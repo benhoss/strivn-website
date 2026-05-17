@@ -4,27 +4,35 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
+  canonicalPath?: string;
+  alternates?: Array<{ hreflang: string; href: string }>;
 }
 
 const {
-  title = 'STRIVN | Know today. Perform tomorrow.',
-  description = 'AI-native performance intelligence for club coaches who need clear decisions before training starts.',
+  title = 'STRIVN | The AI operating layer for modern coaches',
+  description = 'Plan sessions, track player signals, and confirm the next move from one assistant built for overloaded coaches and club staff.',
+  lang = 'en',
+  canonicalPath,
+  alternates = [],
 } = Astro.props;
+const site = Astro.site ?? new URL('https://strivn.ai');
+const canonicalUrl = canonicalPath ? new URL(canonicalPath, site).toString() : undefined;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {alternates.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.hreflang} href={new URL(alternate.href, site).toString()} />
+    ))}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <slot />

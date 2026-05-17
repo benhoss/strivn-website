@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STRIVN — Hero mockup (Aura spirit · Strivn dark system)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+  />
+
+  <style>
+    /* ============================================================
+       Strivn Design System — tokens (subset, canonical)
+       ============================================================ */
+    :root {
+      /* Brand colors */
+      --navy-950: #03091a;
+      --navy-900: #06152b;
+      --navy-850: #0b1e3a;
+      --navy-800: #112849;
+      --navy-700: #1a3258;
+      --navy-500: #3d5a8a;
+      --navy-300: #8497bd;
+      --navy-200: #b5c2d7;
+      --soft-white: #f8fafc;
+      --electric: #2d7ff9;
+      --electric-500: #4f94fb;
+      --performance: #27d7a1;
+      --warning: #ffb020;
+
+      /* Semantic — dark mode */
+      --bg: var(--navy-900);
+      --bg-elev-1: var(--navy-850);
+      --bg-elev-2: var(--navy-800);
+      --bg-recess: var(--navy-950);
+      --fg: var(--soft-white);
+      --fg-muted: var(--navy-200);
+      --fg-subtle: var(--navy-300);
+      --fg-faint: var(--navy-500);
+
+      --border: rgba(255, 255, 255, 0.06);
+      --border-strong: rgba(255, 255, 255, 0.12);
+
+      /* Shadows — only floating chrome (DS rule 4) */
+      --shadow-md: 0 4px 12px rgba(3, 9, 26, 0.4), 0 2px 4px rgba(3, 9, 26, 0.2);
+      --shadow-lg: 0 16px 48px rgba(3, 9, 26, 0.55), 0 4px 12px rgba(3, 9, 26, 0.3);
+
+      /* Type */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      --t-display-xl: 56px;
+      --t-h2: 22px;
+      --t-h3: 18px;
+      --t-body: 15px;
+      --t-body-sm: 13px;
+      --t-caption: 12px;
+      --t-overline: 11px;
+      --lh-display: 1.08;
+      --track-display: -0.02em;
+      --track-heading: -0.01em;
+      --track-overline: 0.08em;
+      --w-regular: 400;
+      --w-medium: 500;
+      --w-semibold: 600;
+
+      /* Spacing */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+      --space-20: 80px;
+      --space-24: 96px;
+
+      /* Radii */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-btn: 6px;
+      --radius-lg: 12px;
+      --radius-pill: 999px;
+
+      /* Motion */
+      --ease: cubic-bezier(0.2, 0, 0, 1);
+      --dur-micro: 150ms;
+      --dur: 220ms;
+      --dur-flow: 320ms;
+    }
+
+    /* Reset & base */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: var(--font-sans);
+      font-size: var(--t-body);
+      line-height: 1.5;
+      color: var(--fg);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: 0;
+      background: none;
+      color: inherit;
+    }
+
+    /* Layout */
+    .page-frame {
+      width: min(80rem, calc(100% - 2 * var(--space-8)));
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       Hero
+       ============================================================ */
+    .hero {
+      position: relative;
+      padding: var(--space-6) 0 var(--space-24);
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero__atmosphere {
+      position: absolute;
+      top: -20%;
+      right: -15%;
+      width: 60rem;
+      height: 60rem;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 60% 40%,
+        rgba(45, 127, 249, 0.16) 0%,
+        rgba(45, 127, 249, 0.04) 30%,
+        transparent 65%
+      );
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    /* Reactive dot field — illuminates near cursor */
+    .hero__field {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 95%);
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 95%);
+      z-index: 0;
+    }
+    .hero > .page-frame {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Topbar */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-8);
+      padding: var(--space-3) 0;
+      position: relative;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .brand__mark {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--electric), var(--performance));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: var(--w-semibold);
+      font-size: 13px;
+      letter-spacing: -0.04em;
+    }
+    .brand__copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .brand__name {
+      font-weight: var(--w-semibold);
+      letter-spacing: -0.02em;
+      font-size: 15px;
+    }
+    .brand__tag {
+      font-size: 11px;
+      color: var(--fg-subtle);
+    }
+    .topbar__nav {
+      display: flex;
+      gap: var(--space-6);
+      font-size: var(--t-body-sm);
+      color: var(--fg-muted);
+    }
+    .topbar__nav a {
+      transition: color var(--dur) var(--ease);
+    }
+    .topbar__nav a:hover {
+      color: var(--fg);
+    }
+    .topbar__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: 3px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      color: var(--fg-subtle);
+    }
+    .lang-switch a {
+      padding: 3px var(--space-3);
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.08em;
+    }
+    .lang-switch a.is-active {
+      background: var(--bg-elev-2);
+      color: var(--fg);
+    }
+
+    /* Buttons */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 10px 18px;
+      border-radius: var(--radius-btn);
+      font-size: var(--t-body-sm);
+      font-weight: var(--w-medium);
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .button--primary {
+      background: var(--electric);
+      color: white;
+    }
+    .button--primary:hover {
+      background: var(--electric-500);
+    }
+    .button--ghost {
+      border: 1px solid var(--border-strong);
+      color: var(--fg);
+      background: transparent;
+    }
+    .button--ghost:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+    .button--small {
+      padding: 6px 12px;
+      font-size: var(--t-caption);
+    }
+
+    /* Hero composition */
+    .hero__layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: var(--space-16);
+      align-items: start;
+      margin-top: var(--space-20);
+      position: relative;
+    }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: 6px 12px 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      color: var(--fg-subtle);
+      letter-spacing: var(--track-overline);
+      text-transform: uppercase;
+      font-weight: var(--w-semibold);
+    }
+    .hero__eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--performance);
+      box-shadow: 0 0 0 3px rgba(39, 215, 161, 0.18);
+    }
+    .hero__eyebrow-sep {
+      width: 1px;
+      height: 12px;
+      background: var(--border);
+    }
+
+    .hero__title {
+      font-size: clamp(36px, 5.6vw, var(--t-display-xl));
+      font-weight: var(--w-semibold);
+      letter-spacing: var(--track-display);
+      line-height: var(--lh-display);
+      margin: var(--space-6) 0 0;
+      max-width: 14ch;
+      text-wrap: balance;
+      color: var(--fg);
+    }
+    .hero__lede {
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--fg-muted);
+      max-width: 38rem;
+      margin-top: var(--space-6);
+    }
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+    .hero__signals {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-12);
+      max-width: 36rem;
+    }
+    .signal {
+      padding: var(--space-4) 0;
+      border-top: 1px solid var(--border);
+    }
+    .signal__label {
+      display: block;
+      font-size: var(--t-overline);
+      font-weight: var(--w-semibold);
+      letter-spacing: var(--track-overline);
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      margin-bottom: var(--space-2);
+    }
+    .signal__value {
+      font-size: var(--t-body-sm);
+      color: var(--fg);
+      font-weight: var(--w-medium);
+    }
+
+    /* ============================================================
+       App mockup panel — 3 levels of depth
+       Level 1: outer panel surface (bg-elev-1)
+       Level 2: chrome strips (bg-elev-2, lighter — comes forward)
+       Level 3: recessed workspace (bg-recess, darker — recedes inward)
+       Float:   proposal popover when step 3 active (shadow-md)
+       ============================================================ */
+    .app {
+      background: var(--bg-elev-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      font-feature-settings: 'cv11', 'ss01';
+    }
+
+    /* Chrome — top app bar */
+    .app__chrome {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: var(--space-4);
+      padding: 10px var(--space-4);
+      background: var(--bg-elev-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .app__dots {
+      display: inline-flex;
+      gap: 6px;
+    }
+    .app__dots span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border);
+    }
+    .app__url {
+      justify-self: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      background: rgba(0, 0, 0, 0.18);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-subtle);
+      letter-spacing: 0.02em;
+    }
+    .app__url-lock {
+      width: 9px;
+      height: 9px;
+      border-radius: 1px;
+      background: var(--fg-faint);
+      position: relative;
+    }
+    .app__avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--electric), var(--performance));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* Sub-chrome — app section nav + context */
+    .app__subchrome {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: 12px var(--space-5);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elev-1);
+    }
+    .app__sections {
+      display: inline-flex;
+      gap: var(--space-1);
+      font-size: var(--t-body-sm);
+      color: var(--fg-subtle);
+    }
+    .app__sections a {
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .app__sections a.is-active {
+      background: rgba(45, 127, 249, 0.08);
+      color: var(--fg);
+    }
+    .app__context {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 11px;
+      color: var(--fg-subtle);
+      font-family: var(--font-mono);
+      letter-spacing: 0.02em;
+    }
+    .app__context-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--performance);
+    }
+
+    /* Workspace — recessed inner surface */
+    .app__workspace {
+      background: var(--bg-recess);
+      padding: var(--space-5);
+      min-height: 520px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    /* ============================================================
+       Flow steps
+       ============================================================ */
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: var(--space-3);
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: transparent;
+      border: 1px solid transparent;
+      transition: background var(--dur-flow) var(--ease), border-color var(--dur-flow) var(--ease),
+        transform var(--dur-flow) var(--ease), box-shadow var(--dur-flow) var(--ease),
+        padding var(--dur-flow) var(--ease);
+    }
+    .step.is-active {
+      background: var(--bg-elev-1);
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-4) var(--space-5);
+    }
+
+    .step__index {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-faint);
+      letter-spacing: 0.04em;
+      padding-top: 4px;
+      transition: color var(--dur-flow) var(--ease);
+    }
+    .step.is-active .step__index {
+      color: var(--electric);
+    }
+
+    /* The "full" and "compact" shells stack inside one cell.
+       Animation uses grid-template-rows 0fr↔1fr (Chrome 117+, Safari 17+).
+       Falls back gracefully on older browsers (instant swap). */
+    .step__content {
+      display: flex;
+      flex-direction: column;
+    }
+    .step__shell {
+      display: grid;
+      grid-template-rows: 0fr;
+      overflow: hidden;
+      opacity: 0;
+      transition: grid-template-rows var(--dur-flow) var(--ease),
+        opacity var(--dur) var(--ease);
+    }
+    .step__shell-inner {
+      min-height: 0;
+      overflow: hidden;
+    }
+    .step.is-active .step__shell--full {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      transition: grid-template-rows var(--dur-flow) var(--ease),
+        opacity var(--dur) var(--ease) 80ms;
+    }
+    .step:not(.is-active) .step__shell--compact {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      transition: grid-template-rows var(--dur-flow) var(--ease),
+        opacity var(--dur) var(--ease) 80ms;
+    }
+
+    /* Compact row */
+    .step__compact-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: 2px 0;
+    }
+    .step__compact-label {
+      font-size: var(--t-overline);
+      font-weight: var(--w-semibold);
+      letter-spacing: var(--track-overline);
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      flex-shrink: 0;
+    }
+    .step__compact-summary {
+      font-size: var(--t-body-sm);
+      color: var(--fg-muted);
+      font-variant-numeric: tabular-nums;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .step__check {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(39, 215, 161, 0.1);
+      border: 1px solid rgba(39, 215, 161, 0.3);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .step__check::after {
+      content: '';
+      width: 5px;
+      height: 3px;
+      border-left: 1.5px solid var(--performance);
+      border-bottom: 1.5px solid var(--performance);
+      transform: rotate(-45deg) translate(0, -1px);
+    }
+
+    /* Full expanded content */
+    .step__label {
+      font-size: var(--t-overline);
+      font-weight: var(--w-semibold);
+      letter-spacing: var(--track-overline);
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      margin: 0 0 var(--space-2);
+    }
+    .step__quote {
+      font-size: var(--t-body);
+      line-height: 1.5;
+      color: var(--fg);
+      margin: 0;
+    }
+    .step__echo {
+      margin-top: var(--space-3);
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: var(--t-body-sm);
+      color: var(--fg-muted);
+      line-height: 1.45;
+    }
+
+    .state-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-2) 0;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: var(--w-medium);
+      border: 1px solid var(--border);
+      color: var(--fg-muted);
+      background: rgba(255, 255, 255, 0.02);
+      font-variant-numeric: tabular-nums;
+    }
+    .pill--warn {
+      color: var(--warning);
+      border-color: rgba(255, 176, 32, 0.22);
+      background: rgba(255, 176, 32, 0.06);
+    }
+    .pill--info {
+      color: var(--electric-500);
+      border-color: rgba(45, 127, 249, 0.24);
+      background: rgba(45, 127, 249, 0.06);
+    }
+    .pill--positive {
+      color: var(--performance);
+      border-color: rgba(39, 215, 161, 0.24);
+      background: rgba(39, 215, 161, 0.06);
+    }
+
+    .insight-list {
+      list-style: none;
+      margin: var(--space-3) 0 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-2);
+    }
+    .insight-list li {
+      font-size: var(--t-body-sm);
+      color: var(--fg-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-variant-numeric: tabular-nums;
+    }
+    .insight-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--fg-faint);
+      flex-shrink: 0;
+    }
+
+    /* Proposal — step 3 content (still inside the step) */
+    .proposal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-3);
+    }
+    .proposal-head h2 {
+      font-size: var(--t-h3);
+      font-weight: var(--w-semibold);
+      letter-spacing: var(--track-heading);
+      line-height: 1.25;
+      margin: var(--space-1) 0 0;
+      color: var(--fg);
+      max-width: 24ch;
+    }
+    .proposal__badge {
+      flex-shrink: 0;
+      font-size: 10.5px;
+      letter-spacing: 0.04em;
+      padding: 4px 10px;
+      color: var(--electric-500);
+      border: 1px solid rgba(45, 127, 249, 0.28);
+      background: rgba(45, 127, 249, 0.06);
+      border-radius: var(--radius-pill);
+      font-weight: var(--w-medium);
+    }
+    .proposal__metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.012);
+    }
+    .proposal__metric {
+      padding: 10px var(--space-3);
+      border-right: 1px solid var(--border);
+    }
+    .proposal__metric:last-child {
+      border-right: 0;
+    }
+    .proposal__metric .label {
+      display: block;
+      font-size: var(--t-overline);
+      font-weight: var(--w-semibold);
+      letter-spacing: var(--track-overline);
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      margin-bottom: 2px;
+    }
+    .proposal__metric .value {
+      font-size: var(--t-body-sm);
+      color: var(--fg);
+      font-weight: var(--w-medium);
+      font-variant-numeric: tabular-nums;
+    }
+    .proposal__actions {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+
+    /* Rail at panel bottom */
+    .app__rail {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--border);
+      background: var(--bg-elev-1);
+    }
+    .rail-item {
+      padding: var(--space-4) var(--space-5);
+      border-right: 1px solid var(--border);
+    }
+    .rail-item:last-child {
+      border-right: 0;
+    }
+    .rail-item .label {
+      display: block;
+      font-size: var(--t-overline);
+      font-weight: var(--w-semibold);
+      letter-spacing: var(--track-overline);
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      margin-bottom: var(--space-1);
+    }
+    .rail-item .value {
+      font-size: var(--t-body-sm);
+      color: var(--fg);
+      font-weight: var(--w-medium);
+    }
+
+    /* Note */
+    .note {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      font-size: 11px;
+      color: var(--fg-subtle);
+      background: rgba(6, 21, 43, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.02em;
+      z-index: 10;
+    }
+
+    /* Entry motion */
+    .animate-rise {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: rise var(--dur) var(--ease) forwards;
+    }
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-rise {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .step,
+      .step__shell,
+      .step__index {
+        transition: none !important;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero__layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-12);
+      }
+    }
+    @media (max-width: 720px) {
+      .topbar__nav {
+        display: none;
+      }
+      .hero {
+        padding-bottom: var(--space-16);
+      }
+      .hero__signals {
+        grid-template-columns: 1fr 1fr;
+      }
+      .app__rail,
+      .proposal__metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+      .rail-item:nth-child(2n),
+      .proposal__metric:nth-child(2n) {
+        border-right: 0;
+      }
+      .app__sections a:nth-child(n + 4) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero__atmosphere" aria-hidden="true"></div>
+    <canvas class="hero__field" aria-hidden="true"></canvas>
+
+    <div class="page-frame">
+      <header class="topbar">
+        <a href="#" class="brand">
+          <div class="brand__mark">S</div>
+          <div class="brand__copy">
+            <span class="brand__name">STRIVN</span>
+            <span class="brand__tag">La couche operative IA des coaches</span>
+          </div>
+        </a>
+
+        <nav class="topbar__nav" aria-label="Navigation principale">
+          <a href="#">Pourquoi STRIVN</a>
+          <a href="#">Workflow</a>
+          <a href="#">Preuves</a>
+          <a href="#">Joueurs</a>
+          <a href="#">Assistant</a>
+          <a href="#">FAQ</a>
+        </nav>
+
+        <div class="topbar__actions">
+          <div class="lang-switch" aria-label="Language switcher">
+            <a href="#">EN</a>
+            <a href="#" class="is-active">FR</a>
+          </div>
+          <a href="#" class="button button--ghost">Reserver une demo</a>
+        </div>
+      </header>
+
+      <div class="hero__layout">
+        <div class="hero__content">
+          <div class="hero__eyebrow animate-rise" style="animation-delay: 90ms;">
+            <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+            <span>Coach-first</span>
+            <span class="hero__eyebrow-sep" aria-hidden="true"></span>
+            <span>Club-ready</span>
+          </div>
+
+          <h1 class="hero__title animate-rise" style="animation-delay: 180ms;">
+            Planifier, suivre et agir depuis un seul assistant.
+          </h1>
+
+          <p class="hero__lede animate-rise" style="animation-delay: 280ms;">
+            STRIVN aide les coaches debordes a faire tourner la semaine — calendrier, presence, charge, wellness, blessures et relances joueurs — depuis une meme surface operative native IA, sans alourdir l'experience cote joueurs.
+          </p>
+
+          <div class="hero__actions animate-rise" style="animation-delay: 380ms;">
+            <a href="#" class="button button--primary">Demander une demo live</a>
+            <a href="#" class="button button--ghost">Voir comment l'assistant fonctionne</a>
+          </div>
+
+          <div class="hero__signals animate-rise" style="animation-delay: 480ms;">
+            <div class="signal">
+              <span class="signal__label">Planification</span>
+              <span class="signal__value">Calendrier + convocations</span>
+            </div>
+            <div class="signal">
+              <span class="signal__label">Suivi</span>
+              <span class="signal__value">Charge, wellness, blessures</span>
+            </div>
+            <div class="signal">
+              <span class="signal__label">Action</span>
+              <span class="signal__value">Demander, verifier, confirmer</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="app animate-rise" style="animation-delay: 240ms;" aria-label="Aperçu de l'app STRIVN">
+          <!-- Browser-style chrome -->
+          <div class="app__chrome">
+            <div class="app__dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="app__url">
+              <span class="app__url-lock" aria-hidden="true"></span>
+              <span>app.strivn.ai &nbsp;·&nbsp; Saison 2025-26</span>
+            </div>
+            <div class="app__avatar" aria-hidden="true"></div>
+          </div>
+
+          <!-- App section nav + context -->
+          <div class="app__subchrome">
+            <nav class="app__sections" aria-label="Sections">
+              <a href="#" class="is-active">Calendrier</a>
+              <a href="#">Joueurs</a>
+              <a href="#">Charge</a>
+              <a href="#">Wellness</a>
+              <a href="#">Blessures</a>
+            </nav>
+            <div class="app__context">
+              <span class="app__context-dot" aria-hidden="true"></span>
+              <span>Mardi 14 mai · Semaine 20</span>
+            </div>
+          </div>
+
+          <!-- Recessed workspace with flow -->
+          <div class="app__workspace" id="flow">
+            <article class="step is-active" data-step="1">
+              <div class="step__index">01</div>
+              <div class="step__content">
+                <div class="step__shell step__shell--full">
+                  <div class="step__shell-inner">
+                    <p class="step__label">Dictee vocale</p>
+                    <p class="step__quote">"Passe la seance de mardi a 20h et relance les joueurs sans reponse."</p>
+                    <div class="step__echo">
+                      Mardi passe a 20h. Envoie aussi des relances aux joueurs qui n'ont toujours pas repondu.
+                    </div>
+                  </div>
+                </div>
+                <div class="step__shell step__shell--compact">
+                  <div class="step__shell-inner">
+                    <div class="step__compact-row">
+                      <span class="step__compact-label">Dictee vocale</span>
+                      <span class="step__check" aria-hidden="true"></span>
+                      <span class="step__compact-summary">Demande reçue</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="step" data-step="2">
+              <div class="step__index">02</div>
+              <div class="step__content">
+                <div class="step__shell step__shell--full">
+                  <div class="step__shell-inner">
+                    <p class="step__label">Etat de l'equipe</p>
+                    <div class="state-pills">
+                      <span class="pill pill--positive">14/18 presences</span>
+                      <span class="pill pill--warn">2 joueurs en risque</span>
+                      <span class="pill pill--info">4 RSVP manquants</span>
+                    </div>
+                    <p class="step__quote" style="font-size: var(--t-body-sm); color: var(--fg-muted);">
+                      Je suggere une mise a jour du planning et des rappels RSVP pour quatre joueurs. Verifiez avant d'appliquer.
+                    </p>
+                    <ul class="insight-list">
+                      <li>14/18 presences confirmees</li>
+                      <li>2 joueurs en risque eleve</li>
+                      <li>4 reponses RSVP manquantes</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="step__shell step__shell--compact">
+                  <div class="step__shell-inner">
+                    <div class="step__compact-row">
+                      <span class="step__compact-label">Etat équipe</span>
+                      <span class="step__check" aria-hidden="true"></span>
+                      <span class="step__compact-summary">14/18 presences · 2 risques · 4 RSVP</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="step" data-step="3">
+              <div class="step__index">03</div>
+              <div class="step__content">
+                <div class="step__shell step__shell--full">
+                  <div class="step__shell-inner">
+                    <div class="proposal-head">
+                      <div>
+                        <p class="step__label" style="margin-bottom: 2px;">Action proposee</p>
+                        <h2>Mettre a jour la seance de mardi et lancer les rappels</h2>
+                      </div>
+                      <span class="proposal__badge">En attente</span>
+                    </div>
+                    <div class="proposal__metrics">
+                      <div class="proposal__metric">
+                        <span class="label">Calendrier</span>
+                        <span class="value">Debut a 20:00</span>
+                      </div>
+                      <div class="proposal__metric">
+                        <span class="label">Relance RSVP</span>
+                        <span class="value">4 joueurs</span>
+                      </div>
+                      <div class="proposal__metric">
+                        <span class="label">Preuves</span>
+                        <span class="value">Reponses + charge</span>
+                      </div>
+                    </div>
+                    <div class="proposal__actions">
+                      <button class="button button--small button--primary">Valider</button>
+                      <button class="button button--small button--ghost">Refuser</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="step__shell step__shell--compact">
+                  <div class="step__shell-inner">
+                    <div class="step__compact-row">
+                      <span class="step__compact-label">Action proposée</span>
+                      <span class="step__compact-summary">En attente de validation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Persistent rail -->
+          <div class="app__rail">
+            <div class="rail-item">
+              <span class="label">Calendrier</span>
+              <span class="value">Semaine alignee</span>
+            </div>
+            <div class="rail-item">
+              <span class="label">Etat joueurs</span>
+              <span class="value">Signaux relies</span>
+            </div>
+            <div class="rail-item">
+              <span class="label">Controle coach</span>
+              <span class="value">Validation humaine</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">hero-mockup · Aura spirit · Strivn dark system · sequenced flow</div>
+
+  <script>
+    // ============================================================
+    // Reactive dot field — cursor-following illumination
+    // Honors prefers-reduced-motion (static base, no animation)
+    // ============================================================
+    (function () {
+      const cv = document.querySelector('.hero__field');
+      if (!cv) return;
+      const hero = cv.closest('.hero');
+      const ctx = cv.getContext('2d');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const GRID = 26;
+      const DOT_R = 1.05;
+      const RADIUS = 200;
+      const BASE_ALPHA = 0.055;
+      const GLOW_ALPHA = 0.42;
+      // navy-300 → electric blue
+      const BASE_RGB = [132, 151, 189];
+      const GLOW_RGB = [78, 168, 252];
+
+      let dpr = 1;
+      let w = 0;
+      let h = 0;
+      let dots = [];
+      let raf = 0;
+      let alive = false;
+      const mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999 };
+
+      function resize() {
+        const rect = hero.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = Math.max(1, Math.floor(rect.width));
+        h = Math.max(1, Math.floor(rect.height));
+        cv.width = Math.floor(w * dpr);
+        cv.height = Math.floor(h * dpr);
+        cv.style.width = w + 'px';
+        cv.style.height = h + 'px';
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+        layoutDots();
+      }
+
+      function layoutDots() {
+        dots = [];
+        const cols = Math.ceil(w / GRID) + 1;
+        const rows = Math.ceil(h / GRID) + 1;
+        const offX = (w - (cols - 1) * GRID) / 2;
+        for (let i = 0; i < cols; i++) {
+          for (let j = 0; j < rows; j++) {
+            dots.push({ x: offX + i * GRID, y: j * GRID });
+          }
+        }
+      }
+
+      function frame() {
+        ctx.clearRect(0, 0, w, h);
+        // ease cursor towards target
+        mouse.x += (mouse.tx - mouse.x) * 0.16;
+        mouse.y += (mouse.ty - mouse.y) * 0.16;
+
+        const cx = mouse.x;
+        const cy = mouse.y;
+        const r2 = RADIUS * RADIUS;
+
+        for (let i = 0; i < dots.length; i++) {
+          const d = dots[i];
+          const dx = d.x - cx;
+          const dy = d.y - cy;
+          const d2 = dx * dx + dy * dy;
+          let alpha = BASE_ALPHA;
+          let r = BASE_RGB[0],
+            g = BASE_RGB[1],
+            b = BASE_RGB[2];
+          if (d2 < r2) {
+            const t = 1 - Math.sqrt(d2) / RADIUS;
+            const k = t * t;
+            alpha = BASE_ALPHA + (GLOW_ALPHA - BASE_ALPHA) * k;
+            r = Math.round(BASE_RGB[0] + (GLOW_RGB[0] - BASE_RGB[0]) * k);
+            g = Math.round(BASE_RGB[1] + (GLOW_RGB[1] - BASE_RGB[1]) * k);
+            b = Math.round(BASE_RGB[2] + (GLOW_RGB[2] - BASE_RGB[2]) * k);
+          }
+          ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, DOT_R, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        raf = requestAnimationFrame(frame);
+      }
+
+      function staticFrame() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = 'rgba(' + BASE_RGB.join(',') + ',' + BASE_ALPHA + ')';
+        for (let i = 0; i < dots.length; i++) {
+          const d = dots[i];
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, DOT_R, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function onMove(e) {
+        const rect = hero.getBoundingClientRect();
+        mouse.tx = e.clientX - rect.left;
+        mouse.ty = e.clientY - rect.top;
+        if (!alive) {
+          mouse.x = mouse.tx;
+          mouse.y = mouse.ty;
+          alive = true;
+        }
+      }
+
+      function start() {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(frame);
+      }
+
+      resize();
+
+      if (reduced) {
+        staticFrame();
+        window.addEventListener('resize', () => {
+          resize();
+          staticFrame();
+        });
+        return;
+      }
+
+      // Skip pointer reactivity on touch-only devices
+      const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+      if (!hasFinePointer) {
+        staticFrame();
+        return;
+      }
+
+      window.addEventListener('mousemove', onMove, { passive: true });
+      window.addEventListener('resize', resize);
+      // Pause when tab hidden
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        } else if (!raf) {
+          start();
+        }
+      });
+      start();
+    })();
+
+    // ============================================================
+    // Flow sequencer (01 → 02 → 03 loop)
+    // ============================================================
+    (function () {
+      const flow = document.getElementById('flow');
+      if (!flow) return;
+      const steps = Array.from(flow.querySelectorAll('.step'));
+      const dwellMs = [3800, 3800, 6000]; // step 3 (decision) holds longer
+      let current = 0;
+      let timer;
+
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        steps.forEach((s) => s.classList.add('is-active'));
+        return;
+      }
+
+      function advance() {
+        steps[current].classList.remove('is-active');
+        current = (current + 1) % steps.length;
+        steps[current].classList.add('is-active');
+        timer = window.setTimeout(advance, dwellMs[current]);
+      }
+
+      timer = window.setTimeout(advance, dwellMs[0]);
+
+      // Pause when tab hidden, resume on return
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearTimeout(timer);
+        } else {
+          timer = window.setTimeout(advance, 1200);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
