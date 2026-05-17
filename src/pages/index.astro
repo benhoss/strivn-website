@@ -1,0 +1,426 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const readinessDots = Array.from({ length: 18 }, (_, index) => ({
+  x: 8 + index * 5.1,
+  y: index % 2 === 0 ? 24 : 32,
+  delay: `${index * 0.16}s`,
+}));
+
+const pulseDots = Array.from({ length: 24 }, (_, index) => ({
+  x: 8 + (index % 6) * 13.2,
+  y: 8 + Math.floor(index / 6) * 13.2,
+  delay: `${index * 0.11}s`,
+}));
+
+const commandModules = [
+  {
+    label: 'Readiness',
+    title: 'Know who can absorb training',
+    body: 'Morning signals arrive by WhatsApp, get interpreted instantly, and resolve into one calm decision before the session begins.',
+  },
+  {
+    label: 'Workload',
+    title: 'Spot spikes before they become absences',
+    body: 'STRIVN compares reported load, recent trends, and player context so coaches can adjust volume without losing the week.',
+  },
+  {
+    label: 'Trust',
+    title: 'Keep the coach in charge',
+    body: 'The recommendation leads. The evidence follows. Nothing about the flow feels like a black-box AI stunt.',
+  },
+];
+
+const coachingMoments = [
+  'Before training starts, see who needs a lighter load.',
+  'During the week, catch weak signals from players who never fill in apps.',
+  'After check-in, move from data collection to a real coaching decision.',
+];
+
+const evidenceRows = [
+  { player: 'Judith V.', note: 'High fatigue and knee pain reported', tone: 'risk' },
+  { player: 'Tom M.', note: 'Load +18% over seven-day average', tone: 'warning' },
+  { player: 'Max R.', note: 'Ready for full session, strong recovery', tone: 'positive' },
+];
+---
+
+<BaseLayout>
+  <main id="top" class="min-h-screen overflow-hidden bg-[var(--bg)] text-[var(--fg)]">
+    <section class="relative isolate border-b border-white/8">
+      <div class="hero-grid absolute inset-0 opacity-70"></div>
+      <div class="signal-aura signal-aura-left"></div>
+      <div class="signal-aura signal-aura-right"></div>
+
+      <div class="mx-auto max-w-[88rem] px-5 pb-12 pt-5 sm:px-8 lg:px-10">
+        <header class="site-header">
+          <a href="#top" class="brand-lockup">
+            <span class="brand-lockup__plate">
+              <img
+                src="strivn-logo.png"
+                alt="STRIVN"
+                class="brand-lockup__logo"
+                loading="eager"
+              />
+            </span>
+            <span class="brand-lockup__meta">
+              <span class="brand-lockup__title">Performance intelligence for clubs</span>
+              <span class="brand-lockup__tagline">Know today. Perform tomorrow.</span>
+            </span>
+          </a>
+          <nav class="site-header__nav hidden items-center gap-8 text-sm text-[var(--fg-muted)] md:flex">
+            <a href="#product" class="transition hover:text-white">Product</a>
+            <a href="#workflow" class="transition hover:text-white">Workflow</a>
+            <a href="#proof" class="transition hover:text-white">Proof</a>
+            <a href="#contact" class="transition hover:text-white">Contact</a>
+          </nav>
+          <a
+            href="#contact"
+            class="inline-flex items-center rounded-full border border-[color:var(--border-strong)] px-4 py-2 text-sm font-medium text-white transition hover:border-[color:var(--electric)] hover:bg-[color:rgba(45,127,249,0.12)]"
+          >
+            Book a live walkthrough
+          </a>
+        </header>
+
+        <div class="grid gap-16 pb-8 pt-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(26rem,0.95fr)] lg:items-end lg:pt-20">
+          <div class="max-w-3xl">
+            <p class="overline mb-6 animate-rise opacity-0 [animation-delay:120ms]">
+              AI-native performance intelligence for ambitious clubs
+            </p>
+            <h1 class="max-w-4xl text-[clamp(3.2rem,7vw,7.3rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-white animate-rise opacity-0 [animation-delay:220ms]">
+              Know what matters before the whistle.
+            </h1>
+            <p class="mt-7 max-w-2xl text-lg leading-8 text-[var(--fg-muted)] animate-rise opacity-0 [animation-delay:320ms]">
+              STRIVN turns daily player check-ins, workload shifts, and weak injury signals into one clear recommendation for the coach. No player app. No dashboard archaeology. Just the next decision.
+            </p>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row animate-rise opacity-0 [animation-delay:420ms]">
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center rounded-full bg-[var(--electric)] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[var(--electric-hover)]"
+              >
+                Request early access
+              </a>
+              <a
+                href="#product"
+                class="inline-flex items-center justify-center rounded-full border border-[color:var(--border-strong)] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+              >
+                See the coach command center
+              </a>
+            </div>
+
+            <div class="mt-12 grid gap-6 sm:grid-cols-3 animate-rise opacity-0 [animation-delay:520ms]">
+              {coachingMoments.map((moment) => (
+                <div class="border-l border-white/10 pl-4 text-sm leading-6 text-[var(--fg-muted)]">
+                  {moment}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="relative lg:pb-4">
+            <div class="hero-theatre">
+              <div class="hero-theatre__wash"></div>
+              <div class="hero-theatre__badge">
+                <span class="overline">Morning briefing</span>
+                <p>From scattered player signals to one calm coaching call before the whistle.</p>
+              </div>
+
+              <div class="hero-theatre__feeds">
+                <article class="hero-feed hero-feed--one">
+                  <span class="hero-feed__label">Wellness check-in</span>
+                  <p>Judith reports heavy legs, poor sleep, knee soreness.</p>
+                </article>
+                <article class="hero-feed hero-feed--two">
+                  <span class="hero-feed__label">Voice note</span>
+                  <p>Tom sounds flat after a heavy Tuesday and short recovery.</p>
+                </article>
+                <article class="hero-feed hero-feed--three">
+                  <span class="hero-feed__label">Load context</span>
+                  <p>Session intensity is already +18% over the recent baseline.</p>
+                </article>
+              </div>
+
+              <div class="hero-core">
+                <div class="hero-core__ring hero-core__ring--outer"></div>
+                <div class="hero-core__ring hero-core__ring--mid"></div>
+                <div class="hero-core__ring hero-core__ring--inner"></div>
+                <div class="hero-core__center">
+                  <span class="overline">STRIVN engine</span>
+                  <strong>Prioritise the signal</strong>
+                </div>
+              </div>
+
+              <svg viewBox="0 0 100 76" class="hero-theatre__paths" aria-hidden="true">
+                <path d="M12 19C24 19 28 25 38 30C46 34 51 36 58 36" class="hero-path hero-path--input hero-path--one" pathLength="100"></path>
+                <path d="M15 31C28 31 31 37 40 41C47 44 52 44 58 43" class="hero-path hero-path--input hero-path--two" pathLength="100"></path>
+                <path d="M18 47C29 47 34 51 42 53C49 55 54 53 59 49" class="hero-path hero-path--input hero-path--three" pathLength="100"></path>
+                <path d="M63 40C74 40 79 35 86 29C90 25 93 23 96 23" class="hero-path hero-path--output hero-path--four" pathLength="100"></path>
+                <path d="M63 45C74 46 80 50 87 56C90 59 93 60 96 60" class="hero-path hero-path--output-soft hero-path--five" pathLength="100"></path>
+              </svg>
+
+              <aside class="hero-decision">
+                <div class="hero-decision__top">
+                  <span class="overline">Today&apos;s recommendation</span>
+                  <span class="hero-decision__time">06:58</span>
+                </div>
+                <h3>Reduce sprint volume for Judith and Tom before full-team work begins.</h3>
+                <p>Risk is elevated by short recovery, higher reported fatigue, and rising session load.</p>
+                <div class="hero-decision__metrics">
+                  <div>
+                    <span class="hero-decision__metric-label">Readiness</span>
+                    <strong class="text-[var(--performance)]">82</strong>
+                  </div>
+                  <div>
+                    <span class="hero-decision__metric-label">Load trend</span>
+                    <strong class="text-[var(--warning)]">+18%</strong>
+                  </div>
+                </div>
+                <div class="hero-decision__actions">
+                  <span class="hero-decision__pill hero-decision__pill--primary">Apply adjustment</span>
+                  <span class="hero-decision__pill">Review players</span>
+                </div>
+              </aside>
+            </div>
+
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <article class="glass-panel animate-rise opacity-0 [animation-delay:580ms]">
+                <p class="overline mb-3">Morning signal</p>
+                <p class="text-sm leading-6 text-[var(--fg-muted)]">
+                  Players reply on WhatsApp in seconds, by text or voice. STRIVN listens for the signals busy staff usually miss.
+                </p>
+              </article>
+              <article class="glass-panel animate-rise opacity-0 [animation-delay:680ms]">
+                <p class="overline mb-3">Decision output</p>
+                <p class="text-sm leading-6 text-[var(--fg-muted)]">
+                  The system surfaces one action, one reason, and the players who need attention before training begins.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="border-b border-white/8">
+      <div class="mx-auto grid max-w-[88rem] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
+        <div class="flex flex-col justify-between gap-8">
+          <div>
+            <p class="overline mb-5">Workflow</p>
+            <h2 class="max-w-xl text-[clamp(2.2rem,4vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-white">
+              Built for clubs that do not have time for another app rollout.
+            </h2>
+          </div>
+          <p class="max-w-lg text-base leading-8 text-[var(--fg-muted)]">
+            STRIVN keeps the player experience invisible. Coaches get the structure of a performance department without forcing a squad to download, learn, or maintain anything new.
+          </p>
+        </div>
+
+        <div class="grid gap-4 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.38fr)]">
+          <div class="feature-stage">
+            <div class="feature-stage__header">
+              <span class="overline">WhatsApp check-in</span>
+              <span class="text-xs text-[var(--fg-subtle)]">06:42</span>
+            </div>
+            <div class="space-y-3">
+              <div class="chat-bubble chat-bubble--system">
+                Morning check-in: how do you feel today? Text or voice both work.
+              </div>
+              <div class="chat-bubble chat-bubble--player">
+                Legs feel heavy. Sleep was short. Left knee sore after Tuesday.
+              </div>
+              <div class="chat-bubble chat-bubble--system">
+                STRIVN catches the pattern, maps it against recent load, and updates the coach view instantly.
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-4">
+            {commandModules.map((module, index) => (
+              <article class={`insight-note animate-rise opacity-0 [animation-delay:${index * 140 + 120}ms]`}>
+                <p class="overline mb-3">{module.label}</p>
+                <h3 class="text-xl font-semibold tracking-[-0.02em] text-white">{module.title}</h3>
+                <p class="mt-3 text-sm leading-6 text-[var(--fg-muted)]">{module.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="product" class="border-b border-white/8">
+      <div class="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 lg:px-10">
+        <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
+          <div>
+            <p class="overline mb-5">Coach command center</p>
+            <h2 class="max-w-lg text-[clamp(2.2rem,4vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-white">
+              Recommendations first, evidence second.
+            </h2>
+          </div>
+          <p class="max-w-2xl text-base leading-8 text-[var(--fg-muted)] lg:justify-self-end">
+            The product language from the STRIVN app becomes the marketing proof here: dark surfaces, hairline separation, exact numbers, and no hype. The coach always understands what to do next and why the system is saying it.
+          </p>
+        </div>
+
+        <div class="command-surface mt-12">
+          <aside class="command-surface__rail">
+            <img src="strivn-logo.png" alt="STRIVN" class="h-9 w-auto object-contain" />
+            <div class="command-surface__menu">
+              <span class="command-surface__item is-active">Briefing</span>
+              <span class="command-surface__item">Players</span>
+              <span class="command-surface__item">Alerts</span>
+              <span class="command-surface__item">Reports</span>
+            </div>
+          </aside>
+
+          <div class="command-surface__body">
+            <div class="recommendation-strip">
+              <div>
+                <p class="overline mb-2">Today&apos;s recommendation</p>
+                <h3 class="text-[1.45rem] font-semibold tracking-[-0.03em] text-white">
+                  Reduce sprint volume for Judith and Tom before full-team work begins.
+                </h3>
+              </div>
+              <div class="recommendation-strip__actions">
+                <a href="#contact" class="rounded-full bg-[var(--electric)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--electric-hover)]">Apply</a>
+                <button class="rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/5">Adjust</button>
+              </div>
+            </div>
+
+            <div class="mt-6 grid gap-6 xl:grid-cols-[minmax(0,0.94fr)_minmax(18rem,0.66fr)]">
+              <div class="space-y-6">
+                <div class="metric-ribbon">
+                  <div>
+                    <p class="metric-ribbon__label">Elevated risk</p>
+                    <p class="metric-ribbon__value text-[var(--risk)]">2 players</p>
+                  </div>
+                  <div>
+                    <p class="metric-ribbon__label">Monitor closely</p>
+                    <p class="metric-ribbon__value text-[var(--warning)]">4 players</p>
+                  </div>
+                  <div>
+                    <p class="metric-ribbon__label">Ready to train</p>
+                    <p class="metric-ribbon__value text-[var(--performance)]">15 players</p>
+                  </div>
+                </div>
+
+                <div class="panel-flow">
+                  <div class="panel-flow__header">
+                    <span class="overline">Signal trace</span>
+                    <span class="text-xs text-[var(--fg-subtle)]">Updated 3 minutes ago</span>
+                  </div>
+                  <div class="signal-board">
+                    <svg viewBox="0 0 100 62" class="w-full">
+                      <path d="M2 35C18 35 18 13 34 13C50 13 50 49 66 49C82 49 82 22 98 22" class="signal-line signal-line--soft" pathLength="100"></path>
+                      <path d="M2 44C17 44 22 27 32 27C45 27 51 8 64 8C77 8 81 41 98 41" class="signal-line" pathLength="100"></path>
+                      {pulseDots.map((dot) => (
+                        <circle
+                          cx={dot.x}
+                          cy={dot.y}
+                          r="1.15"
+                          class="signal-dot signal-dot--small"
+                          style={`animation-delay:${dot.delay};`}
+                        ></circle>
+                      ))}
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="evidence-panel">
+                <div class="panel-flow__header">
+                  <span class="overline">Player evidence</span>
+                  <span class="text-xs text-[var(--fg-subtle)]">Daily view</span>
+                </div>
+                <div class="divide-y divide-white/8">
+                  {evidenceRows.map((row) => (
+                    <div class="flex items-start gap-4 py-4">
+                      <span class={`status-pill status-pill--${row.tone}`}></span>
+                      <div>
+                        <p class="text-sm font-semibold text-white">{row.player}</p>
+                        <p class="mt-1 text-sm leading-6 text-[var(--fg-muted)]">{row.note}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof" class="border-b border-white/8">
+      <div class="mx-auto grid max-w-[88rem] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
+        <div>
+          <p class="overline mb-5">Why it lands</p>
+          <h2 class="max-w-lg text-[clamp(2.2rem,4vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-white">
+            Serious enough for performance staff, simple enough for a head coach at 7am.
+          </h2>
+        </div>
+
+        <div class="space-y-5">
+          <article class="narrative-band">
+            <span class="narrative-band__index">01</span>
+            <div>
+              <h3 class="text-2xl font-semibold tracking-[-0.03em] text-white">No player login friction</h3>
+              <p class="mt-3 max-w-2xl text-base leading-8 text-[var(--fg-muted)]">
+                Players answer where they already are. That keeps response rates high and removes the dead weight of another onboarding exercise.
+              </p>
+            </div>
+          </article>
+          <article class="narrative-band">
+            <span class="narrative-band__index">02</span>
+            <div>
+              <h3 class="text-2xl font-semibold tracking-[-0.03em] text-white">AI that augments, not performs</h3>
+              <p class="mt-3 max-w-2xl text-base leading-8 text-[var(--fg-muted)]">
+                STRIVN does not posture as the coach. It quietly handles consistency, weak-signal detection, and workload interpretation so staff can make the real call.
+              </p>
+            </div>
+          </article>
+          <article class="narrative-band">
+            <span class="narrative-band__index">03</span>
+            <div>
+              <h3 class="text-2xl font-semibold tracking-[-0.03em] text-white">Designed like a high-performance instrument</h3>
+              <p class="mt-3 max-w-2xl text-base leading-8 text-[var(--fg-muted)]">
+                The product and the site share the same language: dark calm surfaces, precise type, status colors with actual meaning, and motion that feels like signal flow rather than decoration.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="relative">
+      <div class="signal-aura signal-aura-bottom"></div>
+      <div class="mx-auto max-w-[88rem] px-5 py-20 sm:px-8 lg:px-10">
+        <div class="cta-shell">
+          <div>
+            <p class="overline mb-5">Get started</p>
+            <h2 class="max-w-3xl text-[clamp(2.5rem,5vw,5.4rem)] font-semibold leading-[0.95] tracking-[-0.045em] text-white">
+              Bring a calmer performance decision loop to your club.
+            </h2>
+          </div>
+          <div class="cta-shell__aside">
+            <p class="text-base leading-8 text-[var(--fg-muted)]">
+              For clubs running with limited staff and real ambition, STRIVN creates structure without creating admin. Start with a live walkthrough and see the morning workflow end to end.
+            </p>
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="mailto:hello@strivn.ai"
+                class="inline-flex items-center justify-center rounded-full bg-[var(--electric)] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[var(--electric-hover)]"
+              >
+                hello@strivn.ai
+              </a>
+              <a
+                href="#top"
+                class="inline-flex items-center justify-center rounded-full border border-white/12 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/5"
+              >
+                Back to top
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
