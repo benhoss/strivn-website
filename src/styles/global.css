@@ -4464,6 +4464,262 @@ h4 {
   }
 }
 
+/* ============================================================
+   HALLMARK REDESIGN v5 · Roster table for "For Whom"
+   Editorial 4×4 table — no card grid, no list. Different
+   shape from anything else on the page.
+   ============================================================ */
+
+.section--roster {
+  position: relative;
+}
+
+.roster-wrap {
+  margin-top: var(--space-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-elev-1);
+}
+
+.roster {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-body-sm);
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.roster__th {
+  text-align: left;
+  font-size: var(--t-overline);
+  font-weight: var(--w-semibold);
+  letter-spacing: var(--track-overline);
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  padding: var(--space-3) var(--space-5);
+  background: var(--bg-elev-2);
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+.roster__th--role {
+  width: 22%;
+}
+.roster__th--where {
+  width: 14%;
+  text-align: right;
+}
+
+.roster__row {
+  transition: background var(--dur) var(--ease);
+}
+.roster__row:hover {
+  background: rgba(255, 255, 255, 0.012);
+}
+.roster__row:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+.roster__cell {
+  padding: var(--space-4) var(--space-5);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--fg-muted);
+  font-weight: var(--w-regular);
+  text-align: left;
+}
+
+.roster__cell--role {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  font-size: 15px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.roster__initials {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy-700), var(--navy-500));
+  border: 1px solid var(--border-strong);
+  display: inline-grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.roster__row:last-child .roster__initials {
+  /* The player row uses a green accent ring to signal "team channel" */
+  background: linear-gradient(135deg, var(--navy-700), rgba(39, 215, 161, 0.4));
+  border-color: rgba(39, 215, 161, 0.32);
+}
+.roster__role {
+  display: inline-block;
+}
+
+.roster__cell--sees,
+.roster__cell--does {
+  color: var(--fg-muted);
+  font-size: var(--t-body-sm);
+}
+
+.roster__cell--where {
+  text-align: right;
+  vertical-align: middle;
+}
+
+.roster__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--electric-500);
+  background: rgba(45, 127, 249, 0.08);
+  border: 1px solid rgba(45, 127, 249, 0.22);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.roster__chip--channel {
+  color: var(--performance);
+  background: rgba(39, 215, 161, 0.08);
+  border-color: rgba(39, 215, 161, 0.22);
+}
+.roster__chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--electric);
+  flex-shrink: 0;
+}
+
+/* Reveal — the table fades in as a single block, then rows cascade */
+.roster-wrap {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-flow) var(--ease), transform var(--dur-flow) var(--ease);
+}
+.roster-wrap.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.roster__row {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 280ms var(--ease), transform 280ms var(--ease);
+  transition-delay: calc(var(--row-i, 0) * 80ms + 100ms);
+}
+.roster-wrap.is-visible .roster__row {
+  opacity: 1;
+  transform: translateY(0);
+}
+.roster__row:nth-of-type(1) { --row-i: 0; }
+.roster__row:nth-of-type(2) { --row-i: 1; }
+.roster__row:nth-of-type(3) { --row-i: 2; }
+.roster__row:nth-of-type(4) { --row-i: 3; }
+
+@media (prefers-reduced-motion: reduce) {
+  .roster-wrap,
+  .roster__row {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Responsive — Roster table */
+@media (max-width: 880px) {
+  .roster__th--role,
+  .roster__th--where {
+    width: auto;
+  }
+  .roster__th,
+  .roster__cell {
+    padding: var(--space-3) var(--space-4);
+  }
+  .roster__cell--role {
+    font-size: 14px;
+    gap: var(--space-2);
+  }
+  .roster__initials {
+    width: 28px;
+    height: 28px;
+    font-size: 10.5px;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Stack each row vertically as a small data block — table-style won't
+     fit four columns at this width without horizontal scroll. */
+  .roster,
+  .roster thead,
+  .roster tbody,
+  .roster tr,
+  .roster th,
+  .roster td {
+    display: block;
+  }
+  .roster thead {
+    display: none; /* header repeats per-row below */
+  }
+  .roster__row {
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--border);
+  }
+  .roster__row:last-child {
+    border-bottom: 0;
+  }
+  .roster__cell {
+    padding: 0;
+    margin-top: var(--space-2);
+  }
+  .roster__cell--role {
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border);
+    white-space: normal;
+  }
+  .roster__cell--sees::before {
+    content: 'Voit · ';
+    color: var(--fg-subtle);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: var(--w-semibold);
+  }
+  .roster__cell--does::before {
+    content: 'Fait · ';
+    color: var(--fg-subtle);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: var(--w-semibold);
+  }
+  .roster__cell--where {
+    text-align: left;
+    margin-top: var(--space-3);
+  }
+  html[lang='en'] .roster__cell--sees::before {
+    content: 'Sees · ';
+  }
+  html[lang='en'] .roster__cell--does::before {
+    content: 'Does · ';
+  }
+}
+
+
 
 
 

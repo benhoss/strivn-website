@@ -747,9 +747,9 @@ const planWeek: WeekCell[] = [
     </section>
 
     <!-- ============================================================
-         FOR WHOM — Staff + Team
+         FOR WHOM — Roster table (Role × Sees × Does × Where)
          ============================================================ -->
-    <section id="for-whom" class="section">
+    <section id="for-whom" class="section section--roster">
       <div class="page-frame">
         <div class="section-intro reveal">
           <p class="eyebrow">{content.forWhom.eyebrow}</p>
@@ -757,25 +757,39 @@ const planWeek: WeekCell[] = [
           <p class="section-body">{content.forWhom.body}</p>
         </div>
 
-        <div class="personas">
-          {content.forWhom.cards.map((card, index) => (
-            <article class="persona reveal" data-reveal-delay={index * 110}>
-              <div class="persona__head">
-                <span class="persona__role">{card.role}</span>
-                <span class="persona__index">0{index + 1}</span>
-              </div>
-              <h3 class="persona__title">{card.title}</h3>
-              <p class="persona__body">{card.body}</p>
-              <span class:list={['persona__surface', card.surfaceKind === 'channel' && 'persona__surface--channel']}>
-                {card.surfaceKind === 'channel' ? (
-                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={whatsappGlyph} aria-hidden="true" />
-                ) : (
-                  <span class="persona__surface-dot" aria-hidden="true"></span>
-                )}
-                <span>{card.surface}</span>
-              </span>
-            </article>
-          ))}
+        <div class="roster-wrap reveal">
+          <table class="roster">
+            <thead>
+              <tr>
+                <th class="roster__th roster__th--role" scope="col">{content.forWhom.columns.role}</th>
+                <th class="roster__th" scope="col">{content.forWhom.columns.sees}</th>
+                <th class="roster__th" scope="col">{content.forWhom.columns.does}</th>
+                <th class="roster__th roster__th--where" scope="col">{content.forWhom.columns.surface}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {content.forWhom.rows.map((row) => (
+                <tr class="roster__row">
+                  <th class="roster__cell roster__cell--role" scope="row">
+                    <span class="roster__initials" aria-hidden="true">{row.initials}</span>
+                    <span class="roster__role">{row.role}</span>
+                  </th>
+                  <td class="roster__cell roster__cell--sees">{row.sees}</td>
+                  <td class="roster__cell roster__cell--does">{row.does}</td>
+                  <td class="roster__cell roster__cell--where">
+                    <span class:list={['roster__chip', row.surfaceKind === 'channel' && 'roster__chip--channel']}>
+                      {row.surfaceKind === 'channel' ? (
+                        <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={whatsappGlyph} aria-hidden="true" />
+                      ) : (
+                        <span class="roster__chip-dot" aria-hidden="true"></span>
+                      )}
+                      <span>{row.surface}</span>
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>

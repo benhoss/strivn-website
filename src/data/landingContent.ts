@@ -141,7 +141,15 @@ type LandingContent = {
     eyebrow: string;
     title: string;
     body: string;
-    cards: Array<{ role: string; title: string; body: string; surface: string; surfaceKind: 'platform' | 'channel' }>;
+    columns: { role: string; sees: string; does: string; surface: string };
+    rows: Array<{
+      role: string;
+      initials: string;
+      sees: string;
+      does: string;
+      surface: string;
+      surfaceKind: 'platform' | 'channel';
+    }>;
   };
   confidence: {
     eyebrow: string;
@@ -432,41 +440,42 @@ export const landingContent: Record<Locale, LandingContent> = {
     },
     forWhom: {
       eyebrow: 'One product · staff and team',
-      title: 'Staff runs the platform. The team answers from WhatsApp.',
+      title: 'Each role · their angle · one squad.',
       body:
-        'Coach, S&C, physio — each gets their angle on the same data inside the platform. Players keep their light experience in WhatsApp. No re-entry, no separate apps.',
-      cards: [
+        "Coach, S&C, physio — each works the same player from their own lens, inside the platform. Players answer from WhatsApp. No re-entry, no separate apps.",
+      columns: { role: 'Role', sees: 'What they see', does: 'What they do', surface: 'Where' },
+      rows: [
         {
-          role: 'Coach',
-          surface: 'Platform · Calendar + actions',
+          role: 'Head coach',
+          initials: 'HC',
+          sees: 'Calendar, RSVP, wellness, risk, week state — one read.',
+          does: 'Drafts the week. Approves comms. Calls the session.',
+          surface: 'Platform',
           surfaceKind: 'platform',
-          title: 'Pilot the week from the platform',
-          body:
-            'Calendar, sessions, convocations, player signals, action approvals — all in one view. The coach keeps the final tap on every write.',
         },
         {
           role: 'S&C coach',
-          surface: 'Platform · Load + wellness',
+          initials: 'SC',
+          sees: 'Training load, post-session wellness, load deltas, risk.',
+          does: 'Adjusts intensity before the next session. Flags overload.',
+          surface: 'Platform',
           surfaceKind: 'platform',
-          title: 'See the load without re-entering it',
-          body:
-            'Training load, post-session wellness, risk deltas — connected in the platform so the strength & conditioning coach can adjust intensity before the next session.',
         },
         {
           role: 'Physio',
-          surface: 'Platform · Injuries + return-to-play',
+          initials: 'PH',
+          sees: 'Injury state, return-to-play step, wellness trend.',
+          does: 'Logs notes. Sets return-to-play stages. Clears for contact.',
+          surface: 'Platform',
           surfaceKind: 'platform',
-          title: 'Track injuries and return-to-play in context',
-          body:
-            'Physio notes, return-to-play protocols, injury state — tied to calendar and load. The return path is planned in the platform, not improvised.',
         },
         {
           role: 'Player',
-          surface: 'WhatsApp · Team channel',
+          initials: 'PL',
+          sees: 'Convocations, wellness asks, session feedback prompts.',
+          does: 'Replies — Yes, 8/10, calf tight. Nothing else.',
+          surface: 'WhatsApp',
           surfaceKind: 'channel',
-          title: 'Answer from the chat they already check',
-          body:
-            'Check-ins, confirmations, wellness, follow-ups — through the WhatsApp they already use. No new app, no new password, no new habit.',
         },
       ],
     },
@@ -790,42 +799,43 @@ export const landingContent: Record<Locale, LandingContent> = {
       },
     },
     forWhom: {
-      eyebrow: "Un produit · staff et equipe",
-      title: "Le staff pilote la plateforme. L'equipe repond depuis WhatsApp.",
+      eyebrow: 'Un produit · staff et equipe',
+      title: 'Chaque role · son angle · un seul groupe.',
       body:
-        "Coach, preparateur, kine — chacun retrouve son angle dans la plateforme. Les joueurs gardent leur experience legere dans WhatsApp. Pas de double saisie, pas d'app a part.",
-      cards: [
+        "Coach, prepa, kine — chacun travaille le meme joueur sous son angle, dans la plateforme. Les joueurs repondent depuis WhatsApp. Pas de double saisie, pas d'app a part.",
+      columns: { role: 'Role', sees: 'Ce qu il voit', does: 'Ce qu il fait', surface: 'Ou' },
+      rows: [
         {
-          role: 'Coach',
-          surface: 'Plateforme · Calendrier + actions',
+          role: 'Head coach',
+          initials: 'HC',
+          sees: 'Calendrier, RSVP, wellness, risque, etat de la semaine — un seul ecran.',
+          does: 'Prepare la semaine. Valide les comms. Decide la seance.',
+          surface: 'Plateforme',
           surfaceKind: 'platform',
-          title: 'Piloter la semaine depuis la plateforme',
-          body:
-            "Calendrier, seances, convocations, signaux joueurs, validation d'actions — dans une meme vue. Le coach garde le dernier tap sur chaque ecriture.",
         },
         {
-          role: 'Preparateur',
-          surface: 'Plateforme · Charge + wellness',
+          role: 'Prepa',
+          initials: 'PR',
+          sees: 'Charge d entrainement, wellness post-seance, variations, risque.',
+          does: 'Ajuste l intensite avant la prochaine seance. Flag les surcharges.',
+          surface: 'Plateforme',
           surfaceKind: 'platform',
-          title: 'Voir la charge sans la ressaisir',
-          body:
-            "Charge d'entrainement, wellness post-seance, variations de risque — connectes dans la plateforme pour ajuster l'intensite avant la prochaine seance.",
         },
         {
           role: 'Kine',
-          surface: 'Plateforme · Blessures + retour au jeu',
+          initials: 'KI',
+          sees: 'Etat blessure, etape de retour au jeu, tendance wellness.',
+          does: 'Note les avis. Pose les etapes RTJ. Autorise le contact.',
+          surface: 'Plateforme',
           surfaceKind: 'platform',
-          title: 'Suivre blessures et retour au jeu en contexte',
-          body:
-            'Notes kine, protocoles de revalidation, etat des blessures — relies au calendrier et a la charge. Le retour se planifie dans la plateforme.',
         },
         {
           role: 'Joueur',
-          surface: "WhatsApp · Canal d'equipe",
+          initials: 'JO',
+          sees: 'Convocations, demandes wellness, ressenti de seance.',
+          does: 'Repond — OK, 8/10, mollet tendu. Rien d autre.',
+          surface: 'WhatsApp',
           surfaceKind: 'channel',
-          title: 'Repondre depuis le chat deja ouvert',
-          body:
-            "Check-ins, confirmations, wellness, relances — dans le WhatsApp deja utilise. Pas de nouvelle app, pas de mot de passe, pas d'habitude a imposer.",
         },
       ],
     },
