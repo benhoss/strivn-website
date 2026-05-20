@@ -15,29 +15,17 @@ const canonical = locale === 'fr' ? '/' : enPath;
 
 const soonLabel = isFrench ? 'A venir' : 'Soon';
 
-// Hero signals icons (Plan / Follow / Act) — Lucide-style stroke 2
+// Hero signals icons (Plan / Monitor / Act) — Lucide-style stroke 2
 const signalIcons = [
   // 0 — Plan (calendar)
   `<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>`,
-  // 1 — Follow (trending-up)
+  // 1 — Monitor (trending-up)
   `<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>`,
   // 2 — Act (check-square)
   `<polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>`,
 ];
 
-// Icons mapped by index for Why cards (Lucide-style, stroke 2 marketing)
-const whyIcons = [
-  // 0 — Inputs (activity / signal)
-  `<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>`,
-  // 1 — Surfaces (layers)
-  `<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>`,
-  // 2 — Actions (zap)
-  `<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>`,
-  // 3 — Control (shield-check)
-  `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>`,
-];
-
-// Icons for Confidence points
+// Confidence point icons
 const confidenceIcons = [
   // 0 — scoped target
   `<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>`,
@@ -49,29 +37,38 @@ const confidenceIcons = [
   `<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>`,
 ];
 
+// WhatsApp logo glyph (used in channel-side header + persona chip)
+const whatsappGlyph = `<path d="M16.6 14.2c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5 0-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.5-1.8-.1-.3 0-.4.1-.6l.4-.4.2-.3c0-.1.1-.2 0-.4 0-.1-.5-1.4-.8-1.8-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.6 1.1 2.7.1.2 1.9 2.9 4.6 4 2.2.9 2.7.7 3.2.7.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.2-.2-.5-.3zM12 3a9 9 0 0 0-7.6 13.8L3 21l4.4-1.2A9 9 0 1 0 12 3z"/>`;
+
+// AI principle icons (Lucide-style, stroke 2, 18px)
+const principleIcons = [
+  // 0 — Learns your team (users — your specific squad)
+  `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+  // 1 — Less admin (audio waveform / voice)
+  `<path d="M2 12h2"/><path d="M6 8v8"/><path d="M10 5v14"/><path d="M14 8v8"/><path d="M18 11v2"/><path d="M22 12h-2"/>`,
+  // 2 — Squad in one read (graph / connected nodes)
+  `<circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="6" y1="8" x2="6" y2="16"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="18" x2="16" y2="18"/><line x1="18" y1="8" x2="18" y2="16"/><line x1="8" y1="8" x2="16" y2="16"/>`,
+  // 3 — Whole staff (layout-grid · four cells = four angles in one layout)
+  `<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>`,
+];
+
 const planDayLabels = isFrench
   ? ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
   : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-const planRosterRows = isFrench
-  ? [
-      { name: 'M. Cordeiro', status: 'OK', tone: 'positive' },
-      { name: 'T. Mendes', status: 'Risque', tone: 'warn' },
-      { name: 'Y. Ribot', status: 'RSVP', tone: 'info' },
-      { name: 'A. Dupin', status: 'OK', tone: 'positive' },
-    ]
-  : [
-      { name: 'M. Cordeiro', status: 'OK', tone: 'positive' },
-      { name: 'T. Mendes', status: 'Risk', tone: 'warn' },
-      { name: 'Y. Ribot', status: 'RSVP', tone: 'info' },
-      { name: 'A. Dupin', status: 'OK', tone: 'positive' },
-    ];
+const planMockText = isFrench
+  ? { label: 'Semaine 20', stamp: '4 evenements prepares', matchTag: 'MATCH', sessionTag: 'SEANCE' }
+  : { label: 'Week 20', stamp: '4 events drafted', matchTag: 'MATCH', sessionTag: 'SESSION' };
+
+const rosterMockText = isFrench
+  ? { label: 'Roster', live: 'En direct', counter: '14/18 presences' }
+  : { label: 'Roster', live: 'Live', counter: '14/18 attendance' };
 
 const actMockText = isFrench
   ? {
-      label: 'Action proposée',
+      label: 'Action proposee',
       title: 'Envoyer la convocation pour mardi 20h ?',
-      sub: 'Notification WhatsApp 24h avant la séance',
+      sub: 'Diffusion WhatsApp 24h avant la seance',
       metrics: [
         { label: 'Cible', value: '18 joueurs' },
         { label: 'Canal', value: 'WhatsApp' },
@@ -84,7 +81,7 @@ const actMockText = isFrench
   : {
       label: 'Proposed action',
       title: 'Send the Tuesday 20:00 convocation?',
-      sub: 'WhatsApp notification, 24 hours ahead',
+      sub: 'WhatsApp dispatch, 24 hours ahead',
       metrics: [
         { label: 'Reach', value: '18 players' },
         { label: 'Channel', value: 'WhatsApp' },
@@ -95,13 +92,19 @@ const actMockText = isFrench
       badge: 'Pending',
     };
 
-const planMockText = isFrench
-  ? { label: 'Semaine 20', stamp: '4 événements préparés', matchTag: 'MATCH', sessionTag: 'SÉANCE' }
-  : { label: 'Week 20', stamp: '4 events drafted', matchTag: 'MATCH', sessionTag: 'SESSION' };
-
-const rosterMockText = isFrench
-  ? { label: 'Roster', live: 'En direct', counter: '14/18 presences' }
-  : { label: 'Roster', live: 'Live', counter: '14/18 attendance' };
+const rosterMomentRows = isFrench
+  ? [
+      { name: 'M. Cordeiro', status: 'OK', tone: 'positive' },
+      { name: 'T. Mendes', status: 'Risque', tone: 'warn' },
+      { name: 'Y. Ribot', status: 'RSVP', tone: 'info' },
+      { name: 'A. Dupin', status: 'OK', tone: 'positive' },
+    ]
+  : [
+      { name: 'M. Cordeiro', status: 'OK', tone: 'positive' },
+      { name: 'T. Mendes', status: 'Risk', tone: 'warn' },
+      { name: 'Y. Ribot', status: 'RSVP', tone: 'info' },
+      { name: 'A. Dupin', status: 'OK', tone: 'positive' },
+    ];
 
 type WeekCell = { day: string; kind: 'empty' | 'training' | 'match'; time?: string; primary?: boolean };
 const planWeek: WeekCell[] = [
@@ -128,7 +131,7 @@ const planWeek: WeekCell[] = [
 >
   <main id="top" class="landing-shell">
     <!-- ============================================================
-         HERO
+         HERO — Platform-first
          ============================================================ -->
     <section class="hero">
       <div class="hero__atmosphere" aria-hidden="true"></div>
@@ -145,8 +148,9 @@ const planWeek: WeekCell[] = [
           </a>
 
           <nav class="topbar__nav" aria-label={content.header.navLabel}>
-            <a href="#why">{content.header.nav.why}</a>
-            <a href="#how-it-works">{content.header.nav.howItWorks}</a>
+            <a href="#platform">{content.header.nav.platform}</a>
+            <a href="#how-it-works">{content.header.nav.loop}</a>
+            <a href="#ai">{content.header.nav.ai}</a>
             <a href="#for-whom">{content.header.nav.forWhom}</a>
             <a href="#confidence">{content.header.nav.confidence}</a>
             <a href="#faq">{content.header.nav.faq}</a>
@@ -171,11 +175,15 @@ const planWeek: WeekCell[] = [
               <span class="hero__eyebrow-dot" aria-hidden="true"></span>
               <span>{content.hero.eyebrowChips[0]}</span>
               <span class="hero__eyebrow-sep" aria-hidden="true"></span>
+              <span class="hero__eyebrow-wa" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={whatsappGlyph} />
+              </span>
               <span>{content.hero.eyebrowChips[1]}</span>
             </div>
 
             <h1 class="hero__title animate-rise" style="animation-delay: 180ms;">
               {content.hero.title}
+              <span class="hero__title-accent">{content.hero.titleAccent}</span>
             </h1>
 
             <p class="hero__lede animate-rise" style="animation-delay: 280ms;">
@@ -243,20 +251,20 @@ const planWeek: WeekCell[] = [
 
               <div class="ai-strip__assistants">
                 <div class="ai-strip__assistant">
-                  <strong class="ai-strip__assistant-label">{content.hero.aiStrip.coach.label}</strong>
-                  <span class="ai-strip__assistant-body">{content.hero.aiStrip.coach.body}</span>
+                  <strong class="ai-strip__assistant-label">{content.hero.aiStrip.staff.label}</strong>
+                  <span class="ai-strip__assistant-body">{content.hero.aiStrip.staff.body}</span>
                 </div>
                 <span class="ai-strip__sep ai-strip__sep--inner" aria-hidden="true"></span>
                 <div class="ai-strip__assistant">
-                  <strong class="ai-strip__assistant-label">{content.hero.aiStrip.player.label}</strong>
-                  <span class="ai-strip__assistant-body">{content.hero.aiStrip.player.body}</span>
+                  <strong class="ai-strip__assistant-label">{content.hero.aiStrip.team.label}</strong>
+                  <span class="ai-strip__assistant-body">{content.hero.aiStrip.team.body}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <aside class="app animate-rise" style="animation-delay: 240ms;" aria-label="STRIVN app preview">
-            <!-- Browser-style chrome -->
+          <aside class="app animate-rise" style="animation-delay: 240ms;" aria-label="STRIVN platform preview">
+            <!-- Browser-style chrome (the platform IS the staff surface) -->
             <div class="app__chrome">
               <div class="app__dots" aria-hidden="true">
                 <span></span><span></span><span></span>
@@ -288,7 +296,7 @@ const planWeek: WeekCell[] = [
             <div class="app__workspace" id="hero-flow">
               <div class="pane-viewport">
                 <div class="pane-track">
-                  <!-- Pane 01 — Voice dictation -->
+                  <!-- Pane 01 — Voice dictation (in-platform) -->
                   <article class="pane is-active" data-step="1">
                     <div class="pane__head">
                       <span class="pane__index">01</span>
@@ -301,7 +309,7 @@ const planWeek: WeekCell[] = [
                     >{content.hero.panel.stepVoiceEcho}</div>
                   </article>
 
-                  <!-- Pane 02 — Week state -->
+                  <!-- Pane 02 — Week state (platform read-out) -->
                   <article class="pane" data-step="2">
                     <div class="pane__head">
                       <span class="pane__index">02</span>
@@ -320,7 +328,7 @@ const planWeek: WeekCell[] = [
                     </ul>
                   </article>
 
-                  <!-- Pane 03 — Proposal -->
+                  <!-- Pane 03 — Proposal (platform action card) -->
                   <article class="pane" data-step="3">
                     <div class="pane__head">
                       <div class="pane__head-left">
@@ -344,7 +352,7 @@ const planWeek: WeekCell[] = [
                     </div>
                   </article>
 
-                  <!-- Pane 04 — Player WhatsApp frame -->
+                  <!-- Pane 04 — Player WhatsApp frame (team channel reveal) -->
                   <article class="pane pane--player" data-step="4">
                     <div class="pane__head">
                       <span class="pane__index">04</span>
@@ -364,6 +372,9 @@ const planWeek: WeekCell[] = [
                             <span class="phone__name">{content.hero.panel.player.phoneName}</span>
                             <span class="phone__sub">{content.hero.panel.player.phoneSub}</span>
                           </div>
+                          <span class="phone__wa" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={whatsappGlyph} />
+                          </span>
                         </div>
                         <div class="phone__chat">
                           {content.hero.panel.player.bubbles.map((b, i) => (
@@ -411,63 +422,206 @@ const planWeek: WeekCell[] = [
     </section>
 
     <!-- ============================================================
-         METRICS STRIP
+         AI INSIDE — principles + evidence trace
          ============================================================ -->
-    <section class="metrics" aria-label="Key metrics">
-      <div class="page-frame">
-        <ul class="metrics__row">
-          {content.metrics.items.map((m, index) => (
-            <li class="metric reveal" data-reveal-delay={index * 90}>
-              <div class="metric__value">
-                <span class="metric__number" data-count-target={m.value}>{m.value}</span>
-                {m.unit && <span class="metric__unit">{m.unit}</span>}
-              </div>
-              <span class="metric__label">{m.label}</span>
-              <p class="metric__body">{m.body}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         WHY STRIVN
-         ============================================================ -->
-    <section id="why" class="section">
+    <section id="ai" class="section section--ai" aria-label="AI inside">
       <div class="page-frame">
         <div class="section-intro reveal">
-          <p class="eyebrow">{content.why.eyebrow}</p>
-          <h2 class="section-title">{content.why.title}</h2>
-          <p class="section-body">{content.why.body}</p>
+          <p class="eyebrow">{content.ai.eyebrow}</p>
+          <h2 class="section-title">{content.ai.title}</h2>
+          <p class="section-body">{content.ai.body}</p>
         </div>
 
-        <div class="why-grid">
-          {content.why.items.map((item, index) => (
-            <article class="why-card reveal" data-reveal-delay={index * 100}>
-              <div class="why-card__icon" aria-hidden="true">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  set:html={whyIcons[index] ?? ''}
-                />
+        <div class="ai-grid">
+          <!-- Left column: 4 numbered principles -->
+          <ol class="ai-principles" aria-label="Principles">
+            {content.ai.principles.map((principle, i) => (
+              <li class="ai-principle reveal" data-reveal-delay={i * 80}>
+                <span class="ai-principle__index">{String(i + 1).padStart(2, '0')}</span>
+                <span class="ai-principle__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={principleIcons[i] ?? ''} />
+                </span>
+                <div class="ai-principle__copy">
+                  <span class="ai-principle__label">{principle.label}</span>
+                  <span class="ai-principle__verb">{principle.verb}</span>
+                  <p class="ai-principle__body">{principle.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <!-- Right column: evidence trace card -->
+          <aside class="ai-trace reveal" data-reveal-delay={120}>
+            <header class="ai-trace__head">
+              <p class="eyebrow eyebrow--accent">{content.ai.trace.eyebrow}</p>
+              <span class="ai-trace__badge">{content.ai.trace.badge}</span>
+            </header>
+            <h3 class="ai-trace__title">{content.ai.trace.title}</h3>
+
+            <div class="ai-trace__block">
+              <span class="ai-trace__block-label">{content.ai.trace.evidenceLabel}</span>
+              <ul class="ai-trace__evidence">
+                {content.ai.trace.evidence.map((line) => (
+                  <li>
+                    <span class="ai-trace__bullet" aria-hidden="true"></span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="ai-trace__block ai-trace__block--row">
+              <span class="ai-trace__block-label">{content.ai.trace.confidenceLabel}</span>
+              <div class="ai-trace__confidence">
+                <div class="ai-trace__bars" role="img" aria-label={`${content.ai.trace.confidenceLevel} · ${content.ai.trace.confidenceSegments} of ${content.ai.trace.confidenceTotal}`}>
+                  {Array.from({ length: content.ai.trace.confidenceTotal }).map((_, i) => (
+                    <span class:list={['ai-trace__bar', i < content.ai.trace.confidenceSegments && 'is-filled']}></span>
+                  ))}
+                </div>
+                <span class="ai-trace__confidence-label">{content.ai.trace.confidenceLevel}</span>
               </div>
-              <span class="why-card__label">{item.label}</span>
-              <h3 class="why-card__title">{item.title}</h3>
-              <p class="why-card__body">{item.body}</p>
-            </article>
-          ))}
+            </div>
+
+            <footer class="ai-trace__actions">
+              <span class="button button--small button--primary ai-trace__btn">{content.ai.trace.approve}</span>
+              <span class="button button--small button--ghost ai-trace__btn">{content.ai.trace.adjust}</span>
+            </footer>
+
+            <p class="ai-trace__caption">{content.ai.trace.caption}</p>
+          </aside>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         HOW IT WORKS
+         PLATFORM + CHANNEL — Two surfaces, one operating loop
+         ============================================================ -->
+    <section id="platform" class="section section--platform-channel">
+      <div class="page-frame">
+        <div class="section-intro reveal">
+          <p class="eyebrow">{content.platformChannel.eyebrow}</p>
+          <h2 class="section-title">{content.platformChannel.title}</h2>
+          <p class="section-body">{content.platformChannel.body}</p>
+        </div>
+
+        <div class="surfaces">
+          <!-- Platform side: staff dashboard mock -->
+          <article class="surface surface--platform reveal">
+            <div class="surface__head">
+              <p class="eyebrow eyebrow--accent">{content.platformChannel.platformSide.eyebrow}</p>
+              <span class="surface__where surface__where--platform">
+                <span class="surface__where-dot" aria-hidden="true"></span>
+                <span>{isFrench ? 'Le staff travaille ici' : 'Where staff works'}</span>
+              </span>
+            </div>
+            <div class="dash-mock" aria-hidden="true">
+              <div class="dash-mock__chrome">
+                <div class="dash-mock__dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="dash-mock__url">
+                  <span class="dash-mock__url-lock"></span>
+                  <span>{content.platformChannel.platformSide.url}</span>
+                </div>
+              </div>
+              <div class="dash-mock__sections">
+                {content.platformChannel.platformSide.sections.map((section) => (
+                  <span class:list={['dash-mock__section', section === content.platformChannel.platformSide.activeSection && 'is-active']}>{section}</span>
+                ))}
+              </div>
+              <div class="dash-mock__context">
+                <span class="dash-mock__context-dot"></span>
+                <span>{content.platformChannel.platformSide.contextLine}</span>
+              </div>
+              <div class="dash-mock__panel">
+                <p class="dash-mock__insight-eyebrow">{isFrench ? 'Insight' : 'Insight'}</p>
+                <h3 class="dash-mock__insight-title">{content.platformChannel.platformSide.insightTitle}</h3>
+                <p class="dash-mock__insight-body">{content.platformChannel.platformSide.insightBody}</p>
+                <ul class="dash-mock__roster">
+                  {content.platformChannel.platformSide.rosterRows.map((row) => (
+                    <li class="dash-mock__row">
+                      <span class="dash-mock__avatar"></span>
+                      <span class="dash-mock__name">{row.name}</span>
+                      <span class:list={['pill', `pill--${row.tone}`]}>{row.status}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p class="surface__caption">{content.platformChannel.platformSide.caption}</p>
+          </article>
+
+          <!-- Bridge: arrow between surfaces -->
+          <div class="surfaces__bridge reveal" aria-hidden="true">
+            <div class="surfaces__bridge-line"></div>
+            <div class="surfaces__bridge-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </div>
+            <p class="surfaces__bridge-label">{content.platformChannel.bridge}</p>
+          </div>
+
+          <!-- Channel side: player WhatsApp -->
+          <article class="surface surface--channel reveal">
+            <div class="surface__head">
+              <p class="eyebrow eyebrow--accent">
+                <span class="surface__wa" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={whatsappGlyph} />
+                </span>
+                <span>{content.platformChannel.channelSide.eyebrow}</span>
+              </p>
+              <span class="surface__where surface__where--channel">
+                <span class="surface__where-dot surface__where-dot--green" aria-hidden="true"></span>
+                <span>{isFrench ? "L'equipe repond ici" : 'Where the team answers'}</span>
+              </span>
+            </div>
+            <div class="channel-mock" aria-hidden="true">
+              <div class="phone phone--inline">
+                <div class="phone__bar">
+                  <span class="phone__time">{content.platformChannel.channelSide.phoneTime}</span>
+                  <span class="phone__dots">
+                    <span></span><span></span><span></span>
+                  </span>
+                </div>
+                <div class="phone__app">
+                  <div class="phone__header">
+                    <span class="phone__avatar">{content.platformChannel.channelSide.phoneAvatar}</span>
+                    <div class="phone__id">
+                      <span class="phone__name">{content.platformChannel.channelSide.phoneName}</span>
+                      <span class="phone__sub">{content.platformChannel.channelSide.phoneSub}</span>
+                    </div>
+                    <span class="phone__wa">
+                      <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={whatsappGlyph} />
+                    </span>
+                  </div>
+                  <div class="phone__chat">
+                    {content.platformChannel.channelSide.thread.map((line) => (
+                      <div class:list={['bubble', line.from === 'player' ? 'bubble--in' : 'bubble--out']}>
+                        <p>{line.text}</p>
+                        <span class="bubble__time">
+                          {line.time}
+                          {line.from === 'staff' && (
+                            <svg class="bubble__check" width="11" height="8" viewBox="0 0 11 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <polyline points="0.6 4.4 3 6.8 7 1.2"/>
+                              <polyline points="3.6 4.4 6 6.8 10 1.2"/>
+                            </svg>
+                          )}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="surface__caption">{content.platformChannel.channelSide.caption}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         HOW IT WORKS — Operating loop
          ============================================================ -->
     <section id="how-it-works" class="section">
       <div class="page-frame">
@@ -535,7 +689,7 @@ const planWeek: WeekCell[] = [
                       <span class="viz__stamp">{rosterMockText.counter}</span>
                     </div>
                     <div class="viz__roster">
-                      {planRosterRows.map((row) => (
+                      {rosterMomentRows.map((row) => (
                         <div class="viz__row">
                           <span class="viz__avatar"></span>
                           <span class="viz__name">{row.name}</span>
@@ -593,7 +747,7 @@ const planWeek: WeekCell[] = [
     </section>
 
     <!-- ============================================================
-         FOR WHOM
+         FOR WHOM — Staff + Team
          ============================================================ -->
     <section id="for-whom" class="section">
       <div class="page-frame">
@@ -612,6 +766,14 @@ const planWeek: WeekCell[] = [
               </div>
               <h3 class="persona__title">{card.title}</h3>
               <p class="persona__body">{card.body}</p>
+              <span class:list={['persona__surface', card.surfaceKind === 'channel' && 'persona__surface--channel']}>
+                {card.surfaceKind === 'channel' ? (
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={whatsappGlyph} aria-hidden="true" />
+                ) : (
+                  <span class="persona__surface-dot" aria-hidden="true"></span>
+                )}
+                <span>{card.surface}</span>
+              </span>
             </article>
           ))}
         </div>
@@ -857,7 +1019,6 @@ const planWeek: WeekCell[] = [
 
   // ============================================================
   // Hero flow sequencer — sliding panes (left → right)
-  // + sub-animations: typing dictation, cascading pills, metrics
   // ============================================================
   (function () {
     const flow = document.getElementById('hero-flow');
@@ -868,7 +1029,6 @@ const planWeek: WeekCell[] = [
     const dots = Array.from(flow.querySelectorAll<HTMLButtonElement>('.pane-dot'));
     if (panes.length === 0) return;
 
-    // Split typing targets into spans (unicode-aware) with cascading delays
     const typingTargets = flow.querySelectorAll<HTMLElement>('[data-typing]');
     typingTargets.forEach((el) => {
       if (el.dataset.typingPrepared) return;
@@ -898,11 +1058,8 @@ const planWeek: WeekCell[] = [
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function activate(idx: number) {
-      // Slide the track
       track!.style.transform = 'translateX(-' + idx * 100 + '%)';
-      // Update dots
       dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
-      // Restart sub-animations on the active pane: remove on all → reflow → add on idx
       panes.forEach((p) => p.classList.remove('is-active'));
       void panes[idx].offsetWidth;
       panes[idx].classList.add('is-active');
@@ -914,7 +1071,6 @@ const planWeek: WeekCell[] = [
       timer = window.setTimeout(advance, dwellMs[current]);
     }
 
-    // Click a dot to jump to that pane
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
         window.clearTimeout(timer);
@@ -927,7 +1083,6 @@ const planWeek: WeekCell[] = [
     });
 
     if (reduced) {
-      // Show pane 1 stationary; user can jump via dots
       panes[0].classList.add('is-active');
       return;
     }
@@ -943,7 +1098,7 @@ const planWeek: WeekCell[] = [
   })();
 
   // ============================================================
-  // Scroll-triggered reveal — 220ms fade-rise per element on enter viewport
+  // Scroll-triggered reveal
   // ============================================================
   (function () {
     const targets = document.querySelectorAll<HTMLElement>('.reveal');
@@ -974,11 +1129,7 @@ const planWeek: WeekCell[] = [
   })();
 
   // ============================================================
-  // Viz reveal — cascade content inside each viz when it enters viewport.
-  // The viz itself fades in via .reveal; this triggers the internal cascade
-  // (week cells appearing one-by-one, roster rows dropping in, action card
-  // building itself). Threshold higher (0.25) so it triggers when the viz
-  // is comfortably in view, not the moment its first pixel scrolls in.
+  // Viz reveal — cascade content inside each viz when it enters viewport
   // ============================================================
   (function () {
     const vizs = document.querySelectorAll<HTMLElement>('.viz');
@@ -1002,45 +1153,4 @@ const planWeek: WeekCell[] = [
     vizs.forEach((v) => io.observe(v));
   })();
 
-  // ============================================================
-  // Metric count-up — numbers ease from 0 to their target when visible.
-  // Stripe-style anchor effect. Skips zero values, respects reduced motion.
-  // ============================================================
-  (function () {
-    const nums = document.querySelectorAll<HTMLElement>('.metric__number[data-count-target]');
-    if (nums.length === 0) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced || typeof IntersectionObserver === 'undefined') return; // leave as-is
-
-    function countUp(el: HTMLElement, target: number, duration = 1200) {
-      if (target === 0) {
-        el.textContent = '0';
-        return;
-      }
-      const startTime = performance.now();
-      function tick(now: number) {
-        const t = Math.min(1, (now - startTime) / duration);
-        const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-        el.textContent = String(Math.round(target * eased));
-        if (t < 1) requestAnimationFrame(tick);
-      }
-      el.textContent = '0';
-      requestAnimationFrame(tick);
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            const target = Number(el.dataset.countTarget || '0');
-            countUp(el, target);
-            io.unobserve(el);
-          }
-        }
-      },
-      { threshold: 0.4 }
-    );
-    nums.forEach((n) => io.observe(n));
-  })();
 </script>

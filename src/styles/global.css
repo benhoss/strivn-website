@@ -2607,3 +2607,1863 @@ h4 {
     padding: var(--space-8) var(--space-5);
   }
 }
+
+/* ============================================================
+   HALLMARK REDESIGN · WhatsApp-as-OS
+   Added 2026-05-20. New chrome around the hero panel,
+   new Channel Proof section, new loop-chat viz inside How It Works.
+   Tokens stay locked to the Strivn design system.
+   ============================================================ */
+
+/* ----- Hero accent line (continuation of headline) ----- */
+.hero__title-accent {
+  display: block;
+  color: var(--fg-muted);
+  font-weight: var(--w-medium);
+  margin-top: var(--space-2);
+}
+
+/* WhatsApp glyph chip embedded in the hero eyebrow */
+.hero__eyebrow-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(39, 215, 161, 0.16);
+  color: var(--performance);
+  margin-right: -2px;
+}
+
+/* Hero anchor line — replaces signals tri-column */
+.hero__anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+  padding: 6px 12px 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-subtle);
+  letter-spacing: 0.02em;
+  max-width: max-content;
+}
+.hero__anchor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--performance);
+  box-shadow: 0 0 0 3px rgba(39, 215, 161, 0.14);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Hero panel — WhatsApp chat chrome
+   ============================================================ */
+.app--chat {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Top chat header (avatar + name + status + mode + WA glyph) */
+.chat-chrome {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px var(--space-4);
+  background: var(--bg-elev-2);
+  border-bottom: 1px solid var(--border);
+}
+.chat-chrome__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: var(--fg-subtle);
+  flex-shrink: 0;
+}
+.chat-chrome__avatar {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--electric), var(--performance));
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 12px;
+  font-weight: var(--w-semibold);
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+.chat-chrome__avatar-dot {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--performance);
+  border: 2px solid var(--bg-elev-2);
+}
+.chat-chrome__id {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+}
+.chat-chrome__name {
+  font-size: 13px;
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+}
+.chat-chrome__status {
+  font-size: 10.5px;
+  color: var(--performance);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chat-chrome__mode {
+  font-size: 9.5px;
+  font-weight: var(--w-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--track-overline);
+  padding: 3px 8px;
+  color: var(--electric-500);
+  background: rgba(45, 127, 249, 0.08);
+  border: 1px solid rgba(45, 127, 249, 0.22);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+.chat-chrome__wa {
+  color: var(--performance);
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+/* Anchor block: today divider, coach prompt bubble, reply label */
+.chat-anchor {
+  padding: 14px var(--space-5) 8px;
+  background: var(--bg-elev-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.chat-anchor__day {
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-subtle);
+  background: rgba(0, 0, 0, 0.18);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+.chat-anchor__prompt {
+  align-self: flex-end;
+  max-width: 86%;
+}
+.chat-anchor__reply-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-subtle);
+  margin: 4px 0 0;
+  letter-spacing: 0.02em;
+}
+.chat-anchor__reply-label strong {
+  color: var(--fg);
+  font-weight: var(--w-semibold);
+}
+.chat-anchor__reply-mark {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--electric);
+  box-shadow: 0 0 0 3px rgba(45, 127, 249, 0.18);
+}
+
+/* Generic chat bubble (coach prompt above the pane track) */
+.chat-bubble {
+  position: relative;
+  padding: 8px 12px 6px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  background: rgba(45, 127, 249, 0.18);
+  border: 1px solid rgba(45, 127, 249, 0.28);
+  color: var(--fg);
+  max-width: 86%;
+}
+.chat-bubble p {
+  margin: 0;
+}
+.chat-bubble--out {
+  border-bottom-right-radius: 4px;
+}
+.chat-bubble--in {
+  background: var(--bg-elev-2);
+  border-color: var(--border);
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+}
+.chat-bubble__time {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--electric-500);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  width: 100%;
+}
+.chat-bubble__check {
+  color: var(--electric-500);
+}
+
+/* Workspace tweak: when used inside the chat chrome, ease the bg + padding */
+.app__workspace--chat {
+  background: var(--bg-recess);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  min-height: 380px;
+  position: relative;
+}
+.app__workspace--chat::before {
+  /* A subtle WhatsApp-style chat-canvas pattern */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 18px 18px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+.app__workspace--chat > * {
+  position: relative;
+}
+
+/* Wrap each pane so it visually reads as STRIVN's rich response card inside the chat */
+.app--chat .pane {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  border-bottom-left-radius: 4px;
+  padding: var(--space-4) var(--space-5);
+  gap: var(--space-3);
+  position: relative;
+}
+.app--chat .pane::before {
+  /* Subtle left rule — anchors the card as STRIVN's reply */
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--electric), var(--performance));
+  border-radius: 0 2px 2px 0;
+  opacity: 0.65;
+}
+.app--chat .pane--player::before {
+  background: linear-gradient(180deg, var(--performance), var(--electric));
+}
+
+/* Proposal context line (Pane 03) */
+.proposal__context {
+  font-size: var(--t-body-sm);
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  margin: var(--space-2) 0 0;
+}
+
+/* Composer at the bottom (decorative) */
+.chat-composer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px var(--space-4);
+  border-top: 1px solid var(--border);
+  background: var(--bg-elev-2);
+  color: var(--fg-faint);
+}
+.chat-composer__icon,
+.chat-composer__mic {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  color: var(--fg-subtle);
+  flex-shrink: 0;
+}
+.chat-composer__mic {
+  background: rgba(39, 215, 161, 0.1);
+  border-color: rgba(39, 215, 161, 0.22);
+  color: var(--performance);
+}
+.chat-composer__placeholder {
+  font-size: 12.5px;
+  color: var(--fg-subtle);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Player phone — add small WA glyph next to phone name */
+.phone__wa {
+  margin-left: auto;
+  color: var(--performance);
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+/* ============================================================
+   Channel Proof section
+   ============================================================ */
+.section--channel {
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+  position: relative;
+}
+.section--channel::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: var(--border);
+}
+
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.channel-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  position: relative;
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+  min-width: 0;
+}
+.channel-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+.channel-card__head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+.channel-card__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--electric), var(--performance));
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 12px;
+  font-weight: var(--w-semibold);
+  letter-spacing: -0.02em;
+}
+.channel-card__id {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+}
+.channel-card__contact {
+  font-size: 12.5px;
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.channel-card__role {
+  font-size: 10px;
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.channel-card__wa {
+  color: var(--performance);
+  display: inline-flex;
+}
+.channel-card__thread {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.014) 1px, transparent 1px);
+  background-size: 14px 14px;
+  padding: 8px 4px;
+  border-radius: var(--radius-sm);
+}
+.channel-bubble {
+  padding: 7px 10px 5px;
+  border-radius: 11px;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 92%;
+  position: relative;
+}
+.channel-bubble p {
+  margin: 0;
+  color: var(--fg);
+}
+.channel-bubble--in {
+  align-self: flex-start;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+.channel-bubble--out {
+  align-self: flex-end;
+  background: rgba(45, 127, 249, 0.16);
+  border: 1px solid rgba(45, 127, 249, 0.26);
+  border-bottom-right-radius: 4px;
+}
+.channel-bubble__time {
+  display: block;
+  margin-top: 2px;
+  font-size: 9.5px;
+  color: var(--fg-faint);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  text-align: right;
+}
+.channel-bubble--out .channel-bubble__time {
+  color: var(--electric-500);
+}
+.channel-card__outcome {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--fg-muted);
+  margin: 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+.channel-footnote {
+  margin: var(--space-8) 0 0;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--fg-subtle);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* ============================================================
+   Loop chat — used inside the How It Works moments
+   Each moment's viz is now a WhatsApp-style mini-thread.
+   ============================================================ */
+.moment__viz--chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loop-chat {
+  width: 100%;
+  max-width: 360px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.loop-chat__head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px var(--space-4);
+  background: var(--bg-elev-2);
+  border-bottom: 1px solid var(--border);
+}
+.loop-chat__avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--electric), var(--performance));
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 11px;
+  font-weight: var(--w-semibold);
+}
+.loop-chat__name {
+  font-size: 12px;
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+}
+.loop-chat__wa {
+  color: var(--performance);
+  display: inline-flex;
+}
+.loop-chat__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-4);
+  background: var(--bg-recess);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  background-size: 16px 16px;
+  min-height: 200px;
+}
+.loop-bubble {
+  position: relative;
+  padding: 8px 11px 6px;
+  border-radius: 11px;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 90%;
+}
+.loop-bubble p {
+  margin: 0;
+  color: var(--fg);
+}
+.loop-bubble--out {
+  align-self: flex-end;
+  background: rgba(45, 127, 249, 0.16);
+  border: 1px solid rgba(45, 127, 249, 0.26);
+  border-bottom-right-radius: 4px;
+  color: var(--fg);
+}
+.loop-bubble--out span:not(.loop-action__btn):not(.loop-dot) {
+  display: block;
+  margin-top: 2px;
+  font-size: 9.5px;
+  color: var(--electric-500);
+  font-family: var(--font-mono);
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+.loop-bubble--in {
+  align-self: flex-start;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+  padding-bottom: 8px;
+}
+.loop-bubble__head {
+  font-size: 9.5px;
+  font-weight: var(--w-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--track-overline);
+  color: var(--electric-500);
+  margin: 0 0 4px;
+}
+.loop-bubble__title {
+  font-size: 13px;
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  margin: 0 0 6px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.loop-bubble__sub {
+  font-size: 10.5px;
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  margin: 6px 0 0;
+}
+.loop-bubble__time {
+  display: block;
+  margin-top: 4px;
+  font-size: 9.5px;
+  color: var(--fg-faint);
+  font-family: var(--font-mono);
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+
+/* Loop week strip — mini calendar inside a chat bubble */
+.loop-week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 3px;
+  margin: 6px 0 4px;
+}
+.loop-week__cell {
+  font-size: 9.5px;
+  font-family: var(--font-mono);
+  font-weight: var(--w-semibold);
+  text-align: center;
+  padding: 6px 2px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--fg-subtle);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.loop-week__cell.is-active {
+  color: var(--electric-500);
+  background: rgba(45, 127, 249, 0.1);
+  border-color: rgba(45, 127, 249, 0.28);
+}
+.loop-week__cell.is-match {
+  color: var(--performance);
+  background: rgba(39, 215, 161, 0.1);
+  border-color: rgba(39, 215, 161, 0.28);
+}
+
+/* Loop state list */
+.loop-state {
+  display: grid;
+  gap: 4px;
+  margin: 4px 0;
+  font-size: 11.5px;
+  color: var(--fg-muted);
+}
+.loop-state li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.loop-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.loop-dot--ok {
+  background: var(--performance);
+  box-shadow: 0 0 0 3px rgba(39, 215, 161, 0.16);
+}
+.loop-dot--warn {
+  background: var(--warning);
+  box-shadow: 0 0 0 3px rgba(255, 176, 32, 0.16);
+}
+.loop-dot--info {
+  background: var(--electric);
+  box-shadow: 0 0 0 3px rgba(45, 127, 249, 0.18);
+}
+
+/* Loop action card inline (Pane "Act") */
+.loop-action {
+  display: flex;
+  gap: 6px;
+  margin: 6px 0 0;
+}
+.loop-action__btn {
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: var(--radius-btn);
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--fg);
+  font-weight: var(--w-medium);
+}
+.loop-action__btn--primary {
+  background: var(--electric);
+  border-color: var(--electric);
+  color: white;
+}
+
+/* ============================================================
+   Persona — add channel chip below body
+   ============================================================ */
+.persona {
+  display: flex;
+  flex-direction: column;
+}
+.persona__channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding: 4px 10px 4px 8px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--performance);
+  background: rgba(39, 215, 161, 0.08);
+  border: 1px solid rgba(39, 215, 161, 0.22);
+  align-self: flex-start;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   Responsive — new elements
+   ============================================================ */
+@media (max-width: 1100px) {
+  .channel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero__title-accent {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 880px) {
+  .channel-grid {
+    grid-template-columns: 1fr;
+  }
+  .moment__viz--chat {
+    justify-content: flex-start;
+  }
+  .loop-chat {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .chat-chrome {
+    grid-template-columns: auto auto 1fr auto;
+    gap: var(--space-2);
+    padding: 10px var(--space-3);
+  }
+  .chat-chrome__back {
+    display: none;
+  }
+  .chat-chrome__mode {
+    display: none;
+  }
+  .chat-anchor__prompt {
+    max-width: 92%;
+  }
+  .app__workspace--chat {
+    padding: var(--space-4) var(--space-3) var(--space-3);
+    min-height: 340px;
+  }
+  .app--chat .pane {
+    padding: var(--space-3) var(--space-4);
+  }
+  .channel-card {
+    padding: var(--space-3);
+  }
+}
+
+/* ============================================================
+   HALLMARK REDESIGN v2 · Platform + Channel
+   Restored desktop chrome on hero panel + new two-up
+   "Platform + Channel" section showing both surfaces side by side.
+   Tokens stay locked to the Strivn design system.
+   ============================================================ */
+
+/* Eyebrow accent variant */
+.eyebrow--accent {
+  color: var(--electric-500);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section--platform-channel {
+  position: relative;
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+}
+.section--platform-channel::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Two-up grid with a thin bridge column between */
+.surfaces {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-8);
+  align-items: stretch;
+  margin-top: var(--space-8);
+}
+
+.surface {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.surface__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.surface__where {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  color: var(--fg-subtle);
+  border: 1px solid var(--border);
+}
+.surface__where-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--electric);
+  box-shadow: 0 0 0 3px rgba(45, 127, 249, 0.16);
+}
+.surface__where-dot--green {
+  background: var(--performance);
+  box-shadow: 0 0 0 3px rgba(39, 215, 161, 0.16);
+}
+.surface__wa {
+  display: inline-flex;
+  align-items: center;
+  color: var(--performance);
+}
+.surface__caption {
+  margin: 0;
+  font-size: var(--t-body-sm);
+  line-height: 1.5;
+  color: var(--fg-muted);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-3);
+}
+
+/* Bridge column: vertical line + arrow + label */
+.surfaces__bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding-top: var(--space-12);
+  position: relative;
+}
+.surfaces__bridge-line {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent 0%, var(--border-strong) 30%, var(--border-strong) 70%, transparent 100%);
+}
+.surfaces__bridge-arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  color: var(--electric-500);
+  position: relative;
+}
+.surfaces__bridge-arrow::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45, 127, 249, 0.18) 0%, transparent 70%);
+  z-index: -1;
+}
+.surfaces__bridge-label {
+  margin: var(--space-3) 0 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--fg-subtle);
+  letter-spacing: 0.02em;
+  text-align: center;
+  max-width: 14rem;
+}
+
+/* --- Dashboard mock (left side of Platform + Channel) --- */
+.dash-mock {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.dash-mock__chrome {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px var(--space-4);
+  background: var(--bg-elev-2);
+  border-bottom: 1px solid var(--border);
+}
+.dash-mock__dots {
+  display: inline-flex;
+  gap: 5px;
+}
+.dash-mock__dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+}
+.dash-mock__url {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-subtle);
+  letter-spacing: 0.02em;
+}
+.dash-mock__url-lock {
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+  background: var(--fg-faint);
+}
+.dash-mock__sections {
+  display: flex;
+  gap: 2px;
+  padding: 8px var(--space-4);
+  border-bottom: 1px solid var(--border);
+  font-size: 11.5px;
+  color: var(--fg-subtle);
+}
+.dash-mock__section {
+  padding: 4px 9px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+.dash-mock__section.is-active {
+  background: rgba(45, 127, 249, 0.08);
+  color: var(--fg);
+}
+.dash-mock__context {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-subtle);
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.02em;
+}
+.dash-mock__context-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--performance);
+}
+.dash-mock__panel {
+  padding: var(--space-4);
+  background: var(--bg-recess);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.dash-mock__insight-eyebrow {
+  margin: 0;
+  font-size: var(--t-overline);
+  font-weight: var(--w-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--track-overline);
+  color: var(--electric-500);
+}
+.dash-mock__insight-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.dash-mock__insight-body {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+.dash-mock__roster {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.dash-mock__row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 9px var(--space-3);
+  border-bottom: 1px solid var(--border);
+  font-size: 12.5px;
+}
+.dash-mock__row:last-child {
+  border-bottom: 0;
+}
+.dash-mock__avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy-700), var(--navy-500));
+  border: 1px solid var(--border-strong);
+  flex-shrink: 0;
+}
+.dash-mock__name {
+  font-weight: var(--w-medium);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Channel mock (right side of Platform + Channel) --- */
+.channel-mock {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  background-size: 18px 18px;
+  flex: 1;
+}
+.phone--inline {
+  max-width: 280px;
+  margin: 0;
+}
+
+/* Persona surface chip — replaces persona__channel from v1 */
+.persona__surface {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding: 4px 10px 4px 8px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--electric-500);
+  background: rgba(45, 127, 249, 0.08);
+  border: 1px solid rgba(45, 127, 249, 0.22);
+  align-self: flex-start;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.persona__surface--channel {
+  color: var(--performance);
+  background: rgba(39, 215, 161, 0.08);
+  border-color: rgba(39, 215, 161, 0.22);
+}
+.persona__surface-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--electric);
+  flex-shrink: 0;
+}
+
+/* Phone WA badge inside player phone */
+.phone__wa {
+  margin-left: auto;
+  color: var(--performance);
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+/* Hero title accent (kept from v1 — restated for the platform-first split) */
+.hero__title-accent {
+  display: block;
+  color: var(--fg-muted);
+  font-weight: var(--w-medium);
+  margin-top: var(--space-2);
+}
+.hero__eyebrow-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(39, 215, 161, 0.16);
+  color: var(--performance);
+}
+
+/* ============================================================
+   Responsive — Platform + Channel
+   ============================================================ */
+@media (max-width: 1100px) {
+  .surfaces {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .surfaces__bridge {
+    flex-direction: row;
+    padding-top: 0;
+    gap: var(--space-4);
+  }
+  .surfaces__bridge-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--border-strong) 30%, var(--border-strong) 70%, transparent 100%);
+  }
+  .surfaces__bridge-arrow {
+    transform: rotate(90deg);
+  }
+  .surfaces__bridge-label {
+    text-align: left;
+    max-width: 22rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .dash-mock__sections {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .dash-mock__sections::-webkit-scrollbar {
+    display: none;
+  }
+  .surface__head {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .channel-mock {
+    padding: var(--space-3);
+  }
+  .phone--inline {
+    max-width: 100%;
+  }
+}
+
+/* ============================================================
+   HALLMARK REDESIGN v3 · Workflow circuit
+   Animated platform ↔ WhatsApp loop replacing the KPI strip.
+   ============================================================ */
+
+.workflow {
+  padding: var(--space-12) 0 var(--space-16);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.workflow__intro {
+  max-width: 52rem;
+  margin: 0 auto var(--space-10);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+.workflow__title {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: var(--w-semibold);
+  letter-spacing: var(--track-display);
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0;
+  max-width: 30ch;
+}
+.workflow__body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  max-width: 40rem;
+  margin: 0;
+}
+
+/* The circuit: platform node — belt — channel node */
+.workflow__circuit {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(280px, 2.4fr) minmax(220px, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-6);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+.workflow__circuit::before,
+.workflow__circuit::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.workflow__circuit::before {
+  background: radial-gradient(circle at 0% 50%, rgba(45, 127, 249, 0.07), transparent 40%),
+              radial-gradient(circle at 100% 50%, rgba(39, 215, 161, 0.07), transparent 40%);
+}
+
+/* Nodes — labelled cards anchoring each end of the loop */
+.wf-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 14px var(--space-4);
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  min-width: 0;
+}
+.wf-node--platform {
+  border-left: 2px solid var(--electric);
+}
+.wf-node--channel {
+  border-right: 2px solid var(--performance);
+}
+.wf-node__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--electric-500);
+  background: rgba(45, 127, 249, 0.1);
+  border: 1px solid rgba(45, 127, 249, 0.22);
+}
+.wf-node__icon--wa {
+  color: var(--performance);
+  background: rgba(39, 215, 161, 0.1);
+  border-color: rgba(39, 215, 161, 0.22);
+}
+.wf-node__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.wf-node__label {
+  font-size: 13.5px;
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wf-node__sub {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--fg-subtle);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wf-node__pulse {
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: var(--electric);
+  box-shadow: 0 0 0 0 rgba(45, 127, 249, 0.45);
+  animation: wf-pulse 2.4s var(--ease) infinite;
+}
+.wf-node--channel .wf-node__pulse {
+  right: auto;
+  left: -6px;
+  background: var(--performance);
+  box-shadow: 0 0 0 0 rgba(39, 215, 161, 0.45);
+}
+@keyframes wf-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(45, 127, 249, 0.45); }
+  60%  { box-shadow: 0 0 0 10px rgba(45, 127, 249, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 127, 249, 0); }
+}
+.wf-node--channel .wf-node__pulse {
+  animation-name: wf-pulse-green;
+}
+@keyframes wf-pulse-green {
+  0%   { box-shadow: 0 0 0 0 rgba(39, 215, 161, 0.45); }
+  60%  { box-shadow: 0 0 0 10px rgba(39, 215, 161, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(39, 215, 161, 0); }
+}
+
+/* Belt — the animated track between the two nodes.
+   container-type: inline-size lets packet keyframes use `cqi` units
+   so we animate transform only (no left/right layout reflow). */
+.wf-belt {
+  position: relative;
+  z-index: 1;
+  height: 120px;
+  margin: 0 var(--space-3);
+  container-type: inline-size;
+}
+.wf-belt__rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-0.5px);
+  background-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 12%,
+    rgba(255, 255, 255, 0.12) 88%,
+    transparent 100%
+  );
+}
+/* Two subtle moving glow strips — one going right, one going left */
+.wf-belt__pulse {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-0.5px);
+  background-image: linear-gradient(to right, transparent, rgba(45, 127, 249, 0.55), transparent);
+  background-size: 22% 100%;
+  background-repeat: no-repeat;
+  background-position: -22% 0;
+  opacity: 0.9;
+}
+.wf-belt__pulse--in {
+  background-image: linear-gradient(to right, transparent, rgba(39, 215, 161, 0.55), transparent);
+  background-position: 122% 0;
+}
+.workflow__circuit.is-running .wf-belt__pulse--out {
+  animation: wf-belt-out 9s linear infinite;
+}
+.workflow__circuit.is-running .wf-belt__pulse--in {
+  animation: wf-belt-in 9s linear infinite;
+  animation-delay: 4.5s;
+}
+@keyframes wf-belt-out {
+  0%   { background-position: -22% 0; }
+  100% { background-position: 122% 0; }
+}
+@keyframes wf-belt-in {
+  0%   { background-position: 122% 0; }
+  100% { background-position: -22% 0; }
+}
+
+/* Packets — labelled cards that fly along the belt */
+.wf-packet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px 5px 8px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  font-weight: var(--w-medium);
+  color: var(--fg);
+  white-space: nowrap;
+  transform: translateY(-50%);
+  opacity: 0;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+.wf-packet--out {
+  color: var(--electric-500);
+  border-color: rgba(45, 127, 249, 0.32);
+  background: linear-gradient(180deg, rgba(45, 127, 249, 0.14), rgba(45, 127, 249, 0.05));
+  top: calc(50% - 24px);
+}
+.wf-packet--in {
+  color: var(--performance);
+  border-color: rgba(39, 215, 161, 0.32);
+  background: linear-gradient(180deg, rgba(39, 215, 161, 0.14), rgba(39, 215, 161, 0.05));
+  top: calc(50% + 24px);
+}
+.wf-packet__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+.wf-packet__label {
+  letter-spacing: -0.01em;
+}
+
+.workflow__circuit.is-running .wf-packet--out {
+  animation: wf-packet-right 9s linear infinite;
+}
+.workflow__circuit.is-running .wf-packet--in {
+  animation: wf-packet-left 9s linear infinite;
+}
+/* Left-going packets are anchored at the right edge of the belt; transforms only. */
+.wf-packet--in {
+  left: auto;
+  right: 0;
+}
+@keyframes wf-packet-right {
+  0%   { transform: translateX(0)       translateY(-50%) scale(0.92); opacity: 0; }
+  8%   { transform: translateX(6cqi)    translateY(-50%) scale(1);    opacity: 1; }
+  85%  { transform: translateX(82cqi)   translateY(-50%) scale(1);    opacity: 1; }
+  100% { transform: translateX(95cqi)   translateY(-50%) scale(0.92); opacity: 0; }
+}
+@keyframes wf-packet-left {
+  0%   { transform: translateX(0)        translateY(-50%) scale(0.92); opacity: 0; }
+  8%   { transform: translateX(-6cqi)    translateY(-50%) scale(1);    opacity: 1; }
+  85%  { transform: translateX(-82cqi)   translateY(-50%) scale(1);    opacity: 1; }
+  100% { transform: translateX(-95cqi)   translateY(-50%) scale(0.92); opacity: 0; }
+}
+
+/* Step strip below the circuit */
+.wf-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-6) auto 0;
+  max-width: 56rem;
+  padding: 0;
+  list-style: none;
+}
+.wf-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px var(--space-3);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.wf-step__index {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: var(--w-semibold);
+  color: var(--fg-subtle);
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.wf-step__label {
+  font-size: 13px;
+  font-weight: var(--w-medium);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wf-step--out .wf-step__index {
+  color: var(--electric-500);
+  background: rgba(45, 127, 249, 0.08);
+  border-color: rgba(45, 127, 249, 0.24);
+}
+.wf-step--in .wf-step__index {
+  color: var(--performance);
+  background: rgba(39, 215, 161, 0.08);
+  border-color: rgba(39, 215, 161, 0.24);
+}
+
+.wf-caption {
+  margin: var(--space-6) auto 0;
+  max-width: 42rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--fg-subtle);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+/* Reduced motion — freeze packets distributed along the belt */
+@media (prefers-reduced-motion: reduce) {
+  .workflow__circuit.is-running .wf-packet--out,
+  .workflow__circuit.is-running .wf-packet--in,
+  .workflow__circuit.is-running .wf-belt__pulse--out,
+  .workflow__circuit.is-running .wf-belt__pulse--in,
+  .wf-node__pulse {
+    animation: none !important;
+  }
+  .wf-packet {
+    opacity: 1;
+  }
+  .wf-packet--out:nth-of-type(1) { transform: translate(15%, -50%); }
+  .wf-packet--out:nth-of-type(2) { transform: translate(45%, -50%); }
+  .wf-packet--out:nth-of-type(3) { transform: translate(75%, -50%); }
+  .wf-packet--in:nth-of-type(1)  { transform: translate(-15%, -50%); }
+  .wf-packet--in:nth-of-type(2)  { transform: translate(-45%, -50%); }
+  .wf-packet--in:nth-of-type(3)  { transform: translate(-75%, -50%); }
+}
+
+/* Responsive — Workflow */
+@media (max-width: 1100px) {
+  .workflow__circuit {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: var(--space-6);
+  }
+  .wf-belt {
+    height: 140px;
+    margin: 0;
+  }
+  .wf-node--platform { border-left: 0; border-top: 2px solid var(--electric); }
+  .wf-node--channel { border-right: 0; border-bottom: 2px solid var(--performance); }
+  .wf-node__pulse,
+  .wf-node--channel .wf-node__pulse {
+    top: auto;
+    bottom: -6px;
+    right: 50%;
+    left: auto;
+    transform: translateX(50%);
+  }
+  .wf-node--channel .wf-node__pulse {
+    bottom: auto;
+    top: -6px;
+  }
+}
+
+@media (max-width: 720px) {
+  .workflow {
+    padding: var(--space-10) 0 var(--space-12);
+  }
+  .wf-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+  }
+  .wf-belt {
+    height: 110px;
+  }
+  .wf-packet {
+    font-size: 10.5px;
+    padding: 4px 8px 4px 6px;
+  }
+  .wf-packet__icon {
+    width: 16px;
+    height: 16px;
+  }
+  .wf-node__sub {
+    font-size: 10.5px;
+  }
+}
+
+/* ============================================================
+   HALLMARK REDESIGN v4 · AI inside
+   Asymmetric 2-column: editorial principles list (left) +
+   evidence trace card (right). Replaces the v3 workflow circuit.
+   ============================================================ */
+
+.section--ai {
+  position: relative;
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--space-12);
+  align-items: start;
+  margin-top: var(--space-6);
+}
+
+/* ----- Left column: numbered principles ----- */
+.ai-principles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ai-principle {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--border);
+  min-width: 0;
+}
+.ai-principle:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.ai-principle:last-child {
+  padding-bottom: 0;
+}
+.ai-principle__index {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--w-semibold);
+  letter-spacing: 0.04em;
+  color: var(--electric-500);
+  align-self: start;
+  padding-top: 4px;
+  min-width: 24px;
+}
+.ai-principle__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: rgba(45, 127, 249, 0.08);
+  border: 1px solid rgba(45, 127, 249, 0.22);
+  color: var(--electric-500);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.ai-principle__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.ai-principle__label {
+  font-size: var(--t-overline);
+  font-weight: var(--w-semibold);
+  letter-spacing: var(--track-overline);
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+.ai-principle__verb {
+  font-size: 16px;
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.ai-principle__body {
+  margin: 2px 0 0;
+  font-size: var(--t-body-sm);
+  line-height: 1.55;
+  color: var(--fg-muted);
+}
+
+/* ----- Right column: evidence trace card ----- */
+.ai-trace {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+.ai-trace::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: var(--space-4);
+  bottom: var(--space-4);
+  width: 2px;
+  background: linear-gradient(180deg, var(--electric), var(--performance));
+  border-radius: 0 2px 2px 0;
+  opacity: 0.85;
+}
+.ai-trace__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.ai-trace__badge {
+  font-size: 10.5px;
+  font-weight: var(--w-medium);
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  color: var(--electric-500);
+  border: 1px solid rgba(45, 127, 249, 0.32);
+  background: rgba(45, 127, 249, 0.08);
+  border-radius: var(--radius-pill);
+}
+.ai-trace__title {
+  margin: 0;
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: var(--w-semibold);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--fg);
+  max-width: 28ch;
+}
+.ai-trace__block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--border);
+}
+.ai-trace__block--row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.ai-trace__block-label {
+  font-size: var(--t-overline);
+  font-weight: var(--w-semibold);
+  letter-spacing: var(--track-overline);
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+.ai-trace__evidence {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.ai-trace__evidence li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  align-items: center;
+  font-size: var(--t-body-sm);
+  color: var(--fg);
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+.ai-trace__bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--electric);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(45, 127, 249, 0.12);
+}
+
+/* Confidence bars — segmented meter, not a percentage */
+.ai-trace__confidence {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.ai-trace__bars {
+  display: inline-flex;
+  gap: 3px;
+}
+.ai-trace__bar {
+  width: 16px;
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+}
+.ai-trace__bar.is-filled {
+  background: var(--electric);
+  border-color: var(--electric);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.ai-trace__confidence-label {
+  font-size: var(--t-body-sm);
+  font-weight: var(--w-semibold);
+  color: var(--electric-500);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ai-trace__actions {
+  display: flex;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+.ai-trace__btn {
+  pointer-events: none;
+}
+
+.ai-trace__caption {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--fg-subtle);
+  letter-spacing: 0.02em;
+}
+
+/* Responsive — AI section */
+@media (max-width: 1100px) {
+  .ai-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .ai-trace {
+    padding: var(--space-5);
+  }
+}
+
+@media (max-width: 720px) {
+  .ai-principle {
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-3);
+    padding: var(--space-4) 0;
+  }
+  .ai-principle__index {
+    grid-column: 1;
+  }
+  .ai-principle__icon {
+    grid-column: 2;
+    justify-self: start;
+    width: 28px;
+    height: 28px;
+  }
+  .ai-principle__copy {
+    grid-column: 1 / -1;
+  }
+  .ai-trace__block--row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ai-trace__head {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+}
+
+
+
+
