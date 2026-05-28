@@ -37,11 +37,19 @@
   --warning: #ffb020;
   --risk: #ff5c5c;
 
+  /* ---------- Void (atmospheric v2 page bg) ----------
+     Darker + less-blue than navy-900. Pulls the page into "void"
+     territory so the navy-tinted elevated surfaces (cards, panels)
+     stand out atop atmosphere instead of merging with it. */
+  --void-deep:    #050610;   /* page background — almost charcoal, hint of cool */
+  --void:         #07080F;   /* page semantic */
+  --void-soft:    #0A0C17;   /* near-page elevations */
+
   /* ---------- Semantic (dark mode default) ---------- */
-  --bg: var(--navy-900);
+  --bg: var(--void);
   --bg-elev-1: var(--navy-850);
   --bg-elev-2: var(--navy-800);
-  --bg-recess: var(--navy-950);
+  --bg-recess: var(--void-deep);
 
   --fg: var(--soft-white);
   --fg-muted: var(--navy-200);
@@ -305,23 +313,64 @@ h4 {
   z-index: 1;
 }
 
-/* Topbar */
+/* Topbar — logo-led header, restrained chrome around it */
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-8);
-  padding: var(--space-3) 0;
+  padding: var(--space-4) 0;
+  min-height: 112px;
 }
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+.brand:focus-visible {
+  outline: 2px solid var(--electric);
+  outline-offset: 4px;
 }
 .brand__logo {
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-md);
+  /* Dark-surface logo file — already white wordmark + colored S icon on
+     transparent. No filter needed. Source aspect 1344:896 (1.5:1)
+     with built-in padding, so display heights are bumped to compensate. */
+  display: block;
+  height: 88px;
+  width: auto;
+  transition: opacity var(--dur) var(--ease);
+}
+.brand:hover .brand__logo,
+.brand:focus-visible .brand__logo {
+  opacity: 0.85;
+}
+.brand__logo--footer {
+  height: 64px;
+}
+@media (max-width: 1100px) {
+  .brand__logo {
+    height: 76px;
+  }
+  .brand__logo--footer {
+    height: 56px;
+  }
+}
+@media (max-width: 720px) {
+  .brand__logo {
+    height: 64px;
+  }
+  .brand__logo--footer {
+    height: 48px;
+  }
+}
+@media (max-width: 414px) {
+  .brand__logo {
+    height: 56px;
+  }
+  .brand__logo--footer {
+    height: 40px;
+  }
 }
 .brand__copy {
   display: flex;
@@ -377,13 +426,43 @@ h4 {
   color: var(--fg);
 }
 
-/* Hero composition */
+/* Hero composition — stacked: centered statement above, centered panel below.
+   Two beats only; signals + AI strip moved to dedicated downstream sections. */
 .hero__layout {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-16);
-  align-items: start;
-  margin-top: var(--space-20);
+  margin-top: var(--space-12);
+}
+.hero__content {
+  width: 100%;
+  max-width: 60rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+}
+.hero__content .hero__title {
+  margin-top: 0;
+  max-width: 22ch;
+  text-align: center;
+}
+.hero__content .hero__lede {
+  margin-top: 0;
+  max-width: 42rem;
+  text-align: center;
+}
+.hero__content .hero__actions {
+  margin-top: var(--space-3);
+  justify-content: center;
+}
+/* The animated platform panel becomes a centered, wider proof block */
+.hero .app {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .hero__eyebrow {
@@ -4718,6 +4797,980 @@ h4 {
     content: 'Does · ';
   }
 }
+
+/* ============================================================
+   HALLMARK REDESIGN v6 · Atmospheric layer (non-pinned)
+   Apple-register lighting + word-reveal titles + section glows
+   on top of the existing natural-flow site. No sticky pin —
+   the hero content is too information-dense for a pinned act.
+   ============================================================ */
+
+/* Hero typography — bigger but still fits inside a normal hero block */
+.hero__title {
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+}
+
+/* ----- Atmospheric blooms behind the hero -----
+   Two soft radial gradients drifting from opposite corners.
+   They sit behind the dot field but above the navy paper. */
+.hero__bloom {
+  position: absolute;
+  inset: auto;
+  width: 80rem;
+  height: 80rem;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  opacity: 0.55;
+  z-index: 0;
+  transition: transform 1200ms var(--ease), opacity 1200ms var(--ease);
+  will-change: transform, opacity;
+}
+.hero__bloom--a {
+  top: -30%;
+  left: -25%;
+  background: radial-gradient(
+    circle at 60% 40%,
+    rgba(45, 127, 249, 0.22) 0%,
+    rgba(45, 127, 249, 0.06) 30%,
+    transparent 65%
+  );
+  /* Drifts with --hero-progress: settles toward right as user scrolls */
+  transform: translate3d(calc(var(--hero-progress, 0) * 12vw), calc(var(--hero-progress, 0) * 4vh), 0);
+}
+.hero__bloom--b {
+  bottom: -35%;
+  right: -25%;
+  background: radial-gradient(
+    circle at 40% 60%,
+    rgba(39, 215, 161, 0.18) 0%,
+    rgba(39, 215, 161, 0.05) 30%,
+    transparent 65%
+  );
+  transform: translate3d(calc(var(--hero-progress, 0) * -12vw), calc(var(--hero-progress, 0) * -4vh), 0);
+  opacity: 0.4;
+}
+
+/* ----- Section title word-by-word reveal ----- */
+.section-title--reveal .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em);
+  transition:
+    opacity 540ms var(--ease),
+    transform 540ms var(--ease);
+  transition-delay: calc(var(--word-i, 0) * 70ms);
+  will-change: opacity, transform;
+}
+.section-title--reveal.is-visible .word {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-title--reveal .word {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ----- Atmospheric glows behind major sections -----
+   Each major section gets one soft bloom anchored off-canvas. */
+.section,
+.section--ai,
+.section--platform-channel,
+.section--roster {
+  position: relative;
+  isolation: isolate;
+}
+.section--platform-channel::before,
+.section--ai::before,
+.section--roster::before,
+#how-it-works::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+}
+.section--platform-channel::before {
+  inset: 5% auto auto -10%;
+  width: 45rem;
+  height: 45rem;
+  background: radial-gradient(circle at 50% 50%, rgba(45, 127, 249, 0.10), transparent 65%);
+}
+.section--ai::before {
+  inset: 10% -10% auto auto;
+  width: 50rem;
+  height: 50rem;
+  background: radial-gradient(circle at 50% 50%, rgba(39, 215, 161, 0.10), transparent 65%);
+}
+.section--roster::before {
+  inset: 20% auto auto 30%;
+  width: 38rem;
+  height: 38rem;
+  background: radial-gradient(circle at 50% 50%, rgba(45, 127, 249, 0.08), transparent 65%);
+}
+#how-it-works::before {
+  inset: -5% auto auto 50%;
+  width: 50rem;
+  height: 50rem;
+  background: radial-gradient(circle at 50% 50%, rgba(45, 127, 249, 0.08), transparent 65%);
+}
+
+/* ----- Generous section gaps to let atmosphere breathe ----- */
+@media (min-width: 1100px) {
+  .section {
+    padding: var(--space-24) 0;
+  }
+  .section--platform-channel,
+  .section--ai,
+  #how-it-works,
+  .section--roster {
+    padding: 144px 0;
+  }
+}
+
+/* ----- Reduced-motion: blooms freeze ----- */
+@media (prefers-reduced-motion: reduce) {
+  .hero__bloom {
+    transform: none !important;
+  }
+}
+
+/* ----- Mobile: dim the blooms (they overpower the small viewport) ----- */
+@media (max-width: 1100px) {
+  .hero__bloom {
+    opacity: 0.5;
+    width: 60rem;
+    height: 60rem;
+  }
+}
+
+/* ============================================================
+   HALLMARK REDESIGN v7 · Atmospheric pushed further
+   Deeper void · stronger blooms · section lift-on-enter ·
+   transparent elevated surfaces so atmosphere bleeds through.
+   ============================================================ */
+
+/* Page bg gets a subtle vertical wash so the top reads cooler
+   and the bottom reads warmer/deeper. Apple-grade ambient depth. */
+html,
+body {
+  background:
+    radial-gradient(ellipse 90% 40% at 50% -10%, rgba(45, 127, 249, 0.05), transparent 70%),
+    radial-gradient(ellipse 60% 30% at 50% 110%, rgba(39, 215, 161, 0.04), transparent 70%),
+    var(--void);
+  background-attachment: fixed;
+}
+
+/* Stronger hero blooms — bigger, brighter, more atmospheric */
+.hero__bloom {
+  width: 95rem;
+  height: 95rem;
+  opacity: 0.85;
+  filter: blur(80px);
+}
+.hero__bloom--a {
+  background: radial-gradient(
+    circle at 60% 40%,
+    rgba(45, 127, 249, 0.34) 0%,
+    rgba(45, 127, 249, 0.12) 25%,
+    rgba(45, 127, 249, 0.03) 50%,
+    transparent 70%
+  );
+}
+.hero__bloom--b {
+  background: radial-gradient(
+    circle at 40% 60%,
+    rgba(39, 215, 161, 0.28) 0%,
+    rgba(39, 215, 161, 0.10) 25%,
+    rgba(39, 215, 161, 0.03) 50%,
+    transparent 70%
+  );
+  opacity: 0.7;
+}
+
+/* Boost the existing hero atmosphere circle so it reads against the deeper void */
+.hero__atmosphere {
+  width: 80rem;
+  height: 80rem;
+  filter: blur(60px);
+  opacity: 0.8;
+}
+
+/* ----- Section glows pushed: bigger reach, multiple hues ----- */
+.section--platform-channel::before {
+  inset: -5% auto auto -15%;
+  width: 60rem;
+  height: 60rem;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(45, 127, 249, 0.18) 0%,
+    rgba(45, 127, 249, 0.05) 30%,
+    transparent 65%
+  );
+  filter: blur(90px);
+  opacity: 0.9;
+}
+.section--ai::before {
+  inset: 5% -15% auto auto;
+  width: 65rem;
+  height: 65rem;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(39, 215, 161, 0.16) 0%,
+    rgba(39, 215, 161, 0.05) 30%,
+    transparent 65%
+  );
+  filter: blur(90px);
+  opacity: 0.9;
+}
+.section--roster::before {
+  inset: 10% auto auto 20%;
+  width: 50rem;
+  height: 50rem;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(124, 92, 220, 0.14) 0%,    /* a touch of violet — third hue */
+    rgba(124, 92, 220, 0.04) 30%,
+    transparent 65%
+  );
+  filter: blur(90px);
+  opacity: 0.85;
+}
+#how-it-works::before {
+  inset: -10% auto auto 45%;
+  width: 70rem;
+  height: 70rem;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(45, 127, 249, 0.14) 0%,
+    rgba(45, 127, 249, 0.04) 30%,
+    transparent 65%
+  );
+  filter: blur(90px);
+  opacity: 0.85;
+}
+
+/* Add a glow to the FAQ + confidence + contact sections too — full atmospheric coverage */
+#confidence,
+#faq,
+#contact {
+  position: relative;
+  isolation: isolate;
+}
+#confidence::before {
+  content: '';
+  position: absolute;
+  inset: 20% -10% auto auto;
+  width: 50rem;
+  height: 50rem;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(39, 215, 161, 0.10) 0%,
+    transparent 65%
+  );
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.8;
+}
+#faq::before {
+  content: '';
+  position: absolute;
+  inset: auto auto -10% -10%;
+  width: 50rem;
+  height: 50rem;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(45, 127, 249, 0.10) 0%,
+    transparent 65%
+  );
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.8;
+}
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 50%;
+  width: 70rem;
+  height: 70rem;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(124, 92, 220, 0.12) 0%,
+    transparent 65%
+  );
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+/* ----- Elevated surfaces sit transparently on the atmosphere -----
+   Cards, panels and boards drop their solid bg and use a frosted-glass
+   effect so atmosphere bleeds through underneath. */
+.app,
+.dash-mock,
+.channel-mock,
+.loop-chat,
+.board,
+.faq-list,
+.cta-band,
+.ai-trace,
+.roster-wrap,
+.channel-card,
+.confidence-list,
+.persona,
+.why-card,
+.surface .dash-mock,
+.moment {
+  background-color: rgba(11, 30, 58, 0.4);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+/* Inner sub-surfaces stay slightly heavier to read */
+.app__chrome,
+.app__subchrome,
+.app__workspace,
+.dash-mock__chrome,
+.dash-mock__sections,
+.dash-mock__context,
+.dash-mock__panel,
+.loop-chat__head,
+.loop-chat__body,
+.phone__bar,
+.phone__header,
+.phone__app {
+  background-color: rgba(11, 30, 58, 0.55);
+}
+
+/* Hairlines softened — instead of hard 1px borders, use a soft inner ring
+   that reads as light catching an edge */
+.app,
+.ai-trace,
+.roster-wrap,
+.dash-mock,
+.channel-mock,
+.loop-chat,
+.board,
+.cta-band {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 1px 60px -20px rgba(45, 127, 249, 0.18);
+}
+
+/* ----- Section block lift-on-enter -----
+   Each top-level section softly fades + rises 24px when entering
+   the viewport. Gives every section the Apple-grade entry beat. */
+.section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms var(--ease),
+    transform 700ms var(--ease);
+  will-change: opacity, transform;
+}
+.section.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section:first-of-type,
+.hero + .section,
+.hero {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .section.is-in-view {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ----- Hero typography — bigger but still proportionate ----- */
+.hero__title {
+  font-size: clamp(44px, 6.6vw, 84px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+.hero__title-accent {
+  color: var(--fg-subtle);
+  font-weight: var(--w-medium);
+  font-size: 0.66em;
+  margin-top: var(--space-2);
+}
+
+/* Word-reveal kept, slightly slower stagger for big Apple-grade titles */
+.section-title--reveal .word {
+  transition-delay: calc(var(--word-i, 0) * 60ms);
+  transition-duration: 620ms;
+}
+
+/* The hero panel sits forward of the atmosphere */
+.app--chat,
+.app {
+  position: relative;
+  z-index: 2;
+}
+
+/* Slightly brighter eyebrows on the deeper void so they don't disappear */
+.eyebrow {
+  color: var(--navy-200);
+}
+.eyebrow--accent {
+  color: var(--electric-400);
+}
+
+/* Slight bump to footer separation */
+.footer-bar {
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-12);
+}
+
+/* ============================================================
+   HALLMARK REDESIGN v8 · Mobile polish
+   Touch targets at 44px+, hero panel breathable on 320px, topbar
+   that fits, performance trims (lighter blur, dim atmosphere on
+   small screens), tighter card padding. Verified at 320 / 375 /
+   414 / 768 px.
+   ============================================================ */
+
+/* ----- Foundations: no horizontal scroll, ever ----- */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* ----- Touch targets — 44x44 minimum on every tappable element ----- */
+@media (max-width: 880px) {
+  .button {
+    min-height: 44px;
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+  .button--small {
+    min-height: 40px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  /* Lang switch sits as a tighter pill — bump to a tappable size */
+  .lang-switch {
+    padding: 4px;
+  }
+  .lang-switch a {
+    min-width: 36px;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  /* Pane dots double as nav — give them more height to tap */
+  .pane-dot {
+    height: 8px;
+    padding: 8px 0;
+    background-clip: content-box;
+    border: 0;
+  }
+  /* FAQ summaries need a real tap area */
+  .faq-item summary {
+    min-height: 56px;
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+  /* Topbar CTA shrinks but still meets touch */
+  .topbar .button--ghost {
+    padding: 10px 14px;
+  }
+}
+
+/* ----- Hero topbar — fit comfortably at 320px ----- */
+@media (max-width: 720px) {
+  .topbar {
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding: var(--space-4) 0 var(--space-2);
+  }
+  .brand__copy {
+    display: flex;
+  }
+  .brand__tag {
+    display: none; /* the tag line steals width on narrow viewports */
+  }
+  .topbar__actions {
+    gap: var(--space-2);
+    margin-left: auto;
+  }
+}
+@media (max-width: 414px) {
+  /* On true phones, drop the "Book a walkthrough" topbar button.
+     The hero has its own CTAs immediately below. */
+  .topbar__actions .button--ghost {
+    display: none;
+  }
+  .brand__name {
+    font-size: 14px;
+  }
+}
+
+/* ----- Hero stack: tighter rhythm on phones ----- */
+@media (max-width: 720px) {
+  .hero {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-12);
+  }
+  .hero__layout {
+    margin-top: var(--space-8);
+    gap: var(--space-8);
+  }
+  .hero__title {
+    font-size: clamp(34px, 9vw, 52px);
+    letter-spacing: -0.02em;
+    max-width: 16ch;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    min-width: 0;
+  }
+  .hero__title-accent {
+    font-size: 0.7em;
+  }
+  .hero__lede {
+    font-size: 15px;
+    margin-top: var(--space-4);
+  }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+  .hero__actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero__eyebrow {
+    font-size: 10.5px;
+    padding: 5px 10px 5px 8px;
+  }
+}
+
+/* ----- Hero panel — denser chrome, scrollable section tabs, less padding ----- */
+@media (max-width: 720px) {
+  .app__chrome {
+    padding: 8px var(--space-3);
+    gap: var(--space-2);
+  }
+  .app__url {
+    padding: 4px 8px;
+    font-size: 10px;
+    max-width: 60vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .app__subchrome {
+    flex-wrap: wrap;
+    padding: 10px var(--space-3);
+    gap: var(--space-2);
+  }
+  .app__sections {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .app__sections::-webkit-scrollbar {
+    display: none;
+  }
+  .app__section-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 6px 10px;
+  }
+  .app__context {
+    font-size: 10px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .app__workspace {
+    padding: var(--space-4);
+    min-height: 360px;
+  }
+  /* Make the pane content content read at the smallest sizes */
+  .pane__quote,
+  .step__quote {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .step__echo,
+  .step__explain {
+    font-size: 12.5px;
+  }
+  .insight-list li {
+    font-size: 12.5px;
+  }
+  .proposal-head__title {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .proposal__metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+  .proposal__metric:nth-child(3) {
+    grid-column: span 2;
+    border-right: 0;
+  }
+  .proposal__metric:nth-child(1),
+  .proposal__metric:nth-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* ----- AI section — trace card density ----- */
+@media (max-width: 720px) {
+  .ai-trace {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+  .ai-trace__title {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+  .ai-trace__bars {
+    gap: 2px;
+  }
+  .ai-trace__bar {
+    width: 12px;
+    height: 7px;
+  }
+  .ai-trace__actions {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .ai-trace__btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .ai-principle {
+    padding: var(--space-4) 0;
+  }
+  .ai-principle__verb {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+}
+
+/* ----- Platform + Channel surfaces — tighter on small screens ----- */
+@media (max-width: 720px) {
+  .surfaces {
+    gap: var(--space-6);
+  }
+  .surfaces__bridge {
+    padding-top: 0;
+    gap: var(--space-2);
+  }
+  .surfaces__bridge-line {
+    width: 50px;
+  }
+  .surface__caption {
+    font-size: 12.5px;
+  }
+  .surface__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .dash-mock__panel {
+    padding: var(--space-3);
+  }
+  .dash-mock__insight-title {
+    font-size: 14px;
+  }
+  .dash-mock__insight-body {
+    font-size: 12px;
+  }
+}
+
+/* ----- Roster table — at 414px the per-row stacked form gets even tighter ----- */
+@media (max-width: 480px) {
+  .roster__row {
+    padding: var(--space-3) var(--space-4);
+  }
+  .roster__cell--role {
+    font-size: 13.5px;
+  }
+  .roster__initials {
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+  .roster__cell--sees,
+  .roster__cell--does {
+    font-size: 12.5px;
+  }
+}
+
+/* ----- Channel cards — single column at < 560px (was already single at <880) ----- */
+@media (max-width: 560px) {
+  .channel-card {
+    padding: var(--space-3);
+  }
+  .channel-card__contact {
+    font-size: 12px;
+  }
+  .channel-bubble {
+    font-size: 11.5px;
+  }
+}
+
+/* ----- How It Works moments — vertical stack on phone ----- */
+@media (max-width: 720px) {
+  .moment {
+    grid-template-columns: 1fr;
+    padding: var(--space-6) var(--space-4);
+    gap: var(--space-5);
+  }
+  .moment--reverse .moment__body,
+  .moment--reverse .moment__viz {
+    order: initial;
+  }
+  .moment__title {
+    font-size: 19px;
+    line-height: 1.3;
+  }
+  .moment__lede {
+    font-size: 14px;
+  }
+  .moment__bullets li {
+    font-size: 13px;
+  }
+  .viz {
+    max-width: 100%;
+  }
+  .viz__week {
+    gap: 4px;
+  }
+  .viz__day {
+    min-height: 80px;
+  }
+}
+
+/* ----- Section spacing — calibrated by size ----- */
+@media (max-width: 720px) {
+  .section {
+    padding: var(--space-12) 0;
+  }
+  .section-intro {
+    margin-bottom: var(--space-8);
+  }
+  .section-title {
+    font-size: clamp(24px, 6.5vw, 32px);
+    line-height: 1.2;
+    max-width: 22ch;
+  }
+  .section-body {
+    font-size: 14.5px;
+  }
+}
+
+/* ----- Confidence list — denser ----- */
+@media (max-width: 720px) {
+  .confidence-list {
+    gap: var(--space-3);
+  }
+  .confidence-item {
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  .confidence-item p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .confidence-item__icon {
+    flex-shrink: 0;
+  }
+}
+
+/* ----- FAQ — bigger summaries, comfortable tap zone ----- */
+@media (max-width: 720px) {
+  .faq-item summary {
+    font-size: 15px;
+    line-height: 1.35;
+    align-items: flex-start;
+  }
+  .faq-item p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+}
+
+/* ----- CTA band — full-width buttons ----- */
+@media (max-width: 720px) {
+  .cta-band {
+    padding: var(--space-5);
+    gap: var(--space-5);
+  }
+  .cta-band__title {
+    font-size: clamp(22px, 5.5vw, 28px);
+    line-height: 1.2;
+  }
+  .cta-band__aside p {
+    font-size: 14px;
+  }
+  .cta-band__actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .cta-band__actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ----- Footer ----- */
+@media (max-width: 720px) {
+  .footer-bar {
+    padding: var(--space-8) 0;
+  }
+  .footer-bar__meta {
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+}
+
+/* ----- Performance: lighter backdrop blurs on mobile -----
+   backdrop-filter is paint-expensive on Android low-end devices.
+   Reduce blur radius and let cards be slightly more opaque so
+   the readability stays high without the GPU cost. */
+@media (max-width: 880px) {
+  .app,
+  .dash-mock,
+  .channel-mock,
+  .loop-chat,
+  .board,
+  .faq-list,
+  .cta-band,
+  .ai-trace,
+  .roster-wrap,
+  .channel-card,
+  .confidence-list,
+  .persona,
+  .why-card,
+  .surface .dash-mock,
+  .moment {
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    background-color: rgba(11, 30, 58, 0.55);
+  }
+}
+@media (max-width: 560px) {
+  .app,
+  .dash-mock,
+  .channel-mock,
+  .loop-chat,
+  .board,
+  .faq-list,
+  .cta-band,
+  .ai-trace,
+  .roster-wrap,
+  .channel-card,
+  .confidence-list,
+  .persona,
+  .why-card,
+  .surface .dash-mock,
+  .moment {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(11, 30, 58, 0.7);
+  }
+}
+
+/* ----- Atmosphere dampening on small screens -----
+   The bloom system is dramatic on big screens. On phones it can
+   wash out content. Pull opacity down for sections, keep the hero
+   slightly stronger so the entry beat still lands. */
+@media (max-width: 720px) {
+  .section--platform-channel::before,
+  .section--ai::before,
+  .section--roster::before,
+  #how-it-works::before,
+  #confidence::before,
+  #faq::before,
+  #contact::before {
+    opacity: 0.45;
+    filter: blur(60px);
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+/* ----- Section block lift on enter — softer translation on mobile ----- */
+@media (max-width: 720px) {
+  .section {
+    transform: translateY(16px);
+  }
+}
+
+/* ----- Hero panel container at narrow widths -----
+   Make the .app card itself sit edge-to-edge of the page frame
+   so the chrome breathes. */
+@media (max-width: 560px) {
+  .app--chat,
+  .app {
+    border-radius: var(--radius-md);
+  }
+  .pane__head {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .state-pills {
+    gap: 6px;
+  }
+  .pill {
+    font-size: 10.5px;
+    padding: 3px 8px;
+  }
+}
+
+/* ----- Page-frame gutter — never less than 16px on phones ----- */
+@media (max-width: 720px) {
+  .page-frame {
+    width: min(80rem, calc(100% - 32px));
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (max-width: 414px) {
+  .page-frame {
+    width: min(80rem, calc(100% - 24px));
+  }
+}
+
+/* ----- Word-break safety on display headers (gate 63) ----- */
+.hero__title,
+.section-title,
+.cta-band__title,
+.ai-trace__title,
+.moment__title {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* v9 cinematic-stack CSS overrides removed — those broke the IO reveals. */
+
+
+
 
 
 

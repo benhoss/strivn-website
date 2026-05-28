@@ -96,13 +96,13 @@ const rosterMomentRows = isFrench
   ? [
       { name: 'M. Cordeiro', status: 'OK', tone: 'positive' },
       { name: 'T. Mendes', status: 'Risque', tone: 'warn' },
-      { name: 'Y. Ribot', status: 'RSVP', tone: 'info' },
+      { name: 'Y. Ribot', status: 'En attente', tone: 'info' },
       { name: 'A. Dupin', status: 'OK', tone: 'positive' },
     ]
   : [
       { name: 'M. Cordeiro', status: 'OK', tone: 'positive' },
       { name: 'T. Mendes', status: 'Risk', tone: 'warn' },
-      { name: 'Y. Ribot', status: 'RSVP', tone: 'info' },
+      { name: 'Y. Ribot', status: 'Pending', tone: 'info' },
       { name: 'A. Dupin', status: 'OK', tone: 'positive' },
     ];
 
@@ -131,20 +131,24 @@ const planWeek: WeekCell[] = [
 >
   <main id="top" class="landing-shell">
     <!-- ============================================================
-         HERO — Platform-first
+         HERO — Platform-first · atmospheric
          ============================================================ -->
     <section class="hero">
       <div class="hero__atmosphere" aria-hidden="true"></div>
-      <canvas class="hero__field" aria-hidden="true"></canvas>
+      <div class="hero__bloom hero__bloom--a" aria-hidden="true"></div>
+      <div class="hero__bloom hero__bloom--b" aria-hidden="true"></div>
 
       <div class="page-frame">
         <header class="topbar">
-          <a href="#top" class="brand">
-            <img src="/strivn-logo.png" alt="STRIVN" class="brand__logo" loading="eager" />
-            <div class="brand__copy">
-              <span class="brand__name">STRIVN</span>
-              <span class="brand__tag">{content.header.brandTag}</span>
-            </div>
+          <a href="#top" class="brand" aria-label="STRIVN">
+            <img
+              src="/strivn-logo-full-white-web.png"
+              alt="STRIVN"
+              class="brand__logo"
+              width="132"
+              height="88"
+              loading="eager"
+            />
           </a>
 
           <nav class="topbar__nav" aria-label={content.header.navLabel}>
@@ -171,16 +175,6 @@ const planWeek: WeekCell[] = [
 
         <div class="hero__layout">
           <div class="hero__content">
-            <div class="hero__eyebrow animate-rise" style="animation-delay: 90ms;">
-              <span class="hero__eyebrow-dot" aria-hidden="true"></span>
-              <span>{content.hero.eyebrowChips[0]}</span>
-              <span class="hero__eyebrow-sep" aria-hidden="true"></span>
-              <span class="hero__eyebrow-wa" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={whatsappGlyph} />
-              </span>
-              <span>{content.hero.eyebrowChips[1]}</span>
-            </div>
-
             <h1 class="hero__title animate-rise" style="animation-delay: 180ms;">
               {content.hero.title}
               <span class="hero__title-accent">{content.hero.titleAccent}</span>
@@ -193,73 +187,6 @@ const planWeek: WeekCell[] = [
             <div class="hero__actions animate-rise" style="animation-delay: 380ms;">
               <a href="#contact" class="button button--primary">{content.hero.primaryCta}</a>
               <a href="#how-it-works" class="button button--ghost">{content.hero.secondaryCta}</a>
-            </div>
-
-            <div class="hero__signals animate-rise" style="animation-delay: 480ms;">
-              {content.hero.signals.map((signal, index) => (
-                <div class="signal">
-                  <div class="signal__head">
-                    <span class="signal__icon" aria-hidden="true">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        set:html={signalIcons[index] ?? ''}
-                      />
-                    </span>
-                    <span class="signal__label">{signal.label}</span>
-                  </div>
-                  <ul class="signal__list">
-                    {signal.features.map((feature) => (
-                      <li class="signal__item">
-                        <span class="signal__text">{feature.text}</span>
-                        {feature.soon && <span class="signal__soon">{soonLabel}</span>}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <div class="hero__ai-strip animate-rise" style="animation-delay: 560ms;">
-              <span class="ai-strip__badge">
-                <span class="ai-strip__spark" aria-hidden="true">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M12 3l1.6 4.8L18.4 9.4l-4.8 1.6L12 15.8l-1.6-4.8L5.6 9.4l4.8-1.6z"/>
-                    <path d="M19 16l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7z"/>
-                    <path d="M5 17.5l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5z"/>
-                  </svg>
-                </span>
-                <span>{content.hero.aiStrip.badge}</span>
-              </span>
-
-              <span class="ai-strip__sep" aria-hidden="true"></span>
-
-              <div class="ai-strip__assistants">
-                <div class="ai-strip__assistant">
-                  <strong class="ai-strip__assistant-label">{content.hero.aiStrip.staff.label}</strong>
-                  <span class="ai-strip__assistant-body">{content.hero.aiStrip.staff.body}</span>
-                </div>
-                <span class="ai-strip__sep ai-strip__sep--inner" aria-hidden="true"></span>
-                <div class="ai-strip__assistant">
-                  <strong class="ai-strip__assistant-label">{content.hero.aiStrip.team.label}</strong>
-                  <span class="ai-strip__assistant-body">{content.hero.aiStrip.team.body}</span>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -419,6 +346,7 @@ const planWeek: WeekCell[] = [
           </aside>
         </div>
       </div>
+
     </section>
 
     <!-- ============================================================
@@ -428,7 +356,7 @@ const planWeek: WeekCell[] = [
       <div class="page-frame">
         <div class="section-intro reveal">
           <p class="eyebrow">{content.ai.eyebrow}</p>
-          <h2 class="section-title">{content.ai.title}</h2>
+          <h2 class="section-title section-title--reveal">{content.ai.title}</h2>
           <p class="section-body">{content.ai.body}</p>
         </div>
 
@@ -500,7 +428,7 @@ const planWeek: WeekCell[] = [
       <div class="page-frame">
         <div class="section-intro reveal">
           <p class="eyebrow">{content.platformChannel.eyebrow}</p>
-          <h2 class="section-title">{content.platformChannel.title}</h2>
+          <h2 class="section-title section-title--reveal">{content.platformChannel.title}</h2>
           <p class="section-body">{content.platformChannel.body}</p>
         </div>
 
@@ -627,7 +555,7 @@ const planWeek: WeekCell[] = [
       <div class="page-frame">
         <div class="section-intro reveal">
           <p class="eyebrow">{content.howItWorks.eyebrow}</p>
-          <h2 class="section-title">{content.howItWorks.title}</h2>
+          <h2 class="section-title section-title--reveal">{content.howItWorks.title}</h2>
           <p class="section-body">{content.howItWorks.body}</p>
         </div>
 
@@ -753,7 +681,7 @@ const planWeek: WeekCell[] = [
       <div class="page-frame">
         <div class="section-intro reveal">
           <p class="eyebrow">{content.forWhom.eyebrow}</p>
-          <h2 class="section-title">{content.forWhom.title}</h2>
+          <h2 class="section-title section-title--reveal">{content.forWhom.title}</h2>
           <p class="section-body">{content.forWhom.body}</p>
         </div>
 
@@ -802,7 +730,7 @@ const planWeek: WeekCell[] = [
         <div class="confidence-shell">
           <div class="section-intro section-intro--compact reveal">
             <p class="eyebrow">{content.confidence.eyebrow}</p>
-            <h2 class="section-title">{content.confidence.title}</h2>
+            <h2 class="section-title section-title--reveal">{content.confidence.title}</h2>
             <p class="section-body">{content.confidence.body}</p>
           </div>
 
@@ -837,7 +765,7 @@ const planWeek: WeekCell[] = [
       <div class="page-frame faq-shell">
         <div class="section-intro section-intro--compact reveal">
           <p class="eyebrow">{content.faq.eyebrow}</p>
-          <h2 class="section-title">{content.faq.title}</h2>
+          <h2 class="section-title section-title--reveal">{content.faq.title}</h2>
           <p class="section-body">{content.faq.body}</p>
         </div>
 
@@ -882,7 +810,14 @@ const planWeek: WeekCell[] = [
     <footer class="footer-bar">
       <div class="page-frame footer-bar__inner">
         <div class="footer-bar__brand">
-          <img src="/strivn-logo.png" alt="STRIVN" class="brand__logo" loading="lazy" />
+          <img
+            src="/strivn-logo-full-white-web.png"
+            alt="STRIVN"
+            class="brand__logo brand__logo--footer"
+            width="96"
+            height="64"
+            loading="lazy"
+          />
           <p>{content.footer.brandLine}</p>
         </div>
 
@@ -898,141 +833,7 @@ const planWeek: WeekCell[] = [
 
 <script>
   // ============================================================
-  // Hero reactive dot field — cursor-following illumination
-  // ============================================================
-  (function () {
-    const cv = document.querySelector<HTMLCanvasElement>('.hero__field');
-    if (!cv) return;
-    const hero = cv.closest<HTMLElement>('.hero');
-    if (!hero) return;
-    const ctx = cv.getContext('2d');
-    if (!ctx) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const GRID = 26;
-    const DOT_R = 1.05;
-    const RADIUS = 200;
-    const BASE_ALPHA = 0.055;
-    const GLOW_ALPHA = 0.42;
-    const BASE_RGB: [number, number, number] = [132, 151, 189];
-    const GLOW_RGB: [number, number, number] = [78, 168, 252];
-
-    let dpr = 1;
-    let w = 0;
-    let h = 0;
-    let dots: Array<{ x: number; y: number }> = [];
-    let raf = 0;
-    let alive = false;
-    const mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999 };
-
-    function resize() {
-      const rect = hero!.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = Math.max(1, Math.floor(rect.width));
-      h = Math.max(1, Math.floor(rect.height));
-      cv!.width = Math.floor(w * dpr);
-      cv!.height = Math.floor(h * dpr);
-      cv!.style.width = w + 'px';
-      cv!.style.height = h + 'px';
-      ctx!.setTransform(1, 0, 0, 1, 0, 0);
-      ctx!.scale(dpr, dpr);
-      layoutDots();
-    }
-    function layoutDots() {
-      dots = [];
-      const cols = Math.ceil(w / GRID) + 1;
-      const rows = Math.ceil(h / GRID) + 1;
-      const offX = (w - (cols - 1) * GRID) / 2;
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          dots.push({ x: offX + i * GRID, y: j * GRID });
-        }
-      }
-    }
-    function frame() {
-      ctx!.clearRect(0, 0, w, h);
-      mouse.x += (mouse.tx - mouse.x) * 0.16;
-      mouse.y += (mouse.ty - mouse.y) * 0.16;
-      const cx = mouse.x;
-      const cy = mouse.y;
-      const r2 = RADIUS * RADIUS;
-      for (let i = 0; i < dots.length; i++) {
-        const d = dots[i];
-        const dx = d.x - cx;
-        const dy = d.y - cy;
-        const d2 = dx * dx + dy * dy;
-        let alpha = BASE_ALPHA;
-        let r = BASE_RGB[0];
-        let g = BASE_RGB[1];
-        let b = BASE_RGB[2];
-        if (d2 < r2) {
-          const t = 1 - Math.sqrt(d2) / RADIUS;
-          const k = t * t;
-          alpha = BASE_ALPHA + (GLOW_ALPHA - BASE_ALPHA) * k;
-          r = Math.round(BASE_RGB[0] + (GLOW_RGB[0] - BASE_RGB[0]) * k);
-          g = Math.round(BASE_RGB[1] + (GLOW_RGB[1] - BASE_RGB[1]) * k);
-          b = Math.round(BASE_RGB[2] + (GLOW_RGB[2] - BASE_RGB[2]) * k);
-        }
-        ctx!.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
-        ctx!.beginPath();
-        ctx!.arc(d.x, d.y, DOT_R, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-      raf = requestAnimationFrame(frame);
-    }
-    function staticFrame() {
-      ctx!.clearRect(0, 0, w, h);
-      ctx!.fillStyle = 'rgba(' + BASE_RGB.join(',') + ',' + BASE_ALPHA + ')';
-      for (let i = 0; i < dots.length; i++) {
-        const d = dots[i];
-        ctx!.beginPath();
-        ctx!.arc(d.x, d.y, DOT_R, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-    }
-    function onMove(e: MouseEvent) {
-      const rect = hero!.getBoundingClientRect();
-      mouse.tx = e.clientX - rect.left;
-      mouse.ty = e.clientY - rect.top;
-      if (!alive) {
-        mouse.x = mouse.tx;
-        mouse.y = mouse.ty;
-        alive = true;
-      }
-    }
-    function start() {
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(frame);
-    }
-    resize();
-    if (reduced) {
-      staticFrame();
-      window.addEventListener('resize', () => {
-        resize();
-        staticFrame();
-      });
-      return;
-    }
-    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
-    if (!hasFinePointer) {
-      staticFrame();
-      return;
-    }
-    window.addEventListener('mousemove', onMove, { passive: true });
-    window.addEventListener('resize', resize);
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        cancelAnimationFrame(raf);
-        raf = 0;
-      } else if (!raf) {
-        start();
-      }
-    });
-    start();
-  })();
-
-  // ============================================================
-  // Hero flow sequencer — sliding panes (left → right)
+  // Hero pane sequencer — timer cycle (no external deps)
   // ============================================================
   (function () {
     const flow = document.getElementById('hero-flow');
@@ -1043,6 +844,7 @@ const planWeek: WeekCell[] = [
     const dots = Array.from(flow.querySelectorAll<HTMLButtonElement>('.pane-dot'));
     if (panes.length === 0) return;
 
+    // Typing cascade for the voice-dictation quote
     const typingTargets = flow.querySelectorAll<HTMLElement>('[data-typing]');
     typingTargets.forEach((el) => {
       if (el.dataset.typingPrepared) return;
@@ -1065,64 +867,110 @@ const planWeek: WeekCell[] = [
       });
     });
 
-    const dwellMs = [3800, 3600, 4200, 7000];
-    let current = 0;
-    let timer = 0;
-
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+    let current = -1;
     function activate(idx: number) {
+      if (idx === current) return;
+      current = idx;
       track!.style.transform = 'translateX(-' + idx * 100 + '%)';
       dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
       panes.forEach((p) => p.classList.remove('is-active'));
       void panes[idx].offsetWidth;
       panes[idx].classList.add('is-active');
     }
-
-    function advance() {
-      current = (current + 1) % panes.length;
-      activate(current);
-      timer = window.setTimeout(advance, dwellMs[current]);
-    }
-
     dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        window.clearTimeout(timer);
-        current = idx;
-        activate(current);
-        if (!reduced) {
-          timer = window.setTimeout(advance, dwellMs[current]);
-        }
-      });
+      dot.addEventListener('click', () => activate(idx));
     });
-
-    if (reduced) {
-      panes[0].classList.add('is-active');
-      return;
+    if (reduced) { activate(0); return; }
+    const dwellMs = [3800, 3600, 4200, 7000];
+    let cur = 0;
+    activate(0);
+    function advance() {
+      cur = (cur + 1) % panes.length;
+      activate(cur);
+      window.setTimeout(advance, dwellMs[cur]);
     }
-
-    timer = window.setTimeout(advance, dwellMs[0]);
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        window.clearTimeout(timer);
-      } else {
-        timer = window.setTimeout(advance, 1200);
-      }
-    });
+    window.setTimeout(advance, dwellMs[0]);
   })();
 
   // ============================================================
-  // Scroll-triggered reveal
+  // Section title word-by-word reveal
+  // ============================================================
+  (function () {
+    const titles = document.querySelectorAll<HTMLElement>('.section-title--reveal');
+    if (titles.length === 0) return;
+    titles.forEach((el) => {
+      if (el.dataset.wordsPrepared) return;
+      el.dataset.wordsPrepared = '1';
+      const text = el.textContent || '';
+      el.textContent = '';
+      const parts = text.split(/(\s+)/);
+      let wordIndex = 0;
+      parts.forEach((part) => {
+        if (/^\s+$/.test(part)) {
+          el.appendChild(document.createTextNode(part));
+        } else if (part.length > 0) {
+          const span = document.createElement('span');
+          span.className = 'word';
+          span.style.setProperty('--word-i', String(wordIndex));
+          span.textContent = part;
+          el.appendChild(span);
+          wordIndex += 1;
+        }
+      });
+    });
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || typeof IntersectionObserver === 'undefined') {
+      titles.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.2 }
+    );
+    titles.forEach((el) => io.observe(el));
+  })();
+
+  // ============================================================
+  // Section lift-on-enter
+  // ============================================================
+  (function () {
+    const all = document.querySelectorAll<HTMLElement>('.section');
+    if (all.length === 0) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || typeof IntersectionObserver === 'undefined') {
+      all.forEach((el) => el.classList.add('is-in-view'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in-view');
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+    );
+    all.forEach((el) => io.observe(el));
+  })();
+
+  // ============================================================
+  // Generic .reveal observer
   // ============================================================
   (function () {
     const targets = document.querySelectorAll<HTMLElement>('.reveal');
     if (targets.length === 0) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      targets.forEach((el) => el.classList.add('is-visible'));
-      return;
-    }
-    if (typeof IntersectionObserver === 'undefined') {
+    if (reduced || typeof IntersectionObserver === 'undefined') {
       targets.forEach((el) => el.classList.add('is-visible'));
       return;
     }
@@ -1143,7 +991,7 @@ const planWeek: WeekCell[] = [
   })();
 
   // ============================================================
-  // Viz reveal — cascade content inside each viz when it enters viewport
+  // Viz reveal — cascade content inside each .viz on enter
   // ============================================================
   (function () {
     const vizs = document.querySelectorAll<HTMLElement>('.viz');
@@ -1166,5 +1014,4 @@ const planWeek: WeekCell[] = [
     );
     vizs.forEach((v) => io.observe(v));
   })();
-
 </script>
