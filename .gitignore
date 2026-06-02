@@ -2,3 +2,13 @@ node_modules
 dist
 .astro
 .DS_Store
+
+# Generated local agent/tool caches
+.agents/
+.claude/
+.cursor/
+.gemini/
+.impeccable/
+.kiro/
+.opencode/
+.qoder/
