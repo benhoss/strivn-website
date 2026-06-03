@@ -18,7 +18,7 @@ const pillarAccents = ['electric', 'performance', 'violet', 'warm'];
 const chapters = [
   { id: 'reality',  n: '01', label: c.nav.reality },
   { id: 'staff',    n: '02', label: c.nav.staff },
-  { id: 'whatsapp', n: '03', label: c.nav.whatsapp },
+  { id: 'communication', n: '03', label: c.nav.communication },
   { id: 'medical',  n: '04', label: c.nav.medical },
   { id: 'sessions', n: '05', label: c.nav.sessions },
   { id: 'pricing',  n: '06', label: c.nav.pricing },
@@ -280,63 +280,72 @@ const chapters = [
       </div>
     </section>
 
-    <!-- ─────────────────── 03 · WHATSAPP ─────────────────── -->
-    <section class="v2-chapter" id="v2-whatsapp" data-accent="performance">
+    <!-- ─────────────────── 03 · COMMUNICATION ─────────────────── -->
+    <section class="v2-chapter" id="v2-communication" data-accent="performance">
       <div class="v2-chapter__head">
         <span class="v2-chapter__n v2-reveal" data-reveal>03</span>
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.whatsapp.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>{c.whatsapp.title}</h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.whatsapp.body}</p>
+        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.communication.eyebrow}</p>
+        <h2 class="v2-chapter__title v2-words" data-words>{c.communication.title}</h2>
+        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.communication.body}</p>
       </div>
 
       <div class="v2-wa-layout">
         <div class="v2-wa-steps v2-reveal" data-reveal data-delay="100">
           <ol>
-            {c.whatsapp.steps.map((s, i) => (
+            {c.communication.steps.map((s, i) => (
               <li class="v2-wa-step" style={`--v2-li: ${i};`}>
                 <span class="v2-wa-step__n">{s.n}</span>
                 <span class="v2-wa-step__text">{s.text}</span>
               </li>
             ))}
           </ol>
-          <div class="v2-noapp">
-            {c.whatsapp.noapp.map((n) => (
-              <span class="v2-noapp__chip">
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
-                {n}
+          <div class="v2-channels" aria-label={c.communication.title}>
+            {c.communication.channels.map((channel) => (
+              <span class="v2-channel">
+                <span class="v2-channel__name">{channel.label}</span>
+                <span class="v2-channel__status">{channel.status}</span>
               </span>
             ))}
           </div>
-          <p class="v2-wa-caption">{c.whatsapp.caption}</p>
+          <p class="v2-wa-caption">{c.communication.caption}</p>
         </div>
 
         <div class="v2-phone v2-phone--wa v2-phone--lg v2-reveal" data-reveal data-delay="200">
           <div class="v2-phone__bar">
-            <span class="v2-phone__time">{c.whatsapp.phone.time}</span>
+            <span class="v2-phone__time">{c.communication.phone.time}</span>
             <span class="v2-phone__dots"><span></span><span></span><span></span></span>
           </div>
           <div class="v2-phone__head">
             <span class="v2-phone__avatar">S</span>
             <div class="v2-phone__id">
-              <span class="v2-phone__name">{c.whatsapp.phone.name}</span>
-              <span class="v2-phone__sub">{c.whatsapp.phone.sub}</span>
+              <span class="v2-phone__name">{c.communication.phone.name}</span>
+              <span class="v2-phone__sub">{c.communication.phone.sub}</span>
             </div>
             <span class="v2-phone__wa"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" set:html={WA} /></span>
           </div>
           <div class="v2-phone__chat">
-            {c.whatsapp.phone.bubbles.map((b, i) => (
+            {c.communication.phone.bubbles.map((b, i) => (
               <div class={`v2-bubble v2-bubble--${b.direction}`} style={`--v2-bi: ${i};`}>
                 <p>{b.text}</p>
                 <span class="v2-bubble__time">{b.time}</span>
               </div>
             ))}
             <div class="v2-wellness" style="--v2-bi: 4;">
-              <span class="v2-wellness__l">{c.whatsapp.phone.wellness.label}</span>
-              <span class="v2-wellness__v">{c.whatsapp.phone.wellness.value}</span>
-              <span class="v2-wellness__n">{c.whatsapp.phone.wellness.note}</span>
+              <span class="v2-wellness__l">{c.communication.phone.wellness.label}</span>
+              <span class="v2-wellness__v">{c.communication.phone.wellness.value}</span>
+              <span class="v2-wellness__n">{c.communication.phone.wellness.note}</span>
             </div>
           </div>
         </div>
+
+        <article class="v2-template v2-reveal" data-reveal data-delay="260">
+          <p class="v2-template__eyebrow">{c.communication.template.eyebrow}</p>
+          <h3 class="v2-template__title">{c.communication.template.title}</h3>
+          <div class="v2-template__lines">
+            {c.communication.template.lines.map((line) => <span>{line}</span>)}
+          </div>
+          <span class="v2-template__action">{c.communication.template.action}</span>
+        </article>
       </div>
     </section>
 
@@ -502,7 +511,7 @@ const chapters = [
                 <span>{plan.price}</span>
                 <small>{plan.period}</small>
               </p>
-              <p class="v2-plan__messages">{plan.messages}</p>
+              <p class="v2-plan__messages">{plan.availability}</p>
               <ul class="v2-plan__features">
                 {plan.features.map((feature) => (
                   <li>
@@ -513,20 +522,9 @@ const chapters = [
                   </li>
                 ))}
               </ul>
+              <span class="v2-plan__cta">{plan.cta}</span>
             </article>
           ))}
-        </div>
-        <div class="v2-addons">
-          <p class="v2-addons__title">{c.pricing.addonsTitle}</p>
-          <div class="v2-addons__list">
-            {c.pricing.addons.map((addon) => (
-              <div class="v2-addon">
-                <span class="v2-addon__name">{addon.name}</span>
-                <span class="v2-addon__messages">{addon.messages}</span>
-                <span class="v2-addon__price">{addon.price}</span>
-              </div>
-            ))}
-          </div>
         </div>
         <div class="v2-pricing__footer">
           <a href={c.pricing.href} target="_blank" rel="noopener" class="v2-btn v2-btn--primary v2-btn--large v2-pricing__cta">{c.pricing.cta}</a>
@@ -936,25 +934,37 @@ const chapters = [
     .v2-ba__before::before { content: '✕ '; color: var(--v2-faint); }
   }
 
-  /* ============================================================ 03 · WhatsApp ============================================================ */
+  /* ============================================================ 03 · Communication ============================================================ */
   .v2-wa-layout { display: grid; grid-template-columns: 1fr 320px; gap: clamp(32px, 6vw, 80px); align-items: center; max-width: 68rem; margin: 0 auto; }
   .v2-wa-steps ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
   .v2-wa-step { display: flex; align-items: center; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--v2-line); }
   .v2-wa-step:last-of-type { border-bottom: 0; }
   .v2-wa-step__n { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--v2-performance); flex: none; }
   .v2-wa-step__text { font-size: clamp(16px, 1.7vw, 20px); color: var(--v2-fg); font-weight: 500; }
-  .v2-noapp { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .v2-noapp__chip {
-    display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border-radius: 999px;
-    border: 1px solid var(--v2-line-2); font-size: 13px; color: var(--v2-muted);
-    font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.02em;
+  .v2-channels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 28px; }
+  .v2-channel {
+    min-width: 0; display: grid; gap: 3px; padding: 10px 12px; border-radius: 12px;
+    border: 1px solid rgba(39, 215, 161, 0.24); background: rgba(39, 215, 161, 0.055);
   }
-  .v2-noapp__chip svg { color: var(--v2-faint); }
+  .v2-channel__name { font-size: 13.5px; font-weight: 600; color: var(--v2-fg); }
+  .v2-channel__status { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--v2-performance); }
   .v2-wa-caption { margin: 24px 0 0; font-size: 14px; line-height: 1.6; color: var(--v2-subtle); max-width: 36rem; }
+  .v2-template {
+    grid-column: 1 / -1; justify-self: center; width: min(100%, 42rem); display: grid; gap: 10px;
+    margin-top: -10px; padding: 18px 20px; border: 1px solid var(--v2-line-2); border-radius: 16px;
+    background: rgba(255,255,255,0.025); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  }
+  .v2-template__eyebrow { margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-subtle); }
+  .v2-template__title { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: var(--v2-fg); }
+  .v2-template__lines { display: grid; gap: 4px; padding: 12px 0; border-top: 1px solid var(--v2-line); border-bottom: 1px solid var(--v2-line); }
+  .v2-template__lines span { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.55; color: var(--v2-muted); }
+  .v2-template__action { justify-self: start; padding: 8px 12px; border-radius: 999px; background: var(--v2-fg); color: var(--v2-void); font-size: 12px; font-weight: 600; }
   @media (max-width: 860px) {
     .v2-wa-layout { grid-template-columns: 1fr; gap: 40px; }
     .v2-phone--lg { max-width: 320px; }
+    .v2-template { margin-top: 0; }
   }
+  @media (max-width: 520px) { .v2-channels { grid-template-columns: 1fr; } }
 
   /* ============================================================ 04 · Medical record ============================================================ */
   .v2-med { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; max-width: var(--v2-frame-w); margin: 0 auto; }
@@ -1044,8 +1054,8 @@ const chapters = [
   @media (max-width: 860px) { .v2-time { grid-template-columns: 1fr; gap: 36px; } }
 
   /* ============================================================ 06 · Pricing ============================================================ */
-  .v2-pricing { max-width: 58rem; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
-  .v2-plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+  .v2-pricing { max-width: 76rem; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+  .v2-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
   .v2-plan {
     position: relative; min-width: 0; display: flex; flex-direction: column; gap: 18px;
     padding: 24px; border: 1px solid var(--v2-line-2); border-radius: 20px;
@@ -1071,6 +1081,10 @@ const chapters = [
   .v2-plan__features { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .v2-plan__features li { display: flex; align-items: flex-start; gap: 8px; font-size: 13.5px; line-height: 1.45; color: var(--v2-muted); }
   .v2-plan__check { flex: none; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: var(--v2-performance); background: rgba(39, 215, 161, 0.12); }
+  .v2-plan__cta {
+    margin-top: auto; display: inline-flex; justify-content: center; padding: 10px 12px; border-radius: 999px;
+    border: 1px solid var(--v2-line-2); color: var(--v2-fg); font-size: 12.5px; font-weight: 600;
+  }
   .v2-addons {
     display: grid; grid-template-columns: minmax(10rem, 0.8fr) 2fr; gap: 14px; align-items: center;
     padding: 16px; border: 1px solid var(--v2-line); border-radius: 18px; background: rgba(255,255,255,0.018);
@@ -1238,6 +1252,7 @@ const chapters = [
     .v2-pane--player .v2-phone { width: 100%; max-width: 240px; }
     .v2-device__url { display: none; }
   }
+  @media (min-width: 721px) and (max-width: 1040px) { .v2-plans { grid-template-columns: 1fr; } }
   @media (max-width: 414px) {
     .v2-pane__quote { font-size: 13px; padding: 12px 14px; }
     .v2-pane__title { font-size: 17px; }

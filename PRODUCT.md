@@ -6,11 +6,11 @@ brand
 
 ## Users
 
-Primary users are club coaches working in amateur to semi-pro environments. They manage performance with limited staff, little time, and inconsistent player reporting. They need a system that helps them understand team readiness quickly and act with confidence before training. Secondary users include performance staff and academy operators who support those coaches and influence adoption.
+Primary users are coaches working in amateur to semi-pro environments. They manage one team with limited time, fragmented information, and little administrative support. They need a free way to organize events, attendance, player information, injuries, tactics, reports and communication without asking a club decision-maker for budget. Secondary users include staff members who support those coaches, plus clubs and academies that may later standardize STRIVN across multiple teams.
 
 ## Product Purpose
 
-STRIVN is an AI-native performance intelligence platform for sports teams. The website explains how STRIVN turns daily wellness, workload, attendance, and check-in signals into simple recommendations that help coaches reduce injury risk, adjust training, and make better day-to-day decisions. Success means a coach understands what STRIVN does, trusts the signal, and takes the next step without digging through dashboards or installing a player-facing app.
+STRIVN is a free operations platform for coaches. The website explains how STRIVN centralizes the work around a team: events, sessions, matches, attendance, injuries, player management, tactical boards, reports, AI assistance, communication and RSVP. Success means a coach understands they can run one team for free, without club approval, and that clubs pay later when they want multi-team coordination.
 
 ## Brand Personality
 
@@ -22,8 +22,8 @@ Avoid gym-bro aesthetics, hype-led sports marketing, overly medical interfaces, 
 
 ## Design Principles
 
-- Lead with the decision, then justify it with signal.
-- Make elite performance feel accessible to ambitious clubs.
+- Lead with time saved and insight, then justify it with operational proof.
+- Make the complete coach experience feel accessible without budget approval.
 - Build trust through precision, restraint, and consistency.
 - Use motion and atmosphere to suggest intelligence in motion, not spectacle for its own sake.
 - Treat the coach's time as scarce; clarity beats completeness.
