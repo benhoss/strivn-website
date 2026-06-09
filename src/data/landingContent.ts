@@ -200,14 +200,14 @@ export const landingContent: Record<Locale, LandingContent> = {
     ctaMini: 'Commencer gratuitement',
 
     hero: {
-      title: 'Centralisez tout.',
-      titleAccent: 'Récupérez du temps.',
+      title: 'Récupérez vos soirées.',
+      titleAccent: 'Coachez le lendemain.',
       body:
-        "STRIVN est la plateforme gratuite qui réunit l'intendance de votre équipe : événements, présences, infirmerie, tactique, rapports, assistant IA et communication. Moins de dispersion, plus d'insights, plus de temps pour coacher.",
+        "STRIVN reprend l'intendance de votre équipe — convocations, présences, infirmerie, tactique, communication — pour que vous arriviez au terrain avec une heure de plus et un groupe à jour. Gratuit pour les coaches.",
       primaryCta: 'Commencer gratuitement',
       secondaryCta: 'Voir la plateforme',
       device: {
-        url: 'app.strivn.net · Saison 2025-26',
+        url: 'app.strivn.net · Saison 2026-27',
         step1: {
           label: 'Vous créez l’événement',
           quote:
@@ -465,16 +465,16 @@ export const landingContent: Record<Locale, LandingContent> = {
       eyebrow: 'Le temps gagné',
       title: 'Récupérez vos soirées.',
       body:
-        "Un coach amateur passe 3 à 5 heures par semaine sur l'intendance. STRIVN en reprend l'essentiel, semaine après semaine.",
-      stat: '3 à 5 h',
-      statLabel: 'par semaine, avant STRIVN',
+        "STRIVN reprend l'intendance qui vous mange vos soirées : convocations, présences, comptes-rendus, coordination staff. Vous gardez le terrain.",
+      stat: 'Le soir',
+      statLabel: 'que vous récupérez, semaine après semaine',
       breakdown: [
-        { task: 'Convocations & relances', hours: '~1 h 30' },
-        { task: 'Présences & infirmerie', hours: '~1 h' },
-        { task: 'Comptes-rendus de séance', hours: '~1 h' },
-        { task: 'Coordination du staff', hours: '~45 min' },
+        { task: 'Convocations & relances', hours: 'centralisées' },
+        { task: 'Présences & infirmerie', hours: 'au même endroit' },
+        { task: 'Comptes-rendus de séance', hours: 'préparés' },
+        { task: 'Coordination du staff', hours: 'visible' },
       ],
-      footer: 'Soit une soirée rendue chaque semaine. Sur une saison, plus de 150 heures.',
+      footer: "Le terrain d'abord. L'intendance ensuite.",
     },
 
     pricing: {
@@ -578,8 +578,8 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: "Centralisez l'équipe. Reprenez le terrain.",
       body: "Créez votre équipe gratuitement et commencez à organiser événements, présences, communication et infos joueurs depuis une seule plateforme.",
       primaryCta: 'Créer mon équipe gratuitement',
-      secondaryCta: 'Réserver une démo',
-      secondaryHref: 'mailto:hello@strivn.ai?subject=Demo%20STRIVN%20-%20demande%20de%20creneau',
+      secondaryCta: 'Une question avant de démarrer ?',
+      secondaryHref: 'mailto:hello@strivn.ai?subject=STRIVN%20-%20question%20avant%20de%20démarrer',
     },
 
     footer: {
@@ -618,14 +618,14 @@ export const landingContent: Record<Locale, LandingContent> = {
     ctaMini: 'Start for free',
 
     hero: {
-      title: 'Centralize everything.',
-      titleAccent: 'Get time back.',
+      title: 'Get your evenings back.',
+      titleAccent: 'Coach the next day.',
       body:
-        'STRIVN is the free platform that brings your team operations together: events, attendance, injuries, tactics, reports, AI and communication. Less scattered work, better insight, more time to coach.',
+        'STRIVN takes the admin off your team — call-ups, attendance, injuries, tactics, communication — so you arrive at the pitch with an extra hour and a squad that’s up to date. Free for coaches.',
       primaryCta: 'Start for free',
       secondaryCta: 'See the platform',
       device: {
-        url: 'app.strivn.net · Season 2025-26',
+        url: 'app.strivn.net · Season 2026-27',
         step1: {
           label: 'You create the event',
           quote:
@@ -883,16 +883,16 @@ export const landingContent: Record<Locale, LandingContent> = {
       eyebrow: 'Time saved',
       title: 'Get your evenings back.',
       body:
-        'An amateur coach spends 3 to 5 hours a week on admin. STRIVN takes most of it off your plate, week after week.',
-      stat: '3 to 5 h',
-      statLabel: 'per week, before STRIVN',
+        'STRIVN takes the admin that eats your evenings: call-ups, attendance, reports, staff coordination. You stay on the pitch.',
+      stat: 'Your evening',
+      statLabel: 'back, week after week',
       breakdown: [
-        { task: 'Call-ups & follow-ups', hours: '~1h 30' },
-        { task: 'Attendance & tracking', hours: '~1h' },
-        { task: 'Reports', hours: '~1h' },
-        { task: 'Staff coordination', hours: '~45 min' },
+        { task: 'Call-ups & follow-ups', hours: 'centralized' },
+        { task: 'Attendance & tracking', hours: 'in one place' },
+        { task: 'Reports', hours: 'prepared' },
+        { task: 'Staff coordination', hours: 'visible' },
       ],
-      footer: 'That’s one evening back every week. Over a season, more than 150 hours.',
+      footer: 'The pitch first. The admin after.',
     },
 
     pricing: {
@@ -996,8 +996,8 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Centralize the team. Get back to the pitch.',
       body: 'Create your team for free and start organizing events, attendance, communication and player information from one platform.',
       primaryCta: 'Create your team for free',
-      secondaryCta: 'Book a demo',
-      secondaryHref: 'mailto:hello@strivn.ai?subject=STRIVN%20walkthrough%20request',
+      secondaryCta: 'Got a question first?',
+      secondaryHref: 'mailto:hello@strivn.ai?subject=STRIVN%20-%20question%20before%20starting',
     },
 
     footer: {
