@@ -7,6 +7,12 @@ interface Props {
   lang?: string;
   canonicalPath?: string;
   alternates?: Array<{ hreflang: string; href: string }>;
+  /** Open Graph image absolute URL or path beginning with `/` */
+  ogImage?: string;
+  /** Open Graph site name (defaults to STRIVN) */
+  siteName?: string;
+  /** Twitter handle without @ — if provided, twitter:site is emitted */
+  twitterSite?: string;
 }
 
 const {
@@ -15,11 +21,41 @@ const {
   lang = 'en',
   canonicalPath,
   alternates = [],
+  ogImage = '/strivn-logo-full-white-web.png',
+  siteName = 'STRIVN',
+  twitterSite,
 } = Astro.props;
+
 const site = Astro.site ?? new URL('https://strivn.ai');
 const canonicalUrl = canonicalPath ? new URL(canonicalPath, site).toString() : undefined;
----
+const ogImageUrl = ogImage
+  ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, site).toString())
+  : undefined;
+const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_US';
 
+// JSON-LD: Organization + WebSite. Single coherent graph per page.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site.toString()}#organization`,
+      name: 'STRIVN',
+      url: site.toString(),
+      logo: ogImageUrl,
+      description,
+      sameAs: [],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.toString()}#website`,
+      url: site.toString(),
+      name: siteName,
+      inLanguage: ['en', 'fr'],
+    },
+  ],
+};
+---
 <!doctype html>
 <html lang={lang}>
   <head>
@@ -27,10 +63,32 @@ const canonicalUrl = canonicalPath ? new URL(canonicalPath, site).toString() : u
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     {alternates.map((alternate) => (
       <link rel="alternate" hreflang={alternate.hreflang} href={new URL(alternate.href, site).toString()} />
     ))}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl ?? site.toString()} />
+    <meta property="og:locale" content={ogLocale} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    {twitterSite && <meta name="twitter:site" content={`@${twitterSite}`} />}
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" href="/favicon.ico" sizes="any" />

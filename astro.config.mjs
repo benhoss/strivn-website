@@ -10,5 +10,10 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Three.js is a separate, deliberately-lazy chunk (canvas ambient
+      // layer). The default 500 kB warning is a false positive here.
+      chunkSizeWarningLimit: 1024,
+    },
   },
 });

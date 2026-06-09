@@ -1,5 +1,10 @@
 ---
 import PremiumLanding from '../../components/PremiumLanding.astro';
----
 
-<PremiumLanding locale="en" />
+const alternates = [
+  { hreflang: 'en', href: '/en/' },
+  { hreflang: 'fr', href: '/fr/' },
+  { hreflang: 'x-default', href: '/fr/' },
+];
+---
+<PremiumLanding locale="en" canonicalPath="/en/" alternates={alternates} />

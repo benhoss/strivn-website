@@ -4,9 +4,13 @@ import { landingContent, type Locale } from '../data/landingContent';
 
 interface Props {
   locale: Locale;
+  /** Canonical path (e.g. '/fr/') forwarded to BaseLayout. */
+  canonicalPath?: string;
+  /** Hreflang alternates forwarded to BaseLayout. */
+  alternates?: Array<{ hreflang: string; href: string }>;
 }
 
-const { locale } = Astro.props;
+const { locale, canonicalPath, alternates } = Astro.props;
 const c = landingContent[locale];
 const isFrench = locale === 'fr';
 const APP_URL = 'https://app.strivn.net';
@@ -25,9 +29,14 @@ const chapters = [
 ];
 ---
 
-<BaseLayout lang={locale} title={c.meta.title} description={c.meta.description}>
+<BaseLayout
+  lang={locale}
+  title={c.meta.title}
+  description={c.meta.description}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+>
   <main class="v2" id="v2-top">
-    <!-- Fixed ambient layers — never block content -->
     <div class="v2-ambient" aria-hidden="true">
       <canvas class="v2-paint" id="v2-paint"></canvas>
       <div class="v2-noise"></div>
@@ -1447,19 +1456,25 @@ const chapters = [
     })();
 
     // ============================================================
-    // Three.js painted-texture background — fails silently
+    // Three.js painted-texture background — fails silently.
+    // Lazy-loaded: only kicks in after idle (or intersection on touch),
+    // and only on devices that pass the capability check below.
     // ============================================================
-    (async function paintedBg() {
-      if (reduced) return;
-      const canvas = document.getElementById('v2-paint') as HTMLCanvasElement | null;
-      if (!canvas) return;
-      if (!window.matchMedia('(pointer: fine)').matches && window.innerWidth < 768) return;
-      let THREE: typeof import('three');
-      try { THREE = await import('three'); } catch (err) { return; }
-      let renderer: import('three').WebGLRenderer;
-      try {
-        renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
-      } catch (err) { return; }
+    const paintCanvas = document.getElementById('v2-paint') as HTMLCanvasElement | null;
+    const paintEligible =
+      !!paintCanvas &&
+      !reduced &&
+      (window.matchMedia('(pointer: fine)').matches || window.innerWidth >= 768);
+
+    if (paintEligible && paintCanvas) {
+      const paintedBg = async (canvas: HTMLCanvasElement) => {
+        if (!window.matchMedia('(pointer: fine)').matches && window.innerWidth < 768) return;
+        let THREE: typeof import('three');
+        try { THREE = await import('three'); } catch (err) { return; }
+        let renderer: import('three').WebGLRenderer;
+        try {
+          renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+        } catch (err) { return; }
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       renderer.setPixelRatio(dpr);
       renderer.setSize(window.innerWidth, window.innerHeight, false);
@@ -1595,7 +1610,34 @@ const chapters = [
         if (document.hidden) { running = false; cancelAnimationFrame(rafId); }
         else if (!running) { running = true; rafId = requestAnimationFrame(loop); }
       });
-    })();
+      };
+
+      // Trigger the paint: only on idle (desktop), or when the canvas
+      // scrolls into view (touch / mobile). Disconnecting IO after fire
+      // avoids duplicate imports.
+      const startPaint = () => {
+        if ((window as any).__v2PaintStarted) return;
+        (window as any).__v2PaintStarted = true;
+        void paintedBg(paintCanvas);
+      };
+      if ('IntersectionObserver' in window) {
+        const paintIO = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((e) => e.isIntersecting)) {
+              startPaint();
+              paintIO.disconnect();
+            }
+          },
+          { rootMargin: '200px' },
+        );
+        paintIO.observe(paintCanvas);
+      }
+      const idle = (cb: () => void) =>
+        'requestIdleCallback' in window
+          ? (window as any).requestIdleCallback(cb, { timeout: 2000 })
+          : window.setTimeout(cb, 1500);
+      idle(startPaint);
+    }
 
     // ============================================================
     // Lenis smooth scroll — additive
