@@ -377,27 +377,40 @@ const chapters = [
         <article class="v2-playerapp v2-reveal" data-reveal data-delay="260">
           <p class="v2-playerapp__eyebrow">{c.communication.playerApp.eyebrow}</p>
           <h3 class="v2-playerapp__title">{c.communication.playerApp.title}</h3>
-          <div class="v2-playerapp__phones">
-            {c.communication.playerApp.phones.map((phone) => (
-              <div class="v2-playerphone">
-                <span class="v2-playerphone__label">{phone.label}</span>
-                <div class="v2-playerphone__device">
-                  <div class="v2-playerphone__notch" aria-hidden="true"></div>
-                  <div class="v2-playerphone__statusbar" aria-hidden="true">
-                    <span>9:41</span>
-                    <span>•••</span>
-                  </div>
-                  <p class="v2-playerphone__title">{phone.title}</p>
-                  <ul class="v2-playerphone__rows">
-                    {phone.rows.map((row) => (
-                      <li><span class="v2-playerphone__dot" aria-hidden="true"></span><span>{row}</span></li>
-                    ))}
-                  </ul>
-                </div>
+          <div class="v2-playerapp__layout">
+            <div class="v2-playerapp__shot">
+              <img
+                src="/screenshots/player-app-agenda.png"
+                alt="Capture d'écran de l'app STRIVN : agenda du joueur avec prochain événement et liste des sessions à venir"
+                width="500"
+                height="932"
+                decoding="async"
+              />
+            </div>
+            <div class="v2-playerapp__side">
+              <p class="v2-playerapp__caption">{c.communication.playerApp.caption}</p>
+              <div class="v2-playerapp__stores" aria-label="App stores">
+                <span class="v2-channel__badge v2-channel__badge--app-store">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="v2-channel__badge-icon">
+                    <path fill="currentColor" d="M17.05 12.04c0-2.18 1.78-3.22 1.86-3.27-1.02-1.49-2.6-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.69 0-1.74-.77-2.86-.75-1.47.02-2.83.85-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.07 2.66-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.49M14.94 5.45c.61-.74 1.02-1.77.91-2.79-.88.04-1.95.59-2.58 1.32-.57.65-1.07 1.7-.93 2.7.98.08 1.98-.5 2.6-1.23"/>
+                  </svg>
+                  <span class="v2-channel__badge-text">
+                    <span class="v2-channel__badge-eyebrow">Télécharger sur</span>
+                    <span class="v2-channel__badge-name">App Store</span>
+                  </span>
+                </span>
+                <span class="v2-channel__badge v2-channel__badge--play-store">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="v2-channel__badge-icon">
+                    <path fill="currentColor" d="M3.6 1.6c-.4.3-.6.8-.6 1.5v17.8c0 .7.2 1.2.6 1.5l9.5-9.5v-.8L3.6 1.6zm14.4 8.4-2.7-1.6L13.5 10l1.8 1.6 2.7-1.6c.9-.5.9-1.4 0-1.9l-1.3.9 1.3-.9zM5 22.9l9-9-2-1.8-7 10.8c.1 0 .1 0 0 0zm-1.4-1.4 7-10.8 1.8-1.6L5 22.9z"/>
+                  </svg>
+                  <span class="v2-channel__badge-text">
+                    <span class="v2-channel__badge-eyebrow">Disponible sur</span>
+                    <span class="v2-channel__badge-name">Google Play</span>
+                  </span>
+                </span>
               </div>
-            ))}
+            </div>
           </div>
-          <p class="v2-playerapp__caption">{c.communication.playerApp.caption}</p>
         </article>
       </div>
     </section>
@@ -1117,62 +1130,41 @@ const chapters = [
   }
   .v2-wa-caption { margin: 24px 0 0; font-size: 14px; line-height: 1.6; color: var(--v2-subtle); max-width: 36rem; }
   .v2-playerapp {
-    grid-column: 1 / -1; justify-self: center; width: min(100%, 40rem);
+    grid-column: 1 / -1; justify-self: center; width: min(100%, 48rem);
     display: grid; gap: 18px; margin-top: 8px;
   }
   .v2-playerapp__eyebrow { margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-performance); }
   .v2-playerapp__title { margin: 0; font-size: clamp(20px, 2.2vw, 26px); font-weight: 600; letter-spacing: -0.015em; color: var(--v2-fg); }
-  .v2-playerapp__phones {
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+  .v2-playerapp__layout {
+    display: grid; grid-template-columns: minmax(0, 220px) 1fr; gap: clamp(20px, 4vw, 48px); align-items: center;
   }
-  .v2-playerphone { display: grid; gap: 8px; }
-  .v2-playerphone__label {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--v2-faint); padding-left: 4px;
-  }
-  .v2-playerphone__device {
-    position: relative;
-    aspect-ratio: 9 / 19.5;
-    padding: 22px 12px 18px; border: 1px solid var(--v2-line-2); border-radius: 22px;
-    background: #000;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.6);
+  .v2-playerapp__shot {
+    border: 1px solid var(--v2-line-2); border-radius: 28px;
+    background: #000; padding: 6px;
+    box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
     overflow: hidden;
-    display: flex; flex-direction: column;
   }
-  .v2-playerphone__notch {
-    position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
-    width: 38%; height: 14px; border-radius: 999px;
-    background: #000;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-    z-index: 2;
+  .v2-playerapp__shot img {
+    display: block; width: 100%; height: auto; border-radius: 22px;
   }
-  .v2-playerphone__statusbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 4px 8px; font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 9px; color: var(--v2-faint); letter-spacing: 0.04em;
-  }
-  .v2-playerphone__title {
-    margin: 4px 0 12px; font-size: 13px; font-weight: 600; color: var(--v2-fg);
-    letter-spacing: -0.005em; padding: 0 2px;
-  }
-  .v2-playerphone__rows { list-style: none; margin: 0; padding: 0 2px; display: grid; gap: 9px; flex: 1; }
-  .v2-playerphone__rows li {
-    display: flex; align-items: flex-start; gap: 8px;
-    font-size: 11px; line-height: 1.4; color: var(--v2-fg);
-  }
-  .v2-playerphone__dot {
-    flex: none; margin-top: 6px; width: 4px; height: 4px; border-radius: 50%;
-    background: var(--v2-performance);
-  }
+  .v2-playerapp__side { display: grid; gap: 18px; min-width: 0; }
   .v2-playerapp__caption {
-    margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: var(--v2-subtle);
-    max-width: 44rem;
+    margin: 0; font-size: 15px; line-height: 1.6; color: var(--v2-muted);
+    max-width: 36rem;
+  }
+  .v2-playerapp__stores {
+    display: grid; grid-template-columns: minmax(0, 180px) minmax(0, 180px); gap: 10px;
   }
   @media (max-width: 860px) {
     .v2-wa-layout { grid-template-columns: 1fr; gap: 40px; }
     .v2-phone--lg { max-width: 320px; }
-    .v2-playerapp__phones { grid-template-columns: 1fr; max-width: 14rem; margin: 0 auto; }
+    .v2-playerapp { width: min(100%, 22rem); }
+    .v2-playerapp__layout { grid-template-columns: 1fr; gap: 24px; }
+    .v2-playerapp__shot { max-width: 220px; margin: 0 auto; }
+    .v2-playerapp__stores { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 420px) {
+    .v2-playerapp__stores { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) { .v2-channels { grid-template-columns: 1fr; } }
 

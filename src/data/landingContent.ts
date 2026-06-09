@@ -87,18 +87,14 @@ type LandingContent = {
       wellness: { label: string; value: string; note: string };
     };
     /**
-     * Player app view: what the player sees on their phone.
-     * 3 phone mockups side by side, each focused on one aspect.
+     * Player app view: a real screenshot of the player app + the App Store
+     * and Google Play badges so visitors can see what the player gets
+     * and grab the app on their phone.
      */
     playerApp: {
       eyebrow: string;
       title: string;
       caption: string;
-      phones: Array<{
-        label: string;        // small label above the phone
-        title: string;        // "Mon agenda", "Mes métriques", "Mes notifications"
-        rows: string[];       // lines visible inside the phone
-      }>;
     };
   };
 
@@ -443,39 +439,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         eyebrow: 'L\'app des joueurs',
         title: 'Ce que vos joueurs voient dans l\'app.',
         caption:
-          "Agenda, métriques, notifications : chaque joueur a sa propre vue sur l'équipe, en temps réel.",
-        phones: [
-          {
-            label: 'Agenda',
-            title: 'Mon agenda',
-            rows: [
-              'Mardi 18h30 · Entraînement',
-              'Jeudi 20h · Match vs Uccle',
-              'Samedi 10h · Prépa physique',
-              'Dimanche 9h30 · Mise au vert',
-            ],
-          },
-          {
-            label: 'Métriques',
-            title: 'Mes métriques',
-            rows: [
-              'Charge semaine : 3 480',
-              'ACWR · 1.08',
-              'RPE moyen · 6.2 / 10',
-              'Récupération : 78%',
-            ],
-          },
-          {
-            label: 'Notifications',
-            title: 'Mes notifications',
-            rows: [
-              'Convocation reçue · 14:02',
-              'Rappel RSVP · 18:00',
-              'Brief du staff · 9:14',
-              'Bien-être à compléter',
-            ],
-          },
-        ],
+          "Chaque joueur a sa propre vue sur l'équipe dans l'app native (iOS + Android) : prochain événement, agenda, RSVP, métriques, notifications en temps réel.",
       },
     },
 
@@ -938,39 +902,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         eyebrow: 'The player app',
         title: 'What your players see in the app.',
         caption:
-          'Agenda, metrics, notifications: each player has their own live view of the team.',
-        phones: [
-          {
-            label: 'Agenda',
-            title: 'My agenda',
-            rows: [
-              'Tuesday 6:30 pm · Training',
-              'Thursday 8 pm · Match vs Uccle',
-              'Saturday 10 am · S&C session',
-              'Sunday 9:30 am · Team meet',
-            ],
-          },
-          {
-            label: 'Metrics',
-            title: 'My metrics',
-            rows: [
-              'Week load: 3,480',
-              'ACWR · 1.08',
-              'Avg RPE · 6.2 / 10',
-              'Recovery: 78%',
-            ],
-          },
-          {
-            label: 'Notifications',
-            title: 'My notifications',
-            rows: [
-              'Call-up received · 2:02 pm',
-              'RSVP reminder · 6:00 pm',
-              'Staff briefing · 9:14 am',
-              'Wellness to fill in',
-            ],
-          },
-        ],
+          'Each player has their own view of the team in the native app (iOS + Android): next event, agenda, RSVP, metrics, real-time notifications.',
       },
     },
 
