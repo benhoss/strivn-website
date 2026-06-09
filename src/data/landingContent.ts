@@ -273,7 +273,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           title: 'Copier le message ou l’envoyer via le canal de votre choix.',
           metrics: [
             { label: 'Web', value: 'lien' },
-            { label: 'Mobile', value: 'push' },
+            { label: 'App', value: 'push' },
             { label: 'Groupe', value: 'WhatsApp' },
           ],
           approve: 'Copier le message',
@@ -282,7 +282,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         step4: {
           label: 'Les réponses deviennent de l’insight',
           phoneName: 'STRIVN',
-          phoneSub: 'RSVP',
+          phoneSub: 'Agenda & métriques',
           phoneTime: '14:32',
           phoneAvatar: 'S',
           bubbles: [
@@ -408,7 +408,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       eyebrow: 'Communication',
       title: 'Un message. Tous vos canaux.',
       body:
-        "Chaque événement peut générer son message, son modèle et son lien RSVP. Vous le partagez depuis le web, l'app mobile, WhatsApp, email ou le canal que votre groupe utilise déjà. STRIVN collecte les réponses et met l'équipe à jour.",
+        "Chaque événement peut générer son message, son modèle et son lien RSVP. Vous le partagez depuis la web app, l'app mobile native (iOS + Android), WhatsApp, email ou le canal que votre groupe utilise déjà. STRIVN collecte les réponses et met l'équipe à jour.",
       steps: [
         { n: '01', text: 'STRIVN charge le dernier modèle utilisé pour ce type d’événement' },
         { n: '02', text: 'Vous ajustez le message et choisissez comment le partager' },
@@ -416,7 +416,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       ],
       channels: [
         { label: 'Web', status: 'copier & partager' },
-        { label: 'Mobile', status: 'push à venir' },
+        { label: 'App', status: 'iOS + Android' },
         { label: 'WhatsApp', status: 'groupe existant' },
         { label: 'Email', status: 'staff & parents' },
       ],
@@ -742,7 +742,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           title: 'Copy the message or send it through the channel you choose.',
           metrics: [
             { label: 'Web', value: 'link' },
-            { label: 'Mobile', value: 'push' },
+            { label: 'App', value: 'push' },
             { label: 'Group', value: 'WhatsApp' },
           ],
           approve: 'Copy message',
@@ -751,7 +751,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         step4: {
           label: 'Replies become insight',
           phoneName: 'STRIVN',
-          phoneSub: 'RSVP',
+          phoneSub: 'Agenda & metrics',
           phoneTime: '14:32',
           phoneAvatar: 'S',
           bubbles: [
@@ -877,7 +877,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       eyebrow: 'Communication',
       title: 'One message. Every channel.',
       body:
-        'Every event can generate its message, template and RSVP link. Share it from the web, mobile app, WhatsApp, email or whichever channel your squad already uses. STRIVN collects the replies and updates the team view.',
+        'Every event can generate its message, template and RSVP link. Share it from the web app, the native mobile app (iOS + Android), WhatsApp, email or whichever channel your squad already uses. STRIVN collects the replies and updates the team view.',
       steps: [
         { n: '01', text: 'STRIVN loads the last template used for this event type' },
         { n: '02', text: 'You adjust the message and choose how to share it' },
@@ -885,7 +885,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       ],
       channels: [
         { label: 'Web', status: 'copy & share' },
-        { label: 'Mobile', status: 'push coming' },
+        { label: 'App', status: 'iOS + Android' },
         { label: 'WhatsApp', status: 'existing group' },
         { label: 'Email', status: 'staff & parents' },
       ],
