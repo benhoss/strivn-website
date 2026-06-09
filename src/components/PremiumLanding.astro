@@ -1150,6 +1150,134 @@ const chapters = [
   .v2-time__footer { margin: 16px 0 0; font-size: 14px; line-height: 1.55; color: var(--v2-performance); font-weight: 500; }
   @media (max-width: 860px) { .v2-time { grid-template-columns: 1fr; gap: 36px; } }
 
+  /* ============================================================ 05 · Load ============================================================ */
+  .v2-chapter__title-accent {
+    display: block; margin-top: 6px;
+    font-size: 0.78em; font-weight: 500;
+    color: var(--v2-performance); letter-spacing: 0;
+  }
+  .v2-load { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; max-width: var(--v2-frame-w); margin: 0 auto; }
+  .v2-load__features { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .v2-load__features li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14.5px; line-height: 1.5; color: var(--v2-muted);
+  }
+  .v2-load__bullet {
+    flex: none; margin-top: 8px; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--v2-performance);
+    box-shadow: 0 0 0 3px rgba(39, 215, 161, 0.10);
+  }
+  .v2-loadboard {
+    border: 1px solid var(--v2-line-2); border-radius: 20px;
+    background: var(--v2-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    overflow: hidden;
+    box-shadow: 0 0 60px -28px rgba(39, 215, 161, 0.32);
+  }
+  .v2-loadboard__head {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+    padding: 24px 26px; border-bottom: 1px solid var(--v2-line); flex-wrap: wrap;
+  }
+  .v2-loadboard__eyebrow {
+    margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--v2-performance);
+  }
+  .v2-loadboard__title {
+    margin: 6px 0 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--v2-fg);
+  }
+  .v2-loadboard__kpis {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
+  }
+  .v2-loadboard__kpi {
+    display: grid; gap: 4px; padding: 12px 14px;
+    border: 1px solid var(--v2-line); border-radius: 12px;
+    background: rgba(39, 215, 161, 0.04);
+    min-width: 0;
+  }
+  .v2-loadboard__kpi-l {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--v2-faint);
+  }
+  .v2-loadboard__kpi-v {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 22px; line-height: 1; font-weight: 500;
+    color: var(--v2-fg); font-variant-numeric: tabular-nums;
+  }
+  .v2-loadboard__table {
+    width: 100%; border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+  .v2-loadboard__table thead th {
+    padding: 14px 16px; text-align: left;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--v2-faint); font-weight: 600;
+    border-bottom: 1px solid var(--v2-line);
+    background: rgba(8, 12, 22, 0.28);
+  }
+  .v2-loadboard__table thead th.v2-loadboard__num { text-align: right; }
+  .v2-loadboard__row { transition: background 150ms ease; }
+  .v2-loadboard__row:hover { background: rgba(255, 255, 255, 0.02); }
+  .v2-loadboard__row th.v2-loadboard__name,
+  .v2-loadboard__row td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--v2-line);
+    font-size: 13.5px; color: var(--v2-fg);
+  }
+  .v2-loadboard__row:last-child th.v2-loadboard__name,
+  .v2-loadboard__row:last-child td { border-bottom: 0; }
+  .v2-loadboard__name {
+    text-align: left; font-weight: 500; white-space: nowrap;
+    color: var(--v2-fg);
+  }
+  .v2-loadboard__num { text-align: right; }
+  .v2-loadboard__pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 9px; border-radius: 999px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    font-weight: 600; white-space: nowrap;
+  }
+  .v2-loadboard__pill::before {
+    content: ''; display: inline-block;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+  }
+  .v2-loadboard__pill.is-green { color: var(--v2-performance); background: rgba(39, 215, 161, 0.10); }
+  .v2-loadboard__pill.is-amber { color: #FFB020; background: rgba(255, 176, 32, 0.10); }
+  .v2-loadboard__pill.is-red  { color: var(--v2-risk); background: rgba(255, 92, 92, 0.10); }
+  .v2-loadboard__row.is-red .v2-loadboard__num { color: var(--v2-risk); }
+  .v2-loadboard__row.is-red .v2-loadboard__name { color: var(--v2-fg); }
+  .v2-loadboard__foot {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 24px;
+    border-top: 1px solid var(--v2-line);
+    background: rgba(39, 215, 161, 0.04);
+  }
+  .v2-loadboard__tip-label {
+    flex: none; padding: 3px 8px; border-radius: 4px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--v2-performance); background: rgba(39, 215, 161, 0.12);
+  }
+  .v2-loadboard__tip {
+    margin: 0; font-size: 14px; line-height: 1.55; color: var(--v2-fg);
+  }
+  @media (max-width: 860px) {
+    .v2-load { grid-template-columns: 1fr; gap: 32px; }
+    .v2-loadboard__kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .v2-loadboard__head { padding: 20px 18px; }
+    .v2-loadboard__table thead th,
+    .v2-loadboard__row th.v2-loadboard__name,
+    .v2-loadboard__row td { padding: 11px 12px; font-size: 12.5px; }
+    .v2-loadboard__table { display: block; overflow-x: auto; white-space: nowrap; }
+    .v2-loadboard__foot { flex-direction: column; gap: 8px; padding: 16px 18px; }
+  }
+
   /* ============================================================ 06 · Pricing ============================================================ */
   .v2-pricing { max-width: 76rem; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
   .v2-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
