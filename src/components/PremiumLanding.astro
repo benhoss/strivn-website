@@ -24,8 +24,9 @@ const chapters = [
   { id: 'staff',    n: '02', label: c.nav.staff },
   { id: 'communication', n: '03', label: c.nav.communication },
   { id: 'medical',  n: '04', label: c.nav.medical },
-  { id: 'sessions', n: '05', label: c.nav.sessions },
-  { id: 'pricing',  n: '06', label: c.nav.pricing },
+  { id: 'load',     n: '05', label: c.nav.load },
+  { id: 'sessions', n: '06', label: c.nav.sessions },
+  { id: 'pricing',  n: '07', label: c.nav.pricing },
 ];
 ---
 
@@ -415,10 +416,97 @@ const chapters = [
       </div>
     </section>
 
-    <!-- ─────────────────── 05 · LES SÉANCES ─────────────────── -->
-    <section class="v2-chapter" id="v2-sessions" data-accent="electric">
+    <!-- ─────────────────── 05 · LA CHARGE ─────────────────── -->
+    <section class="v2-chapter" id="v2-load" data-accent="performance">
       <div class="v2-chapter__head">
         <span class="v2-chapter__n v2-reveal" data-reveal>05</span>
+        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.load.eyebrow}</p>
+        <h2 class="v2-chapter__title v2-words" data-words>
+          {c.load.title}
+          <span class="v2-chapter__title-accent">{c.load.titleAccent}</span>
+        </h2>
+        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.load.body}</p>
+      </div>
+
+      <div class="v2-load">
+        <ul class="v2-load__features v2-reveal" data-reveal data-delay="100">
+          {c.load.features.map((f, i) => (
+            <li style={`--v2-li: ${i};`}>
+              <span class="v2-load__bullet" aria-hidden="true"></span>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+
+        <article class="v2-loadboard v2-reveal" data-reveal data-delay="200">
+          <header class="v2-loadboard__head">
+            <div>
+              <p class="v2-loadboard__eyebrow">{c.load.snapshot.week}</p>
+              <h3 class="v2-loadboard__title">{c.load.labels.tableTitle}</h3>
+            </div>
+            <div class="v2-loadboard__kpis">
+              <div class="v2-loadboard__kpi">
+                <span class="v2-loadboard__kpi-l">{c.load.labels.kpiRpe}</span>
+                <span class="v2-loadboard__kpi-v">{c.load.snapshot.weekRpeAvg.toFixed(1)}</span>
+              </div>
+              <div class="v2-loadboard__kpi">
+                <span class="v2-loadboard__kpi-l">{c.load.labels.kpiLoad}</span>
+                <span class="v2-loadboard__kpi-v">{c.load.snapshot.weekLoad.toLocaleString(isFrench ? 'fr-FR' : 'en-US')}</span>
+              </div>
+              <div class="v2-loadboard__kpi">
+                <span class="v2-loadboard__kpi-l">{c.load.labels.kpiAcwr}</span>
+                <span class="v2-loadboard__kpi-v">{c.load.snapshot.acwr.toFixed(2)}</span>
+              </div>
+              <div class="v2-loadboard__kpi">
+                <span class="v2-loadboard__kpi-l">{c.load.labels.kpiRecovery}</span>
+                <span class="v2-loadboard__kpi-v">{c.load.snapshot.recovery}%</span>
+              </div>
+            </div>
+          </header>
+
+          <table class="v2-loadboard__table">
+            <thead>
+              <tr>
+                <th scope="col">{c.load.labels.colPlayer}</th>
+                <th scope="col" class="v2-loadboard__num">{c.load.labels.colMon}</th>
+                <th scope="col" class="v2-loadboard__num">{c.load.labels.colWed}</th>
+                <th scope="col" class="v2-loadboard__num">{c.load.labels.colFri}</th>
+                <th scope="col" class="v2-loadboard__num">{c.load.labels.colLoad}</th>
+                <th scope="col" class="v2-loadboard__num">{c.load.labels.colAcwr}</th>
+                <th scope="col">{c.load.labels.colState}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {c.load.snapshot.players.map((p) => (
+                <tr class={`v2-loadboard__row is-${p.zone}`}>
+                  <th scope="row" class="v2-loadboard__name">{p.name}</th>
+                  <td class="v2-loadboard__num">{p.rpeWed === 0 && p.rpeMon > 0 ? '–' : p.rpeMon || '–'}</td>
+                  <td class="v2-loadboard__num">{p.rpeWed || '–'}</td>
+                  <td class="v2-loadboard__num">{p.rpeFri || '–'}</td>
+                  <td class="v2-loadboard__num">{p.load}</td>
+                  <td class="v2-loadboard__num">{p.acwr.toFixed(2)}</td>
+                  <td>
+                    <span class={`v2-loadboard__pill is-${p.zone}`}>
+                      {p.zone === 'green' ? c.load.labels.pillOk : p.zone === 'amber' ? c.load.labels.pillWatch : c.load.labels.pillRisk}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <footer class="v2-loadboard__foot">
+            <span class="v2-loadboard__tip-label">{c.load.labels.tipLabel}</span>
+            <p class="v2-loadboard__tip">{c.load.snapshot.tip}</p>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─────────────────── 06 · LES SÉANCES ─────────────────── -->
+    <section class="v2-chapter" id="v2-sessions" data-accent="electric">
+      <div class="v2-chapter__head">
+        <span class="v2-chapter__n v2-reveal" data-reveal>06</span>
         <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.sessions.eyebrow}</p>
         <h2 class="v2-chapter__title v2-words" data-words>{c.sessions.title}</h2>
         <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.sessions.body}</p>
@@ -496,10 +584,10 @@ const chapters = [
       </div>
     </section>
 
-    <!-- ─────────────────── 06 · TARIFS ─────────────────── -->
+    <!-- ─────────────────── 07 · TARIFS ─────────────────── -->
     <section class="v2-chapter" id="v2-pricing" data-accent="electric">
       <div class="v2-chapter__head">
-        <span class="v2-chapter__n v2-reveal" data-reveal>06</span>
+        <span class="v2-chapter__n v2-reveal" data-reveal>07</span>
         <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.pricing.eyebrow}</p>
         <h2 class="v2-chapter__title v2-words" data-words>{c.pricing.title}</h2>
         <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.pricing.body}</p>

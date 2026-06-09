@@ -9,6 +9,7 @@ type LandingContent = {
     staff: string;
     communication: string;
     medical: string;
+    load: string;
     sessions: string;
     pricing: string;
   };
@@ -110,6 +111,45 @@ type LandingContent = {
     };
   };
 
+  load: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    body: string;
+    features: string[];
+    /** UI labels for the load-tracking mock — kept separate so we can translate. */
+    labels: {
+      tableTitle: string;
+      colPlayer: string;
+      colMon: string;
+      colWed: string;
+      colFri: string;
+      colLoad: string;
+      colAcwr: string;
+      colState: string;
+      pillOk: string;
+      pillWatch: string;
+      pillRisk: string;
+      kpiRpe: string;
+      kpiLoad: string;
+      kpiAcwr: string;
+      kpiRecovery: string;
+      tipLabel: string;
+    };
+    /**
+     * Mock data for the load-tracking UI: a 7-day rolling view of the squad.
+     */
+    snapshot: {
+      week: string;
+      weekRpeAvg: number;
+      weekLoad: number;
+      acwr: number;
+      recovery: number;
+      players: Array<{ name: string; rpeMon: number; rpeWed: number; rpeFri: number; load: number; acwr: number; zone: 'green' | 'amber' | 'red' }>;
+      tip: string;
+    };
+  };
+
   sessions: {
     eyebrow: string;
     title: string;
@@ -194,6 +234,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       staff: 'La plateforme',
       communication: 'Communication',
       medical: "L'infirmerie",
+      load: 'La charge',
       sessions: 'Les séances',
       pricing: 'Tarifs',
     },
@@ -203,7 +244,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Récupérez vos soirées.',
       titleAccent: 'Coachez le lendemain.',
       body:
-        "STRIVN reprend l'intendance de votre équipe — convocations, présences, infirmerie, tactique, communication — pour que vous arriviez au terrain avec une heure de plus et un groupe à jour. Gratuit pour les coaches.",
+        "STRIVN reprend l'intendance de votre staff technique — convocations, présences, charge, RPE, infirmerie, communication. Coach, préparateur physique et kiné partagent la même plateforme, le même groupe, les mêmes données. Gratuit pour les coaches.",
       primaryCta: 'Commencer gratuitement',
       secondaryCta: 'Voir la plateforme',
       device: {
@@ -437,6 +478,56 @@ export const landingContent: Record<Locale, LandingContent> = {
       },
     },
 
+    load: {
+      eyebrow: 'La charge',
+      title: 'Charge, RPE, fatigue.',
+      titleAccent: 'Mesurés sans les chercher.',
+      body:
+        "RPE, charge, fatigue, récupération : STRIVN assemble les données semaine par semaine. Vous arrivez le lundi avec la charge du groupe, les signaux faibles et les joueurs à surveiller, sans avoir à relancer personne.",
+      labels: {
+        tableTitle: 'Charge & RPE',
+        colPlayer: 'Joueur',
+        colMon: 'Lun',
+        colWed: 'Mer',
+        colFri: 'Ven',
+        colLoad: 'Charge',
+        colAcwr: 'ACWR',
+        colState: 'État',
+        pillOk: 'OK',
+        pillWatch: 'À surveiller',
+        pillRisk: 'Risque',
+        kpiRpe: 'RPE moyen',
+        kpiLoad: 'Charge',
+        kpiAcwr: 'ACWR',
+        kpiRecovery: 'Récup.',
+        tipLabel: 'Note prépa',
+      },
+      features: [
+        'RPE par session, par joueur',
+        'Charge hebdo et monotonie',
+        'ACWR (acute:chronic workload ratio)',
+        'Indicateurs de récupération',
+        'Snapshot prêt à partager avec le staff',
+      ],
+      snapshot: {
+        week: 'Semaine 23 · 1 – 7 juin',
+        weekRpeAvg: 6.4,
+        weekLoad: 4280,
+        acwr: 1.12,
+        recovery: 72,
+        players: [
+          { name: 'A. Diallo',     rpeMon: 6, rpeWed: 7, rpeFri: 6, load: 420, acwr: 1.05, zone: 'green' },
+          { name: 'M. Benyahia',   rpeMon: 7, rpeWed: 8, rpeFri: 7, load: 510, acwr: 1.18, zone: 'amber' },
+          { name: 'T. Mendes',     rpeMon: 4, rpeWed: 0, rpeFri: 5, load: 180, acwr: 0.85, zone: 'amber' },
+          { name: 'J. Petit',      rpeMon: 6, rpeWed: 6, rpeFri: 7, load: 395, acwr: 1.02, zone: 'green' },
+          { name: 'L. Moreau',     rpeMon: 7, rpeWed: 7, rpeFri: 8, load: 485, acwr: 1.32, zone: 'red'   },
+          { name: 'S. Cissé',      rpeMon: 5, rpeWed: 6, rpeFri: 5, load: 330, acwr: 0.95, zone: 'green' },
+          { name: 'R. Dubois',     rpeMon: 6, rpeWed: 7, rpeFri: 6, load: 410, acwr: 1.10, zone: 'green' },
+        ],
+        tip: 'L. Moreau enchaîne 3 semaines au-dessus de 1.25 — prévoir une séance allégé vendredi.',
+      },
+    },
+
     sessions: {
       eyebrow: 'La prépa',
       title: 'Préparez vos séances plus vite.',
@@ -612,6 +703,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       staff: 'Platform',
       communication: 'Communication',
       medical: 'Medical',
+      load: 'Load',
       sessions: 'Sessions',
       pricing: 'Pricing',
     },
@@ -621,7 +713,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Get your evenings back.',
       titleAccent: 'Coach the next day.',
       body:
-        'STRIVN takes the admin off your team — call-ups, attendance, injuries, tactics, communication — so you arrive at the pitch with an extra hour and a squad that’s up to date. Free for coaches.',
+        'STRIVN takes the admin off your technical staff — call-ups, attendance, load, RPE, medical, communication. Coach, S&C coach and physio share the same platform, the same squad, the same data. Free for coaches.',
       primaryCta: 'Start for free',
       secondaryCta: 'See the platform',
       device: {
@@ -852,6 +944,56 @@ export const landingContent: Record<Locale, LandingContent> = {
         ],
         returnLabel: 'Estimated return',
         returnValue: '10 — 12 days',
+      },
+    },
+
+    load: {
+      eyebrow: 'Load',
+      title: 'Load, RPE, fatigue.',
+      titleAccent: 'Measured without chasing them.',
+      body:
+        'RPE, training load, fatigue, recovery: STRIVN assembles the data week after week. You arrive on Monday with the squad’s load, the early warning signs and the players to watch — without chasing anyone.',
+      labels: {
+        tableTitle: 'Load & RPE',
+        colPlayer: 'Player',
+        colMon: 'Mon',
+        colWed: 'Wed',
+        colFri: 'Fri',
+        colLoad: 'Load',
+        colAcwr: 'ACWR',
+        colState: 'Status',
+        pillOk: 'OK',
+        pillWatch: 'Watch',
+        pillRisk: 'Risk',
+        kpiRpe: 'Avg RPE',
+        kpiLoad: 'Load',
+        kpiAcwr: 'ACWR',
+        kpiRecovery: 'Recovery',
+        tipLabel: 'S&C note',
+      },
+      features: [
+        'RPE per session, per player',
+        'Weekly load and monotony',
+        'ACWR (acute:chronic workload ratio)',
+        'Recovery indicators',
+        'Snapshot ready to share with the staff',
+      ],
+      snapshot: {
+        week: 'Week 23 · 1 – 7 Jun',
+        weekRpeAvg: 6.4,
+        weekLoad: 4280,
+        acwr: 1.12,
+        recovery: 72,
+        players: [
+          { name: 'A. Diallo',     rpeMon: 6, rpeWed: 7, rpeFri: 6, load: 420, acwr: 1.05, zone: 'green' },
+          { name: 'M. Benyahia',   rpeMon: 7, rpeWed: 8, rpeFri: 7, load: 510, acwr: 1.18, zone: 'amber' },
+          { name: 'T. Mendes',     rpeMon: 4, rpeWed: 0, rpeFri: 5, load: 180, acwr: 0.85, zone: 'amber' },
+          { name: 'J. Petit',      rpeMon: 6, rpeWed: 6, rpeFri: 7, load: 395, acwr: 1.02, zone: 'green' },
+          { name: 'L. Moreau',     rpeMon: 7, rpeWed: 7, rpeFri: 8, load: 485, acwr: 1.32, zone: 'red'   },
+          { name: 'S. Cissé',      rpeMon: 5, rpeWed: 6, rpeFri: 5, load: 330, acwr: 0.95, zone: 'green' },
+          { name: 'R. Dubois',     rpeMon: 6, rpeWed: 7, rpeFri: 6, load: 410, acwr: 1.10, zone: 'green' },
+        ],
+        tip: 'L. Moreau has been above 1.25 for 3 weeks straight — plan a lighter Friday session.',
       },
     },
 
