@@ -12,3 +12,14 @@ dist
 .kiro/
 .opencode/
 .qoder/
+
+# Debug screenshots — not part of the site
+big*.png
+band-*.png
+ch-03-*.png
+channels-zoom*.png
+final-*.png
+load-*.png
+marked.html
+measure.html
+scan-*.png
