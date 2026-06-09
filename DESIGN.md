@@ -1,6 +1,6 @@
 ---
 name: STRIVN Website
-description: Free operations platform for coaches and clubs.
+description: Free team-management app for coaches and clubs.
 colors:
   void: "#07080F"
   void-deep: "#050610"
@@ -202,7 +202,7 @@ Depth is mostly tonal. Panels separate through navy ramp shifts and 1px hairline
 
 ### Signature Product Demo
 
-The landing page's demo device is the primary proof component. It should show the loop from event creation to communication generation, RSVP collection, and coach insight, using paced motion and visible state changes rather than static screenshots.
+The landing page's demo device is the primary proof component. It should show the loop from creating an event to sending the message, collecting player replies, and updating the coach view, using paced motion and visible state changes rather than static screenshots.
 
 ## 6. Do's and Don'ts
 
@@ -212,7 +212,7 @@ The landing page's demo device is the primary proof component. It should show th
 - **Do** use Electric Blue for primary actions and focus states.
 - **Do** keep panels dense but calm with 1px hairlines, 8-12px radii, and clear typography.
 - **Do** respect reduced motion and keep choreography under control.
-- **Do** make the operations workflow, RSVP loop, and channel-agnostic communication concrete when explaining the product.
+- **Do** make the weekly coach routine, player reply loop, and channel-agnostic communication concrete when explaining the product.
 
 ### Don't:
 

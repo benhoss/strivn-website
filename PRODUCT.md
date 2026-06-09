@@ -6,11 +6,11 @@ brand
 
 ## Users
 
-Primary users are coaches working in amateur to semi-pro environments. They manage one team with limited time, fragmented information, and little administrative support. They need a free way to organize events, attendance, player information, injuries, tactics, reports and communication without asking a club decision-maker for budget. Secondary users include staff members who support those coaches, plus clubs and academies that may later standardize STRIVN across multiple teams.
+Primary users are coaches working in amateur to semi-pro environments. They manage one team with limited time, scattered messages, fragmented player information, and little administrative support. They need a free way to prepare training and matches, track attendance, follow injuries, message players, write reports, and keep team information in one place without asking a club decision-maker for budget. Secondary users include staff members who support those coaches, plus clubs and academies that may later standardize STRIVN across multiple teams.
 
 ## Product Purpose
 
-STRIVN is a free operations platform for coaches. The website explains how STRIVN centralizes the work around a team: events, sessions, matches, attendance, injuries, player management, tactical boards, reports, AI assistance, communication and RSVP. Success means a coach understands they can run one team for free, without club approval, and that clubs pay later when they want multi-team coordination.
+STRIVN is a free app for coaches to manage one team. The website explains how STRIVN helps with the weekly work around a team: training, matches, attendance, injuries, player lists, tactical boards, reports, AI assistance, messages, and reply links. Success means a coach understands they can manage one team for free, without club approval, and that clubs pay later when they want to manage several teams together.
 
 ## Brand Personality
 
@@ -22,7 +22,7 @@ Avoid gym-bro aesthetics, hype-led sports marketing, overly medical interfaces, 
 
 ## Design Principles
 
-- Lead with time saved and insight, then justify it with operational proof.
+- Lead with time saved, then prove it with weekly coach tasks.
 - Make the complete coach experience feel accessible without budget approval.
 - Build trust through precision, restraint, and consistency.
 - Use motion and atmosphere to suggest intelligence in motion, not spectacle for its own sake.
