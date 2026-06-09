@@ -26,7 +26,7 @@ const {
   twitterSite,
 } = Astro.props;
 
-const site = Astro.site ?? new URL('https://strivn.ai');
+const site = Astro.site ?? new URL('https://strivn.net');
 const canonicalUrl = canonicalPath ? new URL(canonicalPath, site).toString() : undefined;
 const ogImageUrl = ogImage
   ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, site).toString())
