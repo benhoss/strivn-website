@@ -244,10 +244,10 @@ export const landingContent: Record<Locale, LandingContent> = {
     ctaMini: 'Commencer gratuitement',
 
     hero: {
-      title: 'Récupérez vos soirées.',
-      titleAccent: 'Coachez le lendemain.',
+      title: 'WhatsApp gère la conversation.',
+      titleAccent: 'STRIVN gère l\'équipe.',
       body:
-        "STRIVN reprend l'intendance de votre staff technique — convocations, présences, charge, RPE, infirmerie, communication. Coach, préparateur physique et kiné partagent la même plateforme, le même groupe, les mêmes données. Gratuit pour les coaches.",
+        "Convocations, présences, charge, RPE, infirmerie, communication. Tout ce que votre staff technique gère au quotidien, au même endroit, consultable par le coach, le préparateur physique et le kiné. Gratuit pour les coaches.",
       primaryCta: 'Commencer gratuitement',
       secondaryCta: 'Voir la plateforme',
       device: {
@@ -707,10 +707,10 @@ export const landingContent: Record<Locale, LandingContent> = {
     ctaMini: 'Start for free',
 
     hero: {
-      title: 'Get your evenings back.',
-      titleAccent: 'Coach the next day.',
+      title: 'WhatsApp handles the conversation.',
+      titleAccent: 'STRIVN handles the team.',
       body:
-        'STRIVN takes the admin off your technical staff — call-ups, attendance, load, RPE, medical, communication. Coach, S&C coach and physio share the same platform, the same squad, the same data. Free for coaches.',
+        'Call-ups, attendance, load, RPE, medical, communication. Everything your technical staff manages day to day, in one place, readable by the head coach, the S&C coach and the physio. Free for coaches.',
       primaryCta: 'Start for free',
       secondaryCta: 'See the platform',
       device: {
