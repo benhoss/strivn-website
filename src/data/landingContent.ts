@@ -86,13 +86,20 @@ type LandingContent = {
       bubbles: Bubble[];
       wellness: { label: string; value: string; note: string };
     };
-    template: {
+    /**
+     * Player app view: what the player sees on their phone.
+     * 3 phone mockups side by side, each focused on one aspect.
+     */
+    playerApp: {
       eyebrow: string;
       title: string;
-      lines: string[];
-      action: string;
+      caption: string;
+      phones: Array<{
+        label: string;        // small label above the phone
+        title: string;        // "Mon agenda", "Mes métriques", "Mes notifications"
+        rows: string[];       // lines visible inside the phone
+      }>;
     };
-    caption: string;
   };
 
   medical: {
@@ -432,18 +439,44 @@ export const landingContent: Record<Locale, LandingContent> = {
         ],
         wellness: { label: 'Tableau coach', value: '14 présents', note: '1 incertain · signal genou' },
       },
-      template: {
-        eyebrow: 'Modèle réutilisable',
-        title: 'Entraînement',
-        lines: [
-          'Jeudi 20h · Terrain 2',
-          'Merci de confirmer ta présence.',
-          '{RSVP_LINK}',
+      playerApp: {
+        eyebrow: 'L\'app des joueurs',
+        title: 'Ce que vos joueurs voient dans l\'app.',
+        caption:
+          "Agenda, métriques, notifications : chaque joueur a sa propre vue sur l'équipe, en temps réel.",
+        phones: [
+          {
+            label: 'Agenda',
+            title: 'Mon agenda',
+            rows: [
+              'Mardi 18h30 · Entraînement',
+              'Jeudi 20h · Match vs Uccle',
+              'Samedi 10h · Prépa physique',
+              'Dimanche 9h30 · Mise au vert',
+            ],
+          },
+          {
+            label: 'Métriques',
+            title: 'Mes métriques',
+            rows: [
+              'Charge semaine : 3 480',
+              'ACWR · 1.08',
+              'RPE moyen · 6.2 / 10',
+              'Récupération : 78%',
+            ],
+          },
+          {
+            label: 'Notifications',
+            title: 'Mes notifications',
+            rows: [
+              'Convocation reçue · 14:02',
+              'Rappel RSVP · 18:00',
+              'Brief du staff · 9:14',
+              'Bien-être à compléter',
+            ],
+          },
         ],
-        action: 'Copier le message',
       },
-      caption:
-        "Le canal ne définit pas le produit. STRIVN prépare la communication, relie les réponses à l'événement et garde l'information exploitable.",
     },
 
     medical: {
@@ -901,18 +934,44 @@ export const landingContent: Record<Locale, LandingContent> = {
         ],
         wellness: { label: 'Coach view', value: '14 present', note: '1 uncertain · knee signal' },
       },
-      template: {
-        eyebrow: 'Reusable template',
-        title: 'Training session',
-        lines: [
-          'Thursday 8pm · Pitch 2',
-          'Please confirm your attendance.',
-          '{RSVP_LINK}',
+      playerApp: {
+        eyebrow: 'The player app',
+        title: 'What your players see in the app.',
+        caption:
+          'Agenda, metrics, notifications: each player has their own live view of the team.',
+        phones: [
+          {
+            label: 'Agenda',
+            title: 'My agenda',
+            rows: [
+              'Tuesday 6:30 pm · Training',
+              'Thursday 8 pm · Match vs Uccle',
+              'Saturday 10 am · S&C session',
+              'Sunday 9:30 am · Team meet',
+            ],
+          },
+          {
+            label: 'Metrics',
+            title: 'My metrics',
+            rows: [
+              'Week load: 3,480',
+              'ACWR · 1.08',
+              'Avg RPE · 6.2 / 10',
+              'Recovery: 78%',
+            ],
+          },
+          {
+            label: 'Notifications',
+            title: 'My notifications',
+            rows: [
+              'Call-up received · 2:02 pm',
+              'RSVP reminder · 6:00 pm',
+              'Staff briefing · 9:14 am',
+              'Wellness to fill in',
+            ],
+          },
         ],
-        action: 'Copy message',
       },
-      caption:
-        'The channel is not the product. STRIVN prepares the communication, connects replies to the event and keeps the information usable.',
     },
 
     medical: {
