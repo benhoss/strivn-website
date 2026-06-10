@@ -23,3 +23,6 @@ load-*.png
 marked.html
 measure.html
 scan-*.png
+
+# gstack browse daemon logs
+.gstack/
