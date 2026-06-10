@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { landingContent, type Locale } from '../data/landingContent';
+import { landingContent, APP_URL, type Locale } from '../data/landingContent';
 
 interface Props {
   locale: Locale;
@@ -13,35 +13,24 @@ interface Props {
 const { locale, canonicalPath, alternates } = Astro.props;
 const c = landingContent[locale];
 const isFrench = locale === 'fr';
-const APP_URL = 'https://app.strivn.net';
 
-const WA = `<path d="M16.6 14.2c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5 0-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.5-1.8-.1-.3 0-.4.1-.6l.4-.4.2-.3c0-.1.1-.2 0-.4 0-.1-.5-1.4-.8-1.8-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.6 1.1 2.7.1.2 1.9 2.9 4.6 4 2.2.9 2.7.7 3.2.7.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.2-.2-.5-.3zM12 3a9 9 0 0 0-7.6 13.8L3 21l4.4-1.2A9 9 0 1 0 12 3z"/>`;
-
-const pillarAccents = ['electric', 'performance', 'violet', 'warm'];
-const featureIcons: Record<string, string> = {
-  team: '<path d="M8.5 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm7-1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM3.5 19c.5-3.4 2.3-5.1 5-5.1s4.5 1.7 5 5.1M12.5 17.2c.7-2 2-3 3.9-3 2.3 0 3.7 1.4 4.1 4.2"/>',
-  calendar: '<path d="M6 4v3M18 4v3M4.5 8.5h15M6 13h3M11 13h3M16 13h2M6 17h3M11 17h3M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/>',
-  attendance: '<path d="M5 12.5 9 16l10-10M5 6.5h8M5 19h14"/>',
-  medical: '<path d="M12 4v16M4 12h16M7 7.5 5.5 6M17 7.5 18.5 6M7 16.5 5.5 18M17 16.5l1.5 1.5"/>',
-  load: '<path d="M4 18h16M6 15l3-5 4 3 5-8M6 6v12M18 5v13"/>',
-  communication: '<path d="M5 6.5h14v9H9l-4 3v-12ZM8 10h8M8 13h5"/>',
-  sessions: '<path d="M5 18V6l7 3 7-3v12l-7-3-7 3ZM12 9v6"/>',
-  insight: '<path d="M12 4v3M12 17v3M5.6 7.6l2.1 2.1M16.3 16.3l2.1 2.1M4 12h3M17 12h3M5.6 16.4l2.1-2.1M16.3 7.7l2.1-2.1M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z"/>',
-  tests: '<path d="M7 4h10M9 4v5l-4.5 8A2 2 0 0 0 6.2 20h11.6a2 2 0 0 0 1.7-3L15 9V4M8 15h8M9.5 11h5"/>',
-  portal: '<path d="M8 3.5h8a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H8A1.5 1.5 0 0 1 6.5 19V5A1.5 1.5 0 0 1 8 3.5ZM10 17.5h4M9.5 7h5M9.5 10h5M9.5 13h3"/>',
-  reports: '<path d="M7 4h7l3 3v13H7V4ZM14 4v4h4M9.5 12h5M9.5 15h5M9.5 18h3M5 8H4v11a2 2 0 0 0 2 2h9"/>',
-  program: '<path d="M5 5.5h14M7 5.5v13h10v-13M9.5 9h5M9.5 12h5M9.5 15h3M4 18.5h16"/>',
-};
-
-const chapters = [
-  { id: 'reality',  n: '01', label: c.nav.reality },
-  { id: 'staff',    n: '02', label: c.nav.staff },
-  { id: 'communication', n: '03', label: c.nav.communication },
-  { id: 'medical',  n: '04', label: c.nav.medical },
-  { id: 'load',     n: '05', label: c.nav.load },
-  { id: 'sessions', n: '06', label: c.nav.sessions },
-  { id: 'pricing',  n: '07', label: c.nav.pricing },
+/**
+ * Scattered start positions for the six chaos fragments, in stage
+ * coordinates. Order matches both c.hero.stage.fragments and the panel
+ * rows — fragment i converges into row i.
+ */
+const fragPositions = [
+  { x: '-2%', y: '-3%', r: '-5deg' },
+  { x: '56%', y: '2%', r: '3deg' },
+  { x: '52%', y: '88%', r: '4deg' },
+  { x: '0%', y: '92%', r: '-3deg' },
+  { x: '-7%', y: '44%', r: '2deg' },
+  { x: '62%', y: '40%', r: '-4deg' },
 ];
+
+const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
+const navAria = isFrench ? 'Navigation principale' : 'Primary navigation';
+const langAria = isFrench ? 'Changer la langue' : 'Switch language';
 ---
 
 <BaseLayout
@@ -51,2087 +40,480 @@ const chapters = [
   canonicalPath={canonicalPath}
   alternates={alternates}
 >
-  <main class="v2" id="v2-top">
-    <div class="v2-ambient" aria-hidden="true">
-      <canvas class="v2-paint" id="v2-paint"></canvas>
-      <div class="v2-noise"></div>
-      <div class="v2-bloom v2-bloom--a"></div>
-      <div class="v2-bloom v2-bloom--b"></div>
-      <div class="v2-cursor"></div>
+  <a href="#s-main" class="s-skip">{skipLabel}</a>
+
+  <!-- Nav · N5 floating pill -->
+  <nav class="s-nav" aria-label={navAria}>
+    <a href="#s-main" class="s-nav__brand" aria-label="STRIVN">
+      <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="180" height="120" />
+    </a>
+    <ul class="s-nav__links">
+      {c.nav.links.map((link) => (
+        <li><a href={link.href} class="s-nav__link">{link.label}</a></li>
+      ))}
+    </ul>
+    <div class="s-nav__lang" role="group" aria-label={langAria}>
+      <a href="/fr/" aria-current={isFrench ? 'page' : undefined}>FR</a>
+      <span class="s-nav__lang-sep" aria-hidden="true">·</span>
+      <a href="/en/" aria-current={!isFrench ? 'page' : undefined}>EN</a>
     </div>
+    <a href={APP_URL} target="_blank" rel="noopener" class="s-nav__cta">{c.nav.cta}</a>
+  </nav>
 
-    <!-- Top bar -->
-    <header class="v2-topbar">
-      <a href="#v2-top" class="v2-brand v2-brand--compact" aria-label="STRIVN">
-        <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="120" height="80" />
-      </a>
-      <nav class="v2-nav" aria-label="Primary">
-        {chapters.map((ch) => (
-          <a href={`#v2-${ch.id}`} class="v2-nav__link">
-            <span class="v2-nav__n">{ch.n}</span>
-            <span class="v2-nav__label">{ch.label}</span>
-          </a>
-        ))}
-      </nav>
-      <div class="v2-topbar__end">
-        <div class="v2-lang" role="group" aria-label={isFrench ? 'Changer la langue' : 'Switch language'}>
-          <a href="/fr/" class:list={['v2-lang__opt', isFrench && 'is-active']} aria-current={isFrench ? 'page' : undefined}>FR</a>
-          <span class="v2-lang__sep" aria-hidden="true">·</span>
-          <a href="/en/" class:list={['v2-lang__opt', !isFrench && 'is-active']} aria-current={!isFrench ? 'page' : undefined}>EN</a>
-        </div>
-        <a href={APP_URL} target="_blank" rel="noopener" class="v2-cta-mini">{c.ctaMini}</a>
-      </div>
-    </header>
-
-    <!-- ─────────────────────────────── HERO ─────────────────────────────── -->
-    <section class="v2-hero">
-      <a href="#v2-top" class="v2-hero__logo v2-reveal" data-reveal aria-label="STRIVN">
-        <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="480" height="320" />
-      </a>
-      <h1 class="v2-hero__title">
-        <span class="v2-hero__title-1 v2-words" data-words>{c.hero.title}</span>
-        <span class="v2-hero__title-2 v2-words" data-words data-words-delay="450">{c.hero.titleAccent}</span>
-      </h1>
-      <p class="v2-hero__lede v2-reveal" data-reveal data-delay="1000">{c.hero.body}</p>
-      <div class="v2-hero__actions v2-reveal" data-reveal data-delay="1200">
-        <a href={APP_URL} target="_blank" rel="noopener" class="v2-btn v2-btn--primary">{c.hero.primaryCta}</a>
-        <a href="#v2-reality" class="v2-btn v2-btn--ghost">{c.hero.secondaryCta}</a>
-      </div>
-
-      <!-- Hero proof — holistic team operating system -->
-      <div class="v2-holistic v2-reveal" id="v2-holistic" data-reveal data-delay="1350" aria-label={c.hero.holistic.eyebrow}>
-        <canvas class="v2-holistic__canvas" id="v2-holistic-canvas" aria-hidden="true"></canvas>
-        <div class="v2-holistic__shell" aria-hidden="true">
-          <span class="v2-holistic__ring v2-holistic__ring--outer"></span>
-          <span class="v2-holistic__ring v2-holistic__ring--inner"></span>
-        </div>
-        <div class="v2-holistic__center">
-          <span class="v2-holistic__eyebrow">{c.hero.holistic.eyebrow}</span>
-          <strong>{c.hero.holistic.center}</strong>
-          <span>{c.hero.holistic.outcome}</span>
-        </div>
-        <div class="v2-holistic__modules" role="list">
-          {c.hero.holistic.modules.map((m, i) => (
-            <div class="v2-holistic__module" role="listitem" data-holistic-module style={`--h-i: ${i};`}>
-              <span class="v2-holistic__module-dot" aria-hidden="true"></span>
-              <strong>{m.label}</strong>
-              <span>{m.detail}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div class="v2-scroll-cue v2-reveal" data-reveal data-delay="1800" aria-hidden="true">
-        <span class="v2-scroll-cue__label">{isFrench ? 'Faire défiler' : 'Scroll'}</span>
-        <span class="v2-scroll-cue__line"></span>
-      </div>
-    </section>
-
-    <!-- ─────────────────── 01 · LA RÉALITÉ ─────────────────── -->
-    <section class="v2-chapter" id="v2-reality" data-accent="warm">
-      <div class="v2-chapter__head">
-        <span class="v2-chapter__n v2-reveal" data-reveal>01</span>
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.reality.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>{c.reality.title}</h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.reality.body}</p>
-      </div>
-
-      <div class="v2-reality">
-        <ul class="v2-tasks v2-reveal" data-reveal data-delay="100">
-          {c.reality.tasks.map((t, i) => (
-            <li class="v2-task" style={`--v2-li: ${i};`}>
-              <span class="v2-task__tick" aria-hidden="true"></span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div class="v2-phone v2-phone--chaos v2-reveal" data-reveal data-delay="200">
-          <div class="v2-phone__bar">
-            <span class="v2-phone__time">{c.reality.phone.time}</span>
-            <span class="v2-phone__dots"><span></span><span></span><span></span></span>
+  <main id="s-main">
+    <!-- ───────────── Hero · H2 split diptych + convergence ───────────── -->
+    <section class="s-hero">
+      <div class="s-wrap s-hero__grid">
+        <div>
+          <h1 class="s-display s-hero__title">
+            <span class="s-hero__title-muted">{c.hero.title}</span>
+            <span class="s-hero__title-main">{c.hero.titleAccent}</span>
+          </h1>
+          <p class="s-lede s-hero__lede">{c.hero.lede}</p>
+          <div class="s-hero__actions">
+            <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.hero.primaryCta}</a>
+            <a href="#platform" class="s-btn s-btn--ghost">{c.hero.secondaryCta}</a>
           </div>
-          <div class="v2-phone__head">
-            <span class="v2-phone__avatar v2-phone__avatar--group" aria-hidden="true"></span>
-            <div class="v2-phone__id">
-              <span class="v2-phone__name">{c.reality.phone.name}</span>
-              <span class="v2-phone__sub v2-phone__sub--muted">{c.reality.phone.sub}</span>
-            </div>
-            <span class="v2-phone__wa"><svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={WA} /></span>
-          </div>
-          <div class="v2-phone__chat">
-            {c.reality.phone.bubbles.map((b, i) => (
-              <div class={`v2-bubble v2-bubble--in${b.unread ? ' is-unread' : ''}`} style={`--v2-bi: ${i};`}>
-                <p>{b.text}</p>
-                <span class="v2-bubble__time">{b.time}</span>
-              </div>
-            ))}
-          </div>
+          <span class="s-label s-hero__reassurance">{c.hero.reassurance}</span>
         </div>
-      </div>
 
-      <div class="v2-resolve v2-reveal" data-reveal data-delay="150">
-        <span class="v2-resolve__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </span>
-        <p><strong>{c.reality.resolve.lead}</strong> {c.reality.resolve.line}</p>
-      </div>
-    </section>
-
-    <!-- ─────────────────── 02 · LE STAFF VIRTUEL ─────────────────── -->
-    <section class="v2-chapter" id="v2-staff" data-accent="electric">
-      <div class="v2-chapter__head">
-        <span class="v2-chapter__n v2-reveal" data-reveal>02</span>
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.staff.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>{c.staff.title}</h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.staff.body}</p>
-      </div>
-
-      <div class="v2-pillars">
-        {c.staff.pillars.map((p, i) => (
-          <article class="v2-pillar v2-reveal" data-reveal data-delay={i * 90} data-accent={pillarAccents[i]}>
-            <header class="v2-pillar__head">
-              <span class="v2-pillar__dot" aria-hidden="true"></span>
-              <span class="v2-pillar__tag">{p.tag}</span>
-            </header>
-            <h3 class="v2-pillar__name">{p.name}</h3>
-            <p class="v2-pillar__role">{p.role}</p>
-            <ul class="v2-pillar__does">
-              {p.does.map((d) => <li>{d}</li>)}
-            </ul>
-          </article>
-        ))}
-      </div>
-
-      <div class="v2-feature-grid v2-reveal" data-reveal data-delay="150">
-        {c.staff.features.map((feature, i) => (
-          <article class="v2-feature-card" style={`--v2-fi: ${i};`}>
-            <span class="v2-feature-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={featureIcons[feature.icon] || featureIcons.insight} />
-            </span>
-            <h3>{feature.title}</h3>
-            <p>{feature.subtitle}</p>
-            <a href={feature.href}>{feature.linkLabel}</a>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <!-- ─────────────────── 03 · COMMUNICATION ─────────────────── -->
-    <section class="v2-chapter" id="v2-communication" data-accent="performance">
-      <div class="v2-chapter__head">
-        <span class="v2-chapter__n v2-reveal" data-reveal>03</span>
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.communication.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>{c.communication.title}</h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.communication.body}</p>
-      </div>
-
-      <div class="v2-wa-layout">
-        <div class="v2-wa-steps v2-reveal" data-reveal data-delay="100">
-          <ol>
-            {c.communication.steps.map((s, i) => (
-              <li class="v2-wa-step" style={`--v2-li: ${i};`}>
-                <span class="v2-wa-step__n">{s.n}</span>
-                <span class="v2-wa-step__text">{s.text}</span>
-              </li>
-            ))}
-          </ol>
-          <div class="v2-channels" aria-label={c.communication.title}>
-            {c.communication.channels.map((channel) => (
-              <span class="v2-channel">
-                <span class="v2-channel__name">{channel.label}</span>
-                <span class="v2-channel__status">{channel.status}</span>
-                {channel.label === 'App' && (
-                  // TODO(ben): replace these stylized "look-alike" badges with the
-                  // official Apple/Google smart-app-badges once we have the real
-                  // App Store + Google Play URLs. Until then, the simplified icons
-                  // avoid any trademark misrepresentation.
-                  <span class="v2-channel__badges" aria-label="App stores">
-                    <span class="v2-channel__badge v2-channel__badge--app-store">
-                      <svg viewBox="0 0 24 24" aria-hidden="true" class="v2-channel__badge-icon">
-                        <path fill="currentColor" d="M17.05 12.04c0-2.18 1.78-3.22 1.86-3.27-1.02-1.49-2.6-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.69 0-1.74-.77-2.86-.75-1.47.02-2.83.85-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.07 2.66-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.49M14.94 5.45c.61-.74 1.02-1.77.91-2.79-.88.04-1.95.59-2.58 1.32-.57.65-1.07 1.7-.93 2.7.98.08 1.98-.5 2.6-1.23"/>
-                      </svg>
-                      <span class="v2-channel__badge-text">
-                        <span class="v2-channel__badge-eyebrow">Télécharger sur</span>
-                        <span class="v2-channel__badge-name">App Store</span>
-                      </span>
-                    </span>
-                    <span class="v2-channel__badge v2-channel__badge--play-store">
-                      <svg viewBox="0 0 24 24" aria-hidden="true" class="v2-channel__badge-icon">
-                        <path fill="currentColor" d="M3.6 1.6c-.4.3-.6.8-.6 1.5v17.8c0 .7.2 1.2.6 1.5l9.5-9.5v-.8L3.6 1.6zm14.4 8.4-2.7-1.6L13.5 10l1.8 1.6 2.7-1.6c.9-.5.9-1.4 0-1.9l-1.3.9 1.3-.9zM5 22.9l9-9-2-1.8-7 10.8c.1 0 .1 0 0 0zm-1.4-1.4 7-10.8 1.8-1.6L5 22.9z"/>
-                      </svg>
-                      <span class="v2-channel__badge-text">
-                        <span class="v2-channel__badge-eyebrow">Disponible sur</span>
-                        <span class="v2-channel__badge-name">Google Play</span>
-                      </span>
-                    </span>
-                  </span>
-                )}
+        <div class="s-stage" id="s-stage" data-stage-label={c.hero.stage.ariaLabel}>
+          {c.hero.stage.fragments.map((frag, i) => (
+            <div
+              class={`s-frag s-frag--${frag.kind}`}
+              data-frag
+              aria-hidden="true"
+              style={`--fx: ${fragPositions[i].x}; --fy: ${fragPositions[i].y}; --fr: ${fragPositions[i].r}; --fi: ${i};`}
+            >
+              <span class="s-frag__inner">
+                <span class="s-frag__source">{frag.source}</span>
+                <span class="s-frag__text">{frag.text}</span>
               </span>
-            ))}
-          </div>
-          <p class="v2-wa-caption">{c.communication.caption}</p>
-        </div>
-
-        <div class="v2-phone v2-phone--wa v2-phone--lg v2-reveal" data-reveal data-delay="200">
-          <div class="v2-phone__bar">
-            <span class="v2-phone__time">{c.communication.phone.time}</span>
-            <span class="v2-phone__dots"><span></span><span></span><span></span></span>
-          </div>
-          <div class="v2-phone__head">
-            <span class="v2-phone__avatar">S</span>
-            <div class="v2-phone__id">
-              <span class="v2-phone__name">{c.communication.phone.name}</span>
-              <span class="v2-phone__sub">{c.communication.phone.sub}</span>
             </div>
-            <span class="v2-phone__wa"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" set:html={WA} /></span>
-          </div>
-          <div class="v2-phone__chat">
-            {c.communication.phone.bubbles.map((b, i) => (
-              <div class={`v2-bubble v2-bubble--${b.direction}`} style={`--v2-bi: ${i};`}>
-                <p>{b.text}</p>
-                <span class="v2-bubble__time">{b.time}</span>
-              </div>
-            ))}
-            <div class="v2-wellness" style="--v2-bi: 4;">
-              <span class="v2-wellness__l">{c.communication.phone.wellness.label}</span>
-              <span class="v2-wellness__v">{c.communication.phone.wellness.value}</span>
-              <span class="v2-wellness__n">{c.communication.phone.wellness.note}</span>
-            </div>
-          </div>
-        </div>
-
-        <article class="v2-playerapp v2-reveal" data-reveal data-delay="260">
-          <p class="v2-playerapp__eyebrow">{c.communication.playerApp.eyebrow}</p>
-          <h3 class="v2-playerapp__title">{c.communication.playerApp.title}</h3>
-          <div class="v2-playerapp__layout">
-            <div class="v2-playerapp__shot">
-              <img
-                src="/screenshots/player-app-agenda.png"
-                alt="Capture d'écran de l'app STRIVN : agenda du joueur avec prochain événement et liste des sessions à venir"
-                width="500"
-                height="932"
-                decoding="async"
-              />
-            </div>
-            <div class="v2-playerapp__side">
-              <p class="v2-playerapp__caption">{c.communication.playerApp.caption}</p>
-              <div class="v2-playerapp__stores" aria-label="App stores">
-                <span class="v2-channel__badge v2-channel__badge--app-store">
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="v2-channel__badge-icon">
-                    <path fill="currentColor" d="M17.05 12.04c0-2.18 1.78-3.22 1.86-3.27-1.02-1.49-2.6-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.69 0-1.74-.77-2.86-.75-1.47.02-2.83.85-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.07 2.66-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.49M14.94 5.45c.61-.74 1.02-1.77.91-2.79-.88.04-1.95.59-2.58 1.32-.57.65-1.07 1.7-.93 2.7.98.08 1.98-.5 2.6-1.23"/>
-                  </svg>
-                  <span class="v2-channel__badge-text">
-                    <span class="v2-channel__badge-eyebrow">Télécharger sur</span>
-                    <span class="v2-channel__badge-name">App Store</span>
-                  </span>
-                </span>
-                <span class="v2-channel__badge v2-channel__badge--play-store">
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="v2-channel__badge-icon">
-                    <path fill="currentColor" d="M3.6 1.6c-.4.3-.6.8-.6 1.5v17.8c0 .7.2 1.2.6 1.5l9.5-9.5v-.8L3.6 1.6zm14.4 8.4-2.7-1.6L13.5 10l1.8 1.6 2.7-1.6c.9-.5.9-1.4 0-1.9l-1.3.9 1.3-.9zM5 22.9l9-9-2-1.8-7 10.8c.1 0 .1 0 0 0zm-1.4-1.4 7-10.8 1.8-1.6L5 22.9z"/>
-                  </svg>
-                  <span class="v2-channel__badge-text">
-                    <span class="v2-channel__badge-eyebrow">Disponible sur</span>
-                    <span class="v2-channel__badge-name">Google Play</span>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─────────────────── 04 · LE MÉDICAL ─────────────────── -->
-    <section class="v2-chapter" id="v2-medical" data-accent="violet">
-      <div class="v2-chapter__head">
-        <span class="v2-chapter__n v2-reveal" data-reveal>04</span>
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.medical.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>{c.medical.title}</h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.medical.body}</p>
-      </div>
-
-      <div class="v2-med">
-        <ul class="v2-med__features v2-reveal" data-reveal data-delay="100">
-          {c.medical.features.map((f, i) => (
-            <li style={`--v2-li: ${i};`}>{f}</li>
           ))}
-        </ul>
 
-        <article class="v2-record v2-reveal" data-reveal data-delay="200">
-          <header class="v2-record__head">
-            <div class="v2-record__id">
-              <span class="v2-record__avatar">{c.medical.record.player.split(' ').pop()?.[0]}</span>
-              <div>
-                <h3 class="v2-record__player">{c.medical.record.player}</h3>
-                <p class="v2-record__injury">{c.medical.record.injury}</p>
-              </div>
+          <div class="s-panel">
+            <div class="s-panel__head">
+              <span class="s-panel__title">{c.hero.stage.panel.header}</span>
+              <span class="s-panel__status" data-status>{c.hero.stage.panel.status}</span>
             </div>
-            <span class="v2-record__since">{c.medical.record.since}</span>
-          </header>
-
-          <div class="v2-record__track" role="list">
-            {c.medical.record.stages.map((s) => (
-              <div class={`v2-stage is-${s.state}`} role="listitem">
-                <span class="v2-stage__dot" aria-hidden="true"></span>
-                <span class="v2-stage__label">{s.label}</span>
-              </div>
-            ))}
-          </div>
-
-          <div class="v2-record__notes">
-            {c.medical.record.notes.map((note) => (
-              <div class="v2-note">
-                <div class="v2-note__meta">
-                  <span class="v2-note__author">{note.author}</span>
-                  <span class="v2-note__role">{note.role}</span>
-                </div>
-                <p class="v2-note__text">{note.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <footer class="v2-record__foot">
-            <span class="v2-record__foot-l">{c.medical.record.returnLabel}</span>
-            <span class="v2-record__foot-v">{c.medical.record.returnValue}</span>
-          </footer>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─────────────────── 05 · LA CHARGE ─────────────────── -->
-    <section class="v2-chapter" id="v2-load" data-accent="performance">
-      <div class="v2-chapter__head">
-        <span class="v2-chapter__n v2-reveal" data-reveal>05</span>
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.load.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>
-          {c.load.title}
-          <span class="v2-chapter__title-accent">{c.load.titleAccent}</span>
-        </h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.load.body}</p>
-      </div>
-
-      <div class="v2-load">
-        <ul class="v2-load__features v2-reveal" data-reveal data-delay="100">
-          {c.load.features.map((f, i) => (
-            <li style={`--v2-li: ${i};`}>
-              <span class="v2-load__bullet" aria-hidden="true"></span>
-              <span>{f}</span>
-            </li>
-          ))}
-        </ul>
-
-        <article class="v2-loadboard v2-reveal" data-reveal data-delay="200">
-          <header class="v2-loadboard__head">
-            <div>
-              <p class="v2-loadboard__eyebrow">{c.load.snapshot.week}</p>
-              <h3 class="v2-loadboard__title">{c.load.labels.tableTitle}</h3>
-            </div>
-            <div class="v2-loadboard__kpis">
-              <div class="v2-loadboard__kpi">
-                <span class="v2-loadboard__kpi-l">{c.load.labels.kpiRpe}</span>
-                <span class="v2-loadboard__kpi-v">{c.load.snapshot.weekRpeAvg.toFixed(1)}</span>
-              </div>
-              <div class="v2-loadboard__kpi">
-                <span class="v2-loadboard__kpi-l">{c.load.labels.kpiLoad}</span>
-                <span class="v2-loadboard__kpi-v">{c.load.snapshot.weekLoad.toLocaleString(isFrench ? 'fr-FR' : 'en-US')}</span>
-              </div>
-              <div class="v2-loadboard__kpi">
-                <span class="v2-loadboard__kpi-l">{c.load.labels.kpiAcwr}</span>
-                <span class="v2-loadboard__kpi-v">{c.load.snapshot.acwr.toFixed(2)}</span>
-              </div>
-              <div class="v2-loadboard__kpi">
-                <span class="v2-loadboard__kpi-l">{c.load.labels.kpiRecovery}</span>
-                <span class="v2-loadboard__kpi-v">{c.load.snapshot.recovery}%</span>
-              </div>
-            </div>
-          </header>
-
-          <table class="v2-loadboard__table">
-            <thead>
-              <tr>
-                <th scope="col">{c.load.labels.colPlayer}</th>
-                <th scope="col" class="v2-loadboard__num">{c.load.labels.colMon}</th>
-                <th scope="col" class="v2-loadboard__num">{c.load.labels.colWed}</th>
-                <th scope="col" class="v2-loadboard__num">{c.load.labels.colFri}</th>
-                <th scope="col" class="v2-loadboard__num">{c.load.labels.colLoad}</th>
-                <th scope="col" class="v2-loadboard__num">{c.load.labels.colAcwr}</th>
-                <th scope="col">{c.load.labels.colState}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {c.load.snapshot.players.map((p) => (
-                <tr class={`v2-loadboard__row is-${p.zone}`}>
-                  <th scope="row" class="v2-loadboard__name">{p.name}</th>
-                  <td class="v2-loadboard__num">{p.rpeWed === 0 && p.rpeMon > 0 ? '–' : p.rpeMon || '–'}</td>
-                  <td class="v2-loadboard__num">{p.rpeWed || '–'}</td>
-                  <td class="v2-loadboard__num">{p.rpeFri || '–'}</td>
-                  <td class="v2-loadboard__num">{p.load}</td>
-                  <td class="v2-loadboard__num">{p.acwr.toFixed(2)}</td>
-                  <td>
-                    <span class={`v2-loadboard__pill is-${p.zone}`}>
-                      {p.zone === 'green' ? c.load.labels.pillOk : p.zone === 'amber' ? c.load.labels.pillWatch : c.load.labels.pillRisk}
-                    </span>
-                  </td>
-                </tr>
+            <ul class="s-panel__rows">
+              {c.hero.stage.panel.rows.map((row) => (
+                <li class="s-panel__row" data-row>
+                  <span class="s-panel__row-label">{row.label}</span>
+                  <span class="s-panel__row-value">{row.value}</span>
+                  <span class={`s-panel__dot s-panel__dot--${row.tone}`} aria-hidden="true"></span>
+                </li>
               ))}
-            </tbody>
-          </table>
-
-          <footer class="v2-loadboard__foot">
-            <span class="v2-loadboard__tip-label">{c.load.labels.tipLabel}</span>
-            <p class="v2-loadboard__tip">{c.load.snapshot.tip}</p>
-          </footer>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─────────────────── 06 · LES SÉANCES ─────────────────── -->
-    <section class="v2-chapter" id="v2-sessions" data-accent="electric">
-      <div class="v2-chapter__head">
-        <span class="v2-chapter__n v2-reveal" data-reveal>06</span>
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.sessions.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>{c.sessions.title}</h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.sessions.body}</p>
-      </div>
-
-      <div class="v2-sessions">
-        <ul class="v2-sessions__features v2-reveal" data-reveal data-delay="100">
-          {c.sessions.features.map((f, i) => (
-            <li style={`--v2-li: ${i};`}>
-              <span class="v2-sessions__bullet" aria-hidden="true"></span>
-              <span>{f}</span>
-            </li>
-          ))}
-        </ul>
-
-        <article class="v2-board v2-reveal" data-reveal data-delay="200">
-          <div class="v2-board__pitch" aria-hidden="true">
-            <svg viewBox="0 0 320 200" preserveAspectRatio="none">
-              <rect x="1" y="1" width="318" height="198" rx="6" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-              <line x1="160" y1="1" x2="160" y2="199" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-              <circle cx="160" cy="100" r="30" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-              <rect x="1" y="60" width="46" height="80" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-              <rect x="273" y="60" width="46" height="80" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-              <circle cx="90" cy="70" r="4" class="v2-board__token v2-board__token--a"/>
-              <circle cx="110" cy="130" r="4" class="v2-board__token v2-board__token--a"/>
-              <circle cx="70" cy="100" r="4" class="v2-board__token v2-board__token--a"/>
-              <circle cx="200" cy="100" r="4" class="v2-board__token v2-board__token--b"/>
-              <path d="M90 70 L150 95" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" class="v2-board__pass"/>
-              <path d="M110 130 L150 105" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" class="v2-board__pass"/>
-            </svg>
-          </div>
-          <header class="v2-board__head">
-            <div>
-              <p class="v2-board__eyebrow">{c.sessions.board.eyebrow}</p>
-              <h3 class="v2-board__title">{c.sessions.board.title}</h3>
-            </div>
-            <span class="v2-board__stamp">{c.sessions.board.stamp}</span>
-          </header>
-          <ol class="v2-board__phases">
-            {c.sessions.board.phases.map((ph, i) => (
-              <li class="v2-board__phase" style={`--v2-li: ${i};`}>
-                <span class="v2-board__phase-l">{ph.label}</span>
-                <span class="v2-board__phase-d">{ph.detail}</span>
-              </li>
-            ))}
-          </ol>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─────────────────── LE TEMPS GAGNÉ ─────────────────── -->
-    <section class="v2-chapter v2-chapter--time" data-accent="performance">
-      <div class="v2-time">
-        <div class="v2-time__lead">
-          <p class="v2-chapter__eyebrow v2-reveal" data-reveal>{c.timeSaved.eyebrow}</p>
-          <h2 class="v2-time__title v2-words" data-words>{c.timeSaved.title}</h2>
-          <p class="v2-time__body v2-reveal" data-reveal data-delay="500">{c.timeSaved.body}</p>
-          <div class="v2-time__stat v2-reveal" data-reveal data-delay="650">
-            <span class="v2-time__stat-v">{c.timeSaved.stat}</span>
-            <span class="v2-time__stat-l">{c.timeSaved.statLabel}</span>
+            </ul>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="v2-time__breakdown v2-reveal" data-reveal data-delay="200">
-          <ul>
-            {c.timeSaved.breakdown.map((b, i) => (
-              <li class="v2-time__row" style={`--v2-li: ${i};`}>
-                <span class="v2-time__task">{b.task}</span>
-                <span class="v2-time__hours">{b.hours}</span>
-              </li>
+    <!-- ───────────── The reality ───────────── -->
+    <section class="s-reality">
+      <div class="s-wrap s-reality__grid">
+        <div data-reveal>
+          <h2 class="s-headline">{c.reality.title}</h2>
+          <p class="s-lede s-reality__body">{c.reality.body}</p>
+        </div>
+        <div data-reveal style="--d: 120ms;">
+          <ul class="s-reality__chips">
+            {c.reality.scattered.map((item) => (
+              <li class="s-reality__chip">{item}</li>
             ))}
           </ul>
-          <p class="v2-time__footer">{c.timeSaved.footer}</p>
+          <p class="s-reality__resolve">{c.reality.resolve}</p>
         </div>
       </div>
     </section>
 
-    <!-- ─────────────────── 07 · TARIFS ─────────────────── -->
-    <section class="v2-chapter" id="v2-pricing" data-accent="electric">
-      <div class="v2-chapter__head">
-        <span class="v2-chapter__n v2-reveal" data-reveal>07</span>
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal data-delay="80">{c.pricing.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>{c.pricing.title}</h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.pricing.body}</p>
-      </div>
-
-      <div class="v2-pricing v2-reveal" data-reveal data-delay="100">
-        <div class="v2-plans" aria-label={c.pricing.eyebrow}>
-          {c.pricing.plans.map((plan, i) => (
-            <article class:list={['v2-plan', plan.badge && 'v2-plan--featured']} style={`--v2-li: ${i};`}>
-              <div class="v2-plan__head">
-                <div>
-                  <h3 class="v2-plan__name">{plan.name}</h3>
-                  <p class="v2-plan__description">{plan.description}</p>
-                </div>
-                {plan.badge && <span class="v2-plan__badge">{plan.badge}</span>}
-              </div>
-              <p class="v2-plan__price">
-                <span>{plan.price}</span>
-                <small>{plan.period}</small>
+    <!-- ───────────── Platform · Split Studio diptychs ───────────── -->
+    <div class="s-platform" id="platform">
+      <div class="s-wrap">
+        <!-- Communication -->
+        <section class="s-diptych">
+          <div class="s-diptych__text" data-reveal>
+            <h2 class="s-headline">{c.communication.title}</h2>
+            <p class="s-lede s-diptych__body">{c.communication.body}</p>
+            <ul class="s-points">
+              {c.communication.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </div>
+          <div class="s-diptych__proof" data-reveal style="--d: 120ms;">
+            <div class="s-proof">
+              <span class="s-label s-proof__label">{c.communication.proof.messageLabel}</span>
+              <p class="s-flow__msg">
+                {c.communication.proof.message}
+                <span class="s-flow__link">{c.communication.proof.link}</span>
               </p>
-              <p class="v2-plan__messages">{plan.availability}</p>
-              <ul class="v2-plan__features">
-                {plan.features.map((feature) => (
-                  <li>
-                    <span class="v2-plan__check" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    </span>
-                    <span>{feature}</span>
+              <ul class="s-flow__replies" aria-label={c.communication.proof.repliesLabel}>
+                {c.communication.proof.replies.map((reply) => (
+                  <li class="s-flow__reply">
+                    <span class="s-flow__name">{reply.name}</span>
+                    <span class={`s-flow__answer ${reply.tone === 'watch' ? 's-flow__answer--watch' : ''}`}>{reply.answer}</span>
                   </li>
                 ))}
               </ul>
-              <span class="v2-plan__cta">{plan.cta}</span>
+              <p class="s-flow__tally">{c.communication.proof.tally}</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Medical -->
+        <section class="s-diptych s-diptych--flip">
+          <div class="s-diptych__text" data-reveal>
+            <h2 class="s-headline">{c.medical.title}</h2>
+            <p class="s-lede s-diptych__body">{c.medical.body}</p>
+            <ul class="s-points">
+              {c.medical.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </div>
+          <div class="s-diptych__proof" data-reveal style="--d: 120ms;">
+            <div class="s-proof">
+              <div class="s-record__head">
+                <p>
+                  <span class="s-record__player">{c.medical.record.player}</span>
+                  <span class="s-record__injury">{c.medical.record.injury}</span>
+                </p>
+                <span class="s-record__since">{c.medical.record.since}</span>
+              </div>
+              <ul class="s-record__stages">
+                {c.medical.record.stages.map((stage) => (
+                  <li class={`s-record__stage s-record__stage--${stage.state}`}>
+                    <span class="s-record__stage-bar" aria-hidden="true"></span>
+                    <span class="s-record__stage-label">{stage.label}</span>
+                  </li>
+                ))}
+              </ul>
+              <ul class="s-record__notes">
+                {c.medical.record.notes.map((note) => (
+                  <li class="s-record__note">
+                    <span class="s-record__note-author">{note.author}</span>
+                    <span class="s-record__note-role">{note.role}</span>
+                    <span class="s-record__note-text">{note.text}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="s-record__return">
+                <span class="s-label">{c.medical.record.returnLabel}</span>
+                <span class="s-record__return-value">{c.medical.record.returnValue}</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Load -->
+        <section class="s-diptych">
+          <div class="s-diptych__text" data-reveal>
+            <h2 class="s-headline">{c.load.title}</h2>
+            <p class="s-lede s-diptych__body">{c.load.body}</p>
+            <ul class="s-points">
+              {c.load.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </div>
+          <div class="s-diptych__proof" data-reveal style="--d: 120ms;">
+            <div class="s-proof">
+              <table class="s-table">
+                <caption>
+                  <span class="s-label">{c.load.table.title} · {c.load.table.week}</span>
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">{c.load.table.colPlayer}</th>
+                    <th scope="col" data-num>{c.load.table.colMon}</th>
+                    <th scope="col" data-num>{c.load.table.colWed}</th>
+                    <th scope="col" data-num>{c.load.table.colFri}</th>
+                    <th scope="col" data-num>{c.load.table.colAcwr}</th>
+                    <th scope="col">{c.load.table.colState}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {c.load.table.players.map((player) => (
+                    <tr>
+                      <td>{player.name}</td>
+                      <td data-num>{player.mon}</td>
+                      <td data-num>{player.wed}</td>
+                      <td data-num>{player.fri}</td>
+                      <td data-num>{player.acwr}</td>
+                      <td>
+                        <span class={`s-zone s-zone--${player.zone}`}>
+                          {player.zone === 'green' ? c.load.table.pillOk : player.zone === 'amber' ? c.load.table.pillWatch : c.load.table.pillRisk}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p class="s-table__tip">
+                <strong>{c.load.table.tipLabel}</strong>
+                {c.load.table.tip}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sessions -->
+        <section class="s-diptych s-diptych--flip">
+          <div class="s-diptych__text" data-reveal>
+            <h2 class="s-headline">{c.sessions.title}</h2>
+            <p class="s-lede s-diptych__body">{c.sessions.body}</p>
+            <ul class="s-points">
+              {c.sessions.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </div>
+          <div class="s-diptych__proof" data-reveal style="--d: 120ms;">
+            <div class="s-proof">
+              <div class="s-board__head">
+                <p>
+                  <span class="s-board__title">{c.sessions.board.title}</span>
+                  <span class="s-board__meta">{c.sessions.board.meta}</span>
+                </p>
+                <span class="s-board__stamp">{c.sessions.board.stamp}</span>
+              </div>
+              <ol class="s-board__phases">
+                {c.sessions.board.phases.map((phase) => (
+                  <li class="s-board__phase">
+                    <p>
+                      <span class="s-board__phase-label">{phase.label}</span>
+                      <span class="s-board__phase-detail">{phase.detail}</span>
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ───────────── Capabilities index ───────────── -->
+    <section class="s-capabilities">
+      <div class="s-wrap">
+        <div class="s-capabilities__head" data-reveal>
+          <h2 class="s-headline">{c.capabilities.title}</h2>
+          <p class="s-lede s-capabilities__body">{c.capabilities.body}</p>
+        </div>
+        <ul class="s-capabilities__grid">
+          {c.capabilities.items.map((item) => (
+            <li class="s-capabilities__item">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ───────────── Player app ───────────── -->
+    <section class="s-player">
+      <div class="s-wrap s-player__grid">
+        <div data-reveal>
+          <h2 class="s-headline">{c.playerApp.title}</h2>
+          <p class="s-lede s-player__body">{c.playerApp.body}</p>
+          <span class="s-label">{c.playerApp.stores}</span>
+        </div>
+        <figure class="s-player__figure" data-reveal style="--d: 120ms;">
+          <img
+            src="/screenshots/player-app-agenda.png"
+            alt={c.playerApp.imageAlt}
+            width="500"
+            height="932"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <!-- ───────────── Time saved ───────────── -->
+    <section class="s-time">
+      <div class="s-wrap s-time__grid">
+        <div data-reveal>
+          <h2 class="s-headline">{c.timeSaved.title}</h2>
+          <p class="s-lede s-time__body">{c.timeSaved.body}</p>
+        </div>
+        <ul class="s-time__rows" data-reveal style="--d: 120ms;">
+          {c.timeSaved.rows.map((row) => (
+            <li class="s-time__row">
+              <span>{row.task}</span>
+              <span class="s-time__outcome">{row.outcome}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ───────────── Pricing ───────────── -->
+    <section class="s-pricing" id="pricing">
+      <div class="s-wrap">
+        <div class="s-pricing__head" data-reveal>
+          <h2 class="s-headline">{c.pricing.title}</h2>
+          <p class="s-lede s-pricing__body">{c.pricing.body}</p>
+        </div>
+        <div class="s-pricing__grid">
+          {c.pricing.plans.map((plan) => (
+            <article class={`s-plan ${plan.featured ? 's-plan--featured' : ''}`}>
+              <div class="s-plan__top">
+                <h3 class="s-plan__name">{plan.name}</h3>
+                <span class="s-plan__availability">{plan.availability}</span>
+              </div>
+              <p class="s-plan__description">{plan.description}</p>
+              <p class="s-plan__price">
+                {plan.price}
+                {plan.period && <span class="s-plan__period">{plan.period}</span>}
+              </p>
+              <ul class="s-plan__features">
+                {plan.features.map((feature) => <li>{feature}</li>)}
+              </ul>
+              {plan.featured ? (
+                <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{plan.cta}</a>
+              ) : (
+                <a href={`mailto:${c.footer.email}?subject=${encodeURIComponent(`STRIVN ${plan.name}`)}`} class="s-btn s-btn--ghost">{plan.cta}</a>
+              )}
             </article>
           ))}
         </div>
-        <div class="v2-pricing__footer">
-          <a href={c.pricing.href} target="_blank" rel="noopener" class="v2-btn v2-btn--primary v2-btn--large v2-pricing__cta">{c.pricing.cta}</a>
-          <p class="v2-pricing__note">{c.pricing.note}</p>
+        <p class="s-pricing__note">{c.pricing.note}</p>
+      </div>
+    </section>
+
+    <!-- ───────────── FAQ ───────────── -->
+    <section class="s-faq" id="faq">
+      <div class="s-wrap s-faq__grid">
+        <div data-reveal>
+          <h2 class="s-headline">{c.faq.title}</h2>
+          <p class="s-lede s-faq__body">{c.faq.body}</p>
+        </div>
+        <div data-reveal style="--d: 120ms;">
+          {c.faq.items.map((item) => (
+            <details class="s-faq__item">
+              <summary class="s-faq__q">{item.question}</summary>
+              <p class="s-faq__a">{item.answer}</p>
+            </details>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- ─────────────────── FAQ ─────────────────── -->
-    <section class="v2-chapter v2-chapter--faq" id="v2-faq" data-accent="electric">
-      <div class="v2-chapter__head">
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal>{c.faq.eyebrow}</p>
-        <h2 class="v2-chapter__title v2-words" data-words>{c.faq.title}</h2>
-        <p class="v2-chapter__body v2-reveal" data-reveal data-delay="600">{c.faq.body}</p>
-      </div>
-      <div class="v2-faq">
-        {c.faq.items.map((q, i) => (
-          <details class="v2-faq__item v2-reveal" data-reveal data-delay={i * 80}>
-            <summary>
-              <span>{q.question}</span>
-              <span class="v2-faq__plus" aria-hidden="true">+</span>
-            </summary>
-            <p>{q.answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-
-    <!-- ─────────────────── CTA ─────────────────── -->
-    <section class="v2-chapter v2-chapter--cta" id="v2-contact" data-accent="electric">
-      <div class="v2-cta">
-        <p class="v2-chapter__eyebrow v2-reveal" data-reveal>{c.finalCta.eyebrow}</p>
-        <h2 class="v2-cta__title v2-words" data-words>{c.finalCta.title}</h2>
-        <p class="v2-cta__body v2-reveal" data-reveal data-delay="500">{c.finalCta.body}</p>
-        <div class="v2-cta__actions v2-reveal" data-reveal data-delay="700">
-          <a href={APP_URL} target="_blank" rel="noopener" class="v2-btn v2-btn--primary v2-btn--large">{c.finalCta.primaryCta}</a>
-          <a href={c.finalCta.secondaryHref} class="v2-btn v2-btn--ghost">{c.finalCta.secondaryCta}</a>
+    <!-- ───────────── Final CTA ───────────── -->
+    <section class="s-final">
+      <div class="s-wrap s-final__inner" data-reveal>
+        <h2 class="s-headline">{c.finalCta.title}</h2>
+        <p class="s-lede s-final__body">{c.finalCta.body}</p>
+        <div class="s-final__actions">
+          <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.primaryCta}</a>
+          <a href={c.finalCta.secondaryHref} class="s-final__secondary">{c.finalCta.secondaryCta}</a>
         </div>
       </div>
     </section>
-
-    <footer class="v2-footer">
-      <div class="v2-footer__top">
-        <div class="v2-footer__brand">
-          <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="120" height="80" />
-          <p>{c.footer.brandLine}</p>
-          <a href={APP_URL} target="_blank" rel="noopener" class="v2-footer__cta">
-            {c.ctaMini}
-            <span class="v2-footer__cta-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="v2-footer__col">
-          <h4 class="v2-footer__h">{c.footer.productLabel}</h4>
-          <ul>
-            {c.footer.product.map((p) => <li><a href={p.href}>{p.label}</a></li>)}
-          </ul>
-        </div>
-
-        <div class="v2-footer__col">
-          <h4 class="v2-footer__h">{c.footer.staffLabel}</h4>
-          <ul>
-            {c.footer.staff.map((s) => <li><a href="#v2-staff">{s}</a></li>)}
-          </ul>
-        </div>
-
-        <div class="v2-footer__col">
-          <h4 class="v2-footer__h">{c.footer.contactLabel}</h4>
-          <ul>
-            <li><a href={`mailto:${c.footer.email}`}>{c.footer.email}</a></li>
-            <li><a href={c.finalCta.secondaryHref}>{c.finalCta.secondaryCta}</a></li>
-            <li><a href="#v2-faq">FAQ</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="v2-footer__bottom">
-        <p class="v2-footer__legal">© {new Date().getFullYear()} STRIVN · {isFrench ? 'Tous droits réservés' : 'All rights reserved'}</p>
-        <p class="v2-footer__credit">{c.footer.credit}</p>
-        <div class="v2-footer__lang">
-          <a href="/fr/" class={isFrench ? 'is-active' : ''}>FR</a>
-          <span aria-hidden="true">·</span>
-          <a href="/en/" class={!isFrench ? 'is-active' : ''}>EN</a>
-        </div>
-      </div>
-    </footer>
   </main>
-</BaseLayout>
 
-<style is:global>
-  /* ============================================================
-     STRIVN · v2 — "Le staff virtuel"
-     Calm, elite, dark. Sells relief, not features.
-     ============================================================ */
-  .v2 {
-    --v2-void: #050610;
-    --v2-void-2: #0a0c17;
-    --v2-card: rgba(15, 22, 40, 0.72);
-    --v2-card-2: rgba(20, 30, 52, 0.55);
-    --v2-line: rgba(255, 255, 255, 0.08);
-    --v2-line-2: rgba(255, 255, 255, 0.14);
-    --v2-fg: #f4f7fb;
-    --v2-muted: #b5c2d7;
-    --v2-subtle: #8497bd;
-    --v2-faint: #4f6488;
-    --v2-electric: #4f94fb;
-    --v2-electric-deep: #2d7ff9;
-    --v2-performance: #4fe0b5;
-    --v2-performance-deep: #27d7a1;
-    --v2-violet: #9c7cff;
-    --v2-violet-deep: #7c5cdc;
-    --v2-warm: #ffb476;
-    --v2-warm-deep: #ff8c42;
-    --v2-risk: #ff5c5c;
-    --v2-accent: var(--v2-electric);
-    --v2-accent-deep: var(--v2-electric-deep);
-    --v2-ease: cubic-bezier(0.22, 1, 0.36, 1);
-    --v2-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --v2-frame-w: min(82rem, calc(100vw - 48px));
+  <!-- ───────────── Footer · Ft5 statement ───────────── -->
+  <footer class="s-footer">
+    <div class="s-wrap">
+      <p class="s-footer__statement">{c.footer.statement}</p>
+      <div class="s-footer__meta">
+        <div class="s-footer__brand">
+          <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="180" height="120" />
+          <p>{c.footer.brandLine}</p>
+        </div>
+        <ul class="s-footer__links">
+          {c.footer.links.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+          <li><a href={`mailto:${c.footer.email}`}>{c.footer.email}</a></li>
+        </ul>
+        <span class="s-footer__credit">{c.footer.credit}</span>
+      </div>
+    </div>
+  </footer>
 
-    position: relative;
-    background: var(--v2-void);
-    color: var(--v2-fg);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    overflow-x: clip;
-    min-height: 100vh;
-  }
-  html, body { overflow-x: clip; scroll-behavior: smooth; }
+  <script is:inline>
+    // Before first paint: flag JS availability and arm the convergence
+    // stage so fragments start scattered instead of flashing the settled
+    // panel. Reduced-motion users keep the settled state.
+    (function () {
+      document.documentElement.classList.add('js-anim');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var stage = document.getElementById('s-stage');
+      if (stage) {
+        stage.classList.add('is-armed');
+        stage.setAttribute('role', 'img');
+        stage.setAttribute('aria-label', stage.getAttribute('data-stage-label') || '');
+      }
+    })();
+  </script>
 
-  /* ----- Ambient layers ----- */
-  .v2-ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-  .v2-paint {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    opacity: 0.55; mix-blend-mode: screen;
-    transition: opacity 800ms var(--v2-ease);
-  }
-  .v2-noise {
-    position: absolute; inset: -50%;
-    background-image:
-      radial-gradient(circle at 30% 20%, rgba(45, 127, 249, 0.10), transparent 50%),
-      radial-gradient(circle at 70% 80%, rgba(124, 92, 220, 0.08), transparent 50%);
-    opacity: 0.9;
-  }
-  .v2-bloom {
-    position: absolute; width: 90rem; height: 90rem; border-radius: 50%;
-    filter: blur(100px); pointer-events: none;
-    will-change: transform, background;
-    transition: background 1200ms var(--v2-ease);
-  }
-  .v2-bloom--a { top: -30%; left: -25%; background: radial-gradient(circle, rgba(45, 127, 249, 0.30), transparent 60%); }
-  .v2-bloom--b { bottom: -35%; right: -25%; background: radial-gradient(circle, rgba(39, 215, 161, 0.24), transparent 60%); opacity: 0.85; }
-  .v2-cursor {
-    position: absolute; width: 600px; height: 600px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 60%);
-    transform: translate(-50%, -50%); left: 50%; top: 50%;
-    transition: transform 280ms var(--v2-ease); will-change: transform; mix-blend-mode: screen;
-  }
-  .v2[data-active-accent="performance"] .v2-bloom--a { background: radial-gradient(circle, rgba(39, 215, 161, 0.30), transparent 60%); }
-  .v2[data-active-accent="performance"] .v2-bloom--b { background: radial-gradient(circle, rgba(45, 127, 249, 0.24), transparent 60%); }
-  .v2[data-active-accent="violet"] .v2-bloom--a { background: radial-gradient(circle, rgba(124, 92, 220, 0.30), transparent 60%); }
-  .v2[data-active-accent="violet"] .v2-bloom--b { background: radial-gradient(circle, rgba(45, 127, 249, 0.20), transparent 60%); }
-  .v2[data-active-accent="warm"] .v2-bloom--a { background: radial-gradient(circle, rgba(255, 176, 32, 0.22), transparent 60%); }
-  .v2[data-active-accent="warm"] .v2-bloom--b { background: radial-gradient(circle, rgba(255, 92, 92, 0.18), transparent 60%); }
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ============================================================ Topbar ============================================================ */
-  .v2-topbar {
-    position: sticky; top: 0; z-index: 50;
-    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-    padding: 14px clamp(20px, 3vw, 40px);
-    background: rgba(5, 6, 16, 0.5);
-    backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border-bottom: 1px solid var(--v2-line); gap: 24px;
-  }
-  .v2-topbar > .v2-brand { justify-self: start; }
-  .v2-topbar > .v2-nav { justify-self: center; }
-  .v2-topbar > .v2-topbar__end { justify-self: end; }
-  .v2-brand { display: inline-flex; align-items: center; }
-  .v2-brand img { display: block; height: 72px; width: auto; }
-  .v2-brand--compact img { height: 40px; }
-  .v2-nav { display: inline-flex; align-items: center; gap: 4px; }
-  .v2-nav__link {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 14px; border-radius: 999px;
-    color: var(--v2-muted); font-size: 13.5px; text-decoration: none;
-    transition: color 200ms var(--v2-ease), background 200ms var(--v2-ease);
-  }
-  .v2-nav__link:hover { color: var(--v2-fg); background: rgba(255, 255, 255, 0.04); }
-  .v2-nav__n { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: var(--v2-faint); letter-spacing: 0.06em; }
-  .v2-cta-mini {
-    display: inline-flex; align-items: center; padding: 10px 18px; border-radius: 999px;
-    background: var(--v2-fg); color: var(--v2-void); font-size: 13.5px; font-weight: 500; text-decoration: none;
-    transition: transform 200ms var(--v2-ease), opacity 200ms var(--v2-ease);
-  }
-  .v2-cta-mini:hover { transform: translateY(-1px); opacity: 0.92; }
-  .v2-topbar__end { display: inline-flex; align-items: center; gap: 14px; }
-  .v2-lang {
-    display: inline-flex; align-items: center; gap: 4px; padding: 6px 10px; border-radius: 999px;
-    border: 1px solid var(--v2-line); background: rgba(255, 255, 255, 0.02);
-    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.08em;
-  }
-  .v2-lang__opt { color: var(--v2-faint); text-decoration: none; padding: 2px 6px; border-radius: 999px; transition: color 180ms var(--v2-ease), background 180ms var(--v2-ease); }
-  .v2-lang__opt:hover { color: var(--v2-muted); }
-  .v2-lang__opt.is-active { color: var(--v2-fg); background: rgba(255, 255, 255, 0.08); }
-  .v2-lang__sep { color: var(--v2-line-2); user-select: none; }
+    // ── Hero convergence — the signature one-shot sequence ──
+    const stage = document.getElementById('s-stage');
+    if (stage && stage.classList.contains('is-armed') && !reduceMotion) {
+      const frags = Array.from(stage.querySelectorAll<HTMLElement>('[data-frag]'));
+      const rows = Array.from(stage.querySelectorAll<HTMLElement>('[data-row]'));
+      const status = stage.querySelector<HTMLElement>('[data-status]');
 
-  @media (max-width: 1040px) { .v2-nav { display: none; } }
-  @media (max-width: 880px) {
-    .v2-topbar { padding: 12px 20px; gap: 12px; }
-    .v2-brand--compact img { height: 34px; }
-    .v2-topbar__end { gap: 10px; }
-  }
-  @media (max-width: 600px) {
-    .v2-topbar > .v2-topbar__end .v2-lang { display: none; }
-  }
-  @media (max-width: 480px) {
-    .v2-cta-mini { padding: 9px 13px; font-size: 12px; }
-    .v2-brand--compact img { height: 28px; }
-    .v2-topbar { gap: 10px; padding: 11px 16px; }
-  }
+      const run = () => {
+        const stepMs = 190;
+        frags.forEach((frag, i) => {
+          const row = rows[i];
+          if (!row) return;
+          const fragRect = frag.getBoundingClientRect();
+          const rowRect = row.getBoundingClientRect();
+          frag.style.setProperty('--tx', `${rowRect.left + rowRect.width / 2 - (fragRect.left + fragRect.width / 2)}px`);
+          frag.style.setProperty('--ty', `${rowRect.top + rowRect.height / 2 - (fragRect.top + fragRect.height / 2)}px`);
+          setTimeout(() => {
+            frag.classList.add('is-absorbed');
+            setTimeout(() => row.classList.add('is-on'), 460);
+          }, i * stepMs);
+        });
+        const total = frags.length * stepMs + 700;
+        setTimeout(() => status?.classList.add('is-on'), total);
+        setTimeout(() => stage.classList.add('is-settled'), total + 700);
+      };
 
-  /* ============================================================ Hero ============================================================ */
-  .v2-hero {
-    position: relative; z-index: 1; max-width: var(--v2-frame-w); margin: 0 auto;
-    padding: clamp(48px, 8vh, 96px) 24px clamp(110px, 16vh, 180px);
-    text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px;
-  }
-  .v2-hero__logo { display: inline-flex; margin-bottom: clamp(8px, 2vh, 20px); }
-  .v2-hero__logo img { display: block; height: clamp(96px, 14vw, 160px); width: auto; filter: drop-shadow(0 8px 32px rgba(45, 127, 249, 0.18)); }
-  @media (max-width: 720px) { .v2-hero__logo img { height: 88px; } }
-  @media (max-width: 414px) { .v2-hero__logo img { height: 76px; } }
-  .v2-hero__title {
-    font-size: clamp(40px, 8vw, 104px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.0;
-    margin: 12px 0 0; max-width: 14ch; width: 100%; display: block;
-    overflow-wrap: break-word; text-wrap: balance; min-width: 0;
-  }
-  .v2-hero__title-1, .v2-hero__title-2 { display: block; }
-  .v2-hero__title-1 { color: var(--v2-subtle); }
-  .v2-hero__title-2 { color: var(--v2-fg); }
-  @media (max-width: 560px) { .v2-hero__title { font-size: 38px; line-height: 1.04; max-width: 100%; letter-spacing: -0.02em; } }
-  @media (max-width: 400px) { .v2-hero__title { font-size: 31px; } }
-  .v2-hero__lede { font-size: clamp(15px, 1.4vw, 18px); line-height: 1.6; color: var(--v2-muted); max-width: 46rem; margin: 8px 0 0; }
-  .v2-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 16px; }
-  .v2-scroll-cue {
-    position: relative; margin-top: 48px; display: inline-flex; flex-direction: column; align-items: center; gap: 12px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--v2-faint);
-  }
-  .v2-scroll-cue__line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--v2-faint), transparent); position: relative; overflow: hidden; }
-  .v2-scroll-cue__line::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, transparent, var(--v2-electric));
-    transform: translateY(-100%); animation: v2-cue-fall 2.4s var(--v2-ease) infinite;
-  }
-  @keyframes v2-cue-fall { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+      const arm = () => {
+        const io = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              io.disconnect();
+              setTimeout(run, 1100);
+            }
+          },
+          { threshold: 0.35 },
+        );
+        io.observe(stage);
+      };
 
-  /* ============================================================ Buttons ============================================================ */
-  .v2-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 14px 22px; border-radius: 999px; font-family: inherit; font-size: 14px; font-weight: 500;
-    text-decoration: none; border: 1px solid transparent; cursor: pointer;
-    transition: transform 200ms var(--v2-ease), background 200ms var(--v2-ease), border-color 200ms var(--v2-ease), opacity 200ms var(--v2-ease);
-  }
-  .v2-btn--primary { background: var(--v2-fg); color: var(--v2-void); }
-  .v2-btn--primary:hover { transform: translateY(-1px); opacity: 0.92; }
-  .v2-btn--ghost { background: transparent; color: var(--v2-fg); border-color: var(--v2-line-2); }
-  .v2-btn--ghost:hover { border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.03); }
-  .v2-btn--large { padding: 18px 30px; font-size: 15px; }
-
-  /* ============================================================ Chapter shell ============================================================ */
-  .v2-chapter { position: relative; z-index: 1; max-width: var(--v2-frame-w); margin: 0 auto; padding: clamp(80px, 14vh, 180px) 24px; }
-  .v2-chapter__head { max-width: 56rem; margin: 0 auto clamp(48px, 6vw, 88px); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; }
-  .v2-chapter__n {
-    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.16em;
-    color: var(--v2-accent); padding: 4px 12px; border: 1px solid currentColor; border-radius: 999px; opacity: 0.75;
-  }
-  .v2-chapter__eyebrow { margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-subtle); }
-  .v2-chapter__title { font-size: clamp(34px, 5vw, 60px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.06; color: var(--v2-fg); margin: 0; max-width: 22ch; overflow-wrap: anywhere; }
-  .v2-chapter__body { font-size: clamp(15px, 1.3vw, 17px); line-height: 1.65; color: var(--v2-muted); max-width: 44rem; margin: 0; }
-  .v2-chapter[data-accent="performance"] { --v2-accent: var(--v2-performance); --v2-accent-deep: var(--v2-performance-deep); }
-  .v2-chapter[data-accent="violet"]      { --v2-accent: var(--v2-violet);      --v2-accent-deep: var(--v2-violet-deep); }
-  .v2-chapter[data-accent="warm"]        { --v2-accent: var(--v2-warm);        --v2-accent-deep: var(--v2-warm-deep); }
-
-  /* ============================================================ 01 · Reality ============================================================ */
-  .v2-reality { display: grid; grid-template-columns: 1fr 340px; gap: clamp(28px, 5vw, 64px); align-items: start; }
-  .v2-tasks { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-  .v2-task {
-    display: flex; align-items: center; gap: 16px; padding: 18px 4px;
-    border-bottom: 1px solid var(--v2-line); font-size: clamp(16px, 1.8vw, 21px); color: var(--v2-muted); font-weight: 500;
-  }
-  .v2-task:last-child { border-bottom: 0; }
-  .v2-task__tick {
-    flex: none; width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid var(--v2-line-2);
-    position: relative;
-  }
-  .v2-task__tick::after {
-    content: ''; position: absolute; inset: 0; display: block; margin: auto;
-    width: 6px; height: 6px; border-radius: 1px; background: var(--v2-warm); opacity: 0.55;
-  }
-
-  /* ============================================================ Phone (shared) ============================================================ */
-  .v2-phone {
-    width: 100%; max-width: 320px; margin: 0 auto;
-    border: 1px solid var(--v2-line-2); border-radius: 22px; overflow: hidden;
-    background: linear-gradient(180deg, #0d1a14 0%, #07120c 100%);
-    box-shadow: 0 30px 60px -25px rgba(0,0,0,0.7);
-  }
-  .v2-phone--chaos { background: linear-gradient(180deg, #14110b 0%, #0c0a07 100%); }
-  .v2-phone__bar {
-    display: flex; align-items: center; justify-content: space-between; padding: 8px 16px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: rgba(255,255,255,0.55);
-  }
-  .v2-phone__dots { display: flex; gap: 3px; }
-  .v2-phone__dots span { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.4); }
-  .v2-phone__head { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .v2-phone__avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--v2-electric); color: var(--v2-void); display: grid; place-items: center; font-weight: 600; font-size: 12px; }
-  .v2-phone__avatar--group { background: linear-gradient(135deg, var(--v2-warm), var(--v2-warm-deep)); }
-  .v2-phone__id { display: flex; flex-direction: column; line-height: 1.2; }
-  .v2-phone__name { font-size: 12.5px; color: var(--v2-fg); font-weight: 500; }
-  .v2-phone__sub { font-size: 10px; color: var(--v2-performance); }
-  .v2-phone__sub--muted { color: var(--v2-faint); }
-  .v2-phone__wa { margin-left: auto; color: rgba(39, 215, 161, 0.85); display: inline-flex; }
-  .v2-phone__chat { padding: 14px 14px 18px; display: flex; flex-direction: column; gap: 6px; }
-  .v2-bubble {
-    max-width: 80%; padding: 8px 11px; font-size: 12.5px; line-height: 1.4; border-radius: 13px;
-    opacity: 0; transform: translateY(6px);
-    transition: opacity 360ms var(--v2-ease), transform 360ms var(--v2-ease);
-    transition-delay: calc(120ms + var(--v2-bi, 0) * 220ms);
-  }
-  .is-in .v2-bubble { opacity: 1; transform: translateY(0); }
-  .v2-bubble p { margin: 0; color: var(--v2-fg); }
-  .v2-bubble__time { display: block; font-size: 9.5px; color: rgba(255,255,255,0.45); margin-top: 2px; text-align: right; }
-  .v2-bubble--in { align-self: flex-start; background: rgba(255,255,255,0.07); border-bottom-left-radius: 3px; }
-  .v2-bubble--in.is-unread { background: rgba(255, 176, 32, 0.1); border: 1px solid rgba(255, 176, 32, 0.22); }
-  .v2-bubble--out { align-self: flex-end; background: rgba(39, 215, 161, 0.16); border: 1px solid rgba(39, 215, 161, 0.25); border-bottom-right-radius: 3px; }
-  .v2-wellness {
-    align-self: flex-start; margin-top: 4px; padding: 8px 11px;
-    border: 1px solid rgba(79, 148, 251, 0.28); background: rgba(79, 148, 251, 0.08); border-radius: 11px;
-    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 8px;
-    opacity: 0; transform: translateY(6px);
-    transition: opacity 360ms var(--v2-ease), transform 360ms var(--v2-ease);
-    transition-delay: calc(120ms + var(--v2-bi, 4) * 220ms);
-  }
-  .is-in .v2-wellness { opacity: 1; transform: translateY(0); }
-  .v2-wellness__l { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--v2-electric); text-transform: uppercase; }
-  .v2-wellness__v { grid-row: span 2; align-self: center; font-size: 16px; font-weight: 600; color: var(--v2-fg); }
-  .v2-wellness__n { font-size: 11px; color: var(--v2-muted); }
-
-  /* Resolve banner */
-  .v2-resolve {
-    display: flex; align-items: flex-start; gap: 16px; margin: clamp(40px, 6vw, 72px) auto 0; max-width: 50rem;
-    padding: 22px 26px; border: 1px solid var(--v2-line-2); border-radius: 16px;
-    background: rgba(39, 215, 161, 0.05);
-  }
-  .v2-resolve__mark { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: var(--v2-performance); background: rgba(39, 215, 161, 0.12); border: 1px solid rgba(39, 215, 161, 0.3); }
-  .v2-resolve p { margin: 0; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.6; color: var(--v2-muted); }
-  .v2-resolve strong { color: var(--v2-fg); font-weight: 600; }
-  @media (max-width: 860px) {
-    .v2-reality { grid-template-columns: 1fr; gap: 32px; }
-    .v2-phone--chaos { max-width: 340px; }
-  }
-
-  /* ============================================================ 02 · Staff pillars ============================================================ */
-  .v2-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: var(--v2-frame-w); margin: 0 auto; }
-  .v2-pillar {
-    --v2-accent: var(--v2-electric);
-    display: flex; flex-direction: column; gap: 12px;
-    padding: 28px; border: 1px solid var(--v2-line); border-radius: 18px;
-    background: var(--v2-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    transition: transform 320ms var(--v2-ease), border-color 320ms var(--v2-ease);
-  }
-  .v2-pillar[data-accent="performance"] { --v2-accent: var(--v2-performance); }
-  .v2-pillar[data-accent="violet"] { --v2-accent: var(--v2-violet); }
-  .v2-pillar[data-accent="warm"] { --v2-accent: var(--v2-warm); }
-  .v2-pillar:hover { transform: translateY(-3px); border-color: color-mix(in oklab, var(--v2-accent) 40%, transparent); }
-  .v2-pillar__head { display: flex; align-items: center; gap: 10px; }
-  .v2-pillar__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v2-accent); box-shadow: 0 0 0 4px color-mix(in oklab, var(--v2-accent) 18%, transparent); }
-  .v2-pillar__tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-accent); }
-  .v2-pillar__name { margin: 4px 0 0; font-size: clamp(20px, 2.2vw, 26px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; color: var(--v2-fg); }
-  .v2-pillar__role { margin: 0; font-size: 14px; color: var(--v2-subtle); }
-  .v2-pillar__does { list-style: none; margin: 8px 0 0; padding: 14px 0 0; border-top: 1px solid var(--v2-line); display: grid; gap: 10px; }
-  .v2-pillar__does li { position: relative; padding-left: 18px; font-size: 14px; line-height: 1.5; color: var(--v2-muted); }
-  .v2-pillar__does li::before { content: ''; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--v2-accent); }
-  @media (max-width: 720px) { .v2-pillars { grid-template-columns: 1fr; } }
-
-  /* Main features */
-  .v2-feature-grid {
-    max-width: var(--v2-frame-w); margin: clamp(40px, 6vw, 72px) auto 0;
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
-  }
-  .v2-feature-card {
-    min-height: 218px; padding: 18px; display: flex; flex-direction: column; gap: 12px;
-    border: 1px solid var(--v2-line); border-radius: 16px;
-    background: linear-gradient(180deg, rgba(20, 30, 52, 0.64), rgba(8, 12, 22, 0.78));
-    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
-    transition: transform 260ms var(--v2-ease), border-color 260ms var(--v2-ease), background 260ms var(--v2-ease);
-  }
-  .v2-feature-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(79, 148, 251, 0.30);
-    background: linear-gradient(180deg, rgba(22, 36, 64, 0.72), rgba(8, 12, 22, 0.82));
-  }
-  .v2-feature-card__icon {
-    width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px;
-    color: var(--v2-electric); background: rgba(79, 148, 251, 0.08); border: 1px solid rgba(79, 148, 251, 0.18);
-  }
-  .v2-feature-card__icon svg { width: 21px; height: 21px; }
-  .v2-feature-card h3 {
-    margin: 4px 0 0; color: var(--v2-fg); font-size: 17px; line-height: 1.18; font-weight: 600; letter-spacing: -0.01em;
-  }
-  .v2-feature-card p { margin: 0; color: var(--v2-muted); font-size: 13.5px; line-height: 1.5; }
-  .v2-feature-card a {
-    margin-top: auto; color: var(--v2-performance); text-decoration: none;
-    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .v2-feature-card a::after { content: ' ->'; }
-  .v2-feature-card a:hover { color: var(--v2-fg); }
-  @media (max-width: 1040px) {
-    .v2-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (max-width: 620px) {
-    .v2-feature-grid { grid-template-columns: 1fr; gap: 10px; }
-    .v2-feature-card { min-height: 0; padding: 16px; }
-  }
-
-  /* ============================================================ 03 · Communication ============================================================ */
-  .v2-wa-layout { display: grid; grid-template-columns: 1fr 320px; gap: clamp(32px, 6vw, 80px); align-items: center; max-width: 68rem; margin: 0 auto; }
-  .v2-wa-steps ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-  .v2-wa-step { display: flex; align-items: center; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--v2-line); }
-  .v2-wa-step:last-of-type { border-bottom: 0; }
-  .v2-wa-step__n { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--v2-performance); flex: none; }
-  .v2-wa-step__text { font-size: clamp(16px, 1.7vw, 20px); color: var(--v2-fg); font-weight: 500; }
-  .v2-channels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 28px; align-items: start; }
-  .v2-channel {
-    min-width: 0; display: grid; gap: 3px; padding: 10px 12px; border-radius: 12px;
-    border: 1px solid rgba(39, 215, 161, 0.24); background: rgba(39, 215, 161, 0.055);
-  }
-  .v2-channel__name { font-size: 13.5px; font-weight: 600; color: var(--v2-fg); }
-  .v2-channel__status { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--v2-performance); }
-  .v2-channel__badges {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px;
-  }
-  .v2-channel__badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 9px; border-radius: 6px;
-    background: #000; color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
-    text-decoration: none;
-  }
-  .v2-channel__badge:hover { background: #1a1a1a; border-color: rgba(255, 255, 255, 0.18); transform: translateY(-1px); }
-  .v2-channel__badge-icon { width: 14px; height: 14px; flex: none; fill: #fff; }
-  .v2-channel__badge-text { display: grid; gap: 0; line-height: 1; min-width: 0; }
-  .v2-channel__badge-eyebrow {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 7.5px; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.72);
-    white-space: nowrap;
-  }
-  .v2-channel__badge-name {
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
-    font-size: 11px; font-weight: 500; letter-spacing: -0.01em; color: #fff;
-    white-space: nowrap;
-  }
-  @media (max-width: 380px) {
-    .v2-channel__badges { grid-template-columns: 1fr; }
-  }
-  .v2-wa-caption { margin: 24px 0 0; font-size: 14px; line-height: 1.6; color: var(--v2-subtle); max-width: 36rem; }
-  .v2-playerapp {
-    grid-column: 1 / -1; justify-self: center; width: min(100%, 48rem);
-    display: grid; gap: 18px; margin-top: 8px;
-  }
-  .v2-playerapp__eyebrow { margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-performance); }
-  .v2-playerapp__title { margin: 0; font-size: clamp(20px, 2.2vw, 26px); font-weight: 600; letter-spacing: -0.015em; color: var(--v2-fg); }
-  .v2-playerapp__layout {
-    display: grid; grid-template-columns: minmax(0, 220px) 1fr; gap: clamp(20px, 4vw, 48px); align-items: center;
-  }
-  .v2-playerapp__shot {
-    border: 1px solid var(--v2-line-2); border-radius: 28px;
-    background: #000; padding: 6px;
-    box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-    overflow: hidden;
-  }
-  .v2-playerapp__shot img {
-    display: block; width: 100%; height: auto; border-radius: 22px;
-  }
-  .v2-playerapp__side { display: grid; gap: 18px; min-width: 0; }
-  .v2-playerapp__caption {
-    margin: 0; font-size: 15px; line-height: 1.6; color: var(--v2-muted);
-    max-width: 36rem;
-  }
-  .v2-playerapp__stores {
-    display: grid; grid-template-columns: minmax(0, 180px) minmax(0, 180px); gap: 10px;
-  }
-  @media (max-width: 860px) {
-    .v2-wa-layout { grid-template-columns: 1fr; gap: 40px; }
-    .v2-phone--lg { max-width: 320px; }
-    .v2-playerapp { width: min(100%, 22rem); }
-    .v2-playerapp__layout { grid-template-columns: 1fr; gap: 24px; }
-    .v2-playerapp__shot { max-width: 220px; margin: 0 auto; }
-    .v2-playerapp__stores { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 420px) {
-    .v2-playerapp__stores { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 520px) { .v2-channels { grid-template-columns: 1fr; } }
-
-  /* ============================================================ 04 · Medical record ============================================================ */
-  .v2-med { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; max-width: var(--v2-frame-w); margin: 0 auto; }
-  .v2-med__features { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-  .v2-med__features li {
-    padding: 16px 4px; border-bottom: 1px solid var(--v2-line); font-size: clamp(15px, 1.5vw, 18px); color: var(--v2-muted); font-weight: 500;
-    position: relative; padding-left: 22px;
-  }
-  .v2-med__features li:last-child { border-bottom: 0; }
-  .v2-med__features li::before { content: ''; position: absolute; left: 0; top: 22px; width: 10px; height: 1px; background: var(--v2-violet); }
-  .v2-record { border: 1px solid var(--v2-line-2); border-radius: 20px; background: var(--v2-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); overflow: hidden; box-shadow: 0 0 60px -28px rgba(124, 92, 220, 0.4); }
-  .v2-record__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-bottom: 1px solid var(--v2-line); flex-wrap: wrap; }
-  .v2-record__id { display: flex; align-items: center; gap: 14px; }
-  .v2-record__avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 15px; color: var(--v2-fg); background: linear-gradient(135deg, var(--v2-faint), var(--v2-violet)); border: 1px solid var(--v2-line-2); }
-  .v2-record__player { margin: 0; font-size: 18px; font-weight: 600; color: var(--v2-fg); }
-  .v2-record__injury { margin: 2px 0 0; font-size: 13px; color: var(--v2-risk); }
-  .v2-record__since { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--v2-faint); }
-  .v2-record__track { display: flex; align-items: flex-start; gap: 0; padding: 26px 24px; border-bottom: 1px solid var(--v2-line); position: relative; }
-  .v2-stage { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; position: relative; text-align: center; }
-  .v2-stage::before { content: ''; position: absolute; top: 7px; left: -50%; width: 100%; height: 2px; background: var(--v2-line); z-index: 0; }
-  .v2-stage:first-child::before { display: none; }
-  .v2-stage__dot { position: relative; z-index: 1; width: 16px; height: 16px; border-radius: 50%; background: var(--v2-void-2); border: 2px solid var(--v2-faint); }
-  .v2-stage__label { font-size: 11px; color: var(--v2-faint); line-height: 1.3; max-width: 9ch; }
-  .v2-stage.is-done .v2-stage__dot { background: var(--v2-performance); border-color: var(--v2-performance); }
-  .v2-stage.is-done::before { background: var(--v2-performance); }
-  .v2-stage.is-done .v2-stage__label { color: var(--v2-muted); }
-  .v2-stage.is-active .v2-stage__dot { background: var(--v2-electric); border-color: var(--v2-electric); box-shadow: 0 0 0 5px rgba(79, 148, 251, 0.18); }
-  .v2-stage.is-active::before { background: linear-gradient(90deg, var(--v2-performance), var(--v2-electric)); }
-  .v2-stage.is-active .v2-stage__label { color: var(--v2-fg); font-weight: 600; }
-  .v2-record__notes { padding: 8px 24px; }
-  .v2-note { padding: 16px 0; border-bottom: 1px solid var(--v2-line); }
-  .v2-note:last-child { border-bottom: 0; }
-  .v2-note__meta { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
-  .v2-note__author { font-size: 13.5px; font-weight: 600; color: var(--v2-fg); }
-  .v2-note__role { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--v2-violet); }
-  .v2-note__text { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--v2-muted); }
-  .v2-record__foot { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; background: rgba(124, 92, 220, 0.06); border-top: 1px solid var(--v2-line); }
-  .v2-record__foot-l { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--v2-subtle); }
-  .v2-record__foot-v { font-size: 16px; font-weight: 600; color: var(--v2-fg); }
-  @media (max-width: 860px) { .v2-med { grid-template-columns: 1fr; gap: 32px; } }
-  @media (max-width: 520px) {
-    .v2-record__track { overflow-x: auto; }
-    .v2-stage { min-width: 78px; }
-  }
-
-  /* ============================================================ 05 · Sessions board ============================================================ */
-  .v2-sessions { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; max-width: var(--v2-frame-w); margin: 0 auto; }
-  .v2-sessions__features { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-  .v2-sessions__features li { display: flex; align-items: center; gap: 14px; padding: 16px 4px; border-bottom: 1px solid var(--v2-line); font-size: clamp(15px, 1.5vw, 18px); color: var(--v2-muted); font-weight: 500; }
-  .v2-sessions__features li:last-child { border-bottom: 0; }
-  .v2-sessions__bullet { flex: none; width: 9px; height: 9px; border-radius: 2px; background: var(--v2-electric); }
-  .v2-board { position: relative; border: 1px solid var(--v2-line-2); border-radius: 20px; background: var(--v2-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); overflow: hidden; }
-  .v2-board__pitch { position: absolute; inset: 0; color: var(--v2-electric); opacity: 0.16; pointer-events: none; }
-  .v2-board__pitch svg { width: 100%; height: 100%; }
-  .v2-board__token { fill: var(--v2-electric); }
-  .v2-board__token--b { fill: var(--v2-warm); }
-  .v2-board__pass { stroke: var(--v2-electric); }
-  .v2-board__head { position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 24px 26px; border-bottom: 1px solid var(--v2-line); flex-wrap: wrap; }
-  .v2-board__eyebrow { margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-electric); }
-  .v2-board__title { margin: 6px 0 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; color: var(--v2-fg); }
-  .v2-board__stamp { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.06em; color: var(--v2-faint); padding: 5px 12px; border: 1px solid var(--v2-line); border-radius: 999px; white-space: nowrap; }
-  .v2-board__phases { position: relative; list-style: none; margin: 0; padding: 8px 26px 24px; }
-  .v2-board__phase { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--v2-line); }
-  .v2-board__phase:last-child { border-bottom: 0; }
-  .v2-board__phase-l { font-size: 14.5px; font-weight: 600; color: var(--v2-fg); flex: none; min-width: 9rem; }
-  .v2-board__phase-d { font-size: 13.5px; color: var(--v2-muted); line-height: 1.5; text-align: right; }
-  @media (max-width: 860px) { .v2-sessions { grid-template-columns: 1fr; gap: 32px; } }
-  @media (max-width: 520px) {
-    .v2-board__phase { flex-direction: column; gap: 4px; }
-    .v2-board__phase-d { text-align: left; }
-  }
-
-  /* ============================================================ Time saved ============================================================ */
-  .v2-time { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; max-width: var(--v2-frame-w); margin: 0 auto; }
-  .v2-time__lead { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; text-align: left; }
-  .v2-time__title { font-size: clamp(34px, 5vw, 60px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.05; color: var(--v2-fg); margin: 0; max-width: 14ch; }
-  .v2-time__body { font-size: clamp(15px, 1.4vw, 18px); line-height: 1.65; color: var(--v2-muted); max-width: 38rem; margin: 0; }
-  .v2-time__stat { margin-top: 12px; display: flex; flex-direction: column; gap: 4px; }
-  .v2-time__stat-v { font-size: clamp(48px, 7vw, 88px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--v2-performance); }
-  .v2-time__stat-l { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--v2-subtle); }
-  .v2-time__breakdown { border: 1px solid var(--v2-line-2); border-radius: 20px; background: var(--v2-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 12px 26px 20px; }
-  .v2-time__breakdown ul { list-style: none; margin: 0; padding: 0; }
-  .v2-time__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--v2-line); }
-  .v2-time__task { font-size: 14.5px; color: var(--v2-muted); }
-  .v2-time__hours { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; color: var(--v2-fg); font-weight: 500; }
-  .v2-time__footer { margin: 16px 0 0; font-size: 14px; line-height: 1.55; color: var(--v2-performance); font-weight: 500; }
-  @media (max-width: 860px) { .v2-time { grid-template-columns: 1fr; gap: 36px; } }
-
-  /* ============================================================ 05 · Load ============================================================ */
-  .v2-chapter__title-accent {
-    display: block; margin-top: 6px;
-    font-size: 0.78em; font-weight: 500;
-    color: var(--v2-performance); letter-spacing: 0;
-  }
-  .v2-load { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; max-width: var(--v2-frame-w); margin: 0 auto; }
-  .v2-load__features { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-  .v2-load__features li {
-    display: flex; align-items: flex-start; gap: 12px;
-    font-size: 14.5px; line-height: 1.5; color: var(--v2-muted);
-  }
-  .v2-load__bullet {
-    flex: none; margin-top: 8px; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--v2-performance);
-    box-shadow: 0 0 0 3px rgba(39, 215, 161, 0.10);
-  }
-  .v2-loadboard {
-    border: 1px solid var(--v2-line-2); border-radius: 20px;
-    background: var(--v2-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    overflow: hidden;
-    box-shadow: 0 0 60px -28px rgba(39, 215, 161, 0.32);
-  }
-  .v2-loadboard__head {
-    display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
-    padding: 24px 26px; border-bottom: 1px solid var(--v2-line); flex-wrap: wrap;
-  }
-  .v2-loadboard__eyebrow {
-    margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--v2-performance);
-  }
-  .v2-loadboard__title {
-    margin: 6px 0 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em;
-    color: var(--v2-fg);
-  }
-  .v2-loadboard__kpis {
-    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
-  }
-  .v2-loadboard__kpi {
-    display: grid; gap: 4px; padding: 12px 14px;
-    border: 1px solid var(--v2-line); border-radius: 12px;
-    background: rgba(39, 215, 161, 0.04);
-    min-width: 0;
-  }
-  .v2-loadboard__kpi-l {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--v2-faint);
-  }
-  .v2-loadboard__kpi-v {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 22px; line-height: 1; font-weight: 500;
-    color: var(--v2-fg); font-variant-numeric: tabular-nums;
-  }
-  .v2-loadboard__table {
-    width: 100%; border-collapse: collapse;
-    font-variant-numeric: tabular-nums;
-  }
-  .v2-loadboard__table thead th {
-    padding: 14px 16px; text-align: left;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--v2-faint); font-weight: 600;
-    border-bottom: 1px solid var(--v2-line);
-    background: rgba(8, 12, 22, 0.28);
-  }
-  .v2-loadboard__table thead th.v2-loadboard__num { text-align: right; }
-  .v2-loadboard__row { transition: background 150ms ease; }
-  .v2-loadboard__row:hover { background: rgba(255, 255, 255, 0.02); }
-  .v2-loadboard__row th.v2-loadboard__name,
-  .v2-loadboard__row td {
-    padding: 13px 16px;
-    border-bottom: 1px solid var(--v2-line);
-    font-size: 13.5px; color: var(--v2-fg);
-  }
-  .v2-loadboard__row:last-child th.v2-loadboard__name,
-  .v2-loadboard__row:last-child td { border-bottom: 0; }
-  .v2-loadboard__name {
-    text-align: left; font-weight: 500; white-space: nowrap;
-    color: var(--v2-fg);
-  }
-  .v2-loadboard__num { text-align: right; }
-  .v2-loadboard__pill {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 3px 9px; border-radius: 999px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
-    font-weight: 600; white-space: nowrap;
-  }
-  .v2-loadboard__pill::before {
-    content: ''; display: inline-block;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: currentColor;
-  }
-  .v2-loadboard__pill.is-green { color: var(--v2-performance); background: rgba(39, 215, 161, 0.10); }
-  .v2-loadboard__pill.is-amber { color: #FFB020; background: rgba(255, 176, 32, 0.10); }
-  .v2-loadboard__pill.is-red  { color: var(--v2-risk); background: rgba(255, 92, 92, 0.10); }
-  .v2-loadboard__row.is-red .v2-loadboard__num { color: var(--v2-risk); }
-  .v2-loadboard__row.is-red .v2-loadboard__name { color: var(--v2-fg); }
-  .v2-loadboard__foot {
-    display: flex; align-items: flex-start; gap: 14px;
-    padding: 18px 24px;
-    border-top: 1px solid var(--v2-line);
-    background: rgba(39, 215, 161, 0.04);
-  }
-  .v2-loadboard__tip-label {
-    flex: none; padding: 3px 8px; border-radius: 4px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--v2-performance); background: rgba(39, 215, 161, 0.12);
-  }
-  .v2-loadboard__tip {
-    margin: 0; font-size: 14px; line-height: 1.55; color: var(--v2-fg);
-  }
-  @media (max-width: 860px) {
-    .v2-load { grid-template-columns: 1fr; gap: 32px; }
-    .v2-loadboard__kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (max-width: 560px) {
-    .v2-loadboard__head { padding: 20px 18px; }
-    .v2-loadboard__table thead th,
-    .v2-loadboard__row th.v2-loadboard__name,
-    .v2-loadboard__row td { padding: 11px 12px; font-size: 12.5px; }
-    .v2-loadboard__table { display: block; overflow-x: auto; white-space: nowrap; }
-    .v2-loadboard__foot { flex-direction: column; gap: 8px; padding: 16px 18px; }
-  }
-
-  /* ============================================================ 06 · Pricing ============================================================ */
-  .v2-pricing { max-width: 76rem; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
-  .v2-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-  .v2-plan {
-    position: relative; min-width: 0; display: flex; flex-direction: column; gap: 18px;
-    padding: 24px; border: 1px solid var(--v2-line-2); border-radius: 20px;
-    background: rgba(255, 255, 255, 0.025); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 24px 70px -48px rgba(0,0,0,0.75);
-  }
-  .v2-plan--featured { background: linear-gradient(180deg, rgba(45,127,249,0.10), var(--v2-card)); box-shadow: 0 0 70px -38px rgba(45, 127, 249, 0.75); }
-  .v2-plan__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; min-height: 96px; }
-  .v2-plan__name { margin: 0; font-size: 18px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; color: var(--v2-fg); }
-  .v2-plan__description { margin: 8px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--v2-muted); }
-  .v2-plan__badge {
-    flex: none; padding: 4px 8px; border: 1px solid rgba(79, 148, 251, 0.34); border-radius: 999px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--v2-electric); background: rgba(79, 148, 251, 0.08);
-  }
-  .v2-plan__price { margin: 0; display: flex; align-items: baseline; gap: 6px; color: var(--v2-fg); }
-  .v2-plan__price span { font-size: clamp(36px, 4vw, 52px); line-height: 0.95; letter-spacing: -0.035em; font-weight: 600; }
-  .v2-plan__price small { font-size: 13px; line-height: 1; color: var(--v2-faint); }
-  .v2-plan__messages {
-    margin: -6px 0 0; padding: 10px 12px; border: 1px solid rgba(39, 215, 161, 0.22); border-radius: 10px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; line-height: 1.45; color: var(--v2-performance); background: rgba(39, 215, 161, 0.055);
-  }
-  .v2-plan__features { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-  .v2-plan__features li { display: flex; align-items: flex-start; gap: 8px; font-size: 13.5px; line-height: 1.45; color: var(--v2-muted); }
-  .v2-plan__check { flex: none; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: var(--v2-performance); background: rgba(39, 215, 161, 0.12); }
-  .v2-plan__cta {
-    margin-top: auto; display: inline-flex; justify-content: center; padding: 10px 12px; border-radius: 999px;
-    border: 1px solid var(--v2-line-2); color: var(--v2-fg); font-size: 12.5px; font-weight: 600;
-  }
-  .v2-addons {
-    display: grid; grid-template-columns: minmax(10rem, 0.8fr) 2fr; gap: 14px; align-items: center;
-    padding: 16px; border: 1px solid var(--v2-line); border-radius: 18px; background: rgba(255,255,255,0.018);
-  }
-  .v2-addons__title {
-    margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-faint);
-  }
-  .v2-addons__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .v2-addon { min-width: 0; display: grid; gap: 3px; padding: 12px; border: 1px solid var(--v2-line); border-radius: 12px; background: rgba(8, 12, 22, 0.32); }
-  .v2-addon__name { font-size: 13.5px; font-weight: 600; color: var(--v2-fg); }
-  .v2-addon__messages { font-size: 12.5px; color: var(--v2-muted); }
-  .v2-addon__price { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--v2-performance); }
-  .v2-pricing__footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
-  .v2-pricing__cta { width: auto; min-width: 15rem; }
-  .v2-pricing__note { margin: 0; max-width: 38rem; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.04em; line-height: 1.55; color: var(--v2-faint); }
-
-  /* ============================================================ FAQ ============================================================ */
-  .v2-faq { max-width: 50rem; margin: 0 auto; }
-  .v2-faq__item { border-bottom: 1px solid var(--v2-line); }
-  .v2-faq__item summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; list-style: none; cursor: pointer; font-size: 16px; font-weight: 500; color: var(--v2-fg); }
-  .v2-faq__item summary::-webkit-details-marker { display: none; }
-  .v2-faq__plus { font-size: 22px; color: var(--v2-accent); font-weight: 300; transition: transform 300ms var(--v2-ease); }
-  .v2-faq__item[open] .v2-faq__plus { transform: rotate(45deg); }
-  .v2-faq__item p { margin: 0 0 24px; font-size: 14.5px; line-height: 1.65; color: var(--v2-muted); max-width: 44rem; }
-
-  /* ============================================================ CTA + Footer ============================================================ */
-  .v2-chapter--cta { padding-bottom: 80px; }
-  .v2-cta {
-    max-width: 56rem; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px;
-    padding: clamp(48px, 8vw, 96px); background: var(--v2-card); border: 1px solid var(--v2-line-2); border-radius: 28px;
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; overflow: hidden;
-  }
-  .v2-cta::before { content: ''; position: absolute; inset: -50%; background: radial-gradient(circle at 50% 0%, rgba(45, 127, 249, 0.18), transparent 60%); pointer-events: none; }
-  .v2-cta__title { position: relative; margin: 8px 0 0; font-size: clamp(28px, 4vw, 48px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; max-width: 20ch; }
-  .v2-cta__body { position: relative; margin: 0; font-size: clamp(14px, 1.2vw, 16px); line-height: 1.6; color: var(--v2-muted); max-width: 36rem; }
-  .v2-cta__actions { position: relative; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
-
-  .v2-footer { position: relative; z-index: 1; max-width: var(--v2-frame-w); margin: 0 auto; padding: clamp(60px, 9vh, 100px) 24px 32px; border-top: 1px solid var(--v2-line); }
-  .v2-footer__top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; padding-bottom: clamp(48px, 7vh, 72px); }
-  .v2-footer__brand { display: flex; flex-direction: column; gap: 18px; max-width: 28rem; }
-  .v2-footer__brand img { height: 56px; width: auto; align-self: flex-start; }
-  .v2-footer__brand p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--v2-muted); }
-  .v2-footer__cta { margin-top: 8px; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px; background: var(--v2-fg); color: var(--v2-void); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: transform 220ms var(--v2-ease), opacity 220ms var(--v2-ease); }
-  .v2-footer__cta:hover { transform: translateY(-1px); opacity: 0.92; }
-  .v2-footer__cta-arrow { display: inline-block; transition: transform 220ms var(--v2-ease); }
-  .v2-footer__cta:hover .v2-footer__cta-arrow { transform: translateX(3px); }
-  .v2-footer__col { display: flex; flex-direction: column; gap: 14px; }
-  .v2-footer__h { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-faint); margin: 0; font-weight: 500; }
-  .v2-footer__col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  .v2-footer__col a { color: var(--v2-muted); text-decoration: none; font-size: 13.5px; line-height: 1.4; transition: color 200ms var(--v2-ease); border-bottom: 1px solid transparent; padding-bottom: 1px; }
-  .v2-footer__col a:hover { color: var(--v2-fg); border-bottom-color: var(--v2-line-2); }
-  .v2-footer__bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 24px; border-top: 1px solid var(--v2-line); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; color: var(--v2-faint); flex-wrap: wrap; }
-  .v2-footer__legal, .v2-footer__credit { margin: 0; }
-  .v2-footer__credit { color: var(--v2-subtle); letter-spacing: 0.04em; }
-  .v2-footer__lang { display: inline-flex; align-items: center; gap: 8px; }
-  .v2-footer__lang a { color: var(--v2-faint); text-decoration: none; transition: color 200ms var(--v2-ease); letter-spacing: 0.1em; }
-  .v2-footer__lang a:hover, .v2-footer__lang a.is-active { color: var(--v2-fg); }
-  .v2-footer__lang a.is-active { border-bottom: 1px solid var(--v2-line-2); padding-bottom: 1px; }
-  @media (max-width: 880px) {
-    .v2-footer__top { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
-    .v2-footer__brand { grid-column: 1 / -1; max-width: none; }
-  }
-  @media (max-width: 480px) {
-    .v2-footer__top { grid-template-columns: 1fr; gap: 32px; }
-    .v2-footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
-  }
-
-  /* ============================================================ Reveal & words ============================================================ */
-  .v2-reveal { opacity: 0; transform: translateY(28px); transition: opacity 700ms var(--v2-ease), transform 700ms var(--v2-ease); transition-delay: var(--v2-rd, 0ms); }
-  .v2-reveal.is-in { opacity: 1; transform: translateY(0); }
-  .v2-words .v2-word { display: inline-block; opacity: 0; transform: translateY(0.5em); transition: opacity 700ms var(--v2-ease-out), transform 700ms var(--v2-ease-out); transition-delay: calc(var(--v2-base, 0ms) + var(--v2-wi, 0) * 70ms); }
-  .v2-words.is-in .v2-word { opacity: 1; transform: translateY(0); }
-  @keyframes v2-failsafe { to { opacity: 1; transform: none; } }
-  .v2-reveal:not(.is-in) { animation: v2-failsafe 1ms 4s forwards; }
-  .v2-words:not(.is-in) .v2-word { animation: v2-failsafe 1ms 4s forwards; }
-  @media (prefers-reduced-motion: reduce) {
-    .v2-reveal, .v2-words .v2-word { opacity: 1; transform: none; transition: none; }
-  }
-  /* Static screenshot / no-JS-parity state (toggled via ?_shot) */
-  .v2-static .v2-reveal, .v2-static .v2-words .v2-word,
-  .v2-static .v2-bubble, .v2-static .v2-wellness {
-    opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important;
-  }
-  .v2-static .v2-holistic__canvas { display: none !important; }
-
-  /* ============================================================ Hero holistic proof ============================================================ */
-  .v2-holistic {
-    position: relative; z-index: 2; width: min(840px, calc(100vw - 32px));
-    min-height: clamp(420px, 48vw, 520px); margin-top: clamp(48px, 8vh, 84px);
-    border: 1px solid var(--v2-line-2); border-radius: 18px;
-    background:
-      radial-gradient(circle at 50% 46%, rgba(79, 148, 251, 0.14), transparent 34%),
-      linear-gradient(180deg, rgba(20, 30, 52, 0.64) 0%, rgba(8, 12, 22, 0.84) 100%);
-    backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 40px 80px -30px rgba(0,0,0,0.65), 0 0 0 1px rgba(79, 148, 251, 0.06);
-    overflow: hidden; text-align: left;
-  }
-  .v2-holistic::before {
-    content: ''; position: absolute; inset: 18px; border-radius: 14px; pointer-events: none;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 44px 44px; mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
-    opacity: 0.22;
-  }
-  .v2-holistic__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.92; }
-  .v2-holistic__shell { position: absolute; inset: 0; pointer-events: none; display: grid; place-items: center; }
-  .v2-holistic__ring {
-    position: absolute; width: min(48%, 360px); aspect-ratio: 1; border-radius: 50%;
-    border: 1px solid rgba(79, 148, 251, 0.18);
-  }
-  .v2-holistic__ring--outer { width: min(66%, 500px); border-color: rgba(79, 148, 251, 0.10); }
-  .v2-holistic__ring--inner { box-shadow: 0 0 48px rgba(79, 148, 251, 0.10) inset; }
-  .v2-holistic__center {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: clamp(178px, 28vw, 238px); min-height: 142px; padding: 20px 18px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; text-align: center;
-    border: 1px solid rgba(79, 148, 251, 0.34); border-radius: 16px;
-    background: linear-gradient(180deg, rgba(8, 12, 22, 0.88), rgba(11, 30, 58, 0.74));
-    box-shadow: 0 20px 60px rgba(3, 9, 26, 0.52), 0 0 0 1px rgba(255,255,255,0.04) inset;
-    transition: border-color 260ms var(--v2-ease-out), box-shadow 260ms var(--v2-ease-out), transform 260ms var(--v2-ease-out);
-  }
-  .v2-holistic.is-locking .v2-holistic__center {
-    transform: translate(-50%, -50%) scale(1.035);
-    border-color: rgba(39, 215, 161, 0.58);
-    box-shadow:
-      0 22px 70px rgba(3, 9, 26, 0.58),
-      0 0 0 1px rgba(39, 215, 161, 0.18) inset,
-      0 0 58px rgba(39, 215, 161, 0.16);
-  }
-  .v2-holistic__center strong { color: var(--v2-fg); font-size: clamp(22px, 3vw, 30px); line-height: 1.08; font-weight: 600; letter-spacing: -0.018em; }
-  .v2-holistic__center span:last-child {
-    color: var(--v2-performance); font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px; letter-spacing: 0.08em;
-  }
-  .v2-holistic__eyebrow {
-    color: var(--v2-subtle); font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase;
-  }
-  .v2-holistic__modules { position: absolute; inset: 0; pointer-events: none; }
-  .v2-holistic__module {
-    --h-x: 50%; --h-y: 50%;
-    position: absolute; left: var(--h-x); top: var(--h-y); transform: translate(-50%, -50%);
-    width: clamp(124px, 16vw, 154px); padding: 10px 12px 11px;
-    display: grid; grid-template-columns: auto 1fr; column-gap: 8px; row-gap: 2px; align-items: center;
-    border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;
-    background: rgba(8, 12, 22, 0.68); color: var(--v2-muted);
-    box-shadow: 0 10px 32px rgba(3, 9, 26, 0.30);
-    transition: border-color 520ms var(--v2-ease), background 520ms var(--v2-ease), transform 520ms var(--v2-ease), opacity 520ms var(--v2-ease);
-  }
-  .v2-holistic__module:nth-child(1) { --h-x: 50%; --h-y: 11%; }
-  .v2-holistic__module:nth-child(2) { --h-x: 81%; --h-y: 29%; }
-  .v2-holistic__module:nth-child(3) { --h-x: 81%; --h-y: 70%; }
-  .v2-holistic__module:nth-child(4) { --h-x: 50%; --h-y: 89%; }
-  .v2-holistic__module:nth-child(5) { --h-x: 19%; --h-y: 70%; }
-  .v2-holistic__module:nth-child(6) { --h-x: 19%; --h-y: 29%; }
-  .v2-holistic__module.is-active {
-    border-color: rgba(79, 148, 251, 0.44); background: rgba(12, 25, 48, 0.82);
-    transform: translate(-50%, -50%) scale(1.025);
-  }
-  .v2-holistic__module.is-pulling {
-    border-color: rgba(39, 215, 161, 0.48);
-    background: rgba(12, 35, 48, 0.88);
-    transform: translate(-50%, -50%) scale(1.045);
-  }
-  .v2-holistic__module-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: var(--v2-electric);
-    box-shadow: 0 0 18px rgba(79, 148, 251, 0.55);
-  }
-  .v2-holistic__module strong { color: var(--v2-fg); font-size: 13px; font-weight: 600; line-height: 1.15; }
-  .v2-holistic__module span:last-child {
-    grid-column: 2; color: var(--v2-subtle); font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px; line-height: 1.2; letter-spacing: 0.08em;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .v2-holistic__canvas { display: none; }
-  }
-
-  /* ============================================================ Responsive cleanup ============================================================ */
-  @media (max-width: 720px) {
-    .v2-chapter { padding: 80px 20px; }
-    .v2-pillar, .v2-plan { padding: 22px; }
-    .v2-chapter__head { gap: 12px; }
-    .v2-plans, .v2-addons, .v2-addons__list { grid-template-columns: 1fr; }
-    .v2-plan__head { min-height: auto; }
-    .v2-pricing__footer { justify-content: center; text-align: center; }
-    .v2-pricing__cta { width: 100%; min-width: 0; }
-    .v2-holistic { width: calc(100vw - 24px); min-height: 620px; }
-    .v2-holistic__canvas, .v2-holistic__shell { display: none; }
-    .v2-holistic__center { top: 148px; width: min(230px, calc(100% - 48px)); }
-    .v2-holistic__modules {
-      position: absolute; inset: auto 18px 74px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-    }
-    .v2-holistic__module {
-      position: relative; left: auto; top: auto; transform: none; width: auto;
-    }
-    .v2-holistic__module.is-active { transform: none; }
-    .v2-holistic__module.is-pulling { transform: none; }
-  }
-  @media (min-width: 721px) and (max-width: 1040px) { .v2-plans { grid-template-columns: 1fr; } }
-  @media (max-width: 414px) {
-    .v2-holistic { min-height: 650px; }
-    .v2-holistic__center { top: 138px; }
-    .v2-holistic__modules { grid-template-columns: 1fr; bottom: 68px; }
-    .v2-holistic__module { padding: 8px 10px 9px; }
-  }
-</style>
-
-<script>
-  // ============================================================
-  // v2 — bulletproof reveal system + hero sequencer + ambient
-  // ============================================================
-  (function v2Init() {
-    const root = document.querySelector<HTMLElement>('.v2');
-    if (!root) return;
-    // `?_shot` forces the fully-revealed resting state (used for static screenshots / no-JS fallback parity).
-    const forceStatic = location.search.indexOf('_shot') !== -1;
-    const reduced = forceStatic || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (forceStatic) {
-      root.classList.add('v2-static');
-      document.querySelectorAll<HTMLElement>('.v2-holistic').forEach((d) => d.classList.add('is-in'));
+      // Wait for web fonts so fragment/row geometry is final before
+      // measuring convergence deltas.
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(arm);
+      } else {
+        arm();
+      }
     }
 
-    // ───── Split words inside [data-words] ─────
-    const wordContainers = document.querySelectorAll<HTMLElement>('[data-words]');
-    wordContainers.forEach((el) => {
-      const baseDelay = Number(el.dataset.wordsDelay || 0);
-      el.style.setProperty('--v2-base', baseDelay + 'ms');
-      const text = el.textContent || '';
-      el.textContent = '';
-      const parts = text.split(/(\s+)/);
-      let wi = 0;
-      parts.forEach((part) => {
-        if (/^\s+$/.test(part)) {
-          el.appendChild(document.createTextNode(' '));
-        } else if (part.length > 0) {
-          const span = document.createElement('span');
-          span.className = 'v2-word';
-          span.style.setProperty('--v2-wi', String(wi));
-          span.textContent = part;
-          el.appendChild(span);
-          wi += 1;
-        }
-      });
-    });
-
-    // ───── Set delay on .v2-reveal[data-delay] ─────
-    document.querySelectorAll<HTMLElement>('.v2-reveal[data-delay]').forEach((el) => {
-      el.style.setProperty('--v2-rd', el.dataset.delay + 'ms');
-    });
-
-    if (reduced) {
-      document.querySelectorAll('.v2-reveal, .v2-words').forEach((el) => el.classList.add('is-in'));
-    }
-
-    // ───── Reveal observer ─────
-    const targets = document.querySelectorAll<HTMLElement>('.v2-reveal, .v2-words');
-    if (!reduced) {
-      const io = new IntersectionObserver(
+    // ── Reveal-once cross-fade (Split Studio) ──
+    const revealTargets = document.querySelectorAll('[data-reveal]');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealTargets.forEach((el) => el.classList.add('is-in'));
+    } else {
+      const revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-in');
-              io.unobserve(entry.target);
+              revealObserver.unobserve(entry.target);
             }
           });
         },
-        { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+        { rootMargin: '0px 0px -8% 0px' },
       );
-      targets.forEach((el) => io.observe(el));
-
-      function showInView() {
-        targets.forEach((el) => {
-          if (el.classList.contains('is-in')) return;
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
-            el.classList.add('is-in');
-            io.unobserve(el);
-          }
-        });
-      }
-      requestAnimationFrame(() => requestAnimationFrame(showInView));
+      revealTargets.forEach((el) => revealObserver.observe(el));
     }
-
-    // ───── Cursor follow ─────
-    const cursor = document.querySelector<HTMLElement>('.v2-cursor');
-    if (cursor && window.matchMedia('(pointer: fine)').matches) {
-      let mx = window.innerWidth / 2;
-      let my = window.innerHeight / 2;
-      let tx = mx, ty = my;
-      let raf = 0;
-      function tick() {
-        mx += (tx - mx) * 0.12;
-        my += (ty - my) * 0.12;
-        cursor!.style.transform = `translate(${mx - window.innerWidth / 2}px, ${my - window.innerHeight / 2}px)`;
-        raf = requestAnimationFrame(tick);
-      }
-      window.addEventListener('mousemove', (e) => {
-        tx = e.clientX;
-        ty = e.clientY;
-        if (!raf) raf = requestAnimationFrame(tick);
-      }, { passive: true });
-    }
-
-    // ───── Chapter accent → bloom hue ─────
-    const chapterEls = document.querySelectorAll<HTMLElement>('.v2-chapter[data-accent]');
-    if (chapterEls.length) {
-      const chapterIO = new IntersectionObserver(
-        (entries) => {
-          let best: IntersectionObserverEntry | null = null;
-          for (const e of entries) {
-            if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
-          }
-          if (best) root!.dataset.activeAccent = (best.target as HTMLElement).dataset.accent || 'electric';
-        },
-        { threshold: [0.25, 0.5, 0.75], rootMargin: '-20% 0% -20% 0%' }
-      );
-      chapterEls.forEach((c) => chapterIO.observe(c));
-    }
-
-    // ============================================================
-    // Hero holistic proof — Three.js living hub with static fallback
-    // ============================================================
-    (function holisticHero() {
-      const host = document.getElementById('v2-holistic') as HTMLElement | null;
-      const canvas = document.getElementById('v2-holistic-canvas') as HTMLCanvasElement | null;
-      if (!host) return;
-      const moduleEls = Array.from(host.querySelectorAll<HTMLElement>('[data-holistic-module]'));
-      moduleEls[0]?.classList.add('is-active');
-      if (!canvas || reduced || window.innerWidth < 721) return;
-
-      let started = false;
-      let setVisible: ((visible: boolean) => void) | null = null;
-
-      const startScene = async () => {
-        if (started) return;
-        started = true;
-        let THREE: typeof import('three');
-        try { THREE = await import('three'); } catch (err) { canvas.style.display = 'none'; return; }
-
-        let renderer: import('three').WebGLRenderer;
-        try {
-          renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
-        } catch (err) {
-          canvas.style.display = 'none';
-          return;
-        }
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.OrthographicCamera(0, 1, 1, 0, -100, 100);
-        const lineGroup = new THREE.Group();
-        const nodeGroup = new THREE.Group();
-        const pulseGroup = new THREE.Group();
-        const impactGroup = new THREE.Group();
-        scene.add(lineGroup, nodeGroup, pulseGroup, impactGroup);
-
-        const electric = new THREE.Color('#4f94fb');
-        const performanceSignal = new THREE.Color('#27d7a1');
-        const muted = new THREE.Color('#8497bd');
-        const paths: import('three').QuadraticBezierCurve3[] = [];
-        const lines: import('three').Line[] = [];
-        const nodes: import('three').Mesh[] = [];
-        const nodeBases: import('three').Vector3[] = [];
-        const pulses: import('three').Mesh[] = [];
-        const impactRings: import('three').Mesh[] = [];
-        const hub = new THREE.Mesh(
-          new THREE.RingGeometry(30, 34, 72),
-          new THREE.MeshBasicMaterial({ color: performanceSignal, transparent: true, opacity: 0.36 })
-        );
-        scene.add(hub);
-
-        const easeOutExpo = (t: number) => t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
-        const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-        const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
-
-        function clearGroup(group: import('three').Group) {
-          while (group.children.length) {
-            const child = group.children.pop();
-            if (!child) continue;
-            const mesh = child as import('three').Mesh;
-            mesh.geometry?.dispose?.();
-            const mat = mesh.material as import('three').Material | import('three').Material[] | undefined;
-            if (Array.isArray(mat)) mat.forEach((m) => m.dispose());
-            else mat?.dispose?.();
-          }
-        }
-
-        function resize() {
-          const rect = host.getBoundingClientRect();
-          const width = Math.max(1, Math.round(rect.width));
-          const height = Math.max(1, Math.round(rect.height));
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-          renderer.setSize(width, height, false);
-          camera.left = 0; camera.right = width; camera.top = 0; camera.bottom = height; camera.updateProjectionMatrix();
-
-          clearGroup(lineGroup);
-          clearGroup(nodeGroup);
-          clearGroup(pulseGroup);
-          clearGroup(impactGroup);
-          paths.length = 0; lines.length = 0; nodes.length = 0; nodeBases.length = 0; pulses.length = 0; impactRings.length = 0;
-
-          const center = new THREE.Vector3(width * 0.5, height * 0.5, 0);
-          hub.position.copy(center);
-          const radiusX = width * 0.33;
-          const radiusY = height * 0.36;
-          const nodeGeo = new THREE.CircleGeometry(8, 28);
-          const pulseGeo = new THREE.CircleGeometry(5, 24);
-
-          for (let i = 0; i < moduleEls.length; i += 1) {
-            const angle = -Math.PI / 2 + i * (Math.PI * 2 / moduleEls.length);
-            const start = new THREE.Vector3(center.x + Math.cos(angle) * radiusX, center.y + Math.sin(angle) * radiusY, 0);
-            const mid = new THREE.Vector3((start.x + center.x) / 2, (start.y + center.y) / 2, 0);
-            const bend = i % 2 === 0 ? 28 : -28;
-            mid.x += Math.cos(angle + Math.PI / 2) * bend;
-            mid.y += Math.sin(angle + Math.PI / 2) * bend;
-
-            const curve = new THREE.QuadraticBezierCurve3(start, mid, center);
-            paths.push(curve);
-            const line = new THREE.Line(
-              new THREE.BufferGeometry().setFromPoints(curve.getPoints(42)),
-              new THREE.LineBasicMaterial({ color: muted, transparent: true, opacity: 0.16 })
-            );
-            lineGroup.add(line);
-            lines.push(line);
-
-            const node = new THREE.Mesh(nodeGeo.clone(), new THREE.MeshBasicMaterial({ color: electric, transparent: true, opacity: 0.30 }));
-            node.position.copy(start);
-            nodeGroup.add(node);
-            nodes.push(node);
-            nodeBases.push(start.clone());
-
-            const pulse = new THREE.Mesh(pulseGeo.clone(), new THREE.MeshBasicMaterial({ color: performanceSignal, transparent: true, opacity: 0 }));
-            pulseGroup.add(pulse);
-            pulses.push(pulse);
-          }
-
-          [72, 112, 154].forEach((radius) => {
-            const ring = new THREE.Mesh(
-              new THREE.RingGeometry(radius, radius + 2, 96),
-              new THREE.MeshBasicMaterial({ color: performanceSignal, transparent: true, opacity: 0 })
-            );
-            ring.position.copy(center);
-            impactGroup.add(ring);
-            impactRings.push(ring);
-          });
-        }
-
-        resize();
-        window.addEventListener('resize', resize, { passive: true });
-
-        let active = 0;
-        let running = false;
-        let rafId = 0;
-        const startedAt = performance.now();
-        const cycleMs = 3200;
-        const pullStartMs = 220;
-        const signalDelayMs = 90;
-        const signalTravelMs = 1180;
-        const lockStartMs = pullStartMs + signalDelayMs * 5 + signalTravelMs - 120;
-        const lockMs = 520;
-
-        function loop(now: number) {
-          if (!running) return;
-          const elapsed = now - startedAt;
-          const cycle = elapsed % cycleMs;
-          const lockProgress = clamp01((cycle - lockStartMs) / lockMs);
-          const isLocking = lockProgress > 0 && lockProgress < 1;
-          host.classList.toggle('is-locking', isLocking);
-
-          nodes.forEach((node, i) => {
-            const mat = node.material as import('three').MeshBasicMaterial;
-            const start = nodeBases[i];
-            const signalStart = pullStartMs + i * signalDelayMs;
-            const signalProgress = clamp01((cycle - signalStart) / signalTravelMs);
-            const isPulling = signalProgress > 0 && signalProgress < 1;
-            const isStaged = signalProgress > 0 && signalProgress < 0.24;
-            const unsettled = Math.max(0, 1 - signalProgress);
-            const driftX = Math.sin(elapsed * 0.0022 + i * 1.7) * 5 * unsettled;
-            const driftY = Math.cos(elapsed * 0.0018 + i * 1.2) * 4 * unsettled;
-            node.position.set(start.x + driftX, start.y + driftY, 0);
-            mat.opacity = isStaged || isLocking ? 0.78 : 0.34 + Math.sin(elapsed * 0.002 + i) * 0.08;
-            node.scale.setScalar(isStaged ? 1.34 : 1 + Math.sin(elapsed * 0.0025 + i) * 0.08);
-          });
-
-          pulses.forEach((pulse, i) => {
-            const mat = pulse.material as import('three').MeshBasicMaterial;
-            const signalStart = pullStartMs + i * signalDelayMs;
-            const signalProgress = clamp01((cycle - signalStart) / signalTravelMs);
-            const isPulling = signalProgress > 0 && signalProgress < 1;
-            const line = lines[i];
-            if (line) {
-              const lineMat = line.material as import('three').LineBasicMaterial;
-              lineMat.opacity = isPulling ? 0.42 + Math.sin(signalProgress * Math.PI) * 0.18 : isLocking ? 0.28 : 0.12;
-              lineMat.color.copy(isPulling || isLocking ? electric : muted);
-            }
-            if (isPulling && paths[i]) {
-              const t = easeOutExpo(signalProgress);
-              pulse.position.copy(paths[i].getPoint(Math.min(0.992, t)));
-              mat.opacity = Math.sin(signalProgress * Math.PI) * 0.9;
-              pulse.scale.setScalar(0.9 + easeOutCubic(signalProgress) * 1.25);
-            } else {
-              mat.opacity = 0;
-            }
-          });
-
-          const activeNow = pulses
-            .map((_, i) => ({ i, p: clamp01((cycle - (pullStartMs + i * signalDelayMs)) / signalTravelMs) }))
-            .filter((item) => item.p > 0 && item.p < 0.24)
-            .map((item) => item.i);
-          if (activeNow[0] !== active) active = activeNow[0] ?? active;
-          moduleEls.forEach((el, i) => {
-            const pulling = activeNow.includes(i);
-            el.classList.toggle('is-pulling', pulling);
-            el.classList.toggle('is-active', pulling || (isLocking && i === active));
-          });
-
-          const lockWave = Math.sin(lockProgress * Math.PI);
-          const hubPulse = 1 + lockWave * 0.18 + Math.sin(cycle * 0.006) * 0.025;
-          hub.scale.setScalar(hubPulse);
-          (hub.material as import('three').MeshBasicMaterial).opacity = 0.30 + lockWave * 0.34;
-          impactRings.forEach((ring, i) => {
-            const mat = ring.material as import('three').MeshBasicMaterial;
-            const p = clamp01((cycle - lockStartMs - i * 90) / 520);
-            const wave = Math.sin(p * Math.PI);
-            mat.opacity = wave * 0.34;
-            ring.scale.setScalar(0.62 + easeOutCubic(p) * 0.58);
-          });
-          lineGroup.rotation.z = Math.sin(elapsed * 0.00034) * 0.018;
-          renderer.render(scene, camera);
-          rafId = requestAnimationFrame(loop);
-        }
-
-        const pause = () => { running = false; cancelAnimationFrame(rafId); };
-        const play = () => { if (!running) { running = true; rafId = requestAnimationFrame(loop); } };
-        setVisible = (visible: boolean) => visible && !document.hidden ? play() : pause();
-        setVisible(true);
-        document.addEventListener('visibilitychange', () => setVisible?.(!document.hidden));
-      };
-
-      const heroIO = new IntersectionObserver((entries) => {
-        const visible = entries.some((entry) => entry.isIntersecting);
-        if (visible) void startScene();
-        setVisible?.(visible);
-      }, { threshold: 0.18, rootMargin: '120px' });
-      heroIO.observe(host);
-    })();
-
-    // ============================================================
-    // Three.js painted-texture background — fails silently.
-    // Lazy-loaded: only kicks in after idle (or intersection on touch),
-    // and only on devices that pass the capability check below.
-    // ============================================================
-    const paintCanvas = document.getElementById('v2-paint') as HTMLCanvasElement | null;
-    const paintEligible =
-      !!paintCanvas &&
-      !reduced &&
-      (window.matchMedia('(pointer: fine)').matches || window.innerWidth >= 768);
-
-    if (paintEligible && paintCanvas) {
-      const paintedBg = async (canvas: HTMLCanvasElement) => {
-        if (!window.matchMedia('(pointer: fine)').matches && window.innerWidth < 768) return;
-        let THREE: typeof import('three');
-        try { THREE = await import('three'); } catch (err) { return; }
-        let renderer: import('three').WebGLRenderer;
-        try {
-          renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
-        } catch (err) { return; }
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      renderer.setPixelRatio(dpr);
-      renderer.setSize(window.innerWidth, window.innerHeight, false);
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-
-      const palettes: Record<string, [THREE.Vector3, THREE.Vector3]> = {
-        electric: [new THREE.Vector3(0.18, 0.50, 1.00), new THREE.Vector3(0.50, 0.30, 1.00)],
-        performance: [new THREE.Vector3(0.15, 0.85, 0.70), new THREE.Vector3(0.20, 0.55, 1.00)],
-        violet: [new THREE.Vector3(0.55, 0.40, 1.00), new THREE.Vector3(0.30, 0.45, 1.00)],
-        warm: [new THREE.Vector3(1.00, 0.65, 0.30), new THREE.Vector3(1.00, 0.45, 0.45)],
-      };
-
-      const uniforms = {
-        uTime: { value: 0 },
-        uMouse: { value: new THREE.Vector2(0.5, 0.5) },
-        uRes: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-        uColorA: { value: palettes.electric[0].clone() },
-        uColorB: { value: palettes.electric[1].clone() },
-        uColorATarget: { value: palettes.electric[0].clone() },
-        uColorBTarget: { value: palettes.electric[1].clone() },
-        uIntensity: { value: 1.0 },
-      };
-
-      const material = new THREE.ShaderMaterial({
-        uniforms,
-        transparent: true,
-        vertexShader: `
-          varying vec2 vUv;
-          void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
-        `,
-        fragmentShader: `
-          precision highp float;
-          varying vec2 vUv;
-          uniform float uTime;
-          uniform vec2 uMouse;
-          uniform vec2 uRes;
-          uniform vec3 uColorA;
-          uniform vec3 uColorB;
-          uniform float uIntensity;
-          vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-          vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-          vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
-          float snoise(vec2 v) {
-            const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
-            vec2 i  = floor(v + dot(v, C.yy) );
-            vec2 x0 = v -   i + dot(i, C.xx);
-            vec2 i1; i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-            vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1;
-            i = mod289(i);
-            vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
-            vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
-            m = m*m; m = m*m;
-            vec3 x = 2.0 * fract(p * C.www) - 1.0;
-            vec3 h = abs(x) - 0.5;
-            vec3 ox = floor(x + 0.5);
-            vec3 a0 = x - ox;
-            m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
-            vec3 g;
-            g.x  = a0.x  * x0.x  + h.x  * x0.y;
-            g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-            return 130.0 * dot(m, g);
-          }
-          float fbm(vec2 p) {
-            float v = 0.0; float a = 0.5;
-            for (int i = 0; i < 4; i++) { v += a * snoise(p); p *= 2.0; a *= 0.5; }
-            return v;
-          }
-          void main() {
-            vec2 st = vUv;
-            vec2 aspect = vec2(uRes.x / uRes.y, 1.0);
-            vec2 p = (st - 0.5) * aspect;
-            vec2 m = (uMouse - 0.5) * aspect;
-            float t = uTime * 0.06;
-            float n1 = fbm(p * 1.4 + vec2(t, t * 0.7));
-            float n2 = fbm(p * 2.6 - vec2(t * 0.5, t));
-            float flow = n1 * 0.6 + n2 * 0.4;
-            float d = length(p - m);
-            float pull = smoothstep(0.8, 0.0, d) * 0.45;
-            vec3 col = mix(uColorA, uColorB, flow * 0.5 + 0.5);
-            col += pull * uColorB * 0.35;
-            float vign = smoothstep(1.1, 0.2, length(p));
-            float alpha = vign * (0.25 + flow * 0.18 + pull * 0.3) * uIntensity;
-            alpha = clamp(alpha, 0.0, 0.55);
-            gl_FragColor = vec4(col, alpha);
-          }
-        `,
-      });
-
-      const mesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
-      scene.add(mesh);
-
-      let mouseX = 0.5, mouseY = 0.5;
-      let targetX = 0.5, targetY = 0.5;
-      window.addEventListener('mousemove', (e) => {
-        targetX = e.clientX / window.innerWidth;
-        targetY = 1.0 - (e.clientY / window.innerHeight);
-      }, { passive: true });
-
-      function syncPalette() {
-        const accent = root!.dataset.activeAccent || 'electric';
-        const pair = palettes[accent] || palettes.electric;
-        uniforms.uColorATarget.value.copy(pair[0]);
-        uniforms.uColorBTarget.value.copy(pair[1]);
-      }
-      const accentObs = new MutationObserver(syncPalette);
-      accentObs.observe(root!, { attributes: true, attributeFilter: ['data-active-accent'] });
-      syncPalette();
-
-      window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight, false);
-        uniforms.uRes.value.set(window.innerWidth, window.innerHeight);
-      }, { passive: true });
-
-      const start = performance.now();
-      let rafId = 0;
-      let running = true;
-      function loop(now: number) {
-        if (!running) return;
-        uniforms.uTime.value = (now - start) / 1000;
-        mouseX += (targetX - mouseX) * 0.05;
-        mouseY += (targetY - mouseY) * 0.05;
-        uniforms.uMouse.value.set(mouseX, mouseY);
-        uniforms.uColorA.value.lerp(uniforms.uColorATarget.value, 0.04);
-        uniforms.uColorB.value.lerp(uniforms.uColorBTarget.value, 0.04);
-        renderer.render(scene, camera);
-        rafId = requestAnimationFrame(loop);
-      }
-      rafId = requestAnimationFrame(loop);
-
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) { running = false; cancelAnimationFrame(rafId); }
-        else if (!running) { running = true; rafId = requestAnimationFrame(loop); }
-      });
-      };
-
-      // Trigger the paint: only on idle (desktop), or when the canvas
-      // scrolls into view (touch / mobile). Disconnecting IO after fire
-      // avoids duplicate imports.
-      const startPaint = () => {
-        if ((window as any).__v2PaintStarted) return;
-        (window as any).__v2PaintStarted = true;
-        void paintedBg(paintCanvas);
-      };
-      if ('IntersectionObserver' in window) {
-        const paintIO = new IntersectionObserver(
-          (entries) => {
-            if (entries.some((e) => e.isIntersecting)) {
-              startPaint();
-              paintIO.disconnect();
-            }
-          },
-          { rootMargin: '200px' },
-        );
-        paintIO.observe(paintCanvas);
-      }
-      const idle = (cb: () => void) =>
-        'requestIdleCallback' in window
-          ? (window as any).requestIdleCallback(cb, { timeout: 2000 })
-          : window.setTimeout(cb, 1500);
-      idle(startPaint);
-    }
-
-    // ============================================================
-    // Lenis smooth scroll — additive
-    // ============================================================
-    let lenisInstance: any = null;
-    (async function smoothScroll() {
-      if (reduced) return;
-      if (!window.matchMedia('(pointer: fine)').matches) return;
-      try {
-        const { default: Lenis } = await import('lenis');
-        lenisInstance = new Lenis({
-          duration: 1.1,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          smoothWheel: true,
-          wheelMultiplier: 1.0,
-          touchMultiplier: 1.0,
-        });
-        function raf(time: number) { lenisInstance.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-      } catch (err) { /* native scroll still works */ }
-    })();
-
-    // ============================================================
-    // GSAP ScrollTrigger — cinematic accent only
-    // ============================================================
-    (async function cinematicAccents() {
-      if (reduced) return;
-      let gsap: any, ScrollTrigger: any;
-      try {
-        const gsapMod = await import('gsap');
-        const stMod = await import('gsap/ScrollTrigger');
-        gsap = gsapMod.gsap || gsapMod.default;
-        ScrollTrigger = stMod.ScrollTrigger || stMod.default;
-        gsap.registerPlugin(ScrollTrigger);
-      } catch (err) { return; }
-
-      if (lenisInstance) lenisInstance.on('scroll', ScrollTrigger.update);
-
-      document.querySelectorAll<HTMLElement>('.v2-chapter__n').forEach((el) => {
-        gsap.to(el, { y: -40, ease: 'none', scrollTrigger: { trigger: el.closest('.v2-chapter'), start: 'top bottom', end: 'bottom top', scrub: 1.2 } });
-      });
-      document.querySelectorAll<HTMLElement>('.v2-chapter__head').forEach((el) => {
-        gsap.to(el, { y: -24, ease: 'none', scrollTrigger: { trigger: el.closest('.v2-chapter'), start: 'top 80%', end: 'bottom 20%', scrub: 1.5 } });
-      });
-    })();
-  })();
-</script>
+  </script>
+</BaseLayout>

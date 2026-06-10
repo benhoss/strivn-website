@@ -1,87 +1,66 @@
 export type Locale = 'en' | 'fr';
 
-type Bubble = { direction: 'in' | 'out'; text: string; time: string; unread?: boolean };
+/** One scattered fragment of the coach's daily chaos, shown in the hero stage. */
+type Fragment = {
+  kind: 'chat' | 'sheet' | 'note' | 'sms' | 'scrap' | 'mail';
+  source: string;
+  text: string;
+};
+
+/** One ordered row of the unified team-state panel the fragments converge into. */
+type PanelRow = { label: string; value: string; tone: 'ok' | 'watch' | 'info' };
 
 type LandingContent = {
   meta: { title: string; description: string };
+
   nav: {
-    reality: string;
-    staff: string;
-    communication: string;
-    medical: string;
-    load: string;
-    sessions: string;
-    pricing: string;
+    links: Array<{ label: string; href: string }>;
+    cta: string;
   };
-  ctaMini: string;
 
   hero: {
     title: string;
     titleAccent: string;
-    body: string;
+    lede: string;
     primaryCta: string;
     secondaryCta: string;
-    holistic: {
-      eyebrow: string;
-      center: string;
-      outcome: string;
-      modules: Array<{ label: string; detail: string }>;
+    reassurance: string;
+    stage: {
+      ariaLabel: string;
+      fragments: Fragment[];
+      panel: {
+        header: string;
+        status: string;
+        rows: PanelRow[];
+      };
     };
   };
 
   reality: {
-    eyebrow: string;
     title: string;
     body: string;
-    tasks: string[];
-    phone: {
-      title: string;
-      name: string;
-      sub: string;
-      time: string;
-      bubbles: Bubble[];
-    };
-    resolve: { lead: string; line: string };
-  };
-
-  staff: {
-    eyebrow: string;
-    title: string;
-    body: string;
-    pillars: Array<{ tag: string; name: string; role: string; does: string[] }>;
-    features: Array<{ icon: string; title: string; subtitle: string; href: string; linkLabel: string }>;
+    scattered: string[];
+    resolve: string;
   };
 
   communication: {
-    eyebrow: string;
     title: string;
     body: string;
-    steps: Array<{ n: string; text: string }>;
-    channels: Array<{ label: string; status: string }>;
-    phone: {
-      name: string;
-      sub: string;
-      time: string;
-      bubbles: Bubble[];
-      wellness: { label: string; value: string; note: string };
-    };
-    /**
-     * Player app view: a real screenshot of the player app + the App Store
-     * and Google Play badges so visitors can see what the player gets
-     * and grab the app on their phone.
-     */
-    playerApp: {
-      eyebrow: string;
-      title: string;
-      caption: string;
+    points: string[];
+    proof: {
+      messageLabel: string;
+      message: string;
+      link: string;
+      repliesLabel: string;
+      replies: Array<{ name: string; answer: string; tone: 'ok' | 'watch' }>;
+      tally: string;
     };
   };
 
   medical: {
-    eyebrow: string;
     title: string;
     body: string;
-    features: string[];
+    points: string[];
     record: {
       player: string;
       injury: string;
@@ -94,69 +73,66 @@ type LandingContent = {
   };
 
   load: {
-    eyebrow: string;
     title: string;
-    titleAccent: string;
     body: string;
-    features: string[];
-    /** UI labels for the load-tracking mock — kept separate so we can translate. */
-    labels: {
-      tableTitle: string;
+    points: string[];
+    table: {
+      title: string;
+      week: string;
       colPlayer: string;
       colMon: string;
       colWed: string;
       colFri: string;
-      colLoad: string;
       colAcwr: string;
       colState: string;
       pillOk: string;
       pillWatch: string;
       pillRisk: string;
-      kpiRpe: string;
-      kpiLoad: string;
-      kpiAcwr: string;
-      kpiRecovery: string;
+      players: Array<{
+        name: string;
+        mon: string;
+        wed: string;
+        fri: string;
+        acwr: string;
+        zone: 'green' | 'amber' | 'red';
+      }>;
       tipLabel: string;
-    };
-    /**
-     * Mock data for the load-tracking UI: a 7-day rolling view of the squad.
-     */
-    snapshot: {
-      week: string;
-      weekRpeAvg: number;
-      weekLoad: number;
-      acwr: number;
-      recovery: number;
-      players: Array<{ name: string; rpeMon: number; rpeWed: number; rpeFri: number; load: number; acwr: number; zone: 'green' | 'amber' | 'red' }>;
       tip: string;
     };
   };
 
   sessions: {
-    eyebrow: string;
     title: string;
     body: string;
-    features: string[];
+    points: string[];
     board: {
-      eyebrow: string;
       title: string;
+      meta: string;
       stamp: string;
       phases: Array<{ label: string; detail: string }>;
     };
   };
 
-  timeSaved: {
-    eyebrow: string;
+  capabilities: {
     title: string;
     body: string;
-    stat: string;
-    statLabel: string;
-    breakdown: Array<{ task: string; hours: string }>;
-    footer: string;
+    items: Array<{ title: string; text: string }>;
+  };
+
+  playerApp: {
+    title: string;
+    body: string;
+    stores: string;
+    imageAlt: string;
+  };
+
+  timeSaved: {
+    title: string;
+    body: string;
+    rows: Array<{ task: string; outcome: string }>;
   };
 
   pricing: {
-    eyebrow: string;
     title: string;
     body: string;
     plans: Array<{
@@ -164,25 +140,21 @@ type LandingContent = {
       description: string;
       price: string;
       period: string;
-      badge?: string;
       availability: string;
       cta: string;
+      featured?: boolean;
       features: string[];
     }>;
-    cta: string;
-    href: string;
     note: string;
   };
 
   faq: {
-    eyebrow: string;
     title: string;
     body: string;
     items: Array<{ question: string; answer: string }>;
   };
 
   finalCta: {
-    eyebrow: string;
     title: string;
     body: string;
     primaryCta: string;
@@ -191,245 +163,111 @@ type LandingContent = {
   };
 
   footer: {
+    statement: string;
     brandLine: string;
     email: string;
-    productLabel: string;
-    product: Array<{ label: string; href: string }>;
-    staffLabel: string;
-    staff: string[];
-    contactLabel: string;
+    links: Array<{ label: string; href: string }>;
     credit: string;
   };
 };
 
-const APP_URL = 'https://app.strivn.net';
+export const APP_URL = 'https://app.strivn.net';
 
 export const landingContent: Record<Locale, LandingContent> = {
   fr: {
     meta: {
-      title: 'STRIVN | La plateforme d’intendance gratuite des coaches',
+      title: 'STRIVN — Toute l’équipe, sous un même toit',
       description:
-        "STRIVN centralise l'intendance d'une équipe : événements, présences, infirmerie, tactique, rapports, assistant IA, communications et RSVP. Gratuit pour les coaches.",
+        'Convocations, présences, infirmerie, charge, séances, communication : STRIVN réunit l’intendance complète d’une équipe dans une seule plateforme. Gratuite pour les coaches, sans validation du club.',
     },
+
     nav: {
-      reality: 'Le quotidien',
-      staff: 'La plateforme',
-      communication: 'Communication',
-      medical: "L'infirmerie",
-      load: 'La charge',
-      sessions: 'Les séances',
-      pricing: 'Tarifs',
+      links: [
+        { label: 'Plateforme', href: '#platform' },
+        { label: 'Tarifs', href: '#pricing' },
+        { label: 'FAQ', href: '#faq' },
+      ],
+      cta: 'Commencer',
     },
-    ctaMini: 'Commencer gratuitement',
 
     hero: {
-      title: 'WhatsApp gère la conversation.',
-      titleAccent: 'STRIVN gère l\'équipe.',
-      body:
-        "Convocations, présences, charge, RPE, infirmerie, communication. Tout ce que votre staff technique gère au quotidien, au même endroit, consultable par le coach, le préparateur physique et le kiné. Gratuit pour les coaches.",
+      title: 'Toute l’équipe,',
+      titleAccent: 'sous un même toit.',
+      lede: 'WhatsApp, Excel, notes papier, mémoire : le quotidien d’un coach est éparpillé. STRIVN réunit convocations, présences, infirmerie, charge et séances dans une seule plateforme, partagée par tout le staff.',
       primaryCta: 'Commencer gratuitement',
       secondaryCta: 'Voir la plateforme',
-      holistic: {
-        eyebrow: 'Une équipe, un état partagé',
-        center: 'État équipe',
-        outcome: 'Décision alignée',
-        modules: [
-          { label: 'Séance', detail: 'planifiée' },
-          { label: 'Match', detail: 'préparé' },
-          { label: 'Présences', detail: 'à jour' },
-          { label: 'Infirmerie', detail: 'visible' },
-          { label: 'Charge & RPE', detail: 'reliées' },
-          { label: 'Communication', detail: 'envoyée' },
+      reassurance: 'Gratuit pour une équipe · sans validation du club · prêt en quelques minutes',
+      stage: {
+        ariaLabel:
+          'Animation : les messages, fichiers et notes éparpillés d’un coach convergent dans un panneau STRIVN unifié qui montre l’état de l’équipe.',
+        fragments: [
+          { kind: 'mail', source: 'Email', text: 'Convocation dimanche : 9 réponses sur 16' },
+          { kind: 'sheet', source: 'presences_S23_v4.xlsx', text: 'Présences : 3 onglets, 2 versions' },
+          { kind: 'sms', source: 'Kiné · SMS', text: 'Genou de Mendes : pas de sprint cette semaine' },
+          { kind: 'scrap', source: 'Carnet', text: 'RPE de jeudi : à ressaisir' },
+          { kind: 'note', source: 'Note papier', text: 'Caler le bloc pressing pour jeudi' },
+          { kind: 'chat', source: 'Équipe · WhatsApp', text: 'On joue à quelle heure dimanche ?' },
         ],
+        panel: {
+          header: 'État équipe',
+          status: 'À jour · partagé avec le staff',
+          rows: [
+            { label: 'Communication', value: 'Convocation envoyée · 14 réponses', tone: 'ok' },
+            { label: 'Présences', value: '14 présents · 2 incertains', tone: 'ok' },
+            { label: 'Infirmerie', value: 'T. Mendes — réathlétisation', tone: 'watch' },
+            { label: 'Charge & RPE', value: 'ACWR 1.12 · groupe stable', tone: 'ok' },
+            { label: 'Séance', value: 'Jeudi 20h · bloc pressing', tone: 'info' },
+            { label: 'Match', value: 'Dimanche 15h · effectif confirmé', tone: 'info' },
+          ],
+        },
       },
     },
 
     reality: {
-      eyebrow: 'Le quotidien du coach',
-      title: "Coacher n'est qu'une partie du métier.",
-      body:
-        "Entre deux séances, le travail de l'ombre commence. Relancer ceux qui n'ont pas répondu, tenir l'infirmerie, briefer le staff, préparer la séance. C'est là que partent vos soirées.",
-      tasks: [
-        "Relancer ceux qui n'ont pas répondu",
-        'Faire les présences à chaque séance',
-        "Tenir l'infirmerie à jour",
-        'Coordonner kiné, prépa et adjoints',
-        'Préparer les comptes-rendus de séance',
-        "Caler la semaine d'entraînement",
+      title: 'Coacher n’est qu’une partie du métier.',
+      body: 'Le mardi à 22h47, le travail de l’ombre continue : relancer ceux qui n’ont pas répondu, tenir l’infirmerie, ressaisir les présences, briefer le kiné. Six endroits différents, zéro vue d’ensemble.',
+      scattered: [
+        'Le groupe WhatsApp',
+        'Le fichier de présences',
+        'Les notes d’infirmerie',
+        'Le carnet de RPE',
+        'Les schémas de séance',
+        'La mémoire du coach',
       ],
-      phone: {
-        title: 'Mardi, 22h47',
-        name: 'Équipe · Seniors A',
-        sub: '23 membres',
-        time: '22:47',
-        bubbles: [
-          { direction: 'in', text: 'Coach je serai en retard demain 🙏', time: '22:31' },
-          { direction: 'in', text: "Qqn a récupéré les plots ?", time: '22:38' },
-          { direction: 'in', text: 'Ah désolé j’avais pas vu le message', time: '22:40' },
-          { direction: 'in', text: 'On joue à quelle heure dimanche ?', time: '22:44', unread: true },
-          { direction: 'in', text: 'Mon genou est encore chaud, je sais pas', time: '22:47', unread: true },
-        ],
-      },
-      resolve: {
-        lead: "STRIVN s'occupe de toute l'intendance.",
-        line: "Tout ce qui n'est pas le terrain tourne en arrière-plan. Vous ne gardez que ce qui compte : le groupe, la séance, le match.",
-      },
-    },
-
-    staff: {
-      eyebrow: 'La plateforme coach',
-      title: 'Tout le quotidien de l’équipe au même endroit.',
-      body:
-        "STRIVN réunit ce que vous gérez déjà partout ailleurs : événements, joueurs, présences, infirmerie, tactique, rapports, programmes individuels et assistant IA. Une seule surface pour gagner du temps et voir plus clair.",
-      pillars: [
-        {
-          tag: 'Équipe',
-          name: "Gestion d'équipe",
-          role: 'Joueurs, staff, rôles et disponibilités dans une seule vue',
-          does: [
-            'Joueurs illimités',
-            'Staff illimité',
-            'Rôles, présences et disponibilités suivies',
-          ],
-        },
-        {
-          tag: 'Opérations',
-          name: 'Communication & événements',
-          role: 'La semaine, les messages et les réponses restent connectés',
-          does: [
-            'Entraînements, matchs, réunions',
-            'Communication unifiée',
-            'Liens RSVP et réponses par événement',
-          ],
-        },
-        {
-          tag: 'Performance',
-          name: 'Performance & suivi joueur',
-          role: 'Les signaux physiques, médicaux et individuels restent lisibles',
-          does: [
-            'Infirmerie et retour au jeu',
-            'Charge, RPE, tests et évaluations',
-            'Programmes individuels',
-          ],
-        },
-        {
-          tag: 'Joueurs',
-          name: 'Portail joueur',
-          role: 'L’expérience joueur continue dans les apps iOS et Android',
-          does: [
-            'Agenda joueur',
-            'RSVP et informations d’équipe',
-            'Apps iOS et Android',
-          ],
-        },
-      ],
-      features: [
-        {
-          icon: 'attendance',
-          title: 'Présences & RSVP',
-          subtitle: 'Les réponses des joueurs deviennent une vue coach à jour, sans recompter à la main.',
-          href: '#v2-communication',
-          linkLabel: 'Voir le workflow',
-        },
-        {
-          icon: 'medical',
-          title: 'Infirmerie',
-          subtitle: 'Blessures, notes médicales et retour au jeu restent visibles pour le staff autorisé.',
-          href: '#v2-medical',
-          linkLabel: "Voir l'infirmerie",
-        },
-        {
-          icon: 'load',
-          title: 'Charge & RPE',
-          subtitle: 'La charge, le ressenti et les signaux faibles se relient à la semaine réelle du groupe.',
-          href: '#v2-load',
-          linkLabel: 'Voir la charge',
-        },
-        {
-          icon: 'tests',
-          title: 'Tests & évaluations',
-          subtitle: 'Les tests physiques et techniques restent suivis dans le temps pour voir la progression réelle.',
-          href: '#v2-load',
-          linkLabel: 'Voir le suivi',
-        },
-        {
-          icon: 'program',
-          title: 'Programmes individuels',
-          subtitle: 'Les objectifs, charges adaptées et exercices spécifiques restent reliés à chaque joueur.',
-          href: '#v2-medical',
-          linkLabel: 'Voir les programmes',
-        },
-        {
-          icon: 'sessions',
-          title: 'Séances & tactique',
-          subtitle: 'Plans de séance, tableaux tactiques et exercices restent connectés à l’état de l’équipe.',
-          href: '#v2-sessions',
-          linkLabel: 'Voir les séances',
-        },
-        {
-          icon: 'reports',
-          title: 'Rapports de match et de séances',
-          subtitle: 'Les retours staff créent une boucle de feedback et gardent les temps de jeu visibles.',
-          href: '#v2-sessions',
-          linkLabel: 'Voir les rapports',
-        },
-        {
-          icon: 'insight',
-          title: 'Rapports & IA',
-          subtitle: 'Les comptes-rendus et l’assistant IA transforment les informations d’équipe en décisions.',
-          href: '#v2-staff',
-          linkLabel: 'Voir les insights',
-        },
-      ],
+      resolve: 'Une seule plateforme.',
     },
 
     communication: {
-      eyebrow: 'Communication',
-      title: 'Un message. Tous vos canaux.',
-      body:
-        "Chaque événement peut générer son message, son modèle et son lien RSVP. Vous le partagez depuis la web app, l'app mobile native (iOS + Android), WhatsApp, email ou le canal que votre groupe utilise déjà. STRIVN collecte les réponses et met l'équipe à jour.",
-      steps: [
-        { n: '01', text: 'STRIVN charge le dernier modèle utilisé pour ce type d’événement' },
-        { n: '02', text: 'Vous ajustez le message et choisissez comment le partager' },
-        { n: '03', text: 'Les joueurs répondent via le lien RSVP, sans compte à créer' },
+      title: 'La convocation qui se gère toute seule.',
+      body: 'Chaque événement génère son message et son lien de réponse. Vous le partagez sur le canal que votre groupe utilise déjà — WhatsApp, email, l’app — et STRIVN collecte les réponses pour tenir la feuille de présences à jour.',
+      points: [
+        'Modèles de message par type d’événement',
+        'Lien de réponse sans compte joueur',
+        'Présences mises à jour en temps réel',
+        'Relances ciblées sur les sans-réponse',
       ],
-      channels: [
-        { label: 'Web', status: 'copier & partager' },
-        { label: 'App', status: 'iOS + Android' },
-        { label: 'WhatsApp', status: 'groupe existant' },
-        { label: 'Email', status: 'staff & parents' },
-      ],
-      phone: {
-        name: 'STRIVN',
-        sub: 'Communication événement',
-        time: '18:05',
-        bubbles: [
-          { direction: 'in', text: 'Entraînement jeudi 20h au terrain 2. Confirme ta présence.', time: '18:02' },
-          { direction: 'in', text: 'RSVP : strivn.net/rsvp/abc123', time: '18:02' },
-          { direction: 'out', text: 'Présent', time: '18:03' },
-          { direction: 'out', text: 'Incertain, genou sensible', time: '18:05' },
+      proof: {
+        messageLabel: 'Message envoyé · 18h02',
+        message: 'Entraînement jeudi 20h · terrain 2. Confirme ta présence.',
+        link: 'strivn.net/rsvp/abc123',
+        repliesLabel: 'Réponses des joueurs',
+        replies: [
+          { name: 'A. Diallo', answer: 'Présent', tone: 'ok' },
+          { name: 'M. Benyahia', answer: 'Présent', tone: 'ok' },
+          { name: 'T. Mendes', answer: 'Incertain · genou', tone: 'watch' },
         ],
-        wellness: { label: 'Tableau coach', value: '14 présents', note: '1 incertain · signal genou' },
-      },
-      playerApp: {
-        eyebrow: 'L\'app des joueurs',
-        title: 'Ce que vos joueurs voient dans l\'app.',
-        caption:
-          "Chaque joueur a sa propre vue sur l'équipe dans l'app native (iOS + Android) : prochain événement, agenda, RSVP, métriques, notifications en temps réel.",
+        tally: '14 présents · 1 incertain · mis à jour à 18h05',
       },
     },
 
     medical: {
-      eyebrow: "L'infirmerie",
-      title: 'Un seul endroit pour tout le staff médical.',
-      body:
-        "L'infirmerie, les notes du doc, les avis du kiné, les protocoles de retour au jeu : tout est relié et visible, du diagnostic au retour sur le terrain. Le coach voit où en est chaque joueur, sans appeler personne.",
-      features: [
-        "Historique de l'infirmerie",
-        'Notes du médecin',
-        'Notes du kiné',
-        'Protocoles de retour au jeu',
-        'Visibilité côté coach',
+      title: 'L’infirmerie que tout le staff peut lire.',
+      body: 'Blessures, notes du médecin, avis du kiné, protocole de retour au jeu : tout est relié, du diagnostic au retour sur le terrain. Le coach voit où en est chaque joueur sans appeler personne.',
+      points: [
+        'Historique par joueur',
+        'Notes du médecin et du kiné au même endroit',
+        'Protocole de retour au jeu par étapes',
+        'Visibilité coach en lecture',
       ],
       record: {
         player: 'T. Mendes',
@@ -447,74 +285,55 @@ export const landingContent: Record<Locale, LandingContent> = {
           { author: 'A. Roux', role: 'Kiné', text: 'Bonne réponse au renforcement. Ressenti joueur en hausse.' },
         ],
         returnLabel: 'Retour estimé',
-        returnValue: '10 — 12 jours',
+        returnValue: '10 – 12 jours',
       },
     },
 
     load: {
-      eyebrow: 'La charge',
-      title: 'Charge, RPE, fatigue.',
-      titleAccent: 'Mesurés sans les chercher.',
-      body:
-        "RPE, charge, fatigue, récupération : STRIVN assemble les données semaine par semaine. Vous arrivez le lundi avec la charge du groupe, les signaux faibles et les joueurs à surveiller, sans avoir à relancer personne.",
-      labels: {
-        tableTitle: 'Charge & RPE',
+      title: 'La charge du groupe, sans relancer personne.',
+      body: 'RPE, charge hebdomadaire, ACWR, récupération : les joueurs répondent depuis leur téléphone et STRIVN assemble la semaine. Vous arrivez le lundi avec les signaux faibles déjà visibles.',
+      points: [
+        'RPE par séance et par joueur',
+        'Charge hebdo et monotonie',
+        'ACWR par joueur',
+        'Note prépa partagée au staff',
+      ],
+      table: {
+        title: 'Charge & RPE',
+        week: 'Semaine 23 · 1 – 7 juin',
         colPlayer: 'Joueur',
         colMon: 'Lun',
         colWed: 'Mer',
         colFri: 'Ven',
-        colLoad: 'Charge',
         colAcwr: 'ACWR',
         colState: 'État',
         pillOk: 'OK',
         pillWatch: 'À surveiller',
         pillRisk: 'Risque',
-        kpiRpe: 'RPE moyen',
-        kpiLoad: 'Charge',
-        kpiAcwr: 'ACWR',
-        kpiRecovery: 'Récup.',
-        tipLabel: 'Note prépa',
-      },
-      features: [
-        'RPE par session, par joueur',
-        'Charge hebdo et monotonie',
-        'ACWR (acute:chronic workload ratio)',
-        'Indicateurs de récupération',
-        'Snapshot prêt à partager avec le staff',
-      ],
-      snapshot: {
-        week: 'Semaine 23 · 1 – 7 juin',
-        weekRpeAvg: 6.4,
-        weekLoad: 4280,
-        acwr: 1.12,
-        recovery: 72,
         players: [
-          { name: 'A. Diallo',     rpeMon: 6, rpeWed: 7, rpeFri: 6, load: 420, acwr: 1.05, zone: 'green' },
-          { name: 'M. Benyahia',   rpeMon: 7, rpeWed: 8, rpeFri: 7, load: 510, acwr: 1.18, zone: 'amber' },
-          { name: 'T. Mendes',     rpeMon: 4, rpeWed: 0, rpeFri: 5, load: 180, acwr: 0.85, zone: 'amber' },
-          { name: 'J. Petit',      rpeMon: 6, rpeWed: 6, rpeFri: 7, load: 395, acwr: 1.02, zone: 'green' },
-          { name: 'L. Moreau',     rpeMon: 7, rpeWed: 7, rpeFri: 8, load: 485, acwr: 1.32, zone: 'red'   },
-          { name: 'S. Cissé',      rpeMon: 5, rpeWed: 6, rpeFri: 5, load: 330, acwr: 0.95, zone: 'green' },
-          { name: 'R. Dubois',     rpeMon: 6, rpeWed: 7, rpeFri: 6, load: 410, acwr: 1.10, zone: 'green' },
+          { name: 'A. Diallo', mon: '6', wed: '7', fri: '6', acwr: '1.05', zone: 'green' },
+          { name: 'M. Benyahia', mon: '7', wed: '8', fri: '7', acwr: '1.18', zone: 'amber' },
+          { name: 'T. Mendes', mon: '4', wed: '—', fri: '5', acwr: '0.85', zone: 'amber' },
+          { name: 'L. Moreau', mon: '7', wed: '7', fri: '8', acwr: '1.32', zone: 'red' },
+          { name: 'S. Cissé', mon: '5', wed: '6', fri: '5', acwr: '0.95', zone: 'green' },
         ],
-        tip: 'L. Moreau enchaîne 3 semaines au-dessus de 1.25 — prévoir une séance allégé vendredi.',
+        tipLabel: 'Note prépa',
+        tip: 'L. Moreau enchaîne 3 semaines au-dessus de 1.25 — prévoir une séance allégée vendredi.',
       },
     },
 
     sessions: {
-      eyebrow: 'La prépa',
-      title: 'Préparez vos séances plus vite.',
-      body:
-        'Vos schémas, vos exercices et votre semaine au même endroit. STRIVN met tout en forme pendant que vous pensez au jeu, et adapte la séance à la charge réelle du groupe.',
-      features: [
+      title: 'La séance prête avant d’arriver au terrain.',
+      body: 'Tableaux tactiques, bibliothèque d’exercices, planification de la semaine : STRIVN met la séance en forme pendant que vous pensez au jeu, et l’assistant IA tient compte de la charge réelle du groupe.',
+      points: [
         'Tableaux tactiques',
-        'Planification des séances',
-        "Bibliothèque d'exercices",
-        'Création de séance assistée',
+        'Bibliothèque d’exercices',
+        'Planification de la semaine',
+        'Création de séance assistée par IA',
       ],
       board: {
-        eyebrow: 'Séance · mardi 20h',
         title: 'Bloc tactique · pressing haut',
+        meta: 'Séance · jeudi 20h',
         stamp: '4 ateliers · 75 min',
         phases: [
           { label: 'Échauffement', detail: 'Activation + conduite de balle · 15 min' },
@@ -525,27 +344,42 @@ export const landingContent: Record<Locale, LandingContent> = {
       },
     },
 
-    timeSaved: {
-      eyebrow: 'Le temps gagné',
-      title: 'Récupérez vos soirées.',
-      body:
-        "STRIVN reprend l'intendance qui vous mange vos soirées : convocations, présences, comptes-rendus, coordination staff. Vous gardez le terrain.",
-      stat: 'Le soir',
-      statLabel: 'que vous récupérez, semaine après semaine',
-      breakdown: [
-        { task: 'Convocations & relances', hours: 'centralisées' },
-        { task: 'Présences & infirmerie', hours: 'au même endroit' },
-        { task: 'Comptes-rendus de séance', hours: 'préparés' },
-        { task: 'Coordination du staff', hours: 'visible' },
+    capabilities: {
+      title: 'Et tout le reste du quotidien.',
+      body: 'Une équipe, des joueurs et un staff illimités. Chaque module est inclus dans le plan gratuit — rien n’est verrouillé derrière un paiement.',
+      items: [
+        { title: 'Présences & RSVP', text: 'Les réponses des joueurs deviennent une vue coach à jour, sans recompter à la main.' },
+        { title: 'Infirmerie', text: 'Blessures, notes médicales et retour au jeu restent visibles pour le staff autorisé.' },
+        { title: 'Charge & RPE', text: 'La charge, le ressenti et les signaux faibles se relient à la semaine réelle du groupe.' },
+        { title: 'Tests & évaluations', text: 'Les tests physiques et techniques sont suivis dans le temps pour voir la progression réelle.' },
+        { title: 'Programmes individuels', text: 'Objectifs, charges adaptées et exercices spécifiques restent reliés à chaque joueur.' },
+        { title: 'Séances & tactique', text: 'Plans de séance, tableaux tactiques et exercices restent connectés à l’état de l’équipe.' },
+        { title: 'Rapports de match et de séance', text: 'Les retours du staff créent une boucle de feedback et gardent les temps de jeu visibles.' },
+        { title: 'Assistant IA', text: 'Les comptes-rendus et l’assistant transforment les informations d’équipe en décisions.' },
       ],
-      footer: "Le terrain d'abord. L'intendance ensuite.",
+    },
+
+    playerApp: {
+      title: 'Vos joueurs ont leur propre vue.',
+      body: 'Agenda, prochain événement, réponses de présence, notifications : chaque joueur suit l’équipe depuis l’app native. Et ceux qui ne l’installent pas répondent quand même par le lien.',
+      stores: 'Disponible sur iOS et Android',
+      imageAlt: 'Capture de l’app joueur STRIVN : agenda de la semaine avec les prochains événements',
+    },
+
+    timeSaved: {
+      title: 'Récupérez vos soirées.',
+      body: 'L’intendance tourne en arrière-plan. Vous gardez ce qui compte : le groupe, la séance, le match.',
+      rows: [
+        { task: 'Convocations & relances', outcome: 'centralisées' },
+        { task: 'Présences & infirmerie', outcome: 'au même endroit' },
+        { task: 'Comptes-rendus de séance', outcome: 'préparés' },
+        { task: 'Coordination du staff', outcome: 'visible par tous' },
+      ],
     },
 
     pricing: {
-      eyebrow: 'Tarifs',
-      title: 'Gratuit pour coacher. Pensé pour grandir en club.',
-      body:
-        "Le plan Coach donne l'expérience complète pour une équipe. Les plans Club arrivent pour les structures qui veulent coordonner plusieurs équipes, staffs et flux médicaux.",
+      title: 'Gratuit pour coacher. Payant quand le club grandit.',
+      body: 'Le plan Coach donne l’expérience complète pour une équipe. Les plans Club arrivent pour les structures qui veulent coordonner plusieurs équipes, staffs et flux médicaux.',
       plans: [
         {
           name: 'Coach',
@@ -554,6 +388,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           period: 'pour toujours',
           availability: 'Disponible maintenant',
           cta: 'Créer mon équipe',
+          featured: true,
           features: [
             '1 équipe',
             'Joueurs illimités',
@@ -594,445 +429,301 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
       ],
-      cta: 'Commencer gratuitement',
-      href: APP_URL,
-      note: "Le premier paiement arrive quand un club veut gérer plusieurs équipes et staffs dans STRIVN. Pas pour débloquer les outils essentiels d'un coach.",
+      note: 'Le premier paiement arrive quand un club veut gérer plusieurs équipes et staffs dans STRIVN. Pas pour débloquer les outils essentiels d’un coach.',
     },
 
     faq: {
-      eyebrow: 'FAQ',
-      title: "Les questions qu'on nous pose en premier.",
+      title: 'Les questions qu’on nous pose en premier.',
       body: 'Ce que vos joueurs ont à faire, qui décide, et combien de temps ça prend à installer.',
       items: [
         {
           question: 'Mes joueurs doivent-ils installer une application ?',
           answer:
-            "Non. Ils peuvent répondre via un lien RSVP partagé sur le canal que vous utilisez déjà : web, mobile, WhatsApp, email. Le but est de réduire la friction, pas d'imposer une nouvelle habitude.",
+            'Non. Ils peuvent répondre via un lien partagé sur le canal que vous utilisez déjà : web, mobile, WhatsApp, email. Le but est de réduire la friction, pas d’imposer une nouvelle habitude.',
         },
         {
-          question: "Est-ce que je perds le contrôle de mon équipe ?",
+          question: 'Est-ce que je perds le contrôle de mon équipe ?',
           answer:
-            "Jamais. STRIVN prépare le travail à votre place, mais rien ne part sans votre validation. Vous gardez la main sur chaque message, chaque décision. Il prend l'intendance, vous coachez.",
+            'Jamais. STRIVN prépare le travail à votre place, mais rien ne part sans votre validation. Vous gardez la main sur chaque message, chaque décision. Il prend l’intendance, vous coachez.',
         },
         {
           question: 'Combien de temps pour démarrer ?',
           answer:
-            "Quelques minutes. Vous créez votre équipe, vous ajoutez vos joueurs, et vous pouvez créer vos premiers événements, messages et liens RSVP dès la première semaine.",
+            'Quelques minutes. Vous créez votre équipe, vous ajoutez vos joueurs, et vous pouvez créer vos premiers événements, messages et liens de réponse dès la première semaine.',
         },
         {
           question: 'Pourquoi le plan Coach est gratuit ?',
           answer:
-            "Parce qu'un coach doit pouvoir tester et adopter STRIVN sans passer par le président, le bureau ou le trésorier. Le paiement commence quand le club veut coordonner plusieurs équipes.",
+            'Parce qu’un coach doit pouvoir tester et adopter STRIVN sans passer par le président, le bureau ou le trésorier. Le paiement commence quand le club veut coordonner plusieurs équipes.',
         },
         {
           question: 'Ça marche vraiment pour le football amateur ?',
           answer:
-            "C'est fait pour. STRIVN est pensé pour les coaches multi-casquettes qui n'ont pas un staff complet derrière eux. Plus vous êtes seul à tout gérer, plus il vous fait gagner du temps.",
+            'C’est fait pour. STRIVN est pensé pour les coaches multi-casquettes qui n’ont pas un staff complet derrière eux. Plus vous êtes seul à tout gérer, plus il vous fait gagner du temps.',
         },
         {
-          question: "Et si j'ai déjà un staff médical et un prépa ?",
+          question: 'Et si j’ai déjà un staff médical et un prépa ?',
           answer:
-            "Encore mieux. Chacun retrouve sa vue : le kiné voit l'infirmerie, le prépa voit la charge, le coordinateur voit plusieurs équipes. Personne ne ressaisit ce que le voisin a déjà noté.",
+            'Encore mieux. Chacun retrouve sa vue : le kiné voit l’infirmerie, le prépa voit la charge, le coordinateur voit plusieurs équipes. Personne ne ressaisit ce que le voisin a déjà noté.',
         },
       ],
     },
 
     finalCta: {
-      eyebrow: 'Commencer',
-      title: "Centralisez l'équipe. Reprenez le terrain.",
-      body: "Créez votre équipe gratuitement et commencez à organiser événements, présences, communication et infos joueurs depuis une seule plateforme.",
+      title: 'Mettez votre équipe sous un même toit.',
+      body: 'Créez votre équipe gratuitement — événements, présences, infirmerie et communication au même endroit dès cette semaine.',
       primaryCta: 'Créer mon équipe gratuitement',
       secondaryCta: 'Une question avant de démarrer ?',
-      secondaryHref: 'mailto:hello@strivn.ai?subject=STRIVN%20-%20question%20avant%20de%20démarrer',
+      secondaryHref: 'mailto:hello@strivn.ai?subject=STRIVN%20-%20question%20avant%20de%20d%C3%A9marrer',
     },
 
     footer: {
-      brandLine:
-        "STRIVN, la plateforme d'intendance gratuite qui rend du temps aux coaches et transforme les infos d'équipe en insights utiles.",
+      statement: 'Le terrain d’abord. L’intendance ensuite.',
+      brandLine: 'STRIVN réunit l’intendance complète d’une équipe dans une seule plateforme, gratuite pour les coaches.',
       email: 'hello@strivn.ai',
-      productLabel: 'Produit',
-      product: [
-        { label: 'La plateforme', href: '#v2-staff' },
-        { label: 'Communication', href: '#v2-communication' },
-        { label: "L'infirmerie", href: '#v2-medical' },
-        { label: 'Les séances', href: '#v2-sessions' },
-        { label: 'Tarifs', href: '#v2-pricing' },
+      links: [
+        { label: 'Plateforme', href: '#platform' },
+        { label: 'Tarifs', href: '#pricing' },
+        { label: 'FAQ', href: '#faq' },
       ],
-      staffLabel: 'Pour qui',
-      staff: ['Coaches', 'Adjoints', 'Prépas physiques', 'Kiné & staff médical', 'Clubs multi-équipes'],
-      contactLabel: 'Contact',
-      credit: 'Gratuit pour les coaches · bientôt pour les clubs',
+      credit: '© 2026 STRIVN · Gratuit pour les coaches, bientôt pour les clubs',
     },
   },
 
   en: {
     meta: {
-      title: 'STRIVN | The free operations platform for coaches',
+      title: 'STRIVN — Your whole team, under one roof',
       description:
-        'STRIVN centralizes one-team operations: events, attendance, injuries, tactics, reports, AI assistant, communication and RSVP. Free for coaches.',
+        'Call-ups, attendance, medical records, training load, sessions, communication: STRIVN brings a team’s entire operations into one platform. Free for coaches, no club approval needed.',
     },
+
     nav: {
-      reality: 'The reality',
-      staff: 'Platform',
-      communication: 'Communication',
-      medical: 'Medical',
-      load: 'Load',
-      sessions: 'Sessions',
-      pricing: 'Pricing',
+      links: [
+        { label: 'Platform', href: '#platform' },
+        { label: 'Pricing', href: '#pricing' },
+        { label: 'FAQ', href: '#faq' },
+      ],
+      cta: 'Get started',
     },
-    ctaMini: 'Start for free',
 
     hero: {
-      title: 'WhatsApp handles the conversation.',
-      titleAccent: 'STRIVN handles the team.',
-      body:
-        'Call-ups, attendance, load, RPE, medical, communication. Everything your technical staff manages day to day, in one place, readable by the head coach, the S&C coach and the physio. Free for coaches.',
+      title: 'Your whole team,',
+      titleAccent: 'under one roof.',
+      lede: 'WhatsApp, spreadsheets, paper notes, memory: a coach’s week is scattered everywhere. STRIVN brings call-ups, attendance, medical records, training load and sessions into one platform the whole staff shares.',
       primaryCta: 'Start for free',
       secondaryCta: 'See the platform',
-      holistic: {
-        eyebrow: 'One team, one shared state',
-        center: 'Team state',
-        outcome: 'Aligned decision',
-        modules: [
-          { label: 'Training', detail: 'planned' },
-          { label: 'Match', detail: 'prepared' },
-          { label: 'Attendance', detail: 'current' },
-          { label: 'Medical', detail: 'visible' },
-          { label: 'Load & RPE', detail: 'connected' },
-          { label: 'Communication', detail: 'sent' },
+      reassurance: 'Free for one team · no club approval needed · ready in minutes',
+      stage: {
+        ariaLabel:
+          'Animation: a coach’s scattered messages, files and notes converge into one unified STRIVN panel showing the team’s state.',
+        fragments: [
+          { kind: 'mail', source: 'Email', text: 'Sunday call-up: 9 replies out of 16' },
+          { kind: 'sheet', source: 'attendance_W23_v4.xlsx', text: 'Attendance: 3 tabs, 2 versions' },
+          { kind: 'sms', source: 'Physio · SMS', text: 'Mendes’ knee: no sprinting this week' },
+          { kind: 'scrap', source: 'Notebook', text: 'Thursday’s RPE: still to enter' },
+          { kind: 'note', source: 'Paper note', text: 'Plan the pressing block for Thursday' },
+          { kind: 'chat', source: 'Team · WhatsApp', text: 'What time is the game on Sunday?' },
         ],
+        panel: {
+          header: 'Team state',
+          status: 'Up to date · shared with staff',
+          rows: [
+            { label: 'Communication', value: 'Call-up sent · 14 replies', tone: 'ok' },
+            { label: 'Attendance', value: '14 in · 2 uncertain', tone: 'ok' },
+            { label: 'Medical', value: 'T. Mendes — reconditioning', tone: 'watch' },
+            { label: 'Load & RPE', value: 'ACWR 1.12 · squad stable', tone: 'ok' },
+            { label: 'Session', value: 'Thursday 8pm · pressing block', tone: 'info' },
+            { label: 'Match', value: 'Sunday 3pm · squad confirmed', tone: 'info' },
+          ],
+        },
       },
     },
 
     reality: {
-      eyebrow: 'The reality of the job',
       title: 'Coaching is only part of the job.',
-      body:
-        "Between two sessions, the real marathon starts. Chasing the players who haven't replied, logging who's injured, keeping staff in the loop, prepping the session. That's where your evenings go.",
-      tasks: [
-        'Chasing player responses',
-        'Keeping attendance up to date',
-        'Tracking injuries',
-        'Coordinating with staff',
-        'Preparing reports',
-        'Organising the training week',
+      body: 'On Tuesday at 10:47pm, the shadow work continues: chasing the players who didn’t reply, updating the medical log, re-entering attendance, briefing the physio. Six different places, zero overview.',
+      scattered: [
+        'The WhatsApp group',
+        'The attendance spreadsheet',
+        'The medical notes',
+        'The RPE notebook',
+        'The session diagrams',
+        'The coach’s memory',
       ],
-      phone: {
-        title: 'Tuesday, 10:47pm',
-        name: 'Team · First squad',
-        sub: '23 members',
-        time: '22:47',
-        bubbles: [
-          { direction: 'in', text: 'Coach I’ll be late tomorrow 🙏', time: '22:31' },
-          { direction: 'in', text: 'Anyone grabbed the cones?', time: '22:38' },
-          { direction: 'in', text: 'Ah sorry, missed the message', time: '22:40' },
-          { direction: 'in', text: 'What time do we play Sunday?', time: '22:44', unread: true },
-          { direction: 'in', text: 'My knee is still warm, not sure', time: '22:47', unread: true },
-        ],
-      },
-      resolve: {
-        lead: 'STRIVN takes all of it off your plate.',
-        line: 'The operational work runs itself in the background. You only keep the decisions that actually matter.',
-      },
-    },
-
-    staff: {
-      eyebrow: 'The coach platform',
-      title: 'Everyday team operations in one place.',
-      body:
-        'STRIVN brings together the work you already manage across too many places: events, players, attendance, injuries, tactics, reports, individual programs and AI support. One surface to save time and see more clearly.',
-      pillars: [
-        {
-          tag: 'Team',
-          name: 'Team management',
-          role: 'Players, staff, roles and availability in one view',
-          does: [
-            'Unlimited players',
-            'Unlimited staff',
-            'Roles, attendance and availability tracking',
-          ],
-        },
-        {
-          tag: 'Operations',
-          name: 'Communication & events',
-          role: 'The week, messages and replies stay connected',
-          does: [
-            'Training, matches, meetings',
-            'Unified communication',
-            'RSVP links and replies per event',
-          ],
-        },
-        {
-          tag: 'Performance',
-          name: 'Performance & player tracking',
-          role: 'Physical, medical and individual signals stay readable',
-          does: [
-            'Medical room and return-to-play',
-            'Load, RPE, tests and evaluations',
-            'Individual programs',
-          ],
-        },
-        {
-          tag: 'Players',
-          name: 'Player portal',
-          role: 'The player experience continues in the iOS and Android apps',
-          does: [
-            'Player schedule',
-            'RSVP and team information',
-            'iOS and Android apps',
-          ],
-        },
-      ],
-      features: [
-        {
-          icon: 'attendance',
-          title: 'Attendance & RSVP',
-          subtitle: 'Player replies become a live coach view without counting answers by hand.',
-          href: '#v2-communication',
-          linkLabel: 'See the workflow',
-        },
-        {
-          icon: 'medical',
-          title: 'Medical room',
-          subtitle: 'Injuries, medical notes and return-to-play status stay visible to authorized staff.',
-          href: '#v2-medical',
-          linkLabel: 'See medical',
-        },
-        {
-          icon: 'load',
-          title: 'Load & RPE',
-          subtitle: 'Load, player feeling and weak signals connect to the real week of the group.',
-          href: '#v2-load',
-          linkLabel: 'See load',
-        },
-        {
-          icon: 'tests',
-          title: 'Tests & evaluations',
-          subtitle: 'Physical and technical tests stay tracked over time so progress is visible.',
-          href: '#v2-load',
-          linkLabel: 'See tracking',
-        },
-        {
-          icon: 'program',
-          title: 'Individual programs',
-          subtitle: 'Goals, adjusted loads and specific exercises stay connected to each player.',
-          href: '#v2-medical',
-          linkLabel: 'See programs',
-        },
-        {
-          icon: 'sessions',
-          title: 'Sessions & tactics',
-          subtitle: 'Session plans, tactical boards and exercises stay connected to the team state.',
-          href: '#v2-sessions',
-          linkLabel: 'See sessions',
-        },
-        {
-          icon: 'reports',
-          title: 'Match and session reports',
-          subtitle: 'Staff feedback creates a clear loop while playing time stays visible.',
-          href: '#v2-sessions',
-          linkLabel: 'See reports',
-        },
-        {
-          icon: 'insight',
-          title: 'Reports & AI',
-          subtitle: 'Reports and the AI assistant turn team information into clearer decisions.',
-          href: '#v2-staff',
-          linkLabel: 'See insights',
-        },
-      ],
+      resolve: 'One platform.',
     },
 
     communication: {
-      eyebrow: 'Communication',
-      title: 'One message. Every channel.',
-      body:
-        'Every event can generate its message, template and RSVP link. Share it from the web app, the native mobile app (iOS + Android), WhatsApp, email or whichever channel your squad already uses. STRIVN collects the replies and updates the team view.',
-      steps: [
-        { n: '01', text: 'STRIVN loads the last template used for this event type' },
-        { n: '02', text: 'You adjust the message and choose how to share it' },
-        { n: '03', text: 'Players answer through the RSVP link, with no account to create' },
+      title: 'The call-up that runs itself.',
+      body: 'Every event generates its message and its reply link. You share it on the channel your group already uses — WhatsApp, email, the app — and STRIVN collects the replies to keep the attendance sheet up to date.',
+      points: [
+        'Message templates per event type',
+        'Reply link with no player account',
+        'Attendance updated in real time',
+        'Targeted reminders for non-responders',
       ],
-      channels: [
-        { label: 'Web', status: 'copy & share' },
-        { label: 'App', status: 'iOS + Android' },
-        { label: 'WhatsApp', status: 'existing group' },
-        { label: 'Email', status: 'staff & parents' },
-      ],
-      phone: {
-        name: 'STRIVN',
-        sub: 'Event communication',
-        time: '18:05',
-        bubbles: [
-          { direction: 'in', text: 'Training Thursday 8pm on pitch 2. Please confirm attendance.', time: '18:02' },
-          { direction: 'in', text: 'RSVP: strivn.net/rsvp/abc123', time: '18:02' },
-          { direction: 'out', text: 'Present', time: '18:03' },
-          { direction: 'out', text: 'Uncertain, sensitive knee', time: '18:05' },
+      proof: {
+        messageLabel: 'Message sent · 6:02pm',
+        message: 'Training Thursday 8pm · pitch 2. Confirm your attendance.',
+        link: 'strivn.net/rsvp/abc123',
+        repliesLabel: 'Player replies',
+        replies: [
+          { name: 'A. Diallo', answer: 'In', tone: 'ok' },
+          { name: 'M. Benyahia', answer: 'In', tone: 'ok' },
+          { name: 'T. Mendes', answer: 'Uncertain · knee', tone: 'watch' },
         ],
-        wellness: { label: 'Coach view', value: '14 present', note: '1 uncertain · knee signal' },
-      },
-      playerApp: {
-        eyebrow: 'The player app',
-        title: 'What your players see in the app.',
-        caption:
-          'Each player has their own view of the team in the native app (iOS + Android): next event, agenda, RSVP, metrics, real-time notifications.',
+        tally: '14 in · 1 uncertain · updated at 6:05pm',
       },
     },
 
     medical: {
-      eyebrow: 'Medical',
-      title: 'One place for the entire medical staff.',
-      body:
-        'Injuries, doctor notes, physio notes, return-to-play programs: everything connected and visible, from diagnosis to return on the pitch. The coach sees where each player stands without calling anyone.',
-      features: [
-        'Injury history',
-        'Medical notes',
-        'Physio notes',
-        'Return-to-play programs',
-        'Coach visibility',
+      title: 'A medical log the whole staff can read.',
+      body: 'Injuries, doctor’s notes, physio assessments, return-to-play protocol: everything is connected, from diagnosis back to the pitch. The coach sees where every player stands without calling anyone.',
+      points: [
+        'Per-player history',
+        'Doctor and physio notes in one place',
+        'Staged return-to-play protocol',
+        'Read-only coach visibility',
       ],
       record: {
         player: 'T. Mendes',
         injury: 'Hamstring strain · grade 1',
-        since: 'Since 28 April',
+        since: 'Since April 28',
         stages: [
           { label: 'Diagnosis', state: 'done' },
           { label: 'Treatment', state: 'done' },
           { label: 'Reconditioning', state: 'active' },
-          { label: 'Team return', state: 'todo' },
+          { label: 'Group training', state: 'todo' },
           { label: 'Match available', state: 'todo' },
         ],
         notes: [
-          { author: 'Dr. Lemaire', role: 'Doctor', text: 'Cleared for straight-line running. No sprinting before D+7.' },
-          { author: 'A. Roux', role: 'Physio', text: 'Good response to strength work. Player feel trending up.' },
+          { author: 'Dr. Lemaire', role: 'Doctor', text: 'Straight-line running approved. No sprinting before day 7.' },
+          { author: 'A. Roux', role: 'Physio', text: 'Good response to strengthening. Player-reported feel improving.' },
         ],
         returnLabel: 'Estimated return',
-        returnValue: '10 — 12 days',
+        returnValue: '10 – 12 days',
       },
     },
 
     load: {
-      eyebrow: 'Load',
-      title: 'Load, RPE, fatigue.',
-      titleAccent: 'Measured without chasing them.',
-      body:
-        'RPE, training load, fatigue, recovery: STRIVN assembles the data week after week. You arrive on Monday with the squad’s load, the early warning signs and the players to watch — without chasing anyone.',
-      labels: {
-        tableTitle: 'Load & RPE',
+      title: 'The squad’s load, without chasing anyone.',
+      body: 'RPE, weekly load, ACWR, recovery: players answer from their phones and STRIVN assembles the week. You arrive on Monday with the weak signals already visible.',
+      points: [
+        'RPE per session, per player',
+        'Weekly load and monotony',
+        'ACWR per player',
+        'Fitness-coach note shared with staff',
+      ],
+      table: {
+        title: 'Load & RPE',
+        week: 'Week 23 · June 1 – 7',
         colPlayer: 'Player',
         colMon: 'Mon',
         colWed: 'Wed',
         colFri: 'Fri',
-        colLoad: 'Load',
         colAcwr: 'ACWR',
-        colState: 'Status',
+        colState: 'State',
         pillOk: 'OK',
         pillWatch: 'Watch',
         pillRisk: 'Risk',
-        kpiRpe: 'Avg RPE',
-        kpiLoad: 'Load',
-        kpiAcwr: 'ACWR',
-        kpiRecovery: 'Recovery',
-        tipLabel: 'S&C note',
-      },
-      features: [
-        'RPE per session, per player',
-        'Weekly load and monotony',
-        'ACWR (acute:chronic workload ratio)',
-        'Recovery indicators',
-        'Snapshot ready to share with the staff',
-      ],
-      snapshot: {
-        week: 'Week 23 · 1 – 7 Jun',
-        weekRpeAvg: 6.4,
-        weekLoad: 4280,
-        acwr: 1.12,
-        recovery: 72,
         players: [
-          { name: 'A. Diallo',     rpeMon: 6, rpeWed: 7, rpeFri: 6, load: 420, acwr: 1.05, zone: 'green' },
-          { name: 'M. Benyahia',   rpeMon: 7, rpeWed: 8, rpeFri: 7, load: 510, acwr: 1.18, zone: 'amber' },
-          { name: 'T. Mendes',     rpeMon: 4, rpeWed: 0, rpeFri: 5, load: 180, acwr: 0.85, zone: 'amber' },
-          { name: 'J. Petit',      rpeMon: 6, rpeWed: 6, rpeFri: 7, load: 395, acwr: 1.02, zone: 'green' },
-          { name: 'L. Moreau',     rpeMon: 7, rpeWed: 7, rpeFri: 8, load: 485, acwr: 1.32, zone: 'red'   },
-          { name: 'S. Cissé',      rpeMon: 5, rpeWed: 6, rpeFri: 5, load: 330, acwr: 0.95, zone: 'green' },
-          { name: 'R. Dubois',     rpeMon: 6, rpeWed: 7, rpeFri: 6, load: 410, acwr: 1.10, zone: 'green' },
+          { name: 'A. Diallo', mon: '6', wed: '7', fri: '6', acwr: '1.05', zone: 'green' },
+          { name: 'M. Benyahia', mon: '7', wed: '8', fri: '7', acwr: '1.18', zone: 'amber' },
+          { name: 'T. Mendes', mon: '4', wed: '—', fri: '5', acwr: '0.85', zone: 'amber' },
+          { name: 'L. Moreau', mon: '7', wed: '7', fri: '8', acwr: '1.32', zone: 'red' },
+          { name: 'S. Cissé', mon: '5', wed: '6', fri: '5', acwr: '0.95', zone: 'green' },
         ],
-        tip: 'L. Moreau has been above 1.25 for 3 weeks straight — plan a lighter Friday session.',
+        tipLabel: 'Fitness note',
+        tip: 'L. Moreau has been above 1.25 for 3 straight weeks — plan a lighter session on Friday.',
       },
     },
 
     sessions: {
-      eyebrow: 'Preparation',
-      title: 'Prepare your sessions faster.',
-      body:
-        'Your boards, your drills and your week in one place. STRIVN lays everything out while you think about the game, and adapts the session to the squad’s real load.',
-      features: [
+      title: 'The session ready before you reach the pitch.',
+      body: 'Tactical boards, a drill library, week planning: STRIVN shapes the session while you think about the game, and the AI assistant accounts for the squad’s actual load.',
+      points: [
         'Tactical boards',
-        'Session planning',
         'Drill library',
-        'Assisted session design',
+        'Week planning',
+        'AI-assisted session creation',
       ],
       board: {
-        eyebrow: 'Session · Tuesday 8pm',
         title: 'Tactical block · high press',
+        meta: 'Session · Thursday 8pm',
         stamp: '4 drills · 75 min',
         phases: [
-          { label: 'Warm-up', detail: 'Activation + ball work · 15 min' },
-          { label: 'Drill 1', detail: 'Press in 3s, trigger on lateral pass · 20 min' },
-          { label: 'Drill 2', detail: 'Playing out under pressure · 20 min' },
-          { label: 'Game', detail: '8v8 opposition, press constraints · 20 min' },
+          { label: 'Warm-up', detail: 'Activation + ball carrying · 15 min' },
+          { label: 'Drill 1', detail: 'Press in threes, triggered on the lateral pass · 20 min' },
+          { label: 'Drill 2', detail: 'Build-up under pressure · 20 min' },
+          { label: 'Game', detail: '8v8 opposition, pressing constraints · 20 min' },
         ],
       },
     },
 
-    timeSaved: {
-      eyebrow: 'Time saved',
-      title: 'Get your evenings back.',
-      body:
-        'STRIVN takes the admin that eats your evenings: call-ups, attendance, reports, staff coordination. You stay on the pitch.',
-      stat: 'Your evening',
-      statLabel: 'back, week after week',
-      breakdown: [
-        { task: 'Call-ups & follow-ups', hours: 'centralized' },
-        { task: 'Attendance & tracking', hours: 'in one place' },
-        { task: 'Reports', hours: 'prepared' },
-        { task: 'Staff coordination', hours: 'visible' },
+    capabilities: {
+      title: 'And everything else in the weekly routine.',
+      body: 'One team, unlimited players and staff. Every module is included in the free plan — nothing is locked behind a payment.',
+      items: [
+        { title: 'Attendance & RSVP', text: 'Player replies become an up-to-date coach view, without counting by hand.' },
+        { title: 'Medical log', text: 'Injuries, medical notes and return-to-play stay visible to authorised staff.' },
+        { title: 'Load & RPE', text: 'Load, perceived effort and weak signals connect to the squad’s actual week.' },
+        { title: 'Tests & assessments', text: 'Physical and technical tests are tracked over time to show real progression.' },
+        { title: 'Individual programs', text: 'Goals, adapted loads and specific drills stay linked to each player.' },
+        { title: 'Sessions & tactics', text: 'Session plans, tactical boards and drills stay connected to the team’s state.' },
+        { title: 'Match & session reports', text: 'Staff feedback creates a loop and keeps playing time visible.' },
+        { title: 'AI assistant', text: 'Reports and the assistant turn team information into decisions.' },
       ],
-      footer: 'The pitch first. The admin after.',
+    },
+
+    playerApp: {
+      title: 'Your players get their own view.',
+      body: 'Agenda, next event, attendance replies, notifications: every player follows the team from the native app. And those who don’t install it still reply through the link.',
+      stores: 'Available on iOS and Android',
+      imageAlt: 'Screenshot of the STRIVN player app: weekly agenda with upcoming events',
+    },
+
+    timeSaved: {
+      title: 'Get your evenings back.',
+      body: 'The operations run in the background. You keep what matters: the squad, the session, the match.',
+      rows: [
+        { task: 'Call-ups & reminders', outcome: 'centralised' },
+        { task: 'Attendance & medical log', outcome: 'in one place' },
+        { task: 'Session reports', outcome: 'prepared' },
+        { task: 'Staff coordination', outcome: 'visible to everyone' },
+      ],
     },
 
     pricing: {
-      eyebrow: 'Pricing',
-      title: 'Free for coaches. Built to grow into clubs.',
-      body:
-        'Coach gives you the complete STRIVN experience for one team. Club plans are coming for organizations that want to coordinate multiple teams, staffs and medical workflows.',
+      title: 'Free to coach. Paid when the club grows.',
+      body: 'The Coach plan is the complete experience for one team. Club plans are coming for organisations that want to coordinate several teams, staffs and medical workflows.',
       plans: [
         {
           name: 'Coach',
-          description: 'For starting STRIVN with one team without asking the club for budget.',
-          price: '0€',
+          description: 'To launch STRIVN on one team without asking the club for budget.',
+          price: '€0',
           period: 'forever',
           availability: 'Available now',
-          cta: 'Create your team',
+          cta: 'Create my team',
+          featured: true,
           features: [
             '1 team',
             'Unlimited players',
             'Unlimited staff',
             'Events, sessions and matches',
             'Attendance, RSVP and communication',
-            'Injuries, tactics, reports and AI assistant',
+            'Medical log, tactics, reports and AI assistant',
           ],
         },
         {
           name: 'Club',
-          description: 'For coordinating all teams and staffs inside one club.',
-          price: 'Coming',
-          period: 'soon',
-          availability: 'Progressive rollout',
+          description: 'To coordinate all the teams and staffs of a club.',
+          price: 'Soon',
+          period: '',
+          availability: 'Gradual rollout',
           cta: 'Request a demo',
           features: [
             'Multiple teams',
-            'Shared player database',
+            'Shared player base',
             'Shared medical staff and coordinators',
             'Club dashboards and reporting',
             'Cross-team injury tracking',
@@ -1040,9 +731,9 @@ export const landingContent: Record<Locale, LandingContent> = {
         },
         {
           name: 'Club Pro',
-          description: 'For organizations that want advanced insights.',
-          price: 'Coming',
-          period: 'soon',
+          description: 'For organisations that want advanced insights.',
+          price: 'Soon',
+          period: '',
           availability: 'On request',
           cta: 'Talk to the team',
           features: [
@@ -1050,78 +741,68 @@ export const landingContent: Record<Locale, LandingContent> = {
             'Advanced reporting',
             'Advanced analytics',
             'API access',
-            'Organization-level insights',
+            'Organisational insights',
           ],
         },
       ],
-      cta: 'Start for free',
-      href: APP_URL,
-      note: 'The first payment happens when a club wants to manage multiple teams and staffs in STRIVN. Not to unlock the essential coach workflow.',
+      note: 'The first payment comes when a club wants to manage several teams and staffs in STRIVN. Not to unlock a coach’s essential tools.',
     },
 
     faq: {
-      eyebrow: 'FAQ',
       title: 'The questions we get asked first.',
       body: 'What your players have to do, who decides, and how long it takes to set up.',
       items: [
         {
-          question: 'Do my players need to install an app?',
+          question: 'Do my players have to install an app?',
           answer:
-            'No. They can answer through an RSVP link shared on the channel you already use: web, mobile, WhatsApp, email. The goal is less friction, not a new habit.',
+            'No. They can reply through a link shared on the channel you already use: web, mobile, WhatsApp, email. The goal is to reduce friction, not to impose a new habit.',
         },
         {
           question: 'Do I lose control of my team?',
           answer:
-            'Never. STRIVN prepares the work for you, but nothing goes out without your approval. You keep your hand on every message and every decision. It handles the organising, you coach.',
+            'Never. STRIVN prepares the work for you, but nothing goes out without your approval. You keep your hand on every message, every decision. It handles the operations, you coach.',
         },
         {
           question: 'How long does it take to get started?',
           answer:
-            'A few minutes. Create your team, add your players, and you can create events, messages and RSVP links in the first week.',
+            'A few minutes. You create your team, add your players, and you can create your first events, messages and reply links in the first week.',
         },
         {
           question: 'Why is the Coach plan free?',
           answer:
-            'Because a coach should be able to try and adopt STRIVN without going through the president, board or treasurer. Payment starts when a club wants to coordinate multiple teams.',
+            'Because a coach should be able to try and adopt STRIVN without going through the president, the board or the treasurer. Payment starts when the club wants to coordinate several teams.',
         },
         {
           question: 'Does it really work for amateur football?',
           answer:
-            "It's built for it. STRIVN is designed for multi-hat coaches who don't have a full staff behind them. The more you handle alone, the more time it gives you back.",
+            'It’s built for it. STRIVN is designed for coaches who wear every hat and don’t have a full staff behind them. The more you manage alone, the more time it gives back.',
         },
         {
-          question: 'What if I already have a medical staff and an S&C coach?',
+          question: 'What if I already have medical staff and a fitness coach?',
           answer:
-            'Even better. Each one gets their own view: the physio sees injuries, the S&C coach sees load, the coordinator sees multiple teams. Nobody re-enters what someone else already logged.',
+            'Even better. Everyone gets their view: the physio sees the medical log, the fitness coach sees the load, the coordinator sees several teams. Nobody re-enters what a colleague already noted.',
         },
       ],
     },
 
     finalCta: {
-      eyebrow: 'Get started',
-      title: 'Centralize the team. Get back to the pitch.',
-      body: 'Create your team for free and start organizing events, attendance, communication and player information from one platform.',
-      primaryCta: 'Create your team for free',
-      secondaryCta: 'Got a question first?',
+      title: 'Put your team under one roof.',
+      body: 'Create your team for free — events, attendance, medical log and communication in one place this week.',
+      primaryCta: 'Create my team for free',
+      secondaryCta: 'A question before you start?',
       secondaryHref: 'mailto:hello@strivn.ai?subject=STRIVN%20-%20question%20before%20starting',
     },
 
     footer: {
-      brandLine:
-        'STRIVN, the free operations platform that gives coaches time back and turns team information into useful insight.',
+      statement: 'The pitch first. The operations second.',
+      brandLine: 'STRIVN brings a team’s entire operations into one platform, free for coaches.',
       email: 'hello@strivn.ai',
-      productLabel: 'Product',
-      product: [
-        { label: 'Platform', href: '#v2-staff' },
-        { label: 'Communication', href: '#v2-communication' },
-        { label: 'Medical', href: '#v2-medical' },
-        { label: 'Sessions', href: '#v2-sessions' },
-        { label: 'Pricing', href: '#v2-pricing' },
+      links: [
+        { label: 'Platform', href: '#platform' },
+        { label: 'Pricing', href: '#pricing' },
+        { label: 'FAQ', href: '#faq' },
       ],
-      staffLabel: 'For whom',
-      staff: ['Coaches', 'Assistant coaches', 'S&C coaches', 'Physio & medical staff', 'Multi-team clubs'],
-      contactLabel: 'Contact',
-      credit: 'Free for coaches · coming soon for clubs',
+      credit: '© 2026 STRIVN · Free for coaches, clubs coming soon',
     },
   },
 };
