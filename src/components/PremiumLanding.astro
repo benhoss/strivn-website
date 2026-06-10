@@ -18,6 +18,20 @@ const APP_URL = 'https://app.strivn.net';
 const WA = `<path d="M16.6 14.2c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5 0-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.5-1.8-.1-.3 0-.4.1-.6l.4-.4.2-.3c0-.1.1-.2 0-.4 0-.1-.5-1.4-.8-1.8-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.6 1.1 2.7.1.2 1.9 2.9 4.6 4 2.2.9 2.7.7 3.2.7.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.2-.2-.5-.3zM12 3a9 9 0 0 0-7.6 13.8L3 21l4.4-1.2A9 9 0 1 0 12 3z"/>`;
 
 const pillarAccents = ['electric', 'performance', 'violet', 'warm'];
+const featureIcons: Record<string, string> = {
+  team: '<path d="M8.5 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm7-1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM3.5 19c.5-3.4 2.3-5.1 5-5.1s4.5 1.7 5 5.1M12.5 17.2c.7-2 2-3 3.9-3 2.3 0 3.7 1.4 4.1 4.2"/>',
+  calendar: '<path d="M6 4v3M18 4v3M4.5 8.5h15M6 13h3M11 13h3M16 13h2M6 17h3M11 17h3M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/>',
+  attendance: '<path d="M5 12.5 9 16l10-10M5 6.5h8M5 19h14"/>',
+  medical: '<path d="M12 4v16M4 12h16M7 7.5 5.5 6M17 7.5 18.5 6M7 16.5 5.5 18M17 16.5l1.5 1.5"/>',
+  load: '<path d="M4 18h16M6 15l3-5 4 3 5-8M6 6v12M18 5v13"/>',
+  communication: '<path d="M5 6.5h14v9H9l-4 3v-12ZM8 10h8M8 13h5"/>',
+  sessions: '<path d="M5 18V6l7 3 7-3v12l-7-3-7 3ZM12 9v6"/>',
+  insight: '<path d="M12 4v3M12 17v3M5.6 7.6l2.1 2.1M16.3 16.3l2.1 2.1M4 12h3M17 12h3M5.6 16.4l2.1-2.1M16.3 7.7l2.1-2.1M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z"/>',
+  tests: '<path d="M7 4h10M9 4v5l-4.5 8A2 2 0 0 0 6.2 20h11.6a2 2 0 0 0 1.7-3L15 9V4M8 15h8M9.5 11h5"/>',
+  portal: '<path d="M8 3.5h8a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H8A1.5 1.5 0 0 1 6.5 19V5A1.5 1.5 0 0 1 8 3.5ZM10 17.5h4M9.5 7h5M9.5 10h5M9.5 13h3"/>',
+  reports: '<path d="M7 4h7l3 3v13H7V4ZM14 4v4h4M9.5 12h5M9.5 15h5M9.5 18h3M5 8H4v11a2 2 0 0 0 2 2h9"/>',
+  program: '<path d="M5 5.5h14M7 5.5v13h10v-13M9.5 9h5M9.5 12h5M9.5 15h3M4 18.5h16"/>',
+};
 
 const chapters = [
   { id: 'reality',  n: '01', label: c.nav.reality },
@@ -84,105 +98,27 @@ const chapters = [
         <a href="#v2-reality" class="v2-btn v2-btn--ghost">{c.hero.secondaryCta}</a>
       </div>
 
-      <!-- Hero device — 4-pane sequencer (delegate → prepare → approve → players answer) -->
-      <div class="v2-device" id="v2-device" aria-label="STRIVN demo">
-        <div class="v2-device__chrome" aria-hidden="true">
-          <span class="v2-device__dot"></span>
-          <span class="v2-device__dot"></span>
-          <span class="v2-device__dot"></span>
-          <span class="v2-device__url">{c.hero.device.url}</span>
+      <!-- Hero proof — holistic team operating system -->
+      <div class="v2-holistic v2-reveal" id="v2-holistic" data-reveal data-delay="1350" aria-label={c.hero.holistic.eyebrow}>
+        <canvas class="v2-holistic__canvas" id="v2-holistic-canvas" aria-hidden="true"></canvas>
+        <div class="v2-holistic__shell" aria-hidden="true">
+          <span class="v2-holistic__ring v2-holistic__ring--outer"></span>
+          <span class="v2-holistic__ring v2-holistic__ring--inner"></span>
         </div>
-        <div class="v2-device__viewport">
-          <div class="v2-device__track" id="v2-device-track">
-            <!-- 01 · delegate -->
-            <article class="v2-pane is-active" data-pane-step="1">
-              <header class="v2-pane__head">
-                <span class="v2-pane__n">01</span>
-                <span class="v2-pane__label">{c.hero.device.step1.label}</span>
-              </header>
-              <p class="v2-pane__quote" data-v2-typing data-v2-typing-start="320" data-v2-typing-speed="20">{c.hero.device.step1.quote}</p>
-              <p class="v2-pane__echo">{c.hero.device.step1.echo}</p>
-            </article>
-
-            <!-- 02 · prepare -->
-            <article class="v2-pane" data-pane-step="2">
-              <header class="v2-pane__head">
-                <span class="v2-pane__n">02</span>
-                <span class="v2-pane__label">{c.hero.device.step2.label}</span>
-              </header>
-              <div class="v2-pills">
-                {c.hero.device.step2.pills.map((p) => <span class="v2-pill v2-pill--info">{p}</span>)}
-              </div>
-              <p class="v2-pane__explain">{c.hero.device.step2.explain}</p>
-              <ul class="v2-pane__list">
-                {c.hero.device.step2.list.map((line, i) => <li style={`--v2-li: ${i};`}>{line}</li>)}
-              </ul>
-            </article>
-
-            <!-- 03 · approve -->
-            <article class="v2-pane" data-pane-step="3">
-              <header class="v2-pane__head">
-                <span class="v2-pane__n">03</span>
-                <span class="v2-pane__label">{c.hero.device.step3.label}</span>
-                <span class="v2-pane__badge">{c.hero.device.step3.badge}</span>
-              </header>
-              <h3 class="v2-pane__title">{c.hero.device.step3.title}</h3>
-              <div class="v2-pane__metrics">
-                {c.hero.device.step3.metrics.map((m, i) => (
-                  <div class="v2-pane__metric" style={`--v2-li: ${i};`}>
-                    <span class="v2-pane__metric-l">{m.label}</span>
-                    <span class="v2-pane__metric-v">{m.value}</span>
-                  </div>
-                ))}
-              </div>
-              <div class="v2-pane__cta">
-                <span class="v2-pane__btn v2-pane__btn--primary">{c.hero.device.step3.approve}</span>
-                <span class="v2-pane__btn v2-pane__btn--ghost">{c.hero.device.step3.reject}</span>
-              </div>
-            </article>
-
-            <!-- 04 · players answer -->
-            <article class="v2-pane v2-pane--player" data-pane-step="4">
-              <header class="v2-pane__head">
-                <span class="v2-pane__n">04</span>
-                <span class="v2-pane__label">{c.hero.device.step4.label}</span>
-              </header>
-              <div class="v2-phone v2-phone--wa" aria-hidden="true">
-                <div class="v2-phone__bar">
-                  <span class="v2-phone__time">{c.hero.device.step4.phoneTime}</span>
-                  <span class="v2-phone__dots"><span></span><span></span><span></span></span>
-                </div>
-                <div class="v2-phone__head">
-                  <span class="v2-phone__avatar">{c.hero.device.step4.phoneAvatar}</span>
-                  <div class="v2-phone__id">
-                    <span class="v2-phone__name">{c.hero.device.step4.phoneName}</span>
-                    <span class="v2-phone__sub">{c.hero.device.step4.phoneSub}</span>
-                  </div>
-                  <span class="v2-phone__wa"><svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" set:html={WA} /></span>
-                </div>
-                <div class="v2-phone__chat">
-                  {c.hero.device.step4.bubbles.map((b, i) => (
-                    <div class={`v2-bubble v2-bubble--${b.direction}`} style={`--v2-bi: ${i};`}>
-                      <p>{b.text}</p>
-                      <span class="v2-bubble__time">{b.time}</span>
-                    </div>
-                  ))}
-                  <div class="v2-wellness" style="--v2-bi: 4;">
-                    <span class="v2-wellness__l">{c.hero.device.step4.wellness.label}</span>
-                    <span class="v2-wellness__v">{c.hero.device.step4.wellness.value}</span>
-                    <span class="v2-wellness__n">{c.hero.device.step4.wellness.note}</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
+        <div class="v2-holistic__center">
+          <span class="v2-holistic__eyebrow">{c.hero.holistic.eyebrow}</span>
+          <strong>{c.hero.holistic.center}</strong>
+          <span>{c.hero.holistic.outcome}</span>
         </div>
-
-        <nav class="v2-device__dots" aria-label="Demo steps">
-          {[0, 1, 2, 3].map((i) => (
-            <button type="button" class={`v2-device__dot-btn${i === 0 ? ' is-active' : ''}`} data-pane-go={i} aria-label={`Step ${i + 1}`}></button>
+        <div class="v2-holistic__modules" role="list">
+          {c.hero.holistic.modules.map((m, i) => (
+            <div class="v2-holistic__module" role="listitem" data-holistic-module style={`--h-i: ${i};`}>
+              <span class="v2-holistic__module-dot" aria-hidden="true"></span>
+              <strong>{m.label}</strong>
+              <span>{m.detail}</span>
+            </div>
           ))}
-        </nav>
+        </div>
       </div>
 
       <div class="v2-scroll-cue v2-reveal" data-reveal data-delay="1800" aria-hidden="true">
@@ -267,26 +203,17 @@ const chapters = [
         ))}
       </div>
 
-      <div class="v2-ba v2-reveal" data-reveal data-delay="150">
-        <div class="v2-ba__head">
-          <span class="v2-ba__eyebrow">{c.staff.beforeAfter.eyebrow}</span>
-          <div class="v2-ba__labels">
-            <span class="v2-ba__label v2-ba__label--before">{c.staff.beforeAfter.beforeLabel}</span>
-            <span class="v2-ba__label v2-ba__label--after">{c.staff.beforeAfter.afterLabel}</span>
-          </div>
-        </div>
-        <ul class="v2-ba__rows">
-          {c.staff.beforeAfter.rows.map((row) => (
-            <li class="v2-ba__row">
-              <span class="v2-ba__task">{row.task}</span>
-              <span class="v2-ba__before">{row.before}</span>
-              <span class="v2-ba__after">
-                <span class="v2-ba__arrow" aria-hidden="true">→</span>
-                {row.after}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <div class="v2-feature-grid v2-reveal" data-reveal data-delay="150">
+        {c.staff.features.map((feature, i) => (
+          <article class="v2-feature-card" style={`--v2-fi: ${i};`}>
+            <span class="v2-feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={featureIcons[feature.icon] || featureIcons.insight} />
+            </span>
+            <h3>{feature.title}</h3>
+            <p>{feature.subtitle}</p>
+            <a href={feature.href}>{feature.linkLabel}</a>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -1007,7 +934,7 @@ const chapters = [
     transition: opacity 360ms var(--v2-ease), transform 360ms var(--v2-ease);
     transition-delay: calc(120ms + var(--v2-bi, 0) * 220ms);
   }
-  .is-in .v2-bubble, .v2-pane.is-active .v2-bubble { opacity: 1; transform: translateY(0); }
+  .is-in .v2-bubble { opacity: 1; transform: translateY(0); }
   .v2-bubble p { margin: 0; color: var(--v2-fg); }
   .v2-bubble__time { display: block; font-size: 9.5px; color: rgba(255,255,255,0.45); margin-top: 2px; text-align: right; }
   .v2-bubble--in { align-self: flex-start; background: rgba(255,255,255,0.07); border-bottom-left-radius: 3px; }
@@ -1021,7 +948,7 @@ const chapters = [
     transition: opacity 360ms var(--v2-ease), transform 360ms var(--v2-ease);
     transition-delay: calc(120ms + var(--v2-bi, 4) * 220ms);
   }
-  .is-in .v2-wellness, .v2-pane.is-active .v2-wellness { opacity: 1; transform: translateY(0); }
+  .is-in .v2-wellness { opacity: 1; transform: translateY(0); }
   .v2-wellness__l { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--v2-electric); text-transform: uppercase; }
   .v2-wellness__v { grid-row: span 2; align-self: center; font-size: 16px; font-weight: 600; color: var(--v2-fg); }
   .v2-wellness__n { font-size: 11px; color: var(--v2-muted); }
@@ -1063,28 +990,44 @@ const chapters = [
   .v2-pillar__does li::before { content: ''; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--v2-accent); }
   @media (max-width: 720px) { .v2-pillars { grid-template-columns: 1fr; } }
 
-  /* Before / After */
-  .v2-ba { max-width: var(--v2-frame-w); margin: clamp(40px, 6vw, 72px) auto 0; border: 1px solid var(--v2-line); border-radius: 20px; overflow: hidden; background: var(--v2-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-  .v2-ba__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--v2-line-2); background: rgba(255,255,255,0.02); flex-wrap: wrap; }
-  .v2-ba__eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-subtle); }
-  .v2-ba__labels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; max-width: 60%; }
-  .v2-ba__label { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
-  .v2-ba__label--before { color: var(--v2-faint); }
-  .v2-ba__label--after { color: var(--v2-performance); }
-  .v2-ba__rows { list-style: none; margin: 0; padding: 0; }
-  .v2-ba__row {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 24px;
-    padding: 18px 24px; border-bottom: 1px solid var(--v2-line);
+  /* Main features */
+  .v2-feature-grid {
+    max-width: var(--v2-frame-w); margin: clamp(40px, 6vw, 72px) auto 0;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
   }
-  .v2-ba__row:last-child { border-bottom: 0; }
-  .v2-ba__task { font-weight: 600; color: var(--v2-fg); font-size: 14.5px; }
-  .v2-ba__before { color: var(--v2-faint); font-size: 14px; text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.18); }
-  .v2-ba__after { color: var(--v2-fg); font-size: 14px; display: inline-flex; align-items: baseline; gap: 8px; }
-  .v2-ba__arrow { color: var(--v2-performance); font-weight: 600; }
-  @media (max-width: 720px) {
-    .v2-ba__head { display: none; }
-    .v2-ba__row { grid-template-columns: 1fr; gap: 8px; padding: 18px 20px; }
-    .v2-ba__before::before { content: '✕ '; color: var(--v2-faint); }
+  .v2-feature-card {
+    min-height: 218px; padding: 18px; display: flex; flex-direction: column; gap: 12px;
+    border: 1px solid var(--v2-line); border-radius: 16px;
+    background: linear-gradient(180deg, rgba(20, 30, 52, 0.64), rgba(8, 12, 22, 0.78));
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+    transition: transform 260ms var(--v2-ease), border-color 260ms var(--v2-ease), background 260ms var(--v2-ease);
+  }
+  .v2-feature-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(79, 148, 251, 0.30);
+    background: linear-gradient(180deg, rgba(22, 36, 64, 0.72), rgba(8, 12, 22, 0.82));
+  }
+  .v2-feature-card__icon {
+    width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px;
+    color: var(--v2-electric); background: rgba(79, 148, 251, 0.08); border: 1px solid rgba(79, 148, 251, 0.18);
+  }
+  .v2-feature-card__icon svg { width: 21px; height: 21px; }
+  .v2-feature-card h3 {
+    margin: 4px 0 0; color: var(--v2-fg); font-size: 17px; line-height: 1.18; font-weight: 600; letter-spacing: -0.01em;
+  }
+  .v2-feature-card p { margin: 0; color: var(--v2-muted); font-size: 13.5px; line-height: 1.5; }
+  .v2-feature-card a {
+    margin-top: auto; color: var(--v2-performance); text-decoration: none;
+    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .v2-feature-card a::after { content: ' ->'; }
+  .v2-feature-card a:hover { color: var(--v2-fg); }
+  @media (max-width: 1040px) {
+    .v2-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 620px) {
+    .v2-feature-grid { grid-template-columns: 1fr; gap: 10px; }
+    .v2-feature-card { min-height: 0; padding: 16px; }
   }
 
   /* ============================================================ 03 · Communication ============================================================ */
@@ -1495,76 +1438,103 @@ const chapters = [
   }
   /* Static screenshot / no-JS-parity state (toggled via ?_shot) */
   .v2-static .v2-reveal, .v2-static .v2-words .v2-word,
-  .v2-static .v2-bubble, .v2-static .v2-wellness,
-  .v2-static .v2-pane, .v2-static .v2-pane *,
-  .v2-static .v2-pane__quote .v2-tchar {
+  .v2-static .v2-bubble, .v2-static .v2-wellness {
     opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important;
   }
+  .v2-static .v2-holistic__canvas { display: none !important; }
 
-  /* ============================================================ Hero device — 4-pane sequencer ============================================================ */
-  .v2-device {
-    position: relative; z-index: 2; width: min(720px, calc(100vw - 32px)); margin-top: clamp(56px, 9vh, 96px);
+  /* ============================================================ Hero holistic proof ============================================================ */
+  .v2-holistic {
+    position: relative; z-index: 2; width: min(840px, calc(100vw - 32px));
+    min-height: clamp(420px, 48vw, 520px); margin-top: clamp(48px, 8vh, 84px);
     border: 1px solid var(--v2-line-2); border-radius: 18px;
-    background: linear-gradient(180deg, rgba(20, 30, 52, 0.7) 0%, rgba(10, 16, 30, 0.85) 100%);
+    background:
+      radial-gradient(circle at 50% 46%, rgba(79, 148, 251, 0.14), transparent 34%),
+      linear-gradient(180deg, rgba(20, 30, 52, 0.64) 0%, rgba(8, 12, 22, 0.84) 100%);
     backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%);
     box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 40px 80px -30px rgba(0,0,0,0.65), 0 0 0 1px rgba(79, 148, 251, 0.06);
-    overflow: hidden; text-align: left; opacity: 0; animation: v2-device-in 900ms var(--v2-ease) 1000ms forwards;
+    overflow: hidden; text-align: left;
   }
-  @keyframes v2-device-in { from { opacity: 0; } to { opacity: 1; } }
-  @media (prefers-reduced-motion: reduce) { .v2-device { opacity: 1; animation: none; } }
-  .v2-device__chrome { display: flex; align-items: center; gap: 8px; padding: 12px 18px; border-bottom: 1px solid var(--v2-line); background: rgba(8, 12, 22, 0.5); }
-  .v2-device__dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.16); }
-  .v2-device__dot:nth-child(1) { background: rgba(255, 92, 92, 0.55); }
-  .v2-device__dot:nth-child(2) { background: rgba(255, 176, 32, 0.55); }
-  .v2-device__dot:nth-child(3) { background: rgba(79, 224, 181, 0.55); }
-  .v2-device__url { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--v2-faint); margin-left: 12px; }
-  .v2-device__viewport { position: relative; overflow: hidden; }
-  .v2-device__track { display: flex; width: 400%; transition: transform 720ms var(--v2-ease); will-change: transform; }
-  .v2-pane { flex: 0 0 25%; width: 25%; min-height: 300px; padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 14px; opacity: 0; transform: translateY(8px); transition: opacity 480ms var(--v2-ease) 80ms, transform 600ms var(--v2-ease) 80ms; }
-  .v2-pane.is-active { opacity: 1; transform: translateY(0); }
-  .v2-pane__head { display: flex; align-items: center; gap: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--v2-subtle); }
-  .v2-pane__n { color: var(--v2-faint); font-weight: 600; }
-  .v2-pane__label { color: var(--v2-muted); }
-  .v2-pane__badge { margin-left: auto; font-size: 10.5px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--v2-line-2); color: var(--v2-warm); background: rgba(255, 176, 32, 0.06); letter-spacing: 0.12em; }
-  .v2-pane__quote {
-    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.55; color: var(--v2-fg);
-    margin: 4px 0 0; padding: 14px 16px; background: rgba(45, 127, 249, 0.07); border: 1px solid rgba(79, 148, 251, 0.2); border-radius: 10px; min-height: 4.5em;
+  .v2-holistic::before {
+    content: ''; position: absolute; inset: 18px; border-radius: 14px; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px; mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+    opacity: 0.22;
   }
-  .v2-pane__quote .v2-tchar { display: inline-block; opacity: 0; animation: v2-tchar 1ms forwards; }
-  @keyframes v2-tchar { to { opacity: 1; } }
-  .v2-pane__echo { font-size: 13px; color: var(--v2-muted); margin: 0; opacity: 0; transform: translateY(4px); transition: opacity 500ms var(--v2-ease), transform 500ms var(--v2-ease); }
-  .v2-pane.is-active .v2-pane__echo { opacity: 1; transform: translateY(0); transition-delay: 1600ms; }
-  .v2-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .v2-pill { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--v2-line-2); background: rgba(255,255,255,0.02); color: var(--v2-muted); letter-spacing: 0.08em; opacity: 0; transform: translateY(4px); transition: opacity 360ms var(--v2-ease), transform 360ms var(--v2-ease); }
-  .v2-pane.is-active .v2-pill { opacity: 1; transform: translateY(0); }
-  .v2-pane.is-active .v2-pill:nth-child(1) { transition-delay: 280ms; }
-  .v2-pane.is-active .v2-pill:nth-child(2) { transition-delay: 420ms; }
-  .v2-pane.is-active .v2-pill:nth-child(3) { transition-delay: 560ms; }
-  .v2-pill--info { color: var(--v2-electric); border-color: rgba(79, 148, 251, 0.30); background: rgba(79, 148, 251, 0.06); }
-  .v2-pane__explain { font-size: 13.5px; color: var(--v2-muted); margin: 4px 0 0; opacity: 0; transition: opacity 420ms var(--v2-ease) 700ms; }
-  .v2-pane.is-active .v2-pane__explain { opacity: 1; }
-  .v2-pane__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--v2-subtle); }
-  .v2-pane__list li { padding-left: 12px; border-left: 1px solid var(--v2-line-2); opacity: 0; transform: translateX(-4px); transition: opacity 360ms var(--v2-ease), transform 360ms var(--v2-ease); transition-delay: calc(900ms + var(--v2-li, 0) * 100ms); }
-  .v2-pane.is-active .v2-pane__list li { opacity: 1; transform: translateX(0); }
-  .v2-pane__title { font-size: 19px; font-weight: 600; line-height: 1.25; letter-spacing: -0.018em; color: var(--v2-fg); margin: 6px 0 0; opacity: 0; transform: translateY(4px); transition: opacity 500ms var(--v2-ease) 320ms, transform 500ms var(--v2-ease) 320ms; }
-  .v2-pane.is-active .v2-pane__title { opacity: 1; transform: translateY(0); }
-  .v2-pane__metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .v2-pane__metric { padding: 10px 12px; border: 1px solid var(--v2-line); border-radius: 10px; background: rgba(255,255,255,0.015); display: flex; flex-direction: column; gap: 2px; opacity: 0; transform: translateY(6px); transition: opacity 380ms var(--v2-ease), transform 380ms var(--v2-ease); transition-delay: calc(560ms + var(--v2-li, 0) * 110ms); }
-  .v2-pane.is-active .v2-pane__metric { opacity: 1; transform: translateY(0); }
-  .v2-pane__metric-l { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v2-faint); }
-  .v2-pane__metric-v { font-size: 14px; color: var(--v2-fg); font-weight: 500; }
-  .v2-pane__cta { display: flex; gap: 8px; margin-top: 4px; }
-  .v2-pane__btn { font-size: 12.5px; padding: 8px 14px; border-radius: 999px; font-weight: 500; opacity: 0; transform: translateY(4px); transition: opacity 420ms var(--v2-ease) 980ms, transform 420ms var(--v2-ease) 980ms; }
-  .v2-pane.is-active .v2-pane__btn { opacity: 1; transform: translateY(0); }
-  .v2-pane__btn--primary { background: var(--v2-fg); color: var(--v2-void); }
-  .v2-pane__btn--ghost { border: 1px solid var(--v2-line-2); color: var(--v2-muted); background: transparent; }
-  .v2-pane--player { align-items: center; justify-content: center; padding-top: 18px; }
-  .v2-pane--player .v2-phone { width: 260px; }
-  .v2-device__dots { display: flex; justify-content: center; gap: 6px; padding: 12px 0 14px; border-top: 1px solid var(--v2-line); background: rgba(8, 12, 22, 0.5); }
-  .v2-device__dot-btn { width: 24px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.12); border: 0; padding: 0; cursor: pointer; transition: background 320ms var(--v2-ease), width 320ms var(--v2-ease); }
-  .v2-device__dot-btn.is-active { background: var(--v2-accent); width: 36px; }
-  .v2-device__dot-btn:hover { background: rgba(255,255,255,0.22); }
-  .v2-device__dot-btn.is-active:hover { background: var(--v2-accent); }
+  .v2-holistic__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.92; }
+  .v2-holistic__shell { position: absolute; inset: 0; pointer-events: none; display: grid; place-items: center; }
+  .v2-holistic__ring {
+    position: absolute; width: min(48%, 360px); aspect-ratio: 1; border-radius: 50%;
+    border: 1px solid rgba(79, 148, 251, 0.18);
+  }
+  .v2-holistic__ring--outer { width: min(66%, 500px); border-color: rgba(79, 148, 251, 0.10); }
+  .v2-holistic__ring--inner { box-shadow: 0 0 48px rgba(79, 148, 251, 0.10) inset; }
+  .v2-holistic__center {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: clamp(178px, 28vw, 238px); min-height: 142px; padding: 20px 18px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; text-align: center;
+    border: 1px solid rgba(79, 148, 251, 0.34); border-radius: 16px;
+    background: linear-gradient(180deg, rgba(8, 12, 22, 0.88), rgba(11, 30, 58, 0.74));
+    box-shadow: 0 20px 60px rgba(3, 9, 26, 0.52), 0 0 0 1px rgba(255,255,255,0.04) inset;
+    transition: border-color 260ms var(--v2-ease-out), box-shadow 260ms var(--v2-ease-out), transform 260ms var(--v2-ease-out);
+  }
+  .v2-holistic.is-locking .v2-holistic__center {
+    transform: translate(-50%, -50%) scale(1.035);
+    border-color: rgba(39, 215, 161, 0.58);
+    box-shadow:
+      0 22px 70px rgba(3, 9, 26, 0.58),
+      0 0 0 1px rgba(39, 215, 161, 0.18) inset,
+      0 0 58px rgba(39, 215, 161, 0.16);
+  }
+  .v2-holistic__center strong { color: var(--v2-fg); font-size: clamp(22px, 3vw, 30px); line-height: 1.08; font-weight: 600; letter-spacing: -0.018em; }
+  .v2-holistic__center span:last-child {
+    color: var(--v2-performance); font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 0.08em;
+  }
+  .v2-holistic__eyebrow {
+    color: var(--v2-subtle); font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .v2-holistic__modules { position: absolute; inset: 0; pointer-events: none; }
+  .v2-holistic__module {
+    --h-x: 50%; --h-y: 50%;
+    position: absolute; left: var(--h-x); top: var(--h-y); transform: translate(-50%, -50%);
+    width: clamp(124px, 16vw, 154px); padding: 10px 12px 11px;
+    display: grid; grid-template-columns: auto 1fr; column-gap: 8px; row-gap: 2px; align-items: center;
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;
+    background: rgba(8, 12, 22, 0.68); color: var(--v2-muted);
+    box-shadow: 0 10px 32px rgba(3, 9, 26, 0.30);
+    transition: border-color 520ms var(--v2-ease), background 520ms var(--v2-ease), transform 520ms var(--v2-ease), opacity 520ms var(--v2-ease);
+  }
+  .v2-holistic__module:nth-child(1) { --h-x: 50%; --h-y: 11%; }
+  .v2-holistic__module:nth-child(2) { --h-x: 81%; --h-y: 29%; }
+  .v2-holistic__module:nth-child(3) { --h-x: 81%; --h-y: 70%; }
+  .v2-holistic__module:nth-child(4) { --h-x: 50%; --h-y: 89%; }
+  .v2-holistic__module:nth-child(5) { --h-x: 19%; --h-y: 70%; }
+  .v2-holistic__module:nth-child(6) { --h-x: 19%; --h-y: 29%; }
+  .v2-holistic__module.is-active {
+    border-color: rgba(79, 148, 251, 0.44); background: rgba(12, 25, 48, 0.82);
+    transform: translate(-50%, -50%) scale(1.025);
+  }
+  .v2-holistic__module.is-pulling {
+    border-color: rgba(39, 215, 161, 0.48);
+    background: rgba(12, 35, 48, 0.88);
+    transform: translate(-50%, -50%) scale(1.045);
+  }
+  .v2-holistic__module-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--v2-electric);
+    box-shadow: 0 0 18px rgba(79, 148, 251, 0.55);
+  }
+  .v2-holistic__module strong { color: var(--v2-fg); font-size: 13px; font-weight: 600; line-height: 1.15; }
+  .v2-holistic__module span:last-child {
+    grid-column: 2; color: var(--v2-subtle); font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px; line-height: 1.2; letter-spacing: 0.08em;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v2-holistic__canvas { display: none; }
+  }
 
   /* ============================================================ Responsive cleanup ============================================================ */
   @media (max-width: 720px) {
@@ -1575,17 +1545,24 @@ const chapters = [
     .v2-plan__head { min-height: auto; }
     .v2-pricing__footer { justify-content: center; text-align: center; }
     .v2-pricing__cta { width: 100%; min-width: 0; }
-    .v2-device { width: calc(100vw - 24px); }
-    .v2-pane { padding: 22px 18px 24px; min-height: 280px; }
-    .v2-pane__metrics { grid-template-columns: 1fr 1fr; }
-    .v2-pane__metrics > :nth-child(3) { grid-column: span 2; }
-    .v2-pane--player .v2-phone { width: 100%; max-width: 240px; }
-    .v2-device__url { display: none; }
+    .v2-holistic { width: calc(100vw - 24px); min-height: 620px; }
+    .v2-holistic__canvas, .v2-holistic__shell { display: none; }
+    .v2-holistic__center { top: 148px; width: min(230px, calc(100% - 48px)); }
+    .v2-holistic__modules {
+      position: absolute; inset: auto 18px 74px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .v2-holistic__module {
+      position: relative; left: auto; top: auto; transform: none; width: auto;
+    }
+    .v2-holistic__module.is-active { transform: none; }
+    .v2-holistic__module.is-pulling { transform: none; }
   }
   @media (min-width: 721px) and (max-width: 1040px) { .v2-plans { grid-template-columns: 1fr; } }
   @media (max-width: 414px) {
-    .v2-pane__quote { font-size: 13px; padding: 12px 14px; }
-    .v2-pane__title { font-size: 17px; }
+    .v2-holistic { min-height: 650px; }
+    .v2-holistic__center { top: 138px; }
+    .v2-holistic__modules { grid-template-columns: 1fr; bottom: 68px; }
+    .v2-holistic__module { padding: 8px 10px 9px; }
   }
 </style>
 
@@ -1601,7 +1578,7 @@ const chapters = [
     const reduced = forceStatic || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (forceStatic) {
       root.classList.add('v2-static');
-      document.querySelectorAll<HTMLElement>('.v2-device').forEach((d) => { d.style.opacity = '1'; d.style.animation = 'none'; });
+      document.querySelectorAll<HTMLElement>('.v2-holistic').forEach((d) => d.classList.add('is-in'));
     }
 
     // ───── Split words inside [data-words] ─────
@@ -1702,78 +1679,230 @@ const chapters = [
     }
 
     // ============================================================
-    // Hero device — pane sequencer
+    // Hero holistic proof — Three.js living hub with static fallback
     // ============================================================
-    (function paneSequencer() {
-      const device = document.getElementById('v2-device');
-      if (!device) return;
-      const track = document.getElementById('v2-device-track') as HTMLElement | null;
-      if (!track) return;
-      const panes = Array.from(device.querySelectorAll<HTMLElement>('.v2-pane'));
-      const dots = Array.from(device.querySelectorAll<HTMLButtonElement>('.v2-device__dot-btn'));
-      if (panes.length === 0) return;
+    (function holisticHero() {
+      const host = document.getElementById('v2-holistic') as HTMLElement | null;
+      const canvas = document.getElementById('v2-holistic-canvas') as HTMLCanvasElement | null;
+      if (!host) return;
+      const moduleEls = Array.from(host.querySelectorAll<HTMLElement>('[data-holistic-module]'));
+      moduleEls[0]?.classList.add('is-active');
+      if (!canvas || reduced || window.innerWidth < 721) return;
 
-      device.querySelectorAll<HTMLElement>('[data-v2-typing]').forEach((el) => {
-        if (el.dataset.v2TypingPrepared) return;
-        el.dataset.v2TypingPrepared = '1';
-        const text = el.textContent || '';
-        const start = Number(el.dataset.v2TypingStart || 320);
-        const speed = Number(el.dataset.v2TypingSpeed || 20);
-        el.textContent = '';
-        Array.from(text).forEach((ch, i) => {
-          if (ch === ' ') {
-            el.appendChild(document.createTextNode(' '));
-          } else {
-            const span = document.createElement('span');
-            span.className = 'v2-tchar';
-            span.textContent = ch;
-            span.style.animationDelay = start + i * speed + 'ms';
-            el.appendChild(span);
-          }
-        });
-      });
+      let started = false;
+      let setVisible: ((visible: boolean) => void) | null = null;
 
-      let cur = -1;
-      let timer = 0;
-      const dwellMs = [4200, 3800, 4400, 6500];
+      const startScene = async () => {
+        if (started) return;
+        started = true;
+        let THREE: typeof import('three');
+        try { THREE = await import('three'); } catch (err) { canvas.style.display = 'none'; return; }
 
-      function activate(idx: number) {
-        if (idx === cur) return;
-        cur = idx;
-        track!.style.transform = 'translateX(-' + idx * 25 + '%)';
-        panes.forEach((p) => p.classList.remove('is-active'));
-        void panes[idx].offsetWidth;
-        panes[idx].classList.add('is-active');
-        dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
-      }
-      function advance() {
-        const next = (cur + 1) % panes.length;
-        activate(next);
-        timer = window.setTimeout(advance, dwellMs[next]);
-      }
-      function pause() { if (timer) { clearTimeout(timer); timer = 0; } }
+        let renderer: import('three').WebGLRenderer;
+        try {
+          renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+        } catch (err) {
+          canvas.style.display = 'none';
+          return;
+        }
 
-      dots.forEach((dot, idx) => {
-        dot.addEventListener('click', () => {
-          pause();
-          activate(idx);
-          timer = window.setTimeout(advance, dwellMs[idx]);
-        });
-      });
+        const scene = new THREE.Scene();
+        const camera = new THREE.OrthographicCamera(0, 1, 1, 0, -100, 100);
+        const lineGroup = new THREE.Group();
+        const nodeGroup = new THREE.Group();
+        const pulseGroup = new THREE.Group();
+        const impactGroup = new THREE.Group();
+        scene.add(lineGroup, nodeGroup, pulseGroup, impactGroup);
 
-      const sequencerIO = new IntersectionObserver((entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting && cur === -1) {
-            activate(0);
-            if (!reduced) timer = window.setTimeout(advance, dwellMs[0]);
-          } else if (!e.isIntersecting) {
-            pause();
+        const electric = new THREE.Color('#4f94fb');
+        const performanceSignal = new THREE.Color('#27d7a1');
+        const muted = new THREE.Color('#8497bd');
+        const paths: import('three').QuadraticBezierCurve3[] = [];
+        const lines: import('three').Line[] = [];
+        const nodes: import('three').Mesh[] = [];
+        const nodeBases: import('three').Vector3[] = [];
+        const pulses: import('three').Mesh[] = [];
+        const impactRings: import('three').Mesh[] = [];
+        const hub = new THREE.Mesh(
+          new THREE.RingGeometry(30, 34, 72),
+          new THREE.MeshBasicMaterial({ color: performanceSignal, transparent: true, opacity: 0.36 })
+        );
+        scene.add(hub);
+
+        const easeOutExpo = (t: number) => t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+        const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
+
+        function clearGroup(group: import('three').Group) {
+          while (group.children.length) {
+            const child = group.children.pop();
+            if (!child) continue;
+            const mesh = child as import('three').Mesh;
+            mesh.geometry?.dispose?.();
+            const mat = mesh.material as import('three').Material | import('three').Material[] | undefined;
+            if (Array.isArray(mat)) mat.forEach((m) => m.dispose());
+            else mat?.dispose?.();
           }
         }
-      }, { threshold: 0.15 });
-      sequencerIO.observe(device);
 
-      if (reduced) activate(0);
+        function resize() {
+          const rect = host.getBoundingClientRect();
+          const width = Math.max(1, Math.round(rect.width));
+          const height = Math.max(1, Math.round(rect.height));
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+          renderer.setSize(width, height, false);
+          camera.left = 0; camera.right = width; camera.top = 0; camera.bottom = height; camera.updateProjectionMatrix();
+
+          clearGroup(lineGroup);
+          clearGroup(nodeGroup);
+          clearGroup(pulseGroup);
+          clearGroup(impactGroup);
+          paths.length = 0; lines.length = 0; nodes.length = 0; nodeBases.length = 0; pulses.length = 0; impactRings.length = 0;
+
+          const center = new THREE.Vector3(width * 0.5, height * 0.5, 0);
+          hub.position.copy(center);
+          const radiusX = width * 0.33;
+          const radiusY = height * 0.36;
+          const nodeGeo = new THREE.CircleGeometry(8, 28);
+          const pulseGeo = new THREE.CircleGeometry(5, 24);
+
+          for (let i = 0; i < moduleEls.length; i += 1) {
+            const angle = -Math.PI / 2 + i * (Math.PI * 2 / moduleEls.length);
+            const start = new THREE.Vector3(center.x + Math.cos(angle) * radiusX, center.y + Math.sin(angle) * radiusY, 0);
+            const mid = new THREE.Vector3((start.x + center.x) / 2, (start.y + center.y) / 2, 0);
+            const bend = i % 2 === 0 ? 28 : -28;
+            mid.x += Math.cos(angle + Math.PI / 2) * bend;
+            mid.y += Math.sin(angle + Math.PI / 2) * bend;
+
+            const curve = new THREE.QuadraticBezierCurve3(start, mid, center);
+            paths.push(curve);
+            const line = new THREE.Line(
+              new THREE.BufferGeometry().setFromPoints(curve.getPoints(42)),
+              new THREE.LineBasicMaterial({ color: muted, transparent: true, opacity: 0.16 })
+            );
+            lineGroup.add(line);
+            lines.push(line);
+
+            const node = new THREE.Mesh(nodeGeo.clone(), new THREE.MeshBasicMaterial({ color: electric, transparent: true, opacity: 0.30 }));
+            node.position.copy(start);
+            nodeGroup.add(node);
+            nodes.push(node);
+            nodeBases.push(start.clone());
+
+            const pulse = new THREE.Mesh(pulseGeo.clone(), new THREE.MeshBasicMaterial({ color: performanceSignal, transparent: true, opacity: 0 }));
+            pulseGroup.add(pulse);
+            pulses.push(pulse);
+          }
+
+          [72, 112, 154].forEach((radius) => {
+            const ring = new THREE.Mesh(
+              new THREE.RingGeometry(radius, radius + 2, 96),
+              new THREE.MeshBasicMaterial({ color: performanceSignal, transparent: true, opacity: 0 })
+            );
+            ring.position.copy(center);
+            impactGroup.add(ring);
+            impactRings.push(ring);
+          });
+        }
+
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        let active = 0;
+        let running = false;
+        let rafId = 0;
+        const startedAt = performance.now();
+        const cycleMs = 3200;
+        const pullStartMs = 220;
+        const signalDelayMs = 90;
+        const signalTravelMs = 1180;
+        const lockStartMs = pullStartMs + signalDelayMs * 5 + signalTravelMs - 120;
+        const lockMs = 520;
+
+        function loop(now: number) {
+          if (!running) return;
+          const elapsed = now - startedAt;
+          const cycle = elapsed % cycleMs;
+          const lockProgress = clamp01((cycle - lockStartMs) / lockMs);
+          const isLocking = lockProgress > 0 && lockProgress < 1;
+          host.classList.toggle('is-locking', isLocking);
+
+          nodes.forEach((node, i) => {
+            const mat = node.material as import('three').MeshBasicMaterial;
+            const start = nodeBases[i];
+            const signalStart = pullStartMs + i * signalDelayMs;
+            const signalProgress = clamp01((cycle - signalStart) / signalTravelMs);
+            const isPulling = signalProgress > 0 && signalProgress < 1;
+            const isStaged = signalProgress > 0 && signalProgress < 0.24;
+            const unsettled = Math.max(0, 1 - signalProgress);
+            const driftX = Math.sin(elapsed * 0.0022 + i * 1.7) * 5 * unsettled;
+            const driftY = Math.cos(elapsed * 0.0018 + i * 1.2) * 4 * unsettled;
+            node.position.set(start.x + driftX, start.y + driftY, 0);
+            mat.opacity = isStaged || isLocking ? 0.78 : 0.34 + Math.sin(elapsed * 0.002 + i) * 0.08;
+            node.scale.setScalar(isStaged ? 1.34 : 1 + Math.sin(elapsed * 0.0025 + i) * 0.08);
+          });
+
+          pulses.forEach((pulse, i) => {
+            const mat = pulse.material as import('three').MeshBasicMaterial;
+            const signalStart = pullStartMs + i * signalDelayMs;
+            const signalProgress = clamp01((cycle - signalStart) / signalTravelMs);
+            const isPulling = signalProgress > 0 && signalProgress < 1;
+            const line = lines[i];
+            if (line) {
+              const lineMat = line.material as import('three').LineBasicMaterial;
+              lineMat.opacity = isPulling ? 0.42 + Math.sin(signalProgress * Math.PI) * 0.18 : isLocking ? 0.28 : 0.12;
+              lineMat.color.copy(isPulling || isLocking ? electric : muted);
+            }
+            if (isPulling && paths[i]) {
+              const t = easeOutExpo(signalProgress);
+              pulse.position.copy(paths[i].getPoint(Math.min(0.992, t)));
+              mat.opacity = Math.sin(signalProgress * Math.PI) * 0.9;
+              pulse.scale.setScalar(0.9 + easeOutCubic(signalProgress) * 1.25);
+            } else {
+              mat.opacity = 0;
+            }
+          });
+
+          const activeNow = pulses
+            .map((_, i) => ({ i, p: clamp01((cycle - (pullStartMs + i * signalDelayMs)) / signalTravelMs) }))
+            .filter((item) => item.p > 0 && item.p < 0.24)
+            .map((item) => item.i);
+          if (activeNow[0] !== active) active = activeNow[0] ?? active;
+          moduleEls.forEach((el, i) => {
+            const pulling = activeNow.includes(i);
+            el.classList.toggle('is-pulling', pulling);
+            el.classList.toggle('is-active', pulling || (isLocking && i === active));
+          });
+
+          const lockWave = Math.sin(lockProgress * Math.PI);
+          const hubPulse = 1 + lockWave * 0.18 + Math.sin(cycle * 0.006) * 0.025;
+          hub.scale.setScalar(hubPulse);
+          (hub.material as import('three').MeshBasicMaterial).opacity = 0.30 + lockWave * 0.34;
+          impactRings.forEach((ring, i) => {
+            const mat = ring.material as import('three').MeshBasicMaterial;
+            const p = clamp01((cycle - lockStartMs - i * 90) / 520);
+            const wave = Math.sin(p * Math.PI);
+            mat.opacity = wave * 0.34;
+            ring.scale.setScalar(0.62 + easeOutCubic(p) * 0.58);
+          });
+          lineGroup.rotation.z = Math.sin(elapsed * 0.00034) * 0.018;
+          renderer.render(scene, camera);
+          rafId = requestAnimationFrame(loop);
+        }
+
+        const pause = () => { running = false; cancelAnimationFrame(rafId); };
+        const play = () => { if (!running) { running = true; rafId = requestAnimationFrame(loop); } };
+        setVisible = (visible: boolean) => visible && !document.hidden ? play() : pause();
+        setVisible(true);
+        document.addEventListener('visibilitychange', () => setVisible?.(!document.hidden));
+      };
+
+      const heroIO = new IntersectionObserver((entries) => {
+        const visible = entries.some((entry) => entry.isIntersecting);
+        if (visible) void startScene();
+        setVisible?.(visible);
+      }, { threshold: 0.18, rootMargin: '120px' });
+      heroIO.observe(host);
     })();
 
     // ============================================================

@@ -21,27 +21,11 @@ type LandingContent = {
     body: string;
     primaryCta: string;
     secondaryCta: string;
-    device: {
-      url: string;
-      step1: { label: string; quote: string; echo: string };
-      step2: { label: string; pills: string[]; explain: string; list: string[] };
-      step3: {
-        label: string;
-        badge: string;
-        title: string;
-        metrics: Array<{ label: string; value: string }>;
-        approve: string;
-        reject: string;
-      };
-      step4: {
-        label: string;
-        phoneName: string;
-        phoneSub: string;
-        phoneTime: string;
-        phoneAvatar: string;
-        bubbles: Bubble[];
-        wellness: { label: string; value: string; note: string };
-      };
+    holistic: {
+      eyebrow: string;
+      center: string;
+      outcome: string;
+      modules: Array<{ label: string; detail: string }>;
     };
   };
 
@@ -65,12 +49,7 @@ type LandingContent = {
     title: string;
     body: string;
     pillars: Array<{ tag: string; name: string; role: string; does: string[] }>;
-    beforeAfter: {
-      eyebrow: string;
-      beforeLabel: string;
-      afterLabel: string;
-      rows: Array<{ task: string; before: string; after: string }>;
-    };
+    features: Array<{ icon: string; title: string; subtitle: string; href: string; linkLabel: string }>;
   };
 
   communication: {
@@ -250,50 +229,18 @@ export const landingContent: Record<Locale, LandingContent> = {
         "Convocations, présences, charge, RPE, infirmerie, communication. Tout ce que votre staff technique gère au quotidien, au même endroit, consultable par le coach, le préparateur physique et le kiné. Gratuit pour les coaches.",
       primaryCta: 'Commencer gratuitement',
       secondaryCta: 'Voir la plateforme',
-      device: {
-        url: 'app.strivn.net · Saison 2026-27',
-        step1: {
-          label: 'Yan signale quelque chose',
-          quote: '"Petit truc aux ischios depuis dimanche. Je viens à l\'entraînement mais je sers à rien."',
-          echo: "Reçu. Je remonte l'info à ton staff et je la relie à ta charge et à ton prochain match.",
-        },
-        step2: {
-          label: 'STRIVN capte et relie',
-          pills: ['3 modules', '0 saisie', '1 joueur'],
-          explain:
-            "L'info remonte dans la fiche joueur. Kinésithérapie, charge, convocations : tout se met à jour en même temps.",
-          list: [
-            'Fiche infirmerie Yan · ischios · ouverte',
-            'Charge Yan · semaine allégée de 30 %',
-            'Convocation dimanche · flag "à surveiller"',
-            'Le staff voit l\'info sans avoir à demander',
-          ],
-        },
-        step3: {
-          label: 'Tout le staff voit la même chose',
-          title: 'Coach, préparateur physique et kiné consultent la même fiche.',
-          metrics: [
-            { label: 'Coach', value: 'feuille de match' },
-            { label: 'Prépa', value: 'charge ajustée' },
-            { label: 'Kiné', value: 'protocole ischio' },
-          ],
-          approve: 'Voir la fiche joueur',
-          reject: 'Masquer cet exemple',
-        },
-        step4: {
-          label: 'Le coach décide, mieux informé',
-          phoneName: 'Yan M.',
-          phoneSub: 'U19 · milieu',
-          phoneTime: 'mardi 18:42',
-          phoneAvatar: 'Y',
-          bubbles: [
-            { direction: 'in', text: 'Ischios signalés · charge semaine −30 %', time: 'mardi' },
-            { direction: 'in', text: 'Match dimanche : disponible, mais rotation limitée', time: 'mardi' },
-            { direction: 'in', text: 'Kiné · protocole J+5 avant retour plein', time: 'mardi' },
-            { direction: 'out', text: 'Vu. On le garde 60 min max samedi et on décide dimanche matin.', time: 'samedi' },
-          ],
-          wellness: { label: 'Décision', value: 'aligné', note: 'staff unanime · match dimanche' },
-        },
+      holistic: {
+        eyebrow: 'Une équipe, un état partagé',
+        center: 'État équipe',
+        outcome: 'Décision alignée',
+        modules: [
+          { label: 'Séance', detail: 'planifiée' },
+          { label: 'Match', detail: 'préparé' },
+          { label: 'Présences', detail: 'à jour' },
+          { label: 'Infirmerie', detail: 'visible' },
+          { label: 'Charge & RPE', detail: 'reliées' },
+          { label: 'Communication', detail: 'envoyée' },
+        ],
       },
     },
 
@@ -337,72 +284,103 @@ export const landingContent: Record<Locale, LandingContent> = {
       pillars: [
         {
           tag: 'Équipe',
-          name: 'Gestion joueurs',
-          role: 'Tout votre groupe, sans limite',
+          name: "Gestion d'équipe",
+          role: 'Joueurs, staff, rôles et disponibilités dans une seule vue',
           does: [
             'Joueurs illimités',
             'Staff illimité',
-            'Présences et disponibilités suivies',
+            'Rôles, présences et disponibilités suivies',
           ],
         },
         {
           tag: 'Opérations',
-          name: 'Événements & séances',
-          role: 'La semaine préparée plus vite',
+          name: 'Communication & événements',
+          role: 'La semaine, les messages et les réponses restent connectés',
           does: [
             'Entraînements, matchs, réunions',
-            'Modèles de communication',
-            'Liens RSVP par événement',
+            'Communication unifiée',
+            'Liens RSVP et réponses par événement',
           ],
         },
         {
-          tag: 'Médical',
-          name: 'Infirmerie & programmes',
-          role: 'Les signaux importants ne se perdent plus',
+          tag: 'Performance',
+          name: 'Performance & suivi joueur',
+          role: 'Les signaux physiques, médicaux et individuels restent lisibles',
           does: [
-            'Notes médicales',
+            'Infirmerie et retour au jeu',
+            'Charge, RPE, tests et évaluations',
             'Programmes individuels',
-            'Retour au jeu visible par le staff',
           ],
         },
         {
-          tag: 'Insight',
-          name: 'Rapports & assistant IA',
-          role: 'Les informations deviennent exploitables',
+          tag: 'Joueurs',
+          name: 'Portail joueur',
+          role: 'L’expérience joueur continue dans les apps iOS et Android',
           does: [
-            'Comptes-rendus',
-            'Tableaux tactiques',
-            'Assistant IA intégré',
+            'Agenda joueur',
+            'RSVP et informations d’équipe',
+            'Apps iOS et Android',
           ],
         },
       ],
-      beforeAfter: {
-        eyebrow: 'Avant / Après',
-        beforeLabel: 'Sans STRIVN',
-        afterLabel: 'Avec STRIVN',
-        rows: [
-          {
-            task: 'Convocations',
-            before: 'Un message à refaire à chaque fois',
-            after: 'Un modèle chargé, un RSVP créé',
-          },
-          {
-            task: 'Présences',
-            before: 'Vous comptez les réponses à la main',
-            after: 'Pointées et à jour en temps réel',
-          },
-          {
-            task: "L'infirmerie",
-            before: 'Éparpillée entre SMS et mémoire',
-            after: 'Au même endroit, visible par le staff',
-          },
-          {
-            task: 'Les infos',
-            before: "Devant l'Excel",
-            after: 'Centralisées, prêtes à analyser',
-          },
-        ],
-      },
+      features: [
+        {
+          icon: 'attendance',
+          title: 'Présences & RSVP',
+          subtitle: 'Les réponses des joueurs deviennent une vue coach à jour, sans recompter à la main.',
+          href: '#v2-communication',
+          linkLabel: 'Voir le workflow',
+        },
+        {
+          icon: 'medical',
+          title: 'Infirmerie',
+          subtitle: 'Blessures, notes médicales et retour au jeu restent visibles pour le staff autorisé.',
+          href: '#v2-medical',
+          linkLabel: "Voir l'infirmerie",
+        },
+        {
+          icon: 'load',
+          title: 'Charge & RPE',
+          subtitle: 'La charge, le ressenti et les signaux faibles se relient à la semaine réelle du groupe.',
+          href: '#v2-load',
+          linkLabel: 'Voir la charge',
+        },
+        {
+          icon: 'tests',
+          title: 'Tests & évaluations',
+          subtitle: 'Les tests physiques et techniques restent suivis dans le temps pour voir la progression réelle.',
+          href: '#v2-load',
+          linkLabel: 'Voir le suivi',
+        },
+        {
+          icon: 'program',
+          title: 'Programmes individuels',
+          subtitle: 'Les objectifs, charges adaptées et exercices spécifiques restent reliés à chaque joueur.',
+          href: '#v2-medical',
+          linkLabel: 'Voir les programmes',
+        },
+        {
+          icon: 'sessions',
+          title: 'Séances & tactique',
+          subtitle: 'Plans de séance, tableaux tactiques et exercices restent connectés à l’état de l’équipe.',
+          href: '#v2-sessions',
+          linkLabel: 'Voir les séances',
+        },
+        {
+          icon: 'reports',
+          title: 'Rapports de match et de séances',
+          subtitle: 'Les retours staff créent une boucle de feedback et gardent les temps de jeu visibles.',
+          href: '#v2-sessions',
+          linkLabel: 'Voir les rapports',
+        },
+        {
+          icon: 'insight',
+          title: 'Rapports & IA',
+          subtitle: 'Les comptes-rendus et l’assistant IA transforment les informations d’équipe en décisions.',
+          href: '#v2-staff',
+          linkLabel: 'Voir les insights',
+        },
+      ],
     },
 
     communication: {
@@ -711,50 +689,18 @@ export const landingContent: Record<Locale, LandingContent> = {
         'Call-ups, attendance, load, RPE, medical, communication. Everything your technical staff manages day to day, in one place, readable by the head coach, the S&C coach and the physio. Free for coaches.',
       primaryCta: 'Start for free',
       secondaryCta: 'See the platform',
-      device: {
-        url: 'app.strivn.net · Season 2026-27',
-        step1: {
-          label: 'Yan flags something',
-          quote: '"Mild hamstring pull since Sunday. I\'ll come to training but I\'m useless."',
-          echo: "Got it. I forward this to your staff and link it to your load and your next match.",
-        },
-        step2: {
-          label: 'STRIVN captures and connects',
-          pills: ['3 modules', '0 manual entry', '1 player'],
-          explain:
-            "The signal lands on Yan's player profile. Physio, load and call-ups all update at the same time.",
-          list: [
-            'Yan medical file · hamstring · opened',
-            'Yan load · week reduced by 30 %',
-            'Sunday call-up · flagged "to monitor"',
-            'Staff see it without anyone having to ask',
-          ],
-        },
-        step3: {
-          label: 'The whole staff sees the same thing',
-          title: 'Head coach, S&C coach and physio all read the same profile.',
-          metrics: [
-            { label: 'Coach', value: 'match sheet' },
-            { label: 'S&C', value: 'adjusted load' },
-            { label: 'Physio', value: 'hamstring plan' },
-          ],
-          approve: 'See player profile',
-          reject: 'Hide this example',
-        },
-        step4: {
-          label: 'The coach decides, better informed',
-          phoneName: 'Yan M.',
-          phoneSub: 'U19 · midfielder',
-          phoneTime: 'Tue 18:42',
-          phoneAvatar: 'Y',
-          bubbles: [
-            { direction: 'in', text: 'Hamstring flagged · week load −30 %', time: 'Tue' },
-            { direction: 'in', text: 'Sunday match: available, limited rotation', time: 'Tue' },
-            { direction: 'in', text: 'Physio · D+5 before full return', time: 'Tue' },
-            { direction: 'out', text: 'Got it. 60-min cap on Saturday, final call Sunday morning.', time: 'Sat' },
-          ],
-          wellness: { label: 'Decision', value: 'aligned', note: 'unanimous staff · Sunday match' },
-        },
+      holistic: {
+        eyebrow: 'One team, one shared state',
+        center: 'Team state',
+        outcome: 'Aligned decision',
+        modules: [
+          { label: 'Training', detail: 'planned' },
+          { label: 'Match', detail: 'prepared' },
+          { label: 'Attendance', detail: 'current' },
+          { label: 'Medical', detail: 'visible' },
+          { label: 'Load & RPE', detail: 'connected' },
+          { label: 'Communication', detail: 'sent' },
+        ],
       },
     },
 
@@ -798,72 +744,103 @@ export const landingContent: Record<Locale, LandingContent> = {
       pillars: [
         {
           tag: 'Team',
-          name: 'Player management',
-          role: 'Your whole squad, with no artificial limit',
+          name: 'Team management',
+          role: 'Players, staff, roles and availability in one view',
           does: [
             'Unlimited players',
             'Unlimited staff',
-            'Attendance and availability tracking',
+            'Roles, attendance and availability tracking',
           ],
         },
         {
           tag: 'Operations',
-          name: 'Events & sessions',
-          role: 'Your week prepared faster',
+          name: 'Communication & events',
+          role: 'The week, messages and replies stay connected',
           does: [
             'Training, matches, meetings',
-            'Communication templates',
-            'RSVP links per event',
+            'Unified communication',
+            'RSVP links and replies per event',
           ],
         },
         {
-          tag: 'Medical',
-          name: 'Injuries & programs',
-          role: 'Important signals stop getting lost',
+          tag: 'Performance',
+          name: 'Performance & player tracking',
+          role: 'Physical, medical and individual signals stay readable',
           does: [
-            'Medical notes',
+            'Medical room and return-to-play',
+            'Load, RPE, tests and evaluations',
             'Individual programs',
-            'Return-to-play visible to staff',
           ],
         },
         {
-          tag: 'Insight',
-          name: 'Reports & AI assistant',
-          role: 'Information becomes usable',
+          tag: 'Players',
+          name: 'Player portal',
+          role: 'The player experience continues in the iOS and Android apps',
           does: [
-            'Prepares reports',
-            'Tactical boards',
-            'Built-in AI assistant',
+            'Player schedule',
+            'RSVP and team information',
+            'iOS and Android apps',
           ],
         },
       ],
-      beforeAfter: {
-        eyebrow: 'Before / After',
-        beforeLabel: 'Without STRIVN',
-        afterLabel: 'With STRIVN',
-        rows: [
-          {
-            task: 'Call-ups',
-            before: 'A message to rewrite every time',
-            after: 'A template loaded, an RSVP created',
-          },
-          {
-            task: 'Attendance',
-            before: 'You count replies by hand',
-            after: 'Counted and live in real time',
-          },
-          {
-            task: 'Injuries',
-            before: 'Scattered across texts and memory',
-            after: 'In one place, visible to the staff',
-          },
-          {
-            task: 'Team info',
-            before: 'In front of a spreadsheet',
-            after: 'Centralized, ready to analyze',
-          },
-        ],
-      },
+      features: [
+        {
+          icon: 'attendance',
+          title: 'Attendance & RSVP',
+          subtitle: 'Player replies become a live coach view without counting answers by hand.',
+          href: '#v2-communication',
+          linkLabel: 'See the workflow',
+        },
+        {
+          icon: 'medical',
+          title: 'Medical room',
+          subtitle: 'Injuries, medical notes and return-to-play status stay visible to authorized staff.',
+          href: '#v2-medical',
+          linkLabel: 'See medical',
+        },
+        {
+          icon: 'load',
+          title: 'Load & RPE',
+          subtitle: 'Load, player feeling and weak signals connect to the real week of the group.',
+          href: '#v2-load',
+          linkLabel: 'See load',
+        },
+        {
+          icon: 'tests',
+          title: 'Tests & evaluations',
+          subtitle: 'Physical and technical tests stay tracked over time so progress is visible.',
+          href: '#v2-load',
+          linkLabel: 'See tracking',
+        },
+        {
+          icon: 'program',
+          title: 'Individual programs',
+          subtitle: 'Goals, adjusted loads and specific exercises stay connected to each player.',
+          href: '#v2-medical',
+          linkLabel: 'See programs',
+        },
+        {
+          icon: 'sessions',
+          title: 'Sessions & tactics',
+          subtitle: 'Session plans, tactical boards and exercises stay connected to the team state.',
+          href: '#v2-sessions',
+          linkLabel: 'See sessions',
+        },
+        {
+          icon: 'reports',
+          title: 'Match and session reports',
+          subtitle: 'Staff feedback creates a clear loop while playing time stays visible.',
+          href: '#v2-sessions',
+          linkLabel: 'See reports',
+        },
+        {
+          icon: 'insight',
+          title: 'Reports & AI',
+          subtitle: 'Reports and the AI assistant turn team information into clearer decisions.',
+          href: '#v2-staff',
+          linkLabel: 'See insights',
+        },
+      ],
     },
 
     communication: {
