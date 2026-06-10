@@ -1,0 +1,136 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  canonicalPath?: string;
+  alternates?: Array<{ hreflang: string; href: string }>;
+  /** Display heading (defaults to title) */
+  heading?: string;
+  /** Localized "last updated" line, already formatted */
+  updated?: string;
+  /** Localized home link label */
+  homeLabel?: string;
+  /** Path the home link points to */
+  homeHref?: string;
+}
+
+const {
+  title,
+  description,
+  lang = 'en',
+  canonicalPath,
+  alternates = [],
+  heading,
+  updated,
+  homeLabel = 'Back to strivn.net',
+  homeHref = '/',
+} = Astro.props;
+---
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+>
+  <main class="legal">
+    <a class="legal__home" href={homeHref}>← {homeLabel}</a>
+    <header class="legal__header">
+      <h1>{heading ?? title}</h1>
+      {updated && <p class="legal__updated">{updated}</p>}
+    </header>
+    <div class="legal__prose">
+      <slot />
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 6rem) var(--space-lg) var(--space-3xl);
+    color: var(--ink-2);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.7;
+  }
+  .legal__home {
+    display: inline-block;
+    margin-bottom: var(--space-xl);
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: color 0.2s var(--ease-out);
+  }
+  .legal__home:hover { color: var(--electric-500); }
+  .legal__header { margin-bottom: var(--space-2xl); }
+  .legal__header h1 {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: var(--text-headline);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .legal__updated {
+    margin: var(--space-sm) 0 0;
+    color: var(--ink-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-frag);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .legal__prose :global(h2) {
+    margin: var(--space-2xl) 0 var(--space-sm);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: var(--text-title);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .legal__prose :global(h3) {
+    margin: var(--space-xl) 0 var(--space-xs);
+    color: var(--ink);
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+  .legal__prose :global(p) { margin: 0 0 var(--space-md); }
+  .legal__prose :global(ul) {
+    margin: 0 0 var(--space-md);
+    padding-left: var(--space-lg);
+    list-style: none;
+  }
+  .legal__prose :global(li) {
+    position: relative;
+    margin: 0 0 var(--space-xs);
+    padding-left: var(--space-md);
+  }
+  .legal__prose :global(li)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-pill);
+    background: var(--electric);
+  }
+  .legal__prose :global(strong) { color: var(--ink); font-weight: 600; }
+  .legal__prose :global(a) {
+    color: var(--electric-500);
+    text-decoration: none;
+    border-bottom: 1px solid var(--electric-border);
+  }
+  .legal__prose :global(a:hover) { color: var(--ink); }
+  .legal__prose :global(hr) {
+    margin: var(--space-2xl) 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+  }
+</style>

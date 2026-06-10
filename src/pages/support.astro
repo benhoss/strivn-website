@@ -1,0 +1,57 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/support' },
+  { hreflang: 'fr', href: '/fr/support' },
+  { hreflang: 'x-default', href: '/support' },
+];
+---
+<LegalLayout
+  title="Support | STRIVN Player"
+  description="Help and support for the STRIVN Player app — signing in, notifications, and account deletion."
+  lang="en"
+  canonicalPath="/support"
+  alternates={alternates}
+  heading="Support"
+>
+  <p>
+    Need help with the <strong>STRIVN Player</strong> app? We're here for you. Email
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a> and we'll get back to you,
+    usually within two business days.
+  </p>
+
+  <h2>Common questions</h2>
+
+  <h3>How do I sign in?</h3>
+  <p>
+    Use the email address or phone number your coach registered for you. If you can't
+    sign in, ask your coach to confirm your contact details, or email us.
+  </p>
+
+  <h3>I'm not receiving notifications</h3>
+  <p>
+    Make sure you allowed notifications when you first signed in. You can re-enable
+    them in your device settings under STRIVN Player. Notifications cover new events,
+    attendance requests, and coach updates.
+  </p>
+
+  <h3>How do I update my profile photo?</h3>
+  <p>
+    Open your account page in the app, choose a new photo from your camera or library,
+    and save. Your photo is visible only within your signed-in player space.
+  </p>
+
+  <h3>How do I delete my account?</h3>
+  <p>
+    You can request deletion from your account page in the app, or email
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a> from the address on your
+    account. We'll delete your personal data within a reasonable period. See our
+    <a href="/privacy">Privacy Policy</a> for details.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    For anything else, reach us at <a href="mailto:hello@strivn.net">hello@strivn.net</a>.
+  </p>
+</LegalLayout>

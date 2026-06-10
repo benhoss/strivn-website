@@ -1,0 +1,117 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/privacy' },
+  { hreflang: 'fr', href: '/fr/privacy' },
+  { hreflang: 'x-default', href: '/privacy' },
+];
+---
+<LegalLayout
+  title="Privacy Policy | STRIVN"
+  description="How STRIVN collects, uses, and protects your data in the STRIVN Player app and player portal."
+  lang="en"
+  canonicalPath="/privacy"
+  alternates={alternates}
+  heading="Privacy Policy"
+  updated="Last updated · 10 June 2026"
+>
+  <p>
+    This Privacy Policy explains how STRIVN ("STRIVN", "we", "us") collects, uses,
+    and protects your personal data when you use the <strong>STRIVN Player</strong>
+    mobile app and the STRIVN player portal (together, the "Service").
+  </p>
+  <p>
+    STRIVN Player is a companion app for athletes whose club or team uses STRIVN.
+    Your account is created by your coach or club, and the data you enter is shared
+    only with the authorized staff of your team.
+  </p>
+
+  <h2>Data we collect</h2>
+  <ul>
+    <li><strong>Account & contact information</strong> — your name, and the email address and/or phone number used to sign in, as registered by your coach.</li>
+    <li><strong>Health & fitness information</strong> — your daily wellness check-ins, availability/readiness signal, and any injuries you declare.</li>
+    <li><strong>Photos</strong> — your profile photo and any photos you attach to an injury report.</li>
+    <li><strong>Messages & content</strong> — questions you send to the AI coach and notes you add to attendance responses.</li>
+    <li><strong>Device & notification data</strong> — a push notification token and device identifier, used solely to deliver notifications to your device.</li>
+  </ul>
+  <p>
+    We do <strong>not</strong> collect your location, contacts, calendar, financial
+    information, or advertising identifiers, and we do not track you across other
+    apps or websites.
+  </p>
+
+  <h2>How we use your data</h2>
+  <ul>
+    <li>To provide the Service — show your agenda, record attendance, store your check-ins, and share them with your authorized team staff.</li>
+    <li>To generate AI coach responses about training load, recovery, and return from injury.</li>
+    <li>To send notifications about events, attendance requests, and coach updates.</li>
+    <li>To secure your account and operate the Service reliably.</li>
+  </ul>
+  <p>
+    We never sell your personal data, and we never use your health data or photos
+    for advertising.
+  </p>
+
+  <h2>Legal basis (EEA/UK)</h2>
+  <p>
+    Where the GDPR applies, we process your data to perform the agreement between
+    you, your club, and STRIVN, and on the basis of your and your club's consent for
+    health-related data. You may withdraw consent at any time (see "Your rights").
+  </p>
+
+  <h2>Sharing & service providers</h2>
+  <p>
+    We share data only with service providers that process it on our behalf under
+    contract, including:
+  </p>
+  <ul>
+    <li><strong>Apple Push Notification service</strong> and <strong>Google Firebase Cloud Messaging</strong> — to deliver notifications.</li>
+    <li>An <strong>AI provider</strong> — to generate AI coach responses from the questions you send.</li>
+    <li>Our <strong>hosting and infrastructure providers</strong> — to run the Service.</li>
+  </ul>
+  <p>Your data is also visible to the authorized staff of your own team. It is never shared publicly or with other clubs.</p>
+
+  <h2>Data retention</h2>
+  <p>
+    We keep your data for as long as your team account is active. When your account
+    is deleted, we remove your personal data within a reasonable period, except where
+    we must retain it to comply with legal obligations.
+  </p>
+
+  <h2>Your rights</h2>
+  <p>
+    You may request access to, correction of, deletion of, or a copy of your personal
+    data, and you may object to or restrict certain processing. To exercise any right,
+    or to request deletion of your account, contact us at
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a> or use the deletion option
+    in your account page. You may also lodge a complaint with your local data
+    protection authority.
+  </p>
+
+  <h2>Security</h2>
+  <p>
+    All traffic between the app and our servers is encrypted in transit (HTTPS), and
+    your session token is stored in your device's secure storage. Access to team data
+    is limited to authorized staff.
+  </p>
+
+  <h2>Children</h2>
+  <p>
+    Athletes using STRIVN may be minors. Accounts are created by clubs, which are
+    responsible for obtaining any required parental consent. If you believe a minor's
+    data has been provided without proper consent, contact us and we will address it.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    We may update this policy from time to time. We will revise the "last updated"
+    date above and, where appropriate, notify you in the app.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this policy or your data? Email us at
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a>.
+  </p>
+</LegalLayout>

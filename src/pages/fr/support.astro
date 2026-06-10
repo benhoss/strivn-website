@@ -1,0 +1,63 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/support' },
+  { hreflang: 'fr', href: '/fr/support' },
+  { hreflang: 'x-default', href: '/support' },
+];
+---
+<LegalLayout
+  title="Aide | STRIVN Player"
+  description="Aide et support pour l'app STRIVN Player — connexion, notifications et suppression de compte."
+  lang="fr"
+  canonicalPath="/fr/support"
+  alternates={alternates}
+  heading="Aide & support"
+  homeLabel="Retour sur strivn.net"
+  homeHref="/fr/"
+>
+  <p>
+    Besoin d'aide avec l'app <strong>STRIVN Player</strong> ? On est là. Écris à
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a> et nous te répondrons,
+    généralement sous deux jours ouvrés.
+  </p>
+
+  <h2>Questions fréquentes</h2>
+
+  <h3>Comment me connecter ?</h3>
+  <p>
+    Utilise l'email ou le numéro de téléphone que ton coach a enregistré pour toi. Si
+    la connexion échoue, demande à ton coach de vérifier tes coordonnées, ou écris-nous.
+  </p>
+
+  <h3>Je ne reçois pas de notifications</h3>
+  <p>
+    Vérifie que tu as autorisé les notifications lors de ta première connexion. Tu peux
+    les réactiver dans les réglages de ton appareil, sous STRIVN Player. Les
+    notifications couvrent les nouveaux événements, les convocations et les messages du
+    coach.
+  </p>
+
+  <h3>Comment changer ma photo de profil ?</h3>
+  <p>
+    Ouvre ta page de compte dans l'app, choisis une nouvelle photo depuis ton appareil
+    photo ou ta galerie, puis enregistre. Ta photo n'est visible que dans ton espace
+    joueur connecté.
+  </p>
+
+  <h3>Comment supprimer mon compte ?</h3>
+  <p>
+    Tu peux demander la suppression depuis ta page de compte dans l'app, ou écrire à
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a> depuis l'adresse de ton
+    compte. Nous supprimerons tes données personnelles dans un délai raisonnable.
+    Consulte notre <a href="/fr/privacy">politique de confidentialité</a> pour les
+    détails.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Pour toute autre demande, contacte-nous à
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a>.
+  </p>
+</LegalLayout>
