@@ -1553,7 +1553,7 @@ a {
 }
 
 .s-footer__brand img {
-  height: 1.75rem;
+  height: clamp(2.5rem, 4vw, 3.75rem);
   width: auto;
 }
 
@@ -1659,6 +1659,16 @@ a {
 }
 
 @media (max-width: 40rem) {
+  .s-nav {
+    width: calc(100vw - 2 * var(--page-gutter));
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+
+  .s-nav__brand img {
+    height: 2rem;
+  }
+
   .s-nav__lang {
     display: none;
   }
