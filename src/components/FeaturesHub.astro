@@ -1,0 +1,192 @@
+---
+import SubpageLayout from '../layouts/SubpageLayout.astro';
+import { APP_URL, landingContent, type Locale } from '../data/landingContent';
+import { featuresContent } from '../data/featuresContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const fc = featuresContent[locale];
+const hub = fc.hub;
+const c = landingContent[locale];
+
+const base = locale === 'fr' ? '/fr' : '/en';
+const canonicalPath = `${base}/features/`;
+const switchHrefs = { en: '/en/features/', fr: '/fr/features/' };
+const alternates = [
+  { hreflang: 'en', href: switchHrefs.en },
+  { hreflang: 'fr', href: switchHrefs.fr },
+  { hreflang: 'x-default', href: switchHrefs.fr },
+];
+
+const site = 'https://strivn.net';
+const jsonLdExtra = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: `${site}${base}/` },
+      { '@type': 'ListItem', position: 2, name: fc.hubName, item: `${site}${canonicalPath}` },
+    ],
+  },
+];
+---
+
+<SubpageLayout
+  locale={locale}
+  title={hub.meta.title}
+  description={hub.meta.description}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+  jsonLdExtra={jsonLdExtra}
+  switchHrefs={switchHrefs}
+>
+  <!-- Hero -->
+  <section class="fh-hero">
+    <div class="s-wrap">
+      <p class="s-label fh-hero__eyebrow">{hub.eyebrow}</p>
+      <h1 class="s-display fh-hero__title">{hub.hero.title}</h1>
+      <p class="s-lede fh-hero__lede">{hub.hero.lede}</p>
+    </div>
+  </section>
+
+  <!-- Feature cards -->
+  <section class="fh-cards">
+    <div class="s-wrap">
+      <ul class="fh-cards__grid">
+        {hub.cards.map((card, i) => (
+          <li data-reveal style={`--d: ${i * 60}ms;`}>
+            <a href={`${base}/features/${card.slug}/`} class="fh-card">
+              <h2>{card.title}</h2>
+              <p>{card.text}</p>
+              <ul class="fh-card__points">
+                {card.points.map((point) => <li>{point}</li>)}
+              </ul>
+              <span class="fh-card__cta">{fc.moreLinkLabel} →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Final CTA (reuses homepage final-CTA styles) -->
+  <section class="s-final">
+    <div class="s-wrap s-final__inner" data-reveal>
+      <h2 class="s-headline">{c.finalCta.title}</h2>
+      <p class="s-lede s-final__body">{c.finalCta.body}</p>
+      <div class="s-final__actions">
+        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.primaryCta}</a>
+        <a href={c.finalCta.secondaryHref} class="s-final__secondary">{c.finalCta.secondaryCta}</a>
+      </div>
+    </div>
+  </section>
+</SubpageLayout>
+
+<style>
+  .fh-hero {
+    position: relative;
+    padding-block: clamp(7rem, 14vh, 9rem) clamp(3.5rem, 7vh, 5rem);
+  }
+
+  .fh-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50rem 30rem at 70% 0%, var(--glow-hero), transparent 65%);
+    pointer-events: none;
+  }
+
+  .fh-hero__eyebrow {
+    position: relative;
+    display: block;
+    margin-bottom: var(--space-lg);
+    color: var(--electric-500);
+  }
+
+  .fh-hero__title {
+    position: relative;
+    max-width: 22ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .fh-hero__lede {
+    position: relative;
+  }
+
+  .fh-cards {
+    padding-block: var(--space-md) var(--space-3xl);
+  }
+
+  .fh-cards__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fh-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    height: 100%;
+    padding: var(--space-xl);
+    background: var(--void-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color var(--dur-short) var(--ease-out), transform 100ms var(--ease-out);
+  }
+
+  .fh-card:hover {
+    border-color: var(--electric-border);
+    transform: translateY(-2px);
+  }
+
+  .fh-card h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .fh-card > p {
+    color: var(--ink-2);
+    max-width: 50ch;
+  }
+
+  .fh-card__points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    list-style: none;
+    margin: var(--space-2xs) 0 0;
+    padding: 0;
+  }
+
+  .fh-card__points li {
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: var(--text-frag-sm);
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+
+  .fh-card__cta {
+    margin-top: auto;
+    padding-top: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--electric-500);
+  }
+
+  @media (max-width: 60rem) {
+    .fh-cards__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

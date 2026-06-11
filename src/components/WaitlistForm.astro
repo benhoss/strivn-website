@@ -1,0 +1,213 @@
+---
+import type { Locale } from '../data/landingContent';
+import { clubsContent, CLUBS_FORM_ENDPOINT } from '../data/clubsContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const form = clubsContent[locale].form;
+---
+
+<div class="wf" data-waitlist-wrap aria-live="polite">
+  <form class="wf__form" method="POST" action={CLUBS_FORM_ENDPOINT} data-waitlist>
+    <!-- Honeypot: Formspree drops submissions where _gotcha is filled. -->
+    <input
+      type="text"
+      name="_gotcha"
+      class="wf__gotcha"
+      tabindex="-1"
+      autocomplete="off"
+      aria-hidden="true"
+    />
+    <input type="hidden" name="locale" value={locale} />
+    <input type="hidden" name="_subject" value="STRIVN Club waitlist" />
+
+    <div class="wf__grid">
+      <label class="wf__field">
+        <span class="wf__label">{form.fields.name.label}</span>
+        <input type="text" name="name" required placeholder={form.fields.name.placeholder} autocomplete="name" />
+      </label>
+      <label class="wf__field">
+        <span class="wf__label">{form.fields.email.label}</span>
+        <input type="email" name="email" required placeholder={form.fields.email.placeholder} autocomplete="email" />
+      </label>
+      <label class="wf__field">
+        <span class="wf__label">{form.fields.club.label}</span>
+        <input type="text" name="club" required placeholder={form.fields.club.placeholder} autocomplete="organization" />
+      </label>
+      <label class="wf__field">
+        <span class="wf__label">{form.fields.role.label}</span>
+        <input type="text" name="role" placeholder={form.fields.role.placeholder} autocomplete="organization-title" />
+      </label>
+      <label class="wf__field">
+        <span class="wf__label">{form.fields.teams.label}</span>
+        <input type="number" name="teams" min="1" inputmode="numeric" placeholder={form.fields.teams.placeholder} />
+      </label>
+    </div>
+
+    <p class="wf__error" data-error role="alert" hidden>{form.error}</p>
+
+    <div class="wf__actions">
+      <button type="submit" class="s-btn s-btn--primary" data-sending={form.sending}>{form.submit}</button>
+      <p class="wf__privacy">
+        {form.privacyNote}
+        <a href={form.privacyLink.href}>{form.privacyLink.label}</a>
+      </p>
+    </div>
+  </form>
+
+  <div class="wf__success" data-success hidden>
+    <h3>{form.success.title}</h3>
+    <p>{form.success.body}</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-waitlist]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const error = form.querySelector<HTMLElement>('[data-error]');
+      const success = form.closest('[data-waitlist-wrap]')?.querySelector<HTMLElement>('[data-success]');
+      if (!button) return;
+
+      error?.setAttribute('hidden', '');
+      const idleLabel = button.textContent;
+      button.disabled = true;
+      button.textContent = button.dataset.sending ?? idleLabel;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (!res.ok) throw new Error(`Formspree responded ${res.status}`);
+        form.setAttribute('hidden', '');
+        success?.removeAttribute('hidden');
+      } catch {
+        // Field values are preserved so the visitor can simply retry.
+        error?.removeAttribute('hidden');
+        button.disabled = false;
+        button.textContent = idleLabel;
+      }
+    });
+  });
+</script>
+
+<style>
+  .wf__gotcha {
+    display: none;
+  }
+
+  .wf__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .wf__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  /* Role spans the full row so the placeholder has room to breathe. */
+  .wf__field:nth-of-type(4) {
+    grid-column: 1 / -1;
+  }
+
+  .wf__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .wf__field input {
+    padding: 0.625rem 0.75rem;
+    background: var(--surface-deep);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-sm);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    transition: border-color var(--dur-short) var(--ease-out);
+  }
+
+  .wf__field input::placeholder {
+    color: var(--navy-500);
+  }
+
+  .wf__field input:hover {
+    border-color: var(--navy-500);
+  }
+
+  .wf__field input:focus {
+    outline: none;
+    border-color: var(--electric-border);
+  }
+
+  .wf__error {
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--risk);
+    border-radius: var(--radius-sm);
+    color: var(--risk);
+    font-size: var(--text-sm);
+  }
+
+  .wf__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md) var(--space-lg);
+  }
+
+  .wf__privacy {
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+    max-width: 40ch;
+  }
+
+  .wf__privacy a {
+    color: var(--ink-2);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--navy-500);
+  }
+
+  .wf__privacy a:hover {
+    color: var(--ink);
+  }
+
+  .wf__success {
+    padding: var(--space-xl);
+    background: var(--void-soft);
+    border: 1px solid var(--electric-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .wf__success h3 {
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-display);
+    font-size: var(--text-title);
+    font-weight: 600;
+  }
+
+  .wf__success p {
+    color: var(--ink-2);
+    max-width: 52ch;
+  }
+
+  @media (max-width: 40rem) {
+    .wf__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,263 @@
+---
+import { landingContent, type Locale } from '../data/landingContent';
+import type { FeatureSlug } from '../data/featuresContent';
+
+interface Props {
+  locale: Locale;
+  slug: FeatureSlug;
+}
+
+const { locale, slug } = Astro.props;
+const c = landingContent[locale];
+const isFrench = locale === 'fr';
+
+/** Whole visual is one illustration for assistive tech — sample data inside is decorative. */
+const ariaLabels: Record<FeatureSlug, string> = isFrench
+  ? {
+      communication: 'Illustration : une convocation avec les réponses des joueurs et le décompte des présences en direct.',
+      medical: 'Illustration : un dossier blessure avec retour au jeu par étapes et notes du staff.',
+      'training-load': 'Illustration : un tableau de charge hebdomadaire avec RPE et signaux ACWR.',
+      sessions: 'Illustration : un plan de séance en quatre ateliers minutés.',
+    }
+  : {
+      communication: 'Illustration: a call-up message with player replies and a live attendance tally.',
+      medical: 'Illustration: an injury record with staged return-to-play and staff notes.',
+      'training-load': 'Illustration: a weekly load table with RPE values and ACWR risk flags.',
+      sessions: 'Illustration: a session plan with four timed drill phases.',
+    };
+
+type Chip = { tone: 'ok' | 'watch' | 'risk' | 'info'; text: string };
+const chips: Record<FeatureSlug, Chip> = isFrench
+  ? {
+      communication: { tone: 'ok', text: 'L. Moreau — Présent · 18h09' },
+      medical: { tone: 'watch', text: 'Réathlétisation · J+9' },
+      'training-load': { tone: 'risk', text: 'ACWR 1.32 — alléger vendredi' },
+      sessions: { tone: 'info', text: 'Ajustée à la charge du groupe' },
+    }
+  : {
+      communication: { tone: 'ok', text: 'L. Moreau — In · 6:09pm' },
+      medical: { tone: 'watch', text: 'Reconditioning · day 9' },
+      'training-load': { tone: 'risk', text: 'ACWR 1.32 — lighten Friday' },
+      sessions: { tone: 'info', text: 'Tuned to the squad’s load' },
+    };
+
+const chip = chips[slug];
+const com = c.communication.proof;
+const med = c.medical.record;
+const load = c.load.table;
+const board = c.sessions.board;
+---
+
+<div class="fv" role="img" aria-label={ariaLabels[slug]}>
+  <!-- Tactical-ink pitch drawing, faint, behind the panel -->
+  <svg class="fv__pitch" viewBox="0 0 560 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- halfway line + centre circle -->
+    <line x1="40" y1="20" x2="40" y2="420" stroke="currentColor" stroke-width="1.5" />
+    <circle cx="40" cy="220" r="96" stroke="currentColor" stroke-width="1.5" />
+    <circle cx="40" cy="220" r="4" fill="currentColor" />
+    <!-- penalty box -->
+    <rect x="392" y="96" width="168" height="248" stroke="currentColor" stroke-width="1.5" />
+    <rect x="486" y="158" width="74" height="124" stroke="currentColor" stroke-width="1.5" />
+    <circle cx="448" cy="220" r="3" fill="currentColor" />
+    <path d="M392 164 A 84 84 0 0 0 392 276" stroke="currentColor" stroke-width="1.5" />
+    <!-- coached run: dashed path with arrowhead -->
+    <path d="M96 332 C 200 300, 250 180, 380 150" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 7" stroke-linecap="round" />
+    <path d="M370 142 L 384 149 L 372 158" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+    <!-- players -->
+    <circle cx="96" cy="332" r="6" stroke="currentColor" stroke-width="1.5" />
+    <circle cx="284" cy="236" r="6" stroke="currentColor" stroke-width="1.5" />
+    <path d="M330 308 l 12 12 m 0 -12 l -12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+  </svg>
+
+  <div class="fv__panel">
+    {slug === 'communication' && (
+      <div class="s-proof">
+        <span class="s-label s-proof__label">{com.messageLabel}</span>
+        <p class="s-flow__msg">
+          {com.message}
+          <span class="s-flow__link">{com.link}</span>
+        </p>
+        <ul class="s-flow__replies">
+          {com.replies.map((reply) => (
+            <li class="s-flow__reply">
+              <span class="s-flow__name">{reply.name}</span>
+              <span class={`s-flow__answer ${reply.tone === 'watch' ? 's-flow__answer--watch' : ''}`}>{reply.answer}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="s-flow__tally">{com.tally}</p>
+      </div>
+    )}
+
+    {slug === 'medical' && (
+      <div class="s-proof">
+        <div class="s-record__head">
+          <p>
+            <span class="s-record__player">{med.player}</span>
+            <span class="s-record__injury">{med.injury}</span>
+          </p>
+          <span class="s-record__since">{med.since}</span>
+        </div>
+        <ul class="s-record__stages">
+          {med.stages.map((stage) => (
+            <li class={`s-record__stage s-record__stage--${stage.state}`}>
+              <span class="s-record__stage-bar" aria-hidden="true"></span>
+              <span class="s-record__stage-label">{stage.label}</span>
+            </li>
+          ))}
+        </ul>
+        <ul class="s-record__notes">
+          {med.notes.map((note) => (
+            <li class="s-record__note">
+              <span class="s-record__note-author">{note.author}</span>
+              <span class="s-record__note-role">{note.role}</span>
+              <span class="s-record__note-text">{note.text}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="s-record__return">
+          <span class="s-label">{med.returnLabel}</span>
+          <span class="s-record__return-value">{med.returnValue}</span>
+        </p>
+      </div>
+    )}
+
+    {slug === 'training-load' && (
+      <div class="s-proof">
+        <table class="s-table">
+          <caption>
+            <span class="s-label">{load.title} · {load.week}</span>
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">{load.colPlayer}</th>
+              <th scope="col" data-num>{load.colMon}</th>
+              <th scope="col" data-num>{load.colWed}</th>
+              <th scope="col" data-num>{load.colFri}</th>
+              <th scope="col" data-num>{load.colAcwr}</th>
+              <th scope="col">{load.colState}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {load.players.map((player) => (
+              <tr>
+                <td>{player.name}</td>
+                <td data-num>{player.mon}</td>
+                <td data-num>{player.wed}</td>
+                <td data-num>{player.fri}</td>
+                <td data-num>{player.acwr}</td>
+                <td>
+                  <span class={`s-zone s-zone--${player.zone}`}>
+                    {player.zone === 'green' ? load.pillOk : player.zone === 'amber' ? load.pillWatch : load.pillRisk}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="s-table__tip">
+          <strong>{load.tipLabel}</strong>
+          {load.tip}
+        </p>
+      </div>
+    )}
+
+    {slug === 'sessions' && (
+      <div class="s-proof">
+        <div class="s-board__head">
+          <p>
+            <span class="s-board__title">{board.title}</span>
+            <span class="s-board__meta">{board.meta}</span>
+          </p>
+          <span class="s-board__stamp">{board.stamp}</span>
+        </div>
+        <ol class="s-board__phases">
+          {board.phases.map((phase) => (
+            <li class="s-board__phase">
+              <p>
+                <span class="s-board__phase-label">{phase.label}</span>
+                <span class="s-board__phase-detail">{phase.detail}</span>
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )}
+
+    <span class={`fv__chip fv__chip--${chip.tone}`}>{chip.text}</span>
+  </div>
+</div>
+
+<style>
+  .fv {
+    position: relative;
+  }
+
+  .fv__pitch {
+    position: absolute;
+    inset: -14% -10% auto;
+    width: 120%;
+    color: var(--electric-500);
+    opacity: 0.11;
+    pointer-events: none;
+  }
+
+  .fv__panel {
+    position: relative;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-chrome-lg);
+  }
+
+  .fv__chip {
+    position: absolute;
+    right: calc(-1 * var(--space-md));
+    bottom: calc(-1 * var(--space-md));
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    max-width: calc(100% - var(--space-md));
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--nav-backdrop);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-chrome);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.03em;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  .fv__chip::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+  }
+
+  .fv__chip--ok::before {
+    background: var(--performance);
+  }
+
+  .fv__chip--watch::before {
+    background: var(--warning);
+  }
+
+  .fv__chip--risk::before {
+    background: var(--risk);
+  }
+
+  .fv__chip--info::before {
+    background: var(--electric-500);
+  }
+
+  @media (max-width: 40rem) {
+    .fv__chip {
+      right: var(--space-xs);
+      white-space: normal;
+    }
+  }
+</style>

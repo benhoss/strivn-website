@@ -1,0 +1,36 @@
+---
+import type { Locale } from '../data/landingContent';
+
+interface Props {
+  locale: Locale;
+  footer: {
+    statement: string;
+    brandLine: string;
+    email: string;
+    links: Array<{ label: string; href: string }>;
+    credit: string;
+  };
+}
+
+const { footer } = Astro.props;
+---
+
+<!-- Footer · Ft5 statement -->
+<footer class="s-footer">
+  <div class="s-wrap">
+    <p class="s-footer__statement">{footer.statement}</p>
+    <div class="s-footer__meta">
+      <div class="s-footer__brand">
+        <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="180" height="120" />
+        <p>{footer.brandLine}</p>
+      </div>
+      <ul class="s-footer__links">
+        {footer.links.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+        <li><a href={`mailto:${footer.email}`}>{footer.email}</a></li>
+      </ul>
+      <span class="s-footer__credit">{footer.credit}</span>
+    </div>
+  </div>
+</footer>

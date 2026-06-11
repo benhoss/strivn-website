@@ -1,0 +1,80 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { landingContent, type Locale } from '../data/landingContent';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  alternates?: Array<{ hreflang: string; href: string }>;
+  /** Extra JSON-LD nodes forwarded to BaseLayout (FAQPage, BreadcrumbList…) */
+  jsonLdExtra?: Record<string, unknown>[];
+  /** Counterpart paths for the language switcher (defaults to the homepages). */
+  switchHrefs?: { en: string; fr: string };
+}
+
+const {
+  locale,
+  title,
+  description,
+  canonicalPath,
+  alternates = [],
+  jsonLdExtra = [],
+  switchHrefs,
+} = Astro.props;
+
+const c = landingContent[locale];
+const isFrench = locale === 'fr';
+const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
+const homeHref = isFrench ? '/fr/' : '/en/';
+---
+
+<BaseLayout
+  lang={locale}
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+  jsonLdExtra={jsonLdExtra}
+>
+  <a href="#s-main" class="s-skip">{skipLabel}</a>
+
+  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} brandHref={homeHref} switchHrefs={switchHrefs} />
+
+  <main id="s-main">
+    <slot />
+  </main>
+
+  <SiteFooter locale={locale} footer={c.footer} />
+
+  <script is:inline>
+    // Before first paint: flag JS availability so [data-reveal] elements
+    // start hidden instead of flashing in. Mirrors the homepage pattern.
+    document.documentElement.classList.add('js-anim');
+  </script>
+
+  <script>
+    // ── Reveal-once cross-fade (Split Studio) ──
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealTargets = document.querySelectorAll('[data-reveal]');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealTargets.forEach((el) => el.classList.add('is-in'));
+    } else {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-in');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px' },
+      );
+      revealTargets.forEach((el) => revealObserver.observe(el));
+    }
+  </script>
+</BaseLayout>

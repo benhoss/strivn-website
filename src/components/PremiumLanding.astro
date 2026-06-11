@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from './SiteHeader.astro';
+import SiteFooter from './SiteFooter.astro';
 import { landingContent, APP_URL, type Locale } from '../data/landingContent';
 
 interface Props {
@@ -29,8 +31,6 @@ const fragPositions = [
 ];
 
 const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
-const navAria = isFrench ? 'Navigation principale' : 'Primary navigation';
-const langAria = isFrench ? 'Changer la langue' : 'Switch language';
 ---
 
 <BaseLayout
@@ -42,23 +42,7 @@ const langAria = isFrench ? 'Changer la langue' : 'Switch language';
 >
   <a href="#s-main" class="s-skip">{skipLabel}</a>
 
-  <!-- Nav · N5 floating pill -->
-  <nav class="s-nav" aria-label={navAria}>
-    <a href="#s-main" class="s-nav__brand" aria-label="STRIVN">
-      <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="180" height="120" />
-    </a>
-    <ul class="s-nav__links">
-      {c.nav.links.map((link) => (
-        <li><a href={link.href} class="s-nav__link">{link.label}</a></li>
-      ))}
-    </ul>
-    <div class="s-nav__lang" role="group" aria-label={langAria}>
-      <a href="/fr/" aria-current={isFrench ? 'page' : undefined}>FR</a>
-      <span class="s-nav__lang-sep" aria-hidden="true">·</span>
-      <a href="/en/" aria-current={!isFrench ? 'page' : undefined}>EN</a>
-    </div>
-    <a href={APP_URL} target="_blank" rel="noopener" class="s-nav__cta">{c.nav.cta}</a>
-  </nav>
+  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} />
 
   <main id="s-main">
     <!-- ───────────── Hero · H2 split diptych + convergence ───────────── -->
@@ -410,25 +394,7 @@ const langAria = isFrench ? 'Changer la langue' : 'Switch language';
     </section>
   </main>
 
-  <!-- ───────────── Footer · Ft5 statement ───────────── -->
-  <footer class="s-footer">
-    <div class="s-wrap">
-      <p class="s-footer__statement">{c.footer.statement}</p>
-      <div class="s-footer__meta">
-        <div class="s-footer__brand">
-          <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="180" height="120" />
-          <p>{c.footer.brandLine}</p>
-        </div>
-        <ul class="s-footer__links">
-          {c.footer.links.map((link) => (
-            <li><a href={link.href}>{link.label}</a></li>
-          ))}
-          <li><a href={`mailto:${c.footer.email}`}>{c.footer.email}</a></li>
-        </ul>
-        <span class="s-footer__credit">{c.footer.credit}</span>
-      </div>
-    </div>
-  </footer>
+  <SiteFooter locale={locale} footer={c.footer} />
 
   <script is:inline>
     // Before first paint: flag JS availability and arm the convergence

@@ -183,9 +183,11 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     nav: {
       links: [
-        { label: 'Plateforme', href: '#platform' },
-        { label: 'Tarifs', href: '#pricing' },
-        { label: 'FAQ', href: '#faq' },
+        { label: 'Plateforme', href: '/fr/#platform' },
+        { label: 'Fonctionnalités', href: '/fr/features/' },
+        { label: 'Clubs', href: '/fr/clubs/' },
+        { label: 'Tarifs', href: '/fr/#pricing' },
+        { label: 'FAQ', href: '/fr/#faq' },
       ],
       cta: 'Commencer',
     },
@@ -482,9 +484,12 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN réunit l’intendance complète d’une équipe dans une seule plateforme, gratuite pour les coaches.',
       email: 'hello@strivn.ai',
       links: [
-        { label: 'Plateforme', href: '#platform' },
-        { label: 'Tarifs', href: '#pricing' },
-        { label: 'FAQ', href: '#faq' },
+        { label: 'Plateforme', href: '/fr/#platform' },
+        { label: 'Fonctionnalités', href: '/fr/features/' },
+        { label: 'Clubs', href: '/fr/clubs/' },
+        { label: 'Tarifs', href: '/fr/#pricing' },
+        { label: 'FAQ', href: '/fr/#faq' },
+        { label: 'Support', href: '/fr/support' },
         { label: 'Confidentialité', href: '/fr/privacy' },
       ],
       credit: '© 2026 STRIVN · Gratuit pour les coaches, bientôt pour les clubs',
@@ -500,9 +505,11 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     nav: {
       links: [
-        { label: 'Platform', href: '#platform' },
-        { label: 'Pricing', href: '#pricing' },
-        { label: 'FAQ', href: '#faq' },
+        { label: 'Platform', href: '/en/#platform' },
+        { label: 'Features', href: '/en/features/' },
+        { label: 'Clubs', href: '/en/clubs/' },
+        { label: 'Pricing', href: '/en/#pricing' },
+        { label: 'FAQ', href: '/en/#faq' },
       ],
       cta: 'Get started',
     },
@@ -799,9 +806,12 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN brings a team’s entire operations into one platform, free for coaches.',
       email: 'hello@strivn.ai',
       links: [
-        { label: 'Platform', href: '#platform' },
-        { label: 'Pricing', href: '#pricing' },
-        { label: 'FAQ', href: '#faq' },
+        { label: 'Platform', href: '/en/#platform' },
+        { label: 'Features', href: '/en/features/' },
+        { label: 'Clubs', href: '/en/clubs/' },
+        { label: 'Pricing', href: '/en/#pricing' },
+        { label: 'FAQ', href: '/en/#faq' },
+        { label: 'Support', href: '/support' },
         { label: 'Privacy', href: '/privacy' },
       ],
       credit: '© 2026 STRIVN · Free for coaches, clubs coming soon',

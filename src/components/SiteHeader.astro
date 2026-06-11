@@ -1,0 +1,43 @@
+---
+import { APP_URL, type Locale } from '../data/landingContent';
+
+interface Props {
+  locale: Locale;
+  links: Array<{ label: string; href: string }>;
+  cta: string;
+  /** Where the brand logo links to ('#s-main' on the homepage, locale root on subpages). */
+  brandHref?: string;
+  /** Language-switcher targets, so subpages can point to their own counterpart. */
+  switchHrefs?: { en: string; fr: string };
+}
+
+const {
+  locale,
+  links,
+  cta,
+  brandHref = '#s-main',
+  switchHrefs = { en: '/en/', fr: '/fr/' },
+} = Astro.props;
+
+const isFrench = locale === 'fr';
+const navAria = isFrench ? 'Navigation principale' : 'Primary navigation';
+const langAria = isFrench ? 'Changer la langue' : 'Switch language';
+---
+
+<!-- Nav · N5 floating pill -->
+<nav class="s-nav" aria-label={navAria}>
+  <a href={brandHref} class="s-nav__brand" aria-label="STRIVN">
+    <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="180" height="120" />
+  </a>
+  <ul class="s-nav__links">
+    {links.map((link) => (
+      <li><a href={link.href} class="s-nav__link">{link.label}</a></li>
+    ))}
+  </ul>
+  <div class="s-nav__lang" role="group" aria-label={langAria}>
+    <a href={switchHrefs.fr} aria-current={isFrench ? 'page' : undefined}>FR</a>
+    <span class="s-nav__lang-sep" aria-hidden="true">·</span>
+    <a href={switchHrefs.en} aria-current={!isFrench ? 'page' : undefined}>EN</a>
+  </div>
+  <a href={APP_URL} target="_blank" rel="noopener" class="s-nav__cta">{cta}</a>
+</nav>

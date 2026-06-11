@@ -13,6 +13,8 @@ interface Props {
   siteName?: string;
   /** Twitter handle without @ — if provided, twitter:site is emitted */
   twitterSite?: string;
+  /** Extra JSON-LD nodes appended to the page @graph (e.g. FAQPage, BreadcrumbList) */
+  jsonLdExtra?: Record<string, unknown>[];
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   ogImage = '/strivn-logo-full-white-web.png',
   siteName = 'STRIVN',
   twitterSite,
+  jsonLdExtra = [],
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://strivn.net');
@@ -53,6 +56,7 @@ const jsonLd = {
       name: siteName,
       inLanguage: ['en', 'fr'],
     },
+    ...jsonLdExtra,
   ],
 };
 ---

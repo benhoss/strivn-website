@@ -1,0 +1,438 @@
+---
+import SubpageLayout from '../layouts/SubpageLayout.astro';
+import FeatureVisual from './FeatureVisual.astro';
+import { APP_URL, type Locale } from '../data/landingContent';
+import { featuresContent, FEATURE_SLUGS, type FeatureSlug } from '../data/featuresContent';
+
+interface Props {
+  locale: Locale;
+  slug: FeatureSlug;
+}
+
+const { locale, slug } = Astro.props;
+const fc = featuresContent[locale];
+const f = fc.features[slug];
+
+const base = locale === 'fr' ? '/fr' : '/en';
+const canonicalPath = `${base}/features/${slug}/`;
+const switchHrefs = { en: `/en/features/${slug}/`, fr: `/fr/features/${slug}/` };
+const alternates = [
+  { hreflang: 'en', href: switchHrefs.en },
+  { hreflang: 'fr', href: switchHrefs.fr },
+  { hreflang: 'x-default', href: switchHrefs.fr },
+];
+
+const site = 'https://strivn.net';
+const siblings = FEATURE_SLUGS.filter((s) => s !== slug).map(
+  (s) => fc.hub.cards.find((card) => card.slug === s)!,
+);
+
+const jsonLdExtra = [
+  {
+    '@type': 'FAQPage',
+    mainEntity: f.faq.items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: `${site}${base}/` },
+      { '@type': 'ListItem', position: 2, name: fc.hubName, item: `${site}${base}/features/` },
+      { '@type': 'ListItem', position: 3, name: f.hero.title, item: `${site}${canonicalPath}` },
+    ],
+  },
+];
+---
+
+<SubpageLayout
+  locale={locale}
+  title={f.meta.title}
+  description={f.meta.description}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+  jsonLdExtra={jsonLdExtra}
+  switchHrefs={switchHrefs}
+>
+  <!-- Hero · split diptych: copy + product-style illustration -->
+  <section class="fp-hero">
+    <div class="s-wrap fp-hero__grid">
+      <div class="fp-hero__copy">
+        <p class="fp-crumb">
+          <a href={`${base}/features/`} class="fp-crumb__link">{fc.hubName}</a>
+          <span aria-hidden="true">/</span>
+          <span class="fp-crumb__here">{f.eyebrow}</span>
+        </p>
+        <h1 class="s-display fp-hero__title">{f.hero.title}</h1>
+        <p class="s-lede fp-hero__lede">{f.hero.lede}</p>
+        <div class="fp-hero__actions">
+          <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{f.hero.primaryCta}</a>
+        </div>
+        <span class="s-label fp-hero__reassurance">{f.hero.reassurance}</span>
+      </div>
+      <div class="fp-hero__visual" data-reveal style="--d: 140ms;">
+        <FeatureVisual locale={locale} slug={slug} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="fp-benefits" id="benefits">
+    <div class="s-wrap">
+      <h2 class="s-headline fp-section__title" data-reveal>{f.benefits.title}</h2>
+      <ul class="fp-benefits__grid">
+        {f.benefits.items.map((item, i) => (
+          <li class="fp-benefits__item" data-reveal style={`--d: ${i * 60}ms;`}>
+            <span class="fp-benefits__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="fp-how" id="how">
+    <div class="s-wrap">
+      <h2 class="s-headline fp-section__title" data-reveal>{f.how.title}</h2>
+      <ol class="fp-how__steps">
+        {f.how.steps.map((step, i) => (
+          <li class="fp-how__step" data-reveal style={`--d: ${i * 60}ms;`}>
+            <span class="fp-how__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ (reuses homepage FAQ styles) -->
+  <section class="fp-faq" id="faq">
+    <div class="s-wrap">
+      <h2 class="s-headline fp-section__title" data-reveal>{f.faq.title}</h2>
+      <div class="fp-faq__list" data-reveal style="--d: 80ms;">
+        {f.faq.items.map((item) => (
+          <details class="s-faq__item">
+            <summary class="s-faq__q">{item.question}</summary>
+            <p class="s-faq__a">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-links to sibling features -->
+  <section class="fp-more">
+    <div class="s-wrap">
+      <h2 class="s-label fp-more__title">{fc.moreTitle}</h2>
+      <ul class="fp-more__grid">
+        {siblings.map((card) => (
+          <li>
+            <a href={`${base}/features/${card.slug}/`} class="fp-more__card">
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+              <span class="fp-more__cta">{fc.moreLinkLabel} →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="fp-more__back"><a href={`${base}/features/`}>{fc.backToHub} →</a></p>
+    </div>
+  </section>
+
+  <!-- Final CTA (reuses homepage final-CTA styles) -->
+  <section class="s-final">
+    <div class="s-wrap s-final__inner" data-reveal>
+      <h2 class="s-headline">{f.finalCta.title}</h2>
+      <p class="s-lede s-final__body">{f.finalCta.body}</p>
+      <div class="s-final__actions">
+        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{f.finalCta.cta}</a>
+      </div>
+    </div>
+  </section>
+</SubpageLayout>
+
+<style>
+  /* Hero — fixed-nav clearance mirrors .s-hero */
+  .fp-hero {
+    position: relative;
+    padding-block: clamp(7rem, 14vh, 9rem) clamp(4rem, 8vh, 6rem);
+  }
+
+  .fp-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(50rem 32rem at 76% 24%, var(--glow-hero), transparent 65%),
+      radial-gradient(36rem 26rem at 8% 90%, var(--navy-veil), transparent 70%);
+    pointer-events: none;
+  }
+
+  .fp-hero__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .fp-hero__visual {
+    min-width: 0;
+  }
+
+  .fp-crumb {
+    position: relative;
+    display: flex;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .fp-crumb__link {
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color var(--dur-micro) var(--ease-out);
+  }
+
+  .fp-crumb__link:hover {
+    color: var(--ink);
+  }
+
+  .fp-crumb__here {
+    color: var(--electric-500);
+  }
+
+  .fp-hero__title {
+    position: relative;
+    max-width: 22ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .fp-hero__lede {
+    position: relative;
+    margin-bottom: var(--space-xl);
+  }
+
+  .fp-hero__actions {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .fp-hero__reassurance {
+    position: relative;
+    display: block;
+  }
+
+  /* Shared section rhythm */
+  .fp-benefits,
+  .fp-how,
+  .fp-faq,
+  .fp-more {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--rule);
+  }
+
+  .fp-section__title {
+    max-width: 30ch;
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Benefits */
+  .fp-benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fp-benefits__item {
+    position: relative;
+    padding: var(--space-lg);
+    background: var(--void-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--dur-short) var(--ease-out);
+  }
+
+  .fp-benefits__item:hover {
+    border-color: var(--electric-border);
+  }
+
+  .fp-benefits__idx {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+  }
+
+  .fp-benefits__item h3 {
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .fp-benefits__item p {
+    color: var(--ink-2);
+    max-width: 52ch;
+  }
+
+  /* How it works — connected timeline */
+  .fp-how__steps {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 42rem;
+  }
+
+  /* Rail connecting the step badges */
+  .fp-how__steps::before {
+    content: '';
+    position: absolute;
+    left: 1.125rem;
+    top: 1.25rem;
+    bottom: 1.25rem;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--electric-border), var(--rule-strong));
+  }
+
+  .fp-how__step {
+    position: relative;
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+    padding-block: var(--space-md);
+  }
+
+  .fp-how__num {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--surface-deep);
+    border: 1px solid var(--electric-border);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--electric-500);
+  }
+
+  .fp-how__step h3 {
+    margin-bottom: var(--space-2xs);
+    padding-top: 0.45rem;
+    font-size: var(--text-body);
+    font-weight: 600;
+  }
+
+  .fp-how__step p {
+    color: var(--ink-2);
+    max-width: 48ch;
+  }
+
+  /* FAQ */
+  .fp-faq__list {
+    max-width: 46rem;
+  }
+
+  /* Cross-links */
+  .fp-more__title {
+    display: block;
+    margin-bottom: var(--space-lg);
+  }
+
+  .fp-more__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+    list-style: none;
+    margin: 0 0 var(--space-lg);
+    padding: 0;
+  }
+
+  .fp-more__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    height: 100%;
+    padding: var(--space-lg);
+    background: var(--void-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color var(--dur-short) var(--ease-out), transform 100ms var(--ease-out);
+  }
+
+  .fp-more__card:hover {
+    border-color: var(--electric-border);
+    transform: translateY(-2px);
+  }
+
+  .fp-more__card h3 {
+    font-size: var(--text-body);
+    font-weight: 600;
+  }
+
+  .fp-more__card p {
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+  }
+
+  .fp-more__cta {
+    margin-top: auto;
+    padding-top: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--electric-500);
+  }
+
+  .fp-more__back a {
+    font-size: var(--text-sm);
+    color: var(--ink-2);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--navy-500);
+  }
+
+  .fp-more__back a:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 60rem) {
+    .fp-hero__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+    }
+
+    .fp-hero__visual {
+      max-width: 32rem;
+    }
+
+    .fp-benefits__grid,
+    .fp-more__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

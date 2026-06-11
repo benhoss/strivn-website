@@ -1,0 +1,206 @@
+---
+import SubpageLayout from '../layouts/SubpageLayout.astro';
+import WaitlistForm from './WaitlistForm.astro';
+import { APP_URL, type Locale } from '../data/landingContent';
+import { clubsContent } from '../data/clubsContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = clubsContent[locale];
+
+const base = locale === 'fr' ? '/fr' : '/en';
+const canonicalPath = `${base}/clubs/`;
+const switchHrefs = { en: '/en/clubs/', fr: '/fr/clubs/' };
+const alternates = [
+  { hreflang: 'en', href: switchHrefs.en },
+  { hreflang: 'fr', href: switchHrefs.fr },
+  { hreflang: 'x-default', href: switchHrefs.fr },
+];
+
+const site = 'https://strivn.net';
+const jsonLdExtra = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: `${site}${base}/` },
+      { '@type': 'ListItem', position: 2, name: c.eyebrow, item: `${site}${canonicalPath}` },
+    ],
+  },
+];
+---
+
+<SubpageLayout
+  locale={locale}
+  title={c.meta.title}
+  description={c.meta.description}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+  jsonLdExtra={jsonLdExtra}
+  switchHrefs={switchHrefs}
+>
+  <!-- Hero -->
+  <section class="cl-hero">
+    <div class="s-wrap">
+      <p class="s-label cl-hero__eyebrow">{c.eyebrow}</p>
+      <h1 class="s-display cl-hero__title">{c.hero.title}</h1>
+      <p class="s-lede cl-hero__lede">{c.hero.lede}</p>
+      <span class="cl-hero__status">{c.hero.status}</span>
+    </div>
+  </section>
+
+  <!-- What the Club plan adds -->
+  <section class="cl-benefits">
+    <div class="s-wrap">
+      <h2 class="s-headline cl-section__title" data-reveal>{c.benefits.title}</h2>
+      <ul class="cl-benefits__grid">
+        {c.benefits.items.map((item, i) => (
+          <li class="cl-benefits__item" data-reveal style={`--d: ${i * 60}ms;`}>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Waitlist -->
+  <section class="cl-waitlist" id="waitlist">
+    <div class="s-wrap cl-waitlist__grid">
+      <div data-reveal>
+        <h2 class="s-headline">{c.form.title}</h2>
+        <p class="s-lede cl-waitlist__body">{c.form.body}</p>
+      </div>
+      <div data-reveal style="--d: 120ms;">
+        <WaitlistForm locale={locale} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA: coaches can start now (reuses homepage final-CTA styles) -->
+  <section class="s-final">
+    <div class="s-wrap s-final__inner" data-reveal>
+      <h2 class="s-headline">{c.finalCta.title}</h2>
+      <p class="s-lede s-final__body">{c.finalCta.body}</p>
+      <div class="s-final__actions">
+        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.cta}</a>
+      </div>
+    </div>
+  </section>
+</SubpageLayout>
+
+<style>
+  .cl-hero {
+    position: relative;
+    padding-block: clamp(7rem, 14vh, 9rem) clamp(3.5rem, 7vh, 5rem);
+  }
+
+  .cl-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50rem 30rem at 70% 0%, var(--glow-hero), transparent 65%);
+    pointer-events: none;
+  }
+
+  .cl-hero__eyebrow {
+    position: relative;
+    display: block;
+    margin-bottom: var(--space-lg);
+    color: var(--electric-500);
+  }
+
+  .cl-hero__title {
+    position: relative;
+    max-width: 22ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .cl-hero__lede {
+    position: relative;
+    margin-bottom: var(--space-lg);
+  }
+
+  .cl-hero__status {
+    position: relative;
+    display: inline-block;
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--electric-border);
+    border-radius: var(--radius-pill);
+    background: var(--electric-tint);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--electric-500);
+  }
+
+  .cl-benefits {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--rule);
+  }
+
+  .cl-section__title {
+    max-width: 30ch;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cl-benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cl-benefits__item {
+    padding: var(--space-lg);
+    background: var(--void-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+  }
+
+  .cl-benefits__item h3 {
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .cl-benefits__item p {
+    color: var(--ink-2);
+    max-width: 52ch;
+  }
+
+  .cl-waitlist {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--rule);
+    background: var(--void-soft);
+  }
+
+  .cl-waitlist__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .cl-waitlist__body {
+    margin-top: var(--space-md);
+    max-width: 36ch;
+  }
+
+  @media (max-width: 60rem) {
+    .cl-benefits__grid,
+    .cl-waitlist__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cl-waitlist__grid {
+      gap: var(--space-xl);
+    }
+  }
+</style>
