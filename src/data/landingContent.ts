@@ -476,13 +476,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       body: 'Créez votre équipe gratuitement — événements, présences, infirmerie et communication au même endroit dès cette semaine.',
       primaryCta: 'Créer mon équipe gratuitement',
       secondaryCta: 'Une question avant de démarrer ?',
-      secondaryHref: 'mailto:hello@strivn.ai?subject=STRIVN%20-%20question%20avant%20de%20d%C3%A9marrer',
+      secondaryHref: 'mailto:hello@strivn.net?subject=STRIVN%20-%20question%20avant%20de%20d%C3%A9marrer',
     },
 
     footer: {
       statement: 'Le terrain d’abord. L’intendance ensuite.',
       brandLine: 'STRIVN réunit l’intendance complète d’une équipe dans une seule plateforme, gratuite pour les coaches.',
-      email: 'hello@strivn.ai',
+      email: 'hello@strivn.net',
       links: [
         { label: 'Plateforme', href: '/fr/#platform' },
         { label: 'Fonctionnalités', href: '/fr/features/' },
@@ -798,13 +798,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       body: 'Create your team for free — events, attendance, medical log and communication in one place this week.',
       primaryCta: 'Create my team for free',
       secondaryCta: 'A question before you start?',
-      secondaryHref: 'mailto:hello@strivn.ai?subject=STRIVN%20-%20question%20before%20starting',
+      secondaryHref: 'mailto:hello@strivn.net?subject=STRIVN%20-%20question%20before%20starting',
     },
 
     footer: {
       statement: 'The pitch first. The operations second.',
       brandLine: 'STRIVN brings a team’s entire operations into one platform, free for coaches.',
-      email: 'hello@strivn.ai',
+      email: 'hello@strivn.net',
       links: [
         { label: 'Platform', href: '/en/#platform' },
         { label: 'Features', href: '/en/features/' },

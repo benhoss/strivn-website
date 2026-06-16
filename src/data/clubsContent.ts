@@ -2,7 +2,7 @@ import type { Locale } from './landingContent';
 
 /**
  * Formspree endpoint for the Club waitlist form.
- * TODO: create a Formspree account (hello@strivn.ai), add a "Club waitlist"
+ * TODO: create a Formspree account (hello@strivn.net), add a "Club waitlist"
  * form and replace YOUR_FORM_ID with the real form ID. Until then the form
  * shows its inline error state on submit.
  */
@@ -87,7 +87,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         title: 'Vous êtes sur la liste.',
         body: 'Merci — nous vous contacterons au fil du déploiement du plan Club. En attendant, vos coaches peuvent déjà démarrer gratuitement avec le plan Coach.',
       },
-      error: 'L’envoi du formulaire a échoué. Réessayez, ou écrivez-nous à hello@strivn.ai.',
+      error: 'L’envoi du formulaire a échoué. Réessayez, ou écrivez-nous à hello@strivn.net.',
       privacyNote: 'Ces informations servent uniquement à vous recontacter au sujet du plan Club.',
       privacyLink: { label: 'Politique de confidentialité', href: '/fr/privacy' },
     },
@@ -151,7 +151,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         title: 'You’re on the list.',
         body: 'Thanks — we’ll get in touch as the Club plan rolls out. In the meantime, your coaches can already start for free with the Coach plan.',
       },
-      error: 'The form could not be sent. Please try again, or write to hello@strivn.ai.',
+      error: 'The form could not be sent. Please try again, or write to hello@strivn.net.',
       privacyNote: 'We only use these details to contact you about the Club plan.',
       privacyLink: { label: 'Privacy policy', href: '/privacy' },
     },
