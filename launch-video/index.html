@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #07080f;
+      }
+      body { font-family: "Inter", -apple-system, sans-serif; color: #f8fafc; }
+      .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+      /* ---------- atmosphere ---------- */
+      #bg { position: absolute; inset: 0; background: #07080f; }
+      #bg .glow {
+        position: absolute; width: 1600px; height: 1600px; border-radius: 50%;
+        left: 160px; top: -500px;
+        background: radial-gradient(circle, rgba(17, 40, 73, 0.55) 0%, rgba(7, 8, 15, 0) 62%);
+      }
+      #bg .glow2 {
+        position: absolute; width: 1200px; height: 1200px; border-radius: 50%;
+        right: -300px; bottom: -600px;
+        background: radial-gradient(circle, rgba(11, 30, 58, 0.5) 0%, rgba(7, 8, 15, 0) 60%);
+      }
+      #bg .grid {
+        position: absolute; inset: 0; opacity: 0.5;
+        background-image:
+          linear-gradient(rgba(248, 250, 252, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(248, 250, 252, 0.025) 1px, transparent 1px);
+        background-size: 96px 96px;
+      }
+      #bg .vignette {
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse at center, rgba(7, 8, 15, 0) 55%, rgba(5, 6, 16, 0.85) 100%);
+      }
+
+      .scene { position: absolute; inset: 0; }
+
+      .overline {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px; font-weight: 600; letter-spacing: 0.18em;
+        text-transform: uppercase; color: #8497bd;
+      }
+      .overline .tick { color: #2d7ff9; }
+
+      /* ---------- scene 1 : hook ---------- */
+      #s1 .stamp { position: absolute; top: 132px; left: 0; right: 0; text-align: center; }
+      #s1 .line {
+        position: absolute; left: 0; right: 0; text-align: center;
+        font-size: 108px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.08;
+      }
+      #s1 .l1 { top: 400px; }
+      #s1 .l2 { top: 540px; color: #b5c2d7; }
+      .frag {
+        position: absolute; border-radius: 12px; padding: 22px 28px;
+        background: #0b1e3a; border: 1px solid rgba(248, 250, 252, 0.08);
+        box-shadow: 0 16px 48px rgba(3, 9, 26, 0.55), 0 4px 12px rgba(3, 9, 26, 0.3);
+        font-size: 24px; color: #b5c2d7; line-height: 1.45;
+      }
+      .frag .src {
+        font-family: "JetBrains Mono", monospace; font-size: 15px; font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase; color: #8497bd;
+        display: block; margin-bottom: 8px;
+      }
+      .frag.sheet { font-family: "JetBrains Mono", monospace; font-size: 19px; color: #8497bd; }
+
+      /* ---------- scene 2 : the mess ---------- */
+      #s2 .head { position: absolute; top: 150px; left: 0; right: 0; text-align: center; }
+      .slam {
+        position: absolute; left: 0; right: 0; text-align: center;
+        font-size: 150px; font-weight: 600; letter-spacing: -0.025em; line-height: 1;
+        color: #f8fafc;
+      }
+      #w1 { top: 268px; }
+      #w2 { top: 442px; }
+      #w3 { top: 616px; }
+      #w4 { top: 790px; }
+
+      /* ---------- scene 3 : reveal ---------- */
+      #s3 .sweep {
+        position: absolute; top: 538px; left: 0; width: 1920px; height: 2px;
+        background: linear-gradient(90deg, rgba(45, 127, 249, 0) 0%, #2d7ff9 50%, rgba(45, 127, 249, 0) 100%);
+        transform-origin: left center;
+      }
+      #s3 .logo { position: absolute; top: 392px; left: 660px; width: 600px; }
+      #s3 .tagline {
+        position: absolute; top: 640px; left: 0; right: 0; text-align: center;
+        font-size: 56px; font-weight: 600; letter-spacing: -0.02em; color: #f8fafc;
+      }
+      #s3 .tagline em { font-style: normal; color: #2d7ff9; }
+      #s3 .sub { position: absolute; top: 330px; left: 0; right: 0; text-align: center; }
+
+      /* ---------- feature scenes ---------- */
+      .feature .copy { position: absolute; left: 160px; top: 300px; width: 760px; }
+      .feature .chip {
+        display: inline-block; padding: 10px 20px; border-radius: 999px;
+        border: 1px solid rgba(248, 250, 252, 0.14);
+        font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 600;
+        letter-spacing: 0.12em; text-transform: uppercase; color: #b5c2d7;
+        margin-bottom: 36px;
+      }
+      .feature .chip b { color: #2d7ff9; font-weight: 600; }
+      .feature h2 {
+        font-size: 72px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.12;
+        margin-bottom: 28px;
+      }
+      .feature p { font-size: 28px; line-height: 1.5; color: #b5c2d7; max-width: 680px; }
+      .feature .mock { position: absolute; right: 160px; }
+
+      .panel {
+        background: #0b1e3a; border: 1px solid rgba(248, 250, 252, 0.09);
+        border-radius: 16px;
+        box-shadow: 0 16px 48px rgba(3, 9, 26, 0.55), 0 4px 12px rgba(3, 9, 26, 0.3);
+      }
+      .panel .ph {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 22px 28px; border-bottom: 1px solid rgba(248, 250, 252, 0.07);
+      }
+      .panel .ph .t { font-size: 24px; font-weight: 600; }
+      .panel .ph .m {
+        font-family: "JetBrains Mono", monospace; font-size: 15px; font-weight: 600;
+        letter-spacing: 0.08em; color: #8497bd; text-transform: uppercase;
+      }
+
+      /* f1 — convocations */
+      #f1 .mock { top: 250px; width: 660px; }
+      #f1 .msg { padding: 26px 28px; font-size: 23px; color: #b5c2d7; line-height: 1.5; }
+      #f1 .msg .link { color: #2d7ff9; }
+      #f1 .replies { padding: 6px 28px 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+      .rpill {
+        padding: 10px 18px; border-radius: 999px; font-size: 19px; font-weight: 500;
+        border: 1px solid rgba(248, 250, 252, 0.12); color: #b5c2d7;
+      }
+      .rpill.ok { color: #27d7a1; border-color: rgba(39, 215, 161, 0.35); }
+      .rpill.watch { color: #ffb020; border-color: rgba(255, 176, 32, 0.35); }
+      #f1 .tally {
+        display: flex; align-items: baseline; gap: 18px;
+        padding: 22px 28px; border-top: 1px solid rgba(248, 250, 252, 0.07);
+      }
+      #f1 .tally .n { font-size: 64px; font-weight: 600; letter-spacing: -0.02em; }
+      #f1 .tally .lbl { font-size: 21px; color: #8497bd; }
+
+      /* f2 — infirmerie */
+      #f2 .mock { top: 230px; width: 640px; }
+      #f2 .row {
+        display: flex; align-items: center; gap: 20px;
+        padding: 24px 28px; border-bottom: 1px solid rgba(248, 250, 252, 0.06);
+        font-size: 24px;
+      }
+      #f2 .row:last-child { border-bottom: none; }
+      #f2 .dot {
+        width: 18px; height: 18px; border-radius: 50%; flex: none;
+        border: 2px solid #3d5a8a;
+      }
+      #f2 .row.done .dot { background: #27d7a1; border-color: #27d7a1; }
+      #f2 .row.active .dot { border-color: #2d7ff9; background: rgba(45, 127, 249, 0.35); }
+      #f2 .row.done { color: #8497bd; }
+      #f2 .row.active { color: #f8fafc; }
+      #f2 .row.todo { color: #3d5a8a; }
+      #f2 .row .when {
+        margin-left: auto; font-family: "JetBrains Mono", monospace;
+        font-size: 15px; font-weight: 600; letter-spacing: 0.06em; color: #8497bd;
+      }
+
+      /* f3 — charge */
+      #f3 .mock { top: 230px; width: 680px; }
+      #f3 .bars {
+        display: flex; align-items: flex-end; gap: 26px;
+        height: 240px; padding: 30px 34px 0;
+      }
+      #f3 .bar { flex: 1; border-radius: 6px 6px 0 0; background: #294471; transform-origin: bottom; }
+      #f3 .bar.hot { background: #3d5a8a; }
+      #f3 .days {
+        display: flex; gap: 26px; padding: 12px 34px 20px;
+        font-family: "JetBrains Mono", monospace; font-size: 14px; font-weight: 600;
+        letter-spacing: 0.08em; color: #8497bd;
+      }
+      #f3 .days span { flex: 1; text-align: center; }
+      #f3 .status {
+        display: flex; gap: 14px; padding: 20px 28px;
+        border-top: 1px solid rgba(248, 250, 252, 0.07);
+      }
+
+      /* f4 — séances */
+      #f4 .mock { top: 220px; width: 680px; }
+      #f4 .pitch {
+        position: relative; margin: 28px; height: 360px; border-radius: 10px;
+        border: 1px solid rgba(248, 250, 252, 0.16); overflow: hidden;
+        background: #06152b;
+      }
+      #f4 .pitch .half { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(248, 250, 252, 0.12); }
+      #f4 .pitch .circle {
+        position: absolute; left: 50%; top: 50%; width: 110px; height: 110px;
+        border: 1px solid rgba(248, 250, 252, 0.12); border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #f4 .pdot {
+        position: absolute; width: 26px; height: 26px; border-radius: 50%;
+        background: #2d7ff9; box-shadow: 0 0 0 4px rgba(45, 127, 249, 0.18);
+      }
+      #f4 .pdot.opp { background: #3d5a8a; box-shadow: none; }
+      #f4 .arrow {
+        position: absolute; height: 3px; background: #f8fafc; border-radius: 2px;
+        transform-origin: left center;
+      }
+      #f4 .ai {
+        display: flex; align-items: center; gap: 14px;
+        padding: 20px 28px; border-top: 1px solid rgba(248, 250, 252, 0.07);
+        font-size: 21px; color: #b5c2d7;
+      }
+      #f4 .ai .badge {
+        padding: 8px 16px; border-radius: 999px; font-family: "JetBrains Mono", monospace;
+        font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+        color: #2d7ff9; border: 1px solid rgba(45, 127, 249, 0.4);
+      }
+
+      /* ---------- scene 5 : gratuit ---------- */
+      #s5 .big {
+        position: absolute; top: 385px; left: 0; right: 0; text-align: center;
+        font-size: 132px; font-weight: 600; letter-spacing: -0.03em; line-height: 1;
+      }
+      #s5 .big em { font-style: normal; color: #2d7ff9; }
+      #s5 .subs {
+        position: absolute; top: 610px; left: 0; right: 0;
+        display: flex; justify-content: center; gap: 56px;
+      }
+      #s5 .subs .item {
+        font-size: 30px; color: #b5c2d7; display: flex; align-items: center; gap: 16px;
+      }
+      #s5 .subs .item::before {
+        content: ""; width: 8px; height: 8px; border-radius: 50%; background: #2d7ff9;
+      }
+      #s5 .head { position: absolute; top: 230px; left: 0; right: 0; text-align: center; }
+
+      /* ---------- scene 6 : cta ---------- */
+      #s6 .logo { position: absolute; top: 300px; left: 220px; width: 480px; }
+      #s6 .pitchline {
+        position: absolute; top: 470px; left: 224px; width: 640px;
+        font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25;
+      }
+      #s6 .btn {
+        position: absolute; top: 640px; left: 224px;
+        display: inline-block; padding: 26px 52px; border-radius: 10px;
+        background: #2d7ff9; color: #f8fafc; font-size: 32px; font-weight: 600;
+        box-shadow: 0 16px 48px rgba(45, 127, 249, 0.35);
+      }
+      #s6 .site {
+        position: absolute; top: 780px; left: 224px;
+        font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 600;
+        letter-spacing: 0.14em; color: #8497bd;
+      }
+      #s6 .site b { color: #f8fafc; font-weight: 600; }
+      #s6 .reassure { position: absolute; top: 860px; left: 224px; font-size: 22px; color: #8497bd; }
+      #s6 .phone {
+        position: absolute; right: 240px; top: 120px; width: 420px;
+        border-radius: 36px; border: 1px solid rgba(248, 250, 252, 0.14);
+        box-shadow: 0 16px 48px rgba(3, 9, 26, 0.55), 0 4px 12px rgba(3, 9, 26, 0.3);
+        transform: rotate(-5deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="37.5"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- atmosphere, full length -->
+      <div id="bg" class="clip" data-start="0" data-duration="37.5" data-track-index="0">
+        <div class="glow"></div>
+        <div class="glow2"></div>
+        <div class="grid"></div>
+        <div class="vignette"></div>
+      </div>
+
+      <!-- music bed -->
+      <audio
+        id="music"
+        data-start="0"
+        data-duration="37.5"
+        data-track-index="9"
+        data-volume="0.65"
+        src="assets/music-stomp.wav"
+      ></audio>
+
+      <!-- ================= SCENE 1 — hook (0 → 4.2) ================= -->
+      <div id="s1" class="scene clip" data-start="0" data-duration="4.2" data-track-index="1">
+        <div class="stamp overline"><span class="tick">●</span>&nbsp; mardi · 22:47</div>
+        <div class="line l1" id="s1l1">L’entraînement est fini.</div>
+        <div class="line l2" id="s1l2">Le vrai travail commence.</div>
+
+        <div class="frag fr1" style="left: 130px; top: 210px; transform: rotate(-5deg)">
+          <span class="src">WhatsApp · groupe équipe</span>Coach, je suis là samedi ?
+        </div>
+        <div class="frag fr2 sheet" style="right: 150px; top: 250px; transform: rotate(4deg)">
+          presences_v3_FINAL(2).xlsx
+        </div>
+        <div class="frag fr3" style="left: 220px; bottom: 160px; transform: rotate(3deg)">
+          <span class="src">Note papier</span>Rappeler le kiné pour N. Diallo
+        </div>
+        <div class="frag fr4" style="right: 200px; bottom: 190px; transform: rotate(-4deg)">
+          <span class="src">SMS · 22:41</span>Désolé coach, absent jeudi
+        </div>
+      </div>
+
+      <!-- ================= SCENE 2 — the mess (4.2 → 8.2) ================= -->
+      <div id="s2" class="scene clip" data-start="4.2" data-duration="4" data-track-index="1">
+        <div class="head overline">Le quotidien d’un coach, aujourd’hui</div>
+        <div class="slam" id="w1">WhatsApp.</div>
+        <div class="slam" id="w2">Excel.</div>
+        <div class="slam" id="w3">Notes papier.</div>
+        <div class="slam" id="w4">La mémoire.</div>
+      </div>
+
+      <!-- ================= SCENE 3 — reveal (8.2 → 12.5) ================= -->
+      <div id="s3" class="scene clip" data-start="8.2" data-duration="4.3" data-track-index="1">
+        <div class="sub overline" id="s3sub">La plateforme des coachs</div>
+        <div class="sweep" id="sweep"></div>
+        <img class="logo" id="s3logo" src="assets/logo.png" alt="STRIVN" />
+        <div class="tagline" id="s3tag">Toute l’équipe, <em>sous un même toit.</em></div>
+      </div>
+
+      <!-- ================= F1 — convocations (12.5 → 16.2) ================= -->
+      <div id="f1" class="scene feature clip" data-start="12.5" data-duration="3.7" data-track-index="1">
+        <div class="copy">
+          <div class="chip"><b>01</b>&nbsp; Convocations &amp; présences</div>
+          <h2>La convocation qui se gère toute seule.</h2>
+          <p>Un événement, un lien. Les joueurs répondent, la feuille de présences se tient à jour.</p>
+        </div>
+        <div class="mock panel">
+          <div class="ph"><span class="t">Match · samedi 14:00</span><span class="m">RSVP</span></div>
+          <div class="msg">« Rendez-vous au club à 13:00. Confirmez votre présence : <span class="link">strivn.net/r/8kf2</span> »</div>
+          <div class="replies">
+            <span class="rpill ok r1">K. Mensah — présent</span>
+            <span class="rpill ok r2">T. Lefèvre — présent</span>
+            <span class="rpill watch r3">A. Costa — incertain</span>
+            <span class="rpill ok r4">+ 11 réponses</span>
+          </div>
+          <div class="tally"><span class="n" id="tallyN">0/16</span><span class="lbl">réponses collectées, sans relancer</span></div>
+        </div>
+      </div>
+
+      <!-- ================= F2 — infirmerie (16.2 → 19.9) ================= -->
+      <div id="f2" class="scene feature clip" data-start="16.2" data-duration="3.7" data-track-index="1">
+        <div class="copy">
+          <div class="chip"><b>02</b>&nbsp; Infirmerie &amp; retour au jeu</div>
+          <h2>L’infirmerie que tout le staff peut lire.</h2>
+          <p>Du diagnostic au retour sur le terrain : un seul dossier, partagé avec le médecin et le kiné.</p>
+        </div>
+        <div class="mock panel">
+          <div class="ph"><span class="t">N. Diallo · ischio-jambiers</span><span class="m">J+12</span></div>
+          <div class="row done st1"><span class="dot"></span>Diagnostic confirmé<span class="when">J+1</span></div>
+          <div class="row done st2"><span class="dot"></span>Soins &amp; suivi kiné<span class="when">J+3</span></div>
+          <div class="row active st3"><span class="dot"></span>Réathlétisation en cours<span class="when">J+12</span></div>
+          <div class="row todo st4"><span class="dot"></span>Retour au jeu progressif<span class="when">—</span></div>
+        </div>
+      </div>
+
+      <!-- ================= F3 — charge (19.9 → 23.6) ================= -->
+      <div id="f3" class="scene feature clip" data-start="19.9" data-duration="3.7" data-track-index="1">
+        <div class="copy">
+          <div class="chip"><b>03</b>&nbsp; Charge &amp; RPE</div>
+          <h2>Les signaux faibles, déjà visibles le lundi.</h2>
+          <p>Les joueurs répondent depuis leur téléphone. STRIVN assemble la charge, l’ACWR et la récupération.</p>
+        </div>
+        <div class="mock panel">
+          <div class="ph"><span class="t">Charge du groupe</span><span class="m">Semaine 23</span></div>
+          <div class="bars">
+            <div class="bar b1" style="height: 38%"></div>
+            <div class="bar b2" style="height: 62%"></div>
+            <div class="bar b3" style="height: 48%"></div>
+            <div class="bar hot b4" style="height: 86%"></div>
+            <div class="bar b5" style="height: 55%"></div>
+            <div class="bar b6" style="height: 30%"></div>
+            <div class="bar b7" style="height: 70%"></div>
+          </div>
+          <div class="days"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+          <div class="status">
+            <span class="rpill ok p1">14 prêts</span>
+            <span class="rpill watch p2">2 à surveiller</span>
+            <span class="rpill p3" style="color: #ff5c5c; border-color: rgba(255, 92, 92, 0.35)">1 à risque</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= F4 — séances (23.6 → 27.4) ================= -->
+      <div id="f4" class="scene feature clip" data-start="23.6" data-duration="3.75" data-track-index="1">
+        <div class="copy">
+          <div class="chip"><b>04</b>&nbsp; Séances &amp; assistant IA</div>
+          <h2>La séance prête avant d’arriver au terrain.</h2>
+          <p>Tableaux tactiques, bibliothèque d’exercices, et un assistant qui tient compte de la charge réelle.</p>
+        </div>
+        <div class="mock panel">
+          <div class="ph"><span class="t">Bloc tactique · pressing haut</span><span class="m">75 min</span></div>
+          <div class="pitch">
+            <div class="half"></div>
+            <div class="circle"></div>
+            <div class="pdot d1" style="left: 80px; top: 150px"></div>
+            <div class="pdot d2" style="left: 200px; top: 70px"></div>
+            <div class="pdot d3" style="left: 210px; top: 240px"></div>
+            <div class="pdot opp d4" style="left: 420px; top: 110px"></div>
+            <div class="pdot opp d5" style="left: 450px; top: 220px"></div>
+            <div class="arrow a1" style="left: 105px; top: 160px; width: 180px; transform: rotate(-22deg)"></div>
+            <div class="arrow a2" style="left: 230px; top: 250px; width: 200px; transform: rotate(-8deg)"></div>
+          </div>
+          <div class="ai"><span class="badge">Assistant IA</span> Séance ajustée à la charge de la semaine</div>
+        </div>
+      </div>
+
+      <!-- ================= SCENE 5 — gratuit (27.4 → 31.6) ================= -->
+      <div id="s5" class="scene clip" data-start="27.4" data-duration="4.2" data-track-index="1">
+        <div class="head overline">Lancement officiel</div>
+        <div class="big" id="s5big">Disponible <em>maintenant.</em></div>
+        <div class="subs">
+          <span class="item i1">Une équipe complète</span>
+          <span class="item i2">Joueurs &amp; staff illimités</span>
+          <span class="item i3">Sans validation du club</span>
+        </div>
+      </div>
+
+      <!-- ================= SCENE 6 — CTA (31.6 → 37.5) ================= -->
+      <div id="s6" class="scene clip" data-start="31.6" data-duration="5.9" data-track-index="1">
+        <img class="logo" id="s6logo" src="assets/logo.png" alt="STRIVN" />
+        <div class="pitchline" id="s6pitch">Reprenez vos soirées. STRIVN s’occupe de l’intendance.</div>
+        <div class="btn" id="s6btn">Commencer gratuitement</div>
+        <div class="site" id="s6site"><b>strivn.net</b></div>
+        <div class="reassure" id="s6re">Gratuit pour une équipe · prêt en quelques minutes</div>
+        <img class="phone" id="s6phone" src="assets/player-app.png" alt="Application joueur STRIVN" />
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+      /* ---------- atmosphere drift ---------- */
+      tl.fromTo("#bg .glow", { x: -80 }, { x: 80, duration: 37.5, ease: "none" }, 0);
+      tl.fromTo("#bg .glow2", { y: 60 }, { y: -60, duration: 37.5, ease: "none" }, 0);
+
+      /* ---------- scene 1 : hook (0 → 4.2) ---------- */
+      tl.from("#s1 .stamp", { opacity: 0, y: -24, duration: 0.5 }, 0.1);
+      tl.from("#s1l1", { opacity: 0, y: 60, duration: 0.55 }, 0.35);
+      tl.from("#s1l2", { opacity: 0, y: 60, duration: 0.55 }, 1.5);
+      tl.from("#s1 .fr1", { opacity: 0, scale: 0.6, rotation: -16, duration: 0.4, ease: "back.out(2)" }, 2.0);
+      tl.from("#s1 .fr2", { opacity: 0, scale: 0.6, rotation: 14, duration: 0.4, ease: "back.out(2)" }, 2.25);
+      tl.from("#s1 .fr3", { opacity: 0, scale: 0.6, rotation: 12, duration: 0.4, ease: "back.out(2)" }, 2.5);
+      tl.from("#s1 .fr4", { opacity: 0, scale: 0.6, rotation: -14, duration: 0.4, ease: "back.out(2)" }, 2.75);
+      tl.to("#s1", { opacity: 0, scale: 0.96, duration: 0.35, ease: "power2.in" }, 3.85);
+      tl.set("#s1", { opacity: 0 }, 4.2);
+
+      /* ---------- scene 2 : slam words (4.2 → 8.2) ---------- */
+      tl.from("#s2 .head", { opacity: 0, duration: 0.4 }, 4.3);
+      tl.from("#w1", { opacity: 0, scale: 1.9, duration: 0.38, ease: "power4.out" }, 4.5);
+      tl.from("#w2", { opacity: 0, scale: 1.9, duration: 0.38, ease: "power4.out" }, 5.1);
+      tl.from("#w3", { opacity: 0, scale: 1.9, duration: 0.38, ease: "power4.out" }, 5.7);
+      tl.from("#w4", { opacity: 0, scale: 1.9, duration: 0.38, ease: "power4.out" }, 6.3);
+      tl.to(["#w1", "#w2", "#w3", "#w4"], {
+        opacity: 0, y: -40, duration: 0.45, stagger: 0.07, ease: "power2.in",
+      }, 7.5);
+      tl.to("#s2 .head", { opacity: 0, duration: 0.3 }, 7.7);
+
+      /* ---------- scene 3 : reveal (8.2 → 12.5) ---------- */
+      tl.fromTo("#sweep", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.7, ease: "power3.inOut" }, 8.3);
+      tl.to("#sweep", { opacity: 0, duration: 0.5 }, 9.4);
+      tl.from("#s3logo", { opacity: 0, scale: 0.86, duration: 0.7, ease: "power3.out" }, 8.7);
+      tl.from("#s3sub", { opacity: 0, y: -20, duration: 0.5 }, 9.2);
+      tl.from("#s3tag", { opacity: 0, y: 36, duration: 0.55 }, 9.6);
+      tl.to("#s3", { opacity: 0, scale: 1.04, duration: 0.4, ease: "power2.in" }, 12.05);
+      tl.set("#s3", { opacity: 0 }, 12.5);
+
+      /* ---------- features : shared enter/exit ---------- */
+      const featureBeat = (id, start, end) => {
+        tl.from(`${id} .chip`, { opacity: 0, x: -32, duration: 0.4 }, start + 0.1);
+        tl.from(`${id} h2`, { opacity: 0, y: 44, duration: 0.5 }, start + 0.22);
+        tl.from(`${id} p`, { opacity: 0, y: 28, duration: 0.45 }, start + 0.4);
+        tl.from(`${id} .mock`, { opacity: 0, x: 90, duration: 0.55, ease: "power3.out" }, start + 0.3);
+        tl.to(id, { opacity: 0, x: -70, duration: 0.32, ease: "power2.in" }, end - 0.32);
+      };
+
+      /* f1 (12.5 → 16.2) */
+      featureBeat("#f1", 12.5, 16.2);
+      tl.from("#f1 .r1", { opacity: 0, y: 16, duration: 0.3 }, 13.3);
+      tl.from("#f1 .r2", { opacity: 0, y: 16, duration: 0.3 }, 13.55);
+      tl.from("#f1 .r3", { opacity: 0, y: 16, duration: 0.3 }, 13.8);
+      tl.from("#f1 .r4", { opacity: 0, y: 16, duration: 0.3 }, 14.05);
+      const tally = { v: 0 };
+      tl.to(tally, {
+        v: 14, duration: 1.3, ease: "power2.out",
+        onUpdate: () => {
+          document.getElementById("tallyN").textContent = Math.round(tally.v) + "/16";
+        },
+      }, 13.4);
+
+      /* f2 (16.2 → 19.9) */
+      featureBeat("#f2", 16.2, 19.9);
+      tl.from("#f2 .st1", { opacity: 0, x: 36, duration: 0.32 }, 17.0);
+      tl.from("#f2 .st2", { opacity: 0, x: 36, duration: 0.32 }, 17.25);
+      tl.from("#f2 .st3", { opacity: 0, x: 36, duration: 0.32 }, 17.5);
+      tl.from("#f2 .st4", { opacity: 0, x: 36, duration: 0.32 }, 17.75);
+      tl.fromTo("#f2 .st3 .dot", { boxShadow: "0 0 0 0 rgba(45,127,249,0.5)" },
+        { boxShadow: "0 0 0 12px rgba(45,127,249,0)", duration: 0.9, repeat: 1 }, 18.1);
+
+      /* f3 (19.9 → 23.6) */
+      featureBeat("#f3", 19.9, 23.6);
+      tl.from("#f3 .bar", { scaleY: 0, duration: 0.55, stagger: 0.08, ease: "power3.out" }, 20.6);
+      tl.from("#f3 .p1", { opacity: 0, y: 14, duration: 0.3 }, 21.6);
+      tl.from("#f3 .p2", { opacity: 0, y: 14, duration: 0.3 }, 21.8);
+      tl.from("#f3 .p3", { opacity: 0, y: 14, duration: 0.3 }, 22.0);
+
+      /* f4 (23.6 → 27.35) */
+      featureBeat("#f4", 23.6, 27.35);
+      tl.from("#f4 .pdot", { opacity: 0, scale: 0, duration: 0.3, stagger: 0.08, ease: "back.out(2.5)" }, 24.3);
+      tl.fromTo("#f4 .a1", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 24.9);
+      tl.fromTo("#f4 .a2", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 25.15);
+      tl.from("#f4 .ai", { opacity: 0, y: 16, duration: 0.4 }, 25.6);
+
+      /* ---------- scene 5 : gratuit (27.4 → 31.6) ---------- */
+      tl.from("#s5 .head", { opacity: 0, duration: 0.4 }, 27.55);
+      tl.from("#s5big", { opacity: 0, scale: 1.7, duration: 0.5, ease: "power4.out" }, 27.7);
+      tl.from("#s5 .i1", { opacity: 0, y: 26, duration: 0.4 }, 28.5);
+      tl.from("#s5 .i2", { opacity: 0, y: 26, duration: 0.4 }, 28.75);
+      tl.from("#s5 .i3", { opacity: 0, y: 26, duration: 0.4 }, 29.0);
+      tl.to("#s5", { opacity: 0, scale: 0.97, duration: 0.4, ease: "power2.in" }, 31.15);
+
+      /* ---------- scene 6 : CTA (31.6 → 37.5) ---------- */
+      tl.from("#s6logo", { opacity: 0, y: 30, duration: 0.55 }, 31.75);
+      tl.from("#s6pitch", { opacity: 0, y: 30, duration: 0.5 }, 32.0);
+      tl.from("#s6btn", { opacity: 0, y: 30, scale: 0.92, duration: 0.5, ease: "back.out(1.6)" }, 32.3);
+      tl.from("#s6site", { opacity: 0, duration: 0.45 }, 32.7);
+      tl.from("#s6re", { opacity: 0, duration: 0.45 }, 32.95);
+      tl.from("#s6phone", { opacity: 0, x: 160, rotation: 4, duration: 0.7, ease: "power3.out" }, 32.1);
+      tl.fromTo("#s6btn", { scale: 1 }, { scale: 1.045, duration: 0.55, yoyo: true, repeat: 5, ease: "sine.inOut" }, 33.6);
+      tl.to("#s6", { opacity: 0, duration: 0.6, ease: "power2.in" }, 36.9);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "imp-coach-evening",
+    "prompt": "An amateur football coach walking off the training pitch at golden hour, relaxed and satisfied, a gym bag over one shoulder, warm low sun flare behind him, seen from the side and slightly behind so the face is not recognizable."
+  },
+  {
+    "name": "imp-staff-touchline",
+    "prompt": "Two or three football coaching staff members standing together on the touchline in soft daylight, calmly conferring over a clipboard, a blurred pitch behind them, composed and collaborative mood."
+  },
+  {
+    "name": "imp-coach-morning",
+    "prompt": "A football coach standing confidently on a training ground in soft morning light, holding a tablet, composed upright posture, dew on the grass catching the light, framed from the side."
+  },
+  {
+    "name": "imp-team-huddle",
+    "prompt": "An amateur football team in a tight pre-match huddle on the pitch in daytime, arms over each other's shoulders, viewed from slightly above, a feeling of unity and quiet focus, soft natural light, no single face emphasized."
+  },
+  {
+    "name": "imp-team-progress",
+    "prompt": "Amateur football players training together in warm late-afternoon light, a sense of momentum and steady progress, soft golden backlight, controlled motion rather than chaos, composed cinematic framing."
+  },
+  {
+    "name": "imp-player-locker",
+    "prompt": "A young football player sitting in a club locker room checking a phone in his hands, kit bag beside him, calm natural light from a window, framed on the hands, phone and kit, face not emphasized, hopeful and quiet mood."
+  }
+]
