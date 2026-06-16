@@ -18,8 +18,8 @@ Convocations = juste « la base » ; on insiste sur ce qui différencie.
 - `//` pause marquée (~0,6 s) — le point / le tiret
 - `///` silence d'emphase (~1 s) — réservé aux 2 moments clés
 
-> Les `/` et `//` correspondent à la ponctuation : HeyGen les fait déjà tout seul. N'ajoute de
-> bloc *break* manuel que sur les `///`. Après ajout, revérifie le compteur : il doit rester < 60 s.
+Les `/` et `//` correspondent à la ponctuation : HeyGen les fait déjà tout seul. N'ajoute de
+bloc *break* manuel que sur les `///`. Après ajout, revérifie le compteur : il doit rester < 60 s.
 
 ---
 

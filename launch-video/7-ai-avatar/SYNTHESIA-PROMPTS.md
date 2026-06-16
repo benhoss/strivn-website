@@ -25,8 +25,8 @@ Structure scène par scène (une phrase de voix off + un texte court à l'écran
 Marque : accent bleu électrique (#2D7FF9) sur fond sombre, sobre et premium. Ajoute des sous-titres incrustés (la vidéo doit être compréhensible sans le son). Utilise les informations de https://strivn.net comme matériel d'appui.
 ```
 
-> ⚠️ Dans le champ « supporting material / link » de Synthesia, remplace l'URL d'exemple
-> `synthesia.io` par **`https://strivn.net`**.
+⚠️ Dans le champ « supporting material / link » de Synthesia, remplace l'URL d'exemple
+`synthesia.io` par **`https://strivn.net`**.
 
 ---
 
