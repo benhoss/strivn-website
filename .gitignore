@@ -29,6 +29,9 @@ scan-*.png
 
 # Secrets — never commit
 nano.json
+credentials.json
+**/credentials.json
+*.credentials.json
 
 # Marketing video — rendered outputs and binary media (keep code + markdown only)
 launch-video/renders/
