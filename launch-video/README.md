@@ -29,10 +29,13 @@ npx hyperframes render -c 6-demo-charge/demo-9x16.html -o 6-demo-charge/strivn-d
 Les compositions référencent les médias partagés via `../assets/` (les dossiers de campagne
 sont au même niveau que l'ancien `compositions/`, donc les chemins restent valides).
 
-Note : l'auto-découverte de `hyperframes lint .` suppose le layout par défaut
-(`index.html` + `compositions/`). Avec cette organisation par campagne, on rend/valide
-chaque composition explicitement via `-c`. (Possibilité de rétablir un `compositions/`
-pour relancer le lint global si besoin.)
+Important : `hyperframes` a besoin d'un `index.html` à la **racine** du projet (`launch-video/`)
+pour résoudre un projet — c'est l'**ancre** (placeholder vide, ne pas y mettre de contenu).
+Sans lui, `render -c …` échoue avec « No composition found ». On rend ensuite chaque
+composition de campagne explicitement avec `-c <dossier>/<fichier>.html`.
+
+(Le `lint .` global, lui, ne découvre que l'`index.html` racine avec cette organisation ;
+la validation se fait donc au rendu, ou en rétablissant temporairement un `compositions/`.)
 
 Les MP4, images et audio ne sont pas commités (voir `.gitignore`) — seuls le code et les
 markdown le sont.
