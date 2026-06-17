@@ -185,6 +185,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       links: [
         { label: 'Plateforme', href: '/fr/#platform' },
         { label: 'Fonctionnalités', href: '/fr/features/' },
+        { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/fr/clubs/' },
         { label: 'Tarifs', href: '/fr/#pricing' },
         { label: 'FAQ', href: '/fr/#faq' },
@@ -486,6 +487,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       links: [
         { label: 'Plateforme', href: '/fr/#platform' },
         { label: 'Fonctionnalités', href: '/fr/features/' },
+        { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/fr/clubs/' },
         { label: 'Tarifs', href: '/fr/#pricing' },
         { label: 'FAQ', href: '/fr/#faq' },
@@ -507,6 +509,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       links: [
         { label: 'Platform', href: '/en/#platform' },
         { label: 'Features', href: '/en/features/' },
+        { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/en/clubs/' },
         { label: 'Pricing', href: '/en/#pricing' },
         { label: 'FAQ', href: '/en/#faq' },
@@ -808,6 +811,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       links: [
         { label: 'Platform', href: '/en/#platform' },
         { label: 'Features', href: '/en/features/' },
+        { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/en/clubs/' },
         { label: 'Pricing', href: '/en/#pricing' },
         { label: 'FAQ', href: '/en/#faq' },
