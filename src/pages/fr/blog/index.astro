@@ -1,0 +1,84 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import {
+  BLOG_CATEGORY_LABELS,
+  BLOG_CATEGORY_DESCRIPTIONS,
+  BLOG_CATEGORIES,
+} from '../../../lib/blog';
+import { getCollection } from 'astro:content';
+
+const title = 'Blog coach foot amateur — prépa physique, séances, charge | strivn';
+const description =
+  'Articles terrain pour coachs de foot amateur : prépa physique, gestion d\'équipe, séances, blessures, charge. Concrets, chiffrés, sans jargon.';
+
+const all = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// Count per category.
+const counts: Record<string, number> = Object.fromEntries(BLOG_CATEGORIES.map((c) => [c, 0]));
+for (const entry of all) counts[entry.data.category] = (counts[entry.data.category] ?? 0) + 1;
+
+const canonicalPath = '/fr/blog/';
+const alternates = [
+  { hreflang: 'fr', href: '/fr/blog/' },
+  { hreflang: 'en', href: '/en/blog/' },
+  { hreflang: 'x-default', href: '/fr/blog/' },
+];
+
+const jsonLdExtra = [
+  {
+    '@type': 'Blog',
+    '@id': 'https://strivn.net/fr/blog/#blog',
+    name: 'Blog strivn — prépa physique et gestion d\'équipe foot amateur',
+    description,
+    url: 'https://strivn.net/fr/blog/',
+    inLanguage: 'fr',
+    publisher: { '@id': 'https://strivn.net/#organization' },
+  },
+];
+---
+
+<BlogLayout
+  locale="fr"
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  jsonLdExtra={jsonLdExtra}
+  bodyClass="b-page"
+  switchHrefs={{ en: '/en/blog/', fr: '/fr/blog/' }}
+>
+  <header class="b-hero">
+    <span class="b-hero__eyebrow">Blog · Coach foot amateur</span>
+    <h1 class="b-hero__title">Notes de terrain pour coachs amateurs.</h1>
+    <p class="b-hero__lede">
+      Prépa physique, séances, charge, blessures, gestion d'équipe. Le genre de trucs
+      qu'on se refile entre coachs après le match du samedi — version écrite.
+    </p>
+
+    <ul class="b-chips" aria-label="Filtrer par catégorie">
+      <li class="b-chips__item">
+        <a class="b-chip" href="/fr/blog/" aria-current="page">Tous ({all.length})</a>
+      </li>
+      {BLOG_CATEGORIES.map((c) => (
+        <li class="b-chips__item">
+          <a
+            class="b-chip"
+            href={`/fr/blog/categorie/${c}/`}
+            title={BLOG_CATEGORY_DESCRIPTIONS[c]}
+          >
+            {BLOG_CATEGORY_LABELS[c]} <span class="b-chip__count">({counts[c]})</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </header>
+
+  {all.length === 0 ? (
+    <div class="b-empty">Aucun article publié pour l'instant. Reviens bientôt.</div>
+  ) : (
+    <div class="b-grid">
+      {all.map((entry) => <BlogCard entry={entry} />)}
+    </div>
+  )}
+</BlogLayout>
