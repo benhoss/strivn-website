@@ -308,6 +308,8 @@ a {
 .s-nav__brand img {
   height: 2rem;
   width: auto;
+  max-width: none;
+  flex-shrink: 0;
 }
 
 .s-nav__links {
@@ -1555,6 +1557,7 @@ a {
 .s-footer__brand img {
   height: clamp(2.75rem, 4.5vw, 4rem);
   width: auto;
+  max-width: none;
 }
 
 .s-footer__brand p {
