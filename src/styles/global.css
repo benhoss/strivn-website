@@ -1558,6 +1558,7 @@ a {
   height: clamp(2.75rem, 4.5vw, 4rem);
   width: auto;
   max-width: none;
+  flex-shrink: 0;
 }
 
 .s-footer__brand p {
