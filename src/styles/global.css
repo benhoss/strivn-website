@@ -306,7 +306,7 @@ a {
 }
 
 .s-nav__brand img {
-  height: 1.5rem;
+  height: 2rem;
   width: auto;
 }
 
@@ -1553,7 +1553,7 @@ a {
 }
 
 .s-footer__brand img {
-  height: clamp(2.5rem, 4vw, 3.75rem);
+  height: clamp(2.75rem, 4.5vw, 4rem);
   width: auto;
 }
 
