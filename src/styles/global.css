@@ -1555,7 +1555,7 @@ a {
 }
 
 .s-footer__brand img {
-  height: clamp(2.75rem, 4.5vw, 4rem);
+  height: clamp(2.25rem, 3.5vw, 2.75rem);
   width: auto;
   max-width: none;
   flex-shrink: 0;
