@@ -14,7 +14,10 @@ type LandingContent = {
   meta: { title: string; description: string };
 
   nav: {
-    links: Array<{ label: string; href: string }>;
+    links: Array<
+      | { label: string; href: string }
+      | { label: string; children: Array<{ label: string; href: string }> }
+    >;
     cta: string;
   };
 
@@ -185,8 +188,14 @@ export const landingContent: Record<Locale, LandingContent> = {
       links: [
         { label: 'Plateforme', href: '/fr/#platform' },
         { label: 'Fonctionnalités', href: '/fr/features/' },
+        {
+          label: 'Solutions',
+          children: [
+            { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
+            { label: 'Clubs', href: '/fr/clubs/' },
+          ],
+        },
         { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Clubs', href: '/fr/clubs/' },
         { label: 'Tarifs', href: '/fr/#pricing' },
         { label: 'FAQ', href: '/fr/#faq' },
       ],
@@ -510,8 +519,14 @@ export const landingContent: Record<Locale, LandingContent> = {
       links: [
         { label: 'Platform', href: '/en/#platform' },
         { label: 'Features', href: '/en/features/' },
+        {
+          label: 'Solutions',
+          children: [
+            { label: 'S&C coaches', href: '/en/sc-coaches/' },
+            { label: 'Clubs', href: '/en/clubs/' },
+          ],
+        },
         { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Clubs', href: '/en/clubs/' },
         { label: 'Pricing', href: '/en/#pricing' },
         { label: 'FAQ', href: '/en/#faq' },
       ],

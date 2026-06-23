@@ -64,9 +64,9 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         },
         {
           slug: 'training-load',
-          title: 'Charge & RPE',
-          text: 'Les joueurs répondent depuis leur téléphone, STRIVN assemble la semaine : charge, ACWR, signaux faibles.',
-          points: ['RPE par séance', 'ACWR par joueur', 'Note prépa partagée'],
+          title: 'Planification & charge',
+          text: 'Planifiez la charge de la semaine jour par jour, puis le RPE des joueurs remplit le réel : planifié vs réel, ACWR, signaux faibles.',
+          points: ['Planification de charge', 'RPE par séance', 'ACWR par joueur'],
         },
         {
           slug: 'sessions',
@@ -254,35 +254,35 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
 
       'training-load': {
         meta: {
-          title: 'Suivi de charge & RPE pour coaches | STRIVN',
+          title: 'Planification & suivi de charge pour coaches | STRIVN',
           description:
-            'Collectez le RPE depuis le téléphone des joueurs, suivez la charge hebdomadaire et l’ACWR, et repérez les signaux de risque avant la blessure. Gratuit pour les coaches.',
+            'Planifiez la charge de la semaine jour par jour, collectez le RPE depuis le téléphone des joueurs, comparez planifié vs réel et suivez l’ACWR pour repérer le risque avant la blessure. Gratuit pour les coaches.',
         },
-        eyebrow: 'Charge & RPE',
+        eyebrow: 'Planification & charge',
         hero: {
-          title: 'La charge du groupe, sans relancer personne.',
-          lede: 'RPE, charge hebdomadaire, ACWR, récupération : les joueurs répondent depuis leur téléphone et STRIVN assemble la semaine. Vous arrivez le lundi avec les signaux faibles déjà visibles.',
+          title: 'Planifiez la semaine. Suivez la charge réelle.',
+          lede: 'Construisez la semaine avec une charge cible et des exercices jour par jour, puis laissez le RPE des joueurs remplir le réel. STRIVN compare planifié et réel, calcule l’ACWR et signale le risque avant qu’il ne coûte.',
           primaryCta: 'Commencer gratuitement',
           reassurance: 'Gratuit pour une équipe · sans validation du club · prêt en quelques minutes',
         },
         benefits: {
-          title: 'Voyez les signaux faibles le lundi, pas à l’infirmerie.',
+          title: 'Planifiez la charge, puis voyez le réel se remplir.',
           items: [
+            {
+              title: 'Planifiez la semaine',
+              text: 'Fixez une charge cible hebdomadaire, posez les séances et les exercices jour par jour avec leurs catégories. La prévision d’ACWR apparaît avant même le premier entraînement.',
+            },
             {
               title: 'Le RPE par séance, par joueur',
               text: 'Les joueurs notent l’effort depuis leur téléphone juste après la séance. Plus de fiches papier, plus de carnet à ressaisir dans un tableur.',
             },
             {
-              title: 'La charge hebdo et la monotonie',
-              text: 'STRIVN assemble les séances en une image hebdomadaire par joueur : les pics comme les semaines plates deviennent visibles.',
+              title: 'Planifié contre réel',
+              text: 'La charge réelle se compare automatiquement au plan : les journées en dépassement comme en sous-charge ressortent d’un coup d’œil.',
             },
             {
               title: 'L’ACWR par joueur',
               text: 'Le ratio charge aiguë / charge chronique signale qui monte trop vite — le précurseur classique des blessures musculaires.',
-            },
-            {
-              title: 'Une note prépa partagée',
-              text: 'La lecture de la semaine par le préparateur est attachée aux données, visible par tout le staff.',
             },
           ],
         },
@@ -290,16 +290,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Comment ça marche',
           steps: [
             {
+              title: 'Planifiez la semaine',
+              text: 'Charge cible, séances et exercices par jour, catégories de charge (physique, technique, match). La prévision d’ACWR du groupe se met à jour au fur et à mesure.',
+            },
+            {
               title: 'Les joueurs notent la séance',
               text: 'Un RPE rapide après chaque séance, répondu depuis leur téléphone en quelques secondes.',
             },
             {
-              title: 'STRIVN assemble la semaine',
-              text: 'Les notes de séance deviennent charge hebdo, monotonie et ACWR par joueur, automatiquement.',
-            },
-            {
-              title: 'Les signaux remontent seuls',
-              text: 'Les joueurs qui dérivent vers des ratios à risque sont signalés — vert, à surveiller, risque.',
+              title: 'STRIVN compare planifié et réel',
+              text: 'Les notes de séance deviennent charge réelle, monotonie et ACWR par joueur, comparées au plan automatiquement.',
             },
             {
               title: 'Ajustez avant que ça coûte',
@@ -310,6 +310,11 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         faq: {
           title: 'Questions fréquentes',
           items: [
+            {
+              question: 'Puis-je planifier la charge à l’avance ?',
+              answer:
+                'Oui. La vue Planification de charge vous laisse fixer une charge cible hebdomadaire et poser les exercices jour par jour, par catégorie ; STRIVN projette l’ACWR du groupe et signale les journées à risque avant que la semaine commence.',
+            },
             {
               question: 'C’est quoi, le RPE ?',
               answer:
@@ -328,13 +333,13 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             {
               question: 'Faut-il un préparateur physique pour s’en servir ?',
               answer:
-                'Non. Les réglages par défaut fonctionnent pour un coach seul ; et si vous avez un prépa, il retrouve sa vue et sa note est partagée au staff.',
+                'Non. Les réglages par défaut fonctionnent pour un coach seul ; et si vous avez un prépa, il retrouve sa vue de planification et sa note est partagée au staff.',
             },
           ],
         },
         finalCta: {
-          title: 'Connaissez la semaine du groupe avant qu’elle commence.',
-          body: 'Créez votre équipe gratuitement — le suivi de charge et le RPE font partie du plan gratuit.',
+          title: 'Planifiez la semaine du groupe avant qu’elle commence.',
+          body: 'Créez votre équipe gratuitement — la planification de charge, le suivi et le RPE font partie du plan gratuit.',
           cta: 'Commencer gratuitement',
         },
       },
@@ -460,9 +465,9 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         },
         {
           slug: 'training-load',
-          title: 'Training load & RPE',
-          text: 'Players answer from their phones, STRIVN assembles the week: load, ACWR, weak signals.',
-          points: ['RPE per session', 'ACWR per player', 'Shared fitness note'],
+          title: 'Load planning & RPE',
+          text: 'Plan the week’s load day by day, then player RPE fills in the actual: planned vs actual, ACWR, weak signals.',
+          points: ['Load planning', 'RPE per session', 'ACWR per player'],
         },
         {
           slug: 'sessions',
@@ -650,35 +655,35 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
 
       'training-load': {
         meta: {
-          title: 'RPE & training load monitoring for coaches | STRIVN',
+          title: 'Load planning & training load monitoring for coaches | STRIVN',
           description:
-            'Collect RPE from your players’ phones, track weekly load and ACWR, and spot injury-risk signals before they become absences. Free for coaches.',
+            'Plan the week’s load day by day, collect RPE from your players’ phones, compare planned vs actual and track ACWR to spot injury risk before it becomes an absence. Free for coaches.',
         },
-        eyebrow: 'Training load & RPE',
+        eyebrow: 'Load planning & RPE',
         hero: {
-          title: 'The squad’s load, without chasing anyone.',
-          lede: 'RPE, weekly load, ACWR, recovery: players answer from their phones and STRIVN assembles the week. You arrive on Monday with the weak signals already visible.',
+          title: 'Plan the week. Track the actual load.',
+          lede: 'Build the week with a load target and exercises day by day, then let player RPE fill in the actual. STRIVN compares planned vs actual, computes ACWR and flags the risk before it costs you.',
           primaryCta: 'Start for free',
           reassurance: 'Free for one team · no club approval needed · ready in minutes',
         },
         benefits: {
-          title: 'See the weak signals on Monday, not in the treatment room.',
+          title: 'Plan the load, then watch the actual fill in.',
           items: [
+            {
+              title: 'Plan the week',
+              text: 'Set a weekly load target, lay out sessions and exercises day by day with their categories. The ACWR forecast appears before the first training even starts.',
+            },
             {
               title: 'RPE per session, per player',
               text: 'Players rate the effort from their phone right after the session. No paper forms, no notebook to re-enter into a spreadsheet.',
             },
             {
-              title: 'Weekly load and monotony',
-              text: 'STRIVN assembles sessions into a weekly picture per player: spikes and flat weeks both become visible.',
+              title: 'Planned vs actual',
+              text: 'Actual load is compared against the plan automatically: over-loaded and under-loaded days both surface at a glance.',
             },
             {
               title: 'ACWR per player',
               text: 'The acute:chronic workload ratio flags who is climbing too fast — the classic precursor to muscle injuries.',
-            },
-            {
-              title: 'A shared fitness note',
-              text: 'The fitness coach’s read on the week is attached to the data, visible to the whole staff.',
             },
           ],
         },
@@ -686,16 +691,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'How it works',
           steps: [
             {
+              title: 'Plan the week',
+              text: 'Load target, sessions and exercises per day, load categories (physical, technical, match). The squad ACWR forecast updates as you build.',
+            },
+            {
               title: 'Players rate the session',
               text: 'A quick RPE prompt after each session, answered from their phones in seconds.',
             },
             {
-              title: 'STRIVN assembles the week',
-              text: 'Session ratings become weekly load, monotony and ACWR per player, automatically.',
-            },
-            {
-              title: 'Signals surface on their own',
-              text: 'Players drifting into risky ratios are flagged — green, watch, risk.',
+              title: 'STRIVN compares planned vs actual',
+              text: 'Session ratings become actual load, monotony and ACWR per player, compared against the plan automatically.',
             },
             {
               title: 'Adjust before it costs you',
@@ -706,6 +711,11 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         faq: {
           title: 'Frequently asked questions',
           items: [
+            {
+              question: 'Can I plan load ahead of time?',
+              answer:
+                'Yes. The Load planning view lets you set a weekly load target and lay out exercises day by day, by category; STRIVN projects the squad ACWR and flags risky days before the week begins.',
+            },
             {
               question: 'What is RPE?',
               answer:
@@ -724,13 +734,13 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             {
               question: 'Do I need a fitness coach to use this?',
               answer:
-                'No. The defaults work for a coach on their own; and if you do have a fitness coach, they get their own view and their note is shared with the staff.',
+                'No. The defaults work for a coach on their own; and if you do have a fitness coach, they get their own planning view and their note is shared with the staff.',
             },
           ],
         },
         finalCta: {
-          title: 'Know the squad’s week before it starts.',
-          body: 'Create your team for free — load tracking and RPE are part of the free plan.',
+          title: 'Plan the squad’s week before it starts.',
+          body: 'Create your team for free — load planning, tracking and RPE are part of the free plan.',
           cta: 'Start for free',
         },
       },
