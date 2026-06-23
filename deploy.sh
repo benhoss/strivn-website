@@ -49,7 +49,9 @@ if [[ ! -d "$DIST" ]] || [[ -z "$(ls -A "$DIST" 2>/dev/null)" ]]; then
 fi
 
 BUILT_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-BUILT_BYTES=$(du -sb "$DIST" | awk '{print $1}')
+# Apparent byte size of the build, portable across BSD (macOS) and GNU du.
+# `du -sb` is GNU-only; sum file sizes instead so it works everywhere.
+BUILT_BYTES=$(find "$DIST" -type f -exec cat {} + | wc -c | tr -d '[:space:]')
 echo "✓ build ok — $DIST ($(numfmt --to=iec --suffix=B "$BUILT_BYTES" 2>/dev/null || echo "${BUILT_BYTES} B")) at $BUILT_AT"
 
 # ─── Publish ───────────────────────────────────────────────────────────────
