@@ -1,0 +1,30 @@
+[
+  {
+    "name": "ms-handball",
+    "prompt": "An indoor handball match moment, a player leaping high to shoot at goal, polished arena floor with soft reflections, dramatic side lighting, spectators blurred in deep shadow."
+  },
+  {
+    "name": "ms-basketball",
+    "prompt": "An indoor basketball game moment, a player driving toward the hoop mid-stride, glossy hardwood court reflections, dramatic arena spotlight from above, moody dark stands."
+  },
+  {
+    "name": "ms-rugby",
+    "prompt": "An outdoor rugby moment at dusk under floodlights, players contesting a high ball in a lineout, light mist catching the beams, wet grass, dark sky."
+  },
+  {
+    "name": "ms-volleyball",
+    "prompt": "An indoor volleyball match, a player rising to spike at the net with arms extended, arena lighting from the side, polished court, dark moody background."
+  },
+  {
+    "name": "sc-sprint",
+    "prompt": "An athlete performing an explosive sprint and agility drill between training cones on an outdoor track at dusk, wearing a GPS performance monitoring vest, strong forward motion, floodlit from behind creating a rim light."
+  },
+  {
+    "name": "sc-gym",
+    "prompt": "A strength and conditioning session in a performance gym, an athlete mid barbell back-squat with chalk dust in the air, dramatic low key lighting, focused intense atmosphere, framed from the side."
+  },
+  {
+    "name": "sc-monitor",
+    "prompt": "A strength and conditioning coach reviewing athlete performance data on a tablet at the edge of an indoor training facility, soft cool screen glow on the hands, focused expression turned away, framed on hands and tablet, no readable text on screen."
+  }
+]

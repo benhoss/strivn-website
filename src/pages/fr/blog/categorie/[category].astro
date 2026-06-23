@@ -1,0 +1,86 @@
+---
+import BlogLayout from '../../../../layouts/BlogLayout.astro';
+import BlogCard from '../../../../components/BlogCard.astro';
+import {
+  BLOG_CATEGORIES,
+  BLOG_CATEGORY_DESCRIPTIONS,
+  BLOG_CATEGORY_LABELS,
+  slugFromEntry,
+} from '../../../../lib/blog';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  return BLOG_CATEGORIES.map((category) => ({ params: { category } }));
+}
+
+const { category } = Astro.params;
+const cat = category as (typeof BLOG_CATEGORIES)[number];
+const label = BLOG_CATEGORY_LABELS[cat];
+const desc = BLOG_CATEGORY_DESCRIPTIONS[cat];
+
+const all = await getCollection('blog', ({ data }) => !data.draft && data.category === cat);
+all.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const title = `${label} — articles pour coachs foot amateur | strivn blog`;
+const description = `${desc} Conseils concrets, vocabulaire terrain, sources autoritatives. Pour coachs de foot amateur et semi-pro.`;
+const canonicalPath = `/fr/blog/categorie/${cat}/`;
+
+const alternates = [
+  { hreflang: 'fr', href: canonicalPath },
+  { hreflang: 'en', href: `/en/blog/category/${cat}/` },
+  { hreflang: 'x-default', href: canonicalPath },
+];
+
+const jsonLdExtra = [
+  {
+    '@type': 'CollectionPage',
+    '@id': `https://strivn.net${canonicalPath}#collection`,
+    name: `${label} — strivn blog`,
+    description,
+    url: `https://strivn.net${canonicalPath}`,
+    inLanguage: 'fr',
+    isPartOf: { '@id': 'https://strivn.net/fr/blog/#blog' },
+  },
+];
+---
+
+<BlogLayout
+  locale="fr"
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  jsonLdExtra={jsonLdExtra}
+  bodyClass="b-page"
+  switchHrefs={{ en: `/en/blog/category/${cat}/`, fr: canonicalPath }}
+>
+  <header class="b-hero">
+    <span class="b-hero__eyebrow">Catégorie · {label}</span>
+    <h1 class="b-hero__title">{label}</h1>
+    <p class="b-hero__lede">{desc}</p>
+
+    <ul class="b-chips" aria-label="Filtrer par catégorie">
+      <li class="b-chips__item">
+        <a class="b-chip" href="/fr/blog/">Tous</a>
+      </li>
+      {BLOG_CATEGORIES.map((c) => (
+        <li class="b-chips__item">
+          <a
+            class="b-chip"
+            href={`/fr/blog/categorie/${c}/`}
+            aria-current={c === cat ? 'page' : undefined}
+          >
+            {BLOG_CATEGORY_LABELS[c]}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </header>
+
+  {all.length === 0 ? (
+    <div class="b-empty">Aucun article dans cette catégorie pour l'instant.</div>
+  ) : (
+    <div class="b-grid">
+      {all.map((entry) => <BlogCard entry={entry} />)}
+    </div>
+  )}
+</BlogLayout>

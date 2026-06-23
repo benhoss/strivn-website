@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #07080f; }
+      body { font-family: "Inter", sans-serif; color: #f8fafc; }
+      .scene { position: absolute; inset: 0; }
+
+      #bg { position: absolute; inset: 0; background: radial-gradient(130% 80% at 50% 0%, #0b1730 0%, #07080f 60%); }
+      #bg .glow { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; left: -260px; top: -220px; background: radial-gradient(circle, rgba(45,127,249,0.22) 0%, rgba(7,8,15,0) 60%); }
+      #bg .glow2 { position: absolute; width: 1300px; height: 1300px; border-radius: 50%; right: -320px; bottom: -260px; background: radial-gradient(circle, rgba(39,215,161,0.12) 0%, rgba(7,8,15,0) 60%); }
+      #bg .grid { position: absolute; inset: 0; opacity: 0.45; background-image: linear-gradient(rgba(248,250,252,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(248,250,252,0.03) 1px, transparent 1px); background-size: 96px 96px; }
+      #bg .vig { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(7,8,15,0) 52%, rgba(5,6,16,0.8) 100%); }
+
+      .overline { font-family: "JetBrains Mono", monospace; font-size: 27px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8497bd; }
+      .overline b { color: #2d7ff9; }
+
+      #intro { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 90px; }
+      #intro .ov { margin-bottom: 40px; }
+      #intro img { width: 540px; margin-bottom: 50px; }
+      #intro h1 { font-size: 92px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; }
+      #intro h1 em { font-style: normal; color: #2d7ff9; }
+      #intro .sub { margin-top: 32px; font-size: 36px; color: #b5c2d7; }
+
+      #toplabel { position: absolute; top: 150px; left: 0; right: 0; text-align: center; }
+
+      #pvideo { position: absolute; left: 282px; top: 472px; width: 516px; height: 917px; border-radius: 46px; object-fit: cover; background: #000; }
+      #bezel { position: absolute; left: 268px; top: 458px; width: 544px; height: 945px; border: 14px solid #14161f; border-radius: 62px; box-shadow: 0 36px 90px rgba(3,9,26,0.65), inset 0 0 0 2px rgba(248,250,252,0.06); }
+      #bezel .di { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 116px; height: 32px; border-radius: 999px; background: #05060f; }
+
+      #cwin { position: absolute; left: 50px; top: 716px; width: 980px; height: 551px; overflow: hidden; border-radius: 0 0 16px 16px; }
+      #cvideo { position: absolute; left: 0; top: 0; width: 980px; height: 551px; object-fit: cover; background: #06152b; transform-origin: 50% 24%; }
+      #cvideo2 { position: absolute; left: 0; top: -571px; width: 980px; height: 1838px; background: #06152b; transform-origin: 50% 60%; }
+      #chrome { position: absolute; left: 50px; top: 662px; width: 980px; height: 54px; background: #0b1428; border: 1px solid rgba(248,250,252,0.1); border-bottom: none; border-radius: 16px 16px 0 0; display: flex; align-items: center; padding: 0 22px; }
+      #chrome .dots { display: flex; gap: 11px; }
+      #chrome .dots i { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+      #chrome .url { margin: 0 auto; font-family: "JetBrains Mono", monospace; font-size: 22px; color: #8497bd; background: #06152b; padding: 8px 30px; border-radius: 999px; border: 1px solid rgba(248,250,252,0.08); }
+      #cframe { position: absolute; left: 50px; top: 716px; width: 980px; height: 551px; border: 1px solid rgba(248,250,252,0.1); border-top: none; border-radius: 0 0 16px 16px; box-shadow: 0 30px 80px rgba(3,9,26,0.6); }
+
+      .cap { position: absolute; left: 70px; right: 70px; top: 1500px; text-align: center; }
+      .cap > span { display: inline-block; background: rgba(7,8,15,0.82); border: 1px solid rgba(45,127,249,0.35); border-radius: 18px; padding: 22px 38px; font-size: 50px; font-weight: 700; line-height: 1.22; box-shadow: 0 10px 40px rgba(3,9,26,0.5); }
+      .cap .w { display: inline-block; }
+      .cap .accent { color: #4f94fb; }
+      .cap .g { color: #27d7a1; }
+      .cap .a { color: #ffb020; }
+      .cap .r { color: #ff5c5c; }
+      .sceneTitle { position: absolute; top: 360px; left: 0; right: 0; text-align: center; font-size: 44px; font-weight: 600; letter-spacing: -0.01em; }
+
+      #outro { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+      #outro img { width: 520px; margin-bottom: 56px; }
+      #outro .btn { padding: 30px 62px; border-radius: 14px; background: #2d7ff9; font-size: 44px; font-weight: 600; box-shadow: 0 16px 48px rgba(45,127,249,0.35); }
+      #outro .site { margin-top: 50px; font-family: "JetBrains Mono", monospace; font-size: 40px; font-weight: 600; letter-spacing: 0.14em; }
+      #outro .re { margin-top: 24px; font-size: 30px; color: #8497bd; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="demo916" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <div id="bg" class="clip" data-start="0" data-duration="30" data-track-index="0">
+        <div class="glow"></div><div class="glow2"></div><div class="grid"></div><div class="vig"></div>
+      </div>
+      <audio id="music" data-start="0" data-duration="30" data-track-index="9" data-volume="0.95" src="../assets/demo-vo-mix.wav"></audio>
+
+      <video id="pvideo" class="clip" data-start="3.3" data-duration="7.7" data-media-start="0.8" data-track-index="2" muted src="../assets/demo-player.mp4"></video>
+      <div id="cwin">
+        <video id="cvideo" class="clip" data-start="11.0" data-duration="4.4" data-media-start="10.0" data-track-index="2" muted src="../assets/demo-coach.mp4"></video>
+        <video id="cvideo2" class="clip" data-start="15.4" data-duration="9.6" data-media-start="9.5" data-track-index="2" muted src="../assets/demo-coach-calendar.mp4"></video>
+      </div>
+
+      <div id="intro" class="scene clip" data-start="0" data-duration="3.3" data-track-index="3">
+        <div class="ov overline" id="introov"><b>STRIVN</b> · démo produit</div>
+        <img id="intrologo" src="../assets/logo.png" alt="STRIVN" />
+        <h1 id="introh1">La charge d'équipe,<br /><em>en direct</em>.</h1>
+        <div class="sub" id="introsub">Du check-in joueur au tableau du coach.</div>
+      </div>
+
+      <div id="phone" class="clip" data-start="3.3" data-duration="7.7" data-track-index="3">
+        <div id="toplabel" class="overline">Côté joueur · le check-in</div>
+        <div id="bezel"><div class="di"></div></div>
+      </div>
+
+      <div id="browser" class="clip" data-start="11.0" data-duration="14.0" data-track-index="3">
+        <div class="sceneTitle" id="ctitle">Côté coach · charge &amp; check-ins</div>
+        <div id="chrome"><span class="dots"><i style="background:#ff5c5c"></i><i style="background:#ffb020"></i><i style="background:#27d7a1"></i></span><span class="url">strivn.net · Demo Team</span></div>
+        <div id="cframe"></div>
+      </div>
+
+      <div id="outro" class="scene clip" data-start="25.0" data-duration="5.0" data-track-index="3">
+        <img id="outrologo" src="../assets/logo.png" alt="STRIVN" />
+        <div class="btn" id="outrobtn">Disponible maintenant</div>
+        <div class="site" id="outrosite">strivn.net</div>
+        <div class="re" id="outrore">Gratuit pour une équipe · tous les sports</div>
+      </div>
+
+      <div class="cap clip" id="cap1" data-start="4.55" data-duration="2.6" data-track-index="4"><span><span class="w">Le</span> <span class="w">joueur</span> <span class="w">fait</span> <span class="w">son</span> <span class="w">check-in</span> <span class="w accent">en</span> <span class="w accent">10</span> <span class="w accent">secondes</span></span></div>
+      <div class="cap clip" id="cap2" data-start="7.3" data-duration="3.5" data-track-index="4"><span><span class="w">Fatigue,</span> <span class="w">sommeil,</span> <span class="w">stress</span> <span class="w">—</span> <span class="w accent">son</span> <span class="w accent">ressenti</span></span></div>
+      <div class="cap clip" id="cap3" data-start="11.2" data-duration="1.6" data-track-index="4"><span><span class="w">L'info</span> <span class="w">remonte</span> <span class="w accent">en</span> <span class="w accent">temps</span> <span class="w accent">réel</span></span></div>
+      <div class="cap clip" id="cap4" data-start="12.9" data-duration="2.4" data-track-index="4"><span><span class="w">La</span> <span class="w">charge,</span> <span class="w accent">calculée</span> <span class="w accent">automatiquement</span></span></div>
+      <div class="cap clip" id="cap5" data-start="15.5" data-duration="3.9" data-track-index="4"><span><span class="w">Chaque</span> <span class="w">jour</span> <span class="w">de</span> <span class="w">check-in,</span> <span class="w accent">son</span> <span class="w accent">indicateur</span></span></div>
+      <div class="cap clip" id="cap6" data-start="19.55" data-duration="5.2" data-track-index="4"><span><span class="w g">Vert,</span> <span class="w a">orange,</span> <span class="w r">rouge</span> <span class="w">—</span> <span class="w accent">d'un</span> <span class="w accent">coup</span> <span class="w accent">d'œil</span></span></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+      tl.fromTo("#bg .glow", { x: -70, y: -30 }, { x: 70, y: 30, duration: 30, ease: "none" }, 0);
+      tl.fromTo("#bg .glow2", { x: 60, y: 40 }, { x: -60, y: -40, duration: 30, ease: "none" }, 0);
+
+      tl.from("#introov", { opacity: 0, y: -20, duration: 0.5 }, 0.15);
+      tl.from("#intrologo", { opacity: 0, scale: 0.88, duration: 0.6 }, 0.3);
+      tl.from("#introh1", { opacity: 0, y: 34, duration: 0.55 }, 0.6);
+      tl.from("#introsub", { opacity: 0, y: 20, duration: 0.5 }, 0.9);
+      tl.to("#intro", { opacity: 0, scale: 1.03, duration: 0.35, ease: "power2.in" }, 2.95);
+      tl.set("#intro", { opacity: 0 }, 3.3);
+
+      tl.from("#toplabel", { opacity: 0, y: -18, duration: 0.45 }, 3.5);
+      tl.from("#bezel", { opacity: 0, y: 70, scale: 0.94, duration: 0.6 }, 3.4);
+      tl.from("#pvideo", { opacity: 0, duration: 0.5 }, 3.5);
+      tl.to(["#phone", "#pvideo"], { opacity: 0, duration: 0.35, ease: "power2.in" }, 10.65);
+      tl.set(["#phone", "#pvideo"], { opacity: 0 }, 11.0);
+
+      tl.from("#ctitle", { opacity: 0, y: -18, duration: 0.45 }, 11.2);
+      tl.from("#chrome", { opacity: 0, y: 50, duration: 0.5 }, 11.15);
+      tl.from("#cframe", { opacity: 0, y: 50, duration: 0.5 }, 11.15);
+      tl.from("#cvideo", { opacity: 0, duration: 0.4 }, 11.3);
+      tl.to("#cvideo", { scale: 1.26, duration: 1.0, ease: "power2.inOut" }, 11.5);
+      tl.to("#cvideo", { scale: 1.34, transformOrigin: "62% 72%", duration: 1.1, ease: "power2.inOut" }, 12.8);
+      tl.to("#cvideo", { opacity: 0, duration: 0.3 }, 15.05);
+      tl.set("#cvideo", { opacity: 0 }, 15.4);
+      tl.fromTo("#cvideo2", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 15.4);
+      tl.fromTo("#cvideo2", { scale: 1.0 }, { scale: 1.12, duration: 8.0, ease: "power1.inOut" }, 16.0);
+      tl.to(["#browser", "#cvideo2"], { opacity: 0, duration: 0.4, ease: "power2.in" }, 24.6);
+      tl.set(["#browser", "#cvideo2"], { opacity: 0 }, 25.0);
+
+      const popCap = (id, t) => {
+        tl.from(`${id} > span`, { opacity: 0, scale: 0.96, duration: 0.18, ease: "power2.out" }, t - 0.02);
+        tl.from(`${id} .w`, { opacity: 0, y: 30, scale: 0.5, duration: 0.32, stagger: 0.065, ease: "back.out(2)" }, t);
+      };
+      popCap("#cap1", 4.6);
+      popCap("#cap2", 7.35);
+      popCap("#cap3", 11.25);
+      popCap("#cap4", 12.95);
+      popCap("#cap5", 15.55);
+      popCap("#cap6", 19.6);
+
+      tl.from("#outrologo", { opacity: 0, y: 30, duration: 0.55 }, 25.15);
+      tl.from("#outrobtn", { opacity: 0, y: 30, scale: 0.92, duration: 0.5, ease: "back.out(1.6)" }, 25.4);
+      tl.from("#outrosite", { opacity: 0, duration: 0.45 }, 25.7);
+      tl.from("#outrore", { opacity: 0, duration: 0.45 }, 25.9);
+      tl.fromTo("#outrobtn", { scale: 1 }, { scale: 1.05, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut" }, 26.4);
+
+      window.__timelines["demo916"] = tl;
+    </script>
+  </body>
+</html>

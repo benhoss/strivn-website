@@ -26,3 +26,17 @@ scan-*.png
 
 # gstack browse daemon logs
 .gstack/
+
+# Secrets — never commit
+nano.json
+credentials.json
+**/credentials.json
+*.credentials.json
+
+# Marketing video — rendered outputs and binary media (keep code + markdown only)
+launch-video/renders/
+launch-video/assets/
+launch-video/**/*.mp4
+launch-video/**/*.wav
+launch-video/**/*.aiff
+launch-video/**/*.webm

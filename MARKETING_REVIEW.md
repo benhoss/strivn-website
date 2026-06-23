@@ -21,7 +21,7 @@ La page tient sa promesse de marque sur trois plans clés — atmosphère calme 
 
 1. **Le reste de la page redonne deux fois le même contenu.** Les sections *Capacités* (Planification/Suivi/Action) et *Comment ça marche* (Planifier/Suivre/Agir) parlent du même découpage avec les mêmes mots. Le lecteur a la sensation de relire — ce qui dilue le punch des moments-clés.
 2. **Aucun ancrage chiffré côté preuve sociale.** "Built for ambitious coaches and clubs" sans une seule citation, logo de club, ou nombre de joueurs déjà suivis. Pour une audience qui parle ROI (clubs semi-pro, académies), c'est un vide qu'un concurrent moins on-brand peut combler.
-3. **Le CTA principal "Réserver une démo" est en haut, mais le bouton équivalent en bas s'appelle "hello@strivn.ai".** La logique du dernier coup d'œil passe d'un verbe d'action ("Réserver") à une adresse mail anonyme. Le lecteur qui scrolle jusqu'en bas perd l'instruction.
+3. **Le CTA principal "Réserver une démo" est en haut, mais le bouton équivalent en bas s'appelle "hello@strivn.net".** La logique du dernier coup d'œil passe d'un verbe d'action ("Réserver") à une adresse mail anonyme. Le lecteur qui scrolle jusqu'en bas perd l'instruction.
 
 ---
 
@@ -73,7 +73,7 @@ La signature visuelle "dot field réactif" qu'on a posée dans le hero ne réapp
 
 C'est le même découpage Plan/Suivi/Action raconté **trois fois** avec trois traitements visuels différents. Le lecteur qui descend voit "Planification" trois fois en l'espace de 1500 px de scroll. Soit on garde l'un et on supprime les deux autres, soit on les différencie clairement : Capacités = catalogue de features, Comment ça marche = scénario d'usage, Hero signals = teaser. Mais aujourd'hui les trois disent la même chose.
 
-Le reste tient bien : le board "Preuve opérative" à la fin de *Comment ça marche* apporte une vraie densité (4 catégories : Entrées / Surfaces / Actions / Garde-fous), le `details` de la FAQ est respiratoire, et le CTA band final centre bien l'offre. Le contact `mailto:hello@strivn.ai` en bouton primaire est honnête mais un peu pauvre — il pourrait être "Réserver un créneau" (avec un calendly ou similaire) pour matcher le CTA du topbar.
+Le reste tient bien : le board "Preuve opérative" à la fin de *Comment ça marche* apporte une vraie densité (4 catégories : Entrées / Surfaces / Actions / Garde-fous), le `details` de la FAQ est respiratoire, et le CTA band final centre bien l'offre. Le contact `mailto:hello@strivn.net` en bouton primaire est honnête mais un peu pauvre — il pourrait être "Réserver un créneau" (avec un calendly ou similaire) pour matcher le CTA du topbar.
 
 ---
 
@@ -85,7 +85,7 @@ Le reste tient bien : le board "Preuve opérative" à la fin de *Comment ça mar
 
 - **Ajouter une 4e persona "Staff élargi" dans *Pour qui*.** Le persona-card actuel parle uniquement joueurs (3 cards). Ajouter une 4e card adressant préparateur physique + kiné : *"Les outils du staff suivent le coach"* avec un body type *"Kinés, préparateurs, analystes — chacun voit l'état joueur dans son angle sans ressaisir."* Permet de fermer la décision-multi-stakeholder. Effort : 30 min (texte + composant existant réutilisé).
 
-- **Remplacer le mailto par un CTA cohérent.** Le bouton primaire du topbar dit *"Réserver une démo"*, celui du contact band dit *"hello@strivn.ai"*. Aligner : soit le mailto monte en topbar (improbable), soit le CTA contact band devient *"Réserver un créneau de 30 min"* avec une vraie destination. Effort : 30 min (texte + lien Calendly/Cal.com).
+- **Remplacer le mailto par un CTA cohérent.** Le bouton primaire du topbar dit *"Réserver une démo"*, celui du contact band dit *"hello@strivn.net"*. Aligner : soit le mailto monte en topbar (improbable), soit le CTA contact band devient *"Réserver un créneau de 30 min"* avec une vraie destination. Effort : 30 min (texte + lien Calendly/Cal.com).
 
 ### Medium impact
 

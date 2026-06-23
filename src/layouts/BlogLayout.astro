@@ -1,0 +1,71 @@
+---
+import '../styles/blog.css';
+import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import type { Locale } from '../data/landingContent';
+import { landingContent } from '../data/landingContent';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  /** JSON-LD extra nodes (BlogPosting, BreadcrumbList). */
+  jsonLdExtra?: Record<string, unknown>[];
+  /** Public body class to apply on <main>. */
+  bodyClass?: string;
+  /** Override the language-switcher targets. */
+  switchHrefs?: { en: string; fr: string };
+  /** Brand href override (locale root). */
+  brandHref?: string;
+}
+
+const {
+  locale,
+  title,
+  description,
+  canonicalPath,
+  jsonLdExtra = [],
+  bodyClass,
+  switchHrefs,
+  brandHref,
+} = Astro.props;
+
+const c = landingContent[locale];
+const isFrench = locale === 'fr';
+const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
+const homeHref = isFrench ? '/fr/' : '/en/';
+const blogHref = isFrench ? '/fr/blog/' : '/en/blog/';
+
+// Augment nav with a Blog link (kept lightweight — does not modify landingContent).
+const navLinks = [
+  ...c.nav.links,
+  { label: isFrench ? 'Blog' : 'Blog', href: blogHref },
+];
+const finalSwitchHrefs = switchHrefs ?? { en: '/en/', fr: '/fr/' };
+---
+
+<BaseLayout
+  lang={locale}
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  jsonLdExtra={jsonLdExtra}
+>
+  <a href="#b-main" class="s-skip">{skipLabel}</a>
+
+  <SiteHeader
+    locale={locale}
+    links={navLinks}
+    cta={c.nav.cta}
+    brandHref={brandHref ?? homeHref}
+    switchHrefs={finalSwitchHrefs}
+  />
+
+  <main id="b-main" class={bodyClass}>
+    <slot />
+  </main>
+
+  <SiteFooter locale={locale} footer={c.footer} />
+</BaseLayout>

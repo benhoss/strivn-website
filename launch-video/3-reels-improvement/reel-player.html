@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #07080f; }
+      body { font-family: "Inter", sans-serif; color: #f8fafc; }
+      .scene { position: absolute; inset: 0; }
+      .overline { font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8497bd; }
+      .overline b { color: #2d7ff9; font-weight: 600; }
+      #bgimg { position: absolute; inset: 0; }
+      #bgimg .bg { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      #bgimg .veil { position: absolute; inset: 0; background: radial-gradient(125% 50% at 50% 36%, rgba(5,6,16,0.5) 0%, rgba(5,6,16,0) 60%), linear-gradient(180deg, rgba(5,6,16,0.78) 0%, rgba(5,6,16,0.55) 32%, rgba(5,6,16,0.66) 54%, rgba(5,6,16,0.97) 100%); }
+      #hook .text, #hook .ov, .caption, #cta .site, #cta .re { text-shadow: 0 2px 22px rgba(5,6,16,0.82); }
+      #hook .text { position: absolute; top: 740px; left: 80px; right: 80px; text-align: center; font-size: 96px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.12; }
+      #hook .text em { font-style: normal; color: #2d7ff9; }
+      #hook .ov { position: absolute; top: 640px; left: 0; right: 0; text-align: center; }
+
+      .caption { position: absolute; top: 380px; left: 80px; right: 80px; text-align: center; font-size: 50px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
+      .caption em { font-style: normal; color: #2d7ff9; }
+
+      /* app card (phone-screen feel) */
+      .card { position: absolute; top: 620px; left: 190px; width: 700px; background: #0b1e3a; border: 1px solid rgba(248,250,252,0.1); border-radius: 32px; box-shadow: 0 24px 64px rgba(3,9,26,0.6); overflow: hidden; }
+      .card .ch { padding: 30px 34px 0; }
+      .card .ch .day { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #8497bd; }
+      .card .ch .ttl { font-size: 40px; font-weight: 600; margin-top: 8px; }
+      .card .body { padding: 22px 34px 30px; font-size: 27px; color: #b5c2d7; line-height: 1.5; }
+      .btnrow { display: flex; gap: 16px; padding: 0 34px 34px; }
+      .abtn { flex: 1; text-align: center; padding: 24px 0; border-radius: 14px; font-size: 28px; font-weight: 600; }
+      .abtn.primary { background: #2d7ff9; color: #f8fafc; }
+      .abtn.ghost { background: transparent; border: 1px solid rgba(248,250,252,0.2); color: #b5c2d7; }
+      .abtn.sel { box-shadow: 0 0 0 4px rgba(45,127,249,0.3); }
+
+      /* RPE slider */
+      .rpe { padding: 6px 34px 30px; }
+      .rpe .track { position: relative; height: 16px; border-radius: 999px; background: linear-gradient(90deg, #27d7a1, #ffb020, #ff5c5c); margin: 30px 0 16px; }
+      .rpe .thumb { position: absolute; top: 50%; width: 44px; height: 44px; border-radius: 50%; background: #f8fafc; border: 4px solid #2d7ff9; transform: translate(-50%, -50%); }
+      .rpe .scale { display: flex; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 17px; color: #8497bd; }
+      .rpe .sent { margin-top: 22px; font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 600; color: #27d7a1; }
+
+      /* return to play steps */
+      .steps { padding: 6px 34px 30px; }
+      .steps .row { display: flex; align-items: center; gap: 20px; padding: 20px 0; border-bottom: 1px solid rgba(248,250,252,0.06); font-size: 27px; }
+      .steps .row:last-child { border-bottom: none; }
+      .steps .dot { width: 20px; height: 20px; border-radius: 50%; flex: none; border: 2px solid #3d5a8a; }
+      .steps .row.done .dot { background: #27d7a1; border-color: #27d7a1; }
+      .steps .row.active .dot { border-color: #2d7ff9; background: rgba(45,127,249,0.35); }
+      .steps .row.done { color: #8497bd; } .steps .row.active { color: #f8fafc; } .steps .row.todo { color: #3d5a8a; }
+      .steps .next { margin-top: 22px; font-size: 24px; color: #b5c2d7; }
+      .steps .next b { color: #2d7ff9; font-weight: 600; }
+
+      #cta .logo { position: absolute; top: 660px; left: 290px; width: 500px; }
+      #cta .btn { position: absolute; top: 920px; left: 50%; transform: translateX(-50%); padding: 30px 56px; border-radius: 12px; background: #2d7ff9; font-size: 38px; font-weight: 600; white-space: nowrap; box-shadow: 0 16px 48px rgba(45,127,249,0.35); }
+      #cta .site { position: absolute; top: 1075px; left: 0; right: 0; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 600; letter-spacing: 0.14em; color: #f8fafc; }
+      #cta .re { position: absolute; top: 1150px; left: 0; right: 0; text-align: center; font-size: 24px; color: #8497bd; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="reelplayer" data-start="0" data-duration="15" data-width="1080" data-height="1920">
+      <div id="bgimg" class="clip" data-start="0" data-duration="15" data-track-index="0">
+        <img class="bg bgA" src="../assets/ig/imp-player-locker.png" alt="" />
+        <img class="bg bgC" src="../assets/ig/imp-team-progress.png" alt="" style="opacity:0" />
+        <div class="veil"></div>
+      </div>
+      <audio id="music" data-start="0" data-duration="15" data-track-index="9" data-volume="0.65" src="../assets/stomp-15s.wav"></audio>
+
+      <div id="hook" class="scene clip" data-start="0" data-duration="3" data-track-index="1">
+        <div class="ov overline">Pour les joueurs</div>
+        <div class="text" id="hooktext">Ta saison, <em>dans ta poche.</em></div>
+      </div>
+
+      <!-- f1 convocation -->
+      <div id="f1" class="scene clip" data-start="3" data-duration="3.3" data-track-index="1">
+        <div class="caption" id="cap1">Convocations reçues. <em>Tu confirmes en un geste.</em></div>
+        <div class="card" id="card1">
+          <div class="ch"><div class="day">Samedi</div><div class="ttl">Match · 14:00</div></div>
+          <div class="body">Rendez-vous au club à 13:00. Tu viens ?</div>
+          <div class="btnrow"><div class="abtn primary" id="presBtn">Présent</div><div class="abtn ghost">Absent</div></div>
+        </div>
+      </div>
+
+      <!-- f2 RPE -->
+      <div id="f2" class="scene clip" data-start="6.3" data-duration="3.3" data-track-index="1">
+        <div class="caption" id="cap2">Ton ressenti compte. <em>10 secondes après l'entraînement.</em></div>
+        <div class="card" id="card2">
+          <div class="ch"><div class="day">Après l'entraînement</div><div class="ttl">Ton effort aujourd'hui ?</div></div>
+          <div class="rpe">
+            <div class="track"><div class="thumb" id="thumb" style="left: 70%"></div></div>
+            <div class="scale"><span>Facile</span><span>Modéré</span><span>Très dur</span></div>
+            <div class="sent" id="sent">Envoyé ✓ · 8 s</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- f3 return to play -->
+      <div id="f3" class="scene clip" data-start="9.6" data-duration="2.9" data-track-index="1">
+        <div class="caption" id="cap3">Blessé ? <em>Tu suis ton retour, étape par étape.</em></div>
+        <div class="card" id="card3">
+          <div class="ch"><div class="day">Ton retour · ischio J+12</div><div class="ttl">Réathlétisation</div></div>
+          <div class="steps">
+            <div class="row done s1"><span class="dot"></span>Soins terminés</div>
+            <div class="row active s2"><span class="dot"></span>Réathlétisation en cours</div>
+            <div class="row todo s3"><span class="dot"></span>Retour sur le terrain</div>
+            <div class="next" id="next">Prochaine étape : <b>course légère</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="cta" class="scene clip" data-start="12.5" data-duration="2.5" data-track-index="1">
+        <img class="logo" id="ctalogo" src="../assets/logo.png" alt="STRIVN" />
+        <div class="btn" id="ctabtn">Demande STRIVN à ton coach</div>
+        <div class="site" id="ctasite">strivn.net</div>
+        <div class="re" id="ctare">Sans compte compliqué · juste un lien</div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+      tl.fromTo("#bgimg .bg", { scale: 1.12 }, { scale: 1, duration: 15, ease: "none" }, 0);
+      tl.fromTo("#bgimg .bgA", { opacity: 1 }, { opacity: 0, duration: 0.6 }, 12.3);
+      tl.fromTo("#bgimg .bgC", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 12.3);
+
+      tl.from("#hook .ov", { opacity: 0, y: -20, duration: 0.4 }, 0.1);
+      tl.from("#hooktext", { opacity: 0, y: 60, duration: 0.55 }, 0.3);
+      tl.to("#hook", { opacity: 0, y: -50, duration: 0.35, ease: "power2.in" }, 2.65);
+      tl.set("#hook", { opacity: 0 }, 3);
+
+      // f1
+      tl.from("#cap1", { opacity: 0, y: 24, duration: 0.4 }, 3.1);
+      tl.from("#card1", { opacity: 0, y: 80, scale: 0.96, duration: 0.5 }, 3.25);
+      tl.from("#presBtn", { scale: 1 }, 3.9);
+      tl.to("#presBtn", { scale: 0.94, duration: 0.12, yoyo: true, repeat: 1 }, 4.5);
+      tl.set("#presBtn", { className: "abtn primary sel" }, 4.75);
+      tl.to("#f1", { opacity: 0, y: -40, duration: 0.32, ease: "power2.in" }, 6.0);
+      tl.set("#f1", { opacity: 0 }, 6.3);
+
+      // f2
+      tl.from("#cap2", { opacity: 0, y: 24, duration: 0.4 }, 6.4);
+      tl.from("#card2", { opacity: 0, y: 80, scale: 0.96, duration: 0.5 }, 6.55);
+      tl.fromTo("#thumb", { left: "20%" }, { left: "70%", duration: 0.8, ease: "power2.out" }, 7.1);
+      tl.from("#sent", { opacity: 0, duration: 0.4 }, 8.2);
+      tl.to("#f2", { opacity: 0, y: -40, duration: 0.32, ease: "power2.in" }, 9.3);
+      tl.set("#f2", { opacity: 0 }, 9.6);
+
+      // f3
+      tl.from("#cap3", { opacity: 0, y: 24, duration: 0.4 }, 9.7);
+      tl.from("#card3", { opacity: 0, y: 80, scale: 0.96, duration: 0.5 }, 9.85);
+      tl.from("#card3 .s1", { opacity: 0, x: 30, duration: 0.3 }, 10.4);
+      tl.from("#card3 .s2", { opacity: 0, x: 30, duration: 0.3 }, 10.65);
+      tl.from("#card3 .s3", { opacity: 0, x: 30, duration: 0.3 }, 10.9);
+      tl.from("#next", { opacity: 0, duration: 0.4 }, 11.25);
+      tl.to("#f3", { opacity: 0, y: -40, duration: 0.32, ease: "power2.in" }, 12.2);
+      tl.set("#f3", { opacity: 0 }, 12.5);
+
+      // cta
+      tl.from("#ctalogo", { opacity: 0, y: 30, duration: 0.5 }, 12.6);
+      tl.from("#ctabtn", { opacity: 0, y: 30, scale: 0.92, duration: 0.45, ease: "back.out(1.6)" }, 12.85);
+      tl.from("#ctasite", { opacity: 0, duration: 0.4 }, 13.15);
+      tl.from("#ctare", { opacity: 0, duration: 0.4 }, 13.35);
+      tl.fromTo("#ctabtn", { scale: 1 }, { scale: 1.04, duration: 0.5, yoyo: true, repeat: 2, ease: "sine.inOut" }, 13.9);
+
+      window.__timelines["reelplayer"] = tl;
+    </script>
+  </body>
+</html>

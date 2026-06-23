@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #07080f; }
+      body { font-family: "Inter", sans-serif; color: #f8fafc; }
+      .scene { position: absolute; inset: 0; }
+      .overline {
+        font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 600;
+        letter-spacing: 0.18em; text-transform: uppercase; color: #8497bd;
+      }
+      .overline .tick { color: #2d7ff9; }
+
+      #bgimg { position: absolute; inset: 0; }
+      #bgimg img { width: 1080px; height: 1920px; object-fit: cover; }
+      #bgimg .veil {
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(7, 8, 15, 0.55) 0%, rgba(7, 8, 15, 0.35) 45%, rgba(7, 8, 15, 0.92) 100%);
+      }
+      #void { position: absolute; inset: 0; background: #07080f; }
+      #void .glow {
+        position: absolute; width: 1400px; height: 1400px; border-radius: 50%;
+        left: -160px; top: 200px;
+        background: radial-gradient(circle, rgba(17, 40, 73, 0.55) 0%, rgba(7, 8, 15, 0) 62%);
+      }
+
+      /* s1 hook */
+      #s1 .stamp { position: absolute; top: 200px; left: 0; right: 0; text-align: center; }
+      #s1 .line {
+        position: absolute; left: 70px; right: 70px; text-align: center;
+        font-size: 88px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.12;
+      }
+      #s1 .l1 { top: 480px; }
+      #s1 .l2 { top: 620px; color: #b5c2d7; }
+      .frag {
+        position: absolute; border-radius: 12px; padding: 24px 30px;
+        background: #0b1e3a; border: 1px solid rgba(248, 250, 252, 0.1);
+        box-shadow: 0 16px 48px rgba(3, 9, 26, 0.55);
+        font-size: 28px; color: #b5c2d7; line-height: 1.4;
+      }
+      .frag .src {
+        font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase; color: #8497bd;
+        display: block; margin-bottom: 8px;
+      }
+      .frag.sheet { font-family: "JetBrains Mono", monospace; font-size: 23px; color: #8497bd; }
+
+      /* s2 slams */
+      .slam {
+        position: absolute; left: 0; right: 0; text-align: center;
+        font-size: 124px; font-weight: 600; letter-spacing: -0.025em; line-height: 1;
+      }
+      #w1 { top: 560px; } #w2 { top: 740px; } #w3 { top: 920px; } #w4 { top: 1100px; }
+      #s2 .head { position: absolute; top: 420px; left: 0; right: 0; text-align: center; }
+
+      /* s3 reveal */
+      #s3 .sweep {
+        position: absolute; top: 880px; left: 0; width: 1080px; height: 2px;
+        background: linear-gradient(90deg, rgba(45, 127, 249, 0) 0%, #2d7ff9 50%, rgba(45, 127, 249, 0) 100%);
+        transform-origin: left center;
+      }
+      #s3 .logo { position: absolute; top: 740px; left: 240px; width: 600px; }
+      #s3 .tagline {
+        position: absolute; top: 1000px; left: 60px; right: 60px; text-align: center;
+        font-size: 58px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;
+      }
+      #s3 .tagline em { font-style: normal; color: #2d7ff9; }
+
+      /* s4 cta */
+      #s4 .logo { position: absolute; top: 660px; left: 290px; width: 500px; }
+      #s4 .btn {
+        position: absolute; top: 920px; left: 50%; transform: translateX(-50%);
+        padding: 30px 60px; border-radius: 12px; background: #2d7ff9;
+        font-size: 40px; font-weight: 600; white-space: nowrap;
+        box-shadow: 0 16px 48px rgba(45, 127, 249, 0.35);
+      }
+      #s4 .site {
+        position: absolute; top: 1080px; left: 0; right: 0; text-align: center;
+        font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 600;
+        letter-spacing: 0.14em; color: #f8fafc;
+      }
+      #s4 .re { position: absolute; top: 1160px; left: 0; right: 0; text-align: center; font-size: 26px; color: #8497bd; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="reel1" data-start="0" data-duration="15" data-width="1080" data-height="1920">
+      <div id="bgimg" class="clip" data-start="0" data-duration="9.5" data-track-index="0">
+        <img src="../assets/ig/ig-coach-night.png" alt="" />
+        <div class="veil"></div>
+      </div>
+      <div id="void" class="clip" data-start="9.5" data-duration="5.5" data-track-index="0">
+        <div class="glow"></div>
+      </div>
+
+      <audio id="music" data-start="0" data-duration="15" data-track-index="9" data-volume="0.65" src="../assets/stomp-15s.wav"></audio>
+
+      <div id="s1" class="scene clip" data-start="0" data-duration="6" data-track-index="1">
+        <div class="stamp overline"><span class="tick">●</span>&nbsp; mardi · 22:47</div>
+        <div class="line l1" id="s1l1">L’entraînement est fini.</div>
+        <div class="line l2" id="s1l2">Le vrai travail commence.</div>
+        <div class="frag fr1" style="left: 90px; top: 1180px; transform: rotate(-4deg)">
+          <span class="src">WhatsApp · groupe équipe</span>Coach, je suis là samedi ?
+        </div>
+        <div class="frag fr2 sheet" style="right: 90px; top: 1370px; transform: rotate(3deg)">
+          presences_v3_FINAL(2).xlsx
+        </div>
+        <div class="frag fr3" style="left: 140px; top: 1530px; transform: rotate(2deg)">
+          <span class="src">Note papier</span>Rappeler le kiné pour N. Diallo
+        </div>
+      </div>
+
+      <div id="s2" class="scene clip" data-start="6" data-duration="3.5" data-track-index="1">
+        <div class="head overline">Le quotidien d’un coach</div>
+        <div class="slam" id="w1">WhatsApp.</div>
+        <div class="slam" id="w2">Excel.</div>
+        <div class="slam" id="w3">Notes.</div>
+        <div class="slam" id="w4">La mémoire.</div>
+      </div>
+
+      <div id="s3" class="scene clip" data-start="9.5" data-duration="3" data-track-index="1">
+        <div class="sweep" id="sweep"></div>
+        <img class="logo" id="s3logo" src="../assets/logo.png" alt="STRIVN" />
+        <div class="tagline" id="s3tag">Toute l’équipe, <em>sous un même toit.</em></div>
+      </div>
+
+      <div id="s4" class="scene clip" data-start="12.5" data-duration="2.5" data-track-index="1">
+        <img class="logo" id="s4logo" src="../assets/logo.png" alt="STRIVN" />
+        <div class="btn" id="s4btn">Disponible maintenant</div>
+        <div class="site" id="s4site">strivn.net</div>
+        <div class="re" id="s4re">Gratuit pour une équipe · prêt en quelques minutes</div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+      tl.fromTo("#bgimg img", { scale: 1.08 }, { scale: 1, duration: 9.5, ease: "none" }, 0);
+
+      tl.from("#s1 .stamp", { opacity: 0, y: -24, duration: 0.5 }, 0.1);
+      tl.from("#s1l1", { opacity: 0, y: 60, duration: 0.55 }, 0.4);
+      tl.from("#s1l2", { opacity: 0, y: 60, duration: 0.55 }, 1.6);
+      tl.from("#s1 .fr1", { opacity: 0, scale: 0.6, rotation: -14, duration: 0.4, ease: "back.out(2)" }, 2.8);
+      tl.from("#s1 .fr2", { opacity: 0, scale: 0.6, rotation: 12, duration: 0.4, ease: "back.out(2)" }, 3.3);
+      tl.from("#s1 .fr3", { opacity: 0, scale: 0.6, rotation: 10, duration: 0.4, ease: "back.out(2)" }, 3.8);
+      tl.to("#s1", { opacity: 0, scale: 0.97, duration: 0.35, ease: "power2.in" }, 5.65);
+      tl.set("#s1", { opacity: 0 }, 6);
+
+      tl.from("#s2 .head", { opacity: 0, duration: 0.35 }, 6.05);
+      tl.from("#w1", { opacity: 0, scale: 1.9, duration: 0.34, ease: "power4.out" }, 6.2);
+      tl.from("#w2", { opacity: 0, scale: 1.9, duration: 0.34, ease: "power4.out" }, 6.75);
+      tl.from("#w3", { opacity: 0, scale: 1.9, duration: 0.34, ease: "power4.out" }, 7.3);
+      tl.from("#w4", { opacity: 0, scale: 1.9, duration: 0.34, ease: "power4.out" }, 7.85);
+      tl.to(["#w1", "#w2", "#w3", "#w4"], { opacity: 0, y: -40, duration: 0.4, stagger: 0.06, ease: "power2.in" }, 8.9);
+      tl.to("#s2 .head", { opacity: 0, duration: 0.3 }, 9.1);
+      tl.set("#s2", { opacity: 0 }, 9.5);
+
+      tl.fromTo("#sweep", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 9.55);
+      tl.to("#sweep", { opacity: 0, duration: 0.4 }, 10.5);
+      tl.from("#s3logo", { opacity: 0, scale: 0.86, duration: 0.6 }, 9.85);
+      tl.from("#s3tag", { opacity: 0, y: 36, duration: 0.5 }, 10.3);
+      tl.to("#s3", { opacity: 0, scale: 1.04, duration: 0.35, ease: "power2.in" }, 12.15);
+      tl.set("#s3", { opacity: 0 }, 12.5);
+
+      tl.from("#s4logo", { opacity: 0, y: 30, duration: 0.5 }, 12.6);
+      tl.from("#s4btn", { opacity: 0, y: 30, scale: 0.92, duration: 0.45, ease: "back.out(1.6)" }, 12.85);
+      tl.from("#s4site", { opacity: 0, duration: 0.4 }, 13.15);
+      tl.from("#s4re", { opacity: 0, duration: 0.4 }, 13.35);
+      tl.fromTo("#s4btn", { scale: 1 }, { scale: 1.05, duration: 0.5, yoyo: true, repeat: 1, ease: "sine.inOut" }, 13.8);
+
+      window.__timelines["reel1"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #07080f; }
+      body { font-family: "Inter", sans-serif; color: #f8fafc; }
+      .scene { position: absolute; inset: 0; }
+      .mono { font-family: "JetBrains Mono", monospace; }
+
+      /* ---- background ---- */
+      #bg { position: absolute; inset: 0; background: #07080f; }
+      #bg .glow { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; left: -210px; top: -240px; background: radial-gradient(circle, rgba(17,40,73,0.5) 0%, rgba(7,8,15,0) 62%); }
+      #bg .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; right: -300px; bottom: -360px; background: radial-gradient(circle, rgba(11,30,58,0.45) 0%, rgba(7,8,15,0) 60%); }
+      #bg .grid { position: absolute; inset: 0; opacity: 0.5; background-image: linear-gradient(rgba(248,250,252,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(248,250,252,0.022) 1px, transparent 1px); background-size: 92px 92px; }
+
+      .overline { font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8497bd; }
+      .overline b { color: #2d7ff9; font-weight: 600; }
+      #toplabel { position: absolute; top: 150px; left: 0; right: 0; text-align: center; }
+
+      /* ---- phone ---- */
+      #phone { position: absolute; left: 270px; top: 330px; width: 540px; height: 1140px; border-radius: 54px; background: #0a0c17; border: 1px solid rgba(248,250,252,0.14); box-shadow: 0 30px 80px rgba(3,9,26,0.6); }
+      #phone .notch { position: absolute; top: 22px; left: 50%; transform: translateX(-50%); width: 150px; height: 30px; border-radius: 999px; background: #05060f; }
+      #phone .screen { position: absolute; inset: 14px; border-radius: 42px; background: linear-gradient(180deg, #0b1428 0%, #0a0c17 100%); overflow: hidden; }
+      .sbar { display: flex; justify-content: space-between; padding: 26px 34px 0; font-size: 20px; font-weight: 600; color: #b5c2d7; }
+      .appbar { display: flex; align-items: center; gap: 12px; padding: 22px 34px 0; }
+      .applogo { width: 30px; height: 30px; border-radius: 8px; background: #2d7ff9; }
+      .appbar .nm { font-size: 22px; font-weight: 600; letter-spacing: 0.02em; }
+      .appbar .nm b { color: #2d7ff9; }
+
+      /* notification card */
+      #notif { position: absolute; top: 150px; left: 34px; right: 34px; background: #112849; border: 1px solid rgba(248,250,252,0.12); border-radius: 18px; padding: 24px 26px; box-shadow: 0 14px 40px rgba(3,9,26,0.5); }
+      #notif .src { font-family: "JetBrains Mono", monospace; font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8497bd; }
+      #notif .msg { font-size: 25px; line-height: 1.45; margin-top: 8px; color: #f8fafc; }
+      #notif .lnk { color: #4f94fb; }
+
+      /* rpe screen */
+      #rpe { position: absolute; top: 120px; left: 0; right: 0; padding: 0 40px; }
+      #rpe .q { font-size: 40px; font-weight: 600; line-height: 1.2; margin-top: 30px; }
+      #rpe .sub { font-size: 21px; color: #8497bd; margin-top: 10px; }
+      #rpe .num { text-align: center; font-size: 150px; font-weight: 700; letter-spacing: -0.03em; margin-top: 30px; line-height: 1; }
+      #rpe .numlbl { text-align: center; font-family: "JetBrains Mono", monospace; font-size: 19px; letter-spacing: 0.1em; text-transform: uppercase; color: #8497bd; margin-top: 2px; }
+      #rpe .track { position: relative; height: 18px; border-radius: 999px; margin: 56px 8px 0; background: linear-gradient(90deg, #27d7a1 0%, #ffb020 60%, #ff5c5c 100%); }
+      #rpe .thumb { position: absolute; top: 50%; width: 54px; height: 54px; border-radius: 50%; background: #f8fafc; border: 5px solid #2d7ff9; transform: translate(-50%, -50%); box-shadow: 0 6px 18px rgba(3,9,26,0.5); }
+      #rpe .scale { display: flex; justify-content: space-between; margin: 18px 10px 0; font-family: "JetBrains Mono", monospace; font-size: 17px; color: #8497bd; }
+      #rpe .send { position: absolute; left: 40px; right: 40px; top: 760px; height: 96px; border-radius: 16px; background: #2d7ff9; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 600; box-shadow: 0 14px 36px rgba(45,127,249,0.4); }
+      #rpe .done { position: absolute; left: 40px; right: 40px; top: 760px; height: 96px; border-radius: 16px; background: rgba(39,215,161,0.14); border: 1px solid rgba(39,215,161,0.5); display: flex; align-items: center; justify-content: center; gap: 14px; font-size: 28px; font-weight: 600; color: #27d7a1; }
+
+      /* cursor + ripple (inside phone) */
+      #cursor { position: absolute; width: 60px; height: 60px; border-radius: 50%; border: 3px solid rgba(248,250,252,0.9); background: rgba(248,250,252,0.18); left: 120px; top: 740px; transform: translate(-50%, -50%); box-shadow: 0 0 0 6px rgba(7,8,15,0.25); }
+      #ripple { position: absolute; width: 40px; height: 40px; border-radius: 50%; background: rgba(45,127,249,0.5); left: 270px; top: 808px; transform: translate(-50%, -50%) scale(0); }
+
+      /* ---- coach board ---- */
+      #toast { position: absolute; top: 320px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 14px; background: #0b1e3a; border: 1px solid rgba(39,215,161,0.4); border-radius: 999px; padding: 16px 26px; font-size: 24px; box-shadow: 0 14px 40px rgba(3,9,26,0.5); }
+      #toast .d { width: 14px; height: 14px; border-radius: 50%; background: #27d7a1; }
+      #toast b { color: #f8fafc; font-weight: 600; }
+      .panel { position: absolute; left: 80px; width: 920px; background: #0b1e3a; border: 1px solid rgba(248,250,252,0.09); border-radius: 18px; box-shadow: 0 16px 48px rgba(3,9,26,0.55); }
+      #board { top: 470px; }
+      #board .ph { display: flex; justify-content: space-between; align-items: center; padding: 28px 34px; border-bottom: 1px solid rgba(248,250,252,0.07); }
+      #board .ph .t { font-size: 32px; font-weight: 600; }
+      #board .ph .m { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 600; letter-spacing: 0.08em; color: #8497bd; text-transform: uppercase; }
+      #board .bars { display: flex; align-items: flex-end; gap: 26px; height: 220px; padding: 32px 40px 0; }
+      #board .bar { flex: 1; border-radius: 7px 7px 0 0; background: #294471; transform-origin: bottom; }
+      #board .bar.today { background: #2d7ff9; }
+      #board .days { display: flex; gap: 26px; padding: 12px 40px 18px; font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 600; letter-spacing: 0.08em; color: #8497bd; }
+      #board .days span { flex: 1; text-align: center; }
+      #board .days span.on { color: #2d7ff9; }
+      #board .tiles { display: flex; gap: 14px; padding: 16px 34px; border-top: 1px solid rgba(248,250,252,0.07); }
+      #board .tile { flex: 1; background: #06152b; border: 1px solid rgba(248,250,252,0.07); border-radius: 12px; padding: 16px; text-align: center; }
+      #board .tile .k { font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #8497bd; }
+      #board .tile .v { font-size: 34px; font-weight: 600; margin-top: 6px; }
+      #board .tile .v.warn { color: #ffb020; }
+      #board .flag { display: flex; align-items: center; gap: 16px; padding: 22px 34px; border-top: 1px solid rgba(248,250,252,0.07); }
+      #board .flag .dot { width: 16px; height: 16px; border-radius: 50%; background: #ffb020; flex: none; box-shadow: 0 0 0 5px rgba(255,176,32,0.16); }
+      #board .flag .nm { font-size: 27px; font-weight: 600; }
+      #board .flag .tag { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 600; letter-spacing: 0.06em; color: #ffb020; }
+
+      /* sources strip */
+      #sources { position: absolute; top: 1180px; left: 80px; width: 920px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+      .schip { padding: 14px 24px; border-radius: 999px; border: 1px solid rgba(45,127,249,0.4); background: rgba(45,127,249,0.08); font-size: 23px; font-weight: 500; color: #b5c2d7; }
+      #sources .lbl { width: 100%; text-align: center; margin-top: 8px; }
+
+      /* ---- cta ---- */
+      #cta .logo { position: absolute; top: 700px; left: 290px; width: 500px; }
+      #cta .btn { position: absolute; top: 960px; left: 50%; transform: translateX(-50%); padding: 30px 60px; border-radius: 12px; background: #2d7ff9; font-size: 42px; font-weight: 600; white-space: nowrap; box-shadow: 0 16px 48px rgba(45,127,249,0.35); }
+      #cta .site { position: absolute; top: 1130px; left: 0; right: 0; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 36px; font-weight: 600; letter-spacing: 0.14em; color: #f8fafc; }
+      #cta .re { position: absolute; top: 1206px; left: 0; right: 0; text-align: center; font-size: 24px; color: #8497bd; }
+
+      /* ---- captions ---- */
+      #caps { position: absolute; left: 70px; right: 70px; top: 1640px; height: 180px; }
+      .cap { position: absolute; left: 0; right: 0; top: 0; text-align: center; font-size: 50px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; text-shadow: 0 3px 20px rgba(5,6,16,0.95); }
+      .cap b { color: #4f94fb; }
+      #progress { position: absolute; left: 0; bottom: 0; height: 6px; background: #2d7ff9; width: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="demorpe" data-start="0" data-duration="28.5" data-width="1080" data-height="1920">
+      <div id="bg" class="clip" data-start="0" data-duration="28.5" data-track-index="0">
+        <div class="glow"></div><div class="glow2"></div><div class="grid"></div>
+      </div>
+
+      <audio id="music" data-start="0" data-duration="28.5" data-track-index="9" data-volume="0.7" src="../assets/demo-music.wav"></audio>
+
+      <div id="toplabel" class="overline clip" data-start="0" data-duration="28.5" data-track-index="2"><b>STRIVN</b> · le suivi de la charge, en direct</div>
+
+      <!-- ===== PLAYER PHONE ===== -->
+      <div id="player" class="scene clip" data-start="0" data-duration="11.8" data-track-index="1">
+        <div id="phone">
+          <div class="notch"></div>
+          <div class="screen">
+            <div class="sbar"><span>20:18</span><span>5G</span></div>
+            <div class="appbar"><span class="applogo"></span><span class="nm"><b>STRIVN</b> · Séance de mardi</span></div>
+
+            <div id="notif">
+              <div class="src">SMS · STRIVN</div>
+              <div class="msg">Note ta séance d'aujourd'hui 👉 <span class="lnk">strivn.net/r/k7p2</span></div>
+            </div>
+
+            <div id="rpe">
+              <div class="q">Ton effort aujourd'hui ?</div>
+              <div class="sub">Glisse pour noter ta séance.</div>
+              <div class="num" id="rpenum">3</div>
+              <div class="numlbl">RPE / 10</div>
+              <div class="track"><div class="thumb" id="thumb" style="left: 20%"></div></div>
+              <div class="scale"><span>Facile</span><span>Dur</span><span>Max</span></div>
+              <div class="send" id="send">Envoyer</div>
+              <div class="done" id="done" style="opacity:0">✓ Merci, c'est envoyé</div>
+            </div>
+          </div>
+          <div id="ripple"></div>
+          <div id="cursor"></div>
+        </div>
+      </div>
+
+      <!-- ===== COACH BOARD ===== -->
+      <div id="coach" class="scene clip" data-start="11.8" data-duration="12.05" data-track-index="1">
+        <div id="toast"><span class="d"></span><span><b>RPE reçu</b> · N. Diallo</span></div>
+        <div class="panel" id="board">
+          <div class="ph"><span class="t">Charge du groupe</span><span class="m">Semaine 24</span></div>
+          <div class="bars">
+            <div class="bar b1" style="height: 40%"></div>
+            <div class="bar b2" style="height: 60%"></div>
+            <div class="bar b3" style="height: 52%"></div>
+            <div class="bar b4" style="height: 70%"></div>
+            <div class="bar today b5" style="height: 92%"></div>
+            <div class="bar b6" style="height: 34%"></div>
+            <div class="bar b7" style="height: 0%"></div>
+          </div>
+          <div class="days"><span>L</span><span>M</span><span>M</span><span>J</span><span class="on">V</span><span>S</span><span>D</span></div>
+          <div class="tiles">
+            <div class="tile"><div class="k">sRPE</div><div class="v">4 320</div></div>
+            <div class="tile"><div class="k">ACWR</div><div class="v warn" id="acwr">1.32</div></div>
+            <div class="tile"><div class="k">Monotonie</div><div class="v">1.7</div></div>
+          </div>
+          <div class="flag" id="flag"><span class="dot"></span><span class="nm">N. Diallo</span><span class="tag">à surveiller</span></div>
+        </div>
+        <div id="sources">
+          <span class="schip c1">RPE</span>
+          <span class="schip c2">Temps de jeu</span>
+          <span class="schip c3">GPS</span>
+          <span class="schip c4">Montres &amp; capteurs</span>
+          <span class="overline lbl c5">Tout, au même endroit</span>
+        </div>
+      </div>
+
+      <!-- ===== CTA ===== -->
+      <div id="cta" class="scene clip" data-start="23.85" data-duration="4.65" data-track-index="1">
+        <img class="logo" id="ctalogo" src="../assets/logo.png" alt="STRIVN" />
+        <div class="btn" id="ctabtn">Disponible maintenant</div>
+        <div class="site" id="ctasite">strivn.net</div>
+        <div class="re" id="ctare">Gratuit pour une équipe · tous les sports</div>
+      </div>
+
+      <!-- ===== CAPTIONS ===== -->
+      <div id="caps" class="clip" data-start="0" data-duration="28.5" data-track-index="3">
+        <div class="cap" id="cap1" style="opacity:0">Le suivi de la charge, <b>en direct</b></div>
+        <div class="cap" id="cap2" style="opacity:0">Le joueur reçoit un lien — <b>sans créer de compte</b></div>
+        <div class="cap" id="cap3" style="opacity:0">Il note son effort… <b>puis il valide</b></div>
+        <div class="cap" id="cap4" style="opacity:0">Côté coach, <b>tout se met à jour</b></div>
+        <div class="cap" id="cap5" style="opacity:0">La charge de la semaine + une alerte <b>« à surveiller »</b></div>
+        <div class="cap" id="cap6" style="opacity:0">Le ressenti de l'équipe, <b>centralisé</b> — zéro ressaisie</div>
+        <div class="cap" id="cap7" style="opacity:0"><b>Gratuit</b>, sur strivn.net</div>
+        <div id="progress"></div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+      // bg drift + progress bar
+      tl.fromTo("#bg .glow", { x: -40 }, { x: 40, duration: 28.5, ease: "none" }, 0);
+      tl.fromTo("#progress", { width: 0 }, { width: 940, duration: 28.5, ease: "none" }, 0);
+      tl.from("#toplabel", { opacity: 0, y: -16, duration: 0.5 }, 0.2);
+
+      // ---- captions (per VO segment timing) ----
+      const caps = [
+        ["#cap1", 0.6, 3.7], ["#cap2", 3.97, 8.5], ["#cap3", 8.81, 11.5],
+        ["#cap4", 11.83, 14.9], ["#cap5", 15.21, 19.1], ["#cap6", 19.41, 23.85],
+        ["#cap7", 24.17, 28.4],
+      ];
+      caps.forEach(([id, s, e]) => {
+        tl.fromTo(id, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35 }, s);
+        tl.to(id, { opacity: 0, y: -16, duration: 0.3 }, e - 0.3);
+      });
+
+      // ---- player phone ----
+      tl.from("#phone", { opacity: 0, y: 70, scale: 0.94, duration: 0.6 }, 0.5);
+      // notif visible first; opens RPE around seg2
+      tl.set("#rpe", { opacity: 0 }, 0);
+      tl.from("#notif", { opacity: 0, y: 24, duration: 0.4 }, 1.0);
+      tl.to("#notif", { opacity: 0, y: -20, duration: 0.35 }, 4.2);
+      tl.fromTo("#rpe", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 4.6);
+
+      // cursor moves to thumb, then drag (seg3 8.8-10.6), number 3->7
+      tl.set("#cursor", { left: 120, top: 740 }, 0);
+      tl.set("#ripple", { scale: 0, opacity: 1 }, 0);
+      tl.to("#cursor", { left: 128, top: 612, duration: 0.6, ease: "power2.inOut" }, 8.0); // to thumb (20%)
+      const rpe = { v: 3 };
+      tl.to("#cursor", { left: 392, duration: 1.0, ease: "power2.inOut" }, 8.9);            // drag to ~70%
+      tl.to("#thumb", { left: "70%", duration: 1.0, ease: "power2.inOut" }, 8.9);
+      tl.to(rpe, { v: 7, duration: 1.0, ease: "power2.inOut",
+        onUpdate: () => { document.getElementById("rpenum").textContent = Math.round(rpe.v); } }, 8.9);
+      // zoom punch on slider
+      tl.to("#phone", { scale: 1.16, transformOrigin: "50% 56%", duration: 0.5 }, 8.6);
+      tl.to("#phone", { scale: 1, duration: 0.4 }, 10.9);
+      // move to button + tap
+      tl.to("#cursor", { left: 270, top: 814, duration: 0.5, ease: "power2.inOut" }, 10.4);
+      tl.set("#ripple", { left: 270, top: 814 }, 10.85);
+      tl.fromTo("#ripple", { scale: 0, opacity: 0.6 }, { scale: 6, opacity: 0, duration: 0.5 }, 10.85);
+      tl.to("#send", { scale: 0.95, duration: 0.12, yoyo: true, repeat: 1 }, 10.85);
+      tl.to("#send", { opacity: 0, duration: 0.2 }, 11.1);
+      tl.to("#done", { opacity: 1, duration: 0.3 }, 11.2);
+      tl.to("#cursor", { opacity: 0, duration: 0.3 }, 11.1);
+      tl.to("#player", { opacity: 0, scale: 1.04, duration: 0.4, ease: "power2.in" }, 11.45);
+      tl.set("#player", { opacity: 0 }, 11.8);
+
+      // ---- coach board ----
+      tl.from("#board", { opacity: 0, y: 80, duration: 0.55 }, 11.9);
+      tl.from("#toast", { opacity: 0, y: -20, duration: 0.4 }, 12.2);
+      tl.to("#toast", { opacity: 0, y: -20, duration: 0.4 }, 18.6);
+      tl.from("#board .bar", { scaleY: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 15.0);
+      tl.from("#board .tile", { opacity: 0, y: 18, duration: 0.35, stagger: 0.12 }, 16.4);
+      // ACWR ticks up to amber
+      const acwr = { v: 1.10 };
+      tl.to(acwr, { v: 1.32, duration: 0.8, ease: "power2.out",
+        onUpdate: () => { document.getElementById("acwr").textContent = acwr.v.toFixed(2); } }, 16.6);
+      tl.from("#flag", { opacity: 0, x: 30, duration: 0.4 }, 17.4);
+      tl.fromTo("#flag .dot", { boxShadow: "0 0 0 0 rgba(255,176,32,0.5)" }, { boxShadow: "0 0 0 16px rgba(255,176,32,0)", duration: 1.0, repeat: 1 }, 17.7);
+      // sources strip (seg6)
+      tl.from("#sources .c1", { opacity: 0, y: 16, duration: 0.3 }, 19.5);
+      tl.from("#sources .c2", { opacity: 0, y: 16, duration: 0.3 }, 19.7);
+      tl.from("#sources .c3", { opacity: 0, y: 16, duration: 0.3 }, 19.9);
+      tl.from("#sources .c4", { opacity: 0, y: 16, duration: 0.3 }, 20.1);
+      tl.from("#sources .c5", { opacity: 0, duration: 0.4 }, 20.5);
+      tl.to("#coach", { opacity: 0, scale: 0.98, duration: 0.4, ease: "power2.in" }, 23.5);
+      tl.set("#coach", { opacity: 0 }, 23.85);
+
+      // ---- cta ----
+      tl.from("#ctalogo", { opacity: 0, y: 30, duration: 0.5 }, 24.0);
+      tl.from("#ctabtn", { opacity: 0, y: 30, scale: 0.92, duration: 0.45, ease: "back.out(1.6)" }, 24.3);
+      tl.from("#ctasite", { opacity: 0, duration: 0.4 }, 24.6);
+      tl.from("#ctare", { opacity: 0, duration: 0.4 }, 24.8);
+      tl.fromTo("#ctabtn", { scale: 1 }, { scale: 1.05, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut" }, 25.3);
+
+      window.__timelines["demorpe"] = tl;
+    </script>
+  </body>
+</html>

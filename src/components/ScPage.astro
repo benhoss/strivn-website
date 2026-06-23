@@ -1,0 +1,238 @@
+---
+import SubpageLayout from '../layouts/SubpageLayout.astro';
+import { APP_URL, type Locale } from '../data/landingContent';
+import { scContent } from '../data/scContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = scContent[locale];
+
+const base = locale === 'fr' ? '/fr' : '/en';
+const frPath = '/fr/preparateurs-physiques/';
+const enPath = '/en/sc-coaches/';
+const canonicalPath = locale === 'fr' ? frPath : enPath;
+const switchHrefs = { en: enPath, fr: frPath };
+const alternates = [
+  { hreflang: 'en', href: enPath },
+  { hreflang: 'fr', href: frPath },
+  { hreflang: 'x-default', href: frPath },
+];
+
+const site = 'https://strivn.net';
+const jsonLdExtra = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: `${site}${base}/` },
+      { '@type': 'ListItem', position: 2, name: c.eyebrow, item: `${site}${canonicalPath}` },
+    ],
+  },
+];
+---
+
+<SubpageLayout
+  locale={locale}
+  title={c.meta.title}
+  description={c.meta.description}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+  jsonLdExtra={jsonLdExtra}
+  switchHrefs={switchHrefs}
+>
+  <!-- Hero -->
+  <section class="sc-hero">
+    <div class="s-wrap">
+      <p class="s-label sc-hero__eyebrow">{c.eyebrow}</p>
+      <h1 class="s-display sc-hero__title">{c.hero.title}</h1>
+      <p class="s-lede sc-hero__lede">{c.hero.lede}</p>
+      <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary sc-hero__cta">
+        {c.hero.cta}
+      </a>
+    </div>
+  </section>
+
+  <!-- Feature highlights -->
+  <section class="sc-features">
+    <div class="s-wrap">
+      <h2 class="s-headline sc-section__title" data-reveal>{c.features.title}</h2>
+      <ul class="sc-features__grid">
+        {c.features.items.map((item, i) => (
+          <li class="sc-features__item" data-reveal style={`--d: ${i * 60}ms;`}>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="sc-how">
+    <div class="s-wrap">
+      <h2 class="s-headline sc-section__title" data-reveal>{c.howItWorks.title}</h2>
+      <ol class="sc-how__steps">
+        {c.howItWorks.steps.map((step, i) => (
+          <li class="sc-how__step" data-reveal style={`--d: ${i * 80}ms;`}>
+            <span class="sc-how__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="s-final">
+    <div class="s-wrap s-final__inner" data-reveal>
+      <h2 class="s-headline">{c.finalCta.title}</h2>
+      <p class="s-lede s-final__body">{c.finalCta.body}</p>
+      <div class="s-final__actions">
+        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.cta}</a>
+      </div>
+    </div>
+  </section>
+</SubpageLayout>
+
+<style>
+  /* ── Hero ───────────────────────────────────────────────── */
+  .sc-hero {
+    position: relative;
+    padding-block: clamp(7rem, 14vh, 9rem) clamp(3.5rem, 7vh, 5rem);
+  }
+
+  .sc-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50rem 30rem at 70% 0%, var(--glow-hero), transparent 65%);
+    pointer-events: none;
+  }
+
+  .sc-hero__eyebrow {
+    position: relative;
+    display: block;
+    margin-bottom: var(--space-lg);
+    color: var(--electric-500);
+  }
+
+  .sc-hero__title {
+    position: relative;
+    max-width: 24ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .sc-hero__lede {
+    position: relative;
+    margin-bottom: var(--space-xl);
+    max-width: 60ch;
+  }
+
+  .sc-hero__cta {
+    position: relative;
+  }
+
+  /* ── Shared section title ───────────────────────────────── */
+  .sc-section__title {
+    max-width: 36ch;
+    margin-bottom: var(--space-xl);
+  }
+
+  /* ── Features grid ──────────────────────────────────────── */
+  .sc-features {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--rule);
+  }
+
+  .sc-features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sc-features__item {
+    padding: var(--space-lg);
+    background: var(--void-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+  }
+
+  .sc-features__item h3 {
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .sc-features__item p {
+    color: var(--ink-2);
+    max-width: 52ch;
+  }
+
+  /* ── How it works ───────────────────────────────────────── */
+  .sc-how {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--rule);
+    background: var(--void-soft);
+  }
+
+  .sc-how__steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-2xl);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: none;
+  }
+
+  .sc-how__step {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .sc-how__num {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--electric-500);
+    padding-top: 0.2em;
+  }
+
+  .sc-how__step h3 {
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .sc-how__step p {
+    color: var(--ink-2);
+    max-width: 52ch;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 72rem) {
+    .sc-features__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .sc-features__grid,
+    .sc-how__steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

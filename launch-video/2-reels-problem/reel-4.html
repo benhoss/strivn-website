@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #07080f; }
+      body { font-family: "Inter", sans-serif; color: #f8fafc; }
+      .scene { position: absolute; inset: 0; }
+      .overline {
+        font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 600;
+        letter-spacing: 0.18em; text-transform: uppercase; color: #8497bd;
+      }
+      .overline b { color: #2d7ff9; font-weight: 600; }
+
+      #bgimg { position: absolute; inset: 0; }
+      #bgimg img { width: 1080px; height: 1920px; object-fit: cover; }
+      #bgimg .veil {
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(7, 8, 15, 0.6) 0%, rgba(7, 8, 15, 0.45) 40%, rgba(7, 8, 15, 0.94) 100%);
+      }
+
+      #hook .text {
+        position: absolute; top: 780px; left: 80px; right: 80px; text-align: center;
+        font-size: 84px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.18;
+      }
+      #hook .ov { position: absolute; top: 680px; left: 0; right: 0; text-align: center; }
+
+      .panel {
+        position: absolute; left: 80px; width: 920px;
+        background: #0b1e3a; border: 1px solid rgba(248, 250, 252, 0.09);
+        border-radius: 16px; box-shadow: 0 16px 48px rgba(3, 9, 26, 0.55);
+      }
+      .panel .ph {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 28px 34px; border-bottom: 1px solid rgba(248, 250, 252, 0.07);
+      }
+      .panel .ph .t { font-size: 32px; font-weight: 600; }
+      .panel .ph .m {
+        font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 600;
+        letter-spacing: 0.08em; color: #8497bd; text-transform: uppercase;
+      }
+      #pload { top: 560px; }
+      #pload .bars {
+        display: flex; align-items: flex-end; gap: 30px;
+        height: 300px; padding: 36px 40px 0;
+      }
+      #pload .bar { flex: 1; border-radius: 8px 8px 0 0; background: #294471; transform-origin: bottom; }
+      #pload .bar.hot { background: #3d5a8a; }
+      #pload .days {
+        display: flex; gap: 30px; padding: 14px 40px 24px;
+        font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 600;
+        letter-spacing: 0.08em; color: #8497bd;
+      }
+      #pload .days span { flex: 1; text-align: center; }
+      #pload .status {
+        display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+        padding: 24px 34px; border-top: 1px solid rgba(248, 250, 252, 0.07);
+      }
+      .rpill {
+        padding: 12px 22px; border-radius: 999px; font-size: 24px; font-weight: 500;
+        border: 1px solid rgba(248, 250, 252, 0.12); color: #b5c2d7;
+      }
+      .rpill.ok { color: #27d7a1; border-color: rgba(39, 215, 161, 0.35); }
+      .rpill.watch { color: #ffb020; border-color: rgba(255, 176, 32, 0.35); }
+      .rpill.risk { color: #ff5c5c; border-color: rgba(255, 92, 92, 0.35); }
+      #pload .acwr {
+        margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 22px;
+        font-weight: 600; letter-spacing: 0.08em; color: #8497bd;
+      }
+      #plabel { position: absolute; top: 470px; left: 80px; }
+
+      #punch .text {
+        position: absolute; top: 840px; left: 70px; right: 70px; text-align: center;
+        font-size: 96px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.15;
+      }
+      #punch .text em { font-style: normal; color: #2d7ff9; }
+
+      #cta .logo { position: absolute; top: 660px; left: 290px; width: 500px; }
+      #cta .btn {
+        position: absolute; top: 920px; left: 50%; transform: translateX(-50%);
+        padding: 30px 60px; border-radius: 12px; background: #2d7ff9;
+        font-size: 40px; font-weight: 600; white-space: nowrap;
+        box-shadow: 0 16px 48px rgba(45, 127, 249, 0.35);
+      }
+      #cta .site {
+        position: absolute; top: 1080px; left: 0; right: 0; text-align: center;
+        font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 600;
+        letter-spacing: 0.14em; color: #f8fafc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="reel4" data-start="0" data-duration="14" data-width="1080" data-height="1920">
+      <div id="bgimg" class="clip" data-start="0" data-duration="14" data-track-index="0">
+        <img src="../assets/ig/ig-training-night.png" alt="" />
+        <div class="veil"></div>
+      </div>
+
+      <audio id="music" data-start="0" data-duration="14" data-track-index="9" data-volume="0.65" src="../assets/stomp-14s.wav"></audio>
+
+      <div id="hook" class="scene clip" data-start="0" data-duration="3" data-track-index="1">
+        <div class="ov overline">Charge d’entraînement</div>
+        <div class="text" id="hooktext">La fatigue, tu la découvres quand il se blesse.</div>
+      </div>
+
+      <div id="feat" class="scene clip" data-start="3" data-duration="7" data-track-index="1">
+        <div id="plabel" class="overline"><b>Charge &amp; RPE</b> · remplie par les joueurs</div>
+        <div class="panel" id="pload">
+          <div class="ph"><span class="t">Charge du groupe</span><span class="m">Semaine 23</span></div>
+          <div class="bars">
+            <div class="bar b1" style="height: 38%"></div>
+            <div class="bar b2" style="height: 62%"></div>
+            <div class="bar b3" style="height: 48%"></div>
+            <div class="bar hot b4" style="height: 86%"></div>
+            <div class="bar b5" style="height: 55%"></div>
+            <div class="bar b6" style="height: 30%"></div>
+            <div class="bar b7" style="height: 70%"></div>
+          </div>
+          <div class="days"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+          <div class="status">
+            <span class="rpill ok p1">14 prêts</span>
+            <span class="rpill watch p2">2 à surveiller</span>
+            <span class="rpill risk p3">1 à risque</span>
+            <span class="acwr" id="acwr">ACWR 1.28</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="punch" class="scene clip" data-start="10" data-duration="1.5" data-track-index="1">
+        <div class="text" id="punchtext">Décidez <em>avant</em> la blessure.</div>
+      </div>
+
+      <div id="cta" class="scene clip" data-start="11.5" data-duration="2.5" data-track-index="1">
+        <img class="logo" id="ctalogo" src="../assets/logo.png" alt="STRIVN" />
+        <div class="btn" id="ctabtn">Disponible maintenant</div>
+        <div class="site" id="ctasite">strivn.net</div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+      tl.fromTo("#bgimg img", { scale: 1.1 }, { scale: 1, duration: 14, ease: "none" }, 0);
+
+      tl.from("#hook .ov", { opacity: 0, y: -20, duration: 0.4 }, 0.1);
+      tl.from("#hooktext", { opacity: 0, y: 60, duration: 0.55 }, 0.3);
+      tl.to("#hook", { opacity: 0, y: -50, duration: 0.35, ease: "power2.in" }, 2.65);
+      tl.set("#hook", { opacity: 0 }, 3);
+
+      tl.from("#plabel", { opacity: 0, x: -32, duration: 0.4 }, 3.1);
+      tl.from("#pload", { opacity: 0, y: 90, duration: 0.55 }, 3.25);
+      tl.from("#pload .bar", { scaleY: 0, duration: 0.5, stagger: 0.09, ease: "power3.out" }, 3.9);
+      tl.from("#pload .p1", { opacity: 0, y: 16, duration: 0.3 }, 5.4);
+      tl.from("#pload .p2", { opacity: 0, y: 16, duration: 0.3 }, 5.65);
+      tl.from("#pload .p3", { opacity: 0, y: 16, duration: 0.3 }, 5.9);
+      tl.from("#acwr", { opacity: 0, duration: 0.35 }, 6.2);
+      tl.to("#feat", { opacity: 0, scale: 0.97, duration: 0.35, ease: "power2.in" }, 9.65);
+      tl.set("#feat", { opacity: 0 }, 10);
+
+      tl.from("#punchtext", { opacity: 0, scale: 1.5, duration: 0.4, ease: "power4.out" }, 10.1);
+      tl.to("#punch", { opacity: 0, duration: 0.3, ease: "power2.in" }, 11.2);
+      tl.set("#punch", { opacity: 0 }, 11.5);
+
+      tl.from("#ctalogo", { opacity: 0, y: 30, duration: 0.5 }, 11.6);
+      tl.from("#ctabtn", { opacity: 0, y: 30, scale: 0.92, duration: 0.45, ease: "back.out(1.6)" }, 11.85);
+      tl.from("#ctasite", { opacity: 0, duration: 0.4 }, 12.15);
+      tl.fromTo("#ctabtn", { scale: 1 }, { scale: 1.05, duration: 0.5, yoyo: true, repeat: 1, ease: "sine.inOut" }, 12.8);
+
+      window.__timelines["reel4"] = tl;
+    </script>
+  </body>
+</html>
