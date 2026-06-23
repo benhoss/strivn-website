@@ -117,14 +117,30 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : 'Today';
                     {sl.kind === 'desktop' && (
                       <span class="sc-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
                     )}
-                    <img
-                      src={sl.img}
-                      alt={sl.alt}
-                      width={sl.kind === 'desktop' ? 1440 : 402}
-                      height={sl.kind === 'desktop' ? 880 : 860}
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    {sl.video ? (
+                      <video
+                        class="sc-frame__media"
+                        poster={sl.img}
+                        muted
+                        loop
+                        playsinline
+                        preload="none"
+                        aria-label={sl.alt}
+                        data-autoplay
+                      >
+                        <source src={`${sl.video}.mp4`} type="video/mp4" />
+                        <source src={`${sl.video}.webm`} type="video/webm" />
+                      </video>
+                    ) : (
+                      <img
+                        src={sl.img}
+                        alt={sl.alt}
+                        width={sl.kind === 'desktop' ? 1440 : 402}
+                        height={sl.kind === 'desktop' ? 880 : 860}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
                   </figure>
                   <figcaption>{sl.caption}</figcaption>
                 </li>
@@ -404,7 +420,8 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : 'Today';
     max-width: 16.5rem;
   }
 
-  .sc-frame img {
+  .sc-frame img,
+  .sc-frame__media {
     width: 100%;
     height: auto;
     display: block;
@@ -710,4 +727,27 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : 'Today';
 
     update();
   });
+
+  // ── Demo videos: autoplay (muted, looping) only in view and only when the
+  //    user has not requested reduced motion; otherwise the poster shows. ──
+  (() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const videos = document.querySelectorAll('video[data-autoplay]');
+    if (reduce || !videos.length) return;
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach((v) => { v.preload = 'auto'; v.play().catch(() => {}); });
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const v = entry.target;
+          if (entry.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); }
+          else v.pause();
+        });
+      },
+      { threshold: 0.4 },
+    );
+    videos.forEach((v) => io.observe(v));
+  })();
 </script>

@@ -2,6 +2,8 @@ import type { Locale } from './landingContent';
 
 type Slide = {
   img: string;
+  /** Optional video base path (without extension); .mp4 + .webm are loaded, img is the poster. */
+  video?: string;
   kind: 'desktop' | 'mobile';
   alt: string;
   caption: string;
@@ -49,19 +51,20 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'Planifiez la semaine, puis laissez la charge planifiée vs réelle et l’ACWR par joueur se calculer tout seuls. Formule sRPE ou GPS, sans tableur.',
         slides: [
           {
-            img: '/screenshots/load-planning.png',
+            img: '/screenshots/load-planning-fr.png',
+            video: '/videos/load-planning-fr',
             kind: 'desktop',
             alt: 'Planification de charge STRIVN : charge planifiée par jour, objectif hebdomadaire et ACWR projeté',
             caption: 'Planifiez la charge de la semaine jour par jour, avec prévision d’ACWR et objectif hebdo.',
           },
           {
-            img: '/screenshots/load-overview.png',
+            img: '/screenshots/load-overview-fr.png',
             kind: 'desktop',
             alt: 'Vue charge équipe STRIVN : charge totale, RPE moyen et distribution par joueur',
             caption: 'La charge de la semaine, par joueur, avec le RPE et la distribution.',
           },
           {
-            img: '/screenshots/load-formula.png',
+            img: '/screenshots/load-formula-fr.png',
             kind: 'desktop',
             alt: 'Configuration de la formule de charge sRPE dans STRIVN',
             caption: 'Réglez votre formule de charge sRPE ou GPS en quelques secondes.',
@@ -73,13 +76,13 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'Le matin, vous voyez qui a répondu et qui est à risque. Les joueurs renseignent fatigue, sommeil, stress et humeur depuis leur téléphone.',
         slides: [
           {
-            img: '/screenshots/wellness-briefing.png',
+            img: '/screenshots/wellness-briefing-fr.png',
             kind: 'desktop',
             alt: 'Briefing du matin STRIVN : réponses aux check-ins et niveaux de risque par joueur',
             caption: 'Le briefing du matin : qui a répondu, qui est à surveiller.',
           },
           {
-            img: '/screenshots/portal-checkin.png',
+            img: '/screenshots/portal-checkin-fr.png',
             kind: 'mobile',
             alt: 'Check-in wellness côté joueur : curseurs fatigue, sommeil, stress et humeur',
             caption: 'Le joueur renseigne fatigue, sommeil, stress et humeur en quelques secondes.',
@@ -91,13 +94,13 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'Chaque joueur a son espace : readiness, charge de la semaine, agenda des séances et matchs. Pas de compte à créer, pas de friction.',
         slides: [
           {
-            img: '/screenshots/portal-fitness.png',
+            img: '/screenshots/portal-fitness-fr.png',
             kind: 'mobile',
             alt: 'Espace joueur STRIVN : readiness, charge récente et tendance de la semaine',
             caption: 'Le joueur voit sa readiness et sa charge de la semaine.',
           },
           {
-            img: '/screenshots/portal-agenda.png',
+            img: '/screenshots/portal-agenda-fr.png',
             kind: 'mobile',
             alt: 'Agenda joueur STRIVN : séances, matchs et réunions des deux prochaines semaines',
             caption: 'Séances, matchs et réunions réunis dans un seul agenda.',
@@ -182,6 +185,7 @@ export const scContent: Record<Locale, ScContent> = {
         slides: [
           {
             img: '/screenshots/load-planning.png',
+            video: '/videos/load-planning-en',
             kind: 'desktop',
             alt: 'STRIVN load planning: daily planned load, weekly target and projected ACWR for the week',
             caption: 'Plan the week’s load by day, with an ACWR forecast and weekly target.',
