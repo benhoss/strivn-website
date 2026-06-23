@@ -303,11 +303,14 @@ a {
 .s-nav__brand {
   display: inline-flex;
   align-items: center;
+  flex: none;
 }
 
 .s-nav__brand img {
   height: 1.5rem;
   width: auto;
+  /* Replaced element as a flex item: don't let it shrink to zero width. */
+  flex: none;
 }
 
 .s-nav__links {
@@ -1555,6 +1558,10 @@ a {
 .s-footer__brand img {
   height: clamp(2.5rem, 4vw, 3.75rem);
   width: auto;
+  /* The brand column is a flex column (align-items: stretch by default);
+     keep the logo at its natural aspect instead of stretching to column width. */
+  align-self: flex-start;
+  max-width: 100%;
 }
 
 .s-footer__brand p {

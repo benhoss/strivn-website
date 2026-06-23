@@ -26,13 +26,15 @@ const {
 const isFrench = locale === 'fr';
 const navAria = isFrench ? 'Navigation principale' : 'Primary navigation';
 const langAria = isFrench ? 'Changer la langue' : 'Switch language';
+const menuLabel = isFrench ? 'Menu' : 'Menu';
 ---
 
 <!-- Nav · N5 floating pill -->
 <nav class="s-nav" aria-label={navAria}>
   <a href={brandHref} class="s-nav__brand" aria-label="STRIVN">
-    <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="180" height="120" />
+    <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="1130" height="369" />
   </a>
+
   <ul class="s-nav__links">
     {links.map((link) => (
       'children' in link ? (
@@ -52,16 +54,56 @@ const langAria = isFrench ? 'Changer la langue' : 'Switch language';
       )
     ))}
   </ul>
+
+  <button
+    type="button"
+    class="s-nav__burger"
+    aria-label={menuLabel}
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-controls="s-nav-mobile"
+    data-nav-burger
+  >
+    <svg class="s-nav__burger-icon s-nav__burger-icon--open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <svg class="s-nav__burger-icon s-nav__burger-icon--close" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+
   <div class="s-nav__lang" role="group" aria-label={langAria}>
     <a href={switchHrefs.fr} aria-current={isFrench ? 'page' : undefined}>FR</a>
     <span class="s-nav__lang-sep" aria-hidden="true">·</span>
     <a href={switchHrefs.en} aria-current={!isFrench ? 'page' : undefined}>EN</a>
   </div>
+
   <a href={APP_URL} target="_blank" rel="noopener" class="s-nav__cta">{cta}</a>
+
+  <!-- Mobile menu panel (≤60rem, where the inline links are hidden) -->
+  <div class="s-nav__mobile" id="s-nav-mobile" hidden>
+    <ul class="s-nav__mobile-list">
+      {links.map((link) => (
+        'children' in link ? (
+          <li class="s-nav__mobile-group">
+            <span class="s-nav__mobile-grouplabel">{link.label}</span>
+            <ul>
+              {link.children.map((child) => (
+                <li><a href={child.href} class="s-nav__mobile-link">{child.label}</a></li>
+              ))}
+            </ul>
+          </li>
+        ) : (
+          <li><a href={link.href} class="s-nav__mobile-link">{link.label}</a></li>
+        )
+      ))}
+    </ul>
+    <div class="s-nav__mobile-lang" role="group" aria-label={langAria}>
+      <a href={switchHrefs.fr} aria-current={isFrench ? 'page' : undefined}>FR</a>
+      <span aria-hidden="true">·</span>
+      <a href={switchHrefs.en} aria-current={!isFrench ? 'page' : undefined}>EN</a>
+    </div>
+  </div>
 </nav>
 
 <style>
-  /* Dropdown group (desktop only — the whole link list is hidden ≤60rem) */
+  /* ── Desktop dropdown group (links hidden ≤60rem) ──────────── */
   .s-nav__group {
     position: relative;
   }
@@ -139,44 +181,154 @@ const langAria = isFrench ? 'Changer la langue' : 'Switch language';
     color: var(--ink);
   }
 
+  /* ── Hamburger (shown only ≤60rem) ─────────────────────────── */
+  .s-nav__burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .s-nav__burger-icon {
+    position: absolute;
+    transition: opacity var(--dur-short) var(--ease-out);
+  }
+
+  .s-nav__burger-icon--close {
+    opacity: 0;
+  }
+
+  .s-nav__burger[aria-expanded='true'] .s-nav__burger-icon--open {
+    opacity: 0;
+  }
+
+  .s-nav__burger[aria-expanded='true'] .s-nav__burger-icon--close {
+    opacity: 1;
+  }
+
+  /* ── Mobile panel ──────────────────────────────────────────── */
+  .s-nav__mobile {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 15rem;
+    max-width: calc(100vw - 2 * var(--page-gutter));
+    padding: var(--space-sm);
+    /* Opaque so the larger panel reads cleanly over page content. */
+    background: var(--surface-deep);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-chrome-lg);
+  }
+
+  .s-nav__mobile[hidden] {
+    display: none;
+  }
+
+  .s-nav__mobile-list {
+    list-style: none;
+    margin: 0 0 var(--space-xs);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .s-nav__mobile-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 var(--space-sm);
+  }
+
+  .s-nav__mobile-link {
+    display: block;
+    padding: 0.625rem 0.625rem;
+    border-radius: var(--radius-sm);
+    color: var(--ink-2);
+    font-size: var(--text-body);
+    text-decoration: none;
+  }
+
+  .s-nav__mobile-link:hover,
+  .s-nav__mobile-link:focus-visible {
+    background: var(--navy-veil);
+    color: var(--ink);
+  }
+
+  .s-nav__mobile-grouplabel {
+    display: block;
+    padding: 0.5rem 0.625rem 0.125rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .s-nav__mobile-lang {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) 0.625rem 0;
+    margin-top: var(--space-xs);
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.06em;
+  }
+
+  .s-nav__mobile-lang a {
+    color: var(--ink-3);
+    text-decoration: none;
+    padding: var(--space-2xs);
+  }
+
+  .s-nav__mobile-lang a[aria-current='page'] {
+    color: var(--ink);
+  }
+
+  @media (max-width: 60rem) {
+    .s-nav__burger {
+      display: inline-flex;
+      position: relative;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .s-nav__menu,
-    .s-nav__caret {
+    .s-nav__caret,
+    .s-nav__burger-icon {
       transition: none;
     }
   }
 </style>
 
 <script>
-  // Dropdown: CSS handles hover/focus reveal; JS adds click toggle,
-  // Escape, outside-click and aria-expanded sync.
+  // ── Desktop dropdown: CSS handles hover/focus; JS adds click, Escape,
+  //    outside-click and aria-expanded sync. ──
   document.querySelectorAll('[data-nav-group]').forEach((group) => {
     const trigger = group.querySelector('.s-nav__trigger');
     if (!trigger) return;
-
     const setOpen = (open) => {
       group.classList.toggle('is-open', open);
       trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
     };
-
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       setOpen(!group.classList.contains('is-open'));
     });
-
     group.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        setOpen(false);
-        trigger.focus();
-      }
+      if (e.key === 'Escape') { setOpen(false); trigger.focus(); }
     });
-
-    // Keep aria in sync with keyboard focus (CSS reveals via :focus-within)
     group.addEventListener('focusin', () => trigger.setAttribute('aria-expanded', 'true'));
     group.addEventListener('focusout', (e) => {
-      if (!group.contains(e.relatedTarget)) {
-        setOpen(false);
-      }
+      if (!group.contains(e.relatedTarget)) setOpen(false);
     });
   });
 
@@ -185,6 +337,32 @@ const langAria = isFrench ? 'Changer la langue' : 'Switch language';
       if (!group.contains(e.target)) {
         group.classList.remove('is-open');
         group.querySelector('.s-nav__trigger')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // ── Mobile menu: burger toggles the panel. ──
+  document.querySelectorAll('[data-nav-burger]').forEach((burger) => {
+    const panel = document.getElementById(burger.getAttribute('aria-controls'));
+    if (!panel) return;
+    const nav = burger.closest('.s-nav');
+    const setOpen = (open) => {
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.hidden = !open;
+    };
+    burger.addEventListener('click', () => {
+      setOpen(burger.getAttribute('aria-expanded') !== 'true');
+    });
+    panel.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', (e) => {
+      if (nav && !nav.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        burger.focus();
       }
     });
   });
