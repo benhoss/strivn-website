@@ -43,6 +43,9 @@ Always run scripts via `./run.sh <script> [lang]` so Playwright resolves.
 ## Quick start
 
 ```bash
+# 0. Demo data: fictional names + current-week planned week + logins + cache (idempotent)
+./data/setup-demo.sh fr                  # run with `en` before EN captures
+
 # Screenshots (coach + portal) for a locale → public/screenshots/
 ./run.sh capture/screenshots.mjs fr      # FR → *-fr.png   |  en → *.png (no suffix)
 
@@ -110,38 +113,33 @@ tooling/media/
 
 ---
 
-## Demo data setup (one-time, makes screenshots coherent + fictional)
+## Demo data setup (one command)
 
-The seeder uses real club names; the pipeline expects **fictional** ones and a
-populated planned week. Applied once on the `p3rform` DB:
-
-```bash
-APP="docker exec p3rform-app-1 php artisan"
-PG="docker exec -i p3rform-postgres-1 psql -U p3rform -d p3rform"
-
-$APP db:seed --class=SampleDataSeeder --force          # if empty
-# fictional teams + venue + opponent (adult, no age category):
-$PG -c "UPDATE teams SET name='AC Verel' WHERE id=1; UPDATE teams SET name='Hévron Rugby Club' WHERE id=2;"
-$PG -c "UPDATE calendar_events SET location='Stade Communal de Verel' WHERE team_id=1 AND location LIKE 'Stade%';
-        UPDATE calendar_events SET title='Match: AC Verel vs FC Aldenne 🏆' WHERE team_id=1 AND title LIKE 'Match:%';"
-# coach + portal demo logins used by config.mjs:
-$APP tinker --execute="\App\Models\User::where('id',1)->update(['password'=>\Illuminate\Support\Facades\Hash::make('password')]);"
-$APP tinker --execute="\$p=\App\Models\Player::find(6); \$p->email='kylian.moreau@acverel.test'; \$p->password='portalpass'; \$p->password_set_at=now(); \$p->locale='fr'; \$p->save();"
-```
-
-A populated **planned week** (`planned_weeks` + `planned_slots` + `load_categories`)
-is required for the Load-planner screens. The localized exercise labels live in
-`data/seed-<lang>.sql`.
-
-### Switching the app's data language (for `fr` vs `en` captures)
-
-The planned-week labels are stored data, so set them before capturing, and
-**clear the cache** (the plan is cached in Redis):
+The seeder uses real club names and leaves the Load planner empty. One
+idempotent script fixes both — fictional names + a **current-week planned week**
++ demo logins + cache clear:
 
 ```bash
-docker exec -i p3rform-postgres-1 psql -U p3rform -d p3rform < data/seed-fr.sql
-docker exec p3rform-app-1 php artisan cache:clear
+./data/setup-demo.sh fr      # or: ./data/setup-demo.sh en
 ```
+
+What it does (`data/setup-demo.sh` → `data/setup-demo.sql`):
+1. `db:seed --class=SampleDataSeeder` **only if the DB is empty**;
+2. renames teams/venue/opponent to fictional, adult names (`AC Verel`, …);
+3. rebuilds `planned_weeks` + `planned_slots` (12 exercises, ~4225 UA) for the
+   **current ISO week**, so the Load-planner screens are always populated;
+4. sets the language of the planned-week labels (`fr` default, `en` applies `seed-en.sql`);
+5. sets the demo logins used by `config.mjs` (coach pw, portal player `kylian.moreau@acverel.test`);
+6. `php artisan cache:clear` (the plan is Redis-cached).
+
+It is date-relative and safe to re-run. Container names default to
+`p3rform-app-1` / `p3rform-postgres-1` (override with `STRIVN_APP_CONTAINER` /
+`STRIVN_PG_CONTAINER`).
+
+> **Always run `setup-demo.sh <lang>` (or at least `cache:clear`) before
+> capturing in a given language** — the screenshot/voice language follows the
+> *stored data*, not just `?lang=`. `data/seed-{fr,en}.sql` only toggle the
+> existing labels' language.
 
 ---
 
@@ -149,7 +147,7 @@ docker exec p3rform-app-1 php artisan cache:clear
 
 - **Run via `./run.sh`** (not bare `node`) so Playwright resolves.
 - **Language of the screenshots = language of the DB data**, not just `?lang=`.
-  Apply `data/seed-<lang>.sql` + `cache:clear` first.
+  Run `./data/setup-demo.sh <lang>` first (or at least `data/seed-<lang>.sql` + `cache:clear`).
 - **Re-recording the narration?** delete `.work/explainer-core-<lang>.mp4` and
   re-run `record.mjs` before `finalize.mjs`, otherwise finalize reuses the old core.
 - The walkthrough trims the login intro **dynamically** (login time varies), so

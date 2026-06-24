@@ -12,38 +12,40 @@ hand-made. The pipeline lives in `tooling/media/` (read its `README.md` first).
 
 1. strivn-app is up: `docker exec p3rform-app-1 php artisan --version` works and
    `http://localhost:8082` responds. If not: `cd ../strivn-app && docker compose up -d`.
-2. Demo data is fictional + populated (teams `AC Verel` / `Hévron Rugby Club`, a
-   populated planned week, portal player `kylian.moreau@acverel.test`). See
-   `tooling/media/README.md#demo-data-setup`. Verify:
-   `docker exec p3rform-postgres-1 psql -U p3rform -d p3rform -t -c "SELECT name FROM teams WHERE id=1;"` → `AC Verel`.
+2. Demo data is fictional + populated. Establish/refresh with **one idempotent
+   command** (fictional names + current-week planned week + demo logins + cache clear):
+   ```bash
+   cd tooling/media && ./data/setup-demo.sh fr      # or: en
+   ```
+   Verify: `docker exec p3rform-postgres-1 psql -U p3rform -d p3rform -t -c "SELECT name FROM teams WHERE id=1;"` → `AC Verel`.
 3. For the explainer: `ELEVENLABS_API_KEY` is in `Website/.env`.
 
-Always invoke scripts with `./run.sh <script> <lang>` from `tooling/media/`
+Always invoke pipeline scripts with `./run.sh <script> <lang>` from `tooling/media/`
 (it symlinks Playwright from strivn-app). `lang` is `fr` or `en`.
 
 ## Tasks
 
 ### Refresh app screenshots (S&C carousels)
-The screenshot language = the **DB data** language, so set it first:
+The screenshot language = the **DB data** language, so run the matching setup first:
 ```bash
 cd tooling/media
-docker exec -i p3rform-postgres-1 psql -U p3rform -d p3rform < data/seed-fr.sql
-docker exec p3rform-app-1 php artisan cache:clear
+./data/setup-demo.sh fr                 # fictional data + FR labels + cache clear
 ./run.sh capture/screenshots.mjs fr     # → public/screenshots/*-fr.png  (en → *.png)
 ```
-EN screenshots: apply `data/seed-en.sql` + cache:clear, then `./run.sh capture/screenshots.mjs en`.
+EN screenshots: `./data/setup-demo.sh en` then `./run.sh capture/screenshots.mjs en`.
 
 ### Refresh the muted demo loop (first carousel slide)
 ```bash
+./data/setup-demo.sh fr
 ./run.sh capture/demo-loop.mjs fr       # → public/videos/load-planning-fr.{mp4,webm}
 ```
 
-### Regenerate the narrated explainer (3 steps, ~5 min)
+### Regenerate the narrated explainer (~5 min)
 ```bash
+cd tooling/media
+./data/setup-demo.sh fr                 # FR data in-app (+ cache clear)
 # edit the script if needed: content/explainer-fr.json
 #   text = spoken (Straïvine, numbers in words) | caption = shown (Strivn, digits)
-docker exec -i p3rform-postgres-1 psql -U p3rform -d p3rform < data/seed-fr.sql   # FR labels in-app
-docker exec p3rform-app-1 php artisan cache:clear
 ./run.sh explainer/tts.mjs fr [voiceId] # voiceId defaults to Adrien Clairon
 rm -f .work/explainer-core-fr.mp4       # IMPORTANT before re-recording
 ./run.sh explainer/record.mjs fr        # synced walkthrough → narrated core
@@ -58,7 +60,8 @@ Check: intro logo present, subtitles ≤ 2 lines showing `Strivn` + digits, the
 
 ## Conventions / gotchas
 - EN assets have **no suffix**; FR assets use `-fr` (matches `src/data/scContent.ts`).
-- After changing in-app data, **always `php artisan cache:clear`** (the plan is Redis-cached).
+- `setup-demo.sh` is **idempotent + date-relative** (rebuilds the planned week on
+  the current week) and clears the cache for you. Re-run it whenever data looks stale.
 - Don't commit `tooling/media/.work/` (gitignored).
 - This ffmpeg has no libass — subtitles are PNG overlays (handled in `finalize.mjs`).
-- Full reference + data-setup SQL: `tooling/media/README.md`.
+- Full reference + data setup: `tooling/media/README.md`, `data/setup-demo.{sh,sql}`.
