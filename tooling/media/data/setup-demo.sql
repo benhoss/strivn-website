@@ -46,3 +46,23 @@ FROM wk, (VALUES
   (2, 4, 'Coups de pied arrêtés',       4, 30, 120, 1),
   (2, 5, 'Match',                       9, 90, 810, 0)
 ) AS s(cat, d, label, rpe, dur, load, pos);
+
+-- ── Calendar link: the planner groups load under the week's TRAINING sessions
+--    (event_type='training') and shows the match as a read-only anchor
+--    (event_type='match'). Mark the events, then attach each slot to the
+--    training session on its day; Fri/Sat slots stay "En attente — non planifié".
+UPDATE calendar_events SET event_type = 'training'
+  WHERE team_id = 1 AND title = 'Entraînement'
+    AND start_at::date BETWEEN date_trunc('week', CURRENT_DATE)::date
+                           AND date_trunc('week', CURRENT_DATE)::date + 4;
+UPDATE calendar_events SET event_type = 'match'
+  WHERE team_id = 1 AND title LIKE 'Match:%'
+    AND start_at::date BETWEEN date_trunc('week', CURRENT_DATE)::date
+                           AND date_trunc('week', CURRENT_DATE)::date + 6;
+
+UPDATE planned_slots ps
+SET calendar_event_id = ce.id
+FROM planned_weeks pw, calendar_events ce
+WHERE ps.planned_week_id = pw.id AND pw.team_id = 1
+  AND ce.team_id = 1 AND ce.event_type = 'training'
+  AND ce.start_at::date = ps.day_date;

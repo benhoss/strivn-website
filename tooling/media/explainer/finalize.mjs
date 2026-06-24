@@ -23,9 +23,9 @@ const coreCopy = resolve(WORK, 'core.mp4');
 copyFileSync(core, coreCopy);
 
 const INTRO_D = 3.2, OUTRO_D = 4.0, MAXCH = 82;
-const IDS = ['01-intro', '02-objectif', '03-acwr', '04-semaine', '05-exercices', '06-categories', '07-prevu-reel', '08-conclusion'];
-const dur = IDS.map((id) => ffprobe(resolve(AUD, `${id}.mp3`)));
 const { segments } = JSON.parse(readFileSync(resolve(DIR.content, `explainer-${lang}.json`), 'utf8'));
+const IDS = segments.map((s) => s.id);
+const dur = IDS.map((id) => ffprobe(resolve(AUD, `${id}.mp3`)));
 
 // ── cue list: displayed `caption` (fallback `text`), chunked to <= ~2 lines ──
 const chunk = (t) => { const w = t.split(/\s+/), out = []; let cur = ''; for (const x of w) { if (cur && (cur + ' ' + x).length > MAXCH) { out.push(cur); cur = x; } else cur = cur ? cur + ' ' + x : x; } if (cur) out.push(cur); return out; };

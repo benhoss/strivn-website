@@ -1,7 +1,7 @@
 {
   "lang": "fr",
-  "title": "Straïvine — Planification de charge",
-  "voice_note": "Voix FR posée, claire, rythme pédagogique. ElevenLabs (modèle multilingue).",
+  "title": "Strivn — Planification de charge",
+  "voice_note": "Voix FR posée, claire, rythme pédagogique. ElevenLabs. text=parlé (Straïvine, nombres en lettres), caption=affiché (Strivn, chiffres).",
   "segments": [
     {
       "id": "01-intro",
@@ -28,24 +28,30 @@
     },
     {
       "id": "05-exercices",
-      "text": "Chaque jour, vous ajoutez vos séances et vos exercices. Le lundi : force et activation, puis mobilité et gainage. Pour chaque exercice, vous renseignez le RPE prévu, la durée et la catégorie. Straïvine calcule la charge automatiquement.",
-      "caption": "Chaque jour, vous ajoutez vos séances et vos exercices. Le lundi : force et activation, puis mobilité et gainage. Pour chaque exercice, vous renseignez le RPE prévu, la durée et la catégorie. Strivn calcule la charge automatiquement.",
-      "action": "Scroller sur les journées ; surligner les exercices du lundi et leurs détails (RPE, durée, catégorie, UA)."
+      "text": "Chaque jour, vous ajoutez vos exercices. Le lundi : force et activation, puis mobilité et gainage. Pour chacun, vous renseignez le RPE prévu, la durée et la catégorie. Straïvine calcule la charge automatiquement.",
+      "caption": "Chaque jour, vous ajoutez vos exercices. Le lundi : force et activation, puis mobilité et gainage. Pour chacun, vous renseignez le RPE prévu, la durée et la catégorie. Strivn calcule la charge automatiquement.",
+      "action": "Scroller sur les journées ; surligner les exercices du lundi (RPE, durée, catégorie, UA)."
     },
     {
-      "id": "06-categories",
+      "id": "06-calendrier",
+      "text": "Et tout est relié à votre calendrier. Chaque charge se place directement dans la séance ou le match concerné : ici, l'entraînement du lundi à dix-huit heures porte ses exercices, au lieu de rester en attente.",
+      "caption": "Et tout est relié à votre calendrier. Chaque charge se place directement dans la séance ou le match concerné : ici, l'entraînement du lundi à 18h porte ses exercices, au lieu de rester en attente.",
+      "action": "Surligner l'en-tête de séance « 18:00 Entraînement » du lundi, puis ouvrir le dialogue montrant le sélecteur « Séance du calendrier »."
+    },
+    {
+      "id": "07-categories",
       "text": "Les catégories de charge vous laissent distinguer le travail physique, technique ou de match, chacun avec sa propre pondération.",
       "action": "Cliquer sur Catégories de charge ; montrer le panneau."
     },
     {
-      "id": "07-prevu-reel",
+      "id": "08-prevu-reel",
       "text": "Une fois la semaine jouée, l'onglet Prévu vs réalisé compare votre plan à la charge réelle, issue du RPE des joueurs. Vous voyez immédiatement les écarts, joueur par joueur.",
       "action": "Cliquer sur l'onglet Prévu vs réalisé ; montrer le tableau de comparaison."
     },
     {
-      "id": "08-conclusion",
-      "text": "En quelques minutes, sans tableur, vous planifiez une semaine cohérente, vous anticipez le risque, et vous gardez tout le staff aligné. C'est ça, la planification de charge avec Straïvine.",
-      "caption": "En quelques minutes, sans tableur, vous planifiez une semaine cohérente, vous anticipez le risque, et vous gardez tout le staff aligné. C'est ça, la planification de charge avec Strivn.",
+      "id": "09-conclusion",
+      "text": "En quelques minutes, sans tableur, vous planifiez une semaine cohérente, reliée à votre calendrier, et vous gardez tout le staff aligné. C'est ça, la planification de charge avec Straïvine.",
+      "caption": "En quelques minutes, sans tableur, vous planifiez une semaine cohérente, reliée à votre calendrier, et vous gardez tout le staff aligné. C'est ça, la planification de charge avec Strivn.",
       "action": "Revenir sur l'onglet Planning ; vue d'ensemble finale."
     }
   ]

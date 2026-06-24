@@ -6,7 +6,7 @@
 //
 // The action list below is specific to the Load-planning explainer; adapt it
 // (and content/explainer-<lang>.json) for other features.
-import { mkdirSync, renameSync } from 'node:fs';
+import { mkdirSync, renameSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { execSync } from 'node:child_process';
 import { DIR, BASE, TEAM } from '../config.mjs';
@@ -14,13 +14,16 @@ import { chromium, ffprobe, coachLogin, go, dismissBanner, overlays } from '../l
 
 const lang = process.argv[2] || 'fr';
 const L = lang === 'fr'
-  ? { categories: 'Catégories de charge', compare: 'Prévu vs réalisé', planner: 'Planning' }
-  : { categories: 'Load categories', compare: 'Planned vs actual', planner: 'Planner' };
+  ? { categories: 'Catégories de charge', compare: 'Prévu vs réalisé', planner: 'Planning', editSession: 'Modifier la séance' }
+  : { categories: 'Load categories', compare: 'Planned vs actual', planner: 'Planner', editSession: 'Edit session' };
 
 const AUD = resolve(DIR.work, 'audio', lang);
 const RAW = resolve(DIR.work, 'raw');
 mkdirSync(RAW, { recursive: true });
-const IDS = ['01-intro', '02-objectif', '03-acwr', '04-semaine', '05-exercices', '06-categories', '07-prevu-reel', '08-conclusion'];
+// Segment order is driven by the script (content/explainer-<lang>.json); the
+// `acts[]` below must stay in the same order.
+const { segments } = JSON.parse(readFileSync(resolve(DIR.content, `explainer-${lang}.json`), 'utf8'));
+const IDS = segments.map((s) => s.id);
 const dur = IDS.map((id) => ffprobe(resolve(AUD, `${id}.mp3`)));
 const cum = dur.reduce((a, d, i) => { a.push((a[i - 1] || 0) + d); return a; }, []); // cumulative end (s)
 
@@ -41,13 +44,31 @@ const waitUntil = async (sec) => { while ((Date.now() - demoStart) / 1000 < sec)
 const byText = (re) => page.getByText(re).first();
 
 const acts = [
+  // 01 intro
   async () => { await moveTo(720, 380); },
+  // 02 objectif
   async () => { await highlight(byText(/Objectif semaine|Weekly target/i).locator('xpath=..'), 10); await moveToEl(byText(/Objectif semaine|Weekly target/i)); },
+  // 03 acwr
   async () => { await highlight(byText(/Allégez|Ease off|ACWR/i).locator('xpath=..'), 10); await moveToEl(byText(/Allégez|Ease off|risque|risk/i)); },
+  // 04 semaine
   async () => { await clearHl(); await moveTo(280, 470); await moveTo(520, 470); await moveTo(760, 470); },
-  async () => { await clearHl(); await scrollTo(360); await highlight(byText(/Force \+ activation|Strength \+ activation/i).locator('xpath=ancestor::*[3]'), 10); await moveToEl(byText(/Force \+ activation|Strength \+ activation/i)); },
+  // 05 exercices
+  async () => { await clearHl(); await scrollTo(300); await highlight(byText(/Force \+ activation|Strength \+ activation/i).locator('xpath=ancestor::*[3]'), 10); await moveToEl(byText(/Force \+ activation|Strength \+ activation/i)); },
+  // 06 calendrier — highlight the Monday calendar session header, then open the
+  //    session dialog to reveal the "Séance du calendrier" selector.
+  async () => {
+    await clearHl();
+    const sess = byText(/Entraînement|Training/i);
+    if (await sess.count()) { await highlight(sess.locator('xpath=ancestor::*[1]'), 8); await moveToEl(sess); }
+    await page.waitForTimeout(1600);
+    const edit = page.getByRole('button', { name: new RegExp(L.editSession, 'i') }).first();
+    if (await edit.count()) { await moveToEl(edit); await edit.click().catch(() => {}); await page.waitForTimeout(1700); await page.keyboard.press('Escape').catch(() => {}); }
+  },
+  // 07 categories
   async () => { await clearHl(); const b = page.getByRole('button', { name: new RegExp(L.categories, 'i') }).first(); if (await b.count()) { await moveToEl(b); await b.click().catch(() => {}); } },
+  // 08 prevu-reel
   async () => { await clearHl(); const close = page.getByRole('button', { name: /Fermer|Close/i }).first(); if (await close.count()) await close.click().catch(() => {}); await page.keyboard.press('Escape').catch(() => {}); await page.waitForTimeout(500); await scrollTo(0); const t = byText(new RegExp('^' + L.compare + '$', 'i')); if (await t.count()) { await moveToEl(t); await t.click().catch(() => {}); } },
+  // 09 conclusion
   async () => { await clearHl(); const t = byText(new RegExp('^' + L.planner + '$', 'i')); if (await t.count()) { await moveToEl(t); await t.click().catch(() => {}); } await scrollTo(0); },
 ];
 
