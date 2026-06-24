@@ -1,0 +1,7 @@
+{
+  "name": "strivn-media",
+  "private": true,
+  "type": "module",
+  "description": "Marketing-media pipeline: app screenshots, demo loop, narrated explainer.",
+  "optionalDependencies": { "playwright": "^1.60.0" }
+}

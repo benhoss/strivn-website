@@ -1,0 +1,12 @@
+UPDATE load_categories SET name='Prépa physique' WHERE team_id=1 AND id=1;
+UPDATE planned_weeks SET phase_label='Développement' WHERE id=1;
+UPDATE planned_slots SET label='Force + activation' WHERE planned_week_id=1 AND label='Strength + activation';
+UPDATE planned_slots SET label='Mobilité + gainage' WHERE planned_week_id=1 AND label='Mobility + core';
+UPDATE planned_slots SET label='Technique + tactique' WHERE planned_week_id=1 AND label='Technical + tactical';
+UPDATE planned_slots SET label='Vitesse + accélération' WHERE planned_week_id=1 AND label='Speed + acceleration';
+UPDATE planned_slots SET label='Puissance + conditionnement' WHERE planned_week_id=1 AND label='Power + conditioning';
+UPDATE planned_slots SET label='Jeux réduits' WHERE planned_week_id=1 AND label='Small-sided games';
+UPDATE planned_slots SET label='Muscu : bas du corps' WHERE planned_week_id=1 AND label='Gym: lower body';
+UPDATE planned_slots SET label='Prépa tactique' WHERE planned_week_id=1 AND label='Tactical prep';
+UPDATE planned_slots SET label='Prévention + récup' WHERE planned_week_id=1 AND label='Prehab + recovery';
+UPDATE planned_slots SET label='Coups de pied arrêtés' WHERE planned_week_id=1 AND label='Set pieces';

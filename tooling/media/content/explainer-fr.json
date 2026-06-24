@@ -1,0 +1,52 @@
+{
+  "lang": "fr",
+  "title": "Straïvine — Planification de charge",
+  "voice_note": "Voix FR posée, claire, rythme pédagogique. ElevenLabs (modèle multilingue).",
+  "segments": [
+    {
+      "id": "01-intro",
+      "text": "La planification de charge de Straïvine vous permet de construire la semaine d'entraînement de votre équipe, jour par jour, et d'anticiper le risque avant qu'il n'arrive.",
+      "caption": "La planification de charge de Strivn vous permet de construire la semaine d'entraînement de votre équipe, jour par jour, et d'anticiper le risque avant qu'il n'arrive.",
+      "action": "Vue d'ensemble de la page Planification de charge."
+    },
+    {
+      "id": "02-objectif",
+      "text": "En haut, vous fixez un objectif de charge hebdomadaire. Straïvine compare en temps réel la charge planifiée à votre cible : ici, quatre mille deux cent vingt-cinq unités pour un objectif de quatre mille deux cents. Tous les objectifs sont atteints.",
+      "caption": "En haut, vous fixez un objectif de charge hebdomadaire. Strivn compare en temps réel la charge planifiée à votre cible : ici, 4225 unités pour un objectif de 4200. Tous les objectifs sont atteints.",
+      "action": "Surligner le bandeau PHASE / OBJECTIF SEMAINE / ACTUEL."
+    },
+    {
+      "id": "03-acwr",
+      "text": "Juste au-dessus, la prévision d'ACWR projeté analyse l'équilibre entre charge aiguë et charge chronique. Straïvine vous alerte : allégez le mercredi, huit joueurs seraient à risque. Vous ajustez avant la blessure, pas après.",
+      "caption": "Juste au-dessus, la prévision d'ACWR projeté analyse l'équilibre entre charge aiguë et charge chronique. Strivn vous alerte : allégez le mercredi, 8 joueurs seraient à risque. Vous ajustez avant la blessure, pas après.",
+      "action": "Surligner le bandeau d'alerte ACWR."
+    },
+    {
+      "id": "04-semaine",
+      "text": "Le graphique de la semaine montre la répartition de la charge, du lundi au dimanche. D'un coup d'œil, vous repérez les journées trop lourdes ou trop légères.",
+      "action": "Survoler le graphique hebdomadaire (barres lundi à dimanche)."
+    },
+    {
+      "id": "05-exercices",
+      "text": "Chaque jour, vous ajoutez vos séances et vos exercices. Le lundi : force et activation, puis mobilité et gainage. Pour chaque exercice, vous renseignez le RPE prévu, la durée et la catégorie. Straïvine calcule la charge automatiquement.",
+      "caption": "Chaque jour, vous ajoutez vos séances et vos exercices. Le lundi : force et activation, puis mobilité et gainage. Pour chaque exercice, vous renseignez le RPE prévu, la durée et la catégorie. Strivn calcule la charge automatiquement.",
+      "action": "Scroller sur les journées ; surligner les exercices du lundi et leurs détails (RPE, durée, catégorie, UA)."
+    },
+    {
+      "id": "06-categories",
+      "text": "Les catégories de charge vous laissent distinguer le travail physique, technique ou de match, chacun avec sa propre pondération.",
+      "action": "Cliquer sur Catégories de charge ; montrer le panneau."
+    },
+    {
+      "id": "07-prevu-reel",
+      "text": "Une fois la semaine jouée, l'onglet Prévu vs réalisé compare votre plan à la charge réelle, issue du RPE des joueurs. Vous voyez immédiatement les écarts, joueur par joueur.",
+      "action": "Cliquer sur l'onglet Prévu vs réalisé ; montrer le tableau de comparaison."
+    },
+    {
+      "id": "08-conclusion",
+      "text": "En quelques minutes, sans tableur, vous planifiez une semaine cohérente, vous anticipez le risque, et vous gardez tout le staff aligné. C'est ça, la planification de charge avec Straïvine.",
+      "caption": "En quelques minutes, sans tableur, vous planifiez une semaine cohérente, vous anticipez le risque, et vous gardez tout le staff aligné. C'est ça, la planification de charge avec Strivn.",
+      "action": "Revenir sur l'onglet Planning ; vue d'ensemble finale."
+    }
+  ]
+}

@@ -40,3 +40,6 @@ launch-video/**/*.mp4
 launch-video/**/*.wav
 launch-video/**/*.aiff
 launch-video/**/*.webm
+
+# Secrets — never commit (ElevenLabs key, etc.)
+.env
