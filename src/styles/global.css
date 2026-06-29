@@ -713,6 +713,124 @@ a {
 }
 
 /* ════════════════════════════════════════════════════════════
+   5b · Product overview (self-hosted video)
+   ════════════════════════════════════════════════════════════ */
+.s-overview {
+  padding-block: var(--space-3xl);
+}
+
+.s-overview__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.s-overview__eyebrow {
+  margin-bottom: var(--space-sm);
+}
+
+.s-overview__title {
+  max-width: 20ch;
+}
+
+.s-overview__sub {
+  margin-top: var(--space-md);
+  text-align: center;
+}
+
+.s-overview__frame {
+  position: relative;
+  width: 100%;
+  max-width: 64rem;
+  margin-top: var(--space-xl);
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-deep);
+  box-shadow: 0 30px 80px -45px rgba(0, 0, 0, 0.85);
+}
+
+.s-overview__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Click-to-play facade — covers the poster until intent. */
+.s-overview__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  width: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  color: var(--ink);
+  background: linear-gradient(180deg, rgba(7, 8, 15, 0.05), rgba(7, 8, 15, 0.4));
+  transition: background var(--dur-short) var(--ease-out);
+}
+
+.s-overview__play[hidden] {
+  display: none;
+}
+
+.s-overview__play:hover {
+  background: linear-gradient(180deg, rgba(7, 8, 15, 0), rgba(7, 8, 15, 0.28));
+}
+
+.s-overview__play-icon {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--focus);
+  color: #fff;
+  box-shadow: 0 14px 44px -12px rgba(45, 127, 249, 0.7);
+  transition: transform var(--dur-short) var(--ease-out);
+}
+
+.s-overview__play:hover .s-overview__play-icon,
+.s-overview__play:focus-visible .s-overview__play-icon {
+  transform: scale(1.06);
+}
+
+.s-overview__play-icon svg {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 3px;
+}
+
+.s-overview__play-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--nav-backdrop);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: var(--text-sm);
+}
+
+.s-overview__play-label {
+  font-weight: 500;
+}
+
+.s-overview__play-time {
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+}
+
+/* ════════════════════════════════════════════════════════════
    6 · Reality band
    ════════════════════════════════════════════════════════════ */
 .s-reality {

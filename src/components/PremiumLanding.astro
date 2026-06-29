@@ -96,6 +96,39 @@ const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
       </div>
     </section>
 
+    <!-- ───────────── Product overview · self-hosted video ───────────── -->
+    <section class="s-overview" id="overview">
+      <div class="s-wrap s-overview__inner" data-reveal>
+        <p class="s-label s-overview__eyebrow">{c.overview.eyebrow}</p>
+        <h2 class="s-headline s-overview__title">{c.overview.title}</h2>
+        <p class="s-lede s-overview__sub">{c.overview.sub}</p>
+
+        <figure class="s-overview__frame" data-reveal style="--d: 120ms;">
+          <video
+            class="s-overview__video"
+            data-overview-video
+            preload="none"
+            playsinline
+            poster={c.overview.poster}
+            aria-label={c.overview.ariaLabel}
+          >
+            <source src={c.overview.srcMp4} type="video/mp4" />
+          </video>
+          <button class="s-overview__play" type="button" data-overview-play aria-label={c.overview.playLabel}>
+            <span class="s-overview__play-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5.5v13l11-6.5L8 5.5Z" fill="currentColor" />
+              </svg>
+            </span>
+            <span class="s-overview__play-meta">
+              <span class="s-overview__play-label">{c.overview.playLabel}</span>
+              <span class="s-overview__play-time">{c.overview.duration}</span>
+            </span>
+          </button>
+        </figure>
+      </div>
+    </section>
+
     <!-- ───────────── The reality ───────────── -->
     <section class="s-reality">
       <div class="s-wrap s-reality__grid">
@@ -481,6 +514,23 @@ const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
         { rootMargin: '0px 0px -8% 0px' },
       );
       revealTargets.forEach((el) => revealObserver.observe(el));
+    }
+
+    // ── Product overview · click-to-play facade ──
+    // preload="none" keeps the ~5 MB MP4 off the critical path; the poster
+    // button only triggers the network fetch on intent.
+    const overviewVideo = document.querySelector<HTMLVideoElement>('[data-overview-video]');
+    const overviewPlay = document.querySelector<HTMLButtonElement>('[data-overview-play]');
+    if (overviewVideo && overviewPlay) {
+      overviewPlay.addEventListener('click', () => {
+        overviewVideo.controls = true;
+        overviewVideo.play();
+      });
+      // Hide the facade once playback begins, keep native controls available.
+      overviewVideo.addEventListener('play', () => {
+        overviewVideo.controls = true;
+        overviewPlay.setAttribute('hidden', '');
+      });
     }
   </script>
 </BaseLayout>

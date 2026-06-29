@@ -40,6 +40,19 @@ type LandingContent = {
     };
   };
 
+  overview: {
+    eyebrow: string;
+    title: string;
+    sub: string;
+    /** Public path to the self-hosted MP4, localized per locale. */
+    srcMp4: string;
+    /** Poster frame shown before play (preload="none"). */
+    poster: string;
+    duration: string;
+    playLabel: string;
+    ariaLabel: string;
+  };
+
   reality: {
     title: string;
     body: string;
@@ -235,6 +248,17 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
       },
+    },
+
+    overview: {
+      eyebrow: 'En action',
+      title: 'Toute la plateforme, en deux minutes.',
+      sub: 'Une visite guidée : comment STRIVN réunit convocations, présences, infirmerie et charge dans un seul espace partagé par le staff.',
+      srcMp4: '/videos/overview-fr.mp4',
+      poster: '/posters/overview-fr.jpg',
+      duration: '2 min',
+      playLabel: 'Lire la présentation du produit',
+      ariaLabel: 'Vidéo de présentation du produit STRIVN',
     },
 
     reality: {
@@ -567,6 +591,17 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
       },
+    },
+
+    overview: {
+      eyebrow: 'See it in action',
+      title: 'The whole platform, in two minutes.',
+      sub: 'A guided tour of how STRIVN pulls call-ups, attendance, medical records and training load into one workspace the whole staff shares.',
+      srcMp4: '/videos/overview-en.mp4',
+      poster: '/posters/overview-en.jpg',
+      duration: '2 min',
+      playLabel: 'Play the product overview',
+      ariaLabel: 'STRIVN product overview video',
     },
 
     reality: {
