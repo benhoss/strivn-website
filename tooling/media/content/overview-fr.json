@@ -1,0 +1,63 @@
+{
+  "lang": "fr",
+  "title": "Strivn — Présentation produit",
+  "voice_note": "Voix FR posée, dynamique. text=parlé (Straïvine, nombres en lettres), caption=affiché (Strivn, chiffres).",
+  "cards": {
+    "introEyebrow": "Présentation",
+    "introTitle": "Toute l'équipe, sous un même toit",
+    "introSub": "Le tour des fonctionnalités clés, en deux minutes.",
+    "outroTitle": "Une équipe. Une plateforme.",
+    "outroSub": "Gratuite pour une équipe, partagée avec tout le staff.",
+    "outroCta": "Commencer gratuitement · strivn.net"
+  },
+  "segments": [
+    {
+      "id": "01-intro",
+      "scene": { "route": "/teams/1/dashboard", "device": "desktop" },
+      "text": "Gérer une équipe, aujourd'hui, c'est jongler entre WhatsApp, des fichiers Excel et des notes éparpillées. Straïvine réunit tout le staff, le coach, le préparateur physique, le médecin et le kiné, autour des mêmes données, en temps réel.",
+      "caption": "Gérer une équipe, aujourd'hui, c'est jongler entre WhatsApp, des fichiers Excel et des notes éparpillées. Strivn réunit tout le staff, le coach, le préparateur physique, le médecin et le kiné, autour des mêmes données, en temps réel."
+    },
+    {
+      "id": "02-calendrier",
+      "scene": { "route": "/teams/1/calendar", "device": "desktop" },
+      "text": "Tout commence par le calendrier. Chaque séance et chaque match génère automatiquement sa convocation, que les joueurs reçoivent sur leur canal habituel. Ils répondent en un clic, les présences se mettent à jour toutes seules, et vous relancez en deux secondes ceux qui n'ont pas répondu.",
+      "caption": "Tout commence par le calendrier. Chaque séance et chaque match génère automatiquement sa convocation, que les joueurs reçoivent sur leur canal habituel. Ils répondent en un clic, les présences se mettent à jour toutes seules, et vous relancez en deux secondes ceux qui n'ont pas répondu."
+    },
+    {
+      "id": "03-portail",
+      "scene": { "route": "/portal/agenda", "device": "mobile" },
+      "text": "Côté joueur, tout se passe depuis le téléphone. L'agenda de la semaine, la confirmation de présence, et surtout le check-in du matin : sommeil, fatigue, niveau de douleur. En quelques secondes, le joueur transmet son ressenti, et le staff reçoit l'information en temps réel.",
+      "caption": "Côté joueur, tout se passe depuis le téléphone. L'agenda de la semaine, la confirmation de présence, et surtout le check-in du matin : sommeil, fatigue, niveau de douleur. En quelques secondes, le joueur transmet son ressenti, et le staff reçoit l'information en temps réel."
+    },
+    {
+      "id": "04-briefing",
+      "scene": { "route": "/teams/1/briefing", "device": "desktop" },
+      "text": "Chaque matin, le briefing fait la synthèse pour le coach. Qui est frais, qui accumule de la fatigue, qui présente un signal à surveiller. Plus besoin de relancer le préparateur ou le médecin : tout est là, et la décision se prend en trente secondes.",
+      "caption": "Chaque matin, le briefing fait la synthèse pour le coach. Qui est frais, qui accumule de la fatigue, qui présente un signal à surveiller. Plus besoin de relancer le préparateur ou le médecin : tout est là, et la décision se prend en 30 secondes."
+    },
+    {
+      "id": "05-charge",
+      "scene": { "route": "/teams/1/load-plan", "device": "desktop" },
+      "text": "C'est ici que le préparateur physique passe à la vitesse supérieure. Il planifie la semaine : un objectif de charge, les exercices jour par jour, et une prévision d'ACWR qui anticipe le risque de blessure. Chaque charge se rattache aux séances du calendrier, puis se compare à la charge réellement vécue par les joueurs.",
+      "caption": "C'est ici que le préparateur physique passe à la vitesse supérieure. Il planifie la semaine : un objectif de charge, les exercices jour par jour, et une prévision d'ACWR qui anticipe le risque de blessure. Chaque charge se rattache aux séances du calendrier, puis se compare à la charge réellement vécue par les joueurs."
+    },
+    {
+      "id": "06-medical",
+      "scene": { "route": "/teams/1/medical", "device": "desktop" },
+      "text": "Côté médical, le médecin et le kiné gèrent les blessures et le retour au jeu, étape par étape, avec leurs notes et leurs protocoles partagés. Le coach, lui, voit simplement la disponibilité de chaque joueur, mise à jour en direct, sans avoir à passer le moindre appel.",
+      "caption": "Côté médical, le médecin et le kiné gèrent les blessures et le retour au jeu, étape par étape, avec leurs notes et leurs protocoles partagés. Le coach, lui, voit simplement la disponibilité de chaque joueur, mise à jour en direct, sans avoir à passer le moindre appel."
+    },
+    {
+      "id": "07-assistant",
+      "scene": { "route": "/teams/1/chat", "device": "desktop", "type": "Qui est à risque cette semaine ?" },
+      "text": "Et quand une question se pose, il suffit de la poser. L'assistant lit la charge, l'état de forme et les blessures de votre équipe, et vous répond en langage naturel, en quelques secondes.",
+      "caption": "Et quand une question se pose, il suffit de la poser. L'assistant lit la charge, l'état de forme et les blessures de votre équipe, et vous répond en langage naturel, en quelques secondes."
+    },
+    {
+      "id": "08-conclusion",
+      "scene": { "route": "/teams/1/dashboard", "device": "desktop" },
+      "text": "Convocations, charge, infirmerie, intelligence artificielle : une seule plateforme, partagée par tout le staff, où chaque rôle contribue et où tout le monde reste aligné. Et c'est gratuit pour une équipe. Essayez Straïvine dès aujourd'hui.",
+      "caption": "Convocations, charge, infirmerie, intelligence artificielle : une seule plateforme, partagée par tout le staff, où chaque rôle contribue et où tout le monde reste aligné. Et c'est gratuit pour une équipe. Essayez Strivn dès aujourd'hui."
+    }
+  ]
+}
