@@ -5,9 +5,13 @@
 # → demo credentials → clears the Redis cache.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
-APP="${STRIVN_APP_CONTAINER:-p3rform-app-1}"
-PG="${STRIVN_PG_CONTAINER:-p3rform-postgres-1}"
+# Auto-detect the compose project from whoever publishes :8082 (survives the
+# stack being renamed, e.g. p3rform-* → strivn-app-*). Override with env vars.
+PREFIX="$(docker ps --filter publish=8082 --format '{{.Names}}' 2>/dev/null | head -1)"; PREFIX="${PREFIX%-web-1}"
+APP="${STRIVN_APP_CONTAINER:-${PREFIX:+${PREFIX}-app-1}}"; APP="${APP:-p3rform-app-1}"
+PG="${STRIVN_PG_CONTAINER:-${PREFIX:+${PREFIX}-postgres-1}}"; PG="${PG:-p3rform-postgres-1}"
 LANG_="${1:-fr}"
+echo "using containers: app=$APP pg=$PG"
 
 psql() { docker exec -i "$PG" psql -U p3rform -d p3rform "$@"; }
 artisan() { docker exec "$APP" php artisan "$@"; }
@@ -24,10 +28,13 @@ psql < "$HERE/setup-demo.sql"
 # 3. Planned-label language (FR is the default in setup-demo.sql).
 [ "$LANG_" = "en" ] && psql < "$HERE/seed-en.sql"
 
-# 4. Demo credentials used by config.mjs (password hashing needs PHP).
+# 4. Deterministic demo credentials used by config.mjs (phone/email vary across
+#    DBs, so we normalize them; password hashing needs PHP).
 artisan tinker --execute="
-  \App\Models\User::where('id',1)->update(['password'=>\Illuminate\Support\Facades\Hash::make('password')]);
-  \$p=\App\Models\Player::find(6); \$p->email='kylian.moreau@acverel.test'; \$p->password='portalpass'; \$p->password_set_at=now(); \$p->locale='${LANG_}'; \$p->save();
+  \$u=\App\Models\User::find(1); \$u->phone='+32470112233'; \$u->password=\Illuminate\Support\Facades\Hash::make('password'); \$u->save();
+  \$p=\App\Models\Player::where('team_id',1)->orderBy('id')->first();
+  \$p->email='kylian.moreau@acverel.test'; \$p->password='portalpass'; \$p->password_set_at=now(); \$p->locale='${LANG_}'; \$p->save();
+  echo 'coach='.\$u->phone.' player='.\$p->email.' (id='.\$p->id.')';
 "
 
 # 5. Bust the cache (the plan is Redis-cached).
