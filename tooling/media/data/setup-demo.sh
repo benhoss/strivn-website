@@ -25,8 +25,8 @@ fi
 # 2. Fictional names + current-week planned data (idempotent).
 psql < "$HERE/setup-demo.sql"
 
-# 3. Planned-label language (FR is the default in setup-demo.sql).
-[ "$LANG_" = "en" ] && psql < "$HERE/seed-en.sql"
+# 3. Label language (FR is the default in setup-demo.sql; others via seed-<lang>.sql).
+[ "$LANG_" != "fr" ] && [ -f "$HERE/seed-$LANG_.sql" ] && psql < "$HERE/seed-$LANG_.sql"
 
 # 4. Deterministic demo credentials used by config.mjs (phone/email vary across
 #    DBs, so we normalize them; password hashing needs PHP).

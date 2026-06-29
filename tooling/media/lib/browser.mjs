@@ -8,18 +8,24 @@ export { chromium };
 export const ffprobe = (f) =>
   parseFloat(execSync(`ffprobe -v error -show_entries format=duration -of default=nokey=1:noprint_wrappers=1 "${f}"`).toString().trim());
 
+// NB: use `domcontentloaded`, not `networkidle` — the Vite dev server's HMR
+// websocket stays open, so networkidle never fires.
 export async function coachLogin(page, lang = 'fr') {
-  await page.goto(`${BASE}/login?lang=${lang}`, { waitUntil: 'networkidle' });
+  await page.goto(`${BASE}/login?lang=${lang}`, { waitUntil: 'domcontentloaded' });
   await page.fill('input[name=phone]', COACH.phone);
   await page.fill('input[name=password]', COACH.password);
-  await Promise.all([page.waitForLoadState('networkidle'), page.click('form button[type=submit]')]);
+  await page.click('form button[type=submit]');
+  await page.waitForURL(/\/teams\//, { timeout: 20000 }).catch(() => {});
+  await page.waitForTimeout(400);
 }
 
 export async function playerLogin(page, lang = 'fr') {
-  await page.goto(`${BASE}/login?as=player&player_only=1&lang=${lang}`, { waitUntil: 'networkidle' });
+  await page.goto(`${BASE}/login?as=player&player_only=1&lang=${lang}`, { waitUntil: 'domcontentloaded' });
   await page.fill('input[name=identifier]', PLAYER.identifier);
   await page.fill('#player_password', PLAYER.password);
-  await Promise.all([page.waitForLoadState('networkidle'), page.locator('form:has(#player_password) button[type=submit]').click()]);
+  await page.locator('form:has(#player_password) button[type=submit]').click();
+  await page.waitForURL(/\/portal\//, { timeout: 20000 }).catch(() => {});
+  await page.waitForTimeout(400);
 }
 
 // Navigate without requiring networkidle (some screens poll/stream forever).

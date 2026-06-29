@@ -58,7 +58,7 @@ for (const seg of segments) {
   try { await page.waitForLoadState('networkidle', { timeout: 6000 }); } catch {}
   await page.waitForTimeout(1200);
   // dismiss the load-plan onboarding banner if present
-  for (const l of ['Compris', "J'ai compris", 'Got it']) { const b = page.getByRole('button', { name: new RegExp(l, 'i') }); if (await b.count()) { await b.first().click().catch(() => {}); await page.waitForTimeout(400); break; } }
+  for (const l of ['Compris', "J'ai compris", 'Got it', 'Begrepen', 'Oké']) { const b = page.getByRole('button', { name: new RegExp(l, 'i') }); if (await b.count()) { await b.first().click().catch(() => {}); await page.waitForTimeout(400); break; } }
   const ov = overlays(page); await ov.ensure();
   const startOffset = (Date.now() - t0ctx) / 1000; // seconds of nav/settle to trim off the front
   try { await sceneAction(seg.id, page, ov, seg); } catch (e) { console.log(seg.id, 'act ERR', e.message.slice(0, 50)); }

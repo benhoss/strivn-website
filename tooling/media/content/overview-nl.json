@@ -1,0 +1,63 @@
+{
+  "lang": "nl",
+  "title": "Strivn — Productpresentatie",
+  "voice_note": "NL (Vlaams) stem, rustig en dynamisch. text=gesproken (Straïvine), caption=getoond (Strivn, cijfers).",
+  "cards": {
+    "introEyebrow": "Presentatie",
+    "introTitle": "Het hele team, op één plek",
+    "introSub": "De belangrijkste functies, in twee minuten.",
+    "outroTitle": "Eén team. Eén platform.",
+    "outroSub": "Gratis voor één team, gedeeld met de hele staf.",
+    "outroCta": "Gratis starten · strivn.net"
+  },
+  "segments": [
+    {
+      "id": "01-intro",
+      "scene": { "route": "/teams/1/dashboard", "device": "desktop" },
+      "text": "Een team beheren betekent vandaag jongleren met WhatsApp, Excel-bestanden en verspreide notities. Straïvine brengt de hele staf samen, de coach, de fysiektrainer, de arts en de kiné, rond dezelfde gegevens, in real time.",
+      "caption": "Een team beheren betekent vandaag jongleren met WhatsApp, Excel-bestanden en verspreide notities. Strivn brengt de hele staf samen, de coach, de fysiektrainer, de arts en de kiné, rond dezelfde gegevens, in real time."
+    },
+    {
+      "id": "02-calendrier",
+      "scene": { "route": "/teams/1/calendar", "device": "desktop" },
+      "text": "Alles begint bij de kalender. Elke training en elke wedstrijd genereert automatisch een oproeping, die de spelers op hun gebruikelijke kanaal ontvangen. Ze antwoorden met één klik, de aanwezigheden werken zichzelf bij, en wie niet reageert herinner je in twee seconden.",
+      "caption": "Alles begint bij de kalender. Elke training en elke wedstrijd genereert automatisch een oproeping, die de spelers op hun gebruikelijke kanaal ontvangen. Ze antwoorden met één klik, de aanwezigheden werken zichzelf bij, en wie niet reageert herinner je in twee seconden."
+    },
+    {
+      "id": "03-portail",
+      "scene": { "route": "/portal/agenda", "device": "mobile" },
+      "text": "Voor de speler gebeurt alles op de telefoon. De agenda van de week, de aanwezigheidsbevestiging, en vooral de ochtend-check-in: slaap, vermoeidheid, pijnniveau. In enkele seconden geeft de speler zijn gevoel door, en de staf ontvangt de informatie in real time.",
+      "caption": "Voor de speler gebeurt alles op de telefoon. De agenda van de week, de aanwezigheidsbevestiging, en vooral de ochtend-check-in: slaap, vermoeidheid, pijnniveau. In enkele seconden geeft de speler zijn gevoel door, en de staf ontvangt de informatie in real time."
+    },
+    {
+      "id": "04-briefing",
+      "scene": { "route": "/teams/1/briefing", "device": "desktop" },
+      "text": "Elke ochtend maakt de briefing de synthese voor de coach. Wie is fris, wie stapelt vermoeidheid op, wie vertoont een signaal om in de gaten te houden. Geen gebel meer met de fysiektrainer of de arts: alles staat er, en de beslissing valt in dertig seconden.",
+      "caption": "Elke ochtend maakt de briefing de synthese voor de coach. Wie is fris, wie stapelt vermoeidheid op, wie vertoont een signaal om in de gaten te houden. Geen gebel meer met de fysiektrainer of de arts: alles staat er, en de beslissing valt in 30 seconden."
+    },
+    {
+      "id": "05-charge",
+      "scene": { "route": "/teams/1/load-plan", "device": "desktop" },
+      "text": "Hier schakelt de fysiektrainer een versnelling hoger. Hij plant de week: een belastingsdoel, de oefeningen dag per dag, en een ACWR-voorspelling die het blessurerisico anticipeert. Elke belasting wordt gekoppeld aan de trainingen in de kalender, en daarna vergeleken met de werkelijk geleverde belasting van de spelers.",
+      "caption": "Hier schakelt de fysiektrainer een versnelling hoger. Hij plant de week: een belastingsdoel, de oefeningen dag per dag, en een ACWR-voorspelling die het blessurerisico anticipeert. Elke belasting wordt gekoppeld aan de trainingen in de kalender, en daarna vergeleken met de werkelijk geleverde belasting van de spelers."
+    },
+    {
+      "id": "06-medical",
+      "scene": { "route": "/teams/1/medical", "device": "desktop" },
+      "text": "Aan medische kant beheren de arts en de kiné de blessures en de terugkeer naar het veld, stap voor stap, met gedeelde notities en protocollen. De coach ziet gewoon de beschikbaarheid van elke speler, live bijgewerkt, zonder ook maar één telefoontje.",
+      "caption": "Aan medische kant beheren de arts en de kiné de blessures en de terugkeer naar het veld, stap voor stap, met gedeelde notities en protocollen. De coach ziet gewoon de beschikbaarheid van elke speler, live bijgewerkt, zonder ook maar één telefoontje."
+    },
+    {
+      "id": "07-assistant",
+      "scene": { "route": "/teams/1/chat", "device": "desktop", "type": "Wie loopt deze week risico?" },
+      "text": "En als er een vraag opduikt, stel je ze gewoon. De assistent leest de belasting, de fitheid en de blessures van je team, en antwoordt in natuurlijke taal, in enkele seconden.",
+      "caption": "En als er een vraag opduikt, stel je ze gewoon. De assistent leest de belasting, de fitheid en de blessures van je team, en antwoordt in natuurlijke taal, in enkele seconden."
+    },
+    {
+      "id": "08-conclusion",
+      "scene": { "route": "/teams/1/dashboard", "device": "desktop" },
+      "text": "Oproepingen, belasting, medische opvolging, artificiële intelligentie: één platform, gedeeld met de hele staf, waar elke rol bijdraagt en iedereen op één lijn blijft. En het is gratis voor één team. Probeer Straïvine vandaag nog.",
+      "caption": "Oproepingen, belasting, medische opvolging, artificiële intelligentie: één platform, gedeeld met de hele staf, waar elke rol bijdraagt en iedereen op één lijn blijft. En het is gratis voor één team. Probeer Strivn vandaag nog."
+    }
+  ]
+}
