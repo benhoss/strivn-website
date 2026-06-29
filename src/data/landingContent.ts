@@ -22,6 +22,7 @@ type LandingContent = {
   };
 
   hero: {
+    claim: string;
     title: string;
     titleAccent: string;
     lede: string;
@@ -203,6 +204,7 @@ export const landingContent: Record<Locale, LandingContent> = {
     },
 
     hero: {
+      claim: 'Conçu par des coachs et des joueurs — pour les staffs et les équipes',
       title: 'Toute l’équipe,',
       titleAccent: 'sous un même toit.',
       lede: 'WhatsApp, Excel, notes papier, mémoire : le quotidien d’un coach est éparpillé. STRIVN réunit convocations, présences, infirmerie, charge et séances dans une seule plateforme, partagée par tout le staff.',
@@ -534,6 +536,7 @@ export const landingContent: Record<Locale, LandingContent> = {
     },
 
     hero: {
+      claim: 'Built by coaches and players — for staff and teams',
       title: 'Your whole team,',
       titleAccent: 'under one roof.',
       lede: 'WhatsApp, spreadsheets, paper notes, memory: a coach’s week is scattered everywhere. STRIVN brings call-ups, attendance, medical records, training load and sessions into one platform the whole staff shares.',
