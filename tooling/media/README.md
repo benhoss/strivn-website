@@ -5,6 +5,7 @@ Generates the real-app media used on the marketing site, all driven from the
 
 - **App screenshots** for the S&C showcase carousels → `public/screenshots/`
 - **Muted demo loop** of the Load planner (first carousel slide) → `public/videos/load-planning-<lang>.{mp4,webm}`
+- **Muted readiness loop** of the morning story (player check-in → briefing → readiness → Planning) → `public/videos/readiness-<lang>.{mp4,webm}`
 - **Narrated explainer** (intro + voice-over walkthrough + subtitles + outro) → `public/videos/explainer-load-planning-<lang>.mp4`
 
 Everything is reproducible: screenshots and videos are derived artifacts, not
@@ -52,6 +53,9 @@ Always run scripts via `./run.sh <script> [lang]` so Playwright resolves.
 # Muted Load-planning loop → public/videos/load-planning-<lang>.{mp4,webm}
 ./run.sh capture/demo-loop.mjs fr
 
+# Muted readiness loop (player check-in → briefing → readiness → Planning)
+./run.sh capture/readiness-loop.mjs fr
+
 # Narrated explainer (3 steps):
 ./run.sh explainer/tts.mjs fr            # 1. voice-over → .work/audio/fr/*.mp3
 ./run.sh explainer/record.mjs fr         # 2. synced walkthrough → .work/explainer-core-fr.mp4
@@ -73,6 +77,7 @@ tooling/media/
   capture/
     screenshots.mjs     # coach + portal screenshots for a locale
     demo-loop.mjs       # muted Load-planning loop
+    readiness-loop.mjs  # muted readiness loop (check-in → briefing → readiness → Planning)
   explainer/
     tts.mjs             # ElevenLabs voice-over, one mp3 per segment
     record.mjs          # walkthrough paced to the voice-over → narrated core
@@ -129,8 +134,11 @@ What it does (`data/setup-demo.sh` → `data/setup-demo.sql`):
 3. rebuilds `planned_weeks` + `planned_slots` (12 exercises, ~4225 UA) for the
    **current ISO week**, so the Load-planner screens are always populated;
 4. sets the language of the planned-week labels (`fr` default, `en` applies `seed-en.sql`);
-5. sets the demo logins used by `config.mjs` (coach pw, portal player `kylian.moreau@acverel.test`);
-6. `php artisan cache:clear` (the plan is Redis-cached).
+5. **upserts today's wellness check-ins** for team 1's active players (a spread
+   of green/yellow/red scores) so the morning briefing and readiness dashboard
+   are populated for capture;
+6. sets the demo logins used by `config.mjs` (coach pw, portal player `kylian.moreau@acverel.test`);
+7. `php artisan cache:clear` (the plan is Redis-cached).
 
 It is date-relative and safe to re-run. Container names default to
 `p3rform-app-1` / `p3rform-postgres-1` (override with `STRIVN_APP_CONTAINER` /
@@ -145,7 +153,16 @@ It is date-relative and safe to re-run. Container names default to
 
 ## Gotchas
 
-- **Run via `./run.sh`** (not bare `node`) so Playwright resolves.
+- **Run via `./run.sh`** (not bare `node`) so Playwright resolves. Playwright is
+  installed locally in this folder (`npm install playwright` + `npx playwright install chromium`).
+- **Capture against built assets, not the Vite dev server.** If Playwright hangs
+  loading *any* page, the app is in Vite dev mode: a `public/hot` file points
+  asset URLs at `:5173`, which isn't published to the host, so the page never
+  finishes loading. Fix: build once and disable hot —
+  `docker exec <app> sh -c 'rm -f public/hot'` and stop the vite container
+  (`docker stop <project>-vite-1`). The app then serves `public/build/*`.
+- **Product video overview**: `overview/{tts,record,finalize}.mjs` +
+  `content/overview-<lang>.json` (scene per segment, desktop + mobile portal).
 - **Language of the screenshots = language of the DB data**, not just `?lang=`.
   Run `./data/setup-demo.sh <lang>` first (or at least `data/seed-<lang>.sql` + `cache:clear`).
 - **Re-recording the narration?** delete `.work/explainer-core-<lang>.mp4` and

@@ -40,6 +40,12 @@ EN screenshots: `./data/setup-demo.sh en` then `./run.sh capture/screenshots.mjs
 ./run.sh capture/demo-loop.mjs fr       # → public/videos/load-planning-fr.{mp4,webm}
 ```
 
+### Refresh the muted readiness loop (morning story)
+```bash
+./data/setup-demo.sh fr                 # also seeds today's wellness check-ins
+./run.sh capture/readiness-loop.mjs fr  # → public/videos/readiness-fr.{mp4,webm}
+```
+
 ### Regenerate the narrated explainer (~5 min)
 ```bash
 cd tooling/media
@@ -58,7 +64,23 @@ Extract frames with `ffmpeg -ss <t> -i <out> -frames:v 1 /tmp/f.png` and read th
 Check: intro logo present, subtitles ≤ 2 lines showing `Strivn` + digits, the
 "Prévu vs réalisé" tab actually switches (~78s), outro CTA.
 
+### Product-overview video (multi-screen tour, ~2:15-2:30, FR + NL)
+`overview/{tts,record,finalize}.mjs` + `content/overview-<lang>.json` (one scene
+per segment; desktop coach screens + a mobile portal scene). Produce:
+```bash
+cd tooling/media
+./data/setup-demo.sh fr                 # (or nl — applies seed-nl.sql)
+./run.sh overview/tts.mjs fr
+./run.sh overview/record.mjs fr          # → .work/overview/scenes/fr/*.mp4
+./run.sh overview/finalize.mjs fr        # → public/videos/overview-fr.mp4
+```
+
 ## Conventions / gotchas
+- **Capture needs built assets, not Vite dev.** If Playwright hangs on page load,
+  remove the Vite `hot` file + stop the vite container (assets point at the
+  unreachable `:5173`): `docker exec <app> sh -c 'rm -f public/hot'; docker stop <project>-vite-1`.
+- Playwright is installed locally in `tooling/media` (it's no longer guaranteed in
+  the sibling repo). `run.sh` uses it; if missing: `npm install playwright && npx playwright install chromium`.
 - EN assets have **no suffix**; FR assets use `-fr` (matches `src/data/scContent.ts`).
 - `setup-demo.sh` is **idempotent + date-relative** (rebuilds the planned week on
   the current week) and clears the cache for you. Re-run it whenever data looks stale.
