@@ -7,7 +7,7 @@
     "introTitle": "Het hele team, op één plek",
     "introSub": "De belangrijkste functies, in twee minuten.",
     "outroTitle": "Eén team. Eén platform.",
-    "outroSub": "Gratis voor één team, gedeeld met de hele staf.",
+    "outroSub": "Schrijf je gratis in, of neem contact op voor een demo.",
     "outroCta": "Gratis starten · strivn.net"
   },
   "segments": [
@@ -54,10 +54,16 @@
       "caption": "En als er een vraag opduikt, stel je ze gewoon. De assistent leest de belasting, de fitheid en de blessures van je team, en antwoordt in natuurlijke taal, in enkele seconden."
     },
     {
-      "id": "08-conclusion",
+      "id": "08-apercu",
+      "scene": { "kind": "montage", "device": "desktop", "shots": ["workout-templates", "tactical-boards", "measures", "sessions/results", "insights", "/teams"] },
+      "text": "En dit is maar een deel van het platform. Straïvine, dat zijn ook je trainingsprogramma's en modellen, je tactische borden, de scouting van tegenstanders, de fysieke tests, de nabespreking van sessies, de signalen en trends, de multikanaal-communicatie via WhatsApp, e-mail en app, de teamkas en boetes, en het beheer van meerdere teams.",
+      "caption": "En dit is maar een deel van het platform. Strivn, dat zijn ook je trainingsprogramma's en modellen, je tactische borden, de scouting van tegenstanders, de fysieke tests, de nabespreking van sessies, de signalen en trends, de multikanaal-communicatie (WhatsApp, e-mail, app), de teamkas en boetes, en het beheer van meerdere teams."
+    },
+    {
+      "id": "09-conclusion",
       "scene": { "route": "/teams/1/dashboard", "device": "desktop" },
-      "text": "Oproepingen, belasting, medische opvolging, artificiële intelligentie: één platform, gedeeld met de hele staf, waar elke rol bijdraagt en iedereen op één lijn blijft. En het is gratis voor één team. Probeer Straïvine vandaag nog.",
-      "caption": "Oproepingen, belasting, medische opvolging, artificiële intelligentie: één platform, gedeeld met de hele staf, waar elke rol bijdraagt en iedereen op één lijn blijft. En het is gratis voor één team. Probeer Strivn vandaag nog."
+      "text": "Oproepingen, belasting, medische opvolging, artificiële intelligentie: één platform, gedeeld met de hele staf, waar elke rol bijdraagt en iedereen op één lijn blijft. Schrijf je gratis in, of neem contact op voor een demo, en ontdek het hele platform.",
+      "caption": "Oproepingen, belasting, medische opvolging, artificiële intelligentie: één platform, gedeeld met de hele staf, waar elke rol bijdraagt en iedereen op één lijn blijft. Schrijf je gratis in, of neem contact op voor een demo, en ontdek het hele platform."
     }
   ]
 }

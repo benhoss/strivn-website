@@ -11,14 +11,15 @@ import { DIR } from '../config.mjs';
 import { ffprobe } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
-const AUD = resolve(DIR.work, 'overview', 'audio', lang);
-const SCN = resolve(DIR.work, 'overview', 'scenes', lang);
-const WORK = resolve(DIR.work, 'overview', 'finalize', lang);
+const PROJECT = process.env.MEDIA_PROJECT || 'overview';
+const AUD = resolve(DIR.work, PROJECT, 'audio', lang);
+const SCN = resolve(DIR.work, PROJECT, 'scenes', lang);
+const WORK = resolve(DIR.work, PROJECT, 'finalize', lang);
 mkdirSync(WORK, { recursive: true });
 const LOGO = resolve(DIR.public, 'strivn-logo-full-white-web.png');
 
 const INTRO_D = 3.4, OUTRO_D = 4.2, MAXCH = 82;
-const { cards, segments } = JSON.parse(readFileSync(resolve(DIR.content, `overview-${lang}.json`), 'utf8'));
+const { cards, segments } = JSON.parse(readFileSync(resolve(DIR.content, `${PROJECT}-${lang}.json`), 'utf8'));
 const IDS = segments.map((s) => s.id);
 const dur = IDS.map((id) => ffprobe(resolve(AUD, `${id}.mp3`)));
 
@@ -62,9 +63,11 @@ execSync(`ffmpeg -y ${inA} -filter_complex "${cc};${cv}concat=n=${parts.length}:
 const TOTAL = ffprobe(body);
 
 // ── overlay subtitle PNGs (timed) ──
-const subIns = cues.map((_, i) => `-loop 1 -framerate 25 -t ${TOTAL.toFixed(2)} -i "${resolve(WORK, 'cue-' + i + '.png')}"`).join(' ');
+// Each cue PNG is loaded for *only its own window* (-t) and shifted to its start
+// (-itsoffset); decoding ~90 frames per cue instead of the full 156 s × 42 cues.
+const subIns = cues.map((c, i) => `-loop 1 -framerate 25 -t ${(c.end - c.start + 0.1).toFixed(2)} -itsoffset ${c.start.toFixed(2)} -i "${resolve(WORK, 'cue-' + i + '.png')}"`).join(' ');
 let pre = '', chain = '', prev = '[0:v]';
-cues.forEach((c, i) => { pre += `[${i + 1}:v]scale=1280:800,setsar=1[s${i}];`; const o = i === cues.length - 1 ? '[vo]' : `[o${i}]`; chain += `${prev}[s${i}]overlay=enable='between(t,${c.start.toFixed(2)},${c.end.toFixed(2)})':x=0:y=0${o};`; prev = o; });
+cues.forEach((c, i) => { pre += `[${i + 1}:v]scale=1280:800,setsar=1[s${i}];`; const o = i === cues.length - 1 ? '[vo]' : `[o${i}]`; chain += `${prev}[s${i}]overlay=enable='between(t,${c.start.toFixed(2)},${c.end.toFixed(2)})':eof_action=pass:repeatlast=0:x=0:y=0${o};`; prev = o; });
 const subbed = resolve(WORK, 'subbed.mp4');
 execSync(`ffmpeg -y -i "${body}" ${subIns} -filter_complex "${(pre + chain).replace(/;$/, '')}" -map "[vo]" -c:v libx264 -profile:v high -pix_fmt yuv420p -crf 23 -preset medium "${subbed}" -loglevel error`);
 
@@ -75,7 +78,7 @@ const audCat = IDS.map((_, i) => `[${i}:a]`).join('');
 execSync(`ffmpeg -y ${audIn} -filter_complex "${audCat}concat=n=${IDS.length}:v=0:a=1[a]" -map "[a]" -c:a aac -b:a 160k "${narration}" -loglevel error`);
 
 mkdirSync(DIR.videos, { recursive: true });
-const out = resolve(DIR.videos, `overview-${lang}.mp4`);
+const out = resolve(DIR.videos, `${PROJECT}-${lang}.mp4`);
 const delayMs = Math.round(INTRO_D * 1000);
 // adelay shifts narration past the intro card; apad keeps audio running under
 // the outro card; -shortest then trims audio to the (longer) video length.

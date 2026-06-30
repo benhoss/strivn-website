@@ -8,10 +8,11 @@ import { DIR, VOICE_ID, ELEVEN_MODEL, elevenKey } from '../config.mjs';
 
 const lang = process.argv[2] || 'fr';
 const voiceId = process.argv[3] || VOICE_ID;
+const PROJECT = process.env.MEDIA_PROJECT || 'overview'; // 'overview' | 'scouting' | …
 const key = elevenKey();
-const out = resolve(DIR.work, 'overview', 'audio', lang);
+const out = resolve(DIR.work, PROJECT, 'audio', lang);
 mkdirSync(out, { recursive: true });
-const { segments } = JSON.parse(readFileSync(resolve(DIR.content, `overview-${lang}.json`), 'utf8'));
+const { segments } = JSON.parse(readFileSync(resolve(DIR.content, `${PROJECT}-${lang}.json`), 'utf8'));
 
 for (const seg of segments) {
   const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`, {
