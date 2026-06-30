@@ -15,8 +15,15 @@ UPDATE teams SET name = 'AC Verel'          WHERE id = 1;
 UPDATE teams SET name = 'Hévron Rugby Club' WHERE id = 2;
 UPDATE calendar_events SET location = 'Stade Communal de Verel'
   WHERE team_id = 1 AND location LIKE 'Stade%';
+-- Normalize event titles to canonical FR. The seeder emits a mix of FR/EN/NL
+-- ("Entraînement du soir", "Training", "Stafvergadering", "Wedstrijd…"), so match
+-- broadly by event_type + title pattern. seed-<lang>.sql then localizes from here.
+UPDATE calendar_events SET title = 'Réunion staff'
+  WHERE team_id = 1 AND (event_type = 'meeting' OR title ILIKE '%vergader%' OR title ILIKE '%réunion%' OR title ILIKE '%meeting%');
 UPDATE calendar_events SET title = 'Match: AC Verel vs FC Aldenne 🏆'
-  WHERE team_id = 1 AND title LIKE 'Match:%';
+  WHERE team_id = 1 AND (event_type = 'match' OR title ILIKE 'match%' OR title ILIKE '%wedstrijd%');
+UPDATE calendar_events SET title = 'Entraînement'
+  WHERE team_id = 1 AND title <> 'Réunion staff' AND title NOT LIKE 'Match:%';
 UPDATE injuries SET notes = replace(replace(replace(notes,
     'Standard U18', 'FC Aldenne'), 'RSC Liège', 'AC Verel'), ' U18', '')
   WHERE team_id = 1;

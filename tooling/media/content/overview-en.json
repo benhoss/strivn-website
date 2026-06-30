@@ -1,0 +1,69 @@
+{
+  "lang": "en",
+  "title": "Strivn — Product overview",
+  "voice_note": "EN voice, calm and dynamic. text=spoken (Straïvine), caption=shown (Strivn, digits).",
+  "cards": {
+    "introEyebrow": "Overview",
+    "introTitle": "The whole team, under one roof",
+    "introSub": "A tour of the key features, in two minutes.",
+    "outroTitle": "One team. One platform.",
+    "outroSub": "Sign up for free, or get in touch for a demo.",
+    "outroCta": "Get started free · strivn.net"
+  },
+  "segments": [
+    {
+      "id": "01-intro",
+      "scene": { "route": "/teams/1/dashboard", "device": "desktop" },
+      "text": "Running a team today means juggling WhatsApp, Excel files and scattered notes. Straïvine brings the whole staff together, the coach, the physical trainer, the doctor and the physio, around the same data, in real time.",
+      "caption": "Running a team today means juggling WhatsApp, Excel files and scattered notes. Strivn brings the whole staff together, the coach, the physical trainer, the doctor and the physio, around the same data, in real time."
+    },
+    {
+      "id": "02-calendrier",
+      "scene": { "route": "/teams/1/calendar", "device": "desktop" },
+      "text": "It all starts with the calendar. Every training session and every match automatically generates its call-up, which players receive on their usual channel. They reply in one tap, attendance updates on its own, and you can nudge whoever hasn't answered in two seconds.",
+      "caption": "It all starts with the calendar. Every training session and every match automatically generates its call-up, which players receive on their usual channel. They reply in one tap, attendance updates on its own, and you can nudge whoever hasn't answered in two seconds."
+    },
+    {
+      "id": "03-portail",
+      "scene": { "route": "/portal/agenda", "device": "mobile" },
+      "text": "On the player side, everything happens from the phone. The week's agenda, attendance confirmation, and above all the morning check-in: sleep, fatigue, pain level. In a few seconds the player shares how they feel, and the staff gets the information in real time.",
+      "caption": "On the player side, everything happens from the phone. The week's agenda, attendance confirmation, and above all the morning check-in: sleep, fatigue, pain level. In a few seconds the player shares how they feel, and the staff gets the information in real time."
+    },
+    {
+      "id": "04-briefing",
+      "scene": { "route": "/teams/1/briefing", "device": "desktop" },
+      "text": "Every morning, the briefing sums it up for the coach. Who's fresh, who's piling up fatigue, who shows a signal worth watching. No more chasing the trainer or the doctor: it's all here, and the decision takes thirty seconds.",
+      "caption": "Every morning, the briefing sums it up for the coach. Who's fresh, who's piling up fatigue, who shows a signal worth watching. No more chasing the trainer or the doctor: it's all here, and the decision takes 30 seconds."
+    },
+    {
+      "id": "05-charge",
+      "scene": { "route": "/teams/1/load-plan", "device": "desktop" },
+      "text": "This is where the physical trainer steps up a gear. They plan the week: a load target, exercises day by day, and an ACWR forecast that anticipates injury risk. Each load links to the calendar's sessions, then compares against the load players actually experienced.",
+      "caption": "This is where the physical trainer steps up a gear. They plan the week: a load target, exercises day by day, and an ACWR forecast that anticipates injury risk. Each load links to the calendar's sessions, then compares against the load players actually experienced."
+    },
+    {
+      "id": "06-medical",
+      "scene": { "route": "/teams/1/medical", "device": "desktop" },
+      "text": "On the medical side, the doctor and physio manage injuries and return to play, step by step, with their shared notes and protocols. The coach simply sees each player's availability, updated live, without making a single call.",
+      "caption": "On the medical side, the doctor and physio manage injuries and return to play, step by step, with their shared notes and protocols. The coach simply sees each player's availability, updated live, without making a single call."
+    },
+    {
+      "id": "07-assistant",
+      "scene": { "route": "/teams/1/chat", "device": "desktop", "type": "Who is at risk this week?" },
+      "text": "And when a question comes up, you just ask it. The assistant reads your team's load, fitness and injuries, and answers in plain language, in seconds.",
+      "caption": "And when a question comes up, you just ask it. The assistant reads your team's load, fitness and injuries, and answers in plain language, in seconds."
+    },
+    {
+      "id": "08-apercu",
+      "scene": { "kind": "montage", "device": "desktop", "shots": ["workout-templates", "tactical-boards", "measures", "sessions/results", "insights", "/teams"] },
+      "text": "And this is only part of the platform. Straïvine is also your training programs and templates, your tactical boards, opponent scouting, physical testing, session debriefs, signals and trends, multi-channel communication over WhatsApp, email and app, the team kitty and fines, and managing multiple teams.",
+      "caption": "And this is only part of the platform. Strivn is also your training programs and templates, your tactical boards, opponent scouting, physical testing, session debriefs, signals and trends, multi-channel communication (WhatsApp, email, app), the team kitty and fines, and managing multiple teams."
+    },
+    {
+      "id": "09-conclusion",
+      "scene": { "route": "/teams/1/dashboard", "device": "desktop" },
+      "text": "Call-ups, load, medical, artificial intelligence: a single platform, shared by the whole staff, where every role contributes and everyone stays aligned. Sign up for free, or get in touch for a demo, and discover the whole platform.",
+      "caption": "Call-ups, load, medical, artificial intelligence: a single platform, shared by the whole staff, where every role contributes and everyone stays aligned. Sign up for free, or get in touch for a demo, and discover the whole platform."
+    }
+  ]
+}

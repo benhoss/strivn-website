@@ -1,0 +1,63 @@
+{
+  "lang": "nl",
+  "title": "Strivn — Scoutingrapporten",
+  "voice_note": "NL (Vlaams) stem. text=gesproken (Straïvine), caption=getoond (Strivn). Ids: opponent 2, session 5, report 8, event 21.",
+  "cards": {
+    "introEyebrow": "Scouting",
+    "introTitle": "Van scouting naar het veld",
+    "introSub": "Observeer, stel samen, deel het essentiële met je spelers.",
+    "outroTitle": "Iedereen op één lijn, op wedstrijddag.",
+    "outroSub": "De staf bereidt grondig voor, de speler komt voorbereid aan.",
+    "outroCta": "Ontdek Strivn · strivn.net"
+  },
+  "segments": [
+    {
+      "id": "sc-01-dossier",
+      "scene": { "route": "/teams/1/scouting/opponents/2", "device": "desktop" },
+      "text": "Voor elke tegenstander centraliseert Straïvine een volledig dossier: de kern, de spelers om in de gaten te houden als gevaarlijk gemarkeerd, en een tactische analyse gegenereerd door artificiële intelligentie.",
+      "caption": "Voor elke tegenstander centraliseert Strivn een volledig dossier: de kern, de spelers om in de gaten te houden als gevaarlijk gemarkeerd, en een tactische analyse gegenereerd door AI."
+    },
+    {
+      "id": "sc-02-session",
+      "scene": { "route": "/teams/1/scouting/opponents/2/sessions/5", "device": "desktop" },
+      "text": "Op het veld leg je je observaties vast in gedateerde scoutingsessies. Een uitgebreide notitie, een tactisch bord dat je zelf tekent, en de link naar de betrokken speler: alles in één keer opgeslagen.",
+      "caption": "Op het veld leg je je observaties vast in gedateerde scoutingsessies. Een uitgebreide notitie, een tactisch bord dat je zelf tekent, en de link naar de betrokken speler: alles in één keer opgeslagen."
+    },
+    {
+      "id": "sc-03-apercu",
+      "scene": { "route": "/teams/1/scouting/opponents/2", "device": "desktop" },
+      "text": "Al je observaties komen samen in één overzicht. Je filtert in één beweging op sessie, op speler of op tactisch thema, om precies te vinden wat telt voor de volgende wedstrijd.",
+      "caption": "Al je observaties komen samen in één overzicht. Je filtert in één beweging op sessie, op speler of op tactisch thema, om precies te vinden wat telt voor de volgende wedstrijd."
+    },
+    {
+      "id": "sc-04-creation",
+      "scene": { "route": "/teams/1/scouting/opponents/2/reports", "device": "desktop" },
+      "text": "Daarna komt het rapport. Je maakt er een nieuw aan en sleept je observaties en schema's rechtstreeks in de secties. Geen kopiëren-plakken: je scoutingmateriaal wordt het rapport.",
+      "caption": "Daarna komt het rapport. Je maakt er een nieuw aan en sleept je observaties en schema's rechtstreeks in de secties. Geen kopiëren-plakken: je scoutingmateriaal wordt het rapport."
+    },
+    {
+      "id": "sc-05-rapport",
+      "scene": { "route": "/teams/1/scouting/opponents/2/reports/8/edit", "device": "desktop" },
+      "text": "In enkele minuten krijgt het rapport vorm: het systeem van de tegenstander, de spelers om in de gaten te houden, je tactische schema's en je wedstrijdplan.",
+      "caption": "In enkele minuten krijgt het rapport vorm: het systeem van de tegenstander, de spelers om in de gaten te houden, je tactische schema's en je wedstrijdplan."
+    },
+    {
+      "id": "sc-06-partage",
+      "scene": { "route": "/teams/1/scouting/opponents/2/reports/8/edit", "device": "desktop" },
+      "text": "Eenmaal klaar deel je het. Koppel het aan de komende wedstrijd, kies de spelers als ontvangers, en deel. Iedereen krijgt een melding, en een beveiligde link wordt gegenereerd.",
+      "caption": "Eenmaal klaar deel je het. Koppel het aan de komende wedstrijd, kies de spelers als ontvangers, en deel. Iedereen krijgt een melding, en een beveiligde link wordt gegenereerd."
+    },
+    {
+      "id": "sc-07-joueur-event",
+      "scene": { "route": "/portal/events/21", "device": "mobile" },
+      "text": "Voor de speler komt alles in het portaal. Door de volgende wedstrijd te openen, vindt de speler het door de staf gedeelde rapport terug, vlak onder de details van de match.",
+      "caption": "Voor de speler komt alles in het portaal. Door de volgende wedstrijd te openen, vindt de speler het door de staf gedeelde rapport terug, vlak onder de details van de match."
+    },
+    {
+      "id": "sc-08-joueur-rapport",
+      "scene": { "route": "/portal/reports/8", "device": "mobile" },
+      "text": "Hij opent het en leest het essentiële vanaf zijn telefoon: de richtlijnen, de spelers om in de gaten te houden, en zelfs de tactische schema's. De staf bereidt grondig voor, de speler komt voorbereid aan, en iedereen speelt dezelfde partituur.",
+      "caption": "Hij opent het en leest het essentiële vanaf zijn telefoon: de richtlijnen, de spelers om in de gaten te houden, en zelfs de tactische schema's. De staf bereidt grondig voor, de speler komt voorbereid aan, en iedereen speelt dezelfde partituur."
+    }
+  ]
+}

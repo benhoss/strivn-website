@@ -163,6 +163,14 @@ It is date-relative and safe to re-run. Container names default to
   (`docker stop <project>-vite-1`). The app then serves `public/build/*`.
 - **Product video overview**: `overview/{tts,record,finalize}.mjs` +
   `content/overview-<lang>.json` (scene per segment, desktop + mobile portal).
+  A segment whose `scene.kind === "montage"` (see `08-apercu`) is rendered as a
+  slideshow of full-page screenshots of its `scene.shots` routes — the "ceci
+  n'est qu'une partie des fonctionnalités" overview that lists the other features
+  and invites sign-up/contact. `record.mjs` captures the shots with the coach
+  session and builds an equal-time crossfaded clip filling the voice-over.
+- **Subtitle overlay is windowed**: in `finalize.mjs` each cue PNG is loaded with
+  `-t (end-start) -itsoffset start` (not full-length looped), or the overlay step
+  takes ~an hour with 40+ cues.
 - **Language of the screenshots = language of the DB data**, not just `?lang=`.
   Run `./data/setup-demo.sh <lang>` first (or at least `data/seed-<lang>.sql` + `cache:clear`).
 - **Re-recording the narration?** delete `.work/explainer-core-<lang>.mp4` and
