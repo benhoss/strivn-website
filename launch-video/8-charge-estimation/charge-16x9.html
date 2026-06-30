@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #07080f; }
+      body { font-family: "Inter", sans-serif; color: #f8fafc; }
+      .scene { position: absolute; inset: 0; }
+
+      /* ---------- ambient background ---------- */
+      #bg { position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 0%, #0b1730 0%, #07080f 60%); }
+      #bg .glow { position: absolute; width: 1700px; height: 1700px; border-radius: 50%; left: -300px; top: -520px; background: radial-gradient(circle, rgba(45,127,249,0.20) 0%, rgba(7,8,15,0) 60%); }
+      #bg .glow2 { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; right: -420px; bottom: -520px; background: radial-gradient(circle, rgba(39,215,161,0.10) 0%, rgba(7,8,15,0) 60%); }
+      #bg .grid { position: absolute; inset: 0; opacity: 0.4; background-image: linear-gradient(rgba(248,250,252,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(248,250,252,0.03) 1px, transparent 1px); background-size: 96px 96px; }
+      #bg .vig { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(7,8,15,0) 50%, rgba(5,6,16,0.82) 100%); }
+
+      .overline { font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8497bd; }
+      .overline b { color: #2d7ff9; }
+
+      /* ---------- intro ---------- */
+      #intro { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+      #intro .ov { margin-bottom: 30px; }
+      #intro img { width: 360px; margin-bottom: 44px; }
+      #intro h1 { font-size: 90px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; }
+      #intro h1 em { font-style: normal; color: #2d7ff9; }
+      #intro .sub { margin-top: 30px; font-size: 34px; color: #b5c2d7; }
+
+      /* ---------- formula ---------- */
+      #formula { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+      #formula .ov { margin-bottom: 40px; }
+      #formula .eq { font-size: 96px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 30px; }
+      #formula .eq .lab { font-size: 60px; color: #8497bd; font-weight: 600; }
+      #formula .eq .int { color: #2d7ff9; }
+      #formula .eq .dur { color: #27d7a1; }
+      #formula .eq .op { color: #5b6b8c; font-weight: 400; }
+      #formula .sub { margin-top: 46px; font-size: 40px; color: #b5c2d7; }
+      #formula .sub b { color: #f8fafc; font-weight: 700; }
+      #formula .sub .est { color: #ffb020; }
+
+      /* ---------- stage (persistent hero) ---------- */
+      #stage { position: absolute; inset: 0; }
+
+      .steplab { position: absolute; top: 48px; left: 150px; width: 1050px; }
+      .steplab .k { font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #2d7ff9; line-height: 1.1; }
+      .steplab .k.muted { color: #8497bd; }
+      .steplab .k.gold { color: #27d7a1; }
+      .steplab h2 { margin-top: 9px; font-size: 44px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.05; }
+      .steplab .note { margin-top: 10px; font-size: 27px; color: #b5c2d7; line-height: 1.2; }
+      .steplab .note b { color: #f8fafc; }
+
+      /* chart card */
+      #chartcard { position: absolute; left: 150px; top: 252px; width: 1060px; height: 540px; background: rgba(11,20,40,0.55); border: 1px solid rgba(248,250,252,0.08); border-radius: 24px; box-shadow: 0 30px 80px rgba(3,9,26,0.5); overflow: hidden; }
+      #chartcard .ctitle { position: absolute; top: 22px; left: 32px; font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 0.08em; text-transform: uppercase; color: #8497bd; }
+      #chartcard .yax { position: absolute; top: 70px; left: 32px; font-size: 20px; color: #5b6b8c; transform: rotate(-90deg); transform-origin: left top; }
+      svg.layer { position: absolute; left: 0; top: 0; width: 1060px; height: 540px; }
+      #bandSvg { filter: blur(7px); }
+      .daylab { position: absolute; bottom: 18px; font-size: 24px; font-weight: 600; color: #8497bd; text-align: center; width: 90px; }
+      .daylab.match { color: #f8fafc; }
+
+      /* right column */
+      #meter { position: absolute; left: 1262px; top: 252px; width: 508px; height: 232px; background: rgba(11,20,40,0.55); border: 1px solid rgba(248,250,252,0.08); border-radius: 24px; padding: 30px 36px; }
+      #meter .lab { font-family: "JetBrains Mono", monospace; font-size: 23px; letter-spacing: 0.08em; text-transform: uppercase; color: #8497bd; }
+      #meter .num { margin-top: 6px; font-size: 116px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: #f8fafc; }
+      #meter .num small { font-size: 54px; font-weight: 700; color: #8497bd; vertical-align: 18px; }
+      #meter .track { position: absolute; left: 36px; right: 36px; bottom: 38px; height: 14px; border-radius: 999px; background: rgba(248,250,252,0.08); overflow: hidden; }
+      #meter .fill { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; transform: scaleX(0); transform-origin: left center; border-radius: 999px; background: linear-gradient(90deg, #ffb020 0%, #2d7ff9 55%, #27d7a1 100%); }
+
+      .statcard { position: absolute; left: 1262px; width: 508px; height: 104px; background: rgba(11,20,40,0.45); border: 1px solid rgba(248,250,252,0.07); border-radius: 18px; padding: 0 30px; display: flex; align-items: center; gap: 22px; }
+      #stat1 { top: 508px; } #stat2 { top: 624px; } #stat3 { top: 740px; }
+      .statcard .ic { width: 52px; height: 52px; flex: 0 0 52px; border-radius: 13px; background: rgba(45,127,249,0.12); display: flex; align-items: center; justify-content: center; color: #6ea3fb; }
+      .statcard .ic svg { width: 28px; height: 28px; }
+      .statcard .meta { flex: 1; }
+      .statcard .nm { font-size: 22px; color: #8497bd; font-weight: 600; letter-spacing: 0.02em; }
+      .statcard .vl { font-size: 38px; font-weight: 700; letter-spacing: -0.01em; margin-top: 2px; }
+      .statcard .vl .approx { color: #8497bd; font-weight: 500; }
+      .statcard .tag { position: relative; width: 116px; flex: 0 0 116px; text-align: center; }
+      .statcard .tag span { position: absolute; right: 0; top: -16px; font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 600; letter-spacing: 0.04em; padding: 7px 14px; border-radius: 999px; }
+      .statcard .tag .est { color: #ffb020; background: rgba(255,176,32,0.12); border: 1px solid rgba(255,176,32,0.3); }
+      .statcard .tag .mes { color: #27d7a1; background: rgba(39,215,161,0.12); border: 1px solid rgba(39,215,161,0.32); opacity: 0; }
+
+      /* input chips */
+      .chips { position: absolute; left: 150px; top: 812px; width: 1060px; display: flex; gap: 20px; }
+      .chip { flex: 1; height: 132px; border-radius: 18px; border: 1px solid rgba(248,250,252,0.1); background: rgba(11,20,40,0.4); padding: 18px 22px; display: flex; flex-direction: column; justify-content: space-between; opacity: 0.42; }
+      .chip .top { display: flex; align-items: center; justify-content: space-between; }
+      .chip .cic { width: 46px; height: 46px; border-radius: 12px; background: rgba(248,250,252,0.06); display: flex; align-items: center; justify-content: center; color: #8497bd; }
+      .chip .cic svg { width: 25px; height: 25px; }
+      .chip .dot { width: 15px; height: 15px; border-radius: 50%; background: rgba(248,250,252,0.14); }
+      .chip .nm { font-size: 23px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
+
+      /* narration subtitles (lower third) */
+      .scap { position: absolute; left: 0; right: 0; top: 958px; text-align: center; padding: 0 110px; }
+      .scap > span { display: inline-block; max-width: 1660px; background: rgba(6,12,26,0.88); border: 1px solid rgba(45,127,249,0.30); border-radius: 14px; padding: 13px 32px; font-size: 30px; font-weight: 600; line-height: 1.25; color: #eaf1fb; box-shadow: 0 12px 38px rgba(3,9,26,0.55); letter-spacing: -0.005em; }
+      .scap b { color: #6ea3fb; font-weight: 700; }
+      .scap .g { color: #27d7a1; font-weight: 700; }
+
+      /* dual message */
+      #dual { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      #dual h2 { font-size: 60px; font-weight: 700; letter-spacing: -0.02em; text-align: center; margin-bottom: 56px; }
+      #dual h2 em { font-style: normal; color: #27d7a1; }
+      #dual .cols { display: flex; gap: 48px; align-items: stretch; }
+      #dual .card { width: 720px; border-radius: 28px; padding: 52px 56px; border: 1px solid rgba(248,250,252,0.1); background: rgba(11,20,40,0.5); }
+      #dual .card.right { border-color: rgba(39,215,161,0.35); background: rgba(8,28,24,0.5); box-shadow: 0 24px 70px rgba(39,215,161,0.12); }
+      #dual .card .badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 20px; border-radius: 999px; }
+      #dual .card.left .badge { color: #ffb020; background: rgba(255,176,32,0.12); border: 1px solid rgba(255,176,32,0.3); }
+      #dual .card.right .badge { color: #27d7a1; background: rgba(39,215,161,0.12); border: 1px solid rgba(39,215,161,0.32); }
+      #dual .card h3 { font-size: 46px; font-weight: 700; letter-spacing: -0.01em; margin-top: 28px; line-height: 1.12; }
+      #dual .card p { font-size: 30px; color: #b5c2d7; margin-top: 22px; line-height: 1.35; }
+      #dual .card .fid { margin-top: 40px; font-size: 30px; color: #8497bd; font-weight: 600; }
+      #dual .card .fid b { font-size: 52px; font-weight: 800; letter-spacing: -0.02em; }
+      #dual .card.left .fid b { color: #ffb020; }
+      #dual .card.right .fid b { color: #27d7a1; }
+      #dual .arrow { display: flex; align-items: center; color: #5b6b8c; font-size: 60px; }
+
+      /* outro */
+      #outro { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+      #outro img { width: 380px; margin-bottom: 44px; }
+      #outro h2 { font-size: 58px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; }
+      #outro h2 em { font-style: normal; color: #2d7ff9; }
+      #outro .site { margin-top: 40px; font-family: "JetBrains Mono", monospace; font-size: 38px; font-weight: 600; letter-spacing: 0.14em; }
+      #outro .re { margin-top: 20px; font-size: 28px; color: #8497bd; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="charge169" data-start="0" data-duration="76" data-width="1920" data-height="1080">
+      <div id="bg" class="clip" data-start="0" data-duration="76" data-track-index="0">
+        <div class="glow"></div><div class="glow2"></div><div class="grid"></div><div class="vig"></div>
+      </div>
+
+      <!-- INTRO -->
+      <div id="intro" class="scene clip" data-start="0" data-duration="3.8" data-track-index="3">
+        <div class="ov overline" id="introov"><b>STRIVN</b> · comprendre la charge</div>
+        <img id="intrologo" src="../assets/logo.png" alt="STRIVN" />
+        <h1 id="introh1">De l'estimation<br />à <em>la réalité</em>.</h1>
+        <div class="sub" id="introsub">Comment STRIVN affine la charge, étape par étape.</div>
+      </div>
+
+      <!-- FORMULA -->
+      <div id="formula" class="scene clip" data-start="3.8" data-duration="5.8" data-track-index="3">
+        <div class="ov overline" id="fov">Le calcul de la charge</div>
+        <div class="eq">
+          <span class="lab" id="fcharge">Charge</span>
+          <span class="op" id="feq">=</span>
+          <span class="int" id="fint">Intensité</span>
+          <span class="op" id="fmul">×</span>
+          <span class="dur" id="fdur">Durée</span>
+        </div>
+        <div class="sub" id="fsub">Deux facteurs. Chacun peut être <b>mesuré</b>… <span class="est">ou estimé.</span></div>
+      </div>
+
+      <!-- STAGE -->
+      <div id="stage" class="clip" data-start="9.6" data-duration="53.4" data-track-index="3">
+        <div id="chartcard">
+          <div class="ctitle">Charge d'équipe · microcycle</div>
+
+          <!-- uncertainty band -->
+          <svg class="layer" id="bandSvg" viewBox="0 0 1060 540" preserveAspectRatio="none">
+            <path id="bandPath" d="M60,400 C140,360 150,340 210,300 C290,250 300,160 360,150 C420,142 460,250 510,290 C560,325 600,370 660,390 C730,415 750,140 810,110 C880,75 910,420 960,430"
+              fill="none" stroke="rgba(45,127,249,0.40)" stroke-width="92" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+
+          <!-- line layer -->
+          <svg class="layer" id="lineSvg" viewBox="0 0 1060 540">
+            <!-- baseline + soft gridlines -->
+            <line x1="40" y1="470" x2="1010" y2="470" stroke="rgba(248,250,252,0.10)" stroke-width="2" />
+            <line x1="40" y1="350" x2="1010" y2="350" stroke="rgba(248,250,252,0.045)" stroke-width="1" />
+            <line x1="40" y1="230" x2="1010" y2="230" stroke="rgba(248,250,252,0.045)" stroke-width="1" />
+            <line x1="40" y1="110" x2="1010" y2="110" stroke="rgba(248,250,252,0.045)" stroke-width="1" />
+            <!-- target / planned zone -->
+            <g id="zone" opacity="0">
+              <rect x="40" y="196" width="970" height="120" rx="14" fill="rgba(45,127,249,0.07)" stroke="rgba(45,127,249,0.35)" stroke-width="1.5" stroke-dasharray="9 9" />
+              <text x="56" y="226" fill="#6ea3fb" font-family="JetBrains Mono, monospace" font-size="20" letter-spacing="0.05em">CHARGE PLANIFIÉE · prévu vs réalisé</text>
+            </g>
+            <!-- estimated centerline (dashed, muted) -->
+            <path id="truthEst" d="M60,400 C140,360 150,340 210,300 C290,250 300,160 360,150 C420,142 460,250 510,290 C560,325 600,370 660,390 C730,415 750,140 810,110 C880,75 910,420 960,430"
+              fill="none" stroke="#7d8db0" stroke-width="3.5" stroke-dasharray="11 13" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+            <!-- real centerline (solid, brand) -->
+            <path id="truthReal" d="M60,400 C140,360 150,340 210,300 C290,250 300,160 360,150 C420,142 460,250 510,290 C560,325 600,370 660,390 C730,415 750,140 810,110 C880,75 910,420 960,430"
+              fill="none" stroke="#2d7ff9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0" />
+            <!-- data point dots -->
+            <g id="dots">
+              <circle cx="60"  cy="400" r="9" fill="#27d7a1" opacity="0" />
+              <circle cx="210" cy="300" r="9" fill="#27d7a1" opacity="0" />
+              <circle cx="360" cy="150" r="9" fill="#27d7a1" opacity="0" />
+              <circle cx="510" cy="290" r="9" fill="#27d7a1" opacity="0" />
+              <circle cx="660" cy="390" r="9" fill="#27d7a1" opacity="0" />
+              <circle cx="810" cy="110" r="10" fill="#27d7a1" opacity="0" />
+              <circle cx="960" cy="430" r="9" fill="#27d7a1" opacity="0" />
+            </g>
+          </svg>
+
+          <div class="daylab" style="left:35px">Lun</div>
+          <div class="daylab" style="left:185px">Mar</div>
+          <div class="daylab" style="left:335px">Mer</div>
+          <div class="daylab" style="left:485px">Jeu</div>
+          <div class="daylab" style="left:635px">Ven</div>
+          <div class="daylab match" style="left:785px">Sam · match</div>
+          <div class="daylab" style="left:935px">Dim</div>
+        </div>
+
+        <!-- fidelity meter -->
+        <div id="meter">
+          <div class="lab">Fidélité à la réalité</div>
+          <div class="num"><span id="fidNum">55</span><small>%</small></div>
+          <div class="track"><div class="fill" id="fidFill"></div></div>
+        </div>
+
+        <!-- stat cards -->
+        <div class="statcard" id="stat1">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 8-9"/><path d="M21 6v4h-4"/></svg></div>
+          <div class="meta"><div class="nm">sRPE · charge de séance</div><div class="vl"><span class="approx" id="s1ap">≈ </span>612 <span style="font-size:24px;color:#8497bd">UA</span></div></div>
+          <div class="tag"><span class="est" id="s1est">estimé</span><span class="mes" id="s1mes">mesuré</span></div>
+        </div>
+        <div class="statcard" id="stat2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 9 9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div class="meta"><div class="nm">ACWR · aigu : chronique</div><div class="vl" id="s2v"><span class="approx" id="s2ap">≈ </span><span id="s2num">1,38</span></div></div>
+          <div class="tag"><span class="est" id="s2est">estimé</span><span class="mes" id="s2mes">mesuré</span></div>
+        </div>
+        <div class="statcard" id="stat3">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div>
+          <div class="meta"><div class="nm">Monotonie · variation</div><div class="vl" id="s3v"><span class="approx" id="s3ap">≈ </span><span id="s3num">1,5</span></div></div>
+          <div class="tag"><span class="est" id="s3est">estimé</span><span class="mes" id="s3mes">mesuré</span></div>
+        </div>
+
+        <!-- input chips -->
+        <div class="chips">
+          <div class="chip" id="chip1">
+            <div class="top"><div class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div><div class="dot"></div></div>
+            <div class="nm">Débrief de séance</div>
+          </div>
+          <div class="chip" id="chip2">
+            <div class="top"><div class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><div class="dot"></div></div>
+            <div class="nm">Planification de charge</div>
+          </div>
+          <div class="chip" id="chip3">
+            <div class="top"><div class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 2h6"/></svg></div><div class="dot"></div></div>
+            <div class="nm">Temps de jeu réels</div>
+          </div>
+          <div class="chip" id="chip4">
+            <div class="top"><div class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><div class="dot"></div></div>
+            <div class="nm">Check-ins joueurs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP LABELS (track 4) -->
+      <div class="steplab clip" id="lab0" data-start="9.8" data-duration="10.2" data-track-index="4">
+        <div class="k muted">Niveau 0 · aucune saisie</div>
+        <h2>Le coach ne fait rien.<br />Les joueurs non plus.</h2>
+        <div class="note"><b>Et pourtant, la charge est déjà là</b> — STRIVN l'estime.</div>
+      </div>
+      <div class="steplab clip" id="lab1" data-start="20.0" data-duration="8.4" data-track-index="4">
+        <div class="k">+ Débrief de séance</div>
+        <h2>L'intensité réelle<br />affine l'estimation.</h2>
+        <div class="note">Le nuage d'incertitude commence à se resserrer.</div>
+      </div>
+      <div class="steplab clip" id="lab2" data-start="28.4" data-duration="8.4" data-track-index="4">
+        <div class="k">+ Planification de charge</div>
+        <h2>Une cible claire :<br />prévu vs réalisé.</h2>
+        <div class="note">La charge se compare à ce que vous aviez planifié.</div>
+      </div>
+      <div class="steplab clip" id="lab3" data-start="36.8" data-duration="8.4" data-track-index="4">
+        <div class="k">+ Temps de jeu réels</div>
+        <h2>La charge devient<br />individuelle.</h2>
+        <div class="note">La durée réelle de chaque joueur entre dans le calcul.</div>
+      </div>
+      <div class="steplab clip" id="lab4" data-start="45.2" data-duration="9.6" data-track-index="4">
+        <div class="k">+ Check-ins joueurs</div>
+        <h2>Le ressenti réel<br />verrouille la courbe.</h2>
+        <div class="note">L'estimation laisse place à la <b>mesure</b>.</div>
+      </div>
+      <div class="steplab clip" id="lab5" data-start="54.8" data-duration="8.2" data-track-index="4">
+        <div class="k gold">Charge fidèle à la réalité</div>
+        <h2>Une planification<br />qui colle au terrain.</h2>
+        <div class="note">ACWR maîtrisé, monotonie sous contrôle, par joueur.</div>
+      </div>
+
+      <!-- DUAL MESSAGE -->
+      <div id="dual" class="scene clip" data-start="63.0" data-duration="8.2" data-track-index="3">
+        <h2>Deux niveaux d'engagement.<br /><em>Toujours</em> de la valeur.</h2>
+        <div class="cols">
+          <div class="card left" id="dleft">
+            <span class="badge">Valeur immédiate</span>
+            <h3>Le coach passif</h3>
+            <p>Aucune saisie, aucun check-in. STRIVN estime la charge à votre place.</p>
+            <div class="fid">Fidélité <b>~55%</b></div>
+          </div>
+          <div class="arrow" id="darrow">→</div>
+          <div class="card right" id="dright">
+            <span class="badge">Pilotage précis</span>
+            <h3>Le coach engagé</h3>
+            <p>Briefs, planification, temps de jeu, check-ins : la charge devient le reflet exact du terrain.</p>
+            <div class="fid">Fidélité <b>~97%</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OUTRO -->
+      <div id="outro" class="scene clip" data-start="71.2" data-duration="4.8" data-track-index="3">
+        <img id="outrologo" src="../assets/logo.png" alt="STRIVN" />
+        <h2>La charge, de l'estimation<br />au <em>pilotage fin</em>.</h2>
+        <div class="site" id="outrosite">strivn.net</div>
+        <div class="re" id="outrore">Gratuit pour une équipe · tous les sports</div>
+      </div>
+
+      <!-- NARRATION SUBTITLES (track 5) -->
+      <div class="scap clip" data-start="0.5"  data-duration="3.4" data-track-index="5"><span>Comment STRIVN calcule la charge d'entraînement de votre équipe.</span></div>
+      <div class="scap clip" data-start="4.2"  data-duration="2.4" data-track-index="5"><span>La charge, c'est l'intensité d'une séance multipliée par sa durée.</span></div>
+      <div class="scap clip" data-start="6.8"  data-duration="2.6" data-track-index="5"><span>Et chacun de ces deux facteurs peut être <b>mesuré</b>… ou estimé.</span></div>
+      <div class="scap clip" data-start="10.2" data-duration="3.1" data-track-index="5"><span>Au départ, le coach ne saisit rien, les joueurs ne font aucun check-in.</span></div>
+      <div class="scap clip" data-start="13.5" data-duration="3.1" data-track-index="5"><span>STRIVN estime la charge à partir du calendrier et du type de séance.</span></div>
+      <div class="scap clip" data-start="16.8" data-duration="3.1" data-track-index="5"><span>Une charge déjà exploitable, fiable à <b>~55 %</b> — sans le moindre effort.</span></div>
+      <div class="scap clip" data-start="20.3" data-duration="3.4" data-track-index="5"><span>Le coach fait le <b>débrief de séance</b> : l'intensité réelle s'affine.</span></div>
+      <div class="scap clip" data-start="24.0" data-duration="4.1" data-track-index="5"><span>Le nuage d'incertitude se resserre, la fidélité monte.</span></div>
+      <div class="scap clip" data-start="28.7" data-duration="3.3" data-track-index="5"><span>Il <b>planifie la charge</b> de la semaine : une cible claire se dessine.</span></div>
+      <div class="scap clip" data-start="32.2" data-duration="4.4" data-track-index="5"><span>STRIVN compare alors le prévu au réalisé, jour après jour.</span></div>
+      <div class="scap clip" data-start="37.1" data-duration="3.2" data-track-index="5"><span>Il saisit les <b>temps de jeu réels</b> de chaque joueur.</span></div>
+      <div class="scap clip" data-start="40.5" data-duration="4.5" data-track-index="5"><span>La charge n'est plus seulement collective : elle devient individuelle.</span></div>
+      <div class="scap clip" data-start="45.5" data-duration="3.3" data-track-index="5"><span>Les joueurs font leurs <b>check-ins</b> : fatigue, sommeil, stress, ressenti.</span></div>
+      <div class="scap clip" data-start="49.0" data-duration="2.8" data-track-index="5"><span>Le ressenti réel remplace l'estimation : la courbe se cale sur la réalité.</span></div>
+      <div class="scap clip" data-start="52.0" data-duration="2.8" data-track-index="5"><span>sRPE, ACWR, monotonie : des indicateurs <span class="g">mesurés</span>, fiables à <span class="g">97 %</span>.</span></div>
+      <div class="scap clip" data-start="55.2" data-duration="3.2" data-track-index="5"><span>Vous obtenez une planification de charge qui colle vraiment au terrain.</span></div>
+      <div class="scap clip" data-start="58.6" data-duration="4.0" data-track-index="5"><span>Charge maîtrisée, risque de blessure réduit, décisions plus sûres.</span></div>
+      <div class="scap clip" data-start="63.4" data-duration="3.2" data-track-index="5"><span>Coach passif : STRIVN estime pour vous — la valeur est immédiate.</span></div>
+      <div class="scap clip" data-start="66.8" data-duration="4.0" data-track-index="5"><span>Coach engagé : la donnée devient le <span class="g">reflet exact</span> de votre équipe.</span></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+      /* ambient drift */
+      tl.fromTo("#bg .glow", { x: -90, y: -40 }, { x: 90, y: 40, duration: 76, ease: "none" }, 0);
+      tl.fromTo("#bg .glow2", { x: 80, y: 50 }, { x: -80, y: -50, duration: 76, ease: "none" }, 0);
+
+      /* ---- intro ---- */
+      tl.from("#introov", { opacity: 0, y: -20, duration: 0.5 }, 0.15);
+      tl.from("#intrologo", { opacity: 0, scale: 0.88, duration: 0.6 }, 0.3);
+      tl.from("#introh1", { opacity: 0, y: 34, duration: 0.6 }, 0.65);
+      tl.from("#introsub", { opacity: 0, y: 20, duration: 0.5 }, 1.05);
+      tl.to("#intro", { opacity: 0, scale: 1.03, duration: 0.4, ease: "power2.in" }, 3.4);
+      tl.set("#intro", { opacity: 0 }, 3.8);
+
+      /* ---- formula ---- */
+      tl.from("#fov", { opacity: 0, y: -16, duration: 0.45 }, 3.95);
+      tl.from("#fcharge", { opacity: 0, y: 24, duration: 0.45 }, 4.2);
+      tl.from("#feq", { opacity: 0, duration: 0.3 }, 4.5);
+      tl.from("#fint", { opacity: 0, y: 24, scale: 0.9, duration: 0.45, ease: "back.out(1.6)" }, 4.65);
+      tl.from("#fmul", { opacity: 0, duration: 0.3 }, 5.0);
+      tl.from("#fdur", { opacity: 0, y: 24, scale: 0.9, duration: 0.45, ease: "back.out(1.6)" }, 5.15);
+      tl.from("#fsub", { opacity: 0, y: 18, duration: 0.5 }, 5.9);
+      tl.to("#formula", { opacity: 0, scale: 1.03, duration: 0.4, ease: "power2.in" }, 9.2);
+      tl.set("#formula", { opacity: 0 }, 9.6);
+
+      /* ---- stage entrance ---- */
+      tl.from("#chartcard", { opacity: 0, y: 40, duration: 0.6 }, 9.8);
+      tl.from("#meter", { opacity: 0, y: 40, duration: 0.6 }, 9.95);
+      tl.from("#stat1", { opacity: 0, x: 30, duration: 0.5 }, 10.1);
+      tl.from("#stat2", { opacity: 0, x: 30, duration: 0.5 }, 10.2);
+      tl.from("#stat3", { opacity: 0, x: 30, duration: 0.5 }, 10.3);
+      tl.from(".chip", { opacity: 0, y: 30, duration: 0.5, stagger: 0.08 }, 10.2);
+      // start: chips dim, band widest, estimate dashed line shown
+      tl.from("#bandPath", { attr: { "stroke-width": 0 }, opacity: 0, duration: 0.7 }, 10.0);
+
+      /* helper: activate a chip */
+      function activateChip(id, t) {
+        tl.to(`${id}`, { opacity: 1, borderColor: "rgba(45,127,249,0.55)", backgroundColor: "rgba(45,127,249,0.10)", boxShadow: "0 16px 44px rgba(45,127,249,0.18)", duration: 0.5 }, t);
+        tl.to(`${id} .cic`, { backgroundColor: "rgba(45,127,249,0.18)", color: "#6ea3fb", duration: 0.5 }, t);
+        tl.to(`${id} .dot`, { backgroundColor: "#27d7a1", boxShadow: "0 0 16px rgba(39,215,161,0.7)", duration: 0.4 }, t);
+        tl.fromTo(`${id}`, { scale: 1 }, { scale: 1.035, duration: 0.22, yoyo: true, repeat: 1, ease: "power2.out" }, t);
+      }
+
+      /* ---- step 1: brief (band 92 -> 70) ---- */
+      activateChip("#chip1", 20.1);
+      tl.to("#bandPath", { attr: { "stroke-width": 70 }, duration: 1.0, ease: "power2.inOut" }, 20.1);
+
+      /* ---- step 2: planning (band -> 52, zone in) ---- */
+      activateChip("#chip2", 28.5);
+      tl.to("#bandPath", { attr: { "stroke-width": 52 }, duration: 1.0, ease: "power2.inOut" }, 28.5);
+      tl.to("#zone", { opacity: 1, duration: 0.6 }, 28.7);
+
+      /* ---- step 3: play time (band -> 32) ---- */
+      activateChip("#chip3", 36.9);
+      tl.to("#bandPath", { attr: { "stroke-width": 32 }, duration: 1.0, ease: "power2.inOut" }, 36.9);
+
+      /* ---- step 4: check-ins (band -> 12, real line locks, dots land, tags flip) ---- */
+      activateChip("#chip4", 45.3);
+      tl.to("#bandPath", { attr: { "stroke-width": 12 }, opacity: 0.55, duration: 1.2, ease: "power2.inOut" }, 45.3);
+      tl.to("#truthEst", { opacity: 0, duration: 0.6 }, 45.6);
+      tl.to("#truthReal", { opacity: 1, duration: 0.8 }, 45.7);
+      tl.to("#dots circle", { opacity: 1, scale: 1, transformOrigin: "center", duration: 0.45, stagger: 0.1, ease: "back.out(2.2)" }, 46.0);
+      // flip stat tags estimé -> mesuré + numbers settle to safe values
+      [["#s1", null], ["#s2", "1,12"], ["#s3", "0,9"]].forEach(([p, val], i) => {
+        const t = 47.3 + i * 0.35;
+        tl.to(`${p}est`, { opacity: 0, duration: 0.3 }, t);
+        tl.to(`${p}mes`, { opacity: 1, duration: 0.4 }, t + 0.1);
+        tl.to(`${p}ap`, { opacity: 0, duration: 0.3 }, t);
+        tl.to(`${p}v .vl, ${p}v`, { color: "#f8fafc", duration: 0.4 }, t);
+        if (val) {
+          tl.add(() => { const el = document.querySelector(`${p}num`); if (el) el.textContent = val; }, t + 0.18);
+        }
+      });
+
+      /* ---- payoff glow on meter + chart ---- */
+      tl.to("#truthReal", { stroke: "#27d7a1", duration: 0.8 }, 55.0);
+      tl.to("#bandPath", { stroke: "rgba(39,215,161,0.40)", duration: 0.8 }, 55.0);
+      tl.to("#dots circle", { fill: "#27d7a1", duration: 0.5 }, 55.0);
+
+      /* ---- stage out ---- */
+      tl.to("#stage", { opacity: 0, duration: 0.5, ease: "power2.in" }, 62.5);
+      tl.set("#stage", { opacity: 0 }, 63.0);
+
+      /* step labels in/out */
+      const labs = [["#lab0",9.8,10.2],["#lab1",20.0,8.4],["#lab2",28.4,8.4],["#lab3",36.8,8.4],["#lab4",45.2,9.6],["#lab5",54.8,8.2]];
+      labs.forEach(([id, s, d]) => {
+        tl.from(`${id} .k`, { opacity: 0, y: -14, duration: 0.4 }, s + 0.1);
+        tl.from(`${id} h2`, { opacity: 0, y: 22, duration: 0.5 }, s + 0.2);
+        tl.from(`${id} .note`, { opacity: 0, y: 16, duration: 0.45 }, s + 0.4);
+        tl.to(`${id}`, { opacity: 0, duration: 0.35, ease: "power2.in" }, s + d - 0.45);
+        tl.set(`${id}`, { opacity: 0 }, s + d);
+      });
+
+      /* ---- dual message ---- */
+      tl.from("#dual h2", { opacity: 0, y: 26, duration: 0.55 }, 63.25);
+      tl.from("#dleft", { opacity: 0, y: 36, duration: 0.55 }, 63.6);
+      tl.from("#darrow", { opacity: 0, scale: 0.6, duration: 0.5, ease: "back.out(2)" }, 64.0);
+      tl.from("#dright", { opacity: 0, y: 36, duration: 0.55 }, 64.25);
+      tl.fromTo("#dright", { boxShadow: "0 24px 70px rgba(39,215,161,0.0)" }, { boxShadow: "0 24px 70px rgba(39,215,161,0.22)", duration: 0.8, yoyo: true, repeat: 1, ease: "sine.inOut" }, 65.2);
+      tl.to("#dual", { opacity: 0, duration: 0.4, ease: "power2.in" }, 70.8);
+      tl.set("#dual", { opacity: 0 }, 71.2);
+
+      /* ---- outro ---- */
+      tl.from("#outrologo", { opacity: 0, y: 30, duration: 0.55 }, 71.4);
+      tl.from("#outro h2", { opacity: 0, y: 28, duration: 0.55 }, 71.7);
+      tl.from("#outrosite", { opacity: 0, duration: 0.45 }, 72.1);
+      tl.from("#outrore", { opacity: 0, duration: 0.45 }, 72.35);
+
+      /* ---- seek-safe readouts (fidelity number + meter fill) ---- */
+      function lerp(a, b, p) { return a + (b - a) * Math.max(0, Math.min(1, p)); }
+      function fidelityAt(t) {
+        if (t < 20.1) return 55;
+        if (t < 21.1) return lerp(55, 66, (t - 20.1) / 1.0);
+        if (t < 28.5) return 66;
+        if (t < 29.5) return lerp(66, 77, (t - 28.5) / 1.0);
+        if (t < 36.9) return 77;
+        if (t < 37.9) return lerp(77, 87, (t - 36.9) / 1.0);
+        if (t < 45.3) return 87;
+        if (t < 46.8) return lerp(87, 97, (t - 45.3) / 1.5);
+        return 97;
+      }
+      const fidNum = document.getElementById("fidNum");
+      const fidFill = document.getElementById("fidFill");
+      tl.eventCallback("onUpdate", () => {
+        const v = fidelityAt(tl.time());
+        if (fidNum) fidNum.textContent = Math.round(v);
+        if (fidFill) fidFill.style.transform = "scaleX(" + (v / 100) + ")";
+      });
+
+      /* subtitle fade-in (driven by each clip's own data-start) */
+      document.querySelectorAll(".scap").forEach((el) => {
+        const s = parseFloat(el.getAttribute("data-start")) || 0;
+        const sp = el.querySelector("span");
+        if (sp) tl.from(sp, { opacity: 0, y: 14, duration: 0.32, ease: "power2.out" }, s + 0.02);
+      });
+
+      window.__timelines["charge169"] = tl;
+    </script>
+  </body>
+</html>
