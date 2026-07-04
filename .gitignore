@@ -41,5 +41,10 @@ launch-video/**/*.wav
 launch-video/**/*.aiff
 launch-video/**/*.webm
 
+# Marketing video — agent working files & demo-capture scratch (not part of the site)
+launch-video/agent/
+launch-video/8-demo-convocation/
+launch-video/launch-video/
+
 # Secrets — never commit (ElevenLabs key, etc.)
 .env
