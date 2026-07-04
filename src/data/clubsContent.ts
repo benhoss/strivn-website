@@ -161,4 +161,68 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       cta: 'Start free as a coach',
     },
   },
+
+  nl: {
+    meta: {
+      title: 'STRIVN voor clubs — coördinatie over meerdere teams',
+      description:
+        'Coördineer elk team, elke staf en elke medische workflow van je club in één platform. Het Club-plan wordt geleidelijk uitgerold — schrijf je in op de wachtlijst.',
+    },
+    eyebrow: 'STRIVN voor clubs',
+    hero: {
+      title: 'Eén club. Elk team, onder één dak.',
+      lede: 'Het Coach-plan laat één team draaien. Het Club-plan coördineert ze allemaal: een gedeelde spelersbasis, gedeelde medische staf, dashboards over alle teams heen. De uitrol verloopt geleidelijk — clubs op de wachtlijst zijn als eerste aan de beurt.',
+      status: 'Binnenkort · geleidelijke uitrol',
+    },
+    benefits: {
+      title: 'Wat het Club-plan toevoegt',
+      items: [
+        {
+          title: 'Meerdere teams, één platform',
+          text: 'Elk team van de club draait op dezelfde basis: dezelfde events, dezelfde aanwezigheidslogica, geen aparte silo’s per team.',
+        },
+        {
+          title: 'Een gedeelde spelersbasis',
+          text: 'Een speler die van team wisselt behoudt zijn historiek: aanwezigheden, medisch dossier, belasting. Niets moet opnieuw worden ingevoerd.',
+        },
+        {
+          title: 'Gedeelde medische staf en coördinatoren',
+          text: 'De kinesist die drie teams volgt, ziet drie teams. Coördinatoren volgen elk team op zonder om exports te moeten vragen.',
+        },
+        {
+          title: 'Clubdashboards en rapportage',
+          text: 'Beschikbaarheid, blessures en belasting over alle teams, in één overzicht gemaakt voor wie de club laat draaien.',
+        },
+        {
+          title: 'Blessureopvolging over teams heen',
+          text: 'Een blessure volgt de speler, niet het team — de terugkeer naar het spel blijft coherent, ook wanneer een speler in een hogere categorie meespeelt.',
+        },
+      ],
+    },
+    form: {
+      title: 'Inschrijven op de Club-wachtlijst',
+      body: 'Vertel ons over je club en we nemen contact op zodra de uitrol jou bereikt. Zonder verplichting — het plaatst je club gewoon in de rij.',
+      fields: {
+        name: { label: 'Je naam', placeholder: 'Voornaam Achternaam' },
+        email: { label: 'E-mail', placeholder: 'jij@club.be' },
+        club: { label: 'Naam van de club', placeholder: 'FC Voorbeeld' },
+        role: { label: 'Je rol binnen de club', placeholder: 'Voorzitter, coördinator, technisch verantwoordelijke…' },
+        teams: { label: 'Aantal teams', placeholder: 'bv. 12' },
+      },
+      submit: 'Inschrijven op de wachtlijst',
+      sending: 'Verzenden…',
+      success: {
+        title: 'Je staat op de lijst.',
+        body: 'Bedankt — we nemen contact op naarmate het Club-plan wordt uitgerold. Ondertussen kunnen je coaches al gratis starten met het Coach-plan.',
+      },
+      error: 'Het formulier kon niet worden verzonden. Probeer het opnieuw, of schrijf naar hello@strivn.net.',
+      privacyNote: 'We gebruiken deze gegevens enkel om contact met je op te nemen over het Club-plan.',
+      privacyLink: { label: 'Privacybeleid', href: '/privacy' },
+    },
+    finalCta: {
+      title: 'Je coaches hoeven niet te wachten.',
+      body: 'Het Coach-plan is gratis voor één team, vandaag nog. Clubs stappen sneller over wanneer hun coaches de tool al gebruiken.',
+      cta: 'Gratis starten als coach',
+    },
+  },
 };

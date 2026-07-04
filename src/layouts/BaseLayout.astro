@@ -34,7 +34,7 @@ const canonicalUrl = canonicalPath ? new URL(canonicalPath, site).toString() : u
 const ogImageUrl = ogImage
   ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, site).toString())
   : undefined;
-const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_US';
+const ogLocale = lang === 'fr' ? 'fr_FR' : lang === 'nl' ? 'nl_NL' : 'en_US';
 
 // JSON-LD: Organization + WebSite. Single coherent graph per page.
 const jsonLd = {
@@ -54,7 +54,7 @@ const jsonLd = {
       '@id': `${site.toString()}#website`,
       url: site.toString(),
       name: siteName,
-      inLanguage: ['en', 'fr'],
+      inLanguage: ['en', 'fr', 'nl'],
     },
     ...jsonLdExtra,
   ],

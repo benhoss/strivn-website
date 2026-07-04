@@ -10,14 +10,16 @@ interface Props {
 const { locale } = Astro.props;
 const c = scContent[locale];
 
-const base = locale === 'fr' ? '/fr' : '/en';
+const base = `/${locale}`;
 const frPath = '/fr/preparateurs-physiques/';
 const enPath = '/en/sc-coaches/';
-const canonicalPath = locale === 'fr' ? frPath : enPath;
-const switchHrefs = { en: enPath, fr: frPath };
+const nlPath = '/nl/sc-coaches/';
+const canonicalPath = locale === 'fr' ? frPath : locale === 'nl' ? nlPath : enPath;
+const switchHrefs = { en: enPath, fr: frPath, nl: nlPath };
 const alternates = [
   { hreflang: 'en', href: enPath },
   { hreflang: 'fr', href: frPath },
+  { hreflang: 'nl', href: nlPath },
   { hreflang: 'x-default', href: frPath },
 ];
 
@@ -46,8 +48,8 @@ function readinessColor(pct: number): string {
   return 'var(--risk)';
 }
 
-const boardLabel = locale === 'fr' ? 'Readiness du groupe' : 'Squad readiness';
-const boardToday  = locale === 'fr' ? "Aujourd'hui"         : 'Today';
+const boardLabel = locale === 'fr' ? 'Readiness du groupe' : locale === 'nl' ? 'Readiness van de groep' : 'Squad readiness';
+const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 'Vandaag'                : 'Today';
 ---
 
 <SubpageLayout

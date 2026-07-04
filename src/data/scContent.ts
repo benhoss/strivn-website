@@ -298,4 +298,137 @@ export const scContent: Record<Locale, ScContent> = {
       cta: 'Create my team space',
     },
   },
+
+  nl: {
+    meta: {
+      title: 'STRIVN voor fysieke trainers: belasting, GPS en readiness',
+      description:
+        'Belastingsplanning, GPS-import, readiness-inschatting, blessureopvolging en return-to-play: STRIVN geeft fysieke trainers een volledig beeld van elke speler, in realtime.',
+    },
+    eyebrow: 'STRIVN voor fysieke trainers',
+    hero: {
+      title: 'De belasting, readiness en gezondheid van elke speler. Op één plek.',
+      lede: 'GPS-import, vermoeidheidsinschatting, belastingsplanning en return-to-play. Alles op één platform, gedeeld met je volledige staf.',
+      cta: 'Gratis beginnen',
+    },
+    showcase: [
+      {
+        title: 'Trainingsbelasting plannen en opvolgen',
+        blurb: 'Plan de week en laat de geplande vs. werkelijke belasting en de ACWR per speler zichzelf berekenen. sRPE- of GPS-formule, geen spreadsheet nodig.',
+        slides: [
+          {
+            img: '/screenshots/load-planning.png',
+            video: '/videos/load-planning-en',
+            kind: 'desktop',
+            alt: 'STRIVN belastingsplanning: geplande dagbelasting, wekelijks doel en verwachte ACWR voor de week',
+            caption: 'Plan de belasting van de week per dag, met een ACWR-prognose en een wekelijks doel.',
+          },
+          {
+            img: '/screenshots/load-overview.png',
+            kind: 'desktop',
+            alt: 'STRIVN teambelasting-overzicht: totale belasting, gemiddelde RPE en verdeling per speler',
+            caption: 'De belasting van de week, per speler, met RPE en verdeling.',
+          },
+          {
+            img: '/screenshots/load-formula.png',
+            kind: 'desktop',
+            alt: 'De sRPE-belastingsformule configureren in STRIVN',
+            caption: 'Stel je sRPE- of GPS-belastingsformule in enkele seconden in.',
+          },
+        ],
+      },
+      {
+        title: 'Readiness en check-ins, aan beide kanten',
+        blurb: '’s Ochtends zie je wie geantwoord heeft en wie een risico vormt. Spelers noteren vermoeidheid, slaap, stress en stemming vanaf hun telefoon.',
+        slides: [
+          {
+            img: '/screenshots/wellness-briefing.png',
+            kind: 'desktop',
+            alt: 'STRIVN ochtendbriefing: antwoorden op check-ins en risiconiveaus per speler',
+            caption: 'De ochtendbriefing: wie geantwoord heeft, wie je in de gaten moet houden.',
+          },
+          {
+            img: '/screenshots/portal-checkin.png',
+            kind: 'mobile',
+            alt: 'Welzijns-check-in aan spelerskant: schuifregelaars voor vermoeidheid, slaap, stress en stemming',
+            caption: 'Spelers noteren vermoeidheid, slaap, stress en stemming in enkele seconden.',
+          },
+        ],
+      },
+      {
+        title: 'Ook gebouwd voor spelers',
+        blurb: 'Elke speler krijgt zijn eigen ruimte: readiness, wekelijkse belasting, trainings- en wedstrijdagenda. Geen account aanmaken, geen wrijving.',
+        slides: [
+          {
+            img: '/screenshots/portal-fitness.png',
+            kind: 'mobile',
+            alt: 'STRIVN spelersruimte: readiness, recente belasting en wekelijkse trend',
+            caption: 'Elke speler ziet zijn readiness en wekelijkse belasting.',
+          },
+          {
+            img: '/screenshots/portal-agenda.png',
+            kind: 'mobile',
+            alt: 'STRIVN spelersagenda: trainingen, wedstrijden en vergaderingen voor de komende twee weken',
+            caption: 'Trainingen, wedstrijden en vergaderingen in één agenda.',
+          },
+        ],
+      },
+    ],
+    featuresLead: 'En al de rest van de dag van een fysieke trainer.',
+    features: {
+      title: 'Wat STRIVN fysieke trainers biedt',
+      items: [
+        {
+          title: 'Belastingsplanning & periodisering',
+          text: 'Bouw trainingsweken op met geplande vs. werkelijke belasting, ACWR-beheer en belastingscategorieën (fysiek, technisch, wedstrijd). Overbelasting komt vanzelf naar boven, geen zoekwerk in spreadsheets.',
+        },
+        {
+          title: 'GPS-import & belastingsformules',
+          text: 'Importeer Catapult- of Statsport-bestanden, koppel je eigen metrieken en bereken automatisch de sessiebelasting per speler. Geen handmatige herinvoer, geen spreadsheets met versiebeheer.',
+        },
+        {
+          title: 'Readiness & vermoeidheidsinschatting',
+          text: 'STRIVN projecteert de readiness van elke speler 1 tot 5 dagen vooruit op basis van de werkelijke belasting en een model voor vermoeidheidsafname. Anticipeer op piekbelasting voordat het een probleem wordt.',
+        },
+        {
+          title: 'RPE- & welzijns-check-ins',
+          text: 'Welzijnsvragenlijsten ’s ochtends en sRPE na de sessie, automatisch verstuurd. Individuele en teamtrends zijn in één oogopslag zichtbaar, zonder spelers achterna te lopen.',
+        },
+        {
+          title: 'Blessureopvolging & return-to-play',
+          text: 'Drie beschikbaarheidsstatussen: NIET BESCHIKBAAR, GEDEELTELIJKE TRAINING en BESCHIKBAAR. Voortgangsnotities, bijlagen en volledige historiek per speler. RTP blijft coherent, zelfs over teams heen.',
+        },
+        {
+          title: 'AI-coachassistent',
+          text: 'Vraag het in gewone taal: "Wie loopt deze week risico?", "Plan een hersteltraining voor morgen." De AI leest belasting, readiness en blessures om je met de volledige context te antwoorden.',
+        },
+      ],
+    },
+    howItWorks: {
+      title: 'De dag van een fysieke trainer met STRIVN',
+      steps: [
+        {
+          title: '’s Ochtends: readiness controleren',
+          text: 'De welzijns-check-ins komen automatisch binnen. STRIVN toont je wie fris is, wie vermoeidheid opbouwt en wie boven zijn drempel zit. Nog voor de sessie begint.',
+        },
+        {
+          title: 'Voor de sessie: belasting plannen',
+          text: 'Pas de geplande intensiteit aan op basis van de readiness van de groep. Het wekelijkse belastingsplan werkt in realtime bij en signaleert automatisch onevenwichten in acute:chronische belasting.',
+        },
+        {
+          title: 'Tijdens of na: de werkelijke belasting vastleggen',
+          text: 'Importeer het GPS-sessiebestand of voer de RPE-waarden per speler in. De werkelijke belasting wordt meteen vergeleken met het plan en werkt de readiness-projecties voor de volgende dagen bij.',
+        },
+        {
+          title: 'Op het einde van de week: trends bekijken',
+          text: 'Visualiseer de cumulatieve belasting, de ACWR per speler en de overbelastingswaarschuwingen. Deel het dashboard met de hoofdcoach en de teamarts, zonder handmatige export.',
+        },
+      ],
+    },
+    finalCta: {
+      title: 'Begin vandaag gratis.',
+      body: 'STRIVN is gratis voor één team, zonder bankkaart. Nodig je medische staf en je hoofdcoach uit. Zij zien dezelfde gegevens in realtime.',
+      cta: 'Mijn teamruimte aanmaken',
+    },
+  },
 };

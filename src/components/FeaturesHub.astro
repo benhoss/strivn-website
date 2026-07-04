@@ -12,12 +12,13 @@ const fc = featuresContent[locale];
 const hub = fc.hub;
 const c = landingContent[locale];
 
-const base = locale === 'fr' ? '/fr' : '/en';
+const base = `/${locale}`;
 const canonicalPath = `${base}/features/`;
-const switchHrefs = { en: '/en/features/', fr: '/fr/features/' };
+const switchHrefs = { en: '/en/features/', fr: '/fr/features/', nl: '/nl/features/' };
 const alternates = [
   { hreflang: 'en', href: switchHrefs.en },
   { hreflang: 'fr', href: switchHrefs.fr },
+  { hreflang: 'nl', href: switchHrefs.nl },
   { hreflang: 'x-default', href: switchHrefs.fr },
 ];
 

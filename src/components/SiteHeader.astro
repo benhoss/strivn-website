@@ -12,7 +12,7 @@ interface Props {
   /** Where the brand logo links to ('#s-main' on the homepage, locale root on subpages). */
   brandHref?: string;
   /** Language-switcher targets, so subpages can point to their own counterpart. */
-  switchHrefs?: { en: string; fr: string };
+  switchHrefs?: { en: string; fr: string; nl?: string };
 }
 
 const {
@@ -20,13 +20,21 @@ const {
   links,
   cta,
   brandHref = '#s-main',
-  switchHrefs = { en: '/en/', fr: '/fr/' },
+  switchHrefs = { en: '/en/', fr: '/fr/', nl: '/nl/' },
 } = Astro.props;
 
-const isFrench = locale === 'fr';
-const navAria = isFrench ? 'Navigation principale' : 'Primary navigation';
-const langAria = isFrench ? 'Changer la langue' : 'Switch language';
-const menuLabel = isFrench ? 'Menu' : 'Menu';
+const navAria =
+  locale === 'fr' ? 'Navigation principale' : locale === 'nl' ? 'Hoofdnavigatie' : 'Primary navigation';
+const langAria =
+  locale === 'fr' ? 'Changer la langue' : locale === 'nl' ? 'Taal wisselen' : 'Switch language';
+const menuLabel = 'Menu';
+
+/** Language switcher entries — NL falls back to the NL homepage when a page has no counterpart. */
+const langs = [
+  { code: 'fr' as const, label: 'FR', href: switchHrefs.fr },
+  { code: 'en' as const, label: 'EN', href: switchHrefs.en },
+  { code: 'nl' as const, label: 'NL', href: switchHrefs.nl ?? '/nl/' },
+];
 ---
 
 <!-- Nav · N5 floating pill -->
@@ -69,9 +77,12 @@ const menuLabel = isFrench ? 'Menu' : 'Menu';
   </button>
 
   <div class="s-nav__lang" role="group" aria-label={langAria}>
-    <a href={switchHrefs.fr} aria-current={isFrench ? 'page' : undefined}>FR</a>
-    <span class="s-nav__lang-sep" aria-hidden="true">·</span>
-    <a href={switchHrefs.en} aria-current={!isFrench ? 'page' : undefined}>EN</a>
+    {langs.map((l, i) => (
+      <>
+        {i > 0 && <span class="s-nav__lang-sep" aria-hidden="true">·</span>}
+        <a href={l.href} aria-current={locale === l.code ? 'page' : undefined}>{l.label}</a>
+      </>
+    ))}
   </div>
 
   <a href={APP_URL} target="_blank" rel="noopener" class="s-nav__cta">{cta}</a>
@@ -95,9 +106,12 @@ const menuLabel = isFrench ? 'Menu' : 'Menu';
       ))}
     </ul>
     <div class="s-nav__mobile-lang" role="group" aria-label={langAria}>
-      <a href={switchHrefs.fr} aria-current={isFrench ? 'page' : undefined}>FR</a>
-      <span aria-hidden="true">·</span>
-      <a href={switchHrefs.en} aria-current={!isFrench ? 'page' : undefined}>EN</a>
+      {langs.map((l, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true">·</span>}
+          <a href={l.href} aria-current={locale === l.code ? 'page' : undefined}>{l.label}</a>
+        </>
+      ))}
     </div>
   </div>
 </nav>

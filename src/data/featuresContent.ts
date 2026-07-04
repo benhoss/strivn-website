@@ -833,4 +833,405 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
     },
   },
+
+  nl: {
+    hubName: 'Functies',
+    backToHub: 'Alle functies',
+    moreTitle: 'Ontdek de rest van het platform',
+    moreLinkLabel: 'Meer weten',
+
+    hub: {
+      meta: {
+        title: 'STRIVN-functies — teamorganisatie voor coaches',
+        description:
+          'Oproepingen, aanwezigheid, blessureopvolging, trainingsbelasting en trainingsplanning: alles wat STRIVN coaches gratis biedt, in één platform.',
+      },
+      eyebrow: 'Functies',
+      hero: {
+        title: 'Alles wat een coach beheert, op één plek.',
+        lede: 'STRIVN dekt de vier taken die de week van een coach opslokken — communicatie, het medisch dossier, trainingsbelasting en trainingsplanning — en alles wat ze met elkaar verbindt. Elke module is gratis en gedeeld met je staf.',
+      },
+      cards: [
+        {
+          slug: 'communication',
+          title: 'Communicatie & oproepingen',
+          text: 'Elk evenement genereert zijn bericht en zijn antwoordlink. De aanwezigheid houdt zichzelf up-to-date.',
+          points: ['Berichtsjablonen', 'Antwoorden zonder spelersaccount', 'Gerichte herinneringen'],
+        },
+        {
+          slug: 'medical',
+          title: 'Medisch dossier & blessureopvolging',
+          text: 'Blessures, notities van arts en kiné, return-to-play-protocol: één dossier, leesbaar voor de hele staf.',
+          points: ['Historiek per speler', 'Notities van de medische staf', 'Gefaseerde return-to-play'],
+        },
+        {
+          slug: 'training-load',
+          title: 'Belastingsplanning & RPE',
+          text: 'Plan de belasting van de week dag per dag, daarna vult de RPE van de spelers het reële in: gepland vs. reëel, ACWR, zwakke signalen.',
+          points: ['Belastingsplanning', 'RPE per training', 'ACWR per speler'],
+        },
+        {
+          slug: 'sessions',
+          title: 'Trainingen & tactiek',
+          text: 'Tactiekborden, een oefeningenbibliotheek en een AI-assistent die rekening houdt met de reële belasting van het team.',
+          points: ['Tactiekborden', 'Oefeningenbibliotheek', 'AI-ondersteunde creatie'],
+        },
+      ],
+    },
+
+    features: {
+      communication: {
+        meta: {
+          title: 'Wedstrijdoproepingen & teamcommunicatie | STRIVN',
+          description:
+            'Stuur oproepingen, verzamel antwoorden zonder spelersaccount en houd de aanwezigheid in realtime up-to-date. Gratis voor amateur- en semiprocoaches.',
+        },
+        eyebrow: 'Communicatie & oproepingen',
+        hero: {
+          title: 'De oproeping die zichzelf beheert.',
+          lede: 'Elk evenement genereert zijn bericht en zijn antwoordlink. Je deelt hem op het kanaal dat je groep al gebruikt — WhatsApp, e-mail, de app — en STRIVN verzamelt de antwoorden, zodat de aanwezigheidslijst zichzelf up-to-date houdt.',
+          primaryCta: 'Gratis starten',
+          reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
+        },
+        benefits: {
+          title: 'Stop met achter antwoorden aanjagen.',
+          items: [
+            {
+              title: 'Sjablonen per evenementtype',
+              text: 'Training, wedstrijd, toernooi: elk evenementtype heeft zijn eigen berichtsjabloon. De oproeping is geschreven nog voor je het toetsenbord opent.',
+            },
+            {
+              title: 'Eén antwoordlink, geen spelersaccounts',
+              text: 'Spelers bevestigen via een eenvoudige link, op web of mobiel — niets te installeren, geen wachtwoord om te resetten de avond voor een wedstrijd.',
+            },
+            {
+              title: 'Aanwezigheid in realtime bijgewerkt',
+              text: 'Elk antwoord komt rechtstreeks op de aanwezigheidslijst terecht. Niets om opnieuw te tellen, geen spreadsheetversies om samen te voegen.',
+            },
+            {
+              title: 'Gerichte herinneringen',
+              text: 'STRIVN weet wie nog niet geantwoord heeft en laat je alleen hen porren — één tik, in plaats van een “bevestig aub”-bericht naar de hele groep.',
+            },
+          ],
+        },
+        how: {
+          title: 'Hoe het werkt',
+          steps: [
+            {
+              title: 'Maak het evenement aan',
+              text: 'Training, wedstrijd of toernooi — STRIVN stelt het oproepingsbericht en de antwoordlink op.',
+            },
+            {
+              title: 'Deel het waar je groep leeft',
+              text: 'Post de link in de WhatsApp-groep, stuur hem per e-mail, of laat de app de spelers rechtstreeks verwittigen.',
+            },
+            {
+              title: 'Zie de antwoorden binnenkomen',
+              text: 'Elk antwoord werkt de aanwezigheid meteen bij, met onzekere spelers gemarkeerd voor opvolging.',
+            },
+            {
+              title: 'Herinner alleen de stille spelers',
+              text: 'Een gerichte herinnering gaat naar wie niet reageerde — de rest van de groep krijgt geen spam.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Veelgestelde vragen',
+          items: [
+            {
+              question: 'Moeten mijn spelers een app installeren?',
+              answer:
+                'Nee. Ze kunnen antwoorden via de link vanaf om het even welke telefoon of computer. De native app voegt meldingen en een agenda toe, maar blijft optioneel.',
+            },
+            {
+              question: 'Vervangt STRIVN onze WhatsApp-groep?',
+              answer:
+                'Nee — het werkt ermee samen. De groep behoudt het teamleven; STRIVN neemt het gestructureerde deel over: wie komt, wie niet, wie niets zei.',
+            },
+            {
+              question: 'Kunnen ouders antwoorden voor jongere spelers?',
+              answer:
+                'Ja. De antwoordlink werkt voor wie de beschikbaarheid van de speler beheert — geen account nodig, dus een ouder bevestigt in enkele seconden.',
+            },
+            {
+              question: 'Wat gebeurt er als iemand laat antwoordt?',
+              answer:
+                'De aanwezigheidslijst wordt bijgewerkt op het moment dat ze antwoorden, en de wijziging is zichtbaar voor de hele staf — geen bericht om door te sturen.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Stuur je laatste manuele oproeping.',
+          body: 'Maak je team gratis aan — de volgende oproeping beheert zichzelf.',
+          cta: 'Gratis starten',
+        },
+      },
+
+      medical: {
+        meta: {
+          title: 'Blessureopvolging voor voetbalteams | STRIVN',
+          description:
+            'Een gedeeld medisch dossier voor amateur- en semiproteams: blessures, notities van arts en kiné, gefaseerde return-to-play. Gratis voor coaches.',
+        },
+        eyebrow: 'Medisch dossier',
+        hero: {
+          title: 'Een medisch dossier dat de hele staf kan lezen.',
+          lede: 'Blessures, notities van de arts, beoordelingen van de kiné, return-to-play-protocol: alles is verbonden, van diagnose tot terug op het veld. Je ziet waar elke speler staat zonder iemand te bellen.',
+          primaryCta: 'Gratis starten',
+          reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
+        },
+        benefits: {
+          title: 'Eén blessure, één dossier — geen vijf gesprekken.',
+          items: [
+            {
+              title: 'Een historiek per speler',
+              text: 'Elke blessure, elke behandeling, elke terugkeer leeft in het dossier van de speler. Terugkerende kwaaltjes worden zichtbaar in plaats van half vergeten.',
+            },
+            {
+              title: 'Arts en kiné op één plek',
+              text: 'Het groen licht van de arts en de beoordeling van de kiné staan in hetzelfde dossier — geen sms om door te sturen, geen mondelinge overdracht die verloren gaat.',
+            },
+            {
+              title: 'Een gefaseerde return-to-play',
+              text: 'Diagnose, behandeling, revalidatie, groepstraining, wedstrijdklaar: elke fase is expliciet, en niemand forceert een terugkeer.',
+            },
+            {
+              title: 'Leestoegang voor de coach',
+              text: 'Je ziet status en beschikbaarheid in één oogopslag; de medische details blijven bij de staf die ze beheert.',
+            },
+          ],
+        },
+        how: {
+          title: 'Hoe het werkt',
+          steps: [
+            {
+              title: 'Open het dossier',
+              text: 'De kiné of de coach maakt de fiche aan: speler, blessure, datum. Dertig seconden langs de zijlijn.',
+            },
+            {
+              title: 'De staf voegt notities toe',
+              text: 'Arts, kiné en fysieke trainer schrijven in hetzelfde dossier, elk vanuit hun eigen weergave.',
+            },
+            {
+              title: 'Volg het protocol',
+              text: 'De return-to-play-fases vorderen mee met de speler, zichtbaar voor elk bevoegd staflid.',
+            },
+            {
+              title: 'Plan met de echte beschikbaarheid',
+              text: 'Aanwezigheid en trainingsplanning weerspiegelen wie echt fit is — geen verrassingen op wedstrijddag.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Veelgestelde vragen',
+          items: [
+            {
+              question: 'Wie kan de medische gegevens van een speler zien?',
+              answer:
+                'Alleen de stafleden die je autoriseert. De coach ziet status en beschikbaarheid; de gedetailleerde notities blijven bij de staf die ze schreef.',
+            },
+            {
+              question: 'We hebben geen kiné. Is het dan toch nuttig?',
+              answer:
+                'Ja. Veel amateurteams starten met de coach die blessures en terugkeerdata noteert. De structuur helpt zelfs met een staf van één persoon.',
+            },
+            {
+              question: 'Wat is een return-to-play-protocol?',
+              answer:
+                'Een gefaseerd pad van diagnose tot wedstrijdbeschikbaarheid. STRIVN maakt de fases expliciet, zodat een speler niet te vroeg terugkeert doordat niemand het volledige beeld had.',
+            },
+            {
+              question: 'Werkt het voor langdurige blessures?',
+              answer:
+                'Ja — een dossier heeft geen tijdslimiet, en het gefaseerde protocol is net gemaakt voor de terugkeer over meerdere weken, waar informatie doorgaans verloren gaat.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Zet het medisch dossier waar de staf het kan lezen.',
+          body: 'Maak je team gratis aan — het medisch dossier hoort bij het gratis plan, niet bij een betaalde optie.',
+          cta: 'Gratis starten',
+        },
+      },
+
+      'training-load': {
+        meta: {
+          title: 'Belastingsplanning & opvolging van trainingsbelasting voor coaches | STRIVN',
+          description:
+            'Plan de belasting van de week dag per dag, verzamel RPE via de telefoon van je spelers, vergelijk gepland vs. reëel en volg ACWR op om blessurerisico te spotten voor het een afwezigheid wordt. Gratis voor coaches.',
+        },
+        eyebrow: 'Belastingsplanning & RPE',
+        hero: {
+          title: 'Plan de week. Volg de reële belasting.',
+          lede: 'Bouw de week op met een belastingsdoel en oefeningen dag per dag, en laat de RPE van de spelers het reële invullen. STRIVN vergelijkt gepland vs. reëel, berekent ACWR en signaleert het risico voor het je iets kost.',
+          primaryCta: 'Gratis starten',
+          reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
+        },
+        benefits: {
+          title: 'Plan de belasting, en zie het reële zich invullen.',
+          items: [
+            {
+              title: 'Plan de week',
+              text: 'Stel een wekelijks belastingsdoel in, zet trainingen en oefeningen dag per dag uit met hun categorieën. De ACWR-prognose verschijnt nog voor de eerste training begint.',
+            },
+            {
+              title: 'RPE per training, per speler',
+              text: 'Spelers scoren de inspanning vanaf hun telefoon meteen na de training. Geen papieren formulieren meer, geen notitieboekje om over te typen in een spreadsheet.',
+            },
+            {
+              title: 'Gepland vs. reëel',
+              text: 'De reële belasting wordt automatisch met het plan vergeleken: overbelaste en onderbelaste dagen komen allebei in één oogopslag naar boven.',
+            },
+            {
+              title: 'ACWR per speler',
+              text: 'De acute:chronische belastingsratio signaleert wie te snel klimt — de klassieke voorbode van spierblessures.',
+            },
+          ],
+        },
+        how: {
+          title: 'Hoe het werkt',
+          steps: [
+            {
+              title: 'Plan de week',
+              text: 'Belastingsdoel, trainingen en oefeningen per dag, belastingscategorieën (fysiek, technisch, wedstrijd). De ACWR-prognose van het team werkt zich bij terwijl je bouwt.',
+            },
+            {
+              title: 'Spelers scoren de training',
+              text: 'Een snelle RPE-vraag na elke training, beantwoord vanaf hun telefoon in enkele seconden.',
+            },
+            {
+              title: 'STRIVN vergelijkt gepland vs. reëel',
+              text: 'Trainingsscores worden reële belasting, monotonie en ACWR per speler, automatisch vergeleken met het plan.',
+            },
+            {
+              title: 'Stuur bij voor het je iets kost',
+              text: 'Plan een lichtere vrijdag voor de speler op 1.32 in plaats van hem zes weken kwijt te zijn.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Veelgestelde vragen',
+          items: [
+            {
+              question: 'Kan ik de belasting op voorhand plannen?',
+              answer:
+                'Ja. De weergave Belastingsplanning laat je een wekelijks belastingsdoel instellen en oefeningen dag per dag uitzetten, per categorie; STRIVN projecteert de ACWR van het team en signaleert risicovolle dagen voor de week begint.',
+            },
+            {
+              question: 'Wat is RPE?',
+              answer:
+                'Rating of Perceived Exertion: de score van 1 tot 10 die een speler zelf geeft aan hoe zwaar een training aanvoelde. Vermenigvuldigd met de duur is het de eenvoudigste betrouwbare belastingsmaat in de amateursport.',
+            },
+            {
+              question: 'Wat is ACWR, en waarom is het belangrijk?',
+              answer:
+                'De acute:chronische belastingsratio vergelijkt de belasting van deze week met de voorbije maand. Scherpe pieken correleren met blessurerisico; STRIVN berekent het per speler zodat je de piek kunt afvlakken voor het je iets kost.',
+            },
+            {
+              question: 'Gaan mijn spelers het echt invullen?',
+              answer:
+                'Het kost enkele seconden op hun telefoon meteen na de training, en je ziet in één oogopslag wie niet geantwoord heeft — dezelfde herinneringslogica als bij oproepingen.',
+            },
+            {
+              question: 'Heb ik een fysieke trainer nodig om dit te gebruiken?',
+              answer:
+                'Nee. De standaardinstellingen werken voor een coach alleen; en heb je wel een fysieke trainer, dan krijgt die een eigen planningsweergave en wordt zijn notitie met de staf gedeeld.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Plan de week van het team voor die begint.',
+          body: 'Maak je team gratis aan — belastingsplanning, opvolging en RPE horen bij het gratis plan.',
+          cta: 'Gratis starten',
+        },
+      },
+
+      sessions: {
+        meta: {
+          title: 'Voetbaltrainingsplanner & tactiekborden | STRIVN',
+          description:
+            'Plan trainingen, teken tactiekborden, bouw je oefeningenbibliotheek — met een AI-assistent die rekening houdt met de reële belasting van het team.',
+        },
+        eyebrow: 'Trainingen & tactiek',
+        hero: {
+          title: 'De training klaar voor je het veld bereikt.',
+          lede: 'Tactiekborden, een oefeningenbibliotheek, weekplanning: STRIVN geeft de training vorm terwijl jij aan het spel denkt, en de AI-assistent houdt rekening met de reële belasting van het team.',
+          primaryCta: 'Gratis starten',
+          reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
+        },
+        benefits: {
+          title: 'Denk aan het spel. STRIVN doet de opmaak.',
+          items: [
+            {
+              title: 'Tactiekborden',
+              text: 'Schets het pressingblok of de opbouw op een bord dat de hele staf kan openen — geen foto’s van een whiteboard meer.',
+            },
+            {
+              title: 'Een bibliotheek die met je meegroeit',
+              text: 'Bewaar de oefeningen die werken, hergebruik ze in enkele seconden, en stop met dezelfde rondo elke maand opnieuw te tekenen.',
+            },
+            {
+              title: 'Weekplanning',
+              text: 'Trainingen staan in de week naast de wedstrijden: volume en intentie sluiten aan op wat er zondag aankomt.',
+            },
+            {
+              title: 'AI-ondersteunde trainingcreatie',
+              text: 'Beschrijf de intentie — STRIVN stelt de structuur voor, rekening houdend met de reële belasting en beschikbaarheid van het team. Jij blijft de coach; het doet de opmaak.',
+            },
+          ],
+        },
+        how: {
+          title: 'Hoe het werkt',
+          steps: [
+            {
+              title: 'Bepaal de intentie',
+              text: 'Hoge pressing, opbouw onder druk, afwerking — benoem het thema van donderdag.',
+            },
+            {
+              title: 'Bouw vanuit de bibliotheek of met AI',
+              text: 'Haal je beproefde oefeningen erbij, of laat de assistent een structuur voorstellen die de belasting van de week respecteert.',
+            },
+            {
+              title: 'Deel met de staf',
+              text: 'De assistent-coach en de fysieke trainer zien het plan voor de training — niet op de parking.',
+            },
+            {
+              title: 'Sluit de cirkel',
+              text: 'Na de training brengt het rapport het samen: wat gepland was, wat er gebeurde, wat bij te sturen.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Veelgestelde vragen',
+          items: [
+            {
+              question: 'Hoe werkt de AI-assistent?',
+              answer:
+                'Je beschrijft de intentie van de training; de assistent stelt fases, duur en oefeningen voor, op basis van wat STRIVN al weet — de beschikbaarheid en recente belasting van het team. Elk voorstel blijft aanpasbaar voor het het plan wordt.',
+            },
+            {
+              question: 'Kan ik mijn eigen oefeningen gebruiken?',
+              answer:
+                'Ja. De bibliotheek is de jouwe: jouw oefeningen, jouw schema’s, jouw namen. De assistent gebruikt die als eerste, niet enkel generieke sjablonen.',
+            },
+            {
+              question: 'Zien spelers het trainingsplan?',
+              answer:
+                'Jij kiest wat je deelt. De oproeping vertelt spelers wanneer en waar; de tactische details kunnen bij de staf blijven.',
+            },
+            {
+              question: 'Is dit alleen voor voetbal?',
+              answer:
+                'STRIVN is voetbal-eerst ontworpen: de borden, de structuur van de oefeningen en de belastingslogica spreken voetbal. Die focus is bewust.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Denk aan het spel. De opmaak is gedaan.',
+          body: 'Maak je team gratis aan — borden, bibliotheek en assistent inbegrepen.',
+          cta: 'Gratis starten',
+        },
+      },
+    },
+  },
 };
