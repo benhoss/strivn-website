@@ -941,7 +941,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Het hele platform, in twee minuten.',
       sub: 'Een rondleiding langs hoe STRIVN oproepingen, aanwezigheid, medische dossiers en trainingsbelasting samenbrengt in één werkruimte die de hele staf deelt.',
       srcMp4: '/videos/overview-nl.mp4',
-      poster: '/posters/overview-en.jpg',
+      poster: '/posters/overview-nl.jpg',
       duration: '2 min',
       playLabel: 'Speel het productoverzicht af',
       ariaLabel: 'STRIVN productoverzichtvideo',
