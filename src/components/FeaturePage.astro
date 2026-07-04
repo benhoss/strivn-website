@@ -13,12 +13,17 @@ const { locale, slug } = Astro.props;
 const fc = featuresContent[locale];
 const f = fc.features[slug];
 
-const base = locale === 'fr' ? '/fr' : '/en';
+const base = `/${locale}`;
 const canonicalPath = `${base}/features/${slug}/`;
-const switchHrefs = { en: `/en/features/${slug}/`, fr: `/fr/features/${slug}/` };
+const switchHrefs = {
+  en: `/en/features/${slug}/`,
+  fr: `/fr/features/${slug}/`,
+  nl: `/nl/features/${slug}/`,
+};
 const alternates = [
   { hreflang: 'en', href: switchHrefs.en },
   { hreflang: 'fr', href: switchHrefs.fr },
+  { hreflang: 'nl', href: switchHrefs.nl },
   { hreflang: 'x-default', href: switchHrefs.fr },
 ];
 

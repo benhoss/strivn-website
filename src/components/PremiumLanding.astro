@@ -14,7 +14,6 @@ interface Props {
 
 const { locale, canonicalPath, alternates } = Astro.props;
 const c = landingContent[locale];
-const isFrench = locale === 'fr';
 
 /**
  * Scattered start positions for the six chaos fragments, in stage
@@ -30,7 +29,8 @@ const fragPositions = [
   { x: '62%', y: '40%', r: '-4deg' },
 ];
 
-const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
+const skipLabel =
+  locale === 'fr' ? 'Aller au contenu' : locale === 'nl' ? 'Naar de inhoud' : 'Skip to content';
 ---
 
 <BaseLayout

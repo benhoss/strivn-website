@@ -11,12 +11,13 @@ interface Props {
 const { locale } = Astro.props;
 const c = clubsContent[locale];
 
-const base = locale === 'fr' ? '/fr' : '/en';
+const base = `/${locale}`;
 const canonicalPath = `${base}/clubs/`;
-const switchHrefs = { en: '/en/clubs/', fr: '/fr/clubs/' };
+const switchHrefs = { en: '/en/clubs/', fr: '/fr/clubs/', nl: '/nl/clubs/' };
 const alternates = [
   { hreflang: 'en', href: switchHrefs.en },
   { hreflang: 'fr', href: switchHrefs.fr },
+  { hreflang: 'nl', href: switchHrefs.nl },
   { hreflang: 'x-default', href: switchHrefs.fr },
 ];
 

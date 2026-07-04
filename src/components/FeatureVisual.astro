@@ -9,39 +9,52 @@ interface Props {
 
 const { locale, slug } = Astro.props;
 const c = landingContent[locale];
-const isFrench = locale === 'fr';
 
 /** Whole visual is one illustration for assistive tech — sample data inside is decorative. */
-const ariaLabels: Record<FeatureSlug, string> = isFrench
-  ? {
-      communication: 'Illustration : une convocation avec les réponses des joueurs et le décompte des présences en direct.',
-      medical: 'Illustration : un dossier blessure avec retour au jeu par étapes et notes du staff.',
-      'training-load': 'Illustration : un tableau de charge hebdomadaire avec RPE et signaux ACWR.',
-      sessions: 'Illustration : un plan de séance en quatre ateliers minutés.',
-    }
-  : {
-      communication: 'Illustration: a call-up message with player replies and a live attendance tally.',
-      medical: 'Illustration: an injury record with staged return-to-play and staff notes.',
-      'training-load': 'Illustration: a weekly load table with RPE values and ACWR risk flags.',
-      sessions: 'Illustration: a session plan with four timed drill phases.',
-    };
+const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
+  fr: {
+    communication: 'Illustration : une convocation avec les réponses des joueurs et le décompte des présences en direct.',
+    medical: 'Illustration : un dossier blessure avec retour au jeu par étapes et notes du staff.',
+    'training-load': 'Illustration : un tableau de charge hebdomadaire avec RPE et signaux ACWR.',
+    sessions: 'Illustration : un plan de séance en quatre ateliers minutés.',
+  },
+  en: {
+    communication: 'Illustration: a call-up message with player replies and a live attendance tally.',
+    medical: 'Illustration: an injury record with staged return-to-play and staff notes.',
+    'training-load': 'Illustration: a weekly load table with RPE values and ACWR risk flags.',
+    sessions: 'Illustration: a session plan with four timed drill phases.',
+  },
+  nl: {
+    communication: 'Illustratie: een oproeping met de antwoorden van de spelers en een live aanwezigheidsteller.',
+    medical: 'Illustratie: een blessuredossier met gefaseerde return-to-play en notities van de staf.',
+    'training-load': 'Illustratie: een weektabel van de belasting met RPE-waarden en ACWR-signalen.',
+    sessions: 'Illustratie: een trainingsplan met vier getimede oefenblokken.',
+  },
+};
+const ariaLabels = ariaLabelsByLocale[locale];
 
 type Chip = { tone: 'ok' | 'watch' | 'risk' | 'info'; text: string };
-const chips: Record<FeatureSlug, Chip> = isFrench
-  ? {
-      communication: { tone: 'ok', text: 'L. Moreau — Présent · 18h09' },
-      medical: { tone: 'watch', text: 'Réathlétisation · J+9' },
-      'training-load': { tone: 'risk', text: 'ACWR 1.32 — alléger vendredi' },
-      sessions: { tone: 'info', text: 'Ajustée à la charge du groupe' },
-    }
-  : {
-      communication: { tone: 'ok', text: 'L. Moreau — In · 6:09pm' },
-      medical: { tone: 'watch', text: 'Reconditioning · day 9' },
-      'training-load': { tone: 'risk', text: 'ACWR 1.32 — lighten Friday' },
-      sessions: { tone: 'info', text: 'Tuned to the squad’s load' },
-    };
-
-const chip = chips[slug];
+const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
+  fr: {
+    communication: { tone: 'ok', text: 'L. Moreau — Présent · 18h09' },
+    medical: { tone: 'watch', text: 'Réathlétisation · J+9' },
+    'training-load': { tone: 'risk', text: 'ACWR 1.32 — alléger vendredi' },
+    sessions: { tone: 'info', text: 'Ajustée à la charge du groupe' },
+  },
+  en: {
+    communication: { tone: 'ok', text: 'L. Moreau — In · 6:09pm' },
+    medical: { tone: 'watch', text: 'Reconditioning · day 9' },
+    'training-load': { tone: 'risk', text: 'ACWR 1.32 — lighten Friday' },
+    sessions: { tone: 'info', text: 'Tuned to the squad’s load' },
+  },
+  nl: {
+    communication: { tone: 'ok', text: 'L. Moreau — Aanwezig · 18u09' },
+    medical: { tone: 'watch', text: 'Revalidatie · dag 9' },
+    'training-load': { tone: 'risk', text: 'ACWR 1.32 — vrijdag verlichten' },
+    sessions: { tone: 'info', text: 'Afgestemd op de belasting van de groep' },
+  },
+};
+const chip = chipsByLocale[locale][slug];
 const com = c.communication.proof;
 const med = c.medical.record;
 const load = c.load.table;

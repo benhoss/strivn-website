@@ -1,4 +1,4 @@
-export type Locale = 'en' | 'fr';
+export type Locale = 'en' | 'fr' | 'nl';
 
 /** One scattered fragment of the coach's daily chaos, shown in the hero stage. */
 type Fragment = {
@@ -874,6 +874,349 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Privacy', href: '/privacy' },
       ],
       credit: '© 2026 STRIVN · Free for coaches, clubs coming soon',
+    },
+  },
+
+  nl: {
+    meta: {
+      title: 'STRIVN — Je hele team, onder één dak',
+      description:
+        'Oproepingen, aanwezigheid, medische dossiers, trainingsbelasting, trainingen, communicatie: STRIVN brengt de volledige teamorganisatie samen in één platform. Gratis voor coaches, zonder goedkeuring van de club.',
+    },
+
+    nav: {
+      links: [
+        { label: 'Platform', href: '/nl/#platform' },
+        { label: 'Functies', href: '/nl/features/' },
+        {
+          label: 'Oplossingen',
+          children: [
+            { label: 'S&C-coaches', href: '/nl/sc-coaches/' },
+            { label: 'Clubs', href: '/nl/clubs/' },
+          ],
+        },
+        { label: 'Blog', href: '/fr/blog/' },
+        { label: 'Tarieven', href: '/nl/#pricing' },
+        { label: 'FAQ', href: '/nl/#faq' },
+      ],
+      cta: 'Aan de slag',
+    },
+
+    hero: {
+      claim: 'Gebouwd door coaches en spelers — voor staf en teams',
+      title: 'Je hele team,',
+      titleAccent: 'onder één dak.',
+      lede: 'WhatsApp, spreadsheets, papieren notities, geheugen: de week van een coach is overal verspreid. STRIVN brengt oproepingen, aanwezigheid, medische dossiers, trainingsbelasting en trainingen samen in één platform dat de hele staf deelt.',
+      primaryCta: 'Gratis starten',
+      secondaryCta: 'Bekijk het platform',
+      reassurance: 'Gratis voor één team · zonder goedkeuring van de club · klaar in enkele minuten',
+      stage: {
+        ariaLabel:
+          'Animatie: de verspreide berichten, bestanden en notities van een coach komen samen in één verenigd STRIVN-paneel dat de staat van het team toont.',
+        fragments: [
+          { kind: 'mail', source: 'E-mail', text: 'Oproeping zondag: 9 antwoorden op 16' },
+          { kind: 'sheet', source: 'aanwezigheid_W23_v4.xlsx', text: 'Aanwezigheid: 3 tabbladen, 2 versies' },
+          { kind: 'sms', source: 'Fysio · SMS', text: 'Knie van Mendes: deze week niet sprinten' },
+          { kind: 'scrap', source: 'Notitieboek', text: 'RPE van donderdag: nog in te voeren' },
+          { kind: 'note', source: 'Papieren notitie', text: 'Het pressingblok voor donderdag plannen' },
+          { kind: 'chat', source: 'Team · WhatsApp', text: 'Hoe laat is de wedstrijd zondag?' },
+        ],
+        panel: {
+          header: 'Teamstatus',
+          status: 'Up-to-date · gedeeld met de staf',
+          rows: [
+            { label: 'Communicatie', value: 'Oproeping verstuurd · 14 antwoorden', tone: 'ok' },
+            { label: 'Aanwezigheid', value: '14 aanwezig · 2 onzeker', tone: 'ok' },
+            { label: 'Medisch', value: 'T. Mendes — revalidatie', tone: 'watch' },
+            { label: 'Belasting & RPE', value: 'ACWR 1.12 · groep stabiel', tone: 'ok' },
+            { label: 'Training', value: 'Donderdag 20u · pressingblok', tone: 'info' },
+            { label: 'Wedstrijd', value: 'Zondag 15u · selectie bevestigd', tone: 'info' },
+          ],
+        },
+      },
+    },
+
+    overview: {
+      eyebrow: 'Zie het in actie',
+      title: 'Het hele platform, in twee minuten.',
+      sub: 'Een rondleiding langs hoe STRIVN oproepingen, aanwezigheid, medische dossiers en trainingsbelasting samenbrengt in één werkruimte die de hele staf deelt.',
+      srcMp4: '/videos/overview-nl.mp4',
+      poster: '/posters/overview-en.jpg',
+      duration: '2 min',
+      playLabel: 'Speel het productoverzicht af',
+      ariaLabel: 'STRIVN productoverzichtvideo',
+    },
+
+    reality: {
+      title: 'Coachen is maar een deel van het werk.',
+      body: 'Op dinsdag om 22u47 gaat het schaduwwerk verder: de spelers achtervolgen die niet antwoordden, het medisch logboek bijwerken, aanwezigheden opnieuw invoeren, de fysio briefen. Zes verschillende plekken, geen enkel overzicht.',
+      scattered: [
+        'De WhatsApp-groep',
+        'De aanwezigheidsspreadsheet',
+        'De medische notities',
+        'Het RPE-notitieboek',
+        'De trainingsschema’s',
+        'Het geheugen van de coach',
+      ],
+      resolve: 'Eén platform.',
+    },
+
+    communication: {
+      title: 'De oproeping die zichzelf regelt.',
+      body: 'Elk evenement genereert zijn bericht en zijn antwoordlink. Je deelt die op het kanaal dat je groep al gebruikt — WhatsApp, e-mail, de app — en STRIVN verzamelt de antwoorden om de aanwezigheidslijst up-to-date te houden.',
+      points: [
+        'Berichtsjablonen per evenementtype',
+        'Antwoordlink zonder spelersaccount',
+        'Aanwezigheid in realtime bijgewerkt',
+        'Gerichte herinneringen voor wie niet antwoordde',
+      ],
+      proof: {
+        messageLabel: 'Bericht verstuurd · 18u02',
+        message: 'Training donderdag 20u · veld 2. Bevestig je aanwezigheid.',
+        link: 'strivn.net/rsvp/abc123',
+        repliesLabel: 'Antwoorden van spelers',
+        replies: [
+          { name: 'A. Diallo', answer: 'Aanwezig', tone: 'ok' },
+          { name: 'M. Benyahia', answer: 'Aanwezig', tone: 'ok' },
+          { name: 'T. Mendes', answer: 'Onzeker · knie', tone: 'watch' },
+        ],
+        tally: '14 aanwezig · 1 onzeker · bijgewerkt om 18u05',
+      },
+    },
+
+    medical: {
+      title: 'Een medisch logboek dat de hele staf kan lezen.',
+      body: 'Blessures, notities van de arts, beoordelingen van de fysio, return-to-play-protocol: alles is verbonden, van diagnose tot terug op het veld. De coach ziet waar elke speler staat zonder iemand te bellen.',
+      points: [
+        'Geschiedenis per speler',
+        'Notities van arts en fysio op één plek',
+        'Gefaseerd return-to-play-protocol',
+        'Alleen-lezen zichtbaarheid voor de coach',
+      ],
+      record: {
+        player: 'T. Mendes',
+        injury: 'Hamstringblessure · graad 1',
+        since: 'Sinds 28 april',
+        stages: [
+          { label: 'Diagnose', state: 'done' },
+          { label: 'Behandeling', state: 'done' },
+          { label: 'Revalidatie', state: 'active' },
+          { label: 'Groepstraining', state: 'todo' },
+          { label: 'Beschikbaar wedstrijd', state: 'todo' },
+        ],
+        notes: [
+          { author: 'Dr. Lemaire', role: 'Arts', text: 'Rechtlijnig lopen toegestaan. Niet sprinten vóór dag 7.' },
+          { author: 'A. Roux', role: 'Fysio', text: 'Goede respons op krachttraining. Gevoel van de speler verbetert.' },
+        ],
+        returnLabel: 'Geschatte terugkeer',
+        returnValue: '10 – 12 dagen',
+      },
+    },
+
+    load: {
+      title: 'De belasting van de groep, zonder iemand achterna te zitten.',
+      body: 'RPE, wekelijkse belasting, ACWR, herstel: spelers antwoorden vanaf hun telefoon en STRIVN stelt de week samen. Je komt maandag binnen met de zwakke signalen al zichtbaar.',
+      points: [
+        'RPE per training, per speler',
+        'Wekelijkse belasting en monotonie',
+        'ACWR per speler',
+        'Notitie van de fysieke coach gedeeld met de staf',
+      ],
+      table: {
+        title: 'Belasting & RPE',
+        week: 'Week 23 · 1 – 7 juni',
+        colPlayer: 'Speler',
+        colMon: 'Ma',
+        colWed: 'Wo',
+        colFri: 'Vr',
+        colAcwr: 'ACWR',
+        colState: 'Status',
+        pillOk: 'OK',
+        pillWatch: 'In de gaten',
+        pillRisk: 'Risico',
+        players: [
+          { name: 'A. Diallo', mon: '6', wed: '7', fri: '6', acwr: '1.05', zone: 'green' },
+          { name: 'M. Benyahia', mon: '7', wed: '8', fri: '7', acwr: '1.18', zone: 'amber' },
+          { name: 'T. Mendes', mon: '4', wed: '—', fri: '5', acwr: '0.85', zone: 'amber' },
+          { name: 'L. Moreau', mon: '7', wed: '7', fri: '8', acwr: '1.32', zone: 'red' },
+          { name: 'S. Cissé', mon: '5', wed: '6', fri: '5', acwr: '0.95', zone: 'green' },
+        ],
+        tipLabel: 'Fysieke notitie',
+        tip: 'L. Moreau zit al 3 weken op rij boven 1.25 — plan een lichtere training op vrijdag.',
+      },
+    },
+
+    sessions: {
+      title: 'De training klaar voordat je op het veld bent.',
+      body: 'Tactische borden, een oefeningenbibliotheek, weekplanning: STRIVN geeft vorm aan de training terwijl jij aan het spel denkt, en de AI-assistent houdt rekening met de werkelijke belasting van de groep.',
+      points: [
+        'Tactische borden',
+        'Oefeningenbibliotheek',
+        'Weekplanning',
+        'AI-ondersteunde trainingsopbouw',
+      ],
+      board: {
+        title: 'Tactisch blok · hoge pressing',
+        meta: 'Training · donderdag 20u',
+        stamp: '4 oefeningen · 75 min',
+        phases: [
+          { label: 'Opwarming', detail: 'Activatie + baldribbelen · 15 min' },
+          { label: 'Oefening 1', detail: 'Pressing met drie, uitgelokt op de laterale pass · 20 min' },
+          { label: 'Oefening 2', detail: 'Opbouw onder druk · 20 min' },
+          { label: 'Spel', detail: '8v8 partij, pressingbeperkingen · 20 min' },
+        ],
+      },
+    },
+
+    capabilities: {
+      title: 'En al de rest van de wekelijkse routine.',
+      body: 'Eén team, onbeperkt spelers en staf. Elke module zit in het gratis plan — niets zit achter een betaling verborgen.',
+      items: [
+        { title: 'Aanwezigheid & RSVP', text: 'Antwoorden van spelers worden een up-to-date coachweergave, zonder handmatig te tellen.' },
+        { title: 'Medisch logboek', text: 'Blessures, medische notities en return-to-play blijven zichtbaar voor bevoegde staf.' },
+        { title: 'Belasting & RPE', text: 'Belasting, ervaren inspanning en zwakke signalen sluiten aan op de werkelijke week van de groep.' },
+        { title: 'Testen & evaluaties', text: 'Fysieke en technische testen worden door de tijd heen gevolgd om echte progressie te tonen.' },
+        { title: 'Individuele programma’s', text: 'Doelen, aangepaste belastingen en specifieke oefeningen blijven gekoppeld aan elke speler.' },
+        { title: 'Trainingen & tactiek', text: 'Trainingsplannen, tactische borden en oefeningen blijven verbonden met de staat van het team.' },
+        { title: 'Wedstrijd- & trainingsrapporten', text: 'Feedback van de staf creëert een lus en houdt speeltijd zichtbaar.' },
+        { title: 'AI-assistent', text: 'Rapporten en de assistent zetten teaminformatie om in beslissingen.' },
+      ],
+    },
+
+    playerApp: {
+      title: 'Je spelers krijgen hun eigen weergave.',
+      body: 'Agenda, volgend evenement, aanwezigheidsantwoorden, meldingen: elke speler volgt het team vanuit de native app. En wie ze niet installeert, antwoordt toch via de link.',
+      stores: 'Beschikbaar op iOS en Android',
+      imageAlt: 'Schermafbeelding van de STRIVN-spelersapp: weekagenda met komende evenementen',
+    },
+
+    timeSaved: {
+      title: 'Krijg je avonden terug.',
+      body: 'De organisatie draait op de achtergrond. Jij houdt wat telt: de groep, de training, de wedstrijd.',
+      rows: [
+        { task: 'Oproepingen & herinneringen', outcome: 'gecentraliseerd' },
+        { task: 'Aanwezigheid & medisch logboek', outcome: 'op één plek' },
+        { task: 'Trainingsrapporten', outcome: 'voorbereid' },
+        { task: 'Coördinatie van de staf', outcome: 'zichtbaar voor iedereen' },
+      ],
+    },
+
+    pricing: {
+      title: 'Gratis om te coachen. Betalend wanneer de club groeit.',
+      body: 'Het Coach-plan is de volledige ervaring voor één team. Club-plannen komen eraan voor organisaties die meerdere teams, staven en medische workflows willen coördineren.',
+      plans: [
+        {
+          name: 'Coach',
+          description: 'Om STRIVN op één team te lanceren zonder de club om budget te vragen.',
+          price: '€0',
+          period: 'voor altijd',
+          availability: 'Nu beschikbaar',
+          cta: 'Maak mijn team',
+          featured: true,
+          features: [
+            '1 team',
+            'Onbeperkt spelers',
+            'Onbeperkt staf',
+            'Evenementen, trainingen en wedstrijden',
+            'Aanwezigheid, RSVP en communicatie',
+            'Medisch logboek, tactiek, rapporten en AI-assistent',
+          ],
+        },
+        {
+          name: 'Club',
+          description: 'Om alle teams en staven van een club te coördineren.',
+          price: 'Binnenkort',
+          period: '',
+          availability: 'Geleidelijke uitrol',
+          cta: 'Vraag een demo aan',
+          features: [
+            'Meerdere teams',
+            'Gedeelde spelersbasis',
+            'Gedeelde medische staf en coördinatoren',
+            'Clubdashboards en rapportage',
+            'Blessureopvolging over teams heen',
+          ],
+        },
+        {
+          name: 'Club Pro',
+          description: 'Voor organisaties die geavanceerde inzichten willen.',
+          price: 'Binnenkort',
+          period: '',
+          availability: 'Op aanvraag',
+          cta: 'Praat met het team',
+          features: [
+            'Alles uit Club',
+            'Geavanceerde rapportage',
+            'Geavanceerde analytics',
+            'API-toegang',
+            'Organisatorische inzichten',
+          ],
+        },
+      ],
+      note: 'De eerste betaling komt wanneer een club meerdere teams en staven in STRIVN wil beheren. Niet om de essentiële tools van een coach te ontgrendelen.',
+    },
+
+    faq: {
+      title: 'De vragen die we het eerst krijgen.',
+      body: 'Wat je spelers moeten doen, wie beslist, en hoe lang het duurt om op te zetten.',
+      items: [
+        {
+          question: 'Moeten mijn spelers een app installeren?',
+          answer:
+            'Nee. Ze kunnen antwoorden via een link die je deelt op het kanaal dat je al gebruikt: web, mobiel, WhatsApp, e-mail. Het doel is wrijving verminderen, niet een nieuwe gewoonte opleggen.',
+        },
+        {
+          question: 'Verlies ik de controle over mijn team?',
+          answer:
+            'Nooit. STRIVN bereidt het werk voor je voor, maar er gaat niets uit zonder jouw goedkeuring. Jij houdt de hand op elk bericht, elke beslissing. Het regelt de organisatie, jij coacht.',
+        },
+        {
+          question: 'Hoe lang duurt het om te starten?',
+          answer:
+            'Enkele minuten. Je maakt je team aan, voegt je spelers toe, en je kunt in de eerste week je eerste evenementen, berichten en antwoordlinks aanmaken.',
+        },
+        {
+          question: 'Waarom is het Coach-plan gratis?',
+          answer:
+            'Omdat een coach STRIVN moet kunnen uitproberen en gebruiken zonder langs de voorzitter, het bestuur of de penningmeester te gaan. Betalen begint wanneer de club meerdere teams wil coördineren.',
+        },
+        {
+          question: 'Werkt het echt voor amateurvoetbal?',
+          answer:
+            'Het is er net voor gemaakt. STRIVN is ontworpen voor coaches die alle petten dragen en geen volledige staf achter zich hebben. Hoe meer je alleen beheert, hoe meer tijd het teruggeeft.',
+        },
+        {
+          question: 'En als ik al medische staf en een fysieke coach heb?',
+          answer:
+            'Nog beter. Iedereen krijgt zijn weergave: de fysio ziet het medisch logboek, de fysieke coach ziet de belasting, de coördinator ziet meerdere teams. Niemand voert opnieuw in wat een collega al noteerde.',
+        },
+      ],
+    },
+
+    finalCta: {
+      title: 'Breng je team onder één dak.',
+      body: 'Maak je team gratis aan — evenementen, aanwezigheid, medisch logboek en communicatie op één plek, deze week nog.',
+      primaryCta: 'Maak mijn team gratis aan',
+      secondaryCta: 'Een vraag voor je begint?',
+      secondaryHref: 'mailto:hello@strivn.net?subject=STRIVN%20-%20vraag%20voor%20je%20begint',
+    },
+
+    footer: {
+      statement: 'Het veld eerst. De organisatie daarna.',
+      brandLine: 'STRIVN brengt de volledige teamorganisatie samen in één platform, gratis voor coaches.',
+      email: 'hello@strivn.net',
+      links: [
+        { label: 'Platform', href: '/nl/#platform' },
+        { label: 'Functies', href: '/nl/features/' },
+        { label: 'Blog', href: '/fr/blog/' },
+        { label: 'Clubs', href: '/nl/clubs/' },
+        { label: 'S&C-coaches', href: '/nl/sc-coaches/' },
+        { label: 'Tarieven', href: '/nl/#pricing' },
+        { label: 'FAQ', href: '/nl/#faq' },
+        { label: 'Support', href: '/support' },
+        { label: 'Privacy', href: '/privacy' },
+      ],
+      credit: '© 2026 STRIVN · Gratis voor coaches, clubs binnenkort',
     },
   },
 };
