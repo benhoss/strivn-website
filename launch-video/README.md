@@ -14,6 +14,7 @@ rendue** (MP4, non versionnée). Ressources partagées dans `assets/` (médias) 
 | `4-multisport/` | Reel multi-sport · `POST.md` · `STORYBOARD.md` | `strivn-reel-multisport.mp4` |
 | `5-sc-centralisation/` | Reel préparateurs physiques (centralisation) · `STORYBOARD.md` | `strivn-reel-sc.mp4` |
 | `6-demo-charge/` | Démo produit (check-in joueur → charge coach) 9:16 + 16:9 · `POST.md` | `strivn-demo-charge-9x16.mp4`, `strivn-demo-charge-16x9.mp4` |
+| `8-demo-convocation/` | Démo convocation : (a) animée HTML/CSS 9:16 + (b) vrais écrans app 9:16 · `POST.md` | `strivn-demo-convocation-9x16.mp4`, `strivn-demo-convocation-real-9x16.mp4` |
 | `7-ai-avatar/` | Scripts pour vidéo avatar (HeyGen / Synthesia) | — (produite hors HyperFrames) |
 | `brand/` | `PAGE-FACEBOOK.md` (textes de la page) | — |
 | `assets/` | Médias partagés : logo, images IA, audio (non versionné) | — |

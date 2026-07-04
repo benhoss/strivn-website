@@ -9,6 +9,8 @@ interface Props {
   alternates?: Array<{ hreflang: string; href: string }>;
   /** Open Graph image absolute URL or path beginning with `/` */
   ogImage?: string;
+  /** Alt text describing the Open Graph image */
+  ogImageAlt?: string;
   /** Open Graph site name (defaults to STRIVN) */
   siteName?: string;
   /** Twitter handle without @ — if provided, twitter:site is emitted */
@@ -23,7 +25,8 @@ const {
   lang = 'en',
   canonicalPath,
   alternates = [],
-  ogImage = '/strivn-logo-full-white-web.png',
+  ogImage = '/og.png',
+  ogImageAlt = 'STRIVN — the free operations platform for coaches',
   siteName = 'STRIVN',
   twitterSite,
   jsonLdExtra = [],
@@ -35,6 +38,7 @@ const ogImageUrl = ogImage
   ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, site).toString())
   : undefined;
 const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_US';
+const logoUrl = new URL('/strivn-logo-full-white-web.png', site).toString();
 
 // JSON-LD: Organization + WebSite. Single coherent graph per page.
 const jsonLd = {
@@ -45,7 +49,7 @@ const jsonLd = {
       '@id': `${site.toString()}#organization`,
       name: 'STRIVN',
       url: site.toString(),
-      logo: ogImageUrl,
+      logo: logoUrl,
       description,
       sameAs: [],
     },
@@ -81,13 +85,22 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl ?? site.toString()} />
     <meta property="og:locale" content={ogLocale} />
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {ogImageUrl && (
+      <>
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content={ogImageAlt} />
+      </>
+    )}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    {ogImageUrl && <meta name="twitter:image:alt" content={ogImageAlt} />}
     {twitterSite && <meta name="twitter:site" content={`@${twitterSite}`} />}
 
     <!-- Structured data -->

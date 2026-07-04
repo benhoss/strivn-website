@@ -77,6 +77,7 @@ export const scContent: Record<Locale, ScContent> = {
         slides: [
           {
             img: '/screenshots/wellness-briefing-fr.png',
+            video: '/videos/readiness-fr',
             kind: 'desktop',
             alt: 'Briefing du matin STRIVN : réponses aux check-ins et niveaux de risque par joueur',
             caption: 'Le briefing du matin : qui a répondu, qui est à surveiller.',
@@ -210,6 +211,7 @@ export const scContent: Record<Locale, ScContent> = {
         slides: [
           {
             img: '/screenshots/wellness-briefing.png',
+            video: '/videos/readiness-en',
             kind: 'desktop',
             alt: 'STRIVN morning briefing: check-in responses and per-player risk levels',
             caption: 'The morning briefing: who responded, who to watch.',
