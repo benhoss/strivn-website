@@ -443,20 +443,20 @@ export const scContent: Record<Locale, ScContent> = {
     eyebrow: 'STRIVN für Athletiktrainer',
     hero: {
       title: 'Belastung, Readiness und Gesundheit jedes Spielers. An einem Ort.',
-      lede: 'GPS-Import, Ermüdungsschätzung, Belastungsplanung und Return-to-Play. Alles auf einer Plattform, geteilt mit deinem gesamten Staff.',
+      lede: 'GPS-Import, Ermüdungsschätzung, Belastungsplanung und Return-to-Play. Alles auf einer Plattform, geteilt mit Ihrem gesamten Staff.',
       cta: 'Kostenlos starten',
     },
     showcase: [
       {
         title: 'Trainingsbelastung planen und verfolgen',
-        blurb: 'Plane die Woche und lass geplante vs. tatsächliche Belastung und den ACWR pro Spieler sich von selbst berechnen. sRPE- oder GPS-Formel, ganz ohne Tabelle.',
+        blurb: 'Planen Sie die Woche und lassen Sie geplante vs. tatsächliche Belastung und den ACWR pro Spieler sich von selbst berechnen. sRPE- oder GPS-Formel, ganz ohne Tabelle.',
         slides: [
           {
             img: '/screenshots/load-planning.png',
             video: '/videos/load-planning-en',
             kind: 'desktop',
             alt: 'STRIVN Belastungsplanung: geplante Tagesbelastung, wöchentliches Ziel und projizierter ACWR für die Woche',
-            caption: 'Plane die Belastung der Woche Tag für Tag, mit ACWR-Prognose und Wochenziel.',
+            caption: 'Planen Sie die Belastung der Woche Tag für Tag, mit ACWR-Prognose und Wochenziel.',
           },
           {
             img: '/screenshots/load-overview.png',
@@ -468,20 +468,20 @@ export const scContent: Record<Locale, ScContent> = {
             img: '/screenshots/load-formula.png',
             kind: 'desktop',
             alt: 'Konfiguration der sRPE-Belastungsformel in STRIVN',
-            caption: 'Stell deine sRPE- oder GPS-Belastungsformel in Sekunden ein.',
+            caption: 'Stellen Sie Ihre sRPE- oder GPS-Belastungsformel in Sekunden ein.',
           },
         ],
       },
       {
         title: 'Readiness und Check-ins, auf beiden Seiten',
-        blurb: 'Am Morgen siehst du, wer geantwortet hat und wer gefährdet ist. Spieler erfassen Ermüdung, Schlaf, Stress und Stimmung direkt vom Handy.',
+        blurb: 'Am Morgen sehen Sie, wer geantwortet hat und wer gefährdet ist. Spieler erfassen Ermüdung, Schlaf, Stress und Stimmung direkt vom Handy.',
         slides: [
           {
             img: '/screenshots/wellness-briefing.png',
             video: '/videos/readiness-en',
             kind: 'desktop',
             alt: 'STRIVN Morgenbriefing: Check-in-Antworten und Risikostufen pro Spieler',
-            caption: 'Das Morgenbriefing: wer geantwortet hat, wen du im Blick behalten solltest.',
+            caption: 'Das Morgenbriefing: wer geantwortet hat, wen Sie im Blick behalten sollten.',
           },
           {
             img: '/screenshots/portal-checkin.png',
@@ -516,15 +516,15 @@ export const scContent: Record<Locale, ScContent> = {
       items: [
         {
           title: 'Belastungsplanung & Periodisierung',
-          text: 'Baue Trainingswochen mit geplanter vs. tatsächlicher Belastung, ACWR-Management und Belastungskategorien (physisch, technisch, Spiel). Überlastungen treten von selbst zutage, kein Suchen in Tabellen.',
+          text: 'Bauen Sie Trainingswochen mit geplanter vs. tatsächlicher Belastung, ACWR-Management und Belastungskategorien (physisch, technisch, Spiel). Überlastungen treten von selbst zutage, kein Suchen in Tabellen.',
         },
         {
           title: 'GPS-Import & Belastungsformeln',
-          text: 'Importiere Catapult- oder Statsport-Dateien, mappe deine eigenen Metriken und berechne die Session-Belastung pro Spieler automatisch. Keine manuelle Neuerfassung, keine versionierten Tabellen.',
+          text: 'Importieren Sie Catapult- oder Statsport-Dateien, mappen Sie Ihre eigenen Metriken und berechnen Sie die Session-Belastung pro Spieler automatisch. Keine manuelle Neuerfassung, keine versionierten Tabellen.',
         },
         {
           title: 'Readiness & Ermüdungsschätzung',
-          text: 'STRIVN projiziert die Readiness jedes Spielers 1-5 Tage voraus, basierend auf der tatsächlichen Belastung und einem Ermüdungsabbau-Modell. Antizipiere Belastungsspitzen, bevor sie zum Problem werden.',
+          text: 'STRIVN projiziert die Readiness jedes Spielers 1-5 Tage voraus, basierend auf der tatsächlichen Belastung und einem Ermüdungsabbau-Modell. Antizipieren Sie Belastungsspitzen, bevor sie zum Problem werden.',
         },
         {
           title: 'RPE- & Befinden-Check-ins',
@@ -536,7 +536,7 @@ export const scContent: Record<Locale, ScContent> = {
         },
         {
           title: 'KI-Coach-Assistent',
-          text: 'Frag in einfacher Sprache: „Wer ist diese Woche gefährdet?", „Plane für morgen eine Regenerationseinheit." Die KI liest Belastung, Readiness und Verletzungen, um dir mit vollem Kontext zu antworten.',
+          text: 'Fragen Sie in einfacher Sprache: „Wer ist diese Woche gefährdet?", „Planen Sie für morgen eine Regenerationseinheit." Die KI liest Belastung, Readiness und Verletzungen, um Ihnen mit vollem Kontext zu antworten.',
         },
       ],
     },
@@ -545,25 +545,25 @@ export const scContent: Record<Locale, ScContent> = {
       steps: [
         {
           title: 'Morgens: Readiness prüfen',
-          text: 'Die Befinden-Check-ins kommen automatisch an. STRIVN zeigt dir, wer frisch ist, wer Ermüdung aufbaut und wer über seiner Schwelle liegt. Noch bevor die Session beginnt.',
+          text: 'Die Befinden-Check-ins kommen automatisch an. STRIVN zeigt Ihnen, wer frisch ist, wer Ermüdung aufbaut und wer über seiner Schwelle liegt. Noch bevor die Session beginnt.',
         },
         {
           title: 'Vor der Session: Belastung planen',
-          text: 'Passe die geplante Intensität an die Readiness der Gruppe an. Der wöchentliche Belastungsplan aktualisiert sich in Echtzeit und markiert Ungleichgewichte zwischen akuter und chronischer Belastung automatisch.',
+          text: 'Passen Sie die geplante Intensität an die Readiness der Gruppe an. Der wöchentliche Belastungsplan aktualisiert sich in Echtzeit und markiert Ungleichgewichte zwischen akuter und chronischer Belastung automatisch.',
         },
         {
           title: 'Während oder danach: tatsächliche Belastung erfassen',
-          text: 'Importiere die GPS-Session-Datei oder gib die RPE-Werte pro Spieler ein. Die tatsächliche Belastung wird sofort mit dem Plan verglichen und aktualisiert die Readiness-Projektionen für die nächsten Tage.',
+          text: 'Importieren Sie die GPS-Session-Datei oder geben Sie die RPE-Werte pro Spieler ein. Die tatsächliche Belastung wird sofort mit dem Plan verglichen und aktualisiert die Readiness-Projektionen für die nächsten Tage.',
         },
         {
           title: 'Am Ende der Woche: Trends auswerten',
-          text: 'Visualisiere die kumulative Belastung, den ACWR pro Spieler und Übertrainings-Warnungen. Teile das Dashboard mit dem Cheftrainer und dem Teamarzt, ohne manuellen Export.',
+          text: 'Visualisieren Sie die kumulative Belastung, den ACWR pro Spieler und Übertrainings-Warnungen. Teilen Sie das Dashboard mit dem Cheftrainer und dem Teamarzt, ohne manuellen Export.',
         },
       ],
     },
     finalCta: {
       title: 'Starte heute kostenlos.',
-      body: 'STRIVN ist kostenlos für ein Team, ohne Kreditkarte. Lade deinen medizinischen Staff und deinen Cheftrainer ein. Sie sehen dieselben Daten in Echtzeit.',
+      body: 'STRIVN ist kostenlos für ein Team, ohne Kreditkarte. Laden Sie Ihren medizinischen Staff und Ihren Cheftrainer ein. Sie sehen dieselben Daten in Echtzeit.',
       cta: 'Meinen Teambereich erstellen',
     },
   },

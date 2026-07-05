@@ -1222,7 +1222,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
   de: {
     meta: {
-      title: 'STRIVN — Dein ganzes Team, unter einem Dach',
+      title: 'STRIVN — Ihr ganzes Team, unter einem Dach',
       description:
         'Aufstellungen, Anwesenheit, medizinische Akten, Trainingsbelastung, Trainings, Kommunikation: STRIVN bringt die gesamte Organisation eines Teams in eine Plattform. Kostenlos für Coaches, ohne Freigabe des Vereins.',
     },
@@ -1247,7 +1247,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     hero: {
       claim: 'Von Coaches und Spielern gebaut — für Staff und Teams',
-      title: 'Dein ganzes Team,',
+      title: 'Ihr ganzes Team,',
       titleAccent: 'unter einem Dach.',
       lede: 'WhatsApp, Tabellen, Zettel, Gedächtnis: die Woche eines Coaches ist überall verstreut. STRIVN bringt Aufstellungen, Anwesenheit, medizinische Akten, Trainingsbelastung und Trainings in eine Plattform, die der ganze Staff teilt.',
       primaryCta: 'Kostenlos starten',
@@ -1306,7 +1306,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     communication: {
       title: 'Die Aufstellung, die sich selbst erledigt.',
-      body: 'Jeder Termin erzeugt seine Nachricht und seinen Antwortlink. Du teilst ihn auf dem Kanal, den deine Gruppe ohnehin nutzt — WhatsApp, E-Mail, die App — und STRIVN sammelt die Antworten, damit die Anwesenheitsliste aktuell bleibt.',
+      body: 'Jeder Termin erzeugt seine Nachricht und seinen Antwortlink. Sie teilen ihn auf dem Kanal, den Ihre Gruppe ohnehin nutzt — WhatsApp, E-Mail, die App — und STRIVN sammelt die Antworten, damit die Anwesenheitsliste aktuell bleibt.',
       points: [
         'Nachrichtenvorlagen je Terminart',
         'Antwortlink ohne Spieler-Konto',
@@ -1315,7 +1315,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       ],
       proof: {
         messageLabel: 'Nachricht verschickt · 18:02 Uhr',
-        message: 'Training Donnerstag 20 Uhr · Platz 2. Bestätige deine Anwesenheit.',
+        message: 'Training Donnerstag 20 Uhr · Platz 2. Bestätigen Sie Ihre Anwesenheit.',
         link: 'strivn.net/rsvp/abc123',
         repliesLabel: 'Antworten der Spieler',
         replies: [
@@ -1358,7 +1358,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     load: {
       title: 'Die Belastung des Kaders, ohne jemandem hinterherzulaufen.',
-      body: 'RPE, wöchentliche Belastung, ACWR, Erholung: die Spieler antworten vom Handy aus und STRIVN setzt die Woche zusammen. Du kommst am Montag rein, und die schwachen Signale sind schon sichtbar.',
+      body: 'RPE, wöchentliche Belastung, ACWR, Erholung: die Spieler antworten vom Handy aus und STRIVN setzt die Woche zusammen. Sie kommen am Montag rein, und die schwachen Signale sind schon sichtbar.',
       points: [
         'RPE je Training, je Spieler',
         'Wöchentliche Belastung und Monotonie',
@@ -1385,13 +1385,13 @@ export const landingContent: Record<Locale, LandingContent> = {
           { name: 'S. Cissé', mon: '5', wed: '6', fri: '5', acwr: '0.95', zone: 'green' },
         ],
         tipLabel: 'Athletik-Notiz',
-        tip: 'L. Moreau liegt seit 3 Wochen in Folge über 1.25 — plane am Freitag ein leichteres Training.',
+        tip: 'L. Moreau liegt seit 3 Wochen in Folge über 1.25 — planen Sie am Freitag ein leichteres Training.',
       },
     },
 
     sessions: {
-      title: 'Das Training fertig, bevor du am Platz bist.',
-      body: 'Taktiktafeln, eine Übungsbibliothek, Wochenplanung: STRIVN bringt das Training in Form, während du ans Spiel denkst, und der KI-Assistent berücksichtigt die tatsächliche Belastung des Kaders.',
+      title: 'Das Training fertig, bevor Sie am Platz sind.',
+      body: 'Taktiktafeln, eine Übungsbibliothek, Wochenplanung: STRIVN bringt das Training in Form, während Sie ans Spiel denken, und der KI-Assistent berücksichtigt die tatsächliche Belastung des Kaders.',
       points: [
         'Taktiktafeln',
         'Übungsbibliothek',
@@ -1427,15 +1427,15 @@ export const landingContent: Record<Locale, LandingContent> = {
     },
 
     playerApp: {
-      title: 'Deine Spieler bekommen ihre eigene Ansicht.',
+      title: 'Ihre Spieler bekommen ihre eigene Ansicht.',
       body: 'Kalender, nächster Termin, Anwesenheitsantworten, Benachrichtigungen: jeder Spieler folgt dem Team über die native App. Und wer sie nicht installiert, antwortet trotzdem über den Link.',
       stores: 'Verfügbar für iOS und Android',
       imageAlt: 'Screenshot der STRIVN-Spieler-App: Wochenkalender mit anstehenden Terminen',
     },
 
     timeSaved: {
-      title: 'Hol dir deine Abende zurück.',
-      body: 'Die Organisation läuft im Hintergrund. Dir bleibt, was zählt: der Kader, das Training, das Spiel.',
+      title: 'Holen Sie sich Ihre Abende zurück.',
+      body: 'Die Organisation läuft im Hintergrund. Ihnen bleibt, was zählt: der Kader, das Training, das Spiel.',
       rows: [
         { task: 'Aufstellungen & Erinnerungen', outcome: 'zentralisiert' },
         { task: 'Anwesenheit & medizinisches Logbuch', outcome: 'an einem Ort' },
@@ -1501,22 +1501,22 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     faq: {
       title: 'Die Fragen, die wir zuerst hören.',
-      body: 'Was deine Spieler tun müssen, wer entscheidet und wie lange die Einrichtung dauert.',
+      body: 'Was Ihre Spieler tun müssen, wer entscheidet und wie lange die Einrichtung dauert.',
       items: [
         {
           question: 'Müssen meine Spieler eine App installieren?',
           answer:
-            'Nein. Sie können über einen Link antworten, den du auf dem Kanal teilst, den du ohnehin nutzt: Web, Mobil, WhatsApp, E-Mail. Ziel ist es, Reibung zu verringern, nicht eine neue Gewohnheit aufzuzwingen.',
+            'Nein. Sie können über einen Link antworten, den Sie auf dem Kanal teilen, den Sie ohnehin nutzen: Web, Mobil, WhatsApp, E-Mail. Ziel ist es, Reibung zu verringern, nicht eine neue Gewohnheit aufzuzwingen.',
         },
         {
           question: 'Verliere ich die Kontrolle über mein Team?',
           answer:
-            'Niemals. STRIVN bereitet die Arbeit für dich vor, aber nichts geht raus ohne deine Freigabe. Du behältst die Hand über jede Nachricht, jede Entscheidung. Es übernimmt die Organisation, du coachst.',
+            'Niemals. STRIVN bereitet die Arbeit für Sie vor, aber nichts geht raus ohne Ihre Freigabe. Sie behalten die Hand über jede Nachricht, jede Entscheidung. Es übernimmt die Organisation, Sie coachen.',
         },
         {
           question: 'Wie lange dauert der Start?',
           answer:
-            'Ein paar Minuten. Du erstellst dein Team, fügst deine Spieler hinzu und kannst in der ersten Woche deine ersten Termine, Nachrichten und Antwortlinks anlegen.',
+            'Ein paar Minuten. Sie erstellen Ihr Team, fügen Ihre Spieler hinzu und können in der ersten Woche Ihre ersten Termine, Nachrichten und Antwortlinks anlegen.',
         },
         {
           question: 'Warum ist der Coach-Plan kostenlos?',
@@ -1526,7 +1526,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         {
           question: 'Funktioniert das wirklich für den Amateurfußball?',
           answer:
-            'Genau dafür ist es gebaut. STRIVN ist für Coaches gemacht, die alle Hüte tragen und keinen vollen Staff hinter sich haben. Je mehr du allein stemmst, desto mehr Zeit gibt es dir zurück.',
+            'Genau dafür ist es gebaut. STRIVN ist für Coaches gemacht, die alle Hüte tragen und keinen vollen Staff hinter sich haben. Je mehr Sie allein stemmen, desto mehr Zeit gibt es Ihnen zurück.',
         },
         {
           question: 'Und wenn ich schon medizinischen Staff und einen Athletiktrainer habe?',
@@ -1537,8 +1537,8 @@ export const landingContent: Record<Locale, LandingContent> = {
     },
 
     finalCta: {
-      title: 'Bring dein Team unter ein Dach.',
-      body: 'Erstelle dein Team kostenlos — Termine, Anwesenheit, medizinisches Logbuch und Kommunikation an einem Ort, noch diese Woche.',
+      title: 'Bringen Sie Ihr Team unter ein Dach.',
+      body: 'Erstellen Sie Ihr Team kostenlos — Termine, Anwesenheit, medizinisches Logbuch und Kommunikation an einem Ort, noch diese Woche.',
       primaryCta: 'Mein Team kostenlos erstellen',
       secondaryCta: 'Noch eine Frage vor dem Start?',
       secondaryHref: 'mailto:hello@strivn.net?subject=STRIVN%20-%20Frage%20vor%20dem%20Start',

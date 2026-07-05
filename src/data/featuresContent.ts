@@ -1238,7 +1238,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
   de: {
     hubName: 'Funktionen',
     backToHub: 'Alle Funktionen',
-    moreTitle: 'Entdecke den Rest der Plattform',
+    moreTitle: 'Entdecken Sie den Rest der Plattform',
     moreLinkLabel: 'Mehr erfahren',
 
     hub: {
@@ -1250,7 +1250,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       eyebrow: 'Funktionen',
       hero: {
         title: 'Alles, was ein Coach steuert, an einem Ort.',
-        lede: 'STRIVN deckt die vier Aufgaben ab, die die Woche eines Coaches auffressen — Kommunikation, das medizinische Protokoll, Trainingsbelastung und Trainingsplanung — und alles, was sie verbindet. Jedes Modul ist kostenlos und mit deinem Staff geteilt.',
+        lede: 'STRIVN deckt die vier Aufgaben ab, die die Woche eines Coaches auffressen — Kommunikation, das medizinische Protokoll, Trainingsbelastung und Trainingsplanung — und alles, was sie verbindet. Jedes Modul ist kostenlos und mit Ihrem Staff geteilt.',
       },
       cards: [
         {
@@ -1268,7 +1268,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         {
           slug: 'training-load',
           title: 'Belastungsplanung & RPE',
-          text: 'Plane die Belastung der Woche Tag für Tag, dann füllt die Spieler-RPE das Reale aus: geplant vs. real, ACWR, schwache Signale.',
+          text: 'Planen Sie die Belastung der Woche Tag für Tag, dann füllt die Spieler-RPE das Reale aus: geplant vs. real, ACWR, schwache Signale.',
           points: ['Belastungsplanung', 'RPE pro Training', 'ACWR pro Spieler'],
         },
         {
@@ -1285,21 +1285,21 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         meta: {
           title: 'Spiel-Aufstellungen & Teamkommunikation | STRIVN',
           description:
-            'Verschicke Aufstellungen, sammle Antworten ohne Spieler-Konto und halte die Anwesenheit in Echtzeit aktuell. Kostenlos für Amateur- und Semiprofi-Coaches.',
+            'Verschicken Sie Aufstellungen, sammeln Sie Antworten ohne Spieler-Konto und halten Sie die Anwesenheit in Echtzeit aktuell. Kostenlos für Amateur- und Semiprofi-Coaches.',
         },
         eyebrow: 'Kommunikation & Aufstellungen',
         hero: {
           title: 'Die Aufstellung, die sich selbst steuert.',
-          lede: 'Jedes Event erzeugt seine Nachricht und seinen Antwortlink. Du teilst ihn auf dem Kanal, den deine Gruppe schon nutzt — WhatsApp, E-Mail, die App — und STRIVN sammelt die Antworten, sodass sich die Anwesenheitsliste selbst aktuell hält.',
+          lede: 'Jedes Event erzeugt seine Nachricht und seinen Antwortlink. Sie teilen ihn auf dem Kanal, den Ihre Gruppe schon nutzt — WhatsApp, E-Mail, die App — und STRIVN sammelt die Antworten, sodass sich die Anwesenheitsliste selbst aktuell hält.',
           primaryCta: 'Kostenlos starten',
           reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
         },
         benefits: {
-          title: 'Hör auf, Antworten hinterherzujagen.',
+          title: 'Hören Sie auf, Antworten hinterherzujagen.',
           items: [
             {
               title: 'Vorlagen pro Event-Typ',
-              text: 'Training, Spiel, Turnier: Jeder Event-Typ hat seine eigene Nachrichtenvorlage. Die Aufstellung ist geschrieben, bevor du überhaupt die Tastatur öffnest.',
+              text: 'Training, Spiel, Turnier: Jeder Event-Typ hat seine eigene Nachrichtenvorlage. Die Aufstellung ist geschrieben, bevor Sie überhaupt die Tastatur öffnen.',
             },
             {
               title: 'Ein Antwortlink, null Spieler-Konten',
@@ -1311,7 +1311,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             },
             {
               title: 'Gezielte Erinnerungen',
-              text: 'STRIVN weiß, wer noch nicht geantwortet hat, und lässt dich nur diese anstupsen — ein Tipp, statt einer „bitte bestätigen“-Nachricht an die ganze Gruppe.',
+              text: 'STRIVN weiß, wer noch nicht geantwortet hat, und lässt Sie nur diese anstupsen — ein Tipp, statt einer „bitte bestätigen“-Nachricht an die ganze Gruppe.',
             },
           ],
         },
@@ -1319,19 +1319,19 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'So funktioniert es',
           steps: [
             {
-              title: 'Erstelle das Event',
+              title: 'Erstellen Sie das Event',
               text: 'Training, Spiel oder Turnier — STRIVN entwirft die Aufstellungsnachricht und ihren Antwortlink.',
             },
             {
-              title: 'Teile es dort, wo deine Gruppe lebt',
-              text: 'Poste den Link in der WhatsApp-Gruppe, verschicke ihn per E-Mail oder lass die App die Spieler direkt benachrichtigen.',
+              title: 'Teilen Sie es dort, wo Ihre Gruppe lebt',
+              text: 'Posten Sie den Link in der WhatsApp-Gruppe, verschicken Sie ihn per E-Mail oder lassen Sie die App die Spieler direkt benachrichtigen.',
             },
             {
-              title: 'Sieh den Antworten beim Eintreffen zu',
+              title: 'Sehen Sie den Antworten beim Eintreffen zu',
               text: 'Jede Antwort aktualisiert die Anwesenheit sofort, mit unsicheren Spielern zur Nachverfolgung markiert.',
             },
             {
-              title: 'Erinnere nur die Stillen',
+              title: 'Erinnern Sie nur die Stillen',
               text: 'Eine gezielte Erinnerung geht an die Nicht-Antwortenden — der Rest der Gruppe wird nicht zugespammt.',
             },
           ],
@@ -1362,8 +1362,8 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           ],
         },
         finalCta: {
-          title: 'Verschicke deine letzte manuelle Aufstellung.',
-          body: 'Erstelle dein Team kostenlos — die nächste Aufstellung steuert sich selbst.',
+          title: 'Verschicken Sie Ihre letzte manuelle Aufstellung.',
+          body: 'Erstellen Sie Ihr Team kostenlos — die nächste Aufstellung steuert sich selbst.',
           cta: 'Kostenlos starten',
         },
       },
@@ -1377,7 +1377,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         eyebrow: 'Medizinisches Protokoll',
         hero: {
           title: 'Ein medizinisches Protokoll, das der ganze Staff lesen kann.',
-          lede: 'Verletzungen, Notizen des Arztes, Einschätzungen des Physios, Return-to-Play-Protokoll: Alles ist verbunden, von der Diagnose zurück auf den Platz. Du siehst, wo jeder Spieler steht, ohne jemanden anzurufen.',
+          lede: 'Verletzungen, Notizen des Arztes, Einschätzungen des Physios, Return-to-Play-Protokoll: Alles ist verbunden, von der Diagnose zurück auf den Platz. Sie sehen, wo jeder Spieler steht, ohne jemanden anzurufen.',
           primaryCta: 'Kostenlos starten',
           reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
         },
@@ -1398,7 +1398,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             },
             {
               title: 'Lesezugriff für den Coach',
-              text: 'Du siehst Status und Verfügbarkeit auf einen Blick; die medizinischen Details bleiben beim Staff, der sie verantwortet.',
+              text: 'Sie sehen Status und Verfügbarkeit auf einen Blick; die medizinischen Details bleiben beim Staff, der sie verantwortet.',
             },
           ],
         },
@@ -1406,7 +1406,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'So funktioniert es',
           steps: [
             {
-              title: 'Öffne das Dossier',
+              title: 'Öffnen Sie das Dossier',
               text: 'Der Physio oder der Coach legt den Eintrag an: Spieler, Verletzung, Datum. Dreißig Sekunden am Spielfeldrand.',
             },
             {
@@ -1414,11 +1414,11 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
               text: 'Arzt, Physio und Athletiktrainer schreiben ins selbe Dossier, jeder aus seiner eigenen Ansicht.',
             },
             {
-              title: 'Folge dem Protokoll',
+              title: 'Folgen Sie dem Protokoll',
               text: 'Die Return-to-Play-Stufen schreiten mit dem Spieler voran, sichtbar für jedes berechtigte Staffmitglied.',
             },
             {
-              title: 'Plane mit der echten Verfügbarkeit',
+              title: 'Planen Sie mit der echten Verfügbarkeit',
               text: 'Anwesenheit und Trainingsplanung spiegeln wider, wer wirklich fit ist — keine Überraschungen am Spieltag.',
             },
           ],
@@ -1429,7 +1429,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             {
               question: 'Wer kann die medizinischen Daten eines Spielers sehen?',
               answer:
-                'Nur die Staffmitglieder, die du autorisierst. Der Coach sieht Status und Verfügbarkeit; die detaillierten Notizen bleiben beim Staff, der sie geschrieben hat.',
+                'Nur die Staffmitglieder, die Sie autorisieren. Der Coach sieht Status und Verfügbarkeit; die detaillierten Notizen bleiben beim Staff, der sie geschrieben hat.',
             },
             {
               question: 'Wir haben keinen Physio. Ist es trotzdem nützlich?',
@@ -1449,8 +1449,8 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           ],
         },
         finalCta: {
-          title: 'Leg das medizinische Protokoll dort ab, wo der Staff es lesen kann.',
-          body: 'Erstelle dein Team kostenlos — das medizinische Protokoll gehört zum kostenlosen Plan, nicht zu einer bezahlten Option.',
+          title: 'Legen Sie das medizinische Protokoll dort ab, wo der Staff es lesen kann.',
+          body: 'Erstellen Sie Ihr Team kostenlos — das medizinische Protokoll gehört zum kostenlosen Plan, nicht zu einer bezahlten Option.',
           cta: 'Kostenlos starten',
         },
       },
@@ -1459,21 +1459,21 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         meta: {
           title: 'Belastungsplanung & Monitoring der Trainingsbelastung für Coaches | STRIVN',
           description:
-            'Plane die Belastung der Woche Tag für Tag, sammle RPE über die Telefone deiner Spieler, vergleiche geplant vs. real und verfolge ACWR, um Verletzungsrisiko zu erkennen, bevor daraus ein Ausfall wird. Kostenlos für Coaches.',
+            'Planen Sie die Belastung der Woche Tag für Tag, sammeln Sie RPE über die Telefone Ihrer Spieler, vergleichen Sie geplant vs. real und verfolgen Sie ACWR, um Verletzungsrisiko zu erkennen, bevor daraus ein Ausfall wird. Kostenlos für Coaches.',
         },
         eyebrow: 'Belastungsplanung & RPE',
         hero: {
-          title: 'Plane die Woche. Verfolge die reale Belastung.',
-          lede: 'Baue die Woche mit einem Belastungsziel und Übungen Tag für Tag auf, dann lass die Spieler-RPE das Reale ausfüllen. STRIVN vergleicht geplant vs. real, berechnet ACWR und markiert das Risiko, bevor es dich etwas kostet.',
+          title: 'Planen Sie die Woche. Verfolgen Sie die reale Belastung.',
+          lede: 'Bauen Sie die Woche mit einem Belastungsziel und Übungen Tag für Tag auf, dann lassen Sie die Spieler-RPE das Reale ausfüllen. STRIVN vergleicht geplant vs. real, berechnet ACWR und markiert das Risiko, bevor es Sie etwas kostet.',
           primaryCta: 'Kostenlos starten',
           reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
         },
         benefits: {
-          title: 'Plane die Belastung, dann sieh das Reale sich füllen.',
+          title: 'Planen Sie die Belastung, dann sehen Sie das Reale sich füllen.',
           items: [
             {
-              title: 'Plane die Woche',
-              text: 'Setze ein wöchentliches Belastungsziel, lege Trainings und Übungen Tag für Tag mit ihren Kategorien an. Die ACWR-Prognose erscheint, bevor das erste Training überhaupt beginnt.',
+              title: 'Planen Sie die Woche',
+              text: 'Setzen Sie ein wöchentliches Belastungsziel, legen Sie Trainings und Übungen Tag für Tag mit ihren Kategorien an. Die ACWR-Prognose erscheint, bevor das erste Training überhaupt beginnt.',
             },
             {
               title: 'RPE pro Training, pro Spieler',
@@ -1493,8 +1493,8 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'So funktioniert es',
           steps: [
             {
-              title: 'Plane die Woche',
-              text: 'Belastungsziel, Trainings und Übungen pro Tag, Belastungskategorien (physisch, technisch, Spiel). Die ACWR-Prognose des Teams aktualisiert sich, während du baust.',
+              title: 'Planen Sie die Woche',
+              text: 'Belastungsziel, Trainings und Übungen pro Tag, Belastungskategorien (physisch, technisch, Spiel). Die ACWR-Prognose des Teams aktualisiert sich, während Sie bauen.',
             },
             {
               title: 'Spieler bewerten das Training',
@@ -1505,8 +1505,8 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
               text: 'Trainingsbewertungen werden zu realer Belastung, Monotonie und ACWR pro Spieler, automatisch mit dem Plan verglichen.',
             },
             {
-              title: 'Justiere, bevor es dich etwas kostet',
-              text: 'Plane einen leichteren Freitag für den Spieler bei 1.32, statt ihn sechs Wochen zu verlieren.',
+              title: 'Justieren Sie, bevor es Sie etwas kostet',
+              text: 'Planen Sie einen leichteren Freitag für den Spieler bei 1.32, statt ihn sechs Wochen zu verlieren.',
             },
           ],
         },
@@ -1516,7 +1516,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             {
               question: 'Kann ich die Belastung im Voraus planen?',
               answer:
-                'Ja. Die Ansicht Belastungsplanung lässt dich ein wöchentliches Belastungsziel setzen und Übungen Tag für Tag nach Kategorie anlegen; STRIVN projiziert das ACWR des Teams und markiert riskante Tage, bevor die Woche beginnt.',
+                'Ja. Die Ansicht Belastungsplanung lässt Sie ein wöchentliches Belastungsziel setzen und Übungen Tag für Tag nach Kategorie anlegen; STRIVN projiziert das ACWR des Teams und markiert riskante Tage, bevor die Woche beginnt.',
             },
             {
               question: 'Was ist RPE?',
@@ -1526,23 +1526,23 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             {
               question: 'Was ist ACWR, und warum ist es wichtig?',
               answer:
-                'Das Acute:Chronic-Workload-Ratio vergleicht die Belastung dieser Woche mit dem vergangenen Monat. Scharfe Spitzen korrelieren mit dem Verletzungsrisiko; STRIVN berechnet es pro Spieler, damit du die Spitze glätten kannst, bevor sie dich etwas kostet.',
+                'Das Acute:Chronic-Workload-Ratio vergleicht die Belastung dieser Woche mit dem vergangenen Monat. Scharfe Spitzen korrelieren mit dem Verletzungsrisiko; STRIVN berechnet es pro Spieler, damit Sie die Spitze glätten können, bevor sie Sie etwas kostet.',
             },
             {
               question: 'Werden meine Spieler es wirklich ausfüllen?',
               answer:
-                'Es dauert Sekunden auf ihrem Telefon direkt nach dem Training, und du siehst auf einen Blick, wer nicht geantwortet hat — dieselbe Erinnerungslogik wie bei Aufstellungen.',
+                'Es dauert Sekunden auf ihrem Telefon direkt nach dem Training, und Sie sehen auf einen Blick, wer nicht geantwortet hat — dieselbe Erinnerungslogik wie bei Aufstellungen.',
             },
             {
               question: 'Brauche ich einen Athletiktrainer, um das zu nutzen?',
               answer:
-                'Nein. Die Standardeinstellungen funktionieren für einen Coach allein; und wenn du einen Athletiktrainer hast, bekommt er eine eigene Planungsansicht und seine Notiz wird mit dem Staff geteilt.',
+                'Nein. Die Standardeinstellungen funktionieren für einen Coach allein; und wenn Sie einen Athletiktrainer haben, bekommt er eine eigene Planungsansicht und seine Notiz wird mit dem Staff geteilt.',
             },
           ],
         },
         finalCta: {
-          title: 'Plane die Woche des Teams, bevor sie beginnt.',
-          body: 'Erstelle dein Team kostenlos — Belastungsplanung, Tracking und RPE gehören zum kostenlosen Plan.',
+          title: 'Planen Sie die Woche des Teams, bevor sie beginnt.',
+          body: 'Erstellen Sie Ihr Team kostenlos — Belastungsplanung, Tracking und RPE gehören zum kostenlosen Plan.',
           cta: 'Kostenlos starten',
         },
       },
@@ -1551,25 +1551,25 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         meta: {
           title: 'Fußball-Trainingsplaner & Taktiktafeln | STRIVN',
           description:
-            'Plane Trainings, zeichne Taktiktafeln, baue deine Übungsbibliothek — mit einem KI-Assistenten, der die reale Belastung des Teams berücksichtigt.',
+            'Planen Sie Trainings, zeichnen Sie Taktiktafeln, bauen Sie Ihre Übungsbibliothek — mit einem KI-Assistenten, der die reale Belastung des Teams berücksichtigt.',
         },
         eyebrow: 'Trainings & Taktik',
         hero: {
-          title: 'Das Training fertig, bevor du den Platz erreichst.',
-          lede: 'Taktiktafeln, eine Übungsbibliothek, Wochenplanung: STRIVN formt das Training, während du über das Spiel nachdenkst, und der KI-Assistent berücksichtigt die reale Belastung des Teams.',
+          title: 'Das Training fertig, bevor Sie den Platz erreichen.',
+          lede: 'Taktiktafeln, eine Übungsbibliothek, Wochenplanung: STRIVN formt das Training, während Sie über das Spiel nachdenken, und der KI-Assistent berücksichtigt die reale Belastung des Teams.',
           primaryCta: 'Kostenlos starten',
           reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
         },
         benefits: {
-          title: 'Denk an das Spiel. STRIVN übernimmt die Aufbereitung.',
+          title: 'Denken Sie an das Spiel. STRIVN übernimmt die Aufbereitung.',
           items: [
             {
               title: 'Taktiktafeln',
-              text: 'Skizziere den Pressingblock oder die Spieleröffnung auf einer Tafel, die der ganze Staff öffnen kann — keine Fotos von einem Whiteboard mehr.',
+              text: 'Skizzieren Sie den Pressingblock oder die Spieleröffnung auf einer Tafel, die der ganze Staff öffnen kann — keine Fotos von einem Whiteboard mehr.',
             },
             {
-              title: 'Eine Bibliothek, die mit dir wächst',
-              text: 'Behalte die Übungen, die funktionieren, verwende sie in Sekunden wieder und hör auf, jeden Monat dasselbe Rondo neu zu zeichnen.',
+              title: 'Eine Bibliothek, die mit Ihnen wächst',
+              text: 'Behalten Sie die Übungen, die funktionieren, verwenden Sie sie in Sekunden wieder und hören Sie auf, jeden Monat dasselbe Rondo neu zu zeichnen.',
             },
             {
               title: 'Wochenplanung',
@@ -1577,7 +1577,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             },
             {
               title: 'KI-gestützte Trainingserstellung',
-              text: 'Beschreibe die Absicht — STRIVN schlägt die Struktur vor und berücksichtigt die reale Belastung und Verfügbarkeit des Teams. Du bleibst der Coach; es übernimmt die Aufbereitung.',
+              text: 'Beschreiben Sie die Absicht — STRIVN schlägt die Struktur vor und berücksichtigt die reale Belastung und Verfügbarkeit des Teams. Sie bleiben der Coach; es übernimmt die Aufbereitung.',
             },
           ],
         },
@@ -1585,19 +1585,19 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'So funktioniert es',
           steps: [
             {
-              title: 'Lege die Absicht fest',
-              text: 'Hohes Pressing, Spieleröffnung unter Druck, Abschluss — benenne das Thema des Donnerstags.',
+              title: 'Legen Sie die Absicht fest',
+              text: 'Hohes Pressing, Spieleröffnung unter Druck, Abschluss — benennen Sie das Thema des Donnerstags.',
             },
             {
-              title: 'Baue aus der Bibliothek oder mit KI',
-              text: 'Hol deine bewährten Übungen heran oder lass den Assistenten eine Struktur vorschlagen, die die Belastung der Woche respektiert.',
+              title: 'Bauen Sie aus der Bibliothek oder mit KI',
+              text: 'Holen Sie Ihre bewährten Übungen heran oder lassen Sie den Assistenten eine Struktur vorschlagen, die die Belastung der Woche respektiert.',
             },
             {
-              title: 'Teile mit dem Staff',
+              title: 'Teilen Sie mit dem Staff',
               text: 'Der Co-Trainer und der Athletiktrainer sehen den Plan vor dem Training — nicht auf dem Parkplatz.',
             },
             {
-              title: 'Schließe den Kreis',
+              title: 'Schließen Sie den Kreis',
               text: 'Nach dem Training bringt der Bericht alles zusammen: was geplant war, was passiert ist, was anzupassen ist.',
             },
           ],
@@ -1608,17 +1608,17 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             {
               question: 'Wie funktioniert der KI-Assistent?',
               answer:
-                'Du beschreibst die Absicht des Trainings; der Assistent schlägt Phasen, Dauern und Übungen vor und stützt sich dabei auf das, was STRIVN bereits weiß — die Verfügbarkeit und die jüngste Belastung des Teams. Jeder Vorschlag bleibt bearbeitbar, bevor er zum Plan wird.',
+                'Sie beschreiben die Absicht des Trainings; der Assistent schlägt Phasen, Dauern und Übungen vor und stützt sich dabei auf das, was STRIVN bereits weiß — die Verfügbarkeit und die jüngste Belastung des Teams. Jeder Vorschlag bleibt bearbeitbar, bevor er zum Plan wird.',
             },
             {
               question: 'Kann ich meine eigenen Übungen verwenden?',
               answer:
-                'Ja. Die Bibliothek gehört dir: deine Übungen, deine Diagramme, deine Namen. Der Assistent stützt sich zuerst darauf, nicht nur auf generische Vorlagen.',
+                'Ja. Die Bibliothek gehört Ihnen: Ihre Übungen, Ihre Diagramme, Ihre Namen. Der Assistent stützt sich zuerst darauf, nicht nur auf generische Vorlagen.',
             },
             {
               question: 'Sehen Spieler den Trainingsplan?',
               answer:
-                'Du entscheidest, was du teilst. Die Aufstellung sagt den Spielern, wann und wo; die taktischen Details können beim Staff bleiben.',
+                'Sie entscheiden, was Sie teilen. Die Aufstellung sagt den Spielern, wann und wo; die taktischen Details können beim Staff bleiben.',
             },
             {
               question: 'Ist das nur für Fußball?',
@@ -1628,8 +1628,8 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           ],
         },
         finalCta: {
-          title: 'Denk an das Spiel. Die Aufbereitung ist erledigt.',
-          body: 'Erstelle dein Team kostenlos — Tafeln, Bibliothek und Assistent inklusive.',
+          title: 'Denken Sie an das Spiel. Die Aufbereitung ist erledigt.',
+          body: 'Erstellen Sie Ihr Team kostenlos — Tafeln, Bibliothek und Assistent inklusive.',
           cta: 'Kostenlos starten',
         },
       },
