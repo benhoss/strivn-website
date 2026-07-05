@@ -10,7 +10,7 @@ import {
   slugFromEntry,
 } from '../../../lib/blog';
 import { getCollection, render } from 'astro:content';
-import { APP_URL } from '../../../data/landingContent';
+import { appStartUrl } from '../../../lib/appUrl';
 
 export async function getStaticPaths() {
   const entries = await getCollection('blog', ({ data }) => !data.draft);
@@ -152,7 +152,7 @@ const jsonLdExtra = [
       Convocations, présences, charge, séances : strivn rassemble ton intendance
       sur une seule page, partagée avec ton staff.
     </p>
-    <a href={APP_URL} target="_blank" rel="noopener" class="b-cta__btn">
+    <a href={appStartUrl('fr')} target="_blank" rel="noopener" class="b-cta__btn">
       Tester strivn gratuitement →
     </a>
   </section>

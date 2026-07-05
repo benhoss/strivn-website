@@ -1,7 +1,8 @@
 ---
 import SubpageLayout from '../layouts/SubpageLayout.astro';
 import WaitlistForm from './WaitlistForm.astro';
-import { APP_URL, type Locale } from '../data/landingContent';
+import { type Locale } from '../data/landingContent';
+import { appStartUrl } from '../lib/appUrl';
 import { clubsContent } from '../data/clubsContent';
 
 interface Props {
@@ -87,7 +88,7 @@ const jsonLdExtra = [
       <h2 class="s-headline">{c.finalCta.title}</h2>
       <p class="s-lede s-final__body">{c.finalCta.body}</p>
       <div class="s-final__actions">
-        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.cta}</a>
+        <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.cta}</a>
       </div>
     </div>
   </section>

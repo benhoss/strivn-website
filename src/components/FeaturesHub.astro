@@ -1,6 +1,7 @@
 ---
 import SubpageLayout from '../layouts/SubpageLayout.astro';
-import { APP_URL, landingContent, type Locale } from '../data/landingContent';
+import { landingContent, type Locale } from '../data/landingContent';
+import { appStartUrl } from '../lib/appUrl';
 import { featuresContent } from '../data/featuresContent';
 
 interface Props {
@@ -79,7 +80,7 @@ const jsonLdExtra = [
       <h2 class="s-headline">{c.finalCta.title}</h2>
       <p class="s-lede s-final__body">{c.finalCta.body}</p>
       <div class="s-final__actions">
-        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.primaryCta}</a>
+        <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.primaryCta}</a>
         <a href={c.finalCta.secondaryHref} class="s-final__secondary">{c.finalCta.secondaryCta}</a>
       </div>
     </div>
