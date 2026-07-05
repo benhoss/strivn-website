@@ -1,4 +1,4 @@
-export type Locale = 'en' | 'fr' | 'nl';
+export type Locale = 'en' | 'fr' | 'nl' | 'de';
 
 /** One scattered fragment of the coach's daily chaos, shown in the hero stage. */
 type Fragment = {
@@ -1217,6 +1217,349 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Privacy', href: '/privacy' },
       ],
       credit: '© 2026 STRIVN · Gratis voor coaches, clubs binnenkort',
+    },
+  },
+
+  de: {
+    meta: {
+      title: 'STRIVN — Dein ganzes Team, unter einem Dach',
+      description:
+        'Aufstellungen, Anwesenheit, medizinische Akten, Trainingsbelastung, Trainings, Kommunikation: STRIVN bringt die gesamte Organisation eines Teams in eine Plattform. Kostenlos für Coaches, ohne Freigabe des Vereins.',
+    },
+
+    nav: {
+      links: [
+        { label: 'Plattform', href: '/de/#platform' },
+        { label: 'Funktionen', href: '/de/features/' },
+        {
+          label: 'Lösungen',
+          children: [
+            { label: 'S&C-Coaches', href: '/de/sc-coaches/' },
+            { label: 'Vereine', href: '/de/clubs/' },
+          ],
+        },
+        { label: 'Blog', href: '/fr/blog/' },
+        { label: 'Preise', href: '/de/#pricing' },
+        { label: 'FAQ', href: '/de/#faq' },
+      ],
+      cta: 'Loslegen',
+    },
+
+    hero: {
+      claim: 'Von Coaches und Spielern gebaut — für Staff und Teams',
+      title: 'Dein ganzes Team,',
+      titleAccent: 'unter einem Dach.',
+      lede: 'WhatsApp, Tabellen, Zettel, Gedächtnis: die Woche eines Coaches ist überall verstreut. STRIVN bringt Aufstellungen, Anwesenheit, medizinische Akten, Trainingsbelastung und Trainings in eine Plattform, die der ganze Staff teilt.',
+      primaryCta: 'Kostenlos starten',
+      secondaryCta: 'Plattform ansehen',
+      reassurance: 'Kostenlos für ein Team · ohne Freigabe des Vereins · in wenigen Minuten startklar',
+      stage: {
+        ariaLabel:
+          'Animation: die verstreuten Nachrichten, Dateien und Notizen eines Coaches laufen in einem einheitlichen STRIVN-Panel zusammen, das den Zustand des Teams zeigt.',
+        fragments: [
+          { kind: 'mail', source: 'E-Mail', text: 'Aufstellung Sonntag: 9 von 16 Antworten' },
+          { kind: 'sheet', source: 'anwesenheit_W23_v4.xlsx', text: 'Anwesenheit: 3 Tabs, 2 Versionen' },
+          { kind: 'sms', source: 'Physio · SMS', text: 'Mendes’ Knie: diese Woche kein Sprinten' },
+          { kind: 'scrap', source: 'Notizbuch', text: 'RPE von Donnerstag: noch einzutragen' },
+          { kind: 'note', source: 'Zettel', text: 'Pressing-Block für Donnerstag planen' },
+          { kind: 'chat', source: 'Team · WhatsApp', text: 'Wann ist am Sonntag das Spiel?' },
+        ],
+        panel: {
+          header: 'Teamzustand',
+          status: 'Aktuell · mit dem Staff geteilt',
+          rows: [
+            { label: 'Kommunikation', value: 'Aufstellung verschickt · 14 Antworten', tone: 'ok' },
+            { label: 'Anwesenheit', value: '14 dabei · 2 unsicher', tone: 'ok' },
+            { label: 'Medizin', value: 'T. Mendes — Rehabilitation', tone: 'watch' },
+            { label: 'Belastung & RPE', value: 'ACWR 1.12 · Kader stabil', tone: 'ok' },
+            { label: 'Training', value: 'Donnerstag 20 Uhr · Pressing-Block', tone: 'info' },
+            { label: 'Spiel', value: 'Sonntag 15 Uhr · Kader bestätigt', tone: 'info' },
+          ],
+        },
+      },
+    },
+
+    overview: {
+      eyebrow: 'In Aktion sehen',
+      title: 'Die ganze Plattform, in zwei Minuten.',
+      sub: 'Eine geführte Tour, wie STRIVN Aufstellungen, Anwesenheit, medizinische Akten und Trainingsbelastung in einen Arbeitsbereich holt, den der ganze Staff teilt.',
+      srcMp4: '/videos/overview-en.mp4',
+      poster: '/posters/overview-en.jpg',
+      duration: '2 min',
+      playLabel: 'Produktüberblick abspielen',
+      ariaLabel: 'STRIVN Produktüberblick-Video',
+    },
+
+    reality: {
+      title: 'Coachen ist nur ein Teil des Jobs.',
+      body: 'Am Dienstag um 22:47 Uhr geht die Arbeit im Hintergrund weiter: den Spielern hinterherlaufen, die nicht geantwortet haben, das medizinische Logbuch aktualisieren, Anwesenheiten neu eintragen, den Physio briefen. Sechs verschiedene Orte, kein Überblick.',
+      scattered: [
+        'Die WhatsApp-Gruppe',
+        'Die Anwesenheitstabelle',
+        'Die medizinischen Notizen',
+        'Das RPE-Notizbuch',
+        'Die Trainingsdiagramme',
+        'Das Gedächtnis des Coaches',
+      ],
+      resolve: 'Eine Plattform.',
+    },
+
+    communication: {
+      title: 'Die Aufstellung, die sich selbst erledigt.',
+      body: 'Jeder Termin erzeugt seine Nachricht und seinen Antwortlink. Du teilst ihn auf dem Kanal, den deine Gruppe ohnehin nutzt — WhatsApp, E-Mail, die App — und STRIVN sammelt die Antworten, damit die Anwesenheitsliste aktuell bleibt.',
+      points: [
+        'Nachrichtenvorlagen je Terminart',
+        'Antwortlink ohne Spieler-Konto',
+        'Anwesenheit in Echtzeit aktualisiert',
+        'Gezielte Erinnerungen für die, die nicht geantwortet haben',
+      ],
+      proof: {
+        messageLabel: 'Nachricht verschickt · 18:02 Uhr',
+        message: 'Training Donnerstag 20 Uhr · Platz 2. Bestätige deine Anwesenheit.',
+        link: 'strivn.net/rsvp/abc123',
+        repliesLabel: 'Antworten der Spieler',
+        replies: [
+          { name: 'A. Diallo', answer: 'Dabei', tone: 'ok' },
+          { name: 'M. Benyahia', answer: 'Dabei', tone: 'ok' },
+          { name: 'T. Mendes', answer: 'Unsicher · Knie', tone: 'watch' },
+        ],
+        tally: '14 dabei · 1 unsicher · aktualisiert um 18:05 Uhr',
+      },
+    },
+
+    medical: {
+      title: 'Ein medizinisches Logbuch, das der ganze Staff lesen kann.',
+      body: 'Verletzungen, Notizen des Arztes, Einschätzungen des Physios, Return-to-Play-Protokoll: alles ist verbunden, von der Diagnose bis zurück auf den Platz. Der Coach sieht, wo jeder Spieler steht, ohne jemanden anzurufen.',
+      points: [
+        'Verlauf je Spieler',
+        'Notizen von Arzt und Physio an einem Ort',
+        'Return-to-Play-Protokoll in Stufen',
+        'Nur-Lese-Einblick für den Coach',
+      ],
+      record: {
+        player: 'T. Mendes',
+        injury: 'Oberschenkelzerrung · Grad 1',
+        since: 'Seit 28. April',
+        stages: [
+          { label: 'Diagnose', state: 'done' },
+          { label: 'Behandlung', state: 'done' },
+          { label: 'Rehabilitation', state: 'active' },
+          { label: 'Gruppentraining', state: 'todo' },
+          { label: 'Spielbereit', state: 'todo' },
+        ],
+        notes: [
+          { author: 'Dr. Lemaire', role: 'Arzt', text: 'Geradeauslaufen freigegeben. Kein Sprinten vor Tag 7.' },
+          { author: 'A. Roux', role: 'Physio', text: 'Gute Reaktion auf Kräftigung. Empfinden des Spielers bessert sich.' },
+        ],
+        returnLabel: 'Voraussichtliche Rückkehr',
+        returnValue: '10 – 12 Tage',
+      },
+    },
+
+    load: {
+      title: 'Die Belastung des Kaders, ohne jemandem hinterherzulaufen.',
+      body: 'RPE, wöchentliche Belastung, ACWR, Erholung: die Spieler antworten vom Handy aus und STRIVN setzt die Woche zusammen. Du kommst am Montag rein, und die schwachen Signale sind schon sichtbar.',
+      points: [
+        'RPE je Training, je Spieler',
+        'Wöchentliche Belastung und Monotonie',
+        'ACWR je Spieler',
+        'Notiz des Athletiktrainers mit dem Staff geteilt',
+      ],
+      table: {
+        title: 'Belastung & RPE',
+        week: 'Woche 23 · 1. – 7. Juni',
+        colPlayer: 'Spieler',
+        colMon: 'Mo',
+        colWed: 'Mi',
+        colFri: 'Fr',
+        colAcwr: 'ACWR',
+        colState: 'Status',
+        pillOk: 'OK',
+        pillWatch: 'Beobachten',
+        pillRisk: 'Risiko',
+        players: [
+          { name: 'A. Diallo', mon: '6', wed: '7', fri: '6', acwr: '1.05', zone: 'green' },
+          { name: 'M. Benyahia', mon: '7', wed: '8', fri: '7', acwr: '1.18', zone: 'amber' },
+          { name: 'T. Mendes', mon: '4', wed: '—', fri: '5', acwr: '0.85', zone: 'amber' },
+          { name: 'L. Moreau', mon: '7', wed: '7', fri: '8', acwr: '1.32', zone: 'red' },
+          { name: 'S. Cissé', mon: '5', wed: '6', fri: '5', acwr: '0.95', zone: 'green' },
+        ],
+        tipLabel: 'Athletik-Notiz',
+        tip: 'L. Moreau liegt seit 3 Wochen in Folge über 1.25 — plane am Freitag ein leichteres Training.',
+      },
+    },
+
+    sessions: {
+      title: 'Das Training fertig, bevor du am Platz bist.',
+      body: 'Taktiktafeln, eine Übungsbibliothek, Wochenplanung: STRIVN bringt das Training in Form, während du ans Spiel denkst, und der KI-Assistent berücksichtigt die tatsächliche Belastung des Kaders.',
+      points: [
+        'Taktiktafeln',
+        'Übungsbibliothek',
+        'Wochenplanung',
+        'KI-gestützte Trainingserstellung',
+      ],
+      board: {
+        title: 'Taktikblock · hohes Pressing',
+        meta: 'Training · Donnerstag 20 Uhr',
+        stamp: '4 Übungen · 75 min',
+        phases: [
+          { label: 'Aufwärmen', detail: 'Aktivierung + Ballführung · 15 min' },
+          { label: 'Übung 1', detail: 'Pressing zu dritt, ausgelöst auf den Querpass · 20 min' },
+          { label: 'Übung 2', detail: 'Spielaufbau unter Druck · 20 min' },
+          { label: 'Spiel', detail: '8-gegen-8, Pressing-Vorgaben · 20 min' },
+        ],
+      },
+    },
+
+    capabilities: {
+      title: 'Und alles andere in der wöchentlichen Routine.',
+      body: 'Ein Team, unbegrenzt Spieler und Staff. Jedes Modul ist im kostenlosen Plan enthalten — nichts ist hinter einer Zahlung verschlossen.',
+      items: [
+        { title: 'Anwesenheit & RSVP', text: 'Antworten der Spieler werden zu einer aktuellen Coach-Ansicht, ohne von Hand zu zählen.' },
+        { title: 'Medizinisches Logbuch', text: 'Verletzungen, medizinische Notizen und Return-to-Play bleiben für befugten Staff sichtbar.' },
+        { title: 'Belastung & RPE', text: 'Belastung, empfundene Anstrengung und schwache Signale verbinden sich mit der realen Woche des Kaders.' },
+        { title: 'Tests & Bewertungen', text: 'Physische und technische Tests werden über die Zeit verfolgt, um echten Fortschritt zu zeigen.' },
+        { title: 'Individuelle Programme', text: 'Ziele, angepasste Belastungen und spezifische Übungen bleiben mit jedem Spieler verknüpft.' },
+        { title: 'Trainings & Taktik', text: 'Trainingspläne, Taktiktafeln und Übungen bleiben mit dem Zustand des Teams verbunden.' },
+        { title: 'Spiel- & Trainingsberichte', text: 'Feedback des Staffs schafft einen Kreislauf und hält die Spielzeit sichtbar.' },
+        { title: 'KI-Assistent', text: 'Berichte und der Assistent machen aus Teaminformationen Entscheidungen.' },
+      ],
+    },
+
+    playerApp: {
+      title: 'Deine Spieler bekommen ihre eigene Ansicht.',
+      body: 'Kalender, nächster Termin, Anwesenheitsantworten, Benachrichtigungen: jeder Spieler folgt dem Team über die native App. Und wer sie nicht installiert, antwortet trotzdem über den Link.',
+      stores: 'Verfügbar für iOS und Android',
+      imageAlt: 'Screenshot der STRIVN-Spieler-App: Wochenkalender mit anstehenden Terminen',
+    },
+
+    timeSaved: {
+      title: 'Hol dir deine Abende zurück.',
+      body: 'Die Organisation läuft im Hintergrund. Dir bleibt, was zählt: der Kader, das Training, das Spiel.',
+      rows: [
+        { task: 'Aufstellungen & Erinnerungen', outcome: 'zentralisiert' },
+        { task: 'Anwesenheit & medizinisches Logbuch', outcome: 'an einem Ort' },
+        { task: 'Trainingsberichte', outcome: 'vorbereitet' },
+        { task: 'Koordination des Staffs', outcome: 'für alle sichtbar' },
+      ],
+    },
+
+    pricing: {
+      title: 'Kostenlos zum Coachen. Kostenpflichtig, wenn der Verein wächst.',
+      body: 'Der Coach-Plan ist das komplette Erlebnis für ein Team. Club-Pläne kommen für Organisationen, die mehrere Teams, Staffs und medizinische Abläufe koordinieren wollen.',
+      plans: [
+        {
+          name: 'Coach',
+          description: 'Um STRIVN in einem Team zu starten, ohne den Verein um Budget zu bitten.',
+          price: '0 €',
+          period: 'für immer',
+          availability: 'Jetzt verfügbar',
+          cta: 'Mein Team erstellen',
+          featured: true,
+          features: [
+            '1 Team',
+            'Unbegrenzt Spieler',
+            'Unbegrenzt Staff',
+            'Termine, Trainings und Spiele',
+            'Anwesenheit, RSVP und Kommunikation',
+            'Medizinisches Logbuch, Taktik, Berichte und KI-Assistent',
+          ],
+        },
+        {
+          name: 'Club',
+          description: 'Um alle Teams und Staffs eines Vereins zu koordinieren.',
+          price: 'Bald',
+          period: '',
+          availability: 'Schrittweiser Rollout',
+          cta: 'Demo anfragen',
+          features: [
+            'Mehrere Teams',
+            'Gemeinsame Spielerbasis',
+            'Gemeinsamer medizinischer Staff und Koordinatoren',
+            'Vereins-Dashboards und Reporting',
+            'Teamübergreifende Verletzungsverfolgung',
+          ],
+        },
+        {
+          name: 'Club Pro',
+          description: 'Für Organisationen, die erweiterte Einblicke wollen.',
+          price: 'Bald',
+          period: '',
+          availability: 'Auf Anfrage',
+          cta: 'Mit dem Team sprechen',
+          features: [
+            'Alles aus Club',
+            'Erweitertes Reporting',
+            'Erweiterte Analytics',
+            'API-Zugriff',
+            'Organisatorische Einblicke',
+          ],
+        },
+      ],
+      note: 'Die erste Zahlung kommt, wenn ein Verein mehrere Teams und Staffs in STRIVN verwalten will. Nicht, um die essenziellen Werkzeuge eines Coaches freizuschalten.',
+    },
+
+    faq: {
+      title: 'Die Fragen, die wir zuerst hören.',
+      body: 'Was deine Spieler tun müssen, wer entscheidet und wie lange die Einrichtung dauert.',
+      items: [
+        {
+          question: 'Müssen meine Spieler eine App installieren?',
+          answer:
+            'Nein. Sie können über einen Link antworten, den du auf dem Kanal teilst, den du ohnehin nutzt: Web, Mobil, WhatsApp, E-Mail. Ziel ist es, Reibung zu verringern, nicht eine neue Gewohnheit aufzuzwingen.',
+        },
+        {
+          question: 'Verliere ich die Kontrolle über mein Team?',
+          answer:
+            'Niemals. STRIVN bereitet die Arbeit für dich vor, aber nichts geht raus ohne deine Freigabe. Du behältst die Hand über jede Nachricht, jede Entscheidung. Es übernimmt die Organisation, du coachst.',
+        },
+        {
+          question: 'Wie lange dauert der Start?',
+          answer:
+            'Ein paar Minuten. Du erstellst dein Team, fügst deine Spieler hinzu und kannst in der ersten Woche deine ersten Termine, Nachrichten und Antwortlinks anlegen.',
+        },
+        {
+          question: 'Warum ist der Coach-Plan kostenlos?',
+          answer:
+            'Weil ein Coach STRIVN ausprobieren und einführen können soll, ohne über den Präsidenten, den Vorstand oder den Kassenwart zu gehen. Die Zahlung beginnt, wenn der Verein mehrere Teams koordinieren will.',
+        },
+        {
+          question: 'Funktioniert das wirklich für den Amateurfußball?',
+          answer:
+            'Genau dafür ist es gebaut. STRIVN ist für Coaches gemacht, die alle Hüte tragen und keinen vollen Staff hinter sich haben. Je mehr du allein stemmst, desto mehr Zeit gibt es dir zurück.',
+        },
+        {
+          question: 'Und wenn ich schon medizinischen Staff und einen Athletiktrainer habe?',
+          answer:
+            'Umso besser. Jeder bekommt seine Ansicht: der Physio sieht das medizinische Logbuch, der Athletiktrainer sieht die Belastung, der Koordinator sieht mehrere Teams. Niemand trägt neu ein, was ein Kollege schon notiert hat.',
+        },
+      ],
+    },
+
+    finalCta: {
+      title: 'Bring dein Team unter ein Dach.',
+      body: 'Erstelle dein Team kostenlos — Termine, Anwesenheit, medizinisches Logbuch und Kommunikation an einem Ort, noch diese Woche.',
+      primaryCta: 'Mein Team kostenlos erstellen',
+      secondaryCta: 'Noch eine Frage vor dem Start?',
+      secondaryHref: 'mailto:hello@strivn.net?subject=STRIVN%20-%20Frage%20vor%20dem%20Start',
+    },
+
+    footer: {
+      statement: 'Zuerst der Platz. Danach die Organisation.',
+      brandLine: 'STRIVN bringt die gesamte Organisation eines Teams in eine Plattform, kostenlos für Coaches.',
+      email: 'hello@strivn.net',
+      links: [
+        { label: 'Plattform', href: '/de/#platform' },
+        { label: 'Funktionen', href: '/de/features/' },
+        { label: 'Blog', href: '/fr/blog/' },
+        { label: 'Vereine', href: '/de/clubs/' },
+        { label: 'S&C-Coaches', href: '/de/sc-coaches/' },
+        { label: 'Preise', href: '/de/#pricing' },
+        { label: 'FAQ', href: '/de/#faq' },
+        { label: 'Support', href: '/support' },
+        { label: 'Datenschutz', href: '/privacy' },
+      ],
+      credit: '© 2026 STRIVN · Kostenlos für Coaches, Vereine bald',
     },
   },
 };

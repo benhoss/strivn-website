@@ -225,4 +225,68 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       cta: 'Gratis starten als coach',
     },
   },
+
+  de: {
+    meta: {
+      title: 'STRIVN für Vereine — Koordination über mehrere Teams',
+      description:
+        'Koordiniere jedes Team, jeden Staff und jeden medizinischen Ablauf deines Vereins in einer Plattform. Der Verein-Tarif wird schrittweise ausgerollt — trag dich in die Warteliste ein.',
+    },
+    eyebrow: 'STRIVN für Vereine',
+    hero: {
+      title: 'Ein Verein. Jedes Team, unter einem Dach.',
+      lede: 'Der Coach-Tarif führt ein Team. Der Verein-Tarif koordiniert sie alle: eine gemeinsame Spielerbasis, gemeinsamer medizinischer Staff, Dashboards über alle Teams hinweg. Der Rollout erfolgt schrittweise — Vereine auf der Warteliste kommen zuerst dran.',
+      status: 'Bald verfügbar · schrittweiser Rollout',
+    },
+    benefits: {
+      title: 'Was der Verein-Tarif hinzufügt',
+      items: [
+        {
+          title: 'Mehrere Teams, eine Plattform',
+          text: 'Jedes Team des Vereins läuft auf derselben Basis: gleiche Events, gleiche Anwesenheitslogik, keine Silos pro Team.',
+        },
+        {
+          title: 'Eine gemeinsame Spielerbasis',
+          text: 'Ein Spieler, der zwischen Teams wechselt, behält seine Historie: Anwesenheiten, medizinische Akte, Belastung. Nichts muss erneut erfasst werden.',
+        },
+        {
+          title: 'Gemeinsamer medizinischer Staff und Koordinatoren',
+          text: 'Der Physiotherapeut, der drei Teams betreut, sieht drei Teams. Koordinatoren verfolgen jedes Team, ohne Exporte anfordern zu müssen.',
+        },
+        {
+          title: 'Vereins-Dashboards und Reporting',
+          text: 'Verfügbarkeit, Verletzungen und Belastung über alle Teams hinweg, in einer Ansicht, die für die Menschen gebaut ist, die den Verein führen.',
+        },
+        {
+          title: 'Teamübergreifende Verletzungsverfolgung',
+          text: 'Eine Verletzung folgt dem Spieler, nicht dem Team — die Rückkehr zum Spiel bleibt schlüssig, selbst wenn ein Spieler eine Kategorie höher spielt.',
+        },
+      ],
+    },
+    form: {
+      title: 'In die Verein-Warteliste eintragen',
+      body: 'Erzähl uns von deinem Verein und wir melden uns, sobald der Rollout dich erreicht. Ohne Verpflichtung — es reiht deinen Verein einfach in die Warteschlange ein.',
+      fields: {
+        name: { label: 'Dein Name', placeholder: 'Vorname Nachname' },
+        email: { label: 'E-Mail', placeholder: 'du@verein.de' },
+        club: { label: 'Name des Vereins', placeholder: 'FC Beispiel' },
+        role: { label: 'Deine Rolle im Verein', placeholder: 'Präsident, Koordinator, sportlicher Leiter…' },
+        teams: { label: 'Anzahl der Teams', placeholder: 'z. B. 12' },
+      },
+      submit: 'In die Warteliste eintragen',
+      sending: 'Wird gesendet…',
+      success: {
+        title: 'Du stehst auf der Liste.',
+        body: 'Danke — wir melden uns, sobald der Verein-Tarif ausgerollt wird. In der Zwischenzeit können deine Coaches bereits kostenlos mit dem Coach-Tarif starten.',
+      },
+      error: 'Das Formular konnte nicht gesendet werden. Bitte versuch es erneut oder schreib uns an hello@strivn.net.',
+      privacyNote: 'Wir verwenden diese Angaben ausschließlich, um dich zum Verein-Tarif zu kontaktieren.',
+      privacyLink: { label: 'Datenschutzerklärung', href: '/privacy' },
+    },
+    finalCta: {
+      title: 'Deine Coaches müssen nicht warten.',
+      body: 'Der Coach-Tarif ist kostenlos für ein Team, ab heute. Vereine steigen schneller um, wenn ihre Coaches das Tool bereits nutzen.',
+      cta: 'Kostenlos als Coach starten',
+    },
+  },
 };

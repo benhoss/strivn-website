@@ -13,7 +13,7 @@ interface Props {
   /** Extra JSON-LD nodes forwarded to BaseLayout (FAQPage, BreadcrumbList…) */
   jsonLdExtra?: Record<string, unknown>[];
   /** Counterpart paths for the language switcher (defaults to the homepages). */
-  switchHrefs?: { en: string; fr: string; nl?: string };
+  switchHrefs?: { en: string; fr: string; nl?: string; de?: string };
 }
 
 const {
@@ -28,7 +28,7 @@ const {
 
 const c = landingContent[locale];
 const skipLabel =
-  locale === 'fr' ? 'Aller au contenu' : locale === 'nl' ? 'Naar de inhoud' : 'Skip to content';
+  locale === 'fr' ? 'Aller au contenu' : locale === 'nl' ? 'Naar de inhoud' : locale === 'de' ? 'Zum Inhalt springen' : 'Skip to content';
 const homeHref = `/${locale}/`;
 ---
 

@@ -30,6 +30,12 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     'training-load': 'Illustratie: een weektabel van de belasting met RPE-waarden en ACWR-signalen.',
     sessions: 'Illustratie: een trainingsplan met vier getimede oefenblokken.',
   },
+  de: {
+    communication: 'Illustration: eine Aufstellung mit den Antworten der Spieler und einer Live-Anwesenheitszählung.',
+    medical: 'Illustration: eine Verletzungsakte mit stufenweisem Return-to-Play und Notizen des Staffs.',
+    'training-load': 'Illustration: eine Wochentabelle der Belastung mit RPE-Werten und ACWR-Signalen.',
+    sessions: 'Illustration: ein Trainingsplan mit vier getimten Übungsblöcken.',
+  },
 };
 const ariaLabels = ariaLabelsByLocale[locale];
 
@@ -52,6 +58,12 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     medical: { tone: 'watch', text: 'Revalidatie · dag 9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — vrijdag verlichten' },
     sessions: { tone: 'info', text: 'Afgestemd op de belasting van de groep' },
+  },
+  de: {
+    communication: { tone: 'ok', text: 'L. Moreau — Dabei · 18:09' },
+    medical: { tone: 'watch', text: 'Reha · Tag 9' },
+    'training-load': { tone: 'risk', text: 'ACWR 1.32 — Freitag reduzieren' },
+    sessions: { tone: 'info', text: 'Auf die Belastung der Gruppe abgestimmt' },
   },
 };
 const chip = chipsByLocale[locale][slug];
