@@ -1,7 +1,8 @@
 ---
 import SubpageLayout from '../layouts/SubpageLayout.astro';
 import FeatureVisual from './FeatureVisual.astro';
-import { APP_URL, type Locale } from '../data/landingContent';
+import { type Locale } from '../data/landingContent';
+import { appStartUrl } from '../lib/appUrl';
 import { featuresContent, FEATURE_SLUGS, type FeatureSlug } from '../data/featuresContent';
 
 interface Props {
@@ -75,7 +76,7 @@ const jsonLdExtra = [
         <h1 class="s-display fp-hero__title">{f.hero.title}</h1>
         <p class="s-lede fp-hero__lede">{f.hero.lede}</p>
         <div class="fp-hero__actions">
-          <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{f.hero.primaryCta}</a>
+          <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{f.hero.primaryCta}</a>
         </div>
         <span class="s-label fp-hero__reassurance">{f.hero.reassurance}</span>
       </div>
@@ -159,7 +160,7 @@ const jsonLdExtra = [
       <h2 class="s-headline">{f.finalCta.title}</h2>
       <p class="s-lede s-final__body">{f.finalCta.body}</p>
       <div class="s-final__actions">
-        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{f.finalCta.cta}</a>
+        <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{f.finalCta.cta}</a>
       </div>
     </div>
   </section>

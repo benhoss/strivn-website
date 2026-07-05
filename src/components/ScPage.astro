@@ -1,6 +1,7 @@
 ---
 import SubpageLayout from '../layouts/SubpageLayout.astro';
-import { APP_URL, type Locale } from '../data/landingContent';
+import { type Locale } from '../data/landingContent';
+import { appStartUrl } from '../lib/appUrl';
 import { scContent } from '../data/scContent';
 
 interface Props {
@@ -71,7 +72,7 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 
         <p class="s-label sc-hero__eyebrow">{c.eyebrow}</p>
         <h1 class="s-display sc-hero__title">{c.hero.title}</h1>
         <p class="s-lede sc-hero__lede">{c.hero.lede}</p>
-        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">
+        <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">
           {c.hero.cta}
         </a>
       </div>
@@ -213,7 +214,7 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 
       <h2 class="s-headline">{c.finalCta.title}</h2>
       <p class="s-lede s-final__body">{c.finalCta.body}</p>
       <div class="s-final__actions">
-        <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.cta}</a>
+        <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.cta}</a>
       </div>
     </div>
   </section>

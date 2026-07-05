@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from './SiteHeader.astro';
 import SiteFooter from './SiteFooter.astro';
-import { landingContent, APP_URL, type Locale } from '../data/landingContent';
+import { landingContent, type Locale } from '../data/landingContent';
+import { appStartUrl } from '../lib/appUrl';
 
 interface Props {
   locale: Locale;
@@ -56,7 +57,7 @@ const skipLabel =
           </h1>
           <p class="s-lede s-hero__lede">{c.hero.lede}</p>
           <div class="s-hero__actions">
-            <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.hero.primaryCta}</a>
+            <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.hero.primaryCta}</a>
             <a href="#platform" class="s-btn s-btn--ghost">{c.hero.secondaryCta}</a>
           </div>
           <span class="s-label s-hero__reassurance">{c.hero.reassurance}</span>
@@ -386,7 +387,7 @@ const skipLabel =
                 {plan.features.map((feature) => <li>{feature}</li>)}
               </ul>
               {plan.featured ? (
-                <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{plan.cta}</a>
+                <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{plan.cta}</a>
               ) : (
                 <a href={`mailto:${c.footer.email}?subject=${encodeURIComponent(`STRIVN ${plan.name}`)}`} class="s-btn s-btn--ghost">{plan.cta}</a>
               )}
@@ -421,7 +422,7 @@ const skipLabel =
         <h2 class="s-headline">{c.finalCta.title}</h2>
         <p class="s-lede s-final__body">{c.finalCta.body}</p>
         <div class="s-final__actions">
-          <a href={APP_URL} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.primaryCta}</a>
+          <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.primaryCta}</a>
           <a href={c.finalCta.secondaryHref} class="s-final__secondary">{c.finalCta.secondaryCta}</a>
         </div>
       </div>

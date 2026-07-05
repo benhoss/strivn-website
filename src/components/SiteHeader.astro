@@ -1,5 +1,6 @@
 ---
-import { APP_URL, type Locale } from '../data/landingContent';
+import { type Locale } from '../data/landingContent';
+import { appStartUrl } from '../lib/appUrl';
 
 type NavLink =
   | { label: string; href: string }
@@ -86,7 +87,7 @@ const langs = [
     ))}
   </div>
 
-  <a href={APP_URL} target="_blank" rel="noopener" class="s-nav__cta">{cta}</a>
+  <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-nav__cta">{cta}</a>
 
   <!-- Mobile menu panel (≤60rem, where the inline links are hidden) -->
   <div class="s-nav__mobile" id="s-nav-mobile" hidden>
