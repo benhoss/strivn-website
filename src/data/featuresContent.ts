@@ -1234,4 +1234,405 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
     },
   },
+
+  de: {
+    hubName: 'Funktionen',
+    backToHub: 'Alle Funktionen',
+    moreTitle: 'Entdecke den Rest der Plattform',
+    moreLinkLabel: 'Mehr erfahren',
+
+    hub: {
+      meta: {
+        title: 'STRIVN-Funktionen — Teamorganisation für Coaches',
+        description:
+          'Aufstellungen, Anwesenheit, Verletzungs-Tracking, Trainingsbelastung und Trainingsplanung: alles, was STRIVN Coaches kostenlos bietet, in einer Plattform.',
+      },
+      eyebrow: 'Funktionen',
+      hero: {
+        title: 'Alles, was ein Coach steuert, an einem Ort.',
+        lede: 'STRIVN deckt die vier Aufgaben ab, die die Woche eines Coaches auffressen — Kommunikation, das medizinische Protokoll, Trainingsbelastung und Trainingsplanung — und alles, was sie verbindet. Jedes Modul ist kostenlos und mit deinem Staff geteilt.',
+      },
+      cards: [
+        {
+          slug: 'communication',
+          title: 'Kommunikation & Aufstellungen',
+          text: 'Jedes Event erzeugt seine Nachricht und seinen Antwortlink. Die Anwesenheit hält sich selbst aktuell.',
+          points: ['Nachrichtenvorlagen', 'Antworten ohne Spieler-Konto', 'Gezielte Erinnerungen'],
+        },
+        {
+          slug: 'medical',
+          title: 'Medizinisches Protokoll & Verletzungs-Tracking',
+          text: 'Verletzungen, Notizen von Arzt und Physio, Return-to-Play-Protokoll: ein Dossier, lesbar für den ganzen Staff.',
+          points: ['Historie pro Spieler', 'Notizen des medizinischen Staffs', 'Gestaffeltes Return-to-Play'],
+        },
+        {
+          slug: 'training-load',
+          title: 'Belastungsplanung & RPE',
+          text: 'Plane die Belastung der Woche Tag für Tag, dann füllt die Spieler-RPE das Reale aus: geplant vs. real, ACWR, schwache Signale.',
+          points: ['Belastungsplanung', 'RPE pro Training', 'ACWR pro Spieler'],
+        },
+        {
+          slug: 'sessions',
+          title: 'Trainings & Taktik',
+          text: 'Taktiktafeln, eine Übungsbibliothek und ein KI-Assistent, der die reale Belastung des Teams berücksichtigt.',
+          points: ['Taktiktafeln', 'Übungsbibliothek', 'KI-gestützte Erstellung'],
+        },
+      ],
+    },
+
+    features: {
+      communication: {
+        meta: {
+          title: 'Spiel-Aufstellungen & Teamkommunikation | STRIVN',
+          description:
+            'Verschicke Aufstellungen, sammle Antworten ohne Spieler-Konto und halte die Anwesenheit in Echtzeit aktuell. Kostenlos für Amateur- und Semiprofi-Coaches.',
+        },
+        eyebrow: 'Kommunikation & Aufstellungen',
+        hero: {
+          title: 'Die Aufstellung, die sich selbst steuert.',
+          lede: 'Jedes Event erzeugt seine Nachricht und seinen Antwortlink. Du teilst ihn auf dem Kanal, den deine Gruppe schon nutzt — WhatsApp, E-Mail, die App — und STRIVN sammelt die Antworten, sodass sich die Anwesenheitsliste selbst aktuell hält.',
+          primaryCta: 'Kostenlos starten',
+          reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
+        },
+        benefits: {
+          title: 'Hör auf, Antworten hinterherzujagen.',
+          items: [
+            {
+              title: 'Vorlagen pro Event-Typ',
+              text: 'Training, Spiel, Turnier: Jeder Event-Typ hat seine eigene Nachrichtenvorlage. Die Aufstellung ist geschrieben, bevor du überhaupt die Tastatur öffnest.',
+            },
+            {
+              title: 'Ein Antwortlink, null Spieler-Konten',
+              text: 'Spieler bestätigen über einen einfachen Link, am Web oder mobil — nichts zu installieren, kein Passwort, das am Abend vor einem Spiel zurückgesetzt werden muss.',
+            },
+            {
+              title: 'Anwesenheit in Echtzeit aktualisiert',
+              text: 'Jede Antwort landet direkt auf der Anwesenheitsliste. Nichts neu zu zählen, keine Tabellenversionen abzugleichen.',
+            },
+            {
+              title: 'Gezielte Erinnerungen',
+              text: 'STRIVN weiß, wer noch nicht geantwortet hat, und lässt dich nur diese anstupsen — ein Tipp, statt einer „bitte bestätigen“-Nachricht an die ganze Gruppe.',
+            },
+          ],
+        },
+        how: {
+          title: 'So funktioniert es',
+          steps: [
+            {
+              title: 'Erstelle das Event',
+              text: 'Training, Spiel oder Turnier — STRIVN entwirft die Aufstellungsnachricht und ihren Antwortlink.',
+            },
+            {
+              title: 'Teile es dort, wo deine Gruppe lebt',
+              text: 'Poste den Link in der WhatsApp-Gruppe, verschicke ihn per E-Mail oder lass die App die Spieler direkt benachrichtigen.',
+            },
+            {
+              title: 'Sieh den Antworten beim Eintreffen zu',
+              text: 'Jede Antwort aktualisiert die Anwesenheit sofort, mit unsicheren Spielern zur Nachverfolgung markiert.',
+            },
+            {
+              title: 'Erinnere nur die Stillen',
+              text: 'Eine gezielte Erinnerung geht an die Nicht-Antwortenden — der Rest der Gruppe wird nicht zugespammt.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Häufig gestellte Fragen',
+          items: [
+            {
+              question: 'Müssen meine Spieler eine App installieren?',
+              answer:
+                'Nein. Sie können über den Link von jedem Telefon oder Computer aus antworten. Die native App ergänzt Benachrichtigungen und einen Kalender, bleibt aber optional.',
+            },
+            {
+              question: 'Ersetzt STRIVN unsere WhatsApp-Gruppe?',
+              answer:
+                'Nein — es arbeitet mit ihr zusammen. Die Gruppe behält das Teamleben; STRIVN übernimmt den strukturierten Teil: wer kommt, wer nicht, wer nichts gesagt hat.',
+            },
+            {
+              question: 'Können Eltern für jüngere Spieler antworten?',
+              answer:
+                'Ja. Der Antwortlink funktioniert für die Person, die die Verfügbarkeit des Spielers verwaltet — kein Konto nötig, also bestätigt ein Elternteil in Sekunden.',
+            },
+            {
+              question: 'Was passiert, wenn jemand spät antwortet?',
+              answer:
+                'Die Anwesenheitsliste aktualisiert sich in dem Moment, in dem sie antworten, und die Änderung ist für den ganzen Staff sichtbar — keine Nachricht weiterzuleiten.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Verschicke deine letzte manuelle Aufstellung.',
+          body: 'Erstelle dein Team kostenlos — die nächste Aufstellung steuert sich selbst.',
+          cta: 'Kostenlos starten',
+        },
+      },
+
+      medical: {
+        meta: {
+          title: 'Verletzungs-Tracking für Fußballteams | STRIVN',
+          description:
+            'Ein gemeinsames medizinisches Protokoll für Amateur- und Semiprofi-Teams: Verletzungen, Notizen von Arzt und Physio, gestaffeltes Return-to-Play. Kostenlos für Coaches.',
+        },
+        eyebrow: 'Medizinisches Protokoll',
+        hero: {
+          title: 'Ein medizinisches Protokoll, das der ganze Staff lesen kann.',
+          lede: 'Verletzungen, Notizen des Arztes, Einschätzungen des Physios, Return-to-Play-Protokoll: Alles ist verbunden, von der Diagnose zurück auf den Platz. Du siehst, wo jeder Spieler steht, ohne jemanden anzurufen.',
+          primaryCta: 'Kostenlos starten',
+          reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
+        },
+        benefits: {
+          title: 'Eine Verletzung, ein Dossier — nicht fünf Gespräche.',
+          items: [
+            {
+              title: 'Eine Historie pro Spieler',
+              text: 'Jede Verletzung, jede Behandlung, jedes Comeback lebt im Dossier des Spielers. Wiederkehrende Probleme werden sichtbar, statt halb vergessen zu sein.',
+            },
+            {
+              title: 'Arzt und Physio an einem Ort',
+              text: 'Die Freigabe des Arztes und die Einschätzung des Physios stehen im selben Dossier — keine SMS weiterzuleiten, keine mündliche Übergabe, die verloren geht.',
+            },
+            {
+              title: 'Ein gestaffeltes Return-to-Play',
+              text: 'Diagnose, Behandlung, Reha, Mannschaftstraining, spielbereit: Jede Stufe ist explizit, und niemand überstürzt ein Comeback.',
+            },
+            {
+              title: 'Lesezugriff für den Coach',
+              text: 'Du siehst Status und Verfügbarkeit auf einen Blick; die medizinischen Details bleiben beim Staff, der sie verantwortet.',
+            },
+          ],
+        },
+        how: {
+          title: 'So funktioniert es',
+          steps: [
+            {
+              title: 'Öffne das Dossier',
+              text: 'Der Physio oder der Coach legt den Eintrag an: Spieler, Verletzung, Datum. Dreißig Sekunden am Spielfeldrand.',
+            },
+            {
+              title: 'Der Staff fügt seine Notizen hinzu',
+              text: 'Arzt, Physio und Athletiktrainer schreiben ins selbe Dossier, jeder aus seiner eigenen Ansicht.',
+            },
+            {
+              title: 'Folge dem Protokoll',
+              text: 'Die Return-to-Play-Stufen schreiten mit dem Spieler voran, sichtbar für jedes berechtigte Staffmitglied.',
+            },
+            {
+              title: 'Plane mit der echten Verfügbarkeit',
+              text: 'Anwesenheit und Trainingsplanung spiegeln wider, wer wirklich fit ist — keine Überraschungen am Spieltag.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Häufig gestellte Fragen',
+          items: [
+            {
+              question: 'Wer kann die medizinischen Daten eines Spielers sehen?',
+              answer:
+                'Nur die Staffmitglieder, die du autorisierst. Der Coach sieht Status und Verfügbarkeit; die detaillierten Notizen bleiben beim Staff, der sie geschrieben hat.',
+            },
+            {
+              question: 'Wir haben keinen Physio. Ist es trotzdem nützlich?',
+              answer:
+                'Ja. Viele Amateurteams beginnen damit, dass der Coach Verletzungen und Rückkehrdaten notiert. Die Struktur hilft schon bei einem Staff aus einer Person.',
+            },
+            {
+              question: 'Was ist ein Return-to-Play-Protokoll?',
+              answer:
+                'Ein gestaffelter Weg von der Diagnose zurück zur Spielverfügbarkeit. STRIVN macht die Stufen explizit, damit ein Spieler nicht zu früh zurückkehrt, weil niemand das ganze Bild hatte.',
+            },
+            {
+              question: 'Funktioniert es für langwierige Verletzungen?',
+              answer:
+                'Ja — ein Dossier hat kein Zeitlimit, und das gestaffelte Protokoll ist genau für die mehrwöchigen Comebacks gemacht, bei denen Informationen üblicherweise verloren gehen.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Leg das medizinische Protokoll dort ab, wo der Staff es lesen kann.',
+          body: 'Erstelle dein Team kostenlos — das medizinische Protokoll gehört zum kostenlosen Plan, nicht zu einer bezahlten Option.',
+          cta: 'Kostenlos starten',
+        },
+      },
+
+      'training-load': {
+        meta: {
+          title: 'Belastungsplanung & Monitoring der Trainingsbelastung für Coaches | STRIVN',
+          description:
+            'Plane die Belastung der Woche Tag für Tag, sammle RPE über die Telefone deiner Spieler, vergleiche geplant vs. real und verfolge ACWR, um Verletzungsrisiko zu erkennen, bevor daraus ein Ausfall wird. Kostenlos für Coaches.',
+        },
+        eyebrow: 'Belastungsplanung & RPE',
+        hero: {
+          title: 'Plane die Woche. Verfolge die reale Belastung.',
+          lede: 'Baue die Woche mit einem Belastungsziel und Übungen Tag für Tag auf, dann lass die Spieler-RPE das Reale ausfüllen. STRIVN vergleicht geplant vs. real, berechnet ACWR und markiert das Risiko, bevor es dich etwas kostet.',
+          primaryCta: 'Kostenlos starten',
+          reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
+        },
+        benefits: {
+          title: 'Plane die Belastung, dann sieh das Reale sich füllen.',
+          items: [
+            {
+              title: 'Plane die Woche',
+              text: 'Setze ein wöchentliches Belastungsziel, lege Trainings und Übungen Tag für Tag mit ihren Kategorien an. Die ACWR-Prognose erscheint, bevor das erste Training überhaupt beginnt.',
+            },
+            {
+              title: 'RPE pro Training, pro Spieler',
+              text: 'Spieler bewerten die Anstrengung von ihrem Telefon aus direkt nach dem Training. Keine Papierformulare mehr, kein Notizbuch, das in eine Tabelle übertragen werden muss.',
+            },
+            {
+              title: 'Geplant vs. real',
+              text: 'Die reale Belastung wird automatisch mit dem Plan verglichen: überbelastete und unterbelastete Tage tauchen beide auf einen Blick auf.',
+            },
+            {
+              title: 'ACWR pro Spieler',
+              text: 'Das Acute:Chronic-Workload-Ratio markiert, wer zu schnell ansteigt — der klassische Vorbote von Muskelverletzungen.',
+            },
+          ],
+        },
+        how: {
+          title: 'So funktioniert es',
+          steps: [
+            {
+              title: 'Plane die Woche',
+              text: 'Belastungsziel, Trainings und Übungen pro Tag, Belastungskategorien (physisch, technisch, Spiel). Die ACWR-Prognose des Teams aktualisiert sich, während du baust.',
+            },
+            {
+              title: 'Spieler bewerten das Training',
+              text: 'Eine schnelle RPE-Abfrage nach jedem Training, in Sekunden von ihren Telefonen beantwortet.',
+            },
+            {
+              title: 'STRIVN vergleicht geplant vs. real',
+              text: 'Trainingsbewertungen werden zu realer Belastung, Monotonie und ACWR pro Spieler, automatisch mit dem Plan verglichen.',
+            },
+            {
+              title: 'Justiere, bevor es dich etwas kostet',
+              text: 'Plane einen leichteren Freitag für den Spieler bei 1.32, statt ihn sechs Wochen zu verlieren.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Häufig gestellte Fragen',
+          items: [
+            {
+              question: 'Kann ich die Belastung im Voraus planen?',
+              answer:
+                'Ja. Die Ansicht Belastungsplanung lässt dich ein wöchentliches Belastungsziel setzen und Übungen Tag für Tag nach Kategorie anlegen; STRIVN projiziert das ACWR des Teams und markiert riskante Tage, bevor die Woche beginnt.',
+            },
+            {
+              question: 'Was ist RPE?',
+              answer:
+                'Rating of Perceived Exertion: die Bewertung von 1 bis 10, die ein Spieler selbst dafür gibt, wie hart sich ein Training angefühlt hat. Multipliziert mit der Dauer ist es das einfachste zuverlässige Belastungsmaß im Amateursport.',
+            },
+            {
+              question: 'Was ist ACWR, und warum ist es wichtig?',
+              answer:
+                'Das Acute:Chronic-Workload-Ratio vergleicht die Belastung dieser Woche mit dem vergangenen Monat. Scharfe Spitzen korrelieren mit dem Verletzungsrisiko; STRIVN berechnet es pro Spieler, damit du die Spitze glätten kannst, bevor sie dich etwas kostet.',
+            },
+            {
+              question: 'Werden meine Spieler es wirklich ausfüllen?',
+              answer:
+                'Es dauert Sekunden auf ihrem Telefon direkt nach dem Training, und du siehst auf einen Blick, wer nicht geantwortet hat — dieselbe Erinnerungslogik wie bei Aufstellungen.',
+            },
+            {
+              question: 'Brauche ich einen Athletiktrainer, um das zu nutzen?',
+              answer:
+                'Nein. Die Standardeinstellungen funktionieren für einen Coach allein; und wenn du einen Athletiktrainer hast, bekommt er eine eigene Planungsansicht und seine Notiz wird mit dem Staff geteilt.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Plane die Woche des Teams, bevor sie beginnt.',
+          body: 'Erstelle dein Team kostenlos — Belastungsplanung, Tracking und RPE gehören zum kostenlosen Plan.',
+          cta: 'Kostenlos starten',
+        },
+      },
+
+      sessions: {
+        meta: {
+          title: 'Fußball-Trainingsplaner & Taktiktafeln | STRIVN',
+          description:
+            'Plane Trainings, zeichne Taktiktafeln, baue deine Übungsbibliothek — mit einem KI-Assistenten, der die reale Belastung des Teams berücksichtigt.',
+        },
+        eyebrow: 'Trainings & Taktik',
+        hero: {
+          title: 'Das Training fertig, bevor du den Platz erreichst.',
+          lede: 'Taktiktafeln, eine Übungsbibliothek, Wochenplanung: STRIVN formt das Training, während du über das Spiel nachdenkst, und der KI-Assistent berücksichtigt die reale Belastung des Teams.',
+          primaryCta: 'Kostenlos starten',
+          reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
+        },
+        benefits: {
+          title: 'Denk an das Spiel. STRIVN übernimmt die Aufbereitung.',
+          items: [
+            {
+              title: 'Taktiktafeln',
+              text: 'Skizziere den Pressingblock oder die Spieleröffnung auf einer Tafel, die der ganze Staff öffnen kann — keine Fotos von einem Whiteboard mehr.',
+            },
+            {
+              title: 'Eine Bibliothek, die mit dir wächst',
+              text: 'Behalte die Übungen, die funktionieren, verwende sie in Sekunden wieder und hör auf, jeden Monat dasselbe Rondo neu zu zeichnen.',
+            },
+            {
+              title: 'Wochenplanung',
+              text: 'Trainings stehen in der Woche neben den Spielen: Umfang und Absicht richten sich nach dem, was am Sonntag kommt.',
+            },
+            {
+              title: 'KI-gestützte Trainingserstellung',
+              text: 'Beschreibe die Absicht — STRIVN schlägt die Struktur vor und berücksichtigt die reale Belastung und Verfügbarkeit des Teams. Du bleibst der Coach; es übernimmt die Aufbereitung.',
+            },
+          ],
+        },
+        how: {
+          title: 'So funktioniert es',
+          steps: [
+            {
+              title: 'Lege die Absicht fest',
+              text: 'Hohes Pressing, Spieleröffnung unter Druck, Abschluss — benenne das Thema des Donnerstags.',
+            },
+            {
+              title: 'Baue aus der Bibliothek oder mit KI',
+              text: 'Hol deine bewährten Übungen heran oder lass den Assistenten eine Struktur vorschlagen, die die Belastung der Woche respektiert.',
+            },
+            {
+              title: 'Teile mit dem Staff',
+              text: 'Der Co-Trainer und der Athletiktrainer sehen den Plan vor dem Training — nicht auf dem Parkplatz.',
+            },
+            {
+              title: 'Schließe den Kreis',
+              text: 'Nach dem Training bringt der Bericht alles zusammen: was geplant war, was passiert ist, was anzupassen ist.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Häufig gestellte Fragen',
+          items: [
+            {
+              question: 'Wie funktioniert der KI-Assistent?',
+              answer:
+                'Du beschreibst die Absicht des Trainings; der Assistent schlägt Phasen, Dauern und Übungen vor und stützt sich dabei auf das, was STRIVN bereits weiß — die Verfügbarkeit und die jüngste Belastung des Teams. Jeder Vorschlag bleibt bearbeitbar, bevor er zum Plan wird.',
+            },
+            {
+              question: 'Kann ich meine eigenen Übungen verwenden?',
+              answer:
+                'Ja. Die Bibliothek gehört dir: deine Übungen, deine Diagramme, deine Namen. Der Assistent stützt sich zuerst darauf, nicht nur auf generische Vorlagen.',
+            },
+            {
+              question: 'Sehen Spieler den Trainingsplan?',
+              answer:
+                'Du entscheidest, was du teilst. Die Aufstellung sagt den Spielern, wann und wo; die taktischen Details können beim Staff bleiben.',
+            },
+            {
+              question: 'Ist das nur für Fußball?',
+              answer:
+                'STRIVN ist fußballorientiert konzipiert: Die Tafeln, die Übungsstrukturen und die Belastungslogik sprechen Fußball. Dieser Fokus ist bewusst gewählt.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Denk an das Spiel. Die Aufbereitung ist erledigt.',
+          body: 'Erstelle dein Team kostenlos — Tafeln, Bibliothek und Assistent inklusive.',
+          cta: 'Kostenlos starten',
+        },
+      },
+    },
+  },
 };

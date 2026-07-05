@@ -37,7 +37,7 @@ const canonicalUrl = canonicalPath ? new URL(canonicalPath, site).toString() : u
 const ogImageUrl = ogImage
   ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, site).toString())
   : undefined;
-const ogLocale = lang === 'fr' ? 'fr_FR' : lang === 'nl' ? 'nl_NL' : 'en_US';
+const ogLocale = lang === 'fr' ? 'fr_FR' : lang === 'nl' ? 'nl_NL' : lang === 'de' ? 'de_DE' : 'en_US';
 const logoUrl = new URL('/strivn-logo-full-white-web.png', site).toString();
 
 // JSON-LD: Organization + WebSite. Single coherent graph per page.
@@ -58,7 +58,7 @@ const jsonLd = {
       '@id': `${site.toString()}#website`,
       url: site.toString(),
       name: siteName,
-      inLanguage: ['en', 'fr', 'nl'],
+      inLanguage: ['en', 'fr', 'nl', 'de'],
     },
     ...jsonLdExtra,
   ],
