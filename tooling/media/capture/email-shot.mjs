@@ -1,0 +1,13 @@
+import { resolve } from 'node:path';
+import { DIR } from '../config.mjs';
+import { chromium } from '../lib/browser.mjs';
+const URL = process.env.MAIL_URL || 'http://localhost:4500/_email-preview.html';
+const OUT = process.env.OUT || resolve(DIR.here, '.work/email-shot.png');
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 640, height: 1000 }, deviceScaleFactor: 1 });
+const page = await ctx.newPage();
+await page.goto(URL, { waitUntil: 'networkidle', timeout: 45000 });
+await page.waitForTimeout(600);
+await page.screenshot({ path: OUT, fullPage: true });
+await browser.close();
+console.log('saved ' + OUT);
