@@ -16,6 +16,16 @@ async function login(p) {
   await p.waitForURL(/\/teams\//, { timeout: 15000 }).catch(() => {});
 }
 
+async function skipBlock(p) {
+  const s = p.getByRole('button', { name: /passer ce bloc/i });
+  if (await s.count()) {
+    await s.first().click().catch(() => {});
+    await p.waitForTimeout(500);
+    await p.getByRole('button', { name: /confirmer le passage/i }).first().click().catch(() => {});
+    await p.waitForTimeout(1500);
+  }
+}
+
 async function runToLive(p, prefix) {
   await go(p, `${BASE}/teams/${TEAM}/next-session?lang=fr`, 2200, 45000);
   await p.locator('[data-live-start]').first().click().catch(() => {});
@@ -28,15 +38,13 @@ async function runToLive(p, prefix) {
   await p.locator('[data-live-confirm-start]').first().click().catch(() => {});
   await p.waitForTimeout(1600);
   // Skip the warm-up (two-tap: "Passer ce bloc" arms → "Confirmer le passage" confirms)
-  // so the current/next block is the small-sided game (coherent scoreboard).
-  const skip = p.getByRole('button', { name: /passer ce bloc/i });
-  if (await skip.count()) {
-    await skip.first().click().catch(() => {});
-    await p.waitForTimeout(500);
-    await p.getByRole('button', { name: /confirmer le passage/i }).first().click().catch(() => {});
-    await p.waitForTimeout(1500);
-  }
-  // State A: live session with team composition (game block)
+  await skipBlock(p);
+  // State A: the passing block — tactical board + consignes on the up-next card
+  await p.screenshot({ path: resolve(OUT, `${prefix}-board-fr.png`) });
+  console.log('saved', prefix, 'board');
+  // Skip the passing block → the small-sided game (teams + coherent scoreboard)
+  await skipBlock(p);
+  // State B: live session with team composition (game block)
   await p.screenshot({ path: resolve(OUT, `${prefix}-compo-fr.png`) });
   console.log('saved', prefix, 'compo');
   // Start the current block -> running block reveals the scoreboard
