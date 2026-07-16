@@ -1,0 +1,63 @@
+{
+  "lang": "fr",
+  "title": "Strivn — Rapports de scouting",
+  "voice_note": "Voix FR posée. text=parlé (Straïvine), caption=affiché (Strivn). Ids seedés : opponent 2, sessions 3/4, report 5, event 21.",
+  "cards": {
+    "introEyebrow": "Scouting",
+    "introTitle": "Du scouting au terrain",
+    "introSub": "Observez, composez, partagez l'essentiel à vos joueurs.",
+    "outroTitle": "Tout le monde aligné, le jour du match.",
+    "outroSub": "Le staff prépare en profondeur, le joueur arrive préparé.",
+    "outroCta": "Découvrir Strivn · strivn.net"
+  },
+  "segments": [
+    {
+      "id": "sc-01-dossier",
+      "scene": { "route": "/teams/1/scouting/opponents/2", "device": "desktop" },
+      "text": "Pour chaque adversaire, Straïvine centralise un dossier complet : l'effectif, les joueurs à surveiller marqués comme dangereux, et une analyse tactique générée par l'intelligence artificielle.",
+      "caption": "Pour chaque adversaire, Strivn centralise un dossier complet : l'effectif, les joueurs à surveiller marqués comme dangereux, et une analyse tactique générée par l'IA."
+    },
+    {
+      "id": "sc-02-session",
+      "scene": { "route": "/teams/1/scouting/opponents/2/sessions/3", "device": "desktop" },
+      "text": "Sur le terrain, vous capturez vos observations dans des sessions de scouting datées. Une note enrichie, un tableau tactique que vous dessinez vous-même, et le lien vers le joueur concerné : le tout enregistré en une seule fois.",
+      "caption": "Sur le terrain, vous capturez vos observations dans des sessions de scouting datées. Une note enrichie, un tableau tactique que vous dessinez vous-même, et le lien vers le joueur concerné : le tout enregistré en une seule fois."
+    },
+    {
+      "id": "sc-03-apercu",
+      "scene": { "route": "/teams/1/scouting/opponents/2", "device": "desktop" },
+      "text": "Toutes vos observations se rassemblent dans une vue d'ensemble. Vous filtrez d'un geste par session, par joueur ou par thème tactique, pour retrouver exactement ce qui compte pour le prochain match.",
+      "caption": "Toutes vos observations se rassemblent dans une vue d'ensemble. Vous filtrez d'un geste par session, par joueur ou par thème tactique, pour retrouver exactement ce qui compte pour le prochain match."
+    },
+    {
+      "id": "sc-04-creation",
+      "scene": { "route": "/teams/1/scouting/opponents/2/reports", "device": "desktop" },
+      "text": "Vient ensuite le rapport. Vous en créez un nouveau, puis vous glissez directement vos observations et vos schémas dans les sections. Pas de copier-coller : votre matériel de scouting devient le rapport.",
+      "caption": "Vient ensuite le rapport. Vous en créez un nouveau, puis vous glissez directement vos observations et vos schémas dans les sections. Pas de copier-coller : votre matériel de scouting devient le rapport."
+    },
+    {
+      "id": "sc-05-rapport",
+      "scene": { "route": "/teams/1/scouting/opponents/2/reports/5/edit", "device": "desktop" },
+      "text": "En quelques minutes, le rapport prend forme : le système adverse, les joueurs à surveiller, vos schémas tactiques, et votre plan de jeu.",
+      "caption": "En quelques minutes, le rapport prend forme : le système adverse, les joueurs à surveiller, vos schémas tactiques, et votre plan de jeu."
+    },
+    {
+      "id": "sc-06-partage",
+      "scene": { "route": "/teams/1/scouting/opponents/2/reports/5/edit", "device": "desktop" },
+      "text": "Une fois prêt, vous le partagez. Rattachez-le au match à venir, choisissez les joueurs destinataires, et partagez. Chacun est notifié, et un lien sécurisé est généré.",
+      "caption": "Une fois prêt, vous le partagez. Rattachez-le au match à venir, choisissez les joueurs destinataires, et partagez. Chacun est notifié, et un lien sécurisé est généré."
+    },
+    {
+      "id": "sc-07-joueur-event",
+      "scene": { "route": "/portal/events/21", "device": "mobile" },
+      "text": "Côté joueur, tout arrive dans le portail. En ouvrant le prochain match, le joueur retrouve le rapport partagé par le staff, juste sous les détails de la rencontre.",
+      "caption": "Côté joueur, tout arrive dans le portail. En ouvrant le prochain match, le joueur retrouve le rapport partagé par le staff, juste sous les détails de la rencontre."
+    },
+    {
+      "id": "sc-08-joueur-rapport",
+      "scene": { "route": "/portal/reports/5", "device": "mobile" },
+      "text": "Il l'ouvre et lit l'essentiel depuis son téléphone : les consignes, les joueurs à surveiller, et même les schémas tactiques. Le staff prépare en profondeur, le joueur arrive préparé, et tout le monde joue la même partition.",
+      "caption": "Il l'ouvre et lit l'essentiel depuis son téléphone : les consignes, les joueurs à surveiller, et même les schémas tactiques. Le staff prépare en profondeur, le joueur arrive préparé, et tout le monde joue la même partition."
+    }
+  ]
+}

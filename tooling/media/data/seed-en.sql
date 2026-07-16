@@ -10,3 +10,8 @@ UPDATE planned_slots SET label='Gym: lower body' WHERE planned_week_id=1 AND lab
 UPDATE planned_slots SET label='Tactical prep' WHERE planned_week_id=1 AND label='Prépa tactique';
 UPDATE planned_slots SET label='Prehab + recovery' WHERE planned_week_id=1 AND label='Prévention + récup';
 UPDATE planned_slots SET label='Set pieces' WHERE planned_week_id=1 AND label='Coups de pied arrêtés';
+
+-- Calendar event titles shown on the calendar/agenda/load-planner (setup-demo.sql
+-- normalizes them to canonical FR first). Match title is already English-friendly.
+UPDATE calendar_events SET title = 'Training'      WHERE team_id = 1 AND title = 'Entraînement';
+UPDATE calendar_events SET title = 'Staff meeting' WHERE team_id = 1 AND title = 'Réunion staff';

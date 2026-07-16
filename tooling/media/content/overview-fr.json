@@ -7,7 +7,7 @@
     "introTitle": "Toute l'équipe, sous un même toit",
     "introSub": "Le tour des fonctionnalités clés, en deux minutes.",
     "outroTitle": "Une équipe. Une plateforme.",
-    "outroSub": "Gratuite pour une équipe, partagée avec tout le staff.",
+    "outroSub": "Inscrivez-vous gratuitement, ou contactez-nous pour une démo.",
     "outroCta": "Commencer gratuitement · strivn.net"
   },
   "segments": [
@@ -54,10 +54,16 @@
       "caption": "Et quand une question se pose, il suffit de la poser. L'assistant lit la charge, l'état de forme et les blessures de votre équipe, et vous répond en langage naturel, en quelques secondes."
     },
     {
-      "id": "08-conclusion",
+      "id": "08-apercu",
+      "scene": { "kind": "montage", "device": "desktop", "shots": ["workout-templates", "tactical-boards", "measures", "sessions/results", "insights", "/teams"] },
+      "text": "Et ceci ne représente qu'une partie de la plateforme. Straïvine, c'est aussi vos programmes et modèles d'entraînement, vos tableaux tactiques, le scouting des adversaires, les tests physiques, le débrief des séances, les signaux et tendances, la communication multi-canal par WhatsApp, e-mail et application, la caisse et les amendes, et la gestion de plusieurs équipes.",
+      "caption": "Et ceci ne représente qu'une partie de la plateforme. Strivn, c'est aussi vos programmes et modèles d'entraînement, vos tableaux tactiques, le scouting des adversaires, les tests physiques, le débrief des séances, les signaux et tendances, la communication multi-canal (WhatsApp, e-mail, app), la caisse et les amendes, et la gestion de plusieurs équipes."
+    },
+    {
+      "id": "09-conclusion",
       "scene": { "route": "/teams/1/dashboard", "device": "desktop" },
-      "text": "Convocations, charge, infirmerie, intelligence artificielle : une seule plateforme, partagée par tout le staff, où chaque rôle contribue et où tout le monde reste aligné. Et c'est gratuit pour une équipe. Essayez Straïvine dès aujourd'hui.",
-      "caption": "Convocations, charge, infirmerie, intelligence artificielle : une seule plateforme, partagée par tout le staff, où chaque rôle contribue et où tout le monde reste aligné. Et c'est gratuit pour une équipe. Essayez Strivn dès aujourd'hui."
+      "text": "Convocations, charge, infirmerie, intelligence artificielle : une seule plateforme, partagée par tout le staff, où chaque rôle contribue et où tout le monde reste aligné. Inscrivez-vous gratuitement, ou contactez-nous pour une démo, et découvrez toute la plateforme.",
+      "caption": "Convocations, charge, infirmerie, intelligence artificielle : une seule plateforme, partagée par tout le staff, où chaque rôle contribue et où tout le monde reste aligné. Inscrivez-vous gratuitement, ou contactez-nous pour une démo, et découvrez toute la plateforme."
     }
   ]
 }
