@@ -18,6 +18,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     'training-load': 'Illustration : un tableau de charge hebdomadaire avec RPE et signaux ACWR.',
     sessions: 'Illustration : un plan de séance en quatre ateliers minutés.',
     live: 'Illustration : un match en direct avec le score, les buts minute par minute et le nombre de personnes qui suivent via le lien public.',
+    scouting: 'Illustration : la fiche d’un adversaire avec ses joueurs, leurs tags d’observation et le statut de rapport partagé.',
   },
   en: {
     communication: 'Illustration: a call-up message with player replies and a live attendance tally.',
@@ -25,6 +26,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     'training-load': 'Illustration: a weekly load table with RPE values and ACWR risk flags.',
     sessions: 'Illustration: a session plan with four timed drill phases.',
     live: 'Illustration: a live match panel with the score, goals minute by minute and the number of people following through the public link.',
+    scouting: 'Illustration: an opponent file with roster rows, observation tags and a shared-report status.',
   },
   nl: {
     communication: 'Illustratie: een oproeping met de antwoorden van de spelers en een live aanwezigheidsteller.',
@@ -32,6 +34,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     'training-load': 'Illustratie: een weektabel van de belasting met RPE-waarden en ACWR-signalen.',
     sessions: 'Illustratie: een trainingsplan met vier getimede oefenblokken.',
     live: 'Illustratie: een livewedstrijd met de score, de doelpunten minuut per minuut en het aantal mensen dat via de publieke link meevolgt.',
+    scouting: 'Illustratie: de fiche van een tegenstander met zijn spelers, observatietags en de status gedeeld rapport.',
   },
   de: {
     communication: 'Illustration: eine Aufstellung mit den Antworten der Spieler und einer Live-Anwesenheitszählung.',
@@ -39,6 +42,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     'training-load': 'Illustration: eine Wochentabelle der Belastung mit RPE-Werten und ACWR-Signalen.',
     sessions: 'Illustration: ein Trainingsplan mit vier getimten Übungsblöcken.',
     live: 'Illustration: ein Live-Spiel mit Spielstand, Toren Minute für Minute und der Zahl der Personen, die über den öffentlichen Link mitverfolgen.',
+    scouting: 'Illustration: die Akte eines Gegners mit seinen Spielern, Beobachtungs-Tags und dem Status geteilter Bericht.',
   },
 };
 const ariaLabels = ariaLabelsByLocale[locale];
@@ -51,6 +55,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — alléger vendredi' },
     sessions: { tone: 'info', text: 'Ajustée à la charge du groupe' },
     live: { tone: 'ok', text: '14 suivent via le lien public' },
+    scouting: { tone: 'info', text: 'Note de l’analyste ajoutée' },
   },
   en: {
     communication: { tone: 'ok', text: 'L. Moreau — In · 6:09pm' },
@@ -58,6 +63,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — lighten Friday' },
     sessions: { tone: 'info', text: 'Tuned to the squad’s load' },
     live: { tone: 'ok', text: '14 watching via the public link' },
+    scouting: { tone: 'info', text: 'Analyst note added' },
   },
   nl: {
     communication: { tone: 'ok', text: 'L. Moreau — Aanwezig · 18u09' },
@@ -65,6 +71,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — vrijdag verlichten' },
     sessions: { tone: 'info', text: 'Afgestemd op de belasting van de groep' },
     live: { tone: 'ok', text: '14 volgen via de publieke link' },
+    scouting: { tone: 'info', text: 'Notitie van de analist toegevoegd' },
   },
   de: {
     communication: { tone: 'ok', text: 'L. Moreau — Dabei · 18:09' },
@@ -72,6 +79,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — Freitag reduzieren' },
     sessions: { tone: 'info', text: 'Auf die Belastung der Gruppe abgestimmt' },
     live: { tone: 'ok', text: '14 folgen über den öffentlichen Link' },
+    scouting: { tone: 'info', text: 'Notiz des Analysten hinzugefügt' },
   },
 };
 const chip = chipsByLocale[locale][slug];
@@ -136,11 +144,62 @@ const liveByLocale: Record<Locale, LiveSample> = {
   },
 };
 
+/** Sample opponent-scouting panel for the `scouting` slug — decorative data, no landingContent entry exists for it. */
+type ScoutingSample = {
+  label: string;
+  opponent: string;
+  shared: string;
+  players: Array<{ num: string; name: string; tags: string[] }>;
+};
+const scoutingByLocale: Record<Locale, ScoutingSample> = {
+  fr: {
+    label: 'Prochain adversaire',
+    opponent: 'FC Boisval',
+    shared: 'Rapport partagé',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Vitesse', 'Pied gauche'] },
+      { num: '10', name: 'T. Willems', tags: ['Coups francs', 'Meneur'] },
+      { num: '4', name: 'S. Dubois', tags: ['Jeu aérien', 'Relance longue'] },
+    ],
+  },
+  en: {
+    label: 'Next opponent',
+    opponent: 'FC Boisval',
+    shared: 'Report shared',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Pace', 'Left foot'] },
+      { num: '10', name: 'T. Willems', tags: ['Free kicks', 'Playmaker'] },
+      { num: '4', name: 'S. Dubois', tags: ['Aerial threat', 'Long balls'] },
+    ],
+  },
+  nl: {
+    label: 'Volgende tegenstander',
+    opponent: 'FC Boisval',
+    shared: 'Rapport gedeeld',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Snelheid', 'Linksbenig'] },
+      { num: '10', name: 'T. Willems', tags: ['Vrije trappen', 'Spelmaker'] },
+      { num: '4', name: 'S. Dubois', tags: ['Kopsterk', 'Lange bal'] },
+    ],
+  },
+  de: {
+    label: 'Nächster Gegner',
+    opponent: 'FC Boisval',
+    shared: 'Bericht geteilt',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Tempo', 'Linker Fuß'] },
+      { num: '10', name: 'T. Willems', tags: ['Freistöße', 'Spielmacher'] },
+      { num: '4', name: 'S. Dubois', tags: ['Kopfballstark', 'Langer Ball'] },
+    ],
+  },
+};
+
 const com = c.communication.proof;
 const med = c.medical.record;
 const load = c.load.table;
 const board = c.sessions.board;
 const live = liveByLocale[locale];
+const scout = scoutingByLocale[locale];
 ---
 
 <div class="fv" role="img" aria-label={ariaLabels[slug]}>
@@ -301,6 +360,31 @@ const live = liveByLocale[locale];
       </div>
     )}
 
+    {slug === 'scouting' && (
+      <div class="s-proof">
+        <div class="fv-scout__head">
+          <p class="fv-scout__title">
+            <span class="s-label">{scout.label}</span>
+            <span class="fv-scout__opponent">{scout.opponent}</span>
+          </p>
+          <span class="fv-scout__shared">{scout.shared}</span>
+        </div>
+        <ul class="fv-scout__players">
+          {scout.players.map((player) => (
+            <li class="fv-scout__player">
+              <span class="fv-scout__num">{player.num}</span>
+              <span class="fv-scout__name">{player.name}</span>
+              <span class="fv-scout__tags">
+                {player.tags.map((tag) => (
+                  <span class="fv-scout__tag">{tag}</span>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
     <span class={`fv__chip fv__chip--${chip.tone}`}>{chip.text}</span>
   </div>
 </div>
@@ -449,6 +533,92 @@ const live = liveByLocale[locale];
 
   .fv-live__event-text {
     color: var(--ink-2);
+  }
+
+  .fv-scout__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .fv-scout__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: 0;
+    min-width: 0;
+  }
+
+  .fv-scout__opponent {
+    font-weight: 600;
+  }
+
+  .fv-scout__shared {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.03em;
+    color: var(--ink-2);
+  }
+
+  .fv-scout__shared::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--performance);
+  }
+
+  .fv-scout__players {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fv-scout__player {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-block: var(--space-xs);
+    border-top: 1px solid var(--rule);
+    font-size: var(--text-sm);
+  }
+
+  .fv-scout__num {
+    flex: none;
+    min-width: 1.2em;
+    font-family: var(--font-mono);
+    color: var(--ink-3);
+  }
+
+  .fv-scout__name {
+    min-width: 0;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .fv-scout__tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-xs);
+    margin-left: auto;
+  }
+
+  .fv-scout__tag {
+    padding: 1px var(--space-xs);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
+    white-space: nowrap;
   }
 
   @media (max-width: 40rem) {

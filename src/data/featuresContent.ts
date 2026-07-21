@@ -1,8 +1,8 @@
 import type { Locale } from './landingContent';
 
-export type FeatureSlug = 'communication' | 'medical' | 'training-load' | 'sessions' | 'live';
+export type FeatureSlug = 'communication' | 'medical' | 'training-load' | 'sessions' | 'live' | 'scouting';
 
-export const FEATURE_SLUGS: FeatureSlug[] = ['communication', 'medical', 'training-load', 'sessions', 'live'];
+export const FEATURE_SLUGS: FeatureSlug[] = ['communication', 'medical', 'training-load', 'sessions', 'live', 'scouting'];
 
 /** Mirrors the `Slide` shape in scContent.ts — exported so a later unit can unify the two. */
 export type Slide = {
@@ -98,6 +98,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Séance & match en direct',
           text: 'Menez la séance sur le terrain, scorez le match d’un geste — et ceux qui ne sont pas là suivent via un simple lien, sans compte.',
           points: ['Séance en direct', 'Score & compositions', 'Lien public sans compte'],
+        },
+        {
+          slug: 'scouting',
+          title: 'Scouting adverse',
+          text: 'Préparez le prochain adversaire à plusieurs : rapport structuré, effectif adverse, clips tagués — puis partagez-le au groupe via un simple lien.',
+          points: ['Rapports d’adversaire', 'Clips vidéo tagués', 'Partage via lien'],
         },
       ],
     },
@@ -570,6 +576,115 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Commencer gratuitement',
         },
       },
+
+      scouting: {
+        meta: {
+          title: 'Scouting adverse & rapports partagés | STRIVN',
+          description:
+            'Préparez le prochain adversaire à plusieurs : rapports de scouting structurés, effectifs adverses suivis dans le temps, clips vidéo tagués — et un rapport partagé au groupe via un simple lien. Gratuit pour les coaches.',
+        },
+        eyebrow: 'Scouting adverse',
+        hero: {
+          title: 'Le prochain adversaire, préparé à plusieurs.',
+          lede: 'L’analyste observe, le coach tranche : le rapport de scouting se construit à plusieurs dans STRIVN — effectif adverse, observations, clips tagués. Et quand il est prêt, un simple lien le partage au groupe.',
+          primaryCta: 'Commencer gratuitement',
+          reassurance: 'Gratuit pour une équipe · sans validation du club · prêt en quelques minutes',
+        },
+        benefits: {
+          title: 'Vous observez le jeu. STRIVN structure le rapport.',
+          items: [
+            {
+              title: 'Des rapports d’adversaire structurés',
+              text: 'Fini le document qui traîne dans une messagerie : chaque adversaire a son rapport dans STRIVN, et le coach comme l’analyste écrivent dans le même — observations, forces, faiblesses, au même endroit.',
+            },
+            {
+              title: 'L’effectif adverse, suivi dans le temps',
+              text: 'Chaque adversaire garde sa fiche : ses joueurs, leurs caractéristiques, vos notes. Match après match, saison après saison, le dossier s’enrichit — vous ne repartez jamais de zéro.',
+            },
+            {
+              title: 'Des clips vidéo tagués et annotés',
+              text: 'Un clip, un tag, une note : les moments clés de l’adversaire se retrouvent en un instant et viennent appuyer le rapport — chacun voit exactement ce dont on parle.',
+            },
+            {
+              title: 'Le rapport partagé au vestiaire',
+              text: 'Quand le rapport est prêt, un lien public suffit : le groupe l’ouvre sur n’importe quel téléphone, sans compte — et arrive au match en sachant à quoi s’attendre.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'De l’observation au vestiaire',
+            blurb: 'L’adversaire s’observe dans le module scouting, le rapport se construit à plusieurs — et le groupe le reçoit via un simple lien.',
+            slides: [
+              {
+                img: '/screenshots/scouting-module-fr.png',
+                kind: 'desktop',
+                alt: 'Le module scouting : les adversaires suivis, avec leurs effectifs et leurs rapports.',
+                caption: 'Le module scouting : chaque adversaire a sa fiche — effectif, observations, rapports.',
+              },
+              {
+                img: '/screenshots/scouting-report-fr.png',
+                kind: 'desktop',
+                alt: 'Un rapport de scouting : observations structurées et clips tagués sur le prochain adversaire.',
+                caption: 'Le rapport se construit à plusieurs : coach et analyste travaillent sur le même document.',
+              },
+              {
+                img: '/screenshots/scouting-report-phone-fr.png',
+                kind: 'mobile',
+                alt: 'Le rapport de scouting ouvert sur un téléphone via le lien de partage.',
+                caption: 'Partagé via lien, le rapport s’ouvre sur n’importe quel téléphone.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Comment ça marche',
+          steps: [
+            {
+              title: 'Observez l’adversaire',
+              text: 'Au bord du terrain ou devant la vidéo : notes, tags et clips s’accumulent dans la fiche de l’adversaire, à mesure que vous observez.',
+            },
+            {
+              title: 'Construisez le rapport',
+              text: 'Coach et analyste assemblent le rapport à plusieurs : observations structurées, effectif adverse, clips à l’appui.',
+            },
+            {
+              title: 'Partagez au groupe',
+              text: 'Un lien, et le rapport arrive au vestiaire : chacun l’ouvre sur son téléphone et arrive préparé le jour du match.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Questions fréquentes',
+          items: [
+            {
+              question: 'Qui peut voir un rapport de scouting ?',
+              answer:
+                'Le staff, dans STRIVN. Et quand vous décidez de le partager, le lien public l’ouvre à ceux qui le reçoivent — joueurs compris — sans compte. Tant que vous ne partagez pas, le rapport reste côté staff.',
+            },
+            {
+              question: 'Faut-il un abonnement vidéo pour les clips ?',
+              answer:
+                'Non. Le scouting fonctionne sans plateforme vidéo dédiée : vous ajoutez vos clips, les taguez et les annotez directement dans STRIVN.',
+            },
+            {
+              question: 'Les joueurs voient-ils le scouting ?',
+              answer:
+                'Seulement ce que vous partagez. Les notes de travail restent côté staff ; le rapport finalisé, lui, se partage au groupe via le lien, quand vous le décidez.',
+            },
+            {
+              question: 'Le scouting est-il gratuit ?',
+              answer:
+                'Oui — comme le reste : les rapports, les effectifs adverses et le partage par lien font partie du plan gratuit, pour une équipe.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Au coup d’envoi, le groupe sait à quoi s’attendre.',
+          body: 'Créez votre équipe gratuitement — rapports, effectifs adverses et partage par lien inclus.',
+          cta: 'Commencer gratuitement',
+        },
+      },
     },
   },
 
@@ -620,6 +735,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Live session & match',
           text: 'Run the session on the pitch, score the match in one tap — and anyone who isn’t there follows through a simple link, no account.',
           points: ['Live session runner', 'Score & lineups', 'Public link, no account'],
+        },
+        {
+          slug: 'scouting',
+          title: 'Opponent scouting',
+          text: 'Prepare the next opponent together: a structured report, the opposing squad, tagged clips — then share it with the group through a simple link.',
+          points: ['Opponent reports', 'Tagged video clips', 'Shared via link'],
         },
       ],
     },
@@ -1092,6 +1213,115 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Start for free',
         },
       },
+
+      scouting: {
+        meta: {
+          title: 'Opponent scouting & shared reports | STRIVN',
+          description:
+            'Prepare the next opponent together: structured scouting reports, opposing squads tracked over time, tagged video clips — and a report shared with the group through a simple link. Free for coaches.',
+        },
+        eyebrow: 'Opponent scouting',
+        hero: {
+          title: 'The next opponent, prepared together.',
+          lede: 'The analyst observes, the coach decides: the scouting report is built together in STRIVN — opposing squad, observations, tagged clips. And when it’s ready, a simple link shares it with the group.',
+          primaryCta: 'Start for free',
+          reassurance: 'Free for one team · no club approval needed · ready in minutes',
+        },
+        benefits: {
+          title: 'You watch the game. STRIVN structures the report.',
+          items: [
+            {
+              title: 'Structured opponent reports',
+              text: 'No more document lost in a chat thread: every opponent has its report in STRIVN, and coach and analyst write in the same one — observations, strengths, weaknesses, in one place.',
+            },
+            {
+              title: 'The opposing squad, tracked over time',
+              text: 'Every opponent keeps its file: their players, their traits, your notes. Match after match, season after season, the record grows — you never start from scratch.',
+            },
+            {
+              title: 'Tagged, annotated video clips',
+              text: 'A clip, a tag, a note: the opponent’s key moments are found in an instant and back up the report — everyone sees exactly what you mean.',
+            },
+            {
+              title: 'The report shared with the dressing room',
+              text: 'When the report is ready, a public link is all it takes: the group opens it on any phone, no account — and turns up knowing what to expect.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'From observation to the dressing room',
+            blurb: 'The opponent is studied in the scouting module, the report is built together — and the group gets it through a simple link.',
+            slides: [
+              {
+                img: '/screenshots/scouting-module.png',
+                kind: 'desktop',
+                alt: 'The scouting module: tracked opponents with their squads and reports.',
+                caption: 'The scouting module: every opponent has its file — squad, observations, reports.',
+              },
+              {
+                img: '/screenshots/scouting-report.png',
+                kind: 'desktop',
+                alt: 'A scouting report: structured observations and tagged clips on the next opponent.',
+                caption: 'The report is built together: coach and analyst work on the same document.',
+              },
+              {
+                img: '/screenshots/scouting-report-phone.png',
+                kind: 'mobile',
+                alt: 'The scouting report opened on a phone through the share link.',
+                caption: 'Shared through a link, the report opens on any phone.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'How it works',
+          steps: [
+            {
+              title: 'Watch the opponent',
+              text: 'From the touchline or in front of the video: notes, tags and clips build up in the opponent’s file as you observe.',
+            },
+            {
+              title: 'Build the report',
+              text: 'Coach and analyst assemble the report together: structured observations, the opposing squad, clips to back it up.',
+            },
+            {
+              title: 'Share it with the group',
+              text: 'One link and the report reaches the dressing room: everyone opens it on their phone and turns up prepared on match day.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Frequently asked questions',
+          items: [
+            {
+              question: 'Who can see a scouting report?',
+              answer:
+                'The staff, inside STRIVN. And when you decide to share it, the public link opens it for whoever receives it — players included — without an account. Until you share, the report stays on the staff side.',
+            },
+            {
+              question: 'Do I need a video subscription for the clips?',
+              answer:
+                'No. Scouting works without a dedicated video platform: you add your clips, tag them and annotate them right in STRIVN.',
+            },
+            {
+              question: 'Do players see the scouting?',
+              answer:
+                'Only what you share. Working notes stay on the staff side; the finished report is shared with the group through the link, when you decide.',
+            },
+            {
+              question: 'Is scouting free?',
+              answer:
+                'Yes — like the rest: reports, opponent squads and link sharing are part of the free plan, for one team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'At kick-off, the group knows what’s coming.',
+          body: 'Create your team for free — reports, opponent squads and link sharing included.',
+          cta: 'Start for free',
+        },
+      },
     },
   },
 
@@ -1142,6 +1372,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Live training & wedstrijd',
           text: 'Leid de training op het veld, scoor de wedstrijd met één tik — en wie er niet is, volgt via een simpele link, zonder account.',
           points: ['Training in realtime', 'Score & opstellingen', 'Publieke link zonder account'],
+        },
+        {
+          slug: 'scouting',
+          title: 'Scouting van de tegenstander',
+          text: 'Bereid de volgende tegenstander samen voor: rapport, kern, getagde clips — en deel het met de groep via één link.',
+          points: ['Tegenstanderrapporten', 'Getagde videoclips', 'Delen via link'],
         },
       ],
     },
@@ -1614,6 +1850,115 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Gratis starten',
         },
       },
+
+      scouting: {
+        meta: {
+          title: 'Scouting van de tegenstander & gedeelde rapporten | STRIVN',
+          description:
+            'Bereid de volgende tegenstander samen voor: gestructureerde scoutingrapporten, kernen van tegenstanders doorheen de tijd, getagde videoclips — en een rapport dat je via een link met de groep deelt. Gratis voor coaches.',
+        },
+        eyebrow: 'Scouting',
+        hero: {
+          title: 'De volgende tegenstander, samen voorbereid.',
+          lede: 'De analist observeert, de coach beslist: het scoutingrapport bouw je samen in STRIVN — kern van de tegenstander, observaties, getagde clips. En als het klaar is, deelt één link het met de groep.',
+          primaryCta: 'Gratis starten',
+          reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
+        },
+        benefits: {
+          title: 'Jij kijkt naar het spel. STRIVN structureert het rapport.',
+          items: [
+            {
+              title: 'Gestructureerde tegenstanderrapporten',
+              text: 'Geen document meer dat rondzwerft in een chat: elke tegenstander heeft zijn rapport in STRIVN, en coach en analist schrijven in hetzelfde — observaties, sterktes, zwaktes, op één plek.',
+            },
+            {
+              title: 'De kern van de tegenstander, doorheen de tijd',
+              text: 'Elke tegenstander houdt zijn fiche bij: spelers, kenmerken, jouw notities. Wedstrijd na wedstrijd, seizoen na seizoen groeit het dossier — je begint nooit van nul.',
+            },
+            {
+              title: 'Getagde videoclips met notities',
+              text: 'Een clip, een tag, een notitie: de sleutelmomenten van de tegenstander vind je meteen terug, als bewijs bij het rapport — iedereen ziet precies wat je bedoelt.',
+            },
+            {
+              title: 'Het rapport gedeeld met de kleedkamer',
+              text: 'Is het rapport klaar, dan volstaat een publieke link: de groep opent het op om het even welke telefoon, zonder account — en weet wat er komt.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Van observatie tot kleedkamer',
+            blurb: 'De tegenstander bestudeer je in de scoutingmodule, het rapport bouw je samen — en de groep krijgt het via een simpele link.',
+            slides: [
+              {
+                img: '/screenshots/scouting-module.png',
+                kind: 'desktop',
+                alt: 'De scoutingmodule: gevolgde tegenstanders met hun kernen en rapporten.',
+                caption: 'De scoutingmodule: elke tegenstander heeft zijn fiche — kern, observaties, rapporten.',
+              },
+              {
+                img: '/screenshots/scouting-report.png',
+                kind: 'desktop',
+                alt: 'Een scoutingrapport: gestructureerde observaties en getagde clips over de volgende tegenstander.',
+                caption: 'Het rapport bouw je samen: coach en analist werken in hetzelfde document.',
+              },
+              {
+                img: '/screenshots/scouting-report-phone.png',
+                kind: 'mobile',
+                alt: 'Het scoutingrapport geopend op een telefoon via de deellink.',
+                caption: 'Gedeeld via link opent het rapport op om het even welke telefoon.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Hoe het werkt',
+          steps: [
+            {
+              title: 'Observeer de tegenstander',
+              text: 'Langs het veld of voor de video: notities, tags en clips verzamelen zich in de fiche van de tegenstander terwijl je kijkt.',
+            },
+            {
+              title: 'Bouw het rapport',
+              text: 'Coach en analist stellen het rapport samen op: gestructureerde observaties, de kern van de tegenstander, clips als bewijs.',
+            },
+            {
+              title: 'Deel het met de groep',
+              text: 'Eén link en het rapport ligt in de kleedkamer: iedereen opent het op zijn telefoon en staat voorbereid aan de aftrap.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Veelgestelde vragen',
+          items: [
+            {
+              question: 'Wie kan een scoutingrapport zien?',
+              answer:
+                'De staf, in STRIVN. En zodra je beslist om te delen, opent de publieke link het voor wie hem krijgt — spelers inbegrepen — zonder account. Zolang je niet deelt, blijft het rapport aan stafzijde.',
+            },
+            {
+              question: 'Heb ik een videoabonnement nodig voor de clips?',
+              answer:
+                'Nee. Scouting werkt zonder aparte videodienst: je voegt je clips toe, tagt ze en annoteert ze rechtstreeks in STRIVN.',
+            },
+            {
+              question: 'Zien de spelers de scouting?',
+              answer:
+                'Alleen wat jij deelt. Werknotities blijven aan stafzijde; het afgewerkte rapport deel je via de link met de groep, wanneer jij dat beslist.',
+            },
+            {
+              question: 'Is scouting gratis?',
+              answer:
+                'Ja — zoals de rest: rapporten, kernen van tegenstanders en delen via link horen bij het gratis plan, voor één team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Bij de aftrap weet de groep wat er komt.',
+          body: 'Maak je team gratis aan — rapporten, tegenstanderkernen en delen via link inbegrepen.',
+          cta: 'Gratis starten',
+        },
+      },
     },
   },
 
@@ -1664,6 +2009,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Training & Spiel live',
           text: 'Leiten Sie das Training auf dem Platz, erfassen Sie den Spielstand mit einem Tipp — und wer nicht da ist, folgt über einen einfachen Link, ohne Konto.',
           points: ['Training in Echtzeit', 'Spielstand & Startelf', 'Öffentlicher Link ohne Konto'],
+        },
+        {
+          slug: 'scouting',
+          title: 'Gegner-Scouting',
+          text: 'Bereiten Sie den nächsten Gegner gemeinsam vor: strukturierter Bericht, gegnerischer Kader, getaggte Clips — geteilt mit der Gruppe über einen einfachen Link.',
+          points: ['Gegner-Berichte', 'Getaggte Videoclips', 'Teilen per Link'],
         },
       ],
     },
@@ -2133,6 +2484,115 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         finalCta: {
           title: 'Beim nächsten Spiel stehen alle an der Seitenlinie.',
           body: 'Erstellen Sie Ihr Team kostenlos — der Live-Modus und der öffentliche Link gehören zum kostenlosen Plan.',
+          cta: 'Kostenlos starten',
+        },
+      },
+
+      scouting: {
+        meta: {
+          title: 'Gegner-Scouting & geteilte Berichte | STRIVN',
+          description:
+            'Bereiten Sie den nächsten Gegner gemeinsam vor: strukturierte Scouting-Berichte, gegnerische Kader im Zeitverlauf, getaggte Videoclips — und ein Bericht, den ein einfacher Link mit der Gruppe teilt. Kostenlos für Coaches.',
+        },
+        eyebrow: 'Gegner-Scouting',
+        hero: {
+          title: 'Der nächste Gegner, gemeinsam vorbereitet.',
+          lede: 'Der Analyst beobachtet, der Coach entscheidet: Der Scouting-Bericht entsteht gemeinsam in STRIVN — gegnerischer Kader, Beobachtungen, getaggte Clips. Und wenn er fertig ist, teilt ihn ein einfacher Link mit der Gruppe.',
+          primaryCta: 'Kostenlos starten',
+          reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
+        },
+        benefits: {
+          title: 'Sie beobachten das Spiel. STRIVN strukturiert den Bericht.',
+          items: [
+            {
+              title: 'Strukturierte Gegner-Berichte',
+              text: 'Kein Dokument mehr, das im Chat verloren geht: Jeder Gegner hat seinen Bericht in STRIVN, und Coach und Analyst schreiben im selben — Beobachtungen, Stärken, Schwächen, an einem Ort.',
+            },
+            {
+              title: 'Der gegnerische Kader, im Zeitverlauf',
+              text: 'Jeder Gegner behält seine Akte: seine Spieler, ihre Merkmale, Ihre Notizen. Spiel für Spiel, Saison für Saison wächst das Dossier — Sie fangen nie bei null an.',
+            },
+            {
+              title: 'Getaggte Videoclips mit Notizen',
+              text: 'Ein Clip, ein Tag, eine Notiz: Die Schlüsselmomente des Gegners sind sofort wiedergefunden und stützen den Bericht — alle sehen genau, was gemeint ist.',
+            },
+            {
+              title: 'Der Bericht, geteilt mit der Kabine',
+              text: 'Ist der Bericht fertig, genügt ein öffentlicher Link: Die Gruppe öffnet ihn auf jedem Telefon, ohne Konto — und weiß, was sie erwartet.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Von der Beobachtung in die Kabine',
+            blurb: 'Der Gegner wird im Scouting-Modul studiert, der Bericht entsteht gemeinsam — und die Gruppe bekommt ihn über einen einfachen Link.',
+            slides: [
+              {
+                img: '/screenshots/scouting-module.png',
+                kind: 'desktop',
+                alt: 'Das Scouting-Modul: verfolgte Gegner mit ihren Kadern und Berichten.',
+                caption: 'Das Scouting-Modul: Jeder Gegner hat seine Akte — Kader, Beobachtungen, Berichte.',
+              },
+              {
+                img: '/screenshots/scouting-report.png',
+                kind: 'desktop',
+                alt: 'Ein Scouting-Bericht: strukturierte Beobachtungen und getaggte Clips zum nächsten Gegner.',
+                caption: 'Der Bericht entsteht gemeinsam: Coach und Analyst arbeiten am selben Dokument.',
+              },
+              {
+                img: '/screenshots/scouting-report-phone.png',
+                kind: 'mobile',
+                alt: 'Der Scouting-Bericht, geöffnet auf einem Telefon über den geteilten Link.',
+                caption: 'Per Link geteilt, öffnet sich der Bericht auf jedem Telefon.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'So funktioniert es',
+          steps: [
+            {
+              title: 'Beobachten Sie den Gegner',
+              text: 'An der Seitenlinie oder vor dem Video: Notizen, Tags und Clips sammeln sich in der Akte des Gegners, während Sie beobachten.',
+            },
+            {
+              title: 'Bauen Sie den Bericht',
+              text: 'Coach und Analyst stellen den Bericht gemeinsam zusammen: strukturierte Beobachtungen, der gegnerische Kader, Clips als Beleg.',
+            },
+            {
+              title: 'Teilen Sie ihn mit der Gruppe',
+              text: 'Ein Link, und der Bericht erreicht die Kabine: Alle öffnen ihn auf dem Telefon und kommen vorbereitet zum Spiel.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Häufig gestellte Fragen',
+          items: [
+            {
+              question: 'Wer kann einen Scouting-Bericht sehen?',
+              answer:
+                'Der Staff, in STRIVN. Und sobald Sie ihn teilen, öffnet der öffentliche Link ihn für alle, die ihn bekommen — Spieler inbegriffen — ohne Konto. Solange Sie nicht teilen, bleibt der Bericht auf Staff-Seite.',
+            },
+            {
+              question: 'Brauche ich ein Video-Abo für die Clips?',
+              answer:
+                'Nein. Das Scouting funktioniert ohne eigene Videoplattform: Sie fügen Ihre Clips hinzu, taggen und annotieren sie direkt in STRIVN.',
+            },
+            {
+              question: 'Sehen die Spieler das Scouting?',
+              answer:
+                'Nur, was Sie teilen. Arbeitsnotizen bleiben auf Staff-Seite; den fertigen Bericht teilen Sie über den Link mit der Gruppe — wann Sie es entscheiden.',
+            },
+            {
+              question: 'Ist das Scouting kostenlos?',
+              answer:
+                'Ja — wie der Rest: Berichte, gegnerische Kader und das Teilen per Link gehören zum kostenlosen Plan, für ein Team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Zum Anpfiff weiß die Gruppe, was kommt.',
+          body: 'Erstellen Sie Ihr Team kostenlos — Berichte, gegnerische Kader und Teilen per Link inbegriffen.',
           cta: 'Kostenlos starten',
         },
       },
