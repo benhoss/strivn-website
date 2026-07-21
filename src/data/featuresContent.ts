@@ -28,6 +28,8 @@ type FeatureContent = {
   benefits: { title: string; items: Array<{ title: string; text: string }> };
   /** Optional real-app screenshot carousels, rendered between benefits and how. */
   showcase?: Showcase[];
+  /** Verified store links, rendered as ghost buttons next to the final CTA (player-app). */
+  storeLinks?: { appStore?: string; playStore?: string };
   how: { title: string; steps: Array<{ title: string; text: string }> };
   faq: { title: string; items: Array<{ question: string; answer: string }> };
   finalCta: { title: string; body: string; cta: string };
@@ -802,6 +804,10 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
 
       'player-app': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-player/id6779121691',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.player',
+        },
         meta: {
           title: 'L’app joueur iOS & Android | STRIVN',
           description:
@@ -1663,6 +1669,10 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
 
       'player-app': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-player/id6779121691',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.player',
+        },
         meta: {
           title: 'The player app for iOS & Android | STRIVN',
           description:
@@ -2524,6 +2534,10 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
 
       'player-app': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-player/id6779121691',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.player',
+        },
         meta: {
           title: 'De spelersapp voor iOS & Android | STRIVN',
           description:
@@ -3385,6 +3399,10 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
 
       'player-app': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-player/id6779121691',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.player',
+        },
         meta: {
           title: 'Die Spieler-App für iOS & Android | STRIVN',
           description:
