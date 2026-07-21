@@ -133,13 +133,14 @@ type LandingContent = {
   capabilities: {
     title: string;
     body: string;
-    items: Array<{ title: string; text: string }>;
+    items: Array<{ title: string; text: string; href?: string }>;
   };
 
   playerApp: {
     title: string;
     body: string;
     stores: string;
+    cta: string;
     imageAlt: string;
   };
 
@@ -387,13 +388,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Et tout le reste du quotidien.',
       body: 'Une équipe, des joueurs et un staff illimités. Chaque module est inclus dans le plan gratuit — rien n’est verrouillé derrière un paiement.',
       items: [
-        { title: 'Présences & RSVP', text: 'Les réponses des joueurs deviennent une vue coach à jour, sans recompter à la main.' },
-        { title: 'Infirmerie', text: 'Blessures, notes médicales et retour au jeu restent visibles pour le staff autorisé.' },
-        { title: 'Charge & RPE', text: 'La charge, le ressenti et les signaux faibles se relient à la semaine réelle du groupe.' },
+        { title: 'Présences & RSVP', text: 'Les réponses des joueurs deviennent une vue coach à jour, sans recompter à la main.', href: '/fr/features/communication/' },
+        { title: 'Infirmerie', text: 'Blessures, notes médicales et retour au jeu restent visibles pour le staff autorisé.', href: '/fr/features/medical/' },
+        { title: 'Charge & RPE', text: 'La charge, le ressenti et les signaux faibles se relient à la semaine réelle du groupe.', href: '/fr/features/training-load/' },
         { title: 'Tests & évaluations', text: 'Les tests physiques et techniques sont suivis dans le temps pour voir la progression réelle.' },
-        { title: 'Programmes individuels', text: 'Objectifs, charges adaptées et exercices spécifiques restent reliés à chaque joueur.' },
-        { title: 'Séances & tactique', text: 'Plans de séance, tableaux tactiques et exercices restent connectés à l’état de l’équipe.' },
-        { title: 'Rapports de match et de séance', text: 'Les retours du staff créent une boucle de feedback et gardent les temps de jeu visibles.' },
+        { title: 'Programmes individuels', text: 'Objectifs, charges adaptées et exercices spécifiques restent reliés à chaque joueur.', href: '/fr/features/player-app/' },
+        { title: 'Séances & tactique', text: 'Plans de séance, tableaux tactiques et exercices restent connectés à l’état de l’équipe.', href: '/fr/features/sessions/' },
+        { title: 'Rapports de match et de séance', text: 'Les retours du staff créent une boucle de feedback et gardent les temps de jeu visibles.', href: '/fr/features/reports/' },
         { title: 'Assistant IA', text: 'Les comptes-rendus et l’assistant transforment les informations d’équipe en décisions.' },
       ],
     },
@@ -402,6 +403,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Vos joueurs ont leur propre vue.',
       body: 'Agenda, prochain événement, réponses de présence, notifications : chaque joueur suit l’équipe depuis l’app native. Et ceux qui ne l’installent pas répondent quand même par le lien.',
       stores: 'Disponible sur iOS et Android',
+      cta: 'Découvrir l’app joueur',
       imageAlt: 'Capture de l’app joueur STRIVN : agenda de la semaine avec les prochains événements',
     },
 
@@ -732,13 +734,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'And everything else in the weekly routine.',
       body: 'One team, unlimited players and staff. Every module is included in the free plan — nothing is locked behind a payment.',
       items: [
-        { title: 'Attendance & RSVP', text: 'Player replies become an up-to-date coach view, without counting by hand.' },
-        { title: 'Medical log', text: 'Injuries, medical notes and return-to-play stay visible to authorised staff.' },
-        { title: 'Load & RPE', text: 'Load, perceived effort and weak signals connect to the squad’s actual week.' },
+        { title: 'Attendance & RSVP', text: 'Player replies become an up-to-date coach view, without counting by hand.', href: '/en/features/communication/' },
+        { title: 'Medical log', text: 'Injuries, medical notes and return-to-play stay visible to authorised staff.', href: '/en/features/medical/' },
+        { title: 'Load & RPE', text: 'Load, perceived effort and weak signals connect to the squad’s actual week.', href: '/en/features/training-load/' },
         { title: 'Tests & assessments', text: 'Physical and technical tests are tracked over time to show real progression.' },
-        { title: 'Individual programs', text: 'Goals, adapted loads and specific drills stay linked to each player.' },
-        { title: 'Sessions & tactics', text: 'Session plans, tactical boards and drills stay connected to the team’s state.' },
-        { title: 'Match & session reports', text: 'Staff feedback creates a loop and keeps playing time visible.' },
+        { title: 'Individual programs', text: 'Goals, adapted loads and specific drills stay linked to each player.', href: '/en/features/player-app/' },
+        { title: 'Sessions & tactics', text: 'Session plans, tactical boards and drills stay connected to the team’s state.', href: '/en/features/sessions/' },
+        { title: 'Match & session reports', text: 'Staff feedback creates a loop and keeps playing time visible.', href: '/en/features/reports/' },
         { title: 'AI assistant', text: 'Reports and the assistant turn team information into decisions.' },
       ],
     },
@@ -747,6 +749,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Your players get their own view.',
       body: 'Agenda, next event, attendance replies, notifications: every player follows the team from the native app. And those who don’t install it still reply through the link.',
       stores: 'Available on iOS and Android',
+      cta: 'Discover the player app',
       imageAlt: 'Screenshot of the STRIVN player app: weekly agenda with upcoming events',
     },
 
@@ -1077,13 +1080,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'En al de rest van de wekelijkse routine.',
       body: 'Eén team, onbeperkt spelers en staf. Elke module zit in het gratis plan — niets zit achter een betaling verborgen.',
       items: [
-        { title: 'Aanwezigheid & RSVP', text: 'Antwoorden van spelers worden een up-to-date coachweergave, zonder handmatig te tellen.' },
-        { title: 'Medisch logboek', text: 'Blessures, medische notities en return-to-play blijven zichtbaar voor bevoegde staf.' },
-        { title: 'Belasting & RPE', text: 'Belasting, ervaren inspanning en zwakke signalen sluiten aan op de werkelijke week van de groep.' },
+        { title: 'Aanwezigheid & RSVP', text: 'Antwoorden van spelers worden een up-to-date coachweergave, zonder handmatig te tellen.', href: '/nl/features/communication/' },
+        { title: 'Medisch logboek', text: 'Blessures, medische notities en return-to-play blijven zichtbaar voor bevoegde staf.', href: '/nl/features/medical/' },
+        { title: 'Belasting & RPE', text: 'Belasting, ervaren inspanning en zwakke signalen sluiten aan op de werkelijke week van de groep.', href: '/nl/features/training-load/' },
         { title: 'Testen & evaluaties', text: 'Fysieke en technische testen worden door de tijd heen gevolgd om echte progressie te tonen.' },
-        { title: 'Individuele programma’s', text: 'Doelen, aangepaste belastingen en specifieke oefeningen blijven gekoppeld aan elke speler.' },
-        { title: 'Trainingen & tactiek', text: 'Trainingsplannen, tactische borden en oefeningen blijven verbonden met de staat van het team.' },
-        { title: 'Wedstrijd- & trainingsrapporten', text: 'Feedback van de staf creëert een lus en houdt speeltijd zichtbaar.' },
+        { title: 'Individuele programma’s', text: 'Doelen, aangepaste belastingen en specifieke oefeningen blijven gekoppeld aan elke speler.', href: '/nl/features/player-app/' },
+        { title: 'Trainingen & tactiek', text: 'Trainingsplannen, tactische borden en oefeningen blijven verbonden met de staat van het team.', href: '/nl/features/sessions/' },
+        { title: 'Wedstrijd- & trainingsrapporten', text: 'Feedback van de staf creëert een lus en houdt speeltijd zichtbaar.', href: '/nl/features/reports/' },
         { title: 'AI-assistent', text: 'Rapporten en de assistent zetten teaminformatie om in beslissingen.' },
       ],
     },
@@ -1092,6 +1095,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Je spelers krijgen hun eigen weergave.',
       body: 'Agenda, volgend evenement, aanwezigheidsantwoorden, meldingen: elke speler volgt het team vanuit de native app. En wie ze niet installeert, antwoordt toch via de link.',
       stores: 'Beschikbaar op iOS en Android',
+      cta: 'Ontdek de spelersapp',
       imageAlt: 'Schermafbeelding van de STRIVN-spelersapp: weekagenda met komende evenementen',
     },
 
@@ -1422,13 +1426,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Und alles andere in der wöchentlichen Routine.',
       body: 'Ein Team, unbegrenzt Spieler und Staff. Jedes Modul ist im kostenlosen Plan enthalten — nichts ist hinter einer Zahlung verschlossen.',
       items: [
-        { title: 'Anwesenheit & RSVP', text: 'Antworten der Spieler werden zu einer aktuellen Coach-Ansicht, ohne von Hand zu zählen.' },
-        { title: 'Medizinisches Logbuch', text: 'Verletzungen, medizinische Notizen und Return-to-Play bleiben für befugten Staff sichtbar.' },
-        { title: 'Belastung & RPE', text: 'Belastung, empfundene Anstrengung und schwache Signale verbinden sich mit der realen Woche des Kaders.' },
+        { title: 'Anwesenheit & RSVP', text: 'Antworten der Spieler werden zu einer aktuellen Coach-Ansicht, ohne von Hand zu zählen.', href: '/de/features/communication/' },
+        { title: 'Medizinisches Logbuch', text: 'Verletzungen, medizinische Notizen und Return-to-Play bleiben für befugten Staff sichtbar.', href: '/de/features/medical/' },
+        { title: 'Belastung & RPE', text: 'Belastung, empfundene Anstrengung und schwache Signale verbinden sich mit der realen Woche des Kaders.', href: '/de/features/training-load/' },
         { title: 'Tests & Bewertungen', text: 'Physische und technische Tests werden über die Zeit verfolgt, um echten Fortschritt zu zeigen.' },
-        { title: 'Individuelle Programme', text: 'Ziele, angepasste Belastungen und spezifische Übungen bleiben mit jedem Spieler verknüpft.' },
-        { title: 'Trainings & Taktik', text: 'Trainingspläne, Taktiktafeln und Übungen bleiben mit dem Zustand des Teams verbunden.' },
-        { title: 'Spiel- & Trainingsberichte', text: 'Feedback des Staffs schafft einen Kreislauf und hält die Spielzeit sichtbar.' },
+        { title: 'Individuelle Programme', text: 'Ziele, angepasste Belastungen und spezifische Übungen bleiben mit jedem Spieler verknüpft.', href: '/de/features/player-app/' },
+        { title: 'Trainings & Taktik', text: 'Trainingspläne, Taktiktafeln und Übungen bleiben mit dem Zustand des Teams verbunden.', href: '/de/features/sessions/' },
+        { title: 'Spiel- & Trainingsberichte', text: 'Feedback des Staffs schafft einen Kreislauf und hält die Spielzeit sichtbar.', href: '/de/features/reports/' },
         { title: 'KI-Assistent', text: 'Berichte und der Assistent machen aus Teaminformationen Entscheidungen.' },
       ],
     },
@@ -1437,6 +1441,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       title: 'Ihre Spieler bekommen ihre eigene Ansicht.',
       body: 'Kalender, nächster Termin, Anwesenheitsantworten, Benachrichtigungen: jeder Spieler folgt dem Team über die native App. Und wer sie nicht installiert, antwortet trotzdem über den Link.',
       stores: 'Verfügbar für iOS und Android',
+      cta: 'Die Spieler-App entdecken',
       imageAlt: 'Screenshot der STRIVN-Spieler-App: Wochenkalender mit anstehenden Terminen',
     },
 
