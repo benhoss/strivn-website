@@ -12,9 +12,10 @@ const sfx = lang === 'en' ? '' : `-${lang}`;
 const OUT = DIR.screenshots;
 mkdirSync(OUT, { recursive: true });
 
-const OPP = 2;       // FC Aldenne (team 1)
-const REPORT = 11;   // shared report
-const TOKEN = 'nP5EHWWlmkzQAJqwG0SPmeEebXT8D43UirBT69YI';
+// Demo ids rot when the DB is reseeded — override via env when they do.
+const OPP = process.env.STRIVN_SCOUT_OPP || 2;          // FC Aldenne (team 1)
+const REPORT = process.env.STRIVN_SCOUT_REPORT || 11;   // shared report
+const TOKEN = process.env.STRIVN_SCOUT_TOKEN || 'nP5EHWWlmkzQAJqwG0SPmeEebXT8D43UirBT69YI';
 
 const shot = (page, name, h) =>
   page.screenshot({ path: resolve(OUT, `${name}${sfx}.png`), clip: { x: 0, y: 0, width: page.viewportSize().width, height: h } })
