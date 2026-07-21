@@ -3,6 +3,7 @@ import SubpageLayout from '../layouts/SubpageLayout.astro';
 import FeatureVisual from './FeatureVisual.astro';
 import { type Locale } from '../data/landingContent';
 import { appStartUrl } from '../lib/appUrl';
+import { pngSize } from '../lib/pngSize';
 import { featuresContent, FEATURE_SLUGS, type FeatureSlug } from '../data/featuresContent';
 
 interface Props {
@@ -102,6 +103,75 @@ const jsonLdExtra = [
     </div>
   </section>
 
+  <!-- Showcase · real-app screenshot carousels (optional; carousel pattern shared with ScPage) -->
+  {(f.showcase ?? []).map((show, si) => (
+    <section class={`fp-show ${si % 2 === 1 ? 'fp-show--alt' : ''}`}>
+      <div class="s-wrap">
+        <header class="fp-show__head" data-reveal>
+          <h2 class="s-headline">{show.title}</h2>
+          <p class="s-lede">{show.blurb}</p>
+        </header>
+
+        <div class={`sc-car ${show.slides.every((sl) => sl.kind === 'mobile') ? 'sc-car--mobile' : ''}`} data-car data-reveal>
+          <div class="sc-car__viewport" data-car-viewport>
+            <ul class="sc-car__track">
+              {show.slides.map((sl) => (
+                <li class={`sc-car__slide sc-car__slide--${sl.kind}`}>
+                  <figure class={`sc-frame sc-frame--${sl.kind}`}>
+                    {sl.kind === 'desktop' && (
+                      <span class="sc-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    )}
+                    {sl.video ? (
+                      <video
+                        class="sc-frame__media"
+                        poster={sl.img}
+                        muted
+                        loop
+                        playsinline
+                        preload="none"
+                        aria-label={sl.alt}
+                        data-autoplay
+                      >
+                        <source src={`${sl.video}.mp4`} type="video/mp4" />
+                        <source src={`${sl.video}.webm`} type="video/webm" />
+                      </video>
+                    ) : (
+                      <img
+                        src={sl.img}
+                        alt={sl.alt}
+                        width={pngSize(sl.img)?.width ?? (sl.kind === 'desktop' ? 1440 : 402)}
+                        height={pngSize(sl.img)?.height ?? (sl.kind === 'desktop' ? 880 : 860)}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </figure>
+                  <figcaption>{sl.caption}</figcaption>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {show.slides.length > 1 && (
+            <div class="sc-car__nav">
+              <button type="button" class="sc-car__btn" data-car-prev aria-label="Previous">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <div class="sc-car__dots" data-car-dots>
+                {show.slides.map((_, di) => (
+                  <button type="button" class="sc-car__dot" data-car-dot={di} aria-label={`Go to slide ${di + 1}`}></button>
+                ))}
+              </div>
+              <button type="button" class="sc-car__btn" data-car-next aria-label="Next">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  ))}
+
   <!-- How it works -->
   <section class="fp-how" id="how">
     <div class="s-wrap">
@@ -161,6 +231,12 @@ const jsonLdExtra = [
       <p class="s-lede s-final__body">{f.finalCta.body}</p>
       <div class="s-final__actions">
         <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{f.finalCta.cta}</a>
+        {f.storeLinks?.appStore && (
+          <a href={f.storeLinks.appStore} target="_blank" rel="noopener" class="s-btn s-btn--ghost">App Store</a>
+        )}
+        {f.storeLinks?.playStore && (
+          <a href={f.storeLinks.playStore} target="_blank" rel="noopener" class="s-btn s-btn--ghost">Google Play</a>
+        )}
       </div>
     </div>
   </section>
@@ -247,6 +323,7 @@ const jsonLdExtra = [
 
   /* Shared section rhythm */
   .fp-benefits,
+  .fp-show,
   .fp-how,
   .fp-faq,
   .fp-more {
@@ -302,6 +379,197 @@ const jsonLdExtra = [
   .fp-benefits__item p {
     color: var(--ink-2);
     max-width: 52ch;
+  }
+
+  /* Showcase — screenshot carousel; classes + rules copied verbatim from
+     ScPage.astro (sc-car / sc-frame) so a later unit can extract a shared
+     component without divergence. Styles are Astro-scoped, so no collision. */
+  .fp-show--alt {
+    background: var(--void-soft);
+  }
+
+  .fp-show__head {
+    margin-bottom: var(--space-xl);
+    max-width: 60ch;
+  }
+
+  .fp-show__head h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .sc-car {
+    position: relative;
+  }
+
+  /* Phones-only carousel: narrow, centred on the page */
+  .sc-car--mobile {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  .sc-car__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+
+  /* scroll-behavior is per-scrolling-box (non-inherited): the html-level
+     reduced-motion override in global.css does not reach this viewport. */
+  @media (prefers-reduced-motion: reduce) {
+    .sc-car__viewport {
+      scroll-behavior: auto;
+    }
+  }
+
+  .sc-car__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sc-car__track {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: var(--space-xs) 0;
+    align-items: flex-end;
+  }
+
+  /* Each slide is a full-width stage; the frame is centred inside it,
+     so desktop and phone screenshots page cleanly in the same carousel. */
+  .sc-car__slide {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .sc-car__slide figcaption {
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+    text-align: center;
+    max-width: 42ch;
+  }
+
+  /* Browser-chrome frame for desktop screenshots */
+  .sc-frame {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--rule-strong);
+    background: var(--void);
+    box-shadow: var(--shadow-chrome-lg);
+  }
+
+  .sc-frame--desktop {
+    max-width: 56rem;
+  }
+
+  .sc-frame--mobile {
+    max-width: 16.5rem;
+  }
+
+  .sc-frame img,
+  .sc-frame__media {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .sc-frame--desktop {
+    border-radius: var(--radius-lg);
+  }
+
+  .sc-frame__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 1.75rem;
+    padding-inline: var(--space-sm);
+    background: var(--void-soft);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sc-frame__bar i {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-pill);
+    background: var(--rule-strong);
+  }
+
+  /* Phone frame for portal screenshots */
+  .sc-frame--mobile {
+    border-radius: 1.75rem;
+    padding: 0.4rem;
+    background: var(--navy-900);
+  }
+
+  .sc-frame--mobile img {
+    border-radius: 1.4rem;
+  }
+
+  .sc-car__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .sc-car__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--rule-strong);
+    background: var(--void-soft);
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: border-color var(--dur-short) var(--ease-out),
+      color var(--dur-short) var(--ease-out),
+      transform 100ms var(--ease-out);
+  }
+
+  .sc-car__btn:hover {
+    border-color: var(--navy-500);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  .sc-car__btn:active {
+    transform: translateY(0);
+  }
+
+  .sc-car__btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+  }
+
+  .sc-car__dots {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .sc-car__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: var(--rule-strong);
+    cursor: pointer;
+    transition: background var(--dur-short) var(--ease-out),
+      width var(--dur-short) var(--ease-out);
+  }
+
+  .sc-car__dot[aria-current='true'] {
+    width: 1.25rem;
+    background: var(--electric-500);
   }
 
   /* How it works — connected timeline */
@@ -444,3 +712,89 @@ const jsonLdExtra = [
     }
   }
 </style>
+
+<script>
+  // ── Screenshot carousels: scroll-snap + prev/next + dots ──
+  // Ported from ScPage.astro; no-ops on pages without a [data-car] carousel.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('[data-car]').forEach((car) => {
+    const vp = car.querySelector('[data-car-viewport]');
+    const slides = Array.from(car.querySelectorAll('.sc-car__slide'));
+    const prev = car.querySelector('[data-car-prev]');
+    const next = car.querySelector('[data-car-next]');
+    const dots = Array.from(car.querySelectorAll('[data-car-dot]'));
+    if (!vp || slides.length < 2) return;
+
+    let index = 0;
+
+    const update = () => {
+      dots.forEach((d, i) => d.setAttribute('aria-current', i === index ? 'true' : 'false'));
+      if (prev) prev.disabled = index === 0;
+      if (next) next.disabled = index === slides.length - 1;
+    };
+
+    const go = (i) => {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      const delta = slides[index].getBoundingClientRect().left - vp.getBoundingClientRect().left;
+      vp.scrollTo({ left: vp.scrollLeft + delta, behavior: reduce ? 'auto' : 'smooth' });
+      update();
+    };
+
+    const nearest = () => {
+      const vpLeft = vp.getBoundingClientRect().left;
+      let best = 0;
+      let bestDist = Infinity;
+      slides.forEach((s, i) => {
+        const dist = Math.abs(s.getBoundingClientRect().left - vpLeft);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
+      });
+      return best;
+    };
+
+    prev && prev.addEventListener('click', () => go(index - 1));
+    next && next.addEventListener('click', () => go(index + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+
+    let raf;
+    vp.addEventListener(
+      'scroll',
+      () => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          index = nearest();
+          update();
+        });
+      },
+      { passive: true },
+    );
+
+    update();
+  });
+
+  // ── Demo videos: autoplay (muted, looping) only in view and only when the
+  //    user has not requested reduced motion; otherwise the poster shows. ──
+  (() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const videos = document.querySelectorAll('video[data-autoplay]');
+    if (reduce || !videos.length) return;
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach((v) => { v.preload = 'auto'; v.play().catch(() => {}); });
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const v = entry.target;
+          if (entry.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); }
+          else v.pause();
+        });
+      },
+      { threshold: 0.4 },
+    );
+    videos.forEach((v) => io.observe(v));
+  })();
+</script>

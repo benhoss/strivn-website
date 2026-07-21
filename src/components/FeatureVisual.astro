@@ -17,24 +17,40 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     medical: 'Illustration : un dossier blessure avec retour au jeu par étapes et notes du staff.',
     'training-load': 'Illustration : un tableau de charge hebdomadaire avec RPE et signaux ACWR.',
     sessions: 'Illustration : un plan de séance en quatre ateliers minutés.',
+    live: 'Illustration : un match en direct avec le score, les buts minute par minute et le nombre de personnes qui suivent via le lien public.',
+    scouting: 'Illustration : la fiche d’un adversaire avec ses joueurs, leurs tags d’observation et le statut de rapport partagé.',
+    reports: 'Illustration : un rapport d’équipe composé de blocs présences, charge et médical, avec le statut PDF prêt.',
+    'player-app': 'Illustration : le check-in bien-être d’un joueur dans l’app, avec curseurs sommeil, fatigue et humeur, sa série de jours remplis et son programme du jour.',
   },
   en: {
     communication: 'Illustration: a call-up message with player replies and a live attendance tally.',
     medical: 'Illustration: an injury record with staged return-to-play and staff notes.',
     'training-load': 'Illustration: a weekly load table with RPE values and ACWR risk flags.',
     sessions: 'Illustration: a session plan with four timed drill phases.',
+    live: 'Illustration: a live match panel with the score, goals minute by minute and the number of people following through the public link.',
+    scouting: 'Illustration: an opponent file with roster rows, observation tags and a shared-report status.',
+    reports: 'Illustration: a team report composed of attendance, load and medical blocks, with a PDF-ready status.',
+    'player-app': 'Illustration: a player’s wellness check-in in the app, with sleep, fatigue and mood sliders, a streak counter and today’s program.',
   },
   nl: {
     communication: 'Illustratie: een oproeping met de antwoorden van de spelers en een live aanwezigheidsteller.',
     medical: 'Illustratie: een blessuredossier met gefaseerde return-to-play en notities van de staf.',
     'training-load': 'Illustratie: een weektabel van de belasting met RPE-waarden en ACWR-signalen.',
     sessions: 'Illustratie: een trainingsplan met vier getimede oefenblokken.',
+    live: 'Illustratie: een livewedstrijd met de score, de doelpunten minuut per minuut en het aantal mensen dat via de publieke link meevolgt.',
+    scouting: 'Illustratie: de fiche van een tegenstander met zijn spelers, observatietags en de status gedeeld rapport.',
+    reports: 'Illustratie: een teamrapport opgebouwd uit de blokken aanwezigheid, belasting en medisch, met de status PDF klaar.',
+    'player-app': 'Illustratie: de welzijnscheck-in van een speler in de app, met schuivers voor slaap, vermoeidheid en humeur, een reeksteller en het programma van de dag.',
   },
   de: {
     communication: 'Illustration: eine Aufstellung mit den Antworten der Spieler und einer Live-Anwesenheitszählung.',
     medical: 'Illustration: eine Verletzungsakte mit stufenweisem Return-to-Play und Notizen des Staffs.',
     'training-load': 'Illustration: eine Wochentabelle der Belastung mit RPE-Werten und ACWR-Signalen.',
     sessions: 'Illustration: ein Trainingsplan mit vier getimten Übungsblöcken.',
+    live: 'Illustration: ein Live-Spiel mit Spielstand, Toren Minute für Minute und der Zahl der Personen, die über den öffentlichen Link mitverfolgen.',
+    scouting: 'Illustration: die Akte eines Gegners mit seinen Spielern, Beobachtungs-Tags und dem Status geteilter Bericht.',
+    reports: 'Illustration: ein Team-Bericht aus den Blöcken Anwesenheit, Belastung und Medizinisches, mit dem Status PDF bereit.',
+    'player-app': 'Illustration: der Wohlbefindens-Check-in eines Spielers in der App, mit Reglern für Schlaf, Müdigkeit und Stimmung, einer Serienanzeige und dem Tagesprogramm.',
   },
 };
 const ariaLabels = ariaLabelsByLocale[locale];
@@ -46,31 +62,272 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     medical: { tone: 'watch', text: 'Réathlétisation · J+9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — alléger vendredi' },
     sessions: { tone: 'info', text: 'Ajustée à la charge du groupe' },
+    live: { tone: 'ok', text: '14 suivent via le lien public' },
+    scouting: { tone: 'info', text: 'Note de l’analyste ajoutée' },
+    reports: { tone: 'ok', text: 'PDF prêt à partager' },
+    'player-app': { tone: 'ok', text: 'Check-in rempli · 7 j d’affilée' },
   },
   en: {
     communication: { tone: 'ok', text: 'L. Moreau — In · 6:09pm' },
     medical: { tone: 'watch', text: 'Reconditioning · day 9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — lighten Friday' },
     sessions: { tone: 'info', text: 'Tuned to the squad’s load' },
+    live: { tone: 'ok', text: '14 watching via the public link' },
+    scouting: { tone: 'info', text: 'Analyst note added' },
+    reports: { tone: 'ok', text: 'PDF ready to share' },
+    'player-app': { tone: 'ok', text: 'Check-in done · 7-day streak' },
   },
   nl: {
     communication: { tone: 'ok', text: 'L. Moreau — Aanwezig · 18u09' },
     medical: { tone: 'watch', text: 'Revalidatie · dag 9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — vrijdag verlichten' },
     sessions: { tone: 'info', text: 'Afgestemd op de belasting van de groep' },
+    live: { tone: 'ok', text: '14 volgen via de publieke link' },
+    scouting: { tone: 'info', text: 'Notitie van de analist toegevoegd' },
+    reports: { tone: 'ok', text: 'PDF klaar om te delen' },
+    'player-app': { tone: 'ok', text: 'Check-in ingevuld · 7 dagen op rij' },
   },
   de: {
     communication: { tone: 'ok', text: 'L. Moreau — Dabei · 18:09' },
     medical: { tone: 'watch', text: 'Reha · Tag 9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — Freitag reduzieren' },
     sessions: { tone: 'info', text: 'Auf die Belastung der Gruppe abgestimmt' },
+    live: { tone: 'ok', text: '14 folgen über den öffentlichen Link' },
+    scouting: { tone: 'info', text: 'Notiz des Analysten hinzugefügt' },
+    reports: { tone: 'ok', text: 'PDF bereit zum Teilen' },
+    'player-app': { tone: 'ok', text: 'Check-in erledigt · 7 Tage in Folge' },
   },
 };
 const chip = chipsByLocale[locale][slug];
+
+/** Sample match panel for the `live` slug — decorative data, no landingContent entry exists for it. */
+type LiveSample = {
+  badge: string;
+  minute: string;
+  home: string;
+  away: string;
+  score: string;
+  events: Array<{ min: string; text: string }>;
+};
+const liveByLocale: Record<Locale, LiveSample> = {
+  fr: {
+    badge: 'EN DIRECT',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'But · N. Carvalho' },
+      { min: '38’', text: 'But · FC Boisval' },
+      { min: '57’', text: 'But · Y. Benali' },
+    ],
+  },
+  en: {
+    badge: 'LIVE',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'Goal · N. Carvalho' },
+      { min: '38’', text: 'Goal · FC Boisval' },
+      { min: '57’', text: 'Goal · Y. Benali' },
+    ],
+  },
+  nl: {
+    badge: 'LIVE',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'Doelpunt · N. Carvalho' },
+      { min: '38’', text: 'Doelpunt · FC Boisval' },
+      { min: '57’', text: 'Doelpunt · Y. Benali' },
+    ],
+  },
+  de: {
+    badge: 'LIVE',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'Tor · N. Carvalho' },
+      { min: '38’', text: 'Tor · FC Boisval' },
+      { min: '57’', text: 'Tor · Y. Benali' },
+    ],
+  },
+};
+
+/** Sample opponent-scouting panel for the `scouting` slug — decorative data, no landingContent entry exists for it. */
+type ScoutingSample = {
+  label: string;
+  opponent: string;
+  shared: string;
+  players: Array<{ num: string; name: string; tags: string[] }>;
+};
+const scoutingByLocale: Record<Locale, ScoutingSample> = {
+  fr: {
+    label: 'Prochain adversaire',
+    opponent: 'FC Boisval',
+    shared: 'Rapport partagé',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Vitesse', 'Pied gauche'] },
+      { num: '10', name: 'T. Willems', tags: ['Coups francs', 'Meneur'] },
+      { num: '4', name: 'S. Dubois', tags: ['Jeu aérien', 'Relance longue'] },
+    ],
+  },
+  en: {
+    label: 'Next opponent',
+    opponent: 'FC Boisval',
+    shared: 'Report shared',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Pace', 'Left foot'] },
+      { num: '10', name: 'T. Willems', tags: ['Free kicks', 'Playmaker'] },
+      { num: '4', name: 'S. Dubois', tags: ['Aerial threat', 'Long balls'] },
+    ],
+  },
+  nl: {
+    label: 'Volgende tegenstander',
+    opponent: 'FC Boisval',
+    shared: 'Rapport gedeeld',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Snelheid', 'Linksbenig'] },
+      { num: '10', name: 'T. Willems', tags: ['Vrije trappen', 'Spelmaker'] },
+      { num: '4', name: 'S. Dubois', tags: ['Kopsterk', 'Lange bal'] },
+    ],
+  },
+  de: {
+    label: 'Nächster Gegner',
+    opponent: 'FC Boisval',
+    shared: 'Bericht geteilt',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Tempo', 'Linker Fuß'] },
+      { num: '10', name: 'T. Willems', tags: ['Freistöße', 'Spielmacher'] },
+      { num: '4', name: 'S. Dubois', tags: ['Kopfballstark', 'Langer Ball'] },
+    ],
+  },
+};
+
+/** Sample report-builder panel for the `reports` slug — decorative data, no landingContent entry exists for it. */
+type ReportsSample = {
+  label: string;
+  name: string;
+  ready: string;
+  blocks: Array<{ name: string; detail: string }>;
+};
+const reportsByLocale: Record<Locale, ReportsSample> = {
+  fr: {
+    label: 'Rapport d’équipe',
+    name: 'Bilan du mois — U17',
+    ready: 'PDF prêt',
+    blocks: [
+      { name: 'Présences', detail: '12 séances' },
+      { name: 'Charge', detail: 'ACWR stable' },
+      { name: 'Médical', detail: '1 retour au jeu' },
+    ],
+  },
+  en: {
+    label: 'Team report',
+    name: 'Monthly review — U17',
+    ready: 'PDF ready',
+    blocks: [
+      { name: 'Attendance', detail: '12 sessions' },
+      { name: 'Load', detail: 'ACWR steady' },
+      { name: 'Medical', detail: '1 return to play' },
+    ],
+  },
+  nl: {
+    label: 'Teamrapport',
+    name: 'Maandoverzicht — U17',
+    ready: 'PDF klaar',
+    blocks: [
+      { name: 'Aanwezigheid', detail: '12 trainingen' },
+      { name: 'Belasting', detail: 'ACWR stabiel' },
+      { name: 'Medisch', detail: '1 return-to-play' },
+    ],
+  },
+  de: {
+    label: 'Team-Bericht',
+    name: 'Monatsbilanz — U17',
+    ready: 'PDF bereit',
+    blocks: [
+      { name: 'Anwesenheit', detail: '12 Einheiten' },
+      { name: 'Belastung', detail: 'ACWR stabil' },
+      { name: 'Medizinisch', detail: '1 Return-to-Play' },
+    ],
+  },
+};
+
+/** Sample player check-in card for the `player-app` slug — decorative data, no landingContent entry exists for it. */
+type PlayerAppSample = {
+  label: string;
+  player: string;
+  streak: string;
+  sliders: Array<{ name: string; value: number }>;
+  programLabel: string;
+  programText: string;
+};
+const playerAppByLocale: Record<Locale, PlayerAppSample> = {
+  fr: {
+    label: 'Check-in du jour',
+    player: 'L. Moreau',
+    streak: '7 j d’affilée',
+    sliders: [
+      { name: 'Sommeil', value: 8 },
+      { name: 'Fatigue', value: 4 },
+      { name: 'Humeur', value: 9 },
+    ],
+    programLabel: 'Programme du jour',
+    programText: 'Mobilité & gainage · 20 min',
+  },
+  en: {
+    label: 'Today’s check-in',
+    player: 'L. Moreau',
+    streak: '7-day streak',
+    sliders: [
+      { name: 'Sleep', value: 8 },
+      { name: 'Fatigue', value: 4 },
+      { name: 'Mood', value: 9 },
+    ],
+    programLabel: 'Today’s program',
+    programText: 'Mobility & core · 20 min',
+  },
+  nl: {
+    label: 'Check-in van vandaag',
+    player: 'L. Moreau',
+    streak: '7 dagen op rij',
+    sliders: [
+      { name: 'Slaap', value: 8 },
+      { name: 'Vermoeidheid', value: 4 },
+      { name: 'Humeur', value: 9 },
+    ],
+    programLabel: 'Programma van vandaag',
+    programText: 'Mobiliteit & core · 20 min',
+  },
+  de: {
+    label: 'Check-in des Tages',
+    player: 'L. Moreau',
+    streak: '7 Tage in Folge',
+    sliders: [
+      { name: 'Schlaf', value: 8 },
+      { name: 'Müdigkeit', value: 4 },
+      { name: 'Stimmung', value: 9 },
+    ],
+    programLabel: 'Programm des Tages',
+    programText: 'Mobilität & Core · 20 Min',
+  },
+};
+
 const com = c.communication.proof;
 const med = c.medical.record;
 const load = c.load.table;
 const board = c.sessions.board;
+const live = liveByLocale[locale];
+const scout = scoutingByLocale[locale];
+const rep = reportsByLocale[locale];
+const app = playerAppByLocale[locale];
 ---
 
 <div class="fv" role="img" aria-label={ariaLabels[slug]}>
@@ -209,6 +466,100 @@ const board = c.sessions.board;
       </div>
     )}
 
+    {slug === 'live' && (
+      <div class="s-proof">
+        <div class="fv-live__head">
+          <span class="fv-live__badge">{live.badge}</span>
+          <span class="fv-live__minute">{live.minute}</span>
+        </div>
+        <p class="fv-live__score">
+          <span class="fv-live__team">{live.home}</span>
+          <span class="fv-live__nums">{live.score}</span>
+          <span class="fv-live__team fv-live__team--away">{live.away}</span>
+        </p>
+        <ul class="fv-live__events">
+          {live.events.map((event) => (
+            <li class="fv-live__event">
+              <span class="fv-live__event-min">{event.min}</span>
+              <span class="fv-live__event-text">{event.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {slug === 'scouting' && (
+      <div class="s-proof">
+        <div class="fv-scout__head">
+          <p class="fv-scout__title">
+            <span class="s-label">{scout.label}</span>
+            <span class="fv-scout__opponent">{scout.opponent}</span>
+          </p>
+          <span class="fv-scout__shared">{scout.shared}</span>
+        </div>
+        <ul class="fv-scout__players">
+          {scout.players.map((player) => (
+            <li class="fv-scout__player">
+              <span class="fv-scout__num">{player.num}</span>
+              <span class="fv-scout__name">{player.name}</span>
+              <span class="fv-scout__tags">
+                {player.tags.map((tag) => (
+                  <span class="fv-scout__tag">{tag}</span>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {slug === 'reports' && (
+      <div class="s-proof">
+        <div class="fv-report__head">
+          <p class="fv-report__title">
+            <span class="s-label">{rep.label}</span>
+            <span class="fv-report__name">{rep.name}</span>
+          </p>
+          <span class="fv-report__ready">{rep.ready}</span>
+        </div>
+        <ul class="fv-report__blocks">
+          {rep.blocks.map((block) => (
+            <li class="fv-report__block">
+              <span class="fv-report__block-name">{block.name}</span>
+              <span class="fv-report__block-detail">{block.detail}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {slug === 'player-app' && (
+      <div class="s-proof">
+        <div class="fv-checkin__head">
+          <p class="fv-checkin__title">
+            <span class="s-label">{app.label}</span>
+            <span class="fv-checkin__player">{app.player}</span>
+          </p>
+          <span class="fv-checkin__streak">{app.streak}</span>
+        </div>
+        <ul class="fv-checkin__sliders">
+          {app.sliders.map((slider) => (
+            <li class="fv-checkin__slider">
+              <span class="fv-checkin__slider-name">{slider.name}</span>
+              <span class="fv-checkin__slider-track" aria-hidden="true">
+                <span class="fv-checkin__slider-fill" style={`width: ${slider.value * 10}%`}></span>
+              </span>
+              <span class="fv-checkin__slider-value">{slider.value}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="fv-checkin__program">
+          <span class="fv-checkin__program-label">{app.programLabel}</span>
+          <span class="fv-checkin__program-text">{app.programText}</span>
+        </p>
+      </div>
+    )}
+
     <span class={`fv__chip fv__chip--${chip.tone}`}>{chip.text}</span>
   </div>
 </div>
@@ -277,6 +628,355 @@ const board = c.sessions.board;
 
   .fv__chip--info::before {
     background: var(--electric-500);
+  }
+
+  .fv-live__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+  }
+
+  .fv-live__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+  }
+
+  .fv-live__badge::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--risk);
+  }
+
+  .fv-live__minute {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
+  }
+
+  .fv-live__score {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin: 0 0 var(--space-md);
+  }
+
+  .fv-live__team {
+    min-width: 0;
+    font-weight: 600;
+  }
+
+  .fv-live__team--away {
+    text-align: right;
+  }
+
+  .fv-live__nums {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .fv-live__events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fv-live__event {
+    display: flex;
+    gap: var(--space-sm);
+    padding-block: var(--space-xs);
+    border-top: 1px solid var(--rule);
+    font-size: var(--text-sm);
+  }
+
+  .fv-live__event-min {
+    flex: none;
+    font-family: var(--font-mono);
+    color: var(--ink-3);
+  }
+
+  .fv-live__event-text {
+    color: var(--ink-2);
+  }
+
+  .fv-scout__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .fv-scout__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: 0;
+    min-width: 0;
+  }
+
+  .fv-scout__opponent {
+    font-weight: 600;
+  }
+
+  .fv-scout__shared {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.03em;
+    color: var(--ink-2);
+  }
+
+  .fv-scout__shared::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--performance);
+  }
+
+  .fv-scout__players {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fv-scout__player {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-block: var(--space-xs);
+    border-top: 1px solid var(--rule);
+    font-size: var(--text-sm);
+  }
+
+  .fv-scout__num {
+    flex: none;
+    min-width: 1.2em;
+    font-family: var(--font-mono);
+    color: var(--ink-3);
+  }
+
+  .fv-scout__name {
+    min-width: 0;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .fv-scout__tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-xs);
+    margin-left: auto;
+  }
+
+  .fv-scout__tag {
+    padding: 1px var(--space-xs);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+
+  .fv-report__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .fv-report__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: 0;
+    min-width: 0;
+  }
+
+  .fv-report__name {
+    font-weight: 600;
+  }
+
+  .fv-report__ready {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.03em;
+    color: var(--ink-2);
+  }
+
+  .fv-report__ready::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--performance);
+  }
+
+  .fv-report__blocks {
+    display: grid;
+    gap: var(--space-xs);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fv-report__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+  }
+
+  .fv-report__block-name {
+    min-width: 0;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .fv-report__block-detail {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
+  }
+
+  .fv-checkin__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .fv-checkin__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: 0;
+    min-width: 0;
+  }
+
+  .fv-checkin__player {
+    font-weight: 600;
+  }
+
+  .fv-checkin__streak {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.03em;
+    color: var(--ink-2);
+  }
+
+  .fv-checkin__streak::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--performance);
+  }
+
+  .fv-checkin__sliders {
+    display: grid;
+    gap: var(--space-sm);
+    list-style: none;
+    margin: 0 0 var(--space-md);
+    padding: 0;
+  }
+
+  .fv-checkin__slider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+  }
+
+  .fv-checkin__slider-name {
+    flex: none;
+    min-width: 7em;
+    color: var(--ink-2);
+  }
+
+  .fv-checkin__slider-track {
+    flex: 1;
+    min-width: 0;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--rule);
+    overflow: hidden;
+  }
+
+  .fv-checkin__slider-fill {
+    display: block;
+    height: 100%;
+    border-radius: var(--radius-pill);
+    background: var(--electric-500);
+  }
+
+  .fv-checkin__slider-value {
+    flex: none;
+    min-width: 1.2em;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
+  }
+
+  .fv-checkin__program {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+  }
+
+  .fv-checkin__program-label {
+    min-width: 0;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .fv-checkin__program-text {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
   }
 
   @media (max-width: 40rem) {

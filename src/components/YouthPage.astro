@@ -2,20 +2,21 @@
 import SubpageLayout from '../layouts/SubpageLayout.astro';
 import { type Locale } from '../data/landingContent';
 import { appStartUrl } from '../lib/appUrl';
-import { scContent } from '../data/scContent';
+import { pngSize } from '../lib/pngSize';
+import { youthContent } from '../data/youthContent';
 
 interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
-const c = scContent[locale];
+const c = youthContent[locale];
 
 const base = `/${locale}`;
-const frPath = '/fr/preparateurs-physiques/';
-const enPath = '/en/sc-coaches/';
-const nlPath = '/nl/sc-coaches/';
-const dePath = '/de/sc-coaches/';
+const frPath = '/fr/equipes-jeunes/';
+const enPath = '/en/youth-teams/';
+const nlPath = '/nl/youth-teams/';
+const dePath = '/de/youth-teams/';
 const canonicalPath =
   locale === 'fr' ? frPath : locale === 'nl' ? nlPath : locale === 'de' ? dePath : enPath;
 const switchHrefs = { en: enPath, fr: frPath, nl: nlPath, de: dePath };
@@ -38,22 +39,53 @@ const jsonLdExtra = [
   },
 ];
 
-const players = [
-  { name: 'K. Laval',    pct: 94 },
-  { name: 'M. Torres',   pct: 81 },
-  { name: 'R. Diallo',   pct: 63 },
-  { name: 'S. Okafor',   pct: 78 },
-  { name: 'L. Bernard',  pct: 47 },
-];
-
-function readinessColor(pct: number): string {
-  if (pct >= 75) return 'var(--performance)';
-  if (pct >= 55) return 'var(--warning)';
-  return 'var(--risk)';
-}
-
-const boardLabel = locale === 'fr' ? 'Readiness du groupe' : locale === 'nl' ? 'Readiness van de groep' : locale === 'de' ? 'Readiness der Gruppe' : 'Squad readiness';
-const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 'Vandaag'                : locale === 'de' ? 'Heute'                : 'Today';
+// Illustrative hero mock: a convocation/RSVP card seen from the guardian's side.
+const heroCard = {
+  fr: {
+    label: 'Convocation',
+    group: 'U13',
+    event: 'Match · Samedi 14:30',
+    present: 'Présent',
+    unsure: 'Incertain',
+    absent: 'Absent',
+    replyWho: 'Parent de Léa',
+    replyMeta: 'a répondu pour Léa',
+    consent: 'Consentement parental à jour',
+  },
+  en: {
+    label: 'Call-up',
+    group: 'U13',
+    event: 'Match · Saturday 14:30',
+    present: 'Present',
+    unsure: 'Unsure',
+    absent: 'Absent',
+    replyWho: 'Léa’s parent',
+    replyMeta: 'replied for Léa',
+    consent: 'Parental consent up to date',
+  },
+  nl: {
+    label: 'Oproeping',
+    group: 'U13',
+    event: 'Wedstrijd · za 14:30',
+    present: 'Aanwezig',
+    unsure: 'Onzeker',
+    absent: 'Afwezig',
+    replyWho: 'Ouder van Léa',
+    replyMeta: 'antwoordde voor Léa',
+    consent: 'Ouderlijke toestemming in orde',
+  },
+  de: {
+    label: 'Aufgebot',
+    group: 'U13',
+    event: 'Spiel · Samstag 14:30',
+    present: 'Dabei',
+    unsure: 'Unsicher',
+    absent: 'Abwesend',
+    replyWho: 'Elternteil von Léa',
+    replyMeta: 'hat für Léa geantwortet',
+    consent: 'Elterliche Einwilligung aktuell',
+  },
+}[locale];
 ---
 
 <SubpageLayout
@@ -77,29 +109,34 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 
         </a>
       </div>
 
-      <!-- Readiness preview: illustrative mini-UI, aria-hidden -->
+      <!-- Convocation/RSVP preview: illustrative mini-UI, aria-hidden -->
       <div class="sc-hero__visual" aria-hidden="true">
-        <div class="sc-board">
-          <div class="sc-board__head">
-            <span class="sc-board__label">{boardLabel}</span>
-            <span class="sc-board__today">{boardToday}</span>
+        <div class="yt-card">
+          <div class="yt-card__head">
+            <span class="yt-card__label">{heroCard.label}</span>
+            <span class="yt-card__group">{heroCard.group}</span>
           </div>
-          <ul class="sc-board__list">
-            {players.map((p) => (
-              <li class="sc-board__row">
-                <span class="sc-board__name">{p.name}</span>
-                <div class="sc-board__track">
-                  <div
-                    class="sc-board__fill"
-                    style={`width: ${p.pct}%; background: ${readinessColor(p.pct)};`}
-                  ></div>
-                </div>
-                <span class="sc-board__pct" style={`color: ${readinessColor(p.pct)};`}>
-                  {p.pct}%
-                </span>
-              </li>
-            ))}
-          </ul>
+          <p class="yt-card__event">{heroCard.event}</p>
+          <div class="yt-card__choices">
+            <span class="yt-chip yt-chip--on">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+              {heroCard.present}
+            </span>
+            <span class="yt-chip">{heroCard.unsure}</span>
+            <span class="yt-chip">{heroCard.absent}</span>
+          </div>
+          <div class="yt-card__reply">
+            <span class="yt-card__avatar">L</span>
+            <div class="yt-card__reply-text">
+              <span class="yt-card__who">{heroCard.replyWho}</span>
+              <span class="yt-card__meta">{heroCard.replyMeta}</span>
+            </div>
+            <span class="yt-card__badge">{heroCard.present}</span>
+          </div>
+          <div class="yt-card__consent">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>{heroCard.consent}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -141,8 +178,8 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 
                       <img
                         src={sl.img}
                         alt={sl.alt}
-                        width={sl.kind === 'desktop' ? 1440 : 402}
-                        height={sl.kind === 'desktop' ? 880 : 860}
+                        width={pngSize(sl.img)?.width ?? (sl.kind === 'desktop' ? 1440 : 402)}
+                        height={pngSize(sl.img)?.height ?? (sl.kind === 'desktop' ? 880 : 860)}
                         loading="lazy"
                         decoding="async"
                       />
@@ -262,12 +299,12 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 
     max-width: 52ch;
   }
 
-  /* ── Readiness board ────────────────────────────────────── */
+  /* ── Convocation/RSVP card ──────────────────────────────── */
   .sc-hero__visual {
     position: relative;
   }
 
-  .sc-board {
+  .yt-card {
     background: var(--void-soft);
     border: 1px solid var(--rule-strong);
     border-radius: var(--radius-lg);
@@ -277,16 +314,14 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 
       0 16px 48px rgba(3, 9, 26, 0.4);
   }
 
-  .sc-board__head {
+  .yt-card__head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-sm);
-    border-bottom: 1px solid var(--rule);
+    margin-bottom: var(--space-sm);
   }
 
-  .sc-board__label {
+  .yt-card__label {
     font-family: var(--font-mono);
     font-size: var(--text-label);
     font-weight: 500;
@@ -295,51 +330,110 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 
     color: var(--ink-3);
   }
 
-  .sc-board__today {
+  .yt-card__group {
+    font-family: var(--font-mono);
+    font-size: var(--text-frag);
+    color: var(--electric-500);
+    border: 1px solid var(--electric-border);
+    border-radius: var(--radius-pill);
+    padding: 0.1rem 0.5rem;
+  }
+
+  .yt-card__event {
+    margin: 0 0 var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .yt-card__choices {
+    display: flex;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .yt-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    color: var(--ink-3);
+  }
+
+  .yt-chip--on {
+    color: var(--performance);
+    border-color: currentColor;
+    background: rgba(39, 215, 161, 0.08);
+  }
+
+  .yt-card__reply {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--void);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .yt-card__avatar {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(45, 127, 249, 0.15);
+    color: var(--electric-500);
+    font-family: var(--font-mono);
+    font-size: var(--text-frag);
+    font-weight: 600;
+  }
+
+  .yt-card__reply-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .yt-card__who {
+    font-size: var(--text-sm);
+    color: var(--ink-2);
+  }
+
+  .yt-card__meta {
     font-family: var(--font-mono);
     font-size: var(--text-frag);
     color: var(--ink-3);
   }
 
-  .sc-board__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-
-  .sc-board__row {
-    display: grid;
-    grid-template-columns: 6rem 1fr 2.5rem;
-    gap: var(--space-sm);
-    align-items: center;
-  }
-
-  .sc-board__name {
-    font-size: var(--text-sm);
-    color: var(--ink-2);
-    white-space: nowrap;
-  }
-
-  .sc-board__track {
-    height: 4px;
-    background: var(--rule-strong);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .sc-board__fill {
-    height: 100%;
-    border-radius: 2px;
-  }
-
-  .sc-board__pct {
+  .yt-card__badge {
+    margin-left: auto;
     font-family: var(--font-mono);
     font-size: var(--text-frag);
     font-weight: 500;
-    text-align: right;
+    color: var(--performance);
+  }
+
+  .yt-card__consent {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+  }
+
+  .yt-card__consent svg {
+    flex-shrink: 0;
+    color: var(--performance);
   }
 
   /* ── Feature showcase + carousel ────────────────────────── */
@@ -572,7 +666,7 @@ const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 
     border-radius: var(--radius-lg);
   }
 
-  /* Flagship cards: Load Planning + RPE get electric tint */
+  /* Flagship cards: parental RSVP + youth mode get electric tint */
   .sc-features__item--0,
   .sc-features__item--3 {
     background: linear-gradient(135deg, rgba(45, 127, 249, 0.08) 0%, transparent 70%);
