@@ -1,8 +1,8 @@
 import type { Locale } from './landingContent';
 
-export type FeatureSlug = 'communication' | 'medical' | 'training-load' | 'sessions' | 'live' | 'scouting' | 'reports' | 'player-app';
+export const FEATURE_SLUGS = ['communication', 'medical', 'training-load', 'sessions', 'live', 'scouting', 'reports', 'player-app'] as const;
 
-export const FEATURE_SLUGS: FeatureSlug[] = ['communication', 'medical', 'training-load', 'sessions', 'live', 'scouting', 'reports', 'player-app'];
+export type FeatureSlug = (typeof FEATURE_SLUGS)[number];
 
 /** Mirrors the `Slide` shape in scContent.ts — exported so a later unit can unify the two. */
 export type Slide = {

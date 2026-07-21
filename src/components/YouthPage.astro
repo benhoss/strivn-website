@@ -2,6 +2,7 @@
 import SubpageLayout from '../layouts/SubpageLayout.astro';
 import { type Locale } from '../data/landingContent';
 import { appStartUrl } from '../lib/appUrl';
+import { pngSize } from '../lib/pngSize';
 import { youthContent } from '../data/youthContent';
 
 interface Props {
@@ -177,8 +178,8 @@ const heroCard = {
                       <img
                         src={sl.img}
                         alt={sl.alt}
-                        width={sl.kind === 'desktop' ? 1440 : 402}
-                        height={sl.kind === 'desktop' ? 880 : 860}
+                        width={pngSize(sl.img)?.width ?? (sl.kind === 'desktop' ? 1440 : 402)}
+                        height={pngSize(sl.img)?.height ?? (sl.kind === 'desktop' ? 880 : 860)}
                         loading="lazy"
                         decoding="async"
                       />

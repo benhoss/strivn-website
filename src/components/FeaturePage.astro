@@ -3,6 +3,7 @@ import SubpageLayout from '../layouts/SubpageLayout.astro';
 import FeatureVisual from './FeatureVisual.astro';
 import { type Locale } from '../data/landingContent';
 import { appStartUrl } from '../lib/appUrl';
+import { pngSize } from '../lib/pngSize';
 import { featuresContent, FEATURE_SLUGS, type FeatureSlug } from '../data/featuresContent';
 
 interface Props {
@@ -138,8 +139,8 @@ const jsonLdExtra = [
                       <img
                         src={sl.img}
                         alt={sl.alt}
-                        width={sl.kind === 'desktop' ? 1440 : 402}
-                        height={sl.kind === 'desktop' ? 880 : 860}
+                        width={pngSize(sl.img)?.width ?? (sl.kind === 'desktop' ? 1440 : 402)}
+                        height={pngSize(sl.img)?.height ?? (sl.kind === 'desktop' ? 880 : 860)}
                         loading="lazy"
                         decoding="async"
                       />

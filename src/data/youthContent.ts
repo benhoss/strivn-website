@@ -1,19 +1,5 @@
 import type { Locale } from './landingContent';
-
-type Slide = {
-  img: string;
-  /** Optional video base path (without extension); .mp4 + .webm are loaded, img is the poster. */
-  video?: string;
-  kind: 'desktop' | 'mobile';
-  alt: string;
-  caption: string;
-};
-
-type Showcase = {
-  title: string;
-  blurb: string;
-  slides: Slide[];
-};
+import type { Showcase } from './featuresContent';
 
 type YouthContent = {
   meta: { title: string; description: string };
