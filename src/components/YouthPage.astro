@@ -1,0 +1,852 @@
+---
+import SubpageLayout from '../layouts/SubpageLayout.astro';
+import { type Locale } from '../data/landingContent';
+import { appStartUrl } from '../lib/appUrl';
+import { youthContent } from '../data/youthContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = youthContent[locale];
+
+const base = `/${locale}`;
+const frPath = '/fr/equipes-jeunes/';
+const enPath = '/en/youth-teams/';
+const nlPath = '/nl/youth-teams/';
+const dePath = '/de/youth-teams/';
+const canonicalPath =
+  locale === 'fr' ? frPath : locale === 'nl' ? nlPath : locale === 'de' ? dePath : enPath;
+const switchHrefs = { en: enPath, fr: frPath, nl: nlPath, de: dePath };
+const alternates = [
+  { hreflang: 'en', href: enPath },
+  { hreflang: 'fr', href: frPath },
+  { hreflang: 'nl', href: nlPath },
+  { hreflang: 'de', href: dePath },
+  { hreflang: 'x-default', href: frPath },
+];
+
+const site = 'https://strivn.net';
+const jsonLdExtra = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: `${site}${base}/` },
+      { '@type': 'ListItem', position: 2, name: c.eyebrow, item: `${site}${canonicalPath}` },
+    ],
+  },
+];
+
+// Illustrative hero mock: a convocation/RSVP card seen from the guardian's side.
+const heroCard = {
+  fr: {
+    label: 'Convocation',
+    group: 'U13',
+    event: 'Match · Samedi 14:30',
+    present: 'Présent',
+    unsure: 'Incertain',
+    absent: 'Absent',
+    replyWho: 'Parent de Léa',
+    replyMeta: 'a répondu pour Léa',
+    consent: 'Consentement parental à jour',
+  },
+  en: {
+    label: 'Call-up',
+    group: 'U13',
+    event: 'Match · Saturday 14:30',
+    present: 'Present',
+    unsure: 'Unsure',
+    absent: 'Absent',
+    replyWho: 'Léa’s parent',
+    replyMeta: 'replied for Léa',
+    consent: 'Parental consent up to date',
+  },
+  nl: {
+    label: 'Oproeping',
+    group: 'U13',
+    event: 'Wedstrijd · za 14:30',
+    present: 'Aanwezig',
+    unsure: 'Onzeker',
+    absent: 'Afwezig',
+    replyWho: 'Ouder van Léa',
+    replyMeta: 'antwoordde voor Léa',
+    consent: 'Ouderlijke toestemming in orde',
+  },
+  de: {
+    label: 'Aufgebot',
+    group: 'U13',
+    event: 'Spiel · Samstag 14:30',
+    present: 'Dabei',
+    unsure: 'Unsicher',
+    absent: 'Abwesend',
+    replyWho: 'Elternteil von Léa',
+    replyMeta: 'hat für Léa geantwortet',
+    consent: 'Elterliche Einwilligung aktuell',
+  },
+}[locale];
+---
+
+<SubpageLayout
+  locale={locale}
+  title={c.meta.title}
+  description={c.meta.description}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+  jsonLdExtra={jsonLdExtra}
+  switchHrefs={switchHrefs}
+>
+  <!-- Hero -->
+  <section class="sc-hero">
+    <div class="s-wrap sc-hero__inner">
+      <div class="sc-hero__text">
+        <p class="s-label sc-hero__eyebrow">{c.eyebrow}</p>
+        <h1 class="s-display sc-hero__title">{c.hero.title}</h1>
+        <p class="s-lede sc-hero__lede">{c.hero.lede}</p>
+        <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">
+          {c.hero.cta}
+        </a>
+      </div>
+
+      <!-- Convocation/RSVP preview: illustrative mini-UI, aria-hidden -->
+      <div class="sc-hero__visual" aria-hidden="true">
+        <div class="yt-card">
+          <div class="yt-card__head">
+            <span class="yt-card__label">{heroCard.label}</span>
+            <span class="yt-card__group">{heroCard.group}</span>
+          </div>
+          <p class="yt-card__event">{heroCard.event}</p>
+          <div class="yt-card__choices">
+            <span class="yt-chip yt-chip--on">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+              {heroCard.present}
+            </span>
+            <span class="yt-chip">{heroCard.unsure}</span>
+            <span class="yt-chip">{heroCard.absent}</span>
+          </div>
+          <div class="yt-card__reply">
+            <span class="yt-card__avatar">L</span>
+            <div class="yt-card__reply-text">
+              <span class="yt-card__who">{heroCard.replyWho}</span>
+              <span class="yt-card__meta">{heroCard.replyMeta}</span>
+            </div>
+            <span class="yt-card__badge">{heroCard.present}</span>
+          </div>
+          <div class="yt-card__consent">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>{heroCard.consent}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature showcases (screenshot carousels) -->
+  {c.showcase.map((show, si) => (
+    <section class={`sc-show ${si % 2 === 1 ? 'sc-show--alt' : ''}`}>
+      <div class="s-wrap">
+        <header class="sc-show__head" data-reveal>
+          <h2 class="s-headline">{show.title}</h2>
+          <p class="s-lede">{show.blurb}</p>
+        </header>
+
+        <div class={`sc-car ${show.slides.every((sl) => sl.kind === 'mobile') ? 'sc-car--mobile' : ''}`} data-car data-reveal>
+          <div class="sc-car__viewport" data-car-viewport>
+            <ul class="sc-car__track">
+              {show.slides.map((sl) => (
+                <li class={`sc-car__slide sc-car__slide--${sl.kind}`}>
+                  <figure class={`sc-frame sc-frame--${sl.kind}`}>
+                    {sl.kind === 'desktop' && (
+                      <span class="sc-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    )}
+                    {sl.video ? (
+                      <video
+                        class="sc-frame__media"
+                        poster={sl.img}
+                        muted
+                        loop
+                        playsinline
+                        preload="none"
+                        aria-label={sl.alt}
+                        data-autoplay
+                      >
+                        <source src={`${sl.video}.mp4`} type="video/mp4" />
+                        <source src={`${sl.video}.webm`} type="video/webm" />
+                      </video>
+                    ) : (
+                      <img
+                        src={sl.img}
+                        alt={sl.alt}
+                        width={sl.kind === 'desktop' ? 1440 : 402}
+                        height={sl.kind === 'desktop' ? 880 : 860}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </figure>
+                  <figcaption>{sl.caption}</figcaption>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {show.slides.length > 1 && (
+            <div class="sc-car__nav">
+              <button type="button" class="sc-car__btn" data-car-prev aria-label="Previous">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <div class="sc-car__dots" data-car-dots>
+                {show.slides.map((_, di) => (
+                  <button type="button" class="sc-car__dot" data-car-dot={di} aria-label={`Go to slide ${di + 1}`}></button>
+                ))}
+              </div>
+              <button type="button" class="sc-car__btn" data-car-next aria-label="Next">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Feature highlights -->
+  <section class="sc-features">
+    <div class="s-wrap">
+      <h2 class="s-headline sc-section__title" data-reveal>{c.features.title}</h2>
+      <p class="s-lede sc-features__lead" data-reveal>{c.featuresLead}</p>
+      <ul class="sc-features__grid">
+        {c.features.items.map((item, i) => (
+          <li class={`sc-features__item sc-features__item--${i}`} data-reveal style={`--d: ${i * 60}ms;`}>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="sc-how">
+    <div class="s-wrap">
+      <h2 class="s-headline sc-section__title" data-reveal>{c.howItWorks.title}</h2>
+      <ol class="sc-how__steps">
+        {c.howItWorks.steps.map((step, i) => (
+          <li class="sc-how__step" data-reveal style={`--d: ${i * 80}ms;`}>
+            <span class="sc-how__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="s-final">
+    <div class="s-wrap s-final__inner" data-reveal>
+      <h2 class="s-headline">{c.finalCta.title}</h2>
+      <p class="s-lede s-final__body">{c.finalCta.body}</p>
+      <div class="s-final__actions">
+        <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-btn s-btn--primary">{c.finalCta.cta}</a>
+      </div>
+    </div>
+  </section>
+</SubpageLayout>
+
+<style>
+  /* ── Hero ───────────────────────────────────────────────── */
+  .sc-hero {
+    position: relative;
+    /* Top padding clears the fixed floating nav (matches subpage convention). */
+    padding-block: clamp(6.5rem, 12vh, 8.5rem) clamp(3rem, 6vh, 5rem);
+  }
+
+  .sc-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50rem 30rem at 70% 0%, var(--glow-hero), transparent 65%);
+    pointer-events: none;
+  }
+
+  .sc-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .sc-hero__eyebrow {
+    position: relative;
+    display: block;
+    margin-bottom: var(--space-lg);
+    color: var(--electric-500);
+  }
+
+  .sc-hero__title {
+    position: relative;
+    max-width: 20ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .sc-hero__lede {
+    position: relative;
+    margin-bottom: var(--space-xl);
+    max-width: 52ch;
+  }
+
+  /* ── Convocation/RSVP card ──────────────────────────────── */
+  .sc-hero__visual {
+    position: relative;
+  }
+
+  .yt-card {
+    background: var(--void-soft);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow:
+      0 0 40px rgba(45, 127, 249, 0.05),
+      0 16px 48px rgba(3, 9, 26, 0.4);
+  }
+
+  .yt-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-sm);
+  }
+
+  .yt-card__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .yt-card__group {
+    font-family: var(--font-mono);
+    font-size: var(--text-frag);
+    color: var(--electric-500);
+    border: 1px solid var(--electric-border);
+    border-radius: var(--radius-pill);
+    padding: 0.1rem 0.5rem;
+  }
+
+  .yt-card__event {
+    margin: 0 0 var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .yt-card__choices {
+    display: flex;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .yt-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    color: var(--ink-3);
+  }
+
+  .yt-chip--on {
+    color: var(--performance);
+    border-color: currentColor;
+    background: rgba(39, 215, 161, 0.08);
+  }
+
+  .yt-card__reply {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--void);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .yt-card__avatar {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(45, 127, 249, 0.15);
+    color: var(--electric-500);
+    font-family: var(--font-mono);
+    font-size: var(--text-frag);
+    font-weight: 600;
+  }
+
+  .yt-card__reply-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .yt-card__who {
+    font-size: var(--text-sm);
+    color: var(--ink-2);
+  }
+
+  .yt-card__meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-frag);
+    color: var(--ink-3);
+  }
+
+  .yt-card__badge {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: var(--text-frag);
+    font-weight: 500;
+    color: var(--performance);
+  }
+
+  .yt-card__consent {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+  }
+
+  .yt-card__consent svg {
+    flex-shrink: 0;
+    color: var(--performance);
+  }
+
+  /* ── Feature showcase + carousel ────────────────────────── */
+  .sc-show {
+    padding-block: clamp(3rem, 6vh, 5rem);
+    border-top: 1px solid var(--rule);
+  }
+
+  .sc-show--alt {
+    background: var(--void-soft);
+  }
+
+  .sc-show__head {
+    margin-bottom: var(--space-xl);
+    max-width: 60ch;
+  }
+
+  .sc-show__head h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .sc-car {
+    position: relative;
+  }
+
+  /* Phones-only carousel: narrow, centred on the page */
+  .sc-car--mobile {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  .sc-car__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+
+  .sc-car__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sc-car__track {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: var(--space-xs) 0;
+    align-items: flex-end;
+  }
+
+  /* Each slide is a full-width stage; the frame is centred inside it,
+     so desktop and phone screenshots page cleanly in the same carousel. */
+  .sc-car__slide {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .sc-car__slide figcaption {
+    color: var(--ink-3);
+    font-size: var(--text-sm);
+    text-align: center;
+    max-width: 42ch;
+  }
+
+  /* Browser-chrome frame for desktop screenshots */
+  .sc-frame {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--rule-strong);
+    background: var(--void);
+    box-shadow: var(--shadow-chrome-lg);
+  }
+
+  .sc-frame--desktop {
+    max-width: 56rem;
+  }
+
+  .sc-frame--mobile {
+    max-width: 16.5rem;
+  }
+
+  .sc-frame img,
+  .sc-frame__media {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .sc-frame--desktop {
+    border-radius: var(--radius-lg);
+  }
+
+  .sc-frame__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 1.75rem;
+    padding-inline: var(--space-sm);
+    background: var(--void-soft);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sc-frame__bar i {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-pill);
+    background: var(--rule-strong);
+  }
+
+  /* Phone frame for portal screenshots */
+  .sc-frame--mobile {
+    border-radius: 1.75rem;
+    padding: 0.4rem;
+    background: var(--navy-900);
+  }
+
+  .sc-frame--mobile img {
+    border-radius: 1.4rem;
+  }
+
+  .sc-car__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .sc-car__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--rule-strong);
+    background: var(--void-soft);
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: border-color var(--dur-short) var(--ease-out),
+      color var(--dur-short) var(--ease-out),
+      transform 100ms var(--ease-out);
+  }
+
+  .sc-car__btn:hover {
+    border-color: var(--navy-500);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  .sc-car__btn:active {
+    transform: translateY(0);
+  }
+
+  .sc-car__btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+  }
+
+  .sc-car__dots {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .sc-car__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: var(--rule-strong);
+    cursor: pointer;
+    transition: background var(--dur-short) var(--ease-out),
+      width var(--dur-short) var(--ease-out);
+  }
+
+  .sc-car__dot[aria-current='true'] {
+    width: 1.25rem;
+    background: var(--electric-500);
+  }
+
+  /* ── Shared section title ───────────────────────────────── */
+  .sc-section__title {
+    max-width: 36ch;
+    margin-bottom: var(--space-xl);
+  }
+
+  /* ── Features grid ──────────────────────────────────────── */
+  .sc-features {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--rule);
+  }
+
+  .sc-features__grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Asymmetric bento: wide-narrow / narrow-wide / half-half */
+  .sc-features__item--0 { grid-column: span 4; }
+  .sc-features__item--1 { grid-column: span 2; }
+  .sc-features__item--2 { grid-column: span 2; }
+  .sc-features__item--3 { grid-column: span 4; }
+  .sc-features__item--4 { grid-column: span 3; }
+  .sc-features__item--5 { grid-column: span 3; }
+
+  .sc-features__item {
+    padding: var(--space-lg);
+    background: var(--void-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Flagship cards: parental RSVP + youth mode get electric tint */
+  .sc-features__item--0,
+  .sc-features__item--3 {
+    background: linear-gradient(135deg, rgba(45, 127, 249, 0.08) 0%, transparent 70%);
+    border-color: var(--electric-border);
+  }
+
+  .sc-features__lead {
+    max-width: 52ch;
+    margin-top: calc(-1 * var(--space-md));
+    margin-bottom: var(--space-xl);
+  }
+
+  .sc-features__item h3 {
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .sc-features__item p {
+    color: var(--ink-2);
+    max-width: 52ch;
+  }
+
+  /* ── How it works ───────────────────────────────────────── */
+  .sc-how {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--rule);
+    background: var(--void-soft);
+  }
+
+  .sc-how__steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-2xl);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: none;
+  }
+
+  .sc-how__step {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .sc-how__num {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--electric-500);
+    padding-top: 0.2em;
+  }
+
+  .sc-how__step h3 {
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .sc-how__step p {
+    color: var(--ink-2);
+    max-width: 52ch;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 56rem) {
+    .sc-hero__inner {
+      grid-template-columns: 1fr;
+    }
+    .sc-hero__visual {
+      display: none;
+    }
+  }
+
+  @media (max-width: 64rem) {
+    .sc-features__item--0,
+    .sc-features__item--1,
+    .sc-features__item--2,
+    .sc-features__item--3,
+    .sc-features__item--4,
+    .sc-features__item--5 {
+      grid-column: span 3;
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .sc-features__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .sc-features__item--0,
+    .sc-features__item--1,
+    .sc-features__item--2,
+    .sc-features__item--3,
+    .sc-features__item--4,
+    .sc-features__item--5 {
+      grid-column: span 1;
+    }
+    .sc-how__steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
+
+<script>
+  // ── Screenshot carousels: scroll-snap + prev/next + dots ──
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('[data-car]').forEach((car) => {
+    const vp = car.querySelector('[data-car-viewport]');
+    const slides = Array.from(car.querySelectorAll('.sc-car__slide'));
+    const prev = car.querySelector('[data-car-prev]');
+    const next = car.querySelector('[data-car-next]');
+    const dots = Array.from(car.querySelectorAll('[data-car-dot]'));
+    if (!vp || slides.length < 2) return;
+
+    let index = 0;
+
+    const update = () => {
+      dots.forEach((d, i) => d.setAttribute('aria-current', i === index ? 'true' : 'false'));
+      if (prev) prev.disabled = index === 0;
+      if (next) next.disabled = index === slides.length - 1;
+    };
+
+    const go = (i) => {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      const delta = slides[index].getBoundingClientRect().left - vp.getBoundingClientRect().left;
+      vp.scrollTo({ left: vp.scrollLeft + delta, behavior: reduce ? 'auto' : 'smooth' });
+      update();
+    };
+
+    const nearest = () => {
+      const vpLeft = vp.getBoundingClientRect().left;
+      let best = 0;
+      let bestDist = Infinity;
+      slides.forEach((s, i) => {
+        const dist = Math.abs(s.getBoundingClientRect().left - vpLeft);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
+      });
+      return best;
+    };
+
+    prev && prev.addEventListener('click', () => go(index - 1));
+    next && next.addEventListener('click', () => go(index + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+
+    let raf;
+    vp.addEventListener(
+      'scroll',
+      () => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          index = nearest();
+          update();
+        });
+      },
+      { passive: true },
+    );
+
+    update();
+  });
+
+  // ── Demo videos: autoplay (muted, looping) only in view and only when the
+  //    user has not requested reduced motion; otherwise the poster shows. ──
+  (() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const videos = document.querySelectorAll('video[data-autoplay]');
+    if (reduce || !videos.length) return;
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach((v) => { v.preload = 'auto'; v.play().catch(() => {}); });
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const v = entry.target;
+          if (entry.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); }
+          else v.pause();
+        });
+      },
+      { threshold: 0.4 },
+    );
+    videos.forEach((v) => io.observe(v));
+  })();
+</script>

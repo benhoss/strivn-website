@@ -207,6 +207,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           children: [
             { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
             { label: 'Clubs', href: '/fr/clubs/' },
+            { label: 'Équipes de jeunes', href: '/fr/equipes-jeunes/' },
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
@@ -525,6 +526,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/fr/clubs/' },
         { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
+        { label: 'Équipes de jeunes', href: '/fr/equipes-jeunes/' },
         { label: 'Tarifs', href: '/fr/#pricing' },
         { label: 'FAQ', href: '/fr/#faq' },
         { label: 'Support', href: '/fr/support' },
@@ -550,6 +552,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           children: [
             { label: 'S&C coaches', href: '/en/sc-coaches/' },
             { label: 'Clubs', href: '/en/clubs/' },
+            { label: 'Youth teams', href: '/en/youth-teams/' },
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
@@ -868,6 +871,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/en/clubs/' },
         { label: 'S&C coaches', href: '/en/sc-coaches/' },
+        { label: 'Youth teams', href: '/en/youth-teams/' },
         { label: 'Pricing', href: '/en/#pricing' },
         { label: 'FAQ', href: '/en/#faq' },
         { label: 'Support', href: '/support' },
@@ -893,6 +897,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           children: [
             { label: 'S&C-coaches', href: '/nl/sc-coaches/' },
             { label: 'Clubs', href: '/nl/clubs/' },
+            { label: 'Jeugdploegen', href: '/nl/youth-teams/' },
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
@@ -1211,6 +1216,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/nl/clubs/' },
         { label: 'S&C-coaches', href: '/nl/sc-coaches/' },
+        { label: 'Jeugdploegen', href: '/nl/youth-teams/' },
         { label: 'Tarieven', href: '/nl/#pricing' },
         { label: 'FAQ', href: '/nl/#faq' },
         { label: 'Support', href: '/support' },
@@ -1236,6 +1242,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           children: [
             { label: 'S&C-Coaches', href: '/de/sc-coaches/' },
             { label: 'Vereine', href: '/de/clubs/' },
+            { label: 'Jugendteams', href: '/de/youth-teams/' },
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
@@ -1554,6 +1561,7 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Vereine', href: '/de/clubs/' },
         { label: 'S&C-Coaches', href: '/de/sc-coaches/' },
+        { label: 'Jugendteams', href: '/de/youth-teams/' },
         { label: 'Preise', href: '/de/#pricing' },
         { label: 'FAQ', href: '/de/#faq' },
         { label: 'Support', href: '/support' },
