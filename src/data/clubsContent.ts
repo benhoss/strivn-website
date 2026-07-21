@@ -153,7 +153,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       },
       error: 'The form could not be sent. Please try again, or write to hello@strivn.net.',
       privacyNote: 'We only use these details to contact you about the Club plan.',
-      privacyLink: { label: 'Privacy policy', href: '/privacy' },
+      privacyLink: { label: 'Privacy policy', href: '/en/privacy' },
     },
     finalCta: {
       title: 'Your coaches don’t have to wait.',
@@ -217,7 +217,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       },
       error: 'Het formulier kon niet worden verzonden. Probeer het opnieuw, of schrijf naar hello@strivn.net.',
       privacyNote: 'We gebruiken deze gegevens enkel om contact met je op te nemen over het Club-plan.',
-      privacyLink: { label: 'Privacybeleid', href: '/privacy' },
+      privacyLink: { label: 'Privacybeleid', href: '/nl/privacy' },
     },
     finalCta: {
       title: 'Je coaches hoeven niet te wachten.',
@@ -281,7 +281,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       },
       error: 'Das Formular konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an hello@strivn.net.',
       privacyNote: 'Wir verwenden diese Angaben ausschließlich, um Sie zum Verein-Tarif zu kontaktieren.',
-      privacyLink: { label: 'Datenschutzerklärung', href: '/privacy' },
+      privacyLink: { label: 'Datenschutzerklärung', href: '/de/privacy' },
     },
     finalCta: {
       title: 'Ihre Coaches müssen nicht warten.',

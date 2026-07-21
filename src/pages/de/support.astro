@@ -1,0 +1,66 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/en/support' },
+  { hreflang: 'fr', href: '/fr/support' },
+  { hreflang: 'nl', href: '/nl/support' },
+  { hreflang: 'de', href: '/de/support' },
+  { hreflang: 'x-default', href: '/en/support' },
+];
+---
+<LegalLayout
+  title="Hilfe | STRIVN Player"
+  description="Hilfe und Support für die STRIVN Player App — Anmeldung, Benachrichtigungen und Kontolöschung."
+  lang="de"
+  canonicalPath="/de/support"
+  alternates={alternates}
+  heading="Hilfe & Support"
+  homeLabel="Zurück zu strivn.net"
+  homeHref="/de/"
+>
+  <p>
+    Brauchst du Hilfe mit der <strong>STRIVN Player</strong> App? Wir sind für dich
+    da. Schreib an <a href="mailto:hello@strivn.net">hello@strivn.net</a> — wir
+    melden uns in der Regel innerhalb von zwei Werktagen.
+  </p>
+
+  <h2>Häufige Fragen</h2>
+
+  <h3>Wie melde ich mich an?</h3>
+  <p>
+    Nutze die E-Mail-Adresse oder Telefonnummer, die dein Coach für dich hinterlegt
+    hat. Klappt die Anmeldung nicht, bitte deinen Coach, deine Kontaktdaten zu
+    prüfen, oder schreib uns.
+  </p>
+
+  <h3>Ich erhalte keine Benachrichtigungen</h3>
+  <p>
+    Stelle sicher, dass du Benachrichtigungen bei deiner ersten Anmeldung erlaubt
+    hast. Du kannst sie in den Einstellungen deines Geräts unter STRIVN Player
+    wieder aktivieren. Benachrichtigungen informieren dich über neue Termine,
+    Nominierungen und Coach-Nachrichten.
+  </p>
+
+  <h3>Wie ändere ich mein Profilfoto?</h3>
+  <p>
+    Öffne deine Kontoseite in der App, wähle ein neues Foto mit der Kamera oder aus
+    deiner Galerie und speichere. Dein Foto ist nur in deinem angemeldeten
+    Spielerbereich sichtbar.
+  </p>
+
+  <h3>Wie lösche ich mein Konto?</h3>
+  <p>
+    Du kannst die Löschung über deine Kontoseite in der App beantragen oder von der
+    Adresse deines Kontos aus an
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a> schreiben. Wir löschen
+    deine personenbezogenen Daten innerhalb eines angemessenen Zeitraums. Details
+    findest du in unserer <a href="/de/privacy">Datenschutzerklärung</a>.
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Für alles andere erreichst du uns unter
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a>.
+  </p>
+</LegalLayout>

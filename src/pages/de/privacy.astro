@@ -1,0 +1,130 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/en/privacy' },
+  { hreflang: 'fr', href: '/fr/privacy' },
+  { hreflang: 'nl', href: '/nl/privacy' },
+  { hreflang: 'de', href: '/de/privacy' },
+  { hreflang: 'x-default', href: '/en/privacy' },
+];
+---
+<LegalLayout
+  title="Datenschutzerklärung | STRIVN"
+  description="Wie STRIVN deine Daten in der STRIVN Player App und im Spielerbereich erhebt, nutzt und schützt."
+  lang="de"
+  canonicalPath="/de/privacy"
+  alternates={alternates}
+  heading="Datenschutzerklärung"
+  updated="Zuletzt aktualisiert · 10. Juni 2026"
+  homeLabel="Zurück zu strivn.net"
+  homeHref="/de/"
+>
+  <p>
+    Diese Datenschutzerklärung erklärt, wie STRIVN („STRIVN“, „wir“) deine
+    personenbezogenen Daten erhebt, nutzt und schützt, wenn du die mobile App
+    <strong>STRIVN Player</strong> und den STRIVN-Spielerbereich nutzt (zusammen der
+    „Dienst“).
+  </p>
+  <p>
+    STRIVN Player ist eine Begleit-App für Athletinnen und Athleten, deren Verein
+    oder Team STRIVN nutzt. Dein Konto wird von deinem Coach oder Verein angelegt,
+    und die Daten, die du eingibst, werden nur mit dem autorisierten Staff deines
+    Teams geteilt.
+  </p>
+
+  <h2>Welche Daten wir erheben</h2>
+  <ul>
+    <li><strong>Konto- und Kontaktdaten</strong> — dein Name sowie die E-Mail-Adresse und/oder Telefonnummer für die Anmeldung, wie von deinem Coach hinterlegt.</li>
+    <li><strong>Gesundheits- und Fitnessdaten</strong> — deine täglichen Check-ins, dein Verfügbarkeitssignal und die Verletzungen, die du meldest.</li>
+    <li><strong>Fotos</strong> — dein Profilfoto und die Fotos, die du einer Verletzungsmeldung anhängst.</li>
+    <li><strong>Nachrichten und Inhalte</strong> — die Fragen, die du an den KI-Coach schickst, und die Notizen zu deinen Anwesenheitsantworten.</li>
+    <li><strong>Geräte- und Benachrichtigungsdaten</strong> — ein Push-Benachrichtigungstoken und eine Gerätekennung, die ausschließlich dazu dienen, dir Benachrichtigungen zu senden.</li>
+  </ul>
+  <p>
+    Wir erheben <strong>keine</strong> Standortdaten, Kontakte, Kalender,
+    Finanzinformationen oder Werbe-IDs, und wir verfolgen dich nicht über andere
+    Apps oder Websites hinweg.
+  </p>
+
+  <h2>Wie wir deine Daten nutzen</h2>
+  <ul>
+    <li>Um den Dienst bereitzustellen — deine Agenda anzeigen, deine Anwesenheit erfassen, deine Check-ins speichern und sie mit dem autorisierten Staff deines Teams teilen.</li>
+    <li>Um die Antworten des KI-Coachs zu Belastung, Erholung und Rückkehr nach Verletzung zu generieren.</li>
+    <li>Um dir Benachrichtigungen zu Terminen, Nominierungen und Coach-Nachrichten zu senden.</li>
+    <li>Um dein Konto zu schützen und den Dienst zuverlässig zu betreiben.</li>
+  </ul>
+  <p>
+    Wir verkaufen deine personenbezogenen Daten niemals und nutzen deine
+    Gesundheitsdaten oder Fotos niemals für Werbung.
+  </p>
+
+  <h2>Rechtsgrundlage (EWR/Vereinigtes Königreich)</h2>
+  <p>
+    Soweit die DSGVO gilt, verarbeiten wir deine Daten zur Erfüllung der
+    Vereinbarung zwischen dir, deinem Verein und STRIVN sowie auf Grundlage deiner
+    Einwilligung und der deines Vereins für Gesundheitsdaten. Du kannst deine
+    Einwilligung jederzeit widerrufen (siehe „Deine Rechte“).
+  </p>
+
+  <h2>Weitergabe und Auftragsverarbeiter</h2>
+  <p>
+    Wir geben Daten nur an Dienstleister weiter, die sie vertraglich gebunden in
+    unserem Auftrag verarbeiten, darunter:
+  </p>
+  <ul>
+    <li>Der <strong>Apple Push Notification Service</strong> und <strong>Google Firebase Cloud Messaging</strong> — zur Zustellung von Benachrichtigungen.</li>
+    <li>Ein <strong>KI-Anbieter</strong> — um aus deinen Fragen die Antworten des KI-Coachs zu generieren.</li>
+    <li>Unsere <strong>Hosting- und Infrastrukturanbieter</strong> — um den Dienst zu betreiben.</li>
+  </ul>
+  <p>Deine Daten sind außerdem für den autorisierten Staff deines eigenen Teams sichtbar. Sie werden niemals öffentlich gemacht oder mit anderen Vereinen geteilt.</p>
+
+  <h2>Speicherdauer</h2>
+  <p>
+    Wir speichern deine Daten, solange das Konto deines Teams aktiv ist. Wird dein
+    Konto gelöscht, entfernen wir deine personenbezogenen Daten innerhalb eines
+    angemessenen Zeitraums, sofern wir sie nicht aus rechtlichen Gründen aufbewahren
+    müssen.
+  </p>
+
+  <h2>Deine Rechte</h2>
+  <p>
+    Du kannst Auskunft über, Berichtigung, Löschung oder eine Kopie deiner
+    personenbezogenen Daten verlangen und bestimmten Verarbeitungen widersprechen
+    oder sie einschränken lassen. Um ein Recht auszuüben oder die Löschung deines
+    Kontos zu beantragen, schreib uns an
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a> oder nutze die
+    Löschoption auf deiner Kontoseite. Du kannst außerdem eine Beschwerde bei deiner
+    Datenschutzbehörde einreichen.
+  </p>
+
+  <h2>Sicherheit</h2>
+  <p>
+    Der gesamte Datenverkehr zwischen der App und unseren Servern ist bei der
+    Übertragung verschlüsselt (HTTPS), und dein Sitzungstoken wird im sicheren
+    Speicher deines Geräts abgelegt. Der Zugriff auf Teamdaten ist auf autorisierten
+    Staff beschränkt.
+  </p>
+
+  <h2>Minderjährige</h2>
+  <p>
+    Athletinnen und Athleten, die STRIVN nutzen, können minderjährig sein. Konten
+    werden von den Vereinen angelegt, die dafür verantwortlich sind, eine
+    gegebenenfalls erforderliche elterliche Einwilligung einzuholen. Wenn du
+    glaubst, dass Daten einer minderjährigen Person ohne die nötige Einwilligung
+    bereitgestellt wurden, kontaktiere uns und wir kümmern uns darum.
+  </p>
+
+  <h2>Änderungen dieser Erklärung</h2>
+  <p>
+    Wir können diese Erklärung von Zeit zu Zeit aktualisieren. Wir passen dann das
+    Datum „zuletzt aktualisiert“ oben an und informieren dich gegebenenfalls in der
+    App.
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Fragen zu dieser Erklärung oder zu deinen Daten? Schreib uns an
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a>.
+  </p>
+</LegalLayout>

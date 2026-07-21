@@ -1,0 +1,65 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/en/support' },
+  { hreflang: 'fr', href: '/fr/support' },
+  { hreflang: 'nl', href: '/nl/support' },
+  { hreflang: 'de', href: '/de/support' },
+  { hreflang: 'x-default', href: '/en/support' },
+];
+---
+<LegalLayout
+  title="Hulp | STRIVN Player"
+  description="Hulp en support voor de STRIVN Player-app — inloggen, meldingen en het verwijderen van je account."
+  lang="nl"
+  canonicalPath="/nl/support"
+  alternates={alternates}
+  heading="Hulp & support"
+  homeLabel="Terug naar strivn.net"
+  homeHref="/nl/"
+>
+  <p>
+    Hulp nodig met de <strong>STRIVN Player</strong>-app? We staan voor je klaar.
+    Mail <a href="mailto:hello@strivn.net">hello@strivn.net</a> en we antwoorden je,
+    meestal binnen twee werkdagen.
+  </p>
+
+  <h2>Veelgestelde vragen</h2>
+
+  <h3>Hoe log ik in?</h3>
+  <p>
+    Gebruik het e-mailadres of telefoonnummer dat je coach voor je heeft
+    geregistreerd. Lukt het inloggen niet, vraag dan je coach om je gegevens te
+    controleren, of mail ons.
+  </p>
+
+  <h3>Ik ontvang geen meldingen</h3>
+  <p>
+    Controleer of je meldingen hebt toegestaan toen je voor het eerst inlogde. Je
+    kunt ze opnieuw inschakelen in de instellingen van je apparaat, onder STRIVN
+    Player. Meldingen gaan over nieuwe evenementen, selecties en berichten van de
+    coach.
+  </p>
+
+  <h3>Hoe wijzig ik mijn profielfoto?</h3>
+  <p>
+    Open je accountpagina in de app, kies een nieuwe foto met je camera of uit je
+    galerij en sla op. Je foto is alleen zichtbaar binnen je ingelogde
+    spelersomgeving.
+  </p>
+
+  <h3>Hoe verwijder ik mijn account?</h3>
+  <p>
+    Je kunt verwijdering aanvragen via je accountpagina in de app, of mailen naar
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a> vanaf het adres van je
+    account. We verwijderen je persoonsgegevens binnen een redelijke termijn. Zie
+    ons <a href="/nl/privacy">privacybeleid</a> voor de details.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Voor al het andere: mail ons via
+    <a href="mailto:hello@strivn.net">hello@strivn.net</a>.
+  </p>
+</LegalLayout>
