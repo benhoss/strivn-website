@@ -414,6 +414,14 @@ const jsonLdExtra = [
     scroll-behavior: smooth;
   }
 
+  /* scroll-behavior is per-scrolling-box (non-inherited): the html-level
+     reduced-motion override in global.css does not reach this viewport. */
+  @media (prefers-reduced-motion: reduce) {
+    .sc-car__viewport {
+      scroll-behavior: auto;
+    }
+  }
+
   .sc-car__viewport::-webkit-scrollbar {
     display: none;
   }
