@@ -5,6 +5,14 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://strivn.net',
   integrations: [sitemap()],
+  // The combined live page shipped briefly before being split into
+  // live-session and live-match. Séance is the usage the campaign links to.
+  redirects: {
+    '/fr/features/live/': '/fr/features/live-session/',
+    '/en/features/live/': '/en/features/live-session/',
+    '/nl/features/live/': '/nl/features/live-session/',
+    '/de/features/live/': '/de/features/live-session/',
+  },
   build: {
     inlineStylesheets: 'always',
   },

@@ -1,6 +1,6 @@
 import type { Locale } from './landingContent';
 
-export const FEATURE_SLUGS = ['communication', 'medical', 'training-load', 'sessions', 'live', 'scouting', 'reports', 'player-app'] as const;
+export const FEATURE_SLUGS = ['communication', 'medical', 'training-load', 'sessions', 'live-session', 'live-match', 'scouting', 'reports', 'player-app'] as const;
 
 export type FeatureSlug = (typeof FEATURE_SLUGS)[number];
 
@@ -96,10 +96,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           points: ['Tableaux tactiques', 'Bibliothèque d’exercices', 'Création assistée par IA'],
         },
         {
-          slug: 'live',
-          title: 'Séance & match en direct',
-          text: 'Menez la séance sur le terrain, scorez le match d’un geste — et ceux qui ne sont pas là suivent via un simple lien, sans compte.',
-          points: ['Séance en direct', 'Score & compositions', 'Lien public sans compte'],
+          slug: 'live-session',
+          title: 'Séance en direct',
+          text: 'La séance préparée se déroule bloc par bloc sur le téléphone ou la tablette, au bord du terrain : chrono, consignes, schémas — et le staff suit en même temps.',
+          points: ['Déroulé bloc par bloc', 'Chrono & consignes', 'Le staff suit en direct'],
+        },
+        {
+          slug: 'live-match',
+          title: 'Match en direct',
+          text: 'Scorez le match d’un geste, partagez un lien public sans compte aux proches — et chaque joueur retrouve ses stats dans son portail après le match.',
+          points: ['Score & compositions', 'Lien public sans compte', 'Stats joueur automatiques'],
         },
         {
           slug: 'scouting',
@@ -476,51 +482,45 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         },
       },
 
-      live: {
+      'live-session': {
         meta: {
-          title: 'Séance & match en direct | STRIVN',
+          title: 'Séance en direct sur le terrain | STRIVN',
           description:
-            'Menez la séance depuis le bord du terrain, scorez le match en direct et partagez un lien public : parents et absents suivent le score sans compte. Gratuit pour les coaches.',
+            'La séance préparée dans STRIVN se déroule bloc par bloc au bord du terrain : chrono, consignes, schémas sur téléphone ou tablette — et le staff suit en même temps. Gratuit pour les coaches.',
         },
-        eyebrow: 'Séance & match en direct',
+        eyebrow: 'Séance en direct',
         hero: {
-          title: 'Menez la séance, scorez le match. Tout le monde suit.',
-          lede: 'Votre séance se déroule bloc par bloc sur le téléphone, votre match se score d’un geste. Et grâce au lien public, ceux qui sont loin du terrain suivent quand même — en direct, sans compte, sans installation.',
+          title: 'Votre séance, en direct au bord du terrain.',
+          lede: 'La séance que vous avez préparée se déroule bloc par bloc sur votre téléphone ou votre tablette : le chrono tourne, les consignes et le schéma du bloc en cours sont sous vos yeux, et le staff suit en même temps. À la fin, le débrief est déjà là.',
           primaryCta: 'Commencer gratuitement',
           reassurance: 'Gratuit pour une équipe · sans validation du club · prêt en quelques minutes',
         },
         benefits: {
-          title: 'Vous gérez le terrain. STRIVN gère le direct.',
+          title: 'Vous coachez. La séance se déroule.',
           items: [
             {
-              title: 'La séance en direct, bloc par bloc',
-              text: 'La séance préparée dans STRIVN se déroule au chrono : consignes, schémas, enchaînements — téléphone en poche ou tablette au bord du terrain, et le staff voit où vous en êtes.',
+              title: 'Bloc par bloc, au chrono',
+              text: 'Échauffement, ateliers, jeu réduit : chaque bloc s’enchaîne au chrono, avec des repères sonores pour tenir le timing sans regarder sa montre.',
             },
             {
-              title: 'Le match scoré d’un geste',
-              text: 'Composition posée avant le coup d’envoi, buts comptés d’un doigt pendant le jeu. Le score et le déroulé du match s’écrivent en direct, sans feuille volante.',
+              title: 'Consignes et schémas sous la main',
+              text: 'Le bloc en cours affiche son schéma tactique et ses consignes : plus besoin de la feuille imprimée qui s’envole au premier coup de vent.',
             },
             {
-              title: 'Un lien public, zéro compte',
-              text: 'Partagez le lien du match : parents, blessés et absents suivent le score en direct depuis n’importe quel téléphone — rien à installer, rien à créer.',
+              title: 'Jeux réduits : équipes et score',
+              text: 'Pour les oppositions et jeux réduits, composez les équipes et comptez les points directement dans le bloc — le chrono continue de tourner.',
             },
             {
-              title: 'La feuille de match papier, importée',
-              text: 'La composition de la feuille papier rejoint STRIVN sans ressaisie ligne par ligne — l’historique des matchs se centralise tout seul.',
+              title: 'Le staff suit, le débrief est prêt',
+              text: 'Adjoint, préparateur : chacun voit sur son écran où en est la séance — bloc actif, chrono, prochain atelier. À la fin, le déroulé réel est enregistré pour le débrief.',
             },
           ],
         },
         showcase: [
           {
-            title: 'Le direct, des deux côtés',
-            blurb: 'Côté terrain, la séance se déroule et le match se score. Côté tribune — ou salon —, un simple lien suffit pour suivre en direct.',
+            title: 'La séance en direct, en vrai',
+            blurb: 'Du plan préparé au bord du terrain : la tablette qui déroule le bloc en cours, le suivi côté staff, et l’écran d’avant-séance.',
             slides: [
-              {
-                img: '/screenshots/live-viewer-phone-fr.png',
-                kind: 'mobile',
-                alt: 'Suivi public d’un match en direct sur téléphone : score et déroulé, sans compte.',
-                caption: 'Le lien public : parents et absents suivent le score en direct, sans compte ni installation.',
-              },
               {
                 img: '/screenshots/live-runner-tablet-board-fr.png',
                 kind: 'desktop',
@@ -546,16 +546,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Comment ça marche',
           steps: [
             {
-              title: 'Préparez comme d’habitude',
-              text: 'La séance est construite dans STRIVN, la composition posée avant le match. Passer en direct ne demande rien de plus.',
+              title: 'Préparez la séance comme d’habitude',
+              text: 'Blocs, durées, schémas, consignes : la séance se construit dans STRIVN, seul ou avec l’assistant IA. Passer en direct ne demande rien de plus.',
             },
             {
-              title: 'Lancez le direct',
-              text: 'Sur le terrain, la séance déroule ses blocs au chrono ; en match, vous comptez les buts d’un geste.',
+              title: 'Lancez le direct sur le terrain',
+              text: 'Téléphone en poche ou tablette au bord du terrain : la séance déroule ses blocs au chrono, consignes et schémas sous les yeux.',
             },
             {
-              title: 'Tout le monde suit',
-              text: 'Le staff suit dans l’app, et le lien public affiche le score en direct à ceux qui ne sont pas au bord du terrain — sans compte.',
+              title: 'Débriefez, tout est noté',
+              text: 'Le staff a suivi en direct, et le déroulé réel de la séance est enregistré : ce qui a été fait, en combien de temps.',
             },
           ],
         },
@@ -563,30 +563,133 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Questions fréquentes',
           items: [
             {
-              question: 'Faut-il un compte pour suivre un match en direct ?',
+              question: 'Faut-il préparer la séance dans STRIVN avant de la lancer ?',
               answer:
-                'Non. Le lien public s’ouvre dans n’importe quel navigateur, sur n’importe quel téléphone. Un parent, un joueur blessé ou un proche suit le score en direct sans rien installer.',
-            },
-            {
-              question: 'Que voit-on exactement via le lien public ?',
-              answer:
-                'Le score, le déroulé du match et la composition. Le reste — présences, dossiers, notes du staff — reste dans STRIVN, côté équipe.',
+                'Oui — c’est la séance préparée qui se déroule en direct : blocs, durées, consignes, schémas. Une séance simple se construit en quelques minutes, avec ou sans l’assistant IA.',
             },
             {
               question: 'Et s’il n’y a pas de réseau au bord du terrain ?',
               answer:
-                'La séance en direct continue de dérouler vos blocs même sans connexion, repères sonores compris. Dès que le réseau revient, tout se synchronise pour ceux qui suivent à distance.',
+                'La séance en direct continue de dérouler vos blocs même sans connexion, repères sonores compris. Dès que le réseau revient, tout se synchronise pour le staff qui suit à distance.',
             },
             {
-              question: 'Le lien public est-il gratuit ?',
+              question: 'Sur téléphone ou sur tablette ?',
               answer:
-                'Oui — comme le reste : la séance en direct, le match en direct et le lien public font partie du plan gratuit, pour une équipe.',
+                'Les deux. Le téléphone en poche suffit pour dérouler la séance ; la tablette au bord du terrain ajoute le confort du grand schéma à montrer aux joueurs.',
+            },
+            {
+              question: 'La séance en direct est-elle gratuite ?',
+              answer:
+                'Oui — comme le reste : la séance en direct fait partie du plan gratuit, pour une équipe.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'À la prochaine séance, gardez les yeux sur le terrain.',
+          body: 'Créez votre équipe gratuitement — la séance en direct fait partie du plan gratuit.',
+          cta: 'Commencer gratuitement',
+        },
+      },
+
+      'live-match': {
+        meta: {
+          title: 'Match en direct — score, lien public & stats joueurs | STRIVN',
+          description:
+            'Scorez le match d’un geste : le lien public permet aux parents et absents de suivre le score en direct, sans compte — et chaque joueur retrouve ses stats dans son portail. Gratuit pour les coaches.',
+        },
+        eyebrow: 'Match en direct',
+        hero: {
+          title: 'Scorez le match d’un geste. Tout le monde suit.',
+          lede: 'Buts, cartes, remplacements : le match se score d’un geste sur votre téléphone. Le lien public laisse parents et absents suivre le score en direct, sans compte — et après le match, chaque joueur retrouve ses stats dans son portail.',
+          primaryCta: 'Commencer gratuitement',
+          reassurance: 'Gratuit pour une équipe · sans validation du club · prêt en quelques minutes',
+        },
+        benefits: {
+          title: 'Un geste pour scorer, un lien pour partager.',
+          items: [
+            {
+              title: 'Le match scoré d’un geste',
+              text: 'Composition posée avant le coup d’envoi ; buts, cartes et remplacements comptés d’un doigt pendant le jeu. Le score et le déroulé du match s’écrivent en direct, sans feuille volante.',
+            },
+            {
+              title: 'Un lien public, zéro compte',
+              text: 'Partagez le lien du match : parents, blessés et absents suivent le score en direct depuis n’importe quel téléphone — rien à installer, rien à créer.',
+            },
+            {
+              title: 'Chaque joueur retrouve ses stats',
+              text: 'Minutes jouées, buts, sélections : après le match, ce que vous avez scoré alimente automatiquement les stats perso de chaque joueur, dans son portail.',
+            },
+            {
+              title: 'La feuille de match papier, importée',
+              text: 'La composition de la feuille papier rejoint STRIVN sans ressaisie ligne par ligne — l’historique des matchs se centralise tout seul.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Du bord du terrain au portail du joueur',
+            blurb: 'Pendant le match, le lien public affiche le score à ceux qui ne sont pas là. Après le match, chacun retrouve ses stats dans son portail.',
+            slides: [
+              {
+                img: '/screenshots/live-viewer-phone-fr.png',
+                kind: 'mobile',
+                alt: 'Suivi public d’un match en direct sur téléphone : score et déroulé, sans compte.',
+                caption: 'Le lien public : parents et absents suivent le score en direct, sans compte ni installation.',
+              },
+              {
+                img: '/screenshots/portal-stats-fr.png',
+                kind: 'mobile',
+                alt: 'Les stats personnelles d’un joueur dans son portail : minutes jouées, buts, sélections.',
+                caption: 'Après le match : chaque joueur retrouve ses minutes, ses buts et ses sélections dans son portail.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Comment ça marche',
+          steps: [
+            {
+              title: 'Posez la composition',
+              text: 'Avant le coup d’envoi, la compo est prête dans STRIVN — ou importée de la feuille de match papier, sans ressaisie.',
+            },
+            {
+              title: 'Scorez d’un geste',
+              text: 'Buts, cartes, remplacements : tout se compte d’un doigt pendant le jeu, et le déroulé du match s’écrit en direct.',
+            },
+            {
+              title: 'Partagez, tout le monde suit',
+              text: 'Pendant le match, le lien public affiche le score aux parents et absents ; après, chaque joueur retrouve ses stats dans son portail.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Questions fréquentes',
+          items: [
+            {
+              question: 'Le lien public est-il vraiment sans compte ?',
+              answer:
+                'Oui. Le lien s’ouvre dans n’importe quel navigateur, sur n’importe quel téléphone. Un parent, un joueur blessé ou un proche suit le score en direct sans rien installer ni créer.',
+            },
+            {
+              question: 'Que voient les parents via le lien ?',
+              answer:
+                'Le score, le déroulé du match et la composition. Le reste — présences, dossiers, notes du staff — reste dans STRIVN, côté équipe.',
+            },
+            {
+              question: 'Les stats des joueurs sont-elles vraiment automatiques ?',
+              answer:
+                'Oui. Minutes jouées, buts, sélections : ce que vous scorez pendant le match alimente les stats perso de chaque joueur, visibles dans son portail — rien à ressaisir.',
+            },
+            {
+              question: 'Le match en direct est-il gratuit ?',
+              answer:
+                'Oui — comme le reste : le match en direct, le lien public et les stats joueurs font partie du plan gratuit, pour une équipe.',
             },
           ],
         },
         finalCta: {
           title: 'Au prochain match, tout le monde est au bord du terrain.',
-          body: 'Créez votre équipe gratuitement — le direct et le lien public font partie du plan gratuit.',
+          body: 'Créez votre équipe gratuitement — le match en direct et le lien public font partie du plan gratuit.',
           cta: 'Commencer gratuitement',
         },
       },
@@ -961,10 +1064,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           points: ['Tactical boards', 'Drill library', 'AI-assisted creation'],
         },
         {
-          slug: 'live',
-          title: 'Live session & match',
-          text: 'Run the session on the pitch, score the match in one tap — and anyone who isn’t there follows through a simple link, no account.',
-          points: ['Live session runner', 'Score & lineups', 'Public link, no account'],
+          slug: 'live-session',
+          title: 'Live session',
+          text: 'The prepared session runs block by block on your phone or tablet at the touchline: clock, instructions, diagrams — and the staff follows along.',
+          points: ['Block-by-block runner', 'Clock & instructions', 'Staff follows live'],
+        },
+        {
+          slug: 'live-match',
+          title: 'Live match',
+          text: 'Score the match in one tap, share a public link that needs no account — and every player finds their stats in their portal after the match.',
+          points: ['Score & lineups', 'Public link, no account', 'Automatic player stats'],
         },
         {
           slug: 'scouting',
@@ -1341,51 +1450,45 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         },
       },
 
-      live: {
+      'live-session': {
         meta: {
-          title: 'Live session & live match score | STRIVN',
+          title: 'Live session on the pitch | STRIVN',
           description:
-            'Run your session from the touchline, score the match live and share a public link: parents and absent players follow the score without an account. Free for coaches.',
+            'The session you prepared in STRIVN runs block by block at the touchline: clock, instructions and diagrams on your phone or tablet — and the staff follows along. Free for coaches.',
         },
-        eyebrow: 'Live session & match',
+        eyebrow: 'Live session',
         hero: {
-          title: 'Run the session, score the match. Everyone follows.',
-          lede: 'Your session runs block by block on your phone, your match is scored in one tap. And thanks to the public link, the people far from the pitch still follow — live, no account, nothing to install.',
+          title: 'Your session, live at the touchline.',
+          lede: 'The session you prepared runs block by block on your phone or tablet: the clock is running, the current block’s instructions and diagram are right in front of you, and the staff follows along. When it ends, the debrief is already there.',
           primaryCta: 'Start for free',
           reassurance: 'Free for one team · no club approval needed · ready in minutes',
         },
         benefits: {
-          title: 'You run the pitch. STRIVN runs the live.',
+          title: 'You coach. The session runs.',
           items: [
             {
-              title: 'The session live, block by block',
-              text: 'The session you prepared in STRIVN runs on the clock: instructions, diagrams, sequences — phone in your pocket or tablet at the touchline, and the staff sees where you are.',
+              title: 'Block by block, on the clock',
+              text: 'Warm-up, drills, small-sided game: each block follows the last on the clock, with audio cues so you hold the timing without checking your watch.',
             },
             {
-              title: 'The match scored in one tap',
-              text: 'Lineup set before kick-off, goals counted with a finger during play. The score and the match timeline write themselves live — no loose sheet of paper.',
+              title: 'Instructions and diagrams at hand',
+              text: 'The current block shows its tactical diagram and its coaching points — no more printed sheet flying off at the first gust of wind.',
             },
             {
-              title: 'A public link, zero accounts',
-              text: 'Share the match link: parents, injured players and anyone absent follow the live score from any phone — nothing to install, nothing to create.',
+              title: 'Small games: teams and score',
+              text: 'For opposed and small-sided games, set the teams and count the points right inside the block — the clock keeps running.',
             },
             {
-              title: 'The paper match sheet, imported',
-              text: 'The lineup from the paper sheet lands in STRIVN without retyping it line by line — the match history centralises itself.',
+              title: 'The staff follows, the debrief is ready',
+              text: 'Assistant, fitness coach: everyone sees where the session is from their own screen — active block, clock, next drill. At the end, what was actually done is saved for the debrief.',
             },
           ],
         },
         showcase: [
           {
-            title: 'The live, from both sides',
-            blurb: 'On the pitch, the session runs and the match gets scored. In the stands — or on the sofa — a simple link is all it takes to follow live.',
+            title: 'The live session, for real',
+            blurb: 'From the prepared plan to the touchline: the tablet running the current block, the staff view, and the pre-session screen.',
             slides: [
-              {
-                img: '/screenshots/live-viewer-phone.png',
-                kind: 'mobile',
-                alt: 'The public live match view on a phone: score and timeline, no account.',
-                caption: 'The public link: parents and absent players follow the live score — no account, nothing to install.',
-              },
               {
                 img: '/screenshots/live-runner-tablet-board.png',
                 kind: 'desktop',
@@ -1411,16 +1514,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'How it works',
           steps: [
             {
-              title: 'Prepare as usual',
-              text: 'The session is built in STRIVN, the lineup set before the match. Going live takes nothing extra.',
+              title: 'Prepare the session as usual',
+              text: 'Blocks, durations, diagrams, instructions: the session is built in STRIVN, on your own or with the AI assistant. Going live takes nothing extra.',
             },
             {
-              title: 'Start the live',
-              text: 'On the pitch, the session runs its blocks on the clock; on match day, you count the goals in one tap.',
+              title: 'Go live on the pitch',
+              text: 'Phone in your pocket or tablet at the touchline: the session runs its blocks on the clock, instructions and diagrams in view.',
             },
             {
-              title: 'Everyone follows',
-              text: 'The staff follows in the app, and the public link shows the live score to the people who aren’t at the pitch — no account needed.',
+              title: 'Debrief — it’s all there',
+              text: 'The staff followed along live, and the real timeline of the session is saved: what was done, and in how much time.',
             },
           ],
         },
@@ -1428,30 +1531,127 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Frequently asked questions',
           items: [
             {
-              question: 'Do people need an account to follow a live match?',
+              question: 'Do I need to prepare the session in STRIVN first?',
               answer:
-                'No. The public link opens in any browser, on any phone. A parent, an injured player or a relative follows the live score without installing anything.',
-            },
-            {
-              question: 'What exactly does the public link show?',
-              answer:
-                'The score, the match timeline and the lineup. Everything else — attendance, records, staff notes — stays inside STRIVN, on the team side.',
+                'Yes — it’s the prepared session that runs live: blocks, durations, instructions, diagrams. A simple session takes a few minutes to build, with or without the AI assistant.',
             },
             {
               question: 'What if there’s no signal at the pitch?',
               answer:
-                'The live session keeps running your blocks even without a connection, audio cues included. As soon as the network comes back, everything syncs for the people following remotely.',
+                'The live session keeps running your blocks even without a connection, audio cues included. As soon as the network comes back, everything syncs for the staff following remotely.',
             },
             {
-              question: 'Is the public link free?',
+              question: 'Phone or tablet?',
               answer:
-                'Yes — like the rest: the live session, the live match and the public link are part of the free plan, for one team.',
+                'Both. A phone in your pocket is enough to run the session; a tablet at the touchline adds a bigger diagram to show the players.',
+            },
+            {
+              question: 'Is the live session free?',
+              answer:
+                'Yes — like the rest: the live session is part of the free plan, for one team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Next session, keep your eyes on the pitch.',
+          body: 'Create your team for free — the live session is part of the free plan.',
+          cta: 'Start for free',
+        },
+      },
+
+      'live-match': {
+        meta: {
+          title: 'Live match — score, public link & player stats | STRIVN',
+          description:
+            'Score the match in one tap: the public link lets parents and absent players follow live without an account — and every player finds their stats in their portal. Free for coaches.',
+        },
+        eyebrow: 'Live match',
+        hero: {
+          title: 'Score the match in one tap. Everyone follows.',
+          lede: 'Goals, cards, substitutions: the match is scored in one tap on your phone. The public link lets parents and absent players follow the score live, no account — and after the match, every player finds their own stats in their portal.',
+          primaryCta: 'Start for free',
+          reassurance: 'Free for one team · no club approval needed · ready in minutes',
+        },
+        benefits: {
+          title: 'One tap to score, one link to share.',
+          items: [
+            {
+              title: 'The match scored in one tap',
+              text: 'Lineup set before kick-off; goals, cards and substitutions counted with a finger during play. The score and the match timeline write themselves live — no loose sheet of paper.',
+            },
+            {
+              title: 'A public link, zero accounts',
+              text: 'Share the match link: parents, injured players and anyone absent follow the live score from any phone — nothing to install, nothing to create.',
+            },
+            {
+              title: 'Every player keeps their stats',
+              text: 'Minutes played, goals, call-ups: after the match, what you scored automatically feeds each player’s personal stats, in their portal.',
+            },
+            {
+              title: 'The paper match sheet, imported',
+              text: 'The lineup from the paper sheet lands in STRIVN without retyping it line by line — the match history centralises itself.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'From the touchline to the player’s portal',
+            blurb: 'During the match, the public link shows the score to the people who aren’t there. Afterwards, everyone finds their stats in their portal.',
+            slides: [
+              {
+                img: '/screenshots/live-viewer-phone.png',
+                kind: 'mobile',
+                alt: 'The public live match view on a phone: score and timeline, no account.',
+                caption: 'The public link: parents and absent players follow the live score — no account, nothing to install.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'How it works',
+          steps: [
+            {
+              title: 'Set the lineup',
+              text: 'Before kick-off, the lineup is ready in STRIVN — or imported from the paper match sheet, no retyping.',
+            },
+            {
+              title: 'Score in one tap',
+              text: 'Goals, cards, substitutions: everything is counted with a finger during play, and the match timeline writes itself live.',
+            },
+            {
+              title: 'Share — everyone follows',
+              text: 'During the match, the public link shows the score to parents and absent players; afterwards, every player finds their stats in their portal.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Frequently asked questions',
+          items: [
+            {
+              question: 'Is the public link really account-free?',
+              answer:
+                'Yes. The link opens in any browser, on any phone. A parent, an injured player or a relative follows the live score without installing or creating anything.',
+            },
+            {
+              question: 'What do parents see through the link?',
+              answer:
+                'The score, the match timeline and the lineup. Everything else — attendance, records, staff notes — stays inside STRIVN, on the team side.',
+            },
+            {
+              question: 'Are player stats really automatic?',
+              answer:
+                'Yes. Minutes played, goals, call-ups: what you score during the match feeds each player’s personal stats, visible in their portal — nothing to re-enter.',
+            },
+            {
+              question: 'Is the live match free?',
+              answer:
+                'Yes — like the rest: the live match, the public link and player stats are part of the free plan, for one team.',
             },
           ],
         },
         finalCta: {
           title: 'Next match, everyone is at the touchline.',
-          body: 'Create your team for free — the live modes and the public link are part of the free plan.',
+          body: 'Create your team for free — the live match and the public link are part of the free plan.',
           cta: 'Start for free',
         },
       },
@@ -1826,10 +2026,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           points: ['Tactiekborden', 'Oefeningenbibliotheek', 'AI-ondersteunde creatie'],
         },
         {
-          slug: 'live',
-          title: 'Live training & wedstrijd',
-          text: 'Leid de training op het veld, scoor de wedstrijd met één tik — en wie er niet is, volgt via een simpele link, zonder account.',
-          points: ['Training in realtime', 'Score & opstellingen', 'Publieke link zonder account'],
+          slug: 'live-session',
+          title: 'Live training',
+          text: 'De voorbereide training loopt blok per blok op je telefoon of tablet langs het veld: klok, instructies, schema’s — en de staf volgt mee.',
+          points: ['Blok per blok', 'Klok & instructies', 'Staf volgt live'],
+        },
+        {
+          slug: 'live-match',
+          title: 'Live wedstrijd',
+          text: 'Scoor de wedstrijd met één tik, deel een publieke link zonder account — en elke speler vindt na de wedstrijd zijn stats in zijn portaal.',
+          points: ['Score & opstellingen', 'Publieke link zonder account', 'Automatische spelersstats'],
         },
         {
           slug: 'scouting',
@@ -2206,51 +2412,45 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         },
       },
 
-      live: {
+      'live-session': {
         meta: {
-          title: 'Live training & live wedstrijdscore | STRIVN',
+          title: 'Live training langs het veld | STRIVN',
           description:
-            'Leid je training vanaf de zijlijn, scoor de wedstrijd live en deel een publieke link: ouders en afwezigen volgen de score zonder account. Gratis voor coaches.',
+            'De training die je in STRIVN voorbereidde, loopt blok per blok langs de zijlijn: klok, instructies, schema’s op telefoon of tablet — en de staf volgt mee. Gratis voor coaches.',
         },
-        eyebrow: 'Live training & wedstrijd',
+        eyebrow: 'Live training',
         hero: {
-          title: 'Leid de training, scoor de wedstrijd. Iedereen volgt.',
-          lede: 'Je training loopt blok per blok op je telefoon, je wedstrijd scoor je met één tik. En dankzij de publieke link volgt wie ver van het veld zit toch mee — live, zonder account, zonder installatie.',
+          title: 'Je training, live langs het veld.',
+          lede: 'De training die je voorbereidde loopt blok per blok op je telefoon of tablet: de klok tikt, de instructies en het schema van het actieve blok staan voor je neus, en de staf volgt mee. Achteraf staat de nabespreking er al.',
           primaryCta: 'Gratis starten',
           reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
         },
         benefits: {
-          title: 'Jij leidt het veld. STRIVN verzorgt de live.',
+          title: 'Jij coacht. De training loopt.',
           items: [
             {
-              title: 'De training live, blok per blok',
-              text: 'De training die je in STRIVN voorbereidde, loopt af op de chrono: instructies, schema’s, overgangen — telefoon op zak of tablet langs de zijlijn, en de staf ziet waar je zit.',
+              title: 'Blok per blok, op de klok',
+              text: 'Opwarming, oefenvormen, partijspel: elk blok volgt op de klok, met geluidssignalen zodat je de timing haalt zonder op je horloge te kijken.',
             },
             {
-              title: 'De wedstrijd gescoord met één tik',
-              text: 'Opstelling klaar voor de aftrap, doelpunten geteld met één vinger tijdens het spel. De score en het wedstrijdverloop schrijven zichzelf live — geen los blaadje meer.',
+              title: 'Instructies en schema’s bij de hand',
+              text: 'Het actieve blok toont zijn tactisch schema en zijn instructies: geen geprint blaadje meer dat wegwaait bij de eerste windvlaag.',
             },
             {
-              title: 'Eén publieke link, geen accounts',
-              text: 'Deel de wedstrijdlink: ouders, geblesseerden en afwezigen volgen de live score vanaf om het even welke telefoon — niets te installeren, niets aan te maken.',
+              title: 'Partijspel: ploegjes en score',
+              text: 'Voor oppositie en partijspel stel je de ploegjes samen en tel je de punten in het blok zelf — de klok blijft gewoon lopen.',
             },
             {
-              title: 'Het papieren wedstrijdblad, geïmporteerd',
-              text: 'De opstelling van het papieren blad komt in STRIVN terecht zonder lijn per lijn over te typen — de wedstrijdhistoriek centraliseert zichzelf.',
+              title: 'De staf volgt, de nabespreking staat klaar',
+              text: 'Assistent, fysiek trainer: iedereen ziet op zijn scherm waar de training staat — actief blok, klok, volgende oefenvorm. Achteraf is het reële verloop bewaard voor de nabespreking.',
             },
           ],
         },
         showcase: [
           {
-            title: 'De live, van twee kanten',
-            blurb: 'Op het veld loopt de training en wordt de wedstrijd gescoord. In de tribune — of thuis in de zetel — volstaat een simpele link om live te volgen.',
+            title: 'De live training, in het echt',
+            blurb: 'Van voorbereid plan tot langs het veld: de tablet die het actieve blok toont, het volgen aan stafzijde, en het scherm van vlak voor de start.',
             slides: [
-              {
-                img: '/screenshots/live-viewer-phone.png',
-                kind: 'mobile',
-                alt: 'De publieke wedstrijdweergave op een telefoon: score en verloop, zonder account.',
-                caption: 'De publieke link: ouders en afwezigen volgen de live score — zonder account of installatie.',
-              },
               {
                 img: '/screenshots/live-runner-tablet-board.png',
                 kind: 'desktop',
@@ -2260,8 +2460,8 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
               {
                 img: '/screenshots/live-session.png',
                 kind: 'desktop',
-                alt: 'De live training aan stafzijde: blokverloop en lopende chrono.',
-                caption: 'De staf volgt de training in realtime: actief blok, chrono, verloop.',
+                alt: 'De live training aan stafzijde: blokverloop en lopende klok.',
+                caption: 'De staf volgt de training in realtime: actief blok, klok, verloop.',
               },
               {
                 img: '/screenshots/live-session-presession.png',
@@ -2276,16 +2476,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Hoe het werkt',
           steps: [
             {
-              title: 'Bereid voor zoals altijd',
-              text: 'De training staat in STRIVN, de opstelling klaar voor de wedstrijd. Live gaan vraagt niets extra.',
+              title: 'Bereid de training voor zoals altijd',
+              text: 'Blokken, duur, schema’s, instructies: de training bouw je in STRIVN, alleen of met de AI-assistent. Live gaan vraagt niets extra.',
             },
             {
-              title: 'Start de live',
-              text: 'Op het veld loopt de training blok per blok op de chrono; op wedstrijddag tel je de doelpunten met één tik.',
+              title: 'Start de live op het veld',
+              text: 'Telefoon op zak of tablet langs de zijlijn: de training loopt haar blokken af op de klok, met instructies en schema’s voor je neus.',
             },
             {
-              title: 'Iedereen volgt',
-              text: 'De staf volgt in de app, en de publieke link toont de live score aan wie niet langs het veld staat — zonder account.',
+              title: 'Bespreek na, alles staat genoteerd',
+              text: 'De staf volgde live mee, en het reële verloop van de training is bewaard: wat er gedaan is, en in hoeveel tijd.',
             },
           ],
         },
@@ -2293,30 +2493,127 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Veelgestelde vragen',
           items: [
             {
-              question: 'Heb je een account nodig om een wedstrijd live te volgen?',
+              question: 'Moet de training vooraf in STRIVN staan?',
               answer:
-                'Nee. De publieke link opent in elke browser, op elke telefoon. Een ouder, een geblesseerde speler of een supporter volgt de live score zonder iets te installeren.',
-            },
-            {
-              question: 'Wat toont de publieke link precies?',
-              answer:
-                'De score, het wedstrijdverloop en de opstelling. Al de rest — aanwezigheid, dossiers, notities van de staf — blijft in STRIVN, aan teamzijde.',
+                'Ja — het is de voorbereide training die live afloopt: blokken, duur, instructies, schema’s. Een eenvoudige training bouw je in enkele minuten, met of zonder de AI-assistent.',
             },
             {
               question: 'En als er geen bereik is aan het veld?',
               answer:
-                'De live training blijft je blokken afspelen, ook zonder verbinding — geluidssignalen inbegrepen. Zodra het netwerk terug is, synchroniseert alles voor wie op afstand volgt.',
+                'De live training blijft je blokken afspelen, ook zonder verbinding — geluidssignalen inbegrepen. Zodra het netwerk terug is, synchroniseert alles voor de staf die op afstand volgt.',
             },
             {
-              question: 'Is de publieke link gratis?',
+              question: 'Op telefoon of op tablet?',
               answer:
-                'Ja — zoals de rest: de live training, de live wedstrijd en de publieke link horen bij het gratis plan, voor één team.',
+                'Allebei. De telefoon op zak volstaat om de training af te werken; de tablet langs de zijlijn geeft het comfort van een groot schema om aan je spelers te tonen.',
+            },
+            {
+              question: 'Is de live training gratis?',
+              answer:
+                'Ja — zoals de rest: de live training hoort bij het gratis plan, voor één team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Houd bij de volgende training je ogen op het veld.',
+          body: 'Maak je team gratis aan — de live training hoort bij het gratis plan.',
+          cta: 'Gratis starten',
+        },
+      },
+
+      'live-match': {
+        meta: {
+          title: 'Live wedstrijd — score, publieke link & spelersstats | STRIVN',
+          description:
+            'Scoor de wedstrijd met één tik: de publieke link laat ouders en afwezigen de score live volgen, zonder account — en elke speler vindt zijn stats terug in zijn portaal. Gratis voor coaches.',
+        },
+        eyebrow: 'Live wedstrijd',
+        hero: {
+          title: 'Scoor de wedstrijd met één tik. Iedereen volgt.',
+          lede: 'Doelpunten, kaarten, wissels: de wedstrijd scoor je met één tik op je telefoon. De publieke link laat ouders en afwezigen de score live volgen, zonder account — en na de wedstrijd vindt elke speler zijn stats in zijn portaal.',
+          primaryCta: 'Gratis starten',
+          reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
+        },
+        benefits: {
+          title: 'Eén tik om te scoren, één link om te delen.',
+          items: [
+            {
+              title: 'De wedstrijd gescoord met één tik',
+              text: 'Opstelling klaar voor de aftrap; doelpunten, kaarten en wissels geteld met één vinger tijdens het spel. De score en het wedstrijdverloop schrijven zichzelf live — geen los blaadje meer.',
+            },
+            {
+              title: 'Eén publieke link, geen accounts',
+              text: 'Deel de wedstrijdlink: ouders, geblesseerden en afwezigen volgen de live score vanaf om het even welke telefoon — niets te installeren, niets aan te maken.',
+            },
+            {
+              title: 'Elke speler vindt zijn stats terug',
+              text: 'Gespeelde minuten, doelpunten, selecties: na de wedstrijd voedt wat jij scoorde automatisch de persoonlijke stats van elke speler, in zijn portaal.',
+            },
+            {
+              title: 'Het papieren wedstrijdblad, geïmporteerd',
+              text: 'De opstelling van het papieren blad komt in STRIVN terecht zonder lijn per lijn over te typen — de wedstrijdhistoriek centraliseert zichzelf.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Van de zijlijn tot het portaal van de speler',
+            blurb: 'Tijdens de wedstrijd toont de publieke link de score aan wie er niet is. Na de wedstrijd vindt iedereen zijn stats in zijn portaal.',
+            slides: [
+              {
+                img: '/screenshots/live-viewer-phone.png',
+                kind: 'mobile',
+                alt: 'De publieke wedstrijdweergave op een telefoon: score en verloop, zonder account.',
+                caption: 'De publieke link: ouders en afwezigen volgen de live score — zonder account of installatie.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Hoe het werkt',
+          steps: [
+            {
+              title: 'Zet de opstelling klaar',
+              text: 'Voor de aftrap staat de opstelling klaar in STRIVN — of geïmporteerd van het papieren wedstrijdblad, zonder over te typen.',
+            },
+            {
+              title: 'Scoor met één tik',
+              text: 'Doelpunten, kaarten, wissels: alles tel je met één vinger tijdens het spel, en het wedstrijdverloop schrijft zich live.',
+            },
+            {
+              title: 'Deel, iedereen volgt',
+              text: 'Tijdens de wedstrijd toont de publieke link de score aan ouders en afwezigen; achteraf vindt elke speler zijn stats in zijn portaal.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Veelgestelde vragen',
+          items: [
+            {
+              question: 'Is de publieke link echt zonder account?',
+              answer:
+                'Ja. De link opent in elke browser, op elke telefoon. Een ouder, een geblesseerde speler of een supporter volgt de live score zonder iets te installeren of aan te maken.',
+            },
+            {
+              question: 'Wat zien de ouders via de link?',
+              answer:
+                'De score, het wedstrijdverloop en de opstelling. Al de rest — aanwezigheid, dossiers, notities van de staf — blijft in STRIVN, aan teamzijde.',
+            },
+            {
+              question: 'Zijn de spelersstats echt automatisch?',
+              answer:
+                'Ja. Gespeelde minuten, doelpunten, selecties: wat je tijdens de wedstrijd scoort voedt de persoonlijke stats van elke speler, zichtbaar in zijn portaal — niets over te typen.',
+            },
+            {
+              question: 'Is de live wedstrijd gratis?',
+              answer:
+                'Ja — zoals de rest: de live wedstrijd, de publieke link en de spelersstats horen bij het gratis plan, voor één team.',
             },
           ],
         },
         finalCta: {
           title: 'Volgende wedstrijd staat iedereen aan de zijlijn.',
-          body: 'Maak je team gratis aan — de live modus en de publieke link horen bij het gratis plan.',
+          body: 'Maak je team gratis aan — de live wedstrijd en de publieke link horen bij het gratis plan.',
           cta: 'Gratis starten',
         },
       },
@@ -2691,10 +2988,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           points: ['Taktiktafeln', 'Übungsbibliothek', 'KI-gestützte Erstellung'],
         },
         {
-          slug: 'live',
-          title: 'Training & Spiel live',
-          text: 'Leiten Sie das Training auf dem Platz, erfassen Sie den Spielstand mit einem Tipp — und wer nicht da ist, folgt über einen einfachen Link, ohne Konto.',
-          points: ['Training in Echtzeit', 'Spielstand & Startelf', 'Öffentlicher Link ohne Konto'],
+          slug: 'live-session',
+          title: 'Training live',
+          text: 'Das vorbereitete Training läuft Block für Block auf Handy oder Tablet am Spielfeldrand: Uhr, Anweisungen, Diagramme — und der Staff sieht mit.',
+          points: ['Block für Block', 'Uhr & Anweisungen', 'Staff sieht live mit'],
+        },
+        {
+          slug: 'live-match',
+          title: 'Spiel live',
+          text: 'Erfassen Sie das Spiel mit einem Tipp, teilen Sie einen öffentlichen Link ohne Konto — und jeder Spieler findet danach seine Statistiken in seinem Portal.',
+          points: ['Spielstand & Aufstellung', 'Öffentlicher Link ohne Konto', 'Automatische Spielerstatistiken'],
         },
         {
           slug: 'scouting',
@@ -3071,51 +3374,45 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         },
       },
 
-      live: {
+      'live-session': {
         meta: {
-          title: 'Training in Echtzeit & Live-Spielstand | STRIVN',
+          title: 'Training live an der Seitenlinie | STRIVN',
           description:
-            'Leiten Sie Ihr Training von der Seitenlinie, erfassen Sie den Spielstand live und teilen Sie einen öffentlichen Link: Eltern und Abwesende folgen ohne Konto. Kostenlos für Coaches.',
+            'Das in STRIVN vorbereitete Training läuft Block für Block an der Seitenlinie: Uhr, Anweisungen, Skizzen auf Telefon oder Tablet — und der Staff sieht mit. Kostenlos für Coaches.',
         },
-        eyebrow: 'Training & Spiel live',
+        eyebrow: 'Training live',
         hero: {
-          title: 'Leiten Sie das Training, erfassen Sie den Spielstand. Alle folgen.',
-          lede: 'Ihr Training läuft Block für Block auf dem Telefon, Ihr Spiel wird mit einem Tipp erfasst. Und dank des öffentlichen Links folgen auch die, die weit vom Platz sind — live, ohne Konto, ohne Installation.',
+          title: 'Ihr Training, live an der Seitenlinie.',
+          lede: 'Das Training, das Sie vorbereitet haben, läuft Block für Block auf Ihrem Telefon oder Tablet: die Uhr läuft, Anweisungen und Skizze des aktiven Blocks liegen vor Ihnen, und der Staff sieht mit. Am Ende steht die Nachbesprechung schon bereit.',
           primaryCta: 'Kostenlos starten',
           reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
         },
         benefits: {
-          title: 'Sie führen den Platz. STRIVN führt das Live.',
+          title: 'Sie coachen. Das Training läuft.',
           items: [
             {
-              title: 'Das Training live, Block für Block',
-              text: 'Das in STRIVN vorbereitete Training läuft auf der Uhr ab: Anweisungen, Skizzen, Abläufe — Telefon in der Tasche oder Tablet an der Seitenlinie, und der Staff sieht, wo Sie stehen.',
+              title: 'Block für Block, auf der Uhr',
+              text: 'Aufwärmen, Übungsformen, Spielformen: jeder Block folgt auf der Uhr, mit Tonsignalen, damit das Timing sitzt, ohne auf die Armbanduhr zu schauen.',
             },
             {
-              title: 'Der Spielstand mit einem Tipp',
-              text: 'Startelf vor dem Anpfiff gesetzt, Tore während des Spiels mit einem Finger gezählt. Spielstand und Spielverlauf schreiben sich live — ohne fliegenden Zettel.',
+              title: 'Anweisungen und Skizzen zur Hand',
+              text: 'Der aktive Block zeigt seine taktische Skizze und seine Anweisungen: kein gedrucktes Blatt mehr, das beim ersten Windstoß davonfliegt.',
             },
             {
-              title: 'Ein öffentlicher Link, null Konten',
-              text: 'Teilen Sie den Spiel-Link: Eltern, Verletzte und Abwesende verfolgen den Spielstand live von jedem Telefon aus — nichts zu installieren, nichts anzulegen.',
+              title: 'Spielformen: Teams und Punkte',
+              text: 'Für Spielformen stellen Sie die Teams zusammen und zählen die Punkte direkt im Block — die Uhr läuft dabei weiter.',
             },
             {
-              title: 'Der Papier-Spielbericht, importiert',
-              text: 'Die Aufstellung vom Papierbogen landet in STRIVN, ohne sie Zeile für Zeile abzutippen — die Spielhistorie zentralisiert sich von selbst.',
+              title: 'Der Staff sieht mit, die Nachbesprechung steht',
+              text: 'Co-Trainer, Athletiktrainer: jeder sieht auf seinem Bildschirm, wo das Training steht — aktiver Block, Uhr, nächste Übungsform. Am Ende ist der reale Ablauf für die Nachbesprechung gespeichert.',
             },
           ],
         },
         showcase: [
           {
-            title: 'Das Live, von beiden Seiten',
-            blurb: 'Auf dem Platz läuft das Training und wird das Spiel erfasst. Auf der Tribüne — oder zu Hause — genügt ein einfacher Link, um live zu folgen.',
+            title: 'Das Live-Training, in echt',
+            blurb: 'Vom vorbereiteten Plan bis an die Seitenlinie: das Tablet mit dem aktiven Block, die Sicht des Staffs und der Bildschirm vor dem Start.',
             slides: [
-              {
-                img: '/screenshots/live-viewer-phone.png',
-                kind: 'mobile',
-                alt: 'Die öffentliche Spielansicht auf einem Telefon: Spielstand und Verlauf, ohne Konto.',
-                caption: 'Der öffentliche Link: Eltern und Abwesende folgen dem Spielstand live — ohne Konto, ohne Installation.',
-              },
               {
                 img: '/screenshots/live-runner-tablet-board.png',
                 kind: 'desktop',
@@ -3141,16 +3438,16 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'So funktioniert es',
           steps: [
             {
-              title: 'Bereiten Sie vor wie immer',
-              text: 'Das Training steht in STRIVN, die Startelf vor dem Spiel. Live zu gehen kostet nichts extra.',
+              title: 'Bereiten Sie das Training vor wie immer',
+              text: 'Blöcke, Dauer, Skizzen, Anweisungen: das Training entsteht in STRIVN, allein oder mit dem KI-Assistenten. Live zu gehen kostet nichts extra.',
             },
             {
-              title: 'Starten Sie das Live',
-              text: 'Auf dem Platz läuft das Training Block für Block auf der Uhr; am Spieltag zählen Sie die Tore mit einem Tipp.',
+              title: 'Starten Sie das Live auf dem Platz',
+              text: 'Telefon in der Tasche oder Tablet an der Seitenlinie: das Training läuft seine Blöcke auf der Uhr ab, Anweisungen und Skizzen vor Augen.',
             },
             {
-              title: 'Alle folgen',
-              text: 'Der Staff folgt in der App, und der öffentliche Link zeigt den Spielstand live allen, die nicht am Platz stehen — ohne Konto.',
+              title: 'Besprechen Sie nach, alles ist notiert',
+              text: 'Der Staff hat live mitverfolgt, und der reale Ablauf des Trainings ist gespeichert: was gemacht wurde und in welcher Zeit.',
             },
           ],
         },
@@ -3158,30 +3455,127 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Häufig gestellte Fragen',
           items: [
             {
-              question: 'Braucht man ein Konto, um ein Spiel live zu verfolgen?',
+              question: 'Muss das Training vorher in STRIVN stehen?',
               answer:
-                'Nein. Der öffentliche Link öffnet sich in jedem Browser, auf jedem Telefon. Ein Elternteil, ein verletzter Spieler oder ein Fan verfolgt den Spielstand live, ohne etwas zu installieren.',
-            },
-            {
-              question: 'Was zeigt der öffentliche Link genau?',
-              answer:
-                'Den Spielstand, den Spielverlauf und die Aufstellung. Alles andere — Anwesenheit, Dossiers, Notizen des Staffs — bleibt in STRIVN, auf Teamseite.',
+                'Ja — es ist das vorbereitete Training, das live abläuft: Blöcke, Dauer, Anweisungen, Skizzen. Ein einfaches Training entsteht in wenigen Minuten, mit oder ohne KI-Assistent.',
             },
             {
               question: 'Und wenn es am Platz kein Netz gibt?',
               answer:
-                'Das Live-Training spielt Ihre Blöcke auch ohne Verbindung weiter ab, Tonsignale inklusive. Sobald das Netz zurück ist, synchronisiert sich alles für die, die aus der Ferne folgen.',
+                'Das Live-Training spielt Ihre Blöcke auch ohne Verbindung weiter ab, Tonsignale inklusive. Sobald das Netz zurück ist, synchronisiert sich alles für den Staff, der aus der Ferne folgt.',
             },
             {
-              question: 'Ist der öffentliche Link kostenlos?',
+              question: 'Auf Telefon oder auf Tablet?',
               answer:
-                'Ja — wie der Rest: das Live-Training, das Live-Spiel und der öffentliche Link gehören zum kostenlosen Plan, für ein Team.',
+                'Beides. Das Telefon in der Tasche genügt, um das Training abzuwickeln; das Tablet an der Seitenlinie gibt zusätzlich den Komfort der großen Skizze zum Zeigen.',
+            },
+            {
+              question: 'Ist das Live-Training kostenlos?',
+              answer:
+                'Ja — wie der Rest: das Live-Training gehört zum kostenlosen Plan, für ein Team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Behalten Sie beim nächsten Training den Platz im Blick.',
+          body: 'Erstellen Sie Ihr Team kostenlos — das Live-Training gehört zum kostenlosen Plan.',
+          cta: 'Kostenlos starten',
+        },
+      },
+
+      'live-match': {
+        meta: {
+          title: 'Spiel live — Spielstand, öffentlicher Link & Spielerstatistiken | STRIVN',
+          description:
+            'Erfassen Sie das Spiel mit einem Tipp: Der öffentliche Link lässt Eltern und Abwesende den Spielstand live verfolgen, ohne Konto — und jeder Spieler findet seine Statistiken in seinem Portal. Kostenlos für Coaches.',
+        },
+        eyebrow: 'Spiel live',
+        hero: {
+          title: 'Erfassen Sie das Spiel mit einem Tipp. Alle folgen.',
+          lede: 'Tore, Karten, Wechsel: das Spiel erfassen Sie mit einem Tipp auf Ihrem Telefon. Der öffentliche Link lässt Eltern und Abwesende den Spielstand live verfolgen, ohne Konto — und nach dem Spiel findet jeder Spieler seine Statistiken in seinem Portal.',
+          primaryCta: 'Kostenlos starten',
+          reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
+        },
+        benefits: {
+          title: 'Ein Tipp zum Erfassen, ein Link zum Teilen.',
+          items: [
+            {
+              title: 'Der Spielstand mit einem Tipp',
+              text: 'Aufstellung vor dem Anpfiff gesetzt; Tore, Karten und Wechsel während des Spiels mit einem Finger gezählt. Spielstand und Spielverlauf schreiben sich live — ohne fliegenden Zettel.',
+            },
+            {
+              title: 'Ein öffentlicher Link, null Konten',
+              text: 'Teilen Sie den Spiel-Link: Eltern, Verletzte und Abwesende verfolgen den Spielstand live von jedem Telefon aus — nichts zu installieren, nichts anzulegen.',
+            },
+            {
+              title: 'Jeder Spieler findet seine Statistiken',
+              text: 'Gespielte Minuten, Tore, Nominierungen: nach dem Spiel speist das, was Sie erfasst haben, automatisch die persönlichen Statistiken jedes Spielers in seinem Portal.',
+            },
+            {
+              title: 'Der Papier-Spielbericht, importiert',
+              text: 'Die Aufstellung vom Papierbogen landet in STRIVN, ohne sie Zeile für Zeile abzutippen — die Spielhistorie zentralisiert sich von selbst.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Von der Seitenlinie bis ins Spielerportal',
+            blurb: 'Während des Spiels zeigt der öffentliche Link den Spielstand allen, die nicht da sind. Nach dem Spiel findet jeder seine Statistiken in seinem Portal.',
+            slides: [
+              {
+                img: '/screenshots/live-viewer-phone.png',
+                kind: 'mobile',
+                alt: 'Die öffentliche Spielansicht auf einem Telefon: Spielstand und Verlauf, ohne Konto.',
+                caption: 'Der öffentliche Link: Eltern und Abwesende folgen dem Spielstand live — ohne Konto, ohne Installation.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'So funktioniert es',
+          steps: [
+            {
+              title: 'Setzen Sie die Aufstellung',
+              text: 'Vor dem Anpfiff steht die Aufstellung in STRIVN bereit — oder importiert vom Papier-Spielbericht, ohne Abtippen.',
+            },
+            {
+              title: 'Erfassen Sie mit einem Tipp',
+              text: 'Tore, Karten, Wechsel: alles wird während des Spiels mit einem Finger gezählt, und der Spielverlauf schreibt sich live.',
+            },
+            {
+              title: 'Teilen Sie, alle folgen',
+              text: 'Während des Spiels zeigt der öffentliche Link den Spielstand Eltern und Abwesenden; danach findet jeder Spieler seine Statistiken in seinem Portal.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Häufig gestellte Fragen',
+          items: [
+            {
+              question: 'Ist der öffentliche Link wirklich ohne Konto?',
+              answer:
+                'Ja. Der Link öffnet sich in jedem Browser, auf jedem Telefon. Ein Elternteil, ein verletzter Spieler oder ein Fan verfolgt den Spielstand live, ohne etwas zu installieren oder anzulegen.',
+            },
+            {
+              question: 'Was sehen die Eltern über den Link?',
+              answer:
+                'Den Spielstand, den Spielverlauf und die Aufstellung. Alles andere — Anwesenheit, Dossiers, Notizen des Staffs — bleibt in STRIVN, auf Teamseite.',
+            },
+            {
+              question: 'Sind die Spielerstatistiken wirklich automatisch?',
+              answer:
+                'Ja. Gespielte Minuten, Tore, Nominierungen: was Sie während des Spiels erfassen, speist die persönlichen Statistiken jedes Spielers, sichtbar in seinem Portal — nichts abzutippen.',
+            },
+            {
+              question: 'Ist das Live-Spiel kostenlos?',
+              answer:
+                'Ja — wie der Rest: das Live-Spiel, der öffentliche Link und die Spielerstatistiken gehören zum kostenlosen Plan, für ein Team.',
             },
           ],
         },
         finalCta: {
           title: 'Beim nächsten Spiel stehen alle an der Seitenlinie.',
-          body: 'Erstellen Sie Ihr Team kostenlos — der Live-Modus und der öffentliche Link gehören zum kostenlosen Plan.',
+          body: 'Erstellen Sie Ihr Team kostenlos — das Live-Spiel und der öffentliche Link gehören zum kostenlosen Plan.',
           cta: 'Kostenlos starten',
         },
       },
