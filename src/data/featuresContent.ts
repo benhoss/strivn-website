@@ -1,8 +1,8 @@
 import type { Locale } from './landingContent';
 
-export type FeatureSlug = 'communication' | 'medical' | 'training-load' | 'sessions' | 'live' | 'scouting';
+export type FeatureSlug = 'communication' | 'medical' | 'training-load' | 'sessions' | 'live' | 'scouting' | 'reports';
 
-export const FEATURE_SLUGS: FeatureSlug[] = ['communication', 'medical', 'training-load', 'sessions', 'live', 'scouting'];
+export const FEATURE_SLUGS: FeatureSlug[] = ['communication', 'medical', 'training-load', 'sessions', 'live', 'scouting', 'reports'];
 
 /** Mirrors the `Slide` shape in scContent.ts — exported so a later unit can unify the two. */
 export type Slide = {
@@ -104,6 +104,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Scouting adverse',
           text: 'Préparez le prochain adversaire à plusieurs : rapport structuré, effectif adverse, clips tagués — puis partagez-le au groupe via un simple lien.',
           points: ['Rapports d’adversaire', 'Clips vidéo tagués', 'Partage via lien'],
+        },
+        {
+          slug: 'reports',
+          title: 'Rapports d’équipe',
+          text: 'Le rapport que vous n’avez jamais le temps de faire : composé depuis vos données — présences, charge, médical — rédigé par l’IA et partagé en PDF.',
+          points: ['Blocs présences, charge, médical', 'Première version rédigée par l’IA', 'Export PDF'],
         },
       ],
     },
@@ -685,6 +691,109 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Commencer gratuitement',
         },
       },
+
+      reports: {
+        meta: {
+          title: 'Rapports d’équipe & export PDF | STRIVN',
+          description:
+            'Le rapport que le staff n’a jamais le temps de faire : présences, charge, suivi médical, matchs et séances — l’IA en rédige une première version depuis les données déjà dans STRIVN, vous relisez, vous partagez en PDF. Gratuit pour les coaches.',
+        },
+        eyebrow: 'Rapports d’équipe',
+        hero: {
+          title: 'Le rapport que vous n’avez jamais le temps de faire.',
+          lede: 'Présences, charge, suivi médical, matchs et séances : tout est déjà dans STRIVN. Choisissez les blocs, l’IA rédige une première version — et le comité, les parents ou la direction reçoivent un PDF propre qui montre le travail du staff.',
+          primaryCta: 'Commencer gratuitement',
+          reassurance: 'Gratuit pour une équipe · sans validation du club · prêt en quelques minutes',
+        },
+        benefits: {
+          title: 'Vous faites le travail. STRIVN le rend visible.',
+          items: [
+            {
+              title: 'Construit depuis vos données existantes',
+              text: 'Pas de collecte, pas de copier-coller : le rapport puise dans ce que STRIVN enregistre déjà au fil de la saison — présences, charge d’entraînement, suivi médical, matchs et séances.',
+            },
+            {
+              title: 'Vous choisissez les blocs',
+              text: 'Présences du mois, évolution de la charge, blessures en cours, résultats : chaque rapport se compose bloc par bloc, selon le destinataire — comité, parents ou direction sportive.',
+            },
+            {
+              title: 'Un PDF propre, prêt à envoyer',
+              text: 'Le rapport s’exporte en PDF mis en page, prêt à joindre à un email ou à poser sur la table en réunion. Pas de tableur à remettre en forme la veille.',
+            },
+            {
+              title: 'L’IA rédige, vous gardez la main',
+              text: 'L’IA propose une première version rédigée à partir de vos chiffres. Vous relisez, corrigez, reformulez — rien ne part sans votre accord.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Des données au PDF',
+            blurb: 'Choisissez les blocs, laissez l’IA rédiger la première version — et relisez avant de partager.',
+            slides: [
+              {
+                img: '/screenshots/reports-hub-fr.png',
+                kind: 'desktop',
+                alt: 'Le module rapports : les rapports d’équipe existants et le bouton pour en créer un nouveau.',
+                caption: 'Le module rapports : chaque rapport garde sa place, prêt à être repris ou partagé.',
+              },
+              {
+                img: '/screenshots/reports-selection-fr.png',
+                kind: 'desktop',
+                alt: 'La composition d’un rapport : les blocs présences, charge et médical sélectionnés avant la génération.',
+                caption: 'Vous choisissez les blocs — présences, charge, médical — et l’IA rédige la première version.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Comment ça marche',
+          steps: [
+            {
+              title: 'Choisissez les blocs',
+              text: 'Présences, charge, suivi médical, matchs, séances : cochez ce que le rapport doit couvrir, sur la période qui vous intéresse.',
+            },
+            {
+              title: 'L’IA assemble',
+              text: 'Une première version rédigée arrive en quelques instants, construite uniquement sur les données de votre équipe dans STRIVN.',
+            },
+            {
+              title: 'Relisez et partagez',
+              text: 'Ajustez le texte, retirez un bloc, puis exportez en PDF — pour le comité, les parents ou la direction.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Questions fréquentes',
+          items: [
+            {
+              question: 'Sur quelles données le rapport se construit-il ?',
+              answer:
+                'Sur celles que votre équipe enregistre déjà dans STRIVN : présences et réponses aux convocations, charge d’entraînement, suivi médical, matchs et séances. Rien à ressaisir.',
+            },
+            {
+              question: 'Le comité ou les parents doivent-ils avoir un compte ?',
+              answer:
+                'Non. Le rapport s’exporte en PDF : vous l’envoyez par email, vous l’imprimez pour la réunion — le destinataire n’a rien à installer.',
+            },
+            {
+              question: 'Peut-on modifier ce que l’IA écrit ?',
+              answer:
+                'Oui, tout. L’IA propose une première version, mais le texte reste le vôtre : vous relisez, corrigez ou réécrivez chaque bloc avant de partager. Rien ne part sans votre accord.',
+            },
+            {
+              question: 'Les rapports sont-ils gratuits ?',
+              answer:
+                'Oui — comme le reste : les rapports et l’assistant IA font partie du plan gratuit, pour une équipe.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'À la prochaine réunion, le travail du staff est sur la table.',
+          body: 'Créez votre équipe gratuitement — rapports, export PDF et assistant IA inclus.',
+          cta: 'Commencer gratuitement',
+        },
+      },
     },
   },
 
@@ -741,6 +850,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Opponent scouting',
           text: 'Prepare the next opponent together: a structured report, the opposing squad, tagged clips — then share it with the group through a simple link.',
           points: ['Opponent reports', 'Tagged video clips', 'Shared via link'],
+        },
+        {
+          slug: 'reports',
+          title: 'Team reports',
+          text: 'The report you never have time to write: composed from your data — attendance, load, medical — drafted by the AI and shared as a PDF.',
+          points: ['Attendance, load and medical blocks', 'First draft written by the AI', 'PDF export'],
         },
       ],
     },
@@ -1322,6 +1437,109 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Start for free',
         },
       },
+
+      reports: {
+        meta: {
+          title: 'Team reports & PDF export | STRIVN',
+          description:
+            'The report the staff never has time to write: attendance, load, medical follow-up, matches and sessions — the AI drafts a first version from the data already in STRIVN, you review it, you share it as a PDF. Free for coaches.',
+        },
+        eyebrow: 'Team reports',
+        hero: {
+          title: 'The report you never have time to write.',
+          lede: 'Attendance, load, medical follow-up, matches and sessions: it is all in STRIVN already. Pick the blocks, the AI drafts a first version — and the committee, the parents or the board receive a clean PDF that shows the staff’s work.',
+          primaryCta: 'Start for free',
+          reassurance: 'Free for one team · no club approval needed · ready in minutes',
+        },
+        benefits: {
+          title: 'You do the work. STRIVN makes it visible.',
+          items: [
+            {
+              title: 'Built from your existing data',
+              text: 'No collecting, no copy-paste: the report draws on what STRIVN already records through the season — attendance, training load, medical follow-up, matches and sessions.',
+            },
+            {
+              title: 'You choose the blocks',
+              text: 'Attendance for the month, load trends, ongoing injuries, results: each report is composed block by block, depending on who it is for — committee, parents or sporting management.',
+            },
+            {
+              title: 'A clean PDF, ready to send',
+              text: 'The report exports as a laid-out PDF, ready to attach to an email or put on the table in a meeting. No spreadsheet to reformat the night before.',
+            },
+            {
+              title: 'The AI drafts, you stay in charge',
+              text: 'The AI proposes a first version written from your numbers. You review, correct, rephrase — nothing goes out without your say.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'From your data to a PDF',
+            blurb: 'Pick the blocks, let the AI draft the first version — and review before you share.',
+            slides: [
+              {
+                img: '/screenshots/reports-hub.png',
+                kind: 'desktop',
+                alt: 'The reports module: the team’s existing reports and the button to create a new one.',
+                caption: 'The reports module: every report keeps its place, ready to be reopened or shared.',
+              },
+              {
+                img: '/screenshots/reports-selection.png',
+                kind: 'desktop',
+                alt: 'Composing a report: the attendance, load and medical blocks selected before generation.',
+                caption: 'You pick the blocks — attendance, load, medical — and the AI drafts the first version.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'How it works',
+          steps: [
+            {
+              title: 'Choose the blocks',
+              text: 'Attendance, load, medical follow-up, matches, sessions: tick what the report should cover, over the period you need.',
+            },
+            {
+              title: 'The AI assembles',
+              text: 'A written first version arrives in moments, built solely on your team’s data in STRIVN.',
+            },
+            {
+              title: 'Review and share',
+              text: 'Adjust the text, drop a block, then export as a PDF — for the committee, the parents or the board.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Frequently asked questions',
+          items: [
+            {
+              question: 'What data does the report build on?',
+              answer:
+                'The data your team already records in STRIVN: attendance and call-up replies, training load, medical follow-up, matches and sessions. Nothing to re-enter.',
+            },
+            {
+              question: 'Does the committee or a parent need an account?',
+              answer:
+                'No. The report exports as a PDF: you send it by email or print it for the meeting — the recipient has nothing to install.',
+            },
+            {
+              question: 'Can I edit what the AI writes?',
+              answer:
+                'Yes, all of it. The AI proposes a first version, but the text stays yours: you review, correct or rewrite every block before sharing. Nothing goes out without your say.',
+            },
+            {
+              question: 'Are reports free?',
+              answer:
+                'Yes — like the rest: reports and the AI assistant are part of the free plan, for one team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'At the next meeting, the staff’s work is on the table.',
+          body: 'Create your team for free — reports, PDF export and the AI assistant included.',
+          cta: 'Start for free',
+        },
+      },
     },
   },
 
@@ -1378,6 +1596,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Scouting van de tegenstander',
           text: 'Bereid de volgende tegenstander samen voor: rapport, kern, getagde clips — en deel het met de groep via één link.',
           points: ['Tegenstanderrapporten', 'Getagde videoclips', 'Delen via link'],
+        },
+        {
+          slug: 'reports',
+          title: 'Teamrapporten',
+          text: 'Het rapport waar je nooit tijd voor hebt: opgebouwd uit je gegevens — aanwezigheid, belasting, medisch — geschreven door de AI en gedeeld als PDF.',
+          points: ['Blokken aanwezigheid, belasting, medisch', 'Eerste versie door de AI', 'PDF-export'],
         },
       ],
     },
@@ -1959,6 +2183,109 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Gratis starten',
         },
       },
+
+      reports: {
+        meta: {
+          title: 'Teamrapporten & PDF-export | STRIVN',
+          description:
+            'Het rapport waar de staf nooit tijd voor heeft: aanwezigheid, belasting, medische opvolging, wedstrijden en trainingen — de AI schrijft een eerste versie op basis van de gegevens die al in STRIVN staan. Jij leest na en deelt als PDF. Gratis voor coaches.',
+        },
+        eyebrow: 'Teamrapporten',
+        hero: {
+          title: 'Het rapport waar je nooit tijd voor hebt.',
+          lede: 'Aanwezigheid, belasting, medische opvolging, wedstrijden en trainingen: alles staat al in STRIVN. Kies de blokken, de AI schrijft een eerste versie — en het bestuur, de ouders of de sportieve cel krijgen een verzorgde PDF die het werk van de staf toont.',
+          primaryCta: 'Gratis starten',
+          reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
+        },
+        benefits: {
+          title: 'Jij doet het werk. STRIVN maakt het zichtbaar.',
+          items: [
+            {
+              title: 'Opgebouwd uit je bestaande gegevens',
+              text: 'Geen verzamelwerk, geen kopieerwerk: het rapport put uit wat STRIVN het hele seizoen al registreert — aanwezigheid, trainingsbelasting, medische opvolging, wedstrijden en trainingen.',
+            },
+            {
+              title: 'Jij kiest de blokken',
+              text: 'Aanwezigheid van de maand, evolutie van de belasting, lopende blessures, resultaten: elk rapport stel je blok per blok samen, volgens de bestemmeling — bestuur, ouders of sportieve cel.',
+            },
+            {
+              title: 'Een verzorgde PDF, klaar om te versturen',
+              text: 'Het rapport exporteert als opgemaakte PDF, klaar om te mailen of op tafel te leggen op de vergadering. Geen spreadsheet meer om de avond ervoor te herwerken.',
+            },
+            {
+              title: 'De AI schrijft, jij beslist',
+              text: 'De AI stelt een eerste versie voor op basis van jouw cijfers. Jij leest na, corrigeert, herschrijft — niets vertrekt zonder jouw akkoord.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Van je gegevens naar een PDF',
+            blurb: 'Kies de blokken, laat de AI de eerste versie schrijven — en lees na voor je deelt.',
+            slides: [
+              {
+                img: '/screenshots/reports-hub.png',
+                kind: 'desktop',
+                alt: 'De rapportenmodule: de bestaande teamrapporten en de knop om een nieuw rapport te maken.',
+                caption: 'De rapportenmodule: elk rapport houdt zijn plaats, klaar om te hernemen of te delen.',
+              },
+              {
+                img: '/screenshots/reports-selection.png',
+                kind: 'desktop',
+                alt: 'Een rapport samenstellen: de blokken aanwezigheid, belasting en medisch geselecteerd vóór de generatie.',
+                caption: 'Jij kiest de blokken — aanwezigheid, belasting, medisch — en de AI schrijft de eerste versie.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Hoe het werkt',
+          steps: [
+            {
+              title: 'Kies de blokken',
+              text: 'Aanwezigheid, belasting, medische opvolging, wedstrijden, trainingen: vink aan wat het rapport moet dekken, voor de periode die je nodig hebt.',
+            },
+            {
+              title: 'De AI stelt samen',
+              text: 'Een geschreven eerste versie staat er in enkele ogenblikken, uitsluitend gebouwd op de gegevens van jouw team in STRIVN.',
+            },
+            {
+              title: 'Lees na en deel',
+              text: 'Pas de tekst aan, laat een blok weg en exporteer als PDF — voor het bestuur, de ouders of de sportieve cel.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Veelgestelde vragen',
+          items: [
+            {
+              question: 'Op welke gegevens bouwt het rapport?',
+              answer:
+                'Op wat je team al in STRIVN registreert: aanwezigheid en antwoorden op oproepingen, trainingsbelasting, medische opvolging, wedstrijden en trainingen. Niets opnieuw in te voeren.',
+            },
+            {
+              question: 'Heeft het bestuur of een ouder een account nodig?',
+              answer:
+                'Nee. Het rapport exporteert als PDF: je mailt het door of drukt het af voor de vergadering — de ontvanger hoeft niets te installeren.',
+            },
+            {
+              question: 'Kan ik aanpassen wat de AI schrijft?',
+              answer:
+                'Ja, alles. De AI stelt een eerste versie voor, maar de tekst blijft van jou: je leest na, corrigeert of herschrijft elk blok voor je deelt.',
+            },
+            {
+              question: 'Zijn rapporten gratis?',
+              answer:
+                'Ja — zoals de rest: rapporten en de AI-assistent zitten in het gratis plan, voor één team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Op de volgende vergadering ligt het werk van de staf op tafel.',
+          body: 'Maak je team gratis aan — rapporten, PDF-export en AI-assistent inbegrepen.',
+          cta: 'Gratis starten',
+        },
+      },
     },
   },
 
@@ -2015,6 +2342,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Gegner-Scouting',
           text: 'Bereiten Sie den nächsten Gegner gemeinsam vor: strukturierter Bericht, gegnerischer Kader, getaggte Clips — geteilt mit der Gruppe über einen einfachen Link.',
           points: ['Gegner-Berichte', 'Getaggte Videoclips', 'Teilen per Link'],
+        },
+        {
+          slug: 'reports',
+          title: 'Team-Berichte',
+          text: 'Der Bericht, für den nie Zeit ist: zusammengestellt aus Ihren Daten — Anwesenheit, Belastung, Medizinisches — von der KI vorformuliert und als PDF geteilt.',
+          points: ['Blöcke Anwesenheit, Belastung, Medizinisches', 'Erster Entwurf von der KI', 'PDF-Export'],
         },
       ],
     },
@@ -2593,6 +2926,109 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         finalCta: {
           title: 'Zum Anpfiff weiß die Gruppe, was kommt.',
           body: 'Erstellen Sie Ihr Team kostenlos — Berichte, gegnerische Kader und Teilen per Link inbegriffen.',
+          cta: 'Kostenlos starten',
+        },
+      },
+
+      reports: {
+        meta: {
+          title: 'Team-Berichte & PDF-Export | STRIVN',
+          description:
+            'Der Bericht, für den der Staff nie Zeit hat: Anwesenheit, Belastung, medizinische Betreuung, Spiele und Trainings — die KI entwirft eine erste Version aus den Daten, die bereits in STRIVN liegen. Sie lesen gegen und teilen als PDF. Kostenlos für Coaches.',
+        },
+        eyebrow: 'Team-Berichte',
+        hero: {
+          title: 'Der Bericht, für den Sie nie Zeit haben.',
+          lede: 'Anwesenheit, Belastung, medizinische Betreuung, Spiele und Trainings: alles liegt bereits in STRIVN. Wählen Sie die Blöcke, die KI entwirft eine erste Version — und Vorstand, Eltern oder sportliche Leitung erhalten ein sauberes PDF, das die Arbeit des Staffs sichtbar macht.',
+          primaryCta: 'Kostenlos starten',
+          reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
+        },
+        benefits: {
+          title: 'Sie machen die Arbeit. STRIVN macht sie sichtbar.',
+          items: [
+            {
+              title: 'Aufgebaut aus Ihren vorhandenen Daten',
+              text: 'Kein Sammeln, kein Kopieren: der Bericht schöpft aus dem, was STRIVN über die Saison ohnehin festhält — Anwesenheit, Trainingsbelastung, medizinische Betreuung, Spiele und Trainings.',
+            },
+            {
+              title: 'Sie wählen die Blöcke',
+              text: 'Anwesenheit des Monats, Verlauf der Belastung, laufende Verletzungen, Ergebnisse: jeder Bericht entsteht Block für Block — je nachdem, an wen er geht: Vorstand, Eltern oder sportliche Leitung.',
+            },
+            {
+              title: 'Ein sauberes PDF, bereit zum Versenden',
+              text: 'Der Bericht exportiert als gestaltetes PDF — bereit für den E-Mail-Anhang oder den Tisch der nächsten Sitzung. Keine Tabelle, die am Vorabend noch in Form gebracht werden muss.',
+            },
+            {
+              title: 'Die KI entwirft, Sie behalten die Hand',
+              text: 'Die KI schlägt eine erste Version auf Basis Ihrer Zahlen vor. Sie lesen gegen, korrigieren, formulieren um — nichts geht ohne Ihre Freigabe hinaus.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Von Ihren Daten zum PDF',
+            blurb: 'Wählen Sie die Blöcke, lassen Sie die KI die erste Version entwerfen — und lesen Sie gegen, bevor Sie teilen.',
+            slides: [
+              {
+                img: '/screenshots/reports-hub.png',
+                kind: 'desktop',
+                alt: 'Das Berichte-Modul: die bestehenden Team-Berichte und der Button für einen neuen Bericht.',
+                caption: 'Das Berichte-Modul: jeder Bericht behält seinen Platz — bereit zum Weiterarbeiten oder Teilen.',
+              },
+              {
+                img: '/screenshots/reports-selection.png',
+                kind: 'desktop',
+                alt: 'Ein Bericht entsteht: die Blöcke Anwesenheit, Belastung und Medizinisches vor der Generierung ausgewählt.',
+                caption: 'Sie wählen die Blöcke — Anwesenheit, Belastung, Medizinisches — und die KI entwirft die erste Version.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'So funktioniert es',
+          steps: [
+            {
+              title: 'Blöcke wählen',
+              text: 'Anwesenheit, Belastung, medizinische Betreuung, Spiele, Trainings: haken Sie an, was der Bericht abdecken soll — für den Zeitraum, den Sie brauchen.',
+            },
+            {
+              title: 'Die KI stellt zusammen',
+              text: 'Eine geschriebene erste Version steht in wenigen Augenblicken — aufgebaut allein auf den Daten Ihres Teams in STRIVN.',
+            },
+            {
+              title: 'Gegenlesen und teilen',
+              text: 'Passen Sie den Text an, nehmen Sie einen Block heraus, dann exportieren Sie als PDF — für Vorstand, Eltern oder sportliche Leitung.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Häufig gestellte Fragen',
+          items: [
+            {
+              question: 'Auf welchen Daten baut der Bericht auf?',
+              answer:
+                'Auf dem, was Ihr Team bereits in STRIVN festhält: Anwesenheit und Antworten auf Aufstellungen, Trainingsbelastung, medizinische Betreuung, Spiele und Trainings. Nichts muss neu erfasst werden.',
+            },
+            {
+              question: 'Brauchen Vorstand oder Eltern ein Konto?',
+              answer:
+                'Nein. Der Bericht exportiert als PDF: Sie verschicken ihn per E-Mail oder drucken ihn für die Sitzung — der Empfänger muss nichts installieren.',
+            },
+            {
+              question: 'Kann ich ändern, was die KI schreibt?',
+              answer:
+                'Ja, alles. Die KI schlägt eine erste Version vor, aber der Text bleibt Ihrer: Sie lesen gegen, korrigieren oder schreiben jeden Block um, bevor Sie teilen.',
+            },
+            {
+              question: 'Sind die Berichte kostenlos?',
+              answer:
+                'Ja — wie der Rest: Berichte und der KI-Assistent gehören zum kostenlosen Plan, für ein Team.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Bei der nächsten Sitzung liegt die Arbeit des Staffs auf dem Tisch.',
+          body: 'Erstellen Sie Ihr Team kostenlos — Berichte, PDF-Export und KI-Assistent inklusive.',
           cta: 'Kostenlos starten',
         },
       },

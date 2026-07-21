@@ -19,6 +19,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     sessions: 'Illustration : un plan de séance en quatre ateliers minutés.',
     live: 'Illustration : un match en direct avec le score, les buts minute par minute et le nombre de personnes qui suivent via le lien public.',
     scouting: 'Illustration : la fiche d’un adversaire avec ses joueurs, leurs tags d’observation et le statut de rapport partagé.',
+    reports: 'Illustration : un rapport d’équipe composé de blocs présences, charge et médical, avec le statut PDF prêt.',
   },
   en: {
     communication: 'Illustration: a call-up message with player replies and a live attendance tally.',
@@ -27,6 +28,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     sessions: 'Illustration: a session plan with four timed drill phases.',
     live: 'Illustration: a live match panel with the score, goals minute by minute and the number of people following through the public link.',
     scouting: 'Illustration: an opponent file with roster rows, observation tags and a shared-report status.',
+    reports: 'Illustration: a team report composed of attendance, load and medical blocks, with a PDF-ready status.',
   },
   nl: {
     communication: 'Illustratie: een oproeping met de antwoorden van de spelers en een live aanwezigheidsteller.',
@@ -35,6 +37,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     sessions: 'Illustratie: een trainingsplan met vier getimede oefenblokken.',
     live: 'Illustratie: een livewedstrijd met de score, de doelpunten minuut per minuut en het aantal mensen dat via de publieke link meevolgt.',
     scouting: 'Illustratie: de fiche van een tegenstander met zijn spelers, observatietags en de status gedeeld rapport.',
+    reports: 'Illustratie: een teamrapport opgebouwd uit de blokken aanwezigheid, belasting en medisch, met de status PDF klaar.',
   },
   de: {
     communication: 'Illustration: eine Aufstellung mit den Antworten der Spieler und einer Live-Anwesenheitszählung.',
@@ -43,6 +46,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     sessions: 'Illustration: ein Trainingsplan mit vier getimten Übungsblöcken.',
     live: 'Illustration: ein Live-Spiel mit Spielstand, Toren Minute für Minute und der Zahl der Personen, die über den öffentlichen Link mitverfolgen.',
     scouting: 'Illustration: die Akte eines Gegners mit seinen Spielern, Beobachtungs-Tags und dem Status geteilter Bericht.',
+    reports: 'Illustration: ein Team-Bericht aus den Blöcken Anwesenheit, Belastung und Medizinisches, mit dem Status PDF bereit.',
   },
 };
 const ariaLabels = ariaLabelsByLocale[locale];
@@ -56,6 +60,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     sessions: { tone: 'info', text: 'Ajustée à la charge du groupe' },
     live: { tone: 'ok', text: '14 suivent via le lien public' },
     scouting: { tone: 'info', text: 'Note de l’analyste ajoutée' },
+    reports: { tone: 'ok', text: 'PDF prêt à partager' },
   },
   en: {
     communication: { tone: 'ok', text: 'L. Moreau — In · 6:09pm' },
@@ -64,6 +69,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     sessions: { tone: 'info', text: 'Tuned to the squad’s load' },
     live: { tone: 'ok', text: '14 watching via the public link' },
     scouting: { tone: 'info', text: 'Analyst note added' },
+    reports: { tone: 'ok', text: 'PDF ready to share' },
   },
   nl: {
     communication: { tone: 'ok', text: 'L. Moreau — Aanwezig · 18u09' },
@@ -72,6 +78,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     sessions: { tone: 'info', text: 'Afgestemd op de belasting van de groep' },
     live: { tone: 'ok', text: '14 volgen via de publieke link' },
     scouting: { tone: 'info', text: 'Notitie van de analist toegevoegd' },
+    reports: { tone: 'ok', text: 'PDF klaar om te delen' },
   },
   de: {
     communication: { tone: 'ok', text: 'L. Moreau — Dabei · 18:09' },
@@ -80,6 +87,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     sessions: { tone: 'info', text: 'Auf die Belastung der Gruppe abgestimmt' },
     live: { tone: 'ok', text: '14 folgen über den öffentlichen Link' },
     scouting: { tone: 'info', text: 'Notiz des Analysten hinzugefügt' },
+    reports: { tone: 'ok', text: 'PDF bereit zum Teilen' },
   },
 };
 const chip = chipsByLocale[locale][slug];
@@ -194,12 +202,63 @@ const scoutingByLocale: Record<Locale, ScoutingSample> = {
   },
 };
 
+/** Sample report-builder panel for the `reports` slug — decorative data, no landingContent entry exists for it. */
+type ReportsSample = {
+  label: string;
+  name: string;
+  ready: string;
+  blocks: Array<{ name: string; detail: string }>;
+};
+const reportsByLocale: Record<Locale, ReportsSample> = {
+  fr: {
+    label: 'Rapport d’équipe',
+    name: 'Bilan du mois — U17',
+    ready: 'PDF prêt',
+    blocks: [
+      { name: 'Présences', detail: '12 séances' },
+      { name: 'Charge', detail: 'ACWR stable' },
+      { name: 'Médical', detail: '1 retour au jeu' },
+    ],
+  },
+  en: {
+    label: 'Team report',
+    name: 'Monthly review — U17',
+    ready: 'PDF ready',
+    blocks: [
+      { name: 'Attendance', detail: '12 sessions' },
+      { name: 'Load', detail: 'ACWR steady' },
+      { name: 'Medical', detail: '1 return to play' },
+    ],
+  },
+  nl: {
+    label: 'Teamrapport',
+    name: 'Maandoverzicht — U17',
+    ready: 'PDF klaar',
+    blocks: [
+      { name: 'Aanwezigheid', detail: '12 trainingen' },
+      { name: 'Belasting', detail: 'ACWR stabiel' },
+      { name: 'Medisch', detail: '1 return-to-play' },
+    ],
+  },
+  de: {
+    label: 'Team-Bericht',
+    name: 'Monatsbilanz — U17',
+    ready: 'PDF bereit',
+    blocks: [
+      { name: 'Anwesenheit', detail: '12 Einheiten' },
+      { name: 'Belastung', detail: 'ACWR stabil' },
+      { name: 'Medizinisch', detail: '1 Return-to-Play' },
+    ],
+  },
+};
+
 const com = c.communication.proof;
 const med = c.medical.record;
 const load = c.load.table;
 const board = c.sessions.board;
 const live = liveByLocale[locale];
 const scout = scoutingByLocale[locale];
+const rep = reportsByLocale[locale];
 ---
 
 <div class="fv" role="img" aria-label={ariaLabels[slug]}>
@@ -379,6 +438,26 @@ const scout = scoutingByLocale[locale];
                   <span class="fv-scout__tag">{tag}</span>
                 ))}
               </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {slug === 'reports' && (
+      <div class="s-proof">
+        <div class="fv-report__head">
+          <p class="fv-report__title">
+            <span class="s-label">{rep.label}</span>
+            <span class="fv-report__name">{rep.name}</span>
+          </p>
+          <span class="fv-report__ready">{rep.ready}</span>
+        </div>
+        <ul class="fv-report__blocks">
+          {rep.blocks.map((block) => (
+            <li class="fv-report__block">
+              <span class="fv-report__block-name">{block.name}</span>
+              <span class="fv-report__block-detail">{block.detail}</span>
             </li>
           ))}
         </ul>
@@ -619,6 +698,78 @@ const scout = scoutingByLocale[locale];
     font-size: var(--text-label);
     color: var(--ink-3);
     white-space: nowrap;
+  }
+
+  .fv-report__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .fv-report__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: 0;
+    min-width: 0;
+  }
+
+  .fv-report__name {
+    font-weight: 600;
+  }
+
+  .fv-report__ready {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.03em;
+    color: var(--ink-2);
+  }
+
+  .fv-report__ready::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--performance);
+  }
+
+  .fv-report__blocks {
+    display: grid;
+    gap: var(--space-xs);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fv-report__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+  }
+
+  .fv-report__block-name {
+    min-width: 0;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .fv-report__block-detail {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
   }
 
   @media (max-width: 40rem) {
