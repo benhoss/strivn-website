@@ -1,7 +1,7 @@
 ---
 title: "feat: Flagship feature pages & youth audience page"
 type: feat
-status: active
+status: completed
 date: 2026-07-21
 origin: docs/brainstorms/2026-07-21-website-missing-feature-pages-requirements.md
 ---
@@ -165,7 +165,7 @@ U8 runs per phase: pages draft against existing assets; the gap-fill + reference
 
 ## Implementation Units
 
-- [ ] U1. **FeaturePage showcase extension**
+- [x] U1. **FeaturePage showcase extension**
 
 **Goal:** Feature pages can optionally display a real-app screenshot carousel, reusing ScPage's presentation.
 
@@ -195,7 +195,7 @@ U8 runs per phase: pages draft against existing assets; the gap-fill + reference
 
 ---
 
-- [ ] U2. **Live feature page (séance + match en direct)**
+- [x] U2. **Live feature page (séance + match en direct)**
 
 **Goal:** One page presents live séance (coach runs the session on the pitch) and live match (scoring, lineups, paper match-sheet import), with the public no-login viewer as headline differentiator; serves as the séance-en-direct campaign landing.
 
@@ -228,7 +228,7 @@ U8 runs per phase: pages draft against existing assets; the gap-fill + reference
 
 ---
 
-- [ ] U3. **Youth audience page (Équipes de jeunes)**
+- [x] U3. **Youth audience page (Équipes de jeunes)**
 
 **Goal:** Audience page for youth-team coaches: parents/guardians (consent, RSVP on behalf), youth mode (AI companion and fines hidden), parent communication, and the public live viewer for parents; serves as the équipes-de-jeunes campaign landing.
 
@@ -263,7 +263,7 @@ U8 runs per phase: pages draft against existing assets; the gap-fill + reference
 
 ---
 
-- [ ] U4. **Scouting feature page**
+- [x] U4. **Scouting feature page**
 
 **Goal:** Feature page for opponent scouting: reports, opponent rosters, video clips with tags/notes, shareable public reports.
 
@@ -291,7 +291,7 @@ U8 runs per phase: pages draft against existing assets; the gap-fill + reference
 
 ---
 
-- [ ] U5. **Reports feature page (rapports IA)**
+- [x] U5. **Reports feature page (rapports IA)**
 
 **Goal:** Feature page for the AI report builder: freeform reports across team data (presence, load, medical, matches/sessions), PDF export, shareable with committee/parents/management.
 
@@ -319,7 +319,7 @@ U8 runs per phase: pages draft against existing assets; the gap-fill + reference
 
 ---
 
-- [ ] U6. **Player-app feature page**
+- [x] U6. **Player-app feature page**
 
 **Goal:** Feature page presenting the player experience to the coach as buyer: native iOS/Android apps, wellness check-ins, personal programs and stats, AI coach companion, WHOOP connection; store badges.
 
@@ -349,7 +349,7 @@ U8 runs per phase: pages draft against existing assets; the gap-fill + reference
 
 ---
 
-- [ ] U7. **Homepage and cross-link integration**
+- [x] U7. **Homepage and cross-link integration**
 
 **Goal:** Homepage capability-grid rows link to their pages; player section links to the player-app page; hub/nav coherence across all 8 features.
 
@@ -377,7 +377,7 @@ U8 runs per phase: pages draft against existing assets; the gap-fill + reference
 
 ---
 
-- [ ] U8. **Asset gap-fill and pre-deploy referenced-file check**
+- [x] U8. **Asset gap-fill and pre-deploy referenced-file check**
 
 **Goal:** Every image path referenced by U2–U6 exists in `public/screenshots/`; capture only true gaps via the existing pipeline. Runs once per phase as a deploy gate.
 

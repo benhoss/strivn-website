@@ -29,9 +29,12 @@ psql < "$HERE/setup-demo.sql"
 [ "$LANG_" != "fr" ] && [ -f "$HERE/seed-$LANG_.sql" ] && psql < "$HERE/seed-$LANG_.sql"
 
 # 4. Deterministic demo credentials used by config.mjs (phone/email vary across
-#    DBs, so we normalize them; password hashing needs PHP).
+#    DBs, so we normalize them; password hashing needs PHP). The coach's stored
+#    locale must follow the target language too: LocaleResolver::forUser gives
+#    users.locale priority over ?lang=, so a stale coach locale silently forces
+#    every authenticated capture back into that language.
 artisan tinker --execute="
-  \$u=\App\Models\User::find(1); \$u->phone='+32470112233'; \$u->password=\Illuminate\Support\Facades\Hash::make('password'); \$u->save();
+  \$u=\App\Models\User::find(1); \$u->phone='+32470112233'; \$u->password=\Illuminate\Support\Facades\Hash::make('password'); \$u->locale='${LANG_}'; \$u->save();
   \$p=\App\Models\Player::where('team_id',1)->orderBy('id')->first();
   \$p->email='kylian.moreau@acverel.test'; \$p->password='portalpass'; \$p->password_set_at=now(); \$p->locale='${LANG_}'; \$p->save();
   echo 'coach='.\$u->phone.' player='.\$p->email.' (id='.\$p->id.')';
