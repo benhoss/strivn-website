@@ -20,6 +20,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     live: 'Illustration : un match en direct avec le score, les buts minute par minute et le nombre de personnes qui suivent via le lien public.',
     scouting: 'Illustration : la fiche d’un adversaire avec ses joueurs, leurs tags d’observation et le statut de rapport partagé.',
     reports: 'Illustration : un rapport d’équipe composé de blocs présences, charge et médical, avec le statut PDF prêt.',
+    'player-app': 'Illustration : le check-in bien-être d’un joueur dans l’app, avec curseurs sommeil, fatigue et humeur, sa série de jours remplis et son programme du jour.',
   },
   en: {
     communication: 'Illustration: a call-up message with player replies and a live attendance tally.',
@@ -29,6 +30,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     live: 'Illustration: a live match panel with the score, goals minute by minute and the number of people following through the public link.',
     scouting: 'Illustration: an opponent file with roster rows, observation tags and a shared-report status.',
     reports: 'Illustration: a team report composed of attendance, load and medical blocks, with a PDF-ready status.',
+    'player-app': 'Illustration: a player’s wellness check-in in the app, with sleep, fatigue and mood sliders, a streak counter and today’s program.',
   },
   nl: {
     communication: 'Illustratie: een oproeping met de antwoorden van de spelers en een live aanwezigheidsteller.',
@@ -38,6 +40,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     live: 'Illustratie: een livewedstrijd met de score, de doelpunten minuut per minuut en het aantal mensen dat via de publieke link meevolgt.',
     scouting: 'Illustratie: de fiche van een tegenstander met zijn spelers, observatietags en de status gedeeld rapport.',
     reports: 'Illustratie: een teamrapport opgebouwd uit de blokken aanwezigheid, belasting en medisch, met de status PDF klaar.',
+    'player-app': 'Illustratie: de welzijnscheck-in van een speler in de app, met schuivers voor slaap, vermoeidheid en humeur, een reeksteller en het programma van de dag.',
   },
   de: {
     communication: 'Illustration: eine Aufstellung mit den Antworten der Spieler und einer Live-Anwesenheitszählung.',
@@ -47,6 +50,7 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     live: 'Illustration: ein Live-Spiel mit Spielstand, Toren Minute für Minute und der Zahl der Personen, die über den öffentlichen Link mitverfolgen.',
     scouting: 'Illustration: die Akte eines Gegners mit seinen Spielern, Beobachtungs-Tags und dem Status geteilter Bericht.',
     reports: 'Illustration: ein Team-Bericht aus den Blöcken Anwesenheit, Belastung und Medizinisches, mit dem Status PDF bereit.',
+    'player-app': 'Illustration: der Wohlbefindens-Check-in eines Spielers in der App, mit Reglern für Schlaf, Müdigkeit und Stimmung, einer Serienanzeige und dem Tagesprogramm.',
   },
 };
 const ariaLabels = ariaLabelsByLocale[locale];
@@ -61,6 +65,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     live: { tone: 'ok', text: '14 suivent via le lien public' },
     scouting: { tone: 'info', text: 'Note de l’analyste ajoutée' },
     reports: { tone: 'ok', text: 'PDF prêt à partager' },
+    'player-app': { tone: 'ok', text: 'Check-in rempli · 7 j d’affilée' },
   },
   en: {
     communication: { tone: 'ok', text: 'L. Moreau — In · 6:09pm' },
@@ -70,6 +75,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     live: { tone: 'ok', text: '14 watching via the public link' },
     scouting: { tone: 'info', text: 'Analyst note added' },
     reports: { tone: 'ok', text: 'PDF ready to share' },
+    'player-app': { tone: 'ok', text: 'Check-in done · 7-day streak' },
   },
   nl: {
     communication: { tone: 'ok', text: 'L. Moreau — Aanwezig · 18u09' },
@@ -79,6 +85,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     live: { tone: 'ok', text: '14 volgen via de publieke link' },
     scouting: { tone: 'info', text: 'Notitie van de analist toegevoegd' },
     reports: { tone: 'ok', text: 'PDF klaar om te delen' },
+    'player-app': { tone: 'ok', text: 'Check-in ingevuld · 7 dagen op rij' },
   },
   de: {
     communication: { tone: 'ok', text: 'L. Moreau — Dabei · 18:09' },
@@ -88,6 +95,7 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     live: { tone: 'ok', text: '14 folgen über den öffentlichen Link' },
     scouting: { tone: 'info', text: 'Notiz des Analysten hinzugefügt' },
     reports: { tone: 'ok', text: 'PDF bereit zum Teilen' },
+    'player-app': { tone: 'ok', text: 'Check-in erledigt · 7 Tage in Folge' },
   },
 };
 const chip = chipsByLocale[locale][slug];
@@ -252,6 +260,66 @@ const reportsByLocale: Record<Locale, ReportsSample> = {
   },
 };
 
+/** Sample player check-in card for the `player-app` slug — decorative data, no landingContent entry exists for it. */
+type PlayerAppSample = {
+  label: string;
+  player: string;
+  streak: string;
+  sliders: Array<{ name: string; value: number }>;
+  programLabel: string;
+  programText: string;
+};
+const playerAppByLocale: Record<Locale, PlayerAppSample> = {
+  fr: {
+    label: 'Check-in du jour',
+    player: 'L. Moreau',
+    streak: '7 j d’affilée',
+    sliders: [
+      { name: 'Sommeil', value: 8 },
+      { name: 'Fatigue', value: 4 },
+      { name: 'Humeur', value: 9 },
+    ],
+    programLabel: 'Programme du jour',
+    programText: 'Mobilité & gainage · 20 min',
+  },
+  en: {
+    label: 'Today’s check-in',
+    player: 'L. Moreau',
+    streak: '7-day streak',
+    sliders: [
+      { name: 'Sleep', value: 8 },
+      { name: 'Fatigue', value: 4 },
+      { name: 'Mood', value: 9 },
+    ],
+    programLabel: 'Today’s program',
+    programText: 'Mobility & core · 20 min',
+  },
+  nl: {
+    label: 'Check-in van vandaag',
+    player: 'L. Moreau',
+    streak: '7 dagen op rij',
+    sliders: [
+      { name: 'Slaap', value: 8 },
+      { name: 'Vermoeidheid', value: 4 },
+      { name: 'Humeur', value: 9 },
+    ],
+    programLabel: 'Programma van vandaag',
+    programText: 'Mobiliteit & core · 20 min',
+  },
+  de: {
+    label: 'Check-in des Tages',
+    player: 'L. Moreau',
+    streak: '7 Tage in Folge',
+    sliders: [
+      { name: 'Schlaf', value: 8 },
+      { name: 'Müdigkeit', value: 4 },
+      { name: 'Stimmung', value: 9 },
+    ],
+    programLabel: 'Programm des Tages',
+    programText: 'Mobilität & Core · 20 Min',
+  },
+};
+
 const com = c.communication.proof;
 const med = c.medical.record;
 const load = c.load.table;
@@ -259,6 +327,7 @@ const board = c.sessions.board;
 const live = liveByLocale[locale];
 const scout = scoutingByLocale[locale];
 const rep = reportsByLocale[locale];
+const app = playerAppByLocale[locale];
 ---
 
 <div class="fv" role="img" aria-label={ariaLabels[slug]}>
@@ -461,6 +530,33 @@ const rep = reportsByLocale[locale];
             </li>
           ))}
         </ul>
+      </div>
+    )}
+
+    {slug === 'player-app' && (
+      <div class="s-proof">
+        <div class="fv-checkin__head">
+          <p class="fv-checkin__title">
+            <span class="s-label">{app.label}</span>
+            <span class="fv-checkin__player">{app.player}</span>
+          </p>
+          <span class="fv-checkin__streak">{app.streak}</span>
+        </div>
+        <ul class="fv-checkin__sliders">
+          {app.sliders.map((slider) => (
+            <li class="fv-checkin__slider">
+              <span class="fv-checkin__slider-name">{slider.name}</span>
+              <span class="fv-checkin__slider-track" aria-hidden="true">
+                <span class="fv-checkin__slider-fill" style={`width: ${slider.value * 10}%`}></span>
+              </span>
+              <span class="fv-checkin__slider-value">{slider.value}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="fv-checkin__program">
+          <span class="fv-checkin__program-label">{app.programLabel}</span>
+          <span class="fv-checkin__program-text">{app.programText}</span>
+        </p>
       </div>
     )}
 
@@ -766,6 +862,117 @@ const rep = reportsByLocale[locale];
   }
 
   .fv-report__block-detail {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
+  }
+
+  .fv-checkin__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .fv-checkin__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: 0;
+    min-width: 0;
+  }
+
+  .fv-checkin__player {
+    font-weight: 600;
+  }
+
+  .fv-checkin__streak {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.03em;
+    color: var(--ink-2);
+  }
+
+  .fv-checkin__streak::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--performance);
+  }
+
+  .fv-checkin__sliders {
+    display: grid;
+    gap: var(--space-sm);
+    list-style: none;
+    margin: 0 0 var(--space-md);
+    padding: 0;
+  }
+
+  .fv-checkin__slider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+  }
+
+  .fv-checkin__slider-name {
+    flex: none;
+    min-width: 7em;
+    color: var(--ink-2);
+  }
+
+  .fv-checkin__slider-track {
+    flex: 1;
+    min-width: 0;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--rule);
+    overflow: hidden;
+  }
+
+  .fv-checkin__slider-fill {
+    display: block;
+    height: 100%;
+    border-radius: var(--radius-pill);
+    background: var(--electric-500);
+  }
+
+  .fv-checkin__slider-value {
+    flex: none;
+    min-width: 1.2em;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
+  }
+
+  .fv-checkin__program {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+  }
+
+  .fv-checkin__program-label {
+    min-width: 0;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .fv-checkin__program-text {
     flex: none;
     font-family: var(--font-mono);
     font-size: var(--text-label);

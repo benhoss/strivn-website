@@ -1,8 +1,8 @@
 import type { Locale } from './landingContent';
 
-export type FeatureSlug = 'communication' | 'medical' | 'training-load' | 'sessions' | 'live' | 'scouting' | 'reports';
+export type FeatureSlug = 'communication' | 'medical' | 'training-load' | 'sessions' | 'live' | 'scouting' | 'reports' | 'player-app';
 
-export const FEATURE_SLUGS: FeatureSlug[] = ['communication', 'medical', 'training-load', 'sessions', 'live', 'scouting', 'reports'];
+export const FEATURE_SLUGS: FeatureSlug[] = ['communication', 'medical', 'training-load', 'sessions', 'live', 'scouting', 'reports', 'player-app'];
 
 /** Mirrors the `Slide` shape in scContent.ts — exported so a later unit can unify the two. */
 export type Slide = {
@@ -66,7 +66,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       eyebrow: 'Fonctionnalités',
       hero: {
         title: 'Tout ce qu’un coach gère, au même endroit.',
-        lede: 'STRIVN couvre les quatre chantiers qui mangent la semaine d’un coach — la communication, l’infirmerie, la charge d’entraînement et la préparation des séances — et tout ce qui les relie. Chaque module est gratuit, et partagé avec votre staff.',
+        lede: 'De la convocation au rapport de fin de mois, STRIVN réunit les chantiers qui mangent la semaine d’un coach — et tout ce qui les relie. Chaque module est gratuit, et partagé avec votre staff.',
       },
       cards: [
         {
@@ -110,6 +110,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Rapports d’équipe',
           text: 'Le rapport que vous n’avez jamais le temps de faire : composé depuis vos données — présences, charge, médical — rédigé par l’IA et partagé en PDF.',
           points: ['Blocs présences, charge, médical', 'Première version rédigée par l’IA', 'Export PDF'],
+        },
+        {
+          slug: 'player-app',
+          title: 'L’app de vos joueurs',
+          text: 'Vos joueurs reçoivent une app iOS et Android : convocations, check-ins bien-être, programme personnel et stats — la boucle que vous lancez se referme toute seule.',
+          points: ['Check-ins bien-être', 'Programmes & stats perso', 'Coach IA compagnon'],
         },
       ],
     },
@@ -794,6 +800,115 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Commencer gratuitement',
         },
       },
+
+      'player-app': {
+        meta: {
+          title: 'L’app joueur iOS & Android | STRIVN',
+          description:
+            'Vos joueurs reçoivent une app native iOS et Android : convocations, check-ins bien-être, programme personnel, stats et coach IA compagnon. Sur l’App Store et Google Play — gratuite pour vos joueurs.',
+        },
+        eyebrow: 'L’app de vos joueurs',
+        hero: {
+          title: 'Ce que vos joueurs reçoivent.',
+          lede: 'Une app native iOS et Android, gratuite pour eux : ils répondent aux convocations, remplissent leur check-in bien-être, suivent leur programme et leurs stats. La boucle que vous lancez côté staff se referme dans leur poche — sans relance.',
+          primaryCta: 'Commencer gratuitement',
+          reassurance: 'Gratuit pour une équipe · sans validation du club · prêt en quelques minutes',
+        },
+        benefits: {
+          title: 'Vous lancez la boucle. L’app la referme.',
+          items: [
+            {
+              title: 'L’app iOS et Android de vos joueurs',
+              text: 'Une app native, disponible sur l’App Store et Google Play, gratuite pour vos joueurs. Convocations, agenda, messages : ce que vous envoyez arrive là où ils regardent déjà — leur téléphone.',
+            },
+            {
+              title: 'Check-ins et forme, sans relance',
+              text: 'Sommeil, fatigue, humeur, courbatures : le joueur remplit son check-in en quelques secondes le matin. Vous voyez la forme du groupe avant la séance — sans envoyer un seul message.',
+            },
+            {
+              title: 'Programme et stats perso dans la poche',
+              text: 'Chaque joueur retrouve son programme individuel, coche ce qu’il a fait et suit ses propres chiffres : présences, charge, progression. Ce que vous planifiez se suit tout seul.',
+            },
+            {
+              title: 'Un coach IA compagnon, dans votre cadre',
+              text: 'Entre deux séances, le joueur peut poser ses questions à un coach IA qui répond dans le cadre que vous fixez — vos consignes, son programme, sa charge. Jamais à votre place.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Dans la poche de vos joueurs',
+            blurb: 'L’agenda, le check-in du matin et la forme : ce que le joueur voit, tel qu’il le voit.',
+            slides: [
+              {
+                img: '/screenshots/portal-agenda-fr.png',
+                kind: 'mobile',
+                alt: 'L’agenda du joueur sur mobile : les prochains événements avec les boutons de réponse à la convocation.',
+                caption: 'La convocation arrive dans l’app — le joueur répond en un geste.',
+              },
+              {
+                img: '/screenshots/portal-checkin-fr.png',
+                kind: 'mobile',
+                alt: 'Le check-in bien-être du joueur sur mobile : sommeil, fatigue, humeur et courbatures à évaluer.',
+                caption: 'Le check-in du matin : quelques curseurs, quelques secondes.',
+              },
+              {
+                img: '/screenshots/portal-fitness-fr.png',
+                kind: 'mobile',
+                alt: 'L’écran forme du joueur sur mobile : sa charge récente et l’évolution de sa forme.',
+                caption: 'Le joueur suit sa forme et sa charge — les mêmes chiffres que vous.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Comment ça marche',
+          steps: [
+            {
+              title: 'Invitez le joueur',
+              text: 'Depuis votre effectif, chaque joueur reçoit son invitation et installe l’app en deux minutes, depuis l’App Store ou Google Play.',
+            },
+            {
+              title: 'Il répond et remplit dans l’app',
+              text: 'Convocations, check-ins, programme : le joueur fait sa part depuis son téléphone, au moment qui l’arrange.',
+            },
+            {
+              title: 'Vous voyez tout arriver',
+              text: 'Présences à jour, forme du groupe, programmes suivis : côté staff, tout se remplit en temps réel — sans relance.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Questions fréquentes',
+          items: [
+            {
+              question: 'L’app est-elle disponible sur iOS et Android ?',
+              answer:
+                'Oui. STRIVN Player est une app native, disponible sur l’App Store (iOS) et sur Google Play (Android). Le joueur l’installe en deux minutes depuis son invitation.',
+            },
+            {
+              question: 'Le joueur doit-il payer quelque chose ?',
+              answer:
+                'Non. L’app est gratuite pour vos joueurs : ils la téléchargent et l’utilisent sans rien payer. C’est vous qui gérez l’équipe — eux n’ont qu’à répondre.',
+            },
+            {
+              question: 'Et la montre WHOOP ?',
+              answer:
+                'Le joueur peut connecter sa montre WHOOP pour préremplir ses check-ins avec son sommeil et sa récupération, selon la formule de votre club. Sans montre, le check-in manuel prend quelques secondes.',
+            },
+            {
+              question: 'Et pour les jeunes joueurs ?',
+              answer:
+                'Le mode jeunes adapte l’app : le coach IA et les amendes sont masqués, et les parents gardent leur place dans la boucle. Notre page équipes de jeunes détaille ce fonctionnement.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Vos joueurs font leur part. Vous la voyez arriver.',
+          body: 'Créez votre équipe gratuitement et invitez vos joueurs — l’app STRIVN Player les attend sur l’App Store et Google Play.',
+          cta: 'Commencer gratuitement',
+        },
+      },
     },
   },
 
@@ -812,7 +927,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       eyebrow: 'Features',
       hero: {
         title: 'Everything a coach runs, in one place.',
-        lede: 'STRIVN covers the four jobs that eat a coach’s week — communication, the medical log, training load and session planning — and everything that connects them. Every module is free, and shared with your staff.',
+        lede: 'From the call-up to the end-of-month report, STRIVN brings together the jobs that eat a coach’s week — and everything that connects them. Every module is free, and shared with your staff.',
       },
       cards: [
         {
@@ -856,6 +971,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Team reports',
           text: 'The report you never have time to write: composed from your data — attendance, load, medical — drafted by the AI and shared as a PDF.',
           points: ['Attendance, load and medical blocks', 'First draft written by the AI', 'PDF export'],
+        },
+        {
+          slug: 'player-app',
+          title: 'Your players’ app',
+          text: 'Your players get an iOS and Android app: call-ups, wellness check-ins, a personal program and stats — the loop you start closes itself.',
+          points: ['Wellness check-ins', 'Personal programs & stats', 'AI coach companion'],
         },
       ],
     },
@@ -1540,6 +1661,115 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Start for free',
         },
       },
+
+      'player-app': {
+        meta: {
+          title: 'The player app for iOS & Android | STRIVN',
+          description:
+            'Your players get a native iOS and Android app: call-ups, wellness check-ins, a personal program, stats and an AI coach companion. On the App Store and Google Play — free for your players.',
+        },
+        eyebrow: 'Your players’ app',
+        hero: {
+          title: 'What your players receive.',
+          lede: 'A native iOS and Android app, free for them: they answer call-ups, fill in their wellness check-in, follow their program and their stats. The loop you start on the staff side closes in their pocket — no chasing.',
+          primaryCta: 'Start for free',
+          reassurance: 'Free for one team · no club approval needed · ready in minutes',
+        },
+        benefits: {
+          title: 'You start the loop. The app closes it.',
+          items: [
+            {
+              title: 'Your players’ iOS and Android app',
+              text: 'A native app, available on the App Store and Google Play, free for your players. Call-ups, agenda, messages: what you send lands where they already look — their phone.',
+            },
+            {
+              title: 'Check-ins and readiness, no chasing',
+              text: 'Sleep, fatigue, mood, soreness: players fill in their check-in in seconds each morning. You see the squad’s readiness before the session — without sending a single message.',
+            },
+            {
+              title: 'Personal program and stats in their pocket',
+              text: 'Each player finds their individual program, ticks off what they did and follows their own numbers: attendance, load, progress. What you plan follows itself.',
+            },
+            {
+              title: 'An AI coach companion, within your frame',
+              text: 'Between sessions, players can ask questions to an AI coach that answers within the frame you set — your instructions, their program, their load. Never in your place.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'In your players’ pocket',
+            blurb: 'The agenda, the morning check-in and readiness: what the player sees, as they see it.',
+            slides: [
+              {
+                img: '/screenshots/portal-agenda.png',
+                kind: 'mobile',
+                alt: 'The player agenda on mobile: upcoming events with call-up reply buttons.',
+                caption: 'The call-up lands in the app — the player answers in one tap.',
+              },
+              {
+                img: '/screenshots/portal-checkin.png',
+                kind: 'mobile',
+                alt: 'The player wellness check-in on mobile: sleep, fatigue, mood and soreness sliders.',
+                caption: 'The morning check-in: a few sliders, a few seconds.',
+              },
+              {
+                img: '/screenshots/portal-fitness.png',
+                kind: 'mobile',
+                alt: 'The player fitness screen on mobile: recent load and the readiness trend.',
+                caption: 'Players follow their readiness and load — the same numbers you see.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'How it works',
+          steps: [
+            {
+              title: 'Invite the player',
+              text: 'From your squad list, each player gets their invitation and installs the app in two minutes, from the App Store or Google Play.',
+            },
+            {
+              title: 'They answer and fill in, in the app',
+              text: 'Call-ups, check-ins, program: players do their part from their phone, whenever it suits them.',
+            },
+            {
+              title: 'You watch it all arrive',
+              text: 'Attendance up to date, squad readiness, programs followed: on the staff side, everything fills in live — no chasing.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Frequently asked questions',
+          items: [
+            {
+              question: 'Is the app available on iOS and Android?',
+              answer:
+                'Yes. STRIVN Player is a native app, available on the App Store (iOS) and on Google Play (Android). Players install it in two minutes from their invitation.',
+            },
+            {
+              question: 'Do players have to pay anything?',
+              answer:
+                'No. The app is free for your players: they download it and use it without paying anything. You run the team — they just answer.',
+            },
+            {
+              question: 'What about WHOOP?',
+              answer:
+                'Players can connect their WHOOP to pre-fill their check-ins with sleep and recovery, depending on your club’s plan. Without a wearable, the manual check-in takes seconds.',
+            },
+            {
+              question: 'And for youth players?',
+              answer:
+                'Youth mode adapts the app: the AI coach and fines are hidden, and parents keep their place in the loop. Our youth teams page covers how it works.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Your players do their part. You watch it arrive.',
+          body: 'Create your team for free and invite your players — the STRIVN Player app is waiting for them on the App Store and Google Play.',
+          cta: 'Start for free',
+        },
+      },
     },
   },
 
@@ -1558,7 +1788,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       eyebrow: 'Functies',
       hero: {
         title: 'Alles wat een coach beheert, op één plek.',
-        lede: 'STRIVN dekt de vier taken die de week van een coach opslokken — communicatie, het medisch dossier, trainingsbelasting en trainingsplanning — en alles wat ze met elkaar verbindt. Elke module is gratis en gedeeld met je staf.',
+        lede: 'Van de oproeping tot het maandrapport: STRIVN bundelt de taken die de week van een coach opslokken — en alles wat ze met elkaar verbindt. Elke module is gratis en gedeeld met je staf.',
       },
       cards: [
         {
@@ -1602,6 +1832,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Teamrapporten',
           text: 'Het rapport waar je nooit tijd voor hebt: opgebouwd uit je gegevens — aanwezigheid, belasting, medisch — geschreven door de AI en gedeeld als PDF.',
           points: ['Blokken aanwezigheid, belasting, medisch', 'Eerste versie door de AI', 'PDF-export'],
+        },
+        {
+          slug: 'player-app',
+          title: 'De app van je spelers',
+          text: 'Je spelers krijgen een iOS- en Android-app: oproepingen, welzijnscheck-ins, een persoonlijk programma en statistieken — de lus die jij start, sluit zichzelf.',
+          points: ['Welzijnscheck-ins', 'Persoonlijk programma & stats', 'AI-coach als compagnon'],
         },
       ],
     },
@@ -2286,6 +2522,115 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           cta: 'Gratis starten',
         },
       },
+
+      'player-app': {
+        meta: {
+          title: 'De spelersapp voor iOS & Android | STRIVN',
+          description:
+            'Je spelers krijgen een native iOS- en Android-app: oproepingen, welzijnscheck-ins, een persoonlijk programma, statistieken en een AI-coach als compagnon. In de App Store en op Google Play — gratis voor je spelers.',
+        },
+        eyebrow: 'De app van je spelers',
+        hero: {
+          title: 'Wat je spelers krijgen.',
+          lede: 'Een native iOS- en Android-app, gratis voor hen: ze antwoorden op oproepingen, vullen hun welzijnscheck-in in, volgen hun programma en hun statistieken. De lus die jij aan stafzijde start, sluit zich in hun broekzak — zonder herinneringen.',
+          primaryCta: 'Gratis starten',
+          reassurance: 'Gratis voor één team · geen goedkeuring van de club nodig · klaar in enkele minuten',
+        },
+        benefits: {
+          title: 'Jij start de lus. De app sluit ze.',
+          items: [
+            {
+              title: 'De iOS- en Android-app van je spelers',
+              text: 'Een native app, beschikbaar in de App Store en op Google Play, gratis voor je spelers. Oproepingen, agenda, berichten: wat jij verstuurt, komt aan waar ze al kijken — op hun telefoon.',
+            },
+            {
+              title: 'Check-ins en vorm, zonder herinneringen',
+              text: 'Slaap, vermoeidheid, humeur, spierpijn: de speler vult zijn check-in ’s ochtends in enkele seconden in. Jij ziet de vorm van de groep vóór de training — zonder één bericht te sturen.',
+            },
+            {
+              title: 'Persoonlijk programma en stats op zak',
+              text: 'Elke speler vindt zijn individueel programma terug, vinkt af wat hij deed en volgt zijn eigen cijfers: aanwezigheid, belasting, progressie. Wat jij plant, volgt zichzelf op.',
+            },
+            {
+              title: 'Een AI-coach als compagnon, binnen jouw kader',
+              text: 'Tussen twee trainingen kan de speler zijn vragen stellen aan een AI-coach die antwoordt binnen het kader dat jij bepaalt — jouw richtlijnen, zijn programma, zijn belasting. Nooit in jouw plaats.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'In de broekzak van je spelers',
+            blurb: 'De agenda, de ochtendcheck-in en de vorm: wat de speler ziet, zoals hij het ziet.',
+            slides: [
+              {
+                img: '/screenshots/portal-agenda.png',
+                kind: 'mobile',
+                alt: 'De agenda van de speler op mobiel: de komende evenementen met antwoordknoppen voor de oproeping.',
+                caption: 'De oproeping komt aan in de app — de speler antwoordt met één tik.',
+              },
+              {
+                img: '/screenshots/portal-checkin.png',
+                kind: 'mobile',
+                alt: 'De welzijnscheck-in van de speler op mobiel: slaap, vermoeidheid, humeur en spierpijn.',
+                caption: 'De ochtendcheck-in: enkele schuivers, enkele seconden.',
+              },
+              {
+                img: '/screenshots/portal-fitness.png',
+                kind: 'mobile',
+                alt: 'Het vormscherm van de speler op mobiel: recente belasting en de evolutie van zijn vorm.',
+                caption: 'De speler volgt zijn vorm en zijn belasting — dezelfde cijfers als jij.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Hoe het werkt',
+          steps: [
+            {
+              title: 'Nodig de speler uit',
+              text: 'Vanuit je kern krijgt elke speler zijn uitnodiging en installeert hij de app in twee minuten, via de App Store of Google Play.',
+            },
+            {
+              title: 'Hij antwoordt en vult in, in de app',
+              text: 'Oproepingen, check-ins, programma: de speler doet zijn deel vanaf zijn telefoon, wanneer het hem past.',
+            },
+            {
+              title: 'Jij ziet alles binnenkomen',
+              text: 'Aanwezigheid up-to-date, vorm van de groep, opgevolgde programma’s: aan stafzijde vult alles zich in realtime — zonder herinneringen.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Veelgestelde vragen',
+          items: [
+            {
+              question: 'Is de app beschikbaar op iOS en Android?',
+              answer:
+                'Ja. STRIVN Player is een native app, beschikbaar in de App Store (iOS) en op Google Play (Android). De speler installeert ze in twee minuten via zijn uitnodiging.',
+            },
+            {
+              question: 'Moet de speler iets betalen?',
+              answer:
+                'Nee. De app is gratis voor je spelers: ze downloaden en gebruiken ze zonder iets te betalen. Jij beheert het team — zij hoeven alleen te antwoorden.',
+            },
+            {
+              question: 'En de WHOOP?',
+              answer:
+                'De speler kan zijn WHOOP koppelen om zijn check-ins vooraf in te vullen met slaap en herstel, afhankelijk van de formule van je club. Zonder wearable duurt de manuele check-in enkele seconden.',
+            },
+            {
+              question: 'En voor jeugdspelers?',
+              answer:
+                'De jeugdmodus past de app aan: de AI-coach en de boetes worden verborgen, en de ouders behouden hun plaats in de lus. Onze pagina over jeugdteams legt uit hoe dat werkt.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Je spelers doen hun deel. Jij ziet het binnenkomen.',
+          body: 'Maak je team gratis aan en nodig je spelers uit — de STRIVN Player-app wacht op hen in de App Store en op Google Play.',
+          cta: 'Gratis starten',
+        },
+      },
     },
   },
 
@@ -2304,7 +2649,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       eyebrow: 'Funktionen',
       hero: {
         title: 'Alles, was ein Coach steuert, an einem Ort.',
-        lede: 'STRIVN deckt die vier Aufgaben ab, die die Woche eines Coaches auffressen — Kommunikation, das medizinische Protokoll, Trainingsbelastung und Trainingsplanung — und alles, was sie verbindet. Jedes Modul ist kostenlos und mit Ihrem Staff geteilt.',
+        lede: 'Von der Aufstellung bis zum Monatsbericht: STRIVN vereint die Aufgaben, die die Woche eines Coaches auffressen — und alles, was sie verbindet. Jedes Modul ist kostenlos und mit Ihrem Staff geteilt.',
       },
       cards: [
         {
@@ -2348,6 +2693,12 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
           title: 'Team-Berichte',
           text: 'Der Bericht, für den nie Zeit ist: zusammengestellt aus Ihren Daten — Anwesenheit, Belastung, Medizinisches — von der KI vorformuliert und als PDF geteilt.',
           points: ['Blöcke Anwesenheit, Belastung, Medizinisches', 'Erster Entwurf von der KI', 'PDF-Export'],
+        },
+        {
+          slug: 'player-app',
+          title: 'Die App Ihrer Spieler',
+          text: 'Ihre Spieler bekommen eine iOS- und Android-App: Aufstellungen, Wohlbefindens-Check-ins, ein persönliches Programm und Statistiken — die Schleife, die Sie starten, schließt sich von selbst.',
+          points: ['Wohlbefindens-Check-ins', 'Persönliches Programm & Statistiken', 'KI-Coach als Begleiter'],
         },
       ],
     },
@@ -3029,6 +3380,115 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
         finalCta: {
           title: 'Bei der nächsten Sitzung liegt die Arbeit des Staffs auf dem Tisch.',
           body: 'Erstellen Sie Ihr Team kostenlos — Berichte, PDF-Export und KI-Assistent inklusive.',
+          cta: 'Kostenlos starten',
+        },
+      },
+
+      'player-app': {
+        meta: {
+          title: 'Die Spieler-App für iOS & Android | STRIVN',
+          description:
+            'Ihre Spieler bekommen eine native iOS- und Android-App: Aufstellungen, Wohlbefindens-Check-ins, ein persönliches Programm, Statistiken und einen KI-Coach als Begleiter. Im App Store und bei Google Play — kostenlos für Ihre Spieler.',
+        },
+        eyebrow: 'Die App Ihrer Spieler',
+        hero: {
+          title: 'Was Ihre Spieler bekommen.',
+          lede: 'Eine native iOS- und Android-App, kostenlos für sie: Sie antworten auf Aufstellungen, füllen ihren Wohlbefindens-Check-in aus, folgen ihrem Programm und ihren Statistiken. Die Schleife, die Sie auf Staff-Seite starten, schließt sich in ihrer Hosentasche — ohne Nachfassen.',
+          primaryCta: 'Kostenlos starten',
+          reassurance: 'Kostenlos für ein Team · keine Freigabe des Vereins nötig · in Minuten bereit',
+        },
+        benefits: {
+          title: 'Sie starten die Schleife. Die App schließt sie.',
+          items: [
+            {
+              title: 'Die iOS- und Android-App Ihrer Spieler',
+              text: 'Eine native App, verfügbar im App Store und bei Google Play, kostenlos für Ihre Spieler. Aufstellungen, Kalender, Nachrichten: Was Sie senden, kommt dort an, wo sie ohnehin hinschauen — auf ihrem Handy.',
+            },
+            {
+              title: 'Check-ins und Form, ohne Nachfassen',
+              text: 'Schlaf, Müdigkeit, Stimmung, Muskelkater: Der Spieler füllt seinen Check-in morgens in Sekunden aus. Sie sehen die Form der Gruppe vor dem Training — ohne eine einzige Nachricht zu schicken.',
+            },
+            {
+              title: 'Persönliches Programm und Statistiken in der Tasche',
+              text: 'Jeder Spieler findet sein individuelles Programm, hakt ab, was er gemacht hat, und verfolgt seine eigenen Zahlen: Anwesenheit, Belastung, Fortschritt. Was Sie planen, verfolgt sich von selbst.',
+            },
+            {
+              title: 'Ein KI-Coach als Begleiter, in Ihrem Rahmen',
+              text: 'Zwischen zwei Trainings kann der Spieler seine Fragen einem KI-Coach stellen, der im Rahmen antwortet, den Sie setzen — Ihre Vorgaben, sein Programm, seine Belastung. Nie an Ihrer Stelle.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'In der Hosentasche Ihrer Spieler',
+            blurb: 'Der Kalender, der Morgen-Check-in und die Form: was der Spieler sieht, so wie er es sieht.',
+            slides: [
+              {
+                img: '/screenshots/portal-agenda.png',
+                kind: 'mobile',
+                alt: 'Der Kalender des Spielers auf dem Handy: die nächsten Termine mit Antwort-Buttons zur Aufstellung.',
+                caption: 'Die Aufstellung kommt in der App an — der Spieler antwortet mit einem Tipp.',
+              },
+              {
+                img: '/screenshots/portal-checkin.png',
+                kind: 'mobile',
+                alt: 'Der Wohlbefindens-Check-in des Spielers auf dem Handy: Schlaf, Müdigkeit, Stimmung und Muskelkater.',
+                caption: 'Der Morgen-Check-in: ein paar Regler, ein paar Sekunden.',
+              },
+              {
+                img: '/screenshots/portal-fitness.png',
+                kind: 'mobile',
+                alt: 'Der Form-Bildschirm des Spielers auf dem Handy: die jüngste Belastung und der Verlauf seiner Form.',
+                caption: 'Der Spieler verfolgt seine Form und seine Belastung — dieselben Zahlen wie Sie.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'So funktioniert es',
+          steps: [
+            {
+              title: 'Laden Sie den Spieler ein',
+              text: 'Aus Ihrem Kader heraus bekommt jeder Spieler seine Einladung und installiert die App in zwei Minuten — über den App Store oder Google Play.',
+            },
+            {
+              title: 'Er antwortet und füllt aus, in der App',
+              text: 'Aufstellungen, Check-ins, Programm: Der Spieler erledigt seinen Teil vom Handy aus, wann es ihm passt.',
+            },
+            {
+              title: 'Sie sehen alles ankommen',
+              text: 'Anwesenheit aktuell, Form der Gruppe, verfolgte Programme: Auf Staff-Seite füllt sich alles in Echtzeit — ohne Nachfassen.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Häufige Fragen',
+          items: [
+            {
+              question: 'Ist die App für iOS und Android verfügbar?',
+              answer:
+                'Ja. STRIVN Player ist eine native App, verfügbar im App Store (iOS) und bei Google Play (Android). Der Spieler installiert sie in zwei Minuten über seine Einladung.',
+            },
+            {
+              question: 'Muss der Spieler etwas bezahlen?',
+              answer:
+                'Nein. Die App ist für Ihre Spieler kostenlos: Sie laden sie herunter und nutzen sie, ohne etwas zu bezahlen. Sie führen das Team — die Spieler müssen nur antworten.',
+            },
+            {
+              question: 'Und die WHOOP?',
+              answer:
+                'Der Spieler kann seine WHOOP verbinden, um seine Check-ins mit Schlaf und Erholung vorzubefüllen — je nach Formel Ihres Vereins. Ohne Wearable dauert der manuelle Check-in ein paar Sekunden.',
+            },
+            {
+              question: 'Und bei Jugendspielern?',
+              answer:
+                'Der Jugendmodus passt die App an: KI-Coach und Strafkasse werden ausgeblendet, und die Eltern behalten ihren Platz in der Schleife. Unsere Seite zu Jugendteams erklärt die Details.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Ihre Spieler machen ihren Teil. Sie sehen es ankommen.',
+          body: 'Erstellen Sie Ihr Team kostenlos und laden Sie Ihre Spieler ein — die STRIVN-Player-App wartet im App Store und bei Google Play auf sie.',
           cta: 'Kostenlos starten',
         },
       },
