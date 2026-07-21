@@ -4,11 +4,30 @@ export type FeatureSlug = 'communication' | 'medical' | 'training-load' | 'sessi
 
 export const FEATURE_SLUGS: FeatureSlug[] = ['communication', 'medical', 'training-load', 'sessions'];
 
+/** Mirrors the `Slide` shape in scContent.ts — exported so a later unit can unify the two. */
+export type Slide = {
+  img: string;
+  /** Optional video base path (without extension); .mp4 + .webm are loaded, img is the poster. */
+  video?: string;
+  kind: 'desktop' | 'mobile';
+  alt: string;
+  caption: string;
+};
+
+/** Mirrors the `Showcase` shape in scContent.ts — exported so a later unit can unify the two. */
+export type Showcase = {
+  title: string;
+  blurb: string;
+  slides: Slide[];
+};
+
 type FeatureContent = {
   meta: { title: string; description: string };
   eyebrow: string;
   hero: { title: string; lede: string; primaryCta: string; reassurance: string };
   benefits: { title: string; items: Array<{ title: string; text: string }> };
+  /** Optional real-app screenshot carousels, rendered between benefits and how. */
+  showcase?: Showcase[];
   how: { title: string; steps: Array<{ title: string; text: string }> };
   faq: { title: string; items: Array<{ question: string; answer: string }> };
   finalCta: { title: string; body: string; cta: string };
