@@ -17,24 +17,28 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     medical: 'Illustration : un dossier blessure avec retour au jeu par étapes et notes du staff.',
     'training-load': 'Illustration : un tableau de charge hebdomadaire avec RPE et signaux ACWR.',
     sessions: 'Illustration : un plan de séance en quatre ateliers minutés.',
+    live: 'Illustration : un match en direct avec le score, les buts minute par minute et le nombre de personnes qui suivent via le lien public.',
   },
   en: {
     communication: 'Illustration: a call-up message with player replies and a live attendance tally.',
     medical: 'Illustration: an injury record with staged return-to-play and staff notes.',
     'training-load': 'Illustration: a weekly load table with RPE values and ACWR risk flags.',
     sessions: 'Illustration: a session plan with four timed drill phases.',
+    live: 'Illustration: a live match panel with the score, goals minute by minute and the number of people following through the public link.',
   },
   nl: {
     communication: 'Illustratie: een oproeping met de antwoorden van de spelers en een live aanwezigheidsteller.',
     medical: 'Illustratie: een blessuredossier met gefaseerde return-to-play en notities van de staf.',
     'training-load': 'Illustratie: een weektabel van de belasting met RPE-waarden en ACWR-signalen.',
     sessions: 'Illustratie: een trainingsplan met vier getimede oefenblokken.',
+    live: 'Illustratie: een livewedstrijd met de score, de doelpunten minuut per minuut en het aantal mensen dat via de publieke link meevolgt.',
   },
   de: {
     communication: 'Illustration: eine Aufstellung mit den Antworten der Spieler und einer Live-Anwesenheitszählung.',
     medical: 'Illustration: eine Verletzungsakte mit stufenweisem Return-to-Play und Notizen des Staffs.',
     'training-load': 'Illustration: eine Wochentabelle der Belastung mit RPE-Werten und ACWR-Signalen.',
     sessions: 'Illustration: ein Trainingsplan mit vier getimten Übungsblöcken.',
+    live: 'Illustration: ein Live-Spiel mit Spielstand, Toren Minute für Minute und der Zahl der Personen, die über den öffentlichen Link mitverfolgen.',
   },
 };
 const ariaLabels = ariaLabelsByLocale[locale];
@@ -46,31 +50,97 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     medical: { tone: 'watch', text: 'Réathlétisation · J+9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — alléger vendredi' },
     sessions: { tone: 'info', text: 'Ajustée à la charge du groupe' },
+    live: { tone: 'ok', text: '14 suivent via le lien public' },
   },
   en: {
     communication: { tone: 'ok', text: 'L. Moreau — In · 6:09pm' },
     medical: { tone: 'watch', text: 'Reconditioning · day 9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — lighten Friday' },
     sessions: { tone: 'info', text: 'Tuned to the squad’s load' },
+    live: { tone: 'ok', text: '14 watching via the public link' },
   },
   nl: {
     communication: { tone: 'ok', text: 'L. Moreau — Aanwezig · 18u09' },
     medical: { tone: 'watch', text: 'Revalidatie · dag 9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — vrijdag verlichten' },
     sessions: { tone: 'info', text: 'Afgestemd op de belasting van de groep' },
+    live: { tone: 'ok', text: '14 volgen via de publieke link' },
   },
   de: {
     communication: { tone: 'ok', text: 'L. Moreau — Dabei · 18:09' },
     medical: { tone: 'watch', text: 'Reha · Tag 9' },
     'training-load': { tone: 'risk', text: 'ACWR 1.32 — Freitag reduzieren' },
     sessions: { tone: 'info', text: 'Auf die Belastung der Gruppe abgestimmt' },
+    live: { tone: 'ok', text: '14 folgen über den öffentlichen Link' },
   },
 };
 const chip = chipsByLocale[locale][slug];
+
+/** Sample match panel for the `live` slug — decorative data, no landingContent entry exists for it. */
+type LiveSample = {
+  badge: string;
+  minute: string;
+  home: string;
+  away: string;
+  score: string;
+  events: Array<{ min: string; text: string }>;
+};
+const liveByLocale: Record<Locale, LiveSample> = {
+  fr: {
+    badge: 'EN DIRECT',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'But · N. Carvalho' },
+      { min: '38’', text: 'But · FC Boisval' },
+      { min: '57’', text: 'But · Y. Benali' },
+    ],
+  },
+  en: {
+    badge: 'LIVE',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'Goal · N. Carvalho' },
+      { min: '38’', text: 'Goal · FC Boisval' },
+      { min: '57’', text: 'Goal · Y. Benali' },
+    ],
+  },
+  nl: {
+    badge: 'LIVE',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'Doelpunt · N. Carvalho' },
+      { min: '38’', text: 'Doelpunt · FC Boisval' },
+      { min: '57’', text: 'Doelpunt · Y. Benali' },
+    ],
+  },
+  de: {
+    badge: 'LIVE',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'Tor · N. Carvalho' },
+      { min: '38’', text: 'Tor · FC Boisval' },
+      { min: '57’', text: 'Tor · Y. Benali' },
+    ],
+  },
+};
+
 const com = c.communication.proof;
 const med = c.medical.record;
 const load = c.load.table;
 const board = c.sessions.board;
+const live = liveByLocale[locale];
 ---
 
 <div class="fv" role="img" aria-label={ariaLabels[slug]}>
@@ -209,6 +279,28 @@ const board = c.sessions.board;
       </div>
     )}
 
+    {slug === 'live' && (
+      <div class="s-proof">
+        <div class="fv-live__head">
+          <span class="fv-live__badge">{live.badge}</span>
+          <span class="fv-live__minute">{live.minute}</span>
+        </div>
+        <p class="fv-live__score">
+          <span class="fv-live__team">{live.home}</span>
+          <span class="fv-live__nums">{live.score}</span>
+          <span class="fv-live__team fv-live__team--away">{live.away}</span>
+        </p>
+        <ul class="fv-live__events">
+          {live.events.map((event) => (
+            <li class="fv-live__event">
+              <span class="fv-live__event-min">{event.min}</span>
+              <span class="fv-live__event-text">{event.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
     <span class={`fv__chip fv__chip--${chip.tone}`}>{chip.text}</span>
   </div>
 </div>
@@ -277,6 +369,86 @@ const board = c.sessions.board;
 
   .fv__chip--info::before {
     background: var(--electric-500);
+  }
+
+  .fv-live__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+  }
+
+  .fv-live__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+  }
+
+  .fv-live__badge::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--risk);
+  }
+
+  .fv-live__minute {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    color: var(--ink-3);
+  }
+
+  .fv-live__score {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin: 0 0 var(--space-md);
+  }
+
+  .fv-live__team {
+    min-width: 0;
+    font-weight: 600;
+  }
+
+  .fv-live__team--away {
+    text-align: right;
+  }
+
+  .fv-live__nums {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .fv-live__events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fv-live__event {
+    display: flex;
+    gap: var(--space-sm);
+    padding-block: var(--space-xs);
+    border-top: 1px solid var(--rule);
+    font-size: var(--text-sm);
+  }
+
+  .fv-live__event-min {
+    flex: none;
+    font-family: var(--font-mono);
+    color: var(--ink-3);
+  }
+
+  .fv-live__event-text {
+    color: var(--ink-2);
   }
 
   @media (max-width: 40rem) {
