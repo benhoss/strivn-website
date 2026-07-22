@@ -483,6 +483,10 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
 
       'live-session': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-coach/id6789923213',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.coach',
+        },
         meta: {
           title: 'Séance en direct sur le terrain | STRIVN',
           description:
@@ -1451,6 +1455,10 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
 
       'live-session': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-coach/id6789923213',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.coach',
+        },
         meta: {
           title: 'Live session on the pitch | STRIVN',
           description:
@@ -2419,6 +2427,10 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
 
       'live-session': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-coach/id6789923213',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.coach',
+        },
         meta: {
           title: 'Live training langs het veld | STRIVN',
           description:
@@ -3387,6 +3399,10 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
 
       'live-session': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-coach/id6789923213',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.coach',
+        },
         meta: {
           title: 'Training live an der Seitenlinie | STRIVN',
           description:

@@ -185,9 +185,23 @@ type LandingContent = {
     brandLine: string;
     email: string;
     links: Array<{ label: string; href: string }>;
+    /** Mobile apps row: one line per app, each with its two store links. */
+    apps: { title: string; rows: Array<{ label: string; appStore: string; playStore: string }> };
     credit: string;
   };
 };
+
+/** Verified store listings — reused by the footer and the feature pages. */
+export const STORE_LINKS = {
+  coach: {
+    appStore: 'https://apps.apple.com/be/app/strivn-coach/id6789923213',
+    playStore: 'https://play.google.com/store/apps/details?id=net.strivn.coach',
+  },
+  player: {
+    appStore: 'https://apps.apple.com/be/app/strivn-player/id6779121691',
+    playStore: 'https://play.google.com/store/apps/details?id=net.strivn.player',
+  },
+} as const;
 
 export const APP_URL = 'https://app.strivn.net';
 
@@ -534,6 +548,13 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Support', href: '/fr/support' },
         { label: 'Confidentialité', href: '/fr/privacy' },
       ],
+      apps: {
+        title: 'Applications mobiles',
+        rows: [
+          { label: 'STRIVN Coach', appStore: STORE_LINKS.coach.appStore, playStore: STORE_LINKS.coach.playStore },
+          { label: 'STRIVN Player', appStore: STORE_LINKS.player.appStore, playStore: STORE_LINKS.player.playStore },
+        ],
+      },
       credit: '© 2026 STRIVN · Gratuit pour les coaches, bientôt pour les clubs',
     },
   },
@@ -880,6 +901,13 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Support', href: '/en/support' },
         { label: 'Privacy', href: '/en/privacy' },
       ],
+      apps: {
+        title: 'Mobile apps',
+        rows: [
+          { label: 'STRIVN Coach', appStore: STORE_LINKS.coach.appStore, playStore: STORE_LINKS.coach.playStore },
+          { label: 'STRIVN Player', appStore: STORE_LINKS.player.appStore, playStore: STORE_LINKS.player.playStore },
+        ],
+      },
       credit: '© 2026 STRIVN · Free for coaches, clubs coming soon',
     },
   },
@@ -1226,6 +1254,13 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Support', href: '/nl/support' },
         { label: 'Privacy', href: '/nl/privacy' },
       ],
+      apps: {
+        title: 'Mobiele apps',
+        rows: [
+          { label: 'STRIVN Coach', appStore: STORE_LINKS.coach.appStore, playStore: STORE_LINKS.coach.playStore },
+          { label: 'STRIVN Player', appStore: STORE_LINKS.player.appStore, playStore: STORE_LINKS.player.playStore },
+        ],
+      },
       credit: '© 2026 STRIVN · Gratis voor coaches, clubs binnenkort',
     },
   },
@@ -1572,6 +1607,13 @@ export const landingContent: Record<Locale, LandingContent> = {
         { label: 'Support', href: '/de/support' },
         { label: 'Datenschutz', href: '/de/privacy' },
       ],
+      apps: {
+        title: 'Mobile Apps',
+        rows: [
+          { label: 'STRIVN Coach', appStore: STORE_LINKS.coach.appStore, playStore: STORE_LINKS.coach.playStore },
+          { label: 'STRIVN Player', appStore: STORE_LINKS.player.appStore, playStore: STORE_LINKS.player.playStore },
+        ],
+      },
       credit: '© 2026 STRIVN · Kostenlos für Coaches, Vereine bald',
     },
   },

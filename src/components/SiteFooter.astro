@@ -8,6 +8,7 @@ interface Props {
     brandLine: string;
     email: string;
     links: Array<{ label: string; href: string }>;
+    apps: { title: string; rows: Array<{ label: string; appStore: string; playStore: string }> };
     credit: string;
   };
 }
@@ -30,6 +31,18 @@ const { footer } = Astro.props;
         ))}
         <li><a href={`mailto:${footer.email}`}>{footer.email}</a></li>
       </ul>
+      <div class="s-footer__apps">
+        <p class="s-footer__apps-title">{footer.apps.title}</p>
+        <ul class="s-footer__apps-list">
+          {footer.apps.rows.map((app) => (
+            <li>
+              <span class="s-footer__apps-name">{app.label}</span>
+              <a href={app.appStore} target="_blank" rel="noopener">App Store</a>
+              <a href={app.playStore} target="_blank" rel="noopener">Google Play</a>
+            </li>
+          ))}
+        </ul>
+      </div>
       <span class="s-footer__credit">{footer.credit}</span>
     </div>
   </div>
