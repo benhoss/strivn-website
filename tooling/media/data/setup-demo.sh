@@ -13,7 +13,10 @@ PG="${STRIVN_PG_CONTAINER:-${PREFIX:+${PREFIX}-postgres-1}}"; PG="${PG:-p3rform-
 LANG_="${1:-fr}"
 echo "using containers: app=$APP pg=$PG"
 
-psql() { docker exec -i "$PG" psql -U p3rform -d p3rform "$@"; }
+# ON_ERROR_STOP: psql otherwise reports a failed statement and carries on, so a
+# broken seed still exits 0 and looks like a successful run. The teams probe
+# below opts out via its own || fallback (an empty DB has no teams table yet).
+psql() { docker exec -i "$PG" psql -U p3rform -d p3rform -v ON_ERROR_STOP=1 "$@"; }
 artisan() { docker exec "$APP" php artisan "$@"; }
 
 # 1. Base demo data — only if the DB is empty (the seeder isn't fully idempotent).
