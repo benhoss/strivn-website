@@ -1772,6 +1772,9 @@ a {
 }
 
 .s-footer__apps-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
   color: var(--ink-2);
   text-decoration: none;
   white-space: nowrap;
@@ -1779,6 +1782,11 @@ a {
 
 .s-footer__apps-list a:hover {
   color: var(--ink);
+}
+
+.s-footer__store-ico {
+  flex: none;
+  display: block;
 }
 
 .s-footer__credit {
