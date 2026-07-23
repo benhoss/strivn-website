@@ -32,6 +32,22 @@ FROM latest
 WHERE ce.team_id = 1 AND latest.m IS NOT NULL;
 
 -- ── Rebuild the planned week (drop first so this is idempotent) ──
+-- live_session_blocks.planned_slot_id is RESTRICT (the DB backstop that keeps a
+-- scored block from losing the plan it reports against), so any live run pins
+-- its week's slots and makes the DELETE below fail. This is NOT rare residue
+-- from a full runner capture: a 'pending' run is pre-minted at bootstrap, so
+-- merely opening next-session (nextsession-shot.mjs) re-creates the pin — it
+-- comes back on nearly every capture batch. Team 1's runs are always capture
+-- residue, never a fixture: the runner shots drive the app to create their own
+-- run, and live_sessions is UNIQUE on calendar_event_id, so leaving a stale run
+-- in place would block the next capture too.
+-- Guarded for DBs that predate the live-session feature (2026_07_06 migration).
+DO $$ BEGIN
+  IF to_regclass('public.live_sessions') IS NOT NULL THEN
+    DELETE FROM live_sessions WHERE team_id = 1;        -- cascades blocks/teams/attendances/events
+  END IF;
+END $$;
+
 DELETE FROM planned_weeks WHERE team_id = 1;            -- cascades planned_slots
 
 -- Two load categories, addressed BY NAME (ids differ across DBs). Normalize any
