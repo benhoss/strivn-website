@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="color-scheme" content="dark">
+  <meta name="supported-color-schemes" content="dark">
+  <title>Le GPS a enfin son module</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <style>
+    body,table,td,a{ -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+    table,td{ mso-table-lspace:0pt; mso-table-rspace:0pt; }
+    img{ -ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
+    table{ border-collapse:collapse !important; }
+    body{ margin:0 !important; padding:0 !important; width:100% !important; background:#050610; }
+    a{ color:#4f94fb; }
+    @media screen and (max-width:600px){
+      .container{ width:100% !important; }
+      .px{ padding-left:24px !important; padding-right:24px !important; }
+      .h1{ font-size:27px !important; line-height:33px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background:#050610;">
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all; font-size:1px; line-height:1px; color:#050610;">
+    Le GPS a son module : imports, analyse, comparaisons et benchmarks réunis. Cibles par joueur, charge interne/externe, et vos rapports qui s'enrichissent.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#050610" style="background:#050610;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+
+          <!-- Logo -->
+          <tr>
+            <td align="center" style="padding:8px 0 26px 0;">
+              <img src="https://strivn.net/strivn-logo-full-white-web.png" width="124" alt="Strivn" style="display:block; width:124px; max-width:124px; height:auto;">
+            </td>
+          </tr>
+
+          <tr>
+            <td style="background:#0b0f20; border:1px solid rgba(79,148,251,0.18); border-radius:20px; overflow:hidden;">
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td height="4" style="height:4px; font-size:0; line-height:0; background:#2d7ff9; background:linear-gradient(90deg,#2d7ff9 0%,#4f94fb 50%,#7db3ff 100%);">&nbsp;</td></tr>
+              </table>
+
+              <!-- En-tête -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:40px 48px 0 48px;">
+                    <p style="margin:0 0 14px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; font-weight:700; letter-spacing:2px; color:#7db3ff; text-transform:uppercase;">Nouveau &middot; Module GPS</p>
+                    <h1 class="h1" style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:30px; line-height:37px; font-weight:800; color:#f8fafc; letter-spacing:-0.4px;">
+                      Le GPS a enfin son module
+                    </h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px" style="padding:18px 48px 0 48px;">
+                    <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:16px; line-height:25px; color:#b5c2d7;">Hello ! Cette semaine, tout ce qui touche au GPS déménage dans un espace dédié — et gagne au passage cibles, comparaisons et benchmarks 👇</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Compatibilité capteurs -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:28px 48px 0 48px;">
+                    <p style="margin:0 0 12px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; font-weight:700; letter-spacing:1.5px; color:#7d8aa3; text-transform:uppercase;">Compatible avec vos capteurs</p>
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="25%" style="padding:0 6px 0 0;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:10px;">
+                            <tr><td align="center" style="padding:14px 4px; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; font-weight:800; color:#e5ebf5; white-space:nowrap;">Statsports</td></tr>
+                          </table>
+                        </td>
+                        <td width="25%" style="padding:0 6px;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:10px;">
+                            <tr><td align="center" style="padding:16px 4px;"><img src="https://strivn.net/partners/catapult.png" width="77" height="20" alt="Catapult" style="display:block; width:77px; height:20px;"></td></tr>
+                          </table>
+                        </td>
+                        <td width="25%" style="padding:0 6px;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff; border:1px solid rgba(255,255,255,0.12); border-radius:10px;">
+                            <tr><td align="center" style="padding:16px 4px;"><img src="https://strivn.net/partners/hudl.png" width="61" height="20" alt="Hudl" style="display:block; width:61px; height:20px;"></td></tr>
+                          </table>
+                        </td>
+                        <td width="25%" style="padding:0 0 0 6px;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:10px;">
+                            <tr><td align="center" style="padding:20px 4px;"><img src="https://strivn.net/partners/oliver-sports.png" width="110" height="12" alt="Oliver Sports" style="display:block; width:110px; height:12px;"></td></tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                    <p style="margin:10px 0 0 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; line-height:16px; color:#566177;">Les marques citées appartiennent à leurs propriétaires respectifs.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Vedette : un seul endroit -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:22px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(45,127,249,0.07); border:1px solid rgba(79,148,251,0.18); border-radius:14px;">
+                      <tr>
+                        <td style="padding:24px 24px 22px 24px;">
+                          <p style="margin:0 0 8px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:19px; font-weight:800; color:#f8fafc;">🛰️ Toutes vos données GPS, un seul endroit</p>
+                          <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; line-height:23px; color:#b5c2d7;">
+                            Fini les données GPS éparpillées entre la fiche joueur et la planification de charge. Un nouvel onglet <strong style="color:#f8fafc;">GPS</strong> dans le menu réunit <strong style="color:#f8fafc;">Analyse</strong>, <strong style="color:#f8fafc;">Imports</strong>, <strong style="color:#f8fafc;">Comparaisons</strong>, <strong style="color:#f8fafc;">Benchmarks</strong> et <strong style="color:#f8fafc;">Paramètres</strong>. L'onglet Analyse ouvre sur l'état de votre effectif : distance par zone de vitesse à la dernière séance, face à la cible de chaque joueur — vert dans la cible, orange en dessous, rouge au-dessus — avec un badge <strong style="color:#f8fafc;">ACWR</strong> par joueur.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" align="center" style="padding:18px 48px 0 48px;">
+                    <img src="https://strivn.net/screenshots/gps-squad-fr.png" width="504" alt="GPS — état de l'effectif : distance par zone vs la cible de chaque joueur, ACWR par joueur" style="display:block; width:100%; max-width:504px; height:auto; border-radius:10px; border:1px solid rgba(255,255,255,0.10);">
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Pourquoi centraliser dans Strivn -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:26px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d1326; border:1px solid rgba(255,255,255,0.10); border-radius:14px;">
+                      <tr>
+                        <td style="padding:22px 24px 6px 24px;">
+                          <p style="margin:0 0 4px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:17px; font-weight:800; color:#f8fafc;">Pourquoi pas juste rester dans l'appli de votre capteur ?</p>
+                          <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#9fb0c9;">Parce qu'un GPS seul ne raconte qu'une partie de l'histoire.</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:14px 24px 4px 24px;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td width="30" valign="top" style="padding-top:2px; font-size:16px;">🔗</td>
+                              <td valign="top" style="padding-left:10px; padding-bottom:14px;">
+                                <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#cdd8ea;"><strong style="color:#f8fafc;">Le GPS rejoint tout le reste.</strong> Distance et vitesse ne veulent rien dire seules : dans Strivn, elles se combinent au ressenti (sRPE), au wellness, aux présences et aux stats de match — dans le même ACWR, le même rapport. Votre plateforme GPS ne voit que le GPS.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="30" valign="top" style="padding-top:2px; font-size:16px;">📲</td>
+                              <td valign="top" style="padding-left:10px; padding-bottom:14px;">
+                                <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#cdd8ea;"><strong style="color:#f8fafc;">Vos joueurs voient leurs propres données.</strong> Aucune appli GPS ne parle à vos joueurs. Dans Strivn, chacun retrouve ses tendances dans son portail — sans export, sans copier-coller.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="30" valign="top" style="padding-top:2px; font-size:16px;">🗂️</td>
+                              <td valign="top" style="padding-left:10px; padding-bottom:4px;">
+                                <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#cdd8ea;"><strong style="color:#f8fafc;">Un historique qui survit au matériel.</strong> Changez de capteur, de marque ou de saison : vos cibles et votre historique restent dans Strivn, quel que soit le boîtier porté sur le terrain.</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Séparateur -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:30px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="height:1px; font-size:0; line-height:0; background:rgba(255,255,255,0.08);">&nbsp;</td></tr></table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Bloc : cibles par joueur -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:26px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="44" valign="top"><table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td width="36" height="36" align="center" valign="middle" style="width:36px; height:36px; background:rgba(45,127,249,0.14); border-radius:10px; font-size:18px;">🎯</td></tr></table></td>
+                        <td valign="top" style="padding-left:14px;">
+                          <p style="margin:0 0 3px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:16px; font-weight:700; color:#f8fafc;">Des cibles par joueur, par poste, par équipe</p>
+                          <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#9fb0c9;">Chaque métrique GPS a sa <strong style="color:#cdd8ea;">cible</strong> : définie pour l'équipe, affinée par poste, ajustée joueur par joueur si besoin. Course haute vitesse, sprint, distance aérobie — vos joueurs voient leur zone du jour face à leur propre objectif, séance après séance.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" align="center" style="padding:18px 48px 0 48px;">
+                    <img src="https://strivn.net/screenshots/gps-player-fr.png" width="504" alt="Cibles GPS d'un joueur, par bloc et par métrique, avec l'évolution sur la saison" style="display:block; width:100%; max-width:504px; height:auto; border-radius:10px; border:1px solid rgba(255,255,255,0.10);">
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Bloc : charge interne / externe -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:26px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="44" valign="top"><table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td width="36" height="36" align="center" valign="middle" style="width:36px; height:36px; background:rgba(45,127,249,0.14); border-radius:10px; font-size:18px;">⚖️</td></tr></table></td>
+                        <td valign="top" style="padding-left:14px;">
+                          <p style="margin:0 0 3px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:16px; font-weight:700; color:#f8fafc;">Charge interne et externe, sur un même graphique</p>
+                          <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#9fb0c9;">Un nouveau <strong style="color:#cdd8ea;">ratio</strong> confronte vos données GPS (charge externe) au ressenti de vos joueurs (sRPE, charge interne) — avec une alerte dès que les deux se <strong style="color:#cdd8ea;">découplent</strong>, signe à surveiller avant la blessure.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Bloc : imports -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:18px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="44" valign="top"><table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td width="36" height="36" align="center" valign="middle" style="width:36px; height:36px; background:rgba(45,127,249,0.14); border-radius:10px; font-size:18px;">📥</td></tr></table></td>
+                        <td valign="top" style="padding-left:14px;">
+                          <p style="margin:0 0 3px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:16px; font-weight:700; color:#f8fafc;">Un hub Imports qui priorise</p>
+                          <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#9fb0c9;">Toutes vos séances et matchs, classés par ce qui reste à faire : <strong style="color:#cdd8ea;">import en attente</strong>, <strong style="color:#cdd8ea;">mapping à confirmer</strong>, <strong style="color:#cdd8ea;">échec à corriger</strong>. Fini de chercher quelle séance n'a pas encore ses données.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Bloc : comparaisons & benchmarks -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:18px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="44" valign="top"><table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td width="36" height="36" align="center" valign="middle" style="width:36px; height:36px; background:rgba(45,127,249,0.14); border-radius:10px; font-size:18px;">🔍</td></tr></table></td>
+                        <td valign="top" style="padding-left:14px;">
+                          <p style="margin:0 0 3px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:16px; font-weight:700; color:#f8fafc;">Comparaisons et benchmarks</p>
+                          <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#9fb0c9;">Confrontez deux séances ou deux joueurs, ou situez un joueur face à son poste. Le nouveau panneau <strong style="color:#cdd8ea;">Benchmarks</strong> affiche, pour chaque métrique : dernière valeur, référence perso sur 28 jours, cible fixée et niveau du poste.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Bloc : rapports -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:18px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="44" valign="top"><table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td width="36" height="36" align="center" valign="middle" style="width:36px; height:36px; background:rgba(45,127,249,0.14); border-radius:10px; font-size:18px;">📊</td></tr></table></td>
+                        <td valign="top" style="padding-left:14px;">
+                          <p style="margin:0 0 3px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:16px; font-weight:700; color:#f8fafc;">Le GPS nourrit vos rapports</p>
+                          <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#9fb0c9;">Distance, sprints, ratio de charge : ces métriques rejoignent désormais le <strong style="color:#cdd8ea;">générateur de rapports</strong>, prêtes à croiser avec vos stats de match, votre wellness et vos disponibilités.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              </table>
+
+              <!-- Et aussi -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:26px 48px 0 48px;">
+                    <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:22px; color:#9fb0c9;"><strong style="color:#cdd8ea;">Et aussi :</strong> des <strong style="color:#f8fafc;">bandes de vitesse configurables</strong> par sport, l'entrée <strong style="color:#f8fafc;">GPS</strong> dans le menu mobile, et des graphiques repensés sur tout le module.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Bloc documentation -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:30px 48px 0 48px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(45,127,249,0.08); border:1px solid rgba(79,148,251,0.18); border-radius:14px;">
+                      <tr>
+                        <td style="padding:22px 24px;">
+                          <p style="margin:0 0 6px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:17px; font-weight:800; color:#f8fafc;">📚 Besoin d'un coup de main ?</p>
+                          <p style="margin:0 0 18px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:22px; color:#b5c2d7;">Le guide du module GPS — cibles, imports, comparaisons — est sur <strong style="color:#f8fafc;">docs.strivn.net</strong>.</p>
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="border-radius:10px; background:#2d7ff9; background:linear-gradient(90deg,#2d7ff9 0%,#4f94fb 100%);">
+                                <a href="https://docs.strivn.net" target="_blank" style="display:inline-block; padding:12px 22px; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; font-weight:700; color:#ffffff; text-decoration:none;">Ouvrir la documentation →</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Signature -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="px" style="padding:32px 48px 44px 48px;">
+                    <p style="margin:0 0 14px 0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; line-height:23px; color:#c4d0e2;">Bonne journée,<br><strong style="color:#f8fafc;">Benoit</strong></p>
+                    <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:22px; color:#9fb0c9;">Une question ? Écrivez-moi à <a href="mailto:hello@strivn.net" style="color:#7db3ff; text-decoration:none;">hello@strivn.net</a>.</p>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding:26px 24px 8px 24px;">
+              <p style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:18px; color:#566177;">
+                <a href="https://strivn.net" target="_blank" style="color:#7db3ff; text-decoration:none;">strivn.net</a>
+                &nbsp;&middot;&nbsp; Vous recevez cet email en tant qu'utilisateur de Strivn.
+                <br><a href="[[UNSUB_LINK_FR]]" target="_blank" style="color:#566177; text-decoration:underline;">Se désabonner</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
