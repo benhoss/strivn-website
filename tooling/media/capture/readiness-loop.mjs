@@ -14,7 +14,7 @@
 import { mkdirSync, renameSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { execSync } from 'node:child_process';
-import { DIR, BASE, TEAM, VIEWPORT, COACH, PLAYER } from '../config.mjs';
+import { DIR, BASE, TEAM, VIEWPORT, COACH, PLAYER, browserLocale } from '../config.mjs';
 import { chromium, go, dismissBanner, overlays } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -45,7 +45,7 @@ const playerLogin = async (page, l = lang) => {
 // ── 1. Player check-in (mobile) ──
 const mobile = await chromium.launch();
 const mRecStart = Date.now();
-const mCtx = await mobile.newContext({ viewport: { width: VIEWPORT.mobile.width, height: VIEWPORT.mobile.height }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 1, isMobile: true, hasTouch: true, recordVideo: { dir: RAW, size: { width: VIEWPORT.mobile.width, height: VIEWPORT.mobile.height } } });
+const mCtx = await mobile.newContext({ viewport: { width: VIEWPORT.mobile.width, height: VIEWPORT.mobile.height }, locale: browserLocale(lang), deviceScaleFactor: 1, isMobile: true, hasTouch: true, recordVideo: { dir: RAW, size: { width: VIEWPORT.mobile.width, height: VIEWPORT.mobile.height } } });
 const mPage = await mCtx.newPage();
 
 await playerLogin(mPage);
@@ -80,7 +80,7 @@ await mobile.close();
 // ── 2. Coach briefing + readiness (desktop) ──
 const desktop = await chromium.launch();
 const dRecStart = Date.now();
-const dCtx = await desktop.newContext({ viewport: { width: VIEWPORT.desktop.width, height: VIEWPORT.desktop.height }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 1, recordVideo: { dir: RAW, size: { width: VIEWPORT.desktop.width, height: VIEWPORT.desktop.height } } });
+const dCtx = await desktop.newContext({ viewport: { width: VIEWPORT.desktop.width, height: VIEWPORT.desktop.height }, locale: browserLocale(lang), deviceScaleFactor: 1, recordVideo: { dir: RAW, size: { width: VIEWPORT.desktop.width, height: VIEWPORT.desktop.height } } });
 const dPage = await dCtx.newPage();
 
 await coachLogin(dPage);

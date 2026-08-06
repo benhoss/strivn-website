@@ -4,7 +4,7 @@
 //        public/screenshots/portal-fitness-trends[-fr].png
 //   (EN = no suffix. Scope 'hub' captures only reports-hub + reports-selection.)
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, go, dismissBanner, playerLogin } from '../lib/browser.mjs';
 const COACH = { phone: process.env.STRIVN_COACH_PHONE || '+32470112233', password: process.env.STRIVN_COACH_PW || 'password' };
 const lang = process.argv[2] || 'fr';
@@ -15,7 +15,7 @@ const browser = await chromium.launch();
 
 // coach desktop: reports screens
 {
-  const ctx = await browser.newContext({ viewport: { width: 1440, height: 940 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2 });
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 940 }, locale: browserLocale(lang), deviceScaleFactor: 2 });
   const p = await ctx.newPage();
   await p.goto(`${BASE}/login?lang=${lang}`, { waitUntil: 'domcontentloaded' });
   try { await p.waitForLoadState('networkidle', { timeout: 8000 }); } catch {}
@@ -41,7 +41,7 @@ const browser = await chromium.launch();
 
 // player mobile: fitness page with personal load/readiness trends
 if (scope === 'all') {
-  const ctx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  const ctx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: browserLocale(lang), deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   const p = await ctx.newPage();
   await playerLogin(p, lang);
   try {

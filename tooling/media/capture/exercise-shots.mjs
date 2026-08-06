@@ -4,7 +4,7 @@
 //        public/screenshots/exercise-inbox-fr.png   (inbox triage)
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, go, dismissBanner } from '../lib/browser.mjs';
 
 const COACH = { phone: process.env.STRIVN_COACH_PHONE || '+32470112233', password: process.env.STRIVN_COACH_PW || 'password' };
@@ -35,7 +35,7 @@ const shot = (page, name, h) =>
       .then(() => console.log('  saved', name + sfx));
 
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2 });
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: browserLocale(lang), deviceScaleFactor: 2 });
 const coach = await ctx.newPage();
 await robustCoachLogin(coach, lang);
 

@@ -15,7 +15,7 @@
 import { execSync } from 'node:child_process';
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, playerLogin, go } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -94,7 +94,7 @@ console.log(`seeded stats for player ${PLAYER_ID} on events ${auroreAway}, ${riv
 
 // ── Capture (mobile portrait, same context as the other portal shots).
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+const ctx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: browserLocale(lang), deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const p = await ctx.newPage();
 await playerLogin(p, lang);
 console.log('stats', await go(p, `${BASE}/portal/stats?lang=${lang}`, 1800, 45000));

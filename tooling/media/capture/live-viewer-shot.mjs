@@ -22,7 +22,7 @@
 import { execSync } from 'node:child_process';
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, coachLogin, go } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -90,7 +90,7 @@ try {
   browser = await chromium.launch();
 
   // 2 ── coach: share link + kickoff + 2-1
-  const ctx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  const ctx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: browserLocale(lang), deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   const p = await ctx.newPage();
   await coachLogin(p, lang);
   const url = `${BASE}/teams/${TEAM}/next-session?event=${eventId}&lang=${lang}`;
@@ -182,7 +182,7 @@ try {
   console.log('stat line written:', stats.map(([t, s, c]) => `${t}/${s}=${c}`).join(' '));
 
   // 4 ── the parent's view: share URL, logged out, phone portrait
-  const pub = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  const pub = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: browserLocale(lang), deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   const v = await pub.newPage();
   console.log('viewer', await go(v, `${viewerUrl}?lang=${lang}`, 2200, 45000));
   await v.screenshot({ path: resolve(OUT, `live-viewer-phone${sfx}.png`), clip: { x: 0, y: 0, width: 402, height: 860 } });

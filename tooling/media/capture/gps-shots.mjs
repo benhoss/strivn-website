@@ -3,7 +3,7 @@
 // Usage: ./run.sh capture/gps-shots.mjs [fr|en]
 //   out: public/screenshots/gps-squad[-fr].png, public/screenshots/gps-player[-fr].png
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, coachLogin, go } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -11,7 +11,7 @@ const sfx = lang === 'en' ? '' : `-${lang}`;
 const OUT = DIR.screenshots;
 
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2 });
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: browserLocale(lang), deviceScaleFactor: 2 });
 const p = await ctx.newPage();
 await coachLogin(p, lang);
 

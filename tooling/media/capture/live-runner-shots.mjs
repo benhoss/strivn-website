@@ -4,7 +4,7 @@
 //   out: public/screenshots/live-runner-{phone,tablet}-{board,compo,score}[-fr].png
 //   (EN = no suffix; the optional 3rd arg limits the devices captured.)
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, go } from '../lib/browser.mjs';
 
 const COACH = { phone: process.env.STRIVN_COACH_PHONE || '+32470112233', password: process.env.STRIVN_COACH_PW || 'password' };
@@ -79,7 +79,7 @@ const browser = await chromium.launch();
 
 // Phone portrait
 if (scope === 'both' || scope === 'phone') {
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 3, isMobile: true, hasTouch: true });
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, locale: browserLocale(lang), deviceScaleFactor: 3, isMobile: true, hasTouch: true });
   const p = await ctx.newPage();
   await login(p);
   await runToLive(p, 'live-runner-phone');
@@ -88,7 +88,7 @@ if (scope === 'both' || scope === 'phone') {
 
 // Tablet landscape
 if (scope === 'both' || scope === 'tablet') {
-  const ctx = await browser.newContext({ viewport: { width: 1194, height: 834 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  const ctx = await browser.newContext({ viewport: { width: 1194, height: 834 }, locale: browserLocale(lang), deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   const p = await ctx.newPage();
   await login(p);
   await runToLive(p, 'live-runner-tablet');

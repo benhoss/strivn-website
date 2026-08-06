@@ -6,7 +6,7 @@
 // language (run `data/seed-<lang>.sql` + `php artisan cache:clear` first — see README).
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, coachLogin, playerLogin, go } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -18,7 +18,7 @@ const shot = (page, name, h) => page.screenshot({ path: resolve(OUT, `${name}${s
 const browser = await chromium.launch();
 
 // ── coach (desktop) ──
-const coachCtx = await browser.newContext({ viewport: { width: 1440, height: 880 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2 });
+const coachCtx = await browser.newContext({ viewport: { width: 1440, height: 880 }, locale: browserLocale(lang), deviceScaleFactor: 2 });
 const coach = await coachCtx.newPage();
 await coachLogin(coach, lang);
 const coachTargets = [
@@ -41,7 +41,7 @@ for (const [slug, name, mode] of coachTargets) {
 }
 
 // ── player portal (mobile) ──
-const portalCtx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+const portalCtx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: browserLocale(lang), deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const portal = await portalCtx.newPage();
 await playerLogin(portal, lang);
 for (const [path, name] of [['agenda', 'portal-agenda'], ['fitness', 'portal-fitness'], ['checkin', 'portal-checkin']]) {

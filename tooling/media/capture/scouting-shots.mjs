@@ -4,7 +4,7 @@
 //        public/screenshots/scouting-report-phone-fr.png    (public report, mobile)
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, coachLogin, go, dismissBanner } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -24,7 +24,7 @@ const shot = (page, name, h) =>
 const browser = await chromium.launch();
 
 // ── coach (desktop) ──
-const coachCtx = await browser.newContext({ viewport: { width: 1440, height: 880 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2 });
+const coachCtx = await browser.newContext({ viewport: { width: 1440, height: 880 }, locale: browserLocale(lang), deviceScaleFactor: 2 });
 const coach = await coachCtx.newPage();
 await coachLogin(coach, lang);
 
@@ -41,7 +41,7 @@ for (const [slug, name] of [
 }
 
 // ── public report (mobile, no auth) ──
-const mob = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+const mob = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: browserLocale(lang), deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const m = await mob.newPage();
 try {
   console.log('shared', await go(m, `${BASE}/reports/shared/${TOKEN}?lang=${lang}`, 1900, 45000));

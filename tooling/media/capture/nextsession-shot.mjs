@@ -3,7 +3,7 @@
 //   out: public/screenshots/live-session[-fr].png, live-session-presession[-fr].png
 //   (EN = no suffix, matching the site's content files.)
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, go, dismissBanner } from '../lib/browser.mjs';
 const COACH = { phone: process.env.STRIVN_COACH_PHONE || '+32470112233', password: process.env.STRIVN_COACH_PW || 'password' };
 const lang = process.argv[2] || 'fr';
@@ -11,7 +11,7 @@ const sfx = lang === 'en' ? '' : `-${lang}`;
 const OUT = DIR.screenshots;
 const shot = (p, name, h) => p.screenshot({ path: resolve(OUT, `${name}${sfx}.png`), clip: { x:0, y:0, width: p.viewportSize().width, height: h } }).then(()=>console.log('saved', name + sfx));
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 1440, height: 980 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2 });
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 980 }, locale: browserLocale(lang), deviceScaleFactor: 2 });
 const p = await ctx.newPage();
 await p.goto(`${BASE}/login?lang=${lang}`, { waitUntil: 'domcontentloaded' });
 try { await p.waitForLoadState('networkidle', { timeout: 8000 }); } catch {}

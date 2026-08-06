@@ -9,7 +9,7 @@
 import { mkdirSync, renameSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { execSync } from 'node:child_process';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, ffprobe, coachLogin, go, dismissBanner, overlays } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -29,7 +29,7 @@ const cum = dur.reduce((a, d, i) => { a.push((a[i - 1] || 0) + d); return a; }, 
 
 const browser = await chromium.launch();
 const recStart = Date.now();
-const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 1, recordVideo: { dir: RAW, size: { width: 1440, height: 900 } } });
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: browserLocale(lang), deviceScaleFactor: 1, recordVideo: { dir: RAW, size: { width: 1440, height: 900 } } });
 const page = await ctx.newPage();
 
 await coachLogin(page, lang);

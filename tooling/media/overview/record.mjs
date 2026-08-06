@@ -7,7 +7,7 @@
 import { mkdirSync, renameSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { execSync } from 'node:child_process';
-import { DIR, BASE } from '../config.mjs';
+import { DIR, BASE, browserLocale } from '../config.mjs';
 import { chromium, ffprobe, coachLogin, playerLogin, overlays } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -22,9 +22,9 @@ const { segments } = JSON.parse(readFileSync(resolve(DIR.content, `overview-${la
 const browser = await chromium.launch();
 
 // Authenticate once; reuse the storage state per scene (no re-login each time).
-const c0 = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 1 });
+const c0 = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: browserLocale(lang), deviceScaleFactor: 1 });
 const cp0 = await c0.newPage(); await coachLogin(cp0, lang); const coachState = await c0.storageState(); await c0.close();
-const p0 = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+const p0 = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: browserLocale(lang), deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const pp0 = await p0.newPage(); await playerLogin(pp0, lang); const playerState = await p0.storageState(); await p0.close();
 
 // Per-scene action. Keep it light + defensive (skip selectors that aren't there).
@@ -48,7 +48,7 @@ for (const seg of segments) {
   const mobile = seg.scene.device === 'mobile';
   const ctx = await browser.newContext({
     viewport: mobile ? { width: 402, height: 860 } : { width: 1440, height: 900 },
-    locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: mobile ? 2 : 1,
+    locale: browserLocale(lang), deviceScaleFactor: mobile ? 2 : 1,
     isMobile: mobile, hasTouch: mobile, storageState: mobile ? playerState : coachState,
     recordVideo: { dir: RAW, size: mobile ? { width: 402, height: 860 } : { width: 1440, height: 900 } },
   });

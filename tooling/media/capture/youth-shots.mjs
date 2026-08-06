@@ -13,7 +13,7 @@
 import { execSync } from 'node:child_process';
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { DIR, BASE, TEAM } from '../config.mjs';
+import { DIR, BASE, TEAM, browserLocale } from '../config.mjs';
 import { chromium, coachLogin, go, dismissBanner } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
@@ -86,7 +86,7 @@ try {
   clearCache();
 
   browser = await chromium.launch();
-  const ctx = await browser.newContext({ viewport: { width: 1440, height: 960 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2 });
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 960 }, locale: browserLocale(lang), deviceScaleFactor: 2 });
   const p = await ctx.newPage();
   await coachLogin(p, lang);
 

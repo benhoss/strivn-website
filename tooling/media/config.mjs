@@ -29,6 +29,14 @@ export const TEAM = process.env.STRIVN_TEAM || '1';
 export const VOICE_ID = process.env.ELEVEN_VOICE_ID || 'c365oriviHmAhyLhpuN6';
 export const ELEVEN_MODEL = 'eleven_multilingual_v2';
 
+// Playwright browser locale per capture language. Drives the in-app date and
+// number formatting, so it must track the language the DB labels were seeded in.
+// Unknown languages fall back to en-GB, which is the pre-existing behaviour.
+export const BROWSER_LOCALE = {
+  fr: 'fr-FR', en: 'en-GB', nl: 'nl-NL', de: 'de-DE', pt: 'pt-PT', es: 'es-ES',
+};
+export const browserLocale = (lang) => BROWSER_LOCALE[lang] ?? 'en-GB';
+
 export const VIEWPORT = {
   desktop: { width: 1440, height: 900 },
   mobile: { width: 402, height: 860 },
