@@ -289,4 +289,132 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       cta: 'Kostenlos als Coach starten',
     },
   },
+
+  pt: {
+    meta: {
+      title: 'STRIVN para clubes — coordenação multiequipa',
+      description:
+        'Coordene todas as equipas, staffs e fluxos médicos do seu clube numa só plataforma. O plano Clube está a chegar por fases — inscreva-se na lista de espera.',
+    },
+    eyebrow: 'STRIVN para clubes',
+    hero: {
+      title: 'Um clube. Todas as equipas, debaixo do mesmo teto.',
+      lede: 'O plano Coach faz funcionar uma equipa. O plano Clube coordena-as a todas: base de jogadores partilhada, staff médico partilhado, painéis transversais a todos os escalões. O lançamento é progressivo — os clubes na lista de espera entram primeiro.',
+      status: 'Em breve · lançamento progressivo',
+    },
+    benefits: {
+      title: 'O que o plano Clube acrescenta',
+      items: [
+        {
+          title: 'Várias equipas, uma plataforma',
+          text: 'Todas as equipas do clube funcionam na mesma base: os mesmos eventos, a mesma lógica de presenças, sem silos por equipa.',
+        },
+        {
+          title: 'Uma base de jogadores partilhada',
+          text: 'Um jogador que muda de equipa mantém o seu histórico: presenças, processo médico, carga. Nada é reintroduzido.',
+        },
+        {
+          title: 'Staff médico e coordenadores partilhados',
+          text: 'O fisioterapeuta que cobre três equipas vê três equipas. Os coordenadores acompanham cada escalão sem pedir exportações.',
+        },
+        {
+          title: 'Painéis e relatórios de clube',
+          text: 'Disponibilidades, lesões e carga em todas as equipas, numa vista pensada para quem faz o clube funcionar.',
+        },
+        {
+          title: 'Acompanhamento de lesões entre equipas',
+          text: 'A lesão segue o jogador, não a equipa — o regresso à competição mantém-se coerente mesmo quando um jogador sobe de escalão.',
+        },
+      ],
+    },
+    form: {
+      title: 'Entrar na lista de espera Clube',
+      body: 'Fale-nos do seu clube e entraremos em contacto quando o lançamento chegar até si. Sem compromisso — apenas coloca o seu clube na fila.',
+      fields: {
+        name: { label: 'O seu nome', placeholder: 'Nome Apelido' },
+        email: { label: 'Email', placeholder: 'nome@clube.pt' },
+        club: { label: 'Nome do clube', placeholder: 'FC Exemplo' },
+        role: { label: 'A sua função no clube', placeholder: 'Presidente, coordenador, diretor técnico…' },
+        teams: { label: 'Número de equipas', placeholder: 'ex.: 12' },
+      },
+      submit: 'Entrar na lista de espera',
+      sending: 'A enviar…',
+      success: {
+        title: 'Está na lista.',
+        body: 'Obrigado — entraremos em contacto à medida que o plano Clube for sendo lançado. Entretanto, os seus treinadores já podem começar gratuitamente com o plano Coach.',
+      },
+      error: 'Não foi possível enviar o formulário. Tente novamente ou escreva-nos para hello@strivn.net.',
+      privacyNote: 'Usamos estes dados apenas para o contactar acerca do plano Clube.',
+      privacyLink: { label: 'Política de privacidade', href: '/pt/privacy' },
+    },
+    finalCta: {
+      title: 'Os seus treinadores não têm de esperar.',
+      body: 'O plano Coach é gratuito para uma equipa, já hoje. Os clubes adotam mais depressa quando os treinadores já usam a ferramenta.',
+      cta: 'Começar gratuitamente como treinador',
+    },
+  },
+
+  es: {
+    meta: {
+      title: 'STRIVN para clubes — coordinación entre equipos',
+      description:
+        'Coordina todos los equipos, cuerpos técnicos y flujos médicos de tu club en una sola plataforma. El plan Club se despliega de forma progresiva — apúntate a la lista de espera.',
+    },
+    eyebrow: 'STRIVN para clubes',
+    hero: {
+      title: 'Un club. Todos los equipos, bajo un mismo techo.',
+      lede: 'El plan Coach hace funcionar un equipo. El plan Club los coordina todos: base de jugadores compartida, personal médico compartido, paneles que cruzan todas las plantillas. El despliegue es progresivo — los clubes de la lista de espera entran primero.',
+      status: 'Muy pronto · despliegue progresivo',
+    },
+    benefits: {
+      title: 'Lo que añade el plan Club',
+      items: [
+        {
+          title: 'Varios equipos, una plataforma',
+          text: 'Todos los equipos del club funcionan sobre la misma base: los mismos eventos, la misma lógica de asistencias, sin silos por equipo.',
+        },
+        {
+          title: 'Una base de jugadores compartida',
+          text: 'Un jugador que cambia de equipo conserva su historial: asistencias, parte médico, carga. No hay que volver a introducir nada.',
+        },
+        {
+          title: 'Personal médico y coordinadores compartidos',
+          text: 'El fisio que cubre tres equipos ve tres equipos. Los coordinadores siguen cada plantilla sin tener que pedir exportaciones.',
+        },
+        {
+          title: 'Paneles e informes de club',
+          text: 'Disponibilidad, lesiones y carga en todos los equipos, en una vista pensada para quienes hacen funcionar el club.',
+        },
+        {
+          title: 'Seguimiento de lesiones entre equipos',
+          text: 'La lesión sigue al jugador, no al equipo — la vuelta a la competición se mantiene coherente incluso cuando un jugador sube de categoría.',
+        },
+      ],
+    },
+    form: {
+      title: 'Apuntarse a la lista de espera Club',
+      body: 'Cuéntanos cómo es tu club y te escribiremos cuando el despliegue llegue a ti. Sin compromiso — simplemente coloca a tu club en la cola.',
+      fields: {
+        name: { label: 'Tu nombre', placeholder: 'Nombre Apellido' },
+        email: { label: 'Email', placeholder: 'tu@club.es' },
+        club: { label: 'Nombre del club', placeholder: 'CF Ejemplo' },
+        role: { label: 'Tu cargo en el club', placeholder: 'Presidente, coordinador, director deportivo…' },
+        teams: { label: 'Número de equipos', placeholder: 'p. ej. 12' },
+      },
+      submit: 'Apuntarme a la lista de espera',
+      sending: 'Enviando…',
+      success: {
+        title: 'Ya estás en la lista.',
+        body: 'Gracias — te escribiremos a medida que se despliegue el plan Club. Mientras tanto, tus entrenadores ya pueden empezar gratis con el plan Coach.',
+      },
+      error: 'No se ha podido enviar el formulario. Inténtalo de nuevo o escríbenos a hello@strivn.net.',
+      privacyNote: 'Solo usamos estos datos para contactar contigo acerca del plan Club.',
+      privacyLink: { label: 'Política de privacidad', href: '/es/privacy' },
+    },
+    finalCta: {
+      title: 'Tus entrenadores no tienen por qué esperar.',
+      body: 'El plan Coach es gratis para un equipo, hoy mismo. Los clubes adoptan más rápido cuando sus entrenadores ya usan la herramienta.',
+      cta: 'Empezar gratis como entrenador',
+    },
+  },
 };

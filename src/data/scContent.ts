@@ -567,4 +567,272 @@ export const scContent: Record<Locale, ScContent> = {
       cta: 'Meinen Teambereich erstellen',
     },
   },
+
+  pt: {
+    meta: {
+      title: 'STRIVN para preparadores físicos: carga, GPS e readiness',
+      description:
+        'Planeamento de carga, importação de GPS, estimativa de readiness, acompanhamento de lesões e regresso à competição: STRIVN dá aos preparadores físicos uma imagem completa de cada jogador, em tempo real.',
+    },
+    eyebrow: 'STRIVN para preparadores físicos',
+    hero: {
+      title: 'A carga, a readiness e a saúde de cada jogador. No mesmo sítio.',
+      lede: 'Importação de GPS, estimativa de fadiga, planeamento de carga e regresso à competição. Tudo numa só plataforma, partilhada com todo o seu staff.',
+      cta: 'Começar gratuitamente',
+    },
+    showcase: [
+      {
+        title: 'Planear e acompanhar a carga de treino',
+        blurb: 'Planeie a semana e deixe a carga prevista vs. realizada e o ACWR por jogador calcularem-se sozinhos. Fórmula sRPE ou GPS, sem folhas de cálculo.',
+        slides: [
+          {
+            img: '/screenshots/load-planning.png',
+            video: '/videos/load-planning-en',
+            kind: 'desktop',
+            alt: 'Planeamento de carga STRIVN: carga diária prevista, objetivo semanal e ACWR projetado para a semana',
+            caption: 'Planeie a carga da semana por dia, com previsão de ACWR e objetivo semanal.',
+          },
+          {
+            img: '/screenshots/load-overview.png',
+            kind: 'desktop',
+            alt: 'Vista de carga da equipa STRIVN: carga total, RPE médio e distribuição por jogador',
+            caption: 'A carga da semana, por jogador, com RPE e distribuição.',
+          },
+          {
+            img: '/screenshots/load-formula.png',
+            kind: 'desktop',
+            alt: 'Configuração da fórmula de carga sRPE em STRIVN',
+            caption: 'Defina a sua fórmula de carga sRPE ou GPS em segundos.',
+          },
+        ],
+      },
+      {
+        title: 'Readiness e check-ins, dos dois lados',
+        blurb: 'De manhã vê quem respondeu e quem está em risco. Os jogadores registam fadiga, sono, stress e humor a partir do telemóvel.',
+        slides: [
+          {
+            img: '/screenshots/wellness-briefing.png',
+            video: '/videos/readiness-en',
+            kind: 'desktop',
+            alt: 'Briefing matinal STRIVN: respostas aos check-ins e níveis de risco por jogador',
+            caption: 'O briefing da manhã: quem respondeu, quem vigiar.',
+          },
+          {
+            img: '/screenshots/portal-checkin.png',
+            kind: 'mobile',
+            alt: 'Check-in de bem-estar do lado do jogador: barras de fadiga, sono, stress e humor',
+            caption: 'Os jogadores registam fadiga, sono, stress e humor em segundos.',
+          },
+        ],
+      },
+      {
+        title: 'Feito também para os jogadores',
+        blurb: 'Cada jogador tem o seu espaço: readiness, carga semanal, agenda de treinos e jogos. Sem conta para criar, sem atrito.',
+        slides: [
+          {
+            img: '/screenshots/portal-fitness.png',
+            kind: 'mobile',
+            alt: 'Espaço do jogador STRIVN: readiness, carga recente e tendência semanal',
+            caption: 'Cada jogador vê a sua readiness e a carga da semana.',
+          },
+          {
+            img: '/screenshots/portal-agenda.png',
+            kind: 'mobile',
+            alt: 'Agenda do jogador STRIVN: treinos, jogos e reuniões das próximas duas semanas',
+            caption: 'Treinos, jogos e reuniões numa só agenda.',
+          },
+        ],
+      },
+    ],
+    featuresLead: 'E tudo o resto do dia a dia de um preparador físico.',
+    features: {
+      title: 'O que STRIVN traz aos preparadores físicos',
+      items: [
+        {
+          title: 'Planeamento de carga e periodização',
+          text: 'Construa semanas de treino com carga prevista vs. realizada, gestão do ACWR e categorias de carga (física, técnica, jogo). As sobrecargas aparecem sozinhas, sem andar à procura numa folha de cálculo.',
+        },
+        {
+          title: 'Importação de GPS e fórmulas de carga',
+          text: 'Importe ficheiros Catapult ou Statsport, mapeie as suas métricas personalizadas e calcule automaticamente a carga da sessão por jogador. Sem reintrodução manual, sem folhas com controlo de versões.',
+        },
+        {
+          title: 'Readiness e estimativa de fadiga',
+          text: 'STRIVN projeta a readiness de cada jogador 1 a 5 dias à frente a partir da carga real e de um modelo de decaimento da fadiga. Antecipe o risco de pico de carga antes que se torne um problema.',
+        },
+        {
+          title: 'RPE e check-ins de bem-estar',
+          text: 'Questionários matinais de bem-estar e sRPE pós-sessão enviados automaticamente. As tendências individuais e da equipa ficam visíveis num relance, sem andar atrás dos jogadores.',
+        },
+        {
+          title: 'Acompanhamento de lesões e regresso à competição',
+          text: 'Três estados de disponibilidade: FORA, TREINO PARCIAL e DISPONÍVEL. Notas de evolução, anexos e histórico completo por jogador. O regresso à competição mantém-se coerente mesmo entre escalões.',
+        },
+        {
+          title: 'Assistente de IA',
+          text: 'Pergunte em linguagem corrente: «Quem está em risco esta semana?», «Planeia uma sessão de recuperação para amanhã.» A IA lê a carga, a readiness e as lesões para responder com todo o contexto.',
+        },
+      ],
+    },
+    howItWorks: {
+      title: 'Um dia de preparador físico com STRIVN',
+      steps: [
+        {
+          title: 'De manhã: verificar a readiness',
+          text: 'Os check-ins de bem-estar chegam automaticamente. STRIVN mostra quem está fresco, quem está a acumular fadiga e quem está acima do seu limiar. Ainda antes de a sessão começar.',
+        },
+        {
+          title: 'Antes da sessão: planear a carga',
+          text: 'Ajuste a intensidade prevista em função da readiness do grupo. O plano de carga semanal atualiza-se em tempo real e sinaliza automaticamente os desequilíbrios entre carga aguda e crónica.',
+        },
+        {
+          title: 'Durante ou depois: registar a carga real',
+          text: 'Importe o ficheiro GPS da sessão ou introduza os valores de RPE dos jogadores. A carga real é comparada com o plano de imediato e atualiza as projeções de readiness para os dias seguintes.',
+        },
+        {
+          title: 'Fim de semana: rever as tendências',
+          text: 'Visualize a carga acumulada, o ACWR por jogador e os alertas de sobretreino. Partilhe o painel com o treinador principal e o médico da equipa, sem exportações manuais.',
+        },
+      ],
+    },
+    finalCta: {
+      title: 'Comece hoje gratuitamente.',
+      body: 'STRIVN é gratuito para uma equipa, sem cartão de crédito. Convide o seu staff médico e o treinador principal. Veem os mesmos dados em tempo real.',
+      cta: 'Criar o meu espaço de equipa',
+    },
+  },
+
+  es: {
+    meta: {
+      title: 'STRIVN para preparadores físicos: carga, GPS y readiness',
+      description:
+        'Planificación de carga, importación de GPS, estimación de readiness, seguimiento de lesiones y vuelta a la competición: STRIVN da a los preparadores físicos una imagen completa de cada jugador, en tiempo real.',
+    },
+    eyebrow: 'STRIVN para preparadores físicos',
+    hero: {
+      title: 'La carga, la readiness y la salud de cada jugador. En un mismo sitio.',
+      lede: 'Importación de GPS, estimación de fatiga, planificación de carga y vuelta a la competición. Todo en una sola plataforma, compartida con todo tu cuerpo técnico.',
+      cta: 'Empezar gratis',
+    },
+    showcase: [
+      {
+        title: 'Planificar y seguir la carga de entrenamiento',
+        blurb: 'Planifica la semana y deja que la carga prevista frente a la real y el ACWR por jugador se calculen solos. Fórmula sRPE o GPS, sin hojas de cálculo.',
+        slides: [
+          {
+            img: '/screenshots/load-planning.png',
+            video: '/videos/load-planning-en',
+            kind: 'desktop',
+            alt: 'Planificación de carga en STRIVN: carga diaria prevista, objetivo semanal y ACWR proyectado para la semana',
+            caption: 'Planifica la carga de la semana por días, con previsión de ACWR y objetivo semanal.',
+          },
+          {
+            img: '/screenshots/load-overview.png',
+            kind: 'desktop',
+            alt: 'Vista de carga del equipo en STRIVN: carga total, RPE medio y distribución por jugador',
+            caption: 'La carga de la semana, por jugador, con RPE y distribución.',
+          },
+          {
+            img: '/screenshots/load-formula.png',
+            kind: 'desktop',
+            alt: 'Configuración de la fórmula de carga sRPE en STRIVN',
+            caption: 'Define tu fórmula de carga sRPE o GPS en segundos.',
+          },
+        ],
+      },
+      {
+        title: 'Readiness y check-ins, por ambos lados',
+        blurb: 'Por la mañana ves quién ha respondido y quién está en riesgo. Los jugadores registran fatiga, sueño, estrés y ánimo desde el móvil.',
+        slides: [
+          {
+            img: '/screenshots/wellness-briefing.png',
+            video: '/videos/readiness-en',
+            kind: 'desktop',
+            alt: 'Briefing matinal de STRIVN: respuestas a los check-ins y niveles de riesgo por jugador',
+            caption: 'El briefing de la mañana: quién ha respondido, a quién vigilar.',
+          },
+          {
+            img: '/screenshots/portal-checkin.png',
+            kind: 'mobile',
+            alt: 'Check-in de bienestar del lado del jugador: deslizadores de fatiga, sueño, estrés y ánimo',
+            caption: 'Los jugadores registran fatiga, sueño, estrés y ánimo en segundos.',
+          },
+        ],
+      },
+      {
+        title: 'Hecho también para los jugadores',
+        blurb: 'Cada jugador tiene su propio espacio: readiness, carga semanal, agenda de entrenamientos y partidos. Sin cuenta que crear, sin fricción.',
+        slides: [
+          {
+            img: '/screenshots/portal-fitness.png',
+            kind: 'mobile',
+            alt: 'Espacio del jugador en STRIVN: readiness, carga reciente y tendencia semanal',
+            caption: 'Cada jugador ve su readiness y la carga de la semana.',
+          },
+          {
+            img: '/screenshots/portal-agenda.png',
+            kind: 'mobile',
+            alt: 'Agenda del jugador en STRIVN: entrenamientos, partidos y reuniones de las próximas dos semanas',
+            caption: 'Entrenamientos, partidos y reuniones en una sola agenda.',
+          },
+        ],
+      },
+    ],
+    featuresLead: 'Y todo lo demás del día a día de un preparador físico.',
+    features: {
+      title: 'Lo que STRIVN aporta a los preparadores físicos',
+      items: [
+        {
+          title: 'Planificación de carga y periodización',
+          text: 'Construye semanas de entrenamiento con carga prevista frente a real, gestión del ACWR y categorías de carga (física, técnica, partido). Las sobrecargas salen solas, sin rebuscar en una hoja de cálculo.',
+        },
+        {
+          title: 'Importación de GPS y fórmulas de carga',
+          text: 'Importa archivos de Catapult o Statsport, mapea tus métricas personalizadas y calcula automáticamente la carga de la sesión por jugador. Sin reintroducir nada a mano, sin hojas con control de versiones.',
+        },
+        {
+          title: 'Readiness y estimación de fatiga',
+          text: 'STRIVN proyecta la readiness de cada jugador de 1 a 5 días vista a partir de la carga real y de un modelo de decaimiento de la fatiga. Anticipa el riesgo de pico de carga antes de que sea un problema.',
+        },
+        {
+          title: 'RPE y check-ins de bienestar',
+          text: 'Cuestionarios matinales de bienestar y sRPE tras la sesión, enviados automáticamente. Las tendencias individuales y del equipo se ven de un vistazo, sin perseguir a los jugadores.',
+        },
+        {
+          title: 'Seguimiento de lesiones y vuelta a la competición',
+          text: 'Tres estados de disponibilidad: FUERA, ENTRENAMIENTO PARCIAL y DISPONIBLE. Notas de evolución, adjuntos e historial completo por jugador. La vuelta a la competición sigue siendo coherente incluso entre plantillas.',
+        },
+        {
+          title: 'Asistente de IA',
+          text: 'Pregunta en lenguaje natural: «¿Quién está en riesgo esta semana?», «Prepara una sesión de recuperación para mañana». La IA lee la carga, la readiness y las lesiones para responder con todo el contexto.',
+        },
+      ],
+    },
+    howItWorks: {
+      title: 'Un día de preparador físico con STRIVN',
+      steps: [
+        {
+          title: 'Por la mañana: revisar la readiness',
+          text: 'Los check-ins de bienestar llegan automáticamente. STRIVN te muestra quién está fresco, quién acumula fatiga y quién está por encima de su umbral. Antes incluso de que empiece la sesión.',
+        },
+        {
+          title: 'Antes de la sesión: planificar la carga',
+          text: 'Ajusta la intensidad prevista según la readiness del grupo. El plan de carga semanal se actualiza en tiempo real y señala automáticamente los desequilibrios entre carga aguda y crónica.',
+        },
+        {
+          title: 'Durante o después: registrar la carga real',
+          text: 'Importa el archivo GPS de la sesión o introduce los valores de RPE de los jugadores. La carga real se compara con el plan al instante y actualiza las proyecciones de readiness de los días siguientes.',
+        },
+        {
+          title: 'Fin de semana: revisar tendencias',
+          text: 'Visualiza la carga acumulada, el ACWR por jugador y las alertas de sobreentrenamiento. Comparte el panel con el primer entrenador y el médico del equipo, sin exportaciones manuales.',
+        },
+      ],
+    },
+    finalCta: {
+      title: 'Empieza gratis hoy.',
+      body: 'STRIVN es gratis para un equipo, sin tarjeta de crédito. Invita a tu personal médico y al primer entrenador. Ven los mismos datos en tiempo real.',
+      cta: 'Crear mi espacio de equipo',
+    },
+  },
 };

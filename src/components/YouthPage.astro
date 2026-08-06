@@ -17,14 +17,20 @@ const frPath = '/fr/equipes-jeunes/';
 const enPath = '/en/youth-teams/';
 const nlPath = '/nl/youth-teams/';
 const dePath = '/de/youth-teams/';
-const canonicalPath =
-  locale === 'fr' ? frPath : locale === 'nl' ? nlPath : locale === 'de' ? dePath : enPath;
-const switchHrefs = { en: enPath, fr: frPath, nl: nlPath, de: dePath };
+const ptPath = '/pt/youth-teams/';
+const esPath = '/es/youth-teams/';
+const pathByLocale: Record<Locale, string> = {
+  fr: frPath, en: enPath, nl: nlPath, de: dePath, pt: ptPath, es: esPath,
+};
+const canonicalPath = pathByLocale[locale];
+const switchHrefs = { en: enPath, fr: frPath, nl: nlPath, de: dePath, pt: ptPath, es: esPath };
 const alternates = [
   { hreflang: 'en', href: enPath },
   { hreflang: 'fr', href: frPath },
   { hreflang: 'nl', href: nlPath },
   { hreflang: 'de', href: dePath },
+  { hreflang: 'pt', href: ptPath },
+  { hreflang: 'es', href: esPath },
   { hreflang: 'x-default', href: frPath },
 ];
 
@@ -84,6 +90,28 @@ const heroCard = {
     replyWho: 'Elternteil von Léa',
     replyMeta: 'hat für Léa geantwortet',
     consent: 'Elterliche Einwilligung aktuell',
+  },
+  pt: {
+    label: 'Convocatória',
+    group: 'Sub-13',
+    event: 'Jogo · sábado 14:30',
+    present: 'Presente',
+    unsure: 'Incerto',
+    absent: 'Ausente',
+    replyWho: 'Encarregada de educação da Léa',
+    replyMeta: 'respondeu pela Léa',
+    consent: 'Consentimento parental em dia',
+  },
+  es: {
+    label: 'Convocatoria',
+    group: 'Sub-13',
+    event: 'Partido · sábado 14:30',
+    present: 'Voy',
+    unsure: 'Duda',
+    absent: 'No voy',
+    replyWho: 'Tutora de Léa',
+    replyMeta: 'ha respondido por Léa',
+    consent: 'Consentimiento parental al día',
   },
 }[locale];
 ---

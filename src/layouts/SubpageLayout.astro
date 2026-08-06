@@ -13,7 +13,7 @@ interface Props {
   /** Extra JSON-LD nodes forwarded to BaseLayout (FAQPage, BreadcrumbList…) */
   jsonLdExtra?: Record<string, unknown>[];
   /** Counterpart paths for the language switcher (defaults to the homepages). */
-  switchHrefs?: { en: string; fr: string; nl?: string; de?: string };
+  switchHrefs?: { en: string; fr: string; nl?: string; de?: string; pt?: string; es?: string };
 }
 
 const {
@@ -27,8 +27,15 @@ const {
 } = Astro.props;
 
 const c = landingContent[locale];
-const skipLabel =
-  locale === 'fr' ? 'Aller au contenu' : locale === 'nl' ? 'Naar de inhoud' : locale === 'de' ? 'Zum Inhalt springen' : 'Skip to content';
+const skipLabelByLocale: Record<Locale, string> = {
+  fr: 'Aller au contenu',
+  nl: 'Naar de inhoud',
+  de: 'Zum Inhalt springen',
+  pt: 'Ir para o conteúdo',
+  es: 'Ir al contenido',
+  en: 'Skip to content',
+};
+const skipLabel = skipLabelByLocale[locale];
 const homeHref = `/${locale}/`;
 ---
 

@@ -1,0 +1,67 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/en/support' },
+  { hreflang: 'fr', href: '/fr/support' },
+  { hreflang: 'nl', href: '/nl/support' },
+  { hreflang: 'de', href: '/de/support' },
+  { hreflang: 'pt', href: '/pt/support' },
+  { hreflang: 'es', href: '/es/support' },
+  { hreflang: 'x-default', href: '/en/support' },
+];
+---
+<LegalLayout
+  title="Soporte | STRIVN Player"
+  description="Ayuda y soporte para la app STRIVN Player — iniciar sesión, notificaciones y eliminación de la cuenta."
+  lang="es"
+  canonicalPath="/es/support"
+  alternates={alternates}
+  heading="Soporte"
+  homeLabel="Volver a strivn.net"
+  homeHref="/es/"
+>
+  <p>
+    ¿Necesitas ayuda con la app <strong>STRIVN Player</strong>? Estamos aquí para
+    eso. Escribe a <a href="mailto:hello@strivn.net">hello@strivn.net</a> y te
+    contestamos, normalmente en dos días laborables.
+  </p>
+
+  <h2>Preguntas frecuentes</h2>
+
+  <h3>¿Cómo inicio sesión?</h3>
+  <p>
+    Usa la dirección de email o el número de teléfono que tu entrenador registró
+    para ti. Si no consigues entrar, pídele a tu entrenador que confirme tus datos
+    de contacto o escríbenos.
+  </p>
+
+  <h3>No recibo notificaciones</h3>
+  <p>
+    Comprueba que diste permiso para las notificaciones la primera vez que
+    iniciaste sesión. Puedes volver a activarlas en los ajustes de tu dispositivo,
+    en STRIVN Player. Las notificaciones cubren nuevos eventos, peticiones de
+    asistencia y avisos del entrenador.
+  </p>
+
+  <h3>¿Cómo actualizo mi foto de perfil?</h3>
+  <p>
+    Abre la página de tu cuenta en la app, elige una foto nueva desde la cámara o
+    la galería y guarda. Tu foto solo es visible dentro de tu espacio de jugador
+    con la sesión iniciada.
+  </p>
+
+  <h3>¿Cómo elimino mi cuenta?</h3>
+  <p>
+    Puedes solicitar la eliminación desde la página de tu cuenta en la app, o
+    escribir a <a href="mailto:hello@strivn.net">hello@strivn.net</a> desde la
+    dirección asociada a tu cuenta. Borraremos tus datos personales en un plazo
+    razonable. Consulta nuestra <a href="/es/privacy">Política de Privacidad</a>
+    para más detalles.
+  </p>
+
+  <h2>Contacto</h2>
+  <p>
+    Para cualquier otra cosa, escríbenos a <a href="mailto:hello@strivn.net">hello@strivn.net</a>.
+  </p>
+</LegalLayout>

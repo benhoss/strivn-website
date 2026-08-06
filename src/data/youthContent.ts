@@ -450,4 +450,220 @@ export const youthContent: Record<Locale, YouthContent> = {
       cta: 'Meinen Teambereich erstellen',
     },
   },
+
+  pt: {
+    meta: {
+      title: 'STRIVN para equipas de formação: pais a par, modo formação',
+      description:
+        'Os pais respondem às convocatórias em nome do jogador, acompanham o jogo em direto sem conta e gerem consentimentos: STRIVN ajuda os treinadores de formação a manter os pais a par, sem um grupo de WhatsApp a transbordar.',
+    },
+    eyebrow: 'STRIVN para equipas de formação',
+    hero: {
+      title: 'Pais a par. Jovens protegidos. E o treinador, no campo.',
+      lede: 'Os pais respondem à convocatória em nome do filho e acompanham o jogo em direto a partir da bancada, sem precisar de conta. Os consentimentos são tratados como deve ser e o modo formação esconde o que não é adequado à idade.',
+      cta: 'Começar gratuitamente',
+    },
+    showcase: [
+      {
+        title: 'A convocatória? São os pais que respondem.',
+        blurb: 'Cada encarregado de educação está associado ao seu filho e recebe a convocatória com um link pessoal. Um toque — Presente, Incerto ou Ausente — e uma nota para o staff, se for preciso. Quem responder primeiro fecha a presença.',
+        slides: [
+          {
+            img: '/screenshots/youth-guardians-card.png',
+            kind: 'desktop',
+            alt: 'Ficha de jogador STRIVN: encarregados de educação associados à criança, com contactos e respostas às convocatórias',
+            caption: 'Os encarregados de educação estão associados ao jogador e respondem às convocatórias em seu nome.',
+          },
+        ],
+      },
+      {
+        title: 'O jogo, em direto a partir da bancada',
+        blurb: 'Partilhe um link antes do apito inicial: pais na bancada, avós em casa — todos acompanham o resultado e os lances em direto, sem conta e sem instalar nada.',
+        slides: [
+          {
+            img: '/screenshots/live-viewer-phone.png',
+            kind: 'mobile',
+            alt: 'Vista pública de jogo STRIVN num telemóvel: resultado e lances em direto, sem conta',
+            caption: 'A vista pública: resultado e lances em direto, sem conta.',
+          },
+        ],
+      },
+      {
+        title: 'Um modo pensado para os mais novos',
+        blurb: 'Ative o modo formação e o espaço adapta-se à idade do grupo: o assistente de IA e as multas ficam automaticamente ocultos para os jogadores, e os consentimentos dos encarregados de educação são recolhidos e acompanhados no mesmo sítio.',
+        slides: [
+          {
+            img: '/screenshots/youth-team-setting.png',
+            kind: 'desktop',
+            alt: 'Definição de modo formação da equipa STRIVN: escalão etário e funcionalidades ocultas para os jogadores',
+            caption: 'O modo formação ativa-se nas definições da equipa, em segundos.',
+          },
+        ],
+      },
+    ],
+    featuresLead: 'E tudo o resto da semana de um treinador de formação.',
+    features: {
+      title: 'O que STRIVN traz às equipas de formação',
+      items: [
+        {
+          title: 'Confirmação pelos pais',
+          text: 'Cada encarregado de educação recebe a convocatória com um link pessoal e marca Presente, Incerto ou Ausente em nome do jogador. Vê as presenças a preencherem-se em tempo real em vez de andar atrás das respostas.',
+        },
+        {
+          title: 'Vista pública do jogo',
+          text: 'Um link para partilhar, sem conta para criar: a família acompanha o resultado e os lances em direto, da bancada ou de casa.',
+        },
+        {
+          title: 'Consentimentos dos encarregados de educação',
+          text: 'Recolha e acompanhe os consentimentos parentais no mesmo sítio: quem autorizou o quê e quando. Revogáveis a qualquer momento, em linha com o RGPD.',
+        },
+        {
+          title: 'Modo formação',
+          text: 'O assistente de IA e as multas ficam automaticamente ocultos para os jogadores. Os mais novos veem apenas o que é adequado à sua idade.',
+        },
+        {
+          title: 'Comunicação com os pais',
+          text: 'Avisos, alterações de horário, informações práticas: um canal para todos os pais em vez de um grupo de WhatsApp a transbordar. Cada família recebe o que diz respeito ao seu filho.',
+        },
+        {
+          title: 'O seu grupo, centralizado',
+          text: 'Jogadores, encarregados de educação, presenças e agenda no mesmo sítio, partilhados com todo o staff. Gere o seu grupo a partir de uma só plataforma.',
+        },
+      ],
+    },
+    howItWorks: {
+      title: 'A semana de uma equipa de formação com STRIVN',
+      steps: [
+        {
+          title: 'Associar os pais ao grupo',
+          text: 'Adicione os jogadores e os respetivos encarregados de educação e ative o modo formação. O espaço adapta-se à idade do grupo e os consentimentos ficam tratados desde a inscrição.',
+        },
+        {
+          title: 'Enviar a convocatória',
+          text: 'Cada encarregado de educação recebe um link pessoal e responde em nome do jogador com um toque. A folha de presenças preenche-se sozinha, lembretes incluídos.',
+        },
+        {
+          title: 'No dia de jogo, partilhar o link em direto',
+          text: 'Um link enviado antes do apito inicial: os pais na bancada e a família em casa acompanham o resultado e os lances em direto, sem conta.',
+        },
+        {
+          title: 'Depois, manter todos a par',
+          text: 'Próximas datas, avisos, informações práticas: uma mensagem em STRIVN e todos os pais ficam informados.',
+        },
+      ],
+    },
+    finalCta: {
+      title: 'Comece hoje gratuitamente.',
+      body: 'STRIVN é gratuito para uma equipa, sem cartão de crédito. Crie a sua equipa de formação, convide o seu staff e associe os pais em poucos minutos.',
+      cta: 'Criar o meu espaço de equipa',
+    },
+  },
+
+  es: {
+    meta: {
+      title: 'STRIVN para fútbol base: familias informadas, modo formación',
+      description:
+        'Las familias responden a las convocatorias en nombre del jugador, siguen el partido en directo sin cuenta y gestionan los consentimientos: STRIVN ayuda a los entrenadores de fútbol base a mantener a las familias informadas, sin un grupo de WhatsApp desbordado.',
+    },
+    eyebrow: 'STRIVN para fútbol base',
+    hero: {
+      title: 'Familias informadas. Jugadores protegidos. Y tú, en el campo.',
+      lede: 'Las familias responden a la convocatoria en nombre de su hijo y siguen el partido en directo desde la grada, sin necesidad de cuenta. Los consentimientos se gestionan como toca y el modo formación oculta lo que no corresponde a su edad.',
+      cta: 'Empezar gratis',
+    },
+    showcase: [
+      {
+        title: '¿La convocatoria? La responden las familias.',
+        blurb: 'Cada tutor está vinculado a su hijo y recibe la convocatoria con un enlace personal. Un toque —Voy, Duda o No voy— y una nota para el cuerpo técnico si hace falta. Quien responde primero cierra la asistencia.',
+        slides: [
+          {
+            img: '/screenshots/youth-guardians-card.png',
+            kind: 'desktop',
+            alt: 'Ficha de jugador en STRIVN: tutores vinculados al menor, con sus datos de contacto y respuestas a las convocatorias',
+            caption: 'Los tutores están vinculados al jugador y responden a las convocatorias en su nombre.',
+          },
+        ],
+      },
+      {
+        title: 'El partido, en directo desde la grada',
+        blurb: 'Comparte un enlace antes del pitido inicial: familias en la grada, abuelos en casa — todos siguen el marcador y las jugadas en directo, sin cuenta y sin instalar nada.',
+        slides: [
+          {
+            img: '/screenshots/live-viewer-phone.png',
+            kind: 'mobile',
+            alt: 'Vista pública del partido en STRIVN desde el móvil: marcador y jugadas en directo, sin cuenta',
+            caption: 'La vista pública: marcador y jugadas en directo, sin cuenta.',
+          },
+        ],
+      },
+      {
+        title: 'Un modo pensado para los más jóvenes',
+        blurb: 'Activa el modo formación y el espacio se adapta a la edad del grupo: el asistente de IA y las multas se ocultan automáticamente a los jugadores, y los consentimientos de los tutores se recogen y se siguen en un mismo sitio.',
+        slides: [
+          {
+            img: '/screenshots/youth-team-setting.png',
+            kind: 'desktop',
+            alt: 'Ajuste de modo formación del equipo en STRIVN: categoría de edad y funciones ocultas a los jugadores',
+            caption: 'El modo formación se activa en los ajustes del equipo, en segundos.',
+          },
+        ],
+      },
+    ],
+    featuresLead: 'Y todo lo demás de la semana de un entrenador de fútbol base.',
+    features: {
+      title: 'Lo que STRIVN aporta al fútbol base',
+      items: [
+        {
+          title: 'Confirmación por parte de las familias',
+          text: 'Cada tutor recibe la convocatoria con un enlace personal y marca Voy, Duda o No voy en nombre del jugador. Ves cómo se llena la asistencia en tiempo real en lugar de perseguir respuestas.',
+        },
+        {
+          title: 'Vista pública del partido',
+          text: 'Un enlace para compartir, sin cuenta que crear: la familia sigue el marcador y las jugadas en directo, desde la grada o desde casa.',
+        },
+        {
+          title: 'Consentimientos de los tutores',
+          text: 'Recoge y sigue los consentimientos parentales en un mismo sitio: quién ha autorizado qué y cuándo. Revocables en cualquier momento, conforme al RGPD.',
+        },
+        {
+          title: 'Modo formación',
+          text: 'El asistente de IA y las multas se ocultan automáticamente a los jugadores. Los más jóvenes solo ven lo que corresponde a su edad.',
+        },
+        {
+          title: 'Comunicación con las familias',
+          text: 'Avisos, cambios de horario, información práctica: un canal para todas las familias en lugar de un grupo de WhatsApp desbordado. Cada familia recibe lo que afecta a su hijo.',
+        },
+        {
+          title: 'Tu grupo, centralizado',
+          text: 'Jugadores, tutores, asistencias y agenda en un mismo sitio, compartidos con todo tu cuerpo técnico. Gestionas tu grupo desde una sola plataforma.',
+        },
+      ],
+    },
+    howItWorks: {
+      title: 'La semana de un equipo de fútbol base con STRIVN',
+      steps: [
+        {
+          title: 'Vincular a las familias con el grupo',
+          text: 'Añade a tus jugadores y a sus tutores y activa el modo formación. El espacio se adapta a la edad del grupo y los consentimientos quedan resueltos desde el alta.',
+        },
+        {
+          title: 'Enviar la convocatoria',
+          text: 'Cada tutor recibe un enlace personal y responde en nombre del jugador con un toque. La lista de asistencia se llena sola, recordatorios incluidos.',
+        },
+        {
+          title: 'El día del partido, comparte el enlace en directo',
+          text: 'Un enlace enviado antes del pitido inicial: las familias en la grada y los que se quedan en casa siguen el marcador y las jugadas en directo, sin cuenta.',
+        },
+        {
+          title: 'Después, mantén a todos al día',
+          text: 'Próximas fechas, avisos, información práctica: un mensaje en STRIVN y todas las familias quedan informadas.',
+        },
+      ],
+    },
+    finalCta: {
+      title: 'Empieza gratis hoy.',
+      body: 'STRIVN es gratis para un equipo, sin tarjeta de crédito. Crea tu equipo de fútbol base, invita a tu cuerpo técnico y vincula a las familias en unos minutos.',
+      cta: 'Crear mi espacio de equipo',
+    },
+  },
 };
