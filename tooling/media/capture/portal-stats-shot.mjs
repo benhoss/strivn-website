@@ -45,7 +45,9 @@ const PLAYER_ID = Number(process.env.STRIVN_STATS_PLAYER
 // gives it a score, and upserts Kylian's minutes + stat counters on it.
 const opponentId = (name) => {
   let id = firstInt(psql(`SELECT id FROM opponent_teams WHERE name=${JSON.stringify(name).replace(/"/g, "'")} LIMIT 1;`));
-  if (!id) id = firstInt(psql(`INSERT INTO opponent_teams (name, created_at, updated_at) VALUES ('${name}', now(), now()) RETURNING id;`));
+  // opponent_teams.team_id became NOT NULL after this script was written — the
+  // opponents are owned by the team that scouts them.
+  if (!id) id = firstInt(psql(`INSERT INTO opponent_teams (team_id, name, created_at, updated_at) VALUES (${TEAM}, '${name}', now(), now()) RETURNING id;`));
   return id;
 };
 

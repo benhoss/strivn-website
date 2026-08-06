@@ -31,6 +31,11 @@ UPDATE injuries SET notes = replace(replace(replace(notes,
     'Standard U18', 'FC Aldenne'), 'RSC Liège', 'AC Verel'), ' U18', '')
   WHERE team_id = 1;
 
+-- Drop the mirrored next-week events re-created at the bottom of this file:
+-- the snap below keys off max(start_at), so leaving them in would drag the
+-- whole calendar back a week on every re-run.
+DELETE FROM calendar_events WHERE team_id = 1 AND external_source = 'media-demo-mirror';
+
 -- ── Snap the team's most-recent calendar week onto the CURRENT week, so the
 --    calendar, agenda and load-planner are coherent and "today" has content.
 --    Idempotent: once aligned, the offset is 0. ──
@@ -164,3 +169,22 @@ ON CONFLICT (player_id, date) DO UPDATE SET
   raw_message   = EXCLUDED.raw_message,
   parsed_payload = EXCLUDED.parsed_payload,
   updated_at    = now();
+
+-- ── Next week's calendar: the demo data only ever populates the CURRENT ISO
+--    week, so the portal agenda ("the next two weeks") looks half-empty when
+--    captures run late in the week. Mirror this week's events onto the next one
+--    so the agenda is full whatever day the pipeline runs. Tagged with
+--    external_source='media-demo-mirror' and deleted before the snap above, so
+--    re-runs stay idempotent. Planner/briefing are unaffected — they read the
+--    current week and past data only.
+INSERT INTO calendar_events
+  (team_id, created_by, title, description, location, start_at, end_at, is_all_day,
+   event_type, external_source, created_at, updated_at, rsvp_enabled)
+SELECT ce.team_id, ce.created_by, ce.title, ce.description, ce.location,
+       ce.start_at + interval '7 days', ce.end_at + interval '7 days', ce.is_all_day,
+       ce.event_type, 'media-demo-mirror', now(), now(), ce.rsvp_enabled
+FROM calendar_events ce
+WHERE ce.team_id = 1 AND ce.deleted_at IS NULL
+  AND ce.external_source IS DISTINCT FROM 'media-demo-mirror'
+  AND ce.start_at::date BETWEEN date_trunc('week', CURRENT_DATE)::date
+                            AND date_trunc('week', CURRENT_DATE)::date + 6;

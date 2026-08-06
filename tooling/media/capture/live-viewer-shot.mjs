@@ -46,7 +46,11 @@ const psql = (q) => execSync(`docker exec ${PG} psql -U p3rform -d p3rform -q -t
 const firstInt = (s) => (s.match(/\d+/) || [''])[0];
 
 const TITLE = lang === 'en' ? 'League match — AC Verel vs FC Aurore' : 'Championnat — AC Verel vs FC Aurore';
-const OPPONENT = Number(process.env.STRIVN_OPPONENT || 4); // opponent_teams id — demo ids rot when the DB is reseeded, override via env (same pattern as scouting-shots.mjs)
+// opponent_teams ids rot on every reseed — resolve by name, then fall back to
+// the team's first opponent. Override with STRIVN_OPPONENT.
+const OPPONENT = Number(process.env.STRIVN_OPPONENT
+  || firstInt(psql(`SELECT id FROM opponent_teams WHERE team_id=${TEAM} AND name='FC Aurore' LIMIT 1;`))
+  || firstInt(psql(`SELECT id FROM opponent_teams WHERE team_id=${TEAM} ORDER BY id LIMIT 1;`)));
 
 // ── Cleanup: drop the capture's match event (calendar_events cascades the
 // live run, periods, moments and counters). Shared by the happy path, the

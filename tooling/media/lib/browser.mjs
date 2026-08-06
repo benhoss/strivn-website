@@ -39,11 +39,15 @@ export async function playerLogin(page, lang = 'fr') {
 }
 
 // Navigate without requiring networkidle (some screens poll/stream forever).
+// Throws on 4xx/5xx: demo ids rot, and a silently captured "404 Not Found" page
+// is far worse than a failed run — it ships to the marketing site looking real.
 export async function go(page, url, settleMs = 1600, timeout = 30000) {
   const resp = await page.goto(url, { waitUntil: 'domcontentloaded', timeout });
+  const status = resp ? resp.status() : 0;
+  if (status >= 400) throw new Error(`HTTP ${status} for ${url}`);
   try { await page.waitForLoadState('networkidle', { timeout: 7000 }); } catch {}
   await page.waitForTimeout(settleMs);
-  return resp ? resp.status() : '??';
+  return status || '??';
 }
 
 // Dismiss the "How the check-in works" onboarding banner if present.

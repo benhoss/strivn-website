@@ -4420,13 +4420,13 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
                 caption: 'No tablet à beira do campo: o bloco atual, o seu esquema, as suas instruções.',
               },
               {
-                img: '/screenshots/live-session.png',
+                img: '/screenshots/live-session-pt.png',
                 kind: 'desktop',
                 alt: 'A sessão em direto do lado do staff: linha temporal dos blocos e cronómetro a contar.',
                 caption: 'O staff acompanha a sessão em tempo real: bloco ativo, cronómetro, linha temporal.',
               },
               {
-                img: '/screenshots/live-session-presession.png',
+                img: '/screenshots/live-session-presession-pt.png',
                 kind: 'desktop',
                 alt: 'O ecrã de pré-sessão: o plano está pronto, basta um toque para começar.',
                 caption: 'Antes de começar: a sessão preparada está pronta a entrar em direto.',
@@ -4529,7 +4529,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
                 caption: 'O link público: pais e jogadores ausentes acompanham o resultado em direto — sem conta, sem instalar nada.',
               },
               {
-                img: '/screenshots/portal-stats.png',
+                img: '/screenshots/portal-stats-pt.png',
                 kind: 'mobile',
                 alt: 'As estatísticas pessoais de um jogador no portal: minutos jogados, golos, convocatórias.',
                 caption: 'Depois do jogo: cada jogador encontra os seus minutos, golos e convocatórias no portal.',
@@ -4735,13 +4735,13 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             blurb: 'Escolha os blocos, deixe a IA redigir a primeira versão — e reveja antes de partilhar.',
             slides: [
               {
-                img: '/screenshots/reports-hub.png',
+                img: '/screenshots/reports-hub-pt.png',
                 kind: 'desktop',
                 alt: 'O módulo de relatórios: os relatórios existentes da equipa e o botão para criar um novo.',
                 caption: 'O módulo de relatórios: cada relatório mantém o seu lugar, pronto a reabrir ou a partilhar.',
               },
               {
-                img: '/screenshots/reports-selection.png',
+                img: '/screenshots/reports-selection-pt.png',
                 kind: 'desktop',
                 alt: 'Composição de um relatório: os blocos de presenças, carga e médico selecionados antes da geração.',
                 caption: 'Escolhe os blocos — presenças, carga, médico — e a IA redige a primeira versão.',
@@ -5392,13 +5392,13 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
                 caption: 'En la tablet a pie de campo: el bloque actual, su esquema, sus instrucciones.',
               },
               {
-                img: '/screenshots/live-session.png',
+                img: '/screenshots/live-session-es.png',
                 kind: 'desktop',
                 alt: 'La sesión en directo del lado del cuerpo técnico: línea temporal de bloques y cronómetro en marcha.',
                 caption: 'El cuerpo técnico sigue la sesión en tiempo real: bloque activo, cronómetro, línea temporal.',
               },
               {
-                img: '/screenshots/live-session-presession.png',
+                img: '/screenshots/live-session-presession-es.png',
                 kind: 'desktop',
                 alt: 'La pantalla previa a la sesión: el plan está listo, un toque para empezar.',
                 caption: 'Antes de empezar: la sesión preparada está lista para salir en directo.',
@@ -5501,7 +5501,7 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
                 caption: 'El enlace público: familias y jugadores ausentes siguen el marcador en directo — sin cuenta, sin instalar nada.',
               },
               {
-                img: '/screenshots/portal-stats.png',
+                img: '/screenshots/portal-stats-es.png',
                 kind: 'mobile',
                 alt: 'Las estadísticas personales de un jugador en su portal: minutos jugados, goles, convocatorias.',
                 caption: 'Después del partido: cada jugador encuentra sus minutos, goles y convocatorias en su portal.',
@@ -5707,13 +5707,13 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             blurb: 'Elige los bloques, deja que la IA redacte la primera versión — y revisa antes de compartir.',
             slides: [
               {
-                img: '/screenshots/reports-hub.png',
+                img: '/screenshots/reports-hub-es.png',
                 kind: 'desktop',
                 alt: 'El módulo de informes: los informes existentes del equipo y el botón para crear uno nuevo.',
                 caption: 'El módulo de informes: cada informe conserva su sitio, listo para reabrir o compartir.',
               },
               {
-                img: '/screenshots/reports-selection.png',
+                img: '/screenshots/reports-selection-es.png',
                 kind: 'desktop',
                 alt: 'Composición de un informe: los bloques de asistencias, carga y médico seleccionados antes de generarlo.',
                 caption: 'Eliges los bloques —asistencias, carga, médico— y la IA redacta la primera versión.',

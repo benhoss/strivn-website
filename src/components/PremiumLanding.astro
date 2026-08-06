@@ -4,6 +4,7 @@ import SiteHeader from './SiteHeader.astro';
 import SiteFooter from './SiteFooter.astro';
 import { landingContent, type Locale } from '../data/landingContent';
 import { appStartUrl } from '../lib/appUrl';
+import { pngSize } from '../lib/pngSize';
 
 interface Props {
   locale: Locale;
@@ -15,6 +16,14 @@ interface Props {
 
 const { locale, canonicalPath, alternates } = Astro.props;
 const c = landingContent[locale];
+
+// Player-app screenshot, localized where a capture exists (see
+// tooling/media/capture/player-app-shot.mjs). Other locales fall back to the
+// unsuffixed English shot rather than showing another language's UI.
+const playerAppImg = (['fr', 'pt', 'es'] as string[]).includes(locale)
+  ? `/screenshots/player-app-agenda-${locale}.png`
+  : '/screenshots/player-app-agenda.png';
+const playerAppSize = pngSize(playerAppImg);
 
 /**
  * Scattered start positions for the six chaos fragments, in stage
@@ -354,10 +363,10 @@ const skipLabel = skipLabelByLocale[locale];
         </div>
         <figure class="s-player__figure" data-reveal style="--d: 120ms;">
           <img
-            src="/screenshots/player-app-agenda.png"
+            src={playerAppImg}
             alt={c.playerApp.imageAlt}
-            width="500"
-            height="932"
+            width={playerAppSize?.width ?? 500}
+            height={playerAppSize?.height ?? 932}
             loading="lazy"
             decoding="async"
           />

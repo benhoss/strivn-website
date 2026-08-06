@@ -469,7 +469,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         blurb: 'Cada encarregado de educação está associado ao seu filho e recebe a convocatória com um link pessoal. Um toque — Presente, Incerto ou Ausente — e uma nota para o staff, se for preciso. Quem responder primeiro fecha a presença.',
         slides: [
           {
-            img: '/screenshots/youth-guardians-card.png',
+            img: '/screenshots/youth-guardians-card-pt.png',
             kind: 'desktop',
             alt: 'Ficha de jogador STRIVN: encarregados de educação associados à criança, com contactos e respostas às convocatórias',
             caption: 'Os encarregados de educação estão associados ao jogador e respondem às convocatórias em seu nome.',
@@ -493,7 +493,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         blurb: 'Ative o modo formação e o espaço adapta-se à idade do grupo: o assistente de IA e as multas ficam automaticamente ocultos para os jogadores, e os consentimentos dos encarregados de educação são recolhidos e acompanhados no mesmo sítio.',
         slides: [
           {
-            img: '/screenshots/youth-team-setting.png',
+            img: '/screenshots/youth-team-setting-pt.png',
             kind: 'desktop',
             alt: 'Definição de modo formação da equipa STRIVN: escalão etário e funcionalidades ocultas para os jogadores',
             caption: 'O modo formação ativa-se nas definições da equipa, em segundos.',
@@ -577,7 +577,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         blurb: 'Cada tutor está vinculado a su hijo y recibe la convocatoria con un enlace personal. Un toque —Voy, Duda o No voy— y una nota para el cuerpo técnico si hace falta. Quien responde primero cierra la asistencia.',
         slides: [
           {
-            img: '/screenshots/youth-guardians-card.png',
+            img: '/screenshots/youth-guardians-card-es.png',
             kind: 'desktop',
             alt: 'Ficha de jugador en STRIVN: tutores vinculados al menor, con sus datos de contacto y respuestas a las convocatorias',
             caption: 'Los tutores están vinculados al jugador y responden a las convocatorias en su nombre.',
@@ -601,7 +601,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         blurb: 'Activa el modo formación y el espacio se adapta a la edad del grupo: el asistente de IA y las multas se ocultan automáticamente a los jugadores, y los consentimientos de los tutores se recogen y se siguen en un mismo sitio.',
         slides: [
           {
-            img: '/screenshots/youth-team-setting.png',
+            img: '/screenshots/youth-team-setting-es.png',
             kind: 'desktop',
             alt: 'Ajuste de modo formación del equipo en STRIVN: categoría de edad y funciones ocultas a los jugadores',
             caption: 'El modo formación se activa en los ajustes del equipo, en segundos.',
