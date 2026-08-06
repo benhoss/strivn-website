@@ -4842,19 +4842,19 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             blurb: 'A agenda, o check-in da manhã e a readiness: o que o jogador vê, tal como o vê.',
             slides: [
               {
-                img: '/screenshots/portal-agenda.png',
+                img: '/screenshots/portal-agenda-pt.png',
                 kind: 'mobile',
                 alt: 'A agenda do jogador no telemóvel: próximos eventos com botões de resposta às convocatórias.',
                 caption: 'A convocatória chega à app — o jogador responde com um toque.',
               },
               {
-                img: '/screenshots/portal-checkin.png',
+                img: '/screenshots/portal-checkin-pt.png',
                 kind: 'mobile',
                 alt: 'O check-in de bem-estar do jogador no telemóvel: barras de sono, fadiga, humor e dores.',
                 caption: 'O check-in da manhã: algumas barras, alguns segundos.',
               },
               {
-                img: '/screenshots/portal-fitness.png',
+                img: '/screenshots/portal-fitness-pt.png',
                 kind: 'mobile',
                 alt: 'O ecrã de condição física do jogador no telemóvel: carga recente e tendência de readiness.',
                 caption: 'Os jogadores acompanham a sua readiness e carga — os mesmos números que o treinador vê.',
@@ -5814,19 +5814,19 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
             blurb: 'La agenda, el check-in de la mañana y la readiness: lo que ve el jugador, tal y como lo ve.',
             slides: [
               {
-                img: '/screenshots/portal-agenda.png',
+                img: '/screenshots/portal-agenda-es.png',
                 kind: 'mobile',
                 alt: 'La agenda del jugador en el móvil: próximos eventos con botones de respuesta a las convocatorias.',
                 caption: 'La convocatoria llega a la app — el jugador responde con un toque.',
               },
               {
-                img: '/screenshots/portal-checkin.png',
+                img: '/screenshots/portal-checkin-es.png',
                 kind: 'mobile',
                 alt: 'El check-in de bienestar del jugador en el móvil: deslizadores de sueño, fatiga, ánimo y molestias.',
                 caption: 'El check-in de la mañana: unos deslizadores, unos segundos.',
               },
               {
-                img: '/screenshots/portal-fitness.png',
+                img: '/screenshots/portal-fitness-es.png',
                 kind: 'mobile',
                 alt: 'La pantalla de condición física del jugador en el móvil: carga reciente y tendencia de readiness.',
                 caption: 'Los jugadores siguen su readiness y su carga — los mismos números que ves tú.',
