@@ -10,13 +10,23 @@
 ALTER TABLE planned_slots ADD COLUMN IF NOT EXISTS label varchar(255);
 ALTER TABLE planned_slots ADD COLUMN IF NOT EXISTS created_at timestamp(0) without time zone;
 
+-- ── Reset to the FR baseline: a previous capture run may have left the demo
+--    data translated by a seed-<lang>.sql. Everything below matches on the FR
+--    strings, so undo the translations first — otherwise the next locale's run
+--    silently keeps the previous language (and duplicates the categories).
+UPDATE calendar_events SET title = 'Entraînement'
+  WHERE team_id = 1 AND title IN ('Training', 'Treino', 'Entrenamiento');
+UPDATE calendar_events SET title = 'Réunion staff'
+  WHERE team_id = 1 AND title IN ('Stafvergadering', 'Reunião de staff', 'Reunión de staff');
+
 -- ── Fictional teams, venue, opponent (adult, no age category) ──
 UPDATE teams SET name = 'AC Verel'          WHERE id = 1;
 UPDATE teams SET name = 'Hévron Rugby Club' WHERE id = 2;
 UPDATE calendar_events SET location = 'Stade Communal de Verel'
   WHERE team_id = 1 AND location LIKE 'Stade%';
 UPDATE calendar_events SET title = 'Match: AC Verel vs FC Aldenne 🏆'
-  WHERE team_id = 1 AND title LIKE 'Match:%';
+  WHERE team_id = 1 AND (title LIKE 'Match:%' OR title LIKE 'Wedstrijd:%'
+                      OR title LIKE 'Jogo:%'  OR title LIKE 'Partido:%');
 UPDATE injuries SET notes = replace(replace(replace(notes,
     'Standard U18', 'FC Aldenne'), 'RSC Liège', 'AC Verel'), ' U18', '')
   WHERE team_id = 1;
@@ -37,7 +47,25 @@ DELETE FROM planned_weeks WHERE team_id = 1;            -- cascades planned_slot
 -- Two load categories, addressed BY NAME (ids differ across DBs). Normalize any
 -- existing physical-prep category, then ensure both exist for team 1.
 UPDATE load_categories SET name = 'Prépa physique'
-  WHERE team_id = 1 AND name IN ('Préparation physique', 'Physical prep');
+  WHERE team_id = 1 AND name IN ('Préparation physique', 'Physical prep', 'Fysiek',
+                                 'Preparação física', 'Preparación física');
+UPDATE load_categories SET name = 'Football'
+  WHERE team_id = 1 AND name IN ('Voetbal', 'Futebol', 'Fútbol');
+
+-- Collapse same-name duplicates: the app recreates its default categories when
+-- it can't find them by name, so a locale switch can leave several behind.
+-- Keep the lowest id per name, repoint the references, drop the rest.
+WITH keep AS (SELECT name, min(id) AS id FROM load_categories WHERE team_id = 1 GROUP BY name),
+     dup  AS (SELECT lc.id, keep.id AS target FROM load_categories lc
+                JOIN keep ON keep.name = lc.name WHERE lc.team_id = 1 AND lc.id <> keep.id)
+UPDATE planned_slots ps SET load_category_id = dup.target FROM dup WHERE ps.load_category_id = dup.id;
+WITH keep AS (SELECT name, min(id) AS id FROM load_categories WHERE team_id = 1 GROUP BY name),
+     dup  AS (SELECT lc.id, keep.id AS target FROM load_categories lc
+                JOIN keep ON keep.name = lc.name WHERE lc.team_id = 1 AND lc.id <> keep.id)
+UPDATE workouts w SET load_category_id = dup.target FROM dup WHERE w.load_category_id = dup.id;
+DELETE FROM load_categories lc WHERE lc.team_id = 1
+  AND lc.id > (SELECT min(id) FROM load_categories x WHERE x.team_id = 1 AND x.name = lc.name);
+
 INSERT INTO load_categories (team_id, name, multiplier, position, created_at, updated_at)
 SELECT 1, 'Prépa physique', 1, 0, now(), now()
   WHERE NOT EXISTS (SELECT 1 FROM load_categories WHERE team_id = 1 AND name = 'Prépa physique');

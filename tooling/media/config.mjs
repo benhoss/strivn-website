@@ -18,7 +18,11 @@ export const DIR = {
 };
 
 // The running strivn-app (Docker compose, project "p3rform", web on :8082).
-export const BASE = process.env.STRIVN_APP_URL || 'http://localhost:8082';
+// Use 127.0.0.1, not localhost: the app builds absolute asset URLs from its
+// APP_URL (http://127.0.0.1:8082), so browsing via `localhost` makes Chromium
+// reject app.js and the fonts as cross-origin — Alpine never boots and every
+// x-show panel (login audience switcher, onboarding, drawers) stays hidden.
+export const BASE = process.env.STRIVN_APP_URL || 'http://127.0.0.1:8082';
 
 // Demo credentials seeded by SampleDataSeeder + the tweaks documented in the README.
 export const COACH = { phone: process.env.STRIVN_COACH_PHONE || '+32470112233', password: process.env.STRIVN_COACH_PW || 'password' };

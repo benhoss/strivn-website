@@ -23,6 +23,9 @@ load-*.png
 marked.html
 measure.html
 scan-*.png
+# …but public/screenshots/ IS the site: the patterns above are unanchored, so
+# load-*.png captures there were only ever tracked via `git add -f`.
+!public/screenshots/*.png
 
 # gstack browse daemon logs
 .gstack/

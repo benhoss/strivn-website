@@ -10,8 +10,17 @@ export const ffprobe = (f) =>
 
 // NB: use `domcontentloaded`, not `networkidle` — the Vite dev server's HMR
 // websocket stays open, so networkidle never fires.
+// The login page is an Alpine audience switcher: both forms are in the DOM but
+// only the selected one is visible. Pick the tab by index (role=tab, coach then
+// player) so this stays locale-independent.
+async function pickAudience(page, index) {
+  const tab = page.locator('[role=tab]').nth(index);
+  if (await tab.count()) { await tab.click().catch(() => {}); await page.waitForTimeout(400); }
+}
+
 export async function coachLogin(page, lang = 'fr') {
   await page.goto(`${BASE}/login?lang=${lang}`, { waitUntil: 'domcontentloaded' });
+  await pickAudience(page, 0);
   await page.fill('input[name=phone]', COACH.phone);
   await page.fill('input[name=password]', COACH.password);
   await page.click('form button[type=submit]');
@@ -21,6 +30,7 @@ export async function coachLogin(page, lang = 'fr') {
 
 export async function playerLogin(page, lang = 'fr') {
   await page.goto(`${BASE}/login?as=player&player_only=1&lang=${lang}`, { waitUntil: 'domcontentloaded' });
+  await pickAudience(page, 1);
   await page.fill('input[name=identifier]', PLAYER.identifier);
   await page.fill('#player_password', PLAYER.password);
   await page.locator('form:has(#player_password) button[type=submit]').click();

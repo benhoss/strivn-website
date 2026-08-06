@@ -586,20 +586,20 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'Planeie a semana e deixe a carga prevista vs. realizada e o ACWR por jogador calcularem-se sozinhos. Fórmula sRPE ou GPS, sem folhas de cálculo.',
         slides: [
           {
-            img: '/screenshots/load-planning.png',
+            img: '/screenshots/load-planning-pt.png',
             video: '/videos/load-planning-en',
             kind: 'desktop',
             alt: 'Planeamento de carga STRIVN: carga diária prevista, objetivo semanal e ACWR projetado para a semana',
             caption: 'Planeie a carga da semana por dia, com previsão de ACWR e objetivo semanal.',
           },
           {
-            img: '/screenshots/load-overview.png',
+            img: '/screenshots/load-overview-pt.png',
             kind: 'desktop',
             alt: 'Vista de carga da equipa STRIVN: carga total, RPE médio e distribuição por jogador',
             caption: 'A carga da semana, por jogador, com RPE e distribuição.',
           },
           {
-            img: '/screenshots/load-formula.png',
+            img: '/screenshots/load-formula-pt.png',
             kind: 'desktop',
             alt: 'Configuração da fórmula de carga sRPE em STRIVN',
             caption: 'Defina a sua fórmula de carga sRPE ou GPS em segundos.',
@@ -611,14 +611,14 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'De manhã vê quem respondeu e quem está em risco. Os jogadores registam fadiga, sono, stress e humor a partir do telemóvel.',
         slides: [
           {
-            img: '/screenshots/wellness-briefing.png',
+            img: '/screenshots/wellness-briefing-pt.png',
             video: '/videos/readiness-en',
             kind: 'desktop',
             alt: 'Briefing matinal STRIVN: respostas aos check-ins e níveis de risco por jogador',
             caption: 'O briefing da manhã: quem respondeu, quem vigiar.',
           },
           {
-            img: '/screenshots/portal-checkin.png',
+            img: '/screenshots/portal-checkin-pt.png',
             kind: 'mobile',
             alt: 'Check-in de bem-estar do lado do jogador: barras de fadiga, sono, stress e humor',
             caption: 'Os jogadores registam fadiga, sono, stress e humor em segundos.',
@@ -630,13 +630,13 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'Cada jogador tem o seu espaço: readiness, carga semanal, agenda de treinos e jogos. Sem conta para criar, sem atrito.',
         slides: [
           {
-            img: '/screenshots/portal-fitness.png',
+            img: '/screenshots/portal-fitness-pt.png',
             kind: 'mobile',
             alt: 'Espaço do jogador STRIVN: readiness, carga recente e tendência semanal',
             caption: 'Cada jogador vê a sua readiness e a carga da semana.',
           },
           {
-            img: '/screenshots/portal-agenda.png',
+            img: '/screenshots/portal-agenda-pt.png',
             kind: 'mobile',
             alt: 'Agenda do jogador STRIVN: treinos, jogos e reuniões das próximas duas semanas',
             caption: 'Treinos, jogos e reuniões numa só agenda.',
@@ -720,20 +720,20 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'Planifica la semana y deja que la carga prevista frente a la real y el ACWR por jugador se calculen solos. Fórmula sRPE o GPS, sin hojas de cálculo.',
         slides: [
           {
-            img: '/screenshots/load-planning.png',
+            img: '/screenshots/load-planning-es.png',
             video: '/videos/load-planning-en',
             kind: 'desktop',
             alt: 'Planificación de carga en STRIVN: carga diaria prevista, objetivo semanal y ACWR proyectado para la semana',
             caption: 'Planifica la carga de la semana por días, con previsión de ACWR y objetivo semanal.',
           },
           {
-            img: '/screenshots/load-overview.png',
+            img: '/screenshots/load-overview-es.png',
             kind: 'desktop',
             alt: 'Vista de carga del equipo en STRIVN: carga total, RPE medio y distribución por jugador',
             caption: 'La carga de la semana, por jugador, con RPE y distribución.',
           },
           {
-            img: '/screenshots/load-formula.png',
+            img: '/screenshots/load-formula-es.png',
             kind: 'desktop',
             alt: 'Configuración de la fórmula de carga sRPE en STRIVN',
             caption: 'Define tu fórmula de carga sRPE o GPS en segundos.',
@@ -745,14 +745,14 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'Por la mañana ves quién ha respondido y quién está en riesgo. Los jugadores registran fatiga, sueño, estrés y ánimo desde el móvil.',
         slides: [
           {
-            img: '/screenshots/wellness-briefing.png',
+            img: '/screenshots/wellness-briefing-es.png',
             video: '/videos/readiness-en',
             kind: 'desktop',
             alt: 'Briefing matinal de STRIVN: respuestas a los check-ins y niveles de riesgo por jugador',
             caption: 'El briefing de la mañana: quién ha respondido, a quién vigilar.',
           },
           {
-            img: '/screenshots/portal-checkin.png',
+            img: '/screenshots/portal-checkin-es.png',
             kind: 'mobile',
             alt: 'Check-in de bienestar del lado del jugador: deslizadores de fatiga, sueño, estrés y ánimo',
             caption: 'Los jugadores registran fatiga, sueño, estrés y ánimo en segundos.',
@@ -764,13 +764,13 @@ export const scContent: Record<Locale, ScContent> = {
         blurb: 'Cada jugador tiene su propio espacio: readiness, carga semanal, agenda de entrenamientos y partidos. Sin cuenta que crear, sin fricción.',
         slides: [
           {
-            img: '/screenshots/portal-fitness.png',
+            img: '/screenshots/portal-fitness-es.png',
             kind: 'mobile',
             alt: 'Espacio del jugador en STRIVN: readiness, carga reciente y tendencia semanal',
             caption: 'Cada jugador ve su readiness y la carga de la semana.',
           },
           {
-            img: '/screenshots/portal-agenda.png',
+            img: '/screenshots/portal-agenda-es.png',
             kind: 'mobile',
             alt: 'Agenda del jugador en STRIVN: entrenamientos, partidos y reuniones de las próximas dos semanas',
             caption: 'Entrenamientos, partidos y reuniones en una sola agenda.',
