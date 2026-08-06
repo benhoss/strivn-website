@@ -14,12 +14,14 @@ const c = clubsContent[locale];
 
 const base = `/${locale}`;
 const canonicalPath = `${base}/clubs/`;
-const switchHrefs = { en: '/en/clubs/', fr: '/fr/clubs/', nl: '/nl/clubs/', de: '/de/clubs/' };
+const switchHrefs = { en: '/en/clubs/', fr: '/fr/clubs/', nl: '/nl/clubs/', de: '/de/clubs/', pt: '/pt/clubs/', es: '/es/clubs/' };
 const alternates = [
   { hreflang: 'en', href: switchHrefs.en },
   { hreflang: 'fr', href: switchHrefs.fr },
   { hreflang: 'nl', href: switchHrefs.nl },
   { hreflang: 'de', href: switchHrefs.de },
+  { hreflang: 'pt', href: switchHrefs.pt },
+  { hreflang: 'es', href: switchHrefs.es },
   { hreflang: 'x-default', href: switchHrefs.fr },
 ];
 

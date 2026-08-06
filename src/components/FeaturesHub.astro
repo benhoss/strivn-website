@@ -15,12 +15,14 @@ const c = landingContent[locale];
 
 const base = `/${locale}`;
 const canonicalPath = `${base}/features/`;
-const switchHrefs = { en: '/en/features/', fr: '/fr/features/', nl: '/nl/features/', de: '/de/features/' };
+const switchHrefs = { en: '/en/features/', fr: '/fr/features/', nl: '/nl/features/', de: '/de/features/', pt: '/pt/features/', es: '/es/features/' };
 const alternates = [
   { hreflang: 'en', href: switchHrefs.en },
   { hreflang: 'fr', href: switchHrefs.fr },
   { hreflang: 'nl', href: switchHrefs.nl },
   { hreflang: 'de', href: switchHrefs.de },
+  { hreflang: 'pt', href: switchHrefs.pt },
+  { hreflang: 'es', href: switchHrefs.es },
   { hreflang: 'x-default', href: switchHrefs.fr },
 ];
 

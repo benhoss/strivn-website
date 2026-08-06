@@ -12,6 +12,8 @@ export default defineConfig({
     '/en/features/live/': '/en/features/live-session/',
     '/nl/features/live/': '/nl/features/live-session/',
     '/de/features/live/': '/de/features/live-session/',
+    '/pt/features/live/': '/pt/features/live-session/',
+    '/es/features/live/': '/es/features/live-session/',
   },
   build: {
     inlineStylesheets: 'always',

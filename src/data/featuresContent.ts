@@ -3940,4 +3940,1948 @@ export const featuresContent: Record<Locale, FeaturesContent> = {
       },
     },
   },
+
+  pt: {
+    hubName: 'Funcionalidades',
+    backToHub: 'Todas as funcionalidades',
+    moreTitle: 'Explore o resto da plataforma',
+    moreLinkLabel: 'Saber mais',
+
+    hub: {
+      meta: {
+        title: 'Funcionalidades STRIVN — a operação da equipa para treinadores',
+        description:
+          'Convocatórias, presenças, acompanhamento de lesões, carga de treino e planeamento de sessões: tudo o que STRIVN dá gratuitamente aos treinadores, numa só plataforma.',
+      },
+      eyebrow: 'Funcionalidades',
+      hero: {
+        title: 'Tudo o que um treinador gere, no mesmo sítio.',
+        lede: 'Da convocatória ao relatório de fim de mês, STRIVN junta as tarefas que comem a semana de um treinador — e tudo o que as liga. Todos os módulos são gratuitos e partilhados com o seu staff.',
+      },
+      cards: [
+        {
+          slug: 'communication',
+          title: 'Comunicação e convocatórias',
+          text: 'Cada evento gera a sua mensagem e o seu link de resposta. As presenças mantêm-se atualizadas sozinhas.',
+          points: ['Modelos de mensagem', 'Respostas sem conta de jogador', 'Lembretes dirigidos'],
+        },
+        {
+          slug: 'medical',
+          title: 'Registo médico e acompanhamento de lesões',
+          text: 'Lesões, notas do médico e do fisioterapeuta, protocolo de regresso à competição: um só processo, legível por todo o staff.',
+          points: ['Histórico por jogador', 'Notas do staff médico', 'Regresso à competição por etapas'],
+        },
+        {
+          slug: 'training-load',
+          title: 'Planeamento de carga e RPE',
+          text: 'Planeie a carga da semana dia a dia e deixe o RPE dos jogadores preencher o realizado: previsto vs. realizado, ACWR, sinais fracos.',
+          points: ['Planeamento de carga', 'RPE por sessão', 'ACWR por jogador'],
+        },
+        {
+          slug: 'sessions',
+          title: 'Sessões e tática',
+          text: 'Quadros táticos, uma biblioteca de exercícios e um assistente de IA que tem em conta a carga real do plantel.',
+          points: ['Quadros táticos', 'Biblioteca de exercícios', 'Criação assistida por IA'],
+        },
+        {
+          slug: 'live-session',
+          title: 'Sessão em direto',
+          text: 'A sessão preparada corre bloco a bloco no telemóvel ou no tablet à beira do campo: cronómetro, instruções, esquemas — e o staff acompanha.',
+          points: ['Execução bloco a bloco', 'Cronómetro e instruções', 'O staff acompanha em direto'],
+        },
+        {
+          slug: 'live-match',
+          title: 'Jogo em direto',
+          text: 'Registe o jogo com um toque, partilhe um link público que não exige conta — e cada jogador encontra as suas estatísticas no portal depois do jogo.',
+          points: ['Resultado e onze inicial', 'Link público, sem conta', 'Estatísticas automáticas dos jogadores'],
+        },
+        {
+          slug: 'scouting',
+          title: 'Observação do adversário',
+          text: 'Prepare o próximo adversário em conjunto: um relatório estruturado, o plantel adversário, clips etiquetados — e depois partilhe com o grupo através de um link simples.',
+          points: ['Relatórios de adversário', 'Clips de vídeo etiquetados', 'Partilha por link'],
+        },
+        {
+          slug: 'reports',
+          title: 'Relatórios de equipa',
+          text: 'O relatório que nunca tem tempo de escrever: composto a partir dos seus dados — presenças, carga, médico — redigido pela IA e partilhado em PDF.',
+          points: ['Blocos de presenças, carga e médico', 'Primeira versão escrita pela IA', 'Exportação em PDF'],
+        },
+        {
+          slug: 'player-app',
+          title: 'A app dos seus jogadores',
+          text: 'Os seus jogadores têm uma app iOS e Android: convocatórias, check-ins de bem-estar, um programa pessoal e estatísticas — o ciclo que inicia fecha-se sozinho.',
+          points: ['Check-ins de bem-estar', 'Programas pessoais e estatísticas', 'Assistente de IA para o jogador'],
+        },
+      ],
+    },
+
+    features: {
+      communication: {
+        meta: {
+          title: 'Convocatórias e comunicação de equipa | STRIVN',
+          description:
+            'Envie convocatórias, recolha respostas sem conta de jogador e mantenha as presenças atualizadas em tempo real. Gratuito para treinadores amadores e semiprofissionais.',
+        },
+        eyebrow: 'Comunicação e convocatórias',
+        hero: {
+          title: 'A convocatória que se trata sozinha.',
+          lede: 'Cada evento gera a sua mensagem e o seu link de resposta. Partilha-o no canal que o grupo já usa — WhatsApp, email, a aplicação — e STRIVN recolhe as respostas para que a folha de presenças se mantenha atualizada sozinha.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'Deixe de andar atrás das respostas.',
+          items: [
+            {
+              title: 'Modelos por tipo de evento',
+              text: 'Treino, jogo, torneio: cada tipo de evento tem o seu modelo de mensagem. A convocatória está escrita antes de sequer abrir o teclado.',
+            },
+            {
+              title: 'Um link de resposta, zero contas de jogador',
+              text: 'Os jogadores confirmam através de um simples link, no telemóvel ou no computador — nada para instalar, nenhuma palavra-passe para recuperar na véspera de um jogo.',
+            },
+            {
+              title: 'Presenças atualizadas em tempo real',
+              text: 'Cada resposta entra diretamente na folha de presenças. Nada para recontar, nenhuma versão de folha de cálculo para conciliar.',
+            },
+            {
+              title: 'Lembretes dirigidos',
+              text: 'STRIVN sabe quem não respondeu e permite dar um toque só a essas pessoas — um clique, em vez de um «confirmem, por favor» para o grupo inteiro.',
+            },
+          ],
+        },
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Criar o evento',
+              text: 'Treino, jogo ou torneio — STRIVN redige a mensagem de convocatória e o respetivo link de resposta.',
+            },
+            {
+              title: 'Partilhar onde o grupo está',
+              text: 'Publique o link no grupo de WhatsApp, envie-o por email ou deixe a app notificar os jogadores diretamente.',
+            },
+            {
+              title: 'Ver as respostas a chegar',
+              text: 'Cada resposta atualiza as presenças de imediato, com os jogadores incertos assinalados para seguimento.',
+            },
+            {
+              title: 'Lembrar apenas quem está calado',
+              text: 'Um lembrete dirigido vai para quem não respondeu — o resto do grupo não é incomodado.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'Os meus jogadores têm de instalar uma aplicação?',
+              answer:
+                'Não. Podem responder pelo link a partir de qualquer telemóvel ou computador. A app nativa acrescenta notificações e agenda, mas continua a ser opcional.',
+            },
+            {
+              question: 'STRIVN substitui o nosso grupo de WhatsApp?',
+              answer:
+                'Não — funciona com ele. O grupo mantém a vida da equipa; STRIVN assume a parte estruturada: quem vem, quem não vem, quem ainda não disse.',
+            },
+            {
+              question: 'Os pais podem responder pelos jogadores mais novos?',
+              answer:
+                'Sim. O link de resposta funciona para quem gere a disponibilidade do jogador — sem conta, um pai ou uma mãe confirma em segundos.',
+            },
+            {
+              question: 'O que acontece quando alguém responde tarde?',
+              answer:
+                'A folha de presenças atualiza-se no momento em que a pessoa responde, e a alteração fica visível para todo o staff — sem mensagens para reencaminhar.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Envie a sua última convocatória manual.',
+          body: 'Crie a sua equipa gratuitamente — a próxima convocatória trata-se sozinha.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+
+      medical: {
+        meta: {
+          title: 'Acompanhamento de lesões para equipas de futebol | STRIVN',
+          description:
+            'Um registo médico partilhado para equipas amadoras e semiprofissionais: lesões, notas do médico e do fisioterapeuta, regresso à competição por etapas. Gratuito para treinadores.',
+        },
+        eyebrow: 'Registo médico',
+        hero: {
+          title: 'Um registo médico que todo o staff consegue ler.',
+          lede: 'Lesões, notas do médico, avaliações do fisioterapeuta, protocolo de regresso à competição: está tudo ligado, do diagnóstico até ao regresso ao campo. Vê em que ponto está cada jogador sem ter de telefonar a ninguém.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'Uma lesão, um processo — não cinco conversas.',
+          items: [
+            {
+              title: 'Um histórico por jogador',
+              text: 'Cada lesão, cada tratamento, cada regresso fica no processo do jogador. Os problemas recorrentes tornam-se visíveis em vez de ficarem na memória de alguém.',
+            },
+            {
+              title: 'Médico e fisioterapeuta no mesmo sítio',
+              text: 'A autorização do médico e a avaliação do fisioterapeuta ficam no mesmo processo — sem SMS para reencaminhar, sem informação passada de boca em boca que se perde.',
+            },
+            {
+              title: 'Um regresso à competição por etapas',
+              text: 'Diagnóstico, tratamento, reatletização, treino com o grupo, disponível para jogo: cada etapa é explícita e ninguém apressa um regresso.',
+            },
+            {
+              title: 'Visibilidade do treinador apenas para leitura',
+              text: 'Vê o estado e a disponibilidade num relance; o detalhe médico fica com o staff a quem pertence.',
+            },
+          ],
+        },
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Abrir o processo',
+              text: 'O fisioterapeuta ou o treinador cria o registo: jogador, lesão, data. Trinta segundos à beira do campo.',
+            },
+            {
+              title: 'O staff acrescenta as suas notas',
+              text: 'Médico, fisioterapeuta e preparador físico escrevem no mesmo processo, cada um a partir da sua vista.',
+            },
+            {
+              title: 'Seguir o protocolo',
+              text: 'As etapas de regresso à competição avançam com o jogador, visíveis para todos os membros autorizados do staff.',
+            },
+            {
+              title: 'Planear com a disponibilidade real',
+              text: 'As presenças e o planeamento das sessões refletem quem está realmente apto — sem surpresas no dia de jogo.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'Quem pode ver os dados médicos de um jogador?',
+              answer:
+                'Apenas os membros do staff que autorizar. O treinador vê o estado e a disponibilidade; as notas detalhadas ficam com quem as escreveu.',
+            },
+            {
+              question: 'Não temos fisioterapeuta. Continua a ser útil?',
+              answer:
+                'Sim. Muitas equipas amadoras começam com o treinador a registar as lesões e as datas de regresso. A estrutura ajuda mesmo com um staff de uma só pessoa.',
+            },
+            {
+              question: 'O que é um protocolo de regresso à competição?',
+              answer:
+                'Um percurso por etapas do diagnóstico até à disponibilidade para jogo. STRIVN torna as etapas explícitas para que um jogador não regresse cedo demais só porque ninguém tinha a imagem completa.',
+            },
+            {
+              question: 'Funciona para lesões de longa duração?',
+              answer:
+                'Sim — um processo não tem limite de tempo, e o protocolo por etapas foi construído precisamente para os regressos de várias semanas, em que a informação normalmente se perde.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Ponha o registo médico onde o staff o consegue ler.',
+          body: 'Crie a sua equipa gratuitamente — o registo médico faz parte do plano gratuito, não é um extra pago.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+
+      'training-load': {
+        meta: {
+          title: 'Planeamento e monitorização da carga de treino | STRIVN',
+          description:
+            'Planeie a carga da semana dia a dia, recolha o RPE a partir do telemóvel dos jogadores, compare previsto vs. realizado e acompanhe o ACWR para detetar o risco de lesão antes que se transforme numa ausência. Gratuito para treinadores.',
+        },
+        eyebrow: 'Planeamento de carga e RPE',
+        hero: {
+          title: 'Planeie a semana. Acompanhe a carga real.',
+          lede: 'Construa a semana com um objetivo de carga e exercícios dia a dia, e deixe o RPE dos jogadores preencher o realizado. STRIVN compara previsto vs. realizado, calcula o ACWR e sinaliza o risco antes que lhe custe caro.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'Planeie a carga e veja o realizado a preencher-se.',
+          items: [
+            {
+              title: 'Planear a semana',
+              text: 'Defina um objetivo de carga semanal e distribua sessões e exercícios dia a dia com as respetivas categorias. A previsão de ACWR aparece antes de o primeiro treino começar.',
+            },
+            {
+              title: 'RPE por sessão e por jogador',
+              text: 'Os jogadores avaliam o esforço a partir do telemóvel logo a seguir à sessão. Sem formulários em papel, sem cadernos para reintroduzir numa folha de cálculo.',
+            },
+            {
+              title: 'Previsto vs. realizado',
+              text: 'A carga real é comparada automaticamente com o plano: os dias em sobrecarga e em subcarga aparecem num relance.',
+            },
+            {
+              title: 'ACWR por jogador',
+              text: 'O rácio entre carga aguda e crónica assinala quem está a subir depressa demais — o precursor clássico das lesões musculares.',
+            },
+          ],
+        },
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Planear a semana',
+              text: 'Objetivo de carga, sessões e exercícios por dia, categorias de carga (física, técnica, jogo). A previsão de ACWR do plantel atualiza-se à medida que constrói.',
+            },
+            {
+              title: 'Os jogadores avaliam a sessão',
+              text: 'Um pedido rápido de RPE depois de cada sessão, respondido do telemóvel em segundos.',
+            },
+            {
+              title: 'STRIVN compara previsto vs. realizado',
+              text: 'As avaliações das sessões tornam-se carga real, monotonia e ACWR por jogador, comparados automaticamente com o plano.',
+            },
+            {
+              title: 'Ajustar antes que lhe custe caro',
+              text: 'Planeie uma sexta-feira mais leve para o jogador que está em 1.32 em vez de o perder durante seis semanas.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'Posso planear a carga com antecedência?',
+              answer:
+                'Sim. A vista de planeamento de carga permite definir um objetivo semanal e distribuir exercícios dia a dia, por categoria; STRIVN projeta o ACWR do plantel e assinala os dias de risco antes de a semana começar.',
+            },
+            {
+              question: 'O que é o RPE?',
+              answer:
+                'Rating of Perceived Exertion, a perceção subjetiva de esforço: a nota de 1 a 10 que um jogador dá à dureza de uma sessão. Multiplicada pela duração, é a medida de carga fiável mais simples no desporto amador.',
+            },
+            {
+              question: 'O que é o ACWR e porque é que importa?',
+              answer:
+                'O rácio entre carga aguda e crónica compara a carga desta semana com a do último mês. Os picos acentuados estão associados ao risco de lesão; STRIVN calcula-o por jogador para poder suavizar o pico antes que lhe custe caro.',
+            },
+            {
+              question: 'Os meus jogadores vão mesmo preencher?',
+              answer:
+                'Demora segundos no telemóvel logo a seguir à sessão, e vê num relance quem não respondeu — a mesma lógica de lembretes das convocatórias.',
+            },
+            {
+              question: 'Preciso de um preparador físico para usar isto?',
+              answer:
+                'Não. As definições por omissão funcionam para um treinador sozinho; e se tiver um preparador físico, ele ganha a sua própria vista de planeamento e a sua nota é partilhada com o staff.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Planeie a semana do plantel antes de ela começar.',
+          body: 'Crie a sua equipa gratuitamente — o planeamento de carga, o acompanhamento e o RPE fazem parte do plano gratuito.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+
+      sessions: {
+        meta: {
+          title: 'Planeador de sessões de futebol e quadros táticos | STRIVN',
+          description:
+            'Planeie sessões de treino, desenhe quadros táticos, construa a sua biblioteca de exercícios — com um assistente de IA que tem em conta a carga real do plantel.',
+        },
+        eyebrow: 'Sessões e tática',
+        hero: {
+          title: 'A sessão pronta antes de chegar ao campo.',
+          lede: 'Quadros táticos, biblioteca de exercícios, planeamento da semana: STRIVN dá forma à sessão enquanto pensa no jogo, e o assistente de IA tem em conta a carga real do plantel.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'Pense no jogo. STRIVN trata da formatação.',
+          items: [
+            {
+              title: 'Quadros táticos',
+              text: 'Desenhe o bloco de pressão ou a estrutura de construção num quadro que todo o staff pode abrir — acabaram-se as fotografias do quadro branco.',
+            },
+            {
+              title: 'Uma biblioteca que cresce consigo',
+              text: 'Guarde os exercícios que funcionam, reutilize-os em segundos e deixe de redesenhar o mesmo rondo todos os meses.',
+            },
+            {
+              title: 'Planeamento da semana',
+              text: 'As sessões ficam na semana ao lado dos jogos: volume e intenção alinham-se com o que vem no domingo.',
+            },
+            {
+              title: 'Criação de sessões assistida por IA',
+              text: 'Descreva a intenção — STRIVN propõe a estrutura, tendo em conta a carga real e a disponibilidade do plantel. O treinador continua a ser o treinador; a plataforma trata da formatação.',
+            },
+          ],
+        },
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Definir a intenção',
+              text: 'Pressão alta, construção sob pressão, finalização — dê um nome ao tema de quinta-feira.',
+            },
+            {
+              title: 'Construir a partir da biblioteca ou com IA',
+              text: 'Puxe os seus exercícios comprovados ou deixe o assistente propor uma estrutura que respeite a carga da semana.',
+            },
+            {
+              title: 'Partilhar com o staff',
+              text: 'O treinador adjunto e o preparador físico veem o plano antes da sessão — não no parque de estacionamento.',
+            },
+            {
+              title: 'Fechar o ciclo',
+              text: 'Depois da sessão, o relatório junta tudo: o que estava previsto, o que aconteceu, o que ajustar.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'Como funciona o assistente de IA?',
+              answer:
+                'Descreve a intenção da sessão; o assistente propõe fases, durações e exercícios, apoiando-se no que STRIVN já sabe — a disponibilidade e a carga recente do plantel. Todas as propostas ficam editáveis antes de se tornarem o plano.',
+            },
+            {
+              question: 'Posso usar os meus próprios exercícios?',
+              answer:
+                'Sim. A biblioteca é sua: os seus exercícios, os seus esquemas, os seus nomes. O assistente recorre primeiro a ela, e não apenas a modelos genéricos.',
+            },
+            {
+              question: 'Os jogadores veem o plano da sessão?',
+              answer:
+                'Escolhe o que partilha. A convocatória diz aos jogadores quando e onde; o detalhe tático pode ficar com o staff.',
+            },
+            {
+              question: 'Isto é só para futebol?',
+              answer:
+                'STRIVN foi concebido a pensar primeiro no futebol: os quadros, as estruturas dos exercícios e a lógica de carga falam futebol. Esse foco é deliberado.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Pense no jogo. A formatação está feita.',
+          body: 'Crie a sua equipa gratuitamente — quadros, biblioteca e assistente incluídos.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+
+      'live-session': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-coach/id6789923213',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.coach',
+        },
+        meta: {
+          title: 'Sessão em direto no campo | STRIVN',
+          description:
+            'A sessão que preparou em STRIVN corre bloco a bloco à beira do campo: cronómetro, instruções e esquemas no telemóvel ou no tablet — e o staff acompanha. Gratuito para treinadores.',
+        },
+        eyebrow: 'Sessão em direto',
+        hero: {
+          title: 'A sua sessão, em direto à beira do campo.',
+          lede: 'A sessão que preparou corre bloco a bloco no telemóvel ou no tablet: o cronómetro está a contar, as instruções e o esquema do bloco atual estão à sua frente e o staff acompanha. Quando termina, o balanço já está feito.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'O treinador treina. A sessão corre.',
+          items: [
+            {
+              title: 'Bloco a bloco, com o cronómetro a contar',
+              text: 'Aquecimento, exercícios, jogo reduzido: cada bloco segue-se ao anterior no cronómetro, com sinais sonoros para manter os tempos sem olhar para o relógio.',
+            },
+            {
+              title: 'Instruções e esquemas à mão',
+              text: 'O bloco atual mostra o seu esquema tático e os seus pontos-chave — acabou a folha impressa a voar à primeira rajada de vento.',
+            },
+            {
+              title: 'Jogos reduzidos: equipas e resultado',
+              text: 'Nos jogos com oposição e reduzidos, defina as equipas e conte os pontos dentro do próprio bloco — o cronómetro continua a correr.',
+            },
+            {
+              title: 'O staff acompanha, o balanço fica pronto',
+              text: 'Adjunto, preparador físico: todos veem em que ponto está a sessão a partir do seu ecrã — bloco ativo, cronómetro, exercício seguinte. No fim, fica guardado o que foi realmente feito, para o balanço.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'A sessão em direto, a sério',
+            blurb: 'Do plano preparado até à beira do campo: o tablet a correr o bloco atual, a vista do staff e o ecrã de pré-sessão.',
+            slides: [
+              {
+                img: '/screenshots/live-runner-tablet-board.png',
+                kind: 'desktop',
+                alt: 'A sessão em direto num tablet: o bloco atual com o seu esquema e as suas instruções.',
+                caption: 'No tablet à beira do campo: o bloco atual, o seu esquema, as suas instruções.',
+              },
+              {
+                img: '/screenshots/live-session.png',
+                kind: 'desktop',
+                alt: 'A sessão em direto do lado do staff: linha temporal dos blocos e cronómetro a contar.',
+                caption: 'O staff acompanha a sessão em tempo real: bloco ativo, cronómetro, linha temporal.',
+              },
+              {
+                img: '/screenshots/live-session-presession.png',
+                kind: 'desktop',
+                alt: 'O ecrã de pré-sessão: o plano está pronto, basta um toque para começar.',
+                caption: 'Antes de começar: a sessão preparada está pronta a entrar em direto.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Preparar a sessão como habitualmente',
+              text: 'Blocos, durações, esquemas, instruções: a sessão é construída em STRIVN, sozinho ou com o assistente de IA. Passar a direto não exige nada de extra.',
+            },
+            {
+              title: 'Entrar em direto no campo',
+              text: 'Telemóvel no bolso ou tablet à beira do campo: a sessão corre os seus blocos ao cronómetro, com instruções e esquemas à vista.',
+            },
+            {
+              title: 'Balanço — está tudo lá',
+              text: 'O staff acompanhou em direto e fica guardada a linha temporal real da sessão: o que foi feito e em quanto tempo.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'Tenho de preparar a sessão em STRIVN primeiro?',
+              answer:
+                'Sim — é a sessão preparada que corre em direto: blocos, durações, instruções, esquemas. Uma sessão simples leva alguns minutos a construir, com ou sem o assistente de IA.',
+            },
+            {
+              question: 'E se não houver rede no campo?',
+              answer:
+                'A sessão em direto continua a correr os seus blocos mesmo sem ligação, sinais sonoros incluídos. Assim que a rede voltar, tudo sincroniza para o staff que acompanha à distância.',
+            },
+            {
+              question: 'Telemóvel ou tablet?',
+              answer:
+                'Os dois. Um telemóvel no bolso chega para correr a sessão; um tablet à beira do campo acrescenta um esquema maior para mostrar aos jogadores.',
+            },
+            {
+              question: 'A sessão em direto é gratuita?',
+              answer:
+                'Sim — como tudo o resto: a sessão em direto faz parte do plano gratuito, para uma equipa.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Na próxima sessão, mantenha os olhos no campo.',
+          body: 'Crie a sua equipa gratuitamente — a sessão em direto faz parte do plano gratuito.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+
+      'live-match': {
+        meta: {
+          title: 'Jogo em direto — resultado, link público e estatísticas | STRIVN',
+          description:
+            'Registe o jogo com um toque: o link público deixa os pais e os jogadores ausentes acompanhar em direto sem conta — e cada jogador encontra as suas estatísticas no portal. Gratuito para treinadores.',
+        },
+        eyebrow: 'Jogo em direto',
+        hero: {
+          title: 'Registe o jogo com um toque. Todos acompanham.',
+          lede: 'Golos, cartões, substituições: o jogo é registado com um toque no telemóvel. O link público deixa os pais e os jogadores ausentes acompanhar o resultado em direto, sem conta — e depois do jogo, cada jogador encontra as suas próprias estatísticas no portal.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'Um toque para registar, um link para partilhar.',
+          items: [
+            {
+              title: 'O jogo registado com um toque',
+              text: 'Onze inicial definido antes do apito; golos, cartões e substituições contados com um dedo durante o jogo. O resultado e a linha temporal do jogo escrevem-se sozinhos, em direto — sem folhas soltas.',
+            },
+            {
+              title: 'Um link público, zero contas',
+              text: 'Partilhe o link do jogo: pais, jogadores lesionados e quem estiver ausente acompanham o resultado em direto a partir de qualquer telemóvel — nada para instalar, nada para criar.',
+            },
+            {
+              title: 'Cada jogador guarda as suas estatísticas',
+              text: 'Minutos jogados, golos, convocatórias: depois do jogo, o que registou alimenta automaticamente as estatísticas pessoais de cada jogador, no respetivo portal.',
+            },
+            {
+              title: 'A ficha de jogo em papel, importada',
+              text: 'O onze da ficha em papel entra em STRIVN sem ter de ser reescrito linha a linha — o histórico dos jogos centraliza-se sozinho.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Da beira do campo ao portal do jogador',
+            blurb: 'Durante o jogo, o link público mostra o resultado a quem não está lá. Depois, cada um encontra as suas estatísticas no portal.',
+            slides: [
+              {
+                img: '/screenshots/live-viewer-phone.png',
+                kind: 'mobile',
+                alt: 'A vista pública do jogo em direto num telemóvel: resultado e linha temporal, sem conta.',
+                caption: 'O link público: pais e jogadores ausentes acompanham o resultado em direto — sem conta, sem instalar nada.',
+              },
+              {
+                img: '/screenshots/portal-stats.png',
+                kind: 'mobile',
+                alt: 'As estatísticas pessoais de um jogador no portal: minutos jogados, golos, convocatórias.',
+                caption: 'Depois do jogo: cada jogador encontra os seus minutos, golos e convocatórias no portal.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Definir o onze',
+              text: 'Antes do apito inicial, o onze está pronto em STRIVN — ou importado da ficha de jogo em papel, sem reescrever nada.',
+            },
+            {
+              title: 'Registar com um toque',
+              text: 'Golos, cartões, substituições: tudo é contado com um dedo durante o jogo, e a linha temporal escreve-se sozinha, em direto.',
+            },
+            {
+              title: 'Partilhar — todos acompanham',
+              text: 'Durante o jogo, o link público mostra o resultado aos pais e aos jogadores ausentes; depois, cada jogador encontra as suas estatísticas no portal.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'O link público dispensa mesmo conta?',
+              answer:
+                'Sim. O link abre em qualquer navegador, em qualquer telemóvel. Um pai, um jogador lesionado ou um familiar acompanha o resultado em direto sem instalar nem criar nada.',
+            },
+            {
+              question: 'O que é que os pais veem através do link?',
+              answer:
+                'O resultado, a linha temporal do jogo e o onze. Tudo o resto — presenças, processos, notas do staff — fica dentro de STRIVN, do lado da equipa.',
+            },
+            {
+              question: 'As estatísticas dos jogadores são mesmo automáticas?',
+              answer:
+                'Sim. Minutos jogados, golos, convocatórias: o que regista durante o jogo alimenta as estatísticas pessoais de cada jogador, visíveis no respetivo portal — sem reintroduzir nada.',
+            },
+            {
+              question: 'O jogo em direto é gratuito?',
+              answer:
+                'Sim — como tudo o resto: o jogo em direto, o link público e as estatísticas dos jogadores fazem parte do plano gratuito, para uma equipa.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'No próximo jogo, estão todos à beira do campo.',
+          body: 'Crie a sua equipa gratuitamente — o jogo em direto e o link público fazem parte do plano gratuito.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+
+      scouting: {
+        meta: {
+          title: 'Observação do adversário e relatórios partilhados | STRIVN',
+          description:
+            'Prepare o próximo adversário em conjunto: relatórios de observação estruturados, planteis adversários acompanhados ao longo do tempo, clips de vídeo etiquetados — e um relatório partilhado com o grupo através de um link simples. Gratuito para treinadores.',
+        },
+        eyebrow: 'Observação do adversário',
+        hero: {
+          title: 'O próximo adversário, preparado em conjunto.',
+          lede: 'O analista observa, o treinador decide: o relatório de observação é construído em conjunto em STRIVN — plantel adversário, observações, clips etiquetados. E quando está pronto, um simples link partilha-o com o grupo.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'Veja o jogo. STRIVN estrutura o relatório.',
+          items: [
+            {
+              title: 'Relatórios de adversário estruturados',
+              text: 'Acabaram-se os documentos perdidos numa conversa: cada adversário tem o seu relatório em STRIVN, e treinador e analista escrevem no mesmo — observações, pontos fortes, pontos fracos, no mesmo sítio.',
+            },
+            {
+              title: 'O plantel adversário, acompanhado ao longo do tempo',
+              text: 'Cada adversário mantém o seu processo: os seus jogadores, as suas características, as suas notas. Jogo após jogo, época após época, o registo cresce — nunca começa do zero.',
+            },
+            {
+              title: 'Clips de vídeo etiquetados e anotados',
+              text: 'Um clip, uma etiqueta, uma nota: os momentos-chave do adversário encontram-se num instante e sustentam o relatório — todos veem exatamente o que quer dizer.',
+            },
+            {
+              title: 'O relatório partilhado com o balneário',
+              text: 'Quando o relatório está pronto, basta um link público: o grupo abre-o em qualquer telemóvel, sem conta — e chega a saber o que esperar.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Da observação ao balneário',
+            blurb: 'O adversário é estudado no módulo de observação, o relatório é construído em conjunto — e o grupo recebe-o através de um link simples.',
+            slides: [
+              {
+                img: '/screenshots/scouting-module.png',
+                kind: 'desktop',
+                alt: 'O módulo de observação: adversários acompanhados com os seus planteis e relatórios.',
+                caption: 'O módulo de observação: cada adversário tem o seu processo — plantel, observações, relatórios.',
+              },
+              {
+                img: '/screenshots/scouting-report.png',
+                kind: 'desktop',
+                alt: 'Um relatório de observação: observações estruturadas e clips etiquetados sobre o próximo adversário.',
+                caption: 'O relatório constrói-se em conjunto: treinador e analista trabalham no mesmo documento.',
+              },
+              {
+                img: '/screenshots/scouting-report-phone.png',
+                kind: 'mobile',
+                alt: 'O relatório de observação aberto num telemóvel através do link de partilha.',
+                caption: 'Partilhado por link, o relatório abre em qualquer telemóvel.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Observar o adversário',
+              text: 'Da beira do campo ou em frente ao vídeo: notas, etiquetas e clips acumulam-se no processo do adversário à medida que observa.',
+            },
+            {
+              title: 'Construir o relatório',
+              text: 'Treinador e analista montam o relatório em conjunto: observações estruturadas, o plantel adversário, clips para sustentar.',
+            },
+            {
+              title: 'Partilhar com o grupo',
+              text: 'Um link e o relatório chega ao balneário: cada um abre-o no telemóvel e aparece preparado no dia de jogo.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'Quem pode ver um relatório de observação?',
+              answer:
+                'O staff, dentro de STRIVN. E quando decide partilhá-lo, o link público abre-o para quem o recebe — jogadores incluídos — sem conta. Até partilhar, o relatório fica do lado do staff.',
+            },
+            {
+              question: 'Preciso de uma subscrição de vídeo para os clips?',
+              answer:
+                'Não. A observação funciona sem uma plataforma de vídeo dedicada: adiciona os seus clips, etiqueta-os e anota-os dentro de STRIVN.',
+            },
+            {
+              question: 'Os jogadores veem a observação?',
+              answer:
+                'Apenas o que partilhar. As notas de trabalho ficam do lado do staff; o relatório final é partilhado com o grupo através do link, quando decidir.',
+            },
+            {
+              question: 'A observação é gratuita?',
+              answer:
+                'Sim — como tudo o resto: relatórios, planteis adversários e partilha por link fazem parte do plano gratuito, para uma equipa.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Ao apito inicial, o grupo sabe o que aí vem.',
+          body: 'Crie a sua equipa gratuitamente — relatórios, planteis adversários e partilha por link incluídos.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+
+      reports: {
+        meta: {
+          title: 'Relatórios de equipa e exportação em PDF | STRIVN',
+          description:
+            'O relatório que o staff nunca tem tempo de escrever: presenças, carga, acompanhamento médico, jogos e sessões — a IA redige uma primeira versão a partir dos dados que já estão em STRIVN, revê-a e partilha-a em PDF. Gratuito para treinadores.',
+        },
+        eyebrow: 'Relatórios de equipa',
+        hero: {
+          title: 'O relatório que nunca tem tempo de escrever.',
+          lede: 'Presenças, carga, acompanhamento médico, jogos e sessões: já está tudo em STRIVN. Escolhe os blocos, a IA redige uma primeira versão — e a direção, os pais ou o conselho recebem um PDF cuidado que mostra o trabalho do staff.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'O trabalho é seu. STRIVN torna-o visível.',
+          items: [
+            {
+              title: 'Construído a partir dos seus dados',
+              text: 'Sem recolhas nem copiar e colar: o relatório apoia-se no que STRIVN já regista ao longo da época — presenças, carga de treino, acompanhamento médico, jogos e sessões.',
+            },
+            {
+              title: 'É o treinador que escolhe os blocos',
+              text: 'Presenças do mês, tendências de carga, lesões em curso, resultados: cada relatório é composto bloco a bloco, consoante o destinatário — direção, pais ou direção desportiva.',
+            },
+            {
+              title: 'Um PDF cuidado, pronto a enviar',
+              text: 'O relatório exporta-se num PDF paginado, pronto a anexar a um email ou a pôr em cima da mesa numa reunião. Sem folhas de cálculo para reformatar na véspera.',
+            },
+            {
+              title: 'A IA redige, o treinador decide',
+              text: 'A IA propõe uma primeira versão escrita a partir dos seus números. Revê, corrige, reformula — nada sai sem a sua palavra.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Dos seus dados até um PDF',
+            blurb: 'Escolha os blocos, deixe a IA redigir a primeira versão — e reveja antes de partilhar.',
+            slides: [
+              {
+                img: '/screenshots/reports-hub.png',
+                kind: 'desktop',
+                alt: 'O módulo de relatórios: os relatórios existentes da equipa e o botão para criar um novo.',
+                caption: 'O módulo de relatórios: cada relatório mantém o seu lugar, pronto a reabrir ou a partilhar.',
+              },
+              {
+                img: '/screenshots/reports-selection.png',
+                kind: 'desktop',
+                alt: 'Composição de um relatório: os blocos de presenças, carga e médico selecionados antes da geração.',
+                caption: 'Escolhe os blocos — presenças, carga, médico — e a IA redige a primeira versão.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Escolher os blocos',
+              text: 'Presenças, carga, acompanhamento médico, jogos, sessões: assinale o que o relatório deve cobrir, no período de que precisa.',
+            },
+            {
+              title: 'A IA monta o relatório',
+              text: 'Uma primeira versão escrita chega em instantes, construída apenas com os dados da sua equipa em STRIVN.',
+            },
+            {
+              title: 'Rever e partilhar',
+              text: 'Ajuste o texto, retire um bloco e exporte em PDF — para a direção, os pais ou o conselho.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'Em que dados se baseia o relatório?',
+              answer:
+                'Nos dados que a sua equipa já regista em STRIVN: presenças e respostas às convocatórias, carga de treino, acompanhamento médico, jogos e sessões. Sem reintroduzir nada.',
+            },
+            {
+              question: 'A direção ou um pai precisam de conta?',
+              answer:
+                'Não. O relatório exporta-se em PDF: envia-o por email ou imprime-o para a reunião — quem o recebe não tem de instalar nada.',
+            },
+            {
+              question: 'Posso editar o que a IA escreve?',
+              answer:
+                'Sim, tudo. A IA propõe uma primeira versão, mas o texto continua a ser seu: revê, corrige ou reescreve cada bloco antes de partilhar. Nada sai sem a sua palavra.',
+            },
+            {
+              question: 'Os relatórios são gratuitos?',
+              answer:
+                'Sim — como tudo o resto: os relatórios e o assistente de IA fazem parte do plano gratuito, para uma equipa.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Na próxima reunião, o trabalho do staff está em cima da mesa.',
+          body: 'Crie a sua equipa gratuitamente — relatórios, exportação em PDF e assistente de IA incluídos.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+
+      'player-app': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-player/id6779121691',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.player',
+        },
+        meta: {
+          title: 'A app do jogador para iOS e Android | STRIVN',
+          description:
+            'Os seus jogadores têm uma app nativa iOS e Android: convocatórias, check-ins de bem-estar, um programa pessoal, estatísticas e um assistente de IA. Na App Store e no Google Play — gratuita para os seus jogadores.',
+        },
+        eyebrow: 'A app dos seus jogadores',
+        hero: {
+          title: 'O que os seus jogadores recebem.',
+          lede: 'Uma app nativa iOS e Android, gratuita para eles: respondem às convocatórias, preenchem o check-in de bem-estar, seguem o seu programa e as suas estatísticas. O ciclo que inicia do lado do staff fecha-se no bolso deles — sem andar atrás de ninguém.',
+          primaryCta: 'Começar gratuitamente',
+          reassurance: 'Gratuito para uma equipa · sem aprovação do clube · pronto em minutos',
+        },
+        benefits: {
+          title: 'O treinador inicia o ciclo. A app fecha-o.',
+          items: [
+            {
+              title: 'A app iOS e Android dos seus jogadores',
+              text: 'Uma app nativa, disponível na App Store e no Google Play, gratuita para os seus jogadores. Convocatórias, agenda, mensagens: o que envia chega onde eles já olham — o telemóvel.',
+            },
+            {
+              title: 'Check-ins e readiness, sem andar atrás de ninguém',
+              text: 'Sono, fadiga, humor, dores: os jogadores preenchem o check-in em segundos todas as manhãs. Vê a readiness do plantel antes da sessão — sem enviar uma única mensagem.',
+            },
+            {
+              title: 'Programa pessoal e estatísticas no bolso',
+              text: 'Cada jogador encontra o seu programa individual, assinala o que fez e acompanha os seus próprios números: presenças, carga, progressão. O que planeia segue-se sozinho.',
+            },
+            {
+              title: 'Um assistente de IA, dentro do seu enquadramento',
+              text: 'Entre sessões, os jogadores podem colocar questões a um assistente de IA que responde dentro do enquadramento que definiu — as suas instruções, o programa deles, a carga deles. Nunca no seu lugar.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'No bolso dos seus jogadores',
+            blurb: 'A agenda, o check-in da manhã e a readiness: o que o jogador vê, tal como o vê.',
+            slides: [
+              {
+                img: '/screenshots/portal-agenda.png',
+                kind: 'mobile',
+                alt: 'A agenda do jogador no telemóvel: próximos eventos com botões de resposta às convocatórias.',
+                caption: 'A convocatória chega à app — o jogador responde com um toque.',
+              },
+              {
+                img: '/screenshots/portal-checkin.png',
+                kind: 'mobile',
+                alt: 'O check-in de bem-estar do jogador no telemóvel: barras de sono, fadiga, humor e dores.',
+                caption: 'O check-in da manhã: algumas barras, alguns segundos.',
+              },
+              {
+                img: '/screenshots/portal-fitness.png',
+                kind: 'mobile',
+                alt: 'O ecrã de condição física do jogador no telemóvel: carga recente e tendência de readiness.',
+                caption: 'Os jogadores acompanham a sua readiness e carga — os mesmos números que o treinador vê.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Como funciona',
+          steps: [
+            {
+              title: 'Convidar o jogador',
+              text: 'A partir da lista do plantel, cada jogador recebe o seu convite e instala a app em dois minutos, na App Store ou no Google Play.',
+            },
+            {
+              title: 'Respondem e preenchem, na app',
+              text: 'Convocatórias, check-ins, programa: os jogadores fazem a sua parte a partir do telemóvel, quando lhes der jeito.',
+            },
+            {
+              title: 'O treinador vê tudo chegar',
+              text: 'Presenças atualizadas, readiness do plantel, programas cumpridos: do lado do staff, tudo se preenche em direto — sem andar atrás de ninguém.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Perguntas frequentes',
+          items: [
+            {
+              question: 'A app está disponível para iOS e Android?',
+              answer:
+                'Sim. STRIVN Player é uma app nativa, disponível na App Store (iOS) e no Google Play (Android). Os jogadores instalam-na em dois minutos a partir do convite.',
+            },
+            {
+              question: 'Os jogadores têm de pagar alguma coisa?',
+              answer:
+                'Não. A app é gratuita para os seus jogadores: descarregam-na e usam-na sem pagar nada. O treinador gere a equipa — eles só têm de responder.',
+            },
+            {
+              question: 'E o WHOOP?',
+              answer:
+                'Os jogadores podem ligar o seu WHOOP para pré-preencher os check-ins com sono e recuperação, consoante o plano do clube. Sem wearable, o check-in manual demora segundos.',
+            },
+            {
+              question: 'E para os jogadores mais novos?',
+              answer:
+                'O modo formação adapta a app: o assistente de IA e as multas ficam ocultos, e os pais mantêm o seu lugar no ciclo. A nossa página sobre equipas de formação explica como funciona.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Os seus jogadores fazem a parte deles. O treinador vê tudo chegar.',
+          body: 'Crie a sua equipa gratuitamente e convide os seus jogadores — a app STRIVN Player espera por eles na App Store e no Google Play.',
+          cta: 'Começar gratuitamente',
+        },
+      },
+    },
+  },
+
+  es: {
+    hubName: 'Funcionalidades',
+    backToHub: 'Todas las funcionalidades',
+    moreTitle: 'Explora el resto de la plataforma',
+    moreLinkLabel: 'Saber más',
+
+    hub: {
+      meta: {
+        title: 'Funcionalidades de STRIVN — la operativa del equipo para entrenadores',
+        description:
+          'Convocatorias, asistencias, seguimiento de lesiones, carga de entrenamiento y planificación de sesiones: todo lo que STRIVN da gratis a los entrenadores, en una sola plataforma.',
+      },
+      eyebrow: 'Funcionalidades',
+      hero: {
+        title: 'Todo lo que gestiona un entrenador, en un mismo sitio.',
+        lede: 'De la convocatoria al informe de fin de mes, STRIVN reúne las tareas que se comen la semana de un entrenador — y todo lo que las conecta. Todos los módulos son gratuitos y se comparten con tu cuerpo técnico.',
+      },
+      cards: [
+        {
+          slug: 'communication',
+          title: 'Comunicación y convocatorias',
+          text: 'Cada evento genera su mensaje y su enlace de respuesta. Las asistencias se mantienen al día solas.',
+          points: ['Plantillas de mensaje', 'Respuestas sin cuenta de jugador', 'Recordatorios dirigidos'],
+        },
+        {
+          slug: 'medical',
+          title: 'Parte médico y seguimiento de lesiones',
+          text: 'Lesiones, notas del médico y del fisio, protocolo de vuelta a la competición: un solo historial, legible por todo el cuerpo técnico.',
+          points: ['Historial por jugador', 'Notas del personal médico', 'Vuelta a la competición por etapas'],
+        },
+        {
+          slug: 'training-load',
+          title: 'Planificación de carga y RPE',
+          text: 'Planifica la carga de la semana día a día y deja que el RPE de los jugadores rellene lo real: previsto frente a real, ACWR, señales débiles.',
+          points: ['Planificación de carga', 'RPE por sesión', 'ACWR por jugador'],
+        },
+        {
+          slug: 'sessions',
+          title: 'Sesiones y táctica',
+          text: 'Pizarras tácticas, una biblioteca de ejercicios y un asistente de IA que tiene en cuenta la carga real de la plantilla.',
+          points: ['Pizarras tácticas', 'Biblioteca de ejercicios', 'Creación asistida por IA'],
+        },
+        {
+          slug: 'live-session',
+          title: 'Sesión en directo',
+          text: 'La sesión preparada corre bloque a bloque en el móvil o la tablet a pie de campo: cronómetro, instrucciones, esquemas — y el cuerpo técnico lo sigue.',
+          points: ['Ejecución bloque a bloque', 'Cronómetro e instrucciones', 'El cuerpo técnico sigue en directo'],
+        },
+        {
+          slug: 'live-match',
+          title: 'Partido en directo',
+          text: 'Registra el partido con un toque, comparte un enlace público que no exige cuenta — y cada jugador encuentra sus estadísticas en su portal después del partido.',
+          points: ['Marcador y alineaciones', 'Enlace público, sin cuenta', 'Estadísticas automáticas de los jugadores'],
+        },
+        {
+          slug: 'scouting',
+          title: 'Scouting del rival',
+          text: 'Prepara al próximo rival en equipo: un informe estructurado, la plantilla rival, clips etiquetados — y luego compártelo con el grupo mediante un enlace simple.',
+          points: ['Informes de rival', 'Clips de vídeo etiquetados', 'Compartido por enlace'],
+        },
+        {
+          slug: 'reports',
+          title: 'Informes de equipo',
+          text: 'El informe que nunca tienes tiempo de escribir: compuesto a partir de tus datos —asistencias, carga, médico—, redactado por la IA y compartido en PDF.',
+          points: ['Bloques de asistencias, carga y médico', 'Primera versión escrita por la IA', 'Exportación en PDF'],
+        },
+        {
+          slug: 'player-app',
+          title: 'La app de tus jugadores',
+          text: 'Tus jugadores tienen una app para iOS y Android: convocatorias, check-ins de bienestar, un programa personal y estadísticas — el círculo que abres se cierra solo.',
+          points: ['Check-ins de bienestar', 'Programas personales y estadísticas', 'Asistente de IA para el jugador'],
+        },
+      ],
+    },
+
+    features: {
+      communication: {
+        meta: {
+          title: 'Convocatorias y comunicación de equipo | STRIVN',
+          description:
+            'Envía convocatorias, recoge respuestas sin cuenta de jugador y mantén las asistencias al día en tiempo real. Gratis para entrenadores amateur y semiprofesionales.',
+        },
+        eyebrow: 'Comunicación y convocatorias',
+        hero: {
+          title: 'La convocatoria que se gestiona sola.',
+          lede: 'Cada evento genera su mensaje y su enlace de respuesta. Lo compartes en el canal que tu grupo ya usa —WhatsApp, email, la app— y STRIVN recoge las respuestas para que la lista de asistencias se mantenga al día sola.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Deja de perseguir respuestas.',
+          items: [
+            {
+              title: 'Plantillas por tipo de evento',
+              text: 'Entrenamiento, partido, torneo: cada tipo de evento tiene su plantilla de mensaje. La convocatoria está escrita antes incluso de abrir el teclado.',
+            },
+            {
+              title: 'Un enlace de respuesta, cero cuentas de jugador',
+              text: 'Los jugadores confirman con un simple enlace, desde el móvil o el ordenador — nada que instalar, ninguna contraseña que recuperar la víspera de un partido.',
+            },
+            {
+              title: 'Asistencias actualizadas en tiempo real',
+              text: 'Cada respuesta entra directamente en la lista de asistencias. Nada que volver a contar, ninguna versión de hoja de cálculo que cuadrar.',
+            },
+            {
+              title: 'Recordatorios dirigidos',
+              text: 'STRIVN sabe quién no ha contestado y te deja avisar solo a esos — un toque, en lugar de un «confirmad, por favor» a todo el grupo.',
+            },
+          ],
+        },
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Crea el evento',
+              text: 'Entrenamiento, partido o torneo — STRIVN redacta el mensaje de convocatoria y su enlace de respuesta.',
+            },
+            {
+              title: 'Compártelo donde está tu grupo',
+              text: 'Publica el enlace en el grupo de WhatsApp, envíalo por email o deja que la app avise a los jugadores directamente.',
+            },
+            {
+              title: 'Mira llegar las respuestas',
+              text: 'Cada respuesta actualiza las asistencias al instante, con los jugadores en duda señalados para hacer seguimiento.',
+            },
+            {
+              title: 'Recuerda solo a los que callan',
+              text: 'Un recordatorio dirigido llega a quien no ha contestado — al resto del grupo no se le molesta.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿Mis jugadores tienen que instalar una app?',
+              answer:
+                'No. Pueden responder desde el enlace en cualquier móvil u ordenador. La app nativa añade notificaciones y agenda, pero sigue siendo opcional.',
+            },
+            {
+              question: '¿STRIVN sustituye a nuestro grupo de WhatsApp?',
+              answer:
+                'No, convive con él. El grupo mantiene la vida del equipo; STRIVN se ocupa de la parte estructurada: quién viene, quién no, quién no ha dicho nada.',
+            },
+            {
+              question: '¿Pueden responder los padres por los jugadores más jóvenes?',
+              answer:
+                'Sí. El enlace de respuesta funciona para quien gestiona la disponibilidad del jugador — sin cuenta, un padre o una madre confirma en segundos.',
+            },
+            {
+              question: '¿Qué pasa cuando alguien responde tarde?',
+              answer:
+                'La lista de asistencias se actualiza en el momento en que contesta, y el cambio queda visible para todo el cuerpo técnico — ningún mensaje que reenviar.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Envía tu última convocatoria manual.',
+          body: 'Crea tu equipo gratis — la próxima convocatoria se gestiona sola.',
+          cta: 'Empezar gratis',
+        },
+      },
+
+      medical: {
+        meta: {
+          title: 'Seguimiento de lesiones para equipos de fútbol | STRIVN',
+          description:
+            'Un parte médico compartido para equipos amateur y semiprofesionales: lesiones, notas del médico y del fisio, vuelta a la competición por etapas. Gratis para entrenadores.',
+        },
+        eyebrow: 'Parte médico',
+        hero: {
+          title: 'Un parte médico que todo el cuerpo técnico puede leer.',
+          lede: 'Lesiones, notas del médico, valoraciones del fisio, protocolo de vuelta a la competición: todo está conectado, del diagnóstico al regreso al campo. Ves en qué punto está cada jugador sin llamar a nadie.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Una lesión, un historial — no cinco conversaciones.',
+          items: [
+            {
+              title: 'Un historial por jugador',
+              text: 'Cada lesión, cada tratamiento, cada vuelta queda en el historial del jugador. Los problemas recurrentes se hacen visibles en lugar de quedarse en la memoria de alguien.',
+            },
+            {
+              title: 'Médico y fisio en un mismo sitio',
+              text: 'El alta del médico y la valoración del fisio están en el mismo historial — ningún SMS que reenviar, ningún recado de palabra que se pierda.',
+            },
+            {
+              title: 'Una vuelta a la competición por etapas',
+              text: 'Diagnóstico, tratamiento, readaptación, entrenamiento con el grupo, disponible para el partido: cada etapa es explícita y nadie acelera una vuelta.',
+            },
+            {
+              title: 'Visibilidad del entrenador en solo lectura',
+              text: 'Ves el estado y la disponibilidad de un vistazo; el detalle médico se queda con el personal al que corresponde.',
+            },
+          ],
+        },
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Abre el historial',
+              text: 'El fisio o el entrenador crea el registro: jugador, lesión, fecha. Treinta segundos a pie de campo.',
+            },
+            {
+              title: 'El cuerpo técnico añade sus notas',
+              text: 'Médico, fisio y preparador físico escriben en el mismo historial, cada uno desde su propia vista.',
+            },
+            {
+              title: 'Sigue el protocolo',
+              text: 'Las etapas de vuelta a la competición avanzan con el jugador, visibles para todo el personal autorizado.',
+            },
+            {
+              title: 'Planifica con la disponibilidad real',
+              text: 'Las asistencias y la planificación de sesiones reflejan quién está realmente apto — sin sorpresas el día del partido.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿Quién puede ver los datos médicos de un jugador?',
+              answer:
+                'Solo los miembros del cuerpo técnico que autorices. El entrenador ve el estado y la disponibilidad; las notas detalladas se quedan con quien las escribió.',
+            },
+            {
+              question: 'No tenemos fisio. ¿Sigue siendo útil?',
+              answer:
+                'Sí. Muchos equipos amateur empiezan con el entrenador anotando lesiones y fechas de vuelta. La estructura ayuda incluso con un cuerpo técnico de una sola persona.',
+            },
+            {
+              question: '¿Qué es un protocolo de vuelta a la competición?',
+              answer:
+                'Un recorrido por etapas desde el diagnóstico hasta la disponibilidad para el partido. STRIVN hace explícitas las etapas para que un jugador no vuelva demasiado pronto solo porque nadie tenía la foto completa.',
+            },
+            {
+              question: '¿Funciona para lesiones de larga duración?',
+              answer:
+                'Sí — un historial no tiene límite de tiempo, y el protocolo por etapas está hecho justamente para las vueltas de varias semanas, en las que la información suele perderse.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Pon el parte médico donde el cuerpo técnico pueda leerlo.',
+          body: 'Crea tu equipo gratis — el parte médico forma parte del plan gratuito, no es un extra de pago.',
+          cta: 'Empezar gratis',
+        },
+      },
+
+      'training-load': {
+        meta: {
+          title: 'Planificación y control de la carga de entrenamiento | STRIVN',
+          description:
+            'Planifica la carga de la semana día a día, recoge el RPE desde el móvil de tus jugadores, compara previsto frente a real y sigue el ACWR para detectar el riesgo de lesión antes de que se convierta en una baja. Gratis para entrenadores.',
+        },
+        eyebrow: 'Planificación de carga y RPE',
+        hero: {
+          title: 'Planifica la semana. Controla la carga real.',
+          lede: 'Construye la semana con un objetivo de carga y ejercicios día a día, y deja que el RPE de los jugadores rellene lo realizado. STRIVN compara previsto frente a real, calcula el ACWR y señala el riesgo antes de que te cueste caro.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Planifica la carga y mira cómo se rellena lo real.',
+          items: [
+            {
+              title: 'Planificar la semana',
+              text: 'Fija un objetivo de carga semanal y reparte sesiones y ejercicios día a día con sus categorías. La previsión de ACWR aparece antes de que empiece el primer entrenamiento.',
+            },
+            {
+              title: 'RPE por sesión y por jugador',
+              text: 'Los jugadores valoran el esfuerzo desde el móvil justo después de la sesión. Sin formularios en papel, sin libretas que volcar en una hoja de cálculo.',
+            },
+            {
+              title: 'Previsto frente a real',
+              text: 'La carga real se compara automáticamente con el plan: los días con exceso y con defecto de carga salen a la vista de un vistazo.',
+            },
+            {
+              title: 'ACWR por jugador',
+              text: 'La ratio entre carga aguda y crónica señala a quien sube demasiado rápido — el precursor clásico de las lesiones musculares.',
+            },
+          ],
+        },
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Planifica la semana',
+              text: 'Objetivo de carga, sesiones y ejercicios por día, categorías de carga (física, técnica, partido). La previsión de ACWR de la plantilla se actualiza mientras construyes.',
+            },
+            {
+              title: 'Los jugadores valoran la sesión',
+              text: 'Una petición rápida de RPE después de cada sesión, contestada desde el móvil en segundos.',
+            },
+            {
+              title: 'STRIVN compara previsto frente a real',
+              text: 'Las valoraciones de las sesiones se convierten en carga real, monotonía y ACWR por jugador, comparados automáticamente con el plan.',
+            },
+            {
+              title: 'Ajusta antes de que te cueste caro',
+              text: 'Plantea un viernes más ligero para el jugador que está en 1.32 en lugar de perderlo durante seis semanas.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿Puedo planificar la carga por adelantado?',
+              answer:
+                'Sí. La vista de planificación de carga permite fijar un objetivo semanal y repartir ejercicios día a día, por categoría; STRIVN proyecta el ACWR de la plantilla y señala los días de riesgo antes de que empiece la semana.',
+            },
+            {
+              question: '¿Qué es el RPE?',
+              answer:
+                'Rating of Perceived Exertion, la percepción subjetiva del esfuerzo: la nota de 1 a 10 que un jugador pone a lo dura que le ha resultado una sesión. Multiplicada por la duración, es la medida de carga fiable más simple en el deporte amateur.',
+            },
+            {
+              question: '¿Qué es el ACWR y por qué importa?',
+              answer:
+                'La ratio entre carga aguda y crónica compara la carga de esta semana con la del último mes. Los picos bruscos se asocian al riesgo de lesión; STRIVN lo calcula por jugador para que puedas suavizar el pico antes de que te cueste caro.',
+            },
+            {
+              question: '¿Mis jugadores lo van a rellenar de verdad?',
+              answer:
+                'Tarda segundos en su móvil justo después de la sesión, y ves de un vistazo quién no ha contestado — la misma lógica de aviso que en las convocatorias.',
+            },
+            {
+              question: '¿Necesito un preparador físico para usarlo?',
+              answer:
+                'No. Los valores por defecto funcionan para un entrenador que va solo; y si tienes preparador físico, él dispone de su propia vista de planificación y su nota se comparte con el cuerpo técnico.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Planifica la semana de la plantilla antes de que empiece.',
+          body: 'Crea tu equipo gratis — la planificación de carga, el seguimiento y el RPE forman parte del plan gratuito.',
+          cta: 'Empezar gratis',
+        },
+      },
+
+      sessions: {
+        meta: {
+          title: 'Planificador de sesiones de fútbol y pizarras tácticas | STRIVN',
+          description:
+            'Planifica sesiones de entrenamiento, dibuja pizarras tácticas, construye tu biblioteca de ejercicios — con un asistente de IA que tiene en cuenta la carga real de la plantilla.',
+        },
+        eyebrow: 'Sesiones y táctica',
+        hero: {
+          title: 'La sesión lista antes de llegar al campo.',
+          lede: 'Pizarras tácticas, biblioteca de ejercicios, planificación semanal: STRIVN da forma a la sesión mientras piensas en el partido, y el asistente de IA tiene en cuenta la carga real de la plantilla.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Piensa en el partido. STRIVN se ocupa del formato.',
+          items: [
+            {
+              title: 'Pizarras tácticas',
+              text: 'Dibuja el bloque de presión o la salida de balón en una pizarra que todo el cuerpo técnico puede abrir — se acabaron las fotos de la pizarra blanca.',
+            },
+            {
+              title: 'Una biblioteca que crece contigo',
+              text: 'Guarda los ejercicios que funcionan, reutilízalos en segundos y deja de redibujar el mismo rondo cada mes.',
+            },
+            {
+              title: 'Planificación semanal',
+              text: 'Las sesiones se colocan en la semana junto a los partidos: volumen e intención encajan con lo que llega el domingo.',
+            },
+            {
+              title: 'Creación de sesiones asistida por IA',
+              text: 'Describe la intención — STRIVN propone la estructura teniendo en cuenta la carga real y la disponibilidad de la plantilla. Tú sigues siendo el entrenador; la plataforma se ocupa del formato.',
+            },
+          ],
+        },
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Define la intención',
+              text: 'Presión alta, salida de balón bajo presión, finalización — ponle nombre al tema del jueves.',
+            },
+            {
+              title: 'Construye desde la biblioteca o con IA',
+              text: 'Tira de tus ejercicios de siempre o deja que el asistente proponga una estructura que respete la carga de la semana.',
+            },
+            {
+              title: 'Comparte con el cuerpo técnico',
+              text: 'El segundo entrenador y el preparador físico ven el plan antes de la sesión — no en el aparcamiento.',
+            },
+            {
+              title: 'Cierra el círculo',
+              text: 'Después de la sesión, el informe lo une todo: qué estaba previsto, qué ha pasado, qué ajustar.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿Cómo funciona el asistente de IA?',
+              answer:
+                'Describes la intención de la sesión; el asistente propone fases, duraciones y ejercicios apoyándose en lo que STRIVN ya sabe — la disponibilidad y la carga reciente de la plantilla. Toda propuesta sigue siendo editable antes de convertirse en el plan.',
+            },
+            {
+              question: '¿Puedo usar mis propios ejercicios?',
+              answer:
+                'Sí. La biblioteca es tuya: tus ejercicios, tus esquemas, tus nombres. El asistente tira primero de ella, no solo de plantillas genéricas.',
+            },
+            {
+              question: '¿Los jugadores ven el plan de la sesión?',
+              answer:
+                'Tú eliges qué compartes. La convocatoria dice a los jugadores cuándo y dónde; el detalle táctico puede quedarse con el cuerpo técnico.',
+            },
+            {
+              question: '¿Esto es solo para fútbol?',
+              answer:
+                'STRIVN está diseñado pensando primero en el fútbol: las pizarras, las estructuras de ejercicios y la lógica de carga hablan fútbol. Ese enfoque es deliberado.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Piensa en el partido. El formato ya está hecho.',
+          body: 'Crea tu equipo gratis — pizarras, biblioteca y asistente incluidos.',
+          cta: 'Empezar gratis',
+        },
+      },
+
+      'live-session': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-coach/id6789923213',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.coach',
+        },
+        meta: {
+          title: 'Sesión en directo en el campo | STRIVN',
+          description:
+            'La sesión que preparaste en STRIVN corre bloque a bloque a pie de campo: cronómetro, instrucciones y esquemas en el móvil o la tablet — y el cuerpo técnico lo sigue. Gratis para entrenadores.',
+        },
+        eyebrow: 'Sesión en directo',
+        hero: {
+          title: 'Tu sesión, en directo a pie de campo.',
+          lede: 'La sesión que preparaste corre bloque a bloque en el móvil o la tablet: el cronómetro corre, las instrucciones y el esquema del bloque actual están delante de ti, y el cuerpo técnico lo sigue. Cuando termina, el balance ya está hecho.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Tú entrenas. La sesión corre.',
+          items: [
+            {
+              title: 'Bloque a bloque, con el cronómetro en marcha',
+              text: 'Calentamiento, ejercicios, partido reducido: cada bloque sigue al anterior en el cronómetro, con avisos sonoros para mantener los tiempos sin mirar el reloj.',
+            },
+            {
+              title: 'Instrucciones y esquemas a mano',
+              text: 'El bloque actual muestra su esquema táctico y sus puntos clave — se acabó la hoja impresa que vuela con la primera racha de viento.',
+            },
+            {
+              title: 'Partidos reducidos: equipos y marcador',
+              text: 'En los juegos con oposición y reducidos, define los equipos y cuenta los puntos dentro del propio bloque — el cronómetro sigue corriendo.',
+            },
+            {
+              title: 'El cuerpo técnico sigue, el balance queda listo',
+              text: 'Segundo entrenador, preparador físico: todos ven por dónde va la sesión desde su pantalla — bloque activo, cronómetro, siguiente ejercicio. Al final queda guardado lo que se hizo de verdad, para el balance.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'La sesión en directo, de verdad',
+            blurb: 'Del plan preparado al pie de campo: la tablet ejecutando el bloque actual, la vista del cuerpo técnico y la pantalla previa a la sesión.',
+            slides: [
+              {
+                img: '/screenshots/live-runner-tablet-board.png',
+                kind: 'desktop',
+                alt: 'La sesión en directo en una tablet: el bloque actual con su esquema y sus instrucciones.',
+                caption: 'En la tablet a pie de campo: el bloque actual, su esquema, sus instrucciones.',
+              },
+              {
+                img: '/screenshots/live-session.png',
+                kind: 'desktop',
+                alt: 'La sesión en directo del lado del cuerpo técnico: línea temporal de bloques y cronómetro en marcha.',
+                caption: 'El cuerpo técnico sigue la sesión en tiempo real: bloque activo, cronómetro, línea temporal.',
+              },
+              {
+                img: '/screenshots/live-session-presession.png',
+                kind: 'desktop',
+                alt: 'La pantalla previa a la sesión: el plan está listo, un toque para empezar.',
+                caption: 'Antes de empezar: la sesión preparada está lista para salir en directo.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Prepara la sesión como siempre',
+              text: 'Bloques, duraciones, esquemas, instrucciones: la sesión se construye en STRIVN, solo o con el asistente de IA. Pasar a directo no exige nada más.',
+            },
+            {
+              title: 'Sal en directo en el campo',
+              text: 'Móvil en el bolsillo o tablet a pie de campo: la sesión ejecuta sus bloques con el cronómetro, con instrucciones y esquemas a la vista.',
+            },
+            {
+              title: 'Balance — está todo ahí',
+              text: 'El cuerpo técnico lo siguió en directo y queda guardada la línea temporal real de la sesión: qué se hizo y en cuánto tiempo.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿Tengo que preparar antes la sesión en STRIVN?',
+              answer:
+                'Sí — es la sesión preparada la que corre en directo: bloques, duraciones, instrucciones, esquemas. Una sesión sencilla se construye en unos minutos, con o sin el asistente de IA.',
+            },
+            {
+              question: '¿Y si no hay cobertura en el campo?',
+              answer:
+                'La sesión en directo sigue ejecutando tus bloques incluso sin conexión, avisos sonoros incluidos. En cuanto vuelve la red, todo se sincroniza para el cuerpo técnico que lo sigue a distancia.',
+            },
+            {
+              question: '¿Móvil o tablet?',
+              answer:
+                'Los dos. Un móvil en el bolsillo basta para ejecutar la sesión; una tablet a pie de campo añade un esquema más grande para enseñárselo a los jugadores.',
+            },
+            {
+              question: '¿La sesión en directo es gratis?',
+              answer:
+                'Sí — como todo lo demás: la sesión en directo forma parte del plan gratuito, para un equipo.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'En la próxima sesión, no apartes la vista del campo.',
+          body: 'Crea tu equipo gratis — la sesión en directo forma parte del plan gratuito.',
+          cta: 'Empezar gratis',
+        },
+      },
+
+      'live-match': {
+        meta: {
+          title: 'Partido en directo — marcador, enlace público y estadísticas | STRIVN',
+          description:
+            'Registra el partido con un toque: el enlace público permite a familias y jugadores ausentes seguirlo en directo sin cuenta — y cada jugador encuentra sus estadísticas en su portal. Gratis para entrenadores.',
+        },
+        eyebrow: 'Partido en directo',
+        hero: {
+          title: 'Registra el partido con un toque. Todos lo siguen.',
+          lede: 'Goles, tarjetas, cambios: el partido se registra con un toque en el móvil. El enlace público permite a familias y jugadores ausentes seguir el marcador en directo, sin cuenta — y después del partido, cada jugador encuentra sus propias estadísticas en su portal.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Un toque para registrar, un enlace para compartir.',
+          items: [
+            {
+              title: 'El partido registrado con un toque',
+              text: 'Alineación cerrada antes del pitido; goles, tarjetas y cambios contados con un dedo durante el juego. El marcador y la línea temporal del partido se escriben solos, en directo — sin papeles sueltos.',
+            },
+            {
+              title: 'Un enlace público, cero cuentas',
+              text: 'Comparte el enlace del partido: familias, jugadores lesionados y cualquiera que falte siguen el marcador en directo desde cualquier móvil — nada que instalar, nada que crear.',
+            },
+            {
+              title: 'Cada jugador conserva sus estadísticas',
+              text: 'Minutos jugados, goles, convocatorias: después del partido, lo que registraste alimenta automáticamente las estadísticas personales de cada jugador, en su portal.',
+            },
+            {
+              title: 'El acta en papel, importada',
+              text: 'La alineación del acta en papel entra en STRIVN sin teclearla línea a línea — el historial de partidos se centraliza solo.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'Del banquillo al portal del jugador',
+            blurb: 'Durante el partido, el enlace público enseña el marcador a quien no está. Después, cada uno encuentra sus estadísticas en su portal.',
+            slides: [
+              {
+                img: '/screenshots/live-viewer-phone.png',
+                kind: 'mobile',
+                alt: 'La vista pública del partido en directo en un móvil: marcador y línea temporal, sin cuenta.',
+                caption: 'El enlace público: familias y jugadores ausentes siguen el marcador en directo — sin cuenta, sin instalar nada.',
+              },
+              {
+                img: '/screenshots/portal-stats.png',
+                kind: 'mobile',
+                alt: 'Las estadísticas personales de un jugador en su portal: minutos jugados, goles, convocatorias.',
+                caption: 'Después del partido: cada jugador encuentra sus minutos, goles y convocatorias en su portal.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Cierra la alineación',
+              text: 'Antes del pitido inicial, la alineación está lista en STRIVN — o importada del acta en papel, sin teclear nada.',
+            },
+            {
+              title: 'Registra con un toque',
+              text: 'Goles, tarjetas, cambios: todo se cuenta con un dedo durante el juego, y la línea temporal del partido se escribe sola, en directo.',
+            },
+            {
+              title: 'Comparte — todos lo siguen',
+              text: 'Durante el partido, el enlace público enseña el marcador a familias y jugadores ausentes; después, cada jugador encuentra sus estadísticas en su portal.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿El enlace público es de verdad sin cuenta?',
+              answer:
+                'Sí. El enlace se abre en cualquier navegador, en cualquier móvil. Un padre, un jugador lesionado o un familiar sigue el marcador en directo sin instalar ni crear nada.',
+            },
+            {
+              question: '¿Qué ven las familias a través del enlace?',
+              answer:
+                'El marcador, la línea temporal del partido y la alineación. Todo lo demás —asistencias, historiales, notas del cuerpo técnico— se queda dentro de STRIVN, del lado del equipo.',
+            },
+            {
+              question: '¿Las estadísticas de los jugadores son de verdad automáticas?',
+              answer:
+                'Sí. Minutos jugados, goles, convocatorias: lo que registras durante el partido alimenta las estadísticas personales de cada jugador, visibles en su portal — sin volver a introducir nada.',
+            },
+            {
+              question: '¿El partido en directo es gratis?',
+              answer:
+                'Sí — como todo lo demás: el partido en directo, el enlace público y las estadísticas de los jugadores forman parte del plan gratuito, para un equipo.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'En el próximo partido, están todos a pie de campo.',
+          body: 'Crea tu equipo gratis — el partido en directo y el enlace público forman parte del plan gratuito.',
+          cta: 'Empezar gratis',
+        },
+      },
+
+      scouting: {
+        meta: {
+          title: 'Scouting del rival e informes compartidos | STRIVN',
+          description:
+            'Prepara al próximo rival en equipo: informes de scouting estructurados, plantillas rivales seguidas en el tiempo, clips de vídeo etiquetados — y un informe compartido con el grupo mediante un enlace simple. Gratis para entrenadores.',
+        },
+        eyebrow: 'Scouting del rival',
+        hero: {
+          title: 'El próximo rival, preparado en equipo.',
+          lede: 'El analista observa, el entrenador decide: el informe de scouting se construye en equipo dentro de STRIVN — plantilla rival, observaciones, clips etiquetados. Y cuando está listo, un simple enlace lo comparte con el grupo.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Tú ves el partido. STRIVN estructura el informe.',
+          items: [
+            {
+              title: 'Informes de rival estructurados',
+              text: 'Se acabaron los documentos perdidos en un chat: cada rival tiene su informe en STRIVN, y entrenador y analista escriben en el mismo — observaciones, fortalezas, debilidades, en un solo sitio.',
+            },
+            {
+              title: 'La plantilla rival, seguida en el tiempo',
+              text: 'Cada rival conserva su ficha: sus jugadores, sus rasgos, tus notas. Partido tras partido, temporada tras temporada, el registro crece — nunca empiezas de cero.',
+            },
+            {
+              title: 'Clips de vídeo etiquetados y anotados',
+              text: 'Un clip, una etiqueta, una nota: los momentos clave del rival se encuentran al instante y respaldan el informe — todos ven exactamente a qué te refieres.',
+            },
+            {
+              title: 'El informe compartido con el vestuario',
+              text: 'Cuando el informe está listo, basta un enlace público: el grupo lo abre en cualquier móvil, sin cuenta — y llega sabiendo qué esperar.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'De la observación al vestuario',
+            blurb: 'El rival se estudia en el módulo de scouting, el informe se construye en equipo — y el grupo lo recibe mediante un enlace simple.',
+            slides: [
+              {
+                img: '/screenshots/scouting-module.png',
+                kind: 'desktop',
+                alt: 'El módulo de scouting: rivales seguidos con sus plantillas e informes.',
+                caption: 'El módulo de scouting: cada rival tiene su ficha — plantilla, observaciones, informes.',
+              },
+              {
+                img: '/screenshots/scouting-report.png',
+                kind: 'desktop',
+                alt: 'Un informe de scouting: observaciones estructuradas y clips etiquetados sobre el próximo rival.',
+                caption: 'El informe se construye en equipo: entrenador y analista trabajan en el mismo documento.',
+              },
+              {
+                img: '/screenshots/scouting-report-phone.png',
+                kind: 'mobile',
+                alt: 'El informe de scouting abierto en un móvil a través del enlace para compartir.',
+                caption: 'Compartido por enlace, el informe se abre en cualquier móvil.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Observa al rival',
+              text: 'Desde el campo o delante del vídeo: notas, etiquetas y clips se acumulan en la ficha del rival a medida que observas.',
+            },
+            {
+              title: 'Construye el informe',
+              text: 'Entrenador y analista montan el informe juntos: observaciones estructuradas, la plantilla rival, clips que lo respaldan.',
+            },
+            {
+              title: 'Compártelo con el grupo',
+              text: 'Un enlace y el informe llega al vestuario: cada uno lo abre en su móvil y se presenta preparado el día del partido.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿Quién puede ver un informe de scouting?',
+              answer:
+                'El cuerpo técnico, dentro de STRIVN. Y cuando decides compartirlo, el enlace público lo abre para quien lo recibe —jugadores incluidos— sin cuenta. Hasta que lo compartas, el informe se queda del lado del cuerpo técnico.',
+            },
+            {
+              question: '¿Necesito una suscripción de vídeo para los clips?',
+              answer:
+                'No. El scouting funciona sin una plataforma de vídeo dedicada: añades tus clips, los etiquetas y los anotas dentro de STRIVN.',
+            },
+            {
+              question: '¿Los jugadores ven el scouting?',
+              answer:
+                'Solo lo que compartas. Las notas de trabajo se quedan del lado del cuerpo técnico; el informe terminado se comparte con el grupo por enlace, cuando tú decidas.',
+            },
+            {
+              question: '¿El scouting es gratis?',
+              answer:
+                'Sí — como todo lo demás: informes, plantillas rivales y compartir por enlace forman parte del plan gratuito, para un equipo.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Al pitido inicial, el grupo sabe lo que viene.',
+          body: 'Crea tu equipo gratis — informes, plantillas rivales y compartir por enlace incluidos.',
+          cta: 'Empezar gratis',
+        },
+      },
+
+      reports: {
+        meta: {
+          title: 'Informes de equipo y exportación en PDF | STRIVN',
+          description:
+            'El informe que el cuerpo técnico nunca tiene tiempo de escribir: asistencias, carga, seguimiento médico, partidos y sesiones — la IA redacta una primera versión con los datos que ya están en STRIVN, tú la revisas y la compartes en PDF. Gratis para entrenadores.',
+        },
+        eyebrow: 'Informes de equipo',
+        hero: {
+          title: 'El informe que nunca tienes tiempo de escribir.',
+          lede: 'Asistencias, carga, seguimiento médico, partidos y sesiones: ya está todo en STRIVN. Eliges los bloques, la IA redacta una primera versión — y la directiva, las familias o la junta reciben un PDF cuidado que enseña el trabajo del cuerpo técnico.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Tú haces el trabajo. STRIVN lo hace visible.',
+          items: [
+            {
+              title: 'Construido con tus datos de siempre',
+              text: 'Sin recopilar nada, sin copiar y pegar: el informe se apoya en lo que STRIVN ya registra a lo largo de la temporada — asistencias, carga de entrenamiento, seguimiento médico, partidos y sesiones.',
+            },
+            {
+              title: 'Tú eliges los bloques',
+              text: 'Asistencias del mes, tendencias de carga, lesiones en curso, resultados: cada informe se compone bloque a bloque, según a quién vaya dirigido — directiva, familias o dirección deportiva.',
+            },
+            {
+              title: 'Un PDF cuidado, listo para enviar',
+              text: 'El informe se exporta como un PDF maquetado, listo para adjuntar a un email o poner sobre la mesa en una reunión. Sin hojas de cálculo que reformatear la víspera.',
+            },
+            {
+              title: 'La IA redacta, tú mandas',
+              text: 'La IA propone una primera versión escrita a partir de tus números. Revisas, corriges, reformulas — nada sale sin tu visto bueno.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'De tus datos a un PDF',
+            blurb: 'Elige los bloques, deja que la IA redacte la primera versión — y revisa antes de compartir.',
+            slides: [
+              {
+                img: '/screenshots/reports-hub.png',
+                kind: 'desktop',
+                alt: 'El módulo de informes: los informes existentes del equipo y el botón para crear uno nuevo.',
+                caption: 'El módulo de informes: cada informe conserva su sitio, listo para reabrir o compartir.',
+              },
+              {
+                img: '/screenshots/reports-selection.png',
+                kind: 'desktop',
+                alt: 'Composición de un informe: los bloques de asistencias, carga y médico seleccionados antes de generarlo.',
+                caption: 'Eliges los bloques —asistencias, carga, médico— y la IA redacta la primera versión.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Elige los bloques',
+              text: 'Asistencias, carga, seguimiento médico, partidos, sesiones: marca lo que el informe debe cubrir, en el periodo que necesites.',
+            },
+            {
+              title: 'La IA lo monta',
+              text: 'Una primera versión escrita llega en un momento, construida únicamente con los datos de tu equipo en STRIVN.',
+            },
+            {
+              title: 'Revisa y comparte',
+              text: 'Ajusta el texto, quita un bloque y expórtalo en PDF — para la directiva, las familias o la junta.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿En qué datos se basa el informe?',
+              answer:
+                'En los datos que tu equipo ya registra en STRIVN: asistencias y respuestas a las convocatorias, carga de entrenamiento, seguimiento médico, partidos y sesiones. Nada que volver a introducir.',
+            },
+            {
+              question: '¿La directiva o una familia necesitan cuenta?',
+              answer:
+                'No. El informe se exporta en PDF: lo envías por email o lo imprimes para la reunión — quien lo recibe no tiene que instalar nada.',
+            },
+            {
+              question: '¿Puedo editar lo que escribe la IA?',
+              answer:
+                'Sí, todo. La IA propone una primera versión, pero el texto sigue siendo tuyo: revisas, corriges o reescribes cada bloque antes de compartirlo. Nada sale sin tu visto bueno.',
+            },
+            {
+              question: '¿Los informes son gratis?',
+              answer:
+                'Sí — como todo lo demás: los informes y el asistente de IA forman parte del plan gratuito, para un equipo.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'En la próxima reunión, el trabajo del cuerpo técnico está sobre la mesa.',
+          body: 'Crea tu equipo gratis — informes, exportación en PDF y asistente de IA incluidos.',
+          cta: 'Empezar gratis',
+        },
+      },
+
+      'player-app': {
+        storeLinks: {
+          appStore: 'https://apps.apple.com/be/app/strivn-player/id6779121691',
+          playStore: 'https://play.google.com/store/apps/details?id=net.strivn.player',
+        },
+        meta: {
+          title: 'La app del jugador para iOS y Android | STRIVN',
+          description:
+            'Tus jugadores tienen una app nativa para iOS y Android: convocatorias, check-ins de bienestar, un programa personal, estadísticas y un asistente de IA. En la App Store y en Google Play — gratis para tus jugadores.',
+        },
+        eyebrow: 'La app de tus jugadores',
+        hero: {
+          title: 'Lo que reciben tus jugadores.',
+          lede: 'Una app nativa para iOS y Android, gratis para ellos: responden a las convocatorias, rellenan su check-in de bienestar, siguen su programa y sus estadísticas. El círculo que abres del lado del cuerpo técnico se cierra en su bolsillo — sin perseguir a nadie.',
+          primaryCta: 'Empezar gratis',
+          reassurance: 'Gratis para un equipo · sin aprobación del club · listo en minutos',
+        },
+        benefits: {
+          title: 'Tú abres el círculo. La app lo cierra.',
+          items: [
+            {
+              title: 'La app iOS y Android de tus jugadores',
+              text: 'Una app nativa, disponible en la App Store y en Google Play, gratis para tus jugadores. Convocatorias, agenda, mensajes: lo que envías llega donde ya miran — su móvil.',
+            },
+            {
+              title: 'Check-ins y readiness, sin perseguir a nadie',
+              text: 'Sueño, fatiga, ánimo, molestias: los jugadores rellenan su check-in en segundos cada mañana. Ves la readiness de la plantilla antes de la sesión — sin mandar un solo mensaje.',
+            },
+            {
+              title: 'Programa personal y estadísticas en el bolsillo',
+              text: 'Cada jugador encuentra su programa individual, marca lo que ha hecho y sigue sus propios números: asistencias, carga, progreso. Lo que planificas se sigue solo.',
+            },
+            {
+              title: 'Un asistente de IA, dentro de tu marco',
+              text: 'Entre sesiones, los jugadores pueden preguntar a un asistente de IA que responde dentro del marco que tú fijas — tus indicaciones, su programa, su carga. Nunca en tu lugar.',
+            },
+          ],
+        },
+        showcase: [
+          {
+            title: 'En el bolsillo de tus jugadores',
+            blurb: 'La agenda, el check-in de la mañana y la readiness: lo que ve el jugador, tal y como lo ve.',
+            slides: [
+              {
+                img: '/screenshots/portal-agenda.png',
+                kind: 'mobile',
+                alt: 'La agenda del jugador en el móvil: próximos eventos con botones de respuesta a las convocatorias.',
+                caption: 'La convocatoria llega a la app — el jugador responde con un toque.',
+              },
+              {
+                img: '/screenshots/portal-checkin.png',
+                kind: 'mobile',
+                alt: 'El check-in de bienestar del jugador en el móvil: deslizadores de sueño, fatiga, ánimo y molestias.',
+                caption: 'El check-in de la mañana: unos deslizadores, unos segundos.',
+              },
+              {
+                img: '/screenshots/portal-fitness.png',
+                kind: 'mobile',
+                alt: 'La pantalla de condición física del jugador en el móvil: carga reciente y tendencia de readiness.',
+                caption: 'Los jugadores siguen su readiness y su carga — los mismos números que ves tú.',
+              },
+            ],
+          },
+        ],
+        how: {
+          title: 'Cómo funciona',
+          steps: [
+            {
+              title: 'Invita al jugador',
+              text: 'Desde tu lista de plantilla, cada jugador recibe su invitación e instala la app en dos minutos, desde la App Store o Google Play.',
+            },
+            {
+              title: 'Responden y rellenan, en la app',
+              text: 'Convocatorias, check-ins, programa: los jugadores hacen su parte desde el móvil, cuando les viene bien.',
+            },
+            {
+              title: 'Tú lo ves llegar todo',
+              text: 'Asistencias al día, readiness de la plantilla, programas cumplidos: del lado del cuerpo técnico, todo se rellena en directo — sin perseguir a nadie.',
+            },
+          ],
+        },
+        faq: {
+          title: 'Preguntas frecuentes',
+          items: [
+            {
+              question: '¿La app está disponible en iOS y Android?',
+              answer:
+                'Sí. STRIVN Player es una app nativa, disponible en la App Store (iOS) y en Google Play (Android). Los jugadores la instalan en dos minutos desde su invitación.',
+            },
+            {
+              question: '¿Los jugadores tienen que pagar algo?',
+              answer:
+                'No. La app es gratis para tus jugadores: se la descargan y la usan sin pagar nada. Tú llevas el equipo — ellos solo tienen que responder.',
+            },
+            {
+              question: '¿Y WHOOP?',
+              answer:
+                'Los jugadores pueden conectar su WHOOP para prerrellenar sus check-ins con sueño y recuperación, según el plan de tu club. Sin wearable, el check-in manual tarda segundos.',
+            },
+            {
+              question: '¿Y para los jugadores del fútbol base?',
+              answer:
+                'El modo formación adapta la app: el asistente de IA y las multas quedan ocultos, y las familias mantienen su sitio en el círculo. Nuestra página de fútbol base explica cómo funciona.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Tus jugadores hacen su parte. Tú lo ves llegar.',
+          body: 'Crea tu equipo gratis e invita a tus jugadores — la app STRIVN Player les espera en la App Store y en Google Play.',
+          cta: 'Empezar gratis',
+        },
+      },
+    },
+  },
 };

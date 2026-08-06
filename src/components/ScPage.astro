@@ -16,14 +16,20 @@ const frPath = '/fr/preparateurs-physiques/';
 const enPath = '/en/sc-coaches/';
 const nlPath = '/nl/sc-coaches/';
 const dePath = '/de/sc-coaches/';
-const canonicalPath =
-  locale === 'fr' ? frPath : locale === 'nl' ? nlPath : locale === 'de' ? dePath : enPath;
-const switchHrefs = { en: enPath, fr: frPath, nl: nlPath, de: dePath };
+const ptPath = '/pt/sc-coaches/';
+const esPath = '/es/sc-coaches/';
+const pathByLocale: Record<Locale, string> = {
+  fr: frPath, en: enPath, nl: nlPath, de: dePath, pt: ptPath, es: esPath,
+};
+const canonicalPath = pathByLocale[locale];
+const switchHrefs = { en: enPath, fr: frPath, nl: nlPath, de: dePath, pt: ptPath, es: esPath };
 const alternates = [
   { hreflang: 'en', href: enPath },
   { hreflang: 'fr', href: frPath },
   { hreflang: 'nl', href: nlPath },
   { hreflang: 'de', href: dePath },
+  { hreflang: 'pt', href: ptPath },
+  { hreflang: 'es', href: esPath },
   { hreflang: 'x-default', href: frPath },
 ];
 
@@ -52,8 +58,24 @@ function readinessColor(pct: number): string {
   return 'var(--risk)';
 }
 
-const boardLabel = locale === 'fr' ? 'Readiness du groupe' : locale === 'nl' ? 'Readiness van de groep' : locale === 'de' ? 'Readiness der Gruppe' : 'Squad readiness';
-const boardToday  = locale === 'fr' ? "Aujourd'hui"         : locale === 'nl' ? 'Vandaag'                : locale === 'de' ? 'Heute'                : 'Today';
+const boardLabelByLocale: Record<Locale, string> = {
+  fr: 'Readiness du groupe',
+  nl: 'Readiness van de groep',
+  de: 'Readiness der Gruppe',
+  pt: 'Readiness do grupo',
+  es: 'Readiness del grupo',
+  en: 'Squad readiness',
+};
+const boardTodayByLocale: Record<Locale, string> = {
+  fr: "Aujourd'hui",
+  nl: 'Vandaag',
+  de: 'Heute',
+  pt: 'Hoje',
+  es: 'Hoy',
+  en: 'Today',
+};
+const boardLabel = boardLabelByLocale[locale];
+const boardToday = boardTodayByLocale[locale];
 ---
 
 <SubpageLayout

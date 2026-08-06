@@ -56,6 +56,28 @@ const ariaLabelsByLocale: Record<Locale, Record<FeatureSlug, string>> = {
     reports: 'Illustration: ein Team-Bericht aus den Blöcken Anwesenheit, Belastung und Medizinisches, mit dem Status PDF bereit.',
     'player-app': 'Illustration: der Wohlbefindens-Check-in eines Spielers in der App, mit Reglern für Schlaf, Müdigkeit und Stimmung, einer Serienanzeige und dem Tagesprogramm.',
   },
+  pt: {
+    communication: 'Ilustração: uma convocatória com as respostas dos jogadores e a contagem de presenças em direto.',
+    medical: 'Ilustração: um processo de lesão com regresso à competição por etapas e notas do staff.',
+    'training-load': 'Ilustração: uma tabela semanal de carga com valores de RPE e sinais de ACWR.',
+    sessions: 'Ilustração: um plano de sessão com quatro blocos de exercícios cronometrados.',
+    'live-session': 'Ilustração: uma sessão em direto com o bloco em curso, o seu cronómetro e o bloco seguinte.',
+    'live-match': 'Ilustração: um jogo em direto com o resultado, os golos minuto a minuto e o número de pessoas que acompanham através do link público.',
+    scouting: 'Ilustração: o processo de um adversário com os seus jogadores, as etiquetas de observação e o estado de relatório partilhado.',
+    reports: 'Ilustração: um relatório de equipa composto por blocos de presenças, carga e médico, com o estado PDF pronto.',
+    'player-app': 'Ilustração: o check-in de bem-estar de um jogador na app, com barras de sono, fadiga e humor, o contador de dias seguidos e o programa do dia.',
+  },
+  es: {
+    communication: 'Ilustración: una convocatoria con las respuestas de los jugadores y el recuento de asistencias en directo.',
+    medical: 'Ilustración: un historial de lesión con vuelta a la competición por etapas y notas del cuerpo técnico.',
+    'training-load': 'Ilustración: una tabla semanal de carga con valores de RPE y señales de ACWR.',
+    sessions: 'Ilustración: un plan de sesión con cuatro bloques de ejercicios cronometrados.',
+    'live-session': 'Ilustración: una sesión en directo con el bloque en curso, su cronómetro y el bloque siguiente.',
+    'live-match': 'Ilustración: un partido en directo con el marcador, los goles minuto a minuto y el número de personas que lo siguen a través del enlace público.',
+    scouting: 'Ilustración: la ficha de un rival con sus jugadores, sus etiquetas de observación y el estado de informe compartido.',
+    reports: 'Ilustración: un informe de equipo compuesto por bloques de asistencias, carga y médico, con el estado PDF listo.',
+    'player-app': 'Ilustración: el check-in de bienestar de un jugador en la app, con deslizadores de sueño, fatiga y ánimo, el contador de días seguidos y el programa del día.',
+  },
 };
 const ariaLabels = ariaLabelsByLocale[locale];
 
@@ -104,6 +126,28 @@ const chipsByLocale: Record<Locale, Record<FeatureSlug, Chip>> = {
     scouting: { tone: 'info', text: 'Notiz des Analysten hinzugefügt' },
     reports: { tone: 'ok', text: 'PDF bereit zum Teilen' },
     'player-app': { tone: 'ok', text: 'Check-in erledigt · 7 Tage in Folge' },
+  },
+  pt: {
+    communication: { tone: 'ok', text: 'L. Moreau — Presente · 18h09' },
+    medical: { tone: 'watch', text: 'Reatletização · dia 9' },
+    'training-load': { tone: 'risk', text: 'ACWR 1.32 — aliviar sexta-feira' },
+    sessions: { tone: 'info', text: 'Ajustada à carga do grupo' },
+    'live-session': { tone: 'info', text: 'Bloco 3/5 · o staff acompanha' },
+    'live-match': { tone: 'ok', text: '14 acompanham pelo link público' },
+    scouting: { tone: 'info', text: 'Nota do analista adicionada' },
+    reports: { tone: 'ok', text: 'PDF pronto a partilhar' },
+    'player-app': { tone: 'ok', text: 'Check-in feito · 7 dias seguidos' },
+  },
+  es: {
+    communication: { tone: 'ok', text: 'L. Moreau — Voy · 18:09' },
+    medical: { tone: 'watch', text: 'Readaptación · día 9' },
+    'training-load': { tone: 'risk', text: 'ACWR 1.32 — aligerar el viernes' },
+    sessions: { tone: 'info', text: 'Ajustada a la carga del grupo' },
+    'live-session': { tone: 'info', text: 'Bloque 3/5 · el cuerpo técnico sigue' },
+    'live-match': { tone: 'ok', text: '14 siguen por el enlace público' },
+    scouting: { tone: 'info', text: 'Nota del analista añadida' },
+    reports: { tone: 'ok', text: 'PDF listo para compartir' },
+    'player-app': { tone: 'ok', text: 'Check-in hecho · 7 días seguidos' },
   },
 };
 const chip = chipsByLocale[locale][slug];
@@ -166,6 +210,30 @@ const liveByLocale: Record<Locale, LiveSample> = {
       { min: '57’', text: 'Tor · Y. Benali' },
     ],
   },
+  pt: {
+    badge: 'EM DIRETO',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'Golo · N. Carvalho' },
+      { min: '38’', text: 'Golo · FC Boisval' },
+      { min: '57’', text: 'Golo · Y. Benali' },
+    ],
+  },
+  es: {
+    badge: 'EN DIRECTO',
+    minute: '64’',
+    home: 'AC Verel',
+    away: 'FC Boisval',
+    score: '2 – 1',
+    events: [
+      { min: '12’', text: 'Gol · N. Carvalho' },
+      { min: '38’', text: 'Gol · FC Boisval' },
+      { min: '57’', text: 'Gol · Y. Benali' },
+    ],
+  },
 };
 
 /** Sample session-runner panel for the `live-session` slug — decorative data, no landingContent entry exists for it. */
@@ -214,6 +282,24 @@ const sessionByLocale: Record<Locale, SessionSample> = {
     cues: ['Hohes Block, Spielaufbau in 3 Pässen', '45 s Pause zwischen den Serien'],
     nextLabel: 'Danach',
     next: 'Ballbesitz 4v4+2 · 8 Min',
+  },
+  pt: {
+    label: 'Bloco em curso',
+    progress: 'Bloco 3 / 5',
+    block: 'Jogo reduzido 8x8 — pressão',
+    clock: '07:12',
+    cues: ['Bloco alto, saída em 3 passes', 'Recuperação de 45 s entre séries'],
+    nextLabel: 'A seguir',
+    next: 'Manutenção de bola 4x4+2 · 8 min',
+  },
+  es: {
+    label: 'Bloque en curso',
+    progress: 'Bloque 3 / 5',
+    block: 'Partido reducido 8x8 — presión',
+    clock: '07:12',
+    cues: ['Bloque alto, salida en 3 pases', '45 s de recuperación entre series'],
+    nextLabel: 'Después',
+    next: 'Posesión 4x4+2 · 8 min',
   },
 };
 const session = sessionByLocale[locale];
@@ -266,6 +352,26 @@ const scoutingByLocale: Record<Locale, ScoutingSample> = {
       { num: '4', name: 'S. Dubois', tags: ['Kopfballstark', 'Langer Ball'] },
     ],
   },
+  pt: {
+    label: 'Próximo adversário',
+    opponent: 'FC Boisval',
+    shared: 'Relatório partilhado',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Velocidade', 'Pé esquerdo'] },
+      { num: '10', name: 'T. Willems', tags: ['Livres', 'Construtor de jogo'] },
+      { num: '4', name: 'S. Dubois', tags: ['Jogo aéreo', 'Passe longo'] },
+    ],
+  },
+  es: {
+    label: 'Próximo rival',
+    opponent: 'FC Boisval',
+    shared: 'Informe compartido',
+    players: [
+      { num: '9', name: 'M. Costa', tags: ['Velocidad', 'Pie izquierdo'] },
+      { num: '10', name: 'T. Willems', tags: ['Faltas', 'Organizador'] },
+      { num: '4', name: 'S. Dubois', tags: ['Juego aéreo', 'Pase largo'] },
+    ],
+  },
 };
 
 /** Sample report-builder panel for the `reports` slug — decorative data, no landingContent entry exists for it. */
@@ -314,6 +420,26 @@ const reportsByLocale: Record<Locale, ReportsSample> = {
       { name: 'Anwesenheit', detail: '12 Einheiten' },
       { name: 'Belastung', detail: 'ACWR stabil' },
       { name: 'Medizinisch', detail: '1 Return-to-Play' },
+    ],
+  },
+  pt: {
+    label: 'Relatório de equipa',
+    name: 'Balanço do mês — Sub-17',
+    ready: 'PDF pronto',
+    blocks: [
+      { name: 'Presenças', detail: '12 sessões' },
+      { name: 'Carga', detail: 'ACWR estável' },
+      { name: 'Médico', detail: '1 regresso à competição' },
+    ],
+  },
+  es: {
+    label: 'Informe de equipo',
+    name: 'Balance del mes — Sub-17',
+    ready: 'PDF listo',
+    blocks: [
+      { name: 'Asistencias', detail: '12 sesiones' },
+      { name: 'Carga', detail: 'ACWR estable' },
+      { name: 'Médico', detail: '1 vuelta a la competición' },
     ],
   },
 };
@@ -375,6 +501,30 @@ const playerAppByLocale: Record<Locale, PlayerAppSample> = {
     ],
     programLabel: 'Programm des Tages',
     programText: 'Mobilität & Core · 20 Min',
+  },
+  pt: {
+    label: 'Check-in do dia',
+    player: 'L. Moreau',
+    streak: '7 dias seguidos',
+    sliders: [
+      { name: 'Sono', value: 8 },
+      { name: 'Fadiga', value: 4 },
+      { name: 'Humor', value: 9 },
+    ],
+    programLabel: 'Programa do dia',
+    programText: 'Mobilidade e core · 20 min',
+  },
+  es: {
+    label: 'Check-in del día',
+    player: 'L. Moreau',
+    streak: '7 días seguidos',
+    sliders: [
+      { name: 'Sueño', value: 8 },
+      { name: 'Fatiga', value: 4 },
+      { name: 'Ánimo', value: 9 },
+    ],
+    programLabel: 'Programa del día',
+    programText: 'Movilidad y core · 20 min',
   },
 };
 
