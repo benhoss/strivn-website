@@ -11,6 +11,9 @@ import { chromium, coachLogin, playerLogin, go } from '../lib/browser.mjs';
 
 const lang = process.argv[2] || 'fr';
 const sfx = lang === 'en' ? '' : `-${lang}`;
+// Browser locale drives client-side date/number formatting (the app locale comes
+// from ?lang= + the user's stored locale).
+const BROWSER_LOCALE = { fr: 'fr-FR', en: 'en-GB', nl: 'nl-BE', pt: 'pt-PT', es: 'es-ES' }[lang] || 'en-GB';
 const OUT = DIR.screenshots;
 mkdirSync(OUT, { recursive: true });
 const shot = (page, name, h) => page.screenshot({ path: resolve(OUT, `${name}${sfx}.png`), clip: { x: 0, y: 0, width: page.viewportSize().width, height: h } }).then(() => console.log('  saved', name + sfx));
@@ -18,7 +21,7 @@ const shot = (page, name, h) => page.screenshot({ path: resolve(OUT, `${name}${s
 const browser = await chromium.launch();
 
 // ── coach (desktop) ──
-const coachCtx = await browser.newContext({ viewport: { width: 1440, height: 880 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2 });
+const coachCtx = await browser.newContext({ viewport: { width: 1440, height: 880 }, locale: BROWSER_LOCALE, deviceScaleFactor: 2 });
 const coach = await coachCtx.newPage();
 await coachLogin(coach, lang);
 const coachTargets = [
@@ -29,19 +32,19 @@ const coachTargets = [
 ];
 for (const [slug, name, mode] of coachTargets) {
   if (name === 'load-formula') { // reuse the workload page already open
-    const btn = coach.getByRole('button', { name: /formule|formula/i }).first();
+    const btn = coach.getByRole('button', { name: /f[oó]rmul/i }).first();
     if (await btn.count()) { await btn.click(); await coach.waitForTimeout(900); }
     await shot(coach, name, 880); continue;
   }
   try {
     console.log(slug, await go(coach, `${BASE}/teams/${TEAM}/${slug}?lang=${lang}`, 1700, 45000));
-    if (mode === true) { for (const l of ['Compris', "J'ai compris", 'Got it']) { const b = coach.getByRole('button', { name: new RegExp(l, 'i') }); if (await b.count()) { await b.first().click().catch(() => {}); await coach.waitForTimeout(700); break; } } await coach.waitForTimeout(500); }
+    if (mode === true) { for (const l of ['Compris', "J.ai compris", 'Got it', 'Entendido', 'Begrepen']) { const b = coach.getByRole('button', { name: new RegExp(l, 'i') }); if (await b.count()) { await b.first().click().catch(() => {}); await coach.waitForTimeout(700); break; } } await coach.waitForTimeout(500); }
     await shot(coach, name, 880);
   } catch (e) { console.log(name, 'ERR', e.message.slice(0, 70)); }
 }
 
 // ── player portal (mobile) ──
-const portalCtx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: lang === 'fr' ? 'fr-FR' : 'en-GB', deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+const portalCtx = await browser.newContext({ viewport: { width: 402, height: 860 }, locale: BROWSER_LOCALE, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const portal = await portalCtx.newPage();
 await playerLogin(portal, lang);
 for (const [path, name] of [['agenda', 'portal-agenda'], ['fitness', 'portal-fitness'], ['checkin', 'portal-checkin']]) {

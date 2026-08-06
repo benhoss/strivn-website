@@ -9,7 +9,7 @@ Generates the real-app media used on the marketing site, all driven from the
 - **Narrated explainer** (intro + voice-over walkthrough + subtitles + outro) → `public/videos/explainer-load-planning-<lang>.mp4`
 
 Everything is reproducible: screenshots and videos are derived artifacts, not
-hand-made. Localized per language (`fr`, `en`).
+hand-made. Localized per language (`fr`, `en`, `nl`, `pt`, `es`).
 
 ---
 
@@ -20,7 +20,10 @@ hand-made. Localized per language (`fr`, `en`).
    cd ../../../strivn-app && docker compose up -d
    ```
    The pipeline drives the *real* coach UI + player portal, so the app must be
-   reachable at `http://localhost:8082` (override with `STRIVN_APP_URL`).
+   reachable at `http://127.0.0.1:8082` (override with `STRIVN_APP_URL`).
+   Use `127.0.0.1`, **not** `localhost`: the app emits absolute asset URLs from
+   its `APP_URL`, so browsing via `localhost` makes Chromium reject `app.js`
+   cross-origin — Alpine never boots and every `x-show` panel stays hidden.
 
 2. **Demo data** seeded and made *fictional* (no real club names). See
    [Demo data setup](#demo-data-setup) — this is a one-time thing per DB.
@@ -45,7 +48,7 @@ Always run scripts via `./run.sh <script> [lang]` so Playwright resolves.
 
 ```bash
 # 0. Demo data: fictional names + current-week planned week + logins + cache (idempotent)
-./data/setup-demo.sh fr                  # run with `en` before EN captures
+./data/setup-demo.sh fr                  # or: en | nl | pt | es, before that locale's captures
 
 # Screenshots (coach + portal) for a locale → public/screenshots/
 ./run.sh capture/screenshots.mjs fr      # FR → *-fr.png   |  en → *.png (no suffix)
@@ -88,6 +91,9 @@ tooling/media/
   data/
     seed-fr.sql         # localize the planned-week demo data → FR
     seed-en.sql         # …→ EN
+    seed-nl.sql         # …→ NL
+    seed-pt.sql         # …→ PT
+    seed-es.sql         # …→ ES
   .work/                # gitignored: TTS audio, raw recordings, finalize temp, narrated core
 ```
 
@@ -125,7 +131,7 @@ idempotent script fixes both — fictional names + a **current-week planned week
 + demo logins + cache clear:
 
 ```bash
-./data/setup-demo.sh fr      # or: ./data/setup-demo.sh en
+./data/setup-demo.sh fr      # or: en | nl | pt | es
 ```
 
 What it does (`data/setup-demo.sh` → `data/setup-demo.sql`):
@@ -133,7 +139,9 @@ What it does (`data/setup-demo.sh` → `data/setup-demo.sql`):
 2. renames teams/venue/opponent to fictional, adult names (`AC Verel`, …);
 3. rebuilds `planned_weeks` + `planned_slots` (12 exercises, ~4225 UA) for the
    **current ISO week**, so the Load-planner screens are always populated;
-4. sets the language of the planned-week labels (`fr` default, `en` applies `seed-en.sql`);
+4. sets the language of the planned-week labels (`fr` default; any other lang
+   applies `seed-<lang>.sql`, after first resetting the data to the FR baseline
+   and collapsing duplicate load categories, so locale switches are repeatable);
 5. **upserts today's wellness check-ins** for team 1's active players (a spread
    of green/yellow/red scores) so the morning briefing and readiness dashboard
    are populated for capture;
@@ -146,7 +154,7 @@ It is date-relative and safe to re-run. Container names default to
 
 > **Always run `setup-demo.sh <lang>` (or at least `cache:clear`) before
 > capturing in a given language** — the screenshot/voice language follows the
-> *stored data*, not just `?lang=`. `data/seed-{fr,en}.sql` only toggle the
+> *stored data*, not just `?lang=`. `data/seed-<lang>.sql` only toggle the
 > existing labels' language.
 
 ---
