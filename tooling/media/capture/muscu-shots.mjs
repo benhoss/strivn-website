@@ -15,22 +15,15 @@ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, l
 const p = await ctx.newPage();
 await coachLogin(p, lang);
 
-// Workout composition preview — open the "Aperçu" panel on the seeded strength session.
+// Séance plan — per-player load, %1RM resolved to real kg (the concrete "joueur par joueur" proof).
 {
   await go(p, `${BASE}/teams/${TEAM}/workouts?lang=${lang}`, 1500, 30000);
-  await p.getByRole('link', { name: /Force/ }).first().waitFor({ timeout: 10000 }).catch(() => {});
-  const preview = p.locator('button', { hasText: 'Aperçu' }).first();
-  if (await preview.count()) {
-    await preview.click();
-  } else {
-    // fallback: unlabeled icon button in the row — click the row's rightmost action.
-    await p.locator('text=Aperçu').first().click().catch(() => {});
-  }
-  await p.waitForTimeout(700);
+  const planHref = await p.getByRole('link', { name: 'Plan', exact: true }).first().getAttribute('href');
+  await go(p, planHref, 1200, 30000);
   const box = await p.locator('main').first().boundingBox();
   await p.screenshot({
     path: resolve(OUT, `muscu-workout${sfx}.png`),
-    clip: { x: box.x, y: box.y, width: box.width, height: Math.min(box.height, 620) },
+    clip: { x: box.x, y: box.y, width: box.width, height: Math.min(box.height, 900) },
   });
   console.log('saved muscu-workout' + sfx);
 }
