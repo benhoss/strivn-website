@@ -101,7 +101,13 @@ const edge: Record<Tone, string> = {
                     {s.title}
                   </h2>
                 )}
-                {s.body && <p class="mt-4 text-[0.94rem] leading-[1.66] text-[#68779A]">{s.body}</p>}
+                {/* Headlines take the full 55rem; the lead is capped at the
+                    widest measure the rest of the site uses (~79 characters). */}
+                {s.body && (
+                  <p class="mt-4 max-w-[62ch] text-[0.94rem] leading-[1.66] text-[#68779A]">
+                    {s.body}
+                  </p>
+                )}
               </div>
             )}
 
@@ -322,7 +328,11 @@ const edge: Record<Tone, string> = {
                       </h3>
                       <p class="font-mono text-[0.69rem] text-[#68779A]">{lv.where}</p>
                     </div>
-                    <p class="mt-2.5 text-[0.875rem] leading-[1.64] text-[#68779A]">{lv.desc}</p>
+                    {/* Same measure at every depth, so the indent reads as
+                        hierarchy rather than as varying line length. */}
+                    <p class="mt-2.5 max-w-[62ch] text-[0.875rem] leading-[1.64] text-[#68779A]">
+                      {lv.desc}
+                    </p>
                   </div>
                 </li>
               ))}

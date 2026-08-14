@@ -14,6 +14,7 @@ import GpsBlocks from './visuals/GpsBlocks.astro';
 import UnitConversion from './visuals/UnitConversion.astro';
 import MeasureEditor from './visuals/MeasureEditor.astro';
 import PercentileScale from './visuals/PercentileScale.astro';
+import WeekPlan from './visuals/WeekPlan.astro';
 
 interface Props {
   name: string;
@@ -30,6 +31,7 @@ const registry: Record<string, any> = {
   'unit-conversion': UnitConversion,
   'measure-editor': MeasureEditor,
   'percentile-scale': PercentileScale,
+  'week-plan': WeekPlan,
 };
 
 const Capture = registry[name];

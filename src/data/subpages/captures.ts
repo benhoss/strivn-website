@@ -80,6 +80,31 @@ export const MEASURE_ZONE_DOTS = ['#8CE99A', '#B8E986', '#FF8400', '#FF5C33'] as
 export const SCALE_BANDS = ['#FF5C332E', '#FF84002E', '#FFFFFF12', '#8CE99A38', '#8CE99A5C'] as const;
 export const SCALE_MARKER_INDEX = 3;
 
+/**
+ * The planned week. `ua` is the load each day carries; Thursday is the day the
+ * capture opens up, so it is the tallest bar that is not a match.
+ */
+export const WEEK_BARS = [
+  { ua: 210, active: false },
+  { ua: 480, active: false },
+  { ua: 120, active: false },
+  { ua: 340, active: true },
+  { ua: 400, active: false },
+  { ua: 90, active: false },
+  { ua: 1000, active: false },
+] as const;
+
+/**
+ * Thursday's load components. The two attached ones sum to the session total
+ * shown in the header; the pending one counts for the week but hangs off no
+ * session — which is the distinction the page is about.
+ */
+export const WEEK_PARTS: Array<{ rpe: number; min: number; ua: number; attached: boolean }> = [
+  { rpe: 8, min: 20, ua: 160, attached: true },
+  { rpe: 6, min: 30, ua: 180, attached: true },
+  { rpe: 4, min: 20, ua: 60, attached: false },
+];
+
 /* ── Shape ────────────────────────────────────────────────────── */
 
 interface Row {
@@ -137,6 +162,20 @@ export interface CaptureText {
     fields: Array<{ k: string; v: string }>;
     zonesLabel: string;
     zones: Array<{ name: string; bound: string }>;
+  };
+  /** The planned week, and the components hanging under Thursday. */
+  week: {
+    title: string;
+    sub: string;
+    acwr: { k: string; v: string };
+    shape: string;
+    days: [string, string, string, string, string, string, string];
+    session: string;
+    sessionTotal: string;
+    parts: [string, string, string];
+    attached: string;
+    pending: string;
+    unit: string;
   };
   /** Percentile scale placing one player's value against their position. */
   scale: {
@@ -218,6 +257,19 @@ const fr: CaptureText = {
       { name: 'À travailler', bound: '> 4,55' },
     ],
   },
+  week: {
+    title: 'Semaine 12 · cycle Compétition 1',
+    sub: 'Objectif 3 000 UA · planifié 2 640',
+    acwr: { k: 'ACWR PROJETÉ', v: '1,06' },
+    shape: 'LA FORME DE LA SEMAINE',
+    days: ['L', 'M', 'M', 'J', 'V', 'S', 'D'],
+    session: 'Jeudi 18:00 — Séance collective',
+    sessionTotal: '340 UA',
+    parts: ['VAMEVAL', 'Opposition', 'Prévention'],
+    attached: 'rattachée',
+    pending: 'en attente',
+    unit: 'UA',
+  },
   scale: {
     who: 'S. Petit · Ailier · VMA',
     ref: 'REPÈRES AILIER · SAISON EN COURS',
@@ -296,6 +348,19 @@ const en: CaptureText = {
       { name: 'Average', bound: '4.30 – 4.55' },
       { name: 'To work on', bound: '> 4.55' },
     ],
+  },
+  week: {
+    title: 'Week 12 · Competition 1 cycle',
+    sub: 'Target 3,000 AU · planned 2,640',
+    acwr: { k: 'PROJECTED ACWR', v: '1.06' },
+    shape: 'THE SHAPE OF THE WEEK',
+    days: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+    session: 'Thursday 18:00 — Squad session',
+    sessionTotal: '340 AU',
+    parts: ['VAMEVAL', 'Small-sided games', 'Prevention'],
+    attached: 'attached',
+    pending: 'pending',
+    unit: 'AU',
   },
   scale: {
     who: 'S. Petit · Winger · MAS',
@@ -376,6 +441,19 @@ const nl: CaptureText = {
       { name: 'Aan te werken', bound: '> 4,55' },
     ],
   },
+  week: {
+    title: 'Week 12 · cyclus Competitie 1',
+    sub: 'Doel 3.000 AE · gepland 2.640',
+    acwr: { k: 'VERWACHTE ACWR', v: '1,06' },
+    shape: 'DE VORM VAN DE WEEK',
+    days: ['M', 'D', 'W', 'D', 'V', 'Z', 'Z'],
+    session: 'Donderdag 18:00 — Groepstraining',
+    sessionTotal: '340 AE',
+    parts: ['VAMEVAL', 'Partijvormen', 'Preventie'],
+    attached: 'gekoppeld',
+    pending: 'in wacht',
+    unit: 'AE',
+  },
   scale: {
     who: 'S. Petit · Vleugelspeler · MAS',
     ref: 'IJKPUNTEN VLEUGELSPELER · HUIDIG SEIZOEN',
@@ -454,6 +532,19 @@ const de: CaptureText = {
       { name: 'Mittel', bound: '4,30 – 4,55' },
       { name: 'Zu verbessern', bound: '> 4,55' },
     ],
+  },
+  week: {
+    title: 'Woche 12 · Zyklus Wettkampf 1',
+    sub: 'Ziel 3.000 AE · geplant 2.640',
+    acwr: { k: 'PROGNOSE ACWR', v: '1,06' },
+    shape: 'DIE FORM DER WOCHE',
+    days: ['M', 'D', 'M', 'D', 'F', 'S', 'S'],
+    session: 'Donnerstag 18:00 — Mannschaftseinheit',
+    sessionTotal: '340 AE',
+    parts: ['VAMEVAL', 'Spielformen', 'Prävention'],
+    attached: 'zugeordnet',
+    pending: 'offen',
+    unit: 'AE',
   },
   scale: {
     who: 'S. Petit · Flügel · MAS',
@@ -534,6 +625,19 @@ const pt: CaptureText = {
       { name: 'A trabalhar', bound: '> 4,55' },
     ],
   },
+  week: {
+    title: 'Semana 12 · ciclo Competição 1',
+    sub: 'Objetivo 3 000 UA · planeado 2 640',
+    acwr: { k: 'ACWR PREVISTO', v: '1,06' },
+    shape: 'A FORMA DA SEMANA',
+    days: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+    session: 'Quinta-feira 18:00 — Treino coletivo',
+    sessionTotal: '340 UA',
+    parts: ['VAMEVAL', 'Jogos reduzidos', 'Prevenção'],
+    attached: 'associada',
+    pending: 'em espera',
+    unit: 'UA',
+  },
   scale: {
     who: 'S. Petit · Extremo · VAM',
     ref: 'REFERÊNCIAS EXTREMO · ÉPOCA ATUAL',
@@ -612,6 +716,19 @@ const es: CaptureText = {
       { name: 'Medio', bound: '4,30 – 4,55' },
       { name: 'A trabajar', bound: '> 4,55' },
     ],
+  },
+  week: {
+    title: 'Semana 12 · ciclo Competición 1',
+    sub: 'Objetivo 3.000 UA · planificado 2.640',
+    acwr: { k: 'ACWR PREVISTO', v: '1,06' },
+    shape: 'LA FORMA DE LA SEMANA',
+    days: ['L', 'M', 'X', 'J', 'V', 'S', 'D'],
+    session: 'Jueves 18:00 — Sesión colectiva',
+    sessionTotal: '340 UA',
+    parts: ['VAMEVAL', 'Juegos reducidos', 'Prevención'],
+    attached: 'asociada',
+    pending: 'en espera',
+    unit: 'UA',
   },
   scale: {
     who: 'S. Petit · Extremo · VAM',
