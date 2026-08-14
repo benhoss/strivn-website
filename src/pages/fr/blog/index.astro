@@ -20,11 +20,6 @@ const counts: Record<string, number> = Object.fromEntries(BLOG_CATEGORIES.map((c
 for (const entry of all) counts[entry.data.category] = (counts[entry.data.category] ?? 0) + 1;
 
 const canonicalPath = '/fr/blog/';
-const alternates = [
-  { hreflang: 'fr', href: '/fr/blog/' },
-  { hreflang: 'en', href: '/en/blog/' },
-  { hreflang: 'x-default', href: '/fr/blog/' },
-];
 
 const jsonLdExtra = [
   {
@@ -46,7 +41,6 @@ const jsonLdExtra = [
   canonicalPath={canonicalPath}
   jsonLdExtra={jsonLdExtra}
   bodyClass="b-page"
-  switchHrefs={{ en: '/en/blog/', fr: '/fr/blog/' }}
 >
   <header class="b-hero">
     <span class="b-hero__eyebrow">Blog · Coach foot amateur</span>

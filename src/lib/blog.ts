@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import type { Locale } from '../data/landingContent';
+import { LOCALES, type Locale } from '../data/landingContent';
 import { BLOG_CATEGORIES } from '../content.config';
 
 export type BlogEntry = CollectionEntry<'blog'>;
@@ -95,7 +95,36 @@ export function findRelated(entries: BlogEntry[], current: BlogEntry, max = 3): 
     .slice(0, max);
 }
 
-/** Convertit un path FR en EN counterpart si jamais le blog EN voit le jour. (Préparé, non câblé.) */
-export function alternateBlogPath(locale: Locale, slug: string): string {
-  return locale === 'fr' ? `/fr/blog/${slug}/` : `/en/blog/${slug}/`;
+// ── Liens inter-locales ───────────────────────────────────────────────────
+// Le blog n'existe qu'en français : ni `/en/blog/…`, ni `/xx/blog/category/…`
+// ne sont générés. Les deux helpers ci-dessous encodent ça une fois pour
+// toutes — un article ne doit jamais fabriquer l'URL d'une traduction absente.
+
+/**
+ * Cibles du sélecteur de langue pour une page de blog.
+ *
+ * Le sélecteur reste visible : un lecteur qui arrive sur un article français
+ * depuis Google doit garder une porte d'entrée vers sa langue. Mais les locales
+ * sans équivalent pointent vers leur page d'accueil — le fallback documenté
+ * dans SiteHeader — au lieu d'une URL de blog traduite qui n'existe pas.
+ */
+export function blogSwitchHrefs(locale: Locale, path: string): Record<Locale, string> {
+  return Object.fromEntries(
+    LOCALES.map((l) => [l, l === locale ? path : `/${l}/`]),
+  ) as Record<Locale, string>;
+}
+
+/**
+ * Alternates hreflang pour une page de blog.
+ *
+ * Contrairement au sélecteur, hreflang ne doit annoncer que ce qui existe
+ * vraiment : la page elle-même, plus x-default (les autres langues n'ont pas
+ * de traduction, la version FR fait office de repli — comme les liens « Blog »
+ * du footer de chaque locale, qui pointent tous vers /fr/blog/).
+ */
+export function blogAlternates(locale: Locale, path: string): Array<{ hreflang: string; href: string }> {
+  return [
+    { hreflang: locale, href: path },
+    { hreflang: 'x-default', href: path },
+  ];
 }

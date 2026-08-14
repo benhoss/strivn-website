@@ -1,4 +1,7 @@
-export type Locale = 'en' | 'fr' | 'nl' | 'de' | 'pt' | 'es';
+/** Every locale the site publishes. Order drives the language switcher. */
+export const LOCALES = ['en', 'fr', 'nl', 'de', 'pt', 'es'] as const;
+
+export type Locale = (typeof LOCALES)[number];
 
 /** One scattered fragment of the coach's daily chaos, shown in the hero stage. */
 type Fragment = {
