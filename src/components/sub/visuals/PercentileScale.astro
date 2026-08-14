@@ -29,7 +29,7 @@ const t = captureText[locale].scale;
     {
       SCALE_BANDS.map((_, i) =>
         i === SCALE_MARKER_INDEX ? (
-          <div class="flex flex-col items-center">
+          <div class="hl-late flex flex-col items-center" style="--ld: 480ms;">
             <span class="rounded-full bg-[#0C1428] px-3 py-1.5 font-mono text-[0.66rem] whitespace-nowrap text-[#F8FAFC] outline-1 outline-[#2D7FF959] -outline-offset-[0.5px]">
               {t.marker}
             </span>
@@ -46,8 +46,8 @@ const t = captureText[locale].scale;
     {
       SCALE_BANDS.map((c, i) => (
         <span
-          class={`h-3.5 rounded-[4px] ${i === SCALE_MARKER_INDEX ? 'outline-1 outline-[#2D7FF980] -outline-offset-[0.5px]' : ''}`}
-          style={`background:${c};`}
+          class={`hl-fill h-3.5 rounded-[4px] ${i === SCALE_MARKER_INDEX ? 'outline-1 outline-[#2D7FF980] -outline-offset-[0.5px]' : ''}`}
+          style={`background:${c}; --bd:${i * 55}ms;`}
           aria-hidden="true"
         />
       ))

@@ -46,7 +46,9 @@ const chip = [
     {
       RSVP_COUNTS.map((n, i) => (
         <li class="rounded-[9px] bg-[#FFFFFF05] px-2 py-2.5 text-center outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-          <p class={`font-mono text-[0.94rem] ${n === 0 ? 'text-[#68779A]' : ink[i]}`}>{n}</p>
+          <p class={`font-mono text-[0.94rem] ${n === 0 ? 'text-[#68779A]' : ink[i]}`} data-count>
+            {n}
+          </p>
           <p class="mt-0.5 text-[0.56rem] leading-[1.3] text-[#68779A]">{t.counts[i]}</p>
         </li>
       ))
@@ -71,8 +73,11 @@ const chip = [
     }
   </ul>
 
+  <!-- The nudge is only offered once the answers are in — it is the decision
+       the board leads to, not part of the board. -->
   <div
-    class="flex flex-wrap items-center gap-x-3 gap-y-2.5 rounded-[10px] bg-[#2D7FF90F] px-3.5 py-3 outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]"
+    class="hl-late flex flex-wrap items-center gap-x-3 gap-y-2.5 rounded-[10px] bg-[#2D7FF90F] px-3.5 py-3 outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]"
+    style="--ld: 620ms;"
   >
     <span class="shrink-0 text-[#7AB8FF]"><HomeIcon name="bell" size={13} /></span>
     <p class="min-w-0 flex-1 text-[0.72rem] leading-[1.45] text-[#C3CDE0]">{t.nudge}</p>

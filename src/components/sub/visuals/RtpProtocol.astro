@@ -47,12 +47,12 @@ const stateDot = {
   <div>
     <div class="flex items-baseline justify-between gap-4">
       <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{t.progressKey}</p>
-      <p class="shrink-0 font-mono text-[0.94rem] text-[#7AB8FF]">{RTP_PROGRESS} %</p>
+      <p class="shrink-0 font-mono text-[0.94rem] text-[#7AB8FF]" data-count>{RTP_PROGRESS} %</p>
     </div>
     <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-[#FFFFFF0F]">
       <span
-        class="block h-full rounded-full bg-[#2D7FF9]"
-        style={`width:${RTP_PROGRESS}%;`}
+        class="hl-fill block h-full rounded-full bg-[#2D7FF9]"
+        style={`width:${RTP_PROGRESS}%; --bd: 120ms;`}
         aria-hidden="true"></span>
     </div>
   </div>
@@ -80,8 +80,11 @@ const stateDot = {
     }
   </ol>
 
+  <!-- The availability line is the conclusion the protocol argues for, so it
+       arrives once the bar has finished filling. -->
   <p
-    class="flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-[10px] bg-[#FFFFFF05] px-3.5 py-3 text-[0.72rem] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+    class="hl-late flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-[10px] bg-[#FFFFFF05] px-3.5 py-3 text-[0.72rem] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+    style="--ld: 620ms;"
   >
     <span class="shrink-0 text-[#FF8400]"><HomeIcon name="shield-check" size={13} /></span>
     <span class="text-[#DCE4F2]">{t.availability}</span>

@@ -36,10 +36,10 @@ const done = `${CAMPAIGN_PROGRESS.done} / ${CAMPAIGN_PROGRESS.total}`;
   <div>
     <div class="flex items-center justify-between gap-4">
       <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{t.progress}</p>
-      <p class="hl-display text-[0.94rem] tracking-[-0.02em]">{done}</p>
+      <p class="hl-display text-[0.94rem] tracking-[-0.02em]" data-count>{done}</p>
     </div>
     <div class="mt-2.5 h-1.5 overflow-hidden rounded-full bg-[#FFFFFF0F]">
-      <span class="block h-full rounded-full bg-[#2D7FF9]" style={`width: ${pct}%;`} aria-hidden="true"></span>
+      <span class="hl-fill block h-full rounded-full bg-[#2D7FF9]" style={`width: ${pct}%; --bd: 100ms;`} aria-hidden="true"></span>
     </div>
   </div>
 

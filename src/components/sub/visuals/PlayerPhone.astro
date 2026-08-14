@@ -43,8 +43,8 @@ const t = captureText[locale].phone;
                 <span class="w-[68px] shrink-0 text-[0.66rem] text-[#9AA8C4]">{f}</span>
                 <span class="h-1 flex-1 overflow-hidden rounded-full bg-[#FFFFFF12]">
                   <span
-                    class="block h-full rounded-full bg-[#7AB8FF]"
-                    style={`width:${[78, 42, 30][i]}%;`}
+                    class="hl-fill block h-full rounded-full bg-[#7AB8FF]"
+                    style={`width:${[78, 42, 30][i]}%; --bd:${120 + i * 90}ms;`}
                     aria-hidden="true"
                   />
                 </span>
@@ -52,8 +52,11 @@ const t = captureText[locale].phone;
             ))
           }
         </ul>
+        <!-- Send lands once the three fields are answered: the capture's claim
+             is that the whole thing takes twenty seconds. -->
         <p
-          class="mt-3.5 rounded-full bg-[#2D7FF9] py-2 text-center text-[0.69rem] font-semibold text-[#F8FAFC]"
+          class="hl-late mt-3.5 rounded-full bg-[#2D7FF9] py-2 text-center text-[0.69rem] font-semibold text-[#F8FAFC]"
+          style="--ld: 560ms;"
         >
           {t.send}
         </p>

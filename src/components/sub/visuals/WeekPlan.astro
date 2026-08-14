@@ -39,8 +39,8 @@ const peak = Math.max(...WEEK_BARS.map((b) => b.ua));
         WEEK_BARS.map((b, i) => (
           <li class="flex flex-1 flex-col items-center gap-2">
             <span
-              class={`w-full rounded-[3px] ${b.active ? 'bg-[#2D7FF9]' : 'bg-[#FFFFFF14]'}`}
-              style={`height:${Math.round((b.ua / peak) * 64) + 4}px;`}
+              class={`hl-bar w-full rounded-[3px] ${b.active ? 'bg-[#2D7FF9]' : 'bg-[#FFFFFF14]'}`}
+              style={`height:${Math.round((b.ua / peak) * 64) + 4}px; --bd:${i * 40}ms;`}
               aria-hidden="true"
             />
             <span
@@ -54,7 +54,12 @@ const peak = Math.max(...WEEK_BARS.map((b) => b.ua));
     </ul>
   </div>
 
-  <div class="rounded-[11px] bg-[#FFFFFF05] p-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+  <!-- The card concludes the week rather than arriving with it: it opens up
+       the tallest weekday, so it lands once the bars have finished reading. -->
+  <div
+    class="hl-late rounded-[11px] bg-[#FFFFFF05] p-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+    style="--ld: 330ms;"
+  >
     <div class="flex items-center justify-between gap-3">
       <p class="min-w-0 truncate text-[0.75rem] font-semibold text-[#DCE4F2]">{t.session}</p>
       <p class="shrink-0 font-mono text-[0.72rem] text-[#7AB8FF]">{t.sessionTotal}</p>

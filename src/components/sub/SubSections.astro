@@ -352,8 +352,12 @@ const edge: Record<Tone, string> = {
             >
               {s.stats.map((st) => (
                 <li class="rounded-[14px] bg-[#0C1120] px-6 py-5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+                  {/* The figure counts to the string that is already in the
+                      HTML, so no-JS, reduced-motion and background-tab loads
+                      all read the real localised value. */}
                   <p
                     class={`hl-display text-[2.1rem] tracking-[-0.04em] ${st.tone ? ink[st.tone] : 'text-[#F8FAFC]'}`}
+                    data-count
                   >
                     {st.value}
                   </p>

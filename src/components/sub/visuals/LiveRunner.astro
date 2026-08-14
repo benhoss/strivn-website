@@ -48,7 +48,11 @@ const seg: Record<(typeof RUNNER_SEGMENTS)[number], string> = {
     <ul class="mt-3.5 flex gap-1.5">
       {
         RUNNER_SEGMENTS.map((state) => (
-          <li class={`h-1 flex-1 rounded-full ${seg[state]}`} aria-hidden="true" />
+          <li
+            class={`h-1 flex-1 rounded-full ${state === 'live' ? 'hl-fill' : ''} ${seg[state]}`}
+            style={state === 'live' ? '--bd: 260ms;' : undefined}
+            aria-hidden="true"
+          />
         ))
       }
     </ul>
