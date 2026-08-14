@@ -1,0 +1,91 @@
+---
+/**
+ * A capture waiting to be sorted, and the two behind it in the queue.
+ *
+ * The fields are styled panels rather than real inputs — nothing here is
+ * focusable, so the capture never puts a fake form in the tab order.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, LIBRARY_QUEUE_ICONS } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].library;
+---
+
+<CaptureFrame>
+  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5">
+    <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
+    <p class="font-mono text-[0.56rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">
+      {t.count}
+    </p>
+  </div>
+
+  <div class="rounded-[11px] bg-[#FFFFFF05] p-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+    <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+      <p class="flex min-w-0 items-center gap-2 text-[0.72rem] text-[#9AA8C4]">
+        <span class="shrink-0 text-[#68779A]"><HomeIcon name="external-link" size={12} /></span>
+        <span class="truncate">{t.source}</span>
+      </p>
+      <p class="shrink-0 font-mono text-[0.59rem] whitespace-nowrap text-[#68779A]">{t.via}</p>
+    </div>
+
+    <div class="mt-3.5">
+      <p class="flex items-center gap-2 font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">
+        {t.titleKey}
+        <span class="rounded-full bg-[#2D7FF914] px-2 py-[2px] text-[#7AB8FF]">{t.ai}</span>
+      </p>
+      <p class="mt-1.5 truncate rounded-[8px] bg-[#FFFFFF07] px-3 py-2.5 text-[0.78rem] text-[#DCE4F2] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+        {t.name}
+      </p>
+    </div>
+
+    <div class="mt-3">
+      <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{t.folderKey}</p>
+      <p class="mt-1.5 truncate rounded-[8px] bg-[#FFFFFF07] px-3 py-2.5 text-[0.78rem] text-[#DCE4F2] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+        {t.folder}
+      </p>
+    </div>
+
+    <ul class="mt-3 flex flex-wrap gap-1.5">
+      {
+        t.tags.map((tag) => (
+          <li class="rounded-full bg-[#FFFFFF0A] px-2.5 py-1 font-mono text-[0.63rem] text-[#9AA8C4]">
+            {tag}
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-4 flex flex-wrap gap-2.5">
+      <span
+        class="rounded-full bg-[#FFFFFF0A] px-4 py-2 text-[0.72rem] text-[#C3CDE0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+        >{t.file}</span
+      >
+      <span class="rounded-full bg-[#2D7FF9] px-4 py-2 text-[0.72rem] font-semibold text-[#F8FAFC]"
+        >{t.publish}</span
+      >
+    </div>
+  </div>
+
+  <ul class="grid gap-2.5">
+    {
+      t.queue.map((q, i) => (
+        <li class="flex items-center gap-2.5">
+          <span class="shrink-0 text-[#68779A]">
+            <HomeIcon name={LIBRARY_QUEUE_ICONS[i]} size={13} />
+          </span>
+          <span class="min-w-0 flex-1 truncate text-[0.75rem] text-[#9AA8C4]">{q.t}</span>
+          <span class="shrink-0 font-mono text-[0.66rem] whitespace-nowrap text-[#68779A]">
+            {q.m}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</CaptureFrame>

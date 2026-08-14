@@ -1,0 +1,102 @@
+---
+/**
+ * The session runner as it looks pitch-side: the running block in full, its
+ * chrono, and the actions queued behind it.
+ *
+ * The live dot pulses because the page's claim is that this screen is running
+ * right now — the one place on these captures where motion says something. It
+ * stops under `prefers-reduced-motion`.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, RUNNER_SEGMENTS, RUNNER_ROW_ICONS } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].runner;
+
+const seg: Record<(typeof RUNNER_SEGMENTS)[number], string> = {
+  done: 'bg-[#2D7FF980]',
+  live: 'bg-[#2D7FF9]',
+  todo: 'bg-[#FFFFFF14]',
+};
+---
+
+<CaptureFrame>
+  <div class="flex items-center justify-between gap-4">
+    <p class="min-w-0 truncate text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
+    <p
+      class="flex shrink-0 items-center gap-2 rounded-full bg-[#FF7A6B14] px-2.5 py-1 font-mono text-[0.56rem] tracking-[0.09em] text-[#FF7A6B]"
+    >
+      <span class="cap-live size-[5px] rounded-full bg-[#FF7A6B]" aria-hidden="true"></span>
+      {t.live}
+    </p>
+  </div>
+
+  <div class="rounded-[11px] bg-[#FFFFFF05] p-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+    <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{t.block}</p>
+
+    <div class="mt-2.5 flex items-baseline justify-between gap-4">
+      <p class="min-w-0 truncate text-[1.05rem] font-semibold text-[#F8FAFC]">{t.name}</p>
+      <p class="shrink-0 font-mono text-[1.25rem] tracking-[-0.02em] text-[#7AB8FF]">{t.chrono}</p>
+    </div>
+
+    <ul class="mt-3.5 flex gap-1.5">
+      {
+        RUNNER_SEGMENTS.map((state) => (
+          <li class={`h-1 flex-1 rounded-full ${seg[state]}`} aria-hidden="true" />
+        ))
+      }
+    </ul>
+
+    <div class="mt-4 flex gap-2.5">
+      <span
+        class="rounded-full bg-[#FFFFFF0A] px-4 py-2 text-[0.72rem] text-[#C3CDE0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+        >{t.pause}</span
+      >
+      <span class="rounded-full bg-[#2D7FF9] px-4 py-2 text-[0.72rem] font-semibold text-[#F8FAFC]"
+        >{t.finish}</span
+      >
+    </div>
+  </div>
+
+  <ul class="grid gap-2.5">
+    {
+      t.rows.map((r, i) => (
+        <li class="flex items-center gap-2.5">
+          <span class="shrink-0 text-[#68779A]">
+            <HomeIcon name={RUNNER_ROW_ICONS[i]} size={13} />
+          </span>
+          <span class="min-w-0 flex-1 truncate text-[0.75rem] text-[#C3CDE0]">{r.t}</span>
+          <span class="shrink-0 font-mono text-[0.66rem] whitespace-nowrap text-[#68779A]">
+            {r.m}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</CaptureFrame>
+
+<style is:global>
+  .cap-live {
+    animation: cap-live-pulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  @keyframes cap-live-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cap-live {
+      animation: none;
+    }
+  }
+</style>

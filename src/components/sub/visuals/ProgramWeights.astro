@@ -1,0 +1,69 @@
+---
+/**
+ * One prescription, a weight per player.
+ *
+ * The weights are the point of the page, so they are computed values held as
+ * fixtures: 80 % of each max, rounded to the 2.5 kg plates named in the
+ * settings row, scaled again for the player coming back from injury, and left
+ * blank for the one with no max rather than loaded at a guess.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, PROGRAM_ROWS } from '../../../data/subpages/captures';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].program;
+
+/* 112.5 must read as "112,5" in French and "112.5" in English. */
+const fmt = (n: number) => new Intl.NumberFormat(locale).format(n);
+---
+
+<CaptureFrame>
+  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5">
+    <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
+    <p class="font-mono text-[0.56rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">
+      {t.meta}
+    </p>
+  </div>
+
+  <div class="rounded-[11px] bg-[#2D7FF90F] px-4 py-3.5 outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]">
+    <p class="text-[0.84rem] font-semibold text-[#F8FAFC]">{t.lift}</p>
+    <p class="mt-1 font-mono text-[0.63rem] text-[#7AB8FF]">{t.detail}</p>
+  </div>
+
+  <ul class="grid gap-2.5">
+    {
+      PROGRAM_ROWS.map((r) => (
+        <li class="flex items-center gap-3">
+          <span class="min-w-0 flex-1">
+            <span class="block truncate text-[0.78rem] text-[#DCE4F2]">{r.name}</span>
+            <span class="block font-mono text-[0.63rem] text-[#68779A]">
+              {r.max === null
+                ? t.untested
+                : `${t.maxLabel} ${r.max} kg${r.mod ? ` · ${t.modLabel} ${r.mod} %` : ''}`}
+            </span>
+          </span>
+          <span
+            class={`shrink-0 font-mono text-[0.84rem] whitespace-nowrap ${r.weight === null ? 'text-[#68779A]' : 'text-[#F8FAFC]'}`}
+          >
+            {r.weight === null ? '—' : `${fmt(r.weight)} kg`}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul class="flex flex-wrap gap-1.5">
+    {
+      t.settings.map((setting) => (
+        <li class="rounded-full bg-[#FFFFFF0A] px-2.5 py-1 font-mono text-[0.59rem] text-[#68779A]">
+          {setting}
+        </li>
+      ))
+    }
+  </ul>
+</CaptureFrame>

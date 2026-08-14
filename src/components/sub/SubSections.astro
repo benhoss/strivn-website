@@ -269,9 +269,14 @@ const edge: Record<Tone, string> = {
             </div>
           )}
 
-          {/* ── Before / during / after rail ──────────────────────── */}
+          {/* ── Before / during / after rail ───────────────────────
+              Three steps read as a rail; four would leave an orphan on a
+              three-column grid, so a four-step rail gets its own tracks. */}
           {s.kind === 'rail' && (
-            <ol class="hl-reveal mt-11 grid gap-8 md:grid-cols-3 md:gap-7" data-stagger>
+            <ol
+              class={`hl-reveal mt-11 grid gap-8 md:gap-7 ${s.steps.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}
+              data-stagger
+            >
               {s.steps.map((st, si) => {
                 const live = si === (s.activeIndex ?? -1);
                 return (

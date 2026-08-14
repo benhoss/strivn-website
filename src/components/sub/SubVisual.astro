@@ -15,6 +15,10 @@ import UnitConversion from './visuals/UnitConversion.astro';
 import MeasureEditor from './visuals/MeasureEditor.astro';
 import PercentileScale from './visuals/PercentileScale.astro';
 import WeekPlan from './visuals/WeekPlan.astro';
+import LiveRunner from './visuals/LiveRunner.astro';
+import MatchLive from './visuals/MatchLive.astro';
+import LibraryInbox from './visuals/LibraryInbox.astro';
+import ProgramWeights from './visuals/ProgramWeights.astro';
 
 interface Props {
   name: string;
@@ -32,6 +36,10 @@ const registry: Record<string, any> = {
   'measure-editor': MeasureEditor,
   'percentile-scale': PercentileScale,
   'week-plan': WeekPlan,
+  'live-runner': LiveRunner,
+  'match-live': MatchLive,
+  'library-inbox': LibraryInbox,
+  'program-weights': ProgramWeights,
 };
 
 const Capture = registry[name];

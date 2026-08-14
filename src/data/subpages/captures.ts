@@ -105,6 +105,54 @@ export const WEEK_PARTS: Array<{ rpe: number; min: number; ua: number; attached:
   { rpe: 4, min: 20, ua: 60, attached: false },
 ];
 
+/**
+ * The session runner's block strip: one done, one running, two to come. The
+ * strip is the only place the capture says where you are in the session, so
+ * the states stay a fixture rather than six translated arrays.
+ */
+export const RUNNER_SEGMENTS = ['done', 'live', 'todo', 'todo'] as const;
+
+/** Icons for the runner's status rows, in order. */
+export const RUNNER_ROW_ICONS = ['user-check', 'shuffle', 'timer', 'cloud-off'] as const;
+
+/** Live match: the counted facts, ours against theirs, in label order. */
+export const MATCH_FACTS = [
+  { a: 6, b: 3 },
+  { a: 14, b: 9 },
+  { a: 8, b: 11 },
+] as const;
+
+/** Match score, and the minutes the timeline rows are stamped with. */
+export const MATCH_SCORE = { us: 2, them: 1, minute: 63 };
+export const MATCH_EVENTS = [
+  { icon: 'circle-dot', minute: 54 },
+  { icon: 'arrow-left-right', minute: 58 },
+  { icon: 'pen-line', minute: 61 },
+  { icon: 'square', minute: 62 },
+] as const;
+
+/**
+ * Program prescription: 4 × 5 @ 80 % of each player's 1RM, rounded to 2.5 kg
+ * plates. L. Moreau is modulated to 60 % on return from injury, and
+ * K. Nakamura has no max yet — so he is shown untested rather than loaded at
+ * a guess. The weights are computed values, kept here so they stay true.
+ */
+export const PROGRAM_PCT = 80;
+export const PROGRAM_ROWS: Array<{
+  name: string;
+  max: number | null;
+  mod?: number;
+  weight: number | null;
+}> = [
+  { name: 'A. Diallo', max: 140, weight: 112.5 },
+  { name: 'S. Petit', max: 105, weight: 85 },
+  { name: 'L. Moreau', max: 118, mod: 60, weight: 57.5 },
+  { name: 'K. Nakamura', max: null, weight: null },
+];
+
+/** The library inbox queue behind the capture being sorted. */
+export const LIBRARY_QUEUE_ICONS = ['image', 'pen-line'] as const;
+
 /* ── Shape ────────────────────────────────────────────────────── */
 
 interface Row {
@@ -176,6 +224,53 @@ export interface CaptureText {
     attached: string;
     pending: string;
     unit: string;
+  };
+  /** Live session runner. */
+  runner: {
+    title: string;
+    live: string;
+    block: string;
+    name: string;
+    chrono: string;
+    pause: string;
+    finish: string;
+    rows: Array<{ t: string; m: string }>;
+  };
+  /** Live match encoder. */
+  match: {
+    title: string;
+    sync: string;
+    us: string;
+    them: string;
+    facts: [string, string, string];
+    events: [string, string, string, string];
+  };
+  /** Exercise library inbox. */
+  library: {
+    title: string;
+    count: string;
+    source: string;
+    via: string;
+    titleKey: string;
+    ai: string;
+    name: string;
+    folderKey: string;
+    folder: string;
+    tags: [string, string, string];
+    file: string;
+    publish: string;
+    queue: Array<{ t: string; m: string }>;
+  };
+  /** Strength program: one prescription, a weight per player. */
+  program: {
+    title: string;
+    meta: string;
+    lift: string;
+    detail: string;
+    maxLabel: string;
+    modLabel: string;
+    untested: string;
+    settings: [string, string, string];
   };
   /** Percentile scale placing one player's value against their position. */
   scale: {
@@ -270,6 +365,62 @@ const fr: CaptureText = {
     pending: 'en attente',
     unit: 'UA',
   },
+  runner: {
+    title: 'Séance jeudi · 18:00',
+    live: 'EN DIRECT',
+    block: 'BLOC 2 / 4 · JEU RÉDUIT',
+    name: 'Pressing 8v8',
+    chrono: '12:34',
+    pause: 'Pause',
+    finish: 'Terminer le bloc',
+    rows: [
+      { t: 'Présents pointés', m: '17 / 20' },
+      { t: 'Équipes créées — 2 × 8', m: 'auto' },
+      { t: 'Prochain bloc — Vitesse', m: '15 min' },
+      { t: 'Hors ligne — 3 actions en attente', m: 'sync' },
+    ],
+  },
+  match: {
+    title: 'J14 · vs RC Valbonne',
+    sync: 'À SYNCHRONISER',
+    us: 'NOUS',
+    them: 'ADV.',
+    facts: ['Tir cadré', 'Duel gagné', 'Perte balle'],
+    events: [
+      'But — A. Diallo · chaîne complétée',
+      'Entrée — K. Nakamura · sortie T. Mendes',
+      'Observation — croquis bloc bas',
+      'Carton jaune — S. Petit',
+    ],
+  },
+  library: {
+    title: 'Boîte de réception',
+    count: '3 CAPTURES À TRIER',
+    source: 'tiktok.com · vidéo importée',
+    via: 'via WhatsApp',
+    titleKey: 'TITRE',
+    ai: 'suggéré par l’IA',
+    name: 'Rondo 4v2 — sortie sous pression',
+    folderKey: 'DOSSIER',
+    folder: 'Conservation',
+    tags: ['rondo', 'pressing', 'U19'],
+    file: 'Classer',
+    publish: 'Publier à l’équipe',
+    queue: [
+      { t: 'Photo — coordination échelle', m: 'hier' },
+      { t: 'Schéma — bloc médian 4-4-2', m: 'hier' },
+    ],
+  },
+  program: {
+    title: 'Bas du corps · mercredi',
+    meta: 'PUBLIÉE · 18 JOUEURS',
+    lift: 'Back Squat — 4 × 5 @ 80 % du 1RM',
+    detail: 'tempo 3010 · repos 2 min · A1 du superset',
+    maxLabel: '1RM',
+    modLabel: 'modulé',
+    untested: '1RM à tester',
+    settings: ['Arrondi barre 2,5 kg', 'Formule Epley', 'kg'],
+  },
   scale: {
     who: 'S. Petit · Ailier · VMA',
     ref: 'REPÈRES AILIER · SAISON EN COURS',
@@ -361,6 +512,62 @@ const en: CaptureText = {
     attached: 'attached',
     pending: 'pending',
     unit: 'AU',
+  },
+  runner: {
+    title: 'Thursday session · 18:00',
+    live: 'LIVE',
+    block: 'BLOCK 2 / 4 · SMALL-SIDED',
+    name: 'Pressing 8v8',
+    chrono: '12:34',
+    pause: 'Pause',
+    finish: 'End the block',
+    rows: [
+      { t: 'Attendance taken', m: '17 / 20' },
+      { t: 'Teams created — 2 × 8', m: 'auto' },
+      { t: 'Next block — Speed', m: '15 min' },
+      { t: 'Offline — 3 actions queued', m: 'sync' },
+    ],
+  },
+  match: {
+    title: 'MD14 · vs RC Valbonne',
+    sync: 'TO SYNC',
+    us: 'US',
+    them: 'OPP.',
+    facts: ['Shot on target', 'Duel won', 'Turnover'],
+    events: [
+      'Goal — A. Diallo · chain completed',
+      'On — K. Nakamura · off T. Mendes',
+      'Observation — low block sketch',
+      'Yellow card — S. Petit',
+    ],
+  },
+  library: {
+    title: 'Inbox',
+    count: '3 CAPTURES TO SORT',
+    source: 'tiktok.com · video imported',
+    via: 'via WhatsApp',
+    titleKey: 'TITLE',
+    ai: 'suggested by AI',
+    name: 'Rondo 4v2 — playing out under pressure',
+    folderKey: 'FOLDER',
+    folder: 'Possession',
+    tags: ['rondo', 'pressing', 'U19'],
+    file: 'File it',
+    publish: 'Publish to the team',
+    queue: [
+      { t: 'Photo — ladder coordination', m: 'yesterday' },
+      { t: 'Diagram — mid block 4-4-2', m: 'yesterday' },
+    ],
+  },
+  program: {
+    title: 'Lower body · Wednesday',
+    meta: 'PUBLISHED · 18 PLAYERS',
+    lift: 'Back Squat — 4 × 5 @ 80 % of 1RM',
+    detail: 'tempo 3010 · rest 2 min · A1 of the superset',
+    maxLabel: '1RM',
+    modLabel: 'scaled',
+    untested: '1RM to test',
+    settings: ['Bar rounding 2.5 kg', 'Epley formula', 'kg'],
   },
   scale: {
     who: 'S. Petit · Winger · MAS',
@@ -454,6 +661,62 @@ const nl: CaptureText = {
     pending: 'in wacht',
     unit: 'AE',
   },
+  runner: {
+    title: 'Training donderdag · 18:00',
+    live: 'LIVE',
+    block: 'BLOK 2 / 4 · PARTIJVORM',
+    name: 'Pressing 8v8',
+    chrono: '12:34',
+    pause: 'Pauze',
+    finish: 'Blok beëindigen',
+    rows: [
+      { t: 'Aanwezigheden genoteerd', m: '17 / 20' },
+      { t: 'Ploegen gemaakt — 2 × 8', m: 'auto' },
+      { t: 'Volgend blok — Snelheid', m: '15 min' },
+      { t: 'Offline — 3 acties in wacht', m: 'sync' },
+    ],
+  },
+  match: {
+    title: 'S14 · tegen RC Valbonne',
+    sync: 'TE SYNCEN',
+    us: 'WIJ',
+    them: 'TEG.',
+    facts: ['Schot op doel', 'Duel gewonnen', 'Balverlies'],
+    events: [
+      'Doelpunt — A. Diallo · keten voltooid',
+      'In — K. Nakamura · uit T. Mendes',
+      'Observatie — schets laag blok',
+      'Gele kaart — S. Petit',
+    ],
+  },
+  library: {
+    title: 'Postvak IN',
+    count: '3 CAPTURES TE SORTEREN',
+    source: 'tiktok.com · video geïmporteerd',
+    via: 'via WhatsApp',
+    titleKey: 'TITEL',
+    ai: 'voorgesteld door AI',
+    name: 'Rondo 4v2 — uitvoetballen onder druk',
+    folderKey: 'MAP',
+    folder: 'Balbezit',
+    tags: ['rondo', 'pressing', 'U19'],
+    file: 'Opbergen',
+    publish: 'Publiceren naar de ploeg',
+    queue: [
+      { t: 'Foto — coördinatie ladder', m: 'gisteren' },
+      { t: 'Schema — middenblok 4-4-2', m: 'gisteren' },
+    ],
+  },
+  program: {
+    title: 'Onderlichaam · woensdag',
+    meta: 'GEPUBLICEERD · 18 SPELERS',
+    lift: 'Back Squat — 4 × 5 @ 80 % van 1RM',
+    detail: 'tempo 3010 · rust 2 min · A1 van de superset',
+    maxLabel: '1RM',
+    modLabel: 'aangepast',
+    untested: '1RM te testen',
+    settings: ['Afronding stang 2,5 kg', 'Formule Epley', 'kg'],
+  },
   scale: {
     who: 'S. Petit · Vleugelspeler · MAS',
     ref: 'IJKPUNTEN VLEUGELSPELER · HUIDIG SEIZOEN',
@@ -545,6 +808,62 @@ const de: CaptureText = {
     attached: 'zugeordnet',
     pending: 'offen',
     unit: 'AE',
+  },
+  runner: {
+    title: 'Einheit Donnerstag · 18:00',
+    live: 'LIVE',
+    block: 'BLOCK 2 / 4 · SPIELFORM',
+    name: 'Pressing 8v8',
+    chrono: '12:34',
+    pause: 'Pause',
+    finish: 'Block beenden',
+    rows: [
+      { t: 'Anwesenheiten erfasst', m: '17 / 20' },
+      { t: 'Teams gebildet — 2 × 8', m: 'auto' },
+      { t: 'Nächster Block — Schnelligkeit', m: '15 Min' },
+      { t: 'Offline — 3 Aktionen in Warteschlange', m: 'sync' },
+    ],
+  },
+  match: {
+    title: 'ST14 · gegen RC Valbonne',
+    sync: 'ZU SYNCHRONISIEREN',
+    us: 'WIR',
+    them: 'GEG.',
+    facts: ['Schuss aufs Tor', 'Zweikampf gewonnen', 'Ballverlust'],
+    events: [
+      'Tor — A. Diallo · Kette vollständig',
+      'Ein — K. Nakamura · aus T. Mendes',
+      'Beobachtung — Skizze tiefer Block',
+      'Gelbe Karte — S. Petit',
+    ],
+  },
+  library: {
+    title: 'Posteingang',
+    count: '3 AUFNAHMEN ZU SORTIEREN',
+    source: 'tiktok.com · Video importiert',
+    via: 'über WhatsApp',
+    titleKey: 'TITEL',
+    ai: 'von der KI vorgeschlagen',
+    name: 'Rondo 4v2 — Spielaufbau unter Druck',
+    folderKey: 'ORDNER',
+    folder: 'Ballbesitz',
+    tags: ['Rondo', 'Pressing', 'U19'],
+    file: 'Ablegen',
+    publish: 'An die Mannschaft veröffentlichen',
+    queue: [
+      { t: 'Foto — Koordinationsleiter', m: 'gestern' },
+      { t: 'Zeichnung — Mittelfeldblock 4-4-2', m: 'gestern' },
+    ],
+  },
+  program: {
+    title: 'Unterkörper · Mittwoch',
+    meta: 'VERÖFFENTLICHT · 18 SPIELER',
+    lift: 'Back Squat — 4 × 5 @ 80 % des 1RM',
+    detail: 'Tempo 3010 · Pause 2 Min · A1 des Supersatzes',
+    maxLabel: '1RM',
+    modLabel: 'angepasst',
+    untested: '1RM zu testen',
+    settings: ['Rundung Hantel 2,5 kg', 'Formel Epley', 'kg'],
   },
   scale: {
     who: 'S. Petit · Flügel · MAS',
@@ -638,6 +957,62 @@ const pt: CaptureText = {
     pending: 'em espera',
     unit: 'UA',
   },
+  runner: {
+    title: 'Treino de quinta · 18:00',
+    live: 'EM DIRETO',
+    block: 'BLOCO 2 / 4 · JOGO REDUZIDO',
+    name: 'Pressing 8v8',
+    chrono: '12:34',
+    pause: 'Pausa',
+    finish: 'Terminar o bloco',
+    rows: [
+      { t: 'Presenças marcadas', m: '17 / 20' },
+      { t: 'Equipas criadas — 2 × 8', m: 'auto' },
+      { t: 'Próximo bloco — Velocidade', m: '15 min' },
+      { t: 'Offline — 3 ações em espera', m: 'sync' },
+    ],
+  },
+  match: {
+    title: 'J14 · vs RC Valbonne',
+    sync: 'POR SINCRONIZAR',
+    us: 'NÓS',
+    them: 'ADV.',
+    facts: ['Remate enquadrado', 'Duelo ganho', 'Perda de bola'],
+    events: [
+      'Golo — A. Diallo · cadeia completa',
+      'Entrada — K. Nakamura · saída T. Mendes',
+      'Observação — esboço bloco baixo',
+      'Cartão amarelo — S. Petit',
+    ],
+  },
+  library: {
+    title: 'Caixa de entrada',
+    count: '3 CAPTURAS POR TRIAR',
+    source: 'tiktok.com · vídeo importado',
+    via: 'via WhatsApp',
+    titleKey: 'TÍTULO',
+    ai: 'sugerido pela IA',
+    name: 'Rondo 4v2 — saída sob pressão',
+    folderKey: 'PASTA',
+    folder: 'Posse de bola',
+    tags: ['rondo', 'pressing', 'Sub-19'],
+    file: 'Arquivar',
+    publish: 'Publicar para a equipa',
+    queue: [
+      { t: 'Foto — coordenação escada', m: 'ontem' },
+      { t: 'Esquema — bloco médio 4-4-2', m: 'ontem' },
+    ],
+  },
+  program: {
+    title: 'Membros inferiores · quarta',
+    meta: 'PUBLICADA · 18 JOGADORES',
+    lift: 'Back Squat — 4 × 5 @ 80 % da 1RM',
+    detail: 'tempo 3010 · descanso 2 min · A1 do superset',
+    maxLabel: '1RM',
+    modLabel: 'modulado',
+    untested: '1RM por testar',
+    settings: ['Arredondamento barra 2,5 kg', 'Fórmula Epley', 'kg'],
+  },
   scale: {
     who: 'S. Petit · Extremo · VAM',
     ref: 'REFERÊNCIAS EXTREMO · ÉPOCA ATUAL',
@@ -729,6 +1104,62 @@ const es: CaptureText = {
     attached: 'asociada',
     pending: 'en espera',
     unit: 'UA',
+  },
+  runner: {
+    title: 'Sesión del jueves · 18:00',
+    live: 'EN DIRECTO',
+    block: 'BLOQUE 2 / 4 · JUEGO REDUCIDO',
+    name: 'Pressing 8v8',
+    chrono: '12:34',
+    pause: 'Pausa',
+    finish: 'Terminar el bloque',
+    rows: [
+      { t: 'Asistencias marcadas', m: '17 / 20' },
+      { t: 'Equipos creados — 2 × 8', m: 'auto' },
+      { t: 'Siguiente bloque — Velocidad', m: '15 min' },
+      { t: 'Sin conexión — 3 acciones en espera', m: 'sync' },
+    ],
+  },
+  match: {
+    title: 'J14 · vs RC Valbonne',
+    sync: 'POR SINCRONIZAR',
+    us: 'NOS.',
+    them: 'RIV.',
+    facts: ['Tiro a puerta', 'Duelo ganado', 'Pérdida de balón'],
+    events: [
+      'Gol — A. Diallo · cadena completada',
+      'Entra — K. Nakamura · sale T. Mendes',
+      'Observación — croquis bloque bajo',
+      'Tarjeta amarilla — S. Petit',
+    ],
+  },
+  library: {
+    title: 'Bandeja de entrada',
+    count: '3 CAPTURAS POR CLASIFICAR',
+    source: 'tiktok.com · vídeo importado',
+    via: 'vía WhatsApp',
+    titleKey: 'TÍTULO',
+    ai: 'sugerido por la IA',
+    name: 'Rondo 4v2 — salida bajo presión',
+    folderKey: 'CARPETA',
+    folder: 'Posesión',
+    tags: ['rondo', 'pressing', 'Sub-19'],
+    file: 'Archivar',
+    publish: 'Publicar al equipo',
+    queue: [
+      { t: 'Foto — coordinación escalera', m: 'ayer' },
+      { t: 'Esquema — bloque medio 4-4-2', m: 'ayer' },
+    ],
+  },
+  program: {
+    title: 'Tren inferior · miércoles',
+    meta: 'PUBLICADA · 18 JUGADORES',
+    lift: 'Back Squat — 4 × 5 @ 80 % del 1RM',
+    detail: 'tempo 3010 · descanso 2 min · A1 del superset',
+    maxLabel: '1RM',
+    modLabel: 'modulado',
+    untested: '1RM por probar',
+    settings: ['Redondeo barra 2,5 kg', 'Fórmula Epley', 'kg'],
   },
   scale: {
     who: 'S. Petit · Extremo · VAM',
