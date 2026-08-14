@@ -1,0 +1,378 @@
+---
+import type { HomeContent } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+
+interface Props {
+  workflow: HomeContent['workflow'];
+}
+
+const { workflow: w } = Astro.props;
+const v = w.visuals;
+
+const accentText: Record<string, string> = {
+  blue: 'text-[#7AB8FF]',
+  green: 'text-[#8CE99A]',
+  orange: 'text-[#FF8400]',
+};
+
+/** Planning chart: [target, actual] heights in %, Monday→Sunday; Sunday is the match (single bar). */
+const planBars: Array<[number, number]> = [
+  [38, 42],
+  [78, 84],
+  [52, 56],
+  [92, 88],
+  [58, 62],
+  [30, 26],
+  [96, 96],
+];
+
+/** Readiness group trend, 14 days (heights in %). */
+const trendBars = [42, 50, 46, 62, 55, 70, 64, 74, 68, 82, 74, 86, 90, 96];
+---
+
+<section id="workflow" class="scroll-mt-24 bg-[#05070F] py-20 md:py-28" aria-labelledby="workflow-title">
+  <div class="hl-wrap">
+    <!-- Section header -->
+    <div class="hl-reveal mx-auto max-w-[52rem] text-center">
+      <p class="hl-index justify-center text-[#7AB8FF]">
+        {w.index}
+        <span class="hl-index__rule"></span>
+        <span class="text-[#68779A]">{w.kicker}</span>
+      </p>
+      <h2 id="workflow-title" class="hl-display mt-5 text-[clamp(2.2rem,5vw,3.6rem)]">{w.title}</h2>
+      <p class="mt-5 text-[1.02rem] leading-[1.65] text-[#AAB8D4]">{w.sub}</p>
+      <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-[#8CE99A0F] px-4 py-2 font-mono text-[0.62rem] tracking-[0.12em] text-[#8CE99A] outline-1 outline-[#8CE99A2E] -outline-offset-[0.5px]">
+        <HomeIcon name="camera" size={13} />
+        {w.badge}
+      </p>
+    </div>
+
+    <div class="mt-20 flex flex-col gap-24 md:gap-32">
+      <!-- ── 01 · GPS import ── -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="hl-reveal">
+          <p class="hl-index">
+            <span class="rounded-[6px] bg-[#FFFFFF06] px-2 py-1 text-[#68779A] outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">{w.steps[0].index}</span>
+            <span class={accentText[w.steps[0].accent]}>{w.steps[0].kicker}</span>
+          </p>
+          <h3 class="hl-display mt-5 max-w-[18ch] text-[clamp(1.7rem,3.2vw,2.5rem)]">{w.steps[0].title}</h3>
+          <p class="mt-4 max-w-[30rem] text-[0.99rem] leading-[1.65] text-[#AAB8D4]">{w.steps[0].body}</p>
+          <ul class="hl-checks mt-6" data-stagger>
+            {w.steps[0].points.map((p) => (
+              <li><HomeIcon name="check-circle" size={16} class={accentText[w.steps[0].accent]} />{p}</li>
+            ))}
+          </ul>
+          <p class="mt-7">
+            <a href={w.steps[0].href} class={`hl-more ${accentText[w.steps[0].accent]}`}>{w.steps[0].cta}<HomeIcon name="arrow-right" size={15} /></a>
+          </p>
+        </div>
+
+        <div class="hl-reveal hl-reveal--card rounded-[22px] bg-gradient-to-b from-[#0C1224] to-[#0A0E1A] p-5 outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px] sm:p-6" style="--d: 120ms;">
+          <div class="rounded-[14px] bg-[#2D7FF90A] px-6 py-7 text-center outline-1 outline-dashed outline-[#2D7FF95C] -outline-offset-[0.5px]">
+            <HomeIcon name="file-up" size={22} class="mx-auto text-[#7AB8FF]" />
+            <p class="mt-3 font-mono text-[0.8rem] font-semibold text-[#F8FAFC]">{v.gps.file}</p>
+            <p class="mt-1 text-[0.78rem] text-[#8CA3C7]">{v.gps.fileSub}</p>
+          </div>
+          <p class="mt-5 font-mono text-[0.58rem] tracking-[0.12em] text-[#68779A]">{v.gps.colsLabel}</p>
+          <ul class="mt-2.5 flex flex-col gap-1.5" data-stagger>
+            {v.gps.cols.map((c) => (
+              <li class="flex items-center gap-3 rounded-[10px] bg-[#FFFFFF04] px-3.5 py-2.5 outline-1 outline-[#FFFFFF08] -outline-offset-[0.5px]">
+                <span class="flex-1 truncate font-mono text-[0.72rem] text-[#8CA3C7]">{c.from}</span>
+                <HomeIcon name="arrow-right" size={13} class="shrink-0 text-[#3D4A66]" />
+                <span class="text-[0.78rem] font-semibold whitespace-nowrap text-[#E2E8F0]">{c.to}</span>
+                <HomeIcon name="check" size={13} class="shrink-0 text-[#8CE99A]" />
+              </li>
+            ))}
+          </ul>
+          <p class="mt-3 flex items-center gap-2.5 rounded-[10px] bg-[#8CE99A0A] px-3.5 py-2.5 text-[0.8rem] font-medium text-[#B9F0C2] outline-1 outline-[#8CE99A24] -outline-offset-[0.5px]">
+            <HomeIcon name="check-circle" size={14} class="shrink-0 text-[#8CE99A]" />
+            {v.gps.done}
+          </p>
+        </div>
+      </div>
+
+      <!-- ── 02 · Readiness (visual left) ── -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="hl-reveal hl-reveal--card order-2 lg:order-1 rounded-[22px] bg-gradient-to-b from-[#0C1A16] to-[#0A0E1A] p-5 outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px] sm:p-6" style="--d: 120ms;">
+          <div class="flex items-baseline justify-between">
+            <p class="text-[0.92rem] font-semibold text-[#F8FAFC]">{v.readiness.title}</p>
+            <span class="font-mono text-[0.64rem] text-[#68779A]">{v.readiness.stamp}</span>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+            {v.readiness.kpis.map((k) => (
+              <div class="rounded-[12px] bg-[#FFFFFF05] px-3 py-2.5 outline-1 outline-[#FFFFFF0C] -outline-offset-[0.5px]">
+                <p class="font-mono text-[0.55rem] tracking-[0.12em] text-[#68779A]">{k.label}</p>
+                <p class={`mt-1 text-[1.15rem] leading-none font-bold ${k.tone === 'green' ? 'text-[#8CE99A]' : 'text-[#FF8400]'}`}>{k.value}</p>
+              </div>
+            ))}
+          </div>
+          <p class="mt-4 font-mono text-[0.58rem] tracking-[0.12em] text-[#68779A]">{v.readiness.alertsLabel}</p>
+          <ul class="mt-2 flex flex-col gap-2" data-stagger>
+            {v.readiness.alerts.map((a) => (
+              <li class="flex items-center gap-3 rounded-[12px] bg-[#FF7A6B0A] px-3.5 py-2.5 outline-1 outline-[#FF7A6B24] -outline-offset-[0.5px]">
+                <HomeIcon name="bell" size={14} class="shrink-0 text-[#FF8400]" />
+                <span class="flex-1">
+                  <span class="block text-[0.8rem] font-semibold text-[#F8FAFC]">{a.name}</span>
+                  <span class="block text-[0.72rem] text-[#AAB8D4]">{a.detail}</span>
+                </span>
+                <span class="shrink-0 rounded-full bg-[#FFFFFF08] px-3 py-1 text-[0.7rem] font-semibold text-[#E2E8F0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">{a.action}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-4 flex h-[4.6rem] items-end gap-1.5">
+            {trendBars.map((h, i) => (
+              <span
+                class={`hl-bar flex-1 rounded-[4px] ${i === trendBars.length - 1 ? 'bg-[#8CE99A]' : 'bg-[#22432F]'}`}
+                style={`height: ${h}%; --bd: ${i * 45}ms;`}
+              ></span>
+            ))}
+          </div>
+          <p class="mt-2.5 font-mono text-[0.55rem] tracking-[0.12em] text-[#68779A]">{v.readiness.chartLabel}</p>
+        </div>
+
+        <div class="hl-reveal order-1 lg:order-2">
+          <p class="hl-index">
+            <span class="rounded-[6px] bg-[#FFFFFF06] px-2 py-1 text-[#68779A] outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">{w.steps[1].index}</span>
+            <span class={accentText[w.steps[1].accent]}>{w.steps[1].kicker}</span>
+          </p>
+          <h3 class="hl-display mt-5 max-w-[18ch] text-[clamp(1.7rem,3.2vw,2.5rem)]">{w.steps[1].title}</h3>
+          <p class="mt-4 max-w-[30rem] text-[0.99rem] leading-[1.65] text-[#AAB8D4]">{w.steps[1].body}</p>
+          <ul class="hl-checks mt-6" data-stagger>
+            {w.steps[1].points.map((p) => (
+              <li><HomeIcon name="check-circle" size={16} class={accentText[w.steps[1].accent]} />{p}</li>
+            ))}
+          </ul>
+          <p class="mt-7">
+            <a href={w.steps[1].href} class={`hl-more ${accentText[w.steps[1].accent]}`}>{w.steps[1].cta}<HomeIcon name="arrow-right" size={15} /></a>
+          </p>
+        </div>
+      </div>
+
+      <!-- ── 03 · Load planning ── -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="hl-reveal">
+          <p class="hl-index">
+            <span class="rounded-[6px] bg-[#FFFFFF06] px-2 py-1 text-[#68779A] outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">{w.steps[2].index}</span>
+            <span class={accentText[w.steps[2].accent]}>{w.steps[2].kicker}</span>
+          </p>
+          <h3 class="hl-display mt-5 max-w-[18ch] text-[clamp(1.7rem,3.2vw,2.5rem)]">{w.steps[2].title}</h3>
+          <p class="mt-4 max-w-[30rem] text-[0.99rem] leading-[1.65] text-[#AAB8D4]">{w.steps[2].body}</p>
+          <ul class="hl-checks mt-6" data-stagger>
+            {w.steps[2].points.map((p) => (
+              <li><HomeIcon name="check-circle" size={16} class={accentText[w.steps[2].accent]} />{p}</li>
+            ))}
+          </ul>
+          <p class="mt-7">
+            <a href={w.steps[2].href} class={`hl-more ${accentText[w.steps[2].accent]}`}>{w.steps[2].cta}<HomeIcon name="arrow-right" size={15} /></a>
+          </p>
+        </div>
+
+        <div class="hl-reveal hl-reveal--card rounded-[22px] bg-gradient-to-b from-[#0C1224] to-[#0A0E1A] p-5 outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px] sm:p-6" style="--d: 120ms;">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <p class="text-[0.92rem] font-semibold text-[#F8FAFC]">{v.planning.title}</p>
+            <p class="flex items-center gap-4 text-[0.7rem] text-[#8CA3C7]">
+              <span class="flex items-center gap-1.5"><span class="size-2 rounded-[3px] bg-[#2E3A54]"></span>{v.planning.legendTarget}</span>
+              <span class="flex items-center gap-1.5"><span class="size-2 rounded-[3px] bg-[#2D7FF9]"></span>{v.planning.legendActual}</span>
+            </p>
+          </div>
+          <div class="mt-5 grid grid-cols-7 items-end gap-2 sm:gap-3" style="height: 10.5rem;">
+            {planBars.map(([target, actual], i) => (
+              <div class="flex h-full items-end justify-center gap-1">
+                {i === planBars.length - 1 ? (
+                  <span class="hl-bar w-[14px] rounded-[5px] bg-[#B96A3A] sm:w-4" style={`height: ${actual}%; --bd: ${i * 70}ms;`}></span>
+                ) : (
+                  <>
+                    <span class="hl-bar w-[10px] rounded-[5px] bg-[#2E3A54] sm:w-3" style={`height: ${target}%; --bd: ${i * 70}ms;`}></span>
+                    <span class="hl-bar w-[10px] rounded-[5px] bg-[#2D7FF9] sm:w-3" style={`height: ${actual}%; --bd: ${i * 70 + 40}ms;`}></span>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+          <div class="mt-2 grid grid-cols-7 gap-2 text-center font-mono text-[0.6rem] text-[#68779A] sm:gap-3">
+            {v.planning.days.map((d) => <span>{d}</span>)}
+          </div>
+          <ul class="mt-5 flex flex-col gap-2" data-stagger>
+            {v.planning.adjustments.map((a) => (
+              <li class="flex items-center gap-3 rounded-[10px] bg-[#FFFFFF04] px-3.5 py-2.5 outline-1 outline-[#FFFFFF0A] -outline-offset-[0.5px]">
+                <HomeIcon name="users" size={14} class="shrink-0 text-[#FF8400]" />
+                <span class="text-[0.8rem] font-semibold text-[#F8FAFC]">{a.name}</span>
+                <span class="text-[0.76rem] text-[#AAB8D4]">{a.detail}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── 04 · Session builder (visual left) ── -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="hl-reveal hl-reveal--card order-2 lg:order-1 rounded-[22px] bg-gradient-to-b from-[#0C1224] to-[#0A0E1A] p-5 outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px] sm:p-6" style="--d: 120ms;">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <p class="text-[0.92rem] font-semibold text-[#F8FAFC]">{v.builder.title}</p>
+              <p class="mt-0.5 text-[0.74rem] text-[#8CA3C7]">{v.builder.sub}</p>
+            </div>
+            <span class="flex items-center gap-1.5 rounded-full bg-[#8CE99A0F] px-3 py-1.5 font-mono text-[0.58rem] tracking-[0.1em] text-[#8CE99A] outline-1 outline-[#8CE99A2E] -outline-offset-[0.5px]">
+              <HomeIcon name="target" size={12} />
+              {v.builder.badge}
+            </span>
+          </div>
+          <ul class="mt-4 flex flex-col gap-2" data-stagger>
+            {v.builder.blocks.map((b) => (
+              <li class="flex items-center gap-3 rounded-[12px] bg-[#FFFFFF05] px-3.5 py-3 outline-1 outline-[#FFFFFF0C] -outline-offset-[0.5px]">
+                <span class="grid shrink-0 grid-cols-2 gap-[3px] opacity-50" aria-hidden="true">
+                  {Array.from({ length: 6 }).map(() => <span class="size-[3px] rounded-full bg-[#68779A]"></span>)}
+                </span>
+                <span class="flex-1 text-[0.85rem] font-medium text-[#E2E8F0]">{b.label}</span>
+                <span class="font-mono text-[0.68rem] text-[#8CA3C7]">{b.time}</span>
+                <span class="rounded-[7px] bg-[#2D7FF917] px-2 py-1 font-mono text-[0.66rem] font-semibold text-[#7AB8FF]">{b.load}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-3 rounded-[12px] bg-[#2D7FF90A] px-4 py-3.5 outline-1 outline-[#2D7FF938] -outline-offset-[0.5px]">
+            <p class="flex flex-wrap items-center justify-between gap-2">
+              <span class="flex items-center gap-2 text-[0.8rem] font-semibold text-[#F8FAFC]">
+                <HomeIcon name="dumbbell" size={14} class="text-[#7AB8FF]" />
+                {v.builder.workout.title}
+              </span>
+              <span class="flex items-center gap-1.5 text-[0.68rem] font-medium text-[#8CE99A]">
+                <HomeIcon name="check" size={12} />
+                {v.builder.workout.stamp}
+              </span>
+            </p>
+            <p class="mt-2 text-[0.74rem] leading-[1.55] text-[#AAB8D4]">{v.builder.workout.body}</p>
+          </div>
+        </div>
+
+        <div class="hl-reveal order-1 lg:order-2">
+          <p class="hl-index">
+            <span class="rounded-[6px] bg-[#FFFFFF06] px-2 py-1 text-[#68779A] outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">{w.steps[3].index}</span>
+            <span class={accentText[w.steps[3].accent]}>{w.steps[3].kicker}</span>
+          </p>
+          <h3 class="hl-display mt-5 max-w-[18ch] text-[clamp(1.7rem,3.2vw,2.5rem)]">{w.steps[3].title}</h3>
+          <p class="mt-4 max-w-[30rem] text-[0.99rem] leading-[1.65] text-[#AAB8D4]">{w.steps[3].body}</p>
+          <ul class="hl-checks mt-6" data-stagger>
+            {w.steps[3].points.map((p) => (
+              <li><HomeIcon name="check-circle" size={16} class={accentText[w.steps[3].accent]} />{p}</li>
+            ))}
+          </ul>
+          <p class="mt-7">
+            <a href={w.steps[3].href} class={`hl-more ${accentText[w.steps[3].accent]}`}>{w.steps[3].cta}<HomeIcon name="arrow-right" size={15} /></a>
+          </p>
+        </div>
+      </div>
+
+      <!-- ── 05 · Live ── -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="hl-reveal">
+          <p class="hl-index">
+            <span class="rounded-[6px] bg-[#FFFFFF06] px-2 py-1 text-[#68779A] outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">{w.steps[4].index}</span>
+            <span class={accentText[w.steps[4].accent]}>{w.steps[4].kicker}</span>
+          </p>
+          <h3 class="hl-display mt-5 max-w-[18ch] text-[clamp(1.7rem,3.2vw,2.5rem)]">{w.steps[4].title}</h3>
+          <p class="mt-4 max-w-[30rem] text-[0.99rem] leading-[1.65] text-[#AAB8D4]">{w.steps[4].body}</p>
+          <ul class="hl-checks mt-6" data-stagger>
+            {w.steps[4].points.map((p) => (
+              <li><HomeIcon name="check-circle" size={16} class={accentText[w.steps[4].accent]} />{p}</li>
+            ))}
+          </ul>
+          <p class="mt-7">
+            <a href={w.steps[4].href} class={`hl-more ${accentText[w.steps[4].accent]}`}>{w.steps[4].cta}<HomeIcon name="arrow-right" size={15} /></a>
+          </p>
+        </div>
+
+        <div class="hl-reveal hl-reveal--card rounded-[22px] bg-gradient-to-b from-[#160F0F] to-[#0A0E1A] p-5 outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px] sm:p-6" style="--d: 120ms;">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <p class="flex items-center gap-2.5">
+              <span class="flex items-center gap-1.5 rounded-full bg-[#FF8A701A] px-2.5 py-1 font-mono text-[0.6rem] font-semibold tracking-[0.1em] text-[#FF8A70] outline-1 outline-[#FF8A7038] -outline-offset-[0.5px]">
+                <span class="hl-pulse size-1.5 rounded-full bg-[#FF8A70]" aria-hidden="true"></span>
+                {v.live.badge}
+              </span>
+              <span class="text-[0.9rem] font-semibold text-[#F8FAFC]">{v.live.title}</span>
+            </p>
+            <span class="font-mono text-[0.62rem] tracking-[0.1em] text-[#68779A]">{v.live.meta}</span>
+          </div>
+          <p class="mt-4 font-mono text-[0.58rem] tracking-[0.12em] text-[#68779A]">{v.live.chartLabel}</p>
+          <ul class="mt-2.5 flex flex-col gap-2.5" data-stagger>
+            {v.live.players.map((p, i) => (
+              <li class="flex items-center gap-3 rounded-[10px] bg-[#FFFFFF04] px-3.5 py-2.5 outline-1 outline-[#FFFFFF08] -outline-offset-[0.5px]">
+                <span class="w-24 shrink-0 truncate text-[0.8rem] font-medium text-[#E2E8F0]">{p.name}</span>
+                <span class="h-2 flex-1 overflow-hidden rounded-full bg-[#FFFFFF0A]">
+                  <span
+                    class={`hl-fill block h-full rounded-full ${p.tone === 'coral' ? 'bg-[#FF7A6B]' : 'bg-[#2D7FF9]'}`}
+                    style={`width: ${p.pct}%; --bd: ${i * 90}ms;`}
+                  ></span>
+                </span>
+                <span class={`w-10 shrink-0 text-right font-mono text-[0.72rem] font-semibold ${p.tone === 'coral' ? 'text-[#FF7A6B]' : 'text-[#7AB8FF]'}`}>{p.pct} %</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-3 flex flex-wrap items-center gap-3 rounded-[12px] bg-[#FF84000D] px-4 py-3 outline-1 outline-[#FF840033] -outline-offset-[0.5px]">
+            <HomeIcon name="bell" size={15} class="shrink-0 text-[#FF8400]" />
+            <p class="min-w-[12rem] flex-1 text-[0.76rem] leading-[1.5] text-[#E8D9CD]">{v.live.alert.body}</p>
+            <span class="flex gap-2">
+              <span class="rounded-full bg-[#FF8400] px-3.5 py-1.5 text-[0.72rem] font-semibold text-[#1A0F05]">{v.live.alert.primary}</span>
+              <span class="rounded-full bg-[#FFFFFF08] px-3.5 py-1.5 text-[0.72rem] font-semibold text-[#E2E8F0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">{v.live.alert.secondary}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 06 · Staff share (visual left) ── -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="hl-reveal hl-reveal--card order-2 lg:order-1 rounded-[22px] bg-gradient-to-b from-[#141019] to-[#0A0E1A] p-5 outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px] sm:p-6" style="--d: 120ms;">
+          <div class="rounded-[14px] bg-[#FFFFFF04] p-4 outline-1 outline-[#FFFFFF0A] -outline-offset-[0.5px]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <p class="flex items-center gap-2 text-[0.86rem] font-semibold text-[#F8FAFC]">
+                <HomeIcon name="file-text" size={15} class="text-[#7AB8FF]" />
+                {v.share.title}
+              </p>
+              <span class="font-mono text-[0.56rem] tracking-[0.12em] text-[#68779A]">{v.share.stamp}</span>
+            </div>
+            <p class="mt-2.5 text-[0.78rem] leading-[1.55] text-[#AAB8D4]">{v.share.body}</p>
+            <div class="mt-3.5 flex items-center justify-between gap-3">
+              <span class="flex -space-x-1.5">
+                {v.share.avatars.map((a, i) => (
+                  <span
+                    class={`grid size-7 place-items-center rounded-full text-[0.56rem] font-bold text-white outline-2 outline-[#0F131F] ${['bg-[#2D7FF9]', 'bg-[#5F6FD4]', 'bg-[#8A5FD4]', 'bg-[#3F9C6B]'][i % 4]}`}
+                  >
+                    {a}
+                  </span>
+                ))}
+              </span>
+              <span class="text-[0.7rem] text-[#8CA3C7]">{v.share.shared}</span>
+            </div>
+          </div>
+          <div class="mt-3 flex gap-3 rounded-[12px] bg-[#FFFFFF04] p-3.5 outline-1 outline-[#FFFFFF08] -outline-offset-[0.5px]">
+            <span class="grid size-7 shrink-0 place-items-center rounded-full bg-[#2D7FF9] text-[0.56rem] font-bold text-white">HC</span>
+            <span>
+              <span class="block font-mono text-[0.56rem] tracking-[0.12em] text-[#68779A]">{v.share.commentAuthor}</span>
+              <span class="mt-1 block text-[0.78rem] leading-[1.5] text-[#E2E8F0]">{v.share.comment}</span>
+            </span>
+          </div>
+          <p class="mt-3 flex items-center gap-2.5 rounded-[12px] bg-[#8CE99A0A] px-3.5 py-3 text-[0.76rem] leading-[1.5] text-[#B9F0C2] outline-1 outline-[#8CE99A24] -outline-offset-[0.5px]">
+            <HomeIcon name="calendar" size={14} class="shrink-0 text-[#8CE99A]" />
+            {v.share.push}
+          </p>
+        </div>
+
+        <div class="hl-reveal order-1 lg:order-2">
+          <p class="hl-index">
+            <span class="rounded-[6px] bg-[#FFFFFF06] px-2 py-1 text-[#68779A] outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">{w.steps[5].index}</span>
+            <span class={accentText[w.steps[5].accent]}>{w.steps[5].kicker}</span>
+          </p>
+          <h3 class="hl-display mt-5 max-w-[18ch] text-[clamp(1.7rem,3.2vw,2.5rem)]">{w.steps[5].title}</h3>
+          <p class="mt-4 max-w-[30rem] text-[0.99rem] leading-[1.65] text-[#AAB8D4]">{w.steps[5].body}</p>
+          <ul class="hl-checks mt-6" data-stagger>
+            {w.steps[5].points.map((p) => (
+              <li><HomeIcon name="check-circle" size={16} class={accentText[w.steps[5].accent]} />{p}</li>
+            ))}
+          </ul>
+          <p class="mt-7">
+            <a href={w.steps[5].href} class={`hl-more ${accentText[w.steps[5].accent]}`}>{w.steps[5].cta}<HomeIcon name="arrow-right" size={15} /></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

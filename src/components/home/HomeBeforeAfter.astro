@@ -1,0 +1,71 @@
+---
+import type { HomeContent } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+
+interface Props {
+  beforeAfter: HomeContent['beforeAfter'];
+}
+
+const { beforeAfter: c } = Astro.props;
+
+/** Scatter offsets for the "before" chips — mirrors the mockup's disorder.
+ * Margins (not translate): Tailwind v4 translate utilities set the individual
+ * `translate` property, which the stagger cascade animates and would reset. */
+const scatter = [
+  'lg:ml-[6px] lg:-rotate-[2.5deg]',
+  'lg:ml-[132px] lg:rotate-[2deg]',
+  'lg:ml-[22px] lg:-rotate-[1.5deg]',
+  'lg:ml-[150px] lg:rotate-[2.5deg]',
+  'lg:ml-[4px] lg:-rotate-[2deg]',
+  'lg:ml-[138px] lg:rotate-[1.5deg]',
+];
+---
+
+<section class="bg-[#05070F] py-20 md:py-28" aria-labelledby="constat-title">
+  <div class="hl-wrap">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-end">
+      <div class="hl-reveal">
+        <p class="hl-index text-[#7AB8FF]">
+          {c.index}
+          <span class="hl-index__rule"></span>
+          <span class="text-[#68779A]">{c.kicker}</span>
+        </p>
+        <h2 id="constat-title" class="hl-display mt-5 max-w-[16ch] text-[clamp(2.1rem,4.6vw,3.4rem)]">{c.title}</h2>
+      </div>
+      <p class="hl-reveal text-[1rem] leading-[1.65] text-[#AAB8D4] lg:pb-2" style="--d: 100ms;">{c.body}</p>
+    </div>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-10">
+      <!-- Before: fragmented tools -->
+      <div class="hl-reveal">
+        <p class="font-mono text-[0.66rem] font-medium tracking-[0.12em] text-[#FF7A6B]">{c.beforeLabel}</p>
+        <ul class="mt-7 flex flex-col gap-4" data-stagger="x">
+          {c.beforeChips.map((chip, i) => (
+            <li
+              class={`flex w-fit items-center gap-2.5 rounded-[12px] bg-[#0B1020] px-4 py-3 text-[0.88rem] font-medium text-[#C6D2E8] outline-1 outline-[#FFFFFF0F] -outline-offset-[0.5px] [box-shadow:0_14px_34px_-16px_rgba(2,6,18,0.9)] ${scatter[i] ?? ''}`}
+            >
+              <HomeIcon name={chip.icon} size={15} class="text-[#68779A]" />
+              {chip.label}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- After: one unified system -->
+      <div class="hl-reveal hl-reveal--right" style="--d: 200ms;">
+        <p class="font-mono text-[0.66rem] font-medium tracking-[0.12em] text-[#7AB8FF]">{c.afterLabel}</p>
+        <div class="mt-7 overflow-hidden rounded-[18px] bg-gradient-to-b from-[#0E1526] to-[#0B1020] outline-1 outline-[#2D7FF938] -outline-offset-[0.5px] [box-shadow:0_30px_70px_-30px_rgba(45,127,249,0.25)]">
+          <ul class="flex flex-col" data-stagger>
+            {c.afterRows.map((row) => (
+              <li class="flex items-center gap-3.5 border-b border-[#FFFFFF08] px-5 py-[1.05rem] last:border-b-0">
+                <HomeIcon name={row.icon} size={17} class="shrink-0 text-[#7AB8FF]" />
+                <span class="flex-1 text-[0.95rem] font-medium text-[#E2E8F0]">{row.label}</span>
+                <HomeIcon name="check" size={15} class="shrink-0 text-[#8CE99A]" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

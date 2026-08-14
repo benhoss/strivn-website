@@ -1,0 +1,93 @@
+---
+import type { HomeContent, Locale } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+import { appStartUrl } from '../../lib/appUrl';
+
+interface Props {
+  locale: Locale;
+  pricing: HomeContent['pricing'];
+  email: string;
+}
+
+const { locale, pricing: c, email } = Astro.props;
+
+const ctaHref = (plan: (typeof c.plans)[number]) =>
+  plan.kind === 'app' ? appStartUrl(locale) : `mailto:${email}?subject=${encodeURIComponent(`STRIVN ${plan.name}`)}`;
+---
+
+<section id="tarifs" class="scroll-mt-24 bg-[#05070F] py-20 md:py-28" aria-labelledby="pricing-title">
+  <div class="hl-wrap">
+    <div class="hl-reveal mx-auto max-w-[46rem] text-center">
+      <p class="hl-index justify-center text-[#7AB8FF]">
+        {c.index}
+        <span class="hl-index__rule"></span>
+        <span class="text-[#68779A]">{c.kicker}</span>
+      </p>
+      <h2 id="pricing-title" class="hl-display mt-5 text-[clamp(2rem,4.4vw,3.2rem)]">{c.title}</h2>
+    </div>
+
+    <div class="mt-12 grid items-start gap-4 lg:grid-cols-3">
+      {c.plans.map((plan, i) => (
+        <article
+          class={`hl-reveal hl-reveal--card flex flex-col rounded-[20px] p-6 outline-1 -outline-offset-[0.5px] sm:p-7 ${
+            plan.featured
+              ? 'bg-gradient-to-b from-[#101B33] to-[#0B1020] outline-[#2D7FF95C] [box-shadow:0_30px_80px_-30px_rgba(45,127,249,0.35)]'
+              : 'hl-lift bg-[#0B1020] outline-[#FFFFFF0F]'
+          }`}
+          style={`--d: ${i * 90}ms;`}
+        >
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-[1.25rem] font-bold text-[#F8FAFC]">{plan.name}</h3>
+            <span
+              class={`rounded-full px-3 py-1 font-mono text-[0.56rem] tracking-[0.08em] outline-1 -outline-offset-[0.5px] ${
+                plan.featured
+                  ? 'bg-[#8CE99A0A] text-[#8CE99A] outline-[#8CE99A38]'
+                  : 'bg-[#FFFFFF06] text-[#8CA3C7] outline-[#FFFFFF14]'
+              }`}
+            >
+              {plan.featured && <span class="mr-1.5 inline-block size-1.5 rounded-full bg-[#8CE99A] align-middle" aria-hidden="true"></span>}
+              {plan.badge}
+            </span>
+          </div>
+
+          <p class="mt-5 flex items-baseline gap-2.5">
+            <span class={`hl-display text-[2.6rem] leading-none ${plan.kind === 'app' ? 'text-[#F8FAFC]' : 'text-[#7E93BE]'}`}>{plan.price}</span>
+            {plan.period && <span class="text-[0.9rem] text-[#68779A]">{plan.period}</span>}
+          </p>
+
+          <p class="mt-4 text-[0.92rem] leading-[1.6] text-[#AAB8D4]">{plan.description}</p>
+
+          <ul class="mt-5 flex flex-1 flex-col gap-3 border-t border-[#FFFFFF0A] pt-5">
+            {plan.features.map((f) => (
+              <li class="flex items-start gap-2.5 text-[0.9rem] leading-[1.45] text-[#C6D2E8]">
+                <HomeIcon name="check" size={14} class={`mt-1 shrink-0 ${plan.featured ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`} />
+                {f}
+              </li>
+            ))}
+          </ul>
+
+          {plan.kind === 'app' ? (
+            <a
+              href={ctaHref(plan)}
+              target="_blank"
+              rel="noopener"
+              class="hl-btn mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-[#2D7FF9] px-6 py-3.5 text-[0.95rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
+            >
+              {plan.cta}
+              <HomeIcon name="arrow-right" size={15} />
+            </a>
+          ) : (
+            <a
+              href={ctaHref(plan)}
+              class="hl-btn mt-7 inline-flex items-center justify-center rounded-full bg-[#FFFFFF08] px-6 py-3.5 text-[0.95rem] font-semibold text-[#F8FAFC] outline-1 outline-[#FFFFFF1F] -outline-offset-[0.5px] hover:bg-[#FFFFFF10]"
+            >
+              {plan.cta}
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <p class="hl-reveal mx-auto mt-10 max-w-[38rem] text-center text-[0.9rem] leading-[1.6] text-[#8CA3C7]">{c.note}</p>
+  </div>
+</section>

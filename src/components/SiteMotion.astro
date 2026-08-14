@@ -1,0 +1,111 @@
+---
+/**
+ * Shared motion runtime for the marketing pages built on `home.css`.
+ *
+ * Two behaviours, both progressive enhancements:
+ *  - reveal-once: adds `.is-in` to `.hl-reveal` elements when they enter view;
+ *  - count-up: rewinds `[data-count]` values to zero and counts them back to
+ *    the exact string already in the HTML, so no-JS, reduced-motion and
+ *    background-tab loads all read the real, localised figure.
+ */
+---
+
+<script is:inline>
+  // Before first paint: flag JS so reveal targets start hidden (no flash),
+  // while no-JS visitors and reduced-motion users get the settled state.
+  document.documentElement.classList.add('js-anim');
+</script>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Reveal-once ──
+  const targets = document.querySelectorAll('.hl-reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach((el) => el.classList.add('is-in'));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -8% 0px' },
+    );
+    targets.forEach((el) => io.observe(el));
+  }
+
+  // ── Count-up ──
+  // Skipped when the tab is hidden: rAF is frozen there and counters would
+  // freeze at 0 instead of showing the real figure.
+  const counters = document.querySelectorAll<HTMLElement>('[data-count]');
+  if (!reduceMotion && document.visibilityState === 'visible' && 'IntersectionObserver' in window && counters.length) {
+    const lang = document.documentElement.lang || 'en';
+    const targetsMap = new Map<
+      HTMLElement,
+      { template: string; numStr: string; end: number; decimals: number; grouped: boolean; delay: number }
+    >();
+
+    counters.forEach((el) => {
+      const template = el.textContent ?? '';
+      const explicit = el.dataset.count;
+      const match = template.match(/\d[\d\s  .,]*\d|\d/);
+      const numStr = explicit && explicit !== '' ? explicit : match ? match[0] : '';
+      if (!numStr) return;
+      const decimals = numStr.includes('.') ? numStr.length - numStr.lastIndexOf('.') - 1 : 0;
+      const end = Number(numStr.replace(/[\s  ,]/g, ''));
+      if (!Number.isFinite(end)) return;
+      targetsMap.set(el, {
+        template,
+        numStr: match ? match[0] : numStr,
+        end,
+        decimals,
+        grouped: /[\s  ,]/.test(numStr),
+        delay: parseInt(el.dataset.countDelay || '0', 10),
+      });
+    });
+
+    const render = (el: HTMLElement, value: number) => {
+      const t = targetsMap.get(el);
+      if (!t) return;
+      const formatted =
+        t.decimals > 0
+          ? value.toFixed(t.decimals)
+          : new Intl.NumberFormat(lang, { maximumFractionDigits: 0, useGrouping: t.grouped }).format(Math.round(value));
+      el.textContent = t.template.replace(t.numStr, formatted);
+    };
+
+    targetsMap.forEach((_, el) => render(el, 0));
+
+    const countIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          countIo.unobserve(entry.target);
+          const el = entry.target as HTMLElement;
+          const t = targetsMap.get(el);
+          if (!t) return;
+          window.setTimeout(() => {
+            const start = performance.now();
+            const dur = 1100;
+            const tick = (now: number) => {
+              const p = Math.min((now - start) / dur, 1);
+              if (p >= 1) {
+                el.textContent = t.template;
+                return;
+              }
+              render(el, t.end * (1 - Math.pow(1 - p, 3)));
+              requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }, t.delay);
+        });
+      },
+      { threshold: 0.4 },
+    );
+    targetsMap.forEach((_, el) => countIo.observe(el));
+  }
+</script>

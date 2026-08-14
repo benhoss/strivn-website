@@ -1,0 +1,216 @@
+---
+import type { HomeContent } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+import { appStartUrl } from '../../lib/appUrl';
+import type { Locale } from '../../data/homeContent';
+
+interface Props {
+  locale: Locale;
+  hero: HomeContent['hero'];
+}
+
+const { locale, hero } = Astro.props;
+
+const toneText: Record<string, string> = {
+  blue: 'text-[#7AB8FF]',
+  green: 'text-[#8CE99A]',
+  orange: 'text-[#FF8400]',
+  coral: 'text-[#FF7A6B]',
+  plain: 'text-[#F8FAFC]',
+};
+const toneBar: Record<string, string> = {
+  green: 'bg-[#8CE99A]',
+  coral: 'bg-[#FF7A6B]',
+  orange: 'bg-[#FF8400]',
+  plain: 'bg-[#7AB8FF]',
+};
+const toneChip: Record<string, string> = {
+  green: 'text-[#8CE99A] bg-[#8CE99A14] outline-[#8CE99A2E]',
+  coral: 'text-[#FF7A6B] bg-[#FF7A6B14] outline-[#FF7A6B2E]',
+  orange: 'text-[#FF8400] bg-[#FF840014] outline-[#FF84002E]',
+  plain: 'text-[#AAB8D4] bg-[#FFFFFF08] outline-[#FFFFFF14]',
+};
+---
+
+<section class="relative overflow-hidden bg-[#05070F]" aria-labelledby="hero-title">
+  <!-- Radial glow behind the hero copy (ambient layer: slow breathing) -->
+  <div
+    class="hl-breathe pointer-events-none absolute inset-x-0 top-0 h-[560px] [background:radial-gradient(ellipse_52%_44%_at_50%_0%,rgba(45,127,249,0.17),transparent_72%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="hl-wrap relative flex flex-col items-center pt-[7.5rem] text-center md:pt-[8.5rem]">
+    <p
+      class="hl-reveal inline-flex items-center gap-2.5 rounded-full bg-[#FFFFFF08] py-[7px] pr-4 pl-2.5 text-[0.82rem] font-medium text-[#AAB8D4] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+    >
+      <span class="size-1.5 rounded-full bg-[#8CE99A]" aria-hidden="true"></span>
+      {hero.eyebrow}
+    </p>
+
+    <h1
+      id="hero-title"
+      class="hl-display hl-reveal mt-7 max-w-[26ch] text-[clamp(2.55rem,7.2vw,5rem)]"
+      style="--d: 70ms;"
+    >
+      <span class="block text-[#7E93BE]">{hero.titleMuted}</span>
+      <span class="block text-[#F8FAFC]">{hero.titleMain}</span>
+    </h1>
+
+    <p class="hl-reveal mt-6 max-w-[42rem] text-[1.05rem] leading-[1.65] text-[#AAB8D4]" style="--d: 140ms;">
+      {hero.sub}
+    </p>
+
+    <div class="hl-reveal mt-8 flex flex-wrap items-center justify-center gap-3" style="--d: 300ms;">
+      <a
+        href={appStartUrl(locale)}
+        target="_blank"
+        rel="noopener"
+        class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#2D7FF9] px-[26px] py-[15px] text-[0.98rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
+      >
+        {hero.primaryCta}
+        <HomeIcon name="arrow-right" size={17} />
+      </a>
+      <a
+        href="#workflow"
+        class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#FFFFFF0A] px-6 py-[15px] text-[0.98rem] font-semibold text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
+      >
+        <HomeIcon name="play" size={15} />
+        {hero.secondaryCta}
+      </a>
+    </div>
+
+    <p
+      class="hl-reveal mt-7 px-4 font-mono text-[0.66rem] font-medium tracking-[0.1em] text-balance text-[#68779A]"
+      style="--d: 380ms;"
+    >
+      {hero.trust}
+    </p>
+  </div>
+
+  <!-- ── Product shot · CSS-drawn "OS" dashboard ── -->
+  <div class="hl-wrap relative max-w-[1240px] pt-14 pb-16 md:pt-16 md:pb-24">
+    <div class="hl-reveal hl-reveal--card relative mx-auto max-w-[780px]" style="--d: 460ms;">
+      <!-- Main readiness board -->
+      <div
+        class="relative z-10 rounded-[20px] bg-[#0A0E1AF2] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] [box-shadow:0_30px_80px_-20px_rgba(2,6,18,0.9)] backdrop-blur-sm"
+      >
+        <div class="flex items-center justify-between border-b border-[#FFFFFF0A] px-5 py-4">
+          <p class="flex items-center gap-2.5 text-[0.92rem] font-semibold text-[#F8FAFC]">
+            <HomeIcon name="gauge" size={16} class="text-[#7AB8FF]" />
+            {hero.shot.title}
+          </p>
+          <span class="font-mono text-[0.62rem] tracking-[0.1em] text-[#68779A]">{hero.shot.stamp}</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5 px-5 pt-4 sm:grid-cols-4" data-stagger>
+          {hero.shot.kpis.map((kpi, i) => (
+            <div class="rounded-[12px] bg-[#FFFFFF05] px-3.5 py-3 outline-1 outline-[#FFFFFF0F] -outline-offset-[0.5px]">
+              <p class="font-mono text-[0.58rem] tracking-[0.12em] text-[#68779A]">{kpi.label}</p>
+              <p
+                class={`mt-1 text-[1.3rem] leading-none font-bold tracking-[-0.02em] ${toneText[kpi.tone]}`}
+                data-count
+                data-count-delay={1650 + i * 140}
+              >
+                {kpi.value}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <p class="px-5 pt-4 pb-1 font-mono text-[0.58rem] tracking-[0.12em] text-[#68779A]">{hero.shot.alertsLabel}</p>
+        <ul class="flex flex-col px-2.5 pb-3" data-stagger>
+          {hero.shot.rows.map((row, i) => (
+            <li class="flex items-center gap-3 rounded-[10px] px-2.5 py-2 odd:bg-[#FFFFFF03]">
+              <span class="w-24 shrink-0 truncate text-[0.82rem] font-medium text-[#E2E8F0]">{row.name}</span>
+              <span class="h-1.5 flex-1 overflow-hidden rounded-full bg-[#FFFFFF0A]">
+                <span
+                  class={`hl-fill block h-full rounded-full ${toneBar[row.tone]}`}
+                  style={`width: ${row.bar}%; --bd: ${950 + i * 150}ms;`}
+                ></span>
+              </span>
+              <span class="hidden w-8 text-right font-mono text-[0.7rem] text-[#8CA3C7] sm:block">{row.bar}</span>
+              <span class="hidden w-10 text-right font-mono text-[0.7rem] text-[#8CA3C7] sm:block">{row.acwr}</span>
+              <span
+                class={`hl-late w-[4.6rem] shrink-0 rounded-full px-2 py-0.5 text-center text-[0.66rem] font-semibold outline-1 -outline-offset-[0.5px] ${toneChip[row.tone]}`}
+                style={`--ld: ${1350 + i * 150}ms;`}
+              >
+                {row.status}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Floating cards — absolute on lg, tucked into a grid below on smaller screens -->
+      <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:static lg:mt-0 lg:contents">
+        <!-- Wellness (left) -->
+        <div
+          class="hl-reveal hl-reveal--left hl-float rounded-[16px] bg-[#0B1020E6] p-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] backdrop-blur-md lg:absolute lg:top-[38%] lg:-left-[15.5rem] lg:z-20 lg:w-[15.5rem] lg:[box-shadow:0_24px_60px_-18px_rgba(2,6,18,0.85)]"
+          style="--d: 1150ms;"
+        >
+          <p class="flex items-center gap-2 text-[0.8rem] font-semibold text-[#F8FAFC]">
+            <HomeIcon name="moon" size={14} class="text-[#7AB8FF]" />
+            {hero.shot.wellness.title}
+          </p>
+          <ul class="mt-3 flex flex-col gap-2.5">
+            {hero.shot.wellness.rows.map((w, i) => (
+              <li class="flex items-center gap-2.5">
+                <span class="w-20 text-[0.74rem] text-[#AAB8D4]">{w.label}</span>
+                <span class="h-1 flex-1 overflow-hidden rounded-full bg-[#FFFFFF0A]">
+                  <span
+                    class={`hl-fill block h-full rounded-full ${w.tone === 'green' ? 'bg-[#8CE99A]' : 'bg-[#FF8400]'}`}
+                    style={`width: ${Number(w.value) * 10}%; --bd: ${1350 + i * 110}ms;`}
+                  ></span>
+                </span>
+                <span class={`font-mono text-[0.7rem] ${w.tone === 'green' ? 'text-[#8CE99A]' : 'text-[#FF8400]'}`}>{w.value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Import toast (top right) -->
+        <div
+          class="hl-reveal hl-reveal--right hl-float--late hl-float flex items-center gap-3 rounded-[14px] bg-[#0B1020E6] p-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] backdrop-blur-md lg:absolute lg:-top-6 lg:-right-[10.5rem] lg:z-20 lg:w-[15.5rem] lg:[box-shadow:0_24px_60px_-18px_rgba(2,6,18,0.85)]"
+          style="--d: 700ms;"
+        >
+          <span class="grid size-9 shrink-0 place-items-center rounded-[10px] bg-[#2D7FF91F] text-[#7AB8FF]">
+            <HomeIcon name="satellite" size={17} />
+          </span>
+          <span>
+            <span class="block text-[0.8rem] font-semibold text-[#F8FAFC]">{hero.shot.toast.title}</span>
+            <span class="block text-[0.7rem] text-[#68779A]">{hero.shot.toast.sub}</span>
+          </span>
+        </div>
+
+        <!-- Load alert (right) -->
+        <div
+          class="hl-reveal hl-reveal--right hl-flash rounded-[14px] bg-[#0B1020E6] p-3.5 outline-1 outline-[#FF84002E] -outline-offset-[0.5px] backdrop-blur-md lg:absolute lg:top-[36%] lg:-right-[15.5rem] lg:z-20 lg:w-[17rem] lg:[box-shadow:0_24px_60px_-18px_rgba(2,6,18,0.85)]"
+          style="--d: 2050ms; --fd: 550ms;"
+        >
+          <p class="flex items-center gap-2 text-[0.78rem] font-semibold text-[#FF8400]">
+            <HomeIcon name="bell" size={14} />
+            {hero.shot.alert.title}
+          </p>
+          <p class="mt-1.5 text-[0.72rem] leading-[1.5] text-[#AAB8D4]">{hero.shot.alert.body}</p>
+        </div>
+
+        <!-- AI assistant (bottom right) -->
+        <div
+          class="hl-reveal hl-reveal--right hl-float rounded-[16px] bg-[#0B1020E6] p-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] backdrop-blur-md lg:absolute lg:-right-[13rem] lg:-bottom-10 lg:z-20 lg:w-[19rem] lg:[box-shadow:0_24px_60px_-18px_rgba(2,6,18,0.85)]"
+          style="--d: 2500ms;"
+        >
+          <p class="flex items-center gap-2 text-[0.8rem] font-semibold text-[#F8FAFC]">
+            <HomeIcon name="sparkles" size={14} class="text-[#7AB8FF]" />
+            {hero.shot.ai.title}
+          </p>
+          <p class="mt-2.5 w-fit rounded-full bg-[#FFFFFF08] px-3 py-1.5 text-[0.72rem] text-[#E2E8F0] outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">
+            {hero.shot.ai.q}<span class="hl-caret" style="--cd: 2550ms;" aria-hidden="true"></span>
+          </p>
+          <p class="hl-late mt-2 text-[0.72rem] leading-[1.55] text-[#AAB8D4]" style="--ld: 3000ms;">{hero.shot.ai.a}</p>
+          <p class="hl-late mt-2.5 font-mono text-[0.56rem] tracking-[0.12em] text-[#68779A]" style="--ld: 3450ms;">{hero.shot.ai.sources}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
