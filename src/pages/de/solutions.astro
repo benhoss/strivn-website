@@ -1,0 +1,14 @@
+---
+import SolutionsLanding from '../../components/sol/SolutionsLanding.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/en/solutions/' },
+  { hreflang: 'fr', href: '/fr/solutions/' },
+  { hreflang: 'nl', href: '/nl/solutions/' },
+  { hreflang: 'de', href: '/de/solutions/' },
+  { hreflang: 'pt', href: '/pt/solutions/' },
+  { hreflang: 'es', href: '/es/solutions/' },
+  { hreflang: 'x-default', href: '/fr/solutions/' },
+];
+---
+<SolutionsLanding locale="de" canonicalPath="/de/solutions/" alternates={alternates} />
