@@ -44,6 +44,12 @@ interface Head {
   body?: string;
   /** Capture rendered between the heading and the section body. */
   visual?: string;
+  /**
+   * Sit the capture beside the heading rather than under it. For narrow
+   * specimens — a single card, a form — which would otherwise leave the
+   * right half of the band empty.
+   */
+  visualAside?: boolean;
   callouts?: Callout[];
   note?: Note;
   foot?: string;
@@ -58,7 +64,7 @@ export type Section = Head &
     | {
         /** Rows of equal cards: icon tile, name, description. */
         kind: 'cards';
-        cards: Array<{ icon: string; title: string; desc: string }>;
+        cards: Array<{ icon: string; title: string; desc: string; tone?: Tone }>;
         /** Cards per row at desktop width. Defaults to 3. */
         per?: 2 | 3;
       }
@@ -140,7 +146,12 @@ export interface SubpageContent {
     sub: string;
     /** Ticked lines under the sub-heading. */
     bullets?: string[];
-    ctas?: { primary: string; secondary?: string };
+    /**
+     * The primary CTA always opens registration. The secondary names its own
+     * destination — a label like "See the player docs" pointing at the
+     * features index would promise something the page does not deliver.
+     */
+    ctas?: { primary: string; secondary?: { label: string; href: string } };
     /** Capture shown beside the copy; omit for a centred hero. */
     visual?: string;
     /** Badge above the title — used by the shared staff brief. */

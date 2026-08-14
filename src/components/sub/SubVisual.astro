@@ -12,6 +12,8 @@ import CheckinSignals from './visuals/CheckinSignals.astro';
 import TestCampaign from './visuals/TestCampaign.astro';
 import GpsBlocks from './visuals/GpsBlocks.astro';
 import UnitConversion from './visuals/UnitConversion.astro';
+import MeasureEditor from './visuals/MeasureEditor.astro';
+import PercentileScale from './visuals/PercentileScale.astro';
 
 interface Props {
   name: string;
@@ -26,6 +28,8 @@ const registry: Record<string, any> = {
   'test-campaign': TestCampaign,
   'gps-blocks': GpsBlocks,
   'unit-conversion': UnitConversion,
+  'measure-editor': MeasureEditor,
+  'percentile-scale': PercentileScale,
 };
 
 const Capture = registry[name];

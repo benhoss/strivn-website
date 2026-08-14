@@ -108,10 +108,10 @@ const split = Boolean(hero.visual);
             </a>
             {hero.ctas.secondary && (
               <a
-                href={`/${locale}/features/`}
+                href={hero.ctas.secondary.href}
                 class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#FFFFFF0A] px-6 py-[14px] text-[0.92rem] font-medium text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
               >
-                {hero.ctas.secondary}
+                {hero.ctas.secondary.label}
               </a>
             )}
           </div>

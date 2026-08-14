@@ -24,6 +24,16 @@ const { sections, locale } = Astro.props;
 
 const BG = { a: 'bg-[#05070F]', b: 'bg-[#070A14]' } as const;
 
+/**
+ * The hero above and the closing CTA below are both #05070F, so the bands
+ * alternate *backward* from the end: the last one always contrasts with the
+ * CTA, which is the seam that hands the reader off. Two shades cannot keep
+ * every seam visible on an even count — there, the repeat lands against the
+ * hero, where a hairline reads as the hero closing rather than a stray rule.
+ */
+const tone = sections.map((s, i) => s.bg ?? ((sections.length - 1 - i) % 2 === 0 ? 'b' : 'a'));
+const seam = tone.map((t, i) => (i === 0 ? t === 'a' : t === tone[i - 1]));
+
 const ink: Record<Tone, string> = {
   blue: 'text-[#7AB8FF]',
   green: 'text-[#8CE99A]',
@@ -38,6 +48,16 @@ const dot: Record<Tone, string> = {
   red: 'bg-[#FF5C33]',
   plain: 'bg-[#68779A]',
 };
+/* Icon tiles: a tone means the card is *about* that colour, so the tile wears
+   it. Red borrows the softer #FF7A6B the captures use, so a card and the
+   screenshot beside it never show two different reds. */
+const tile: Record<Tone, string> = {
+  blue: 'bg-[#2D7FF914] text-[#7AB8FF] outline-[#2D7FF92E]',
+  green: 'bg-[#8CE99A14] text-[#8CE99A] outline-[#8CE99A2E]',
+  orange: 'bg-[#FF840014] text-[#FF8400] outline-[#FF84002E]',
+  red: 'bg-[#FF7A6B14] text-[#FF7A6B] outline-[#FF7A6B2E]',
+  plain: 'bg-[#FFFFFF0A] text-[#9AA8C4] outline-[#FFFFFF1F]',
+};
 const edge: Record<Tone, string> = {
   blue: 'outline-[#2D7FF959]',
   green: 'outline-[#8CE99A4D]',
@@ -49,38 +69,49 @@ const edge: Record<Tone, string> = {
 
 {
   sections.map((s, i) => {
-    const bg = BG[s.bg ?? (i % 2 === 0 ? 'b' : 'a')];
+    const bg = BG[tone[i]];
     const head = s.kicker || s.title || s.body;
     /* A section that is only a banner or an aside needs no top margin on it. */
     const bare = s.kind === 'callout' || s.kind === 'note';
+    /* A narrow capture shares the opening row with the heading instead of
+       stranding half the band; a wide one keeps the row to itself. */
+    const aside = Boolean(s.visual && s.visualAside && head);
 
     return (
       <section
         id={s.id}
-        class={`${bg} py-16 md:py-[88px] ${s.id ? 'scroll-mt-20' : ''}`}
+        class={`${bg} py-16 md:py-[88px] ${seam[i] ? 'border-t border-[#FFFFFF0F]' : ''} ${s.id ? 'scroll-mt-20' : ''}`}
         aria-labelledby={s.title ? `sub-s${i}` : undefined}
       >
         <div class="hl-wrap">
-          {head && (
-            <div class="hl-reveal max-w-[55rem]">
-              {s.kicker && (
-                <p class="font-mono text-[0.63rem] tracking-[0.13em] text-[#68779A]">{s.kicker}</p>
-              )}
-              {s.title && (
-                <h2 id={`sub-s${i}`} class="hl-display mt-3.5 text-[clamp(1.75rem,3.6vw,2.4rem)]">
-                  {s.title}
-                </h2>
-              )}
-              {s.body && <p class="mt-4 text-[0.94rem] leading-[1.66] text-[#68779A]">{s.body}</p>}
-            </div>
-          )}
+          <div
+            class={
+              aside ? 'grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)]' : ''
+            }
+          >
+            {head && (
+              <div class={`hl-reveal ${aside ? '' : 'max-w-[55rem]'}`}>
+                {s.kicker && (
+                  <p class="font-mono text-[0.63rem] tracking-[0.13em] text-[#68779A]">
+                    {s.kicker}
+                  </p>
+                )}
+                {s.title && (
+                  <h2 id={`sub-s${i}`} class="hl-display mt-3.5 text-[clamp(1.75rem,3.6vw,2.4rem)]">
+                    {s.title}
+                  </h2>
+                )}
+                {s.body && <p class="mt-4 text-[0.94rem] leading-[1.66] text-[#68779A]">{s.body}</p>}
+              </div>
+            )}
 
-          {/* Capture above the section body, when the band opens on one. */}
-          {s.visual && (
-            <div class={`hl-reveal ${head ? 'mt-9' : ''}`}>
-              <SubVisual name={s.visual} locale={locale} />
-            </div>
-          )}
+            {/* Capture above the section body, when the band opens on one. */}
+            {s.visual && (
+              <div class={`hl-reveal ${head && !aside ? 'mt-9' : ''}`}>
+                <SubVisual name={s.visual} locale={locale} />
+              </div>
+            )}
+          </div>
 
           {/* ── Card grid ─────────────────────────────────────────── */}
           {s.kind === 'cards' && (
@@ -90,7 +121,9 @@ const edge: Record<Tone, string> = {
             >
               {s.cards.map((c) => (
                 <li class="hl-lift flex flex-col gap-3 rounded-[16px] bg-[#0C1120] p-6 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-                  <span class="grid size-[38px] place-items-center rounded-[11px] bg-[#2D7FF914] text-[#7AB8FF] outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]">
+                  <span
+                    class={`grid size-[38px] place-items-center rounded-[11px] outline-1 -outline-offset-[0.5px] ${tile[c.tone ?? 'blue']}`}
+                  >
                     <HomeIcon name={c.icon} size={17} />
                   </span>
                   <h3 class="hl-display text-[1.09rem] tracking-[-0.02em]">{c.title}</h3>

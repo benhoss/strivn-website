@@ -69,6 +69,17 @@ export const GPS_BLOCKS: Array<{ zones: number[] | 'all' }> = [
   { zones: 'all' },
 ];
 
+
+/** Zone swatches for the measure editor, best to worst. */
+export const MEASURE_ZONE_DOTS = ['#8CE99A', '#B8E986', '#FF8400', '#FF5C33'] as const;
+
+/**
+ * Percentile bands, left to right. The marker sits on index 3 — the page's
+ * point is that a value only means something once it is placed on this scale.
+ */
+export const SCALE_BANDS = ['#FF5C332E', '#FF84002E', '#FFFFFF12', '#8CE99A38', '#8CE99A5C'] as const;
+export const SCALE_MARKER_INDEX = 3;
+
 /* ── Shape ────────────────────────────────────────────────────── */
 
 interface Row {
@@ -120,6 +131,21 @@ export interface CaptureText {
     steps: [{ k: string; v: string }, { k: string; v: string }, { k: string; v: string }];
     fields: [{ k: string; v: string }, { k: string; v: string }];
   };
+  /** Measure editor: the fields and the zones a value falls into. */
+  measure: {
+    title: string;
+    fields: Array<{ k: string; v: string }>;
+    zonesLabel: string;
+    zones: Array<{ name: string; bound: string }>;
+  };
+  /** Percentile scale placing one player's value against their position. */
+  scale: {
+    who: string;
+    ref: string;
+    marker: string;
+    labels: [string, string, string, string, string];
+    delta: string;
+  };
 }
 
 /* ────────────────────────────── FR ────────────────────────────── */
@@ -146,7 +172,7 @@ const fr: CaptureText = {
     cols: ['JOUEUR', 'SOMMEIL', 'FATIGUE', 'DOULEUR', 'READINESS'],
     yes: 'oui',
     no: 'non',
-    ready: { green: 'Vert', amber: 'Jaune', red: 'Rouge', missing: 'Donnée manquante' },
+    ready: { green: 'Vert', amber: 'Jaune', red: 'Rouge', missing: 'Manquant' },
     alert: 'L. Moreau — rouge : 4 h de sommeil, douleur signalée. Acquitter avec une note ?',
   },
   campaign: {
@@ -177,6 +203,28 @@ const fr: CaptureText = {
       { k: 'Vaut en UA', v: '108 · entre 0,01 et 2 000' },
     ],
   },
+  measure: {
+    title: 'Nouvelle mesure',
+    fields: [
+      { k: 'NOM', v: 'Sprint 30 m' },
+      { k: 'UNITÉ', v: 's' },
+      { k: 'DESCRIPTION', v: 'Départ arrêté, cellules à 30 m' },
+    ],
+    zonesLabel: 'ZONES',
+    zones: [
+      { name: 'Excellent', bound: '≤ 4,10' },
+      { name: 'Bon', bound: '4,10 – 4,30' },
+      { name: 'Moyen', bound: '4,30 – 4,55' },
+      { name: 'À travailler', bound: '> 4,55' },
+    ],
+  },
+  scale: {
+    who: 'S. Petit · Ailier · VMA',
+    ref: 'REPÈRES AILIER · SAISON EN COURS',
+    marker: '17,4 km/h',
+    labels: ['sous p25', 'p25 → médiane', 'médiane → p75', 'p75 → p90', 'au-delà de p90'],
+    delta: '+ 1,2 km/h au-dessus de la médiane des ailiers.',
+  },
 };
 
 /* ────────────────────────────── EN ────────────────────────────── */
@@ -203,7 +251,7 @@ const en: CaptureText = {
     cols: ['PLAYER', 'SLEEP', 'FATIGUE', 'PAIN', 'READINESS'],
     yes: 'yes',
     no: 'no',
-    ready: { green: 'Green', amber: 'Amber', red: 'Red', missing: 'Data missing' },
+    ready: { green: 'Green', amber: 'Amber', red: 'Red', missing: 'Missing' },
     alert: 'L. Moreau — red: 4 h of sleep, pain reported. Acknowledge with a note?',
   },
   campaign: {
@@ -234,6 +282,28 @@ const en: CaptureText = {
       { k: 'Worth in AU', v: '108 · between 0.01 and 2,000' },
     ],
   },
+  measure: {
+    title: 'New measure',
+    fields: [
+      { k: 'NAME', v: '30 m sprint' },
+      { k: 'UNIT', v: 's' },
+      { k: 'DESCRIPTION', v: 'Standing start, gates at 30 m' },
+    ],
+    zonesLabel: 'ZONES',
+    zones: [
+      { name: 'Excellent', bound: '≤ 4.10' },
+      { name: 'Good', bound: '4.10 – 4.30' },
+      { name: 'Average', bound: '4.30 – 4.55' },
+      { name: 'To work on', bound: '> 4.55' },
+    ],
+  },
+  scale: {
+    who: 'S. Petit · Winger · MAS',
+    ref: 'WINGER BENCHMARKS · CURRENT SEASON',
+    marker: '17.4 km/h',
+    labels: ['below p25', 'p25 → median', 'median → p75', 'p75 → p90', 'beyond p90'],
+    delta: '+ 1.2 km/h above the median for wingers.',
+  },
 };
 
 /* ────────────────────────────── NL ────────────────────────────── */
@@ -260,7 +330,7 @@ const nl: CaptureText = {
     cols: ['SPELER', 'SLAAP', 'VERMOEIDHEID', 'PIJN', 'READINESS'],
     yes: 'ja',
     no: 'nee',
-    ready: { green: 'Groen', amber: 'Oranje', red: 'Rood', missing: 'Gegeven ontbreekt' },
+    ready: { green: 'Groen', amber: 'Oranje', red: 'Rood', missing: 'Ontbreekt' },
     alert: 'L. Moreau — rood: 4 u slaap, pijn gemeld. Bevestigen met een notitie?',
   },
   campaign: {
@@ -291,6 +361,28 @@ const nl: CaptureText = {
       { k: 'Waard in AE', v: '108 · tussen 0,01 en 2.000' },
     ],
   },
+  measure: {
+    title: 'Nieuwe meting',
+    fields: [
+      { k: 'NAAM', v: 'Sprint 30 m' },
+      { k: 'EENHEID', v: 's' },
+      { k: 'OMSCHRIJVING', v: 'Staande start, poortjes op 30 m' },
+    ],
+    zonesLabel: 'ZONES',
+    zones: [
+      { name: 'Uitstekend', bound: '≤ 4,10' },
+      { name: 'Goed', bound: '4,10 – 4,30' },
+      { name: 'Gemiddeld', bound: '4,30 – 4,55' },
+      { name: 'Aan te werken', bound: '> 4,55' },
+    ],
+  },
+  scale: {
+    who: 'S. Petit · Vleugelspeler · MAS',
+    ref: 'IJKPUNTEN VLEUGELSPELER · HUIDIG SEIZOEN',
+    marker: '17,4 km/u',
+    labels: ['onder p25', 'p25 → mediaan', 'mediaan → p75', 'p75 → p90', 'boven p90'],
+    delta: '+ 1,2 km/u boven de mediaan van de vleugelspelers.',
+  },
 };
 
 /* ────────────────────────────── DE ────────────────────────────── */
@@ -317,7 +409,7 @@ const de: CaptureText = {
     cols: ['SPIELER', 'SCHLAF', 'ERMÜDUNG', 'SCHMERZ', 'READINESS'],
     yes: 'ja',
     no: 'nein',
-    ready: { green: 'Grün', amber: 'Gelb', red: 'Rot', missing: 'Daten fehlen' },
+    ready: { green: 'Grün', amber: 'Gelb', red: 'Rot', missing: 'Fehlt' },
     alert: 'L. Moreau — rot: 4 Std. Schlaf, Schmerz gemeldet. Mit Notiz quittieren?',
   },
   campaign: {
@@ -348,6 +440,28 @@ const de: CaptureText = {
       { k: 'Wert in AE', v: '108 · zwischen 0,01 und 2.000' },
     ],
   },
+  measure: {
+    title: 'Neue Messgröße',
+    fields: [
+      { k: 'NAME', v: 'Sprint 30 m' },
+      { k: 'EINHEIT', v: 's' },
+      { k: 'BESCHREIBUNG', v: 'Stehender Start, Lichtschranken bei 30 m' },
+    ],
+    zonesLabel: 'ZONEN',
+    zones: [
+      { name: 'Ausgezeichnet', bound: '≤ 4,10' },
+      { name: 'Gut', bound: '4,10 – 4,30' },
+      { name: 'Mittel', bound: '4,30 – 4,55' },
+      { name: 'Zu verbessern', bound: '> 4,55' },
+    ],
+  },
+  scale: {
+    who: 'S. Petit · Flügel · MAS',
+    ref: 'REFERENZWERTE FLÜGEL · LAUFENDE SAISON',
+    marker: '17,4 km/h',
+    labels: ['unter p25', 'p25 → Median', 'Median → p75', 'p75 → p90', 'über p90'],
+    delta: '+ 1,2 km/h über dem Median der Flügelspieler.',
+  },
 };
 
 /* ────────────────────────────── PT ────────────────────────────── */
@@ -374,7 +488,7 @@ const pt: CaptureText = {
     cols: ['JOGADOR', 'SONO', 'FADIGA', 'DOR', 'READINESS'],
     yes: 'sim',
     no: 'não',
-    ready: { green: 'Verde', amber: 'Amarelo', red: 'Vermelho', missing: 'Dado em falta' },
+    ready: { green: 'Verde', amber: 'Amarelo', red: 'Vermelho', missing: 'Em falta' },
     alert: 'L. Moreau — vermelho: 4 h de sono, dor assinalada. Confirmar com uma nota?',
   },
   campaign: {
@@ -405,6 +519,28 @@ const pt: CaptureText = {
       { k: 'Vale em UA', v: '108 · entre 0,01 e 2 000' },
     ],
   },
+  measure: {
+    title: 'Nova medida',
+    fields: [
+      { k: 'NOME', v: 'Sprint 30 m' },
+      { k: 'UNIDADE', v: 's' },
+      { k: 'DESCRIÇÃO', v: 'Partida parada, células aos 30 m' },
+    ],
+    zonesLabel: 'ZONAS',
+    zones: [
+      { name: 'Excelente', bound: '≤ 4,10' },
+      { name: 'Bom', bound: '4,10 – 4,30' },
+      { name: 'Médio', bound: '4,30 – 4,55' },
+      { name: 'A trabalhar', bound: '> 4,55' },
+    ],
+  },
+  scale: {
+    who: 'S. Petit · Extremo · VAM',
+    ref: 'REFERÊNCIAS EXTREMO · ÉPOCA ATUAL',
+    marker: '17,4 km/h',
+    labels: ['abaixo de p25', 'p25 → mediana', 'mediana → p75', 'p75 → p90', 'acima de p90'],
+    delta: '+ 1,2 km/h acima da mediana dos extremos.',
+  },
 };
 
 /* ────────────────────────────── ES ────────────────────────────── */
@@ -431,7 +567,7 @@ const es: CaptureText = {
     cols: ['JUGADOR', 'SUEÑO', 'FATIGA', 'DOLOR', 'READINESS'],
     yes: 'sí',
     no: 'no',
-    ready: { green: 'Verde', amber: 'Ámbar', red: 'Rojo', missing: 'Dato ausente' },
+    ready: { green: 'Verde', amber: 'Ámbar', red: 'Rojo', missing: 'Ausente' },
     alert: 'L. Moreau — rojo: 4 h de sueño, dolor señalado. ¿Marcar con una nota?',
   },
   campaign: {
@@ -461,6 +597,28 @@ const es: CaptureText = {
       { k: 'Nombre de la unidad', v: 'UC · 16 caracteres máx.' },
       { k: 'Vale en UA', v: '108 · entre 0,01 y 2 000' },
     ],
+  },
+  measure: {
+    title: 'Nueva medida',
+    fields: [
+      { k: 'NOMBRE', v: 'Sprint 30 m' },
+      { k: 'UNIDAD', v: 's' },
+      { k: 'DESCRIPCIÓN', v: 'Salida parada, células a 30 m' },
+    ],
+    zonesLabel: 'ZONAS',
+    zones: [
+      { name: 'Excelente', bound: '≤ 4,10' },
+      { name: 'Bueno', bound: '4,10 – 4,30' },
+      { name: 'Medio', bound: '4,30 – 4,55' },
+      { name: 'A trabajar', bound: '> 4,55' },
+    ],
+  },
+  scale: {
+    who: 'S. Petit · Extremo · VAM',
+    ref: 'REFERENCIAS EXTREMO · TEMPORADA ACTUAL',
+    marker: '17,4 km/h',
+    labels: ['bajo p25', 'p25 → mediana', 'mediana → p75', 'p75 → p90', 'más allá de p90'],
+    delta: '+ 1,2 km/h por encima de la mediana de los extremos.',
   },
 };
 
