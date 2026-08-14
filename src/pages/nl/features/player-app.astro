@@ -1,4 +1,6 @@
 ---
-import FeaturePage from '../../../components/FeaturePage.astro';
+import SubLanding from "../../../components/sub/SubLanding.astro";
+import { playerApp } from "../../../data/subpages/playerApp";
 ---
-<FeaturePage locale="nl" slug="player-app" />
+
+<SubLanding locale="nl" slug="player-app" content={playerApp.nl} />

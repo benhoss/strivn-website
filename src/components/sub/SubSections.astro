@@ -347,7 +347,7 @@ const edge: Record<Tone, string> = {
           {/* ── Headline figures ──────────────────────────────────── */}
           {s.kind === 'stats' && (
             <ul
-              class={`hl-reveal ${head ? 'mt-8' : ''} grid gap-4 sm:grid-cols-2 lg:grid-cols-4`}
+              class={`hl-reveal ${head ? 'mt-8' : ''} grid gap-4 sm:grid-cols-2 ${s.stats.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}
               data-stagger
             >
               {s.stats.map((st) => (

@@ -52,12 +52,12 @@ const skipLabelByLocale: Record<Locale, string> = {
 
   <main id="s-main" class="bg-[#05070F] font-sans text-[#F8FAFC] antialiased">
     <FeatHero hero={c.hero} />
-    <FeatMonitoring monitoring={c.monitoring} board={sc.hero.board} />
-    <FeatSessions sessions={c.sessions} />
-    <FeatTeam team={c.team} />
+    <FeatMonitoring monitoring={c.monitoring} board={sc.hero.board} locale={locale} />
+    <FeatSessions sessions={c.sessions} locale={locale} />
+    <FeatTeam team={c.team} locale={locale} />
     <FeatAi ai={c.ai} />
-    <FeatReporting reporting={c.reporting} dashboard={sc.reports.dashboard} />
-    <FeatOpponentPlayer opponent={c.opponent} player={c.player} phone={home.playerApp.phone} />
+    <FeatReporting reporting={c.reporting} dashboard={sc.reports.dashboard} locale={locale} />
+    <FeatOpponentPlayer opponent={c.opponent} player={c.player} phone={home.playerApp.phone} locale={locale} />
     <HomeFinalCta locale={locale} finalCta={home.finalCta} />
   </main>
 

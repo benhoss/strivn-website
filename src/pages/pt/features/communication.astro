@@ -1,4 +1,6 @@
 ---
-import FeaturePage from '../../../components/FeaturePage.astro';
+import SubLanding from "../../../components/sub/SubLanding.astro";
+import { teamManagement } from "../../../data/subpages/teamManagement";
 ---
-<FeaturePage locale="pt" slug="communication" />
+
+<SubLanding locale="pt" slug="communication" content={teamManagement.pt} />

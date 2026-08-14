@@ -7,6 +7,7 @@
  * column of eight rows reads as inert body text.
  */
 import type { ModuleText } from '../../data/featuresIndexContent';
+import type { Locale } from '../../data/landingContent';
 import HomeIcon from '../home/HomeIcon.astro';
 
 interface Props {
@@ -20,10 +21,28 @@ interface Props {
    * description collapses to one word per line.
    */
   compact?: boolean;
+  /**
+   * Sub-page slug per row, parallel to `icons`. A row with a slug becomes a
+   * link; a row without one stays plain text rather than pointing somewhere
+   * that only half answers it. Requires `locale`.
+   */
+  slugs?: readonly (string | null)[];
+  locale?: Locale;
   class?: string;
 }
 
-const { modules, icons, accent = 'text-[#2D7FF9]', compact = false, class: className = '' } = Astro.props;
+const {
+  modules,
+  icons,
+  accent = 'text-[#2D7FF9]',
+  compact = false,
+  slugs,
+  locale,
+  class: className = '',
+} = Astro.props;
+
+const href = (i: number) =>
+  locale && slugs?.[i] ? `/${locale}/features/${slugs[i]}/` : undefined;
 
 /* Name and description live in their own nested grid rather than sharing the
  * row's grid with the icon. Placing them by flow instead of `col-start`
@@ -36,13 +55,19 @@ const textCols = compact
 ---
 
 <ul class={`hl-reveal ${className}`} data-stagger>
-  {modules.map((m, i) => (
-    <li class={`hl-row flex items-start gap-3.5 border-t border-[#FFFFFF14] py-[13px] first:border-t-0 ${accent}`}>
-      <HomeIcon name={icons[i] ?? 'check-circle'} size={16} class="hl-row__icon mt-1 shrink-0 text-[#68779A]" />
-      <div class={`min-w-0 flex-1 ${textCols}`}>
-        <p class="text-[0.9rem] leading-[1.4] font-medium text-[#F8FAFC]">{m.name}</p>
-        <p class="text-[0.78rem] leading-[1.45] text-[#9AA8C4]">{m.desc}</p>
-      </div>
-    </li>
-  ))}
+  {modules.map((m, i) => {
+    const to = href(i);
+    const Row = to ? 'a' : 'div';
+    return (
+      <li class={`hl-row border-t border-[#FFFFFF14] first:border-t-0 ${accent}`}>
+        <Row href={to} class="flex items-start gap-3.5 py-[13px]">
+          <HomeIcon name={icons[i] ?? 'check-circle'} size={16} class="hl-row__icon mt-1 shrink-0 text-[#68779A]" />
+          <div class={`min-w-0 flex-1 ${textCols}`}>
+            <p class="text-[0.9rem] leading-[1.4] font-medium text-[#F8FAFC]">{m.name}</p>
+            <p class="text-[0.78rem] leading-[1.45] text-[#9AA8C4]">{m.desc}</p>
+          </div>
+        </Row>
+      </li>
+    );
+  })}
 </ul>

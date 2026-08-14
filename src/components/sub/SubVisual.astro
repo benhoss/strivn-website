@@ -19,6 +19,11 @@ import LiveRunner from './visuals/LiveRunner.astro';
 import MatchLive from './visuals/MatchLive.astro';
 import LibraryInbox from './visuals/LibraryInbox.astro';
 import ProgramWeights from './visuals/ProgramWeights.astro';
+import SquadList from './visuals/SquadList.astro';
+import RsvpBoard from './visuals/RsvpBoard.astro';
+import RtpProtocol from './visuals/RtpProtocol.astro';
+import PlayerPhone from './visuals/PlayerPhone.astro';
+import ReportTable from './visuals/ReportTable.astro';
 
 interface Props {
   name: string;
@@ -40,6 +45,11 @@ const registry: Record<string, any> = {
   'match-live': MatchLive,
   'library-inbox': LibraryInbox,
   'program-weights': ProgramWeights,
+  'squad-list': SquadList,
+  'rsvp-board': RsvpBoard,
+  'rtp-protocol': RtpProtocol,
+  'player-phone': PlayerPhone,
+  'report-table': ReportTable,
 };
 
 const Capture = registry[name];

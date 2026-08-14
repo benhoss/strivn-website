@@ -153,6 +153,47 @@ export const PROGRAM_ROWS: Array<{
 /** The library inbox queue behind the capture being sorted. */
 export const LIBRARY_QUEUE_ICONS = ['image', 'pen-line'] as const;
 
+/** Squad list: five players, their status index into the locale's labels. */
+export const SQUAD_ROWS: Array<{ name: string; pos: number; status: 0 | 1 | 2 | 3 }> = [
+  { name: 'A. Diallo', pos: 0, status: 0 },
+  { name: 'S. Petit', pos: 1, status: 0 },
+  { name: 'L. Moreau', pos: 2, status: 1 },
+  { name: 'T. Mendes', pos: 0, status: 2 },
+  { name: 'N. Diarra', pos: 3, status: 3 },
+];
+export const SQUAD_TABS = [18, 2, 1, 1] as const;
+
+/**
+ * RSVP board. The counters add up to the ten called-up players and the
+ * "answered" figure in the header is the six who are not still pending — the
+ * page's point is that only those two remain to chase.
+ */
+export const RSVP_COUNTS = [6, 0, 0, 2, 2] as const;
+export const RSVP_ROWS: Array<{ name: string; pos: number; answer: 0 | 1 | 2 | 3 | 4 }> = [
+  { name: 'A. Diallo', pos: 0, answer: 0 },
+  { name: 'T. Mendes', pos: 1, answer: 3 },
+  { name: 'K. Nakamura', pos: 2, answer: 2 },
+  { name: 'S. Petit', pos: 3, answer: 4 },
+];
+
+/** Return-to-play protocol: two steps done, one running, one to come. */
+export const RTP_STATES = ['done', 'done', 'live', 'todo'] as const;
+export const RTP_PROGRESS = 68;
+
+/** Report table: minutes, rating and ACWR over the last five matches. */
+export const REPORT_ROWS: Array<{
+  name: string;
+  min: number;
+  minDelta: number | null;
+  rating: string | null;
+  ratingDelta: string | null;
+  acwr: string | null;
+}> = [
+  { name: 'A. Diallo', min: 450, minDelta: 12, rating: '7,4', ratingDelta: '+0,3', acwr: '1,08' },
+  { name: 'S. Petit', min: 270, minDelta: -90, rating: '6,1', ratingDelta: '−0,4', acwr: '1,26' },
+  { name: 'K. Nakamura', min: 180, minDelta: null, rating: '6,8', ratingDelta: null, acwr: null },
+];
+
 /* ── Shape ────────────────────────────────────────────────────── */
 
 interface Row {
@@ -271,6 +312,57 @@ export interface CaptureText {
     modLabel: string;
     untested: string;
     settings: [string, string, string];
+  };
+  /** Squad list with its status tabs. */
+  squad: {
+    title: string;
+    meta: string;
+    tabs: [string, string, string, string];
+    positions: [string, string, string, string];
+    statuses: [string, string, string, string];
+    note: string;
+  };
+  /** Call-up board and its answers. */
+  rsvp: {
+    title: string;
+    meta: string;
+    counts: [string, string, string, string, string];
+    positions: [string, string, string, string];
+    answers: [string, string, string, string, string];
+    nudge: string;
+    send: string;
+  };
+  /** Return-to-play protocol for one injured player. */
+  rtp: {
+    who: string;
+    detail: string;
+    status: string;
+    progressKey: string;
+    steps: [string, string, string, string];
+    stepStates: [string, string, string];
+    availability: string;
+    availabilityNote: string;
+  };
+  /** Player app home, on a phone. */
+  phone: {
+    clock: string;
+    hello: string;
+    team: string;
+    wellness: string;
+    duration: string;
+    fields: [string, string, string];
+    send: string;
+    rpe: string;
+    rpeValue: string;
+    workout: string;
+    workoutMeta: string;
+  };
+  /** Selection & form report. */
+  report: {
+    title: string;
+    meta: string;
+    cols: [string, string, string, string];
+    note: string;
   };
   /** Percentile scale placing one player's value against their position. */
   scale: {
@@ -421,6 +513,57 @@ const fr: CaptureText = {
     untested: '1RM à tester',
     settings: ['Arrondi barre 2,5 kg', 'Formule Epley', 'kg'],
   },
+  squad: {
+    title: 'Effectif · Olympique Montverne',
+    meta: '22 JOUEURS',
+    tabs: ['Actifs', 'Blessés', 'Inactifs', 'À l’essai'],
+    positions: ['Milieu', 'Défenseur', 'Attaquant', 'Ailier'],
+    statuses: ['Présent', 'Adapté', 'Blessé', 'À l’essai'],
+    note: 'Un joueur à l’essai est convoqué comme un actif, mais reste hors des moyennes d’équipe.',
+  },
+  rsvp: {
+    title: 'Match dimanche · 15:00',
+    meta: '8 / 10 ONT RÉPONDU',
+    counts: ['présents', 'adaptés', 'incertains', 'absents', 'en attente'],
+    positions: ['Milieu', 'Défenseur', 'Ailier', 'Gardien'],
+    answers: ['Présent', 'Adapté', 'Incertain', 'Absent', 'En attente'],
+    nudge: 'Relance ciblée — 2 joueurs restent en attente',
+    send: 'Envoyer',
+  },
+  rtp: {
+    who: 'T. Mendes — ischio-jambiers',
+    detail: 'Aiguë · sévérité 2 / 5 · J+13',
+    status: 'REVALIDATION',
+    progressKey: 'PROGRESSION ESTIMÉE · RETOUR J+18',
+    steps: [
+      'Phase anti-inflammatoire',
+      'Renforcement excentrique',
+      'Course linéaire progressive',
+      'Retour au collectif',
+    ],
+    stepStates: ['validée', 'en cours', 'à venir'],
+    availability: 'Entraînement uniquement',
+    availabilityNote: 'hors convocation match',
+  },
+  phone: {
+    clock: '7:42',
+    hello: 'Bonjour, Adam',
+    team: 'Olympique Montverne',
+    wellness: 'Wellness du matin',
+    duration: '20 s',
+    fields: ['Sommeil', 'Fatigue', 'Courbatures'],
+    send: 'Envoyer',
+    rpe: 'RPE · séance d’hier',
+    rpeValue: '7',
+    workout: 'Workout du jour · prévention',
+    workoutMeta: '3 exercices · 12 min · vidéos incluses',
+  },
+  report: {
+    title: 'Sélection / forme · 5 derniers matchs',
+    meta: '18 JOUEURS',
+    cols: ['JOUEUR', 'MIN', 'NOTE', 'ACWR'],
+    note: 'Rapport enregistré — rejoué sur les données du jour. « * » signale un échantillon trop court.',
+  },
   scale: {
     who: 'S. Petit · Ailier · VMA',
     ref: 'REPÈRES AILIER · SAISON EN COURS',
@@ -568,6 +711,57 @@ const en: CaptureText = {
     modLabel: 'scaled',
     untested: '1RM to test',
     settings: ['Bar rounding 2.5 kg', 'Epley formula', 'kg'],
+  },
+  squad: {
+    title: 'Squad · Olympique Montverne',
+    meta: '22 PLAYERS',
+    tabs: ['Active', 'Injured', 'Inactive', 'On trial'],
+    positions: ['Midfielder', 'Defender', 'Striker', 'Winger'],
+    statuses: ['Available', 'Adapted', 'Injured', 'On trial'],
+    note: 'A trialist is called up like an active player, but stays out of the team averages.',
+  },
+  rsvp: {
+    title: 'Match Sunday · 15:00',
+    meta: '8 / 10 HAVE ANSWERED',
+    counts: ['available', 'adapted', 'unsure', 'unavailable', 'pending'],
+    positions: ['Midfielder', 'Defender', 'Winger', 'Goalkeeper'],
+    answers: ['Available', 'Adapted', 'Unsure', 'Unavailable', 'Pending'],
+    nudge: 'Targeted reminder — 2 players still pending',
+    send: 'Send',
+  },
+  rtp: {
+    who: 'T. Mendes — hamstring',
+    detail: 'Acute · severity 2 / 5 · day 13',
+    status: 'REHAB',
+    progressKey: 'ESTIMATED PROGRESS · RETURN DAY 18',
+    steps: [
+      'Anti-inflammatory phase',
+      'Eccentric strengthening',
+      'Progressive linear running',
+      'Return to the group',
+    ],
+    stepStates: ['done', 'in progress', 'to come'],
+    availability: 'Training only',
+    availabilityNote: 'not called up for matches',
+  },
+  phone: {
+    clock: '7:42',
+    hello: 'Morning, Adam',
+    team: 'Olympique Montverne',
+    wellness: 'Morning wellness',
+    duration: '20 s',
+    fields: ['Sleep', 'Fatigue', 'Soreness'],
+    send: 'Send',
+    rpe: 'RPE · yesterday’s session',
+    rpeValue: '7',
+    workout: 'Today’s workout · prevention',
+    workoutMeta: '3 exercises · 12 min · videos included',
+  },
+  report: {
+    title: 'Selection / form · last 5 matches',
+    meta: '18 PLAYERS',
+    cols: ['PLAYER', 'MIN', 'RATING', 'ACWR'],
+    note: 'Saved report — replayed on today’s data. “*” marks too short a sample.',
   },
   scale: {
     who: 'S. Petit · Winger · MAS',
@@ -717,6 +911,57 @@ const nl: CaptureText = {
     untested: '1RM te testen',
     settings: ['Afronding stang 2,5 kg', 'Formule Epley', 'kg'],
   },
+  squad: {
+    title: 'Kern · Olympique Montverne',
+    meta: '22 SPELERS',
+    tabs: ['Actief', 'Geblesseerd', 'Inactief', 'Op proef'],
+    positions: ['Middenvelder', 'Verdediger', 'Aanvaller', 'Flankspeler'],
+    statuses: ['Beschikbaar', 'Aangepast', 'Geblesseerd', 'Op proef'],
+    note: 'Een speler op proef wordt opgeroepen als een actieve speler, maar blijft buiten de ploeggemiddelden.',
+  },
+  rsvp: {
+    title: 'Wedstrijd zondag · 15:00',
+    meta: '8 / 10 HEBBEN GEANTWOORD',
+    counts: ['beschikbaar', 'aangepast', 'onzeker', 'afwezig', 'in afwachting'],
+    positions: ['Middenvelder', 'Verdediger', 'Flankspeler', 'Doelman'],
+    answers: ['Beschikbaar', 'Aangepast', 'Onzeker', 'Afwezig', 'In afwachting'],
+    nudge: 'Gerichte herinnering — 2 spelers blijven in afwachting',
+    send: 'Versturen',
+  },
+  rtp: {
+    who: 'T. Mendes — hamstring',
+    detail: 'Acuut · ernst 2 / 5 · dag 13',
+    status: 'REVALIDATIE',
+    progressKey: 'GESCHATTE VOORTGANG · TERUGKEER DAG 18',
+    steps: [
+      'Ontstekingsremmende fase',
+      'Excentrische versterking',
+      'Progressieve lineaire loop',
+      'Terugkeer naar de groep',
+    ],
+    stepStates: ['afgerond', 'bezig', 'te komen'],
+    availability: 'Enkel training',
+    availabilityNote: 'niet opgeroepen voor wedstrijden',
+  },
+  phone: {
+    clock: '7:42',
+    hello: 'Goeiemorgen, Adam',
+    team: 'Olympique Montverne',
+    wellness: 'Wellness van de ochtend',
+    duration: '20 s',
+    fields: ['Slaap', 'Vermoeidheid', 'Spierpijn'],
+    send: 'Versturen',
+    rpe: 'RPE · training van gisteren',
+    rpeValue: '7',
+    workout: 'Workout van vandaag · preventie',
+    workoutMeta: '3 oefeningen · 12 min · video’s inbegrepen',
+  },
+  report: {
+    title: 'Selectie / vorm · laatste 5 wedstrijden',
+    meta: '18 SPELERS',
+    cols: ['SPELER', 'MIN', 'SCORE', 'ACWR'],
+    note: 'Bewaard rapport — opnieuw gedraaid op de data van vandaag. “*” markeert een te kleine steekproef.',
+  },
   scale: {
     who: 'S. Petit · Vleugelspeler · MAS',
     ref: 'IJKPUNTEN VLEUGELSPELER · HUIDIG SEIZOEN',
@@ -864,6 +1109,57 @@ const de: CaptureText = {
     modLabel: 'angepasst',
     untested: '1RM zu testen',
     settings: ['Rundung Hantel 2,5 kg', 'Formel Epley', 'kg'],
+  },
+  squad: {
+    title: 'Kader · Olympique Montverne',
+    meta: '22 SPIELER',
+    tabs: ['Aktiv', 'Verletzt', 'Inaktiv', 'Im Probetraining'],
+    positions: ['Mittelfeld', 'Abwehr', 'Sturm', 'Flügel'],
+    statuses: ['Verfügbar', 'Angepasst', 'Verletzt', 'Probetraining'],
+    note: 'Ein Spieler im Probetraining wird wie ein aktiver aufgeboten, bleibt aber außerhalb der Mannschaftsmittel.',
+  },
+  rsvp: {
+    title: 'Spiel Sonntag · 15:00',
+    meta: '8 / 10 HABEN GEANTWORTET',
+    counts: ['verfügbar', 'angepasst', 'unsicher', 'abwesend', 'ausstehend'],
+    positions: ['Mittelfeld', 'Abwehr', 'Flügel', 'Torhüter'],
+    answers: ['Verfügbar', 'Angepasst', 'Unsicher', 'Abwesend', 'Ausstehend'],
+    nudge: 'Gezielte Erinnerung — 2 Spieler stehen noch aus',
+    send: 'Senden',
+  },
+  rtp: {
+    who: 'T. Mendes — Oberschenkelrückseite',
+    detail: 'Akut · Schweregrad 2 / 5 · Tag 13',
+    status: 'REHA',
+    progressKey: 'GESCHÄTZTER FORTSCHRITT · RÜCKKEHR TAG 18',
+    steps: [
+      'Entzündungshemmende Phase',
+      'Exzentrisches Krafttraining',
+      'Progressiver Geradeauslauf',
+      'Rückkehr in die Mannschaft',
+    ],
+    stepStates: ['abgeschlossen', 'laufend', 'ausstehend'],
+    availability: 'Nur Training',
+    availabilityNote: 'kein Spielaufgebot',
+  },
+  phone: {
+    clock: '7:42',
+    hello: 'Guten Morgen, Adam',
+    team: 'Olympique Montverne',
+    wellness: 'Wellness am Morgen',
+    duration: '20 s',
+    fields: ['Schlaf', 'Ermüdung', 'Muskelkater'],
+    send: 'Senden',
+    rpe: 'RPE · Einheit von gestern',
+    rpeValue: '7',
+    workout: 'Workout des Tages · Prävention',
+    workoutMeta: '3 Übungen · 12 Min · Videos inklusive',
+  },
+  report: {
+    title: 'Auswahl / Form · letzte 5 Spiele',
+    meta: '18 SPIELER',
+    cols: ['SPIELER', 'MIN', 'NOTE', 'ACWR'],
+    note: 'Gespeicherter Bericht — auf den heutigen Daten neu gerechnet. „*“ markiert eine zu kleine Stichprobe.',
   },
   scale: {
     who: 'S. Petit · Flügel · MAS',
@@ -1013,6 +1309,57 @@ const pt: CaptureText = {
     untested: '1RM por testar',
     settings: ['Arredondamento barra 2,5 kg', 'Fórmula Epley', 'kg'],
   },
+  squad: {
+    title: 'Plantel · Olympique Montverne',
+    meta: '22 JOGADORES',
+    tabs: ['Ativos', 'Lesionados', 'Inativos', 'À experiência'],
+    positions: ['Médio', 'Defesa', 'Avançado', 'Extremo'],
+    statuses: ['Disponível', 'Adaptado', 'Lesionado', 'À experiência'],
+    note: 'Um jogador à experiência é convocado como um ativo, mas fica fora das médias da equipa.',
+  },
+  rsvp: {
+    title: 'Jogo domingo · 15:00',
+    meta: '8 / 10 RESPONDERAM',
+    counts: ['disponíveis', 'adaptados', 'incertos', 'ausentes', 'em espera'],
+    positions: ['Médio', 'Defesa', 'Extremo', 'Guarda-redes'],
+    answers: ['Disponível', 'Adaptado', 'Incerto', 'Ausente', 'Em espera'],
+    nudge: 'Lembrete dirigido — faltam 2 jogadores',
+    send: 'Enviar',
+  },
+  rtp: {
+    who: 'T. Mendes — isquiotibiais',
+    detail: 'Aguda · gravidade 2 / 5 · dia 13',
+    status: 'REABILITAÇÃO',
+    progressKey: 'PROGRESSO ESTIMADO · REGRESSO DIA 18',
+    steps: [
+      'Fase anti-inflamatória',
+      'Reforço excêntrico',
+      'Corrida linear progressiva',
+      'Regresso ao coletivo',
+    ],
+    stepStates: ['validada', 'em curso', 'a seguir'],
+    availability: 'Apenas treino',
+    availabilityNote: 'sem convocatória para jogos',
+  },
+  phone: {
+    clock: '7:42',
+    hello: 'Bom dia, Adam',
+    team: 'Olympique Montverne',
+    wellness: 'Wellness da manhã',
+    duration: '20 s',
+    fields: ['Sono', 'Fadiga', 'Dores musculares'],
+    send: 'Enviar',
+    rpe: 'RPE · treino de ontem',
+    rpeValue: '7',
+    workout: 'Workout do dia · prevenção',
+    workoutMeta: '3 exercícios · 12 min · vídeos incluídos',
+  },
+  report: {
+    title: 'Seleção / forma · últimos 5 jogos',
+    meta: '18 JOGADORES',
+    cols: ['JOGADOR', 'MIN', 'NOTA', 'ACWR'],
+    note: 'Relatório guardado — recalculado sobre os dados de hoje. «*» assinala uma amostra curta.',
+  },
   scale: {
     who: 'S. Petit · Extremo · VAM',
     ref: 'REFERÊNCIAS EXTREMO · ÉPOCA ATUAL',
@@ -1160,6 +1507,57 @@ const es: CaptureText = {
     modLabel: 'modulado',
     untested: '1RM por probar',
     settings: ['Redondeo barra 2,5 kg', 'Fórmula Epley', 'kg'],
+  },
+  squad: {
+    title: 'Plantilla · Olympique Montverne',
+    meta: '22 JUGADORES',
+    tabs: ['Activos', 'Lesionados', 'Inactivos', 'A prueba'],
+    positions: ['Centrocampista', 'Defensa', 'Delantero', 'Extremo'],
+    statuses: ['Disponible', 'Adaptado', 'Lesionado', 'A prueba'],
+    note: 'Un jugador a prueba se convoca como un activo, pero queda fuera de las medias del equipo.',
+  },
+  rsvp: {
+    title: 'Partido domingo · 15:00',
+    meta: '8 / 10 HAN RESPONDIDO',
+    counts: ['disponibles', 'adaptados', 'inseguros', 'ausentes', 'en espera'],
+    positions: ['Centrocampista', 'Defensa', 'Extremo', 'Portero'],
+    answers: ['Disponible', 'Adaptado', 'Inseguro', 'Ausente', 'En espera'],
+    nudge: 'Recordatorio dirigido — quedan 2 jugadores en espera',
+    send: 'Enviar',
+  },
+  rtp: {
+    who: 'T. Mendes — isquiotibiales',
+    detail: 'Aguda · gravedad 2 / 5 · día 13',
+    status: 'READAPTACIÓN',
+    progressKey: 'PROGRESO ESTIMADO · REGRESO DÍA 18',
+    steps: [
+      'Fase antiinflamatoria',
+      'Refuerzo excéntrico',
+      'Carrera lineal progresiva',
+      'Vuelta al grupo',
+    ],
+    stepStates: ['validada', 'en curso', 'por venir'],
+    availability: 'Solo entrenamiento',
+    availabilityNote: 'sin convocatoria de partido',
+  },
+  phone: {
+    clock: '7:42',
+    hello: 'Buenos días, Adam',
+    team: 'Olympique Montverne',
+    wellness: 'Wellness de la mañana',
+    duration: '20 s',
+    fields: ['Sueño', 'Fatiga', 'Agujetas'],
+    send: 'Enviar',
+    rpe: 'RPE · sesión de ayer',
+    rpeValue: '7',
+    workout: 'Workout del día · prevención',
+    workoutMeta: '3 ejercicios · 12 min · vídeos incluidos',
+  },
+  report: {
+    title: 'Selección / forma · últimos 5 partidos',
+    meta: '18 JUGADORES',
+    cols: ['JUGADOR', 'MIN', 'NOTA', 'ACWR'],
+    note: 'Informe guardado — recalculado sobre los datos de hoy. «*» señala una muestra corta.',
   },
   scale: {
     who: 'S. Petit · Extremo · VAM',

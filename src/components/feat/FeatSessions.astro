@@ -1,15 +1,17 @@
 ---
 import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
-import { SECTION_ICONS, SESSION_BLOCKS } from '../../data/featuresIndexContent';
+import type { Locale } from '../../data/landingContent';
+import { SECTION_ICONS, SECTION_SLUGS, SESSION_BLOCKS } from '../../data/featuresIndexContent';
 import HomeIcon from '../home/HomeIcon.astro';
 import FeatHead from './FeatHead.astro';
 import FeatModules from './FeatModules.astro';
 
 interface Props {
   sessions: FeaturesIndexContent['sessions'];
+  locale: Locale;
 }
 
-const { sessions: c } = Astro.props;
+const { sessions: c, locale } = Astro.props;
 const v = c.visual;
 ---
 
@@ -21,6 +23,8 @@ const v = c.visual;
       <FeatModules
         modules={c.modules}
         icons={SECTION_ICONS.sessions}
+        slugs={SECTION_SLUGS.sessions}
+        locale={locale}
         accent="text-[#8CE99A]"
         class="order-2 lg:order-1 lg:pt-2"
       />

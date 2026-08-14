@@ -1,15 +1,17 @@
 ---
 import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
-import { SECTION_ICONS, RSVP_ROWS } from '../../data/featuresIndexContent';
+import type { Locale } from '../../data/landingContent';
+import { SECTION_ICONS, SECTION_SLUGS, RSVP_ROWS } from '../../data/featuresIndexContent';
 import HomeIcon from '../home/HomeIcon.astro';
 import FeatHead from './FeatHead.astro';
 import FeatModules from './FeatModules.astro';
 
 interface Props {
   team: FeaturesIndexContent['team'];
+  locale: Locale;
 }
 
-const { team: c } = Astro.props;
+const { team: c, locale } = Astro.props;
 const v = c.visual;
 
 /** Each RSVP state carries its own icon and colour. */
@@ -63,7 +65,7 @@ const stateStyle: Record<string, { icon: string; tone: string }> = {
         </ul>
       </div>
 
-      <FeatModules modules={c.modules} icons={SECTION_ICONS.team} accent="text-[#FF8400]" class="lg:pt-2" />
+      <FeatModules modules={c.modules} icons={SECTION_ICONS.team} slugs={SECTION_SLUGS.team} locale={locale} accent="text-[#FF8400]" class="lg:pt-2" />
     </div>
   </div>
 </section>

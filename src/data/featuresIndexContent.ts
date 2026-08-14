@@ -34,6 +34,47 @@ export const SECTION_ICONS = {
   player: ['smartphone', 'users'],
 } as const;
 
+/**
+ * The sub-page each module row leads to, in `SECTION_ICONS` order. `null`
+ * marks a module with no page of its own yet — the row stays plain text
+ * rather than linking somewhere that only half answers it.
+ */
+export const SECTION_SLUGS = {
+  monitoring: [
+    'training-load',
+    'training-load',
+    'sessions',
+    'check-in',
+    'check-in',
+    'tests',
+    'programs',
+    'programs',
+  ],
+  sessions: [
+    'sessions',
+    'exercise-library',
+    'exercise-library',
+    'live-session',
+    'live-match',
+    'live-session',
+    'live-match',
+  ],
+  team: [
+    'communication',
+    'communication',
+    'attendance',
+    'attendance',
+    'medical',
+    'medical',
+    'staff',
+    null,
+  ],
+  ai: ['reports', 'reports', 'reports', 'reports', 'reports', 'attendance', 'live-match'],
+  reporting: ['reports', 'reports', 'reports', 'sessions'],
+  opponent: ['scouting', 'staff'],
+  player: ['player-app', 'staff'],
+} as const;
+
 /** Anchor targets for the hero jump pills — order matches `hero.jump`. */
 export const JUMP_HREFS = ['#monitoring', '#seances', '#equipe', '#ia', '#pilotage', '#adversaire'];
 

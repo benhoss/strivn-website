@@ -1,4 +1,6 @@
 ---
-import FeaturePage from '../../../components/FeaturePage.astro';
+import SubLanding from "../../../components/sub/SubLanding.astro";
+import { reports } from "../../../data/subpages/reports";
 ---
-<FeaturePage locale="de" slug="reports" />
+
+<SubLanding locale="de" slug="reports" content={reports.de} />
