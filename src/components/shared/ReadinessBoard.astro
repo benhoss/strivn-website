@@ -1,0 +1,91 @@
+---
+/**
+ * The "readiness of the day" product capture.
+ *
+ * Shared by the S&C hero and the features index — same screen, same numbers,
+ * so it must not drift between the two pages. Row data is locale-invariant
+ * (`BOARD_ROWS`); only the labels come from the caller's locale.
+ */
+import type { ScPageContent } from '../../data/scPageContent';
+import { BOARD_ROWS } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  board: ScPageContent['hero']['board'];
+  /** Extra classes for the outer frame (reveal variant, parallax, …). */
+  class?: string;
+  /** Inline style for the outer frame — used to set the reveal delay. */
+  style?: string;
+  /** Base delay before the KPI counters start; rows follow their own ramp. */
+  countFrom?: number;
+}
+
+const { board, class: className = '', style, countFrom = 900 } = Astro.props;
+
+const toneText: Record<string, string> = {
+  green: 'text-[#8CE99A]',
+  orange: 'text-[#FF8400]',
+  coral: 'text-[#FF7A6B]',
+  blue: 'text-[#7AB8FF]',
+  plain: 'text-[#F8FAFC]',
+};
+const toneBar: Record<string, string> = {
+  green: 'bg-[#8CE99A]',
+  orange: 'bg-[#FF8400]',
+  coral: 'bg-[#FF7A6B]',
+  blue: 'bg-[#2D7FF9]',
+  plain: 'bg-[#7AB8FF]',
+};
+---
+
+<div
+  class={`overflow-hidden rounded-[16px] [background-image:linear-gradient(90deg,#131B33_0%,#080C18_100%)] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] [box-shadow:0_36px_80px_-18px_rgba(0,0,0,0.8)] ${className}`}
+  style={style}
+>
+  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#FFFFFF14] bg-[#FFFFFF06] px-[18px] py-3">
+    <p class="flex items-center gap-2.5 text-[0.78rem] font-semibold text-[#F8FAFC]">
+      <HomeIcon name="gauge" size={14} class="text-[#7AB8FF]" />
+      {board.title}
+    </p>
+    <span class="font-mono text-[0.6rem] tracking-[0.08em] text-[#68779A]">{board.stamp}</span>
+  </div>
+
+  <div class="grid grid-cols-2 gap-2.5 px-4 pt-3.5 sm:grid-cols-4" data-stagger>
+    {board.kpis.map((kpi, i) => (
+      <div class="rounded-[10px] bg-[#FFFFFF07] px-3 py-2.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+        <p class="font-mono text-[0.53rem] tracking-[0.09em] text-[#68779A]">{kpi.label}</p>
+        <p
+          class={`hl-display mt-1 text-[1.12rem] leading-none whitespace-nowrap ${toneText[kpi.tone]}`}
+          data-count
+          data-count-delay={countFrom + i * 130}
+        >
+          {kpi.value}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  <div class="px-4 pt-3.5 pb-4">
+    <ul class="overflow-hidden rounded-[11px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]" data-stagger>
+      {BOARD_ROWS.map((row, i) => (
+        <li class="flex items-center gap-3 border-b border-[#FFFFFF14] px-3.5 py-2.5 last:border-b-0">
+          <span class="min-w-0 flex-1 truncate text-[0.78rem] font-medium text-[#DCE4F2]">{row.name}</span>
+          <span class="h-[5px] w-14 shrink-0 overflow-hidden rounded-full bg-[#FFFFFF12]">
+            <span
+              class={`hl-fill block h-full rounded-full ${toneBar[row.tone]}`}
+              style={`width: ${row.bar}%; --bd: ${520 + i * 140}ms;`}
+            ></span>
+          </span>
+          <span class={`w-6 shrink-0 text-right font-mono text-[0.7rem] font-medium ${toneText[row.tone]}`}>{row.value}</span>
+          <span class="hidden w-9 shrink-0 text-right font-mono text-[0.7rem] text-[#9AA8C4] sm:block">{row.acwr}</span>
+          <span
+            class={`hl-late w-[4.6rem] shrink-0 rounded-full bg-[#FFFFFF0A] px-2 py-[3px] text-center text-[0.66rem] ${toneText[row.tone]}`}
+            style={`--ld: ${900 + i * 140}ms;`}
+          >
+            {board.status[row.status]}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

@@ -1,4 +1,14 @@
 ---
-import ScPage from '../../components/ScPage.astro';
+import ScLanding from '../../components/sc/ScLanding.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/en/sc-coaches/' },
+  { hreflang: 'fr', href: '/fr/preparateurs-physiques/' },
+  { hreflang: 'nl', href: '/nl/sc-coaches/' },
+  { hreflang: 'de', href: '/de/sc-coaches/' },
+  { hreflang: 'pt', href: '/pt/sc-coaches/' },
+  { hreflang: 'es', href: '/es/sc-coaches/' },
+  { hreflang: 'x-default', href: '/fr/preparateurs-physiques/' },
+];
 ---
-<ScPage locale="nl" />
+<ScLanding locale="nl" canonicalPath="/nl/sc-coaches/" alternates={alternates} />

@@ -1,0 +1,85 @@
+---
+import type { ScPageContent } from '../../data/scPageContent';
+import { TEST_ROWS } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  tests: ScPageContent['tests'];
+}
+
+const { tests: c } = Astro.props;
+const v = c.visual;
+
+const deltaTone: Record<string, string> = { green: 'text-[#8CE99A]', orange: 'text-[#FF8400]' };
+---
+
+<section class="bg-[#070A14] py-20 md:py-28" aria-labelledby="sc-tests-title">
+  <div class="hl-wrap grid items-center gap-12 lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)] lg:gap-[72px]">
+    <!-- Text -->
+    <div class="hl-reveal">
+      <p class="font-mono text-[0.63rem] tracking-[0.11em] text-[#FF8400]">{c.tag}</p>
+      <h2 id="sc-tests-title" class="hl-display mt-4 text-[clamp(1.85rem,3.6vw,2.5rem)]">{c.title}</h2>
+      <p class="mt-5 text-[0.97rem] leading-[1.65] text-[#9AA8C4]">{c.body}</p>
+      <ul class="hl-checks mt-6" data-stagger>
+        {c.points.map((p) => (
+          <li><HomeIcon name="check-circle" size={15} class="text-[#FF8400]" />{p}</li>
+        ))}
+      </ul>
+      <p class="mt-7">
+        <a href={c.href} class="hl-more text-[0.88rem] text-[#FF8400]">{c.cta}<HomeIcon name="arrow-right" size={15} /></a>
+      </p>
+    </div>
+
+    <!-- Visual -->
+    <div
+      class="hl-reveal hl-reveal--card hl-parallax flex flex-col gap-3.5 overflow-hidden rounded-[18px] bg-[#0B1020] p-6 [background-image:radial-gradient(ellipse_50%_50%_at_85%_0%,rgba(255,132,0,0.13),transparent_70%)] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+      style="--d: 120ms;"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <p class="text-[0.92rem] font-semibold text-[#F8FAFC]">{v.title}</p>
+          <p class="mt-0.5 text-[0.72rem] text-[#9AA8C4]">{v.sub}</p>
+        </div>
+        <span class="flex items-center gap-1.5 rounded-full bg-[#FF84001A] px-[11px] py-[5px] font-mono text-[0.53rem] tracking-[0.08em] text-[#FF8400] outline-1 outline-[#FF840038] -outline-offset-[0.5px]">
+          <HomeIcon name="link" size={11} />
+          {v.badge}
+        </span>
+      </div>
+
+      <div class="rounded-[11px] bg-[#FFFFFF08] px-[15px] py-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+        <p class="flex items-center justify-between gap-2">
+          <span class="text-[0.78rem] font-medium text-[#DCE4F2]">{v.progressLabel}</span>
+          <span class="font-mono text-[0.78rem] font-medium text-[#8CE99A]">{v.progressValue}</span>
+        </p>
+        <span class="mt-2 block h-1.5 overflow-hidden rounded-full bg-[#FFFFFF10]">
+          <span class="hl-fill block h-full rounded-full bg-[#8CE99A]" style={`width: ${v.progressPct}%; --bd: 180ms;`}></span>
+        </span>
+      </div>
+
+      <p class="font-mono text-[0.59rem] tracking-[0.1em] text-[#68779A]">{v.entriesLabel}</p>
+      <ul class="overflow-hidden rounded-[11px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]" data-stagger>
+        {TEST_ROWS.map((row) => (
+          <li class="flex items-center gap-3 border-b border-[#FFFFFF14] px-3.5 py-3 last:border-b-0">
+            <span class="min-w-0 flex-1 truncate text-[0.78rem] font-medium text-[#DCE4F2]">{row.name}</span>
+            <span class="shrink-0 font-mono text-[0.71rem] whitespace-nowrap text-[#9AA8C4]">{row.value}</span>
+            {row.delta && (
+              <span class={`shrink-0 rounded-full bg-[#FFFFFF0A] px-[7px] py-0.5 font-mono text-[0.59rem] ${deltaTone[row.deltaTone ?? 'green']}`}>
+                {row.delta}
+              </span>
+            )}
+            <span
+              class={`w-[4.6rem] shrink-0 text-right text-[0.69rem] ${row.state === 'received' ? 'text-[#8CE99A]' : 'text-[#68779A]'}`}
+            >
+              {row.state === 'received' ? v.stateReceived : v.statePending}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="flex items-center gap-2.5 rounded-[11px] bg-[#2D7FF914] p-3.5 text-[0.78rem] leading-[1.5] text-[#C3D4EE] outline-1 outline-[#2D7FF93D] -outline-offset-[0.5px]">
+        <HomeIcon name="arrow-right" size={15} class="shrink-0 text-[#7AB8FF]" />
+        {v.note}
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+---
+import type { ScPageContent } from '../../data/scPageContent';
+import { PLAN_BARS } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  planning: ScPageContent['planning'];
+}
+
+const { planning: c } = Astro.props;
+const v = c.visual;
+
+const toneBar: Record<string, string> = { blue: 'bg-[#2D7FF9]', green: 'bg-[#8CE99A]' };
+const toneText: Record<string, string> = { blue: 'text-[#2D7FF9]', green: 'text-[#8CE99A]', orange: 'text-[#FF8400]' };
+const toneChip: Record<string, string> = { orange: 'bg-[#FF84001A] text-[#FF8400]', green: 'bg-[#8CE99A14] text-[#8CE99A]' };
+---
+
+<section class="bg-[#070A14] py-20 md:py-28" aria-labelledby="sc-planning-title">
+  <div class="hl-wrap grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)] lg:gap-[72px]">
+    <!-- Visual -->
+    <div
+      class="hl-reveal hl-reveal--card hl-parallax order-2 flex flex-col gap-3.5 overflow-hidden rounded-[18px] bg-[#0B1020] p-6 [background-image:radial-gradient(ellipse_50%_50%_at_15%_0%,rgba(45,127,249,0.15),transparent_70%)] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] lg:order-1"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <p class="text-[0.92rem] font-semibold text-[#F8FAFC]">{v.week}</p>
+          <p class="mt-0.5 text-[0.72rem] text-[#9AA8C4]">{v.goal}</p>
+        </div>
+        <span class="rounded-full bg-[#2D7FF921] px-[11px] py-[5px] font-mono text-[0.53rem] tracking-[0.08em] text-[#7AB8FF] outline-1 outline-[#2D7FF947] -outline-offset-[0.5px]">
+          {v.remaining}
+        </span>
+      </div>
+
+      <p class="font-mono text-[0.59rem] tracking-[0.1em] text-[#68779A]">{v.budgetLabel}</p>
+      <ul class="flex flex-col gap-2" data-stagger>
+        {v.categories.map((cat, i) => (
+          <li class="rounded-[10px] bg-[#FFFFFF06] px-3.5 py-3">
+            <p class="flex items-center justify-between gap-2">
+              <span class="text-[0.75rem] text-[#C3CDE0]">{cat.name}</span>
+              <span class={`font-mono text-[0.69rem] font-medium ${toneText[cat.tone]}`}>{cat.value}</span>
+            </p>
+            <span class="mt-1.5 block h-[5px] overflow-hidden rounded-full bg-[#FFFFFF10]">
+              <span
+                class={`hl-fill block h-full rounded-full ${toneBar[cat.tone]}`}
+                style={`width: ${cat.pct}%; --bd: ${i * 120}ms;`}
+              ></span>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <p class="font-mono text-[0.59rem] tracking-[0.1em] text-[#68779A]">{v.chartLabel}</p>
+        <p class="flex items-center gap-3.5 text-[0.66rem] text-[#8CA3C7]">
+          <span class="flex items-center gap-1.5"><span class="size-2 rounded-[3px] bg-[#FFFFFF1F]"></span>{v.legendPlanned}</span>
+          <span class="flex items-center gap-1.5"><span class="size-2 rounded-[3px] bg-[#2D7FF9]"></span>{v.legendActual}</span>
+        </p>
+      </div>
+
+      <div class="grid grid-cols-7 items-end gap-2" style="height: 7rem;">
+        {PLAN_BARS.map(([planned, actual], i) => (
+          <div class="flex h-full items-end justify-center gap-1">
+            <span class="hl-bar w-[11px] rounded-[4px] bg-[#FFFFFF1F] sm:w-[13px]" style={`height: ${planned}%; --bd: ${i * 70}ms;`}></span>
+            {actual !== null && (
+              <span class="hl-bar w-[11px] rounded-[4px] bg-[#2D7FF9] sm:w-[13px]" style={`height: ${actual}%; --bd: ${i * 70 + 40}ms;`}></span>
+            )}
+          </div>
+        ))}
+      </div>
+      <div class="grid grid-cols-7 gap-2 text-center font-mono text-[0.59rem] text-[#68779A]">
+        {v.days.map((d) => <span>{d}</span>)}
+      </div>
+
+      <ul class="flex flex-col gap-[7px]" data-stagger>
+        {v.variance.map((row) => (
+          <li class="flex items-center justify-between gap-3 rounded-[9px] bg-[#FFFFFF06] px-3.5 py-2.5">
+            <span class="text-[0.75rem] font-medium text-[#DCE4F2]">{row.name}</span>
+            <span class={`rounded-full px-2.5 py-[3px] font-mono text-[0.63rem] ${toneChip[row.tone]}`}>{row.delta}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Text -->
+    <div class="hl-reveal hl-reveal--right order-1 lg:order-2" style="--d: 120ms;">
+      <p class="font-mono text-[0.63rem] tracking-[0.11em] text-[#7AB8FF]">{c.tag}</p>
+      <h2 id="sc-planning-title" class="hl-display mt-4 text-[clamp(1.85rem,3.6vw,2.5rem)]">{c.title}</h2>
+      <p class="mt-5 text-[0.97rem] leading-[1.65] text-[#9AA8C4]">{c.body}</p>
+      <ul class="hl-checks mt-6" data-stagger>
+        {c.points.map((p) => (
+          <li><HomeIcon name="check-circle" size={15} class="text-[#2D7FF9]" />{p}</li>
+        ))}
+      </ul>
+      <p class="mt-7">
+        <a href={c.href} class="hl-more text-[0.88rem] text-[#7AB8FF]">{c.cta}<HomeIcon name="arrow-right" size={15} /></a>
+      </p>
+    </div>
+  </div>
+</section>

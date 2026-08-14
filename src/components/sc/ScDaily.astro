@@ -1,0 +1,45 @@
+---
+import type { ScPageContent } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  daily: ScPageContent['daily'];
+}
+
+const { daily: c } = Astro.props;
+---
+
+<section id="quotidien" class="scroll-mt-24 bg-[#070A14] py-20 md:py-28" aria-labelledby="sc-daily-title">
+  <div class="hl-wrap">
+    <div class="hl-reveal">
+      <p class="hl-kicker text-[#68779A]">{c.kicker}</p>
+      <h2 id="sc-daily-title" class="hl-display mt-4 max-w-[18ch] text-[clamp(2rem,4.4vw,2.75rem)]">{c.title}</h2>
+      <p class="mt-4 max-w-[40rem] text-[0.97rem] leading-[1.6] text-[#9AA8C4]">{c.sub}</p>
+    </div>
+
+    <div class="hl-reveal mt-11" style="--d: 120ms;">
+      <!-- Column heads (desktop only — on mobile each row carries its own labels) -->
+      <div class="hidden gap-14 pb-3.5 lg:grid lg:grid-cols-[minmax(0,1fr)_16px_minmax(0,1fr)]">
+        <p class="font-mono text-[0.59rem] tracking-[0.11em] text-[#68779A]">{c.colBefore}</p>
+        <span></span>
+        <p class="font-mono text-[0.59rem] tracking-[0.11em] text-[#7AB8FF]">{c.colAfter}</p>
+      </div>
+
+      <ul data-stagger>
+        {c.rows.map((row) => (
+          <li class="hl-row grid gap-4 border-t border-[#FFFFFF14] py-[17px] text-[#2D7FF9] lg:grid-cols-[minmax(0,1fr)_16px_minmax(0,1fr)] lg:items-center lg:gap-14">
+            <p class="flex items-start gap-3 text-[0.9rem] leading-[1.45] text-[#8B99B8]">
+              <HomeIcon name="circle-dashed" size={15} class="mt-0.5 shrink-0 text-[#68779A]" />
+              {row.before}
+            </p>
+            <HomeIcon name="arrow-right" size={16} class="hl-row__icon hidden shrink-0 text-[#2D7FF9] lg:block" />
+            <p class="flex items-start gap-3 pl-[27px] text-[0.9rem] leading-[1.45] font-medium text-[#DCE4F2] lg:pl-0">
+              <HomeIcon name="check-circle" size={15} class="mt-0.5 shrink-0 text-[#8CE99A]" />
+              {row.after}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
