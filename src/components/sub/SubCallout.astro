@@ -1,0 +1,55 @@
+---
+/**
+ * Banner used both as a section of its own and as a section's trailing slot,
+ * so the two spellings cannot drift apart.
+ */
+import type { Tone } from '../../data/subpages/types';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  tone?: Tone;
+  icon?: string;
+  text: string;
+  link?: { label: string; href: string };
+  class?: string;
+}
+
+const { tone = 'plain', icon, text, link, class: className = '' } = Astro.props;
+
+/** `blue` is the quoted-figure panel, not a warning. */
+const skin: Record<Tone, string> = {
+  orange: 'bg-[#FF84001A] outline-[#FF840040] text-[#E8D3B8]',
+  red: 'bg-[#FF7A6B14] outline-[#FF7A6B33] text-[#F0C4BC]',
+  blue: 'bg-[#0C1428] outline-[#2D7FF94D] text-[#C3CDE0]',
+  green: 'bg-[#8CE99A14] outline-[#8CE99A3D] text-[#C7E8CE]',
+  plain: 'bg-[#FFFFFF07] outline-[#FFFFFF14] text-[#C3CDE0]',
+};
+const ink: Record<Tone, string> = {
+  orange: 'text-[#FF8400]',
+  red: 'text-[#FF7A6B]',
+  blue: 'text-[#7AB8FF]',
+  green: 'text-[#8CE99A]',
+  plain: 'text-[#68779A]',
+};
+---
+
+<div
+  class={`flex flex-wrap items-center gap-4 rounded-[14px] px-6 py-5 outline-1 -outline-offset-[0.5px] ${skin[tone]} ${className}`}
+>
+  {
+    icon && (
+      <span class={`shrink-0 ${ink[tone]}`}>
+        <HomeIcon name={icon} size={17} />
+      </span>
+    )
+  }
+  <p class="min-w-0 flex-1 text-[0.875rem] leading-[1.6]">{text}</p>
+  {
+    link && (
+      <a href={link.href} class="hl-more shrink-0 text-[0.84rem] text-[#7AB8FF]">
+        {link.label}
+        <HomeIcon name="arrow-right" size={13} class="hl-row__icon" />
+      </a>
+    )
+  }
+</div>

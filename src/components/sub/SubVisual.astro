@@ -1,0 +1,34 @@
+---
+/**
+ * Registry of sub-page product captures.
+ *
+ * Content names a capture with a string; this resolves it to a component. An
+ * unknown name renders nothing rather than throwing — a half-written page
+ * should still build, and the gap is obvious on screen.
+ */
+import type { Locale } from '../../data/landingContent';
+import LoadBoard from './visuals/LoadBoard.astro';
+import CheckinSignals from './visuals/CheckinSignals.astro';
+import TestCampaign from './visuals/TestCampaign.astro';
+import GpsBlocks from './visuals/GpsBlocks.astro';
+import UnitConversion from './visuals/UnitConversion.astro';
+
+interface Props {
+  name: string;
+  locale: Locale;
+}
+
+const { name, locale } = Astro.props;
+
+const registry: Record<string, any> = {
+  'load-board': LoadBoard,
+  'checkin-signals': CheckinSignals,
+  'test-campaign': TestCampaign,
+  'gps-blocks': GpsBlocks,
+  'unit-conversion': UnitConversion,
+};
+
+const Capture = registry[name];
+---
+
+{Capture && <Capture locale={locale} />}

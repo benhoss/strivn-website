@@ -1,0 +1,380 @@
+---
+/**
+ * Renders a feature sub-page's sections from data.
+ *
+ * Backgrounds alternate on their own so a page reads as bands without every
+ * content file having to say so; `bg` overrides where the mockup breaks the
+ * rhythm. Each section may close with an aside, a banner or a last paragraph
+ * — those are trailing slots rather than sections of their own, so the band
+ * keeps one set of vertical padding.
+ */
+import type { Section, Tone } from '../../data/subpages/types';
+import type { Locale } from '../../data/landingContent';
+import HomeIcon from '../home/HomeIcon.astro';
+import SubVisual from './SubVisual.astro';
+import SubCallout from './SubCallout.astro';
+import SubNote from './SubNote.astro';
+
+interface Props {
+  sections: Section[];
+  locale: Locale;
+}
+
+const { sections, locale } = Astro.props;
+
+const BG = { a: 'bg-[#05070F]', b: 'bg-[#070A14]' } as const;
+
+const ink: Record<Tone, string> = {
+  blue: 'text-[#7AB8FF]',
+  green: 'text-[#8CE99A]',
+  orange: 'text-[#FF8400]',
+  red: 'text-[#FF5C33]',
+  plain: 'text-[#68779A]',
+};
+const dot: Record<Tone, string> = {
+  blue: 'bg-[#7AB8FF]',
+  green: 'bg-[#8CE99A]',
+  orange: 'bg-[#FF8400]',
+  red: 'bg-[#FF5C33]',
+  plain: 'bg-[#68779A]',
+};
+const edge: Record<Tone, string> = {
+  blue: 'outline-[#2D7FF959]',
+  green: 'outline-[#8CE99A4D]',
+  orange: 'outline-[#FF84004D]',
+  red: 'outline-[#FF5C334D]',
+  plain: 'outline-[#FFFFFF14]',
+};
+---
+
+{
+  sections.map((s, i) => {
+    const bg = BG[s.bg ?? (i % 2 === 0 ? 'b' : 'a')];
+    const head = s.kicker || s.title || s.body;
+    /* A section that is only a banner or an aside needs no top margin on it. */
+    const bare = s.kind === 'callout' || s.kind === 'note';
+
+    return (
+      <section
+        id={s.id}
+        class={`${bg} py-16 md:py-[88px] ${s.id ? 'scroll-mt-20' : ''}`}
+        aria-labelledby={s.title ? `sub-s${i}` : undefined}
+      >
+        <div class="hl-wrap">
+          {head && (
+            <div class="hl-reveal max-w-[55rem]">
+              {s.kicker && (
+                <p class="font-mono text-[0.63rem] tracking-[0.13em] text-[#68779A]">{s.kicker}</p>
+              )}
+              {s.title && (
+                <h2 id={`sub-s${i}`} class="hl-display mt-3.5 text-[clamp(1.75rem,3.6vw,2.4rem)]">
+                  {s.title}
+                </h2>
+              )}
+              {s.body && <p class="mt-4 text-[0.94rem] leading-[1.66] text-[#68779A]">{s.body}</p>}
+            </div>
+          )}
+
+          {/* Capture above the section body, when the band opens on one. */}
+          {s.visual && (
+            <div class={`hl-reveal ${head ? 'mt-9' : ''}`}>
+              <SubVisual name={s.visual} locale={locale} />
+            </div>
+          )}
+
+          {/* ── Card grid ─────────────────────────────────────────── */}
+          {s.kind === 'cards' && (
+            <ul
+              class={`hl-reveal mt-9 grid gap-5 sm:grid-cols-2 ${s.per === 2 ? '' : 'lg:grid-cols-3'}`}
+              data-stagger
+            >
+              {s.cards.map((c) => (
+                <li class="hl-lift flex flex-col gap-3 rounded-[16px] bg-[#0C1120] p-6 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+                  <span class="grid size-[38px] place-items-center rounded-[11px] bg-[#2D7FF914] text-[#7AB8FF] outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]">
+                    <HomeIcon name={c.icon} size={17} />
+                  </span>
+                  <h3 class="hl-display text-[1.09rem] tracking-[-0.02em]">{c.title}</h3>
+                  <p class="text-[0.84rem] leading-[1.63] text-[#9AA8C4]">{c.desc}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* ── Definition rows ───────────────────────────────────── */}
+          {s.kind === 'rows' && (
+            <ul class="hl-reveal mt-9" data-stagger>
+              {s.rows.map((r) => (
+                <li class="grid gap-x-10 gap-y-3 border-t border-[#FFFFFF14] py-6 md:grid-cols-[minmax(0,280px)_minmax(0,1fr)] md:items-start lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)_minmax(0,180px)]">
+                  <div>
+                    {s.pill ? (
+                      <span class="inline-flex rounded-full bg-[#FFFFFF08] px-3.5 py-1.5 font-mono text-[0.72rem] text-[#9AA8C4] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+                        {r.name}
+                      </span>
+                    ) : (
+                      <h3
+                        class={`hl-display text-[1.25rem] tracking-[-0.03em] ${r.tone ? ink[r.tone] : ''}`}
+                      >
+                        {r.name}
+                      </h3>
+                    )}
+                    {r.sub && <p class="mt-1.5 font-mono text-[0.69rem] text-[#68779A]">{r.sub}</p>}
+                  </div>
+                  <p class="text-[0.875rem] leading-[1.64] text-[#B4C0D6]">{r.desc}</p>
+                  {r.chip && (
+                    <div class="lg:justify-self-end">
+                      <span
+                        class={`inline-flex rounded-full bg-[#FFFFFF08] px-3 py-1 font-mono text-[0.63rem] whitespace-nowrap outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] ${ink[r.chip.tone ?? 'plain']}`}
+                      >
+                        {r.chip.label}
+                      </span>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* ── Columns split by hairlines ────────────────────────── */}
+          {s.kind === 'columns' && (
+            <ul class="hl-reveal mt-9 grid gap-x-0 gap-y-8 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(0,1fr))]" data-stagger>
+              {s.cols.map((c, ci) => (
+                <li
+                  class={`sm:px-7 sm:first:pl-0 ${ci > 0 ? 'sm:border-l sm:border-[#FFFFFF14]' : ''}`}
+                >
+                  {c.eyebrow && (
+                    <p class={`font-mono text-[0.66rem] tracking-[0.1em] ${ink[c.tone ?? 'blue']}`}>
+                      {c.eyebrow}
+                    </p>
+                  )}
+                  <h3
+                    class={`hl-display text-[1.2rem] tracking-[-0.03em] ${c.eyebrow ? 'mt-2.5' : ''} ${c.tone && !c.eyebrow ? ink[c.tone] : ''}`}
+                  >
+                    {c.title}
+                  </h3>
+                  <p class="mt-2.5 text-[0.84rem] leading-[1.63] text-[#68779A]">{c.desc}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* ── Panels compared ───────────────────────────────────── */}
+          {s.kind === 'panels' && (
+            <ul
+              class={`hl-reveal mt-9 grid gap-6 ${
+                s.panels.length === 1 ? '' : s.panels.length > 2 ? 'md:grid-cols-3' : 'md:grid-cols-2'
+              }`}
+              data-stagger
+            >
+              {s.panels.map((p) => (
+                <li
+                  class={`flex flex-col gap-3 rounded-[16px] bg-[#FFFFFF05] p-7 outline-1 -outline-offset-[0.5px] ${edge[p.tone ?? 'plain']}`}
+                >
+                  <h3 class="hl-display text-[1.35rem] tracking-[-0.03em]">{p.title}</h3>
+                  {p.eyebrow && (
+                    <p class={`font-mono text-[0.7rem] ${ink[p.tone ?? 'plain']}`}>{p.eyebrow}</p>
+                  )}
+                  {p.lead && (
+                    <p class="text-[1rem] leading-[1.35] font-semibold text-[#F8FAFC]">{p.lead}</p>
+                  )}
+                  {p.desc && <p class="text-[0.875rem] leading-[1.64] text-[#9AA8C4]">{p.desc}</p>}
+                  {p.items && (
+                    <ul class="mt-1 grid gap-2.5">
+                      {p.items.map((it) => (
+                        <li class="flex items-start gap-2.5">
+                          <span
+                            class={`mt-[7px] size-[5px] shrink-0 rounded-full ${dot[p.tone ?? 'blue']}`}
+                            aria-hidden="true"
+                          />
+                          <span class="text-[0.81rem] leading-[1.55] text-[#9AA8C4]">{it}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* ── Comparison table ──────────────────────────────────── */}
+          {s.kind === 'compare' && (
+            <div class="hl-reveal mt-9">
+              <div class="hidden gap-10 pb-4 md:grid md:grid-cols-[minmax(0,190px)_minmax(0,1fr)_minmax(0,1fr)]">
+                <span aria-hidden="true" />
+                {s.heads.map((h, hi) => (
+                  <h3
+                    class={`hl-display text-[1.18rem] tracking-[-0.03em] ${ink[s.tones?.[hi] ?? 'plain']}`}
+                  >
+                    {h}
+                  </h3>
+                ))}
+              </div>
+              <ul data-stagger>
+                {s.rows.map((r) => (
+                  <li class="grid gap-x-10 gap-y-2 border-t border-[#FFFFFF14] py-6 md:grid-cols-[minmax(0,190px)_minmax(0,1fr)_minmax(0,1fr)]">
+                    <p class="font-mono text-[0.69rem] tracking-[0.06em] text-[#68779A]">{r.label}</p>
+                    <p class="text-[0.875rem] leading-[1.6] text-[#C3CDE0]">
+                      <span class={`font-semibold md:hidden ${ink[s.tones?.[0] ?? 'plain']}`}>
+                        {s.heads[0]} —{' '}
+                      </span>
+                      {r.a}
+                    </p>
+                    <p class="text-[0.875rem] leading-[1.6] text-[#C3CDE0]">
+                      <span class={`font-semibold md:hidden ${ink[s.tones?.[1] ?? 'plain']}`}>
+                        {s.heads[1]} —{' '}
+                      </span>
+                      {r.b}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* ── Before / during / after rail ──────────────────────── */}
+          {s.kind === 'rail' && (
+            <ol class="hl-reveal mt-11 grid gap-8 md:grid-cols-3 md:gap-7" data-stagger>
+              {s.steps.map((st, si) => {
+                const live = si === (s.activeIndex ?? -1);
+                return (
+                  <li>
+                    <span
+                      class={`block size-[9px] rounded-full ${live ? 'bg-[#2D7FF9]' : 'bg-[#68779A]'}`}
+                      aria-hidden="true"
+                    />
+                    <span
+                      class={`mt-2.5 block h-px w-full ${live ? 'bg-[#2D7FF9]' : 'bg-[#FFFFFF29]'}`}
+                      aria-hidden="true"
+                    />
+                    <p
+                      class={`mt-6 font-mono text-[0.66rem] tracking-[0.11em] ${live ? 'text-[#2D7FF9]' : 'text-[#68779A]'}`}
+                    >
+                      {st.num}
+                    </p>
+                    <h3 class="hl-display mt-3 text-[1.2rem] tracking-[-0.03em]">{st.title}</h3>
+                    <p class="mt-3 text-[0.84rem] leading-[1.63] text-[#68779A]">{st.desc}</p>
+                    {st.items && (
+                      <ul class="mt-4 grid gap-2.5">
+                        {st.items.map((it) => (
+                          <li class="flex items-start gap-2.5">
+                            <span
+                              class={`shrink-0 font-mono text-[0.72rem] ${live ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`}
+                              aria-hidden="true"
+                            >
+                              —
+                            </span>
+                            <span class="text-[0.81rem] leading-[1.55] text-[#B4C0D6]">{it}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          )}
+
+          {/* ── Nested scales ─────────────────────────────────────── */}
+          {s.kind === 'nested' && (
+            <ol class="hl-reveal mt-9" data-stagger>
+              {s.levels.map((lv, li) => (
+                <li style={`padding-left: ${li * 2.25}rem;`}>
+                  <div
+                    class={`border-t border-[#FFFFFF14] py-6 ${li > 0 ? 'border-l border-l-[#FFFFFF14] pl-6' : ''}`}
+                  >
+                    <div class="flex flex-wrap items-baseline gap-x-3.5 gap-y-1">
+                      <h3
+                        class={`hl-display text-[1.3rem] tracking-[-0.02em] ${li === (s.activeIndex ?? -1) ? 'text-[#7AB8FF]' : ''}`}
+                      >
+                        {lv.name}
+                      </h3>
+                      <p class="font-mono text-[0.69rem] text-[#68779A]">{lv.where}</p>
+                    </div>
+                    <p class="mt-2.5 text-[0.875rem] leading-[1.64] text-[#68779A]">{lv.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
+
+          {/* ── Headline figures ──────────────────────────────────── */}
+          {s.kind === 'stats' && (
+            <ul
+              class={`hl-reveal ${head ? 'mt-8' : ''} grid gap-4 sm:grid-cols-2 lg:grid-cols-4`}
+              data-stagger
+            >
+              {s.stats.map((st) => (
+                <li class="rounded-[14px] bg-[#0C1120] px-6 py-5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+                  <p
+                    class={`hl-display text-[2.1rem] tracking-[-0.04em] ${st.tone ? ink[st.tone] : 'text-[#F8FAFC]'}`}
+                  >
+                    {st.value}
+                  </p>
+                  <p class="mt-1.5 text-[0.81rem] leading-[1.45] text-[#9AA8C4]">{st.label}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* ── Pointer to a neighbouring page ────────────────────── */}
+          {s.kind === 'crosslink' && (
+            <a
+              href={s.link.href}
+              class="hl-row hl-btn hl-reveal mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#FFFFFF0D] px-6 py-[14px] text-[0.9rem] font-semibold text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
+            >
+              {s.link.label}
+              <HomeIcon name="arrow-right" size={15} class="hl-row__icon text-[#7AB8FF]" />
+            </a>
+          )}
+
+          {/* ── Bespoke capture ───────────────────────────────────── */}
+          {s.kind === 'visual' && (
+            <div class={`hl-reveal ${head ? 'mt-9' : ''}`}>
+              <SubVisual name={s.name} locale={locale} />
+            </div>
+          )}
+
+          {/* ── Standalone banner / aside ─────────────────────────── */}
+          {s.kind === 'callout' && (
+            <SubCallout
+              tone={s.tone}
+              icon={s.icon}
+              text={s.text}
+              link={s.link}
+              class={`hl-reveal ${head ? 'mt-8' : ''}`}
+            />
+          )}
+          {s.kind === 'note' && (
+            <SubNote
+              label={s.label}
+              desc={s.desc}
+              icon={s.icon}
+              class={`hl-reveal ${head ? 'mt-8' : ''}`}
+            />
+          )}
+
+          {/* ── Trailing slots, inside the same band ──────────────── */}
+          {!bare && s.callouts && (
+            <div class="mt-9 grid gap-4">
+              {s.callouts.map((c) => (
+                <SubCallout tone={c.tone} icon={c.icon} text={c.text} link={c.link} class="hl-reveal" />
+              ))}
+            </div>
+          )}
+          {!bare && s.note && (
+            <SubNote
+              label={s.note.label}
+              desc={s.note.desc}
+              icon={s.note.icon}
+              class="hl-reveal mt-9"
+            />
+          )}
+          {!bare && s.foot && (
+            <p class="hl-reveal mt-9 max-w-[58rem] text-[0.84rem] leading-[1.63] text-[#68779A]">
+              {s.foot}
+            </p>
+          )}
+        </div>
+      </section>
+    );
+  })
+}
