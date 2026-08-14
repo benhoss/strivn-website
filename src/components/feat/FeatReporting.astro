@@ -1,0 +1,30 @@
+---
+import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
+import { SECTION_ICONS } from '../../data/featuresIndexContent';
+import type { ScPageContent } from '../../data/scPageContent';
+import ReportingDashboard from '../shared/ReportingDashboard.astro';
+import FeatHead from './FeatHead.astro';
+import FeatModules from './FeatModules.astro';
+
+interface Props {
+  reporting: FeaturesIndexContent['reporting'];
+  dashboard: ScPageContent['reports']['dashboard'];
+}
+
+const { reporting: c, dashboard } = Astro.props;
+---
+
+<section id="pilotage" class="scroll-mt-20 bg-[#05070F] py-20 md:py-24" aria-labelledby="feat-reporting-title">
+  <div class="hl-wrap">
+    <FeatHead kicker={c.kicker} title={c.title} body={c.body} id="feat-reporting-title" accent="text-[#2D7FF9]" />
+
+    <div class="mt-11 grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,600px)] lg:gap-16">
+      <FeatModules modules={c.modules} icons={SECTION_ICONS.reporting} class="order-2 lg:order-1 lg:pt-2" />
+      <ReportingDashboard
+        dashboard={dashboard}
+        class="hl-reveal hl-reveal--card hl-parallax order-1 lg:order-2"
+        style="--d: 120ms;"
+      />
+    </div>
+  </div>
+</section>

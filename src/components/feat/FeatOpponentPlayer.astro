@@ -1,0 +1,128 @@
+---
+import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
+import { SECTION_ICONS } from '../../data/featuresIndexContent';
+import type { HomeContent } from '../../data/homeContent';
+import HomeIcon from '../home/HomeIcon.astro';
+import FeatModules from './FeatModules.astro';
+
+interface Props {
+  opponent: FeaturesIndexContent['opponent'];
+  player: FeaturesIndexContent['player'];
+  /** Player-app phone screen, reused from the homepage (already translated). */
+  phone: HomeContent['playerApp']['phone'];
+}
+
+const { opponent: o, player: p, phone } = Astro.props;
+
+/** RPE scale: value out of 10 drives how many segments light up. */
+const rpeValue = Number.parseInt(phone.rpe.value, 10) || 7;
+---
+
+<section id="adversaire" class="scroll-mt-20 bg-[#070A14] py-20 md:py-24" aria-labelledby="feat-opponent-title">
+  <div class="hl-wrap grid gap-16 lg:grid-cols-2">
+    <!-- Opponent -->
+    <div>
+      <p class="hl-reveal font-mono text-[0.63rem] tracking-[0.13em] text-[#9AA8C4]">{o.kicker}</p>
+      <h2 id="feat-opponent-title" class="hl-reveal hl-display mt-3.5 text-[clamp(1.6rem,3vw,1.9rem)]" style="--d: 70ms;">
+        {o.title}
+      </h2>
+
+      <div
+        class="hl-reveal hl-reveal--card mt-7 flex flex-col gap-2.5 rounded-[16px] p-5 [background-image:linear-gradient(90deg,#121A31_0%,#090D19_100%)] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+        style="--d: 120ms;"
+      >
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <p class="text-[0.78rem] font-semibold text-[#F8FAFC]">{o.visual.title}</p>
+          <span class="font-mono text-[0.6rem] text-[#68779A]">{o.visual.meta}</span>
+        </div>
+        <ul class="flex flex-col gap-2.5" data-stagger>
+          {o.visual.items.map((item, i) => (
+            <li class="flex items-center gap-3 rounded-[9px] bg-[#FFFFFF06] px-3 py-2.5">
+              <HomeIcon name={['pen-tool', 'play', 'camera'][i]} size={14} class="shrink-0 text-[#9AA8C4]" />
+              <span class="min-w-0 flex-1 truncate text-[0.75rem] text-[#DCE4F2]">{item.label}</span>
+              <span class="shrink-0 font-mono text-[0.57rem] whitespace-nowrap text-[#68779A]">{item.meta}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <FeatModules modules={o.modules} icons={SECTION_ICONS.opponent} compact class="mt-7" />
+    </div>
+
+    <!-- Player & parents -->
+    <div class="grid items-center gap-10 sm:grid-cols-[minmax(0,1fr)_auto]">
+      <div>
+        <p class="hl-reveal hl-kicker">{p.kicker}</p>
+        <h2 class="hl-reveal hl-display mt-3.5 text-[clamp(1.6rem,3vw,1.9rem)]" style="--d: 70ms;">{p.title}</h2>
+        <FeatModules modules={p.modules} icons={SECTION_ICONS.player} compact class="mt-6" />
+      </div>
+
+      <!-- Player app phone (CSS-drawn, no screenshot) -->
+      <div
+        class="hl-reveal hl-reveal--right mx-auto w-full max-w-[250px] rounded-[42px] bg-[#161C2E] p-2.5 outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] [box-shadow:0_38px_80px_-16px_rgba(0,0,0,0.8)]"
+        style="--d: 160ms;"
+      >
+        <div class="flex flex-col gap-3.5 rounded-[34px] px-[18px] pt-4 pb-6 [background-image:linear-gradient(90deg,#0E1628_0%,#070B15_100%)]">
+          <div class="flex items-center justify-between">
+            <span class="text-[0.72rem] font-semibold text-[#F8FAFC]">{phone.time}</span>
+            <span class="flex items-end gap-[2px]" aria-hidden="true">
+              {[4, 6, 8, 10].map((h) => <span class="w-[2px] rounded-full bg-[#9AA8C4]" style={`height: ${h}px;`}></span>)}
+            </span>
+          </div>
+
+          <div>
+            <p class="hl-display text-[1.3rem] leading-none">{phone.greeting}</p>
+            <p class="mt-1 text-[0.72rem] text-[#68779A]">{phone.team}</p>
+          </div>
+
+          <div class="rounded-[16px] bg-[#2D7FF91A] p-3.5 outline-1 outline-[#2D7FF947] -outline-offset-[0.5px]">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{phone.wellness.title}</p>
+              <span class="font-mono text-[0.6rem] text-[#7AB8FF]">{phone.wellness.badge}</span>
+            </div>
+            {phone.wellness.rows.map((row) => (
+              <div class="mt-2.5 flex items-center justify-between gap-2.5">
+                <span class="text-[0.69rem] text-[#9AA8C4]">{row.label}</span>
+                <span class="flex gap-1">
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <span
+                      class={`size-[17px] rounded-[5px] ${i + 1 === row.value ? 'bg-[#2D7FF9]' : 'bg-[#FFFFFF12] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]'}`}
+                    ></span>
+                  ))}
+                </span>
+              </div>
+            ))}
+            <p class="mt-3 rounded-[10px] bg-[#2D7FF9] py-2.5 text-center text-[0.75rem] font-semibold text-white">
+              {phone.wellness.submit}
+            </p>
+          </div>
+
+          <div class="rounded-[16px] bg-[#FFFFFF08] p-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-[0.75rem] font-semibold text-[#F8FAFC]">{phone.rpe.title}</p>
+              <span class="hl-display text-[1.05rem] leading-none text-[#7AB8FF]">{phone.rpe.value}</span>
+            </div>
+            <div class="mt-2.5 flex gap-1">
+              {Array.from({ length: 10 }, (_, i) => (
+                <span
+                  class={`h-6 flex-1 rounded-[6px] ${
+                    i + 1 === rpeValue ? 'bg-[#2D7FF9]' : i + 1 < rpeValue ? 'bg-[#2D7FF966]' : 'bg-[#FFFFFF0F]'
+                  }`}
+                ></span>
+              ))}
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 rounded-[16px] bg-[#FFFFFF08] p-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+            <HomeIcon name="dumbbell" size={15} class="shrink-0 text-[#8CE99A]" />
+            <div class="min-w-0 flex-1">
+              <p class="truncate text-[0.72rem] font-medium text-[#DCE4F2]">{phone.workout.title}</p>
+              <p class="mt-0.5 truncate text-[0.63rem] text-[#68779A]">{phone.workout.meta}</p>
+            </div>
+            <HomeIcon name="arrow-right" size={14} class="shrink-0 text-[#68779A]" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

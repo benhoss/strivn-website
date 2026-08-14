@@ -107,7 +107,7 @@ const jsonLdExtra = [
     </div>
   </section>
 
-  <!-- Showcase · real-app screenshot carousels (optional; carousel pattern shared with ScPage) -->
+  <!-- Showcase · real-app screenshot carousels (optional) -->
   {(f.showcase ?? []).map((show, si) => (
     <section class={`fp-show ${si % 2 === 1 ? 'fp-show--alt' : ''}`}>
       <div class="s-wrap">
@@ -385,9 +385,8 @@ const jsonLdExtra = [
     max-width: 52ch;
   }
 
-  /* Showcase — screenshot carousel; classes + rules copied verbatim from
-     ScPage.astro (sc-car / sc-frame) so a later unit can extract a shared
-     component without divergence. Styles are Astro-scoped, so no collision. */
+  /* Showcase — screenshot carousel. This is now the only implementation of
+     the pattern; styles are Astro-scoped, so no collision. */
   .fp-show--alt {
     background: var(--void-soft);
   }
@@ -719,7 +718,7 @@ const jsonLdExtra = [
 
 <script>
   // ── Screenshot carousels: scroll-snap + prev/next + dots ──
-  // Ported from ScPage.astro; no-ops on pages without a [data-car] carousel.
+  // No-ops on pages without a [data-car] carousel.
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.querySelectorAll('[data-car]').forEach((car) => {

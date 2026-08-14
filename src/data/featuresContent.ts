@@ -4,7 +4,7 @@ export const FEATURE_SLUGS = ['communication', 'medical', 'training-load', 'sess
 
 export type FeatureSlug = (typeof FEATURE_SLUGS)[number];
 
-/** Mirrors the `Slide` shape in scContent.ts — exported so a later unit can unify the two. */
+/** One screenshot (or short video) in a feature-page showcase carousel. */
 export type Slide = {
   img: string;
   /** Optional video base path (without extension); .mp4 + .webm are loaded, img is the poster. */
@@ -14,7 +14,7 @@ export type Slide = {
   caption: string;
 };
 
-/** Mirrors the `Showcase` shape in scContent.ts — exported so a later unit can unify the two. */
+/** A titled group of slides rendered as one showcase carousel. */
 export type Showcase = {
   title: string;
   blurb: string;

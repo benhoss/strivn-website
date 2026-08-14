@@ -1,0 +1,48 @@
+---
+/**
+ * The module list that sits opposite each section's product capture.
+ *
+ * Rows carry `hl-row` so the pointer gets a response: surface tint, an accent
+ * rule growing at the left edge, and the icon nudging right. Without it a
+ * column of eight rows reads as inert body text.
+ */
+import type { ModuleText } from '../../data/featuresIndexContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  modules: ModuleText[];
+  icons: readonly string[];
+  /** Accent colour driving the hover rule; defaults to the house blue. */
+  accent?: string;
+  /**
+   * Keep name and description stacked at every width. Required in narrow
+   * columns: the side-by-side layout needs ~400px, and below that the
+   * description collapses to one word per line.
+   */
+  compact?: boolean;
+  class?: string;
+}
+
+const { modules, icons, accent = 'text-[#2D7FF9]', compact = false, class: className = '' } = Astro.props;
+
+/* Name and description live in their own nested grid rather than sharing the
+ * row's grid with the icon. Placing them by flow instead of `col-start`
+ * avoids relying on a `col-start-2` / `sm:col-start-3` pair, which carry equal
+ * specificity and so resolve by stylesheet order — the description landed in
+ * the 200px name column and collapsed. */
+const textCols = compact
+  ? 'grid gap-1'
+  : 'grid gap-1 sm:grid-cols-[minmax(0,200px)_minmax(0,1fr)] sm:items-center sm:gap-3.5';
+---
+
+<ul class={`hl-reveal ${className}`} data-stagger>
+  {modules.map((m, i) => (
+    <li class={`hl-row flex items-start gap-3.5 border-t border-[#FFFFFF14] py-[13px] first:border-t-0 ${accent}`}>
+      <HomeIcon name={icons[i] ?? 'check-circle'} size={16} class="hl-row__icon mt-1 shrink-0 text-[#68779A]" />
+      <div class={`min-w-0 flex-1 ${textCols}`}>
+        <p class="text-[0.9rem] leading-[1.4] font-medium text-[#F8FAFC]">{m.name}</p>
+        <p class="text-[0.78rem] leading-[1.45] text-[#9AA8C4]">{m.desc}</p>
+      </div>
+    </li>
+  ))}
+</ul>
