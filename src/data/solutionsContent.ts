@@ -18,11 +18,14 @@ type Tone = 'plain' | 'green' | 'blue' | 'orange';
  * break the moment the pitch is not exactly 560×700.
  */
 export const PITCH_SPOTS: Array<{ num: string; x: number; y: number; tone: Tone; captain?: boolean }> = [
-  { num: '9', x: 50, y: 8, tone: 'plain' },
-  { num: '10', x: 29.5, y: 27.9, tone: 'green' },
-  { num: '8', x: 70.5, y: 27.9, tone: 'plain' },
-  { num: '6', x: 50, y: 48.9, tone: 'blue', captain: true },
-  { num: '4', x: 50, y: 67.9, tone: 'plain' },
+  /* Markers are centred on their point, so each one occupies roughly ±6% of
+     the pitch height. The values below keep every block clear of the boxes and
+     the centre circle — except the captain, who is framed by it on purpose. */
+  { num: '9', x: 50, y: 17, tone: 'plain' },
+  { num: '10', x: 26, y: 33.5, tone: 'green' },
+  { num: '8', x: 74, y: 33.5, tone: 'plain' },
+  { num: '6', x: 50, y: 50, tone: 'blue', captain: true },
+  { num: '4', x: 50, y: 68, tone: 'plain' },
   { num: '1', x: 50, y: 84, tone: 'orange' },
 ];
 

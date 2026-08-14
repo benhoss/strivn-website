@@ -10,7 +10,7 @@ interface Props {
 
 const { locale, compo: c } = Astro.props;
 
-/** Shirt colours: the captain is the only one that glows. */
+/** Shirt colours: the captain is the only one that carries a glow. */
 const tone: Record<string, { ring: string; text: string; glow: string }> = {
   plain: { ring: 'outline-[#C3CDE066]', text: 'text-[#C3CDE0]', glow: '' },
   green: { ring: 'outline-[#8CE99A66]', text: 'text-[#8CE99A]', glow: '' },
@@ -31,6 +31,18 @@ const hrefs = ROSTER_TARGETS.map((t) =>
       ? `${base}/features/${t.slug}/`
       : 'mailto:hello@strivn.net',
 );
+
+/**
+ * The page claims six roles share one pitch; this is what proves it. Engaging
+ * a roster row picks its shirt out of the formation and lets the rest recede,
+ * so the two panels read as one object instead of two lists side by side.
+ * CSS can't match an attribute value across two selectors, so the pairs are
+ * generated from the same constant the markup uses — they cannot drift.
+ */
+const linkRules = PITCH_SPOTS.map(
+  (s) =>
+    `#solutions:has(.sol-row[data-role="${s.num}"]:is(:hover,:focus-visible)) .sol-spot[data-role="${s.num}"]{opacity:1}`,
+).join('');
 ---
 
 <section id="solutions" class="scroll-mt-20 bg-[#070A14] py-20 md:py-24" aria-labelledby="sol-compo-title">
@@ -45,38 +57,43 @@ const hrefs = ROSTER_TARGETS.map((t) =>
       <p class="hl-reveal text-[0.9rem] leading-[1.6] text-[#9AA8C4] lg:pb-1.5" style="--d: 100ms;">{c.body}</p>
     </div>
 
-    <div class="mt-12 grid items-center gap-14 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-[72px]">
-      <!-- Pitch: CSS-drawn, markers placed in % so the formation scales -->
+    <div class="mt-12 grid items-center gap-14 lg:grid-cols-[minmax(0,520px)_minmax(0,1fr)] lg:gap-[72px]">
+      <!-- Pitch: drawn in CSS, markers placed in % so the formation scales -->
       <div class="hl-reveal hl-reveal--card flex flex-col items-center gap-4">
         <div
           class="relative w-full overflow-hidden rounded-[16px] [aspect-ratio:4/5] [background-image:linear-gradient(90deg,#0C1428_0%,#070C1A_100%)] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px]"
         >
-          <!-- Pitch markings, purely decorative -->
-          <span class="pointer-events-none absolute inset-[5%_5%] rounded-[2px] outline-1 outline-[#FFFFFF12]" aria-hidden="true"></span>
-          <span class="pointer-events-none absolute top-1/2 right-[5%] left-[5%] h-px bg-[#FFFFFF12]" aria-hidden="true"></span>
+          <!-- Markings, decorative. Kept at the extremes and hairline-thin so
+               they frame the formation instead of cutting through it. -->
+          <span class="pointer-events-none absolute inset-[3%_5%] rounded-[2px] outline-1 outline-[#FFFFFF0F]" aria-hidden="true"></span>
+          <span class="pointer-events-none absolute top-1/2 right-[5%] left-[5%] h-px bg-[#FFFFFF0F]" aria-hidden="true"></span>
           <span
-            class="pointer-events-none absolute top-1/2 left-1/2 size-[19.6%] -translate-x-1/2 -translate-y-1/2 rounded-full outline-1 outline-[#FFFFFF12]"
+            class="pointer-events-none absolute top-1/2 left-1/2 size-[22%] -translate-x-1/2 -translate-y-1/2 rounded-full outline-1 outline-[#FFFFFF0F]"
             aria-hidden="true"></span>
-          <span
-            class="pointer-events-none absolute top-1/2 left-1/2 size-[6px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FFFFFF12]"
-            aria-hidden="true"></span>
-          <span class="pointer-events-none absolute top-[4%] left-1/2 h-[12%] w-[39.3%] -translate-x-1/2 outline-1 outline-[#FFFFFF12]" aria-hidden="true"></span>
-          <span class="pointer-events-none absolute top-[4%] left-1/2 h-[4.9%] w-[19.6%] -translate-x-1/2 outline-1 outline-[#FFFFFF12]" aria-hidden="true"></span>
-          <span class="pointer-events-none absolute bottom-[4%] left-1/2 h-[12%] w-[39.3%] -translate-x-1/2 outline-1 outline-[#FFFFFF12]" aria-hidden="true"></span>
-          <span class="pointer-events-none absolute bottom-[4%] left-1/2 h-[4.9%] w-[19.6%] -translate-x-1/2 outline-1 outline-[#FFFFFF12]" aria-hidden="true"></span>
+          <span class="pointer-events-none absolute top-[3%] left-1/2 h-[5.5%] w-[38%] -translate-x-1/2 outline-1 outline-[#FFFFFF0F]" aria-hidden="true"></span>
+          <span class="pointer-events-none absolute top-[3%] left-1/2 h-[2.4%] w-[18%] -translate-x-1/2 outline-1 outline-[#FFFFFF0F]" aria-hidden="true"></span>
+          <span class="pointer-events-none absolute bottom-[3%] left-1/2 h-[5.5%] w-[38%] -translate-x-1/2 outline-1 outline-[#FFFFFF0F]" aria-hidden="true"></span>
+          <span class="pointer-events-none absolute bottom-[3%] left-1/2 h-[2.4%] w-[18%] -translate-x-1/2 outline-1 outline-[#FFFFFF0F]" aria-hidden="true"></span>
 
+          <!-- Markers are centred with `transform`, not Tailwind's translate
+               utilities: those write the `translate` property, which is the one
+               the stagger animation owns — and `html.js-anim [data-stagger] > *`
+               outranks a utility class, so the markers were silently pinned by
+               their top-left corner. `transform` composes with `translate`
+               instead of fighting it. -->
           <ul data-stagger>
             {PITCH_SPOTS.map((spot, i) => (
               <li
-                class="absolute flex -translate-x-1/2 flex-col items-center gap-[7px]"
+                class="sol-spot absolute flex flex-col items-center gap-2 [transform:translate(-50%,-50%)]"
+                data-role={spot.num}
                 style={`left: ${spot.x}%; top: ${spot.y}%;`}
               >
                 <span
-                  class={`grid size-[54px] place-items-center rounded-full [background-image:linear-gradient(90deg,#18223F,#0A101F)] outline-1 -outline-offset-[0.5px] ${tone[spot.tone].ring} ${tone[spot.tone].glow} ${spot.captain ? 'hl-breathe' : ''}`}
+                  class={`grid size-[52px] place-items-center rounded-full [background-image:linear-gradient(90deg,#18223F,#0A101F)] outline-1 -outline-offset-[0.5px] ${tone[spot.tone].ring} ${tone[spot.tone].glow} ${spot.captain ? 'hl-breathe' : ''}`}
                 >
-                  <span class={`hl-display text-[1.19rem] leading-none ${tone[spot.tone].text}`}>{spot.num}</span>
+                  <span class={`hl-display text-[1.15rem] leading-none ${tone[spot.tone].text}`}>{spot.num}</span>
                 </span>
-                <span class="flex items-center gap-1.5 rounded-full bg-[#05070FD9] px-2.5 py-1 font-mono text-[0.53rem] tracking-[0.11em] whitespace-nowrap text-[#C3CDE0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+                <span class="flex items-center gap-1.5 rounded-full bg-[#05070FE6] px-2.5 py-1 font-mono text-[0.53rem] tracking-[0.11em] whitespace-nowrap text-[#C3CDE0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
                   {c.spots[i]}
                   {spot.captain && <span class="text-[#FF8400]">{c.captain}</span>}
                 </span>
@@ -93,53 +110,74 @@ const hrefs = ROSTER_TARGETS.map((t) =>
         {c.roster.map((row, i) => {
           const isCaptain = i === 0;
           const isSoon = i === SOON_INDEX;
-          return (
-            <li
-              class={
-                isCaptain
-                  ? 'rounded-[12px] bg-[#2D7FF912] p-5 outline-1 outline-[#2D7FF959] -outline-offset-[0.5px]'
-                  : 'border-t border-[#FFFFFF14]'
-              }
-            >
-              <!-- Two nested grids rather than one flex-wrap row. Wrapping made
-                   the link column ragged — a long description pushed its CTA to
-                   the next line while short ones kept it inline. Nesting also
-                   avoids placing the CTA with `col-start`, whose responsive
-                   variant carries equal specificity and resolves by stylesheet
-                   order rather than by breakpoint. -->
-              <a
-                href={hrefs[i]}
-                class={`hl-row grid grid-cols-[40px_minmax(0,1fr)] items-center gap-x-4 text-[#7AB8FF] ${isCaptain ? '' : 'px-1 py-[18px]'}`}
-              >
-                <span
-                  class={`grid size-10 shrink-0 place-items-center rounded-full outline-1 -outline-offset-[0.5px] ${
-                    isCaptain ? 'bg-[#2D7FF929] outline-[#7AB8FF80]' : 'bg-[#FFFFFF07] outline-[#FFFFFF14]'
-                  }`}
+
+          /* The armband row keeps the shared header/description rhythm and is
+             set apart by its panel and glow alone — squeezing it into a
+             three-column row instead wrapped the "(C)" onto its own line and
+             crushed the description, which made the most important entry the
+             worst-reading one. */
+          if (isCaptain) {
+            return (
+              <li class="rounded-[14px] bg-[#2D7FF912] p-5 outline-1 outline-[#2D7FF959] -outline-offset-[0.5px]">
+                <a
+                  href={hrefs[i]}
+                  class="sol-row hl-row flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[#7AB8FF]"
+                  data-role={ROSTER_NUMS[i]}
                 >
-                  <span class={`hl-display text-[0.94rem] leading-none ${isCaptain ? 'text-[#7AB8FF]' : 'text-[#C3CDE0]'}`}>
-                    {ROSTER_NUMS[i]}
+                  <span class="grid size-10 shrink-0 place-items-center rounded-full bg-[#2D7FF929] outline-1 outline-[#7AB8FF80] -outline-offset-[0.5px]">
+                    <span class="hl-display text-[0.94rem] leading-none text-[#7AB8FF]">{ROSTER_NUMS[i]}</span>
                   </span>
-                </span>
-
-                <span class="grid min-w-0 gap-2.5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4">
-                  <span class="min-w-0">
-                    <span class="flex flex-wrap items-center gap-2">
-                      <span class="text-[0.94rem] font-semibold text-[#F8FAFC]">{row.name}</span>
-                      {isCaptain && <span class="font-mono text-[0.66rem] text-[#FF8400]">{c.captain}</span>}
-                      {isSoon && (
-                        <span class="rounded-full bg-[#FF840014] px-2.5 py-[3px] font-mono text-[0.53rem] tracking-[0.13em] text-[#FF8400] outline-1 outline-[#FF840040] -outline-offset-[0.5px]">
-                          {c.soon}
-                        </span>
-                      )}
-                    </span>
-                    <span class="mt-1 block text-[0.78rem] leading-[1.5] text-[#9AA8C4]">{row.desc}</span>
+                  <span class="flex min-w-0 flex-1 flex-wrap items-center gap-2.5">
+                    <span class="text-[1rem] font-semibold text-[#F8FAFC]">{row.name}</span>
+                    <span class="font-mono text-[0.66rem] text-[#FF8400]">{c.captain}</span>
                   </span>
-
-                  <span class={`hl-more shrink-0 text-[0.78rem] ${isSoon ? 'text-[#F8FAFC]' : 'text-[#7AB8FF]'}`}>
+                  <span class="hl-more order-1 w-full shrink-0 pl-14 text-[0.78rem] text-[#7AB8FF] sm:order-none sm:w-auto sm:pl-0">
                     {row.cta}
                     <HomeIcon name="arrow-right" size={13} class="hl-row__icon" />
                   </span>
+                  <span class="w-full pl-14 text-[0.81rem] leading-[1.55] text-[#9AA8C4]">{row.desc}</span>
+                </a>
+              </li>
+            );
+          }
+
+          /* Same two-part shape as the captain: a header line carrying number,
+             name and link, then the description underneath. It puts the badge
+             on the name rather than on the middle of a three-line block, lines
+             every link up on one axis, and hands the description the full
+             column instead of the ~200px leftover it had beside the link. */
+          return (
+            <li class="border-t border-[#FFFFFF14]">
+              {/* One wrapping flex row. `order-1` drops the link onto its own
+                  line on phones, where holding it beside the name left "Directeur
+                  sportif" three words tall behind a 209px link; from `sm` up it
+                  returns to the header line and every link shares one right edge. */}
+              <a
+                href={hrefs[i]}
+                class="sol-row hl-row flex flex-wrap items-center gap-x-4 gap-y-1.5 px-1 py-[18px] text-[#7AB8FF]"
+                data-role={ROSTER_NUMS[i]}
+              >
+                <span class="grid size-10 shrink-0 place-items-center rounded-full bg-[#FFFFFF07] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+                  <span class="hl-display text-[0.94rem] leading-none text-[#C3CDE0]">{ROSTER_NUMS[i]}</span>
                 </span>
+
+                <span class="flex min-w-0 flex-1 flex-wrap items-center gap-2.5">
+                  <span class="text-[0.94rem] font-semibold text-[#F8FAFC]">{row.name}</span>
+                  {isSoon && (
+                    <span class="rounded-full bg-[#FF840014] px-2.5 py-[3px] font-mono text-[0.53rem] tracking-[0.13em] text-[#FF8400] outline-1 outline-[#FF840040] -outline-offset-[0.5px]">
+                      {c.soon}
+                    </span>
+                  )}
+                </span>
+
+                <span
+                  class={`hl-more order-1 w-full shrink-0 pl-14 text-[0.78rem] sm:order-none sm:w-auto sm:pl-0 ${isSoon ? 'text-[#F8FAFC]' : 'text-[#7AB8FF]'}`}
+                >
+                  {row.cta}
+                  <HomeIcon name="arrow-right" size={13} class="hl-row__icon" />
+                </span>
+
+                <span class="w-full pl-14 text-[0.78rem] leading-[1.5] text-[#9AA8C4]">{row.desc}</span>
               </a>
             </li>
           );
@@ -148,3 +186,13 @@ const hrefs = ROSTER_TARGETS.map((t) =>
     </div>
   </div>
 </section>
+
+<style
+  is:global
+  set:html={`
+  .sol-spot { transition: opacity 220ms cubic-bezier(0.4, 0, 0.2, 1); }
+  #solutions:has(.sol-row:is(:hover, :focus-visible)) .sol-spot { opacity: 0.22; }
+  ${linkRules}
+  @media (prefers-reduced-motion: reduce) { .sol-spot { transition: none; } }
+`}
+></style>
