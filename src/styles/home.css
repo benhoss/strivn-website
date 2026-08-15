@@ -621,6 +621,12 @@ footer :is(a, button):focus-visible {
     width: 100%;
   }
 
+  /* Standing still, the row wraps instead of scrolling — and the second copy
+     the animation needs would spell out every logo twice. Drop it. */
+  .hl-marquee__clone {
+    display: none;
+  }
+
   .hl-float,
   .hl-float--late,
   .hl-pulse,
