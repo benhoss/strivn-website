@@ -201,7 +201,7 @@ const fr: FeaturesIndexContent = {
   meta: {
     title: 'Fonctionnalités STRIVN | Tout ce que la plateforme fait, module par module',
     description:
-      'Monitoring, séances, équipe, IA, rapports, adversaire et app joueur : chaque module de STRIVN en détail, avec des captures réelles.',
+      'Monitoring, séances, équipe, IA, rapports, adversaire et app joueur : chaque module de STRIVN en détail.',
   },
   nav: {
     links: [
@@ -394,7 +394,7 @@ const en: FeaturesIndexContent = {
   meta: {
     title: 'STRIVN features | Everything the platform does, module by module',
     description:
-      'Monitoring, sessions, squad, AI, reports, opponents and the player app: every STRIVN module in detail, with real captures.',
+      'Monitoring, sessions, squad, AI, reports, opponents and the player app: every STRIVN module in detail.',
   },
   nav: {
     links: [
@@ -575,7 +575,7 @@ const nl: FeaturesIndexContent = {
   meta: {
     title: 'STRIVN-functies | Alles wat het platform doet, module per module',
     description:
-      'Monitoring, trainingen, kern, AI, rapporten, tegenstander en spelersapp: elke module van STRIVN in detail, met echte schermen.',
+      'Monitoring, trainingen, kern, AI, rapporten, tegenstander en spelersapp: elke module van STRIVN in detail.',
   },
   nav: {
     links: [
@@ -761,7 +761,7 @@ const de: FeaturesIndexContent = {
   meta: {
     title: 'STRIVN Funktionen | Alles, was die Plattform leistet — Modul für Modul',
     description:
-      'Monitoring, Einheiten, Kader, KI, Berichte, Gegner und Spieler-App: jedes Modul von STRIVN im Detail, mit echten Ansichten.',
+      'Monitoring, Einheiten, Kader, KI, Berichte, Gegner und Spieler-App: jedes Modul von STRIVN im Detail.',
   },
   nav: {
     links: [
@@ -948,7 +948,7 @@ const pt: FeaturesIndexContent = {
   meta: {
     title: 'Funcionalidades STRIVN | Tudo o que a plataforma faz, módulo a módulo',
     description:
-      'Monitorização, sessões, plantel, IA, relatórios, adversário e app do jogador: cada módulo do STRIVN em detalhe, com ecrãs reais.',
+      'Monitorização, sessões, plantel, IA, relatórios, adversário e app do jogador: cada módulo do STRIVN em detalhe.',
   },
   nav: {
     links: [
@@ -1134,7 +1134,7 @@ const es: FeaturesIndexContent = {
   meta: {
     title: 'Funcionalidades STRIVN | Todo lo que hace la plataforma, módulo a módulo',
     description:
-      'Monitorización, sesiones, plantilla, IA, informes, rival y app del jugador: cada módulo de STRIVN en detalle, con pantallas reales.',
+      'Monitorización, sesiones, plantilla, IA, informes, rival y app del jugador: cada módulo de STRIVN en detalle.',
   },
   nav: {
     links: [

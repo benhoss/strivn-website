@@ -66,7 +66,6 @@ export interface HomeContent {
     kicker: string;
     title: string;
     sub: string;
-    badge: string;
     steps: [WorkflowStep, WorkflowStep, WorkflowStep, WorkflowStep, WorkflowStep, WorkflowStep];
     visuals: {
       gps: { file: string; fileSub: string; colsLabel: string; cols: Array<{ from: string; to: string }>; done: string };
@@ -390,8 +389,7 @@ const fr: HomeContent = {
     index: '02',
     kicker: 'LE WORKFLOW',
     title: 'Mesurer. Planifier. Construire. Conduire.',
-    sub: 'L’analyse n’est que la moitié du système : STRIVN planifie la charge, construit les séances et les workouts, et les conduit en direct — dans le vrai produit.',
-    badge: 'CAPTURES RÉELLES DE L’APPLICATION',
+    sub: 'L’analyse n’est que la moitié du système : STRIVN planifie la charge, construit les séances et les workouts, et les conduit en direct.',
     steps: [
       {
         index: '01 / 06',
@@ -1057,8 +1055,7 @@ const en: HomeContent = {
     index: '02',
     kicker: 'THE WORKFLOW',
     title: 'Measure. Plan. Build. Run.',
-    sub: 'Analysis is only half the system: STRIVN plans the load, builds the sessions and workouts, and runs them live — in the real product.',
-    badge: 'REAL SCREENS FROM THE APP',
+    sub: 'Analysis is only half the system: STRIVN plans the load, builds the sessions and workouts, and runs them live.',
     steps: [
       {
         index: '01 / 06',
@@ -1724,8 +1721,7 @@ const nl: HomeContent = {
     index: '02',
     kicker: 'DE WORKFLOW',
     title: 'Meten. Plannen. Bouwen. Sturen.',
-    sub: 'Analyse is maar de helft van het systeem: STRIVN plant de belasting, bouwt de trainingen en workouts, en stuurt ze live — in het echte product.',
-    badge: 'ECHTE SCHERMEN UIT DE APP',
+    sub: 'Analyse is maar de helft van het systeem: STRIVN plant de belasting, bouwt de trainingen en workouts, en stuurt ze live.',
     steps: [
       {
         index: '01 / 06',
@@ -2391,8 +2387,7 @@ const de: HomeContent = {
     index: '02',
     kicker: 'DER WORKFLOW',
     title: 'Messen. Planen. Bauen. Steuern.',
-    sub: 'Analyse ist nur die halbe Miete: STRIVN plant die Belastung, baut Einheiten und Workouts und steuert sie live — im echten Produkt.',
-    badge: 'ECHTE SCREENSHOTS AUS DER APP',
+    sub: 'Analyse ist nur die halbe Miete: STRIVN plant die Belastung, baut Einheiten und Workouts und steuert sie live.',
     steps: [
       {
         index: '01 / 06',
@@ -3058,8 +3053,7 @@ const pt: HomeContent = {
     index: '02',
     kicker: 'O WORKFLOW',
     title: 'Medir. Planear. Construir. Conduzir.',
-    sub: 'A análise é só metade do sistema: o STRIVN planeia a carga, constrói as sessões e os workouts, e conduz tudo em direto — no produto real.',
-    badge: 'CAPTURAS REAIS DA APLICAÇÃO',
+    sub: 'A análise é só metade do sistema: o STRIVN planeia a carga, constrói as sessões e os workouts, e conduz tudo em direto.',
     steps: [
       {
         index: '01 / 06',
@@ -3725,8 +3719,7 @@ const es: HomeContent = {
     index: '02',
     kicker: 'EL WORKFLOW',
     title: 'Medir. Planificar. Construir. Dirigir.',
-    sub: 'El análisis es solo la mitad del sistema: STRIVN planifica la carga, construye las sesiones y los workouts, y los dirige en directo — en el producto real.',
-    badge: 'CAPTURAS REALES DE LA APLICACIÓN',
+    sub: 'El análisis es solo la mitad del sistema: STRIVN planifica la carga, construye las sesiones y los workouts, y los dirige en directo.',
     steps: [
       {
         index: '01 / 06',
