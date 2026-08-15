@@ -15,7 +15,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'PARTAGÉ PAR LE PRÉPARATEUR PHYSIQUE DE VOTRE ÉQUIPE',
-      title: 'Ce que STRIVN change pour votre staff.',
+      title: 'Votre préparateur a déjà commencé.',
       sub: 'Une page à lire en deux minutes. Elle résume ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace — sans compte à créer, sans engagement, sans validation du club.',
       ctas: {
         primary: 'Demander mon accès',
@@ -89,7 +89,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'SHARED BY YOUR TEAM’S S&C COACH',
-      title: 'What STRIVN changes for your staff.',
+      title: 'Your S&C coach has already started.',
       sub: 'A page to read in two minutes. It sums up what the team already tracks, what each role gains, and how to join the space — no account to create, no commitment, no club sign-off.',
       ctas: {
         primary: 'Request my access',
@@ -163,7 +163,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'GEDEELD DOOR DE FYSIEK TRAINER VAN JE PLOEG',
-      title: 'Wat STRIVN verandert voor je staf.',
+      title: 'Jullie fysiek trainer is al begonnen.',
       sub: 'Een pagina om in twee minuten te lezen. Ze vat samen wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe je de ruimte binnenstapt — geen account aan te maken, geen verbintenis, geen goedkeuring van de club.',
       ctas: {
         primary: 'Mijn toegang aanvragen',
@@ -237,7 +237,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'GETEILT VOM ATHLETIKTRAINER IHRER MANNSCHAFT',
-      title: 'Was STRIVN für Ihren Staff verändert.',
+      title: 'Ihr Athletiktrainer hat schon angefangen.',
       sub: 'Eine Seite für zwei Minuten. Sie fasst zusammen, was die Mannschaft bereits verfolgt, was jede Rolle davon hat, und wie man den Raum betritt — kein Konto anzulegen, keine Bindung, keine Freigabe des Vereins.',
       ctas: {
         primary: 'Zugang anfragen',
@@ -311,7 +311,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'PARTILHADO PELO PREPARADOR FÍSICO DA SUA EQUIPA',
-      title: 'O que a STRIVN muda para o seu staff.',
+      title: 'O seu preparador físico já começou.',
       sub: 'Uma página para ler em dois minutos. Resume o que a equipa já acompanha, o que cada papel ganha, e como entrar no espaço — sem conta a criar, sem compromisso, sem validação do clube.',
       ctas: {
         primary: 'Pedir o meu acesso',
@@ -385,7 +385,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'COMPARTIDO POR EL PREPARADOR FÍSICO DE TU EQUIPO',
-      title: 'Lo que STRIVN cambia para tu staff.',
+      title: 'Vuestro preparador físico ya ha empezado.',
       sub: 'Una página para leer en dos minutos. Resume lo que el equipo ya sigue, lo que gana cada rol, y cómo entrar en el espacio — sin cuenta que crear, sin compromiso, sin validación del club.',
       ctas: {
         primary: 'Pedir mi acceso',

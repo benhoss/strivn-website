@@ -31,7 +31,7 @@ export const attendance: SubpageLocales = {
     sections: [
       {
         kicker: 'LE VOCABULAIRE DES RÉPONSES',
-        title: 'Cinq réponses. Dont « Adapté ».',
+        title: 'Entre présent et absent, il manque un mot.',
         body: 'Un joueur n’est pas seulement là ou pas là. Un ischio qui tire, une reprise en cours, un rendez-vous qui déborde : la réponse doit pouvoir dire ce qui se passe vraiment.',
         kind: 'rows',
         pill: true,
@@ -68,7 +68,7 @@ export const attendance: SubpageLocales = {
       },
       {
         kicker: 'CE QUI COMPTE, ET CE QUI NE COMPTE PAS',
-        title: 'Des pourcentages justes, pas seulement bruts.',
+        title: 'Ce taux sait que le joueur était blessé en février.',
         kind: 'columns',
         cols: [
           {
@@ -122,7 +122,7 @@ export const attendance: SubpageLocales = {
     sections: [
       {
         kicker: 'THE VOCABULARY OF ANSWERS',
-        title: 'Five answers. One of them “Adapted”.',
+        title: 'Between present and absent, a word is missing.',
         body: 'A player is not only there or not there. A tight hamstring, a comeback in progress, an appointment running long: the answer has to be able to say what is actually happening.',
         kind: 'rows',
         pill: true,
@@ -159,7 +159,7 @@ export const attendance: SubpageLocales = {
       },
       {
         kicker: 'WHAT COUNTS, AND WHAT DOES NOT',
-        title: 'Fair percentages, not just raw ones.',
+        title: 'This rate knows the player was injured in February.',
         kind: 'columns',
         cols: [
           {
@@ -213,7 +213,7 @@ export const attendance: SubpageLocales = {
     sections: [
       {
         kicker: 'DE WOORDENSCHAT VAN DE ANTWOORDEN',
-        title: 'Vijf antwoorden. Waaronder “Aangepast”.',
+        title: 'Tussen aanwezig en afwezig ontbreekt een woord.',
         body: 'Een speler is niet enkel er of niet er. Een trekkende hamstring, een revalidatie die loopt, een afspraak die uitloopt: het antwoord moet kunnen zeggen wat er echt aan de hand is.',
         kind: 'rows',
         pill: true,
@@ -250,7 +250,7 @@ export const attendance: SubpageLocales = {
       },
       {
         kicker: 'WAT MEETELT, EN WAT NIET',
-        title: 'Eerlijke percentages, niet alleen ruwe.',
+        title: 'Dit percentage weet dat de speler in februari geblesseerd was.',
         kind: 'columns',
         cols: [
           {
@@ -304,7 +304,7 @@ export const attendance: SubpageLocales = {
     sections: [
       {
         kicker: 'DAS VOKABULAR DER ANTWORTEN',
-        title: 'Fünf Antworten. Eine davon „Angepasst“.',
+        title: 'Zwischen anwesend und abwesend fehlt ein Wort.',
         body: 'Ein Spieler ist nicht nur da oder nicht da. Ein ziehender Oberschenkel, eine laufende Rückkehr, ein Termin, der sich zieht: Die Antwort muss sagen können, was wirklich los ist.',
         kind: 'rows',
         pill: true,
@@ -341,7 +341,7 @@ export const attendance: SubpageLocales = {
       },
       {
         kicker: 'WAS ZÄHLT UND WAS NICHT',
-        title: 'Faire Prozentwerte, nicht bloß rohe.',
+        title: 'Diese Quote weiß, dass der Spieler im Februar verletzt war.',
         kind: 'columns',
         cols: [
           {
@@ -395,7 +395,7 @@ export const attendance: SubpageLocales = {
     sections: [
       {
         kicker: 'O VOCABULÁRIO DAS RESPOSTAS',
-        title: 'Cinco respostas. Uma delas «Adaptado».',
+        title: 'Entre presente e ausente falta uma palavra.',
         body: 'Um jogador não está apenas presente ou ausente. Um isquiotibial a puxar, um regresso em curso, uma consulta que se prolonga: a resposta tem de poder dizer o que se passa mesmo.',
         kind: 'rows',
         pill: true,
@@ -432,7 +432,7 @@ export const attendance: SubpageLocales = {
       },
       {
         kicker: 'O QUE CONTA, E O QUE NÃO CONTA',
-        title: 'Percentagens justas, não apenas brutas.',
+        title: 'Esta taxa sabe que o jogador esteve lesionado em fevereiro.',
         kind: 'columns',
         cols: [
           {
@@ -486,7 +486,7 @@ export const attendance: SubpageLocales = {
     sections: [
       {
         kicker: 'EL VOCABULARIO DE LAS RESPUESTAS',
-        title: 'Cinco respuestas. Una de ellas «Adaptado».',
+        title: 'Entre presente y ausente falta una palabra.',
         body: 'Un jugador no solo está o no está. Un isquio que tira, una vuelta en curso, una cita que se alarga: la respuesta tiene que poder decir lo que pasa de verdad.',
         kind: 'rows',
         pill: true,
@@ -523,7 +523,7 @@ export const attendance: SubpageLocales = {
       },
       {
         kicker: 'LO QUE CUENTA, Y LO QUE NO',
-        title: 'Porcentajes justos, no solo brutos.',
+        title: 'Esta tasa sabe que el jugador estuvo lesionado en febrero.',
         kind: 'columns',
         cols: [
           {

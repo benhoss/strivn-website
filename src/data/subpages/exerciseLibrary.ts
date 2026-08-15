@@ -34,7 +34,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'QUATRE ENTRÉES',
-        title: 'Une capture ne doit pas demander un formulaire.',
+        title: 'Un lien collé, et c’est déjà dans la bibliothèque.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -67,7 +67,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'LA BOÎTE DE RÉCEPTION',
-        title: 'Rien n’atteint l’équipe avant d’être trié.',
+        title: 'Vous triez d’abord. L’équipe voit ensuite.',
         body: 'Chaque capture arrive d’abord dans la boîte de réception. Vous ajustez le titre, vous la classez dans un dossier — existant ou créé à la volée — et vous ajoutez des tags. Sur les liens et les vidéos, un bandeau propose un titre et des tags : reprenez-les d’un clic, ou ignorez-les.',
         kind: 'columns',
         cols: [
@@ -127,7 +127,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'AVANT QUE LA SÉANCE AIT LIEU',
-        title: 'Ce que la séance devrait produire — et ce qu’elle ne dit pas.',
+        title: 'Ce que la séance produira, et sur quelle part du temps.',
         kind: 'columns',
         cols: [
           {
@@ -198,7 +198,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'FOUR WAYS IN',
-        title: 'A capture should not ask for a form.',
+        title: 'Paste a link, and it is already in the library.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -231,7 +231,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'THE INBOX',
-        title: 'Nothing reaches the team before it is sorted.',
+        title: 'You sort first. The team sees after.',
         body: 'Every capture lands in the inbox first. You adjust the title, you file it in a folder — existing or created on the spot — and you add tags. On links and videos, a banner suggests a title and tags: take them in a click, or ignore them.',
         kind: 'columns',
         cols: [
@@ -291,7 +291,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'BEFORE THE SESSION HAPPENS',
-        title: 'What the session should produce — and what it does not say.',
+        title: 'What the session will produce, and over how much of its time.',
         kind: 'columns',
         cols: [
           {
@@ -362,7 +362,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'VIER INGANGEN',
-        title: 'Iets vastleggen mag geen formulier vragen.',
+        title: 'Een link geplakt, en het staat al in de bibliotheek.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -395,7 +395,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'HET POSTVAK IN',
-        title: 'Niets bereikt de ploeg voor het gesorteerd is.',
+        title: 'Jij sorteert eerst. De ploeg ziet daarna.',
         body: 'Elke capture komt eerst in het postvak IN. Je past de titel aan, je bergt ze op in een map — bestaand of ter plekke gemaakt — en je voegt tags toe. Bij links en video’s stelt een balk een titel en tags voor: neem ze over met één klik, of negeer ze.',
         kind: 'columns',
         cols: [
@@ -455,7 +455,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'VOOR DE TRAINING PLAATSVINDT',
-        title: 'Wat de training zou moeten opleveren — en wat ze niet zegt.',
+        title: 'Wat de training zal opleveren, en over welk deel van de tijd.',
         kind: 'columns',
         cols: [
           {
@@ -526,7 +526,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'VIER EINGÄNGE',
-        title: 'Eine Aufnahme darf kein Formular verlangen.',
+        title: 'Ein Link eingefügt, und er liegt schon in der Bibliothek.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -559,7 +559,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'DER POSTEINGANG',
-        title: 'Nichts erreicht die Mannschaft, bevor es sortiert ist.',
+        title: 'Sie sortieren zuerst. Die Mannschaft sieht danach.',
         body: 'Jede Aufnahme landet zuerst im Posteingang. Sie passen den Titel an, legen sie in einen Ordner — bestehend oder spontan angelegt — und ergänzen Tags. Bei Links und Videos schlägt ein Band Titel und Tags vor: mit einem Klick übernehmen oder ignorieren.',
         kind: 'columns',
         cols: [
@@ -619,7 +619,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'BEVOR DIE EINHEIT STATTFINDET',
-        title: 'Was die Einheit erzeugen sollte — und was sie nicht sagt.',
+        title: 'Was die Einheit erzeugen wird, und über welchen Anteil ihrer Zeit.',
         kind: 'columns',
         cols: [
           {
@@ -690,7 +690,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'QUATRO ENTRADAS',
-        title: 'Capturar não deve exigir um formulário.',
+        title: 'Um link colado, e já está na biblioteca.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -723,7 +723,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'A CAIXA DE ENTRADA',
-        title: 'Nada chega à equipa antes de ser triado.',
+        title: 'Você tria primeiro. A equipa vê depois.',
         body: 'Cada captura chega primeiro à caixa de entrada. Ajusta o título, arquiva-a numa pasta — existente ou criada na hora — e acrescenta etiquetas. Nas ligações e nos vídeos, uma faixa propõe um título e etiquetas: aceite-os num clique, ou ignore-os.',
         kind: 'columns',
         cols: [
@@ -783,7 +783,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'ANTES DE O TREINO ACONTECER',
-        title: 'O que o treino deveria produzir — e o que não diz.',
+        title: 'O que o treino vai produzir, e sobre que parte do tempo.',
         kind: 'columns',
         cols: [
           {
@@ -854,7 +854,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'CUATRO ENTRADAS',
-        title: 'Capturar no debería pedir un formulario.',
+        title: 'Un enlace pegado, y ya está en la biblioteca.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -887,7 +887,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'LA BANDEJA DE ENTRADA',
-        title: 'Nada llega al equipo antes de estar clasificado.',
+        title: 'Tú clasificas primero. El equipo lo ve después.',
         body: 'Cada captura llega primero a la bandeja de entrada. Ajustas el título, la archivas en una carpeta — existente o creada al vuelo — y añades etiquetas. En los enlaces y los vídeos, una franja propone un título y etiquetas: acéptalos en un clic, o ignóralos.',
         kind: 'columns',
         cols: [
@@ -947,7 +947,7 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'ANTES DE QUE LA SESIÓN OCURRA',
-        title: 'Lo que la sesión debería producir — y lo que no dice.',
+        title: 'Lo que la sesión producirá, y sobre qué parte del tiempo.',
         kind: 'columns',
         cols: [
           {

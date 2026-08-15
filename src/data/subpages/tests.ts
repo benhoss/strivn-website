@@ -15,7 +15,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · MESURES',
-      title: 'Un chiffre ne vaut rien sans son repère.',
+      title: 'Le chiffre tombe. Reste à savoir ce qu’il vaut.',
       sub: 'Créez vos mesures, lancez une campagne de tests, saisissez sur le terrain. STRIVN place chaque résultat dans ses zones et sur le percentile du poste — pour que la valeur devienne une décision.',
       bullets: [
         'Mesures sur mesure : nom, unité, sens de la progression',
@@ -32,7 +32,7 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'LE VOCABULAIRE DE VOS TESTS',
-        title: 'Une mesure, son unité, et vos zones.',
+        title: 'Sur un 10 m, le meilleur est le plus petit.',
         body: 'Un test n’est pas un champ libre. Vous définissez la mesure une fois — son nom, son unité, le sens de la progression, ses seuils — et elle reste comparable d’une campagne à l’autre.',
         visual: 'measure-editor',
         visualAside: true,
@@ -95,7 +95,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · MEASURES',
-      title: 'A number is worthless without its reference.',
+      title: 'The number lands. What it is worth is the other question.',
       sub: 'Define your measures, run a testing campaign, record results on the pitch. STRIVN places each one in its zones and on the percentile for the position — so the value becomes a decision.',
       bullets: [
         'Measures you define: name, unit, direction of progress',
@@ -112,7 +112,7 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'THE VOCABULARY OF YOUR TESTS',
-        title: 'A measure, its unit, and your zones.',
+        title: 'On a 10 m sprint, the best score is the smallest.',
         body: 'A test is not a free-text field. You define the measure once — its name, its unit, which direction counts as progress, its thresholds — and it stays comparable from one campaign to the next.',
         visual: 'measure-editor',
         visualAside: true,
@@ -175,7 +175,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · METINGEN',
-      title: 'Een cijfer is niets waard zonder ijkpunt.',
+      title: 'Het cijfer valt. Wat het waard is, is de vraag.',
       sub: 'Definieer je metingen, start een testcampagne, noteer op het veld. STRIVN plaatst elk resultaat in zijn zones en op het percentiel van de positie — zodat de waarde een beslissing wordt.',
       bullets: [
         'Eigen metingen: naam, eenheid, richting van vooruitgang',
@@ -192,7 +192,7 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'DE WOORDENSCHAT VAN JE TESTS',
-        title: 'Eén meting, haar eenheid, en jouw zones.',
+        title: 'Op een 10 m is de beste de kleinste.',
         body: 'Een test is geen vrij veld. Je definieert de meting één keer — naam, eenheid, welke richting vooruitgang is, de drempels — en ze blijft vergelijkbaar van campagne tot campagne.',
         visual: 'measure-editor',
         visualAside: true,
@@ -255,7 +255,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · MESSGRÖSSEN',
-      title: 'Eine Zahl ist ohne Bezugspunkt wertlos.',
+      title: 'Die Zahl steht. Was sie wert ist, ist die andere Frage.',
       sub: 'Definieren Sie Ihre Messgrößen, starten Sie eine Testkampagne, erfassen Sie auf dem Platz. STRIVN ordnet jedes Ergebnis seinen Zonen und dem Perzentil der Position zu — damit aus dem Wert eine Entscheidung wird.',
       bullets: [
         'Eigene Messgrößen: Name, Einheit, Richtung des Fortschritts',
@@ -272,7 +272,7 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'DAS VOKABULAR IHRER TESTS',
-        title: 'Eine Messgröße, ihre Einheit und Ihre Zonen.',
+        title: 'Bei 10 m ist der beste Wert der kleinste.',
         body: 'Ein Test ist kein freies Textfeld. Sie definieren die Messgröße einmal — Name, Einheit, welche Richtung Fortschritt bedeutet, ihre Schwellen — und sie bleibt von Kampagne zu Kampagne vergleichbar.',
         visual: 'measure-editor',
         visualAside: true,
@@ -335,7 +335,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · MEDIDAS',
-      title: 'Um número não vale nada sem a sua referência.',
+      title: 'O número sai. Falta saber o que vale.',
       sub: 'Defina as suas medidas, lance uma campanha de testes, registe no campo. A STRIVN coloca cada resultado nas suas zonas e no percentil da posição — para que o valor se torne uma decisão.',
       bullets: [
         'Medidas à sua medida: nome, unidade, sentido do progresso',
@@ -352,7 +352,7 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'O VOCABULÁRIO DOS SEUS TESTES',
-        title: 'Uma medida, a sua unidade, e as suas zonas.',
+        title: 'Num 10 m, o melhor é o mais pequeno.',
         body: 'Um teste não é um campo livre. Define a medida uma vez — o nome, a unidade, o sentido do progresso, os limiares — e ela mantém-se comparável de campanha para campanha.',
         visual: 'measure-editor',
         visualAside: true,
@@ -415,7 +415,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · MEDIDAS',
-      title: 'Un número no vale nada sin su referencia.',
+      title: 'El número cae. Queda saber lo que vale.',
       sub: 'Define tus medidas, lanza una campaña de tests, registra en el campo. STRIVN coloca cada resultado en sus zonas y en el percentil del puesto — para que el valor se convierta en una decisión.',
       bullets: [
         'Medidas a tu medida: nombre, unidad, sentido del progreso',
@@ -432,7 +432,7 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'EL VOCABULARIO DE TUS TESTS',
-        title: 'Una medida, su unidad, y tus zonas.',
+        title: 'En un 10 m, el mejor es el más pequeño.',
         body: 'Un test no es un campo libre. Defines la medida una vez — su nombre, su unidad, el sentido del progreso, sus umbrales — y sigue siendo comparable de una campaña a otra.',
         visual: 'measure-editor',
         visualAside: true,

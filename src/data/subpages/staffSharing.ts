@@ -24,7 +24,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'À L’INTÉRIEUR DE L’ÉQUIPE',
-        title: 'Qui voit quoi.',
+        title: 'L’adjoint lit la disponibilité. Pas le diagnostic.',
         kind: 'columns',
         cols: [
           {
@@ -46,7 +46,7 @@ export const staffSharing: SubpageLocales = {
       },
       {
         kicker: 'CE QUI SORT DE L’ÉQUIPE',
-        title: 'Des liens que vous gardez sous contrôle.',
+        title: 'Un lien envoyé reste un lien que vous pouvez couper.',
         kind: 'cards',
         cards: [
           {
@@ -102,7 +102,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'INSIDE THE TEAM',
-        title: 'Who sees what.',
+        title: 'The assistant reads availability. Not the diagnosis.',
         kind: 'columns',
         cols: [
           {
@@ -124,7 +124,7 @@ export const staffSharing: SubpageLocales = {
       },
       {
         kicker: 'WHAT LEAVES THE TEAM',
-        title: 'Links you keep under control.',
+        title: 'A link you sent is still a link you can cut.',
         kind: 'cards',
         cards: [
           {
@@ -180,7 +180,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'BINNEN DE PLOEG',
-        title: 'Wie ziet wat.',
+        title: 'De assistent leest de beschikbaarheid. Niet de diagnose.',
         kind: 'columns',
         cols: [
           {
@@ -202,7 +202,7 @@ export const staffSharing: SubpageLocales = {
       },
       {
         kicker: 'WAT DE PLOEG VERLAAT',
-        title: 'Links die je onder controle houdt.',
+        title: 'Een verstuurde link blijft een link die je kunt afsluiten.',
         kind: 'cards',
         cards: [
           {
@@ -258,7 +258,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'INNERHALB DER MANNSCHAFT',
-        title: 'Wer sieht was.',
+        title: 'Der Assistent liest die Verfügbarkeit. Nicht die Diagnose.',
         kind: 'columns',
         cols: [
           {
@@ -280,7 +280,7 @@ export const staffSharing: SubpageLocales = {
       },
       {
         kicker: 'WAS DIE MANNSCHAFT VERLÄSST',
-        title: 'Links, die Sie unter Kontrolle behalten.',
+        title: 'Ein gesendeter Link bleibt ein Link, den Sie kappen können.',
         kind: 'cards',
         cards: [
           {
@@ -336,7 +336,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'DENTRO DA EQUIPA',
-        title: 'Quem vê o quê.',
+        title: 'O adjunto lê a disponibilidade. Não o diagnóstico.',
         kind: 'columns',
         cols: [
           {
@@ -358,7 +358,7 @@ export const staffSharing: SubpageLocales = {
       },
       {
         kicker: 'O QUE SAI DA EQUIPA',
-        title: 'Ligações que mantém sob controlo.',
+        title: 'Uma ligação enviada continua a ser uma ligação que pode cortar.',
         kind: 'cards',
         cards: [
           {
@@ -414,7 +414,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'DENTRO DEL EQUIPO',
-        title: 'Quién ve qué.',
+        title: 'El adjunto lee la disponibilidad. No el diagnóstico.',
         kind: 'columns',
         cols: [
           {
@@ -436,7 +436,7 @@ export const staffSharing: SubpageLocales = {
       },
       {
         kicker: 'LO QUE SALE DEL EQUIPO',
-        title: 'Enlaces que mantienes bajo control.',
+        title: 'Un enlace enviado sigue siendo un enlace que puedes cortar.',
         kind: 'cards',
         cards: [
           {

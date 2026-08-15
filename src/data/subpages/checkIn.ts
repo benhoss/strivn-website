@@ -32,7 +32,7 @@ export const checkIn: SubpageLocales = {
     sections: [
       {
         kicker: 'LA RÈGLE DE COULEUR',
-        title: 'Une seule grammaire visuelle, partout.',
+        title: 'Rouge veut dire la même chose sur tous les écrans.',
         kind: 'cards',
         cards: [
           {
@@ -110,7 +110,7 @@ export const checkIn: SubpageLocales = {
     sections: [
       {
         kicker: 'THE COLOUR RULE',
-        title: 'One visual grammar, everywhere.',
+        title: 'Red means the same thing on every screen.',
         kind: 'cards',
         cards: [
           {
@@ -188,7 +188,7 @@ export const checkIn: SubpageLocales = {
     sections: [
       {
         kicker: 'DE KLEURREGEL',
-        title: 'Eén visuele grammatica, overal.',
+        title: 'Rood betekent overal hetzelfde.',
         kind: 'cards',
         cards: [
           {
@@ -266,7 +266,7 @@ export const checkIn: SubpageLocales = {
     sections: [
       {
         kicker: 'DIE FARBREGEL',
-        title: 'Eine einzige visuelle Grammatik, überall.',
+        title: 'Rot bedeutet auf jedem Bildschirm dasselbe.',
         kind: 'cards',
         cards: [
           {
@@ -344,7 +344,7 @@ export const checkIn: SubpageLocales = {
     sections: [
       {
         kicker: 'A REGRA DE COR',
-        title: 'Uma só gramática visual, em todo o lado.',
+        title: 'Vermelho quer dizer o mesmo em todos os ecrãs.',
         kind: 'cards',
         cards: [
           {
@@ -422,7 +422,7 @@ export const checkIn: SubpageLocales = {
     sections: [
       {
         kicker: 'LA REGLA DE COLOR',
-        title: 'Una sola gramática visual, en todas partes.',
+        title: 'El rojo significa lo mismo en todas las pantallas.',
         kind: 'cards',
         cards: [
           {
