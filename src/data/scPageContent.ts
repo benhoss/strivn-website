@@ -346,7 +346,7 @@ const fr: ScPageContent = {
       'Partage par lien public sans compte — révocable à tout moment',
     ],
     cta: 'Voir la bibliothèque d’exercices',
-    href: '/fr/features/sessions/',
+    href: '/fr/features/exercise-library/',
     visual: {
       title: 'Jeu réduit 8v8 · pressing haut',
       sub: 'Dossier « Pressing » · tags : intensité, transition',
@@ -384,7 +384,7 @@ const fr: ScPageContent = {
       'Aperçu par joueur avant publication vers l’app',
     ],
     cta: 'Voir la musculation & 1RM',
-    href: '/fr/features/player-app/',
+    href: '/fr/features/programs/',
     visual: {
       title: 'Constructeur · bloc force',
       badge: 'CALCULÉ SUR 1RM',
@@ -409,7 +409,7 @@ const fr: ScPageContent = {
       'Suivi des saisies reçues, date limite et clôture automatique',
     ],
     cta: 'Voir les tests physiques',
-    href: '/fr/features/reports/',
+    href: '/fr/features/tests/',
     visual: {
       title: 'Campagne · VMA',
       sub: 'Auto-mesure · date limite vendredi 20h',
@@ -603,7 +603,7 @@ const en: ScPageContent = {
       'Public link sharing with no account — revocable at any time',
     ],
     cta: 'See the drill library',
-    href: '/en/features/sessions/',
+    href: '/en/features/exercise-library/',
     visual: {
       title: 'Small-sided game 8v8 · high press',
       sub: 'Folder “Pressing” · tags: intensity, transition',
@@ -641,7 +641,7 @@ const en: ScPageContent = {
       'Per-player preview before publishing to the app',
     ],
     cta: 'See strength & 1RM',
-    href: '/en/features/player-app/',
+    href: '/en/features/programs/',
     visual: {
       title: 'Builder · strength block',
       badge: 'COMPUTED ON 1RM',
@@ -666,7 +666,7 @@ const en: ScPageContent = {
       'Tracking of entries received, deadline and automatic closing',
     ],
     cta: 'See physical tests',
-    href: '/en/features/reports/',
+    href: '/en/features/tests/',
     visual: {
       title: 'Campaign · MAS',
       sub: 'Self-measurement · deadline Friday 8 pm',
@@ -860,7 +860,7 @@ const nl: ScPageContent = {
       'Delen via publieke link zonder account — altijd intrekbaar',
     ],
     cta: 'Bekijk de oefenbibliotheek',
-    href: '/nl/features/sessions/',
+    href: '/nl/features/exercise-library/',
     visual: {
       title: 'Klein spel 8v8 · hoge pressing',
       sub: 'Map “Pressing” · tags: intensiteit, omschakeling',
@@ -898,7 +898,7 @@ const nl: ScPageContent = {
       'Voorbeeld per speler vóór publicatie naar de app',
     ],
     cta: 'Bekijk krachttraining & 1RM',
-    href: '/nl/features/player-app/',
+    href: '/nl/features/programs/',
     visual: {
       title: 'Bouwer · krachtblok',
       badge: 'BEREKEND OP 1RM',
@@ -923,7 +923,7 @@ const nl: ScPageContent = {
       'Opvolging van ontvangen invoer, deadline en automatische afsluiting',
     ],
     cta: 'Bekijk de fysieke testen',
-    href: '/nl/features/reports/',
+    href: '/nl/features/tests/',
     visual: {
       title: 'Campagne · MAS',
       sub: 'Zelfmeting · deadline vrijdag 20u',
@@ -1117,7 +1117,7 @@ const de: ScPageContent = {
       'Teilen per öffentlichem Link ohne Konto — jederzeit widerrufbar',
     ],
     cta: 'Übungsbibliothek ansehen',
-    href: '/de/features/sessions/',
+    href: '/de/features/exercise-library/',
     visual: {
       title: 'Kleinfeldspiel 8v8 · hohes Pressing',
       sub: 'Ordner „Pressing“ · Tags: Intensität, Umschalten',
@@ -1155,7 +1155,7 @@ const de: ScPageContent = {
       'Vorschau je Spieler vor der Veröffentlichung in die App',
     ],
     cta: 'Krafttraining & 1RM ansehen',
-    href: '/de/features/player-app/',
+    href: '/de/features/programs/',
     visual: {
       title: 'Builder · Kraftblock',
       badge: 'AUF 1RM BERECHNET',
@@ -1180,7 +1180,7 @@ const de: ScPageContent = {
       'Überblick über eingegangene Eingaben, Frist und automatischer Abschluss',
     ],
     cta: 'Leistungstests ansehen',
-    href: '/de/features/reports/',
+    href: '/de/features/tests/',
     visual: {
       title: 'Kampagne · MAS',
       sub: 'Selbstmessung · Frist Freitag 20 Uhr',
@@ -1374,7 +1374,7 @@ const pt: ScPageContent = {
       'Partilha por link público sem conta — revogável a qualquer momento',
     ],
     cta: 'Ver a biblioteca de exercícios',
-    href: '/pt/features/sessions/',
+    href: '/pt/features/exercise-library/',
     visual: {
       title: 'Jogo reduzido 8v8 · pressão alta',
       sub: 'Pasta «Pressão» · etiquetas: intensidade, transição',
@@ -1412,7 +1412,7 @@ const pt: ScPageContent = {
       'Pré-visualização por jogador antes da publicação para a app',
     ],
     cta: 'Ver a musculação & 1RM',
-    href: '/pt/features/player-app/',
+    href: '/pt/features/programs/',
     visual: {
       title: 'Construtor · bloco de força',
       badge: 'CALCULADO SOBRE 1RM',
@@ -1437,7 +1437,7 @@ const pt: ScPageContent = {
       'Acompanhamento das entradas recebidas, prazo e fecho automático',
     ],
     cta: 'Ver os testes físicos',
-    href: '/pt/features/reports/',
+    href: '/pt/features/tests/',
     visual: {
       title: 'Campanha · VAM',
       sub: 'Automedição · prazo sexta-feira 20h',
@@ -1631,7 +1631,7 @@ const es: ScPageContent = {
       'Compartir por enlace público sin cuenta — revocable en cualquier momento',
     ],
     cta: 'Ver la biblioteca de ejercicios',
-    href: '/es/features/sessions/',
+    href: '/es/features/exercise-library/',
     visual: {
       title: 'Juego reducido 8v8 · presión alta',
       sub: 'Carpeta «Presión» · etiquetas: intensidad, transición',
@@ -1669,7 +1669,7 @@ const es: ScPageContent = {
       'Vista previa por jugador antes de publicar a la app',
     ],
     cta: 'Ver la fuerza & 1RM',
-    href: '/es/features/player-app/',
+    href: '/es/features/programs/',
     visual: {
       title: 'Constructor · bloque de fuerza',
       badge: 'CALCULADO SOBRE 1RM',
@@ -1694,7 +1694,7 @@ const es: ScPageContent = {
       'Seguimiento de las entradas recibidas, fecha límite y cierre automático',
     ],
     cta: 'Ver los tests físicos',
-    href: '/es/features/reports/',
+    href: '/es/features/tests/',
     visual: {
       title: 'Campaña · VAM',
       sub: 'Automedición · fecha límite viernes 20h',

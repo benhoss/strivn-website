@@ -22,6 +22,15 @@ const c = solutionsContent[locale];
 /** Closing CTA and footer are shared with the homepage. */
 const shared = homeContent[locale];
 
+/**
+ * The switcher falls back to a locale's homepage only for pages with no
+ * counterpart. This one exists in all six, so hand the header the real targets.
+ */
+const LOCALES: Locale[] = ['en', 'fr', 'nl', 'de', 'pt', 'es'];
+const switchHrefs = Object.fromEntries(
+  LOCALES.map((l) => [l, `/${l}/solutions/`]),
+) as Record<Locale, string>;
+
 const skipLabelByLocale: Record<Locale, string> = {
   fr: 'Aller au contenu',
   nl: 'Naar de inhoud',
@@ -41,7 +50,7 @@ const skipLabelByLocale: Record<Locale, string> = {
 >
   <a href="#s-main" class="s-skip">{skipLabelByLocale[locale]}</a>
 
-  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} />
+  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} switchHrefs={switchHrefs} />
 
   <main id="s-main" class="bg-[#05070F] font-sans text-[#F8FAFC] antialiased">
     <SolHero hero={c.hero} />
