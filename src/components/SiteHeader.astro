@@ -21,13 +21,18 @@ interface Props {
   switchHrefs?: { en?: string; fr?: string; nl?: string; de?: string; pt?: string; es?: string };
 }
 
-const {
-  locale,
-  links,
-  cta,
-  brandHref = '#s-main',
-  switchHrefs = {},
-} = Astro.props;
+const { locale, links, cta, brandHref, switchHrefs = {} } = Astro.props;
+
+/**
+ * The logo goes to the homepage of the language being read. The default used
+ * to be `#s-main`, which only ever scrolled to the top of the page you were
+ * already on — fine on a homepage, a dead end on every other landing page.
+ *
+ * On the homepage itself a link to its own URL would reload the page, so it
+ * keeps the scroll-to-top behaviour a logo is expected to have there.
+ */
+const home = `/${locale}/`;
+const brand = brandHref ?? (Astro.url.pathname === home ? '#s-main' : home);
 
 const navAriaByLocale: Record<Locale, string> = {
   fr: 'Navigation principale',
@@ -62,7 +67,7 @@ const langs = [
 
 <!-- Nav · N5 floating pill -->
 <nav class="s-nav" aria-label={navAria}>
-  <a href={brandHref} class="s-nav__brand" aria-label="STRIVN">
+  <a href={brand} class="s-nav__brand" aria-label="STRIVN">
     <img src="/strivn-logo-full-white-web.png" alt="STRIVN" width="1130" height="369" />
   </a>
 

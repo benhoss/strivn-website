@@ -35,7 +35,6 @@ const {
 const c = landingContent[locale];
 const isFrench = locale === 'fr';
 const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
-const homeHref = isFrench ? '/fr/' : '/en/';
 const blogHref = isFrench ? '/fr/blog/' : '/en/blog/';
 
 /* Add a Blog link only if the shared nav does not already carry one. It does
@@ -60,7 +59,7 @@ const finalSwitchHrefs = switchHrefs ?? {};
     locale={locale}
     links={navLinks}
     cta={c.nav.cta}
-    brandHref={brandHref ?? homeHref}
+    brandHref={brandHref}
     switchHrefs={finalSwitchHrefs}
   />
 
