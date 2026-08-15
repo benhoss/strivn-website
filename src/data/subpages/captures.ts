@@ -194,6 +194,28 @@ export const REPORT_ROWS: Array<{
   { name: 'K. Nakamura', min: 180, minDelta: null, rating: '6,8', ratingDelta: null, acwr: null },
 ];
 
+/**
+ * The opponent file. `source` and `confidence` index into the locale's labels:
+ * a row lifted from an imported team sheet says so and carries how sure the
+ * extraction was, because a roster the coach never confirmed must not read
+ * like one they did.
+ */
+export const SCOUT_ROWS: Array<{
+  num: number;
+  pos: 0 | 1 | 2 | 3;
+  danger: boolean;
+  source: 0 | 1;
+  confidence: number | null;
+}> = [
+  { num: 9, pos: 0, danger: true, source: 0, confidence: null },
+  { num: 10, pos: 1, danger: true, source: 1, confidence: 92 },
+  { num: 4, pos: 2, danger: false, source: 1, confidence: 78 },
+  { num: 1, pos: 3, danger: false, source: 1, confidence: 61 },
+];
+
+/** Names are invariant, like every other capture on the site. */
+export const SCOUT_NAMES = ['M. Costa', 'T. Willems', 'S. Dubois', 'R. Faye'] as const;
+
 /* ── Shape ────────────────────────────────────────────────────── */
 
 interface Row {
@@ -363,6 +385,18 @@ export interface CaptureText {
     meta: string;
     cols: [string, string, string, string];
     note: string;
+  };
+  /** Opponent file: the scouted roster and the brief proposed from it. */
+  scout: {
+    title: string;
+    meta: string;
+    cols: [string, string];
+    positions: [string, string, string, string];
+    sources: [string, string];
+    danger: string;
+    proposal: string;
+    proposalNote: string;
+    accept: string;
   };
   /** Percentile scale placing one player's value against their position. */
   scale: {
@@ -564,6 +598,17 @@ const fr: CaptureText = {
     cols: ['JOUEUR', 'MIN', 'NOTE', 'ACWR'],
     note: 'Rapport enregistré — rejoué sur les données du jour. « * » signale un échantillon trop court.',
   },
+  scout: {
+    title: 'FC Boisval · J-6',
+    meta: '3 SESSIONS · 14 NOTES',
+    cols: ['EFFECTIF ADVERSE', 'SOURCE'],
+    positions: ['Attaquant', 'Meneur', 'Défenseur', 'Gardien'],
+    sources: ['observé', 'feuille de match'],
+    danger: 'à surveiller',
+    proposal: 'Brief tactique — proposition IA',
+    proposalNote: 'Bloc médian haut, sorties courtes. Rien n’est appliqué tant que vous n’avez pas tranché.',
+    accept: 'Relire',
+  },
   scale: {
     who: 'S. Petit · Ailier · VMA',
     ref: 'REPÈRES AILIER · SAISON EN COURS',
@@ -762,6 +807,17 @@ const en: CaptureText = {
     meta: '18 PLAYERS',
     cols: ['PLAYER', 'MIN', 'RATING', 'ACWR'],
     note: 'Saved report — replayed on today’s data. “*” marks too short a sample.',
+  },
+  scout: {
+    title: 'FC Boisval · MD-6',
+    meta: '3 SESSIONS · 14 NOTES',
+    cols: ['OPPONENT SQUAD', 'SOURCE'],
+    positions: ['Striker', 'Playmaker', 'Defender', 'Goalkeeper'],
+    sources: ['observed', 'team sheet'],
+    danger: 'danger man',
+    proposal: 'Tactical brief — AI proposal',
+    proposalNote: 'High mid block, short build-up. Nothing is applied until you decide.',
+    accept: 'Review',
   },
   scale: {
     who: 'S. Petit · Winger · MAS',
@@ -962,6 +1018,17 @@ const nl: CaptureText = {
     cols: ['SPELER', 'MIN', 'SCORE', 'ACWR'],
     note: 'Bewaard rapport — opnieuw gedraaid op de data van vandaag. “*” markeert een te kleine steekproef.',
   },
+  scout: {
+    title: 'FC Boisval · W-6',
+    meta: '3 SESSIES · 14 NOTITIES',
+    cols: ['KERN TEGENSTANDER', 'BRON'],
+    positions: ['Aanvaller', 'Spelmaker', 'Verdediger', 'Doelman'],
+    sources: ['geobserveerd', 'wedstrijdblad'],
+    danger: 'in de gaten houden',
+    proposal: 'Tactische briefing — AI-voorstel',
+    proposalNote: 'Hoog middenblok, korte opbouw. Er wordt niets toegepast tot jij beslist.',
+    accept: 'Nalezen',
+  },
   scale: {
     who: 'S. Petit · Vleugelspeler · MAS',
     ref: 'IJKPUNTEN VLEUGELSPELER · HUIDIG SEIZOEN',
@@ -1160,6 +1227,17 @@ const de: CaptureText = {
     meta: '18 SPIELER',
     cols: ['SPIELER', 'MIN', 'NOTE', 'ACWR'],
     note: 'Gespeicherter Bericht — auf den heutigen Daten neu gerechnet. „*“ markiert eine zu kleine Stichprobe.',
+  },
+  scout: {
+    title: 'FC Boisval · ST-6',
+    meta: '3 SITZUNGEN · 14 NOTIZEN',
+    cols: ['KADER DES GEGNERS', 'QUELLE'],
+    positions: ['Stürmer', 'Spielmacher', 'Verteidiger', 'Torhüter'],
+    sources: ['beobachtet', 'Spielbericht'],
+    danger: 'im Auge behalten',
+    proposal: 'Taktisches Briefing — KI-Vorschlag',
+    proposalNote: 'Hoher Mittelfeldblock, kurzer Spielaufbau. Nichts wird angewandt, bevor Sie entscheiden.',
+    accept: 'Prüfen',
   },
   scale: {
     who: 'S. Petit · Flügel · MAS',
@@ -1360,6 +1438,17 @@ const pt: CaptureText = {
     cols: ['JOGADOR', 'MIN', 'NOTA', 'ACWR'],
     note: 'Relatório guardado — recalculado sobre os dados de hoje. «*» assinala uma amostra curta.',
   },
+  scout: {
+    title: 'FC Boisval · J-6',
+    meta: '3 SESSÕES · 14 NOTAS',
+    cols: ['PLANTEL ADVERSÁRIO', 'ORIGEM'],
+    positions: ['Avançado', 'Construtor', 'Defesa', 'Guarda-redes'],
+    sources: ['observado', 'ficha de jogo'],
+    danger: 'a vigiar',
+    proposal: 'Briefing tático — proposta da IA',
+    proposalNote: 'Bloco médio alto, saídas curtas. Nada é aplicado enquanto não decidir.',
+    accept: 'Rever',
+  },
   scale: {
     who: 'S. Petit · Extremo · VAM',
     ref: 'REFERÊNCIAS EXTREMO · ÉPOCA ATUAL',
@@ -1558,6 +1647,17 @@ const es: CaptureText = {
     meta: '18 JUGADORES',
     cols: ['JUGADOR', 'MIN', 'NOTA', 'ACWR'],
     note: 'Informe guardado — recalculado sobre los datos de hoy. «*» señala una muestra corta.',
+  },
+  scout: {
+    title: 'FC Boisval · J-6',
+    meta: '3 SESIONES · 14 NOTAS',
+    cols: ['PLANTILLA RIVAL', 'ORIGEN'],
+    positions: ['Delantero', 'Organizador', 'Defensa', 'Portero'],
+    sources: ['observado', 'acta del partido'],
+    danger: 'a vigilar',
+    proposal: 'Briefing táctico — propuesta de la IA',
+    proposalNote: 'Bloque medio alto, salidas cortas. No se aplica nada hasta que decidas.',
+    accept: 'Revisar',
   },
   scale: {
     who: 'S. Petit · Extremo · VAM',

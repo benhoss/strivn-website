@@ -24,6 +24,7 @@ import RsvpBoard from './visuals/RsvpBoard.astro';
 import RtpProtocol from './visuals/RtpProtocol.astro';
 import PlayerPhone from './visuals/PlayerPhone.astro';
 import ReportTable from './visuals/ReportTable.astro';
+import ScoutingBrief from './visuals/ScoutingBrief.astro';
 
 interface Props {
   name: string;
@@ -50,6 +51,7 @@ const registry: Record<string, any> = {
   'rtp-protocol': RtpProtocol,
   'player-phone': PlayerPhone,
   'report-table': ReportTable,
+  'scouting-brief': ScoutingBrief,
 };
 
 const Capture = registry[name];

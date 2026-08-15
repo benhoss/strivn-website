@@ -1,0 +1,101 @@
+---
+/**
+ * The opponent file: a scouted roster, and the brief proposed from it.
+ *
+ * Two things the capture has to make visible, because they are the page's
+ * argument. A row lifted from an imported team sheet says so and carries the
+ * extraction's confidence — a roster nobody confirmed must not look like one
+ * that was. And the brief is labelled a proposal with a Review button, never
+ * an answer already applied.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, SCOUT_ROWS, SCOUT_NAMES } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].scout;
+---
+
+<CaptureFrame>
+  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5">
+    <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
+    <p class="font-mono text-[0.56rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">
+      {t.meta}
+    </p>
+  </div>
+
+  <div class="overflow-hidden rounded-[11px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+    <div
+      class="grid grid-cols-[minmax(0,1fr)_minmax(0,104px)] gap-2 border-b border-[#FFFFFF14] bg-[#FFFFFF0A] px-3.5 py-2.5"
+    >
+      {
+        t.cols.map((c, i) => (
+          <p
+            class={`font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A] ${i === 1 ? 'text-right' : ''}`}
+          >
+            {c}
+          </p>
+        ))
+      }
+    </div>
+
+    <ul>
+      {
+        SCOUT_ROWS.map((r, i) => (
+          <li
+            class={`grid grid-cols-[minmax(0,1fr)_minmax(0,104px)] items-center gap-2 px-3.5 py-2.5 ${i < SCOUT_ROWS.length - 1 ? 'border-b border-[#FFFFFF14]' : ''}`}
+          >
+            <span class="flex min-w-0 items-center gap-2.5">
+              <span class="w-5 shrink-0 font-mono text-[0.69rem] text-[#68779A]">{r.num}</span>
+              <span class="min-w-0">
+                <span class="flex items-center gap-2">
+                  <span class="truncate text-[0.78rem] font-medium text-[#DCE4F2]">
+                    {SCOUT_NAMES[i]}
+                  </span>
+                  {r.danger && (
+                    <span class="shrink-0 rounded-full bg-[#FF7A6B14] px-2 py-[2px] text-[0.56rem] whitespace-nowrap text-[#FF7A6B]">
+                      {t.danger}
+                    </span>
+                  )}
+                </span>
+                <span class="block font-mono text-[0.63rem] text-[#68779A]">
+                  {t.positions[r.pos]}
+                </span>
+              </span>
+            </span>
+
+            <span class="text-right">
+              <span
+                class={`block font-mono text-[0.63rem] whitespace-nowrap ${r.source === 0 ? 'text-[#8CE99A]' : 'text-[#68779A]'}`}
+              >
+                {t.sources[r.source]}
+              </span>
+              {r.confidence !== null && (
+                <span class="block font-mono text-[0.56rem] text-[#68779A]">{r.confidence} %</span>
+              )}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div
+    class="rounded-[10px] bg-[#2D7FF90F] px-3.5 py-3 outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]"
+  >
+    <p class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+      <span class="shrink-0 text-[#7AB8FF]"><HomeIcon name="sparkles" size={13} /></span>
+      <span class="text-[0.72rem] font-semibold text-[#DCE4F2]">{t.proposal}</span>
+      <span
+        class="ml-auto shrink-0 rounded-full bg-[#FFFFFF0A] px-3 py-1 text-[0.66rem] text-[#C3CDE0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+        >{t.accept}</span
+      >
+    </p>
+    <p class="mt-1.5 text-[0.69rem] leading-[1.5] text-[#9AA8C4]">{t.proposalNote}</p>
+  </div>
+</CaptureFrame>

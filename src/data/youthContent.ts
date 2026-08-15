@@ -1,5 +1,25 @@
 import type { Locale } from './landingContent';
-import type { Showcase } from './featuresContent';
+
+/** One screenshot (or short video) in a showcase carousel. */
+export type Slide = {
+  img: string;
+  /** Optional video base path (without extension); .mp4 + .webm are loaded, img is the poster. */
+  video?: string;
+  kind: 'desktop' | 'mobile';
+  alt: string;
+  caption: string;
+};
+
+/**
+ * A titled group of slides rendered as one carousel. This lived in the old
+ * per-feature content file; the youth page is now its only consumer, so it
+ * lives here rather than keeping that file alive for one type.
+ */
+export type Showcase = {
+  title: string;
+  blurb: string;
+  slides: Slide[];
+};
 
 type YouthContent = {
   meta: { title: string; description: string };
