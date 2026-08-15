@@ -418,7 +418,7 @@ const fr: HomeContent = {
           'Tendance individuelle et collective',
         ],
         cta: 'Voir le wellness',
-        href: '/fr/preparateurs-physiques/',
+        href: '/fr/features/check-in/',
         accent: 'green',
       },
       {
@@ -433,7 +433,7 @@ const fr: HomeContent = {
           'Ajustements individualisés, appliqués immédiatement',
         ],
         cta: 'Voir la planification',
-        href: '/fr/preparateurs-physiques/',
+        href: '/fr/features/training-load/',
         accent: 'blue',
       },
       {
@@ -621,7 +621,7 @@ const fr: HomeContent = {
         badgeTone: 'green',
         body: 'Sprint, VMA, CMJ, tests techniques : les batteries se suivent dans le temps et alimentent les programmes individuels.',
         cta: 'Tests en détail',
-        href: '/fr/preparateurs-physiques/',
+        href: '/fr/features/tests/',
       },
     ],
     cards: [
@@ -644,7 +644,7 @@ const fr: HomeContent = {
         title: 'Programmes individuels',
         body: 'Objectifs et exercices reliés aux données de chaque joueur.',
         cta: 'En détail',
-        href: '/fr/features/player-app/',
+        href: '/fr/features/programs/',
       },
       {
         icon: 'clipboard',
@@ -793,7 +793,7 @@ const fr: HomeContent = {
         title: 'Head coach & staff',
         body: 'Convocations, présences, séances, tactique : l’intendance d’équipe au quotidien.',
         cta: 'Voir la gestion d’équipe',
-        href: '/fr/features/',
+        href: '/fr/features/communication/',
       },
       {
         icon: 'building',
@@ -1084,7 +1084,7 @@ const en: HomeContent = {
           'Individual and collective trend',
         ],
         cta: 'See wellness',
-        href: '/en/sc-coaches/',
+        href: '/en/features/check-in/',
         accent: 'green',
       },
       {
@@ -1099,7 +1099,7 @@ const en: HomeContent = {
           'Individual adjustments, applied immediately',
         ],
         cta: 'See planning',
-        href: '/en/sc-coaches/',
+        href: '/en/features/training-load/',
         accent: 'blue',
       },
       {
@@ -1287,7 +1287,7 @@ const en: HomeContent = {
         badgeTone: 'green',
         body: 'Sprint, MAS, CMJ, technical tests: batteries are tracked over time and feed the individual programmes.',
         cta: 'Tests in detail',
-        href: '/en/sc-coaches/',
+        href: '/en/features/tests/',
       },
     ],
     cards: [
@@ -1310,7 +1310,7 @@ const en: HomeContent = {
         title: 'Individual programmes',
         body: 'Goals and drills linked to each player’s data.',
         cta: 'In detail',
-        href: '/en/features/player-app/',
+        href: '/en/features/programs/',
       },
       {
         icon: 'clipboard',
@@ -1459,7 +1459,7 @@ const en: HomeContent = {
         title: 'Head coach & staff',
         body: 'Call-ups, attendance, sessions, tactics: the team’s daily logistics.',
         cta: 'See team management',
-        href: '/en/features/',
+        href: '/en/features/communication/',
       },
       {
         icon: 'building',
@@ -1750,7 +1750,7 @@ const nl: HomeContent = {
           'Individuele en collectieve trend',
         ],
         cta: 'Bekijk wellness',
-        href: '/nl/sc-coaches/',
+        href: '/nl/features/check-in/',
         accent: 'green',
       },
       {
@@ -1765,7 +1765,7 @@ const nl: HomeContent = {
           'Individuele aanpassingen, meteen toegepast',
         ],
         cta: 'Bekijk de planning',
-        href: '/nl/sc-coaches/',
+        href: '/nl/features/training-load/',
         accent: 'blue',
       },
       {
@@ -1953,7 +1953,7 @@ const nl: HomeContent = {
         badgeTone: 'green',
         body: 'Sprint, MAS, CMJ, technische testen: batterijen worden doorheen de tijd opgevolgd en voeden de individuele programma’s.',
         cta: 'Testen in detail',
-        href: '/nl/sc-coaches/',
+        href: '/nl/features/tests/',
       },
     ],
     cards: [
@@ -1976,7 +1976,7 @@ const nl: HomeContent = {
         title: 'Individuele programma’s',
         body: 'Doelen en oefeningen gekoppeld aan de data van elke speler.',
         cta: 'In detail',
-        href: '/nl/features/player-app/',
+        href: '/nl/features/programs/',
       },
       {
         icon: 'clipboard',
@@ -2125,7 +2125,7 @@ const nl: HomeContent = {
         title: 'Hoofdcoach & staf',
         body: 'Oproepingen, aanwezigheid, trainingen, tactiek: de dagelijkse teamorganisatie.',
         cta: 'Bekijk teambeheer',
-        href: '/nl/features/',
+        href: '/nl/features/communication/',
       },
       {
         icon: 'building',
@@ -2416,7 +2416,7 @@ const de: HomeContent = {
           'Individueller und kollektiver Trend',
         ],
         cta: 'Wellness ansehen',
-        href: '/de/sc-coaches/',
+        href: '/de/features/check-in/',
         accent: 'green',
       },
       {
@@ -2431,7 +2431,7 @@ const de: HomeContent = {
           'Individuelle Anpassungen, sofort angewendet',
         ],
         cta: 'Planung ansehen',
-        href: '/de/sc-coaches/',
+        href: '/de/features/training-load/',
         accent: 'blue',
       },
       {
@@ -2619,7 +2619,7 @@ const de: HomeContent = {
         badgeTone: 'green',
         body: 'Sprint, MAS, CMJ, technische Tests: Testbatterien werden über die Zeit verfolgt und speisen die individuellen Programme.',
         cta: 'Tests im Detail',
-        href: '/de/sc-coaches/',
+        href: '/de/features/tests/',
       },
     ],
     cards: [
@@ -2642,7 +2642,7 @@ const de: HomeContent = {
         title: 'Individuelle Programme',
         body: 'Ziele und Übungen, verknüpft mit den Daten jedes Spielers.',
         cta: 'Im Detail',
-        href: '/de/features/player-app/',
+        href: '/de/features/programs/',
       },
       {
         icon: 'clipboard',
@@ -2791,7 +2791,7 @@ const de: HomeContent = {
         title: 'Cheftrainer & Staff',
         body: 'Aufgebote, Anwesenheit, Einheiten, Taktik: die tägliche Teamorganisation.',
         cta: 'Teamverwaltung ansehen',
-        href: '/de/features/',
+        href: '/de/features/communication/',
       },
       {
         icon: 'building',
@@ -3082,7 +3082,7 @@ const pt: HomeContent = {
           'Tendência individual e coletiva',
         ],
         cta: 'Ver o wellness',
-        href: '/pt/sc-coaches/',
+        href: '/pt/features/check-in/',
         accent: 'green',
       },
       {
@@ -3097,7 +3097,7 @@ const pt: HomeContent = {
           'Ajustes individualizados, aplicados de imediato',
         ],
         cta: 'Ver o planeamento',
-        href: '/pt/sc-coaches/',
+        href: '/pt/features/training-load/',
         accent: 'blue',
       },
       {
@@ -3285,7 +3285,7 @@ const pt: HomeContent = {
         badgeTone: 'green',
         body: 'Sprint, VAM, CMJ, testes técnicos: as baterias seguem-se no tempo e alimentam os programas individuais.',
         cta: 'Testes em detalhe',
-        href: '/pt/sc-coaches/',
+        href: '/pt/features/tests/',
       },
     ],
     cards: [
@@ -3308,7 +3308,7 @@ const pt: HomeContent = {
         title: 'Programas individuais',
         body: 'Objetivos e exercícios ligados aos dados de cada jogador.',
         cta: 'Em detalhe',
-        href: '/pt/features/player-app/',
+        href: '/pt/features/programs/',
       },
       {
         icon: 'clipboard',
@@ -3457,7 +3457,7 @@ const pt: HomeContent = {
         title: 'Treinador principal & staff',
         body: 'Convocatórias, presenças, sessões, tática: a gestão diária da equipa.',
         cta: 'Ver a gestão de equipa',
-        href: '/pt/features/',
+        href: '/pt/features/communication/',
       },
       {
         icon: 'building',
@@ -3748,7 +3748,7 @@ const es: HomeContent = {
           'Tendencia individual y colectiva',
         ],
         cta: 'Ver el wellness',
-        href: '/es/sc-coaches/',
+        href: '/es/features/check-in/',
         accent: 'green',
       },
       {
@@ -3763,7 +3763,7 @@ const es: HomeContent = {
           'Ajustes individualizados, aplicados de inmediato',
         ],
         cta: 'Ver la planificación',
-        href: '/es/sc-coaches/',
+        href: '/es/features/training-load/',
         accent: 'blue',
       },
       {
@@ -3951,7 +3951,7 @@ const es: HomeContent = {
         badgeTone: 'green',
         body: 'Sprint, VAM, CMJ, tests técnicos: las baterías se siguen en el tiempo y alimentan los programas individuales.',
         cta: 'Tests en detalle',
-        href: '/es/sc-coaches/',
+        href: '/es/features/tests/',
       },
     ],
     cards: [
@@ -3974,7 +3974,7 @@ const es: HomeContent = {
         title: 'Programas individuales',
         body: 'Objetivos y ejercicios vinculados a los datos de cada jugador.',
         cta: 'En detalle',
-        href: '/es/features/player-app/',
+        href: '/es/features/programs/',
       },
       {
         icon: 'clipboard',
@@ -4123,7 +4123,7 @@ const es: HomeContent = {
         title: 'Primer entrenador & staff',
         body: 'Convocatorias, asistencia, sesiones, táctica: la gestión diaria del equipo.',
         cta: 'Ver la gestión de equipo',
-        href: '/es/features/',
+        href: '/es/features/communication/',
       },
       {
         icon: 'building',
