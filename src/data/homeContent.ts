@@ -47,7 +47,6 @@ export interface HomeContent {
     statSuffix: string;
     statLine: string;
     statSub: string;
-    logoPlaceholder: string;
     methodKicker: string;
     /** One line — the logo carries the institution's name. */
     methodTitle: string;
@@ -360,7 +359,6 @@ const fr: HomeContent = {
     statSuffix: '+',
     statLine: 'équipes font tourner leur quotidien sur STRIVN',
     statSub: 'CLUBS ET ACADÉMIES · DU RÉGIONAL AU PROFESSIONNEL',
-    logoPlaceholder: 'LOGO CLUB',
     methodKicker: 'MÉTHODOLOGIE',
     methodTitle: 'Alumni Barça Innovation Hub',
   },
@@ -1028,7 +1026,6 @@ const en: HomeContent = {
     statSuffix: '+',
     statLine: 'teams run their daily work on STRIVN',
     statSub: 'CLUBS AND ACADEMIES · FROM REGIONAL TO PROFESSIONAL',
-    logoPlaceholder: 'CLUB LOGO',
     methodKicker: 'METHODOLOGY',
     methodTitle: 'Alumni Barça Innovation Hub',
   },
@@ -1696,7 +1693,6 @@ const nl: HomeContent = {
     statSuffix: '+',
     statLine: 'teams draaien hun dagelijkse werking op STRIVN',
     statSub: 'CLUBS EN ACADEMIES · VAN REGIONAAL TOT PROFESSIONEEL',
-    logoPlaceholder: 'CLUBLOGO',
     methodKicker: 'METHODOLOGIE',
     methodTitle: 'Alumni Barça Innovation Hub',
   },
@@ -2364,7 +2360,6 @@ const de: HomeContent = {
     statSuffix: '+',
     statLine: 'Teams organisieren ihren Alltag mit STRIVN',
     statSub: 'VEREINE UND AKADEMIEN · VON REGIONAL BIS PROFESSIONELL',
-    logoPlaceholder: 'VEREINSLOGO',
     methodKicker: 'METHODIK',
     methodTitle: 'Alumni Barça Innovation Hub',
   },
@@ -3032,7 +3027,6 @@ const pt: HomeContent = {
     statSuffix: '+',
     statLine: 'equipas gerem o seu dia a dia no STRIVN',
     statSub: 'CLUBES E ACADEMIAS · DO REGIONAL AO PROFISSIONAL',
-    logoPlaceholder: 'LOGO DO CLUBE',
     methodKicker: 'METODOLOGIA',
     methodTitle: 'Alumni Barça Innovation Hub',
   },
@@ -3700,7 +3694,6 @@ const es: HomeContent = {
     statSuffix: '+',
     statLine: 'equipos gestionan su día a día en STRIVN',
     statSub: 'CLUBES Y ACADEMIAS · DEL REGIONAL AL PROFESIONAL',
-    logoPlaceholder: 'LOGO DEL CLUB',
     methodKicker: 'METODOLOGÍA',
     methodTitle: 'Alumni Barça Innovation Hub',
   },

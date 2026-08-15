@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { landingContent, type Locale } from '../data/landingContent';
+import { SKIP_LABEL } from '../lib/skipLabel';
 
 interface Props {
   locale: Locale;
@@ -27,15 +28,7 @@ const {
 } = Astro.props;
 
 const c = landingContent[locale];
-const skipLabelByLocale: Record<Locale, string> = {
-  fr: 'Aller au contenu',
-  nl: 'Naar de inhoud',
-  de: 'Zum Inhalt springen',
-  pt: 'Ir para o conteúdo',
-  es: 'Ir al contenido',
-  en: 'Skip to content',
-};
-const skipLabel = skipLabelByLocale[locale];
+const skipLabel = SKIP_LABEL[locale];
 ---
 
 <BaseLayout

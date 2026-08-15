@@ -5,6 +5,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import type { Locale } from '../data/landingContent';
 import { landingContent } from '../data/landingContent';
+import { SKIP_LABEL } from '../lib/skipLabel';
 
 interface Props {
   locale: Locale;
@@ -34,7 +35,7 @@ const {
 
 const c = landingContent[locale];
 const isFrench = locale === 'fr';
-const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
+const skipLabel = SKIP_LABEL[locale];
 const blogHref = isFrench ? '/fr/blog/' : '/en/blog/';
 
 /* Add a Blog link only if the shared nav does not already carry one. It does

@@ -1,5 +1,9 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { landingContent, type Locale } from '../data/landingContent';
+import { SKIP_LABEL } from '../lib/skipLabel';
 
 interface Props {
   title: string;
@@ -11,23 +15,23 @@ interface Props {
   heading?: string;
   /** Localized "last updated" line, already formatted */
   updated?: string;
-  /** Localized home link label */
-  homeLabel?: string;
-  /** Path the home link points to */
-  homeHref?: string;
 }
 
-const {
-  title,
-  description,
-  lang = 'en',
-  canonicalPath,
-  alternates = [],
-  heading,
-  updated,
-  homeLabel = 'Back to strivn.net',
-  homeHref = '/',
-} = Astro.props;
+const { title, description, lang = 'en', canonicalPath, alternates = [], heading, updated } =
+  Astro.props;
+
+/* `lang` is a free string on these pages; narrow it before indexing content. */
+const locale: Locale = lang in landingContent ? (lang as Locale) : 'en';
+const c = landingContent[locale];
+
+/* The language switcher should land on this same document in the chosen
+   language, not on the homepage. Every legal page already declares that
+   mapping as hreflang alternates — reuse it rather than restate it. */
+const switchHrefs: Partial<Record<Locale, string>> = Object.fromEntries(
+  alternates
+    .filter((a) => a.hreflang in landingContent)
+    .map((a) => [a.hreflang, a.href.endsWith('/') ? a.href : `${a.href}/`])
+);
 ---
 <BaseLayout
   title={title}
@@ -36,8 +40,11 @@ const {
   canonicalPath={canonicalPath}
   alternates={alternates}
 >
-  <main class="legal">
-    <a class="legal__home" href={homeHref}>← {homeLabel}</a>
+  <a href="#s-main" class="s-skip">{SKIP_LABEL[locale]}</a>
+
+  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} switchHrefs={switchHrefs} />
+
+  <main id="s-main" class="legal">
     <header class="legal__header">
       <h1>{heading ?? title}</h1>
       {updated && <p class="legal__updated">{updated}</p>}
@@ -46,27 +53,22 @@ const {
       <slot />
     </div>
   </main>
+
+  <SiteFooter locale={locale} footer={c.footer} />
 </BaseLayout>
 
 <style>
   .legal {
     max-width: 46rem;
     margin: 0 auto;
-    padding: clamp(3rem, 8vw, 6rem) var(--space-lg) var(--space-3xl);
+    /* The nav is fixed and overlays the page: the top padding has to clear it
+       before the heading starts, the same reserve the sub-pages keep. */
+    padding: clamp(7.5rem, 6vw + 5rem, 9rem) var(--space-lg) var(--space-3xl);
     color: var(--ink-2);
     font-family: var(--font-body);
     font-size: var(--text-body);
     line-height: 1.7;
   }
-  .legal__home {
-    display: inline-block;
-    margin-bottom: var(--space-xl);
-    color: var(--ink-3);
-    font-size: var(--text-sm);
-    text-decoration: none;
-    transition: color 0.2s var(--ease-out);
-  }
-  .legal__home:hover { color: var(--electric-500); }
   .legal__header { margin-bottom: var(--space-2xl); }
   .legal__header h1 {
     margin: 0;

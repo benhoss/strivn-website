@@ -1,12 +1,33 @@
 ---
 import type { HomeContent } from '../../data/homeContent';
+import { CLUBS } from '../../data/clubs';
+import { pngSize } from '../../lib/pngSize';
 
 interface Props {
   credibility: HomeContent['credibility'];
 }
 
 const { credibility } = Astro.props;
-const placeholders = Array.from({ length: 8 }, () => credibility.logoPlaceholder);
+
+/**
+ * The crests are normalized to a common ink *area*, not a common height — a
+ * portrait shield and a square roundel of equal height do not read as equal.
+ * Constraining them in CSS would undo that, so each is emitted at its own
+ * intrinsic size times one shared factor. 0.34 lands the tallest crest at
+ * ~76px inside a 7rem tile, and leaves every file at ~2.9x its drawn size.
+ */
+const SCALE = 0.34;
+
+const crests = CLUBS.map((club) => {
+  const src = `logos/clubs/${club.slug}.png`;
+  const size = pngSize(src);
+  return {
+    ...club,
+    src: `/${src}`,
+    width: size ? Math.round(size.width * SCALE) : undefined,
+    height: size ? Math.round(size.height * SCALE) : undefined,
+  };
+});
 ---
 
 <section class="bg-[#070A14] py-20 md:py-24" aria-labelledby="cred-title">
@@ -22,22 +43,32 @@ const placeholders = Array.from({ length: 8 }, () => credibility.logoPlaceholder
         <p class="mt-3 font-mono text-[0.64rem] tracking-[0.12em] text-[#68779A]">{credibility.statSub}</p>
       </div>
 
-      <div class="hl-reveal hl-marquee-mask" style="--d: 120ms;" aria-hidden="true">
-        <div class="flex flex-col gap-4">
-          <div class="hl-marquee">
-            {[...placeholders, ...placeholders].map((label) => (
-              <span class="grid h-[4.5rem] w-[17rem] shrink-0 place-items-center rounded-[14px] bg-[#0B1020] font-mono text-[0.62rem] tracking-[0.16em] text-[#3D4A66] outline-1 outline-[#FFFFFF0A] -outline-offset-[0.5px]">
-                {label}
+      <div class="hl-reveal hl-marquee-mask" style="--d: 120ms;">
+        <div class="hl-marquee">
+          {/* The animation translates by -50%, so the set is laid down twice.
+              The second pass is scenery: hidden from assistive tech, and
+              dropped entirely when motion is reduced and the row wraps. */}
+          {[false, true].map((clone) =>
+            crests.map((crest) => (
+              <span
+                class:list={[
+                  'grid h-[7rem] w-[10.5rem] shrink-0 place-items-center rounded-[14px] bg-white px-5',
+                  clone && 'hl-marquee__clone',
+                ]}
+                aria-hidden={clone ? 'true' : undefined}
+              >
+                <img
+                  src={crest.src}
+                  alt={clone ? '' : crest.name}
+                  width={crest.width}
+                  height={crest.height}
+                  class="max-w-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
               </span>
-            ))}
-          </div>
-          <div class="hl-marquee [animation-direction:reverse]">
-            {[...placeholders, ...placeholders].map((label) => (
-              <span class="grid h-[4.5rem] w-[17rem] shrink-0 place-items-center rounded-[14px] bg-[#0B1020] font-mono text-[0.62rem] tracking-[0.16em] text-[#3D4A66] outline-1 outline-[#FFFFFF0A] -outline-offset-[0.5px]">
-                {label}
-              </span>
-            ))}
-          </div>
+            ))
+          )}
         </div>
       </div>
     </div>
