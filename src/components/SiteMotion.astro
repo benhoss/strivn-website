@@ -24,18 +24,27 @@
   if (reduceMotion || !('IntersectionObserver' in window)) {
     targets.forEach((el) => el.classList.add('is-in'));
   } else {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-in');
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: '0px 0px -8% 0px' },
-    );
-    targets.forEach((el) => io.observe(el));
+    // Two triggers, same behaviour, different patience. The default fires as
+    // soon as an element clears the bottom 8% of the viewport. Anything inside
+    // a `[data-reveal-band]` waits until it is a third of the way up the
+    // screen — that is for a staged sequence whose opening beats would
+    // otherwise be spent on the sliver peeking above the fold.
+    const watch = (rootMargin) =>
+      new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-in');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin },
+      );
+
+    const near = watch('0px 0px -8% 0px');
+    const patient = watch('0px 0px -38% 0px');
+    targets.forEach((el) => (el.closest('[data-reveal-band]') ? patient : near).observe(el));
   }
 
   // ── Count-up ──
