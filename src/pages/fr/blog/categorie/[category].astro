@@ -5,7 +5,6 @@ import {
   BLOG_CATEGORIES,
   BLOG_CATEGORY_DESCRIPTIONS,
   BLOG_CATEGORY_LABELS,
-  slugFromEntry,
 } from '../../../../lib/blog';
 import { getCollection } from 'astro:content';
 
@@ -24,12 +23,6 @@ all.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 const title = `${label} — articles pour coachs foot amateur | strivn blog`;
 const description = `${desc} Conseils concrets, vocabulaire terrain, sources autoritatives. Pour coachs de foot amateur et semi-pro.`;
 const canonicalPath = `/fr/blog/categorie/${cat}/`;
-
-const alternates = [
-  { hreflang: 'fr', href: canonicalPath },
-  { hreflang: 'en', href: `/en/blog/category/${cat}/` },
-  { hreflang: 'x-default', href: canonicalPath },
-];
 
 const jsonLdExtra = [
   {
@@ -51,7 +44,6 @@ const jsonLdExtra = [
   canonicalPath={canonicalPath}
   jsonLdExtra={jsonLdExtra}
   bodyClass="b-page"
-  switchHrefs={{ en: `/en/blog/category/${cat}/`, fr: canonicalPath }}
 >
   <header class="b-hero">
     <span class="b-hero__eyebrow">Catégorie · {label}</span>
