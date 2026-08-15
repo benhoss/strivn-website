@@ -40,7 +40,20 @@ const toneChip: Record<string, string> = {
   >
   </div>
 
-  <div class="hl-wrap relative flex flex-col items-center pt-[7.5rem] text-center md:pt-[8.5rem]">
+  <!-- The claim owns the first screen. The board below used to start at a
+       constant 666px whatever the display, so on a 1080p screen the whole
+       three-and-a-half-second sequence was already on screen at load and
+       played to nobody.
+
+       `100svh` minus a fixed reserve rather than a percentage: a percentage
+       cannot hold the peek steady across screen heights, this can. The band
+       adds ~95px of its own padding, so the reserve leaves the board about a
+       hundred pixels above the fold — enough to say there is more below,
+       nowhere near enough to start the sequence. `min-h` means a short laptop
+       keeps its natural height instead of being squeezed. -->
+  <div
+    class="hl-wrap relative flex min-h-[calc(100svh-12rem)] flex-col items-center justify-center pt-[7.5rem] pb-12 text-center md:pt-[8.5rem]"
+  >
     <p
       class="hl-reveal inline-flex items-center gap-2.5 rounded-full bg-[#FFFFFF08] py-[7px] pr-4 pl-2.5 text-[0.82rem] font-medium text-[#AAB8D4] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
     >
@@ -89,7 +102,9 @@ const toneChip: Record<string, string> = {
   </div>
 
   <!-- ── Product shot · CSS-drawn "OS" dashboard ── -->
-  <div class="hl-wrap relative max-w-[1240px] pt-14 pb-16 md:pt-16 md:pb-24">
+  <!-- `data-reveal-band` holds every reveal in here to a stricter trigger, so
+       the sliver peeking above the fold does not start the sequence early. -->
+  <div class="hl-wrap relative max-w-[1240px] pt-14 pb-16 md:pt-16 md:pb-24" data-reveal-band>
     <div class="hl-reveal hl-reveal--card relative mx-auto max-w-[780px]" style="--d: 460ms;">
       <!-- Main readiness board -->
       <div
