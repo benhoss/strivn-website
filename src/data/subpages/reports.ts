@@ -43,7 +43,7 @@ export const reports: SubpageLocales = {
           {
             num: 'AVANT LA SÉANCE',
             title: 'Briefing IA',
-            desc: 'Les décisions du jour : chaque joueur classé Repos, Surveillance, Apte ou Inconnu. « Inconnu » est une réponse, pas un trou.',
+            desc: 'Les décisions du jour : chaque joueur rangé dans une case — s’entraîne, adapté, repos, absent, non convoqué, inconnu. « Inconnu » est une réponse, pas un trou.',
           },
           {
             num: 'SUR LA PÉRIODE',
@@ -125,7 +125,7 @@ export const reports: SubpageLocales = {
           {
             num: 'BEFORE THE SESSION',
             title: 'AI briefing',
-            desc: 'Today’s decisions: every player sorted into Rest, Watch, Fit or Unknown. “Unknown” is an answer, not a hole.',
+            desc: 'Today’s decisions: every player sorted into one call — training, adapted, resting, absent, not called up, unknown. “Unknown” is an answer, not a hole.',
           },
           {
             num: 'OVER THE PERIOD',
@@ -207,7 +207,7 @@ export const reports: SubpageLocales = {
           {
             num: 'VOOR DE TRAINING',
             title: 'AI-briefing',
-            desc: 'De beslissingen van de dag: elke speler ingedeeld als Rust, Opvolgen, Fit of Onbekend. “Onbekend” is een antwoord, geen gat.',
+            desc: 'De beslissingen van de dag: elke speler in één vakje — traint, aangepast, rust, afwezig, niet opgeroepen, onbekend. “Onbekend” is een antwoord, geen gat.',
           },
           {
             num: 'OVER DE PERIODE',
@@ -289,7 +289,7 @@ export const reports: SubpageLocales = {
           {
             num: 'VOR DER EINHEIT',
             title: 'KI-Briefing',
-            desc: 'Die Entscheidungen des Tages: jeder Spieler eingeordnet als Ruhe, Beobachten, Fit oder Unbekannt. „Unbekannt“ ist eine Antwort, keine Lücke.',
+            desc: 'Die Entscheidungen des Tages: jeder Spieler in genau einer Kategorie — trainiert, angepasst, Ruhe, abwesend, nicht aufgeboten, unbekannt. „Unbekannt“ ist eine Antwort, keine Lücke.',
           },
           {
             num: 'ÜBER DEN ZEITRAUM',
@@ -371,7 +371,7 @@ export const reports: SubpageLocales = {
           {
             num: 'ANTES DO TREINO',
             title: 'Briefing IA',
-            desc: 'As decisões do dia: cada jogador classificado em Repouso, Vigilância, Apto ou Desconhecido. «Desconhecido» é uma resposta, não um buraco.',
+            desc: 'As decisões do dia: cada jogador numa só casa — treina, adaptado, repouso, ausente, não convocado, desconhecido. «Desconhecido» é uma resposta, não um buraco.',
           },
           {
             num: 'NO PERÍODO',
@@ -453,7 +453,7 @@ export const reports: SubpageLocales = {
           {
             num: 'ANTES DE LA SESIÓN',
             title: 'Briefing IA',
-            desc: 'Las decisiones del día: cada jugador clasificado en Reposo, Vigilancia, Apto o Desconocido. «Desconocido» es una respuesta, no un hueco.',
+            desc: 'Las decisiones del día: cada jugador en una sola casilla — entrena, adaptado, reposo, ausente, no convocado, desconocido. «Desconocido» es una respuesta, no un hueco.',
           },
           {
             num: 'EN EL PERIODO',

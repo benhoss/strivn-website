@@ -84,7 +84,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'LES ENFANTS',
             title: 'Portail parent',
-            desc: 'Sur une équipe « enfants » (6-12 ans), tout passe par les parents, avec un consentement explicite.',
+            desc: 'Sur une équipe en mode « enfants », tout passe par les parents, avec un consentement explicite.',
           },
         ],
       },
@@ -169,7 +169,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'CHILDREN',
             title: 'Parent portal',
-            desc: 'On a “children” team (6-12), everything goes through the parents, with explicit consent.',
+            desc: 'On a team in “children” mode, everything goes through the parents, with explicit consent.',
           },
         ],
       },
@@ -254,7 +254,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'DE KINDEREN',
             title: 'Ouderportaal',
-            desc: 'Bij een “kinderen”-ploeg (6-12 jaar) loopt alles via de ouders, met uitdrukkelijke toestemming.',
+            desc: 'Bij een ploeg in “kinderen”-modus loopt alles via de ouders, met uitdrukkelijke toestemming.',
           },
         ],
       },
@@ -339,7 +339,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'DIE KINDER',
             title: 'Elternportal',
-            desc: 'Bei einer „Kinder“-Mannschaft (6-12 Jahre) läuft alles über die Eltern, mit ausdrücklicher Einwilligung.',
+            desc: 'Bei einer Mannschaft im Modus „Kinder“ läuft alles über die Eltern, mit ausdrücklicher Einwilligung.',
           },
         ],
       },
@@ -424,7 +424,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'AS CRIANÇAS',
             title: 'Portal dos pais',
-            desc: 'Numa equipa «crianças» (6-12 anos), tudo passa pelos pais, com consentimento explícito.',
+            desc: 'Numa equipa em modo «crianças», tudo passa pelos pais, com consentimento explícito.',
           },
         ],
       },
@@ -509,7 +509,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'LOS NIÑOS',
             title: 'Portal de padres',
-            desc: 'En un equipo «niños» (6-12 años), todo pasa por los padres, con consentimiento explícito.',
+            desc: 'En un equipo en modo «niños», todo pasa por los padres, con consentimiento explícito.',
           },
         ],
       },

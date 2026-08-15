@@ -75,8 +75,29 @@ export const SECTION_SLUGS = {
   player: ['player-app', 'staff'],
 } as const;
 
-/** Anchor targets for the hero jump pills — order matches `hero.jump`. */
-export const JUMP_HREFS = ['#monitoring', '#seances', '#equipe', '#ia', '#pilotage', '#adversaire'];
+/**
+ * Anchor targets for the hero jump pills — order matches `hero.jump`, and
+ * each entry must be a section id the page actually renders. The last band
+ * carries both the opponent and the player columns, so it gets one pill.
+ */
+export const JUMP_HREFS = [
+  '#monitoring',
+  '#seances',
+  '#equipe',
+  '#ia',
+  '#pilotage',
+  '#adversaire',
+] as const;
+
+/**
+ * One pill per anchor: a locale that gains or loses a label becomes a type
+ * error rather than a pill whose href resolves to `undefined` — which is how
+ * the pills silently drifted a section out of step. The mapping goes through
+ * a type parameter because that is the only form TypeScript treats as
+ * homomorphic; mapping a concrete tuple would rewrite `length` to `string`.
+ */
+type SameLength<T extends readonly unknown[]> = { -readonly [K in keyof T]: string };
+export type JumpLabels = SameLength<typeof JUMP_HREFS>;
 
 /** Session builder capture: block durations and load, identical everywhere. */
 export const SESSION_BLOCKS = [
@@ -111,7 +132,7 @@ export const AI_ACTS_FROM = 3;
 export interface FeaturesIndexContent {
   meta: { title: string; description: string };
   nav: { links: Array<{ label: string; href: string }>; cta: string };
-  hero: { kicker: string; title: string; sub: string; jump: string[] };
+  hero: { kicker: string; title: string; sub: string; jump: JumpLabels };
   monitoring: SectionHead & { modules: ModuleText[] };
   sessions: SectionHead & {
     modules: ModuleText[];
@@ -197,7 +218,7 @@ const fr: FeaturesIndexContent = {
     kicker: 'FONCTIONNALITÉS',
     title: 'Tout ce que STRIVN fait, module par module.',
     sub: 'Chaque module tient debout seul et tous partagent la même base. Rien à débloquer : le plan Coach les inclut tous, pour une équipe.',
-    jump: ['Monitoring', 'Séances & terrain', 'Équipe', 'Intelligence', 'Adversaire', 'Joueur'],
+    jump: ['Monitoring', 'Séances & terrain', 'Équipe', 'Intelligence', 'Pilotage', 'Adversaire & joueur'],
   },
   monitoring: {
     kicker: 'MONITORING & PERFORMANCE',
@@ -390,7 +411,7 @@ const en: FeaturesIndexContent = {
     kicker: 'FEATURES',
     title: 'Everything STRIVN does, module by module.',
     sub: 'Every module stands on its own and all of them share the same base. Nothing to unlock: the Coach plan includes them all, for one team.',
-    jump: ['Monitoring', 'Sessions & pitch', 'Squad', 'Intelligence', 'Opponent', 'Player'],
+    jump: ['Monitoring', 'Sessions & pitch', 'Squad', 'Intelligence', 'Reports', 'Opponent & player'],
   },
   monitoring: {
     kicker: 'MONITORING & PERFORMANCE',
@@ -571,7 +592,7 @@ const nl: FeaturesIndexContent = {
     kicker: 'FUNCTIES',
     title: 'Alles wat STRIVN doet, module per module.',
     sub: 'Elke module staat op zichzelf en ze delen allemaal dezelfde basis. Niets te ontgrendelen: het Coach-plan bevat ze allemaal, voor één team.',
-    jump: ['Monitoring', 'Trainingen & veld', 'Kern', 'Intelligentie', 'Tegenstander', 'Speler'],
+    jump: ['Monitoring', 'Trainingen & veld', 'Kern', 'Intelligentie', 'Rapporten', 'Tegenstander & speler'],
   },
   monitoring: {
     kicker: 'MONITORING & PRESTATIE',
@@ -757,7 +778,7 @@ const de: FeaturesIndexContent = {
     kicker: 'FUNKTIONEN',
     title: 'Alles, was STRIVN leistet — Modul für Modul.',
     sub: 'Jedes Modul steht für sich, und alle teilen dieselbe Basis. Nichts freizuschalten: Der Coach-Plan enthält sie alle, für ein Team.',
-    jump: ['Monitoring', 'Einheiten & Platz', 'Kader', 'Intelligenz', 'Gegner', 'Spieler'],
+    jump: ['Monitoring', 'Einheiten & Platz', 'Kader', 'Intelligenz', 'Berichte', 'Gegner & Spieler'],
   },
   monitoring: {
     kicker: 'MONITORING & LEISTUNG',
@@ -944,7 +965,7 @@ const pt: FeaturesIndexContent = {
     kicker: 'FUNCIONALIDADES',
     title: 'Tudo o que o STRIVN faz, módulo a módulo.',
     sub: 'Cada módulo sustenta-se sozinho e todos partilham a mesma base. Nada a desbloquear: o plano Coach inclui-os todos, para uma equipa.',
-    jump: ['Monitorização', 'Sessões & campo', 'Plantel', 'Inteligência', 'Adversário', 'Jogador'],
+    jump: ['Monitorização', 'Sessões & campo', 'Plantel', 'Inteligência', 'Relatórios', 'Adversário & jogador'],
   },
   monitoring: {
     kicker: 'MONITORIZAÇÃO & DESEMPENHO',
@@ -1130,7 +1151,7 @@ const es: FeaturesIndexContent = {
     kicker: 'FUNCIONALIDADES',
     title: 'Todo lo que hace STRIVN, módulo a módulo.',
     sub: 'Cada módulo se sostiene solo y todos comparten la misma base. Nada que desbloquear: el plan Coach los incluye todos, para un equipo.',
-    jump: ['Monitorización', 'Sesiones & campo', 'Plantilla', 'Inteligencia', 'Rival', 'Jugador'],
+    jump: ['Monitorización', 'Sesiones & campo', 'Plantilla', 'Inteligencia', 'Informes', 'Rival & jugador'],
   },
   monitoring: {
     kicker: 'MONITORIZACIÓN & RENDIMIENTO',

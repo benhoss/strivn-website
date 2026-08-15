@@ -215,7 +215,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     nav: {
       links: [
-        { label: 'Plateforme', href: '/fr/#platform' },
+        { label: 'Plateforme', href: '/fr/#plateforme' },
         { label: 'Fonctionnalités', href: '/fr/features/' },
         {
           label: 'Solutions',
@@ -226,7 +226,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Tarifs', href: '/fr/#pricing' },
+        { label: 'Tarifs', href: '/fr/#tarifs' },
         { label: 'FAQ', href: '/fr/#faq' },
       ],
       cta: 'Commencer',
@@ -537,13 +537,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN réunit l’intendance complète d’une équipe dans une seule plateforme, gratuite pour les coaches.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Plateforme', href: '/fr/#platform' },
+        { label: 'Plateforme', href: '/fr/#plateforme' },
         { label: 'Fonctionnalités', href: '/fr/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/fr/clubs/' },
         { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
         { label: 'Équipes de jeunes', href: '/fr/equipes-jeunes/' },
-        { label: 'Tarifs', href: '/fr/#pricing' },
+        { label: 'Tarifs', href: '/fr/#tarifs' },
         { label: 'FAQ', href: '/fr/#faq' },
         { label: 'Support', href: '/fr/support' },
         { label: 'Confidentialité', href: '/fr/privacy' },
@@ -568,7 +568,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     nav: {
       links: [
-        { label: 'Platform', href: '/en/#platform' },
+        { label: 'Platform', href: '/en/#plateforme' },
         { label: 'Features', href: '/en/features/' },
         {
           label: 'Solutions',
@@ -579,7 +579,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Pricing', href: '/en/#pricing' },
+        { label: 'Pricing', href: '/en/#tarifs' },
         { label: 'FAQ', href: '/en/#faq' },
       ],
       cta: 'Get started',
@@ -890,13 +890,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN brings a team’s entire operations into one platform, free for coaches.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Platform', href: '/en/#platform' },
+        { label: 'Platform', href: '/en/#plateforme' },
         { label: 'Features', href: '/en/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/en/clubs/' },
         { label: 'S&C coaches', href: '/en/sc-coaches/' },
         { label: 'Youth teams', href: '/en/youth-teams/' },
-        { label: 'Pricing', href: '/en/#pricing' },
+        { label: 'Pricing', href: '/en/#tarifs' },
         { label: 'FAQ', href: '/en/#faq' },
         { label: 'Support', href: '/en/support' },
         { label: 'Privacy', href: '/en/privacy' },
@@ -921,7 +921,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     nav: {
       links: [
-        { label: 'Platform', href: '/nl/#platform' },
+        { label: 'Platform', href: '/nl/#plateforme' },
         { label: 'Functies', href: '/nl/features/' },
         {
           label: 'Oplossingen',
@@ -932,7 +932,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Tarieven', href: '/nl/#pricing' },
+        { label: 'Tarieven', href: '/nl/#tarifs' },
         { label: 'FAQ', href: '/nl/#faq' },
       ],
       cta: 'Aan de slag',
@@ -1243,13 +1243,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN brengt de volledige teamorganisatie samen in één platform, gratis voor coaches.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Platform', href: '/nl/#platform' },
+        { label: 'Platform', href: '/nl/#plateforme' },
         { label: 'Functies', href: '/nl/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/nl/clubs/' },
         { label: 'S&C-coaches', href: '/nl/sc-coaches/' },
         { label: 'Jeugdploegen', href: '/nl/youth-teams/' },
-        { label: 'Tarieven', href: '/nl/#pricing' },
+        { label: 'Tarieven', href: '/nl/#tarifs' },
         { label: 'FAQ', href: '/nl/#faq' },
         { label: 'Support', href: '/nl/support' },
         { label: 'Privacy', href: '/nl/privacy' },
@@ -1274,7 +1274,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     nav: {
       links: [
-        { label: 'Plattform', href: '/de/#platform' },
+        { label: 'Plattform', href: '/de/#plateforme' },
         { label: 'Funktionen', href: '/de/features/' },
         {
           label: 'Lösungen',
@@ -1285,7 +1285,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Preise', href: '/de/#pricing' },
+        { label: 'Preise', href: '/de/#tarifs' },
         { label: 'FAQ', href: '/de/#faq' },
       ],
       cta: 'Loslegen',
@@ -1596,13 +1596,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN bringt die gesamte Organisation eines Teams in eine Plattform, kostenlos für Coaches.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Plattform', href: '/de/#platform' },
+        { label: 'Plattform', href: '/de/#plateforme' },
         { label: 'Funktionen', href: '/de/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Vereine', href: '/de/clubs/' },
         { label: 'S&C-Coaches', href: '/de/sc-coaches/' },
         { label: 'Jugendteams', href: '/de/youth-teams/' },
-        { label: 'Preise', href: '/de/#pricing' },
+        { label: 'Preise', href: '/de/#tarifs' },
         { label: 'FAQ', href: '/de/#faq' },
         { label: 'Support', href: '/de/support' },
         { label: 'Datenschutz', href: '/de/privacy' },
@@ -1627,7 +1627,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     nav: {
       links: [
-        { label: 'Plataforma', href: '/pt/#platform' },
+        { label: 'Plataforma', href: '/pt/#plateforme' },
         { label: 'Funcionalidades', href: '/pt/features/' },
         {
           label: 'Soluções',
@@ -1638,7 +1638,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Preços', href: '/pt/#pricing' },
+        { label: 'Preços', href: '/pt/#tarifs' },
         { label: 'FAQ', href: '/pt/#faq' },
       ],
       cta: 'Começar',
@@ -1949,13 +1949,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN reúne toda a operação de uma equipa numa só plataforma, gratuita para treinadores.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Plataforma', href: '/pt/#platform' },
+        { label: 'Plataforma', href: '/pt/#plateforme' },
         { label: 'Funcionalidades', href: '/pt/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubes', href: '/pt/clubs/' },
         { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
         { label: 'Equipas de formação', href: '/pt/youth-teams/' },
-        { label: 'Preços', href: '/pt/#pricing' },
+        { label: 'Preços', href: '/pt/#tarifs' },
         { label: 'FAQ', href: '/pt/#faq' },
         { label: 'Apoio', href: '/pt/support' },
         { label: 'Privacidade', href: '/pt/privacy' },
@@ -1980,7 +1980,7 @@ export const landingContent: Record<Locale, LandingContent> = {
 
     nav: {
       links: [
-        { label: 'Plataforma', href: '/es/#platform' },
+        { label: 'Plataforma', href: '/es/#plateforme' },
         { label: 'Funcionalidades', href: '/es/features/' },
         {
           label: 'Soluciones',
@@ -1991,7 +1991,7 @@ export const landingContent: Record<Locale, LandingContent> = {
           ],
         },
         { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Precios', href: '/es/#pricing' },
+        { label: 'Precios', href: '/es/#tarifs' },
         { label: 'FAQ', href: '/es/#faq' },
       ],
       cta: 'Empezar',
@@ -2302,13 +2302,13 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN reúne toda la operativa de un equipo en una sola plataforma, gratis para entrenadores.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Plataforma', href: '/es/#platform' },
+        { label: 'Plataforma', href: '/es/#plateforme' },
         { label: 'Funcionalidades', href: '/es/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubes', href: '/es/clubs/' },
         { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
         { label: 'Fútbol base', href: '/es/youth-teams/' },
-        { label: 'Precios', href: '/es/#pricing' },
+        { label: 'Precios', href: '/es/#tarifs' },
         { label: 'FAQ', href: '/es/#faq' },
         { label: 'Soporte', href: '/es/support' },
         { label: 'Privacidad', href: '/es/privacy' },

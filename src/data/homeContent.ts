@@ -250,7 +250,15 @@ export interface HomeContent {
     tagline: string;
     body: string;
     email: string;
-    columns: Array<{ title: string; links: Array<{ label: string; href: string }> }>;
+    /**
+     * `hreflang` marks a link whose destination is in another language —
+     * the blog exists in French only, so the five other locales point at it
+     * and browsers and crawlers should know that before following.
+     */
+    columns: Array<{
+      title: string;
+      links: Array<{ label: string; href: string; hreflang?: string }>;
+    }>;
     copyright: string;
   };
 }
@@ -277,11 +285,11 @@ const fr: HomeContent = {
   nav: {
     links: [
       { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
-      { label: 'Plateforme', href: '#plateforme' },
+      { label: 'Plateforme', href: '/fr/#plateforme' },
       { label: 'Fonctionnalités', href: '/fr/features/' },
       { label: 'Solutions', href: '/fr/solutions/' },
-      { label: 'Tarifs', href: '#tarifs' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Tarifs', href: '/fr/#tarifs' },
+      { label: 'FAQ', href: '/fr/#faq' },
     ],
     cta: 'Commencer',
   },
@@ -391,7 +399,7 @@ const fr: HomeContent = {
         index: '01 / 06',
         kicker: 'IMPORT GPS',
         title: 'Vos données GPS intégrées, sans ressaisie.',
-        body: 'Un export CSV de n’importe quel système — Catapult, STATSports, Polar — suffit : la séance est rattachée au calendrier, joueur par joueur.',
+        body: 'Un export CSV de n’importe quel système — Catapult, STATSports ou autre — suffit : la séance est rattachée au calendrier, joueur par joueur.',
         points: [
           'Import direct d’un export CSV',
           'Correspondance des colonnes mémorisée',
@@ -867,7 +875,7 @@ const fr: HomeContent = {
     items: [
       {
         q: 'Comment importer mes données GPS ?',
-        a: 'Par export CSV, depuis n’importe quel système — Catapult, STATSports, Polar ou autre. La correspondance des colonnes est mémorisée : les imports suivants prennent quelques secondes.',
+        a: 'Par export CSV, depuis n’importe quel système — Catapult, STATSports ou un autre. La correspondance des colonnes est mémorisée : les imports suivants prennent quelques secondes.',
       },
       {
         q: 'Qui garde le contrôle de l’espace d’équipe ?',
@@ -907,10 +915,10 @@ const fr: HomeContent = {
       {
         title: 'PRODUIT',
         links: [
-          { label: 'Plateforme', href: '#plateforme' },
+          { label: 'Plateforme', href: '/fr/#plateforme' },
           { label: 'Fonctionnalités', href: '/fr/features/' },
-          { label: 'Tarifs', href: '#tarifs' },
-          { label: 'FAQ', href: '#faq' },
+          { label: 'Tarifs', href: '/fr/#tarifs' },
+          { label: 'FAQ', href: '/fr/#faq' },
           { label: 'Blog', href: '/fr/blog/' },
         ],
       },
@@ -945,11 +953,11 @@ const en: HomeContent = {
   nav: {
     links: [
       { label: 'S&C coaches', href: '/en/sc-coaches/' },
-      { label: 'Platform', href: '#plateforme' },
+      { label: 'Platform', href: '/en/#plateforme' },
       { label: 'Features', href: '/en/features/' },
       { label: 'Solutions', href: '/en/solutions/' },
-      { label: 'Pricing', href: '#tarifs' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Pricing', href: '/en/#tarifs' },
+      { label: 'FAQ', href: '/en/#faq' },
     ],
     cta: 'Get started',
   },
@@ -1059,7 +1067,7 @@ const en: HomeContent = {
         index: '01 / 06',
         kicker: 'GPS IMPORT',
         title: 'Your GPS data integrated, no re-typing.',
-        body: 'A CSV export from any system — Catapult, STATSports, Polar — is enough: the session is attached to the calendar, player by player.',
+        body: 'A CSV export from any system — Catapult, STATSports or another — is enough: the session is attached to the calendar, player by player.',
         points: [
           'Direct import of a CSV export',
           'Column mapping remembered',
@@ -1535,7 +1543,7 @@ const en: HomeContent = {
     items: [
       {
         q: 'How do I import my GPS data?',
-        a: 'Via CSV export, from any system — Catapult, STATSports, Polar or other. Column mapping is remembered: subsequent imports take a few seconds.',
+        a: 'Via CSV export, from any system — Catapult, STATSports or another. Column mapping is remembered: subsequent imports take a few seconds.',
       },
       {
         q: 'Who keeps control of the team space?',
@@ -1575,11 +1583,11 @@ const en: HomeContent = {
       {
         title: 'PRODUCT',
         links: [
-          { label: 'Platform', href: '#plateforme' },
+          { label: 'Platform', href: '/en/#plateforme' },
           { label: 'Features', href: '/en/features/' },
-          { label: 'Pricing', href: '#tarifs' },
-          { label: 'FAQ', href: '#faq' },
-          { label: 'Blog', href: '/blog/' },
+          { label: 'Pricing', href: '/en/#tarifs' },
+          { label: 'FAQ', href: '/en/#faq' },
+          { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
       },
       {
@@ -1613,11 +1621,11 @@ const nl: HomeContent = {
   nav: {
     links: [
       { label: 'Fysieke trainers', href: '/nl/sc-coaches/' },
-      { label: 'Platform', href: '#plateforme' },
+      { label: 'Platform', href: '/nl/#plateforme' },
       { label: 'Functies', href: '/nl/features/' },
       { label: 'Oplossingen', href: '/nl/solutions/' },
-      { label: 'Prijzen', href: '#tarifs' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Prijzen', href: '/nl/#tarifs' },
+      { label: 'FAQ', href: '/nl/#faq' },
     ],
     cta: 'Aan de slag',
   },
@@ -1727,7 +1735,7 @@ const nl: HomeContent = {
         index: '01 / 06',
         kicker: 'GPS-IMPORT',
         title: 'Uw GPS-data geïntegreerd, zonder herinvoer.',
-        body: 'Een CSV-export uit eender welk systeem — Catapult, STATSports, Polar — volstaat: de training wordt aan de kalender gekoppeld, speler per speler.',
+        body: 'Een CSV-export uit eender welk systeem — Catapult, STATSports of een ander — volstaat: de training wordt aan de kalender gekoppeld, speler per speler.',
         points: [
           'Directe import van een CSV-export',
           'Kolomtoewijzing onthouden',
@@ -2203,7 +2211,7 @@ const nl: HomeContent = {
     items: [
       {
         q: 'Hoe importeer ik mijn GPS-data?',
-        a: 'Via CSV-export, uit eender welk systeem — Catapult, STATSports, Polar of ander. De kolomtoewijzing wordt onthouden: volgende imports duren enkele seconden.',
+        a: 'Via CSV-export, uit eender welk systeem — Catapult, STATSports of een ander. De kolomtoewijzing wordt onthouden: volgende imports duren enkele seconden.',
       },
       {
         q: 'Wie houdt de controle over de teamomgeving?',
@@ -2243,11 +2251,11 @@ const nl: HomeContent = {
       {
         title: 'PRODUCT',
         links: [
-          { label: 'Platform', href: '#plateforme' },
+          { label: 'Platform', href: '/nl/#plateforme' },
           { label: 'Functies', href: '/nl/features/' },
-          { label: 'Prijzen', href: '#tarifs' },
-          { label: 'FAQ', href: '#faq' },
-          { label: 'Blog', href: '/blog/' },
+          { label: 'Prijzen', href: '/nl/#tarifs' },
+          { label: 'FAQ', href: '/nl/#faq' },
+          { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
       },
       {
@@ -2281,11 +2289,11 @@ const de: HomeContent = {
   nav: {
     links: [
       { label: 'Athletiktrainer', href: '/de/sc-coaches/' },
-      { label: 'Plattform', href: '#plateforme' },
+      { label: 'Plattform', href: '/de/#plateforme' },
       { label: 'Funktionen', href: '/de/features/' },
       { label: 'Lösungen', href: '/de/solutions/' },
-      { label: 'Preise', href: '#tarifs' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Preise', href: '/de/#tarifs' },
+      { label: 'FAQ', href: '/de/#faq' },
     ],
     cta: 'Loslegen',
   },
@@ -2395,7 +2403,7 @@ const de: HomeContent = {
         index: '01 / 06',
         kicker: 'GPS-IMPORT',
         title: 'Ihre GPS-Daten integriert, ohne Neueingabe.',
-        body: 'Ein CSV-Export aus jedem System — Catapult, STATSports, Polar — genügt: Die Einheit wird dem Kalender zugeordnet, Spieler für Spieler.',
+        body: 'Ein CSV-Export aus jedem System — Catapult, STATSports oder einem anderen — genügt: Die Einheit wird dem Kalender zugeordnet, Spieler für Spieler.',
         points: [
           'Direkter Import eines CSV-Exports',
           'Spaltenzuordnung wird gespeichert',
@@ -2871,7 +2879,7 @@ const de: HomeContent = {
     items: [
       {
         q: 'Wie importiere ich meine GPS-Daten?',
-        a: 'Per CSV-Export, aus jedem System — Catapult, STATSports, Polar oder anderen. Die Spaltenzuordnung wird gespeichert: Folgende Importe dauern wenige Sekunden.',
+        a: 'Per CSV-Export, aus jedem System — Catapult, STATSports oder einem anderen. Die Spaltenzuordnung wird gespeichert: Folgende Importe dauern wenige Sekunden.',
       },
       {
         q: 'Wer behält die Kontrolle über den Teambereich?',
@@ -2911,11 +2919,11 @@ const de: HomeContent = {
       {
         title: 'PRODUKT',
         links: [
-          { label: 'Plattform', href: '#plateforme' },
+          { label: 'Plattform', href: '/de/#plateforme' },
           { label: 'Funktionen', href: '/de/features/' },
-          { label: 'Preise', href: '#tarifs' },
-          { label: 'FAQ', href: '#faq' },
-          { label: 'Blog', href: '/blog/' },
+          { label: 'Preise', href: '/de/#tarifs' },
+          { label: 'FAQ', href: '/de/#faq' },
+          { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
       },
       {
@@ -2949,11 +2957,11 @@ const pt: HomeContent = {
   nav: {
     links: [
       { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
-      { label: 'Plataforma', href: '#plateforme' },
+      { label: 'Plataforma', href: '/pt/#plateforme' },
       { label: 'Funcionalidades', href: '/pt/features/' },
       { label: 'Soluções', href: '/pt/solutions/' },
-      { label: 'Preços', href: '#tarifs' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Preços', href: '/pt/#tarifs' },
+      { label: 'FAQ', href: '/pt/#faq' },
     ],
     cta: 'Começar',
   },
@@ -3063,7 +3071,7 @@ const pt: HomeContent = {
         index: '01 / 06',
         kicker: 'IMPORTAÇÃO GPS',
         title: 'Os seus dados GPS integrados, sem reintrodução.',
-        body: 'Uma exportação CSV de qualquer sistema — Catapult, STATSports, Polar — chega: a sessão fica ligada ao calendário, jogador a jogador.',
+        body: 'Uma exportação CSV de qualquer sistema — Catapult, STATSports ou outro — chega: a sessão fica ligada ao calendário, jogador a jogador.',
         points: [
           'Importação direta de uma exportação CSV',
           'Correspondência de colunas memorizada',
@@ -3539,7 +3547,7 @@ const pt: HomeContent = {
     items: [
       {
         q: 'Como importo os meus dados GPS?',
-        a: 'Por exportação CSV, a partir de qualquer sistema — Catapult, STATSports, Polar ou outro. A correspondência de colunas fica memorizada: as importações seguintes demoram segundos.',
+        a: 'Por exportação CSV, a partir de qualquer sistema — Catapult, STATSports ou outro. A correspondência de colunas fica memorizada: as importações seguintes demoram segundos.',
       },
       {
         q: 'Quem mantém o controlo do espaço de equipa?',
@@ -3579,11 +3587,11 @@ const pt: HomeContent = {
       {
         title: 'PRODUTO',
         links: [
-          { label: 'Plataforma', href: '#plateforme' },
+          { label: 'Plataforma', href: '/pt/#plateforme' },
           { label: 'Funcionalidades', href: '/pt/features/' },
-          { label: 'Preços', href: '#tarifs' },
-          { label: 'FAQ', href: '#faq' },
-          { label: 'Blog', href: '/blog/' },
+          { label: 'Preços', href: '/pt/#tarifs' },
+          { label: 'FAQ', href: '/pt/#faq' },
+          { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
       },
       {
@@ -3617,11 +3625,11 @@ const es: HomeContent = {
   nav: {
     links: [
       { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
-      { label: 'Plataforma', href: '#plateforme' },
+      { label: 'Plataforma', href: '/es/#plateforme' },
       { label: 'Funcionalidades', href: '/es/features/' },
       { label: 'Soluciones', href: '/es/solutions/' },
-      { label: 'Precios', href: '#tarifs' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Precios', href: '/es/#tarifs' },
+      { label: 'FAQ', href: '/es/#faq' },
     ],
     cta: 'Empezar',
   },
@@ -3731,7 +3739,7 @@ const es: HomeContent = {
         index: '01 / 06',
         kicker: 'IMPORTACIÓN GPS',
         title: 'Sus datos GPS integrados, sin volver a teclear.',
-        body: 'Una exportación CSV de cualquier sistema — Catapult, STATSports, Polar — basta: la sesión queda vinculada al calendario, jugador a jugador.',
+        body: 'Una exportación CSV de cualquier sistema — Catapult, STATSports u otro — basta: la sesión queda vinculada al calendario, jugador a jugador.',
         points: [
           'Importación directa de una exportación CSV',
           'Correspondencia de columnas memorizada',
@@ -4207,7 +4215,7 @@ const es: HomeContent = {
     items: [
       {
         q: '¿Cómo importo mis datos GPS?',
-        a: 'Por exportación CSV, desde cualquier sistema — Catapult, STATSports, Polar u otro. La correspondencia de columnas queda memorizada: las siguientes importaciones tardan unos segundos.',
+        a: 'Por exportación CSV, desde cualquier sistema — Catapult, STATSports u otro. La correspondencia de columnas queda memorizada: las siguientes importaciones tardan unos segundos.',
       },
       {
         q: '¿Quién mantiene el control del espacio de equipo?',
@@ -4247,11 +4255,11 @@ const es: HomeContent = {
       {
         title: 'PRODUCTO',
         links: [
-          { label: 'Plataforma', href: '#plateforme' },
+          { label: 'Plataforma', href: '/es/#plateforme' },
           { label: 'Funcionalidades', href: '/es/features/' },
-          { label: 'Precios', href: '#tarifs' },
-          { label: 'FAQ', href: '#faq' },
-          { label: 'Blog', href: '/blog/' },
+          { label: 'Precios', href: '/es/#tarifs' },
+          { label: 'FAQ', href: '/es/#faq' },
+          { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
       },
       {
