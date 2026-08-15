@@ -17,7 +17,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · MONITORING',
-      title: 'Charge interne, charge externe, un seul écran.',
+      title: 'Le ressenti d’un côté, le GPS de l’autre. Sur le même écran.',
       sub: 'Le RPE du bilan et la durée donnent la charge interne. Votre export GPS donne la charge externe. STRIVN les met face à face — ACWR, monotonie, contrainte et ratio se calculent seuls.',
       bullets: [
         'Charge sRPE : RPE × durée, coefficients match et entraînement réglables',
@@ -31,7 +31,7 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'CE QUE VOUS LISEZ',
-        title: 'Quatre nombres, et ce qu’ils veulent dire.',
+        title: 'ACWR, monotonie, contrainte : ce qu’ils disent.',
         kind: 'rows',
         rows: [
           {
@@ -88,7 +88,7 @@ export const trainingLoad: SubpageLocales = {
       },
       {
         kicker: 'LE POINT À RETENIR',
-        title: 'Deux sélecteurs voisins, deux portées opposées.',
+        title: 'L’un recalcule tout. L’autre change juste l’affichage.',
         kind: 'panels',
         panels: [
           {
@@ -196,7 +196,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · MONITORING',
-      title: 'Internal load, external load, one screen.',
+      title: 'Perceived effort on one side, GPS on the other. Same screen.',
       sub: 'The RPE from the debrief and the duration give internal load. Your GPS export gives external load. STRIVN puts them side by side — ACWR, monotony, strain and the ratio compute themselves.',
       bullets: [
         'sRPE load: RPE × duration, with adjustable match and training coefficients',
@@ -210,7 +210,7 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'WHAT YOU READ',
-        title: 'Four numbers, and what they mean.',
+        title: 'ACWR, monotony, strain: what they say.',
         kind: 'rows',
         rows: [
           {
@@ -267,7 +267,7 @@ export const trainingLoad: SubpageLocales = {
       },
       {
         kicker: 'THE THING TO REMEMBER',
-        title: 'Two neighbouring selectors, two opposite reaches.',
+        title: 'One recalculates everything. The other only changes the display.',
         kind: 'panels',
         panels: [
           {
@@ -375,7 +375,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · MONITORING',
-      title: 'Interne belasting, externe belasting, één scherm.',
+      title: 'Het gevoel aan de ene kant, de GPS aan de andere. Zelfde scherm.',
       sub: 'De RPE uit de nabespreking en de duur geven de interne belasting. Je gps-export geeft de externe. STRIVN zet ze naast elkaar — ACWR, monotonie, strain en de verhouding rekenen zichzelf uit.',
       bullets: [
         'sRPE-belasting: RPE × duur, met instelbare coëfficiënten voor wedstrijd en training',
@@ -389,7 +389,7 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'WAT JE LEEST',
-        title: 'Vier getallen, en wat ze betekenen.',
+        title: 'ACWR, monotonie, strain: wat ze zeggen.',
         kind: 'rows',
         rows: [
           {
@@ -446,7 +446,7 @@ export const trainingLoad: SubpageLocales = {
       },
       {
         kicker: 'HET PUNT OM TE ONTHOUDEN',
-        title: 'Twee keuzelijsten naast elkaar, twee tegengestelde reikwijdtes.',
+        title: 'De ene herberekent alles. De andere verandert alleen de weergave.',
         kind: 'panels',
         panels: [
           {
@@ -554,7 +554,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · MONITORING',
-      title: 'Interne Belastung, externe Belastung, ein Bildschirm.',
+      title: 'Das Empfinden auf der einen Seite, das GPS auf der anderen. Ein Bildschirm.',
       sub: 'RPE aus der Nachbesprechung und Dauer ergeben die interne Belastung. Ihr GPS-Export die externe. STRIVN stellt beide gegenüber — ACWR, Monotonie, Strain und Verhältnis rechnen sich von selbst.',
       bullets: [
         'sRPE-Belastung: RPE × Dauer, mit einstellbaren Koeffizienten für Spiel und Training',
@@ -568,7 +568,7 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'WAS SIE LESEN',
-        title: 'Vier Zahlen — und was sie bedeuten.',
+        title: 'ACWR, Monotonie, Strain: was sie sagen.',
         kind: 'rows',
         rows: [
           {
@@ -625,7 +625,7 @@ export const trainingLoad: SubpageLocales = {
       },
       {
         kicker: 'DER PUNKT, DEN MAN BEHÄLT',
-        title: 'Zwei benachbarte Auswahlfelder, zwei gegensätzliche Reichweiten.',
+        title: 'Das eine rechnet alles neu. Das andere ändert nur die Anzeige.',
         kind: 'panels',
         panels: [
           {
@@ -733,7 +733,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · MONITORIZAÇÃO',
-      title: 'Carga interna, carga externa, um só ecrã.',
+      title: 'O sentido de um lado, o GPS do outro. No mesmo ecrã.',
       sub: 'O RPE do balanço e a duração dão a carga interna. A sua exportação GPS dá a externa. A STRIVN põe-nas frente a frente — ACWR, monotonia, strain e rácio calculam-se sozinhos.',
       bullets: [
         'Carga sRPE: RPE × duração, com coeficientes de jogo e treino ajustáveis',
@@ -747,7 +747,7 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'O QUE VOCÊ LÊ',
-        title: 'Quatro números, e o que querem dizer.',
+        title: 'ACWR, monotonia, strain: o que dizem.',
         kind: 'rows',
         rows: [
           {
@@ -804,7 +804,7 @@ export const trainingLoad: SubpageLocales = {
       },
       {
         kicker: 'O PONTO A RETER',
-        title: 'Dois seletores vizinhos, dois alcances opostos.',
+        title: 'Um recalcula tudo. O outro só muda o que é mostrado.',
         kind: 'panels',
         panels: [
           {
@@ -912,7 +912,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · MONITORIZACIÓN',
-      title: 'Carga interna, carga externa, una sola pantalla.',
+      title: 'La percepción de un lado, el GPS del otro. En la misma pantalla.',
       sub: 'El RPE del balance y la duración dan la carga interna. Tu exportación GPS da la externa. STRIVN las pone frente a frente — ACWR, monotonía, strain y ratio se calculan solos.',
       bullets: [
         'Carga sRPE: RPE × duración, con coeficientes de partido y entrenamiento ajustables',
@@ -926,7 +926,7 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'LO QUE LEES',
-        title: 'Cuatro números, y lo que quieren decir.',
+        title: 'ACWR, monotonía, strain: lo que dicen.',
         kind: 'rows',
         rows: [
           {
@@ -983,7 +983,7 @@ export const trainingLoad: SubpageLocales = {
       },
       {
         kicker: 'LO QUE HAY QUE RETENER',
-        title: 'Dos selectores vecinos, dos alcances opuestos.',
+        title: 'Uno recalcula todo. El otro solo cambia lo que se muestra.',
         kind: 'panels',
         panels: [
           {

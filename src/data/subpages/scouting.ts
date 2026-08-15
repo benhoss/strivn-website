@@ -34,7 +34,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'DE L’OBSERVATION AU VESTIAIRE',
-        title: 'Trois moments, un seul dossier.',
+        title: 'L’analyste observe le samedi. Le coach tranche le mardi.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -73,7 +73,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'CE QUI RENTRE DANS UNE SESSION',
-        title: 'Quatre façons de capturer ce que vous voyez.',
+        title: 'Vous notez, vous parlez, vous filmez, vous dessinez.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -129,7 +129,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'LE BRIEF TACTIQUE',
-        title: 'L’IA propose. Vous tranchez.',
+        title: 'Un brief à relire avant de l’envoyer.',
         body: 'À la demande, STRIVN synthétise un brief à partir de l’effectif confirmé, des notes récentes et des tableaux tactiques : forces, faiblesses, système probable, plan suggéré.',
         kind: 'compare',
         heads: ['Ce que le brief est', 'Ce qu’il n’est pas'],
@@ -211,7 +211,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'FROM THE TOUCHLINE TO THE CHANGING ROOM',
-        title: 'Three moments, one file.',
+        title: 'The analyst watches on Saturday. The coach decides on Tuesday.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -250,7 +250,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'WHAT GOES INTO A SESSION',
-        title: 'Four ways to capture what you see.',
+        title: 'You write, you speak, you film, you draw.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -306,7 +306,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'THE TACTICAL BRIEF',
-        title: 'The AI proposes. You decide.',
+        title: 'A briefing to read over before you send it.',
         body: 'On demand, STRIVN synthesises a brief from the confirmed squad, the recent notes and the tactical boards: strengths, weaknesses, likely shape, suggested plan.',
         kind: 'compare',
         heads: ['What the brief is', 'What it is not'],
@@ -388,7 +388,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'VAN DE ZIJLIJN TOT DE KLEEDKAMER',
-        title: 'Drie momenten, één dossier.',
+        title: 'De analist kijkt op zaterdag. De coach beslist op dinsdag.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -427,7 +427,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'WAT IN EEN SESSIE GAAT',
-        title: 'Vier manieren om vast te leggen wat je ziet.',
+        title: 'Je schrijft, je spreekt, je filmt, je tekent.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -483,7 +483,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'DE TACTISCHE BRIEFING',
-        title: 'De AI stelt voor. Jij beslist.',
+        title: 'Een briefing om na te lezen voor je ze verstuurt.',
         body: 'Op aanvraag stelt STRIVN een briefing samen uit de bevestigde kern, de recente notities en de tactische borden: sterktes, zwaktes, waarschijnlijke opstelling, voorgesteld plan.',
         kind: 'compare',
         heads: ['Wat de briefing is', 'Wat ze niet is'],
@@ -565,7 +565,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'VOM SPIELFELDRAND IN DIE KABINE',
-        title: 'Drei Momente, eine Akte.',
+        title: 'Der Analyst beobachtet am Samstag. Der Coach entscheidet am Dienstag.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -604,7 +604,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'WAS IN EINE SITZUNG GEHT',
-        title: 'Vier Wege, festzuhalten, was Sie sehen.',
+        title: 'Sie schreiben, Sie sprechen, Sie filmen, Sie zeichnen.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -660,7 +660,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'DAS TAKTISCHE BRIEFING',
-        title: 'Die KI schlägt vor. Sie entscheiden.',
+        title: 'Ein Briefing, das Sie vor dem Senden noch einmal lesen.',
         body: 'Auf Anforderung stellt STRIVN ein Briefing aus dem bestätigten Kader, den jüngsten Notizen und den Taktiktafeln zusammen: Stärken, Schwächen, wahrscheinliche Formation, vorgeschlagener Plan.',
         kind: 'compare',
         heads: ['Was das Briefing ist', 'Was es nicht ist'],
@@ -742,7 +742,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'DA LINHA LATERAL AO BALNEÁRIO',
-        title: 'Três momentos, um só processo.',
+        title: 'O analista observa no sábado. O treinador decide na terça.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -781,7 +781,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'O QUE ENTRA NUMA SESSÃO',
-        title: 'Quatro formas de registar o que vê.',
+        title: 'Você escreve, fala, filma, desenha.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -837,7 +837,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'O BRIEFING TÁTICO',
-        title: 'A IA propõe. Você decide.',
+        title: 'Um briefing para reler antes de enviar.',
         body: 'A pedido, a STRIVN sintetiza um briefing a partir do plantel confirmado, das notas recentes e dos quadros táticos: forças, fraquezas, sistema provável, plano sugerido.',
         kind: 'compare',
         heads: ['O que o briefing é', 'O que não é'],
@@ -919,7 +919,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'DE LA BANDA AL VESTUARIO',
-        title: 'Tres momentos, un solo expediente.',
+        title: 'El analista observa el sábado. El entrenador decide el martes.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -958,7 +958,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'LO QUE ENTRA EN UNA SESIÓN',
-        title: 'Cuatro formas de capturar lo que ves.',
+        title: 'Escribes, hablas, grabas, dibujas.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -1014,7 +1014,7 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'EL BRIEFING TÁCTICO',
-        title: 'La IA propone. Tú decides.',
+        title: 'Un briefing para releer antes de enviarlo.',
         body: 'A petición, STRIVN sintetiza un briefing a partir de la plantilla confirmada, las notas recientes y las pizarras tácticas: fortalezas, debilidades, sistema probable, plan sugerido.',
         kind: 'compare',
         heads: ['Lo que el briefing es', 'Lo que no es'],

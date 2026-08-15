@@ -34,7 +34,7 @@ export const programs: SubpageLocales = {
     sections: [
       {
         kicker: 'ÉVALUATIONS 1RM',
-        title: 'Pas besoin de tester un vrai maximum.',
+        title: 'Cinq répétitions à 100 kg suffisent.',
         kind: 'columns',
         cols: [
           {
@@ -56,7 +56,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'LE CONSTRUCTEUR DE SÉANCE',
-        title: 'Trois formes de bloc, quatre façons de charger.',
+        title: 'Du simple enchaînement au circuit complet.',
         kind: 'cards',
         cards: [
           {
@@ -78,7 +78,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'LE MODE DE CHARGE',
-        title: 'Il se choisit exercice par exercice.',
+        title: 'Le squat en % de 1RM, les pompes au poids du corps.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -94,7 +94,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'CE QUI ARRIVE JUSQU’AU JOUEUR',
-        title: 'La notation de préparateur ne sort pas du constructeur.',
+        title: 'Vous écrivez « 3010 ». Il lit « 3 s de descente ».',
         kind: 'columns',
         cols: [
           {
@@ -116,7 +116,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'NE PAS CONFONDRE',
-        title: '« Programme » désigne deux choses. Elles ne se remplacent pas.',
+        title: 'Le mot « programme » recouvre deux objets.',
         kind: 'compare',
         heads: ['La séance de musculation', 'Le modèle de programme'],
         tones: ['blue', 'green'],
@@ -175,7 +175,7 @@ export const programs: SubpageLocales = {
     sections: [
       {
         kicker: '1RM ASSESSMENTS',
-        title: 'No need to test a true maximum.',
+        title: 'Five reps at 100 kg is enough.',
         kind: 'columns',
         cols: [
           {
@@ -197,7 +197,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'THE SESSION BUILDER',
-        title: 'Three block shapes, four ways to load.',
+        title: 'From a plain set to a full circuit.',
         kind: 'cards',
         cards: [
           {
@@ -219,7 +219,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'THE LOAD MODE',
-        title: 'It is chosen exercise by exercise.',
+        title: 'Squats as a % of 1RM, push-ups at bodyweight.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -235,7 +235,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'WHAT REACHES THE PLAYER',
-        title: 'S&C notation does not leave the builder.',
+        title: 'You write “3010”. The player reads “3 s down”.',
         kind: 'columns',
         cols: [
           {
@@ -257,7 +257,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'DO NOT CONFUSE THEM',
-        title: '“Program” means two things. They do not replace each other.',
+        title: 'The word “program” covers two objects.',
         kind: 'compare',
         heads: ['The strength session', 'The program template'],
         tones: ['blue', 'green'],
@@ -316,7 +316,7 @@ export const programs: SubpageLocales = {
     sections: [
       {
         kicker: '1RM-EVALUATIES',
-        title: 'Je hoeft geen echt maximum te testen.',
+        title: 'Vijf herhalingen op 100 kg volstaan.',
         kind: 'columns',
         cols: [
           {
@@ -338,7 +338,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'DE TRAININGSBOUWER',
-        title: 'Drie blokvormen, vier manieren om te belasten.',
+        title: 'Van een gewone reeks tot een volledig circuit.',
         kind: 'cards',
         cards: [
           {
@@ -360,7 +360,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'DE BELASTINGSMODUS',
-        title: 'Hij wordt oefening per oefening gekozen.',
+        title: 'Squat in % van 1RM, push-ups op lichaamsgewicht.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -376,7 +376,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'WAT BIJ DE SPELER AANKOMT',
-        title: 'De notatie van de trainer verlaat de bouwer niet.',
+        title: 'Jij schrijft “3010”. De speler leest “3 s zakken”.',
         kind: 'columns',
         cols: [
           {
@@ -398,7 +398,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'NIET VERWARREN',
-        title: '“Programma” betekent twee dingen. Ze vervangen elkaar niet.',
+        title: 'Het woord “programma” dekt twee objecten.',
         kind: 'compare',
         heads: ['De krachttraining', 'Het programmasjabloon'],
         tones: ['blue', 'green'],
@@ -457,7 +457,7 @@ export const programs: SubpageLocales = {
     sections: [
       {
         kicker: '1RM-ERHEBUNGEN',
-        title: 'Ein echtes Maximum muss nicht getestet werden.',
+        title: 'Fünf Wiederholungen mit 100 kg genügen.',
         kind: 'columns',
         cols: [
           {
@@ -479,7 +479,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'DER EINHEITEN-BAUKASTEN',
-        title: 'Drei Blockformen, vier Arten zu belasten.',
+        title: 'Vom einfachen Satz bis zum vollen Zirkel.',
         kind: 'cards',
         cards: [
           {
@@ -501,7 +501,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'DER BELASTUNGSMODUS',
-        title: 'Er wird Übung für Übung gewählt.',
+        title: 'Kniebeuge in % des 1RM, Liegestütze mit Körpergewicht.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -517,7 +517,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'WAS BEIM SPIELER ANKOMMT',
-        title: 'Die Notation des Athletiktrainers verlässt den Baukasten nicht.',
+        title: 'Sie schreiben „3010“. Der Spieler liest „3 s abwärts“.',
         kind: 'columns',
         cols: [
           {
@@ -539,7 +539,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'NICHT VERWECHSELN',
-        title: '„Programm“ meint zwei Dinge. Sie ersetzen einander nicht.',
+        title: 'Das Wort „Programm“ deckt zwei Objekte ab.',
         kind: 'compare',
         heads: ['Die Krafteinheit', 'Die Programmvorlage'],
         tones: ['blue', 'green'],
@@ -598,7 +598,7 @@ export const programs: SubpageLocales = {
     sections: [
       {
         kicker: 'AVALIAÇÕES 1RM',
-        title: 'Não é preciso testar um máximo verdadeiro.',
+        title: 'Cinco repetições a 100 kg bastam.',
         kind: 'columns',
         cols: [
           {
@@ -620,7 +620,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'O CONSTRUTOR DE TREINO',
-        title: 'Três formas de bloco, quatro maneiras de carregar.',
+        title: 'Da série simples ao circuito completo.',
         kind: 'cards',
         cards: [
           {
@@ -642,7 +642,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'O MODO DE CARGA',
-        title: 'Escolhe-se exercício a exercício.',
+        title: 'O agachamento em % de 1RM, as flexões com peso do corpo.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -658,7 +658,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'O QUE CHEGA AO JOGADOR',
-        title: 'A notação do preparador não sai do construtor.',
+        title: 'Você escreve «3010». O jogador lê «3 s a descer».',
         kind: 'columns',
         cols: [
           {
@@ -680,7 +680,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'NÃO CONFUNDIR',
-        title: '«Programa» designa duas coisas. Não se substituem.',
+        title: 'A palavra «programa» cobre dois objetos.',
         kind: 'compare',
         heads: ['O treino de força', 'O modelo de programa'],
         tones: ['blue', 'green'],
@@ -739,7 +739,7 @@ export const programs: SubpageLocales = {
     sections: [
       {
         kicker: 'EVALUACIONES 1RM',
-        title: 'No hace falta testar un máximo real.',
+        title: 'Cinco repeticiones a 100 kg bastan.',
         kind: 'columns',
         cols: [
           {
@@ -761,7 +761,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'EL CONSTRUCTOR DE SESIÓN',
-        title: 'Tres formas de bloque, cuatro maneras de cargar.',
+        title: 'De la serie simple al circuito completo.',
         kind: 'cards',
         cards: [
           {
@@ -783,7 +783,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'EL MODO DE CARGA',
-        title: 'Se elige ejercicio por ejercicio.',
+        title: 'La sentadilla en % de 1RM, las flexiones con peso corporal.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -799,7 +799,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'LO QUE LLEGA AL JUGADOR',
-        title: 'La notación del preparador no sale del constructor.',
+        title: 'Tú escribes «3010». El jugador lee «3 s de bajada».',
         kind: 'columns',
         cols: [
           {
@@ -821,7 +821,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'NO CONFUNDIR',
-        title: '«Programa» designa dos cosas. No se sustituyen.',
+        title: 'La palabra «programa» cubre dos objetos.',
         kind: 'compare',
         heads: ['La sesión de fuerza', 'La plantilla de programa'],
         tones: ['blue', 'green'],

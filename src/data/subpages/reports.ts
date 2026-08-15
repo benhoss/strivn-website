@@ -31,7 +31,7 @@ export const reports: SubpageLocales = {
     sections: [
       {
         kicker: 'DU SIGNAL À LA DÉCISION',
-        title: 'Quatre surfaces, quatre horizons.',
+        title: 'Avant le café, avant la séance, avant la réunion.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -59,7 +59,7 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'LA PAGE LIBRE',
-        title: 'Composez la question, pas seulement le tableau.',
+        title: 'Sur qui, quelles statistiques, à quoi les comparer.',
         body: 'Le générateur assemble un rapport en trois choix : sur qui, quelles statistiques, et à quoi les comparer. Ce qui est enregistré, c’est la question — les chiffres, eux, sont toujours ceux du jour.',
         kind: 'columns',
         cols: [
@@ -113,7 +113,7 @@ export const reports: SubpageLocales = {
     sections: [
       {
         kicker: 'FROM SIGNAL TO DECISION',
-        title: 'Four surfaces, four horizons.',
+        title: 'Before the coffee, before the session, before the meeting.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -141,7 +141,7 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'THE BLANK PAGE',
-        title: 'Compose the question, not just the table.',
+        title: 'About whom, which statistics, against what.',
         body: 'The generator assembles a report from three choices: about whom, which statistics, and what to compare them against. What gets saved is the question — the figures are always today’s.',
         kind: 'columns',
         cols: [
@@ -195,7 +195,7 @@ export const reports: SubpageLocales = {
     sections: [
       {
         kicker: 'VAN SIGNAAL NAAR BESLISSING',
-        title: 'Vier oppervlakken, vier horizonten.',
+        title: 'Voor de koffie, voor de training, voor de vergadering.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -223,7 +223,7 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'DE VRIJE PAGINA',
-        title: 'Stel de vraag samen, niet alleen de tabel.',
+        title: 'Over wie, welke statistieken, waarmee vergeleken.',
         body: 'De generator zet een rapport in elkaar met drie keuzes: over wie, welke statistieken, en waarmee te vergelijken. Wat bewaard wordt is de vraag — de cijfers zijn altijd die van vandaag.',
         kind: 'columns',
         cols: [
@@ -277,7 +277,7 @@ export const reports: SubpageLocales = {
     sections: [
       {
         kicker: 'VOM SIGNAL ZUR ENTSCHEIDUNG',
-        title: 'Vier Flächen, vier Horizonte.',
+        title: 'Vor dem Kaffee, vor der Einheit, vor der Sitzung.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -305,7 +305,7 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'DIE FREIE SEITE',
-        title: 'Stellen Sie die Frage zusammen, nicht nur die Tabelle.',
+        title: 'Über wen, welche Statistiken, verglichen womit.',
         body: 'Der Generator baut einen Bericht aus drei Entscheidungen: über wen, welche Statistiken und wogegen verglichen wird. Gespeichert wird die Frage — die Zahlen sind immer die von heute.',
         kind: 'columns',
         cols: [
@@ -359,7 +359,7 @@ export const reports: SubpageLocales = {
     sections: [
       {
         kicker: 'DO SINAL À DECISÃO',
-        title: 'Quatro superfícies, quatro horizontes.',
+        title: 'Antes do café, antes do treino, antes da reunião.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -387,7 +387,7 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'A PÁGINA LIVRE',
-        title: 'Componha a pergunta, não apenas a tabela.',
+        title: 'Sobre quem, que estatísticas, comparadas com o quê.',
         body: 'O gerador monta um relatório em três escolhas: sobre quem, que estatísticas, e com o que as comparar. O que fica guardado é a pergunta — os números são sempre os de hoje.',
         kind: 'columns',
         cols: [
@@ -441,7 +441,7 @@ export const reports: SubpageLocales = {
     sections: [
       {
         kicker: 'DE LA SEÑAL A LA DECISIÓN',
-        title: 'Cuatro superficies, cuatro horizontes.',
+        title: 'Antes del café, antes de la sesión, antes de la reunión.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -469,7 +469,7 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'LA PÁGINA LIBRE',
-        title: 'Compón la pregunta, no solo la tabla.',
+        title: 'Sobre quién, qué estadísticas, comparadas con qué.',
         body: 'El generador arma un informe con tres elecciones: sobre quién, qué estadísticas, y con qué compararlas. Lo que se guarda es la pregunta — las cifras son siempre las de hoy.',
         kind: 'columns',
         cols: [

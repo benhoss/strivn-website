@@ -103,7 +103,7 @@ export const liveMatch: SubpageLocales = {
       },
       {
         kicker: 'QUAND LA CHAÎNE EST FINIE',
-        title: 'Tous vos axes en même temps. Pas une file d’attente.',
+        title: 'Le but vient d’être marqué. Vous avez trente secondes.',
         body: 'L’écran présente vos axes côte à côte, chacun avec la valeur déjà donnée. Vous en choisissez un, vous répondez, vous revenez à la liste — ou vous vous arrêtez là. La plupart des buts ne méritent qu’un ou deux axes.',
         kind: 'rows',
         pill: true,
@@ -281,7 +281,7 @@ export const liveMatch: SubpageLocales = {
       },
       {
         kicker: 'ONCE THE CHAIN IS DONE',
-        title: 'All your axes at once. Not a queue.',
+        title: 'The goal has just gone in. You have thirty seconds.',
         body: 'The screen lays your axes side by side, each with the value already given. You pick one, you answer, you come back to the list — or you stop there. Most goals only deserve one or two axes.',
         kind: 'rows',
         pill: true,
@@ -459,7 +459,7 @@ export const liveMatch: SubpageLocales = {
       },
       {
         kicker: 'ALS DE KETEN KLAAR IS',
-        title: 'Al je assen tegelijk. Geen wachtrij.',
+        title: 'Het doelpunt is net gevallen. Je hebt dertig seconden.',
         body: 'Het scherm zet je assen naast elkaar, elk met de reeds gegeven waarde. Je kiest er een, je antwoordt, je keert terug naar de lijst — of je stopt daar. De meeste doelpunten verdienen maar één of twee assen.',
         kind: 'rows',
         pill: true,
@@ -637,7 +637,7 @@ export const liveMatch: SubpageLocales = {
       },
       {
         kicker: 'WENN DIE KETTE STEHT',
-        title: 'Alle Ihre Achsen gleichzeitig. Keine Warteschlange.',
+        title: 'Das Tor ist gerade gefallen. Sie haben dreißig Sekunden.',
         body: 'Der Bildschirm legt Ihre Achsen nebeneinander, jede mit dem bereits gegebenen Wert. Sie wählen eine, Sie antworten, Sie kehren zur Liste zurück — oder Sie hören auf. Die meisten Tore verdienen nur ein oder zwei Achsen.',
         kind: 'rows',
         pill: true,
@@ -815,7 +815,7 @@ export const liveMatch: SubpageLocales = {
       },
       {
         kicker: 'QUANDO A CADEIA ESTÁ FEITA',
-        title: 'Todos os seus eixos ao mesmo tempo. Não uma fila.',
+        title: 'O golo acabou de entrar. Tem trinta segundos.',
         body: 'O ecrã apresenta os seus eixos lado a lado, cada um com o valor já dado. Escolhe um, responde, volta à lista — ou fica-se por aí. A maioria dos golos só merece um ou dois eixos.',
         kind: 'rows',
         pill: true,
@@ -993,7 +993,7 @@ export const liveMatch: SubpageLocales = {
       },
       {
         kicker: 'CUANDO LA CADENA ESTÁ HECHA',
-        title: 'Todos tus ejes a la vez. No una cola.',
+        title: 'El gol acaba de entrar. Tienes treinta segundos.',
         body: 'La pantalla presenta tus ejes uno al lado del otro, cada uno con el valor ya dado. Eliges uno, respondes, vuelves a la lista — o te paras ahí. La mayoría de los goles solo merecen uno o dos ejes.',
         kind: 'rows',
         pill: true,

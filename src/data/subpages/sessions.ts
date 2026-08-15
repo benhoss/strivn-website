@@ -32,7 +32,7 @@ export const sessions: SubpageLocales = {
     sections: [
       {
         kicker: 'QUATRE ÉCHELLES EMBOÎTÉES',
-        title: 'Chaque niveau donne son cadre au suivant.',
+        title: 'La saison tient le cycle, le cycle tient la semaine.',
         kind: 'nested',
         activeIndex: 3,
         levels: [
@@ -83,7 +83,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'LES RÉGLAGES DE CHARGE',
-        title: 'Trois écrans pour cadrer la semaine.',
+        title: 'Fixer l’objectif, peser les catégories, garder le modèle.',
         kind: 'columns',
         cols: [
           {
@@ -110,7 +110,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'DANS LE CALENDRIER',
-        title: 'Tout ce qu’on peut demander à un joueur n’est pas une séance.',
+        title: 'Un questionnaire à rendre est aussi un événement.',
         kind: 'rows',
         rows: [
           {
@@ -144,7 +144,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'APRÈS COUP',
-        title: 'Le prévu ne vaut que comparé au réalisé.',
+        title: 'Vous aviez prévu 630. Ils ont produit 780.',
         body: 'Le prévu est connu à l’avance ; le réalisé se remplit au fil des check-ins, des imports et des bilans. L’écart entre les deux devient la matière du plan de la semaine suivante.',
         kind: 'panels',
         panels: [
@@ -204,7 +204,7 @@ export const sessions: SubpageLocales = {
     sections: [
       {
         kicker: 'FOUR NESTED SCALES',
-        title: 'Each level frames the next.',
+        title: 'The season holds the cycle, the cycle holds the week.',
         kind: 'nested',
         activeIndex: 3,
         levels: [
@@ -255,7 +255,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'THE LOAD SETTINGS',
-        title: 'Three screens to frame the week.',
+        title: 'Set the target, weight the categories, keep the template.',
         kind: 'columns',
         cols: [
           {
@@ -282,7 +282,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'IN THE CALENDAR',
-        title: 'Not everything you ask of a player is a session.',
+        title: 'A questionnaire to hand in is an event too.',
         kind: 'rows',
         rows: [
           {
@@ -316,7 +316,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'AFTER THE FACT',
-        title: 'Planned load only means something next to actual load.',
+        title: 'You planned 630. They produced 780.',
         body: 'The plan is known in advance; the actual fills in through check-ins, imports and debriefs. The gap between the two becomes the material for next week’s plan.',
         kind: 'panels',
         panels: [
@@ -376,7 +376,7 @@ export const sessions: SubpageLocales = {
     sections: [
       {
         kicker: 'VIER GENESTE SCHALEN',
-        title: 'Elk niveau geeft het volgende zijn kader.',
+        title: 'Het seizoen draagt de cyclus, de cyclus draagt de week.',
         kind: 'nested',
         activeIndex: 3,
         levels: [
@@ -427,7 +427,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'DE BELASTINGSINSTELLINGEN',
-        title: 'Drie schermen om de week te kaderen.',
+        title: 'Het doel zetten, de categorieën wegen, het model bewaren.',
         kind: 'columns',
         cols: [
           {
@@ -454,7 +454,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'IN DE KALENDER',
-        title: 'Niet alles wat je van een speler vraagt is een training.',
+        title: 'Een in te leveren vragenlijst is ook een gebeurtenis.',
         kind: 'rows',
         rows: [
           {
@@ -488,7 +488,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'ACHTERAF',
-        title: 'Het geplande telt pas naast het gerealiseerde.',
+        title: 'Je plande 630. Ze produceerden 780.',
         body: 'Het plan is vooraf bekend; het gerealiseerde vult zich via check-ins, imports en nabesprekingen. Het verschil tussen beide wordt het materiaal voor het plan van volgende week.',
         kind: 'panels',
         panels: [
@@ -548,7 +548,7 @@ export const sessions: SubpageLocales = {
     sections: [
       {
         kicker: 'VIER VERSCHACHTELTE EBENEN',
-        title: 'Jede Ebene gibt der nächsten ihren Rahmen.',
+        title: 'Die Saison trägt den Zyklus, der Zyklus trägt die Woche.',
         kind: 'nested',
         activeIndex: 3,
         levels: [
@@ -599,7 +599,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'DIE BELASTUNGSEINSTELLUNGEN',
-        title: 'Drei Ansichten, um die Woche zu rahmen.',
+        title: 'Das Ziel setzen, die Kategorien gewichten, die Vorlage sichern.',
         kind: 'columns',
         cols: [
           {
@@ -626,7 +626,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'IM KALENDER',
-        title: 'Nicht alles, was man von einem Spieler verlangt, ist eine Einheit.',
+        title: 'Ein abzugebender Fragebogen ist auch ein Termin.',
         kind: 'rows',
         rows: [
           {
@@ -660,7 +660,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'IM NACHHINEIN',
-        title: 'Geplant zählt erst neben realisiert.',
+        title: 'Sie hatten 630 geplant. Produziert wurden 780.',
         body: 'Der Plan ist im Voraus bekannt; das Realisierte füllt sich über Check-ins, Importe und Nachbesprechungen. Die Lücke dazwischen wird zum Material für den Plan der nächsten Woche.',
         kind: 'panels',
         panels: [
@@ -720,7 +720,7 @@ export const sessions: SubpageLocales = {
     sections: [
       {
         kicker: 'QUATRO ESCALAS ENCAIXADAS',
-        title: 'Cada nível dá o enquadramento ao seguinte.',
+        title: 'A época sustenta o ciclo, o ciclo sustenta a semana.',
         kind: 'nested',
         activeIndex: 3,
         levels: [
@@ -771,7 +771,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'AS DEFINIÇÕES DE CARGA',
-        title: 'Três ecrãs para enquadrar a semana.',
+        title: 'Fixar o objetivo, ponderar as categorias, guardar o modelo.',
         kind: 'columns',
         cols: [
           {
@@ -798,7 +798,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'NO CALENDÁRIO',
-        title: 'Nem tudo o que se pede a um jogador é um treino.',
+        title: 'Um questionário a entregar também é um evento.',
         kind: 'rows',
         rows: [
           {
@@ -832,7 +832,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'DEPOIS DO FACTO',
-        title: 'O previsto só vale comparado com o realizado.',
+        title: 'Tinha previsto 630. Produziram 780.',
         body: 'O previsto é conhecido de antemão; o realizado preenche-se ao longo dos check-ins, das importações e dos balanços. A diferença entre os dois torna-se a matéria do plano da semana seguinte.',
         kind: 'panels',
         panels: [
@@ -892,7 +892,7 @@ export const sessions: SubpageLocales = {
     sections: [
       {
         kicker: 'CUATRO ESCALAS ENCAJADAS',
-        title: 'Cada nivel da su marco al siguiente.',
+        title: 'La temporada sostiene el ciclo, el ciclo sostiene la semana.',
         kind: 'nested',
         activeIndex: 3,
         levels: [
@@ -943,7 +943,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'LOS AJUSTES DE CARGA',
-        title: 'Tres pantallas para enmarcar la semana.',
+        title: 'Fijar el objetivo, ponderar las categorías, guardar la plantilla.',
         kind: 'columns',
         cols: [
           {
@@ -970,7 +970,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'EN EL CALENDARIO',
-        title: 'No todo lo que se pide a un jugador es una sesión.',
+        title: 'Un cuestionario a entregar también es un evento.',
         kind: 'rows',
         rows: [
           {
@@ -1004,7 +1004,7 @@ export const sessions: SubpageLocales = {
       },
       {
         kicker: 'DESPUÉS',
-        title: 'Lo previsto solo vale comparado con lo realizado.',
+        title: 'Habías previsto 630. Produjeron 780.',
         body: 'Lo previsto se conoce de antemano; lo realizado se rellena con los check-ins, las importaciones y los balances. La diferencia entre ambos se convierte en la materia del plan de la semana siguiente.',
         kind: 'panels',
         panels: [
