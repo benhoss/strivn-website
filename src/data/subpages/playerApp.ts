@@ -31,7 +31,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'LES ÉCRANS',
-        title: 'Ce que le joueur ouvre, et rien de plus.',
+        title: 'Son agenda, ses convocations, son check-in.',
         kind: 'cards',
         cards: [
           {
@@ -68,7 +68,7 @@ export const playerApp: SubpageLocales = {
       },
       {
         kicker: 'CE QUE LE JOUEUR NE VOIT PAS',
-        title: 'La confidentialité par défaut.',
+        title: 'Chaque joueur ne voit que le sien.',
         kind: 'columns',
         cols: [
           {
@@ -116,7 +116,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'THE SCREENS',
-        title: 'What the player opens, and nothing more.',
+        title: 'Their schedule, their call-ups, their check-in.',
         kind: 'cards',
         cards: [
           {
@@ -153,7 +153,7 @@ export const playerApp: SubpageLocales = {
       },
       {
         kicker: 'WHAT THE PLAYER DOES NOT SEE',
-        title: 'Privacy by default.',
+        title: 'Each player sees only their own.',
         kind: 'columns',
         cols: [
           {
@@ -201,7 +201,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'DE SCHERMEN',
-        title: 'Wat de speler opent, en niets meer.',
+        title: 'Eigen agenda, eigen selecties, eigen check-in.',
         kind: 'cards',
         cards: [
           {
@@ -238,7 +238,7 @@ export const playerApp: SubpageLocales = {
       },
       {
         kicker: 'WAT DE SPELER NIET ZIET',
-        title: 'Privacy als standaard.',
+        title: 'Elke speler ziet alleen het eigen dossier.',
         kind: 'columns',
         cols: [
           {
@@ -286,7 +286,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'DIE ANSICHTEN',
-        title: 'Was der Spieler öffnet, und nicht mehr.',
+        title: 'Der eigene Kalender, die eigenen Aufgebote, der eigene Check-in.',
         kind: 'cards',
         cards: [
           {
@@ -323,7 +323,7 @@ export const playerApp: SubpageLocales = {
       },
       {
         kicker: 'WAS DER SPIELER NICHT SIEHT',
-        title: 'Vertraulichkeit als Standard.',
+        title: 'Jeder Spieler sieht nur die eigene Akte.',
         kind: 'columns',
         cols: [
           {
@@ -371,7 +371,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'OS ECRÃS',
-        title: 'O que o jogador abre, e nada mais.',
+        title: 'A sua agenda, as suas convocatórias, o seu check-in.',
         kind: 'cards',
         cards: [
           {
@@ -408,7 +408,7 @@ export const playerApp: SubpageLocales = {
       },
       {
         kicker: 'O QUE O JOGADOR NÃO VÊ',
-        title: 'Confidencialidade por omissão.',
+        title: 'Cada jogador vê apenas o seu.',
         kind: 'columns',
         cols: [
           {
@@ -456,7 +456,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'LAS PANTALLAS',
-        title: 'Lo que el jugador abre, y nada más.',
+        title: 'Su agenda, sus convocatorias, su check-in.',
         kind: 'cards',
         cards: [
           {
@@ -493,7 +493,7 @@ export const playerApp: SubpageLocales = {
       },
       {
         kicker: 'LO QUE EL JUGADOR NO VE',
-        title: 'Confidencialidad por defecto.',
+        title: 'Cada jugador ve solo el suyo.',
         kind: 'columns',
         cols: [
           {

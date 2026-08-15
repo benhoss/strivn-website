@@ -33,7 +33,7 @@ export const medical: SubpageLocales = {
     sections: [
       {
         kicker: 'DEUX OBJETS, PAS UN',
-        title: 'Une blessure et un passage kiné ne sont pas la même chose.',
+        title: 'Une blessure dure des semaines. Un passage kiné, trente minutes.',
         kind: 'compare',
         heads: ['Blessure', 'Créneau de soins'],
         tones: ['red', 'blue'],
@@ -62,7 +62,7 @@ export const medical: SubpageLocales = {
       },
       {
         kicker: 'LA DISPONIBILITÉ',
-        title: 'Trois crans, et rien d’autre à tenir à jour.',
+        title: 'Vous bougez un cran. Les convocations suivent.',
         body: 'C’est ce panneau, et lui seul, qui décide de ce que le joueur peut faire. Vous ne maintenez pas une liste de convocables en parallèle : elle se déduit d’ici.',
         kind: 'columns',
         cols: [
@@ -128,7 +128,7 @@ export const medical: SubpageLocales = {
     sections: [
       {
         kicker: 'TWO OBJECTS, NOT ONE',
-        title: 'An injury and a physio slot are not the same thing.',
+        title: 'An injury lasts weeks. A physio slot, thirty minutes.',
         kind: 'compare',
         heads: ['Injury', 'Treatment slot'],
         tones: ['red', 'blue'],
@@ -157,7 +157,7 @@ export const medical: SubpageLocales = {
       },
       {
         kicker: 'AVAILABILITY',
-        title: 'Three steps, and nothing else to keep up to date.',
+        title: 'You move one step. The call-ups follow.',
         body: 'This panel, and only this panel, decides what a player can do. You do not maintain a parallel list of who is selectable: it follows from here.',
         kind: 'columns',
         cols: [
@@ -223,7 +223,7 @@ export const medical: SubpageLocales = {
     sections: [
       {
         kicker: 'TWEE DINGEN, GEEN ÉÉN',
-        title: 'Een blessure en een kinébeurt zijn niet hetzelfde.',
+        title: 'Een blessure duurt weken. Een kinébeurt, dertig minuten.',
         kind: 'compare',
         heads: ['Blessure', 'Verzorgingsslot'],
         tones: ['red', 'blue'],
@@ -252,7 +252,7 @@ export const medical: SubpageLocales = {
       },
       {
         kicker: 'DE BESCHIKBAARHEID',
-        title: 'Drie standen, en niets anders bij te houden.',
+        title: 'Jij verzet één stand. De selecties volgen.',
         body: 'Dit paneel, en enkel dit paneel, bepaalt wat de speler mag doen. Je houdt geen parallelle lijst van oproepbaren bij: die volgt hieruit.',
         kind: 'columns',
         cols: [
@@ -318,7 +318,7 @@ export const medical: SubpageLocales = {
     sections: [
       {
         kicker: 'ZWEI DINGE, NICHT EINS',
-        title: 'Eine Verletzung und ein Physiotermin sind nicht dasselbe.',
+        title: 'Eine Verletzung dauert Wochen. Ein Physiotermin, dreißig Minuten.',
         kind: 'compare',
         heads: ['Verletzung', 'Behandlungs-Slot'],
         tones: ['red', 'blue'],
@@ -347,7 +347,7 @@ export const medical: SubpageLocales = {
       },
       {
         kicker: 'DIE VERFÜGBARKEIT',
-        title: 'Drei Stufen, und sonst nichts zu pflegen.',
+        title: 'Sie verschieben eine Stufe. Die Aufgebote folgen.',
         body: 'Dieses Panel, und nur dieses, entscheidet, was ein Spieler darf. Sie führen keine parallele Liste der Aufbietbaren: Sie ergibt sich von hier.',
         kind: 'columns',
         cols: [
@@ -413,7 +413,7 @@ export const medical: SubpageLocales = {
     sections: [
       {
         kicker: 'DUAS COISAS, NÃO UMA',
-        title: 'Uma lesão e uma ida à fisioterapia não são a mesma coisa.',
+        title: 'Uma lesão dura semanas. Uma ida à fisioterapia, trinta minutos.',
         kind: 'compare',
         heads: ['Lesão', 'Vaga de tratamento'],
         tones: ['red', 'blue'],
@@ -442,7 +442,7 @@ export const medical: SubpageLocales = {
       },
       {
         kicker: 'A DISPONIBILIDADE',
-        title: 'Três níveis, e mais nada para manter.',
+        title: 'Muda um nível. As convocatórias seguem.',
         body: 'É este painel, e só ele, que decide o que o jogador pode fazer. Não mantém uma lista paralela de convocáveis: ela deduz-se daqui.',
         kind: 'columns',
         cols: [
@@ -508,7 +508,7 @@ export const medical: SubpageLocales = {
     sections: [
       {
         kicker: 'DOS COSAS, NO UNA',
-        title: 'Una lesión y un pase por fisio no son lo mismo.',
+        title: 'Una lesión dura semanas. Un pase por fisio, treinta minutos.',
         kind: 'compare',
         heads: ['Lesión', 'Hueco de tratamiento'],
         tones: ['red', 'blue'],
@@ -537,7 +537,7 @@ export const medical: SubpageLocales = {
       },
       {
         kicker: 'LA DISPONIBILIDAD',
-        title: 'Tres niveles, y nada más que mantener.',
+        title: 'Mueves un nivel. Las convocatorias siguen.',
         body: 'Es este panel, y solo él, el que decide lo que el jugador puede hacer. No mantienes una lista paralela de convocables: se deduce de aquí.',
         kind: 'columns',
         cols: [
