@@ -1,0 +1,197 @@
+---
+import type { HomeContent } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+
+interface Props {
+  intelligence: HomeContent['intelligence'];
+}
+
+const { intelligence: c } = Astro.props;
+
+/** AI console chart: [J13, J14] heights in % for DISTANCE / HSR / SPRINTS / CHARGE. */
+const aiBars: Array<[number, number]> = [
+  [72, 78],
+  [58, 76],
+  [46, 68],
+  [70, 74],
+];
+
+/** BI weekly-load widget bars (last = current week, blue). */
+const weeklyBars = [46, 62, 50, 74, 58, 92];
+---
+
+<section class="bg-[#05070F] py-20 md:py-28" aria-labelledby="intel-title">
+  <div class="hl-wrap">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-end">
+      <div class="hl-reveal">
+        <p class="hl-index text-[#7AB8FF]">
+          {c.index}
+          <span class="hl-index__rule"></span>
+          <span class="text-[#68779A]">{c.kicker}</span>
+        </p>
+        <h2 id="intel-title" class="hl-display mt-5 max-w-[18ch] text-[clamp(2.1rem,4.6vw,3.4rem)]">{c.title}</h2>
+      </div>
+      <p class="hl-reveal text-[1rem] leading-[1.65] text-[#AAB8D4] lg:pb-2" style="--d: 100ms;">{c.body}</p>
+    </div>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-14">
+      <!-- AI console -->
+      <div class="hl-reveal hl-reveal--card rounded-[22px] bg-gradient-to-b from-[#0C1224] to-[#0A0E1A] p-5 outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px] sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <p class="flex items-center gap-2 text-[0.92rem] font-semibold text-[#F8FAFC]">
+            <HomeIcon name="sparkles" size={16} class="text-[#7AB8FF]" />
+            {c.console.title}
+          </p>
+          <span class="flex items-center gap-1.5 rounded-full bg-[#8CE99A0A] px-3 py-1 font-mono text-[0.56rem] tracking-[0.12em] text-[#8CE99A] outline-1 outline-[#8CE99A2E] -outline-offset-[0.5px]">
+            <span class="hl-pulse size-1 rounded-full bg-[#8CE99A]" aria-hidden="true"></span>
+            {c.console.badge}
+          </span>
+        </div>
+
+        <p class="mt-4 rounded-[12px] bg-[#FFFFFF08] px-4 py-3 text-[0.85rem] text-[#E2E8F0] outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px]">
+          {c.console.q}
+        </p>
+
+        <div class="mt-3 rounded-[14px] bg-[#2D7FF908] p-4 outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]">
+          <p class="text-[0.82rem] font-medium text-[#E2E8F0]">{c.console.aIntro}</p>
+          <p class="mt-1.5 font-mono text-[0.56rem] tracking-[0.12em] text-[#68779A]">{c.console.sources}</p>
+
+          <div class="mt-3 rounded-[12px] bg-[#0A0E1A] p-4 outline-1 outline-[#FFFFFF0A] -outline-offset-[0.5px]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <p class="text-[0.8rem] font-semibold text-[#F8FAFC]">{c.console.chartTitle}</p>
+              <p class="flex items-center gap-3 text-[0.66rem] text-[#8CA3C7]">
+                <span class="flex items-center gap-1.5"><span class="size-2 rounded-[3px] bg-[#3A465F]"></span>{c.console.legend[0]}</span>
+                <span class="flex items-center gap-1.5"><span class="size-2 rounded-[3px] bg-[#5EA2FF]"></span>{c.console.legend[1]}</span>
+              </p>
+            </div>
+            <div class="mt-4 grid grid-cols-4 items-end gap-4" style="height: 7rem;">
+              {aiBars.map(([a, b], i) => (
+                <div class="flex h-full items-end justify-center gap-1.5">
+                  <span class="hl-bar w-4 rounded-[5px] bg-[#3A465F]" style={`height: ${a}%; --bd: ${i * 80}ms;`}></span>
+                  <span class="hl-bar w-4 rounded-[5px] bg-gradient-to-t from-[#2D7FF9] to-[#7AB8FF]" style={`height: ${b}%; --bd: ${i * 80 + 40}ms;`}></span>
+                </div>
+              ))}
+            </div>
+            <div class="mt-2 grid grid-cols-4 gap-4 text-center font-mono text-[0.55rem] tracking-[0.1em] text-[#68779A]">
+              {c.console.metrics.map((m) => <span>{m}</span>)}
+            </div>
+          </div>
+
+          <p class="mt-3 text-[0.78rem] leading-[1.55] text-[#AAB8D4]">{c.console.insight}</p>
+          <p class="mt-3 flex flex-wrap gap-2">
+            <span class="flex items-center gap-1.5 rounded-full bg-[#2D7FF9] px-3.5 py-1.5 text-[0.72rem] font-semibold text-white">
+              <HomeIcon name="plus" size={12} />
+              {c.console.pin}
+            </span>
+            <span class="rounded-full bg-[#FFFFFF08] px-3.5 py-1.5 text-[0.72rem] font-semibold text-[#E2E8F0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">{c.console.refine}</span>
+          </p>
+        </div>
+
+        <div class="mt-3 flex flex-wrap items-center gap-3 rounded-[12px] bg-[#FF84000A] px-4 py-3 outline-1 outline-[#FF84002E] -outline-offset-[0.5px]">
+          <HomeIcon name="radar" size={15} class="shrink-0 text-[#FF8400]" />
+          <p class="min-w-[12rem] flex-1">
+            <span class="block text-[0.78rem] font-semibold text-[#F8FAFC]">{c.console.signalTitle}</span>
+            <span class="block text-[0.72rem] text-[#AAB8D4]">{c.console.signalBody}</span>
+          </p>
+          <span class="rounded-full bg-[#FFFFFF08] px-3.5 py-1.5 text-[0.72rem] font-semibold text-[#E2E8F0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">{c.console.signalCta}</span>
+        </div>
+      </div>
+
+      <!-- Capabilities -->
+      <ul class="hl-reveal flex flex-col" style="--d: 140ms;" data-stagger>
+        {c.capabilities.map((cap) => (
+          <li class="flex gap-4 border-b border-[#FFFFFF0A] py-6 first:pt-0 last:border-b-0">
+            <span class="grid size-11 shrink-0 place-items-center rounded-[12px] bg-[#2D7FF912] text-[#7AB8FF] outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]">
+              <HomeIcon name={cap.icon} size={19} />
+            </span>
+            <span>
+              <span class="block text-[1.05rem] font-bold text-[#F8FAFC]">{cap.title}</span>
+              <span class="mt-1.5 block text-[0.9rem] leading-[1.6] text-[#AAB8D4]">{cap.body}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- BI & dashboards -->
+    <div class="mt-20 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div class="hl-reveal">
+        <p class="hl-kicker">{c.bi.kicker}</p>
+        <h3 class="hl-display mt-4 max-w-[16ch] text-[clamp(1.8rem,3.6vw,2.7rem)]">{c.bi.title}</h3>
+        <p class="mt-4 max-w-[30rem] text-[0.99rem] leading-[1.65] text-[#AAB8D4]">{c.bi.body}</p>
+        <ul class="hl-checks mt-6" data-stagger>
+          {c.bi.points.map((p) => (
+            <li><HomeIcon name="check-circle" size={16} class="text-[#7AB8FF]" />{p}</li>
+          ))}
+        </ul>
+        <p class="mt-7">
+          <a href={c.bi.href} class="hl-more text-[#7AB8FF]">{c.bi.cta}<HomeIcon name="arrow-right" size={15} /></a>
+        </p>
+      </div>
+
+      <div class="hl-reveal hl-reveal--card rounded-[22px] bg-gradient-to-b from-[#0C1224] to-[#0A0E1A] p-5 outline-1 outline-[#FFFFFF10] -outline-offset-[0.5px] sm:p-6" style="--d: 120ms;">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <p class="flex items-center gap-2 text-[0.9rem] font-semibold text-[#F8FAFC]">
+            <HomeIcon name="layout" size={15} class="text-[#7AB8FF]" />
+            {c.bi.dash.title}
+          </p>
+          <p class="flex gap-2">
+            <span class="flex items-center gap-1 rounded-full bg-[#FFFFFF08] px-3 py-1 text-[0.66rem] font-semibold text-[#E2E8F0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+              <HomeIcon name="plus" size={11} />
+              {c.bi.dash.widgetBtn}
+            </span>
+            <span class="flex items-center gap-1 rounded-full bg-[#2D7FF9] px-3 py-1 text-[0.66rem] font-semibold text-white">
+              <HomeIcon name="sparkles" size={11} />
+              {c.bi.dash.aiBtn}
+            </span>
+          </p>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 gap-2.5">
+          {c.bi.dash.kpis.map((k) => (
+            <div class="rounded-[12px] bg-[#FFFFFF05] px-3 py-2.5 outline-1 outline-[#FFFFFF0C] -outline-offset-[0.5px]">
+              <p class="font-mono text-[0.53rem] tracking-[0.12em] text-[#68779A]">{k.label}</p>
+              <p class={`mt-1 text-[1.05rem] leading-none font-bold ${k.tone === 'green' ? 'text-[#8CE99A]' : k.tone === 'blue' ? 'text-[#7AB8FF]' : 'text-[#F8FAFC]'}`}>{k.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-2.5 grid gap-2.5 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+          <div class="rounded-[12px] bg-[#FFFFFF04] p-3.5 outline-1 outline-[#FFFFFF0A] -outline-offset-[0.5px]">
+            <p class="text-[0.74rem] font-semibold text-[#E2E8F0]">{c.bi.dash.weekly}</p>
+            <div class="mt-3 flex h-[4.4rem] items-end gap-2">
+              {weeklyBars.map((h, i) => (
+                <span
+                  class={`hl-bar flex-1 rounded-[5px] ${i === weeklyBars.length - 1 ? 'bg-[#2D7FF9]' : 'bg-[#2E3A54]'}`}
+                  style={`height: ${h}%; --bd: ${i * 60}ms;`}
+                ></span>
+              ))}
+            </div>
+          </div>
+          <div class="flex flex-col justify-between rounded-[12px] bg-[#FFFFFF04] p-3.5 outline-1 outline-[#FFFFFF0A] -outline-offset-[0.5px]">
+            <p class="text-[0.74rem] font-semibold text-[#E2E8F0]">{c.bi.dash.availability}</p>
+            <p class="text-[1.6rem] font-bold text-[#8CE99A]">{c.bi.dash.availabilityValue}</p>
+            <span class="h-1.5 overflow-hidden rounded-full bg-[#FFFFFF0A]">
+              <span class="hl-fill block h-full rounded-full bg-[#8CE99A]" style="width: 83%; --bd: 240ms;"></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-2.5 rounded-[12px] bg-[#2D7FF908] p-3.5 outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]">
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-[0.74rem] font-semibold text-[#E2E8F0]">{c.bi.dash.hsr}</p>
+            <span class="font-mono text-[0.5rem] tracking-[0.12em] text-[#7AB8FF]">{c.bi.dash.aiTag}</span>
+          </div>
+          <div class="mt-3 grid grid-cols-4 items-end gap-3" style="height: 3.4rem;">
+            {aiBars.map(([a, b], i) => (
+              <div class="flex h-full items-end justify-center gap-1">
+                <span class="hl-bar w-2.5 rounded-[3px] bg-[#3A465F]" style={`height: ${a}%; --bd: ${i * 70}ms;`}></span>
+                <span class="hl-bar w-2.5 rounded-[3px] bg-[#5EA2FF]" style={`height: ${b}%; --bd: ${i * 70 + 35}ms;`}></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

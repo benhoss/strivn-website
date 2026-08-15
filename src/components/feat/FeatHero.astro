@@ -1,0 +1,45 @@
+---
+import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
+import { JUMP_HREFS } from '../../data/featuresIndexContent';
+
+interface Props {
+  hero: FeaturesIndexContent['hero'];
+}
+
+const { hero } = Astro.props;
+---
+
+<section
+  class="relative overflow-hidden bg-[#05070F] [background-image:radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(45,127,249,0.24),transparent_72%)]"
+  aria-labelledby="feat-hero-title"
+>
+  <!-- Ambient layer: one slow-drifting glow behind the title. -->
+  <span
+    class="hl-drift pointer-events-none absolute -top-56 left-1/2 size-[46rem] -translate-x-1/2 rounded-full [background:radial-gradient(circle,rgba(45,127,249,0.13),transparent_65%)]"
+    aria-hidden="true"></span>
+
+  <div class="hl-wrap relative flex flex-col items-center pt-24 pb-16 text-center md:pt-28">
+    <p class="hl-reveal hl-kicker">{hero.kicker}</p>
+    <h1
+      id="feat-hero-title"
+      class="hl-reveal hl-display mt-5 max-w-[16ch] text-[clamp(2.4rem,6.2vw,3.75rem)]"
+      style="--d: 70ms;"
+    >
+      {hero.title}
+    </h1>
+    <p class="hl-reveal mt-6 max-w-[38rem] text-[1rem] leading-[1.65] text-[#9AA8C4]" style="--d: 140ms;">
+      {hero.sub}
+    </p>
+
+    <nav class="hl-reveal mt-9 flex flex-wrap justify-center gap-2" style="--d: 220ms;" aria-label={hero.kicker}>
+      {hero.jump.map((label, i) => (
+        <a
+          href={JUMP_HREFS[i]}
+          class="hl-btn rounded-full bg-[#FFFFFF07] px-3.5 py-[7px] text-[0.78rem] font-medium text-[#C3CDE0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] hover:bg-[#FFFFFF12] hover:text-[#F8FAFC]"
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</section>

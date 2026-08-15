@@ -1,0 +1,92 @@
+---
+/**
+ * The planned week: seven days of load, then Thursday opened up.
+ *
+ * The two attached components add up to the session total in the header; the
+ * pending one does not. That arithmetic is the page's argument — load can
+ * belong to the week without belonging to a session — so the numbers are
+ * fixtures rather than per-locale strings, and the sum stays true everywhere.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, WEEK_BARS, WEEK_PARTS } from '../../../data/subpages/captures';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].week;
+
+const peak = Math.max(...WEEK_BARS.map((b) => b.ua));
+---
+
+<CaptureFrame>
+  <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+    <div class="min-w-0">
+      <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
+      <p class="mt-1 text-[0.72rem] text-[#68779A]">{t.sub}</p>
+    </div>
+    <p class="shrink-0 font-mono text-[0.56rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">
+      {t.acwr.k} <span class="text-[#7AB8FF]">{t.acwr.v}</span>
+    </p>
+  </div>
+
+  <div>
+    <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{t.shape}</p>
+    <ul class="mt-3 flex items-end gap-1.5">
+      {
+        WEEK_BARS.map((b, i) => (
+          <li class="flex flex-1 flex-col items-center gap-2">
+            <span
+              class={`hl-bar w-full rounded-[3px] ${b.active ? 'bg-[#2D7FF9]' : 'bg-[#FFFFFF14]'}`}
+              style={`height:${Math.round((b.ua / peak) * 64) + 4}px; --bd:${i * 40}ms;`}
+              aria-hidden="true"
+            />
+            <span
+              class={`font-mono text-[0.56rem] ${b.active ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`}
+            >
+              {t.days[i]}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <!-- The card concludes the week rather than arriving with it: it opens up
+       the tallest weekday, so it lands once the bars have finished reading. -->
+  <div
+    class="hl-late rounded-[11px] bg-[#FFFFFF05] p-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+    style="--ld: 330ms;"
+  >
+    <div class="flex items-center justify-between gap-3">
+      <p class="min-w-0 truncate text-[0.75rem] font-semibold text-[#DCE4F2]">{t.session}</p>
+      <p class="shrink-0 font-mono text-[0.72rem] text-[#7AB8FF]">{t.sessionTotal}</p>
+    </div>
+
+    <ul class="mt-3 grid gap-2.5">
+      {
+        WEEK_PARTS.map((p, i) => (
+          <li class="flex items-center gap-2.5">
+            <span
+              class={`size-[7px] shrink-0 rounded-full ${p.attached ? 'bg-[#2D7FF9]' : 'bg-[#68779A]'}`}
+              aria-hidden="true"
+            />
+            <span class="min-w-0 flex-1">
+              <span class="block truncate text-[0.75rem] text-[#DCE4F2]">{t.parts[i]}</span>
+              <span class="block font-mono text-[0.63rem] text-[#68779A]">
+                RPE {p.rpe} · {p.min} min · {p.attached ? t.attached : t.pending}
+              </span>
+            </span>
+            <span
+              class={`shrink-0 font-mono text-[0.69rem] whitespace-nowrap ${p.attached ? 'text-[#9AA8C4]' : 'text-[#68779A]'}`}
+            >
+              {p.ua} {t.unit}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</CaptureFrame>

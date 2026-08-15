@@ -1,5 +1,5 @@
 ---
-import PremiumLanding from '../components/PremiumLanding.astro';
+import HomeLanding from '../components/home/HomeLanding.astro';
 
 const alternates = [
   { hreflang: 'en', href: '/en/' },
@@ -11,4 +11,4 @@ const alternates = [
   { hreflang: 'x-default', href: '/fr/' },
 ];
 ---
-<PremiumLanding locale="fr" canonicalPath="/fr/" alternates={alternates} />
+<HomeLanding locale="fr" canonicalPath="/fr/" alternates={alternates} />

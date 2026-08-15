@@ -1,0 +1,28 @@
+---
+import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
+import type { Locale } from '../../data/landingContent';
+import { SECTION_ICONS, SECTION_SLUGS } from '../../data/featuresIndexContent';
+import type { ScPageContent } from '../../data/scPageContent';
+import ReadinessBoard from '../shared/ReadinessBoard.astro';
+import FeatHead from './FeatHead.astro';
+import FeatModules from './FeatModules.astro';
+
+interface Props {
+  monitoring: FeaturesIndexContent['monitoring'];
+  board: ScPageContent['hero']['board'];
+  locale: Locale;
+}
+
+const { monitoring: c, board, locale } = Astro.props;
+---
+
+<section id="monitoring" class="scroll-mt-20 bg-[#070A14] py-20 md:py-24" aria-labelledby="feat-monitoring-title">
+  <div class="hl-wrap">
+    <FeatHead kicker={c.kicker} title={c.title} body={c.body} id="feat-monitoring-title" />
+
+    <div class="mt-11 grid items-start gap-12 lg:grid-cols-[minmax(0,600px)_minmax(0,1fr)] lg:gap-16">
+      <ReadinessBoard board={board} class="hl-reveal hl-reveal--card hl-parallax" countFrom={500} />
+      <FeatModules modules={c.modules} icons={SECTION_ICONS.monitoring} slugs={SECTION_SLUGS.monitoring} locale={locale} class="lg:pt-2" />
+    </div>
+  </div>
+</section>

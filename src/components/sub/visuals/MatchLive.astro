@@ -1,0 +1,75 @@
+---
+/**
+ * The match encoder mid-game: score, the counted facts, and the timeline
+ * behind them.
+ *
+ * The minute lives in the fixtures rather than in each locale's title, so the
+ * timeline can never drift past the clock in one language and not another.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, MATCH_FACTS, MATCH_SCORE, MATCH_EVENTS } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].match;
+---
+
+<CaptureFrame>
+  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+    <p class="min-w-0 text-[0.81rem] font-semibold text-[#F8FAFC]">
+      {t.title} — {MATCH_SCORE.minute}’
+    </p>
+    <p
+      class="flex shrink-0 items-center gap-1.5 font-mono text-[0.56rem] tracking-[0.09em] text-[#FF8400]"
+    >
+      <HomeIcon name="cloud-off" size={11} />
+      {t.sync}
+    </p>
+  </div>
+
+  <div
+    class="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 rounded-[11px] bg-[#FFFFFF05] px-4 py-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+  >
+    <p class="font-mono text-[0.63rem] tracking-[0.08em] text-[#7AB8FF]">{t.us}</p>
+    <p class="font-mono text-[1.5rem] tracking-[-0.02em] whitespace-nowrap text-[#F8FAFC]">
+      {MATCH_SCORE.us} — {MATCH_SCORE.them}
+    </p>
+    <p class="text-right font-mono text-[0.63rem] tracking-[0.08em] text-[#68779A]">{t.them}</p>
+  </div>
+
+  <ul class="grid grid-cols-3 gap-2">
+    {
+      t.facts.map((name, i) => (
+        <li class="rounded-[9px] bg-[#FFFFFF05] px-3 py-2.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+          <p class="truncate text-[0.69rem] text-[#9AA8C4]">{name}</p>
+          <p class="mt-1 font-mono text-[0.81rem] whitespace-nowrap">
+            <span class="text-[#7AB8FF]">{MATCH_FACTS[i].a}</span>
+            <span class="text-[#FFFFFF29]"> · </span>
+            <span class="text-[#68779A]">{MATCH_FACTS[i].b}</span>
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul class="grid gap-2.5">
+    {
+      t.events.map((text, i) => (
+        <li class="flex items-center gap-2.5">
+          <span class="shrink-0 text-[#68779A]">
+            <HomeIcon name={MATCH_EVENTS[i].icon} size={13} />
+          </span>
+          <span class="min-w-0 flex-1 truncate text-[0.75rem] text-[#C3CDE0]">{text}</span>
+          <span class="shrink-0 font-mono text-[0.66rem] whitespace-nowrap text-[#68779A]">
+            {MATCH_EVENTS[i].minute}’
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</CaptureFrame>

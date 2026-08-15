@@ -1,0 +1,60 @@
+---
+/**
+ * Registry of sub-page product captures.
+ *
+ * Content names a capture with a string; this resolves it to a component. An
+ * unknown name renders nothing rather than throwing — a half-written page
+ * should still build, and the gap is obvious on screen.
+ */
+import type { Locale } from '../../data/landingContent';
+import LoadBoard from './visuals/LoadBoard.astro';
+import CheckinSignals from './visuals/CheckinSignals.astro';
+import TestCampaign from './visuals/TestCampaign.astro';
+import GpsBlocks from './visuals/GpsBlocks.astro';
+import UnitConversion from './visuals/UnitConversion.astro';
+import MeasureEditor from './visuals/MeasureEditor.astro';
+import PercentileScale from './visuals/PercentileScale.astro';
+import WeekPlan from './visuals/WeekPlan.astro';
+import LiveRunner from './visuals/LiveRunner.astro';
+import MatchLive from './visuals/MatchLive.astro';
+import LibraryInbox from './visuals/LibraryInbox.astro';
+import ProgramWeights from './visuals/ProgramWeights.astro';
+import SquadList from './visuals/SquadList.astro';
+import RsvpBoard from './visuals/RsvpBoard.astro';
+import RtpProtocol from './visuals/RtpProtocol.astro';
+import PlayerPhone from './visuals/PlayerPhone.astro';
+import ReportTable from './visuals/ReportTable.astro';
+import ScoutingBrief from './visuals/ScoutingBrief.astro';
+
+interface Props {
+  name: string;
+  locale: Locale;
+}
+
+const { name, locale } = Astro.props;
+
+const registry: Record<string, any> = {
+  'load-board': LoadBoard,
+  'checkin-signals': CheckinSignals,
+  'test-campaign': TestCampaign,
+  'gps-blocks': GpsBlocks,
+  'unit-conversion': UnitConversion,
+  'measure-editor': MeasureEditor,
+  'percentile-scale': PercentileScale,
+  'week-plan': WeekPlan,
+  'live-runner': LiveRunner,
+  'match-live': MatchLive,
+  'library-inbox': LibraryInbox,
+  'program-weights': ProgramWeights,
+  'squad-list': SquadList,
+  'rsvp-board': RsvpBoard,
+  'rtp-protocol': RtpProtocol,
+  'player-phone': PlayerPhone,
+  'report-table': ReportTable,
+  'scouting-brief': ScoutingBrief,
+};
+
+const Capture = registry[name];
+---
+
+{Capture && <Capture locale={locale} />}

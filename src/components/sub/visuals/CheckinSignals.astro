@@ -1,0 +1,78 @@
+---
+/**
+ * "Signals" capture: the morning check-in table plus the red row's prompt.
+ *
+ * The missing-data row is deliberately grey rather than green — the page's
+ * colour rule says an unanswered check-in must never read as "fine".
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, CHECKIN_ROWS } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].checkin;
+
+const pill: Record<string, string> = {
+  green: 'bg-[#8CE99A14] text-[#8CE99A]',
+  amber: 'bg-[#FF84001A] text-[#FF8400]',
+  red: 'bg-[#FF7A6B1A] text-[#FF7A6B]',
+  missing: 'bg-[#FFFFFF0A] text-[#68779A]',
+};
+const dash = '—';
+---
+
+<CaptureFrame>
+  <div class="flex items-center justify-between gap-4">
+    <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
+    <p class="font-mono text-[0.59rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">{t.meta}</p>
+  </div>
+
+  <div class="overflow-hidden rounded-[11px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+    <div
+      class="grid grid-cols-[minmax(0,1fr)_repeat(3,minmax(0,52px))_minmax(0,84px)] gap-2 border-b border-[#FFFFFF14] bg-[#FFFFFF0A] px-3.5 py-2.5"
+    >
+      {
+        t.cols.map((c) => (
+          <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{c}</p>
+        ))
+      }
+    </div>
+
+    <ul>
+      {
+        CHECKIN_ROWS.map((r, i) => (
+          <li
+            class={`grid grid-cols-[minmax(0,1fr)_repeat(3,minmax(0,52px))_minmax(0,84px)] items-center gap-2 px-3.5 py-2.5 ${i < CHECKIN_ROWS.length - 1 ? 'border-b border-[#FFFFFF14]' : ''}`}
+          >
+            <span class="min-w-0 truncate text-[0.78rem] font-medium text-[#DCE4F2]">{r.name}</span>
+            <span class="font-mono text-[0.72rem] text-[#9AA8C4]">{r.sleep ?? dash}</span>
+            <span class="font-mono text-[0.72rem] text-[#9AA8C4]">{r.fatigue ?? dash}</span>
+            <span class="font-mono text-[0.72rem] text-[#9AA8C4]">
+              {r.pain === null ? dash : r.pain ? t.yes : t.no}
+            </span>
+            <span
+              class={`inline-flex justify-self-start rounded-full px-2.5 py-[3px] text-[0.63rem] whitespace-nowrap ${pill[r.ready]}`}
+            >
+              {t.ready[r.ready]}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div
+    class="hl-flash flex items-center gap-2.5 rounded-[10px] bg-[#FF7A6B14] px-3 py-3 outline-1 outline-[#FF7A6B33] -outline-offset-[0.5px]"
+    style="--fd: 700ms;"
+  >
+    <span class="shrink-0 text-[#FF7A6B]">
+      <HomeIcon name="triangle-alert" size={14} />
+    </span>
+    <p class="min-w-0 flex-1 text-[0.75rem] leading-[1.45] text-[#F0C4BC]">{t.alert}</p>
+  </div>
+</CaptureFrame>

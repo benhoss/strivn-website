@@ -1,0 +1,54 @@
+---
+/**
+ * Load-unit conversion strip: what the coach types, what STRIVN stores, what
+ * the staff reads — then the two settings that define the conversion.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].unit;
+
+/** The third step is the one the staff actually reads — it carries the accent. */
+const stepInk = ['text-[#9AA8C4]', 'text-[#68779A]', 'text-[#7AB8FF]'];
+---
+
+<div
+  class="flex flex-wrap items-center gap-x-7 gap-y-6 rounded-[16px] bg-[#FFFFFF05] px-8 py-8 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+>
+  {
+    t.steps.map((st, i) => (
+      <>
+        {i > 0 && (
+          <span class="shrink-0 text-[#FFFFFF29]" aria-hidden="true">
+            <HomeIcon name="arrow-right" size={16} />
+          </span>
+        )}
+        <div class="shrink-0">
+          <p class="font-mono text-[0.56rem] tracking-[0.1em] text-[#68779A]">{st.k}</p>
+          <p class={`hl-display mt-2 text-[1.35rem] tracking-[-0.04em] whitespace-nowrap ${stepInk[i]}`}>
+            {st.v}
+          </p>
+        </div>
+      </>
+    ))
+  }
+
+  <span class="hidden flex-1 xl:block" aria-hidden="true"></span>
+
+  <ul class="flex flex-wrap gap-3">
+    {
+      t.fields.map((fl) => (
+        <li class="rounded-[10px] bg-[#FFFFFF07] px-4 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+          <p class="font-mono text-[0.56rem] tracking-[0.08em] text-[#68779A]">{fl.k}</p>
+          <p class="mt-1.5 text-[0.78rem] font-medium text-[#DCE4F2]">{fl.v}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>

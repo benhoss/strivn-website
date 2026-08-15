@@ -16,7 +16,7 @@ interface Props {
   /** Public body class to apply on <main>. */
   bodyClass?: string;
   /** Override the language-switcher targets. */
-  switchHrefs?: { en: string; fr: string; nl?: string; de?: string; pt?: string; es?: string };
+  switchHrefs?: { en?: string; fr?: string; nl?: string; de?: string; pt?: string; es?: string };
   /** Brand href override (locale root). */
   brandHref?: string;
 }
@@ -38,12 +38,13 @@ const skipLabel = isFrench ? 'Aller au contenu' : 'Skip to content';
 const homeHref = isFrench ? '/fr/' : '/en/';
 const blogHref = isFrench ? '/fr/blog/' : '/en/blog/';
 
-// Augment nav with a Blog link (kept lightweight — does not modify landingContent).
-const navLinks = [
-  ...c.nav.links,
-  { label: isFrench ? 'Blog' : 'Blog', href: blogHref },
-];
-const finalSwitchHrefs = switchHrefs ?? { en: '/en/', fr: '/fr/' };
+/* Add a Blog link only if the shared nav does not already carry one. It does
+   now, so appending unconditionally printed "Blog" twice on every blog page. */
+const hasBlog = c.nav.links.some((l) => 'href' in l && l.href === blogHref);
+const navLinks = hasBlog ? c.nav.links : [...c.nav.links, { label: 'Blog', href: blogHref }];
+/* The blog is French-only, so only FR ever gets a page-specific target;
+   the rest fall back to their home page in SiteHeader. */
+const finalSwitchHrefs = switchHrefs ?? {};
 ---
 
 <BaseLayout

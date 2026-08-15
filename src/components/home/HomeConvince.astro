@@ -1,0 +1,67 @@
+---
+import type { HomeContent } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+
+interface Props {
+  convince: HomeContent['convince'];
+}
+
+const { convince: c } = Astro.props;
+---
+
+<section id="dossier-staff" class="scroll-mt-24 bg-[#070A14] py-20 md:py-28" aria-labelledby="convince-title">
+  <div class="hl-wrap">
+    <div class="grid items-center gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-16">
+      <div class="hl-reveal">
+        <p class="hl-index text-[#7AB8FF]">
+          {c.index}
+          <span class="hl-index__rule"></span>
+          <span class="text-[#68779A]">{c.kicker}</span>
+        </p>
+        <h2 id="convince-title" class="hl-display mt-5 max-w-[20ch] text-[clamp(2.1rem,4.6vw,3.3rem)]">{c.title}</h2>
+        <p class="mt-5 max-w-[36rem] text-[1rem] leading-[1.65] text-[#AAB8D4]">{c.body}</p>
+
+        <ol class="mt-9 flex flex-col" data-stagger>
+          {c.steps.map((step, i) => (
+            <li class="flex gap-4 border-t border-[#FFFFFF0A] py-5 first:border-t-0">
+              <span class="grid size-7 shrink-0 place-items-center rounded-full bg-[#2D7FF917] font-mono text-[0.72rem] font-semibold text-[#7AB8FF] outline-1 outline-[#2D7FF938] -outline-offset-[0.5px]">
+                {i + 1}
+              </span>
+              <span>
+                <span class="block text-[1.02rem] font-bold text-[#F8FAFC]">{step.title}</span>
+                <span class="mt-1 block text-[0.9rem] leading-[1.55] text-[#AAB8D4]">{step.body}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="hl-reveal hl-reveal--right" style="--d: 200ms;">
+        <div class="rounded-[22px] bg-gradient-to-b from-[#0E1526] to-[#0B1020] p-6 outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px] [box-shadow:0_36px_90px_-30px_rgba(2,6,18,0.95)] sm:p-7">
+          <p class="font-mono text-[0.66rem] font-bold tracking-[0.22em] text-[#F8FAFC]">{c.dossier.brand}</p>
+          <p class="mt-1 font-mono text-[0.56rem] tracking-[0.14em] text-[#68779A]">{c.dossier.kicker}</p>
+          <p class="mt-4 text-[1.35rem] font-bold tracking-[-0.01em] text-[#F8FAFC]">{c.dossier.title}</p>
+          <ul class="mt-5 flex flex-col gap-3.5" data-stagger>
+            {c.dossier.roles.map((role) => (
+              <li class="flex items-start gap-3 text-[0.88rem] leading-[1.5] text-[#C6D2E8]">
+                <HomeIcon name={role.icon} size={16} class="mt-0.5 shrink-0 text-[#7AB8FF]" />
+                {role.body}
+              </li>
+            ))}
+          </ul>
+          <div class="mt-7 flex flex-wrap gap-2.5">
+            <span class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#2D7FF9] px-5 py-2.5 text-[0.85rem] font-semibold text-white">
+              <HomeIcon name="link" size={14} />
+              {c.dossier.copyBtn}
+            </span>
+            <span class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#FFFFFF08] px-5 py-2.5 text-[0.85rem] font-semibold text-[#F8FAFC] outline-1 outline-[#FFFFFF1F] -outline-offset-[0.5px]">
+              <HomeIcon name="download" size={14} />
+              {c.dossier.pdfBtn}
+            </span>
+          </div>
+        </div>
+        <p class="mt-4 text-center font-mono text-[0.6rem] tracking-[0.14em] text-[#68779A]">{c.dossier.note}</p>
+      </div>
+    </div>
+  </div>
+</section>

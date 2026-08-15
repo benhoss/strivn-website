@@ -1,0 +1,106 @@
+---
+/**
+ * The composable "Charge & availability" dashboard capture.
+ *
+ * Shared by the S&C reporting section and the features index. Chart data is
+ * locale-invariant; only labels come from the caller's locale.
+ */
+import type { ScPageContent } from '../../data/scPageContent';
+import { WEEKLY_BARS, HSR_BARS } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  dashboard: ScPageContent['reports']['dashboard'];
+  class?: string;
+  style?: string;
+}
+
+const { dashboard: d, class: className = '', style } = Astro.props;
+
+const toneText: Record<string, string> = {
+  green: 'text-[#8CE99A]',
+  blue: 'text-[#7AB8FF]',
+  plain: 'text-[#F8FAFC]',
+};
+
+/** Availability donut, drawn with a conic gradient rather than an SVG arc. */
+const availabilityPct = Number.parseInt(d.availabilityValue, 10) || 0;
+---
+
+<div
+  class={`flex flex-col gap-3 overflow-hidden rounded-[18px] p-5 [background-image:linear-gradient(90deg,#121A31_0%,#090D19_100%)] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] [box-shadow:0_30px_70px_-16px_rgba(0,0,0,0.8)] ${className}`}
+  style={style}
+>
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <p class="flex items-center gap-2.5 text-[0.82rem] font-semibold text-[#F8FAFC]">
+      <HomeIcon name="layout-dashboard" size={15} class="text-[#7AB8FF]" />
+      {d.title}
+    </p>
+    <p class="flex gap-2">
+      <span class="flex items-center gap-1.5 rounded-full bg-[#FFFFFF0A] px-3 py-1.5 text-[0.69rem] text-[#9AA8C4] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+        <HomeIcon name="plus" size={11} />
+        {d.widgetBtn}
+      </span>
+      <span class="flex items-center gap-1.5 rounded-full bg-[#2D7FF921] px-3 py-1.5 text-[0.69rem] font-medium text-[#7AB8FF] outline-1 outline-[#2D7FF947] -outline-offset-[0.5px]">
+        <HomeIcon name="sparkles" size={11} />
+        {d.aiBtn}
+      </span>
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-3" data-stagger>
+    {d.kpis.map((kpi) => (
+      <div class="rounded-[10px] bg-[#FFFFFF07] px-3.5 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+        <p class="font-mono text-[0.5rem] tracking-[0.09em] text-[#68779A]">{kpi.label}</p>
+        <p class={`hl-display mt-1 text-[1.18rem] leading-none ${toneText[kpi.tone]}`}>{kpi.value}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="grid gap-2.5 sm:grid-cols-[minmax(0,1fr)_170px]">
+    <div class="rounded-[12px] bg-[#FFFFFF06] px-3.5 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+      <p class="text-[0.69rem] font-semibold text-[#DCE4F2]">{d.weekly}</p>
+      <div class="mt-3 flex h-[4.6rem] items-end gap-[7px]">
+        {WEEKLY_BARS.map((h, i) => (
+          <span
+            class={`hl-bar flex-1 rounded-[3px] ${i === WEEKLY_BARS.length - 1 ? 'bg-[#2D7FF9]' : 'bg-[#FFFFFF1F]'}`}
+            style={`height: ${h}%; --bd: ${i * 60}ms;`}
+          ></span>
+        ))}
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center gap-2 rounded-[12px] bg-[#FFFFFF06] px-3.5 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+      <p class="text-[0.69rem] font-semibold text-[#DCE4F2]">{d.availability}</p>
+      <div
+        class="grid size-[84px] place-items-center rounded-full"
+        style={`background: conic-gradient(#8CE99A 0% ${availabilityPct}%, rgba(255,255,255,0.07) ${availabilityPct}% 100%);`}
+        aria-hidden="true"
+      >
+        <span class="grid size-[60px] place-items-center rounded-full bg-[#0B111F]">
+          <span class="hl-display text-[1.05rem] leading-none">{d.availabilityValue}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-[12px] bg-[#2D7FF912] px-3.5 py-3 outline-1 outline-[#2D7FF95C] -outline-offset-[0.5px]">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <p class="text-[0.69rem] font-semibold text-[#DCE4F2]">{d.hsr}</p>
+      <span class="flex items-center gap-1.5 rounded-full bg-[#2D7FF929] px-2.5 py-[3px] font-mono text-[0.47rem] tracking-[0.07em] text-[#7AB8FF]">
+        <HomeIcon name="sparkles" size={9} />
+        {d.aiTag}
+      </span>
+    </div>
+    <div class="mt-3 flex h-[3.4rem] items-end gap-2.5">
+      {HSR_BARS.map(([a, b], i) => (
+        <!-- h-full is required: the bars size in %, which only resolves
+             against a parent with a definite height. -->
+        <div class="flex h-full flex-1 items-end justify-center gap-[3px]">
+          <span class="hl-bar w-[11px] rounded-t-[3px] bg-[#FFFFFF26]" style={`height: ${a}%; --bd: ${i * 70}ms;`}></span>
+          <span class="hl-bar w-[11px] rounded-t-[3px] bg-[#2D7FF9]" style={`height: ${b}%; --bd: ${i * 70 + 35}ms;`}></span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

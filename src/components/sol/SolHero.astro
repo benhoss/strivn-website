@@ -1,0 +1,33 @@
+---
+import type { SolutionsContent } from '../../data/solutionsContent';
+
+interface Props {
+  hero: SolutionsContent['hero'];
+}
+
+const { hero } = Astro.props;
+---
+
+<section
+  class="relative overflow-hidden bg-[#05070F] [background-image:radial-gradient(ellipse_65%_55%_at_50%_0%,rgba(45,127,249,0.24),transparent_72%)]"
+  aria-labelledby="sol-hero-title"
+>
+  <!-- Ambient layer: one slow-drifting glow behind the title. -->
+  <span
+    class="hl-drift pointer-events-none absolute -top-56 left-1/2 size-[44rem] -translate-x-1/2 rounded-full [background:radial-gradient(circle,rgba(45,127,249,0.13),transparent_65%)]"
+    aria-hidden="true"></span>
+
+  <div class="hl-wrap relative flex flex-col items-center pt-24 pb-16 text-center md:pt-28">
+    <p class="hl-reveal hl-kicker">{hero.kicker}</p>
+    <h1
+      id="sol-hero-title"
+      class="hl-reveal hl-display mt-5 max-w-[17ch] text-[clamp(2.4rem,6.2vw,3.75rem)]"
+      style="--d: 70ms;"
+    >
+      {hero.title}
+    </h1>
+    <p class="hl-reveal mt-6 max-w-[40rem] text-[1rem] leading-[1.65] text-[#9AA8C4]" style="--d: 140ms;">
+      {hero.sub}
+    </p>
+  </div>
+</section>

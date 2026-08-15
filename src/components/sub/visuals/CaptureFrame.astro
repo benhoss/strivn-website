@@ -1,0 +1,19 @@
+---
+/**
+ * Shared shell for every sub-page product capture — one place for the frame,
+ * so a screenshot on the load page and one on the tests page cannot drift.
+ */
+interface Props {
+  /** Extra classes on the frame (parallax, reveal variants). */
+  class?: string;
+  gap?: string;
+}
+
+const { class: className = '', gap = 'gap-3.5' } = Astro.props;
+---
+
+<div
+  class={`flex flex-col ${gap} rounded-[18px] p-[22px] [background-image:linear-gradient(90deg,#131B33_0%,#080C18_100%)] [box-shadow:0_30px_70px_-16px_#000000CC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] ${className}`}
+>
+  <slot />
+</div>

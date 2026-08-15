@@ -1,0 +1,130 @@
+---
+/**
+ * Sub-page hero. Splits copy and product capture when the page names a
+ * visual; centres the copy when it does not — the two shapes the mockups use.
+ */
+import type { SubpageContent } from '../../data/subpages/types';
+import { appStartUrl } from '../../lib/appUrl';
+import type { Locale } from '../../data/landingContent';
+import HomeIcon from '../home/HomeIcon.astro';
+import SubVisual from './SubVisual.astro';
+
+interface Props {
+  locale: Locale;
+  hero: SubpageContent['hero'];
+}
+
+const { locale, hero } = Astro.props;
+const split = Boolean(hero.visual);
+---
+
+<section
+  class:list={[
+    'relative overflow-hidden bg-[#05070F]',
+    split
+      ? '[background-image:radial-gradient(ellipse_65%_55%_at_25%_0%,rgba(45,127,249,0.24),transparent_72%)]'
+      : '[background-image:radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(45,127,249,0.24),transparent_72%)]',
+  ]}
+  aria-labelledby="sub-hero-title"
+>
+  <!-- Ambient layer: one slow-drifting glow, as on every other landing. -->
+  <span
+    class:list={[
+      'hl-drift pointer-events-none absolute -top-56 size-[44rem] rounded-full [background:radial-gradient(circle,rgba(45,127,249,0.13),transparent_65%)]',
+      split ? '-left-40' : 'left-1/2 -translate-x-1/2',
+    ]}
+    aria-hidden="true"></span>
+
+  <div
+    class:list={[
+      'hl-wrap relative pt-20 pb-16 md:pt-24 md:pb-20',
+      split
+        ? 'grid items-center gap-12 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-16'
+        : 'flex flex-col items-center text-center',
+    ]}
+  >
+    <div class={split ? '' : 'flex flex-col items-center'}>
+      {
+        hero.badge && (
+          <p class="hl-reveal mb-5 inline-flex items-center gap-2.5 rounded-full bg-[#FFFFFF08] py-1.5 pr-4 pl-2.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+            <span class="text-[#7AB8FF]">
+              <HomeIcon name={hero.badge.icon} size={13} />
+            </span>
+            <span class="font-mono text-[0.6rem] tracking-[0.11em] text-[#C6D2E8]">
+              {hero.badge.label}
+            </span>
+          </p>
+        )
+      }
+
+      <p class="hl-reveal hl-kicker">{hero.kicker}</p>
+
+      <h1
+        id="sub-hero-title"
+        class:list={[
+          'hl-reveal hl-display mt-5',
+          split
+            ? 'text-[clamp(2.1rem,4.6vw,3.2rem)]'
+            : 'max-w-[19ch] text-[clamp(2.3rem,5.6vw,3.6rem)]',
+        ]}
+        style="--d: 70ms;"
+      >
+        {hero.title}
+      </h1>
+
+      <p
+        class:list={[
+          'hl-reveal mt-6 text-[1rem] leading-[1.65] text-[#9AA8C4]',
+          split ? 'max-w-[36rem]' : 'max-w-[40rem]',
+        ]}
+        style="--d: 140ms;"
+      >
+        {hero.sub}
+      </p>
+
+      {
+        hero.bullets && (
+          <ul class="hl-reveal mt-7 grid gap-3" data-stagger style="--d: 200ms;">
+            {hero.bullets.map((b) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-px shrink-0 text-[#2D7FF9]" aria-hidden="true">
+                  <HomeIcon name="check-circle" size={15} />
+                </span>
+                <span class="text-[0.875rem] leading-[1.5] text-[#C3CDE0]">{b}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      {
+        hero.ctas && (
+          <div class="hl-reveal mt-9 flex flex-wrap items-center gap-3" style="--d: 260ms;">
+            <a
+              href={appStartUrl(locale)}
+              class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#2D7FF9] px-[26px] py-[14px] text-[0.92rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
+            >
+              {hero.ctas.primary}
+            </a>
+            {hero.ctas.secondary && (
+              <a
+                href={hero.ctas.secondary.href}
+                class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#FFFFFF0A] px-6 py-[14px] text-[0.92rem] font-medium text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
+              >
+                {hero.ctas.secondary.label}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+
+    {
+      split && (
+        <div class="hl-reveal hl-reveal--right" style="--d: 180ms;">
+          <SubVisual name={hero.visual!} locale={locale} />
+        </div>
+      )
+    }
+  </div>
+</section>

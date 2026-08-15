@@ -1,0 +1,657 @@
+/* Home (S&C First) — style layer for the redesigned homepage.
+ *
+ * Tailwind v4 utilities WITHOUT preflight: the rest of the site runs on the
+ * handcrafted global.css system, so we must not reset base styles globally.
+ * Utilities are imported unlayered on purpose — global.css element rules stay
+ * unlayered too, and utility classes need to win by specificity.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap');
+@import 'tailwindcss/theme.css';
+@import 'tailwindcss/utilities.css';
+
+/* ── Home palette (mockup-locked values, on top of global.css tokens) ── */
+:root {
+  --hl-bg: #05070f;
+  --hl-bg-alt: #070a14;
+  --hl-footer: #060911;
+  --hl-card: #0b1020;
+  --hl-card-deep: #0a0e1a;
+  --hl-line: rgba(255, 255, 255, 0.08);
+  --hl-line-strong: rgba(255, 255, 255, 0.16);
+  --hl-ink: #f8fafc;
+  --hl-ink-2: #aab8d4;
+  --hl-ink-3: #68779a;
+  --hl-blue: #7ab8ff;
+  --hl-electric: #2d7ff9;
+  --hl-green: #8ce99a;
+  --hl-orange: #ff8400;
+  --hl-coral: #ff7a6b;
+  --hl-font-display: 'Archivo', 'Inter', system-ui, sans-serif;
+  /* Tailwind's theme layer redefines --font-mono; pin it back to the brand mono. */
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Motion identity — Premium archetype: long decelerations, no overshoot.
+   * One signature curve for entrances, one for on-screen state changes,
+   * three durations (quick / standard / slow). */
+  --hl-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --hl-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Emphasized decelerate — reserved for the few elements that must feel
+   * "placed" rather than merely moved (hero board, section captures). */
+  --hl-ease-emph: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --hl-dur-micro: 110ms;
+  --hl-dur-quick: 160ms;
+  --hl-dur-std: 480ms;
+  --hl-dur-slow: 760ms;
+}
+
+/* global.css underlines content links; the home page styles every link
+ * explicitly, so reset decoration within the page's own regions. */
+#s-main a,
+#s-main a:hover,
+footer a,
+footer a:hover {
+  text-decoration: none;
+}
+
+/* Wrapped in :where() so the reset carries zero specificity — an ID-level
+ * selector here would outrank Tailwind's margin utilities and collapse the
+ * spacing above every list. */
+:where(#s-main ul, #s-main ol, footer ul) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Recurring patterns ── */
+.hl-wrap {
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.hl-display {
+  font-family: var(--hl-font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  color: var(--hl-ink);
+  margin: 0;
+}
+
+.hl-kicker {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hl-blue);
+}
+
+.hl-card {
+  background: var(--hl-card);
+  outline: 1px solid var(--hl-line);
+  outline-offset: -0.5px;
+  border-radius: 20px;
+}
+
+/* Numbered section header chip: `01 ── LE CONSTAT` */
+.hl-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hl-index__rule {
+  width: 2rem;
+  height: 1px;
+  background: var(--hl-line-strong);
+}
+
+/* Text link with trailing arrow */
+.hl-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: gap 160ms ease;
+}
+
+.hl-more:hover,
+.hl-more:focus-visible {
+  gap: 0.7rem;
+}
+
+/* Check bullet rows */
+.hl-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.hl-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: var(--hl-ink-2);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.hl-checks svg {
+  flex: none;
+  margin-top: 0.18rem;
+}
+
+/* ── Reveal-on-scroll (house pattern: IO adds .is-in) ──
+ * Base: fade + rise. Variants slide from the side (directional consistency)
+ * or land with a faint scale (cards). Cards use `transform`; staggered
+ * children use the individual `translate` property so they never fight
+ * Tailwind transform utilities (the scattered "before" chips keep their
+ * rotation while still cascading in). */
+/* Opacity resolves at ~60 % of the travel time on purpose: the element is
+ * legible before it stops moving, so the eye reads it settling into place
+ * rather than sliding in. That lag is what separates "premium" from "slid". */
+html.js-anim .hl-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity calc(var(--hl-dur-slow) * 0.6) var(--hl-ease),
+    transform var(--hl-dur-slow) var(--hl-ease-out);
+  transition-delay: var(--d, 0ms);
+}
+
+html.js-anim .hl-reveal--left {
+  transform: translateX(-28px);
+}
+
+html.js-anim .hl-reveal--right {
+  transform: translateX(28px);
+}
+
+html.js-anim .hl-reveal--card {
+  transform: translateY(26px) scale(0.975);
+}
+
+html.js-anim .hl-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Micro-cascade for list children inside a revealed block.
+ * Add `data-stagger` to the list; children fade-rise one after another
+ * once the nearest `.hl-reveal` ancestor (or the list itself) is in view. */
+html.js-anim [data-stagger] > * {
+  opacity: 0;
+  translate: 0 14px;
+  transition:
+    opacity 560ms var(--hl-ease-out),
+    translate 560ms var(--hl-ease-out);
+}
+
+html.js-anim [data-stagger='x'] > * {
+  translate: -18px 0;
+}
+
+html.js-anim .is-in [data-stagger] > *,
+html.js-anim [data-stagger].is-in > * {
+  opacity: 1;
+  translate: 0 0;
+}
+
+[data-stagger] > *:nth-child(1) { transition-delay: 90ms; }
+[data-stagger] > *:nth-child(2) { transition-delay: 140ms; }
+[data-stagger] > *:nth-child(3) { transition-delay: 190ms; }
+[data-stagger] > *:nth-child(4) { transition-delay: 240ms; }
+[data-stagger] > *:nth-child(5) { transition-delay: 290ms; }
+[data-stagger] > *:nth-child(6) { transition-delay: 340ms; }
+[data-stagger] > *:nth-child(7) { transition-delay: 390ms; }
+[data-stagger] > *:nth-child(8) { transition-delay: 440ms; }
+[data-stagger] > *:nth-child(n + 9) { transition-delay: 480ms; }
+
+/* Connector line that draws itself once revealed (Spectre chain). */
+html.js-anim .hl-trace {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1100ms var(--hl-ease) 150ms;
+}
+
+html.js-anim .is-in .hl-trace {
+  transform: scaleX(1);
+}
+
+/* Hover lift for card surfaces — light weight, no overshoot. */
+.hl-lift {
+  transition:
+    translate var(--hl-dur-quick) var(--hl-ease),
+    outline-color var(--hl-dur-quick) var(--hl-ease),
+    box-shadow var(--hl-dur-quick) var(--hl-ease);
+}
+
+.hl-lift:hover {
+  translate: 0 -3px;
+  outline-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 44px -18px rgba(2, 6, 18, 0.9);
+}
+
+/* ── Hero "OS at work" sequence ──
+ * The readiness board computes on arrival: GPS import lands, bars fill,
+ * verdict chips drop in after each bar, KPIs count up, the load alert
+ * flashes once, the AI assistant writes its answer. Timeline is pure CSS
+ * delays measured from the moment `.is-in` lands on each reveal target. */
+
+/* Late elements: appear after the "computation" they conclude (verdict
+ * chips, AI answer, sources line). Delay via --ld per element. */
+html.js-anim .hl-late {
+  opacity: 0;
+  transition: opacity 420ms var(--hl-ease-out) var(--ld, 0ms);
+}
+
+html.js-anim .is-in .hl-late,
+html.js-anim .hl-reveal.is-in.hl-late {
+  opacity: 1;
+}
+
+/* One-shot alert flash: the outline ignites when the signal is detected,
+ * then settles. Runs once, --fd after the card's own reveal. */
+@keyframes hl-flash-once {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 132, 0, 0);
+  }
+  40% {
+    box-shadow: 0 0 30px -4px rgba(255, 132, 0, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 132, 0, 0);
+  }
+}
+
+html.js-anim .hl-reveal.is-in .hl-flash,
+html.js-anim .hl-reveal.is-in.hl-flash {
+  animation: hl-flash-once 950ms var(--hl-ease) var(--fd, 0ms) 1 both;
+}
+
+/* Generation caret: blinks while the AI "writes", then goes out. */
+@keyframes hl-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+html.js-anim .is-in .hl-caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  background: var(--hl-blue);
+  opacity: 0;
+  animation: hl-caret 640ms steps(1) var(--cd, 0ms) 5 forwards;
+}
+
+html:not(.js-anim) .hl-caret {
+  display: none;
+}
+
+/* Ambient breathing for the hero / final glows — background life. */
+@keyframes hl-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.hl-breathe {
+  animation: hl-breathe 9s ease-in-out infinite;
+}
+
+/* ── Logo marquee ── */
+@keyframes hl-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.hl-marquee {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: hl-marquee 36s linear infinite;
+}
+
+.hl-marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* ── Floating hero side cards ──
+ * Animates the individual `translate` property so it composes with the
+ * reveal transition (which owns `transform`) instead of overriding it. */
+@keyframes hl-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+.hl-float {
+  animation: hl-float 7s ease-in-out infinite;
+}
+
+.hl-float--late {
+  animation-delay: -3.5s;
+}
+
+/* ── Live pulse dot ── */
+@keyframes hl-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.hl-pulse {
+  animation: hl-pulse 1.6s ease-in-out infinite;
+}
+
+/* ── Chart bars grow when revealed ── */
+html.js-anim .hl-bar {
+  transform-origin: bottom;
+  transform: scaleY(0.12);
+  transition: transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--bd, 0ms);
+}
+
+html.js-anim .is-in .hl-bar {
+  transform: scaleY(1);
+}
+
+html.js-anim .hl-fill {
+  transform-origin: left;
+  transform: scaleX(0.08);
+  transition: transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--bd, 0ms);
+}
+
+html.js-anim .is-in .hl-fill {
+  transform: scaleX(1);
+}
+
+/* ── FAQ accordion ── */
+.hl-faq details {
+  border-bottom: 1px solid var(--hl-line);
+}
+
+.hl-faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 0;
+  color: var(--hl-ink);
+  font-weight: 600;
+  font-size: 1.06rem;
+}
+
+.hl-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.hl-faq summary::after {
+  content: '+';
+  flex: none;
+  color: var(--hl-ink-3);
+  font-weight: 400;
+  font-size: 1.2rem;
+  transition: transform 200ms ease;
+}
+
+.hl-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.hl-faq details p {
+  margin: 0;
+  padding: 0 2.5rem 1.35rem 0;
+  color: var(--hl-ink-2);
+  line-height: 1.6;
+}
+
+/* Answer entrance: content fades and settles when a question opens. */
+@keyframes hl-faq-in {
+  from {
+    opacity: 0;
+    translate: 0 -6px;
+  }
+}
+
+html.js-anim .hl-faq details[open] summary ~ * {
+  animation: hl-faq-in 300ms var(--hl-ease-out);
+}
+
+/* Real height animation where supported (progressive enhancement). */
+@supports (interpolate-size: allow-keywords) {
+  .hl-faq {
+    interpolate-size: allow-keywords;
+  }
+
+  .hl-faq details::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size 340ms var(--hl-ease),
+      content-visibility 340ms allow-discrete;
+  }
+
+  .hl-faq details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* ── Buttons: hover lift + press feedback (anticipation, quick settle) ── */
+.hl-btn {
+  transition:
+    transform var(--hl-dur-quick) var(--hl-ease),
+    scale var(--hl-dur-quick) var(--hl-ease),
+    box-shadow var(--hl-dur-quick) var(--hl-ease),
+    background-color var(--hl-dur-quick) var(--hl-ease);
+}
+
+.hl-btn:hover,
+.hl-btn:focus-visible {
+  transform: translateY(-1px);
+}
+
+.hl-btn:active {
+  transform: translateY(0);
+  scale: 0.98;
+}
+
+/* ── Secondary layer: row hover ──
+ * Dense module lists read as dead text without a response to the pointer.
+ * Three coordinated micro-moves (surface tint, accent rule, icon nudge)
+ * on one 110 ms curve — enough to feel alive, too small to distract. */
+.hl-row {
+  position: relative;
+  transition:
+    background-color var(--hl-dur-micro) var(--hl-ease),
+    padding-left var(--hl-dur-quick) var(--hl-ease);
+}
+
+.hl-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2px;
+  height: 0;
+  translate: -0.75rem -50%;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0;
+  transition:
+    height var(--hl-dur-quick) var(--hl-ease),
+    opacity var(--hl-dur-micro) var(--hl-ease);
+}
+
+.hl-row:hover {
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+.hl-row:hover::before,
+.hl-row:focus-within::before {
+  height: 55%;
+  opacity: 0.5;
+}
+
+.hl-row__icon {
+  transition: translate var(--hl-dur-quick) var(--hl-ease);
+}
+
+.hl-row:hover .hl-row__icon {
+  translate: 2px 0;
+}
+
+/* ── Ambient layer: background life ──
+ * A very slow, very small drift on decorative gradient wells. Never on
+ * content — this exists only so the page is not perfectly static. */
+@keyframes hl-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(1.5%, -1%, 0) scale(1.07);
+    opacity: 1;
+  }
+}
+
+.hl-drift {
+  animation: hl-drift 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Scroll-linked depth (progressive enhancement) ──
+ * Where scroll-driven animations exist, product captures track the scroll a
+ * few pixels slower than the page, which reads as depth. Uses `translate`
+ * so it composes with the reveal's `transform`; never put this on a
+ * `[data-stagger]` child, which owns `translate` itself. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes hl-parallax {
+      from {
+        translate: 0 12px;
+      }
+      to {
+        translate: 0 -12px;
+      }
+    }
+
+    html.js-anim .hl-parallax {
+      animation: hl-parallax linear both;
+      animation-timeline: view();
+      animation-range: entry 15% exit 85%;
+    }
+  }
+}
+
+/* Keyboard parity: every interactive surface shows the same ring. */
+#s-main :is(a, button, summary):focus-visible,
+footer :is(a, button):focus-visible {
+  outline: 2px solid var(--hl-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-anim .hl-reveal,
+  html.js-anim .hl-bar,
+  html.js-anim .hl-fill,
+  html.js-anim .hl-trace,
+  html.js-anim [data-stagger] > *,
+  html.js-anim .hl-late {
+    opacity: 1;
+    transform: none;
+    translate: 0 0;
+    transition: none;
+  }
+
+  html.js-anim .hl-reveal.is-in .hl-flash,
+  html.js-anim .hl-reveal.is-in.hl-flash,
+  html.js-anim .is-in .hl-caret {
+    animation: none;
+  }
+
+  html.js-anim .is-in .hl-caret {
+    opacity: 0;
+  }
+
+  .hl-marquee {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .hl-float,
+  .hl-float--late,
+  .hl-pulse,
+  .hl-breathe,
+  .hl-drift,
+  html.js-anim .hl-parallax,
+  html.js-anim .hl-faq details[open] summary ~ * {
+    animation: none;
+  }
+
+  .hl-more,
+  .hl-btn,
+  .hl-lift,
+  .hl-row,
+  .hl-row::before,
+  .hl-row__icon,
+  .hl-faq summary::after,
+  .hl-faq details::details-content {
+    transition: none;
+  }
+
+  .hl-lift:hover {
+    translate: 0 0;
+  }
+
+  /* The tint stays — it is state, not motion — but nothing moves. */
+  .hl-row:hover .hl-row__icon {
+    translate: 0 0;
+  }
+
+  html.js-anim .hl-parallax {
+    translate: 0 0;
+  }
+}

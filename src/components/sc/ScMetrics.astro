@@ -1,0 +1,32 @@
+---
+import type { ScPageContent } from '../../data/scPageContent';
+
+interface Props {
+  metrics: ScPageContent['metrics'];
+}
+
+const { metrics: c } = Astro.props;
+---
+
+<section class="bg-[#05070F] py-20 md:py-28" aria-labelledby="sc-metrics-title">
+  <div class="hl-wrap">
+    <div class="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:gap-20">
+      <div class="hl-reveal">
+        <p class="hl-kicker text-[#68779A]">{c.kicker}</p>
+        <h2 id="sc-metrics-title" class="hl-display mt-4 max-w-[20ch] text-[clamp(2rem,4.4vw,2.75rem)]">{c.title}</h2>
+      </div>
+      <p class="hl-reveal text-[0.9rem] leading-[1.6] text-[#9AA8C4] lg:pb-1.5" style="--d: 100ms;">{c.body}</p>
+    </div>
+
+    <!-- `hl-reveal` here is load-bearing: the stagger cascade only unhides its
+         children once an ancestor (or the list itself) carries `.is-in`. -->
+    <ul class="hl-reveal mt-10 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
+      {c.items.map((item) => (
+        <li class="hl-lift rounded-[12px] bg-[#0C1120] px-[18px] py-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+          <p class="font-mono text-[0.76rem] font-medium text-[#7AB8FF]">{item.name}</p>
+          <p class="mt-1.5 text-[0.75rem] leading-[1.45] text-[#68779A]">{item.detail}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

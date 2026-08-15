@@ -1,0 +1,76 @@
+---
+/**
+ * The squad, split by the four statuses that decide who can be called up.
+ * The tab counts add up to the header total, so the capture never claims a
+ * squad it does not list.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, SQUAD_ROWS, SQUAD_TABS } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].squad;
+
+const chip = [
+  'bg-[#8CE99A14] text-[#8CE99A]',
+  'bg-[#FF840014] text-[#FF8400]',
+  'bg-[#FF7A6B14] text-[#FF7A6B]',
+  'bg-[#FFFFFF0A] text-[#9AA8C4]',
+];
+---
+
+<CaptureFrame>
+  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5">
+    <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
+    <p class="font-mono text-[0.56rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">
+      {t.meta}
+    </p>
+  </div>
+
+  <ul class="flex flex-wrap gap-1.5">
+    {
+      t.tabs.map((tab, i) => (
+        <li
+          class={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[0.66rem] ${i === 0 ? 'bg-[#2D7FF91F] text-[#7AB8FF] outline-1 outline-[#2D7FF93D] -outline-offset-[0.5px]' : 'bg-[#FFFFFF07] text-[#9AA8C4]'}`}
+        >
+          {tab}
+          <span class="font-mono text-[0.63rem] opacity-70">{SQUAD_TABS[i]}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul class="grid gap-2.5">
+    {
+      SQUAD_ROWS.map((r) => (
+        <li class="flex items-center gap-2.5">
+          <span
+            class="grid size-7 shrink-0 place-items-center rounded-full bg-[#FFFFFF0A] font-mono text-[0.66rem] text-[#9AA8C4]"
+            aria-hidden="true"
+          >
+            {r.name[0]}
+          </span>
+          <span class="min-w-0 flex-1">
+            <span class="block truncate text-[0.78rem] text-[#DCE4F2]">{r.name}</span>
+            <span class="block font-mono text-[0.63rem] text-[#68779A]">{t.positions[r.pos]}</span>
+          </span>
+          <span
+            class={`shrink-0 rounded-full px-2.5 py-[3px] text-[0.63rem] whitespace-nowrap ${chip[r.status]}`}
+          >
+            {t.statuses[r.status]}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="flex items-start gap-2.5 text-[0.72rem] leading-[1.5] text-[#9AA8C4]">
+    <span class="mt-[2px] shrink-0 text-[#68779A]"><HomeIcon name="info" size={13} /></span>
+    {t.note}
+  </p>
+</CaptureFrame>

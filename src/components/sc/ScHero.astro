@@ -1,0 +1,57 @@
+---
+import type { ScPageContent, Locale } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+import { appStartUrl } from '../../lib/appUrl';
+import ReadinessBoard from '../shared/ReadinessBoard.astro';
+
+interface Props {
+  locale: Locale;
+  hero: ScPageContent['hero'];
+}
+
+const { locale, hero } = Astro.props;
+
+---
+
+<section
+  class="relative overflow-hidden bg-[#05070F] [background-image:radial-gradient(ellipse_65%_55%_at_25%_0%,rgba(45,127,249,0.24),transparent_72%)]"
+  aria-labelledby="sc-hero-title"
+>
+  <!-- Ambient layer: a single slow-drifting glow so the hero is never wholly
+       static. Decorative and behind everything; content sits above it. -->
+  <span
+    class="hl-drift pointer-events-none absolute -top-40 left-[8%] size-[42rem] rounded-full [background:radial-gradient(circle,rgba(45,127,249,0.12),transparent_65%)]"
+    aria-hidden="true"></span>
+
+  <div class="hl-wrap relative grid items-center gap-14 pt-24 pb-20 md:pt-28 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-16">
+    <!-- Copy -->
+    <div class="hl-reveal">
+      <p class="hl-kicker">{hero.kicker}</p>
+      <h1 id="sc-hero-title" class="hl-display mt-5 text-[clamp(2.4rem,6vw,3.9rem)]">{hero.title}</h1>
+      <p class="mt-6 max-w-[34rem] text-[1rem] leading-[1.65] text-[#9AA8C4]">{hero.sub}</p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href={appStartUrl(locale)}
+          target="_blank"
+          rel="noopener"
+          class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#2D7FF9] px-[26px] py-[15px] text-[0.95rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
+        >
+          {hero.primaryCta}
+          <HomeIcon name="arrow-right" size={16} />
+        </a>
+        <a
+          href="#quotidien"
+          class="hl-btn inline-flex items-center rounded-full bg-[#FFFFFF0A] px-6 py-[15px] text-[0.95rem] font-medium text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
+        >
+          {hero.secondaryCta}
+        </a>
+      </div>
+
+      <p class="mt-7 font-mono text-[0.63rem] tracking-[0.1em] text-balance text-[#68779A]">{hero.trust}</p>
+    </div>
+
+    <!-- Readiness board -->
+    <ReadinessBoard board={hero.board} class="hl-reveal hl-reveal--card" style="--d: 160ms;" />
+  </div>
+</section>

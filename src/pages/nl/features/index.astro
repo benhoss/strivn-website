@@ -1,4 +1,14 @@
 ---
-import FeaturesHub from '../../../components/FeaturesHub.astro';
+import FeaturesLanding from '../../../components/feat/FeaturesLanding.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/en/features/' },
+  { hreflang: 'fr', href: '/fr/features/' },
+  { hreflang: 'nl', href: '/nl/features/' },
+  { hreflang: 'de', href: '/de/features/' },
+  { hreflang: 'pt', href: '/pt/features/' },
+  { hreflang: 'es', href: '/es/features/' },
+  { hreflang: 'x-default', href: '/fr/features/' },
+];
 ---
-<FeaturesHub locale="nl" />
+<FeaturesLanding locale="nl" canonicalPath="/nl/features/" alternates={alternates} />

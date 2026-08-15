@@ -1,0 +1,86 @@
+---
+import type { ScPageContent } from '../../data/scPageContent';
+import { ONE_RM_ROWS } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  strength: ScPageContent['strength'];
+}
+
+const { strength: c } = Astro.props;
+const v = c.visual;
+---
+
+<section class="bg-[#05070F] py-20 md:py-28" aria-labelledby="sc-strength-title">
+  <div class="hl-wrap grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)] lg:gap-[72px]">
+    <!-- Visual -->
+    <div
+      class="hl-reveal hl-reveal--card hl-parallax order-2 flex flex-col gap-3.5 overflow-hidden rounded-[18px] bg-[#0B1020] p-6 [background-image:radial-gradient(ellipse_50%_50%_at_15%_0%,rgba(140,233,154,0.1),transparent_70%)] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] lg:order-1"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <p class="text-[0.88rem] font-semibold text-[#F8FAFC]">{v.title}</p>
+        <span class="rounded-full bg-[#8CE99A14] px-[11px] py-[5px] font-mono text-[0.53rem] tracking-[0.08em] text-[#8CE99A] outline-1 outline-[#8CE99A2E] -outline-offset-[0.5px]">
+          {v.badge}
+        </span>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-3 rounded-[11px] bg-[#FFFFFF08] px-[15px] py-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+        <p class="flex items-center gap-2.5 text-[0.84rem] font-semibold text-[#F8FAFC]">
+          <HomeIcon name="dumbbell" size={15} class="text-[#7AB8FF]" />
+          {v.exercise}
+        </p>
+        <span class="font-mono text-[0.75rem] font-medium text-[#8CE99A]">{v.prescription}</span>
+      </div>
+
+      <ul class="grid grid-cols-2 gap-[7px] sm:grid-cols-4">
+        {v.modes.map((mode, i) => (
+          <li
+            class={`rounded-[8px] py-[7px] text-center font-mono text-[0.63rem] outline-1 -outline-offset-[0.5px] ${
+              i === 0 ? 'bg-[#8CE99A1A] text-[#8CE99A] outline-[#8CE99A38]' : 'bg-[#FFFFFF06] text-[#68779A] outline-[#FFFFFF14]'
+            }`}
+          >
+            {mode}
+          </li>
+        ))}
+      </ul>
+
+      <p class="font-mono text-[0.59rem] tracking-[0.1em] text-[#68779A]">{v.tableLabel}</p>
+      <div class="overflow-hidden rounded-[11px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+        <div class="grid grid-cols-[minmax(0,1fr)_86px_96px] border-b border-[#FFFFFF14] bg-[#FFFFFF0A] px-3.5 py-2.5 font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">
+          <span>{v.colPlayer}</span>
+          <span>{v.colMax}</span>
+          <span>{v.colLoad}</span>
+        </div>
+        <ul data-stagger>
+          {ONE_RM_ROWS.map((row) => (
+            <li class="grid grid-cols-[minmax(0,1fr)_86px_96px] items-center border-b border-[#FFFFFF14] px-3.5 py-2.5 last:border-b-0">
+              <span class="truncate text-[0.78rem] font-medium text-[#DCE4F2]">{row.name}</span>
+              <span class="font-mono text-[0.71rem] text-[#9AA8C4]">{row.max}</span>
+              <span class="font-mono text-[0.71rem] font-medium text-[#8CE99A]">{row.load}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <p class="flex items-center gap-2.5 rounded-[11px] bg-[#8CE99A12] p-3.5 text-[0.78rem] leading-[1.5] text-[#C9EED2] outline-1 outline-[#8CE99A2E] -outline-offset-[0.5px]">
+        <HomeIcon name="smartphone" size={15} class="shrink-0 text-[#8CE99A]" />
+        {v.note}
+      </p>
+    </div>
+
+    <!-- Text -->
+    <div class="hl-reveal hl-reveal--right order-1 lg:order-2" style="--d: 120ms;">
+      <p class="font-mono text-[0.63rem] tracking-[0.11em] text-[#8CE99A]">{c.tag}</p>
+      <h2 id="sc-strength-title" class="hl-display mt-4 text-[clamp(1.85rem,3.6vw,2.5rem)]">{c.title}</h2>
+      <p class="mt-5 text-[0.97rem] leading-[1.65] text-[#9AA8C4]">{c.body}</p>
+      <ul class="hl-checks mt-6" data-stagger>
+        {c.points.map((p) => (
+          <li><HomeIcon name="check-circle" size={15} class="text-[#8CE99A]" />{p}</li>
+        ))}
+      </ul>
+      <p class="mt-7">
+        <a href={c.href} class="hl-more text-[0.88rem] text-[#8CE99A]">{c.cta}<HomeIcon name="arrow-right" size={15} /></a>
+      </p>
+    </div>
+  </div>
+</section>

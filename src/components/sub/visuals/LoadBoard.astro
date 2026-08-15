@@ -1,0 +1,67 @@
+---
+/**
+ * "Load · week 12" capture: three KPIs over the day's feed.
+ *
+ * The KPI value is set nowrap at a size that holds "2 340 UA" on one line —
+ * three cards share a narrow column, and a wrapped unit reads as a bug.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, LOAD_ROW_STYLE } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].load;
+
+/** KPI tint, in `t.stats` order: total, ratio, alerts. */
+const statInk = ['text-[#F8FAFC]', 'text-[#8CE99A]', 'text-[#FF8400]'];
+const rowInk: Record<string, string> = {
+  blue: 'text-[#7AB8FF]',
+  green: 'text-[#8CE99A]',
+  orange: 'text-[#FF8400]',
+};
+---
+
+<CaptureFrame gap="gap-3">
+  <div class="flex items-center justify-between gap-4">
+    <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
+    <p class="font-mono text-[0.59rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">{t.meta}</p>
+  </div>
+
+  <ul class="grid grid-cols-3 gap-2.5">
+    {
+      t.stats.map((st, i) => (
+        <li class="rounded-[10px] bg-[#FFFFFF07] px-3.5 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+          <p class="font-mono text-[0.53rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">
+            {st.k}
+          </p>
+          <p
+            class={`hl-display mt-1.5 text-[1.05rem] tracking-[-0.03em] whitespace-nowrap ${statInk[i]}`}
+          >
+            {st.v}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul class="overflow-hidden rounded-[11px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+    {
+      t.rows.map((r, i) => (
+        <li
+          class={`flex items-center gap-3 px-3.5 py-3 ${i < t.rows.length - 1 ? 'border-b border-[#FFFFFF14]' : ''}`}
+        >
+          <span class={`shrink-0 ${rowInk[LOAD_ROW_STYLE[i].tone]}`}>
+            <HomeIcon name={LOAD_ROW_STYLE[i].icon} size={14} />
+          </span>
+          <span class="min-w-0 flex-1 text-[0.78rem] font-medium text-[#DCE4F2]">{r.text}</span>
+          <span class="shrink-0 font-mono text-[0.63rem] text-[#68779A]">{r.meta}</span>
+        </li>
+      ))
+    }
+  </ul>
+</CaptureFrame>

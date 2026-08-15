@@ -1,0 +1,67 @@
+---
+import type { ScPageContent } from '../../data/scPageContent';
+import ReportingDashboard from '../shared/ReportingDashboard.astro';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  reports: ScPageContent['reports'];
+}
+
+const { reports: c } = Astro.props;
+const d = c.dashboard;
+const r = c.report;
+
+---
+
+<section
+  class="border-t border-[#FFFFFF14] bg-[#060913] py-20 [background-image:radial-gradient(ellipse_50%_60%_at_30%_30%,rgba(45,127,249,0.16),transparent_72%)] md:py-28"
+  aria-labelledby="sc-reports-title"
+>
+  <div class="hl-wrap">
+    <div class="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:gap-20">
+      <div class="hl-reveal">
+        <p class="font-mono text-[0.63rem] tracking-[0.11em] text-[#7AB8FF]">{c.tag}</p>
+        <h2 id="sc-reports-title" class="hl-display mt-4 max-w-[18ch] text-[clamp(2rem,4.4vw,2.75rem)]">{c.title}</h2>
+      </div>
+      <p class="hl-reveal text-[0.9rem] leading-[1.6] text-[#9AA8C4] lg:pb-1.5" style="--d: 100ms;">{c.body}</p>
+    </div>
+
+    <div class="mt-11 grid gap-5 lg:grid-cols-[minmax(0,700px)_minmax(0,1fr)]">
+      <!-- Dashboard -->
+      <ReportingDashboard dashboard={d} class="hl-reveal hl-reveal--card hl-parallax" />
+
+      <!-- Report -->
+      <div
+        class="hl-reveal hl-reveal--card flex flex-col gap-3.5 overflow-hidden rounded-[18px] bg-[#0C1120] p-[22px] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+        style="--d: 120ms;"
+      >
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <p class="flex items-center gap-2.5 text-[0.84rem] font-semibold text-[#F8FAFC]">
+            <HomeIcon name="file-text" size={15} class="text-[#7AB8FF]" />
+            {r.title}
+          </p>
+          <span class="flex items-center gap-1.5 rounded-full bg-[#2D7FF921] px-2.5 py-1 font-mono text-[0.47rem] tracking-[0.07em] text-[#7AB8FF]">
+            <HomeIcon name="sparkles" size={9} />
+            {r.aiBadge}
+          </span>
+        </div>
+
+        <p class="text-[0.81rem] leading-[1.6] text-[#9AA8C4]">{r.body}</p>
+
+        <ul class="flex flex-col gap-2.5" data-stagger>
+          {r.items.map((item) => (
+            <li class="flex items-center gap-3 rounded-[9px] bg-[#FFFFFF06] px-3 py-2.5">
+              <HomeIcon name={item.icon} size={14} class="shrink-0 text-[#7AB8FF]" />
+              <span class="text-[0.75rem] text-[#DCE4F2]">{item.label}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="flex items-center gap-2.5 rounded-[11px] bg-[#2D7FF914] p-3.5 text-[0.75rem] leading-[1.5] text-[#C3D4EE] outline-1 outline-[#2D7FF93D] -outline-offset-[0.5px]">
+          <HomeIcon name="sparkles" size={15} class="shrink-0 text-[#7AB8FF]" />
+          {r.aiStrip}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

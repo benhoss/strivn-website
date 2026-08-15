@@ -1,0 +1,97 @@
+---
+import type { ScPageContent } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  library: ScPageContent['library'];
+}
+
+const { library: c } = Astro.props;
+const v = c.visual;
+
+const tagTone: Record<string, string> = {
+  blue: 'bg-[#2D7FF91C] text-[#7AB8FF]',
+  orange: 'bg-[#FF84001A] text-[#FF8400]',
+  plain: 'bg-[#FFFFFF0A] text-[#9AA8C4]',
+};
+---
+
+<section class="bg-[#070A14] py-20 md:py-28" aria-labelledby="sc-library-title">
+  <div class="hl-wrap grid items-center gap-12 lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)] lg:gap-[72px]">
+    <!-- Text -->
+    <div class="hl-reveal">
+      <p class="font-mono text-[0.63rem] tracking-[0.11em] text-[#7AB8FF]">{c.tag}</p>
+      <h2 id="sc-library-title" class="hl-display mt-4 text-[clamp(1.85rem,3.6vw,2.5rem)]">{c.title}</h2>
+      <p class="mt-5 text-[0.97rem] leading-[1.65] text-[#9AA8C4]">{c.body}</p>
+      <ul class="hl-checks mt-6" data-stagger>
+        {c.points.map((p) => (
+          <li><HomeIcon name="check-circle" size={15} class="text-[#7AB8FF]" />{p}</li>
+        ))}
+      </ul>
+      <p class="mt-7">
+        <a href={c.href} class="hl-more text-[0.88rem] text-[#7AB8FF]">{c.cta}<HomeIcon name="arrow-right" size={15} /></a>
+      </p>
+    </div>
+
+    <!-- Visual -->
+    <div
+      class="hl-reveal hl-reveal--card hl-parallax flex flex-col gap-3.5 overflow-hidden rounded-[18px] bg-[#0B1020] p-6 [background-image:radial-gradient(ellipse_50%_50%_at_85%_0%,rgba(45,127,249,0.15),transparent_70%)] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
+      style="--d: 120ms;"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <p class="text-[0.92rem] font-semibold text-[#F8FAFC]">{v.title}</p>
+          <p class="mt-0.5 text-[0.72rem] text-[#9AA8C4]">{v.sub}</p>
+        </div>
+        <span class="flex items-center gap-1.5 rounded-full bg-[#FFFFFF0A] px-[11px] py-[5px] font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+          <HomeIcon name="pen-tool" size={11} />
+          {v.badge}
+        </span>
+      </div>
+
+      <p class="font-mono text-[0.59rem] tracking-[0.1em] text-[#68779A]">{v.metricsLabel}</p>
+      <ul class="flex flex-col gap-1.5" data-stagger>
+        {v.metrics.map((m) => (
+          <li class="flex items-center gap-2.5 rounded-[9px] bg-[#FFFFFF06] px-3.5 py-2.5">
+            <span class="min-w-0 flex-1 truncate text-[0.75rem] text-[#C3CDE0]">{m.name}</span>
+            <span class={`shrink-0 rounded-[5px] px-[7px] py-0.5 font-mono text-[0.47rem] tracking-[0.07em] ${tagTone[m.tagTone]}`}>{m.tag}</span>
+            <span class="shrink-0 font-mono text-[0.71rem] font-medium whitespace-nowrap text-[#DCE4F2]">{m.value}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="rounded-[11px] bg-[#2D7FF912] px-[15px] py-3.5 outline-1 outline-[#2D7FF93D] -outline-offset-[0.5px]">
+        <p class="flex items-center gap-2 text-[0.75rem] font-semibold text-[#F8FAFC]">
+          <HomeIcon name="clock" size={13} class="text-[#7AB8FF]" />
+          {v.scalingTitle}
+        </p>
+        <div class="mt-2.5 grid gap-4 sm:grid-cols-3">
+          {v.scaling.map((s) => (
+            <div>
+              <p class="font-mono text-[0.5rem] tracking-[0.07em] text-[#68779A]">{s.label}</p>
+              <p class="mt-1 flex items-center gap-1.5 font-mono text-[0.66rem] whitespace-nowrap">
+                <span class="text-[#68779A]">{s.from}</span>
+                {!s.unchanged && <HomeIcon name="arrow-right" size={10} class="shrink-0 text-[#68779A]" />}
+                <span class={s.unchanged ? 'text-[#8CE99A]' : 'font-medium text-[#7AB8FF]'}>{s.to}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-[12px] bg-[#FFFFFF08] px-4 py-3.5 outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px]">
+        <p class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-[0.78rem] font-semibold text-[#F8FAFC]">{v.totalTitle}</span>
+          <span class="font-mono text-[0.75rem] font-medium text-[#7AB8FF]">{v.totalValue}</span>
+        </p>
+        <p class="mt-2.5 flex items-center justify-between gap-2">
+          <span class="text-[0.7rem] text-[#9AA8C4]">{v.coverageLabel}</span>
+          <span class="font-mono text-[0.7rem] font-medium text-[#8CE99A]">{v.coverageValue}</span>
+        </p>
+        <span class="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[#FFFFFF10]">
+          <span class="hl-fill block h-full rounded-full bg-[#8CE99A]" style={`width: ${v.coveragePct}%; --bd: 260ms;`}></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

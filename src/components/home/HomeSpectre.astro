@@ -1,0 +1,43 @@
+---
+import type { HomeContent } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+
+interface Props {
+  spectre: HomeContent['spectre'];
+}
+
+const { spectre } = Astro.props;
+---
+
+<section class="bg-[#05070F] py-20 md:py-24" aria-labelledby="spectre-title">
+  <div class="hl-wrap">
+    <div class="hl-reveal text-center">
+      <p class="hl-kicker">{spectre.kicker}</p>
+      <h2 id="spectre-title" class="hl-display mt-3 text-[clamp(1.7rem,3.4vw,2.4rem)]">{spectre.title}</h2>
+    </div>
+
+    <div class="hl-reveal relative mt-12" style="--d: 120ms;">
+      <!-- Connector line through the icon centres (desktop only) -->
+      <div
+        class="hl-trace absolute top-[28px] right-[6%] left-[6%] hidden h-px bg-gradient-to-r from-transparent via-[#2D7FF959] to-transparent lg:block"
+        aria-hidden="true"
+      >
+      </div>
+      <ul class="grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-4 lg:flex lg:items-start lg:justify-between" data-stagger>
+        {spectre.steps.map((step, i) => (
+          <li class="relative flex flex-col items-center gap-3.5 text-center">
+            <span
+              class="grid size-14 place-items-center rounded-full bg-[#0B1020] text-[#7AB8FF] outline-1 outline-[#2D7FF945] -outline-offset-[0.5px] [box-shadow:0_0_0_6px_#05070F]"
+              style={`--bd: ${i * 60}ms;`}
+            >
+              <HomeIcon name={step.icon} size={20} />
+            </span>
+            <span class="text-[0.84rem] font-medium text-[#E2E8F0]">{step.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="hl-reveal mt-12 text-center text-[0.95rem] text-[#8CA3C7]" style="--d: 200ms;">{spectre.note}</p>
+  </div>
+</section>

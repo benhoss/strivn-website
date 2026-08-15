@@ -1,0 +1,61 @@
+---
+import type { HomeContent, Locale } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+import { appStartUrl } from '../../lib/appUrl';
+
+interface Props {
+  locale: Locale;
+  finalCta: HomeContent['finalCta'];
+}
+
+const { locale, finalCta: c } = Astro.props;
+
+/* This block closes every page, including the staff brief itself — where the
+   secondary button would otherwise reload the page you are already on. */
+const briefHref = `/${locale}/features/staff-brief/`;
+const showSecondary = Astro.url.pathname !== briefHref;
+---
+
+<section class="relative overflow-hidden bg-[#05070F] py-24 md:py-32" aria-labelledby="final-title">
+  <!-- Bottom glow -->
+  <div
+    class="hl-breathe pointer-events-none absolute inset-x-0 bottom-0 h-[420px] [background:radial-gradient(ellipse_55%_60%_at_50%_100%,rgba(45,127,249,0.2),transparent_72%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="hl-wrap relative flex flex-col items-center text-center">
+    <p class="hl-reveal hl-kicker">{c.kicker}</p>
+    <h2 id="final-title" class="hl-display hl-reveal mt-5 max-w-[18ch] text-[clamp(2.4rem,6vw,4.2rem)] text-[#F8FAFC]" style="--d: 80ms;">
+      {c.title}
+    </h2>
+    <p class="hl-reveal mt-6 max-w-[38rem] text-[1.02rem] leading-[1.65] text-[#AAB8D4]" style="--d: 150ms;">{c.body}</p>
+
+    <div class="hl-reveal mt-9 flex flex-wrap items-center justify-center gap-3" style="--d: 220ms;">
+      <a
+        href={appStartUrl(locale)}
+        target="_blank"
+        rel="noopener"
+        class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#F8FAFC] px-7 py-4 text-[1rem] font-semibold text-[#0A0E1A] [box-shadow:0_16px_50px_-12px_rgba(248,250,252,0.35)] hover:bg-white"
+      >
+        {c.primaryCta}
+        <HomeIcon name="arrow-right" size={17} />
+      </a>
+      {/* The staff brief has its own page now. This block closes every page
+          on the site, so a bare `#dossier-staff` was inert everywhere except
+          the homepage — the one place the section happens to live. */}
+      {showSecondary && (
+        <a
+          href={briefHref}
+          class="hl-btn inline-flex items-center rounded-full bg-[#FFFFFF0A] px-6 py-4 text-[1rem] font-semibold text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
+        >
+          {c.secondaryCta}
+        </a>
+      )}
+    </div>
+
+    <p class="hl-reveal mt-8 px-4 font-mono text-[0.64rem] font-medium tracking-[0.1em] text-balance text-[#68779A]" style="--d: 290ms;">
+      {c.trust}
+    </p>
+  </div>
+</section>

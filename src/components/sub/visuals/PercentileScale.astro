@@ -1,0 +1,75 @@
+---
+/**
+ * Where one player's value sits on the benchmarks for their position.
+ *
+ * The marker column is the same width as its band, so the chip stays over the
+ * band it names at any width — the whole point of the section is that the
+ * number is meaningless until it is placed.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, SCALE_BANDS, SCALE_MARKER_INDEX } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].scale;
+---
+
+<div class="rounded-[16px] bg-[#FFFFFF05] px-6 py-7 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] sm:px-8">
+  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5">
+    <p class="text-[0.81rem] font-semibold text-[#9AA8C4]">{t.who}</p>
+    <p class="font-mono text-[0.56rem] tracking-[0.09em] text-[#68779A]">{t.ref}</p>
+  </div>
+
+  <!-- Marker row: an empty cell per band, the chip sitting over its own. -->
+  <div class="mt-4 grid grid-cols-5 gap-1">
+    {
+      SCALE_BANDS.map((_, i) =>
+        i === SCALE_MARKER_INDEX ? (
+          <div class="hl-late flex flex-col items-center" style="--ld: 480ms;">
+            <span class="rounded-full bg-[#0C1428] px-3 py-1.5 font-mono text-[0.66rem] whitespace-nowrap text-[#F8FAFC] outline-1 outline-[#2D7FF959] -outline-offset-[0.5px]">
+              {t.marker}
+            </span>
+            <span class="mt-1.5 h-2.5 w-px bg-[#2D7FF9]" aria-hidden="true"></span>
+          </div>
+        ) : (
+          <span aria-hidden="true" />
+        ),
+      )
+    }
+  </div>
+
+  <div class="mt-1.5 grid grid-cols-5 gap-1">
+    {
+      SCALE_BANDS.map((c, i) => (
+        <span
+          class={`hl-fill h-3.5 rounded-[4px] ${i === SCALE_MARKER_INDEX ? 'outline-1 outline-[#2D7FF980] -outline-offset-[0.5px]' : ''}`}
+          style={`background:${c}; --bd:${i * 55}ms;`}
+          aria-hidden="true"
+        />
+      ))
+    }
+  </div>
+
+  <ul class="mt-2.5 grid grid-cols-5 gap-1">
+    {
+      t.labels.map((l, i) => (
+        <li
+          class={`text-center font-mono text-[0.56rem] leading-[1.3] ${i === SCALE_MARKER_INDEX ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`}
+        >
+          {l}
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="mt-6 flex items-center gap-2.5 text-[0.81rem] text-[#C3CDE0]">
+    <span class="shrink-0 text-[#8CE99A]">
+      <HomeIcon name="trending-up" size={14} />
+    </span>
+    {t.delta}
+  </p>
+</div>

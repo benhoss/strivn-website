@@ -1,0 +1,76 @@
+---
+/**
+ * GPS zones mapped onto named speed blocks.
+ *
+ * The arrow between the two panels is decorative and turns downward on narrow
+ * screens, where the panels stack — an arrow pointing right at a panel that
+ * now sits below would misdescribe the relationship.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, GPS_ZONES, GPS_BLOCKS } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].gps;
+
+/** "Zone 1 + Zone 2 + Zone 3", or the elided form for the total. */
+const formula = (zones: number[] | 'all') =>
+  zones === 'all'
+    ? `${t.zone} 1 + … + ${t.zone} ${GPS_ZONES.length}`
+    : zones.map((z) => `${t.zone} ${z}`).join(' + ');
+
+const chipOn =
+  'rounded-full bg-[#2D7FF91F] px-2.5 py-[3px] font-mono text-[0.56rem] text-[#7AB8FF] outline-1 outline-[#2D7FF94D] -outline-offset-[0.5px]';
+const chipOff =
+  'rounded-full bg-[#FFFFFF06] px-2.5 py-[3px] font-mono text-[0.56rem] text-[#68779A] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]';
+---
+
+<div class="flex flex-col items-center gap-6 lg:flex-row lg:gap-9">
+  <div class="w-full shrink-0 overflow-hidden rounded-[14px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] lg:w-[360px]">
+    <p class="border-b border-[#FFFFFF14] px-4.5 py-3.5 font-mono text-[0.56rem] tracking-[0.1em] text-[#68779A]">
+      {t.colsTitle}
+    </p>
+    <ul>
+      {
+        GPS_ZONES.map((z, i) => (
+          <li
+            class={`flex items-center gap-2.5 px-4.5 py-3 ${i < GPS_ZONES.length - 1 ? 'border-b border-[#FFFFFF14]' : ''}`}
+          >
+            <span class="min-w-0 flex-1 text-[0.78rem] font-medium text-[#DCE4F2]">
+              {t.zone} {z.n}
+            </span>
+            <span class={z.dist ? chipOn : chipOff}>{z.dist ? t.dist : t.none}</span>
+            <span class={z.time ? chipOn : chipOff}>{z.time ? t.time : t.none}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <span class="shrink-0 rotate-90 text-[#FFFFFF29] lg:rotate-0" aria-hidden="true">
+    <HomeIcon name="arrow-right" size={20} />
+  </span>
+
+  <ul class="grid w-full gap-3">
+    {
+      GPS_BLOCKS.map((b, i) => (
+        <li
+          class={`flex flex-wrap items-center gap-x-5 gap-y-1.5 rounded-[12px] px-5.5 py-4.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] ${
+            b.zones === 'all' ? 'bg-[#FFFFFF04]' : 'bg-[#FFFFFF08]'
+          }`}
+        >
+          <span class="w-full text-[0.97rem] font-semibold text-[#F8FAFC] sm:w-[200px] sm:shrink-0">
+            {t.blocks[i]}
+          </span>
+          <span class="min-w-0 flex-1 font-mono text-[0.72rem] text-[#7AB8FF]">
+            {formula(b.zones)}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

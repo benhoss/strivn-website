@@ -1,0 +1,67 @@
+---
+import '../../styles/home.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../SiteHeader.astro';
+import SiteMotion from '../SiteMotion.astro';
+import FeatHero from './FeatHero.astro';
+import FeatMonitoring from './FeatMonitoring.astro';
+import FeatSessions from './FeatSessions.astro';
+import FeatTeam from './FeatTeam.astro';
+import FeatAi from './FeatAi.astro';
+import FeatReporting from './FeatReporting.astro';
+import FeatOpponentPlayer from './FeatOpponentPlayer.astro';
+import HomeFinalCta from '../home/HomeFinalCta.astro';
+import HomeFooter from '../home/HomeFooter.astro';
+import { featuresIndexContent } from '../../data/featuresIndexContent';
+import { scPageContent } from '../../data/scPageContent';
+import { homeContent } from '../../data/homeContent';
+import type { Locale } from '../../data/featuresIndexContent';
+
+interface Props {
+  locale: Locale;
+  canonicalPath?: string;
+  alternates?: Array<{ hreflang: string; href: string }>;
+}
+
+const { locale, canonicalPath, alternates } = Astro.props;
+const c = featuresIndexContent[locale];
+/** Captures that already exist elsewhere, reused rather than re-translated. */
+const sc = scPageContent[locale];
+const home = homeContent[locale];
+
+const skipLabelByLocale: Record<Locale, string> = {
+  fr: 'Aller au contenu',
+  nl: 'Naar de inhoud',
+  de: 'Zum Inhalt springen',
+  pt: 'Ir para o conteúdo',
+  es: 'Ir al contenido',
+  en: 'Skip to content',
+};
+---
+
+<BaseLayout
+  lang={locale}
+  title={c.meta.title}
+  description={c.meta.description}
+  canonicalPath={canonicalPath}
+  alternates={alternates}
+>
+  <a href="#s-main" class="s-skip">{skipLabelByLocale[locale]}</a>
+
+  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} />
+
+  <main id="s-main" class="bg-[#05070F] font-sans text-[#F8FAFC] antialiased">
+    <FeatHero hero={c.hero} />
+    <FeatMonitoring monitoring={c.monitoring} board={sc.hero.board} locale={locale} />
+    <FeatSessions sessions={c.sessions} locale={locale} />
+    <FeatTeam team={c.team} locale={locale} />
+    <FeatAi ai={c.ai} />
+    <FeatReporting reporting={c.reporting} dashboard={sc.reports.dashboard} locale={locale} />
+    <FeatOpponentPlayer opponent={c.opponent} player={c.player} phone={home.playerApp.phone} locale={locale} />
+    <HomeFinalCta locale={locale} finalCta={home.finalCta} />
+  </main>
+
+  <HomeFooter locale={locale} footer={home.footer} />
+
+  <SiteMotion />
+</BaseLayout>

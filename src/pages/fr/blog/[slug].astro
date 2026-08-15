@@ -30,11 +30,6 @@ const toc = buildTocFromHeadings(headings);
 const showToc = toc.length >= 3;
 
 const canonicalPath = `/fr/blog/${slug}/`;
-const alternates = [
-  { hreflang: 'fr', href: `/fr/blog/${slug}/` },
-  { hreflang: 'en', href: `/en/blog/${slug}/` },
-  { hreflang: 'x-default', href: `/fr/blog/${slug}/` },
-];
 
 const all = await getCollection('blog', ({ data }) => !data.draft);
 const related = findRelated(all, entry, 3);
@@ -86,7 +81,7 @@ const jsonLdExtra = [
   jsonLdExtra={jsonLdExtra}
   bodyClass="b-article"
   ogImage={`/og-blog-${slug}.png`}
-  switchHrefs={{ en: `/en/blog/${slug}/`, fr: `/fr/blog/${slug}/` }}
+  switchHrefs={{ fr: `/fr/blog/${slug}/` }}
 >
   <nav aria-label="Fil d'Ariane">
     <ol class="b-crumb">

@@ -1,0 +1,21 @@
+---
+/** Section header: kicker + title on the left, supporting copy on the right. */
+interface Props {
+  kicker: string;
+  title: string;
+  body: string;
+  id: string;
+  /** Kicker colour — each section owns one accent. */
+  accent?: string;
+}
+
+const { kicker, title, body, id, accent = 'text-[#7AB8FF]' } = Astro.props;
+---
+
+<div class="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:gap-20">
+  <div class="hl-reveal">
+    <p class={`font-mono text-[0.63rem] tracking-[0.13em] ${accent}`}>{kicker}</p>
+    <h2 id={id} class="hl-display mt-3.5 max-w-[20ch] text-[clamp(1.85rem,3.8vw,2.5rem)]">{title}</h2>
+  </div>
+  <p class="hl-reveal text-[0.9rem] leading-[1.6] text-[#9AA8C4] lg:pb-1.5" style="--d: 100ms;">{body}</p>
+</div>

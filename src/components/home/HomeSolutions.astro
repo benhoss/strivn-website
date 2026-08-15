@@ -1,0 +1,48 @@
+---
+import type { HomeContent } from '../../data/homeContent';
+import HomeIcon from './HomeIcon.astro';
+
+interface Props {
+  solutions: HomeContent['solutions'];
+}
+
+const { solutions: c } = Astro.props;
+---
+
+<section id="solutions" class="scroll-mt-24 bg-[#05070F] py-20 md:py-28" aria-labelledby="solutions-title">
+  <div class="hl-wrap">
+    <div class="hl-reveal mx-auto max-w-[46rem] text-center">
+      <p class="hl-index justify-center text-[#7AB8FF]">
+        {c.index}
+        <span class="hl-index__rule"></span>
+        <span class="text-[#68779A]">{c.kicker}</span>
+      </p>
+      <h2 id="solutions-title" class="hl-display mt-5 text-[clamp(2rem,4.4vw,3.2rem)]">{c.title}</h2>
+    </div>
+
+    <div class="mt-12 grid gap-4 lg:grid-cols-3">
+      {c.cards.map((card, i) => (
+        <article
+          class={`hl-reveal hl-reveal--card hl-lift flex flex-col rounded-[18px] p-6 outline-1 -outline-offset-[0.5px] sm:p-7 ${
+            card.featured
+              ? 'bg-gradient-to-br from-[#12203E] to-[#0B1020] outline-[#2D7FF945]'
+              : 'bg-[#0B1020] outline-[#FFFFFF0F]'
+          }`}
+          style={`--d: ${i * 90}ms;`}
+        >
+          <span class={`grid size-11 place-items-center rounded-[12px] outline-1 -outline-offset-[0.5px] ${card.featured ? 'bg-[#2D7FF91F] text-[#7AB8FF] outline-[#2D7FF945]' : 'bg-[#FFFFFF06] text-[#AAB8D4] outline-[#FFFFFF10]'}`}>
+            <HomeIcon name={card.icon} size={19} />
+          </span>
+          <h3 class="mt-5 text-[1.2rem] font-bold text-[#F8FAFC]">{card.title}</h3>
+          <p class="mt-2 flex-1 text-[0.92rem] leading-[1.6] text-[#AAB8D4]">{card.body}</p>
+          <p class="mt-5">
+            <a href={card.href} class={`hl-more text-[0.88rem] ${card.featured ? 'text-[#7AB8FF]' : 'text-[#E2E8F0]'}`}>
+              {card.cta}
+              <HomeIcon name="arrow-right" size={14} />
+            </a>
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
