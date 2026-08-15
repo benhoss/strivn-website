@@ -36,7 +36,6 @@ const skipLabelByLocale: Record<Locale, string> = {
   en: 'Skip to content',
 };
 const skipLabel = skipLabelByLocale[locale];
-const homeHref = `/${locale}/`;
 ---
 
 <BaseLayout
@@ -49,7 +48,7 @@ const homeHref = `/${locale}/`;
 >
   <a href="#s-main" class="s-skip">{skipLabel}</a>
 
-  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} brandHref={homeHref} switchHrefs={switchHrefs} />
+  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} switchHrefs={switchHrefs} />
 
   <main id="s-main">
     <slot />
