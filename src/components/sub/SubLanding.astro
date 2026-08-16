@@ -7,6 +7,7 @@
  * fifteen copies of the same six-locale nav would be fifteen places to forget.
  */
 import '../../styles/home.css';
+import { NAV } from '../../data/nav';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
 import SiteMotion from '../SiteMotion.astro';
@@ -57,7 +58,7 @@ const jsonLdExtra = [
       {
         '@type': 'ListItem',
         position: 2,
-        name: shared.nav.links[1]?.label ?? 'Features',
+        name: NAV[locale].links[1]?.label ?? 'Features',
         item: `${site}/${locale}/features/`,
       },
       { '@type': 'ListItem', position: 3, name: content.hero.title, item: `${site}${canonicalPath}` },
@@ -78,8 +79,8 @@ const jsonLdExtra = [
 
   <SiteHeader
     locale={locale}
-    links={shared.nav.links}
-    cta={shared.nav.cta}
+    links={NAV[locale].links}
+    cta={NAV[locale].cta}
     switchHrefs={switchHrefs}
   />
 

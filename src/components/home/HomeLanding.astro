@@ -18,6 +18,7 @@ import HomeFaq from './HomeFaq.astro';
 import HomeFinalCta from './HomeFinalCta.astro';
 import HomeFooter from './HomeFooter.astro';
 import { homeContent, type Locale } from '../../data/homeContent';
+import { NAV } from '../../data/nav';
 
 interface Props {
   locale: Locale;
@@ -58,7 +59,7 @@ const faqJsonLd = {
 >
   <a href="#s-main" class="s-skip">{skipLabelByLocale[locale]}</a>
 
-  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} />
+  <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} />
 
   <main id="s-main" class="bg-[#05070F] font-sans text-[#F8FAFC] antialiased">
     <HomeHero locale={locale} hero={c.hero} />

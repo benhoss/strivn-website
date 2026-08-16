@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { landingContent, type Locale } from '../data/landingContent';
+import { NAV } from '../data/nav';
 import { SKIP_LABEL } from '../lib/skipLabel';
 
 interface Props {
@@ -41,7 +42,7 @@ const skipLabel = SKIP_LABEL[locale];
 >
   <a href="#s-main" class="s-skip">{skipLabel}</a>
 
-  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} switchHrefs={switchHrefs} />
+  <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} switchHrefs={switchHrefs} />
 
   <main id="s-main">
     <slot />

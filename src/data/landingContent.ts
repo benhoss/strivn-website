@@ -13,13 +13,6 @@ type PanelRow = { label: string; value: string; tone: 'ok' | 'watch' | 'info' };
 type LandingContent = {
   meta: { title: string; description: string };
 
-  nav: {
-    links: Array<
-      | { label: string; href: string }
-      | { label: string; children: Array<{ label: string; href: string }> }
-    >;
-    cta: string;
-  };
 
   hero: {
     claim: string;
@@ -213,24 +206,6 @@ export const landingContent: Record<Locale, LandingContent> = {
         'Convocations, présences, infirmerie, charge, séances, communication : STRIVN réunit l’intendance complète d’une équipe dans une seule plateforme. Gratuite pour les coaches, sans validation du club.',
     },
 
-    nav: {
-      links: [
-        { label: 'Plateforme', href: '/fr/#plateforme' },
-        { label: 'Fonctionnalités', href: '/fr/features/' },
-        {
-          label: 'Solutions',
-          children: [
-            { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
-            { label: 'Clubs', href: '/fr/clubs/' },
-            { label: 'Équipes de jeunes', href: '/fr/equipes-jeunes/' },
-          ],
-        },
-        { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Tarifs', href: '/fr/#tarifs' },
-        { label: 'FAQ', href: '/fr/#faq' },
-      ],
-      cta: 'Commencer',
-    },
 
     hero: {
       claim: 'Conçu par des coachs et des joueurs — pour les staffs et les équipes',
@@ -537,7 +512,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN réunit l’intendance complète d’une équipe dans une seule plateforme, gratuite pour les coaches.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Plateforme', href: '/fr/#plateforme' },
+        { label: 'Plateforme', href: '/fr/solutions/' },
         { label: 'Fonctionnalités', href: '/fr/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/fr/clubs/' },
@@ -566,24 +541,6 @@ export const landingContent: Record<Locale, LandingContent> = {
         'Call-ups, attendance, medical records, training load, sessions, communication: STRIVN brings a team’s entire operations into one platform. Free for coaches, no club approval needed.',
     },
 
-    nav: {
-      links: [
-        { label: 'Platform', href: '/en/#plateforme' },
-        { label: 'Features', href: '/en/features/' },
-        {
-          label: 'Solutions',
-          children: [
-            { label: 'S&C coaches', href: '/en/sc-coaches/' },
-            { label: 'Clubs', href: '/en/clubs/' },
-            { label: 'Youth teams', href: '/en/youth-teams/' },
-          ],
-        },
-        { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Pricing', href: '/en/#tarifs' },
-        { label: 'FAQ', href: '/en/#faq' },
-      ],
-      cta: 'Get started',
-    },
 
     hero: {
       claim: 'Built by coaches and players — for staff and teams',
@@ -890,7 +847,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN brings a team’s entire operations into one platform, free for coaches.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Platform', href: '/en/#plateforme' },
+        { label: 'Platform', href: '/en/solutions/' },
         { label: 'Features', href: '/en/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/en/clubs/' },
@@ -919,24 +876,6 @@ export const landingContent: Record<Locale, LandingContent> = {
         'Oproepingen, aanwezigheid, medische dossiers, trainingsbelasting, trainingen, communicatie: STRIVN brengt de volledige teamorganisatie samen in één platform. Gratis voor coaches, zonder goedkeuring van de club.',
     },
 
-    nav: {
-      links: [
-        { label: 'Platform', href: '/nl/#plateforme' },
-        { label: 'Functies', href: '/nl/features/' },
-        {
-          label: 'Oplossingen',
-          children: [
-            { label: 'S&C-coaches', href: '/nl/sc-coaches/' },
-            { label: 'Clubs', href: '/nl/clubs/' },
-            { label: 'Jeugdploegen', href: '/nl/youth-teams/' },
-          ],
-        },
-        { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Tarieven', href: '/nl/#tarifs' },
-        { label: 'FAQ', href: '/nl/#faq' },
-      ],
-      cta: 'Aan de slag',
-    },
 
     hero: {
       claim: 'Gebouwd door coaches en spelers — voor staf en teams',
@@ -1243,7 +1182,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN brengt de volledige teamorganisatie samen in één platform, gratis voor coaches.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Platform', href: '/nl/#plateforme' },
+        { label: 'Platform', href: '/nl/solutions/' },
         { label: 'Functies', href: '/nl/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubs', href: '/nl/clubs/' },
@@ -1272,24 +1211,6 @@ export const landingContent: Record<Locale, LandingContent> = {
         'Aufstellungen, Anwesenheit, medizinische Akten, Trainingsbelastung, Trainings, Kommunikation: STRIVN bringt die gesamte Organisation eines Teams in eine Plattform. Kostenlos für Coaches, ohne Freigabe des Vereins.',
     },
 
-    nav: {
-      links: [
-        { label: 'Plattform', href: '/de/#plateforme' },
-        { label: 'Funktionen', href: '/de/features/' },
-        {
-          label: 'Lösungen',
-          children: [
-            { label: 'S&C-Coaches', href: '/de/sc-coaches/' },
-            { label: 'Vereine', href: '/de/clubs/' },
-            { label: 'Jugendteams', href: '/de/youth-teams/' },
-          ],
-        },
-        { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Preise', href: '/de/#tarifs' },
-        { label: 'FAQ', href: '/de/#faq' },
-      ],
-      cta: 'Loslegen',
-    },
 
     hero: {
       claim: 'Von Coaches und Spielern gebaut — für Staff und Teams',
@@ -1596,7 +1517,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN bringt die gesamte Organisation eines Teams in eine Plattform, kostenlos für Coaches.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Plattform', href: '/de/#plateforme' },
+        { label: 'Plattform', href: '/de/solutions/' },
         { label: 'Funktionen', href: '/de/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Vereine', href: '/de/clubs/' },
@@ -1625,24 +1546,6 @@ export const landingContent: Record<Locale, LandingContent> = {
         'Convocatórias, presenças, processo médico, carga de treino, sessões, comunicação: STRIVN reúne toda a operação de uma equipa numa só plataforma. Gratuito para treinadores, sem precisar da aprovação do clube.',
     },
 
-    nav: {
-      links: [
-        { label: 'Plataforma', href: '/pt/#plateforme' },
-        { label: 'Funcionalidades', href: '/pt/features/' },
-        {
-          label: 'Soluções',
-          children: [
-            { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
-            { label: 'Clubes', href: '/pt/clubs/' },
-            { label: 'Equipas de formação', href: '/pt/youth-teams/' },
-          ],
-        },
-        { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Preços', href: '/pt/#tarifs' },
-        { label: 'FAQ', href: '/pt/#faq' },
-      ],
-      cta: 'Começar',
-    },
 
     hero: {
       claim: 'Criado por treinadores e jogadores — para o staff e as equipas',
@@ -1949,7 +1852,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN reúne toda a operação de uma equipa numa só plataforma, gratuita para treinadores.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Plataforma', href: '/pt/#plateforme' },
+        { label: 'Plataforma', href: '/pt/solutions/' },
         { label: 'Funcionalidades', href: '/pt/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubes', href: '/pt/clubs/' },
@@ -1978,24 +1881,6 @@ export const landingContent: Record<Locale, LandingContent> = {
         'Convocatorias, asistencias, historial médico, carga de entrenamiento, sesiones, comunicación: STRIVN reúne toda la operativa de un equipo en una sola plataforma. Gratis para entrenadores, sin necesidad de aprobación del club.',
     },
 
-    nav: {
-      links: [
-        { label: 'Plataforma', href: '/es/#plateforme' },
-        { label: 'Funcionalidades', href: '/es/features/' },
-        {
-          label: 'Soluciones',
-          children: [
-            { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
-            { label: 'Clubes', href: '/es/clubs/' },
-            { label: 'Fútbol base', href: '/es/youth-teams/' },
-          ],
-        },
-        { label: 'Blog', href: '/fr/blog/' },
-        { label: 'Precios', href: '/es/#tarifs' },
-        { label: 'FAQ', href: '/es/#faq' },
-      ],
-      cta: 'Empezar',
-    },
 
     hero: {
       claim: 'Creado por entrenadores y jugadores — para cuerpos técnicos y equipos',
@@ -2302,7 +2187,7 @@ export const landingContent: Record<Locale, LandingContent> = {
       brandLine: 'STRIVN reúne toda la operativa de un equipo en una sola plataforma, gratis para entrenadores.',
       email: 'hello@strivn.net',
       links: [
-        { label: 'Plataforma', href: '/es/#plateforme' },
+        { label: 'Plataforma', href: '/es/solutions/' },
         { label: 'Funcionalidades', href: '/es/features/' },
         { label: 'Blog', href: '/fr/blog/' },
         { label: 'Clubes', href: '/es/clubs/' },
