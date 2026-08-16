@@ -175,6 +175,10 @@ const langs = [
     border: none;
     cursor: pointer;
     font: inherit;
+    /* There is no preflight on this site, so a bare button keeps the UA's own
+       colour — near-black, and invisible on the nav. The nav groups happened to
+       carry `.s-nav__link` as well and never showed it. */
+    color: inherit;
   }
 
   .s-nav__caret {
@@ -239,13 +243,23 @@ const langs = [
     transform: translateY(0.375rem);
   }
 
-  /* Reads as a control, not as an eighth destination. */
+  /* Reads as a control, not as an eighth destination — but it names the
+     current language, so it sits at the same weight as the links beside it
+     rather than at the dimmer tone the old inline list used for the five
+     locales you were not reading. */
   .s-nav__lang-trigger {
     gap: 0.3rem;
     padding: 0;
     font-family: inherit;
     font-size: inherit;
     letter-spacing: inherit;
+    color: var(--ink-2);
+    transition: color var(--dur-micro) var(--ease-out);
+  }
+
+  .s-nav__lang-trigger:hover,
+  .s-nav__group.is-open .s-nav__lang-trigger {
+    color: var(--ink);
   }
 
   .s-nav__menu-link {
