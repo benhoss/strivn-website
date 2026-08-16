@@ -217,15 +217,43 @@ html.js-anim [data-stagger].is-in > * {
 [data-stagger] > *:nth-child(8) { transition-delay: 440ms; }
 [data-stagger] > *:nth-child(n + 9) { transition-delay: 480ms; }
 
-/* Connector line that draws itself once revealed (Spectre chain). */
+/* ── Spectre chain ──────────────────────────────────────────────
+ * Eight modules on one line, and the claim under them is that each feeds the
+ * next. So the connector is a signal travelling left to right, and a module
+ * lights as the signal reaches it — not eight pops on their own schedule.
+ *
+ * Items stay content-sized: forcing equal columns would put the line exactly
+ * on every icon centre, but it also squeezes the longer labels onto two lines
+ * and leaves the row's baseline ragged. The endpoints are approximate instead,
+ * which the icons' backdrop rings hide — and the few milliseconds of drift it
+ * costs the sync below are not perceivable across a 480ms sweep. */
 html.js-anim .hl-trace {
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 1100ms var(--hl-ease) 150ms;
+  /* Linear on purpose — this is a progress sweep, and every module's delay is
+     derived from where it sits along it. An eased line would reach the middle
+     modules early and the outer ones late, and the sync would drift. */
+  transition: transform var(--hl-trace-dur, 480ms) linear 150ms;
 }
 
 html.js-anim .is-in .hl-trace {
   transform: scaleX(1);
+}
+
+/* The chain keeps its own cascade rather than `data-stagger`'s fixed one: each
+   item's delay comes from the component, which computes it from the item's
+   position on the line. */
+html.js-anim .hl-chain > * {
+  opacity: 0;
+  translate: 0 14px;
+  transition:
+    opacity 560ms var(--hl-ease-out) var(--bd, 0ms),
+    translate 560ms var(--hl-ease-out) var(--bd, 0ms);
+}
+
+html.js-anim .is-in .hl-chain > * {
+  opacity: 1;
+  translate: 0 0;
 }
 
 /* Hover lift for card surfaces — light weight, no overshoot. */
@@ -598,6 +626,7 @@ footer :is(a, button):focus-visible {
   html.js-anim .hl-fill,
   html.js-anim .hl-trace,
   html.js-anim [data-stagger] > *,
+  html.js-anim .hl-chain > *,
   html.js-anim .hl-late {
     opacity: 1;
     transform: none;

@@ -7,6 +7,17 @@ interface Props {
 }
 
 const { spectre } = Astro.props;
+
+/**
+ * The chain reads as one signal travelling left to right, so the connector is
+ * a constant-rate sweep and each module wakes exactly as the line reaches it.
+ * Its delay is therefore derived from its position along the line, not from a
+ * fixed cascade — add a module and the choreography still holds.
+ */
+const TRACE_MS = 480;
+const LEAD_MS = 150;
+const n = spectre.steps.length;
+const wakeAt = (i: number) => Math.round(LEAD_MS + (i * TRACE_MS) / (n - 1));
 ---
 
 <section class="bg-[#05070F] py-20 md:py-24" aria-labelledby="spectre-title">
@@ -16,20 +27,27 @@ const { spectre } = Astro.props;
       <h2 id="spectre-title" class="hl-display mt-3 text-[clamp(1.7rem,3.4vw,2.4rem)]">{spectre.title}</h2>
     </div>
 
-    <div class="hl-reveal relative mt-12" style="--d: 120ms;">
-      <!-- Connector line through the icon centres (desktop only) -->
+    <div class="hl-reveal relative mt-12" style={`--d: 120ms; --hl-trace-dur: ${TRACE_MS}ms;`}>
+      {/* Full strength across the row, fading only in the outermost 2%. The
+          old gradient ran transparent→colour→transparent over the whole span,
+          so it died out exactly where the first and last icons sit, and the
+          chain looked severed at both ends.
+
+          The insets are deliberately uneven: items are content-sized, and the
+          trailing label outruns the leading one in all six locales, so the
+          last icon's centre lands near 95.5% while the first sits near 7.5%.
+          Measured across the six, both ends then fall within 22px of a centre
+          — inside the 34px backdrop ring that hides them — and the short fade
+          absorbs whatever a future label shifts. */}
       <div
-        class="hl-trace absolute top-[28px] right-[6%] left-[6%] hidden h-px bg-gradient-to-r from-transparent via-[#2D7FF959] to-transparent lg:block"
+        class="hl-trace absolute top-[28px] right-[5%] left-[6%] hidden h-px bg-[linear-gradient(to_right,transparent,#2D7FF959_2%,#2D7FF959_98%,transparent)] lg:block"
         aria-hidden="true"
       >
       </div>
-      <ul class="grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-4 lg:flex lg:items-start lg:justify-between" data-stagger>
+      <ul class="hl-chain grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-4 lg:flex lg:items-start lg:justify-between">
         {spectre.steps.map((step, i) => (
-          <li class="relative flex flex-col items-center gap-3.5 text-center">
-            <span
-              class="grid size-14 place-items-center rounded-full bg-[#0B1020] text-[#7AB8FF] outline-1 outline-[#2D7FF945] -outline-offset-[0.5px] [box-shadow:0_0_0_6px_#05070F]"
-              style={`--bd: ${i * 60}ms;`}
-            >
+          <li class="relative flex flex-col items-center gap-3.5 text-center" style={`--bd: ${wakeAt(i)}ms;`}>
+            <span class="grid size-14 place-items-center rounded-full bg-[#0B1020] text-[#7AB8FF] outline-1 outline-[#2D7FF945] -outline-offset-[0.5px] [box-shadow:0_0_0_6px_#05070F]">
               <HomeIcon name={step.icon} size={20} />
             </span>
             <span class="text-[0.84rem] font-medium text-[#E2E8F0]">{step.label}</span>
