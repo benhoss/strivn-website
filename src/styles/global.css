@@ -345,7 +345,11 @@ a {
   font-family: var(--font-mono);
   font-size: var(--text-label);
   letter-spacing: 0.06em;
+  /* Anchors the dropdown; the group class supplies the rest. */
+  position: relative;
 }
+
+
 
 .s-nav__lang a {
   color: var(--ink-3);
@@ -361,9 +365,6 @@ a {
   color: var(--ink);
 }
 
-.s-nav__lang-sep {
-  color: var(--ink-3);
-}
 
 .s-nav__cta {
   display: inline-flex;
@@ -1816,15 +1817,15 @@ a {
 /* ════════════════════════════════════════════════════════════
    16 · Responsive
    ════════════════════════════════════════════════════════════ */
-/* The nav collapses earlier than the page grids do, so it gets its own
-   breakpoint; the layout rules in the 60rem block below keep theirs.
+/* The nav keeps its own breakpoint even though it currently matches the page
+   grids below: the two constrain different things, and only this one moves
+   when a label changes.
 
    The pill is capped at `100vw - 2 * gutter`, so a bar wider than that is
-   simply clipped rather than wrapped. Seven entries measure 1043px in Spanish,
-   the widest of the six locales, which needs a 1123px viewport — hence 71rem.
-   Shortening a label lowers this; re-measure the widest locale before moving
-   it, and remember the language switcher alone accounts for ~211px. */
-@media (max-width: 71rem) {
+   clipped rather than wrapped. Seven entries measure 862px in Spanish, the
+   widest of the six locales, needing a 942px viewport — 18px of headroom at
+   60rem. Re-measure the widest locale before adding an eighth entry. */
+@media (max-width: 60rem) {
   .s-nav {
     gap: var(--space-md);
   }
