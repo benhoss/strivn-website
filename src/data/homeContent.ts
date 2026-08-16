@@ -21,7 +21,6 @@ export interface HomeContent {
     sub: string;
     primaryCta: string;
     secondaryCta: string;
-    trust: string;
     /** CSS-drawn "OS" dashboard shot */
     shot: {
       title: string;
@@ -298,7 +297,6 @@ const fr: HomeContent = {
     sub: 'Import GPS, wellness, charge et planification — avec une couche d’intelligence artificielle qui transforme les données du groupe en décisions. Une seule lecture quotidienne, partagée par tout le staff.',
     primaryCta: 'Commencer gratuitement',
     secondaryCta: 'Voir le workflow monitoring',
-    trust: 'GRATUIT POUR UNE ÉQUIPE · IMPORT GPS EN CSV · IA INTÉGRÉE, PAS EN OPTION',
     shot: {
       title: 'Readiness du jour · Olympique Montverne',
       stamp: 'MER 07:45',
@@ -963,7 +961,6 @@ const en: HomeContent = {
     sub: 'GPS import, wellness, load and planning — with an artificial-intelligence layer that turns squad data into decisions. One daily read, shared by the whole staff.',
     primaryCta: 'Start for free',
     secondaryCta: 'See the monitoring workflow',
-    trust: 'FREE FOR ONE TEAM · GPS IMPORT VIA CSV · AI BUILT IN, NOT AN ADD-ON',
     shot: {
       title: 'Today’s readiness · Olympique Montverne',
       stamp: 'WED 07:45',
@@ -1628,7 +1625,6 @@ const nl: HomeContent = {
     sub: 'GPS-import, wellness, belasting en planning — met een laag kunstmatige intelligentie die groepsdata omzet in beslissingen. Eén dagelijkse lezing, gedeeld door de hele staf.',
     primaryCta: 'Gratis beginnen',
     secondaryCta: 'Bekijk de monitoring-workflow',
-    trust: 'GRATIS VOOR ÉÉN TEAM · GPS-IMPORT VIA CSV · AI INGEBOUWD, GEEN OPTIE',
     shot: {
       title: 'Readiness vandaag · Olympique Montverne',
       stamp: 'WOE 07:45',
@@ -2293,7 +2289,6 @@ const de: HomeContent = {
     sub: 'GPS-Import, Wellness, Belastung und Planung — mit einer KI-Ebene, die Teamdaten in Entscheidungen verwandelt. Eine tägliche Lesart, geteilt vom gesamten Staff.',
     primaryCta: 'Kostenlos starten',
     secondaryCta: 'Monitoring-Workflow ansehen',
-    trust: 'KOSTENLOS FÜR EIN TEAM · GPS-IMPORT PER CSV · KI INTEGRIERT, KEINE OPTION',
     shot: {
       title: 'Readiness heute · Olympique Montverne',
       stamp: 'MI 07:45',
@@ -2958,7 +2953,6 @@ const pt: HomeContent = {
     sub: 'Importação GPS, wellness, carga e planeamento — com uma camada de inteligência artificial que transforma os dados do plantel em decisões. Uma única leitura diária, partilhada por todo o staff.',
     primaryCta: 'Começar gratuitamente',
     secondaryCta: 'Ver o workflow de monitorização',
-    trust: 'GRÁTIS PARA UMA EQUIPA · IMPORTAÇÃO GPS EM CSV · IA INTEGRADA, NÃO OPCIONAL',
     shot: {
       title: 'Readiness do dia · Olympique Montverne',
       stamp: 'QUA 07:45',
@@ -3623,7 +3617,6 @@ const es: HomeContent = {
     sub: 'Importación GPS, wellness, carga y planificación — con una capa de inteligencia artificial que convierte los datos de la plantilla en decisiones. Una sola lectura diaria, compartida por todo el staff.',
     primaryCta: 'Empezar gratis',
     secondaryCta: 'Ver el workflow de monitorización',
-    trust: 'GRATIS PARA UN EQUIPO · IMPORTACIÓN GPS EN CSV · IA INTEGRADA, NO OPCIONAL',
     shot: {
       title: 'Readiness del día · Olympique Montverne',
       stamp: 'MIÉ 07:45',
