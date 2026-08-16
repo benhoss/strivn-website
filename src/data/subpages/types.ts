@@ -136,6 +136,11 @@ export type Section = Head &
         kind: 'visual';
         name: string;
       }
+    | {
+        /** App Store and Google Play badges for one of the mobile apps. */
+        kind: 'stores';
+        app: 'coach' | 'player';
+      }
   );
 
 export interface SubpageContent {
@@ -152,6 +157,12 @@ export interface SubpageContent {
      * features index would promise something the page does not deliver.
      */
     ctas?: { primary: string; secondary?: { label: string; href: string } };
+    /**
+     * Store badges under the buttons, for a page whose subject is one of the
+     * mobile apps: the download is the action there, so it belongs in the
+     * first screen rather than only at the foot of the page.
+     */
+    stores?: 'coach' | 'player';
     /** Capture shown beside the copy; omit for a centred hero. */
     visual?: string;
     /** Badge above the title — used by the shared staff brief. */
