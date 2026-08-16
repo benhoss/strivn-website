@@ -58,8 +58,15 @@ const skipLabelByLocale: Record<Locale, string> = {
     <SolHero hero={c.hero} />
     {/* The platform presentation, merged in from the homepage section the nav
         used to jump to: what the system does, before who on the staff it
-        serves. Same component, same content — no second copy to translate. */}
-    <HomePlatform platform={shared.platform} index={null} />
+        serves. Same component and same cards, so the modules stay in step on
+        both pages; only the heading and lede are this page's own, because the
+        homepage's lean on the monitoring block sitting directly above them. */}
+    <HomePlatform
+      platform={shared.platform}
+      index={null}
+      title={c.platformIntro.title}
+      body={c.platformIntro.body}
+    />
     <SolCompo locale={locale} compo={c.compo} />
     <HomeFinalCta locale={locale} finalCta={shared.finalCta} />
   </main>

@@ -63,6 +63,14 @@ export const SOON_INDEX = 5;
 export interface SolutionsContent {
   meta: { title: string; description: string };
   hero: { kicker: string; title: string; sub: string };
+  /**
+   * Overrides for the platform section borrowed from the homepage. There it
+   * sits right below the monitoring block and can lean on it as a reference;
+   * here nothing has mentioned monitoring, so the heading names the span the
+   * eight cards actually cover and the body lists monitoring as one module
+   * among the others.
+   */
+  platformIntro: { title: string; body: string };
   compo: {
     kicker: string;
     title: string;
@@ -89,6 +97,10 @@ const fr: SolutionsContent = {
     kicker: 'SOLUTIONS · LA FEUILLE DE MATCH',
     title: 'La compo de votre staff performance.',
     sub: 'Sur le terrain, chacun a son poste. Dans STRIVN aussi : six fonctions, six écrans, et un seul terrain de jeu — la donnée. Trouvez votre numéro.',
+  },
+  platformIntro: {
+    title: 'De la convocation au rapport d’après-match.',
+    body: 'Convocations, présences, infirmerie, séances, monitoring et rapports vivent dans le même environnement, ouvert à tout le staff.',
   },
   compo: {
     kicker: 'SIX POSTES, UN TERRAIN',
@@ -146,6 +158,10 @@ const en: SolutionsContent = {
     title: 'The line-up of your performance staff.',
     sub: 'On the pitch, everyone has a position. In STRIVN too: six roles, six screens, and one playing surface — the data. Find your number.',
   },
+  platformIntro: {
+    title: 'From the call-up to the post-match report.',
+    body: 'Call-ups, attendance, medical log, sessions, monitoring and reports live in the same environment, open to the whole staff.',
+  },
   compo: {
     kicker: 'SIX POSITIONS, ONE PITCH',
     title: 'Everyone plays on the same pitch: the data.',
@@ -201,6 +217,10 @@ const nl: SolutionsContent = {
     kicker: 'OPLOSSINGEN · HET WEDSTRIJDBLAD',
     title: 'De opstelling van uw performance-staf.',
     sub: 'Op het veld heeft iedereen zijn positie. In STRIVN ook: zes functies, zes schermen, en één speelveld — de data. Vind uw nummer.',
+  },
+  platformIntro: {
+    title: 'Van de oproeping tot het wedstrijdrapport.',
+    body: 'Oproepingen, aanwezigheid, ziekenboeg, trainingen, monitoring en rapporten zitten in dezelfde omgeving, open voor de hele staf.',
   },
   compo: {
     kicker: 'ZES POSITIES, ÉÉN VELD',
@@ -258,6 +278,10 @@ const de: SolutionsContent = {
     title: 'Die Aufstellung Ihres Performance-Staffs.',
     sub: 'Auf dem Platz hat jeder seine Position. In STRIVN auch: sechs Rollen, sechs Bildschirme, und ein Spielfeld — die Daten. Finden Sie Ihre Nummer.',
   },
+  platformIntro: {
+    title: 'Vom Aufgebot bis zum Spielbericht.',
+    body: 'Aufgebote, Anwesenheit, Medizinbereich, Einheiten, Monitoring und Berichte liegen in derselben Umgebung, offen für den gesamten Staff.',
+  },
   compo: {
     kicker: 'SECHS POSITIONEN, EIN PLATZ',
     title: 'Alle spielen auf demselben Platz: den Daten.',
@@ -314,6 +338,10 @@ const pt: SolutionsContent = {
     title: 'O onze do seu staff de performance.',
     sub: 'No campo cada um tem a sua posição. No STRIVN também: seis funções, seis ecrãs, e um só terreno de jogo — os dados. Encontre o seu número.',
   },
+  platformIntro: {
+    title: 'Da convocatória ao relatório pós-jogo.',
+    body: 'Convocatórias, presenças, enfermaria, sessões, monitorização e relatórios vivem no mesmo ambiente, aberto a todo o staff.',
+  },
   compo: {
     kicker: 'SEIS POSIÇÕES, UM CAMPO',
     title: 'Toda a gente joga no mesmo campo: os dados.',
@@ -369,6 +397,10 @@ const es: SolutionsContent = {
     kicker: 'SOLUCIONES · EL ACTA DE PARTIDO',
     title: 'La alineación de tu staff de rendimiento.',
     sub: 'En el campo cada uno tiene su posición. En STRIVN también: seis funciones, seis pantallas, y un solo terreno de juego — los datos. Encuentra tu número.',
+  },
+  platformIntro: {
+    title: 'De la convocatoria al informe pospartido.',
+    body: 'Convocatorias, asistencia, enfermería, sesiones, monitorización e informes viven en el mismo entorno, abierto a todo el staff.',
   },
   compo: {
     kicker: 'SEIS POSICIONES, UN CAMPO',
