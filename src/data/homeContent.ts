@@ -777,13 +777,6 @@ const fr: HomeContent = {
         cta: 'Voir la gestion d’équipe',
         href: '/fr/features/communication/',
       },
-      {
-        icon: 'building',
-        title: 'Clubs & académies',
-        body: 'Plusieurs équipes, base joueurs partagée, suivi médical inter-équipes.',
-        cta: 'Voir l’offre club',
-        href: '/fr/clubs/',
-      },
     ],
   },
   pricing: {
@@ -904,8 +897,6 @@ const fr: HomeContent = {
         title: 'SOLUTIONS',
         links: [
           { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
-          { label: 'Clubs', href: '/fr/clubs/' },
-          { label: 'Équipes de jeunes', href: '/fr/equipes-jeunes/' },
         ],
       },
       {
@@ -1430,13 +1421,6 @@ const en: HomeContent = {
         cta: 'See team management',
         href: '/en/features/communication/',
       },
-      {
-        icon: 'building',
-        title: 'Clubs & academies',
-        body: 'Several teams, shared player base, cross-team medical tracking.',
-        cta: 'See the club offer',
-        href: '/en/clubs/',
-      },
     ],
   },
   pricing: {
@@ -1557,8 +1541,6 @@ const en: HomeContent = {
         title: 'SOLUTIONS',
         links: [
           { label: 'S&C coaches', href: '/en/sc-coaches/' },
-          { label: 'Clubs', href: '/en/clubs/' },
-          { label: 'Youth teams', href: '/en/youth-teams/' },
         ],
       },
       {
@@ -2083,13 +2065,6 @@ const nl: HomeContent = {
         cta: 'Bekijk teambeheer',
         href: '/nl/features/communication/',
       },
-      {
-        icon: 'building',
-        title: 'Clubs & academies',
-        body: 'Meerdere teams, gedeelde spelersbasis, medische opvolging over teams heen.',
-        cta: 'Bekijk het clubaanbod',
-        href: '/nl/clubs/',
-      },
     ],
   },
   pricing: {
@@ -2210,8 +2185,6 @@ const nl: HomeContent = {
         title: 'OPLOSSINGEN',
         links: [
           { label: 'Fysieke trainers', href: '/nl/sc-coaches/' },
-          { label: 'Clubs', href: '/nl/clubs/' },
-          { label: 'Jeugdteams', href: '/nl/youth-teams/' },
         ],
       },
       {
@@ -2736,13 +2709,6 @@ const de: HomeContent = {
         cta: 'Teamverwaltung ansehen',
         href: '/de/features/communication/',
       },
-      {
-        icon: 'building',
-        title: 'Vereine & Akademien',
-        body: 'Mehrere Teams, geteilte Spielerbasis, teamübergreifendes medizinisches Tracking.',
-        cta: 'Vereinsangebot ansehen',
-        href: '/de/clubs/',
-      },
     ],
   },
   pricing: {
@@ -2863,8 +2829,6 @@ const de: HomeContent = {
         title: 'LÖSUNGEN',
         links: [
           { label: 'Athletiktrainer', href: '/de/sc-coaches/' },
-          { label: 'Vereine', href: '/de/clubs/' },
-          { label: 'Jugendteams', href: '/de/youth-teams/' },
         ],
       },
       {
@@ -3389,13 +3353,6 @@ const pt: HomeContent = {
         cta: 'Ver a gestão de equipa',
         href: '/pt/features/communication/',
       },
-      {
-        icon: 'building',
-        title: 'Clubes & academias',
-        body: 'Várias equipas, base de jogadores partilhada, acompanhamento médico entre equipas.',
-        cta: 'Ver a oferta para clubes',
-        href: '/pt/clubs/',
-      },
     ],
   },
   pricing: {
@@ -3516,8 +3473,6 @@ const pt: HomeContent = {
         title: 'SOLUÇÕES',
         links: [
           { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
-          { label: 'Clubes', href: '/pt/clubs/' },
-          { label: 'Equipas jovens', href: '/pt/youth-teams/' },
         ],
       },
       {
@@ -4042,13 +3997,6 @@ const es: HomeContent = {
         cta: 'Ver la gestión de equipo',
         href: '/es/features/communication/',
       },
-      {
-        icon: 'building',
-        title: 'Clubes & academias',
-        body: 'Varios equipos, base de jugadores compartida, seguimiento médico entre equipos.',
-        cta: 'Ver la oferta para clubes',
-        href: '/es/clubs/',
-      },
     ],
   },
   pricing: {
@@ -4169,8 +4117,6 @@ const es: HomeContent = {
         title: 'SOLUCIONES',
         links: [
           { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
-          { label: 'Clubes', href: '/es/clubs/' },
-          { label: 'Equipos juveniles', href: '/es/youth-teams/' },
         ],
       },
       {

@@ -20,7 +20,9 @@ const { solutions: c } = Astro.props;
       <h2 id="solutions-title" class="hl-display mt-5 text-[clamp(2rem,4.4vw,3.2rem)]">{c.title}</h2>
     </div>
 
-    <div class="mt-12 grid gap-4 lg:grid-cols-3">
+    {/* Track count follows the cards: a fixed three left an empty column the
+        moment one was withdrawn. */}
+    <div class:list={['mt-12 grid gap-4', c.cards.length >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2']}>
       {c.cards.map((card, i) => (
         <article
           class={`hl-reveal hl-reveal--card hl-lift flex flex-col rounded-[18px] p-6 outline-1 -outline-offset-[0.5px] sm:p-7 ${
