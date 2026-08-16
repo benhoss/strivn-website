@@ -17,7 +17,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'App joueur STRIVN Player | STRIVN',
       description:
-        'STRIVN Player, l’app du joueur sur iOS et Android : agenda, convocations, check-in du matin, RPE et séances de musculation. Chaque joueur n’y voit que ses propres données.',
+        'STRIVN Player, l’app du joueur sur iOS et Android : agenda, convocations, check-in du matin, séances de musculation et créneaux de soins. Chaque joueur n’y voit que ses propres données.',
     },
     hero: {
       kicker: 'APP JOUEUR',
@@ -27,6 +27,7 @@ export const playerApp: SubpageLocales = {
         'Gratuite pour le joueur, sur iPhone et Android',
         'Le staff envoie l’invitation, le joueur rejoint son équipe',
         'Wellness au réveil, RPE après la séance',
+        'Réservation de son créneau de soins, depuis l’app',
         'Ses réponses partent au staff, jamais au groupe',
       ],
       ctas: {
@@ -105,6 +106,59 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
+        kicker: 'SA FORME',
+        title: 'Plus il en donne, plus il en voit.',
+        body: 'Les séances planifiées par le coach, ses RPE et ses check-in alimentent les mêmes courbes. Le joueur ouvre les siennes dans l’app.',
+        kind: 'panels',
+        panels: [
+          {
+            eyebrow: 'UNE MINUTE PAR JOUR',
+            title: 'Ce qu’il donne',
+            tone: 'plain',
+            items: ['Le check-in du matin', 'Le RPE après la séance'],
+          },
+          {
+            eyebrow: 'SA CHARGE ET SA FORME',
+            title: 'Ce qu’il en voit',
+            tone: 'blue',
+            items: ['Sa charge semaine après semaine', 'Où en est sa forme aujourd’hui', 'La séance que le coach a prévue'],
+          },
+        ],
+        foot: 'Un joueur qui répond tous les matins lit sa propre courbe. Celui qui saute une semaine voit le trou dedans. La collecte tient sur ça, plus que sur les rappels du staff.',
+      },
+      {
+        kicker: 'SOINS',
+        title: 'Le joueur réserve son créneau de soins.',
+        body: 'Le staff pose la fenêtre du kiné dans le calendrier, trente minutes avant l’entraînement par exemple. Elle se découpe en créneaux, et chaque joueur prend le sien depuis l’app.',
+        kind: 'rows',
+        rows: [
+          {
+            name: 'Choisir son heure',
+            desc: 'Les créneaux libres s’affichent dans l’app. Le joueur prend celui qui tient dans sa journée, et personne ne fait la queue devant une porte.',
+          },
+          {
+            name: 'Dire pourquoi',
+            desc: 'Chaque réservation porte un motif. Le kiné sait ce qui l’attend avant que le joueur entre.',
+          },
+          {
+            name: 'Ou laisser le staff réserver',
+            desc: 'Quand un joueur ne réserve pas, le staff pose le créneau à sa place.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'heart-pulse',
+            text: 'Les conseils du kiné, un exercice ou un protocole, arrivent ensuite dans l’app du joueur avec leur date.',
+            link: { label: 'Voir l’infirmerie', href: '/fr/features/medical/' },
+          },
+        ],
+        note: {
+          icon: 'eye-off',
+          label: 'Motifs et notes',
+          desc: 'Le motif et la note d’un créneau restent visibles du staff. Un joueur voit son propre rendez-vous, jamais celui d’un coéquipier.',
+        },
+      },
+      {
         kicker: 'CE QUE LE JOUEUR NE VOIT PAS',
         title: 'Un joueur ne voit jamais le dossier d’un autre.',
         kind: 'columns',
@@ -146,7 +200,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'STRIVN Player app | STRIVN',
       description:
-        'STRIVN Player, the player’s app on iOS and Android: schedule, call-ups, morning check-in, RPE and strength sessions. Each player sees only their own data.',
+        'STRIVN Player, the player’s app on iOS and Android: schedule, call-ups, morning check-in, strength sessions and treatment slots. Each player sees only their own data.',
     },
     hero: {
       kicker: 'PLAYER APP',
@@ -156,6 +210,7 @@ export const playerApp: SubpageLocales = {
         'Free for the player, on iPhone and Android',
         'The staff sends the invitation, the player joins their team',
         'Wellness on waking, RPE after the session',
+        'Booking their own treatment slot, from the app',
         'Their answers go to the staff, never to the group',
       ],
       ctas: {
@@ -234,6 +289,59 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
+        kicker: 'THEIR FORM',
+        title: 'The more they put in, the more they see.',
+        body: 'The sessions the coach planned, their RPE and their check-ins feed the same curves. The player opens their own in the app.',
+        kind: 'panels',
+        panels: [
+          {
+            eyebrow: 'A MINUTE A DAY',
+            title: 'What they put in',
+            tone: 'plain',
+            items: ['The morning check-in', 'RPE after the session'],
+          },
+          {
+            eyebrow: 'THEIR LOAD AND THEIR FORM',
+            title: 'What they see',
+            tone: 'blue',
+            items: ['Their load week after week', 'Where their form sits today', 'The session the coach has planned'],
+          },
+        ],
+        foot: 'A player who answers every morning reads their own curve. One who skips a week sees the hole in it. Collection holds on that, more than on reminders from the staff.',
+      },
+      {
+        kicker: 'TREATMENT',
+        title: 'The player books their treatment slot.',
+        body: 'The staff drops the physio’s window into the calendar, thirty minutes before training for instance. It gets cut into slots, and each player takes theirs from the app.',
+        kind: 'rows',
+        rows: [
+          {
+            name: 'Pick a time',
+            desc: 'Free slots show up in the app. The player takes the one that fits their day, and nobody queues outside a door.',
+          },
+          {
+            name: 'Say why',
+            desc: 'Every booking carries a reason. The physio knows what is coming before the player walks in.',
+          },
+          {
+            name: 'Or let the staff book it',
+            desc: 'When a player does not book, the staff puts the slot in for them.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'heart-pulse',
+            text: 'Physio advice, an exercise or a protocol, then lands in the player’s app with its date.',
+            link: { label: 'See the medical log', href: '/en/features/medical/' },
+          },
+        ],
+        note: {
+          icon: 'eye-off',
+          label: 'Reasons and notes',
+          desc: 'The reason and the note on a slot stay visible to the staff. A player sees their own appointment, never a teammate’s.',
+        },
+      },
+      {
         kicker: 'WHAT THE PLAYER DOES NOT SEE',
         title: 'A player never sees another player’s file.',
         kind: 'columns',
@@ -275,7 +383,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'Spelers-app STRIVN Player | STRIVN',
       description:
-        'STRIVN Player, de app van de speler op iOS en Android: agenda, oproepingen, ochtendcheck-in, RPE en krachttrainingen. Elke speler ziet alleen zijn eigen gegevens.',
+        'STRIVN Player, de app van de speler op iOS en Android: agenda, oproepingen, ochtendcheck-in, krachttrainingen en verzorgingsslots. Elke speler ziet alleen zijn eigen gegevens.',
     },
     hero: {
       kicker: 'SPELERS-APP',
@@ -285,6 +393,7 @@ export const playerApp: SubpageLocales = {
         'Gratis voor de speler, op iPhone en Android',
         'De staf stuurt de uitnodiging, de speler vervoegt zijn ploeg',
         'Wellness bij het opstaan, RPE na de training',
+        'Zelf zijn verzorgingsslot boeken, vanuit de app',
         'Zijn antwoorden gaan naar de staf, nooit naar de groep',
       ],
       ctas: {
@@ -363,6 +472,59 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
+        kicker: 'ZIJN VORM',
+        title: 'Hoe meer hij geeft, hoe meer hij ziet.',
+        body: 'De trainingen die de coach plande, zijn RPE en zijn check-ins voeden dezelfde curves. De speler opent de zijne in de app.',
+        kind: 'panels',
+        panels: [
+          {
+            eyebrow: 'EEN MINUUT PER DAG',
+            title: 'Wat hij geeft',
+            tone: 'plain',
+            items: ['De check-in van de ochtend', 'De RPE na de training'],
+          },
+          {
+            eyebrow: 'ZIJN BELASTING EN ZIJN VORM',
+            title: 'Wat hij ziet',
+            tone: 'blue',
+            items: ['Zijn belasting week na week', 'Waar zijn vorm vandaag staat', 'De training die de coach heeft gepland'],
+          },
+        ],
+        foot: 'Een speler die elke ochtend antwoordt, leest zijn eigen curve. Wie een week overslaat, ziet het gat erin. De verzameling steunt daarop, meer dan op herinneringen van de staf.',
+      },
+      {
+        kicker: 'VERZORGING',
+        title: 'De speler boekt zijn verzorgingsslot.',
+        body: 'De staf zet het venster van de kiné in de kalender, bijvoorbeeld dertig minuten voor de training. Het splitst in slots, en elke speler neemt het zijne vanuit de app.',
+        kind: 'rows',
+        rows: [
+          {
+            name: 'Een uur kiezen',
+            desc: 'De vrije slots verschijnen in de app. De speler neemt het slot dat in zijn dag past, en niemand staat aan te schuiven voor een deur.',
+          },
+          {
+            name: 'Zeggen waarom',
+            desc: 'Elke reservatie draagt een reden. De kiné weet wat hem te wachten staat voor de speler binnenkomt.',
+          },
+          {
+            name: 'Of de staf laten boeken',
+            desc: 'Boekt een speler niet, dan zet de staf het slot in zijn plaats.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'heart-pulse',
+            text: 'Kinéadvies, een oefening of een protocol, komt daarna in de app van de speler terecht, met datum.',
+            link: { label: 'Het medisch logboek bekijken', href: '/nl/features/medical/' },
+          },
+        ],
+        note: {
+          icon: 'eye-off',
+          label: 'Redenen en notities',
+          desc: 'De reden en de notitie bij een slot blijven zichtbaar voor de staf. Een speler ziet zijn eigen afspraak, nooit die van een ploegmaat.',
+        },
+      },
+      {
         kicker: 'WAT DE SPELER NIET ZIET',
         title: 'Een speler ziet nooit het dossier van een ander.',
         kind: 'columns',
@@ -404,7 +566,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'Spieler-App STRIVN Player | STRIVN',
       description:
-        'STRIVN Player, die App des Spielers für iOS und Android: Terminplan, Aufgebote, Check-in am Morgen, RPE und Krafteinheiten. Jeder Spieler sieht darin nur die eigenen Daten.',
+        'STRIVN Player, die App des Spielers für iOS und Android: Terminplan, Aufgebote, Check-in am Morgen, Krafteinheiten und Behandlungs-Slots. Jeder Spieler sieht darin nur die eigenen Daten.',
     },
     hero: {
       kicker: 'SPIELER-APP',
@@ -414,6 +576,7 @@ export const playerApp: SubpageLocales = {
         'Für den Spieler kostenlos, auf iPhone und Android',
         'Der Staff schickt die Einladung, der Spieler tritt seiner Mannschaft bei',
         'Wellness nach dem Aufwachen, RPE nach der Einheit',
+        'Den Behandlungs-Slot selbst buchen, in der App',
         'Seine Antworten gehen an den Staff, nie an die Gruppe',
       ],
       ctas: {
@@ -492,6 +655,59 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
+        kicker: 'SEINE FORM',
+        title: 'Je mehr er gibt, desto mehr sieht er.',
+        body: 'Die vom Trainer geplanten Einheiten, seine RPE-Werte und seine Check-ins speisen dieselben Kurven. Der Spieler öffnet seine eigenen in der App.',
+        kind: 'panels',
+        panels: [
+          {
+            eyebrow: 'EINE MINUTE AM TAG',
+            title: 'Was er gibt',
+            tone: 'plain',
+            items: ['Den Check-in am Morgen', 'Den RPE nach der Einheit'],
+          },
+          {
+            eyebrow: 'SEINE BELASTUNG UND SEINE FORM',
+            title: 'Was er sieht',
+            tone: 'blue',
+            items: ['Seine Belastung Woche für Woche', 'Wo seine Form heute steht', 'Die Einheit, die der Trainer geplant hat'],
+          },
+        ],
+        foot: 'Ein Spieler, der jeden Morgen antwortet, liest seine eigene Kurve. Wer eine Woche auslässt, sieht die Lücke darin. Darauf beruht die Erfassung, mehr als auf Erinnerungen des Staffs.',
+      },
+      {
+        kicker: 'BEHANDLUNG',
+        title: 'Der Spieler bucht seinen Behandlungs-Slot.',
+        body: 'Der Staff legt das Zeitfenster des Physios in den Kalender, etwa dreißig Minuten vor dem Training. Es wird in Slots geteilt, und jeder Spieler nimmt sich seinen in der App.',
+        kind: 'rows',
+        rows: [
+          {
+            name: 'Eine Uhrzeit wählen',
+            desc: 'Die freien Slots stehen in der App. Der Spieler nimmt den, der in seinen Tag passt, und niemand wartet vor einer Tür.',
+          },
+          {
+            name: 'Den Grund angeben',
+            desc: 'Jede Buchung trägt einen Grund. Der Physio weiß, was ihn erwartet, bevor der Spieler hereinkommt.',
+          },
+          {
+            name: 'Oder den Staff buchen lassen',
+            desc: 'Bucht ein Spieler nicht, setzt der Staff den Slot für ihn.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'heart-pulse',
+            text: 'Physio-Hinweise, eine Übung oder ein Protokoll, landen danach mit Datum in der App des Spielers.',
+            link: { label: 'Medizinisches Logbuch ansehen', href: '/de/features/medical/' },
+          },
+        ],
+        note: {
+          icon: 'eye-off',
+          label: 'Gründe und Notizen',
+          desc: 'Grund und Notiz eines Slots bleiben beim Staff sichtbar. Ein Spieler sieht seinen eigenen Termin, nie den eines Mitspielers.',
+        },
+      },
+      {
         kicker: 'WAS DER SPIELER NICHT SIEHT',
         title: 'Ein Spieler sieht nie die Akte eines anderen.',
         kind: 'columns',
@@ -533,7 +749,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'App do jogador STRIVN Player | STRIVN',
       description:
-        'STRIVN Player, a app do jogador em iOS e Android: agenda, convocatórias, check-in da manhã, RPE e treinos de força. Cada jogador vê apenas os seus próprios dados.',
+        'STRIVN Player, a app do jogador em iOS e Android: agenda, convocatórias, check-in da manhã, treinos de força e vagas de tratamento. Cada jogador vê apenas os seus próprios dados.',
     },
     hero: {
       kicker: 'APP DO JOGADOR',
@@ -543,6 +759,7 @@ export const playerApp: SubpageLocales = {
         'Gratuita para o jogador, em iPhone e Android',
         'O staff envia o convite, o jogador entra na sua equipa',
         'Wellness ao acordar, RPE depois do treino',
+        'Marcação da sua vaga de tratamento, a partir da app',
         'As respostas vão para o staff, nunca para o grupo',
       ],
       ctas: {
@@ -621,6 +838,59 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
+        kicker: 'A SUA FORMA',
+        title: 'Quanto mais dá, mais vê.',
+        body: 'Os treinos planeados pelo treinador, os seus RPE e os seus check-ins alimentam as mesmas curvas. O jogador abre as suas na app.',
+        kind: 'panels',
+        panels: [
+          {
+            eyebrow: 'UM MINUTO POR DIA',
+            title: 'O que dá',
+            tone: 'plain',
+            items: ['O check-in da manhã', 'O RPE depois do treino'],
+          },
+          {
+            eyebrow: 'A SUA CARGA E A SUA FORMA',
+            title: 'O que vê',
+            tone: 'blue',
+            items: ['A sua carga semana após semana', 'Onde está a sua forma hoje', 'O treino que o treinador planeou'],
+          },
+        ],
+        foot: 'Um jogador que responde todas as manhãs lê a sua própria curva. Quem falha uma semana vê o buraco nela. A recolha assenta nisso, mais do que nos lembretes do staff.',
+      },
+      {
+        kicker: 'TRATAMENTO',
+        title: 'O jogador marca a sua vaga de tratamento.',
+        body: 'O staff coloca a janela do fisioterapeuta no calendário, por exemplo trinta minutos antes do treino. Ela divide-se em vagas, e cada jogador fica com a sua a partir da app.',
+        kind: 'rows',
+        rows: [
+          {
+            name: 'Escolher a hora',
+            desc: 'As vagas livres aparecem na app. O jogador fica com a que cabe no seu dia, e ninguém faz fila à porta.',
+          },
+          {
+            name: 'Dizer porquê',
+            desc: 'Cada marcação leva um motivo. O fisioterapeuta sabe o que o espera antes de o jogador entrar.',
+          },
+          {
+            name: 'Ou deixar o staff marcar',
+            desc: 'Quando um jogador não marca, o staff coloca a vaga por ele.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'heart-pulse',
+            text: 'Os conselhos de fisioterapia, um exercício ou um protocolo, chegam depois à app do jogador com a sua data.',
+            link: { label: 'Ver o registo médico', href: '/pt/features/medical/' },
+          },
+        ],
+        note: {
+          icon: 'eye-off',
+          label: 'Motivos e notas',
+          desc: 'O motivo e a nota de uma vaga ficam visíveis para o staff. Um jogador vê a sua própria marcação, nunca a de um colega.',
+        },
+      },
+      {
         kicker: 'O QUE O JOGADOR NÃO VÊ',
         title: 'Um jogador nunca vê o processo de outro.',
         kind: 'columns',
@@ -662,7 +932,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'App del jugador STRIVN Player | STRIVN',
       description:
-        'STRIVN Player, la app del jugador en iOS y Android: agenda, convocatorias, check-in de la mañana, RPE y sesiones de fuerza. Cada jugador ve solo sus propios datos.',
+        'STRIVN Player, la app del jugador en iOS y Android: agenda, convocatorias, check-in de la mañana, sesiones de fuerza y huecos de tratamiento. Cada jugador ve solo sus propios datos.',
     },
     hero: {
       kicker: 'APP DEL JUGADOR',
@@ -672,6 +942,7 @@ export const playerApp: SubpageLocales = {
         'Gratis para el jugador, en iPhone y Android',
         'El staff envía la invitación, el jugador entra en su equipo',
         'Wellness al despertar, RPE después de la sesión',
+        'Reserva de su hueco de tratamiento, desde la app',
         'Sus respuestas van al staff, nunca al grupo',
       ],
       ctas: {
@@ -748,6 +1019,59 @@ export const playerApp: SubpageLocales = {
             link: { label: 'Ver los programas', href: '/es/features/programs/' },
           },
         ],
+      },
+      {
+        kicker: 'SU FORMA',
+        title: 'Cuanto más da, más ve.',
+        body: 'Las sesiones que planificó el entrenador, sus RPE y sus check-ins alimentan las mismas curvas. El jugador abre las suyas en la app.',
+        kind: 'panels',
+        panels: [
+          {
+            eyebrow: 'UN MINUTO AL DÍA',
+            title: 'Lo que da',
+            tone: 'plain',
+            items: ['El check-in de la mañana', 'El RPE después de la sesión'],
+          },
+          {
+            eyebrow: 'SU CARGA Y SU FORMA',
+            title: 'Lo que ve',
+            tone: 'blue',
+            items: ['Su carga semana tras semana', 'Dónde está su forma hoy', 'La sesión que el entrenador ha planificado'],
+          },
+        ],
+        foot: 'Un jugador que responde cada mañana lee su propia curva. El que se salta una semana ve el hueco. La recogida se sostiene en eso, más que en los recordatorios del staff.',
+      },
+      {
+        kicker: 'TRATAMIENTO',
+        title: 'El jugador reserva su hueco de tratamiento.',
+        body: 'El staff pone la ventana del fisio en el calendario, por ejemplo treinta minutos antes de la sesión. Se divide en huecos, y cada jugador coge el suyo desde la app.',
+        kind: 'rows',
+        rows: [
+          {
+            name: 'Elegir la hora',
+            desc: 'Los huecos libres aparecen en la app. El jugador coge el que cabe en su día, y nadie hace cola delante de una puerta.',
+          },
+          {
+            name: 'Decir por qué',
+            desc: 'Cada reserva lleva un motivo. El fisio sabe lo que le espera antes de que el jugador entre.',
+          },
+          {
+            name: 'O dejar que reserve el staff',
+            desc: 'Cuando un jugador no reserva, el staff pone el hueco por él.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'heart-pulse',
+            text: 'Los consejos del fisio, un ejercicio o un protocolo, llegan después a la app del jugador con su fecha.',
+            link: { label: 'Ver el parte médico', href: '/es/features/medical/' },
+          },
+        ],
+        note: {
+          icon: 'eye-off',
+          label: 'Motivos y notas',
+          desc: 'El motivo y la nota de un hueco quedan visibles para el staff. Un jugador ve su propia cita, nunca la de un compañero.',
+        },
       },
       {
         kicker: 'LO QUE EL JUGADOR NO VE',
