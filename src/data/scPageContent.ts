@@ -71,7 +71,6 @@ export interface ScPageContent {
     sub: string;
     primaryCta: string;
     secondaryCta: string;
-    trust: string;
     board: {
       title: string;
       stamp: string;
@@ -225,7 +224,6 @@ const fr: ScPageContent = {
     sub: 'Ce que vous faites déjà dans Excel — charge, check-in bien-être, état de forme, tests — exécuté par un système : collecte automatique, indicateurs validés, restitution au staff.',
     primaryCta: 'Commencer gratuitement',
     secondaryCta: 'Voir la méthodologie',
-    trust: 'GRATUIT POUR UNE ÉQUIPE · IMPORT GPS EN CSV · IA INTÉGRÉE',
     board: {
       title: 'Readiness du jour · Olympique Montverne',
       stamp: 'MER 07:45',
@@ -482,7 +480,6 @@ const en: ScPageContent = {
     sub: 'What you already do in Excel — load, wellness check-in, readiness, tests — run by a system: automatic collection, validated metrics, reporting to the staff.',
     primaryCta: 'Start for free',
     secondaryCta: 'See the methodology',
-    trust: 'FREE FOR ONE TEAM · GPS IMPORT VIA CSV · AI BUILT IN',
     board: {
       title: 'Today’s readiness · Olympique Montverne',
       stamp: 'WED 07:45',
@@ -739,7 +736,6 @@ const nl: ScPageContent = {
     sub: 'Wat u al in Excel doet — belasting, wellness-check-in, readiness, testen — uitgevoerd door een systeem: automatische verzameling, gevalideerde indicatoren, rapportage aan de staf.',
     primaryCta: 'Gratis beginnen',
     secondaryCta: 'Bekijk de methodologie',
-    trust: 'GRATIS VOOR ÉÉN TEAM · GPS-IMPORT VIA CSV · AI INGEBOUWD',
     board: {
       title: 'Readiness vandaag · Olympique Montverne',
       stamp: 'WOE 07:45',
@@ -996,7 +992,6 @@ const de: ScPageContent = {
     sub: 'Was Sie längst in Excel machen — Belastung, Wellness-Check-in, Readiness, Tests — ausgeführt von einem System: automatische Erfassung, validierte Kennzahlen, Rückmeldung an den Staff.',
     primaryCta: 'Kostenlos starten',
     secondaryCta: 'Methodik ansehen',
-    trust: 'KOSTENLOS FÜR EIN TEAM · GPS-IMPORT PER CSV · KI INTEGRIERT',
     board: {
       title: 'Readiness heute · Olympique Montverne',
       stamp: 'MI 07:45',
@@ -1253,7 +1248,6 @@ const pt: ScPageContent = {
     sub: 'O que já faz em Excel — carga, check-in de bem-estar, readiness, testes — executado por um sistema: recolha automática, indicadores validados, devolução ao staff.',
     primaryCta: 'Começar gratuitamente',
     secondaryCta: 'Ver a metodologia',
-    trust: 'GRÁTIS PARA UMA EQUIPA · IMPORTAÇÃO GPS EM CSV · IA INTEGRADA',
     board: {
       title: 'Readiness do dia · Olympique Montverne',
       stamp: 'QUA 07:45',
@@ -1510,7 +1504,6 @@ const es: ScPageContent = {
     sub: 'Lo que ya hace en Excel — carga, check-in de bienestar, readiness, tests — ejecutado por un sistema: recogida automática, indicadores validados, devolución al staff.',
     primaryCta: 'Empezar gratis',
     secondaryCta: 'Ver la metodología',
-    trust: 'GRATIS PARA UN EQUIPO · IMPORTACIÓN GPS EN CSV · IA INTEGRADA',
     board: {
       title: 'Readiness del día · Olympique Montverne',
       stamp: 'MIÉ 07:45',
