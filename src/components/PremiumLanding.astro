@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { NAV } from '../data/nav';
 import SiteHeader from './SiteHeader.astro';
 import SiteFooter from './SiteFooter.astro';
 import { landingContent, type Locale } from '../data/landingContent';
@@ -50,7 +51,7 @@ const skipLabel = skipLabelByLocale[locale];
 >
   <a href="#s-main" class="s-skip">{skipLabel}</a>
 
-  <SiteHeader locale={locale} links={c.nav.links} cta={c.nav.cta} />
+  <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} />
 
   <main id="s-main">
     <!-- ───────────── Hero · H2 split diptych + convergence ───────────── -->

@@ -64,7 +64,6 @@ export const TEST_ROWS: Array<{ name: string; value: string; delta?: string; del
 
 export interface ScPageContent {
   meta: { title: string; description: string };
-  nav: { links: Array<{ label: string; href: string }>; cta: string };
   hero: {
     kicker: string;
     title: string;
@@ -206,17 +205,6 @@ const fr: ScPageContent = {
     title: 'STRIVN pour les préparateurs physiques | Votre méthodologie, industrialisée',
     description:
       'Charge, check-in bien-être, état de forme, tests : ce que vous faites déjà dans Excel, exécuté par un système. Import GPS, ACWR, planification et restitution au staff.',
-  },
-  nav: {
-    links: [
-      { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
-      { label: 'Plateforme', href: '/fr/#plateforme' },
-      { label: 'Fonctionnalités', href: '/fr/features/' },
-      { label: 'Solutions', href: '/fr/solutions/' },
-      { label: 'Tarifs', href: '/fr/#tarifs' },
-      { label: 'FAQ', href: '/fr/#faq' },
-    ],
-    cta: 'Commencer',
   },
   hero: {
     kicker: 'POUR LES PRÉPARATEURS PHYSIQUES',
@@ -463,17 +451,6 @@ const en: ScPageContent = {
     description:
       'Load, wellness check-in, readiness, tests: what you already do in Excel, run by a system. GPS import, ACWR, planning and staff reporting.',
   },
-  nav: {
-    links: [
-      { label: 'S&C coaches', href: '/en/sc-coaches/' },
-      { label: 'Platform', href: '/en/#plateforme' },
-      { label: 'Features', href: '/en/features/' },
-      { label: 'Solutions', href: '/en/solutions/' },
-      { label: 'Pricing', href: '/en/#tarifs' },
-      { label: 'FAQ', href: '/en/#faq' },
-    ],
-    cta: 'Get started',
-  },
   hero: {
     kicker: 'FOR STRENGTH & CONDITIONING COACHES',
     title: 'Your methodology, industrialised.',
@@ -718,17 +695,6 @@ const nl: ScPageContent = {
     title: 'STRIVN voor fysieke trainers | Uw methodologie, geïndustrialiseerd',
     description:
       'Belasting, wellness-check-in, readiness, testen: wat u al in Excel doet, uitgevoerd door een systeem. GPS-import, ACWR, planning en rapportage aan de staf.',
-  },
-  nav: {
-    links: [
-      { label: 'Fysieke trainers', href: '/nl/sc-coaches/' },
-      { label: 'Platform', href: '/nl/#plateforme' },
-      { label: 'Functies', href: '/nl/features/' },
-      { label: 'Oplossingen', href: '/nl/solutions/' },
-      { label: 'Prijzen', href: '/nl/#tarifs' },
-      { label: 'FAQ', href: '/nl/#faq' },
-    ],
-    cta: 'Aan de slag',
   },
   hero: {
     kicker: 'VOOR FYSIEKE TRAINERS',
@@ -975,17 +941,6 @@ const de: ScPageContent = {
     description:
       'Belastung, Wellness-Check-in, Readiness, Tests: was Sie längst in Excel machen, ausgeführt von einem System. GPS-Import, ACWR, Planung und Rückmeldung an den Staff.',
   },
-  nav: {
-    links: [
-      { label: 'Athletiktrainer', href: '/de/sc-coaches/' },
-      { label: 'Plattform', href: '/de/#plateforme' },
-      { label: 'Funktionen', href: '/de/features/' },
-      { label: 'Lösungen', href: '/de/solutions/' },
-      { label: 'Preise', href: '/de/#tarifs' },
-      { label: 'FAQ', href: '/de/#faq' },
-    ],
-    cta: 'Loslegen',
-  },
   hero: {
     kicker: 'FÜR ATHLETIKTRAINER',
     title: 'Ihre Methodik, industrialisiert.',
@@ -1231,17 +1186,6 @@ const pt: ScPageContent = {
     description:
       'Carga, check-in de bem-estar, readiness, testes: o que já faz em Excel, executado por um sistema. Importação GPS, ACWR, planeamento e devolução ao staff.',
   },
-  nav: {
-    links: [
-      { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
-      { label: 'Plataforma', href: '/pt/#plateforme' },
-      { label: 'Funcionalidades', href: '/pt/features/' },
-      { label: 'Soluções', href: '/pt/solutions/' },
-      { label: 'Preços', href: '/pt/#tarifs' },
-      { label: 'FAQ', href: '/pt/#faq' },
-    ],
-    cta: 'Começar',
-  },
   hero: {
     kicker: 'PARA PREPARADORES FÍSICOS',
     title: 'A sua metodologia, industrializada.',
@@ -1486,17 +1430,6 @@ const es: ScPageContent = {
     title: 'STRIVN para preparadores físicos | Su metodología, industrializada',
     description:
       'Carga, check-in de bienestar, readiness, tests: lo que ya hace en Excel, ejecutado por un sistema. Importación GPS, ACWR, planificación y devolución al staff.',
-  },
-  nav: {
-    links: [
-      { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
-      { label: 'Plataforma', href: '/es/#plateforme' },
-      { label: 'Funcionalidades', href: '/es/features/' },
-      { label: 'Soluciones', href: '/es/solutions/' },
-      { label: 'Precios', href: '/es/#tarifs' },
-      { label: 'FAQ', href: '/es/#faq' },
-    ],
-    cta: 'Empezar',
   },
   hero: {
     kicker: 'PARA PREPARADORES FÍSICOS',

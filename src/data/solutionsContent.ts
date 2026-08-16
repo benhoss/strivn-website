@@ -62,7 +62,6 @@ export const SOON_INDEX = 5;
 
 export interface SolutionsContent {
   meta: { title: string; description: string };
-  nav: { links: Array<{ label: string; href: string }>; cta: string };
   hero: { kicker: string; title: string; sub: string };
   compo: {
     kicker: string;
@@ -85,17 +84,6 @@ const fr: SolutionsContent = {
     title: 'Solutions STRIVN | La compo de votre staff performance',
     description:
       'Six fonctions, six écrans, une seule base de données : préparateur physique, head coach, analyste, kiné, joueur et direction sportive.',
-  },
-  nav: {
-    links: [
-      { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
-      { label: 'Fonctionnalités', href: '/fr/features/' },
-      { label: 'Solutions', href: '/fr/solutions/' },
-      { label: 'Plateforme', href: '/fr/#plateforme' },
-      { label: 'Tarifs', href: '/fr/#tarifs' },
-      { label: 'FAQ', href: '/fr/#faq' },
-    ],
-    cta: 'Commencer',
   },
   hero: {
     kicker: 'SOLUTIONS · LA FEUILLE DE MATCH',
@@ -153,17 +141,6 @@ const en: SolutionsContent = {
     description:
       'Six roles, six screens, one single database: S&C coach, head coach, analyst, physio, player and sporting director.',
   },
-  nav: {
-    links: [
-      { label: 'S&C coaches', href: '/en/sc-coaches/' },
-      { label: 'Features', href: '/en/features/' },
-      { label: 'Solutions', href: '/en/solutions/' },
-      { label: 'Platform', href: '/en/#plateforme' },
-      { label: 'Pricing', href: '/en/#tarifs' },
-      { label: 'FAQ', href: '/en/#faq' },
-    ],
-    cta: 'Get started',
-  },
   hero: {
     kicker: 'SOLUTIONS · THE TEAM SHEET',
     title: 'The line-up of your performance staff.',
@@ -219,17 +196,6 @@ const nl: SolutionsContent = {
     title: 'STRIVN-oplossingen | De opstelling van uw performance-staf',
     description:
       'Zes functies, zes schermen, één enkele database: fysieke trainer, hoofdcoach, analist, kine, speler en sportief directeur.',
-  },
-  nav: {
-    links: [
-      { label: 'Fysieke trainers', href: '/nl/sc-coaches/' },
-      { label: 'Functies', href: '/nl/features/' },
-      { label: 'Oplossingen', href: '/nl/solutions/' },
-      { label: 'Platform', href: '/nl/#plateforme' },
-      { label: 'Prijzen', href: '/nl/#tarifs' },
-      { label: 'FAQ', href: '/nl/#faq' },
-    ],
-    cta: 'Aan de slag',
   },
   hero: {
     kicker: 'OPLOSSINGEN · HET WEDSTRIJDBLAD',
@@ -287,17 +253,6 @@ const de: SolutionsContent = {
     description:
       'Sechs Rollen, sechs Bildschirme, eine einzige Datenbasis: Athletiktrainer, Cheftrainer, Analyst, Physio, Spieler und Sportdirektor.',
   },
-  nav: {
-    links: [
-      { label: 'Athletiktrainer', href: '/de/sc-coaches/' },
-      { label: 'Funktionen', href: '/de/features/' },
-      { label: 'Lösungen', href: '/de/solutions/' },
-      { label: 'Plattform', href: '/de/#plateforme' },
-      { label: 'Preise', href: '/de/#tarifs' },
-      { label: 'FAQ', href: '/de/#faq' },
-    ],
-    cta: 'Loslegen',
-  },
   hero: {
     kicker: 'LÖSUNGEN · DER SPIELBERICHT',
     title: 'Die Aufstellung Ihres Performance-Staffs.',
@@ -354,17 +309,6 @@ const pt: SolutionsContent = {
     description:
       'Seis funções, seis ecrãs, uma única base de dados: preparador físico, treinador principal, analista, fisioterapeuta, jogador e diretor desportivo.',
   },
-  nav: {
-    links: [
-      { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
-      { label: 'Funcionalidades', href: '/pt/features/' },
-      { label: 'Soluções', href: '/pt/solutions/' },
-      { label: 'Plataforma', href: '/pt/#plateforme' },
-      { label: 'Preços', href: '/pt/#tarifs' },
-      { label: 'FAQ', href: '/pt/#faq' },
-    ],
-    cta: 'Começar',
-  },
   hero: {
     kicker: 'SOLUÇÕES · A FICHA DE JOGO',
     title: 'O onze do seu staff de performance.',
@@ -420,17 +364,6 @@ const es: SolutionsContent = {
     title: 'Soluciones STRIVN | La alineación de tu staff de rendimiento',
     description:
       'Seis funciones, seis pantallas, una sola base de datos: preparador físico, entrenador, analista, fisio, jugador y director deportivo.',
-  },
-  nav: {
-    links: [
-      { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
-      { label: 'Funcionalidades', href: '/es/features/' },
-      { label: 'Soluciones', href: '/es/solutions/' },
-      { label: 'Plataforma', href: '/es/#plateforme' },
-      { label: 'Precios', href: '/es/#tarifs' },
-      { label: 'FAQ', href: '/es/#faq' },
-    ],
-    cta: 'Empezar',
   },
   hero: {
     kicker: 'SOLUCIONES · EL ACTA DE PARTIDO',

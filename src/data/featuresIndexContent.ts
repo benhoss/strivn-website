@@ -131,7 +131,6 @@ export const AI_ACTS_FROM = 3;
 
 export interface FeaturesIndexContent {
   meta: { title: string; description: string };
-  nav: { links: Array<{ label: string; href: string }>; cta: string };
   hero: { kicker: string; title: string; sub: string; jump: JumpLabels };
   monitoring: SectionHead & { modules: ModuleText[] };
   sessions: SectionHead & {
@@ -202,17 +201,6 @@ const fr: FeaturesIndexContent = {
     title: 'Fonctionnalités STRIVN | Tout ce que la plateforme fait, module par module',
     description:
       'Monitoring, séances, équipe, IA, rapports, adversaire et app joueur : chaque module de STRIVN en détail.',
-  },
-  nav: {
-    links: [
-      { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
-      { label: 'Plateforme', href: '/fr/#plateforme' },
-      { label: 'Fonctionnalités', href: '/fr/features/' },
-      { label: 'Solutions', href: '/fr/solutions/' },
-      { label: 'Tarifs', href: '/fr/#tarifs' },
-      { label: 'FAQ', href: '/fr/#faq' },
-    ],
-    cta: 'Commencer',
   },
   hero: {
     kicker: 'FONCTIONNALITÉS',
@@ -396,17 +384,6 @@ const en: FeaturesIndexContent = {
     description:
       'Monitoring, sessions, squad, AI, reports, opponents and the player app: every STRIVN module in detail.',
   },
-  nav: {
-    links: [
-      { label: 'S&C coaches', href: '/en/sc-coaches/' },
-      { label: 'Platform', href: '/en/#plateforme' },
-      { label: 'Features', href: '/en/features/' },
-      { label: 'Solutions', href: '/en/solutions/' },
-      { label: 'Pricing', href: '/en/#tarifs' },
-      { label: 'FAQ', href: '/en/#faq' },
-    ],
-    cta: 'Get started',
-  },
   hero: {
     kicker: 'FEATURES',
     title: 'Everything STRIVN does, module by module.',
@@ -576,17 +553,6 @@ const nl: FeaturesIndexContent = {
     title: 'STRIVN-functies | Alles wat het platform doet, module per module',
     description:
       'Monitoring, trainingen, kern, AI, rapporten, tegenstander en spelersapp: elke module van STRIVN in detail.',
-  },
-  nav: {
-    links: [
-      { label: 'Fysieke trainers', href: '/nl/sc-coaches/' },
-      { label: 'Platform', href: '/nl/#plateforme' },
-      { label: 'Functies', href: '/nl/features/' },
-      { label: 'Oplossingen', href: '/nl/solutions/' },
-      { label: 'Prijzen', href: '/nl/#tarifs' },
-      { label: 'FAQ', href: '/nl/#faq' },
-    ],
-    cta: 'Aan de slag',
   },
   hero: {
     kicker: 'FUNCTIES',
@@ -762,17 +728,6 @@ const de: FeaturesIndexContent = {
     title: 'STRIVN Funktionen | Alles, was die Plattform leistet — Modul für Modul',
     description:
       'Monitoring, Einheiten, Kader, KI, Berichte, Gegner und Spieler-App: jedes Modul von STRIVN im Detail.',
-  },
-  nav: {
-    links: [
-      { label: 'Athletiktrainer', href: '/de/sc-coaches/' },
-      { label: 'Plattform', href: '/de/#plateforme' },
-      { label: 'Funktionen', href: '/de/features/' },
-      { label: 'Lösungen', href: '/de/solutions/' },
-      { label: 'Preise', href: '/de/#tarifs' },
-      { label: 'FAQ', href: '/de/#faq' },
-    ],
-    cta: 'Loslegen',
   },
   hero: {
     kicker: 'FUNKTIONEN',
@@ -950,17 +905,6 @@ const pt: FeaturesIndexContent = {
     description:
       'Monitorização, sessões, plantel, IA, relatórios, adversário e app do jogador: cada módulo do STRIVN em detalhe.',
   },
-  nav: {
-    links: [
-      { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
-      { label: 'Plataforma', href: '/pt/#plateforme' },
-      { label: 'Funcionalidades', href: '/pt/features/' },
-      { label: 'Soluções', href: '/pt/solutions/' },
-      { label: 'Preços', href: '/pt/#tarifs' },
-      { label: 'FAQ', href: '/pt/#faq' },
-    ],
-    cta: 'Começar',
-  },
   hero: {
     kicker: 'FUNCIONALIDADES',
     title: 'Tudo o que o STRIVN faz, módulo a módulo.',
@@ -1135,17 +1079,6 @@ const es: FeaturesIndexContent = {
     title: 'Funcionalidades STRIVN | Todo lo que hace la plataforma, módulo a módulo',
     description:
       'Monitorización, sesiones, plantilla, IA, informes, rival y app del jugador: cada módulo de STRIVN en detalle.',
-  },
-  nav: {
-    links: [
-      { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
-      { label: 'Plataforma', href: '/es/#plateforme' },
-      { label: 'Funcionalidades', href: '/es/features/' },
-      { label: 'Soluciones', href: '/es/solutions/' },
-      { label: 'Precios', href: '/es/#tarifs' },
-      { label: 'FAQ', href: '/es/#faq' },
-    ],
-    cta: 'Empezar',
   },
   hero: {
     kicker: 'FUNCIONALIDADES',

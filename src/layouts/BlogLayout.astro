@@ -5,6 +5,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import type { Locale } from '../data/landingContent';
 import { landingContent } from '../data/landingContent';
+import { NAV } from '../data/nav';
 import { SKIP_LABEL } from '../lib/skipLabel';
 
 interface Props {
@@ -40,8 +41,8 @@ const blogHref = isFrench ? '/fr/blog/' : '/en/blog/';
 
 /* Add a Blog link only if the shared nav does not already carry one. It does
    now, so appending unconditionally printed "Blog" twice on every blog page. */
-const hasBlog = c.nav.links.some((l) => 'href' in l && l.href === blogHref);
-const navLinks = hasBlog ? c.nav.links : [...c.nav.links, { label: 'Blog', href: blogHref }];
+const hasBlog = NAV[locale].links.some((l) => 'href' in l && l.href === blogHref);
+const navLinks = hasBlog ? NAV[locale].links : [...NAV[locale].links, { label: 'Blog', href: blogHref }];
 /* The blog is French-only, so only FR ever gets a page-specific target;
    the rest fall back to their home page in SiteHeader. */
 const finalSwitchHrefs = switchHrefs ?? {};
@@ -59,7 +60,7 @@ const finalSwitchHrefs = switchHrefs ?? {};
   <SiteHeader
     locale={locale}
     links={navLinks}
-    cta={c.nav.cta}
+    cta={NAV[locale].cta}
     brandHref={brandHref}
     switchHrefs={finalSwitchHrefs}
   />

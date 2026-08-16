@@ -10,10 +10,6 @@ export type { Locale };
 
 export interface HomeContent {
   meta: { title: string; description: string };
-  nav: {
-    links: Array<{ label: string; href: string }>;
-    cta: string;
-  };
   hero: {
     eyebrow: string;
     titleMuted: string;
@@ -278,17 +274,6 @@ const fr: HomeContent = {
     title: 'STRIVN | Le système d’exploitation du staff performance',
     description:
       'Import GPS, wellness, charge et planification dans un seul outil. L’IA lit les données du groupe et signale qui alléger. Gratuit pour une équipe, partagé par tout le staff.',
-  },
-  nav: {
-    links: [
-      { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
-      { label: 'Plateforme', href: '/fr/#plateforme' },
-      { label: 'Fonctionnalités', href: '/fr/features/' },
-      { label: 'Solutions', href: '/fr/solutions/' },
-      { label: 'Tarifs', href: '/fr/#tarifs' },
-      { label: 'FAQ', href: '/fr/#faq' },
-    ],
-    cta: 'Commencer',
   },
   hero: {
     eyebrow: 'Conçu avec des staffs professionnels',
@@ -908,7 +893,7 @@ const fr: HomeContent = {
       {
         title: 'PRODUIT',
         links: [
-          { label: 'Plateforme', href: '/fr/#plateforme' },
+          { label: 'Plateforme', href: '/fr/solutions/' },
           { label: 'Fonctionnalités', href: '/fr/features/' },
           { label: 'Tarifs', href: '/fr/#tarifs' },
           { label: 'FAQ', href: '/fr/#faq' },
@@ -942,17 +927,6 @@ const en: HomeContent = {
     title: 'STRIVN | The operating system for performance staff',
     description:
       'GPS import, wellness, load and planning in one tool. The AI reads the squad data and tells you who to hold back. Free for one team, shared by the whole staff.',
-  },
-  nav: {
-    links: [
-      { label: 'S&C coaches', href: '/en/sc-coaches/' },
-      { label: 'Platform', href: '/en/#plateforme' },
-      { label: 'Features', href: '/en/features/' },
-      { label: 'Solutions', href: '/en/solutions/' },
-      { label: 'Pricing', href: '/en/#tarifs' },
-      { label: 'FAQ', href: '/en/#faq' },
-    ],
-    cta: 'Get started',
   },
   hero: {
     eyebrow: 'Built with professional staffs',
@@ -1572,7 +1546,7 @@ const en: HomeContent = {
       {
         title: 'PRODUCT',
         links: [
-          { label: 'Platform', href: '/en/#plateforme' },
+          { label: 'Platform', href: '/en/solutions/' },
           { label: 'Features', href: '/en/features/' },
           { label: 'Pricing', href: '/en/#tarifs' },
           { label: 'FAQ', href: '/en/#faq' },
@@ -1606,17 +1580,6 @@ const nl: HomeContent = {
     title: 'STRIVN | Het besturingssysteem van de performance staff',
     description:
       'GPS-import, wellness, belasting en planning in één tool. De AI leest de groepsdata en geeft aan wie u moet ontzien. Gratis voor één team, gedeeld door de hele staf.',
-  },
-  nav: {
-    links: [
-      { label: 'Fysieke trainers', href: '/nl/sc-coaches/' },
-      { label: 'Platform', href: '/nl/#plateforme' },
-      { label: 'Functies', href: '/nl/features/' },
-      { label: 'Oplossingen', href: '/nl/solutions/' },
-      { label: 'Prijzen', href: '/nl/#tarifs' },
-      { label: 'FAQ', href: '/nl/#faq' },
-    ],
-    cta: 'Aan de slag',
   },
   hero: {
     eyebrow: 'Gebouwd met professionele staffen',
@@ -2236,7 +2199,7 @@ const nl: HomeContent = {
       {
         title: 'PRODUCT',
         links: [
-          { label: 'Platform', href: '/nl/#plateforme' },
+          { label: 'Platform', href: '/nl/solutions/' },
           { label: 'Functies', href: '/nl/features/' },
           { label: 'Prijzen', href: '/nl/#tarifs' },
           { label: 'FAQ', href: '/nl/#faq' },
@@ -2270,17 +2233,6 @@ const de: HomeContent = {
     title: 'STRIVN | Das Betriebssystem für den Performance-Staff',
     description:
       'GPS-Import, Wellness, Belastung und Planung in einem Tool. Die KI liest die Teamdaten und sagt Ihnen, wen Sie schonen sollten. Kostenlos für ein Team, geteilt vom gesamten Staff.',
-  },
-  nav: {
-    links: [
-      { label: 'Athletiktrainer', href: '/de/sc-coaches/' },
-      { label: 'Plattform', href: '/de/#plateforme' },
-      { label: 'Funktionen', href: '/de/features/' },
-      { label: 'Lösungen', href: '/de/solutions/' },
-      { label: 'Preise', href: '/de/#tarifs' },
-      { label: 'FAQ', href: '/de/#faq' },
-    ],
-    cta: 'Loslegen',
   },
   hero: {
     eyebrow: 'Entwickelt mit professionellen Staffs',
@@ -2900,7 +2852,7 @@ const de: HomeContent = {
       {
         title: 'PRODUKT',
         links: [
-          { label: 'Plattform', href: '/de/#plateforme' },
+          { label: 'Plattform', href: '/de/solutions/' },
           { label: 'Funktionen', href: '/de/features/' },
           { label: 'Preise', href: '/de/#tarifs' },
           { label: 'FAQ', href: '/de/#faq' },
@@ -2934,17 +2886,6 @@ const pt: HomeContent = {
     title: 'STRIVN | O sistema operativo do staff de performance',
     description:
       'Importação GPS, wellness, carga e planeamento numa só ferramenta. A IA lê os dados do plantel e diz quem aliviar. Grátis para uma equipa, partilhado por todo o staff.',
-  },
-  nav: {
-    links: [
-      { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
-      { label: 'Plataforma', href: '/pt/#plateforme' },
-      { label: 'Funcionalidades', href: '/pt/features/' },
-      { label: 'Soluções', href: '/pt/solutions/' },
-      { label: 'Preços', href: '/pt/#tarifs' },
-      { label: 'FAQ', href: '/pt/#faq' },
-    ],
-    cta: 'Começar',
   },
   hero: {
     eyebrow: 'Construído com staffs profissionais',
@@ -3564,7 +3505,7 @@ const pt: HomeContent = {
       {
         title: 'PRODUTO',
         links: [
-          { label: 'Plataforma', href: '/pt/#plateforme' },
+          { label: 'Plataforma', href: '/pt/solutions/' },
           { label: 'Funcionalidades', href: '/pt/features/' },
           { label: 'Preços', href: '/pt/#tarifs' },
           { label: 'FAQ', href: '/pt/#faq' },
@@ -3598,17 +3539,6 @@ const es: HomeContent = {
     title: 'STRIVN | El sistema operativo del staff de rendimiento',
     description:
       'Importación GPS, wellness, carga y planificación en una sola herramienta. La IA lee los datos de la plantilla y señala a quién aliviar. Gratis para un equipo, compartido por todo el staff.',
-  },
-  nav: {
-    links: [
-      { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
-      { label: 'Plataforma', href: '/es/#plateforme' },
-      { label: 'Funcionalidades', href: '/es/features/' },
-      { label: 'Soluciones', href: '/es/solutions/' },
-      { label: 'Precios', href: '/es/#tarifs' },
-      { label: 'FAQ', href: '/es/#faq' },
-    ],
-    cta: 'Empezar',
   },
   hero: {
     eyebrow: 'Construido con staffs profesionales',
@@ -4228,7 +4158,7 @@ const es: HomeContent = {
       {
         title: 'PRODUCTO',
         links: [
-          { label: 'Plataforma', href: '/es/#plateforme' },
+          { label: 'Plataforma', href: '/es/solutions/' },
           { label: 'Funcionalidades', href: '/es/features/' },
           { label: 'Precios', href: '/es/#tarifs' },
           { label: 'FAQ', href: '/es/#faq' },
