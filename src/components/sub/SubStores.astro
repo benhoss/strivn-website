@@ -1,0 +1,64 @@
+---
+/**
+ * The two store badges for one of the mobile apps.
+ *
+ * Apple and Google both ship their badge as a fixed image on a light plate,
+ * which would be the only light rectangle on the site. The shape they define
+ * — mark, over-line, store name — is reproduced here on the site's own dark
+ * pill so the row reads as a badge without breaking the surface, and the
+ * marks stay in their own colours so they remain recognisable.
+ */
+import { STORE_LINKS, type Locale } from '../../data/landingContent';
+import { STORE_BADGE_TEXT } from '../../lib/storeBadges';
+
+interface Props {
+  locale: Locale;
+  /** Which of the two apps the badges point at. */
+  app: keyof typeof STORE_LINKS;
+  class?: string;
+}
+
+const { locale, app, class: className = '' } = Astro.props;
+const links = STORE_LINKS[app];
+const t = STORE_BADGE_TEXT[locale];
+
+const pill =
+  'hl-btn inline-flex items-center gap-3 rounded-[12px] bg-[#FFFFFF0A] px-5 py-2.5 outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]';
+---
+
+<ul class:list={['flex flex-wrap items-center gap-3', className]}>
+  <li>
+    <a href={links.appStore} target="_blank" rel="noopener" class={pill}>
+      <svg viewBox="0 0 384 512" width="20" height="20" aria-hidden="true" focusable="false">
+        <path
+          fill="#F8FAFC"
+          d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+        ></path>
+      </svg>
+      <span class="block text-left">
+        <span class="block font-mono text-[0.6rem] tracking-[0.08em] text-[#9AA8C4]">{t.apple}</span>
+        <span class="block text-[0.95rem] leading-tight font-semibold text-[#F8FAFC]">App Store</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href={links.playStore} target="_blank" rel="noopener" class={pill}>
+      <svg viewBox="0 0 512 512" width="20" height="20" aria-hidden="true" focusable="false">
+        <path
+          fill="#00D0FF"
+          d="M48.6 26.9C42.7 33.2 39.3 42.9 39.3 55.6v400.8c0 12.7 3.4 22.4 9.5 28.5l1.3 1.2 224.5-224.5v-5.3L50.1 25.7z"
+        ></path>
+        <path
+          fill="#00E676"
+          d="M349.1 336.3l-74.8-74.8v-5.3l74.9-74.9 1.7 1 88.7 50.4c25.3 14.3 25.3 37.9 0 52.4l-88.7 50.4z"
+        ></path>
+        <path fill="#FF3D47" d="M350.9 335.3L274.3 258.7 48.6 484.6c8.3 8.8 22.1 9.9 37.7 1.1l264.6-150.4"></path>
+        <path fill="#FFD500" d="M350.9 182.1L86.3 31.8C70.7 22.9 56.9 24.1 48.6 32.9l225.7 225.8z"></path>
+      </svg>
+      <span class="block text-left">
+        <span class="block font-mono text-[0.6rem] tracking-[0.08em] text-[#9AA8C4]">{t.google}</span>
+        <span class="block text-[0.95rem] leading-tight font-semibold text-[#F8FAFC]">Google Play</span>
+      </span>
+    </a>
+  </li>
+</ul>

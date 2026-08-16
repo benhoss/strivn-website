@@ -7,6 +7,7 @@ import type { SubpageContent } from '../../data/subpages/types';
 import { appStartUrl } from '../../lib/appUrl';
 import type { Locale } from '../../data/landingContent';
 import HomeIcon from '../home/HomeIcon.astro';
+import SubStores from './SubStores.astro';
 import SubVisual from './SubVisual.astro';
 
 interface Props {
@@ -114,6 +115,14 @@ const split = Boolean(hero.visual);
                 {hero.ctas.secondary.label}
               </a>
             )}
+          </div>
+        )
+      }
+
+      {
+        hero.stores && (
+          <div class="hl-reveal mt-6" style="--d: 320ms;">
+            <SubStores locale={locale} app={hero.stores} class={split ? '' : 'justify-center'} />
           </div>
         )
       }
