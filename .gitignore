@@ -51,3 +51,8 @@ launch-video/launch-video/
 
 # Secrets — never commit (ElevenLabs key, etc.)
 .env
+.mailjet
+
+# Local tool scratch — not project content
+.context/
+.freebuff/
