@@ -106,9 +106,9 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'SA FORME',
+        kicker: 'SON READINESS',
         title: 'Plus il en donne, plus il en voit.',
-        body: 'Les séances planifiées par le coach, ses RPE et ses check-in alimentent les mêmes courbes. Le joueur ouvre les siennes dans l’app.',
+        body: 'Les séances planifiées par le coach, ses RPE et ses check-in alimentent la même courbe de readiness. Le joueur ouvre la sienne dans l’app.',
         kind: 'panels',
         panels: [
           {
@@ -118,13 +118,17 @@ export const playerApp: SubpageLocales = {
             items: ['Le check-in du matin', 'Le RPE après la séance'],
           },
           {
-            eyebrow: 'SA CHARGE ET SA FORME',
+            eyebrow: 'SA CHARGE ET SON READINESS',
             title: 'Ce qu’il en voit',
             tone: 'blue',
-            items: ['Sa charge semaine après semaine', 'Où en est sa forme aujourd’hui', 'La séance que le coach a prévue'],
+            items: [
+              'Sa charge, semaine après semaine',
+              'Sa courbe de readiness, jour après jour',
+              'La séance que le coach a prévue',
+            ],
           },
         ],
-        foot: 'Un joueur qui répond tous les matins lit sa propre courbe. Celui qui saute une semaine voit le trou dedans. La collecte tient sur ça, plus que sur les rappels du staff.',
+        foot: 'Un joueur qui répond tous les matins voit son readiness monter et descendre. Celui qui saute une semaine voit le trou dans la courbe. La collecte tient sur ça, plus que sur les rappels du staff.',
       },
       {
         kicker: 'SOINS',
@@ -289,9 +293,9 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'THEIR FORM',
+        kicker: 'THEIR READINESS',
         title: 'The more they put in, the more they see.',
-        body: 'The sessions the coach planned, their RPE and their check-ins feed the same curves. The player opens their own in the app.',
+        body: 'The sessions the coach planned, their RPE and their check-ins feed the same readiness curve. The player opens their own in the app.',
         kind: 'panels',
         panels: [
           {
@@ -301,13 +305,17 @@ export const playerApp: SubpageLocales = {
             items: ['The morning check-in', 'RPE after the session'],
           },
           {
-            eyebrow: 'THEIR LOAD AND THEIR FORM',
+            eyebrow: 'THEIR LOAD AND THEIR READINESS',
             title: 'What they see',
             tone: 'blue',
-            items: ['Their load week after week', 'Where their form sits today', 'The session the coach has planned'],
+            items: [
+              'Their load, week after week',
+              'Their readiness curve, day after day',
+              'The session the coach has planned',
+            ],
           },
         ],
-        foot: 'A player who answers every morning reads their own curve. One who skips a week sees the hole in it. Collection holds on that, more than on reminders from the staff.',
+        foot: 'A player who answers every morning watches their readiness rise and fall. One who skips a week sees the hole in the curve. Collection holds on that, more than on reminders from the staff.',
       },
       {
         kicker: 'TREATMENT',
@@ -472,9 +480,9 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'ZIJN VORM',
+        kicker: 'ZIJN READINESS',
         title: 'Hoe meer hij geeft, hoe meer hij ziet.',
-        body: 'De trainingen die de coach plande, zijn RPE en zijn check-ins voeden dezelfde curves. De speler opent de zijne in de app.',
+        body: 'De trainingen die de coach plande, zijn RPE en zijn check-ins voeden dezelfde readiness-curve. De speler opent de zijne in de app.',
         kind: 'panels',
         panels: [
           {
@@ -484,13 +492,17 @@ export const playerApp: SubpageLocales = {
             items: ['De check-in van de ochtend', 'De RPE na de training'],
           },
           {
-            eyebrow: 'ZIJN BELASTING EN ZIJN VORM',
+            eyebrow: 'ZIJN BELASTING EN ZIJN READINESS',
             title: 'Wat hij ziet',
             tone: 'blue',
-            items: ['Zijn belasting week na week', 'Waar zijn vorm vandaag staat', 'De training die de coach heeft gepland'],
+            items: [
+              'Zijn belasting, week na week',
+              'Zijn readiness-curve, dag na dag',
+              'De training die de coach heeft gepland',
+            ],
           },
         ],
-        foot: 'Een speler die elke ochtend antwoordt, leest zijn eigen curve. Wie een week overslaat, ziet het gat erin. De verzameling steunt daarop, meer dan op herinneringen van de staf.',
+        foot: 'Een speler die elke ochtend antwoordt, ziet zijn readiness stijgen en dalen. Wie een week overslaat, ziet het gat in de curve. De verzameling steunt daarop, meer dan op herinneringen van de staf.',
       },
       {
         kicker: 'VERZORGING',
@@ -655,9 +667,9 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'SEINE FORM',
+        kicker: 'SEIN READINESS-WERT',
         title: 'Je mehr er gibt, desto mehr sieht er.',
-        body: 'Die vom Trainer geplanten Einheiten, seine RPE-Werte und seine Check-ins speisen dieselben Kurven. Der Spieler öffnet seine eigenen in der App.',
+        body: 'Die vom Trainer geplanten Einheiten, seine RPE-Werte und seine Check-ins speisen dieselbe Readiness-Kurve. Der Spieler öffnet seine eigene in der App.',
         kind: 'panels',
         panels: [
           {
@@ -667,13 +679,17 @@ export const playerApp: SubpageLocales = {
             items: ['Den Check-in am Morgen', 'Den RPE nach der Einheit'],
           },
           {
-            eyebrow: 'SEINE BELASTUNG UND SEINE FORM',
+            eyebrow: 'SEINE BELASTUNG UND SEIN READINESS-WERT',
             title: 'Was er sieht',
             tone: 'blue',
-            items: ['Seine Belastung Woche für Woche', 'Wo seine Form heute steht', 'Die Einheit, die der Trainer geplant hat'],
+            items: [
+              'Seine Belastung, Woche für Woche',
+              'Seine Readiness-Kurve, Tag für Tag',
+              'Die Einheit, die der Trainer geplant hat',
+            ],
           },
         ],
-        foot: 'Ein Spieler, der jeden Morgen antwortet, liest seine eigene Kurve. Wer eine Woche auslässt, sieht die Lücke darin. Darauf beruht die Erfassung, mehr als auf Erinnerungen des Staffs.',
+        foot: 'Ein Spieler, der jeden Morgen antwortet, sieht seinen Readiness-Wert steigen und fallen. Wer eine Woche auslässt, sieht die Lücke in der Kurve. Darauf beruht die Erfassung, mehr als auf Erinnerungen des Staffs.',
       },
       {
         kicker: 'BEHANDLUNG',
@@ -838,9 +854,9 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'A SUA FORMA',
+        kicker: 'O SEU READINESS',
         title: 'Quanto mais dá, mais vê.',
-        body: 'Os treinos planeados pelo treinador, os seus RPE e os seus check-ins alimentam as mesmas curvas. O jogador abre as suas na app.',
+        body: 'Os treinos planeados pelo treinador, os seus RPE e os seus check-ins alimentam a mesma curva de readiness. O jogador abre a sua na app.',
         kind: 'panels',
         panels: [
           {
@@ -850,13 +866,17 @@ export const playerApp: SubpageLocales = {
             items: ['O check-in da manhã', 'O RPE depois do treino'],
           },
           {
-            eyebrow: 'A SUA CARGA E A SUA FORMA',
+            eyebrow: 'A SUA CARGA E O SEU READINESS',
             title: 'O que vê',
             tone: 'blue',
-            items: ['A sua carga semana após semana', 'Onde está a sua forma hoje', 'O treino que o treinador planeou'],
+            items: [
+              'A sua carga, semana após semana',
+              'A sua curva de readiness, dia após dia',
+              'O treino que o treinador planeou',
+            ],
           },
         ],
-        foot: 'Um jogador que responde todas as manhãs lê a sua própria curva. Quem falha uma semana vê o buraco nela. A recolha assenta nisso, mais do que nos lembretes do staff.',
+        foot: 'Um jogador que responde todas as manhãs vê o seu readiness subir e descer. Quem falha uma semana vê o buraco na curva. A recolha assenta nisso, mais do que nos lembretes do staff.',
       },
       {
         kicker: 'TRATAMENTO',
@@ -1021,9 +1041,9 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'SU FORMA',
+        kicker: 'SU READINESS',
         title: 'Cuanto más da, más ve.',
-        body: 'Las sesiones que planificó el entrenador, sus RPE y sus check-ins alimentan las mismas curvas. El jugador abre las suyas en la app.',
+        body: 'Las sesiones que planificó el entrenador, sus RPE y sus check-ins alimentan la misma curva de readiness. El jugador abre la suya en la app.',
         kind: 'panels',
         panels: [
           {
@@ -1033,13 +1053,17 @@ export const playerApp: SubpageLocales = {
             items: ['El check-in de la mañana', 'El RPE después de la sesión'],
           },
           {
-            eyebrow: 'SU CARGA Y SU FORMA',
+            eyebrow: 'SU CARGA Y SU READINESS',
             title: 'Lo que ve',
             tone: 'blue',
-            items: ['Su carga semana tras semana', 'Dónde está su forma hoy', 'La sesión que el entrenador ha planificado'],
+            items: [
+              'Su carga, semana tras semana',
+              'Su curva de readiness, día tras día',
+              'La sesión que el entrenador ha planificado',
+            ],
           },
         ],
-        foot: 'Un jugador que responde cada mañana lee su propia curva. El que se salta una semana ve el hueco. La recogida se sostiene en eso, más que en los recordatorios del staff.',
+        foot: 'Un jugador que responde cada mañana ve su readiness subir y bajar. El que se salta una semana ve el hueco en la curva. La recogida se sostiene en eso, más que en los recordatorios del staff.',
       },
       {
         kicker: 'TRATAMIENTO',
