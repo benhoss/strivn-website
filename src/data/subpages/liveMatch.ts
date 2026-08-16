@@ -13,12 +13,12 @@ export const liveMatch: SubpageLocales = {
     meta: {
       title: 'Live match | STRIVN',
       description:
-        'Score, temps de jeu, cartons — et vos faits, la chaîne de joueurs derrière chaque but, sa qualification, et des observations dessinées. Tout fonctionne hors ligne.',
+        'Score, temps de jeu, cartons, plus vos faits, la chaîne de joueurs derrière chaque but, sa qualification, et des observations dessinées. Tout fonctionne hors ligne.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · TERRAIN',
       title: 'Le match s’encode pendant qu’il se joue.',
-      sub: 'Le score, les temps de jeu et les cartons — mais aussi les faits que votre équipe compte, la chaîne de joueurs derrière chaque but, sa qualification, et des observations dessinées sur un vrai terrain. Tout fonctionne hors ligne.',
+      sub: 'Le score, les temps de jeu et les cartons, mais aussi les faits que votre équipe compte, la chaîne de joueurs derrière chaque but, sa qualification, et des observations dessinées sur un vrai terrain. Tout fonctionne hors ligne.',
       bullets: [
         'Votre vocabulaire de match : vos faits, vos rôles, vos axes',
         'Un tap côté Nous ouvre la grille des joueurs, un second attribue',
@@ -63,7 +63,7 @@ export const liveMatch: SubpageLocales = {
           {
             icon: 'sigma',
             tone: 'blue',
-            text: 'Le compteur affiche le total réel. Il additionne les faits attribués et les faits non attribués — le nombre que vous lisez pendant le match n’est amputé de rien.',
+            text: 'Le compteur affiche le total réel. Il additionne les faits attribués et les faits non attribués. Le nombre que vous lisez pendant le match n’est amputé de rien.',
           },
         ],
       },
@@ -77,7 +77,7 @@ export const liveMatch: SubpageLocales = {
           {
             num: '01',
             title: 'Buteur',
-            desc: 'Déjà connu — vous venez de le taper. La chaîne démarre donc sur la première vraie question, pas sur une évidence.',
+            desc: 'Déjà connu : vous venez de le taper. La chaîne démarre donc sur la première vraie question, pas sur une évidence.',
           },
           {
             num: '02',
@@ -98,13 +98,13 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'corner-down-right',
           label: '« Passer ce rôle » laisse un vide, et continue',
-          desc: 'Une chaîne à trous est une chaîne valide — vous n’êtes pas obligé de tout savoir dans l’instant. Un joueur peut d’ailleurs tenir deux rôles : le garde qui refuse buteur = passeur ne vaut que pour les deux emplacements du score, jamais pour la chaîne.',
+          desc: 'Une chaîne à trous est une chaîne valide. Vous n’êtes pas obligé de tout savoir dans l’instant. Un joueur peut d’ailleurs tenir deux rôles : le garde qui refuse buteur = passeur ne vaut que pour les deux emplacements du score, jamais pour la chaîne.',
         },
       },
       {
         kicker: 'QUAND LA CHAÎNE EST FINIE',
         title: 'Le but vient d’être marqué. Vous avez trente secondes.',
-        body: 'L’écran présente vos axes côte à côte, chacun avec la valeur déjà donnée. Vous en choisissez un, vous répondez, vous revenez à la liste — ou vous vous arrêtez là. La plupart des buts ne méritent qu’un ou deux axes.',
+        body: 'L’écran présente vos axes côte à côte, chacun avec la valeur déjà donnée. Vous en choisissez un, vous répondez, vous revenez à la liste, ou vous vous arrêtez là. La plupart des buts ne méritent qu’un ou deux axes.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -132,7 +132,7 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'clock-3',
           label: 'Un axe qui découpe la minute n’est jamais demandé',
-          desc: 'L’application connaît déjà la minute du but : elle calcule « Timing » toute seule. Les axes de buts encaissés ne s’affichent pas non plus — la chaîne du direct porte sur un but que vous marquez, les autres se renseignent après le match, au calme.',
+          desc: 'L’application connaît déjà la minute du but : elle calcule « Timing » toute seule. Les axes de buts encaissés ne s’affichent pas non plus. La chaîne du direct porte sur un but que vous marquez, les autres se renseignent après le match, au calme.',
         },
       },
       {
@@ -191,12 +191,12 @@ export const liveMatch: SubpageLocales = {
     meta: {
       title: 'Live match | STRIVN',
       description:
-        'Score, minutes, cards — plus your own facts, the chain of players behind every goal, its qualification, and drawn observations. It all works offline.',
+        'Score, minutes, cards, plus your own facts, the chain of players behind every goal, its qualification, and drawn observations. It all works offline.',
     },
     hero: {
       kicker: 'FEATURES · PITCH-SIDE',
       title: 'The match is encoded while it is played.',
-      sub: 'The score, the minutes and the cards — but also the facts your team counts, the chain of players behind every goal, its qualification, and observations drawn on a real pitch for your sport. It all works offline.',
+      sub: 'The score, the minutes and the cards, but also the facts your team counts, the chain of players behind every goal, its qualification, and observations drawn on a real pitch for your sport. It all works offline.',
       bullets: [
         'Your match vocabulary: your facts, your roles, your axes',
         'A tap on our side opens the player grid, a second attributes it',
@@ -241,7 +241,7 @@ export const liveMatch: SubpageLocales = {
           {
             icon: 'sigma',
             tone: 'blue',
-            text: 'The counter shows the real total. It adds credited and uncredited facts together — the number you read during the match is missing nothing.',
+            text: 'The counter shows the real total. It adds credited and uncredited facts together. The number you read during the match is missing nothing.',
           },
         ],
       },
@@ -255,7 +255,7 @@ export const liveMatch: SubpageLocales = {
           {
             num: '01',
             title: 'Scorer',
-            desc: 'Already known — you have just tapped them. So the chain starts on the first real question, not on the obvious one.',
+            desc: 'Already known: you have just tapped them. So the chain starts on the first real question, not on the obvious one.',
           },
           {
             num: '02',
@@ -276,13 +276,13 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'corner-down-right',
           label: '“Skip this role” leaves a gap, and carries on',
-          desc: 'A chain with gaps is a valid chain — you are not required to know everything in the moment. A player can hold two roles, too: the guard that refuses scorer = assist only applies to the two score slots, never to the chain.',
+          desc: 'A chain with gaps is a valid chain. You are not required to know everything in the moment. A player can hold two roles, too: the guard that refuses scorer = assist only applies to the two score slots, never to the chain.',
         },
       },
       {
         kicker: 'ONCE THE CHAIN IS DONE',
         title: 'The goal has just gone in. You have thirty seconds.',
-        body: 'The screen lays your axes side by side, each with the value already given. You pick one, you answer, you come back to the list — or you stop there. Most goals only deserve one or two axes.',
+        body: 'The screen lays your axes side by side, each with the value already given. You pick one, you answer, you come back to the list, or you stop there. Most goals only deserve one or two axes.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -310,7 +310,7 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'clock-3',
           label: 'An axis that slices the minute is never asked for',
-          desc: 'The app already knows the minute of the goal: it works out “Timing” on its own. Conceded-goal axes do not appear either — the live chain is about a goal you score, the rest is filled in after the match, calmly.',
+          desc: 'The app already knows the minute of the goal: it works out “Timing” on its own. Conceded-goal axes do not appear either. The live chain is about a goal you score, the rest is filled in after the match, calmly.',
         },
       },
       {
@@ -369,12 +369,12 @@ export const liveMatch: SubpageLocales = {
     meta: {
       title: 'Live wedstrijd | STRIVN',
       description:
-        'Score, speelminuten, kaarten — plus jouw eigen feiten, de spelersketen achter elk doelpunt, de kwalificatie ervan, en getekende observaties. Alles werkt offline.',
+        'Score, speelminuten, kaarten, plus jouw eigen feiten, de spelersketen achter elk doelpunt, de kwalificatie ervan, en getekende observaties. Alles werkt offline.',
     },
     hero: {
       kicker: 'FUNCTIES · LANGS HET VELD',
       title: 'De wedstrijd wordt ingevoerd terwijl ze gespeeld wordt.',
-      sub: 'De score, de speelminuten en de kaarten — maar ook de feiten die jouw ploeg telt, de spelersketen achter elk doelpunt, de kwalificatie ervan, en observaties getekend op een echt veld van jouw sport. Alles werkt offline.',
+      sub: 'De score, de speelminuten en de kaarten, maar ook de feiten die jouw ploeg telt, de spelersketen achter elk doelpunt, de kwalificatie ervan, en observaties getekend op een echt veld van jouw sport. Alles werkt offline.',
       bullets: [
         'Jouw wedstrijdwoordenschat: jouw feiten, rollen en assen',
         'Eén tik aan onze kant opent het spelersraster, een tweede wijst toe',
@@ -419,7 +419,7 @@ export const liveMatch: SubpageLocales = {
           {
             icon: 'sigma',
             tone: 'blue',
-            text: 'De teller toont het echte totaal. Hij telt toegewezen en niet-toegewezen feiten samen — het getal dat je tijdens de wedstrijd leest mist niets.',
+            text: 'De teller toont het echte totaal. Hij telt toegewezen en niet-toegewezen feiten samen. Het getal dat je tijdens de wedstrijd leest mist niets.',
           },
         ],
       },
@@ -433,7 +433,7 @@ export const liveMatch: SubpageLocales = {
           {
             num: '01',
             title: 'Doelpuntenmaker',
-            desc: 'Al bekend — je hebt hem net aangetikt. De keten start dus op de eerste echte vraag, niet op een vanzelfsprekendheid.',
+            desc: 'Al bekend: je hebt hem net aangetikt. De keten start dus op de eerste echte vraag, niet op een vanzelfsprekendheid.',
           },
           {
             num: '02',
@@ -454,13 +454,13 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'corner-down-right',
           label: '“Deze rol overslaan” laat een gat, en gaat verder',
-          desc: 'Een keten met gaten is een geldige keten — je hoeft niet alles op het moment zelf te weten. Een speler kan trouwens twee rollen dragen: de regel die doelpuntenmaker = assist weigert geldt alleen voor de twee scoreplaatsen, nooit voor de keten.',
+          desc: 'Een keten met gaten is een geldige keten. Je hoeft niet alles op het moment zelf te weten. Een speler kan trouwens twee rollen dragen: de regel die doelpuntenmaker = assist weigert geldt alleen voor de twee scoreplaatsen, nooit voor de keten.',
         },
       },
       {
         kicker: 'ALS DE KETEN KLAAR IS',
         title: 'Het doelpunt is net gevallen. Je hebt dertig seconden.',
-        body: 'Het scherm zet je assen naast elkaar, elk met de reeds gegeven waarde. Je kiest er een, je antwoordt, je keert terug naar de lijst — of je stopt daar. De meeste doelpunten verdienen maar één of twee assen.',
+        body: 'Het scherm zet je assen naast elkaar, elk met de reeds gegeven waarde. Je kiest er een, je antwoordt, je keert terug naar de lijst, of je stopt daar. De meeste doelpunten verdienen maar één of twee assen.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -488,7 +488,7 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'clock-3',
           label: 'Een as die de minuut opdeelt wordt nooit gevraagd',
-          desc: 'De app kent de minuut van het doelpunt al: ze berekent “Timing” zelf. Assen van tegendoelpunten verschijnen evenmin — de live-keten gaat over een doelpunt dat jij maakt, de rest vul je na de wedstrijd in, in alle rust.',
+          desc: 'De app kent de minuut van het doelpunt al: ze berekent “Timing” zelf. Assen van tegendoelpunten verschijnen evenmin. De live-keten gaat over een doelpunt dat jij maakt, de rest vul je na de wedstrijd in, in alle rust.',
         },
       },
       {
@@ -547,12 +547,12 @@ export const liveMatch: SubpageLocales = {
     meta: {
       title: 'Live-Spiel | STRIVN',
       description:
-        'Ergebnis, Einsatzzeiten, Karten — dazu Ihre eigenen Aktionen, die Spielerkette hinter jedem Tor, dessen Einordnung und gezeichnete Beobachtungen. Alles läuft offline.',
+        'Ergebnis, Einsatzzeiten, Karten, dazu Ihre eigenen Aktionen, die Spielerkette hinter jedem Tor, dessen Einordnung und gezeichnete Beobachtungen. Alles läuft offline.',
     },
     hero: {
       kicker: 'FUNKTIONEN · AM PLATZ',
       title: 'Das Spiel wird erfasst, während es läuft.',
-      sub: 'Ergebnis, Einsatzzeiten und Karten — aber auch die Aktionen, die Ihre Mannschaft zählt, die Spielerkette hinter jedem Tor, dessen Einordnung und Beobachtungen, gezeichnet auf einem echten Feld Ihrer Sportart. Alles läuft offline.',
+      sub: 'Ergebnis, Einsatzzeiten und Karten, aber auch die Aktionen, die Ihre Mannschaft zählt, die Spielerkette hinter jedem Tor, dessen Einordnung und Beobachtungen, gezeichnet auf einem echten Feld Ihrer Sportart. Alles läuft offline.',
       bullets: [
         'Ihr Spielvokabular: Ihre Aktionen, Rollen und Achsen',
         'Ein Tippen auf unserer Seite öffnet das Spielerraster, ein zweites ordnet zu',
@@ -597,7 +597,7 @@ export const liveMatch: SubpageLocales = {
           {
             icon: 'sigma',
             tone: 'blue',
-            text: 'Der Zähler zeigt die echte Summe. Er addiert zugeordnete und nicht zugeordnete Aktionen — der Zahl, die Sie während des Spiels lesen, fehlt nichts.',
+            text: 'Der Zähler zeigt die echte Summe. Er addiert zugeordnete und nicht zugeordnete Aktionen. Der Zahl, die Sie während des Spiels lesen, fehlt nichts.',
           },
         ],
       },
@@ -611,7 +611,7 @@ export const liveMatch: SubpageLocales = {
           {
             num: '01',
             title: 'Torschütze',
-            desc: 'Schon bekannt — Sie haben ihn gerade getippt. Die Kette beginnt also bei der ersten echten Frage, nicht bei einer Selbstverständlichkeit.',
+            desc: 'Schon bekannt: Sie haben ihn gerade getippt. Die Kette beginnt also bei der ersten echten Frage, nicht bei einer Selbstverständlichkeit.',
           },
           {
             num: '02',
@@ -632,13 +632,13 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'corner-down-right',
           label: '„Diese Rolle überspringen“ lässt eine Lücke und macht weiter',
-          desc: 'Eine Kette mit Lücken ist eine gültige Kette — Sie müssen im Moment nicht alles wissen. Ein Spieler kann übrigens zwei Rollen halten: Die Sperre, die Torschütze = Vorlage verbietet, gilt nur für die beiden Plätze des Ergebnisses, nie für die Kette.',
+          desc: 'Eine Kette mit Lücken ist eine gültige Kette. Sie müssen im Moment nicht alles wissen. Ein Spieler kann übrigens zwei Rollen halten: Die Sperre, die Torschütze = Vorlage verbietet, gilt nur für die beiden Plätze des Ergebnisses, nie für die Kette.',
         },
       },
       {
         kicker: 'WENN DIE KETTE STEHT',
         title: 'Das Tor ist gerade gefallen. Sie haben dreißig Sekunden.',
-        body: 'Der Bildschirm legt Ihre Achsen nebeneinander, jede mit dem bereits gegebenen Wert. Sie wählen eine, Sie antworten, Sie kehren zur Liste zurück — oder Sie hören auf. Die meisten Tore verdienen nur ein oder zwei Achsen.',
+        body: 'Der Bildschirm legt Ihre Achsen nebeneinander, jede mit dem bereits gegebenen Wert. Sie wählen eine, Sie antworten, Sie kehren zur Liste zurück, oder Sie hören auf. Die meisten Tore verdienen nur ein oder zwei Achsen.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -666,7 +666,7 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'clock-3',
           label: 'Eine Achse, die die Minute zerteilt, wird nie abgefragt',
-          desc: 'Die App kennt die Minute des Tores bereits: Sie berechnet „Timing“ selbst. Achsen für Gegentore erscheinen ebenfalls nicht — die Live-Kette betrifft ein Tor, das Sie erzielen, der Rest wird nach dem Spiel in Ruhe eingetragen.',
+          desc: 'Die App kennt die Minute des Tores bereits: Sie berechnet „Timing“ selbst. Achsen für Gegentore erscheinen ebenfalls nicht. Die Live-Kette betrifft ein Tor, das Sie erzielen, der Rest wird nach dem Spiel in Ruhe eingetragen.',
         },
       },
       {
@@ -725,12 +725,12 @@ export const liveMatch: SubpageLocales = {
     meta: {
       title: 'Jogo em direto | STRIVN',
       description:
-        'Resultado, minutos, cartões — e ainda os seus factos, a cadeia de jogadores atrás de cada golo, a sua qualificação, e observações desenhadas. Tudo funciona offline.',
+        'Resultado, minutos, cartões, e ainda os seus factos, a cadeia de jogadores atrás de cada golo, a sua qualificação, e observações desenhadas. Tudo funciona offline.',
     },
     hero: {
       kicker: 'FUNCIONALIDADES · NO CAMPO',
       title: 'O jogo regista-se enquanto se joga.',
-      sub: 'O resultado, os minutos e os cartões — mas também os factos que a sua equipa conta, a cadeia de jogadores atrás de cada golo, a sua qualificação, e observações desenhadas num campo real da sua modalidade. Tudo funciona offline.',
+      sub: 'O resultado, os minutos e os cartões, mas também os factos que a sua equipa conta, a cadeia de jogadores atrás de cada golo, a sua qualificação, e observações desenhadas num campo real da sua modalidade. Tudo funciona offline.',
       bullets: [
         'O seu vocabulário de jogo: os seus factos, papéis e eixos',
         'Um toque do lado Nós abre a grelha de jogadores, um segundo atribui',
@@ -775,7 +775,7 @@ export const liveMatch: SubpageLocales = {
           {
             icon: 'sigma',
             tone: 'blue',
-            text: 'O contador mostra o total real. Soma os factos atribuídos e os não atribuídos — ao número que lê durante o jogo não falta nada.',
+            text: 'O contador mostra o total real. Soma os factos atribuídos e os não atribuídos. Ao número que lê durante o jogo não falta nada.',
           },
         ],
       },
@@ -789,7 +789,7 @@ export const liveMatch: SubpageLocales = {
           {
             num: '01',
             title: 'Marcador',
-            desc: 'Já conhecido — acabou de o tocar. A cadeia começa portanto na primeira pergunta a sério, não numa evidência.',
+            desc: 'Já conhecido: acabou de o tocar. A cadeia começa portanto na primeira pergunta a sério, não numa evidência.',
           },
           {
             num: '02',
@@ -810,13 +810,13 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'corner-down-right',
           label: '«Saltar este papel» deixa um vazio, e continua',
-          desc: 'Uma cadeia com falhas é uma cadeia válida — não é obrigado a saber tudo no momento. Um jogador pode aliás ocupar dois papéis: a regra que recusa marcador = assistência só vale para os dois lugares do resultado, nunca para a cadeia.',
+          desc: 'Uma cadeia com falhas é uma cadeia válida. Não é obrigado a saber tudo no momento. Um jogador pode aliás ocupar dois papéis: a regra que recusa marcador = assistência só vale para os dois lugares do resultado, nunca para a cadeia.',
         },
       },
       {
         kicker: 'QUANDO A CADEIA ESTÁ FEITA',
         title: 'O golo acabou de entrar. Tem trinta segundos.',
-        body: 'O ecrã apresenta os seus eixos lado a lado, cada um com o valor já dado. Escolhe um, responde, volta à lista — ou fica-se por aí. A maioria dos golos só merece um ou dois eixos.',
+        body: 'O ecrã apresenta os seus eixos lado a lado, cada um com o valor já dado. Escolhe um, responde, volta à lista, ou fica-se por aí. A maioria dos golos só merece um ou dois eixos.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -844,7 +844,7 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'clock-3',
           label: 'Um eixo que recorta o minuto nunca é pedido',
-          desc: 'A aplicação já conhece o minuto do golo: calcula «Timing» sozinha. Os eixos de golos sofridos também não aparecem — a cadeia do direto é sobre um golo que marca, os restantes preenchem-se depois do jogo, com calma.',
+          desc: 'A aplicação já conhece o minuto do golo: calcula «Timing» sozinha. Os eixos de golos sofridos também não aparecem. A cadeia do direto é sobre um golo que marca, os restantes preenchem-se depois do jogo, com calma.',
         },
       },
       {
@@ -903,12 +903,12 @@ export const liveMatch: SubpageLocales = {
     meta: {
       title: 'Partido en directo | STRIVN',
       description:
-        'Marcador, minutos, tarjetas — y también tus hechos, la cadena de jugadores detrás de cada gol, su calificación, y observaciones dibujadas. Todo funciona sin conexión.',
+        'Marcador, minutos, tarjetas, y también tus hechos, la cadena de jugadores detrás de cada gol, su calificación, y observaciones dibujadas. Todo funciona sin conexión.',
     },
     hero: {
       kicker: 'FUNCIONALIDADES · A PIE DE CAMPO',
       title: 'El partido se registra mientras se juega.',
-      sub: 'El marcador, los minutos y las tarjetas — pero también los hechos que tu equipo cuenta, la cadena de jugadores detrás de cada gol, su calificación, y observaciones dibujadas sobre un campo real de tu deporte. Todo funciona sin conexión.',
+      sub: 'El marcador, los minutos y las tarjetas, pero también los hechos que tu equipo cuenta, la cadena de jugadores detrás de cada gol, su calificación, y observaciones dibujadas sobre un campo real de tu deporte. Todo funciona sin conexión.',
       bullets: [
         'Tu vocabulario de partido: tus hechos, roles y ejes',
         'Un toque del lado Nosotros abre la rejilla de jugadores, un segundo atribuye',
@@ -953,7 +953,7 @@ export const liveMatch: SubpageLocales = {
           {
             icon: 'sigma',
             tone: 'blue',
-            text: 'El contador muestra el total real. Suma los hechos atribuidos y los no atribuidos — al número que lees durante el partido no le falta nada.',
+            text: 'El contador muestra el total real. Suma los hechos atribuidos y los no atribuidos. Al número que lees durante el partido no le falta nada.',
           },
         ],
       },
@@ -967,7 +967,7 @@ export const liveMatch: SubpageLocales = {
           {
             num: '01',
             title: 'Goleador',
-            desc: 'Ya conocido — acabas de tocarlo. La cadena arranca por tanto en la primera pregunta de verdad, no en una evidencia.',
+            desc: 'Ya conocido: acabas de tocarlo. La cadena arranca por tanto en la primera pregunta de verdad, no en una evidencia.',
           },
           {
             num: '02',
@@ -988,13 +988,13 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'corner-down-right',
           label: '«Saltar este rol» deja un hueco, y continúa',
-          desc: 'Una cadena con huecos es una cadena válida — no estás obligado a saberlo todo en el momento. Un jugador puede además ocupar dos roles: la regla que rechaza goleador = asistencia solo vale para los dos puestos del marcador, nunca para la cadena.',
+          desc: 'Una cadena con huecos es una cadena válida. No estás obligado a saberlo todo en el momento. Un jugador puede además ocupar dos roles: la regla que rechaza goleador = asistencia solo vale para los dos puestos del marcador, nunca para la cadena.',
         },
       },
       {
         kicker: 'CUANDO LA CADENA ESTÁ HECHA',
         title: 'El gol acaba de entrar. Tienes treinta segundos.',
-        body: 'La pantalla presenta tus ejes uno al lado del otro, cada uno con el valor ya dado. Eliges uno, respondes, vuelves a la lista — o te paras ahí. La mayoría de los goles solo merecen uno o dos ejes.',
+        body: 'La pantalla presenta tus ejes uno al lado del otro, cada uno con el valor ya dado. Eliges uno, respondes, vuelves a la lista, o te paras ahí. La mayoría de los goles solo merecen uno o dos ejes.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -1022,7 +1022,7 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'clock-3',
           label: 'Un eje que recorta el minuto nunca se pide',
-          desc: 'La aplicación ya conoce el minuto del gol: calcula «Timing» sola. Los ejes de goles encajados tampoco aparecen — la cadena del directo trata de un gol que marcas, el resto se rellena tras el partido, con calma.',
+          desc: 'La aplicación ya conoce el minuto del gol: calcula «Timing» sola. Los ejes de goles encajados tampoco aparecen. La cadena del directo trata de un gol que marcas, el resto se rellena tras el partido, con calma.',
         },
       },
       {

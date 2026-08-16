@@ -66,7 +66,7 @@ export const sessions: SubpageLocales = {
       {
         kicker: 'CE QU’IL NE FAIT PAS',
         title: 'Le planificateur ne crée jamais de séance.',
-        body: 'Les séances, les horaires et les convocations restent gérés depuis le calendrier, par le coach. Le préparateur y ajoute de la charge — et rien d’autre. Deux rôles, un seul calendrier.',
+        body: 'Les séances, les horaires et les convocations restent gérés depuis le calendrier, par le coach. Le préparateur y ajoute de la charge, et rien d’autre. Deux rôles, un seul calendrier.',
         kind: 'panels',
         panels: [
           {
@@ -94,7 +94,7 @@ export const sessions: SubpageLocales = {
           {
             eyebrow: 'CATÉGORIES',
             title: 'Catégories de charge',
-            desc: 'Renommer, ajouter ou repondérer — le coefficient pèse la charge. Une prévisualisation « 60 min @ RPE 7 ≈ N UA » montre l’effet avant d’enregistrer.',
+            desc: 'Renommer, ajouter ou repondérer : le coefficient pèse la charge. Une prévisualisation « 60 min @ RPE 7 ≈ N UA » montre l’effet avant d’enregistrer.',
           },
           {
             eyebrow: 'MODÈLES',
@@ -138,7 +138,7 @@ export const sessions: SubpageLocales = {
           {
             icon: 'copy',
             tone: 'blue',
-            text: '« Copier → » duplique tous les événements de la semaine courante sur la suivante, en un clic. Pratique pour les semaines type — et sans effet sur les réponses déjà données.',
+            text: '« Copier → » duplique tous les événements de la semaine courante sur la suivante, en un clic. Pratique pour les semaines type, et sans effet sur les réponses déjà données.',
           },
         ],
       },
@@ -172,7 +172,7 @@ export const sessions: SubpageLocales = {
         note: {
           icon: 'arrow-left-right',
           label: 'Votre 7 face à leur 9',
-          desc: 'Le bilan met votre RPE et la moyenne de ceux qui ont couru côte à côte. Un écart marqué ne dit pas qui a raison — il dit que la séance n’a pas été vécue comme vous l’aviez pensée, et que ça vaut une question.',
+          desc: 'Le bilan met votre RPE et la moyenne de ceux qui ont couru côte à côte. Un écart marqué ne dit pas qui a raison. Il dit que la séance n’a pas été vécue comme vous l’aviez pensée, et que ça vaut une question.',
         },
       },
     ],
@@ -238,7 +238,7 @@ export const sessions: SubpageLocales = {
       {
         kicker: 'WHAT IT DOES NOT DO',
         title: 'The planner never creates a session.',
-        body: 'Sessions, times and call-ups stay in the calendar, managed by the coach. The S&C coach adds load there — and nothing else. Two roles, one calendar.',
+        body: 'Sessions, times and call-ups stay in the calendar, managed by the coach. The S&C coach adds load there, and nothing else. Two roles, one calendar.',
         kind: 'panels',
         panels: [
           {
@@ -266,7 +266,7 @@ export const sessions: SubpageLocales = {
           {
             eyebrow: 'CATEGORIES',
             title: 'Load categories',
-            desc: 'Rename, add or reweight — the coefficient weighs the load. A preview, “60 min @ RPE 7 ≈ N AU”, shows the effect before you save.',
+            desc: 'Rename, add or reweight: the coefficient weighs the load. A preview, “60 min @ RPE 7 ≈ N AU”, shows the effect before you save.',
           },
           {
             eyebrow: 'TEMPLATES',
@@ -310,7 +310,7 @@ export const sessions: SubpageLocales = {
           {
             icon: 'copy',
             tone: 'blue',
-            text: '“Copy →” duplicates every event in the current week onto the next one, in a click. Handy for template weeks — and it leaves answers already given untouched.',
+            text: '“Copy →” duplicates every event in the current week onto the next one, in a click. Handy for template weeks, and it leaves answers already given untouched.',
           },
         ],
       },
@@ -344,7 +344,7 @@ export const sessions: SubpageLocales = {
         note: {
           icon: 'arrow-left-right',
           label: 'Your 7 against their 9',
-          desc: 'The debrief puts your RPE and the average of those who ran side by side. A wide gap does not say who is right — it says the session was not experienced the way you designed it, and that is worth a question.',
+          desc: 'The debrief puts your RPE and the average of those who ran side by side. A wide gap does not say who is right. It says the session was not experienced the way you designed it, and that is worth a question.',
         },
       },
     ],
@@ -410,7 +410,7 @@ export const sessions: SubpageLocales = {
       {
         kicker: 'WAT HIJ NIET DOET',
         title: 'De planner maakt nooit een training aan.',
-        body: 'Trainingen, uren en oproepingen blijven in de kalender, beheerd door de coach. De fysiek trainer voegt daar belasting aan toe — en niets anders. Twee rollen, één kalender.',
+        body: 'Trainingen, uren en oproepingen blijven in de kalender, beheerd door de coach. De fysiek trainer voegt daar belasting aan toe, en niets anders. Twee rollen, één kalender.',
         kind: 'panels',
         panels: [
           {
@@ -438,7 +438,7 @@ export const sessions: SubpageLocales = {
           {
             eyebrow: 'CATEGORIEËN',
             title: 'Belastingscategorieën',
-            desc: 'Hernoemen, toevoegen of herwegen — de coëfficiënt weegt de belasting. Een voorbeeld, “60 min @ RPE 7 ≈ N AE”, toont het effect voor je bewaart.',
+            desc: 'Hernoemen, toevoegen of herwegen: de coëfficiënt weegt de belasting. Een voorbeeld, “60 min @ RPE 7 ≈ N AE”, toont het effect voor je bewaart.',
           },
           {
             eyebrow: 'SJABLONEN',
@@ -482,7 +482,7 @@ export const sessions: SubpageLocales = {
           {
             icon: 'copy',
             tone: 'blue',
-            text: '“Kopiëren →” dupliceert alle activiteiten van de huidige week naar de volgende, in één klik. Handig voor typeweken — en zonder gevolgen voor reeds gegeven antwoorden.',
+            text: '“Kopiëren →” dupliceert alle activiteiten van de huidige week naar de volgende, in één klik. Handig voor typeweken, en zonder gevolgen voor reeds gegeven antwoorden.',
           },
         ],
       },
@@ -516,7 +516,7 @@ export const sessions: SubpageLocales = {
         note: {
           icon: 'arrow-left-right',
           label: 'Jouw 7 tegenover hun 9',
-          desc: 'De nabespreking zet jouw RPE en het gemiddelde van wie gelopen heeft naast elkaar. Een groot verschil zegt niet wie gelijk heeft — het zegt dat de training niet beleefd is zoals je ze bedacht had, en dat dat een vraag waard is.',
+          desc: 'De nabespreking zet jouw RPE en het gemiddelde van wie gelopen heeft naast elkaar. Een groot verschil zegt niet wie gelijk heeft. Het zegt dat de training niet beleefd is zoals je ze bedacht had, en dat dat een vraag waard is.',
         },
       },
     ],
@@ -582,7 +582,7 @@ export const sessions: SubpageLocales = {
       {
         kicker: 'WAS ER NICHT TUT',
         title: 'Der Planer erstellt nie eine Einheit.',
-        body: 'Einheiten, Zeiten und Aufgebote bleiben im Kalender, verwaltet vom Trainer. Der Athletiktrainer fügt dort Belastung hinzu — und sonst nichts. Zwei Rollen, ein Kalender.',
+        body: 'Einheiten, Zeiten und Aufgebote bleiben im Kalender, verwaltet vom Trainer. Der Athletiktrainer fügt dort Belastung hinzu, und sonst nichts. Zwei Rollen, ein Kalender.',
         kind: 'panels',
         panels: [
           {
@@ -610,7 +610,7 @@ export const sessions: SubpageLocales = {
           {
             eyebrow: 'KATEGORIEN',
             title: 'Belastungskategorien',
-            desc: 'Umbenennen, ergänzen oder neu gewichten — der Koeffizient wiegt die Belastung. Eine Vorschau, „60 Min @ RPE 7 ≈ N AE“, zeigt die Wirkung vor dem Speichern.',
+            desc: 'Umbenennen, ergänzen oder neu gewichten: der Koeffizient wiegt die Belastung. Eine Vorschau, „60 Min @ RPE 7 ≈ N AE“, zeigt die Wirkung vor dem Speichern.',
           },
           {
             eyebrow: 'VORLAGEN',
@@ -654,7 +654,7 @@ export const sessions: SubpageLocales = {
           {
             icon: 'copy',
             tone: 'blue',
-            text: '„Kopieren →“ dupliziert alle Termine der laufenden Woche auf die nächste, mit einem Klick. Praktisch für Musterwochen — und ohne Wirkung auf bereits gegebene Antworten.',
+            text: '„Kopieren →“ dupliziert alle Termine der laufenden Woche auf die nächste, mit einem Klick. Praktisch für Musterwochen, und ohne Wirkung auf bereits gegebene Antworten.',
           },
         ],
       },
@@ -688,7 +688,7 @@ export const sessions: SubpageLocales = {
         note: {
           icon: 'arrow-left-right',
           label: 'Ihre 7 gegen deren 9',
-          desc: 'Die Nachbesprechung stellt Ihren RPE und den Mittelwert derer, die gelaufen sind, nebeneinander. Eine große Abweichung sagt nicht, wer recht hat — sie sagt, dass die Einheit nicht so erlebt wurde, wie Sie sie gedacht hatten, und dass das eine Frage wert ist.',
+          desc: 'Die Nachbesprechung stellt Ihren RPE und den Mittelwert derer, die gelaufen sind, nebeneinander. Eine große Abweichung sagt nicht, wer recht hat. Sie sagt, dass die Einheit nicht so erlebt wurde, wie Sie sie gedacht hatten, und dass das eine Frage wert ist.',
         },
       },
     ],
@@ -754,7 +754,7 @@ export const sessions: SubpageLocales = {
       {
         kicker: 'O QUE NÃO FAZ',
         title: 'O planeador nunca cria um treino.',
-        body: 'Os treinos, os horários e as convocatórias continuam a ser geridos no calendário, pelo treinador. O preparador acrescenta-lhe carga — e mais nada. Dois papéis, um só calendário.',
+        body: 'Os treinos, os horários e as convocatórias continuam a ser geridos no calendário, pelo treinador. O preparador acrescenta-lhe carga, e mais nada. Dois papéis, um só calendário.',
         kind: 'panels',
         panels: [
           {
@@ -782,7 +782,7 @@ export const sessions: SubpageLocales = {
           {
             eyebrow: 'CATEGORIAS',
             title: 'Categorias de carga',
-            desc: 'Renomear, acrescentar ou repesar — o coeficiente pesa a carga. Uma pré-visualização, «60 min @ RPE 7 ≈ N UA», mostra o efeito antes de gravar.',
+            desc: 'Renomear, acrescentar ou repesar: o coeficiente pesa a carga. Uma pré-visualização, «60 min @ RPE 7 ≈ N UA», mostra o efeito antes de gravar.',
           },
           {
             eyebrow: 'MODELOS',
@@ -826,7 +826,7 @@ export const sessions: SubpageLocales = {
           {
             icon: 'copy',
             tone: 'blue',
-            text: '«Copiar →» duplica todos os eventos da semana atual para a seguinte, num clique. Prático para as semanas-tipo — e sem efeito nas respostas já dadas.',
+            text: '«Copiar →» duplica todos os eventos da semana atual para a seguinte, num clique. Prático para as semanas-tipo, e sem efeito nas respostas já dadas.',
           },
         ],
       },
@@ -860,7 +860,7 @@ export const sessions: SubpageLocales = {
         note: {
           icon: 'arrow-left-right',
           label: 'O seu 7 face ao 9 deles',
-          desc: 'O balanço põe o seu RPE e a média de quem correu lado a lado. Um desvio marcado não diz quem tem razão — diz que o treino não foi vivido como o tinha pensado, e que isso vale uma pergunta.',
+          desc: 'O balanço põe o seu RPE e a média de quem correu lado a lado. Um desvio marcado não diz quem tem razão. Diz que o treino não foi vivido como o tinha pensado, e que isso vale uma pergunta.',
         },
       },
     ],
@@ -926,7 +926,7 @@ export const sessions: SubpageLocales = {
       {
         kicker: 'LO QUE NO HACE',
         title: 'El planificador nunca crea una sesión.',
-        body: 'Las sesiones, los horarios y las convocatorias se siguen gestionando desde el calendario, por el entrenador. El preparador le añade carga — y nada más. Dos roles, un solo calendario.',
+        body: 'Las sesiones, los horarios y las convocatorias se siguen gestionando desde el calendario, por el entrenador. El preparador le añade carga, y nada más. Dos roles, un solo calendario.',
         kind: 'panels',
         panels: [
           {
@@ -954,7 +954,7 @@ export const sessions: SubpageLocales = {
           {
             eyebrow: 'CATEGORÍAS',
             title: 'Categorías de carga',
-            desc: 'Renombrar, añadir o reponderar — el coeficiente pesa la carga. Una vista previa, «60 min @ RPE 7 ≈ N UA», muestra el efecto antes de guardar.',
+            desc: 'Renombrar, añadir o reponderar: el coeficiente pesa la carga. Una vista previa, «60 min @ RPE 7 ≈ N UA», muestra el efecto antes de guardar.',
           },
           {
             eyebrow: 'PLANTILLAS',
@@ -998,7 +998,7 @@ export const sessions: SubpageLocales = {
           {
             icon: 'copy',
             tone: 'blue',
-            text: '«Copiar →» duplica todos los eventos de la semana actual en la siguiente, en un clic. Práctico para las semanas tipo — y sin efecto sobre las respuestas ya dadas.',
+            text: '«Copiar →» duplica todos los eventos de la semana actual en la siguiente, en un clic. Práctico para las semanas tipo, y sin efecto sobre las respuestas ya dadas.',
           },
         ],
       },
@@ -1032,7 +1032,7 @@ export const sessions: SubpageLocales = {
         note: {
           icon: 'arrow-left-right',
           label: 'Tu 7 frente a su 9',
-          desc: 'El balance pone tu RPE y la media de los que han corrido uno al lado del otro. Una desviación marcada no dice quién tiene razón — dice que la sesión no se ha vivido como la habías pensado, y que eso merece una pregunta.',
+          desc: 'El balance pone tu RPE y la media de los que han corrido uno al lado del otro. Una desviación marcada no dice quién tiene razón. Dice que la sesión no se ha vivido como la habías pensado, y que eso merece una pregunta.',
         },
       },
     ],

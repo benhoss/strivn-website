@@ -18,7 +18,7 @@ export const trainingLoad: SubpageLocales = {
     hero: {
       kicker: 'FONCTIONNALITÉS · MONITORING',
       title: 'Le ressenti d’un côté, le GPS de l’autre. Sur le même écran.',
-      sub: 'Le RPE du bilan et la durée donnent la charge interne. Votre export GPS donne la charge externe. STRIVN les met face à face — ACWR, monotonie, contrainte et ratio se calculent seuls.',
+      sub: 'Le RPE du bilan et la durée donnent la charge interne. Votre export GPS donne la charge externe. STRIVN les met face à face. ACWR, monotonie, contrainte et ratio se calculent seuls.',
       bullets: [
         'Charge sRPE : RPE × durée, coefficients match et entraînement réglables',
         'ACWR, monotonie et contrainte, semaine après semaine',
@@ -55,7 +55,7 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Ratio externe ÷ interne',
             sub: 'charge GPS ÷ sRPE',
-            desc: 'Aucun sens absolu — les deux mesures n’ont pas la même unité. Le seul repère est l’écart à la base 28 jours du joueur lui-même.',
+            desc: 'Aucun sens absolu. Les deux mesures n’ont pas la même unité. Le seul repère est l’écart à la base 28 jours du joueur lui-même.',
             chip: { label: 'vs base 28 j' },
           },
         ],
@@ -114,7 +114,7 @@ export const trainingLoad: SubpageLocales = {
         ],
         note: {
           label: 'Le troisième : Mesure',
-          desc: 'Distance ou Temps : les mêmes blocs, dans l’autre unité. Chaque bloc a une cible par mesure — vous pouvez viser 4 200 m d’aérobie et 15 minutes, indépendamment. Enregistrer l’une ne touche pas l’autre.',
+          desc: 'Distance ou Temps : les mêmes blocs, dans l’autre unité. Chaque bloc a une cible par mesure : vous pouvez viser 4 200 m d’aérobie et 15 minutes, indépendamment. Enregistrer l’une ne touche pas l’autre.',
         },
       },
       {
@@ -160,11 +160,11 @@ export const trainingLoad: SubpageLocales = {
         cols: [
           {
             title: 'Vos données ne bougent pas',
-            desc: 'La charge reste enregistrée en UA. L’unité ne change que ce que vous lisez et ce que vous saisissez — vous pouvez revenir en arrière quand vous voulez, l’historique se relit simplement dans la nouvelle unité.',
+            desc: 'La charge reste enregistrée en UA. L’unité ne change que ce que vous lisez et ce que vous saisissez. Vous pouvez revenir en arrière quand vous voulez, l’historique se relit simplement dans la nouvelle unité.',
           },
           {
             title: 'Tous les écrans suivent',
-            desc: 'Charge et tendances, planification, prévu vs réalisé, saison, déroulé de séance, bilans, rapports — et le portail des joueurs. Vos objectifs hebdomadaires se tapent directement dans votre unité.',
+            desc: 'Charge et tendances, planification, prévu vs réalisé, saison, déroulé de séance, bilans, rapports et le portail des joueurs. Vos objectifs hebdomadaires se tapent directement dans votre unité.',
           },
           {
             title: 'Les ratios gardent leur échelle',
@@ -180,7 +180,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'Le nom devient obligatoire dès que l’équivalence quitte 1 — sinon des valeurs converties s’afficheraient sous le sigle « UA », qui n’est plus le bon.',
+            text: 'Le nom devient obligatoire dès que l’équivalence quitte 1. Sinon, des valeurs converties s’afficheraient sous le sigle « UA », qui n’est plus le bon.',
           },
         ],
       },
@@ -197,7 +197,7 @@ export const trainingLoad: SubpageLocales = {
     hero: {
       kicker: 'FEATURES · MONITORING',
       title: 'Perceived effort on one side, GPS on the other. Same screen.',
-      sub: 'The RPE from the debrief and the duration give internal load. Your GPS export gives external load. STRIVN puts them side by side — ACWR, monotony, strain and the ratio compute themselves.',
+      sub: 'The RPE from the debrief and the duration give internal load. Your GPS export gives external load. STRIVN puts them side by side. ACWR, monotony, strain and the ratio compute themselves.',
       bullets: [
         'sRPE load: RPE × duration, with adjustable match and training coefficients',
         'ACWR, monotony and strain, week after week',
@@ -234,7 +234,7 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'External ÷ internal ratio',
             sub: 'GPS load ÷ sRPE',
-            desc: 'No absolute meaning — the two measures do not share a unit. The only reference is the gap to the player’s own 28-day baseline.',
+            desc: 'No absolute meaning. The two measures do not share a unit. The only reference is the gap to the player’s own 28-day baseline.',
             chip: { label: 'vs 28-day base' },
           },
         ],
@@ -293,7 +293,7 @@ export const trainingLoad: SubpageLocales = {
         ],
         note: {
           label: 'The third one: Measure',
-          desc: 'Distance or Time: the same blocks, in the other unit. Each block has a target per measure — you can aim for 4,200 m of aerobic work and 15 minutes, independently. Saving one does not touch the other.',
+          desc: 'Distance or Time: the same blocks, in the other unit. Each block has a target per measure: you can aim for 4,200 m of aerobic work and 15 minutes, independently. Saving one does not touch the other.',
         },
       },
       {
@@ -339,11 +339,11 @@ export const trainingLoad: SubpageLocales = {
         cols: [
           {
             title: 'Your data does not move',
-            desc: 'Load stays recorded in AU. The unit only changes what you read and what you type — you can switch back whenever you like, and the history simply reads in the new unit.',
+            desc: 'Load stays recorded in AU. The unit only changes what you read and what you type. You can switch back whenever you like, and the history simply reads in the new unit.',
           },
           {
             title: 'Every screen follows',
-            desc: 'Load and trends, planning, planned vs actual, season, session run-through, debriefs, reports — and the player portal. Your weekly targets are typed straight in your unit.',
+            desc: 'Load and trends, planning, planned vs actual, season, session run-through, debriefs, reports, and the player portal. Your weekly targets are typed straight in your unit.',
           },
           {
             title: 'Ratios keep their scale',
@@ -359,7 +359,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'The name becomes mandatory as soon as the equivalence leaves 1 — otherwise converted values would show under the symbol “AU”, which is no longer the right one.',
+            text: 'The name becomes mandatory as soon as the equivalence leaves 1. Otherwise converted values would show under the symbol “AU”, which is no longer the right one.',
           },
         ],
       },
@@ -376,7 +376,7 @@ export const trainingLoad: SubpageLocales = {
     hero: {
       kicker: 'FUNCTIES · MONITORING',
       title: 'Het gevoel aan de ene kant, de GPS aan de andere. Zelfde scherm.',
-      sub: 'De RPE uit de nabespreking en de duur geven de interne belasting. Je gps-export geeft de externe. STRIVN zet ze naast elkaar — ACWR, monotonie, strain en de verhouding rekenen zichzelf uit.',
+      sub: 'De RPE uit de nabespreking en de duur geven de interne belasting. Je gps-export geeft de externe. STRIVN zet ze naast elkaar. ACWR, monotonie, strain en de verhouding rekenen zichzelf uit.',
       bullets: [
         'sRPE-belasting: RPE × duur, met instelbare coëfficiënten voor wedstrijd en training',
         'ACWR, monotonie en strain, week na week',
@@ -413,7 +413,7 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Verhouding extern ÷ intern',
             sub: 'gps-belasting ÷ sRPE',
-            desc: 'Geen absolute betekenis — beide metingen delen geen eenheid. Het enige ijkpunt is het verschil met de eigen basislijn van 28 dagen.',
+            desc: 'Geen absolute betekenis. Beide metingen delen geen eenheid. Het enige ijkpunt is het verschil met de eigen basislijn van 28 dagen.',
             chip: { label: 'vs basis 28 d' },
           },
         ],
@@ -472,7 +472,7 @@ export const trainingLoad: SubpageLocales = {
         ],
         note: {
           label: 'De derde: Meting',
-          desc: 'Afstand of Tijd: dezelfde blokken, in de andere eenheid. Elk blok heeft een doel per meting — je kunt onafhankelijk mikken op 4 200 m aeroob en 15 minuten. Het ene opslaan raakt het andere niet.',
+          desc: 'Afstand of Tijd: dezelfde blokken, in de andere eenheid. Elk blok heeft een doel per meting: je kunt onafhankelijk mikken op 4 200 m aeroob en 15 minuten. Het ene opslaan raakt het andere niet.',
         },
       },
       {
@@ -518,11 +518,11 @@ export const trainingLoad: SubpageLocales = {
         cols: [
           {
             title: 'Je gegevens verschuiven niet',
-            desc: 'De belasting blijft in AE opgeslagen. De eenheid wijzigt alleen wat je leest en wat je invoert — je kunt altijd terug, en de historiek leest gewoon in de nieuwe eenheid.',
+            desc: 'De belasting blijft in AE opgeslagen. De eenheid wijzigt alleen wat je leest en wat je invoert. Je kunt altijd terug, en de historiek leest gewoon in de nieuwe eenheid.',
           },
           {
             title: 'Alle schermen volgen',
-            desc: 'Belasting en trends, planning, gepland vs gerealiseerd, seizoen, verloop van de training, nabesprekingen, rapporten — en het spelersportaal. Je weekdoelen typ je meteen in je eenheid.',
+            desc: 'Belasting en trends, planning, gepland vs gerealiseerd, seizoen, verloop van de training, nabesprekingen, rapporten en het spelersportaal. Je weekdoelen typ je meteen in je eenheid.',
           },
           {
             title: 'Verhoudingen houden hun schaal',
@@ -538,7 +538,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'De naam wordt verplicht zodra de gelijkwaardigheid 1 verlaat — anders zouden omgerekende waarden onder de afkorting “AE” verschijnen, die dan niet meer klopt.',
+            text: 'De naam wordt verplicht zodra de gelijkwaardigheid 1 verlaat. Anders zouden omgerekende waarden onder de afkorting “AE” verschijnen, die dan niet meer klopt.',
           },
         ],
       },
@@ -555,7 +555,7 @@ export const trainingLoad: SubpageLocales = {
     hero: {
       kicker: 'FUNKTIONEN · MONITORING',
       title: 'Das Empfinden auf der einen Seite, das GPS auf der anderen. Ein Bildschirm.',
-      sub: 'RPE aus der Nachbesprechung und Dauer ergeben die interne Belastung. Ihr GPS-Export die externe. STRIVN stellt beide gegenüber — ACWR, Monotonie, Strain und Verhältnis rechnen sich von selbst.',
+      sub: 'RPE aus der Nachbesprechung und Dauer ergeben die interne Belastung. Ihr GPS-Export die externe. STRIVN stellt beide gegenüber. ACWR, Monotonie, Strain und Verhältnis rechnen sich von selbst.',
       bullets: [
         'sRPE-Belastung: RPE × Dauer, mit einstellbaren Koeffizienten für Spiel und Training',
         'ACWR, Monotonie und Strain, Woche für Woche',
@@ -592,7 +592,7 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Verhältnis extern ÷ intern',
             sub: 'GPS-Belastung ÷ sRPE',
-            desc: 'Keine absolute Bedeutung — beide Größen teilen keine Einheit. Der einzige Bezug ist der Abstand zur eigenen 28-Tage-Basis des Spielers.',
+            desc: 'Keine absolute Bedeutung. Beide Größen teilen keine Einheit. Der einzige Bezug ist der Abstand zur eigenen 28-Tage-Basis des Spielers.',
             chip: { label: 'vs Basis 28 T' },
           },
         ],
@@ -651,7 +651,7 @@ export const trainingLoad: SubpageLocales = {
         ],
         note: {
           label: 'Das dritte: Messgröße',
-          desc: 'Distanz oder Zeit: dieselben Blöcke in der anderen Einheit. Jeder Block hat ein Ziel je Messgröße — Sie können unabhängig 4 200 m aerob und 15 Minuten anpeilen. Das eine zu speichern rührt das andere nicht an.',
+          desc: 'Distanz oder Zeit: dieselben Blöcke in der anderen Einheit. Jeder Block hat ein Ziel je Messgröße: Sie können unabhängig 4 200 m aerob und 15 Minuten anpeilen. Das eine zu speichern rührt das andere nicht an.',
         },
       },
       {
@@ -697,11 +697,11 @@ export const trainingLoad: SubpageLocales = {
         cols: [
           {
             title: 'Ihre Daten bewegen sich nicht',
-            desc: 'Die Belastung bleibt in AE gespeichert. Die Einheit ändert nur, was Sie lesen und eingeben — Sie können jederzeit zurück, und die Historie liest sich schlicht in der neuen Einheit.',
+            desc: 'Die Belastung bleibt in AE gespeichert. Die Einheit ändert nur, was Sie lesen und eingeben. Sie können jederzeit zurück, und die Historie liest sich schlicht in der neuen Einheit.',
           },
           {
             title: 'Alle Ansichten ziehen mit',
-            desc: 'Belastung und Trends, Planung, geplant vs. tatsächlich, Saison, Ablauf der Einheit, Nachbesprechungen, Berichte — und das Spielerportal. Ihre Wochenziele tippen Sie direkt in Ihrer Einheit.',
+            desc: 'Belastung und Trends, Planung, geplant vs. tatsächlich, Saison, Ablauf der Einheit, Nachbesprechungen, Berichte und das Spielerportal. Ihre Wochenziele tippen Sie direkt in Ihrer Einheit.',
           },
           {
             title: 'Verhältnisse behalten ihre Skala',
@@ -717,7 +717,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'Der Name wird Pflicht, sobald die Äquivalenz 1 verlässt — sonst erschienen umgerechnete Werte unter dem Kürzel „AE“, das dann nicht mehr stimmt.',
+            text: 'Der Name wird Pflicht, sobald die Äquivalenz 1 verlässt. Sonst erschienen umgerechnete Werte unter dem Kürzel „AE“, das dann nicht mehr stimmt.',
           },
         ],
       },
@@ -734,7 +734,7 @@ export const trainingLoad: SubpageLocales = {
     hero: {
       kicker: 'FUNCIONALIDADES · MONITORIZAÇÃO',
       title: 'O sentido de um lado, o GPS do outro. No mesmo ecrã.',
-      sub: 'O RPE do balanço e a duração dão a carga interna. A sua exportação GPS dá a externa. A STRIVN põe-nas frente a frente — ACWR, monotonia, strain e rácio calculam-se sozinhos.',
+      sub: 'O RPE do balanço e a duração dão a carga interna. A sua exportação GPS dá a externa. A STRIVN põe-nas frente a frente. ACWR, monotonia, strain e rácio calculam-se sozinhos.',
       bullets: [
         'Carga sRPE: RPE × duração, com coeficientes de jogo e treino ajustáveis',
         'ACWR, monotonia e strain, semana após semana',
@@ -771,7 +771,7 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Rácio externo ÷ interno',
             sub: 'carga GPS ÷ sRPE',
-            desc: 'Sem sentido absoluto — as duas medidas não partilham unidade. A única referência é o desvio à base de 28 dias do próprio jogador.',
+            desc: 'Sem sentido absoluto. As duas medidas não partilham unidade. A única referência é o desvio à base de 28 dias do próprio jogador.',
             chip: { label: 'vs base 28 d' },
           },
         ],
@@ -830,7 +830,7 @@ export const trainingLoad: SubpageLocales = {
         ],
         note: {
           label: 'O terceiro: Medida',
-          desc: 'Distância ou Tempo: os mesmos blocos, na outra unidade. Cada bloco tem um alvo por medida — pode visar 4 200 m de aeróbio e 15 minutos, de forma independente. Guardar um não toca no outro.',
+          desc: 'Distância ou Tempo: os mesmos blocos, na outra unidade. Cada bloco tem um alvo por medida: pode visar 4 200 m de aeróbio e 15 minutos, de forma independente. Guardar um não toca no outro.',
         },
       },
       {
@@ -876,11 +876,11 @@ export const trainingLoad: SubpageLocales = {
         cols: [
           {
             title: 'Os seus dados não se mexem',
-            desc: 'A carga fica registada em UA. A unidade só muda o que você lê e o que insere — pode voltar atrás quando quiser, e o histórico lê-se simplesmente na nova unidade.',
+            desc: 'A carga fica registada em UA. A unidade só muda o que você lê e o que insere. Pode voltar atrás quando quiser, e o histórico lê-se simplesmente na nova unidade.',
           },
           {
             title: 'Todos os ecrãs acompanham',
-            desc: 'Carga e tendências, planeamento, previsto vs realizado, época, desenrolar do treino, balanços, relatórios — e o portal dos jogadores. Os objetivos semanais escrevem-se diretamente na sua unidade.',
+            desc: 'Carga e tendências, planeamento, previsto vs realizado, época, desenrolar do treino, balanços, relatórios e o portal dos jogadores. Os objetivos semanais escrevem-se diretamente na sua unidade.',
           },
           {
             title: 'Os rácios mantêm a escala',
@@ -896,7 +896,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'O nome torna-se obrigatório assim que a equivalência deixa de ser 1 — caso contrário apareceriam valores convertidos sob a sigla «UA», que já não é a correta.',
+            text: 'O nome torna-se obrigatório assim que a equivalência deixa de ser 1. Caso contrário, apareceriam valores convertidos sob a sigla «UA», que já não é a correta.',
           },
         ],
       },
@@ -913,7 +913,7 @@ export const trainingLoad: SubpageLocales = {
     hero: {
       kicker: 'FUNCIONALIDADES · MONITORIZACIÓN',
       title: 'La percepción de un lado, el GPS del otro. En la misma pantalla.',
-      sub: 'El RPE del balance y la duración dan la carga interna. Tu exportación GPS da la externa. STRIVN las pone frente a frente — ACWR, monotonía, strain y ratio se calculan solos.',
+      sub: 'El RPE del balance y la duración dan la carga interna. Tu exportación GPS da la externa. STRIVN las pone frente a frente. ACWR, monotonía, strain y ratio se calculan solos.',
       bullets: [
         'Carga sRPE: RPE × duración, con coeficientes de partido y entrenamiento ajustables',
         'ACWR, monotonía y strain, semana tras semana',
@@ -950,7 +950,7 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Ratio externo ÷ interno',
             sub: 'carga GPS ÷ sRPE',
-            desc: 'Sin sentido absoluto — las dos medidas no comparten unidad. La única referencia es la distancia a la base de 28 días del propio jugador.',
+            desc: 'Sin sentido absoluto. Las dos medidas no comparten unidad. La única referencia es la distancia a la base de 28 días del propio jugador.',
             chip: { label: 'vs base 28 d' },
           },
         ],
@@ -1009,7 +1009,7 @@ export const trainingLoad: SubpageLocales = {
         ],
         note: {
           label: 'El tercero: Medida',
-          desc: 'Distancia o Tiempo: los mismos bloques, en la otra unidad. Cada bloque tiene un objetivo por medida — puedes apuntar a 4 200 m de aeróbico y 15 minutos, de forma independiente. Guardar uno no toca el otro.',
+          desc: 'Distancia o Tiempo: los mismos bloques, en la otra unidad. Cada bloque tiene un objetivo por medida: puedes apuntar a 4 200 m de aeróbico y 15 minutos, de forma independiente. Guardar uno no toca el otro.',
         },
       },
       {
@@ -1055,11 +1055,11 @@ export const trainingLoad: SubpageLocales = {
         cols: [
           {
             title: 'Tus datos no se mueven',
-            desc: 'La carga sigue registrada en UA. La unidad solo cambia lo que lees y lo que introduces — puedes volver atrás cuando quieras, y el historial se relee sin más en la nueva unidad.',
+            desc: 'La carga sigue registrada en UA. La unidad solo cambia lo que lees y lo que introduces. Puedes volver atrás cuando quieras, y el historial se relee sin más en la nueva unidad.',
           },
           {
             title: 'Todas las pantallas siguen',
-            desc: 'Carga y tendencias, planificación, previsto vs realizado, temporada, desarrollo de la sesión, balances, informes — y el portal de los jugadores. Tus objetivos semanales se escriben directamente en tu unidad.',
+            desc: 'Carga y tendencias, planificación, previsto vs realizado, temporada, desarrollo de la sesión, balances, informes y el portal de los jugadores. Tus objetivos semanales se escriben directamente en tu unidad.',
           },
           {
             title: 'Los ratios mantienen su escala',
@@ -1075,7 +1075,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'El nombre pasa a ser obligatorio en cuanto la equivalencia deja de ser 1 — si no, aparecerían valores convertidos bajo la sigla «UA», que ya no es la correcta.',
+            text: 'El nombre pasa a ser obligatorio en cuanto la equivalencia deja de ser 1. Si no, aparecerían valores convertidos bajo la sigla «UA», que ya no es la correcta.',
           },
         ],
       },

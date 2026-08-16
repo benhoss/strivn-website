@@ -223,7 +223,7 @@ const fr: FeaturesIndexContent = {
   monitoring: {
     kicker: 'MONITORING & PERFORMANCE',
     title: 'La donnée du groupe, lue chaque matin.',
-    body: 'La capture ci-contre est l’écran que vous ouvrez avant la séance : readiness par joueur, charge et alertes IA — alimenté par le check-in et le GPS.',
+    body: 'La capture ci-contre est l’écran que vous ouvrez avant la séance : readiness par joueur, charge et alertes IA, alimenté par le check-in et le GPS.',
     modules: [
       { name: 'Charge d’entraînement', desc: 'sRPE, ACWR, monotonie et contrainte en continu' },
       { name: 'GPS & blocs de vitesse', desc: 'Exports regroupés en zones nommées' },
@@ -238,7 +238,7 @@ const fr: FeaturesIndexContent = {
   sessions: {
     kicker: 'SÉANCES & TERRAIN',
     title: 'Construite au bureau, pilotée au bord du terrain.',
-    body: 'Le constructeur estime la charge de chaque bloc avant l’entraînement — puis le mode live la compare au réel pendant que ça se joue.',
+    body: 'Le constructeur estime la charge de chaque bloc avant l’entraînement. Puis le mode live la compare au réel pendant que ça se joue.',
     modules: [
       { name: 'Calendrier & événements', desc: 'Une semaine se duplique vers la suivante' },
       { name: 'Bibliothèque d’exercices', desc: 'Lien, vidéo, schéma ou texte, en dossiers' },
@@ -267,7 +267,7 @@ const fr: FeaturesIndexContent = {
   team: {
     kicker: 'ÉQUIPE & QUOTIDIEN',
     title: 'L’intendance qui se tient toute seule.',
-    body: 'La convocation part, les réponses reviennent d’un simple lien, les relances sont automatiques — et la disponibilité intègre l’infirmerie.',
+    body: 'La convocation part, les réponses reviennent d’un simple lien, les relances sont automatiques. Et la disponibilité intègre l’infirmerie.',
     modules: [
       { name: 'Gérer l’effectif', desc: 'Actifs, blessés, inactifs, archivage RGPD' },
       { name: 'Joueurs à l’essai', desc: 'Convoqués, mais hors des moyennes' },
@@ -291,7 +291,7 @@ const fr: FeaturesIndexContent = {
   ai: {
     kicker: 'INTELLIGENCE ARTIFICIELLE',
     title: 'L’IA n’est pas un module. C’est un poste dans le staff.',
-    body: 'Elle restitue ce que vous saisissez — et elle agit : recommandations applicables en un bouton, propositions en attente, joueurs créés depuis une photo. Toujours sous votre validation.',
+    body: 'Elle restitue ce que vous saisissez, et elle agit : recommandations applicables en un bouton, propositions en attente, joueurs créés depuis une photo. Toujours sous votre validation.',
     readsLabel: 'ELLE LIT ET RESTITUE',
     actsLabel: 'ELLE AGIT — VOUS VALIDEZ',
     moments: [
@@ -305,7 +305,7 @@ const fr: FeaturesIndexContent = {
       },
       {
         name: 'Le canvas de réponse',
-        desc: 'Une question chiffrée génère un canvas de widgets — sauvegardable en dashboard.',
+        desc: 'Une question chiffrée génère un canvas de widgets, sauvegardable en dashboard.',
       },
       {
         name: 'Les recommandations à action directe',
@@ -338,16 +338,16 @@ const fr: FeaturesIndexContent = {
         'HSR +9 % et sprints +21 % pour un volume quasi stable : l’intensité progresse sans surcoût de charge.',
       pin: 'Épingler au dashboard',
       refine: 'Affiner la question',
-      signalTitle: 'Signal détecté par l’IA, sans sollicitation',
+      signalTitle: 'Signal remonté par l’IA, sans qu’on lui demande',
       signalBody: 'Sommeil du groupe en baisse de 12 % depuis le passage à 2 matchs / semaine.',
       examine: 'Examiner',
     },
-    note: '« L’assistant aide à la décision, il ne la remplace pas. » Deux questions de clarification maximum, des réponses tirées de vos données — et vos validations avant toute action.',
+    note: '« L’assistant aide à la décision, il ne la remplace pas. » Deux questions de clarification maximum, des réponses tirées de vos données, et vos validations avant toute action.',
   },
   reporting: {
     kicker: 'PILOTAGE & RAPPORTS',
     title: 'Des rapports lisibles sans être analyste.',
-    body: 'Le dashboard composable partage la même base que les cinq rapports types et le générateur — la direction le lit sans formation.',
+    body: 'Le dashboard composable partage la même base que les cinq rapports types et le générateur. La direction le lit sans formation.',
     modules: [
       { name: 'Tableau de bord & signaux', desc: 'KPIs du jour et risques détectés par l’IA' },
       { name: 'Rapports', desc: 'Cinq rapports types plus le générateur' },
@@ -416,7 +416,7 @@ const en: FeaturesIndexContent = {
   monitoring: {
     kicker: 'MONITORING & PERFORMANCE',
     title: 'The squad’s data, read every morning.',
-    body: 'The capture opposite is the screen you open before the session: readiness per player, load and AI alerts — fed by the check-in and the GPS.',
+    body: 'The capture opposite is the screen you open before the session: readiness per player, load and AI alerts, fed by the check-in and the GPS.',
     modules: [
       { name: 'Training load', desc: 'sRPE, ACWR, monotony and strain, continuously' },
       { name: 'GPS & speed blocks', desc: 'Exports grouped into named zones' },
@@ -431,7 +431,7 @@ const en: FeaturesIndexContent = {
   sessions: {
     kicker: 'SESSIONS & PITCH',
     title: 'Built at the desk, run from the touchline.',
-    body: 'The builder estimates each block’s load before training — then live mode compares it to the real thing while it plays out.',
+    body: 'The builder estimates each block’s load before training. Then live mode compares it to the real thing while it plays out.',
     modules: [
       { name: 'Calendar & events', desc: 'A week duplicates onto the next' },
       { name: 'Drill library', desc: 'Link, video, diagram or text, in folders' },
@@ -455,7 +455,7 @@ const en: FeaturesIndexContent = {
   team: {
     kicker: 'SQUAD & DAY-TO-DAY',
     title: 'The admin that holds itself together.',
-    body: 'The call-up goes out, answers come back from a plain link, reminders are automatic — and availability takes the treatment room into account.',
+    body: 'The call-up goes out, answers come back from a plain link, reminders are automatic. And availability takes the treatment room into account.',
     modules: [
       { name: 'Manage the squad', desc: 'Active, injured, inactive, GDPR archiving' },
       { name: 'Trialists', desc: 'Called up, but kept out of the averages' },
@@ -479,7 +479,7 @@ const en: FeaturesIndexContent = {
   ai: {
     kicker: 'ARTIFICIAL INTELLIGENCE',
     title: 'The AI is not a module. It is a role on the staff.',
-    body: 'It gives back what you enter — and it acts: recommendations applied with one button, proposals held in a queue, players created from a photo. Always subject to your approval.',
+    body: 'It gives back what you enter, and it acts: recommendations applied with one button, proposals held in a queue, players created from a photo. Always subject to your approval.',
     readsLabel: 'IT READS AND REPORTS',
     actsLabel: 'IT ACTS — YOU APPROVE',
     moments: [
@@ -493,7 +493,7 @@ const en: FeaturesIndexContent = {
       },
       {
         name: 'The answer canvas',
-        desc: 'A question with numbers generates a canvas of widgets — saveable as a dashboard.',
+        desc: 'A question with numbers generates a canvas of widgets, saveable as a dashboard.',
       },
       {
         name: 'Recommendations with a direct action',
@@ -525,16 +525,16 @@ const en: FeaturesIndexContent = {
       insight: 'HSR +9 % and sprints +21 % for a near-flat volume: intensity is rising without extra load.',
       pin: 'Pin to dashboard',
       refine: 'Refine the question',
-      signalTitle: 'Signal found by the AI, unprompted',
+      signalTitle: 'Signal raised by the AI, without being asked',
       signalBody: 'Squad sleep down 12 % since the switch to two matches a week.',
       examine: 'Examine',
     },
-    note: '“The assistant supports the decision, it does not replace it.” Two clarifying questions at most, answers drawn from your data — and your approval before any action.',
+    note: '“The assistant supports the decision, it does not replace it.” Two clarifying questions at most, answers drawn from your data, and your approval before any action.',
   },
   reporting: {
     kicker: 'STEERING & REPORTS',
     title: 'Reports you can read without being an analyst.',
-    body: 'The composable dashboard shares its base with the five standard reports and the generator — the board reads it without training.',
+    body: 'The composable dashboard shares its base with the five standard reports and the generator. The board reads it without training.',
     modules: [
       { name: 'Dashboard & signals', desc: 'Today’s KPIs and risks detected by the AI' },
       { name: 'Reports', desc: 'Five standard reports plus the generator' },
@@ -597,7 +597,7 @@ const nl: FeaturesIndexContent = {
   monitoring: {
     kicker: 'MONITORING & PRESTATIE',
     title: 'De data van de groep, elke ochtend gelezen.',
-    body: 'Het scherm hiernaast opent u vóór de training: readiness per speler, belasting en AI-signalen — gevoed door de check-in en de gps.',
+    body: 'Het scherm hiernaast opent u vóór de training: readiness per speler, belasting en AI-signalen, gevoed door de check-in en de gps.',
     modules: [
       { name: 'Trainingsbelasting', desc: 'sRPE, ACWR, monotonie en strain, doorlopend' },
       { name: 'GPS & snelheidsblokken', desc: 'Exports gegroepeerd in benoemde zones' },
@@ -612,7 +612,7 @@ const nl: FeaturesIndexContent = {
   sessions: {
     kicker: 'TRAININGEN & VELD',
     title: 'Op kantoor gebouwd, langs de lijn gestuurd.',
-    body: 'De bouwer schat de belasting van elk blok vóór de training — daarna vergelijkt de live-modus die met de werkelijkheid, terwijl het gebeurt.',
+    body: 'De bouwer schat de belasting van elk blok vóór de training. Daarna vergelijkt de live-modus die met de werkelijkheid, terwijl het gebeurt.',
     modules: [
       { name: 'Kalender & events', desc: 'Een week kopieert naar de volgende' },
       { name: 'Oefenbibliotheek', desc: 'Link, video, schema of tekst, in mappen' },
@@ -641,7 +641,7 @@ const nl: FeaturesIndexContent = {
   team: {
     kicker: 'KERN & DAGELIJKSE WERKING',
     title: 'De organisatie die zichzelf draaiende houdt.',
-    body: 'De oproep vertrekt, antwoorden komen terug via een simpele link, herinneringen gaan automatisch — en de beschikbaarheid houdt rekening met de ziekenboeg.',
+    body: 'De oproep vertrekt, antwoorden komen terug via een simpele link, herinneringen gaan automatisch. En de beschikbaarheid houdt rekening met de ziekenboeg.',
     modules: [
       { name: 'Kern beheren', desc: 'Actief, geblesseerd, inactief, AVG-archivering' },
       { name: 'Spelers op proef', desc: 'Opgeroepen, maar buiten de gemiddelden' },
@@ -665,7 +665,7 @@ const nl: FeaturesIndexContent = {
   ai: {
     kicker: 'ARTIFICIËLE INTELLIGENTIE',
     title: 'De AI is geen module. Het is een functie in de staf.',
-    body: 'Ze geeft terug wat u invoert — en ze handelt: aanbevelingen met één knop toe te passen, voorstellen in wacht, spelers aangemaakt vanaf een foto. Altijd onder uw validatie.',
+    body: 'Ze geeft terug wat u invoert, en ze handelt: aanbevelingen met één knop toe te passen, voorstellen in wacht, spelers aangemaakt vanaf een foto. Altijd onder uw validatie.',
     readsLabel: 'ZE LEEST EN RAPPORTEERT',
     actsLabel: 'ZE HANDELT — U VALIDEERT',
     moments: [
@@ -679,7 +679,7 @@ const nl: FeaturesIndexContent = {
       },
       {
         name: 'Het antwoordcanvas',
-        desc: 'Een vraag met cijfers genereert een canvas van widgets — op te slaan als dashboard.',
+        desc: 'Een vraag met cijfers genereert een canvas van widgets, op te slaan als dashboard.',
       },
       {
         name: 'Aanbevelingen met directe actie',
@@ -711,16 +711,16 @@ const nl: FeaturesIndexContent = {
       insight: 'HSR +9 % en sprints +21 % bij nagenoeg gelijk volume: de intensiteit stijgt zonder extra belasting.',
       pin: 'Vastzetten op dashboard',
       refine: 'Vraag verfijnen',
-      signalTitle: 'Signaal door de AI gevonden, ongevraagd',
+      signalTitle: 'Signaal aangebracht door de AI, zonder dat u het vroeg',
       signalBody: 'Slaap van de groep 12 % lager sinds de overgang naar 2 wedstrijden / week.',
       examine: 'Bekijken',
     },
-    note: '« De assistent helpt bij de beslissing, hij vervangt ze niet. » Maximaal twee verduidelijkende vragen, antwoorden uit uw eigen data — en uw validatie vóór elke actie.',
+    note: '« De assistent helpt bij de beslissing, hij vervangt ze niet. » Maximaal twee verduidelijkende vragen, antwoorden uit uw eigen data, en uw validatie vóór elke actie.',
   },
   reporting: {
     kicker: 'STURING & RAPPORTEN',
     title: 'Rapporten die leesbaar zijn zonder analist te zijn.',
-    body: 'Het samenstelbare dashboard deelt dezelfde basis als de vijf standaardrapporten en de generator — het bestuur leest het zonder opleiding.',
+    body: 'Het samenstelbare dashboard deelt dezelfde basis als de vijf standaardrapporten en de generator. Het bestuur leest het zonder opleiding.',
     modules: [
       { name: 'Dashboard & signalen', desc: 'KPI’s van de dag en risico’s gedetecteerd door de AI' },
       { name: 'Rapporten', desc: 'Vijf standaardrapporten plus de generator' },
@@ -783,7 +783,7 @@ const de: FeaturesIndexContent = {
   monitoring: {
     kicker: 'MONITORING & LEISTUNG',
     title: 'Die Daten der Gruppe, jeden Morgen gelesen.',
-    body: 'Die Ansicht nebenan ist der Bildschirm, den Sie vor der Einheit öffnen: Readiness je Spieler, Belastung und KI-Warnungen — gespeist aus Check-in und GPS.',
+    body: 'Die Ansicht nebenan ist der Bildschirm, den Sie vor der Einheit öffnen: Readiness je Spieler, Belastung und KI-Warnungen, gespeist aus Check-in und GPS.',
     modules: [
       { name: 'Trainingsbelastung', desc: 'sRPE, ACWR, Monotonie und Strain, fortlaufend' },
       { name: 'GPS & Geschwindigkeitsblöcke', desc: 'Exporte in benannte Zonen gebündelt' },
@@ -798,7 +798,7 @@ const de: FeaturesIndexContent = {
   sessions: {
     kicker: 'EINHEITEN & PLATZ',
     title: 'Am Schreibtisch gebaut, an der Linie gesteuert.',
-    body: 'Der Builder schätzt die Belastung jedes Blocks vor dem Training — der Live-Modus vergleicht sie dann mit der Realität, während sie läuft.',
+    body: 'Der Builder schätzt die Belastung jedes Blocks vor dem Training. Der Live-Modus vergleicht sie dann mit der Realität, während sie läuft.',
     modules: [
       { name: 'Kalender & Termine', desc: 'Eine Woche dupliziert sich auf die nächste' },
       { name: 'Übungsbibliothek', desc: 'Link, Video, Skizze oder Text, in Ordnern' },
@@ -827,7 +827,7 @@ const de: FeaturesIndexContent = {
   team: {
     kicker: 'KADER & ALLTAG',
     title: 'Die Organisation, die sich selbst trägt.',
-    body: 'Das Aufgebot geht raus, Antworten kommen über einen simplen Link zurück, Erinnerungen laufen automatisch — und die Verfügbarkeit bezieht die Behandlungsliege mit ein.',
+    body: 'Das Aufgebot geht raus, Antworten kommen über einen simplen Link zurück, Erinnerungen laufen automatisch. Und die Verfügbarkeit bezieht die Behandlungsliege mit ein.',
     modules: [
       { name: 'Kader verwalten', desc: 'Aktiv, verletzt, inaktiv, DSGVO-Archivierung' },
       { name: 'Spieler im Probetraining', desc: 'Aufgeboten, aber außerhalb der Mittelwerte' },
@@ -851,7 +851,7 @@ const de: FeaturesIndexContent = {
   ai: {
     kicker: 'KÜNSTLICHE INTELLIGENZ',
     title: 'Die KI ist kein Modul. Sie ist eine Stelle im Staff.',
-    body: 'Sie gibt wieder, was Sie erfassen — und sie handelt: Empfehlungen per Knopfdruck anwendbar, Vorschläge in der Warteschlange, Spieler aus einem Foto angelegt. Immer unter Ihrer Freigabe.',
+    body: 'Sie gibt wieder, was Sie erfassen, und sie handelt: Empfehlungen per Knopfdruck anwendbar, Vorschläge in der Warteschlange, Spieler aus einem Foto angelegt. Immer unter Ihrer Freigabe.',
     readsLabel: 'SIE LIEST UND BERICHTET',
     actsLabel: 'SIE HANDELT — SIE GEBEN FREI',
     moments: [
@@ -865,7 +865,7 @@ const de: FeaturesIndexContent = {
       },
       {
         name: 'Das Antwort-Canvas',
-        desc: 'Eine Frage mit Zahlen erzeugt ein Canvas aus Widgets — als Dashboard speicherbar.',
+        desc: 'Eine Frage mit Zahlen erzeugt ein Canvas aus Widgets, als Dashboard speicherbar.',
       },
       {
         name: 'Empfehlungen mit direkter Aktion',
@@ -898,16 +898,16 @@ const de: FeaturesIndexContent = {
         'HSR +9 % und Sprints +21 % bei nahezu gleichem Volumen: Die Intensität steigt ohne Mehrbelastung.',
       pin: 'Ans Dashboard heften',
       refine: 'Frage verfeinern',
-      signalTitle: 'Von der KI erkanntes Signal, unaufgefordert',
+      signalTitle: 'Signal von der KI gemeldet, ohne dass jemand fragt',
       signalBody: 'Schlaf der Gruppe 12 % niedriger seit der Umstellung auf 2 Spiele / Woche.',
       examine: 'Prüfen',
     },
-    note: '„Der Assistent unterstützt die Entscheidung, er ersetzt sie nicht.“ Höchstens zwei Rückfragen, Antworten aus Ihren Daten — und Ihre Freigabe vor jeder Aktion.',
+    note: '„Der Assistent unterstützt die Entscheidung, er ersetzt sie nicht.“ Höchstens zwei Rückfragen, Antworten aus Ihren Daten, und Ihre Freigabe vor jeder Aktion.',
   },
   reporting: {
     kicker: 'STEUERUNG & BERICHTE',
     title: 'Berichte, die man ohne Analyst lesen kann.',
-    body: 'Das zusammenstellbare Dashboard teilt die Basis mit den fünf Standardberichten und dem Generator — die Führung liest es ohne Schulung.',
+    body: 'Das zusammenstellbare Dashboard teilt die Basis mit den fünf Standardberichten und dem Generator. Die Führung liest es ohne Schulung.',
     modules: [
       { name: 'Dashboard & Signale', desc: 'KPIs des Tages und von der KI erkannte Risiken' },
       { name: 'Berichte', desc: 'Fünf Standardberichte plus der Generator' },
@@ -970,7 +970,7 @@ const pt: FeaturesIndexContent = {
   monitoring: {
     kicker: 'MONITORIZAÇÃO & DESEMPENHO',
     title: 'Os dados do grupo, lidos todas as manhãs.',
-    body: 'O ecrã ao lado é o que abre antes da sessão: readiness por jogador, carga e alertas de IA — alimentado pelo check-in e pelo GPS.',
+    body: 'O ecrã ao lado é o que abre antes da sessão: readiness por jogador, carga e alertas de IA, alimentado pelo check-in e pelo GPS.',
     modules: [
       { name: 'Carga de treino', desc: 'sRPE, ACWR, monotonia e constrangimento em contínuo' },
       { name: 'GPS & blocos de velocidade', desc: 'Exportações agrupadas em zonas nomeadas' },
@@ -985,7 +985,7 @@ const pt: FeaturesIndexContent = {
   sessions: {
     kicker: 'SESSÕES & CAMPO',
     title: 'Construída na secretária, conduzida à beira do campo.',
-    body: 'O construtor estima a carga de cada bloco antes do treino — depois o modo direto compara-a com o real enquanto acontece.',
+    body: 'O construtor estima a carga de cada bloco antes do treino. Depois o modo direto compara-a com o real enquanto acontece.',
     modules: [
       { name: 'Calendário & eventos', desc: 'Uma semana duplica-se para a seguinte' },
       { name: 'Biblioteca de exercícios', desc: 'Link, vídeo, esquema ou texto, em pastas' },
@@ -1014,7 +1014,7 @@ const pt: FeaturesIndexContent = {
   team: {
     kicker: 'PLANTEL & DIA A DIA',
     title: 'A logística que se aguenta sozinha.',
-    body: 'A convocatória sai, as respostas voltam por um simples link, os lembretes são automáticos — e a disponibilidade integra a enfermaria.',
+    body: 'A convocatória sai, as respostas voltam por um simples link, os lembretes são automáticos. E a disponibilidade integra a enfermaria.',
     modules: [
       { name: 'Gerir o plantel', desc: 'Ativos, lesionados, inativos, arquivo RGPD' },
       { name: 'Jogadores à experiência', desc: 'Convocados, mas fora das médias' },
@@ -1038,7 +1038,7 @@ const pt: FeaturesIndexContent = {
   ai: {
     kicker: 'INTELIGÊNCIA ARTIFICIAL',
     title: 'A IA não é um módulo. É um lugar no staff.',
-    body: 'Restitui o que introduz — e age: recomendações aplicáveis num botão, propostas em espera, jogadores criados a partir de uma foto. Sempre sob a sua validação.',
+    body: 'Restitui o que introduz, e age: recomendações aplicáveis num botão, propostas em espera, jogadores criados a partir de uma foto. Sempre sob a sua validação.',
     readsLabel: 'ELA LÊ E RESTITUI',
     actsLabel: 'ELA AGE — VOCÊ VALIDA',
     moments: [
@@ -1052,7 +1052,7 @@ const pt: FeaturesIndexContent = {
       },
       {
         name: 'O canvas de resposta',
-        desc: 'Uma pergunta com números gera um canvas de widgets — guardável como dashboard.',
+        desc: 'Uma pergunta com números gera um canvas de widgets, guardável como dashboard.',
       },
       {
         name: 'As recomendações com ação direta',
@@ -1084,16 +1084,16 @@ const pt: FeaturesIndexContent = {
       insight: 'HSR +9 % e sprints +21 % com volume quase estável: a intensidade sobe sem custo de carga.',
       pin: 'Fixar no dashboard',
       refine: 'Afinar a pergunta',
-      signalTitle: 'Sinal detetado pela IA, sem solicitação',
+      signalTitle: 'Sinal levantado pela IA, sem ninguém pedir',
       signalBody: 'Sono do grupo em queda de 12 % desde a passagem a 2 jogos / semana.',
       examine: 'Examinar',
     },
-    note: '«O assistente ajuda a decidir, não decide por si.» Duas perguntas de clarificação no máximo, respostas tiradas dos seus dados — e as suas validações antes de qualquer ação.',
+    note: '«O assistente ajuda a decidir, não decide por si.» Duas perguntas de clarificação no máximo, respostas tiradas dos seus dados, e as suas validações antes de qualquer ação.',
   },
   reporting: {
     kicker: 'PILOTAGEM & RELATÓRIOS',
     title: 'Relatórios legíveis sem ser analista.',
-    body: 'O dashboard componível partilha a mesma base dos cinco relatórios tipo e do gerador — a direção lê-o sem formação.',
+    body: 'O dashboard componível partilha a mesma base dos cinco relatórios tipo e do gerador. A direção lê-o sem formação.',
     modules: [
       { name: 'Painel & sinais', desc: 'KPIs do dia e riscos detetados pela IA' },
       { name: 'Relatórios', desc: 'Cinco relatórios tipo mais o gerador' },
@@ -1156,7 +1156,7 @@ const es: FeaturesIndexContent = {
   monitoring: {
     kicker: 'MONITORIZACIÓN & RENDIMIENTO',
     title: 'Los datos del grupo, leídos cada mañana.',
-    body: 'La pantalla de al lado es la que abre antes de la sesión: readiness por jugador, carga y alertas de IA — alimentada por el check-in y el GPS.',
+    body: 'La pantalla de al lado es la que abre antes de la sesión: readiness por jugador, carga y alertas de IA, alimentada por el check-in y el GPS.',
     modules: [
       { name: 'Carga de entrenamiento', desc: 'sRPE, ACWR, monotonía y strain en continuo' },
       { name: 'GPS & bloques de velocidad', desc: 'Exportaciones agrupadas en zonas nombradas' },
@@ -1171,7 +1171,7 @@ const es: FeaturesIndexContent = {
   sessions: {
     kicker: 'SESIONES & CAMPO',
     title: 'Construida en el despacho, dirigida a pie de campo.',
-    body: 'El constructor estima la carga de cada bloque antes del entrenamiento — y luego el modo en directo la compara con lo real mientras ocurre.',
+    body: 'El constructor estima la carga de cada bloque antes del entrenamiento. Y luego el modo en directo la compara con lo real mientras ocurre.',
     modules: [
       { name: 'Calendario & eventos', desc: 'Una semana se duplica en la siguiente' },
       { name: 'Biblioteca de ejercicios', desc: 'Enlace, vídeo, esquema o texto, en carpetas' },
@@ -1200,7 +1200,7 @@ const es: FeaturesIndexContent = {
   team: {
     kicker: 'PLANTILLA & DÍA A DÍA',
     title: 'La intendencia que se sostiene sola.',
-    body: 'La convocatoria sale, las respuestas vuelven por un simple enlace, los recordatorios son automáticos — y la disponibilidad integra la enfermería.',
+    body: 'La convocatoria sale, las respuestas vuelven por un simple enlace, los recordatorios son automáticos. Y la disponibilidad integra la enfermería.',
     modules: [
       { name: 'Gestionar la plantilla', desc: 'Activos, lesionados, inactivos, archivado RGPD' },
       { name: 'Jugadores a prueba', desc: 'Convocados, pero fuera de las medias' },
@@ -1224,7 +1224,7 @@ const es: FeaturesIndexContent = {
   ai: {
     kicker: 'INTELIGENCIA ARTIFICIAL',
     title: 'La IA no es un módulo. Es un puesto en el staff.',
-    body: 'Devuelve lo que usted introduce — y actúa: recomendaciones aplicables con un botón, propuestas en espera, jugadores creados desde una foto. Siempre bajo su validación.',
+    body: 'Devuelve lo que usted introduce, y actúa: recomendaciones aplicables con un botón, propuestas en espera, jugadores creados desde una foto. Siempre bajo su validación.',
     readsLabel: 'ELLA LEE Y DEVUELVE',
     actsLabel: 'ELLA ACTÚA — USTED VALIDA',
     moments: [
@@ -1238,7 +1238,7 @@ const es: FeaturesIndexContent = {
       },
       {
         name: 'El canvas de respuesta',
-        desc: 'Una pregunta con cifras genera un canvas de widgets — guardable como dashboard.',
+        desc: 'Una pregunta con cifras genera un canvas de widgets, guardable como dashboard.',
       },
       {
         name: 'Las recomendaciones con acción directa',
@@ -1270,16 +1270,16 @@ const es: FeaturesIndexContent = {
       insight: 'HSR +9 % y sprints +21 % con un volumen casi estable: la intensidad sube sin sobrecoste de carga.',
       pin: 'Fijar al dashboard',
       refine: 'Afinar la pregunta',
-      signalTitle: 'Señal detectada por la IA, sin pedirlo',
+      signalTitle: 'Señal levantada por la IA, sin que nadie la pida',
       signalBody: 'Sueño del grupo a la baja un 12 % desde el paso a 2 partidos / semana.',
       examine: 'Examinar',
     },
-    note: '«El asistente ayuda a decidir, no decide por usted.» Dos preguntas de aclaración como máximo, respuestas sacadas de sus datos — y sus validaciones antes de cualquier acción.',
+    note: '«El asistente ayuda a decidir, no decide por usted.» Dos preguntas de aclaración como máximo, respuestas sacadas de sus datos, y sus validaciones antes de cualquier acción.',
   },
   reporting: {
     kicker: 'PILOTAJE & INFORMES',
     title: 'Informes legibles sin ser analista.',
-    body: 'El dashboard componible comparte la misma base que los cinco informes tipo y el generador — la dirección lo lee sin formación.',
+    body: 'El dashboard componible comparte la misma base que los cinco informes tipo y el generador. La dirección lo lee sin formación.',
     modules: [
       { name: 'Panel & señales', desc: 'KPIs del día y riesgos detectados por la IA' },
       { name: 'Informes', desc: 'Cinco informes tipo más el generador' },

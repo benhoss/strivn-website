@@ -52,13 +52,13 @@ export const attendance: SubpageLocales = {
         note: {
           icon: 'bell',
           label: 'La relance ne réveille personne pour rien',
-          desc: '« Envoyer un rappel » ne notifie que les joueurs en attente. Ceux qui ont déjà répondu ne reçoivent rien — c’est ce qui fait qu’une relance reste crédible la fois d’après.',
+          desc: '« Envoyer un rappel » ne notifie que les joueurs en attente. Ceux qui ont déjà répondu ne reçoivent rien. C’est ce qui fait qu’une relance reste crédible la fois d’après.',
         },
       },
       {
         kicker: 'SUR TOUTE LA SAISON',
         title: 'Ce joueur est-il présent, et réactif ?',
-        body: 'Trois indicateurs calculés à partir de ce que vous collectez déjà — aucune saisie supplémentaire, aucun tableur à tenir.',
+        body: 'Trois indicateurs calculés à partir de ce que vous collectez déjà. Aucune saisie supplémentaire, aucun tableur à tenir.',
         kind: 'stats',
         stats: [
           { value: '91 %', label: 'Présence saison — détaillée en entraînements et en matchs, pour repérer l’assidu à l’entraînement qui manque les matchs.', tone: 'green' },
@@ -143,13 +143,13 @@ export const attendance: SubpageLocales = {
         note: {
           icon: 'bell',
           label: 'The reminder wakes nobody for nothing',
-          desc: '“Send a reminder” notifies only the pending players. Those who have already answered receive nothing — which is what keeps a reminder credible the next time.',
+          desc: '“Send a reminder” notifies only the pending players. Those who have already answered receive nothing. And that is what keeps a reminder credible the next time.',
         },
       },
       {
         kicker: 'ACROSS THE SEASON',
         title: 'Is this player there, and responsive?',
-        body: 'Three indicators computed from what you already collect — no extra entry, no spreadsheet to keep.',
+        body: 'Three indicators computed from what you already collect. No extra entry, no spreadsheet to keep.',
         kind: 'stats',
         stats: [
           { value: '91 %', label: 'Season attendance — split between training and matches, so you spot the player who never misses training and misses matches.', tone: 'green' },
@@ -234,13 +234,13 @@ export const attendance: SubpageLocales = {
         note: {
           icon: 'bell',
           label: 'De herinnering wekt niemand voor niets',
-          desc: '“Een herinnering sturen” verwittigt alleen de spelers in afwachting. Wie al geantwoord heeft krijgt niets — en daardoor blijft een herinnering de volgende keer geloofwaardig.',
+          desc: '“Een herinnering sturen” verwittigt alleen de spelers in afwachting. Wie al geantwoord heeft krijgt niets. En daardoor blijft een herinnering de volgende keer geloofwaardig.',
         },
       },
       {
         kicker: 'OVER HET HELE SEIZOEN',
         title: 'Is deze speler aanwezig, en reactief?',
-        body: 'Drie indicatoren berekend op wat je al verzamelt — geen extra invoer, geen rekenblad bij te houden.',
+        body: 'Drie indicatoren berekend op wat je al verzamelt. Geen extra invoer, geen rekenblad bij te houden.',
         kind: 'stats',
         stats: [
           { value: '91 %', label: 'Aanwezigheid seizoen — opgesplitst in trainingen en wedstrijden, om de trouwe trainer te herkennen die wedstrijden mist.', tone: 'green' },
@@ -325,13 +325,13 @@ export const attendance: SubpageLocales = {
         note: {
           icon: 'bell',
           label: 'Die Erinnerung weckt niemanden ohne Grund',
-          desc: '„Erinnerung senden“ benachrichtigt nur die ausstehenden Spieler. Wer bereits geantwortet hat, bekommt nichts — und genau das hält eine Erinnerung beim nächsten Mal glaubwürdig.',
+          desc: '„Erinnerung senden“ benachrichtigt nur die ausstehenden Spieler. Wer bereits geantwortet hat, bekommt nichts. Und genau das hält eine Erinnerung beim nächsten Mal glaubwürdig.',
         },
       },
       {
         kicker: 'ÜBER DIE GANZE SAISON',
         title: 'Ist dieser Spieler da — und antwortet er?',
-        body: 'Drei Kennzahlen, berechnet aus dem, was Sie ohnehin erheben — keine Zusatzeingabe, keine Tabelle zu führen.',
+        body: 'Drei Kennzahlen, berechnet aus dem, was Sie ohnehin erheben. Keine Zusatzeingabe, keine Tabelle zu führen.',
         kind: 'stats',
         stats: [
           { value: '91 %', label: 'Anwesenheit Saison — getrennt nach Training und Spiel, damit der auffällt, der nie ein Training verpasst und Spiele auslässt.', tone: 'green' },
@@ -416,13 +416,13 @@ export const attendance: SubpageLocales = {
         note: {
           icon: 'bell',
           label: 'O lembrete não acorda ninguém à toa',
-          desc: '«Enviar um lembrete» só notifica os jogadores em espera. Quem já respondeu não recebe nada — e é isso que mantém um lembrete credível da próxima vez.',
+          desc: '«Enviar um lembrete» só notifica os jogadores em espera. Quem já respondeu não recebe nada. E é isso que mantém um lembrete credível da próxima vez.',
         },
       },
       {
         kicker: 'AO LONGO DA ÉPOCA',
         title: 'Este jogador está presente, e é reativo?',
-        body: 'Três indicadores calculados a partir do que já recolhe — nenhuma entrada adicional, nenhuma folha de cálculo a manter.',
+        body: 'Três indicadores calculados a partir do que já recolhe. Nenhuma entrada adicional, nenhuma folha de cálculo a manter.',
         kind: 'stats',
         stats: [
           { value: '91 %', label: 'Presença na época — separada em treinos e jogos, para detetar o assíduo ao treino que falta aos jogos.', tone: 'green' },
@@ -507,13 +507,13 @@ export const attendance: SubpageLocales = {
         note: {
           icon: 'bell',
           label: 'El recordatorio no despierta a nadie por nada',
-          desc: '«Enviar un recordatorio» solo notifica a los jugadores en espera. Quien ya ha respondido no recibe nada — y eso es lo que mantiene creíble un recordatorio la próxima vez.',
+          desc: '«Enviar un recordatorio» solo notifica a los jugadores en espera. Quien ya ha respondido no recibe nada. Y eso es lo que mantiene creíble un recordatorio la próxima vez.',
         },
       },
       {
         kicker: 'A LO LARGO DE LA TEMPORADA',
         title: '¿Está este jugador presente, y responde?',
-        body: 'Tres indicadores calculados a partir de lo que ya recoges — ninguna entrada adicional, ninguna hoja de cálculo que mantener.',
+        body: 'Tres indicadores calculados a partir de lo que ya recoges. Ninguna entrada adicional, ninguna hoja de cálculo que mantener.',
         kind: 'stats',
         stats: [
           { value: '91 %', label: 'Asistencia de temporada — desglosada en entrenamientos y partidos, para detectar al asiduo al entrenamiento que falta a los partidos.', tone: 'green' },

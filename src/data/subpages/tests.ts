@@ -16,7 +16,7 @@ export const tests: SubpageLocales = {
     hero: {
       kicker: 'FONCTIONNALITÉS · MESURES',
       title: 'Le chiffre tombe. Reste à savoir ce qu’il vaut.',
-      sub: 'Créez vos mesures, lancez une campagne de tests, saisissez sur le terrain. STRIVN place chaque résultat dans ses zones et sur le percentile du poste — pour que la valeur devienne une décision.',
+      sub: 'Créez vos mesures, lancez une campagne de tests, saisissez sur le terrain. STRIVN place chaque résultat dans ses zones et sur le percentile du poste, pour que la valeur devienne une décision.',
       bullets: [
         'Mesures sur mesure : nom, unité, sens de la progression',
         'Zones colorées, vos bornes',
@@ -96,7 +96,7 @@ export const tests: SubpageLocales = {
     hero: {
       kicker: 'FEATURES · MEASURES',
       title: 'The number lands. What it is worth is the other question.',
-      sub: 'Define your measures, run a testing campaign, record results on the pitch. STRIVN places each one in its zones and on the percentile for the position — so the value becomes a decision.',
+      sub: 'Define your measures, run a testing campaign, record results on the pitch. STRIVN places each one in its zones and on the percentile for the position, so the value becomes a decision.',
       bullets: [
         'Measures you define: name, unit, direction of progress',
         'Colour-coded zones, your own thresholds',
@@ -176,7 +176,7 @@ export const tests: SubpageLocales = {
     hero: {
       kicker: 'FUNCTIES · METINGEN',
       title: 'Het cijfer valt. Wat het waard is, is de vraag.',
-      sub: 'Definieer je metingen, start een testcampagne, noteer op het veld. STRIVN plaatst elk resultaat in zijn zones en op het percentiel van de positie — zodat de waarde een beslissing wordt.',
+      sub: 'Definieer je metingen, start een testcampagne, noteer op het veld. STRIVN plaatst elk resultaat in zijn zones en op het percentiel van de positie, zodat de waarde een beslissing wordt.',
       bullets: [
         'Eigen metingen: naam, eenheid, richting van vooruitgang',
         'Gekleurde zones, jouw grenzen',
@@ -256,7 +256,7 @@ export const tests: SubpageLocales = {
     hero: {
       kicker: 'FUNKTIONEN · MESSGRÖSSEN',
       title: 'Die Zahl steht. Was sie wert ist, ist die andere Frage.',
-      sub: 'Definieren Sie Ihre Messgrößen, starten Sie eine Testkampagne, erfassen Sie auf dem Platz. STRIVN ordnet jedes Ergebnis seinen Zonen und dem Perzentil der Position zu — damit aus dem Wert eine Entscheidung wird.',
+      sub: 'Definieren Sie Ihre Messgrößen, starten Sie eine Testkampagne, erfassen Sie auf dem Platz. STRIVN ordnet jedes Ergebnis seinen Zonen und dem Perzentil der Position zu, damit aus dem Wert eine Entscheidung wird.',
       bullets: [
         'Eigene Messgrößen: Name, Einheit, Richtung des Fortschritts',
         'Farbige Zonen, Ihre Schwellen',
@@ -336,7 +336,7 @@ export const tests: SubpageLocales = {
     hero: {
       kicker: 'FUNCIONALIDADES · MEDIDAS',
       title: 'O número sai. Falta saber o que vale.',
-      sub: 'Defina as suas medidas, lance uma campanha de testes, registe no campo. A STRIVN coloca cada resultado nas suas zonas e no percentil da posição — para que o valor se torne uma decisão.',
+      sub: 'Defina as suas medidas, lance uma campanha de testes, registe no campo. A STRIVN coloca cada resultado nas suas zonas e no percentil da posição, para que o valor se torne uma decisão.',
       bullets: [
         'Medidas à sua medida: nome, unidade, sentido do progresso',
         'Zonas coloridas, os seus limiares',
@@ -416,7 +416,7 @@ export const tests: SubpageLocales = {
     hero: {
       kicker: 'FUNCIONALIDADES · MEDIDAS',
       title: 'El número cae. Queda saber lo que vale.',
-      sub: 'Define tus medidas, lanza una campaña de tests, registra en el campo. STRIVN coloca cada resultado en sus zonas y en el percentil del puesto — para que el valor se convierta en una decisión.',
+      sub: 'Define tus medidas, lanza una campaña de tests, registra en el campo. STRIVN coloca cada resultado en sus zonas y en el percentil del puesto, para que el valor se convierta en una decisión.',
       bullets: [
         'Medidas a tu medida: nombre, unidad, sentido del progreso',
         'Zonas de color, tus umbrales',

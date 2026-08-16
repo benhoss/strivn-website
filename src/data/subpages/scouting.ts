@@ -13,7 +13,7 @@ export const scouting: SubpageLocales = {
     meta: {
       title: 'Scouting adverse | STRIVN',
       description:
-        'Sessions d’observation, notes écrites ou vocales, clips tagués, effectif adverse importé d’une feuille de match — et un rapport partagé aux destinataires que vous choisissez.',
+        'Sessions d’observation, notes écrites ou vocales, clips tagués, effectif adverse importé d’une feuille de match et un rapport partagé aux destinataires que vous choisissez.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · ADVERSAIRE',
@@ -52,7 +52,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · ASSEMBLER',
             title: 'Le rapport',
-            desc: 'Un document en sections et en blocs, pas un champ libre. Coach et analyste écrivent dans le même — il reste en brouillon jusqu’à ce que vous le partagiez.',
+            desc: 'Un document en sections et en blocs, pas un champ libre. Coach et analyste écrivent dans le même. Il reste en brouillon jusqu’à ce que vous le partagiez.',
             items: [
               'Sections ordonnées, blocs déplaçables',
               'L’effectif adverse et les clips à l’appui',
@@ -95,7 +95,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-tool',
             title: 'Tableau tactique',
-            desc: 'La même surface de dessin que le reste du produit, rattachée à la session — le schéma reste avec l’observation qui l’a motivé.',
+            desc: 'La même surface de dessin que le reste du produit, rattachée à la session. Le schéma reste avec l’observation qui l’a motivé.',
           },
         ],
         note: {
@@ -107,7 +107,7 @@ export const scouting: SubpageLocales = {
       {
         kicker: 'LA FEUILLE DE MATCH',
         title: 'L’IA lit l’effectif. Elle ne l’écrit pas.',
-        body: 'Vous photographiez la feuille de match, l’IA en extrait les joueurs — et s’arrête là. L’extraction produit une proposition ; les joueurs n’entrent dans l’effectif adverse qu’au moment où vous confirmez.',
+        body: 'Vous photographiez la feuille de match, l’IA en extrait les joueurs, et s’arrête là. L’extraction produit une proposition ; les joueurs n’entrent dans l’effectif adverse qu’au moment où vous confirmez.',
         kind: 'columns',
         cols: [
           {
@@ -177,7 +177,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'radio',
             tone: 'blue',
-            text: 'Le jour du match, la feuille adverse et les faits que vous comptez basculent dans le direct — et la revue des buts reprend ce qui a été encodé.',
+            text: 'Le jour du match, la feuille adverse et les faits que vous comptez basculent dans le direct, et la revue des buts reprend ce qui a été encodé.',
             link: { label: 'Live match', href: '/fr/features/live-match/' },
           },
         ],
@@ -190,7 +190,7 @@ export const scouting: SubpageLocales = {
     meta: {
       title: 'Opponent scouting | STRIVN',
       description:
-        'Observation sessions, written or voice notes, tagged clips, an opponent squad extracted from a team sheet — and a report shared with the recipients you choose.',
+        'Observation sessions, written or voice notes, tagged clips, an opponent squad extracted from a team sheet, and a report shared with the recipients you choose.',
     },
     hero: {
       kicker: 'FEATURES · OPPONENT',
@@ -229,7 +229,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · ASSEMBLE',
             title: 'The report',
-            desc: 'A document of ordered sections and blocks, not a free-text field. Coach and analyst write in the same one — it stays a draft until you share it.',
+            desc: 'A document of ordered sections and blocks, not a free-text field. Coach and analyst write in the same one. It stays a draft until you share it.',
             items: [
               'Ordered sections, movable blocks',
               'The opponent squad and the clips behind it',
@@ -272,7 +272,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-tool',
             title: 'Tactical board',
-            desc: 'The same drawing surface as the rest of the product, attached to the session — the diagram stays with the observation that prompted it.',
+            desc: 'The same drawing surface as the rest of the product, attached to the session. The diagram stays with the observation that prompted it.',
           },
         ],
         note: {
@@ -284,7 +284,7 @@ export const scouting: SubpageLocales = {
       {
         kicker: 'THE TEAM SHEET',
         title: 'The AI reads the squad. It does not write it.',
-        body: 'You photograph the team sheet, the AI extracts the players — and stops there. The extraction produces a proposal; players only enter the opponent squad the moment you confirm.',
+        body: 'You photograph the team sheet, the AI extracts the players, and stops there. The extraction produces a proposal; players only enter the opponent squad the moment you confirm.',
         kind: 'columns',
         cols: [
           {
@@ -354,7 +354,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'radio',
             tone: 'blue',
-            text: 'On match day the opponent sheet and the facts you count tip into the live view — and the goal review picks up what was encoded there.',
+            text: 'On match day the opponent sheet and the facts you count tip into the live view, and the goal review picks up what was encoded there.',
             link: { label: 'Live match', href: '/en/features/live-match/' },
           },
         ],
@@ -367,7 +367,7 @@ export const scouting: SubpageLocales = {
     meta: {
       title: 'Scouting tegenstander | STRIVN',
       description:
-        'Observatiesessies, geschreven of gesproken notities, getagde clips, een tegenstanderskern uit een wedstrijdblad — en een rapport gedeeld met wie jij kiest.',
+        'Observatiesessies, geschreven of gesproken notities, getagde clips, een tegenstanderskern uit een wedstrijdblad en een rapport gedeeld met wie jij kiest.',
     },
     hero: {
       kicker: 'FUNCTIES · TEGENSTANDER',
@@ -406,7 +406,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · SAMENSTELLEN',
             title: 'Het rapport',
-            desc: 'Een document van geordende secties en blokken, geen vrij tekstveld. Coach en analist schrijven in hetzelfde — het blijft een concept tot je het deelt.',
+            desc: 'Een document van geordende secties en blokken, geen vrij tekstveld. Coach en analist schrijven in hetzelfde. Het blijft een concept tot je het deelt.',
             items: [
               'Geordende secties, verplaatsbare blokken',
               'De kern van de tegenstander en de clips erachter',
@@ -449,7 +449,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-tool',
             title: 'Tactisch bord',
-            desc: 'Hetzelfde tekenvlak als de rest van het product, gekoppeld aan de sessie — het schema blijft bij de observatie die het opriep.',
+            desc: 'Hetzelfde tekenvlak als de rest van het product, gekoppeld aan de sessie. Het schema blijft bij de observatie die het opriep.',
           },
         ],
         note: {
@@ -461,7 +461,7 @@ export const scouting: SubpageLocales = {
       {
         kicker: 'HET WEDSTRIJDBLAD',
         title: 'De AI leest de kern. Ze schrijft ze niet.',
-        body: 'Je fotografeert het wedstrijdblad, de AI haalt er de spelers uit — en stopt daar. De extractie levert een voorstel; spelers komen pas in de kern van de tegenstander op het moment dat jij bevestigt.',
+        body: 'Je fotografeert het wedstrijdblad, de AI haalt er de spelers uit, en stopt daar. De extractie levert een voorstel; spelers komen pas in de kern van de tegenstander op het moment dat jij bevestigt.',
         kind: 'columns',
         cols: [
           {
@@ -531,7 +531,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'radio',
             tone: 'blue',
-            text: 'Op wedstrijddag kantelen het blad van de tegenstander en de feiten die je telt naar de live-weergave — en de doelpuntenanalyse neemt op wat daar is ingevoerd.',
+            text: 'Op wedstrijddag kantelen het blad van de tegenstander en de feiten die je telt naar de live-weergave, en de doelpuntenanalyse neemt op wat daar is ingevoerd.',
             link: { label: 'Live wedstrijd', href: '/nl/features/live-match/' },
           },
         ],
@@ -544,7 +544,7 @@ export const scouting: SubpageLocales = {
     meta: {
       title: 'Gegner-Scouting | STRIVN',
       description:
-        'Beobachtungssitzungen, geschriebene oder gesprochene Notizen, getaggte Clips, ein aus dem Spielbericht extrahierter Gegnerkader — und ein Bericht, geteilt mit den Empfängern Ihrer Wahl.',
+        'Beobachtungssitzungen, geschriebene oder gesprochene Notizen, getaggte Clips, ein aus dem Spielbericht extrahierter Gegnerkader und ein Bericht, geteilt mit den Empfängern Ihrer Wahl.',
     },
     hero: {
       kicker: 'FUNKTIONEN · GEGNER',
@@ -583,7 +583,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · ZUSAMMENSTELLEN',
             title: 'Der Bericht',
-            desc: 'Ein Dokument aus geordneten Abschnitten und Blöcken, kein freies Textfeld. Trainer und Analyst schreiben im selben — er bleibt Entwurf, bis Sie ihn teilen.',
+            desc: 'Ein Dokument aus geordneten Abschnitten und Blöcken, kein freies Textfeld. Trainer und Analyst schreiben im selben. Er bleibt Entwurf, bis Sie ihn teilen.',
             items: [
               'Geordnete Abschnitte, verschiebbare Blöcke',
               'Der Gegnerkader und die Clips dahinter',
@@ -626,7 +626,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-tool',
             title: 'Taktiktafel',
-            desc: 'Dieselbe Zeichenfläche wie im übrigen Produkt, an die Sitzung gehängt — die Skizze bleibt bei der Beobachtung, die sie ausgelöst hat.',
+            desc: 'Dieselbe Zeichenfläche wie im übrigen Produkt, an die Sitzung gehängt. Die Skizze bleibt bei der Beobachtung, die sie ausgelöst hat.',
           },
         ],
         note: {
@@ -638,7 +638,7 @@ export const scouting: SubpageLocales = {
       {
         kicker: 'DER SPIELBERICHT',
         title: 'Die KI liest den Kader. Sie schreibt ihn nicht.',
-        body: 'Sie fotografieren den Spielbericht, die KI extrahiert die Spieler — und hört dort auf. Die Extraktion erzeugt einen Vorschlag; Spieler kommen erst in dem Moment in den Gegnerkader, in dem Sie bestätigen.',
+        body: 'Sie fotografieren den Spielbericht, die KI extrahiert die Spieler, und hört dort auf. Die Extraktion erzeugt einen Vorschlag; Spieler kommen erst in dem Moment in den Gegnerkader, in dem Sie bestätigen.',
         kind: 'columns',
         cols: [
           {
@@ -708,7 +708,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'radio',
             tone: 'blue',
-            text: 'Am Spieltag kippen der Gegnerbogen und die Aktionen, die Sie zählen, in die Live-Ansicht — und die Torauswertung greift auf, was dort erfasst wurde.',
+            text: 'Am Spieltag kippen der Gegnerbogen und die Aktionen, die Sie zählen, in die Live-Ansicht, und die Torauswertung greift auf, was dort erfasst wurde.',
             link: { label: 'Live-Spiel', href: '/de/features/live-match/' },
           },
         ],
@@ -721,7 +721,7 @@ export const scouting: SubpageLocales = {
     meta: {
       title: 'Scouting do adversário | STRIVN',
       description:
-        'Sessões de observação, notas escritas ou de voz, clips etiquetados, plantel adversário extraído de uma ficha de jogo — e um relatório partilhado com quem escolher.',
+        'Sessões de observação, notas escritas ou de voz, clips etiquetados, plantel adversário extraído de uma ficha de jogo e um relatório partilhado com quem escolher.',
     },
     hero: {
       kicker: 'FUNCIONALIDADES · ADVERSÁRIO',
@@ -760,7 +760,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · MONTAR',
             title: 'O relatório',
-            desc: 'Um documento de secções e blocos ordenados, não um campo de texto livre. Treinador e analista escrevem no mesmo — fica em rascunho até o partilhar.',
+            desc: 'Um documento de secções e blocos ordenados, não um campo de texto livre. Treinador e analista escrevem no mesmo. Fica em rascunho até o partilhar.',
             items: [
               'Secções ordenadas, blocos móveis',
               'O plantel adversário e os clips que o sustentam',
@@ -803,7 +803,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-tool',
             title: 'Quadro tático',
-            desc: 'A mesma superfície de desenho do resto do produto, ligada à sessão — o esquema fica com a observação que o motivou.',
+            desc: 'A mesma superfície de desenho do resto do produto, ligada à sessão. O esquema fica com a observação que o motivou.',
           },
         ],
         note: {
@@ -815,7 +815,7 @@ export const scouting: SubpageLocales = {
       {
         kicker: 'A FICHA DE JOGO',
         title: 'A IA lê o plantel. Não o escreve.',
-        body: 'Fotografa a ficha de jogo, a IA extrai os jogadores — e para aí. A extração produz uma proposta; os jogadores só entram no plantel adversário no momento em que confirma.',
+        body: 'Fotografa a ficha de jogo, a IA extrai os jogadores, e para aí. A extração produz uma proposta; os jogadores só entram no plantel adversário no momento em que confirma.',
         kind: 'columns',
         cols: [
           {
@@ -885,7 +885,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'radio',
             tone: 'blue',
-            text: 'No dia do jogo, a ficha do adversário e os factos que conta passam para o direto — e a revisão dos golos retoma o que lá foi registado.',
+            text: 'No dia do jogo, a ficha do adversário e os factos que conta passam para o direto, e a revisão dos golos retoma o que lá foi registado.',
             link: { label: 'Jogo em direto', href: '/pt/features/live-match/' },
           },
         ],
@@ -898,7 +898,7 @@ export const scouting: SubpageLocales = {
     meta: {
       title: 'Scouting del rival | STRIVN',
       description:
-        'Sesiones de observación, notas escritas o de voz, clips etiquetados, plantilla rival extraída de un acta — y un informe compartido con quien tú elijas.',
+        'Sesiones de observación, notas escritas o de voz, clips etiquetados, plantilla rival extraída de un acta y un informe compartido con quien tú elijas.',
     },
     hero: {
       kicker: 'FUNCIONALIDADES · RIVAL',
@@ -937,7 +937,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · MONTAR',
             title: 'El informe',
-            desc: 'Un documento de secciones y bloques ordenados, no un campo de texto libre. Entrenador y analista escriben en el mismo — queda en borrador hasta que lo compartes.',
+            desc: 'Un documento de secciones y bloques ordenados, no un campo de texto libre. Entrenador y analista escriben en el mismo. Queda en borrador hasta que lo compartes.',
             items: [
               'Secciones ordenadas, bloques movibles',
               'La plantilla rival y los clips que la respaldan',
@@ -980,7 +980,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-tool',
             title: 'Pizarra táctica',
-            desc: 'La misma superficie de dibujo que el resto del producto, ligada a la sesión — el esquema se queda con la observación que lo motivó.',
+            desc: 'La misma superficie de dibujo que el resto del producto, ligada a la sesión. El esquema se queda con la observación que lo motivó.',
           },
         ],
         note: {
@@ -992,7 +992,7 @@ export const scouting: SubpageLocales = {
       {
         kicker: 'EL ACTA DEL PARTIDO',
         title: 'La IA lee la plantilla. No la escribe.',
-        body: 'Fotografías el acta, la IA extrae los jugadores — y se para ahí. La extracción produce una propuesta; los jugadores solo entran en la plantilla rival en el momento en que confirmas.',
+        body: 'Fotografías el acta, la IA extrae los jugadores, y se para ahí. La extracción produce una propuesta; los jugadores solo entran en la plantilla rival en el momento en que confirmas.',
         kind: 'columns',
         cols: [
           {
@@ -1062,7 +1062,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'radio',
             tone: 'blue',
-            text: 'El día del partido, el acta del rival y los hechos que cuentas pasan al directo — y la revisión de los goles retoma lo que allí se ha registrado.',
+            text: 'El día del partido, el acta del rival y los hechos que cuentas pasan al directo, y la revisión de los goles retoma lo que allí se ha registrado.',
             link: { label: 'Partido en directo', href: '/es/features/live-match/' },
           },
         ],

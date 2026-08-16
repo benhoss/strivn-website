@@ -221,7 +221,7 @@ const fr: ScPageContent = {
   hero: {
     kicker: 'POUR LES PRÉPARATEURS PHYSIQUES',
     title: 'Votre méthodologie, industrialisée.',
-    sub: 'Ce que vous faites déjà dans Excel — charge, check-in bien-être, état de forme, tests — exécuté par un système : collecte automatique, indicateurs validés, restitution au staff.',
+    sub: 'Ce que vous faites déjà dans Excel — charge, check-in bien-être, état de forme, tests — exécuté par un système : la collecte se fait seule, les indicateurs sont ceux de la littérature, et le staff voit le résultat.',
     primaryCta: 'Commencer gratuitement',
     secondaryCta: 'Voir la méthodologie',
     board: {
@@ -284,7 +284,7 @@ const fr: ScPageContent = {
   metrics: {
     kicker: 'INDICATEURS',
     title: 'Les indicateurs du métier, calculés en continu.',
-    body: 'Repris de la littérature, calculés depuis ce que vous saisissez déjà. Les coefficients restent ajustables depuis le panneau Formule — aucune boîte noire.',
+    body: 'Repris de la littérature, calculés depuis ce que vous saisissez déjà. Les coefficients restent ajustables depuis le panneau Formule. Aucune boîte noire.',
     items: [
       { name: 'ACWR', detail: 'charge aiguë 7 j ÷ (chronique 28 j ÷ 4) · zone 0.8–1.3' },
       { name: 'Monotonie', detail: 'moyenne quotidienne ÷ écart-type de la semaine' },
@@ -303,7 +303,7 @@ const fr: ScPageContent = {
   planning: {
     tag: 'PLANIFICATION DE CHARGE',
     title: 'La semaine se dessine avant d’être jouée.',
-    body: 'L’outil du préparateur : vous fixez l’objectif hebdomadaire en UA et le répartissez par catégorie. Chaque composant s’accroche à une séance du calendrier — ou reste en attente. Puis « Prévu vs réalisé » confronte le plan à ce que le groupe a encaissé.',
+    body: 'L’outil du préparateur : vous fixez l’objectif hebdomadaire en UA et le répartissez par catégorie. Chaque composant s’accroche à une séance du calendrier, ou reste en attente. Puis « Prévu vs réalisé » confronte le plan à ce que le groupe a encaissé.',
     points: [
       'Objectif hebdomadaire en UA, budget par catégorie',
       'Charge = RPE × durée × coefficient de catégorie',
@@ -393,13 +393,13 @@ const fr: ScPageContent = {
       colPlayer: 'JOUEUR',
       colMax: '1RM TESTÉ',
       colLoad: 'CHARGE 82 %',
-      note: 'Aperçu par joueur — chacun voit sa charge, pas celle du voisin.',
+      note: 'Aperçu par joueur : chacun voit sa charge, pas celle du voisin.',
     },
   },
   tests: {
     tag: 'TESTS PHYSIQUES & AUTO-MESURE',
     title: 'Des mesures collectées sans transcription.',
-    body: 'Lancez une campagne sur la mesure de votre choix — VMA, poids, ou une mesure que vous définissez. Le staff saisit, ou les joueurs renseignent eux-mêmes depuis un lien magique reçu par e-mail, WhatsApp ou notification.',
+    body: 'Lancez une campagne sur ce que vous voulez mesurer : VMA, poids, ou un test que vous définissez vous-même. Le staff saisit, ou les joueurs renseignent eux-mêmes depuis un lien magique reçu par e-mail, WhatsApp ou notification.',
     points: [
       'Mesures personnalisées, créées par vos soins',
       'Saisie par le staff ou auto-mesure par les joueurs',
@@ -424,7 +424,7 @@ const fr: ScPageContent = {
   reports: {
     tag: 'RAPPORTS & TABLEAU DE BORD',
     title: 'Rendre des comptes sans y passer la soirée.',
-    body: 'Les données viennent de ce que vous saisissez déjà — aucun double encodage. Cinq rapports couvrent la sélection, la charge, l’équipe et le joueur, le générateur construit tout le reste, et l’IA rédige la synthèse comme les signaux de risque.',
+    body: 'Les données viennent de ce que vous saisissez déjà. Aucun double encodage. Cinq rapports couvrent la sélection, la charge, l’équipe et le joueur, le générateur construit tout le reste, et l’IA rédige la synthèse comme les signaux de risque.',
     dashboard: {
       title: 'Dashboard · Charge & disponibilité',
       widgetBtn: 'Widget',
@@ -477,7 +477,7 @@ const en: ScPageContent = {
   hero: {
     kicker: 'FOR STRENGTH & CONDITIONING COACHES',
     title: 'Your methodology, industrialised.',
-    sub: 'What you already do in Excel — load, wellness check-in, readiness, tests — run by a system: automatic collection, validated metrics, reporting to the staff.',
+    sub: 'What you already do in Excel — load, wellness check-in, readiness, tests — run by a system: collection happens on its own, the metrics are the ones from the literature, and the staff sees the result.',
     primaryCta: 'Start for free',
     secondaryCta: 'See the methodology',
     board: {
@@ -540,7 +540,7 @@ const en: ScPageContent = {
   metrics: {
     kicker: 'METRICS',
     title: 'The metrics of the trade, computed continuously.',
-    body: 'Taken from the literature, computed from what you already enter. Coefficients stay adjustable from the Formula panel — no black box.',
+    body: 'Taken from the literature, computed from what you already enter. The coefficients stay adjustable from the Formula panel. No black box.',
     items: [
       { name: 'ACWR', detail: 'acute 7 d ÷ (chronic 28 d ÷ 4) · zone 0.8–1.3' },
       { name: 'Monotony', detail: 'daily mean ÷ standard deviation of the week' },
@@ -559,7 +559,7 @@ const en: ScPageContent = {
   planning: {
     tag: 'LOAD PLANNING',
     title: 'The week takes shape before it is played.',
-    body: 'The S&C coach’s tool: you set the weekly target in AU and split it by category. Each component attaches to a session in the calendar — or stays pending. Then “planned vs actual” confronts the plan with what the squad absorbed.',
+    body: 'The S&C coach’s tool: you set the weekly target in AU and split it by category. Each component attaches to a session in the calendar, or stays pending. Then “planned vs actual” puts the plan against what the squad really absorbed.',
     points: [
       'Weekly target in AU, budget per category',
       'Load = RPE × duration × category coefficient',
@@ -649,13 +649,13 @@ const en: ScPageContent = {
       colPlayer: 'PLAYER',
       colMax: 'TESTED 1RM',
       colLoad: 'LOAD AT 82 %',
-      note: 'Per-player preview — each sees their own load, not their neighbour’s.',
+      note: 'Per-player preview: each sees their own load, not their neighbour’s.',
     },
   },
   tests: {
     tag: 'PHYSICAL TESTS & SELF-MEASUREMENT',
     title: 'Measurements collected without transcription.',
-    body: 'Launch a campaign on the measure of your choice — MAS, weight, or one you define yourself. The staff enters the values, or players fill them in themselves from a magic link received by email, WhatsApp or notification.',
+    body: 'Launch a campaign on whatever you want to measure: MAS, weight, or a test you define yourself. The staff enters the values, or players fill them in themselves from a magic link received by email, WhatsApp or notification.',
     points: [
       'Custom measures, created by you',
       'Staff entry or player self-measurement',
@@ -680,7 +680,7 @@ const en: ScPageContent = {
   reports: {
     tag: 'REPORTS & DASHBOARD',
     title: 'Report back without losing your evening.',
-    body: 'The data comes from what you already enter — no double encoding. Five reports cover selection, load, the team and the player, the generator builds everything else, and the AI writes both the summary and the risk signals.',
+    body: 'The data comes from what you already enter. No double encoding. Five reports cover selection, load, the team and the player, the generator builds everything else, and the AI writes both the summary and the risk signals.',
     dashboard: {
       title: 'Dashboard · Load & availability',
       widgetBtn: 'Widget',
@@ -733,7 +733,7 @@ const nl: ScPageContent = {
   hero: {
     kicker: 'VOOR FYSIEKE TRAINERS',
     title: 'Uw methodologie, geïndustrialiseerd.',
-    sub: 'Wat u al in Excel doet — belasting, wellness-check-in, readiness, testen — uitgevoerd door een systeem: automatische verzameling, gevalideerde indicatoren, rapportage aan de staf.',
+    sub: 'Wat u al in Excel doet — belasting, wellness-check-in, readiness, testen — uitgevoerd door een systeem: de verzameling gebeurt vanzelf, de indicatoren zijn die uit de literatuur, en de staf ziet het resultaat.',
     primaryCta: 'Gratis beginnen',
     secondaryCta: 'Bekijk de methodologie',
     board: {
@@ -796,7 +796,7 @@ const nl: ScPageContent = {
   metrics: {
     kicker: 'INDICATOREN',
     title: 'De indicatoren van het vak, doorlopend berekend.',
-    body: 'Overgenomen uit de literatuur, berekend op basis van wat u al invoert. De coëfficiënten blijven aanpasbaar via het Formule-paneel — geen black box.',
+    body: 'Overgenomen uit de literatuur, berekend op basis van wat u al invoert. De coëfficiënten blijven aanpasbaar via het Formule-paneel. Geen black box.',
     items: [
       { name: 'ACWR', detail: 'acuut 7 d ÷ (chronisch 28 d ÷ 4) · zone 0,8–1,3' },
       { name: 'Monotonie', detail: 'daggemiddelde ÷ standaardafwijking van de week' },
@@ -815,7 +815,7 @@ const nl: ScPageContent = {
   planning: {
     tag: 'BELASTINGSPLANNING',
     title: 'De week krijgt vorm voordat ze gespeeld wordt.',
-    body: 'Het instrument van de fysieke trainer: u bepaalt het weekdoel in AU en verdeelt het per categorie. Elk onderdeel hangt aan een training in de kalender — of blijft in wacht. Daarna zet “Gepland vs gerealiseerd” het plan naast wat de groep werkelijk verwerkte.',
+    body: 'Het instrument van de fysieke trainer: u bepaalt het weekdoel in AU en verdeelt het per categorie. Elk onderdeel hangt aan een training in de kalender, of blijft in wacht. Daarna zet “Gepland vs gerealiseerd” het plan naast wat de groep werkelijk verwerkte.',
     points: [
       'Weekdoel in AU, budget per categorie',
       'Belasting = RPE × duur × categoriecoëfficiënt',
@@ -905,13 +905,13 @@ const nl: ScPageContent = {
       colPlayer: 'SPELER',
       colMax: 'GETEST 1RM',
       colLoad: 'BELASTING 82 %',
-      note: 'Voorbeeld per speler — elk ziet zijn eigen belasting, niet die van de buur.',
+      note: 'Voorbeeld per speler: elk ziet zijn eigen belasting, niet die van de buur.',
     },
   },
   tests: {
     tag: 'FYSIEKE TESTEN & ZELFMETING',
     title: 'Metingen verzameld zonder overtypen.',
-    body: 'Start een campagne op de meting van uw keuze — MAS, gewicht, of een meting die u zelf definieert. De staf voert in, of de spelers vullen zelf in via een magische link ontvangen per e-mail, WhatsApp of notificatie.',
+    body: 'Start een campagne op wat u wilt meten: MAS, gewicht, of een test die u zelf definieert. De staf voert in, of de spelers vullen zelf in via een magische link ontvangen per e-mail, WhatsApp of notificatie.',
     points: [
       'Eigen metingen, door uzelf aangemaakt',
       'Invoer door de staf of zelfmeting door de spelers',
@@ -936,7 +936,7 @@ const nl: ScPageContent = {
   reports: {
     tag: 'RAPPORTEN & DASHBOARD',
     title: 'Verantwoording afleggen zonder er uw avond aan te besteden.',
-    body: 'De data komt uit wat u al invoert — geen dubbele invoer. Vijf rapporten dekken de selectie, de belasting, het team en de speler, de generator bouwt al de rest, en de AI schrijft zowel de synthese als de risicosignalen.',
+    body: 'De data komt uit wat u al invoert. Geen dubbele invoer. Vijf rapporten dekken de selectie, de belasting, het team en de speler, de generator bouwt al de rest, en de AI schrijft zowel de synthese als de risicosignalen.',
     dashboard: {
       title: 'Dashboard · Belasting & beschikbaarheid',
       widgetBtn: 'Widget',
@@ -989,7 +989,7 @@ const de: ScPageContent = {
   hero: {
     kicker: 'FÜR ATHLETIKTRAINER',
     title: 'Ihre Methodik, industrialisiert.',
-    sub: 'Was Sie längst in Excel machen — Belastung, Wellness-Check-in, Readiness, Tests — ausgeführt von einem System: automatische Erfassung, validierte Kennzahlen, Rückmeldung an den Staff.',
+    sub: 'Was Sie längst in Excel machen — Belastung, Wellness-Check-in, Readiness, Tests — ausgeführt von einem System: Die Erfassung läuft von selbst, die Kennzahlen sind die aus der Literatur, und der Staff sieht das Ergebnis.',
     primaryCta: 'Kostenlos starten',
     secondaryCta: 'Methodik ansehen',
     board: {
@@ -1052,7 +1052,7 @@ const de: ScPageContent = {
   metrics: {
     kicker: 'KENNZAHLEN',
     title: 'Die Kennzahlen des Fachs, laufend berechnet.',
-    body: 'Aus der Literatur übernommen, berechnet aus dem, was Sie ohnehin erfassen. Die Koeffizienten bleiben im Formel-Panel einstellbar — keine Blackbox.',
+    body: 'Aus der Literatur übernommen, berechnet aus dem, was Sie ohnehin erfassen. Die Koeffizienten bleiben im Formel-Panel einstellbar. Keine Blackbox.',
     items: [
       { name: 'ACWR', detail: 'akut 7 T ÷ (chronisch 28 T ÷ 4) · Zone 0,8–1,3' },
       { name: 'Monotonie', detail: 'Tagesmittel ÷ Standardabweichung der Woche' },
@@ -1071,7 +1071,7 @@ const de: ScPageContent = {
   planning: {
     tag: 'BELASTUNGSPLANUNG',
     title: 'Die Woche entsteht, bevor sie gespielt wird.',
-    body: 'Das Werkzeug des Athletiktrainers: Sie setzen das Wochenziel in AU und verteilen es nach Kategorie. Jede Komponente hängt an einer Einheit im Kalender — oder bleibt offen. Danach stellt „Plan vs Ist“ den Plan dem gegenüber, was die Gruppe tatsächlich aufgenommen hat.',
+    body: 'Das Werkzeug des Athletiktrainers: Sie setzen das Wochenziel in AU und verteilen es nach Kategorie. Jede Komponente hängt an einer Einheit im Kalender, oder bleibt offen. Danach stellt „Plan vs Ist“ den Plan dem gegenüber, was die Gruppe tatsächlich aufgenommen hat.',
     points: [
       'Wochenziel in AU, Budget je Kategorie',
       'Belastung = RPE × Dauer × Kategoriekoeffizient',
@@ -1161,13 +1161,13 @@ const de: ScPageContent = {
       colPlayer: 'SPIELER',
       colMax: 'GETESTETES 1RM',
       colLoad: 'LAST 82 %',
-      note: 'Vorschau je Spieler — jeder sieht seine Last, nicht die des Nachbarn.',
+      note: 'Vorschau je Spieler: Jeder sieht seine Last, nicht die des Nachbarn.',
     },
   },
   tests: {
     tag: 'LEISTUNGSTESTS & SELBSTMESSUNG',
     title: 'Messwerte erfassen, ohne sie abzutippen.',
-    body: 'Starten Sie eine Kampagne auf der Messgröße Ihrer Wahl — MAS, Gewicht oder eine, die Sie selbst definieren. Der Staff trägt ein, oder die Spieler erfassen selbst über einen Magic Link per E-Mail, WhatsApp oder Benachrichtigung.',
+    body: 'Starten Sie eine Kampagne auf dem, was Sie messen wollen: MAS, Gewicht oder ein Test, den Sie selbst definieren. Der Staff trägt ein, oder die Spieler erfassen selbst über einen Magic Link per E-Mail, WhatsApp oder Benachrichtigung.',
     points: [
       'Eigene Messgrößen, von Ihnen angelegt',
       'Eingabe durch den Staff oder Selbstmessung durch die Spieler',
@@ -1192,7 +1192,7 @@ const de: ScPageContent = {
   reports: {
     tag: 'BERICHTE & DASHBOARD',
     title: 'Rechenschaft geben, ohne den Abend zu opfern.',
-    body: 'Die Daten stammen aus dem, was Sie ohnehin erfassen — keine Doppelerfassung. Fünf Berichte decken Auswahl, Belastung, Team und Spieler ab, der Generator baut alles Weitere, und die KI schreibt sowohl die Synthese als auch die Risikosignale.',
+    body: 'Die Daten stammen aus dem, was Sie ohnehin erfassen. Keine Doppelerfassung. Fünf Berichte decken Auswahl, Belastung, Team und Spieler ab, der Generator baut alles Weitere, und die KI schreibt sowohl die Synthese als auch die Risikosignale.',
     dashboard: {
       title: 'Dashboard · Belastung & Verfügbarkeit',
       widgetBtn: 'Widget',
@@ -1245,7 +1245,7 @@ const pt: ScPageContent = {
   hero: {
     kicker: 'PARA PREPARADORES FÍSICOS',
     title: 'A sua metodologia, industrializada.',
-    sub: 'O que já faz em Excel — carga, check-in de bem-estar, readiness, testes — executado por um sistema: recolha automática, indicadores validados, devolução ao staff.',
+    sub: 'O que já faz em Excel — carga, check-in de bem-estar, readiness, testes — executado por um sistema: a recolha faz-se sozinha, os indicadores são os da literatura, e o staff vê o resultado.',
     primaryCta: 'Começar gratuitamente',
     secondaryCta: 'Ver a metodologia',
     board: {
@@ -1308,7 +1308,7 @@ const pt: ScPageContent = {
   metrics: {
     kicker: 'INDICADORES',
     title: 'Os indicadores da profissão, calculados em contínuo.',
-    body: 'Retirados da literatura, calculados a partir do que já introduz. Os coeficientes ficam ajustáveis no painel Fórmula — nenhuma caixa negra.',
+    body: 'Retirados da literatura, calculados a partir do que já introduz. Os coeficientes ficam ajustáveis no painel Fórmula. Nenhuma caixa negra.',
     items: [
       { name: 'ACWR', detail: 'carga aguda 7 d ÷ (crónica 28 d ÷ 4) · zona 0,8–1,3' },
       { name: 'Monotonia', detail: 'média diária ÷ desvio-padrão da semana' },
@@ -1327,7 +1327,7 @@ const pt: ScPageContent = {
   planning: {
     tag: 'PLANEAMENTO DE CARGA',
     title: 'A semana desenha-se antes de ser jogada.',
-    body: 'A ferramenta do preparador: define o objetivo semanal em UA e reparte-o por categoria. Cada componente liga-se a uma sessão do calendário — ou fica em espera. Depois, «Previsto vs realizado» confronta o plano com o que o plantel absorveu.',
+    body: 'A ferramenta do preparador: define o objetivo semanal em UA e reparte-o por categoria. Cada componente liga-se a uma sessão do calendário, ou fica em espera. Depois, «Previsto vs realizado» confronta o plano com o que o plantel absorveu.',
     points: [
       'Objetivo semanal em UA, orçamento por categoria',
       'Carga = RPE × duração × coeficiente de categoria',
@@ -1417,13 +1417,13 @@ const pt: ScPageContent = {
       colPlayer: 'JOGADOR',
       colMax: '1RM TESTADO',
       colLoad: 'CARGA 82 %',
-      note: 'Pré-visualização por jogador — cada um vê a sua carga, não a do vizinho.',
+      note: 'Pré-visualização por jogador: cada um vê a sua carga, não a do vizinho.',
     },
   },
   tests: {
     tag: 'TESTES FÍSICOS & AUTOMEDIÇÃO',
     title: 'Medições recolhidas sem transcrição.',
-    body: 'Lance uma campanha sobre a medida à sua escolha — VAM, peso, ou uma medida que defina. O staff introduz, ou os jogadores preenchem eles próprios a partir de um link mágico recebido por e-mail, WhatsApp ou notificação.',
+    body: 'Lance uma campanha sobre o que quiser medir: VAM, peso, ou um teste que defina você mesmo. O staff introduz, ou os jogadores preenchem eles próprios a partir de um link mágico recebido por e-mail, WhatsApp ou notificação.',
     points: [
       'Medidas personalizadas, criadas por si',
       'Introdução pelo staff ou automedição pelos jogadores',
@@ -1448,7 +1448,7 @@ const pt: ScPageContent = {
   reports: {
     tag: 'RELATÓRIOS & PAINEL',
     title: 'Prestar contas sem lá passar a noite.',
-    body: 'Os dados vêm do que já introduz — nenhuma dupla codificação. Cinco relatórios cobrem a seleção, a carga, a equipa e o jogador, o gerador constrói tudo o resto, e a IA redige tanto a síntese como os sinais de risco.',
+    body: 'Os dados vêm do que já introduz. Nenhuma dupla codificação. Cinco relatórios cobrem a seleção, a carga, a equipa e o jogador, o gerador constrói tudo o resto, e a IA redige tanto a síntese como os sinais de risco.',
     dashboard: {
       title: 'Dashboard · Carga & disponibilidade',
       widgetBtn: 'Widget',
@@ -1501,7 +1501,7 @@ const es: ScPageContent = {
   hero: {
     kicker: 'PARA PREPARADORES FÍSICOS',
     title: 'Su metodología, industrializada.',
-    sub: 'Lo que ya hace en Excel — carga, check-in de bienestar, readiness, tests — ejecutado por un sistema: recogida automática, indicadores validados, devolución al staff.',
+    sub: 'Lo que ya hace en Excel — carga, check-in de bienestar, readiness, tests — ejecutado por un sistema: la recogida se hace sola, los indicadores son los de la literatura, y el staff ve el resultado.',
     primaryCta: 'Empezar gratis',
     secondaryCta: 'Ver la metodología',
     board: {
@@ -1564,7 +1564,7 @@ const es: ScPageContent = {
   metrics: {
     kicker: 'INDICADORES',
     title: 'Los indicadores del oficio, calculados en continuo.',
-    body: 'Tomados de la literatura, calculados desde lo que ya introduce. Los coeficientes siguen siendo ajustables desde el panel Fórmula — ninguna caja negra.',
+    body: 'Tomados de la literatura, calculados desde lo que ya introduce. Los coeficientes siguen siendo ajustables desde el panel Fórmula. Ninguna caja negra.',
     items: [
       { name: 'ACWR', detail: 'carga aguda 7 d ÷ (crónica 28 d ÷ 4) · zona 0,8–1,3' },
       { name: 'Monotonía', detail: 'media diaria ÷ desviación típica de la semana' },
@@ -1583,7 +1583,7 @@ const es: ScPageContent = {
   planning: {
     tag: 'PLANIFICACIÓN DE CARGA',
     title: 'La semana se dibuja antes de jugarse.',
-    body: 'La herramienta del preparador: fija el objetivo semanal en UA y lo reparte por categoría. Cada componente se engancha a una sesión del calendario — o queda en espera. Después, «Previsto vs realizado» confronta el plan con lo que el grupo ha encajado.',
+    body: 'La herramienta del preparador: fija el objetivo semanal en UA y lo reparte por categoría. Cada componente se engancha a una sesión del calendario, o queda en espera. Después, «Previsto vs realizado» confronta el plan con lo que el grupo ha encajado.',
     points: [
       'Objetivo semanal en UA, presupuesto por categoría',
       'Carga = RPE × duración × coeficiente de categoría',
@@ -1673,13 +1673,13 @@ const es: ScPageContent = {
       colPlayer: 'JUGADOR',
       colMax: '1RM TESTADO',
       colLoad: 'CARGA 82 %',
-      note: 'Vista previa por jugador — cada uno ve su carga, no la del vecino.',
+      note: 'Vista previa por jugador: cada uno ve su carga, no la del vecino.',
     },
   },
   tests: {
     tag: 'TESTS FÍSICOS & AUTOMEDICIÓN',
     title: 'Mediciones recogidas sin transcripción.',
-    body: 'Lance una campaña sobre la medida que elija — VAM, peso, o una medida que usted defina. El staff introduce, o los jugadores lo rellenan ellos mismos desde un enlace mágico recibido por correo, WhatsApp o notificación.',
+    body: 'Lance una campaña sobre lo que quiera medir: VAM, peso, o un test que usted mismo defina. El staff introduce, o los jugadores lo rellenan ellos mismos desde un enlace mágico recibido por correo, WhatsApp o notificación.',
     points: [
       'Medidas personalizadas, creadas por usted',
       'Introducción por el staff o automedición por los jugadores',
@@ -1704,7 +1704,7 @@ const es: ScPageContent = {
   reports: {
     tag: 'INFORMES & PANEL',
     title: 'Rendir cuentas sin dedicarle la noche.',
-    body: 'Los datos vienen de lo que ya introduce — ninguna doble codificación. Cinco informes cubren la selección, la carga, el equipo y el jugador, el generador construye todo lo demás, y la IA redacta tanto la síntesis como las señales de riesgo.',
+    body: 'Los datos vienen de lo que ya introduce. Ninguna doble codificación. Cinco informes cubren la selección, la carga, el equipo y el jugador, el generador construye todo lo demás, y la IA redacta tanto la síntesis como las señales de riesgo.',
     dashboard: {
       title: 'Dashboard · Carga & disponibilidad',
       widgetBtn: 'Widget',

@@ -60,7 +60,7 @@ export const reports: SubpageLocales = {
       {
         kicker: 'LA PAGE LIBRE',
         title: 'Sur qui, quelles statistiques, à quoi les comparer.',
-        body: 'Le générateur assemble un rapport en trois choix : sur qui, quelles statistiques, et à quoi les comparer. Ce qui est enregistré, c’est la question — les chiffres, eux, sont toujours ceux du jour.',
+        body: 'Le générateur assemble un rapport en trois choix : sur qui, quelles statistiques, et à quoi les comparer. Ce qui est enregistré, c’est la question. Les chiffres, eux, sont toujours ceux du jour.',
         kind: 'columns',
         cols: [
           {
@@ -142,7 +142,7 @@ export const reports: SubpageLocales = {
       {
         kicker: 'THE BLANK PAGE',
         title: 'About whom, which statistics, against what.',
-        body: 'The generator assembles a report from three choices: about whom, which statistics, and what to compare them against. What gets saved is the question — the figures are always today’s.',
+        body: 'The generator assembles a report from three choices: about whom, which statistics, and what to compare them against. What gets saved is the question. The figures are always today’s.',
         kind: 'columns',
         cols: [
           {
@@ -224,7 +224,7 @@ export const reports: SubpageLocales = {
       {
         kicker: 'DE VRIJE PAGINA',
         title: 'Over wie, welke statistieken, waarmee vergeleken.',
-        body: 'De generator zet een rapport in elkaar met drie keuzes: over wie, welke statistieken, en waarmee te vergelijken. Wat bewaard wordt is de vraag — de cijfers zijn altijd die van vandaag.',
+        body: 'De generator zet een rapport in elkaar met drie keuzes: over wie, welke statistieken, en waarmee te vergelijken. Wat bewaard wordt is de vraag. De cijfers zijn altijd die van vandaag.',
         kind: 'columns',
         cols: [
           {
@@ -306,7 +306,7 @@ export const reports: SubpageLocales = {
       {
         kicker: 'DIE FREIE SEITE',
         title: 'Über wen, welche Statistiken, verglichen womit.',
-        body: 'Der Generator baut einen Bericht aus drei Entscheidungen: über wen, welche Statistiken und wogegen verglichen wird. Gespeichert wird die Frage — die Zahlen sind immer die von heute.',
+        body: 'Der Generator baut einen Bericht aus drei Entscheidungen: über wen, welche Statistiken und wogegen verglichen wird. Gespeichert wird die Frage. Die Zahlen sind immer die von heute.',
         kind: 'columns',
         cols: [
           {
@@ -388,7 +388,7 @@ export const reports: SubpageLocales = {
       {
         kicker: 'A PÁGINA LIVRE',
         title: 'Sobre quem, que estatísticas, comparadas com o quê.',
-        body: 'O gerador monta um relatório em três escolhas: sobre quem, que estatísticas, e com o que as comparar. O que fica guardado é a pergunta — os números são sempre os de hoje.',
+        body: 'O gerador monta um relatório em três escolhas: sobre quem, que estatísticas, e com o que as comparar. O que fica guardado é a pergunta. Os números são sempre os de hoje.',
         kind: 'columns',
         cols: [
           {
@@ -470,7 +470,7 @@ export const reports: SubpageLocales = {
       {
         kicker: 'LA PÁGINA LIBRE',
         title: 'Sobre quién, qué estadísticas, comparadas con qué.',
-        body: 'El generador arma un informe con tres elecciones: sobre quién, qué estadísticas, y con qué compararlas. Lo que se guarda es la pregunta — las cifras son siempre las de hoy.',
+        body: 'El generador arma un informe con tres elecciones: sobre quién, qué estadísticas, y con qué compararlas. Lo que se guarda es la pregunta. Las cifras son siempre las de hoy.',
         kind: 'columns',
         cols: [
           {

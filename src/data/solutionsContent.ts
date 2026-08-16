@@ -100,12 +100,12 @@ const fr: SolutionsContent = {
   hero: {
     kicker: 'SOLUTIONS · LA FEUILLE DE MATCH',
     title: 'La compo de votre staff performance.',
-    sub: 'Sur le terrain, chacun a son poste. Dans STRIVN aussi : six fonctions, six écrans — et un seul terrain de jeu, la donnée. Trouvez votre numéro.',
+    sub: 'Sur le terrain, chacun a son poste. Dans STRIVN aussi : six fonctions, six écrans, et un seul terrain de jeu — la donnée. Trouvez votre numéro.',
   },
   compo: {
     kicker: 'SIX POSTES, UN TERRAIN',
     title: 'Tout le monde joue sur le même terrain : la donnée.',
-    body: 'Chaque numéro renvoie à une page dédiée. Le brassard est au préparateur physique — c’est lui qui fait entrer STRIVN au club, gratuitement.',
+    body: 'Chaque numéro renvoie à une page dédiée. Le brassard est au préparateur physique : c’est lui qui fait entrer STRIVN au club, gratuitement.',
     caption: 'LE TERRAIN — UNE SEULE BASE : GPS · WELLNESS · CHARGE · PRÉSENCES · MÉDICAL',
     captain: '(C)',
     soon: 'BIENTÔT',
@@ -167,12 +167,12 @@ const en: SolutionsContent = {
   hero: {
     kicker: 'SOLUTIONS · THE TEAM SHEET',
     title: 'The line-up of your performance staff.',
-    sub: 'On the pitch everyone has a position. In STRIVN too: six roles, six screens — and one playing surface, the data. Find your number.',
+    sub: 'On the pitch, everyone has a position. In STRIVN too: six roles, six screens, and one playing surface — the data. Find your number.',
   },
   compo: {
     kicker: 'SIX POSITIONS, ONE PITCH',
     title: 'Everyone plays on the same pitch: the data.',
-    body: 'Every number leads to a dedicated page. The armband goes to the S&C coach — they are the one who brings STRIVN into the club, for free.',
+    body: 'Each number leads to its own page. The armband goes to the S&C coach: they are the one who brings STRIVN into the club, for free.',
     caption: 'THE PITCH — ONE SINGLE BASE: GPS · WELLNESS · LOAD · ATTENDANCE · MEDICAL',
     captain: '(C)',
     soon: 'SOON',
@@ -234,12 +234,12 @@ const nl: SolutionsContent = {
   hero: {
     kicker: 'OPLOSSINGEN · HET WEDSTRIJDBLAD',
     title: 'De opstelling van uw performance-staf.',
-    sub: 'Op het veld heeft iedereen zijn positie. In STRIVN ook: zes functies, zes schermen — en één speelveld, de data. Vind uw nummer.',
+    sub: 'Op het veld heeft iedereen zijn positie. In STRIVN ook: zes functies, zes schermen, en één speelveld — de data. Vind uw nummer.',
   },
   compo: {
     kicker: 'ZES POSITIES, ÉÉN VELD',
     title: 'Iedereen speelt op hetzelfde veld: de data.',
-    body: 'Elk nummer leidt naar een eigen pagina. De band gaat naar de fysieke trainer — hij brengt STRIVN de club binnen, gratis.',
+    body: 'Elk nummer leidt naar een eigen pagina. De band gaat naar de fysieke trainer: hij brengt STRIVN de club binnen, gratis.',
     caption: 'HET VELD — ÉÉN ENKELE BASIS: GPS · WELLNESS · BELASTING · AANWEZIGHEID · MEDISCH',
     captain: '(C)',
     soon: 'BINNENKORT',
@@ -301,12 +301,12 @@ const de: SolutionsContent = {
   hero: {
     kicker: 'LÖSUNGEN · DER SPIELBERICHT',
     title: 'Die Aufstellung Ihres Performance-Staffs.',
-    sub: 'Auf dem Platz hat jeder seine Position. In STRIVN auch: sechs Rollen, sechs Bildschirme — und ein Spielfeld, die Daten. Finden Sie Ihre Nummer.',
+    sub: 'Auf dem Platz hat jeder seine Position. In STRIVN auch: sechs Rollen, sechs Bildschirme, und ein Spielfeld — die Daten. Finden Sie Ihre Nummer.',
   },
   compo: {
     kicker: 'SECHS POSITIONEN, EIN PLATZ',
     title: 'Alle spielen auf demselben Platz: den Daten.',
-    body: 'Jede Nummer führt zu einer eigenen Seite. Die Binde trägt der Athletiktrainer — er holt STRIVN in den Verein, kostenlos.',
+    body: 'Jede Nummer führt zu einer eigenen Seite. Die Binde trägt der Athletiktrainer: Er holt STRIVN in den Verein, kostenlos.',
     caption: 'DER PLATZ — EINE EINZIGE BASIS: GPS · WELLNESS · BELASTUNG · ANWESENHEIT · MEDIZIN',
     captain: '(C)',
     soon: 'BALD',
@@ -368,12 +368,12 @@ const pt: SolutionsContent = {
   hero: {
     kicker: 'SOLUÇÕES · A FICHA DE JOGO',
     title: 'O onze do seu staff de performance.',
-    sub: 'No campo cada um tem a sua posição. No STRIVN também: seis funções, seis ecrãs — e um só terreno de jogo, os dados. Encontre o seu número.',
+    sub: 'No campo cada um tem a sua posição. No STRIVN também: seis funções, seis ecrãs, e um só terreno de jogo — os dados. Encontre o seu número.',
   },
   compo: {
     kicker: 'SEIS POSIÇÕES, UM CAMPO',
     title: 'Toda a gente joga no mesmo campo: os dados.',
-    body: 'Cada número leva a uma página dedicada. A braçadeira é do preparador físico — é ele que faz entrar o STRIVN no clube, gratuitamente.',
+    body: 'Cada número leva a uma página dedicada. A braçadeira é do preparador físico: é ele que faz entrar o STRIVN no clube, gratuitamente.',
     caption: 'O CAMPO — UMA SÓ BASE: GPS · BEM-ESTAR · CARGA · PRESENÇAS · MÉDICO',
     captain: '(C)',
     soon: 'EM BREVE',
@@ -435,12 +435,12 @@ const es: SolutionsContent = {
   hero: {
     kicker: 'SOLUCIONES · EL ACTA DE PARTIDO',
     title: 'La alineación de tu staff de rendimiento.',
-    sub: 'En el campo cada uno tiene su posición. En STRIVN también: seis funciones, seis pantallas — y un solo terreno de juego, los datos. Encuentra tu número.',
+    sub: 'En el campo cada uno tiene su posición. En STRIVN también: seis funciones, seis pantallas, y un solo terreno de juego — los datos. Encuentra tu número.',
   },
   compo: {
     kicker: 'SEIS POSICIONES, UN CAMPO',
     title: 'Todos juegan en el mismo campo: los datos.',
-    body: 'Cada número lleva a una página dedicada. El brazalete es del preparador físico — es él quien mete STRIVN en el club, gratis.',
+    body: 'Cada número lleva a una página dedicada. El brazalete es del preparador físico: es él quien mete STRIVN en el club, gratis.',
     caption: 'EL CAMPO — UNA SOLA BASE: GPS · BIENESTAR · CARGA · ASISTENCIA · MÉDICO',
     captain: '(C)',
     soon: 'PRONTO',
