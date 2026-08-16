@@ -21,13 +21,13 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'APP JOUEUR',
-      title: 'Une app dédiée, ouverte vingt secondes par jour.',
-      sub: 'STRIVN Player se télécharge sur l’App Store et Google Play. Le joueur y répond à son check-in, accepte ses convocations et suit ses séances de musculation. Vous arrêtez de relancer par message.',
+      title: 'Vingt secondes par jour. Sa saison en retour.',
+      sub: 'STRIVN Player se télécharge sur l’App Store et Google Play. Le joueur y répond à son check-in, accepte ses convocations, suit ses séances de musculation — et consulte ses propres statistiques. Vous arrêtez de relancer par message.',
       bullets: [
         'Gratuite pour le joueur, sur iPhone et Android',
         'Le staff envoie l’invitation, le joueur rejoint son équipe',
         'Wellness au réveil, RPE après la séance',
-        'Réservation de son créneau de soins, depuis l’app',
+        'Ses stats de match et sa courbe de forme, dans l’app',
         'Ses réponses partent au staff, jamais au groupe',
       ],
       ctas: {
@@ -40,7 +40,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'DANS L’APP',
-        title: 'Son agenda, ses convocations, son check-in.',
+        title: 'Son agenda, ses séances, ses chiffres.',
         kind: 'cards',
         cards: [
           {
@@ -51,7 +51,7 @@ export const playerApp: SubpageLocales = {
           {
             icon: 'bell',
             title: 'Convocations',
-            desc: 'Répondre prend un tap. Le joueur peut revenir sur sa réponse jusqu’au début de l’événement.',
+            desc: 'Une notification l’avertit, répondre prend un tap. Il peut revenir sur sa réponse jusqu’au début de l’événement.',
           },
           {
             icon: 'clipboard-list',
@@ -64,9 +64,10 @@ export const playerApp: SubpageLocales = {
             desc: 'Le workout du jour, avec les vidéos et les charges déjà calculées sur son propre 1RM.',
           },
           {
-            icon: 'zap',
-            title: 'Notifications',
-            desc: 'Rappel de check-in, nouvelle convocation, changement d’horaire. Le joueur les active à la première ouverture.',
+            icon: 'chart-column',
+            tone: 'blue',
+            title: 'Stats',
+            desc: 'Ses minutes, ses buts, ses passes décisives, match par match. Et sa courbe de forme, jour après jour.',
           },
           {
             icon: 'file-text',
@@ -106,9 +107,11 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'SON READINESS',
+        kicker: 'SA FORME',
         title: 'Plus il en donne, plus il en voit.',
-        body: 'Les séances planifiées par le coach, ses RPE et ses check-in alimentent la même courbe de readiness. Le joueur ouvre la sienne dans l’app.',
+        body: 'Le check-in du matin et le RPE d’après-séance alimentent la même courbe de readiness. Le joueur ouvre la sienne dans l’app : son score du jour, sa semaine à sept cases, sa charge récente.',
+        visual: 'player-form',
+        visualAside: true,
         kind: 'panels',
         panels: [
           {
@@ -129,6 +132,37 @@ export const playerApp: SubpageLocales = {
           },
         ],
         foot: 'Un joueur qui répond tous les matins voit son readiness monter et descendre. Celui qui saute une semaine voit le trou dans la courbe. La collecte tient sur ça, plus que sur les rappels du staff.',
+      },
+      {
+        kicker: 'SES STATS',
+        title: 'Sa saison, en chiffres qui lui appartiennent.',
+        body: 'Le staff saisit la feuille de match. Le joueur retrouve sa ligne dans l’onglet Stats : minutes, buts, passes décisives, cartons, match par match — sur les cinq derniers, sur la saison, ou depuis son arrivée au club.',
+        visual: 'player-stats',
+        kind: 'columns',
+        cols: [
+          {
+            eyebrow: 'SES CHIFFRES',
+            title: 'Ce qui se compte',
+            desc: 'Minutes, buts, passes décisives, tirs cadrés, cartons, et les arrêts pour un gardien. Chaque valeur vient de la feuille de match, pas d’une saisie du joueur.',
+          },
+          {
+            eyebrow: 'MATCH PAR MATCH',
+            title: 'Sa ligne, chaque week-end',
+            desc: 'L’adversaire, le score, dom. ou ext., et ce qu’il a fait ce jour-là. Une saison se relit match par match plutôt qu’en moyenne.',
+          },
+          {
+            eyebrow: 'LES PÉRIODES',
+            title: 'Cinq matchs, ou tout',
+            desc: 'Cinq derniers, dix derniers, cette saison, depuis le début. Le même écran répond aux quatre questions.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'trophy',
+            text: 'Les résultats de l’équipe et ses oppositions à l’entraînement s’affichent au même endroit, alimentés par ce que le staff encode pendant le match.',
+            link: { label: 'Voir le match en direct', href: '/fr/features/live-match/' },
+          },
+        ],
       },
       {
         kicker: 'SOINS',
@@ -163,24 +197,37 @@ export const playerApp: SubpageLocales = {
         },
       },
       {
-        kicker: 'CE QUE LE JOUEUR NE VOIT PAS',
-        title: 'Un joueur ne voit jamais le dossier d’un autre.',
-        kind: 'columns',
-        cols: [
+        kicker: 'CE QU’IL VOIT',
+        title: 'Ses chiffres, et rien que les siens.',
+        body: 'Un écran de stats pose toujours la même question dans un vestiaire : qui voit les miens ? La réponse est dans le produit, pas dans une consigne d’usage.',
+        kind: 'compare',
+        heads: ['Dans son app', 'Jamais dans son app'],
+        tones: ['blue', 'plain'],
+        rows: [
           {
-            eyebrow: 'LES AUTRES',
-            title: 'Les données de l’effectif',
-            desc: 'Chaque joueur accède à ses propres chiffres. Aucun classement d’équipe, aucune comparaison publique.',
+            label: 'SES CHIFFRES',
+            a: 'Ses minutes, ses buts, ses passes décisives, match par match.',
+            b: 'La ligne d’un coéquipier, et tout classement d’équipe.',
           },
           {
-            eyebrow: 'L’ANALYSE',
-            title: 'Vos analyses de match',
-            desc: 'Les erreurs qu’un coach attribue pendant l’analyse restent au staff. La règle est dans le produit, pas dans une consigne.',
+            label: 'SA FORME',
+            a: 'Son readiness, sa charge récente, sa série de check-in.',
+            b: 'Le tableau de l’effectif que le staff lit avant la séance.',
           },
           {
-            eyebrow: 'LES ENFANTS',
-            title: 'Portail parent',
-            desc: 'Sur une équipe en mode enfants, l’invitation part au parent et tout passe par lui, avec un consentement explicite.',
+            label: 'L’ANALYSE',
+            a: 'Les exercices et les documents que le staff lui partage.',
+            b: 'Les erreurs qu’un coach attribue pendant l’analyse de match.',
+          },
+          {
+            label: 'LE KINÉ',
+            a: 'Son propre créneau, avec le motif qu’il a posé.',
+            b: 'Le rendez-vous d’un coéquipier, motif compris.',
+          },
+          {
+            label: 'LES ENFANTS',
+            a: 'Sur une équipe en mode enfants, le parent reçoit l’invitation et voit tout.',
+            b: 'Rien ne part au joueur mineur sans le consentement du parent.',
           },
         ],
       },
@@ -208,13 +255,13 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'PLAYER APP',
-      title: 'A dedicated app, open twenty seconds a day.',
-      sub: 'STRIVN Player downloads from the App Store and Google Play. The player answers their check-in there, accepts call-ups and follows their strength sessions. You stop chasing answers by message.',
+      title: 'Twenty seconds a day. Their season back.',
+      sub: 'STRIVN Player downloads from the App Store and Google Play. The player answers their check-in there, accepts call-ups, follows their strength sessions — and reads their own statistics. You stop chasing answers by message.',
       bullets: [
         'Free for the player, on iPhone and Android',
         'The staff sends the invitation, the player joins their team',
         'Wellness on waking, RPE after the session',
-        'Booking their own treatment slot, from the app',
+        'Their match stats and their form curve, in the app',
         'Their answers go to the staff, never to the group',
       ],
       ctas: {
@@ -227,7 +274,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'INSIDE THE APP',
-        title: 'Their schedule, their call-ups, their check-in.',
+        title: 'Their schedule, their sessions, their figures.',
         kind: 'cards',
         cards: [
           {
@@ -238,7 +285,7 @@ export const playerApp: SubpageLocales = {
           {
             icon: 'bell',
             title: 'Call-ups',
-            desc: 'Answering takes a tap. The player can change that answer until the event starts.',
+            desc: 'A notification tells them, and answering takes a tap. They can change that answer until the event starts.',
           },
           {
             icon: 'clipboard-list',
@@ -251,9 +298,10 @@ export const playerApp: SubpageLocales = {
             desc: 'The workout of the day, with videos and the weights already worked out from their own 1RM.',
           },
           {
-            icon: 'zap',
-            title: 'Notifications',
-            desc: 'Check-in reminder, new call-up, schedule change. The player turns them on at first open.',
+            icon: 'chart-column',
+            tone: 'blue',
+            title: 'Stats',
+            desc: 'Their minutes, their goals, their assists, match by match. And their form curve, day after day.',
           },
           {
             icon: 'file-text',
@@ -293,9 +341,11 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'THEIR READINESS',
+        kicker: 'THEIR FORM',
         title: 'The more they put in, the more they see.',
-        body: 'The sessions the coach planned, their RPE and their check-ins feed the same readiness curve. The player opens their own in the app.',
+        body: 'The morning check-in and the post-session RPE feed the same readiness curve. The player opens their own in the app: today’s score, their week in seven cells, their recent load.',
+        visual: 'player-form',
+        visualAside: true,
         kind: 'panels',
         panels: [
           {
@@ -316,6 +366,37 @@ export const playerApp: SubpageLocales = {
           },
         ],
         foot: 'A player who answers every morning watches their readiness rise and fall. One who skips a week sees the hole in the curve. Collection holds on that, more than on reminders from the staff.',
+      },
+      {
+        kicker: 'THEIR STATS',
+        title: 'Their season, in figures that belong to them.',
+        body: 'The staff fills in the match sheet. The player finds their own line in the Stats tab: minutes, goals, assists, cards, match by match — over the last five, over the season, or since they joined the club.',
+        visual: 'player-stats',
+        kind: 'columns',
+        cols: [
+          {
+            eyebrow: 'THEIR FIGURES',
+            title: 'What gets counted',
+            desc: 'Minutes, goals, assists, shots on target, cards, and saves for a keeper. Every value comes from the match sheet, not from the player typing it in.',
+          },
+          {
+            eyebrow: 'MATCH BY MATCH',
+            title: 'Their line, every weekend',
+            desc: 'The opponent, the score, home or away, and what they did that day. A season reads back match by match rather than as an average.',
+          },
+          {
+            eyebrow: 'THE RANGES',
+            title: 'Five matches, or all of them',
+            desc: 'Last five, last ten, this season, since the start. The same screen answers all four questions.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'trophy',
+            text: 'Team results and their training-ground match-ups sit in the same place, fed by what the staff records during the match.',
+            link: { label: 'See live match', href: '/en/features/live-match/' },
+          },
+        ],
       },
       {
         kicker: 'TREATMENT',
@@ -350,24 +431,37 @@ export const playerApp: SubpageLocales = {
         },
       },
       {
-        kicker: 'WHAT THE PLAYER DOES NOT SEE',
-        title: 'A player never sees another player’s file.',
-        kind: 'columns',
-        cols: [
+        kicker: 'WHAT THEY SEE',
+        title: 'Their figures, and only theirs.',
+        body: 'A stats screen always raises the same question in a dressing room: who sees mine? The answer is in the product, not in a usage policy.',
+        kind: 'compare',
+        heads: ['In their app', 'Never in their app'],
+        tones: ['blue', 'plain'],
+        rows: [
           {
-            eyebrow: 'THE OTHERS',
-            title: 'The squad’s data',
-            desc: 'Each player reaches their own figures. No team ranking, no public comparison.',
+            label: 'THEIR FIGURES',
+            a: 'Their minutes, their goals, their assists, match by match.',
+            b: 'A teammate’s line, and any team ranking.',
           },
           {
-            eyebrow: 'THE ANALYSIS',
-            title: 'Your match analysis',
-            desc: 'Errors a coach attributes during analysis stay with the staff. The rule is in the product, not in a policy.',
+            label: 'THEIR FORM',
+            a: 'Their readiness, their recent load, their check-in streak.',
+            b: 'The squad board the staff reads before the session.',
           },
           {
-            eyebrow: 'CHILDREN',
-            title: 'Parent portal',
-            desc: 'On a team in children mode, the invitation goes to the parent and everything passes through them, with explicit consent.',
+            label: 'THE ANALYSIS',
+            a: 'The exercises and documents the staff shares with them.',
+            b: 'Errors a coach attributes during match analysis.',
+          },
+          {
+            label: 'THE PHYSIO',
+            a: 'Their own slot, with the reason they gave.',
+            b: 'A teammate’s appointment, reason included.',
+          },
+          {
+            label: 'CHILDREN',
+            a: 'On a team in children mode, the parent gets the invitation and sees everything.',
+            b: 'Nothing reaches a minor without the parent’s consent.',
           },
         ],
       },
@@ -395,13 +489,13 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'SPELERS-APP',
-      title: 'Een eigen app, twintig seconden per dag open.',
-      sub: 'STRIVN Player download je in de App Store en op Google Play. Daar doet de speler zijn check-in, aanvaardt hij zijn oproepingen en volgt hij zijn krachttrainingen. Jij hoeft niets meer na te vragen via berichten.',
+      title: 'Twintig seconden per dag. Zijn seizoen terug.',
+      sub: 'STRIVN Player download je in de App Store en op Google Play. Daar doet de speler zijn check-in, aanvaardt hij zijn oproepingen, volgt hij zijn krachttrainingen — en leest hij zijn eigen statistieken. Jij hoeft niets meer na te vragen via berichten.',
       bullets: [
         'Gratis voor de speler, op iPhone en Android',
         'De staf stuurt de uitnodiging, de speler vervoegt zijn ploeg',
         'Wellness bij het opstaan, RPE na de training',
-        'Zelf zijn verzorgingsslot boeken, vanuit de app',
+        'Zijn wedstrijdcijfers en zijn conditiecurve, in de app',
         'Zijn antwoorden gaan naar de staf, nooit naar de groep',
       ],
       ctas: {
@@ -414,7 +508,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'IN DE APP',
-        title: 'Eigen agenda, eigen oproepingen, eigen check-in.',
+        title: 'Eigen agenda, eigen trainingen, eigen cijfers.',
         kind: 'cards',
         cards: [
           {
@@ -425,7 +519,7 @@ export const playerApp: SubpageLocales = {
           {
             icon: 'bell',
             title: 'Oproepingen',
-            desc: 'Antwoorden kost één tik. De speler kan zijn antwoord aanpassen tot de activiteit begint.',
+            desc: 'Een melding verwittigt hem, antwoorden kost één tik. Hij kan zijn antwoord aanpassen tot de activiteit begint.',
           },
           {
             icon: 'clipboard-list',
@@ -438,9 +532,10 @@ export const playerApp: SubpageLocales = {
             desc: 'De workout van de dag, met video’s en de gewichten al berekend op zijn eigen 1RM.',
           },
           {
-            icon: 'zap',
-            title: 'Meldingen',
-            desc: 'Herinnering voor de check-in, nieuwe oproeping, uurwijziging. De speler zet ze aan bij de eerste opening.',
+            icon: 'chart-column',
+            tone: 'blue',
+            title: 'Stats',
+            desc: 'Zijn minuten, zijn doelpunten, zijn assists, wedstrijd per wedstrijd. En zijn conditiecurve, dag na dag.',
           },
           {
             icon: 'file-text',
@@ -480,9 +575,11 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'ZIJN READINESS',
+        kicker: 'ZIJN CONDITIE',
         title: 'Hoe meer hij geeft, hoe meer hij ziet.',
-        body: 'De trainingen die de coach plande, zijn RPE en zijn check-ins voeden dezelfde readiness-curve. De speler opent de zijne in de app.',
+        body: 'De check-in van de ochtend en de RPE na de training voeden dezelfde readiness-curve. De speler opent de zijne in de app: zijn score van vandaag, zijn week in zeven vakjes, zijn recente belasting.',
+        visual: 'player-form',
+        visualAside: true,
         kind: 'panels',
         panels: [
           {
@@ -503,6 +600,37 @@ export const playerApp: SubpageLocales = {
           },
         ],
         foot: 'Een speler die elke ochtend antwoordt, ziet zijn readiness stijgen en dalen. Wie een week overslaat, ziet het gat in de curve. De verzameling steunt daarop, meer dan op herinneringen van de staf.',
+      },
+      {
+        kicker: 'ZIJN STATS',
+        title: 'Zijn seizoen, in cijfers die van hem zijn.',
+        body: 'De staf vult het wedstrijdblad in. De speler vindt zijn eigen lijn terug in het tabblad Stats: minuten, doelpunten, assists, kaarten, wedstrijd per wedstrijd — over de laatste vijf, over het seizoen, of sinds hij bij de club kwam.',
+        visual: 'player-stats',
+        kind: 'columns',
+        cols: [
+          {
+            eyebrow: 'ZIJN CIJFERS',
+            title: 'Wat geteld wordt',
+            desc: 'Minuten, doelpunten, assists, schoten op doel, kaarten, en reddingen voor een doelman. Elke waarde komt van het wedstrijdblad, niet van een invoer door de speler.',
+          },
+          {
+            eyebrow: 'WEDSTRIJD PER WEDSTRIJD',
+            title: 'Zijn lijn, elk weekend',
+            desc: 'De tegenstander, de score, thuis of uit, en wat hij die dag deed. Een seizoen lees je terug wedstrijd per wedstrijd, niet als gemiddelde.',
+          },
+          {
+            eyebrow: 'DE PERIODES',
+            title: 'Vijf wedstrijden, of alles',
+            desc: 'Laatste vijf, laatste tien, dit seizoen, sinds het begin. Hetzelfde scherm beantwoordt alle vier de vragen.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'trophy',
+            text: 'De resultaten van de ploeg en zijn partijtjes op training staan op dezelfde plek, gevoed door wat de staf tijdens de wedstrijd encodeert.',
+            link: { label: 'Wedstrijd live bekijken', href: '/nl/features/live-match/' },
+          },
+        ],
       },
       {
         kicker: 'VERZORGING',
@@ -537,24 +665,37 @@ export const playerApp: SubpageLocales = {
         },
       },
       {
-        kicker: 'WAT DE SPELER NIET ZIET',
-        title: 'Een speler ziet nooit het dossier van een ander.',
-        kind: 'columns',
-        cols: [
+        kicker: 'WAT HIJ ZIET',
+        title: 'Zijn cijfers, en alleen de zijne.',
+        body: 'Een statistiekenscherm roept in een kleedkamer altijd dezelfde vraag op: wie ziet de mijne? Het antwoord zit in het product, niet in een gebruiksafspraak.',
+        kind: 'compare',
+        heads: ['In zijn app', 'Nooit in zijn app'],
+        tones: ['blue', 'plain'],
+        rows: [
           {
-            eyebrow: 'DE ANDEREN',
-            title: 'De data van de kern',
-            desc: 'Elke speler komt bij zijn eigen cijfers. Geen ploegranglijst, geen publieke vergelijking.',
+            label: 'ZIJN CIJFERS',
+            a: 'Zijn minuten, zijn doelpunten, zijn assists, wedstrijd per wedstrijd.',
+            b: 'De lijn van een ploegmaat, en elke ploegranglijst.',
           },
           {
-            eyebrow: 'DE ANALYSE',
-            title: 'Jouw wedstrijdanalyses',
-            desc: 'Fouten die een coach tijdens de analyse toewijst blijven bij de staf. De regel zit in het product, niet in een afspraak.',
+            label: 'ZIJN CONDITIE',
+            a: 'Zijn readiness, zijn recente belasting, zijn check-inreeks.',
+            b: 'Het overzicht van de kern dat de staf voor de training leest.',
           },
           {
-            eyebrow: 'DE KINDEREN',
-            title: 'Ouderportaal',
-            desc: 'Bij een ploeg in kindermodus vertrekt de uitnodiging naar de ouder, en alles loopt via de ouder, met uitdrukkelijke toestemming.',
+            label: 'DE ANALYSE',
+            a: 'De oefeningen en documenten die de staf met hem deelt.',
+            b: 'Fouten die een coach tijdens de wedstrijdanalyse toewijst.',
+          },
+          {
+            label: 'DE KINÉ',
+            a: 'Zijn eigen slot, met de reden die hij opgaf.',
+            b: 'De afspraak van een ploegmaat, reden inbegrepen.',
+          },
+          {
+            label: 'DE KINDEREN',
+            a: 'Bij een ploeg in kindermodus krijgt de ouder de uitnodiging en ziet die alles.',
+            b: 'Niets bereikt een minderjarige zonder toestemming van de ouder.',
           },
         ],
       },
@@ -582,13 +723,13 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'SPIELER-APP',
-      title: 'Eine eigene App, zwanzig Sekunden am Tag geöffnet.',
-      sub: 'STRIVN Player lädt man im App Store und bei Google Play. Dort beantwortet der Spieler seinen Check-in, nimmt Aufgebote an und folgt seinen Krafteinheiten. Sie hören auf, per Nachricht nachzuhaken.',
+      title: 'Zwanzig Sekunden am Tag. Seine Saison zurück.',
+      sub: 'STRIVN Player lädt man im App Store und bei Google Play. Dort beantwortet der Spieler seinen Check-in, nimmt Aufgebote an, folgt seinen Krafteinheiten — und liest seine eigenen Statistiken. Sie hören auf, per Nachricht nachzuhaken.',
       bullets: [
         'Für den Spieler kostenlos, auf iPhone und Android',
         'Der Staff schickt die Einladung, der Spieler tritt seiner Mannschaft bei',
         'Wellness nach dem Aufwachen, RPE nach der Einheit',
-        'Den Behandlungs-Slot selbst buchen, in der App',
+        'Seine Spielzahlen und seine Formkurve, in der App',
         'Seine Antworten gehen an den Staff, nie an die Gruppe',
       ],
       ctas: {
@@ -601,7 +742,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'IN DER APP',
-        title: 'Der eigene Kalender, die eigenen Aufgebote, der eigene Check-in.',
+        title: 'Der eigene Kalender, die eigenen Einheiten, die eigenen Zahlen.',
         kind: 'cards',
         cards: [
           {
@@ -612,7 +753,7 @@ export const playerApp: SubpageLocales = {
           {
             icon: 'bell',
             title: 'Aufgebote',
-            desc: 'Antworten kostet ein Tippen. Der Spieler kann seine Antwort bis zum Beginn des Termins ändern.',
+            desc: 'Eine Benachrichtigung meldet es, Antworten kostet ein Tippen. Er kann seine Antwort bis zum Beginn des Termins ändern.',
           },
           {
             icon: 'clipboard-list',
@@ -625,9 +766,10 @@ export const playerApp: SubpageLocales = {
             desc: 'Das Workout des Tages, mit Videos und den Gewichten, die schon aus seinem eigenen 1RM berechnet sind.',
           },
           {
-            icon: 'zap',
-            title: 'Benachrichtigungen',
-            desc: 'Check-in-Erinnerung, neues Aufgebot, Zeitänderung. Der Spieler schaltet sie beim ersten Öffnen frei.',
+            icon: 'chart-column',
+            tone: 'blue',
+            title: 'Statistiken',
+            desc: 'Seine Minuten, seine Tore, seine Vorlagen, Spiel für Spiel. Und seine Formkurve, Tag für Tag.',
           },
           {
             icon: 'file-text',
@@ -667,9 +809,11 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'SEIN READINESS-WERT',
+        kicker: 'SEINE FORM',
         title: 'Je mehr er gibt, desto mehr sieht er.',
-        body: 'Die vom Trainer geplanten Einheiten, seine RPE-Werte und seine Check-ins speisen dieselbe Readiness-Kurve. Der Spieler öffnet seine eigene in der App.',
+        body: 'Der Check-in am Morgen und der RPE nach der Einheit speisen dieselbe Readiness-Kurve. Der Spieler öffnet seine eigene in der App: seinen Wert von heute, seine Woche in sieben Feldern, seine aktuelle Belastung.',
+        visual: 'player-form',
+        visualAside: true,
         kind: 'panels',
         panels: [
           {
@@ -690,6 +834,37 @@ export const playerApp: SubpageLocales = {
           },
         ],
         foot: 'Ein Spieler, der jeden Morgen antwortet, sieht seinen Readiness-Wert steigen und fallen. Wer eine Woche auslässt, sieht die Lücke in der Kurve. Darauf beruht die Erfassung, mehr als auf Erinnerungen des Staffs.',
+      },
+      {
+        kicker: 'SEINE STATISTIKEN',
+        title: 'Seine Saison, in Zahlen, die ihm gehören.',
+        body: 'Der Staff trägt den Spielbericht ein. Der Spieler findet seine eigene Zeile im Reiter Statistiken: Minuten, Tore, Vorlagen, Karten, Spiel für Spiel — über die letzten fünf, über die Saison, oder seit seinem Wechsel zum Verein.',
+        visual: 'player-stats',
+        kind: 'columns',
+        cols: [
+          {
+            eyebrow: 'SEINE ZAHLEN',
+            title: 'Was gezählt wird',
+            desc: 'Minuten, Tore, Vorlagen, Schüsse aufs Tor, Karten, und Paraden bei einem Torhüter. Jeder Wert kommt aus dem Spielbericht, nicht aus einer Eingabe des Spielers.',
+          },
+          {
+            eyebrow: 'SPIEL FÜR SPIEL',
+            title: 'Seine Zeile, jedes Wochenende',
+            desc: 'Der Gegner, das Ergebnis, heim oder auswärts, und was er an dem Tag gemacht hat. Eine Saison liest sich Spiel für Spiel, nicht als Mittelwert.',
+          },
+          {
+            eyebrow: 'DIE ZEITRÄUME',
+            title: 'Fünf Spiele, oder alle',
+            desc: 'Letzte fünf, letzte zehn, diese Saison, seit Beginn. Derselbe Bildschirm beantwortet alle vier Fragen.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'trophy',
+            text: 'Die Ergebnisse der Mannschaft und seine Trainingsspiele stehen an derselben Stelle, gespeist aus dem, was der Staff während des Spiels erfasst.',
+            link: { label: 'Spiel live ansehen', href: '/de/features/live-match/' },
+          },
+        ],
       },
       {
         kicker: 'BEHANDLUNG',
@@ -724,24 +899,37 @@ export const playerApp: SubpageLocales = {
         },
       },
       {
-        kicker: 'WAS DER SPIELER NICHT SIEHT',
-        title: 'Ein Spieler sieht nie die Akte eines anderen.',
-        kind: 'columns',
-        cols: [
+        kicker: 'WAS ER SIEHT',
+        title: 'Seine Zahlen, und nur seine.',
+        body: 'Ein Statistik-Bildschirm wirft in einer Kabine immer dieselbe Frage auf: wer sieht meine? Die Antwort steckt im Produkt, nicht in einer Nutzungsregel.',
+        kind: 'compare',
+        heads: ['In seiner App', 'Nie in seiner App'],
+        tones: ['blue', 'plain'],
+        rows: [
           {
-            eyebrow: 'DIE ANDEREN',
-            title: 'Die Daten des Kaders',
-            desc: 'Jeder Spieler erreicht seine eigenen Zahlen. Keine Mannschaftsrangliste, kein öffentlicher Vergleich.',
+            label: 'SEINE ZAHLEN',
+            a: 'Seine Minuten, seine Tore, seine Vorlagen, Spiel für Spiel.',
+            b: 'Die Zeile eines Mitspielers, und jede Mannschaftsrangliste.',
           },
           {
-            eyebrow: 'DIE ANALYSE',
-            title: 'Ihre Spielanalysen',
-            desc: 'Fehler, die ein Trainer in der Analyse zuordnet, bleiben beim Staff. Die Regel steckt im Produkt, nicht in einer Absprache.',
+            label: 'SEINE FORM',
+            a: 'Sein Readiness-Wert, seine aktuelle Belastung, seine Check-in-Serie.',
+            b: 'Die Kaderübersicht, die der Staff vor der Einheit liest.',
           },
           {
-            eyebrow: 'DIE KINDER',
-            title: 'Elternportal',
-            desc: 'Bei einer Mannschaft im Kindermodus geht die Einladung an die Eltern, und alles läuft über sie, mit ausdrücklicher Einwilligung.',
+            label: 'DIE ANALYSE',
+            a: 'Die Übungen und Dokumente, die der Staff mit ihm teilt.',
+            b: 'Fehler, die ein Trainer in der Spielanalyse zuordnet.',
+          },
+          {
+            label: 'DER PHYSIO',
+            a: 'Sein eigener Slot, mit dem Grund, den er angegeben hat.',
+            b: 'Der Termin eines Mitspielers, Grund inklusive.',
+          },
+          {
+            label: 'DIE KINDER',
+            a: 'Bei einer Mannschaft im Kindermodus bekommen die Eltern die Einladung und sehen alles.',
+            b: 'Nichts erreicht einen Minderjährigen ohne Einwilligung der Eltern.',
           },
         ],
       },
@@ -769,13 +957,13 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'APP DO JOGADOR',
-      title: 'Uma app dedicada, aberta vinte segundos por dia.',
-      sub: 'A STRIVN Player transfere-se na App Store e no Google Play. É aí que o jogador responde ao check-in, aceita as convocatórias e segue os treinos de força. Deixa de andar a insistir por mensagem.',
+      title: 'Vinte segundos por dia. A sua época de volta.',
+      sub: 'A STRIVN Player transfere-se na App Store e no Google Play. É aí que o jogador responde ao check-in, aceita as convocatórias, segue os treinos de força — e consulta as suas próprias estatísticas. Deixa de andar a insistir por mensagem.',
       bullets: [
         'Gratuita para o jogador, em iPhone e Android',
         'O staff envia o convite, o jogador entra na sua equipa',
         'Wellness ao acordar, RPE depois do treino',
-        'Marcação da sua vaga de tratamento, a partir da app',
+        'Os seus números de jogo e a sua curva de forma, na app',
         'As respostas vão para o staff, nunca para o grupo',
       ],
       ctas: {
@@ -788,7 +976,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'DENTRO DA APP',
-        title: 'A sua agenda, as suas convocatórias, o seu check-in.',
+        title: 'A sua agenda, os seus treinos, os seus números.',
         kind: 'cards',
         cards: [
           {
@@ -799,7 +987,7 @@ export const playerApp: SubpageLocales = {
           {
             icon: 'bell',
             title: 'Convocatórias',
-            desc: 'Responder é um toque. O jogador pode mudar a resposta até ao início do evento.',
+            desc: 'Uma notificação avisa-o e responder é um toque. Pode mudar a resposta até ao início do evento.',
           },
           {
             icon: 'clipboard-list',
@@ -812,9 +1000,10 @@ export const playerApp: SubpageLocales = {
             desc: 'O workout do dia, com os vídeos e as cargas já calculadas sobre a sua própria 1RM.',
           },
           {
-            icon: 'zap',
-            title: 'Notificações',
-            desc: 'Lembrete de check-in, nova convocatória, mudança de horário. O jogador ativa-as na primeira abertura.',
+            icon: 'chart-column',
+            tone: 'blue',
+            title: 'Estatísticas',
+            desc: 'Os seus minutos, os seus golos, as suas assistências, jogo a jogo. E a sua curva de forma, dia após dia.',
           },
           {
             icon: 'file-text',
@@ -854,9 +1043,11 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'O SEU READINESS',
+        kicker: 'A SUA FORMA',
         title: 'Quanto mais dá, mais vê.',
-        body: 'Os treinos planeados pelo treinador, os seus RPE e os seus check-ins alimentam a mesma curva de readiness. O jogador abre a sua na app.',
+        body: 'O check-in da manhã e o RPE do fim do treino alimentam a mesma curva de readiness. O jogador abre a sua na app: o valor de hoje, a sua semana em sete casas, a sua carga recente.',
+        visual: 'player-form',
+        visualAside: true,
         kind: 'panels',
         panels: [
           {
@@ -877,6 +1068,37 @@ export const playerApp: SubpageLocales = {
           },
         ],
         foot: 'Um jogador que responde todas as manhãs vê o seu readiness subir e descer. Quem falha uma semana vê o buraco na curva. A recolha assenta nisso, mais do que nos lembretes do staff.',
+      },
+      {
+        kicker: 'AS SUAS ESTATÍSTICAS',
+        title: 'A sua época, em números que lhe pertencem.',
+        body: 'O staff preenche a ficha de jogo. O jogador encontra a sua linha no separador Estatísticas: minutos, golos, assistências, cartões, jogo a jogo — nos últimos cinco, na época, ou desde que chegou ao clube.',
+        visual: 'player-stats',
+        kind: 'columns',
+        cols: [
+          {
+            eyebrow: 'OS SEUS NÚMEROS',
+            title: 'O que se conta',
+            desc: 'Minutos, golos, assistências, remates à baliza, cartões, e defesas para um guarda-redes. Cada valor vem da ficha de jogo, não de um registo do jogador.',
+          },
+          {
+            eyebrow: 'JOGO A JOGO',
+            title: 'A sua linha, todos os fins de semana',
+            desc: 'O adversário, o resultado, casa ou fora, e o que fez nesse dia. Uma época relê-se jogo a jogo, não em média.',
+          },
+          {
+            eyebrow: 'OS PERÍODOS',
+            title: 'Cinco jogos, ou tudo',
+            desc: 'Últimos cinco, últimos dez, esta época, desde o início. O mesmo ecrã responde às quatro perguntas.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'trophy',
+            text: 'Os resultados da equipa e os seus jogos de treino ficam no mesmo sítio, alimentados pelo que o staff regista durante o jogo.',
+            link: { label: 'Ver o jogo em direto', href: '/pt/features/live-match/' },
+          },
+        ],
       },
       {
         kicker: 'TRATAMENTO',
@@ -911,24 +1133,37 @@ export const playerApp: SubpageLocales = {
         },
       },
       {
-        kicker: 'O QUE O JOGADOR NÃO VÊ',
-        title: 'Um jogador nunca vê o processo de outro.',
-        kind: 'columns',
-        cols: [
+        kicker: 'O QUE ELE VÊ',
+        title: 'Os seus números, e só os seus.',
+        body: 'Um ecrã de estatísticas levanta sempre a mesma pergunta num balneário: quem vê os meus? A resposta está no produto, não numa instrução de utilização.',
+        kind: 'compare',
+        heads: ['Na app dele', 'Nunca na app dele'],
+        tones: ['blue', 'plain'],
+        rows: [
           {
-            eyebrow: 'OS OUTROS',
-            title: 'Os dados do plantel',
-            desc: 'Cada jogador chega aos seus próprios números. Sem classificação de equipa, sem comparação pública.',
+            label: 'OS SEUS NÚMEROS',
+            a: 'Os seus minutos, os seus golos, as suas assistências, jogo a jogo.',
+            b: 'A linha de um colega, e qualquer classificação de equipa.',
           },
           {
-            eyebrow: 'A ANÁLISE',
-            title: 'As suas análises de jogo',
-            desc: 'Os erros que um treinador atribui em análise ficam no staff. A regra está no produto, não numa instrução.',
+            label: 'A SUA FORMA',
+            a: 'O seu readiness, a sua carga recente, a sua série de check-in.',
+            b: 'O quadro do plantel que o staff lê antes do treino.',
           },
           {
-            eyebrow: 'AS CRIANÇAS',
-            title: 'Portal dos pais',
-            desc: 'Numa equipa em modo crianças, o convite vai para o encarregado de educação e tudo passa por ele, com consentimento explícito.',
+            label: 'A ANÁLISE',
+            a: 'Os exercícios e documentos que o staff partilha com ele.',
+            b: 'Os erros que um treinador atribui na análise de jogo.',
+          },
+          {
+            label: 'O FISIOTERAPEUTA',
+            a: 'A sua própria vaga, com o motivo que indicou.',
+            b: 'A marcação de um colega, motivo incluído.',
+          },
+          {
+            label: 'AS CRIANÇAS',
+            a: 'Numa equipa em modo crianças, o encarregado de educação recebe o convite e vê tudo.',
+            b: 'Nada chega a um jogador menor sem o consentimento do encarregado.',
           },
         ],
       },
@@ -956,13 +1191,13 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'APP DEL JUGADOR',
-      title: 'Una app dedicada, abierta veinte segundos al día.',
-      sub: 'STRIVN Player se descarga en la App Store y en Google Play. Ahí el jugador responde su check-in, acepta sus convocatorias y sigue sus sesiones de fuerza. Dejas de reclamar respuestas por mensaje.',
+      title: 'Veinte segundos al día. Su temporada de vuelta.',
+      sub: 'STRIVN Player se descarga en la App Store y en Google Play. Ahí el jugador responde su check-in, acepta sus convocatorias, sigue sus sesiones de fuerza — y consulta sus propias estadísticas. Dejas de reclamar respuestas por mensaje.',
       bullets: [
         'Gratis para el jugador, en iPhone y Android',
         'El staff envía la invitación, el jugador entra en su equipo',
         'Wellness al despertar, RPE después de la sesión',
-        'Reserva de su hueco de tratamiento, desde la app',
+        'Sus cifras de partido y su curva de forma, en la app',
         'Sus respuestas van al staff, nunca al grupo',
       ],
       ctas: {
@@ -975,7 +1210,7 @@ export const playerApp: SubpageLocales = {
     sections: [
       {
         kicker: 'DENTRO DE LA APP',
-        title: 'Su agenda, sus convocatorias, su check-in.',
+        title: 'Su agenda, sus sesiones, sus cifras.',
         kind: 'cards',
         cards: [
           {
@@ -986,7 +1221,7 @@ export const playerApp: SubpageLocales = {
           {
             icon: 'bell',
             title: 'Convocatorias',
-            desc: 'Responder es un toque. El jugador puede cambiar su respuesta hasta el inicio del evento.',
+            desc: 'Una notificación le avisa y responder es un toque. Puede cambiar su respuesta hasta el inicio del evento.',
           },
           {
             icon: 'clipboard-list',
@@ -999,9 +1234,10 @@ export const playerApp: SubpageLocales = {
             desc: 'El workout del día, con los vídeos y las cargas ya calculadas sobre su propio 1RM.',
           },
           {
-            icon: 'zap',
-            title: 'Notificaciones',
-            desc: 'Recordatorio de check-in, nueva convocatoria, cambio de horario. El jugador las activa en la primera apertura.',
+            icon: 'chart-column',
+            tone: 'blue',
+            title: 'Estadísticas',
+            desc: 'Sus minutos, sus goles, sus asistencias, partido a partido. Y su curva de forma, día tras día.',
           },
           {
             icon: 'file-text',
@@ -1041,9 +1277,11 @@ export const playerApp: SubpageLocales = {
         ],
       },
       {
-        kicker: 'SU READINESS',
+        kicker: 'SU FORMA',
         title: 'Cuanto más da, más ve.',
-        body: 'Las sesiones que planificó el entrenador, sus RPE y sus check-ins alimentan la misma curva de readiness. El jugador abre la suya en la app.',
+        body: 'El check-in de la mañana y el RPE de después de la sesión alimentan la misma curva de readiness. El jugador abre la suya en la app: su valor de hoy, su semana en siete casillas, su carga reciente.',
+        visual: 'player-form',
+        visualAside: true,
         kind: 'panels',
         panels: [
           {
@@ -1064,6 +1302,37 @@ export const playerApp: SubpageLocales = {
           },
         ],
         foot: 'Un jugador que responde cada mañana ve su readiness subir y bajar. El que se salta una semana ve el hueco en la curva. La recogida se sostiene en eso, más que en los recordatorios del staff.',
+      },
+      {
+        kicker: 'SUS ESTADÍSTICAS',
+        title: 'Su temporada, en cifras que le pertenecen.',
+        body: 'El staff rellena el acta del partido. El jugador encuentra su línea en la pestaña Estadísticas: minutos, goles, asistencias, tarjetas, partido a partido — en los últimos cinco, en la temporada, o desde que llegó al club.',
+        visual: 'player-stats',
+        kind: 'columns',
+        cols: [
+          {
+            eyebrow: 'SUS CIFRAS',
+            title: 'Lo que se cuenta',
+            desc: 'Minutos, goles, asistencias, tiros a puerta, tarjetas, y paradas para un portero. Cada valor viene del acta del partido, no de algo que teclee el jugador.',
+          },
+          {
+            eyebrow: 'PARTIDO A PARTIDO',
+            title: 'Su línea, cada fin de semana',
+            desc: 'El rival, el resultado, casa o fuera, y lo que hizo ese día. Una temporada se relee partido a partido, no en promedio.',
+          },
+          {
+            eyebrow: 'LOS PERIODOS',
+            title: 'Cinco partidos, o todo',
+            desc: 'Últimos cinco, últimos diez, esta temporada, desde el principio. La misma pantalla responde a las cuatro preguntas.',
+          },
+        ],
+        callouts: [
+          {
+            icon: 'trophy',
+            text: 'Los resultados del equipo y sus partidillos de entrenamiento están en el mismo sitio, alimentados por lo que el staff registra durante el partido.',
+            link: { label: 'Ver el partido en directo', href: '/es/features/live-match/' },
+          },
+        ],
       },
       {
         kicker: 'TRATAMIENTO',
@@ -1098,24 +1367,37 @@ export const playerApp: SubpageLocales = {
         },
       },
       {
-        kicker: 'LO QUE EL JUGADOR NO VE',
-        title: 'Un jugador nunca ve el expediente de otro.',
-        kind: 'columns',
-        cols: [
+        kicker: 'LO QUE VE',
+        title: 'Sus cifras, y solo las suyas.',
+        body: 'Una pantalla de estadísticas plantea siempre la misma pregunta en un vestuario: ¿quién ve las mías? La respuesta está en el producto, no en una consigna de uso.',
+        kind: 'compare',
+        heads: ['En su app', 'Nunca en su app'],
+        tones: ['blue', 'plain'],
+        rows: [
           {
-            eyebrow: 'LOS DEMÁS',
-            title: 'Los datos de la plantilla',
-            desc: 'Cada jugador llega a sus propias cifras. Sin clasificación de equipo, sin comparación pública.',
+            label: 'SUS CIFRAS',
+            a: 'Sus minutos, sus goles, sus asistencias, partido a partido.',
+            b: 'La línea de un compañero, y cualquier clasificación de equipo.',
           },
           {
-            eyebrow: 'EL ANÁLISIS',
-            title: 'Tus análisis de partido',
-            desc: 'Los errores que un entrenador atribuye en el análisis se quedan en el staff. La regla está en el producto, no en una consigna.',
+            label: 'SU FORMA',
+            a: 'Su readiness, su carga reciente, su racha de check-in.',
+            b: 'El cuadro de la plantilla que el staff lee antes de la sesión.',
           },
           {
-            eyebrow: 'LOS NIÑOS',
-            title: 'Portal de padres',
-            desc: 'En un equipo en modo niños, la invitación va al padre o a la madre y todo pasa por ahí, con consentimiento explícito.',
+            label: 'EL ANÁLISIS',
+            a: 'Los ejercicios y documentos que el staff comparte con él.',
+            b: 'Los errores que un entrenador atribuye en el análisis de partido.',
+          },
+          {
+            label: 'EL FISIO',
+            a: 'Su propio hueco, con el motivo que indicó.',
+            b: 'La cita de un compañero, motivo incluido.',
+          },
+          {
+            label: 'LOS NIÑOS',
+            a: 'En un equipo en modo niños, el padre o la madre recibe la invitación y lo ve todo.',
+            b: 'Nada llega a un jugador menor sin el consentimiento de sus padres.',
           },
         ],
       },

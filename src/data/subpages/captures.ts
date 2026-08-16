@@ -216,6 +216,37 @@ export const SCOUT_ROWS: Array<{
 /** Names are invariant, like every other capture on the site. */
 export const SCOUT_NAMES = ['M. Costa', 'T. Willems', 'S. Dubois', 'R. Faye'] as const;
 
+/* Player stats tab. Figures carry no thousands separator on purpose: a
+   grouped number is the one fixture that cannot be locale-invariant. */
+export const PLAYER_STAT_TILES = [
+  { icon: 'timer', v: '940' },
+  { icon: 'target', v: '7' },
+  { icon: 'share-2', v: '4' },
+  { icon: 'radar', v: '11' },
+  { icon: 'square', v: '2' },
+  { icon: 'calendar-days', v: '12' },
+] as const;
+
+/** Opponent names are invariant; the dates beside them are not. */
+export const PLAYER_MATCHES: Array<{
+  opp: string;
+  us: number;
+  them: number;
+  home: boolean;
+  /** Minutes, goals, assists — his own line for that match. */
+  line: [string, string, string];
+}> = [
+  { opp: 'FC Aurore', us: 2, them: 2, home: false, line: ['90', '1', '0'] },
+  { opp: 'AS Verrière', us: 2, them: 0, home: true, line: ['90', '0', '1'] },
+  { opp: 'FC Rivaux', us: 1, them: 3, home: false, line: ['62', '0', '0'] },
+];
+
+/** Seven days of wellness state, oldest first. Today is the last cell. */
+export const PLAYER_WEEK = ['green', 'red', 'green', 'amber', 'red', 'red', 'green'] as const;
+
+/** Fourteen readiness readings, 0-100. The last one is the estimate. */
+export const PLAYER_TREND = [72, 64, 78, 45, 70, 81, 58, 66, 74, 52, 69, 77, 61, 65] as const;
+
 /* ── Shape ────────────────────────────────────────────────────── */
 
 interface Row {
@@ -406,6 +437,38 @@ export interface CaptureText {
     labels: [string, string, string, string, string];
     delta: string;
   };
+  /** Player app, Stats tab: his season figures and his last matches. */
+  playerStats: {
+    title: string;
+    who: string;
+    /** Range filters; the third is the one shown selected. */
+    periods: [string, string, string];
+    /** Tile labels, in `PLAYER_STAT_TILES` order. */
+    tiles: [string, string, string, string, string, string];
+    matchTitle: string;
+    dates: [string, string, string];
+    home: string;
+    away: string;
+    /** Result letters, in `PLAYER_MATCHES` order. */
+    results: [string, string, string];
+    /** Keys for his own line: minutes, goals, assists. */
+    lineKeys: [string, string, string];
+    note: string;
+  };
+  /** Player app, Fitness tab: readiness, streak and the week behind it. */
+  playerForm: {
+    title: string;
+    score: string;
+    verdict: string;
+    tiles: [{ k: string; v: string }, { k: string; v: string }];
+    weekTitle: string;
+    weekMeta: string;
+    days: [string, string, string, string, string, string, string];
+    alert: string;
+    trendTitle: string;
+    measured: string;
+    estimated: string;
+  };
 }
 
 /* ────────────────────────────── FR ────────────────────────────── */
@@ -591,6 +654,42 @@ const fr: CaptureText = {
     rpeValue: '7',
     workout: 'Workout du jour · prévention',
     workoutMeta: '3 exercices · 12 min · vidéos incluses',
+  },
+  playerStats: {
+    title: 'Statistiques',
+    who: 'Adam · Milieu',
+    periods: ['5 derniers', '10 derniers', 'Cette saison'],
+    tiles: [
+      'MINUTES JOUÉES',
+      'BUTS',
+      'PASSES DÉCISIVES',
+      'TIRS CADRÉS',
+      'CARTONS JAUNES',
+      'MATCHS JOUÉS',
+    ],
+    matchTitle: 'Match par match',
+    dates: ['21/06', '28/06', '05/07'],
+    home: 'DOM.',
+    away: 'EXT.',
+    results: ['N', 'V', 'D'],
+    lineKeys: ['min', 'buts', 'passes'],
+    note: 'Les chiffres viennent de la feuille de match saisie par le staff.',
+  },
+  playerForm: {
+    title: 'Forme',
+    score: '65',
+    verdict: 'Signal à surveiller',
+    tiles: [
+      { k: 'SÉRIE CHECK-IN', v: '7 j' },
+      { k: 'CHARGE RÉCENTE', v: '0,70' },
+    ],
+    weekTitle: 'Ta semaine',
+    weekMeta: '7 / 7 jours',
+    days: ['ME', 'JE', 'VE', 'SA', 'DI', 'LU', 'MA'],
+    alert: 'Trois jours dans le rouge. Préviens le staff si ça persiste.',
+    trendTitle: 'Readiness · 14 jours',
+    measured: 'Mesuré',
+    estimated: 'Estimé',
   },
   report: {
     title: 'Sélection / forme · 5 derniers matchs',
@@ -802,6 +901,42 @@ const en: CaptureText = {
     workout: 'Today’s workout · prevention',
     workoutMeta: '3 exercises · 12 min · videos included',
   },
+  playerStats: {
+    title: 'Statistics',
+    who: 'Adam · Midfielder',
+    periods: ['Last 5', 'Last 10', 'This season'],
+    tiles: [
+      'MINUTES PLAYED',
+      'GOALS',
+      'ASSISTS',
+      'SHOTS ON TARGET',
+      'YELLOW CARDS',
+      'MATCHES PLAYED',
+    ],
+    matchTitle: 'Match by match',
+    dates: ['21 Jun', '28 Jun', '5 Jul'],
+    home: 'HOME',
+    away: 'AWAY',
+    results: ['D', 'W', 'L'],
+    lineKeys: ['min', 'goals', 'assists'],
+    note: 'The figures come from the match sheet the staff fills in.',
+  },
+  playerForm: {
+    title: 'Fitness',
+    score: '65',
+    verdict: 'Signal to watch',
+    tiles: [
+      { k: 'CHECK-IN STREAK', v: '7 d' },
+      { k: 'RECENT LOAD', v: '0.70' },
+    ],
+    weekTitle: 'Your week',
+    weekMeta: '7 / 7 days',
+    days: ['WE', 'TH', 'FR', 'SA', 'SU', 'MO', 'TU'],
+    alert: 'Three days in the red. Tell the staff if it keeps up.',
+    trendTitle: 'Readiness · 14 days',
+    measured: 'Measured',
+    estimated: 'Estimated',
+  },
   report: {
     title: 'Selection / form · last 5 matches',
     meta: '18 PLAYERS',
@@ -1011,6 +1146,42 @@ const nl: CaptureText = {
     rpeValue: '7',
     workout: 'Workout van vandaag · preventie',
     workoutMeta: '3 oefeningen · 12 min · video’s inbegrepen',
+  },
+  playerStats: {
+    title: 'Statistieken',
+    who: 'Adam · Middenvelder',
+    periods: ['Laatste 5', 'Laatste 10', 'Dit seizoen'],
+    tiles: [
+      'GESPEELDE MINUTEN',
+      'DOELPUNTEN',
+      'ASSISTS',
+      'SCHOTEN OP DOEL',
+      'GELE KAARTEN',
+      'GESPEELDE WEDSTRIJDEN',
+    ],
+    matchTitle: 'Wedstrijd per wedstrijd',
+    dates: ['21/06', '28/06', '05/07'],
+    home: 'THUIS',
+    away: 'UIT',
+    results: ['G', 'W', 'V'],
+    lineKeys: ['min', 'goals', 'assists'],
+    note: 'De cijfers komen van het wedstrijdblad dat de staf invult.',
+  },
+  playerForm: {
+    title: 'Conditie',
+    score: '65',
+    verdict: 'Signaal om op te volgen',
+    tiles: [
+      { k: 'CHECK-INREEKS', v: '7 d' },
+      { k: 'RECENTE BELASTING', v: '0,70' },
+    ],
+    weekTitle: 'Jouw week',
+    weekMeta: '7 / 7 dagen',
+    days: ['WO', 'DO', 'VR', 'ZA', 'ZO', 'MA', 'DI'],
+    alert: 'Drie dagen in het rood. Verwittig de staf als dit aanhoudt.',
+    trendTitle: 'Readiness · 14 dagen',
+    measured: 'Gemeten',
+    estimated: 'Geschat',
   },
   report: {
     title: 'Selectie / vorm · laatste 5 wedstrijden',
@@ -1222,6 +1393,42 @@ const de: CaptureText = {
     workout: 'Workout des Tages · Prävention',
     workoutMeta: '3 Übungen · 12 Min · Videos inklusive',
   },
+  playerStats: {
+    title: 'Statistiken',
+    who: 'Adam · Mittelfeld',
+    periods: ['Letzte 5', 'Letzte 10', 'Diese Saison'],
+    tiles: [
+      'GESPIELTE MINUTEN',
+      'TORE',
+      'VORLAGEN',
+      'SCHÜSSE AUFS TOR',
+      'GELBE KARTEN',
+      'SPIELE',
+    ],
+    matchTitle: 'Spiel für Spiel',
+    dates: ['21.06.', '28.06.', '05.07.'],
+    home: 'HEIM',
+    away: 'AUSW.',
+    results: ['U', 'S', 'N'],
+    lineKeys: ['Min', 'Tore', 'Vorl.'],
+    note: 'Die Zahlen stammen aus dem Spielbericht, den das Staff einträgt.',
+  },
+  playerForm: {
+    title: 'Form',
+    score: '65',
+    verdict: 'Signal im Blick behalten',
+    tiles: [
+      { k: 'CHECK-IN-SERIE', v: '7 T' },
+      { k: 'AKTUELLE BELASTUNG', v: '0,70' },
+    ],
+    weekTitle: 'Deine Woche',
+    weekMeta: '7 / 7 Tage',
+    days: ['MI', 'DO', 'FR', 'SA', 'SO', 'MO', 'DI'],
+    alert: 'Drei Tage im roten Bereich. Sag dem Staff Bescheid, wenn es anhält.',
+    trendTitle: 'Readiness · 14 Tage',
+    measured: 'Gemessen',
+    estimated: 'Geschätzt',
+  },
   report: {
     title: 'Auswahl / Form · letzte 5 Spiele',
     meta: '18 SPIELER',
@@ -1432,6 +1639,42 @@ const pt: CaptureText = {
     workout: 'Workout do dia · prevenção',
     workoutMeta: '3 exercícios · 12 min · vídeos incluídos',
   },
+  playerStats: {
+    title: 'Estatísticas',
+    who: 'Adam · Médio',
+    periods: ['Últimos 5', 'Últimos 10', 'Esta época'],
+    tiles: [
+      'MINUTOS JOGADOS',
+      'GOLOS',
+      'ASSISTÊNCIAS',
+      'REMATES À BALIZA',
+      'CARTÕES AMARELOS',
+      'JOGOS',
+    ],
+    matchTitle: 'Jogo a jogo',
+    dates: ['21/06', '28/06', '05/07'],
+    home: 'CASA',
+    away: 'FORA',
+    results: ['E', 'V', 'D'],
+    lineKeys: ['min', 'golos', 'assist.'],
+    note: 'Os números vêm da ficha de jogo preenchida pelo staff.',
+  },
+  playerForm: {
+    title: 'Forma',
+    score: '65',
+    verdict: 'Sinal a vigiar',
+    tiles: [
+      { k: 'SÉRIE DE CHECK-IN', v: '7 d' },
+      { k: 'CARGA RECENTE', v: '0,70' },
+    ],
+    weekTitle: 'A tua semana',
+    weekMeta: '7 / 7 dias',
+    days: ['QUA', 'QUI', 'SEX', 'SÁB', 'DOM', 'SEG', 'TER'],
+    alert: 'Três dias no vermelho. Avisa o staff se persistir.',
+    trendTitle: 'Readiness · 14 dias',
+    measured: 'Medido',
+    estimated: 'Estimado',
+  },
   report: {
     title: 'Seleção / forma · últimos 5 jogos',
     meta: '18 JOGADORES',
@@ -1641,6 +1884,42 @@ const es: CaptureText = {
     rpeValue: '7',
     workout: 'Workout del día · prevención',
     workoutMeta: '3 ejercicios · 12 min · vídeos incluidos',
+  },
+  playerStats: {
+    title: 'Estadísticas',
+    who: 'Adam · Centrocampista',
+    periods: ['Últimos 5', 'Últimos 10', 'Esta temporada'],
+    tiles: [
+      'MINUTOS JUGADOS',
+      'GOLES',
+      'ASISTENCIAS',
+      'TIROS A PUERTA',
+      'TARJETAS AMARILLAS',
+      'PARTIDOS',
+    ],
+    matchTitle: 'Partido a partido',
+    dates: ['21/06', '28/06', '05/07'],
+    home: 'CASA',
+    away: 'FUERA',
+    results: ['E', 'V', 'D'],
+    lineKeys: ['min', 'goles', 'asist.'],
+    note: 'Las cifras vienen del acta del partido que rellena el staff.',
+  },
+  playerForm: {
+    title: 'Forma',
+    score: '65',
+    verdict: 'Señal a vigilar',
+    tiles: [
+      { k: 'RACHA DE CHECK-IN', v: '7 d' },
+      { k: 'CARGA RECIENTE', v: '0,70' },
+    ],
+    weekTitle: 'Tu semana',
+    weekMeta: '7 / 7 días',
+    days: ['MI', 'JU', 'VI', 'SÁ', 'DO', 'LU', 'MA'],
+    alert: 'Tres días en rojo. Avisa al staff si continúa.',
+    trendTitle: 'Readiness · 14 días',
+    measured: 'Medido',
+    estimated: 'Estimado',
   },
   report: {
     title: 'Selección / forma · últimos 5 partidos',
