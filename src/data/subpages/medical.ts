@@ -17,7 +17,7 @@ export const medical: SubpageLocales = {
     hero: {
       kicker: 'FONCTIONNALITÉS · ÉQUIPE',
       title: 'La blessure décide qui est convocable.',
-      sub: 'Le tableau médical réunit les blessures actives, les joueurs en revalidation et la disponibilité de chacun. Ce n’est pas un registre à part : c’est ce panneau qui filtre les convocations.',
+      sub: 'Le tableau médical réunit les blessures actives, les joueurs en revalidation et la disponibilité de chacun. C’est ce panneau, et lui seul, qui filtre les convocations.',
       bullets: [
         'Statut par joueur : OK, Blessé, Revalidation',
         'Plan de retour au jeu en étapes, personnalisable',
@@ -75,7 +75,7 @@ export const medical: SubpageLocales = {
           {
             eyebrow: 'ENTRAÎNEMENT UNIQUEMENT',
             title: 'Convoqué aux séances, pas aux matchs',
-            desc: 'Le cran intermédiaire, celui qui manque presque partout — et celui qui décrit la majorité des retours.',
+            desc: 'Le cran intermédiaire, celui qui manque presque partout, et celui qui décrit la majorité des retours.',
             tone: 'orange',
           },
           {
@@ -112,7 +112,7 @@ export const medical: SubpageLocales = {
     hero: {
       kicker: 'FEATURES · TEAM',
       title: 'The injury decides who can be called up.',
-      sub: 'The medical board brings together active injuries, players in rehab and everyone’s availability. It is not a register on the side: this panel is what filters the call-ups.',
+      sub: 'The medical board brings together active injuries, players in rehab and everyone’s availability. This panel, and this panel alone, filters the call-ups.',
       bullets: [
         'Status per player: OK, Injured, Rehab',
         'A staged return-to-play plan you can customise',
@@ -170,7 +170,7 @@ export const medical: SubpageLocales = {
           {
             eyebrow: 'TRAINING ONLY',
             title: 'Called up for sessions, not matches',
-            desc: 'The middle step, the one almost everywhere is missing — and the one that describes most returns.',
+            desc: 'The middle step, the one almost everywhere is missing, and the one that describes most returns.',
             tone: 'orange',
           },
           {
@@ -207,7 +207,7 @@ export const medical: SubpageLocales = {
     hero: {
       kicker: 'FUNCTIES · PLOEG',
       title: 'De blessure bepaalt wie opgeroepen kan worden.',
-      sub: 'Het medische bord brengt actieve blessures, spelers in revalidatie en ieders beschikbaarheid samen. Het is geen apart register: dit paneel filtert de oproepingen.',
+      sub: 'Het medische bord brengt actieve blessures, spelers in revalidatie en ieders beschikbaarheid samen. Dit paneel, en dit paneel alleen, filtert de oproepingen.',
       bullets: [
         'Status per speler: OK, Geblesseerd, Revalidatie',
         'Terugkeerplan in stappen, aanpasbaar',
@@ -265,7 +265,7 @@ export const medical: SubpageLocales = {
           {
             eyebrow: 'ENKEL TRAINING',
             title: 'Opgeroepen voor trainingen, niet voor wedstrijden',
-            desc: 'De tussenstand, die bijna overal ontbreekt — en die de meeste terugkeren beschrijft.',
+            desc: 'De tussenstand, die bijna overal ontbreekt, en die de meeste terugkeren beschrijft.',
             tone: 'orange',
           },
           {
@@ -302,7 +302,7 @@ export const medical: SubpageLocales = {
     hero: {
       kicker: 'FUNKTIONEN · MANNSCHAFT',
       title: 'Die Verletzung entscheidet, wer aufgeboten werden kann.',
-      sub: 'Die medizinische Übersicht bündelt aktive Verletzungen, Spieler in Reha und die Verfügbarkeit jedes Einzelnen. Kein Register nebenher: Genau dieses Panel filtert die Aufgebote.',
+      sub: 'Die medizinische Übersicht bündelt aktive Verletzungen, Spieler in Reha und die Verfügbarkeit jedes Einzelnen. Genau dieses Panel filtert die Aufgebote.',
       bullets: [
         'Status je Spieler: OK, Verletzt, Reha',
         'Ein Rückkehrplan in Stufen, anpassbar',
@@ -360,7 +360,7 @@ export const medical: SubpageLocales = {
           {
             eyebrow: 'NUR TRAINING',
             title: 'Zu Einheiten aufgeboten, nicht zu Spielen',
-            desc: 'Die mittlere Stufe, die fast überall fehlt — und die die meisten Rückkehrer beschreibt.',
+            desc: 'Die mittlere Stufe, die fast überall fehlt, und die die meisten Rückkehrer beschreibt.',
             tone: 'orange',
           },
           {
@@ -397,7 +397,7 @@ export const medical: SubpageLocales = {
     hero: {
       kicker: 'FUNCIONALIDADES · EQUIPA',
       title: 'A lesão decide quem pode ser convocado.',
-      sub: 'O quadro médico reúne as lesões ativas, os jogadores em reabilitação e a disponibilidade de cada um. Não é um registo à parte: é este painel que filtra as convocatórias.',
+      sub: 'O quadro médico reúne as lesões ativas, os jogadores em reabilitação e a disponibilidade de cada um. É este painel, e só ele, que filtra as convocatórias.',
       bullets: [
         'Estado por jogador: OK, Lesionado, Reabilitação',
         'Plano de regresso por etapas, personalizável',
@@ -455,7 +455,7 @@ export const medical: SubpageLocales = {
           {
             eyebrow: 'APENAS TREINO',
             title: 'Convocado para treinos, não para jogos',
-            desc: 'O nível intermédio, o que falta quase em todo o lado — e o que descreve a maioria dos regressos.',
+            desc: 'O nível intermédio, o que falta quase em todo o lado, e o que descreve a maioria dos regressos.',
             tone: 'orange',
           },
           {
@@ -492,7 +492,7 @@ export const medical: SubpageLocales = {
     hero: {
       kicker: 'FUNCIONALIDADES · EQUIPO',
       title: 'La lesión decide quién es convocable.',
-      sub: 'El cuadro médico reúne las lesiones activas, los jugadores en readaptación y la disponibilidad de cada uno. No es un registro aparte: es este panel el que filtra las convocatorias.',
+      sub: 'El cuadro médico reúne las lesiones activas, los jugadores en readaptación y la disponibilidad de cada uno. Es este panel, y solo este panel, el que filtra las convocatorias.',
       bullets: [
         'Estado por jugador: OK, Lesionado, Readaptación',
         'Plan de vuelta por etapas, personalizable',
@@ -550,7 +550,7 @@ export const medical: SubpageLocales = {
           {
             eyebrow: 'SOLO ENTRENAMIENTO',
             title: 'Convocado a sesiones, no a partidos',
-            desc: 'El nivel intermedio, el que falta casi en todas partes — y el que describe la mayoría de las vueltas.',
+            desc: 'El nivel intermedio, el que falta casi en todas partes, y el que describe la mayoría de las vueltas.',
             tone: 'orange',
           },
           {

@@ -38,12 +38,12 @@ export const clubsContent: Record<Locale, ClubsContent> = {
     meta: {
       title: 'STRIVN pour les clubs — coordination multi-équipes',
       description:
-        'Coordonnez toutes les équipes, les staffs et les flux médicaux de votre club dans une seule plateforme. Le plan Club arrive progressivement — rejoignez la liste d’attente.',
+        'Coordonnez toutes les équipes, les staffs et les flux médicaux de votre club dans une seule plateforme. Le plan Club arrive progressivement. Inscrivez-vous sur la liste d’attente.',
     },
     eyebrow: 'STRIVN pour les clubs',
     hero: {
       title: 'Un club. Toutes les équipes, sous un même toit.',
-      lede: 'Le plan Coach fait tourner une équipe. Le plan Club les coordonne toutes : base joueurs partagée, staff médical mutualisé, tableaux de bord inter-équipes. Le déploiement est progressif — les clubs inscrits sur la liste entrent en premier.',
+      lede: 'Le plan Coach fait tourner une équipe. Le plan Club les coordonne toutes : base joueurs partagée, staff médical mutualisé, tableaux de bord inter-équipes. Le déploiement est progressif, et les clubs inscrits sur la liste entrent en premier.',
       status: 'Bientôt · ouverture progressive',
     },
     benefits: {
@@ -67,13 +67,13 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         },
         {
           title: 'Suivi blessure inter-équipes',
-          text: 'Une blessure suit le joueur, pas l’équipe — le retour au jeu reste cohérent même quand un joueur surclasse.',
+          text: 'Une blessure suit le joueur, pas l’équipe. Le retour au jeu reste cohérent même quand un joueur surclasse.',
         },
       ],
     },
     form: {
       title: 'Rejoindre la liste d’attente Club',
-      body: 'Parlez-nous de votre club et nous vous contacterons quand le déploiement arrivera chez vous. Sans engagement — cela place simplement votre club dans la file.',
+      body: 'Parlez-nous de votre club et nous vous contacterons quand le déploiement arrivera chez vous. Sans engagement : cela place simplement votre club dans la file.',
       fields: {
         name: { label: 'Votre nom', placeholder: 'Prénom Nom' },
         email: { label: 'Email', placeholder: 'vous@club.fr' },
@@ -85,7 +85,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       sending: 'Envoi…',
       success: {
         title: 'Vous êtes sur la liste.',
-        body: 'Merci — nous vous contacterons au fil du déploiement du plan Club. En attendant, vos coaches peuvent déjà démarrer gratuitement avec le plan Coach.',
+        body: 'Merci. Nous vous contacterons au fil du déploiement du plan Club. En attendant, vos coaches peuvent déjà démarrer gratuitement avec le plan Coach.',
       },
       error: 'L’envoi du formulaire a échoué. Réessayez, ou écrivez-nous à hello@strivn.net.',
       privacyNote: 'Ces informations servent uniquement à vous recontacter au sujet du plan Club.',
@@ -102,12 +102,12 @@ export const clubsContent: Record<Locale, ClubsContent> = {
     meta: {
       title: 'STRIVN for clubs — multi-team coordination',
       description:
-        'Coordinate every team, staff and medical workflow of your club in one platform. The Club plan is rolling out gradually — join the waitlist.',
+        'Coordinate every team, staff and medical workflow of your club in one platform. The Club plan is rolling out gradually. Join the waitlist.',
     },
     eyebrow: 'STRIVN for clubs',
     hero: {
       title: 'One club. Every team, under one roof.',
-      lede: 'The Coach plan runs one team. The Club plan coordinates all of them: a shared player base, shared medical staff, dashboards across squads. The rollout is gradual — clubs on the waitlist get in first.',
+      lede: 'The Coach plan runs one team. The Club plan coordinates all of them: a shared player base, shared medical staff, dashboards across squads. The rollout is gradual, and clubs on the waitlist go first.',
       status: 'Coming soon · gradual rollout',
     },
     benefits: {
@@ -131,13 +131,13 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         },
         {
           title: 'Cross-team injury tracking',
-          text: 'An injury follows the player, not the team — return-to-play stays coherent even when a player plays up a category.',
+          text: 'An injury follows the player, not the team. Return-to-play stays coherent even when a player plays up a category.',
         },
       ],
     },
     form: {
       title: 'Join the Club waitlist',
-      body: 'Tell us about your club and we’ll get in touch as the rollout reaches you. No commitment — it simply puts your club in the queue.',
+      body: 'Tell us about your club and we’ll get in touch as the rollout reaches you. No commitment: it simply puts your club in the queue.',
       fields: {
         name: { label: 'Your name', placeholder: 'First Last' },
         email: { label: 'Email', placeholder: 'you@club.com' },
@@ -149,7 +149,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       sending: 'Sending…',
       success: {
         title: 'You’re on the list.',
-        body: 'Thanks — we’ll get in touch as the Club plan rolls out. In the meantime, your coaches can already start for free with the Coach plan.',
+        body: 'Thanks. We’ll get in touch as the Club plan rolls out. In the meantime, your coaches can already start for free with the Coach plan.',
       },
       error: 'The form could not be sent. Please try again, or write to hello@strivn.net.',
       privacyNote: 'We only use these details to contact you about the Club plan.',
@@ -166,12 +166,12 @@ export const clubsContent: Record<Locale, ClubsContent> = {
     meta: {
       title: 'STRIVN voor clubs — coördinatie over meerdere teams',
       description:
-        'Coördineer elk team, elke staf en elke medische workflow van je club in één platform. Het Club-plan wordt geleidelijk uitgerold — schrijf je in op de wachtlijst.',
+        'Coördineer elk team, elke staf en elke medische workflow van je club in één platform. Het Club-plan wordt geleidelijk uitgerold. Schrijf je in op de wachtlijst.',
     },
     eyebrow: 'STRIVN voor clubs',
     hero: {
       title: 'Eén club. Elk team, onder één dak.',
-      lede: 'Het Coach-plan laat één team draaien. Het Club-plan coördineert ze allemaal: een gedeelde spelersbasis, gedeelde medische staf, dashboards over alle teams heen. De uitrol verloopt geleidelijk — clubs op de wachtlijst zijn als eerste aan de beurt.',
+      lede: 'Het Coach-plan laat één team draaien. Het Club-plan coördineert ze allemaal: een gedeelde spelersbasis, gedeelde medische staf, dashboards over alle teams heen. De uitrol verloopt geleidelijk, en clubs op de wachtlijst zijn als eerste aan de beurt.',
       status: 'Binnenkort · geleidelijke uitrol',
     },
     benefits: {
@@ -195,13 +195,13 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         },
         {
           title: 'Blessureopvolging over teams heen',
-          text: 'Een blessure volgt de speler, niet het team — de terugkeer naar het spel blijft coherent, ook wanneer een speler in een hogere categorie meespeelt.',
+          text: 'Een blessure volgt de speler, niet het team. De terugkeer naar het spel blijft coherent, ook wanneer een speler in een hogere categorie meespeelt.',
         },
       ],
     },
     form: {
       title: 'Inschrijven op de Club-wachtlijst',
-      body: 'Vertel ons over je club en we nemen contact op zodra de uitrol jou bereikt. Zonder verplichting — het plaatst je club gewoon in de rij.',
+      body: 'Vertel ons over je club en we nemen contact op zodra de uitrol jou bereikt. Zonder verplichting: het plaatst je club gewoon in de rij.',
       fields: {
         name: { label: 'Je naam', placeholder: 'Voornaam Achternaam' },
         email: { label: 'E-mail', placeholder: 'jij@club.be' },
@@ -213,7 +213,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       sending: 'Verzenden…',
       success: {
         title: 'Je staat op de lijst.',
-        body: 'Bedankt — we nemen contact op naarmate het Club-plan wordt uitgerold. Ondertussen kunnen je coaches al gratis starten met het Coach-plan.',
+        body: 'Bedankt. We nemen contact op naarmate het Club-plan wordt uitgerold. Ondertussen kunnen je coaches al gratis starten met het Coach-plan.',
       },
       error: 'Het formulier kon niet worden verzonden. Probeer het opnieuw, of schrijf naar hello@strivn.net.',
       privacyNote: 'We gebruiken deze gegevens enkel om contact met je op te nemen over het Club-plan.',
@@ -230,12 +230,12 @@ export const clubsContent: Record<Locale, ClubsContent> = {
     meta: {
       title: 'STRIVN für Vereine — Koordination über mehrere Teams',
       description:
-        'Koordinieren Sie jedes Team, jeden Staff und jeden medizinischen Ablauf Ihres Vereins in einer Plattform. Der Verein-Tarif wird schrittweise ausgerollt — tragen Sie sich in die Warteliste ein.',
+        'Koordinieren Sie jedes Team, jeden Staff und jeden medizinischen Ablauf Ihres Vereins in einer Plattform. Der Verein-Tarif wird schrittweise ausgerollt. Tragen Sie sich in die Warteliste ein.',
     },
     eyebrow: 'STRIVN für Vereine',
     hero: {
       title: 'Ein Verein. Jedes Team, unter einem Dach.',
-      lede: 'Der Coach-Tarif führt ein Team. Der Verein-Tarif koordiniert sie alle: eine gemeinsame Spielerbasis, gemeinsamer medizinischer Staff, Dashboards über alle Teams hinweg. Der Rollout erfolgt schrittweise — Vereine auf der Warteliste kommen zuerst dran.',
+      lede: 'Der Coach-Tarif führt ein Team. Der Verein-Tarif koordiniert sie alle: eine gemeinsame Spielerbasis, gemeinsamer medizinischer Staff, Dashboards über alle Teams hinweg. Der Rollout erfolgt schrittweise, und Vereine auf der Warteliste kommen zuerst dran.',
       status: 'Bald verfügbar · schrittweiser Rollout',
     },
     benefits: {
@@ -259,13 +259,13 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         },
         {
           title: 'Teamübergreifende Verletzungsverfolgung',
-          text: 'Eine Verletzung folgt dem Spieler, nicht dem Team — die Rückkehr zum Spiel bleibt schlüssig, selbst wenn ein Spieler eine Kategorie höher spielt.',
+          text: 'Eine Verletzung folgt dem Spieler, nicht dem Team. Die Rückkehr zum Spiel bleibt schlüssig, selbst wenn ein Spieler eine Kategorie höher spielt.',
         },
       ],
     },
     form: {
       title: 'In die Verein-Warteliste eintragen',
-      body: 'Erzählen Sie uns von Ihrem Verein und wir melden uns, sobald der Rollout Sie erreicht. Ohne Verpflichtung — es reiht Ihren Verein einfach in die Warteschlange ein.',
+      body: 'Erzählen Sie uns von Ihrem Verein und wir melden uns, sobald der Rollout Sie erreicht. Ohne Verpflichtung: Es reiht Ihren Verein einfach in die Warteschlange ein.',
       fields: {
         name: { label: 'Ihr Name', placeholder: 'Vorname Nachname' },
         email: { label: 'E-Mail', placeholder: 'name@verein.de' },
@@ -277,7 +277,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       sending: 'Wird gesendet…',
       success: {
         title: 'Sie stehen auf der Liste.',
-        body: 'Danke — wir melden uns, sobald der Verein-Tarif ausgerollt wird. In der Zwischenzeit können Ihre Coaches bereits kostenlos mit dem Coach-Tarif starten.',
+        body: 'Danke. Wir melden uns, sobald der Verein-Tarif ausgerollt wird. In der Zwischenzeit können Ihre Coaches bereits kostenlos mit dem Coach-Tarif starten.',
       },
       error: 'Das Formular konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an hello@strivn.net.',
       privacyNote: 'Wir verwenden diese Angaben ausschließlich, um Sie zum Verein-Tarif zu kontaktieren.',
@@ -294,12 +294,12 @@ export const clubsContent: Record<Locale, ClubsContent> = {
     meta: {
       title: 'STRIVN para clubes — coordenação multiequipa',
       description:
-        'Coordene todas as equipas, staffs e fluxos médicos do seu clube numa só plataforma. O plano Clube está a chegar por fases — inscreva-se na lista de espera.',
+        'Coordene todas as equipas, staffs e fluxos médicos do seu clube numa só plataforma. O plano Clube está a chegar por fases. Inscreva-se na lista de espera.',
     },
     eyebrow: 'STRIVN para clubes',
     hero: {
       title: 'Um clube. Todas as equipas, debaixo do mesmo teto.',
-      lede: 'O plano Coach faz funcionar uma equipa. O plano Clube coordena-as a todas: base de jogadores partilhada, staff médico partilhado, painéis transversais a todos os escalões. O lançamento é progressivo — os clubes na lista de espera entram primeiro.',
+      lede: 'O plano Coach faz funcionar uma equipa. O plano Clube coordena-as a todas: base de jogadores partilhada, staff médico partilhado, painéis transversais a todos os escalões. O lançamento é progressivo, e os clubes na lista de espera entram primeiro.',
       status: 'Em breve · lançamento progressivo',
     },
     benefits: {
@@ -323,13 +323,13 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         },
         {
           title: 'Acompanhamento de lesões entre equipas',
-          text: 'A lesão segue o jogador, não a equipa — o regresso à competição mantém-se coerente mesmo quando um jogador sobe de escalão.',
+          text: 'A lesão segue o jogador, não a equipa. O regresso à competição mantém-se coerente mesmo quando um jogador sobe de escalão.',
         },
       ],
     },
     form: {
       title: 'Entrar na lista de espera Clube',
-      body: 'Fale-nos do seu clube e entraremos em contacto quando o lançamento chegar até si. Sem compromisso — apenas coloca o seu clube na fila.',
+      body: 'Fale-nos do seu clube e entraremos em contacto quando o lançamento chegar até si. Sem compromisso: apenas coloca o seu clube na fila.',
       fields: {
         name: { label: 'O seu nome', placeholder: 'Nome Apelido' },
         email: { label: 'Email', placeholder: 'nome@clube.pt' },
@@ -341,7 +341,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       sending: 'A enviar…',
       success: {
         title: 'Está na lista.',
-        body: 'Obrigado — entraremos em contacto à medida que o plano Clube for sendo lançado. Entretanto, os seus treinadores já podem começar gratuitamente com o plano Coach.',
+        body: 'Obrigado. Entraremos em contacto à medida que o plano Clube for sendo lançado. Entretanto, os seus treinadores já podem começar gratuitamente com o plano Coach.',
       },
       error: 'Não foi possível enviar o formulário. Tente novamente ou escreva-nos para hello@strivn.net.',
       privacyNote: 'Usamos estes dados apenas para o contactar acerca do plano Clube.',
@@ -358,12 +358,12 @@ export const clubsContent: Record<Locale, ClubsContent> = {
     meta: {
       title: 'STRIVN para clubes — coordinación entre equipos',
       description:
-        'Coordina todos los equipos, cuerpos técnicos y flujos médicos de tu club en una sola plataforma. El plan Club se despliega de forma progresiva — apúntate a la lista de espera.',
+        'Coordina todos los equipos, cuerpos técnicos y flujos médicos de tu club en una sola plataforma. El plan Club se despliega de forma progresiva. Apúntate a la lista de espera.',
     },
     eyebrow: 'STRIVN para clubes',
     hero: {
       title: 'Un club. Todos los equipos, bajo un mismo techo.',
-      lede: 'El plan Coach hace funcionar un equipo. El plan Club los coordina todos: base de jugadores compartida, personal médico compartido, paneles que cruzan todas las plantillas. El despliegue es progresivo — los clubes de la lista de espera entran primero.',
+      lede: 'El plan Coach hace funcionar un equipo. El plan Club los coordina todos: base de jugadores compartida, personal médico compartido, paneles que cruzan todas las plantillas. El despliegue es progresivo, y los clubes de la lista de espera entran primero.',
       status: 'Muy pronto · despliegue progresivo',
     },
     benefits: {
@@ -387,13 +387,13 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         },
         {
           title: 'Seguimiento de lesiones entre equipos',
-          text: 'La lesión sigue al jugador, no al equipo — la vuelta a la competición se mantiene coherente incluso cuando un jugador sube de categoría.',
+          text: 'La lesión sigue al jugador, no al equipo. La vuelta a la competición se mantiene coherente incluso cuando un jugador sube de categoría.',
         },
       ],
     },
     form: {
       title: 'Apuntarse a la lista de espera Club',
-      body: 'Cuéntanos cómo es tu club y te escribiremos cuando el despliegue llegue a ti. Sin compromiso — simplemente coloca a tu club en la cola.',
+      body: 'Cuéntanos cómo es tu club y te escribiremos cuando el despliegue llegue a ti. Sin compromiso: simplemente coloca a tu club en la cola.',
       fields: {
         name: { label: 'Tu nombre', placeholder: 'Nombre Apellido' },
         email: { label: 'Email', placeholder: 'tu@club.es' },
@@ -405,7 +405,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       sending: 'Enviando…',
       success: {
         title: 'Ya estás en la lista.',
-        body: 'Gracias — te escribiremos a medida que se despliegue el plan Club. Mientras tanto, tus entrenadores ya pueden empezar gratis con el plan Coach.',
+        body: 'Gracias. Te escribiremos a medida que se despliegue el plan Club. Mientras tanto, tus entrenadores ya pueden empezar gratis con el plan Coach.',
       },
       error: 'No se ha podido enviar el formulario. Inténtalo de nuevo o escríbenos a hello@strivn.net.',
       privacyNote: 'Solo usamos estos datos para contactar contigo acerca del plan Club.',

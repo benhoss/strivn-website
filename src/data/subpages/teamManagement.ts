@@ -14,7 +14,7 @@ export const teamManagement: SubpageLocales = {
     hero: {
       kicker: 'FONCTIONNALITÉS · ÉQUIPE',
       title: 'L’intendance de l’équipe, sans le classeur.',
-      sub: 'Effectif, calendrier, convocations, présences, feuille de match : le quotidien d’une équipe tient dans un seul espace — et se nourrit des mêmes données que le monitoring.',
+      sub: 'Effectif, calendrier, convocations, présences, feuille de match : le quotidien d’une équipe tient dans un seul espace et se nourrit des mêmes données que le monitoring.',
       bullets: [
         'Effectif : actifs, blessés, inactifs, joueurs à l’essai',
         'Calendrier avec duplication de semaine',
@@ -77,7 +77,7 @@ export const teamManagement: SubpageLocales = {
     hero: {
       kicker: 'FEATURES · TEAM',
       title: 'Running the team, without the ring binder.',
-      sub: 'Squad, calendar, call-ups, attendance, team sheet: a team’s day-to-day fits in one space — and feeds on the same data as the monitoring side.',
+      sub: 'Squad, calendar, call-ups, attendance, team sheet: a team’s day-to-day fits in one space and feeds on the same data as the monitoring side.',
       bullets: [
         'Squad: active, injured, inactive, trialists',
         'Calendar with week duplication',
@@ -140,7 +140,7 @@ export const teamManagement: SubpageLocales = {
     hero: {
       kicker: 'FUNCTIES · PLOEG',
       title: 'Het beheer van de ploeg, zonder de ordner.',
-      sub: 'Kern, kalender, oproepingen, aanwezigheden, wedstrijdblad: het dagelijkse van een ploeg past in één ruimte — en voedt zich met dezelfde data als de opvolging.',
+      sub: 'Kern, kalender, oproepingen, aanwezigheden, wedstrijdblad: het dagelijkse van een ploeg past in één ruimte en voedt zich met dezelfde data als de opvolging.',
       bullets: [
         'Kern: actief, geblesseerd, inactief, spelers op proef',
         'Kalender met weekduplicatie',
@@ -203,7 +203,7 @@ export const teamManagement: SubpageLocales = {
     hero: {
       kicker: 'FUNKTIONEN · MANNSCHAFT',
       title: 'Die Organisation der Mannschaft, ohne Ordner.',
-      sub: 'Kader, Kalender, Aufgebote, Anwesenheiten, Spielberichtsbogen: der Alltag einer Mannschaft passt in einen Raum — und speist sich aus denselben Daten wie das Monitoring.',
+      sub: 'Kader, Kalender, Aufgebote, Anwesenheiten, Spielberichtsbogen: der Alltag einer Mannschaft passt in einen Raum und speist sich aus denselben Daten wie das Monitoring.',
       bullets: [
         'Kader: aktiv, verletzt, inaktiv, Spieler im Probetraining',
         'Kalender mit Wochenduplikat',
@@ -266,7 +266,7 @@ export const teamManagement: SubpageLocales = {
     hero: {
       kicker: 'FUNCIONALIDADES · EQUIPA',
       title: 'A gestão da equipa, sem o dossiê.',
-      sub: 'Plantel, calendário, convocatórias, presenças, ficha de jogo: o dia a dia de uma equipa cabe num só espaço — e alimenta-se dos mesmos dados do acompanhamento.',
+      sub: 'Plantel, calendário, convocatórias, presenças, ficha de jogo: o dia a dia de uma equipa cabe num só espaço e alimenta-se dos mesmos dados do acompanhamento.',
       bullets: [
         'Plantel: ativos, lesionados, inativos, jogadores à experiência',
         'Calendário com duplicação de semana',
@@ -329,7 +329,7 @@ export const teamManagement: SubpageLocales = {
     hero: {
       kicker: 'FUNCIONALIDADES · EQUIPO',
       title: 'La gestión del equipo, sin el archivador.',
-      sub: 'Plantilla, calendario, convocatorias, asistencias, acta: el día a día de un equipo cabe en un solo espacio — y se alimenta de los mismos datos que el seguimiento.',
+      sub: 'Plantilla, calendario, convocatorias, asistencias, acta: el día a día de un equipo cabe en un solo espacio y se alimenta de los mismos datos que el seguimiento.',
       bullets: [
         'Plantilla: activos, lesionados, inactivos, jugadores a prueba',
         'Calendario con duplicación de semana',

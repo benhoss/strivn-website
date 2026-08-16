@@ -63,7 +63,7 @@ export const checkIn: SubpageLocales = {
           {
             icon: 'clock-3',
             title: 'Par défaut, au check-in du lendemain',
-            desc: 'Le joueur note sa séance en même temps que son état du matin — une seule sollicitation.',
+            desc: 'Le joueur note sa séance en même temps que son état du matin : une seule sollicitation.',
           },
           {
             icon: 'zap',
@@ -141,7 +141,7 @@ export const checkIn: SubpageLocales = {
           {
             icon: 'clock-3',
             title: 'By default, at the next morning’s check-in',
-            desc: 'The player rates the session alongside their morning state — one prompt, not two.',
+            desc: 'The player rates the session alongside their morning state: one prompt, not two.',
           },
           {
             icon: 'zap',
@@ -219,7 +219,7 @@ export const checkIn: SubpageLocales = {
           {
             icon: 'clock-3',
             title: 'Standaard bij de check-in van de volgende ochtend',
-            desc: 'De speler beoordeelt zijn training samen met zijn ochtendtoestand — één vraag in plaats van twee.',
+            desc: 'De speler beoordeelt zijn training samen met zijn ochtendtoestand: één vraag in plaats van twee.',
           },
           {
             icon: 'zap',
@@ -297,7 +297,7 @@ export const checkIn: SubpageLocales = {
           {
             icon: 'clock-3',
             title: 'Standardmäßig beim Check-in am nächsten Morgen',
-            desc: 'Der Spieler bewertet die Einheit zusammen mit seinem Morgenzustand — eine Abfrage statt zwei.',
+            desc: 'Der Spieler bewertet die Einheit zusammen mit seinem Morgenzustand: eine Abfrage statt zwei.',
           },
           {
             icon: 'zap',
@@ -375,7 +375,7 @@ export const checkIn: SubpageLocales = {
           {
             icon: 'clock-3',
             title: 'Por omissão, no check-in do dia seguinte',
-            desc: 'O jogador classifica o treino ao mesmo tempo que o seu estado da manhã — um só pedido.',
+            desc: 'O jogador classifica o treino ao mesmo tempo que o seu estado da manhã: um só pedido.',
           },
           {
             icon: 'zap',
@@ -453,7 +453,7 @@ export const checkIn: SubpageLocales = {
           {
             icon: 'clock-3',
             title: 'Por defecto, en el check-in del día siguiente',
-            desc: 'El jugador puntúa su sesión a la vez que su estado de la mañana — una sola petición.',
+            desc: 'El jugador puntúa su sesión a la vez que su estado de la mañana: una sola petición.',
           },
           {
             icon: 'zap',

@@ -15,7 +15,7 @@ export const staffSharing: SubpageLocales = {
     hero: {
       kicker: 'STAFF & PARTAGE',
       title: 'Tout le staff, la même lecture.',
-      sub: 'Coach principal, adjoints, staff médical : chacun accède à ce qui le concerne. Et ce qui sort de l’équipe sort par un lien que vous gardez sous contrôle — révocable, traçable, sans compte à créer en face.',
+      sub: 'Coach principal, adjoints, staff médical : chacun accède à ce qui le concerne. Et ce qui sort de l’équipe sort par un lien que vous gardez sous contrôle : révocable, traçable, sans compte à créer en face.',
       ctas: {
         primary: 'Commencer gratuitement',
         secondary: { label: 'Voir le dossier staff', href: '/fr/features/staff-brief/' },
@@ -30,7 +30,7 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'STAFF D’ÉQUIPE',
             title: 'Coach principal et assistants',
-            desc: 'Accès aux réponses de check-in et aux signaux de readiness — ce qu’il faut pour composer une séance, sans le détail médical.',
+            desc: 'Accès aux réponses de check-in et aux signaux de readiness, ce qu’il faut pour composer une séance, sans le détail médical.',
           },
           {
             eyebrow: 'STAFF MÉDICAL',
@@ -93,7 +93,7 @@ export const staffSharing: SubpageLocales = {
     hero: {
       kicker: 'STAFF & SHARING',
       title: 'The whole staff, the same reading.',
-      sub: 'Head coach, assistants, medical staff: each reaches what concerns them. And what leaves the team leaves by a link you keep under control — revocable, traceable, with no account to create at the other end.',
+      sub: 'Head coach, assistants, medical staff: each reaches what concerns them. And what leaves the team leaves by a link you keep under control: revocable, traceable, with no account to create at the other end.',
       ctas: {
         primary: 'Start for free',
         secondary: { label: 'See the staff brief', href: '/en/features/staff-brief/' },
@@ -108,7 +108,7 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'TEAM STAFF',
             title: 'Head coach and assistants',
-            desc: 'Access to check-in answers and readiness signals — what it takes to build a session, without the medical detail.',
+            desc: 'Access to check-in answers and readiness signals, what it takes to build a session, without the medical detail.',
           },
           {
             eyebrow: 'MEDICAL STAFF',
@@ -171,7 +171,7 @@ export const staffSharing: SubpageLocales = {
     hero: {
       kicker: 'STAF & DELEN',
       title: 'De hele staf, dezelfde lezing.',
-      sub: 'Hoofdcoach, assistenten, medische staf: elk komt bij wat hem aangaat. En wat de ploeg verlaat, vertrekt via een link die je onder controle houdt — intrekbaar, traceerbaar, zonder account aan de andere kant.',
+      sub: 'Hoofdcoach, assistenten, medische staf: elk komt bij wat hem aangaat. En wat de ploeg verlaat, vertrekt via een link die je onder controle houdt: intrekbaar, traceerbaar, zonder account aan de andere kant.',
       ctas: {
         primary: 'Gratis beginnen',
         secondary: { label: 'Het stafdossier bekijken', href: '/nl/features/staff-brief/' },
@@ -186,7 +186,7 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'PLOEGSTAF',
             title: 'Hoofdcoach en assistenten',
-            desc: 'Toegang tot de check-in-antwoorden en de readiness-signalen — wat nodig is om een training te bouwen, zonder het medische detail.',
+            desc: 'Toegang tot de check-in-antwoorden en de readiness-signalen, wat nodig is om een training te bouwen, zonder het medische detail.',
           },
           {
             eyebrow: 'MEDISCHE STAF',
@@ -249,7 +249,7 @@ export const staffSharing: SubpageLocales = {
     hero: {
       kicker: 'STAFF & TEILEN',
       title: 'Der ganze Staff, dieselbe Lesart.',
-      sub: 'Cheftrainer, Assistenten, medizinischer Staff: Jeder erreicht, was ihn betrifft. Und was die Mannschaft verlässt, geht über einen Link, den Sie unter Kontrolle behalten — widerrufbar, nachvollziehbar, ohne Konto auf der Gegenseite.',
+      sub: 'Cheftrainer, Assistenten, medizinischer Staff: Jeder erreicht, was ihn betrifft. Und was die Mannschaft verlässt, geht über einen Link, den Sie unter Kontrolle behalten: widerrufbar, nachvollziehbar, ohne Konto auf der Gegenseite.',
       ctas: {
         primary: 'Kostenlos starten',
         secondary: { label: 'Die Staff-Übersicht ansehen', href: '/de/features/staff-brief/' },
@@ -264,7 +264,7 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'MANNSCHAFTSSTAFF',
             title: 'Cheftrainer und Assistenten',
-            desc: 'Zugriff auf Check-in-Antworten und Readiness-Signale — was es braucht, um eine Einheit zu bauen, ohne medizinische Details.',
+            desc: 'Zugriff auf Check-in-Antworten und Readiness-Signale, was es braucht, um eine Einheit zu bauen, ohne medizinische Details.',
           },
           {
             eyebrow: 'MEDIZINISCHER STAFF',
@@ -327,7 +327,7 @@ export const staffSharing: SubpageLocales = {
     hero: {
       kicker: 'STAFF E PARTILHA',
       title: 'Todo o staff, a mesma leitura.',
-      sub: 'Treinador principal, adjuntos, staff médico: cada um acede ao que lhe diz respeito. E o que sai da equipa sai por uma ligação que mantém sob controlo — revogável, rastreável, sem conta a criar do outro lado.',
+      sub: 'Treinador principal, adjuntos, staff médico: cada um acede ao que lhe diz respeito. E o que sai da equipa sai por uma ligação que mantém sob controlo: revogável, rastreável, sem conta a criar do outro lado.',
       ctas: {
         primary: 'Começar gratuitamente',
         secondary: { label: 'Ver o dossiê do staff', href: '/pt/features/staff-brief/' },
@@ -342,7 +342,7 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'STAFF DA EQUIPA',
             title: 'Treinador principal e adjuntos',
-            desc: 'Acesso às respostas de check-in e aos sinais de readiness — o necessário para montar um treino, sem o detalhe médico.',
+            desc: 'Acesso às respostas de check-in e aos sinais de readiness, o necessário para montar um treino, sem o detalhe médico.',
           },
           {
             eyebrow: 'STAFF MÉDICO',
@@ -405,7 +405,7 @@ export const staffSharing: SubpageLocales = {
     hero: {
       kicker: 'STAFF Y COMPARTIR',
       title: 'Todo el staff, la misma lectura.',
-      sub: 'Entrenador principal, ayudantes, staff médico: cada uno accede a lo que le concierne. Y lo que sale del equipo sale por un enlace que mantienes bajo control — revocable, trazable, sin cuenta que crear enfrente.',
+      sub: 'Entrenador principal, ayudantes, staff médico: cada uno accede a lo que le concierne. Y lo que sale del equipo sale por un enlace que mantienes bajo control: revocable, trazable, sin cuenta que crear enfrente.',
       ctas: {
         primary: 'Empezar gratis',
         secondary: { label: 'Ver el dosier del staff', href: '/es/features/staff-brief/' },
@@ -420,7 +420,7 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'STAFF DEL EQUIPO',
             title: 'Entrenador principal y ayudantes',
-            desc: 'Acceso a las respuestas de check-in y a las señales de readiness — lo que hace falta para montar una sesión, sin el detalle médico.',
+            desc: 'Acceso a las respuestas de check-in y a las señales de readiness, lo que hace falta para montar una sesión, sin el detalle médico.',
           },
           {
             eyebrow: 'STAFF MÉDICO',

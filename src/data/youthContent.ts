@@ -66,7 +66,7 @@ export const youthContent: Record<Locale, YouthContent> = {
       },
       {
         title: 'Le match en direct, depuis la tribune',
-        blurb: 'Partagez un lien avant le coup d’envoi : parents en tribune, grands-parents à la maison — tout le monde suit le score et les événements du match en direct, sans compte et sans rien installer.',
+        blurb: 'Partagez un lien avant le coup d’envoi : parents en tribune, grands-parents à la maison, tout le monde suit le score et les événements du match en direct, sans compte et sans rien installer.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone-fr.png',
@@ -174,7 +174,7 @@ export const youthContent: Record<Locale, YouthContent> = {
       },
       {
         title: 'The match, live from the stands',
-        blurb: 'Share a link before kick-off: parents in the stands, grandparents at home — everyone follows the score and match events live, with no account and nothing to install.',
+        blurb: 'Share a link before kick-off: parents in the stand, grandparents at home, everyone follows the score and the match events live, with no account and nothing to install.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
@@ -282,7 +282,7 @@ export const youthContent: Record<Locale, YouthContent> = {
       },
       {
         title: 'De wedstrijd live, vanuit de tribune',
-        blurb: 'Deel een link voor de aftrap: ouders in de tribune, grootouders thuis — iedereen volgt de score en de wedstrijdgebeurtenissen live, zonder account en zonder iets te installeren.',
+        blurb: 'Deel een link voor de aftrap: ouders in de tribune, grootouders thuis, iedereen volgt de score en de wedstrijdgebeurtenissen live, zonder account en zonder iets te installeren.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
@@ -390,7 +390,7 @@ export const youthContent: Record<Locale, YouthContent> = {
       },
       {
         title: 'Das Spiel live, von der Tribüne',
-        blurb: 'Teilen Sie vor dem Anpfiff einen Link: Eltern auf der Tribüne, Großeltern zu Hause — alle verfolgen den Spielstand und die Ereignisse live, ohne Konto und ohne etwas zu installieren.',
+        blurb: 'Teilen Sie vor dem Anpfiff einen Link: Eltern auf der Tribüne, Großeltern zu Hause, alle verfolgen den Spielstand und die Ereignisse live, ohne Konto und ohne etwas zu installieren.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
@@ -498,7 +498,7 @@ export const youthContent: Record<Locale, YouthContent> = {
       },
       {
         title: 'O jogo, em direto a partir da bancada',
-        blurb: 'Partilhe um link antes do apito inicial: pais na bancada, avós em casa — todos acompanham o resultado e os lances em direto, sem conta e sem instalar nada.',
+        blurb: 'Partilhe um link antes do apito inicial: pais na bancada, avós em casa, todos acompanham o resultado e os lances em direto, sem conta e sem instalar nada.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
@@ -606,7 +606,7 @@ export const youthContent: Record<Locale, YouthContent> = {
       },
       {
         title: 'El partido, en directo desde la grada',
-        blurb: 'Comparte un enlace antes del pitido inicial: familias en la grada, abuelos en casa — todos siguen el marcador y las jugadas en directo, sin cuenta y sin instalar nada.',
+        blurb: 'Comparte un enlace antes del pitido inicial: familias en la grada, abuelos en casa, todos siguen el marcador y las jugadas en directo, sin cuenta y sin instalar nada.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',

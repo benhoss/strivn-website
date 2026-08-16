@@ -16,7 +16,7 @@ export const staffBrief: SubpageLocales = {
     hero: {
       kicker: 'PARTAGÉ PAR LE PRÉPARATEUR PHYSIQUE DE VOTRE ÉQUIPE',
       title: 'Votre préparateur a déjà commencé.',
-      sub: 'Une page à lire en deux minutes. Elle résume ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace — sans compte à créer, sans engagement, sans validation du club.',
+      sub: 'Une page à lire en deux minutes. Elle résume ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace : sans compte à créer, sans engagement, sans validation du club.',
       ctas: {
         primary: 'Demander mon accès',
         secondary: { label: 'Voir la plateforme', href: '/fr/features/' },
@@ -33,7 +33,7 @@ export const staffBrief: SubpageLocales = {
           { value: '12', label: 'semaines d’historique de charge', tone: 'blue' },
           { value: '2', label: 'joueurs en protocole de retour', tone: 'orange' },
         ],
-        foot: 'Chiffres d’exemple. Sur votre espace, ils décrivent votre effectif — et se mettent à jour tout seuls.',
+        foot: 'Chiffres d’exemple. Sur votre espace, ils décrivent votre effectif et se mettent à jour tout seuls.',
       },
       {
         kicker: 'CE QUE CHAQUE RÔLE Y GAGNE',
@@ -43,7 +43,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'clipboard-list',
             title: 'Head coach',
-            desc: 'La disponibilité réelle arrive dans la convocation : qui est apte, qui est adapté, qui est hors jeu — sans demander.',
+            desc: 'La disponibilité réelle arrive dans la convocation : qui est apte, qui est adapté, qui est hors jeu, sans demander.',
           },
           {
             icon: 'shield-check',
@@ -90,7 +90,7 @@ export const staffBrief: SubpageLocales = {
     hero: {
       kicker: 'SHARED BY YOUR TEAM’S S&C COACH',
       title: 'Your S&C coach has already started.',
-      sub: 'A page to read in two minutes. It sums up what the team already tracks, what each role gains, and how to join the space — no account to create, no commitment, no club sign-off.',
+      sub: 'A page to read in two minutes. It sums up what the team already tracks, what each role gains, and how to join the space: no account to create, no commitment, no club sign-off.',
       ctas: {
         primary: 'Request my access',
         secondary: { label: 'See the platform', href: '/en/features/' },
@@ -107,7 +107,7 @@ export const staffBrief: SubpageLocales = {
           { value: '12', label: 'weeks of load history', tone: 'blue' },
           { value: '2', label: 'players on a return protocol', tone: 'orange' },
         ],
-        foot: 'Example figures. On your own space they describe your squad — and update themselves.',
+        foot: 'Example figures. On your own space they describe your squad and update themselves.',
       },
       {
         kicker: 'WHAT EACH ROLE GAINS',
@@ -117,7 +117,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'clipboard-list',
             title: 'Head coach',
-            desc: 'Real availability arrives inside the call-up: who is fit, who is adapted, who is out — without asking.',
+            desc: 'Real availability arrives inside the call-up: who is fit, who is adapted, who is out, without asking.',
           },
           {
             icon: 'shield-check',
@@ -164,7 +164,7 @@ export const staffBrief: SubpageLocales = {
     hero: {
       kicker: 'GEDEELD DOOR DE FYSIEK TRAINER VAN JE PLOEG',
       title: 'Jullie fysiek trainer is al begonnen.',
-      sub: 'Een pagina om in twee minuten te lezen. Ze vat samen wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe je de ruimte binnenstapt — geen account aan te maken, geen verbintenis, geen goedkeuring van de club.',
+      sub: 'Een pagina om in twee minuten te lezen. Ze vat samen wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe je de ruimte binnenstapt: geen account aan te maken, geen verbintenis, geen goedkeuring van de club.',
       ctas: {
         primary: 'Mijn toegang aanvragen',
         secondary: { label: 'Het platform bekijken', href: '/nl/features/' },
@@ -181,7 +181,7 @@ export const staffBrief: SubpageLocales = {
           { value: '12', label: 'weken belastingshistoriek', tone: 'blue' },
           { value: '2', label: 'spelers in een terugkeerprotocol', tone: 'orange' },
         ],
-        foot: 'Voorbeeldcijfers. Op jouw ruimte beschrijven ze jouw kern — en werken ze zichzelf bij.',
+        foot: 'Voorbeeldcijfers. Op jouw ruimte beschrijven ze jouw kern en werken ze zichzelf bij.',
       },
       {
         kicker: 'WAT ELKE ROL ERBIJ WINT',
@@ -191,7 +191,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'clipboard-list',
             title: 'Hoofdcoach',
-            desc: 'De echte beschikbaarheid komt mee in de oproeping: wie fit is, wie aangepast is, wie buiten strijd is — zonder ernaar te vragen.',
+            desc: 'De echte beschikbaarheid komt mee in de oproeping: wie fit is, wie aangepast is, wie buiten strijd is, zonder ernaar te vragen.',
           },
           {
             icon: 'shield-check',
@@ -238,7 +238,7 @@ export const staffBrief: SubpageLocales = {
     hero: {
       kicker: 'GETEILT VOM ATHLETIKTRAINER IHRER MANNSCHAFT',
       title: 'Ihr Athletiktrainer hat schon angefangen.',
-      sub: 'Eine Seite für zwei Minuten. Sie fasst zusammen, was die Mannschaft bereits verfolgt, was jede Rolle davon hat, und wie man den Raum betritt — kein Konto anzulegen, keine Bindung, keine Freigabe des Vereins.',
+      sub: 'Eine Seite für zwei Minuten. Sie fasst zusammen, was die Mannschaft bereits verfolgt, was jede Rolle davon hat, und wie man den Raum betritt: kein Konto anzulegen, keine Bindung, keine Freigabe des Vereins.',
       ctas: {
         primary: 'Zugang anfragen',
         secondary: { label: 'Die Plattform ansehen', href: '/de/features/' },
@@ -255,7 +255,7 @@ export const staffBrief: SubpageLocales = {
           { value: '12', label: 'Wochen Belastungshistorie', tone: 'blue' },
           { value: '2', label: 'Spieler im Rückkehrprotokoll', tone: 'orange' },
         ],
-        foot: 'Beispielzahlen. In Ihrem Raum beschreiben sie Ihren Kader — und aktualisieren sich von selbst.',
+        foot: 'Beispielzahlen. In Ihrem Raum beschreiben sie Ihren Kader und aktualisieren sich von selbst.',
       },
       {
         kicker: 'WAS JEDE ROLLE DAVON HAT',
@@ -265,7 +265,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'clipboard-list',
             title: 'Cheftrainer',
-            desc: 'Die reale Verfügbarkeit kommt im Aufgebot an: wer fit ist, wer angepasst ist, wer ausfällt — ohne zu fragen.',
+            desc: 'Die reale Verfügbarkeit kommt im Aufgebot an: wer fit ist, wer angepasst ist, wer ausfällt, ohne zu fragen.',
           },
           {
             icon: 'shield-check',
@@ -312,7 +312,7 @@ export const staffBrief: SubpageLocales = {
     hero: {
       kicker: 'PARTILHADO PELO PREPARADOR FÍSICO DA SUA EQUIPA',
       title: 'O seu preparador físico já começou.',
-      sub: 'Uma página para ler em dois minutos. Resume o que a equipa já acompanha, o que cada papel ganha, e como entrar no espaço — sem conta a criar, sem compromisso, sem validação do clube.',
+      sub: 'Uma página para ler em dois minutos. Resume o que a equipa já acompanha, o que cada papel ganha, e como entrar no espaço: sem conta a criar, sem compromisso, sem validação do clube.',
       ctas: {
         primary: 'Pedir o meu acesso',
         secondary: { label: 'Ver a plataforma', href: '/pt/features/' },
@@ -329,7 +329,7 @@ export const staffBrief: SubpageLocales = {
           { value: '12', label: 'semanas de histórico de carga', tone: 'blue' },
           { value: '2', label: 'jogadores em protocolo de regresso', tone: 'orange' },
         ],
-        foot: 'Números de exemplo. No seu espaço descrevem o seu plantel — e atualizam-se sozinhos.',
+        foot: 'Números de exemplo. No seu espaço descrevem o seu plantel e atualizam-se sozinhos.',
       },
       {
         kicker: 'O QUE CADA PAPEL GANHA',
@@ -339,7 +339,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'clipboard-list',
             title: 'Treinador principal',
-            desc: 'A disponibilidade real chega na convocatória: quem está apto, quem está adaptado, quem está fora — sem ter de perguntar.',
+            desc: 'A disponibilidade real chega na convocatória: quem está apto, quem está adaptado, quem está fora, sem ter de perguntar.',
           },
           {
             icon: 'shield-check',
@@ -386,7 +386,7 @@ export const staffBrief: SubpageLocales = {
     hero: {
       kicker: 'COMPARTIDO POR EL PREPARADOR FÍSICO DE TU EQUIPO',
       title: 'Vuestro preparador físico ya ha empezado.',
-      sub: 'Una página para leer en dos minutos. Resume lo que el equipo ya sigue, lo que gana cada rol, y cómo entrar en el espacio — sin cuenta que crear, sin compromiso, sin validación del club.',
+      sub: 'Una página para leer en dos minutos. Resume lo que el equipo ya sigue, lo que gana cada rol, y cómo entrar en el espacio: sin cuenta que crear, sin compromiso, sin validación del club.',
       ctas: {
         primary: 'Pedir mi acceso',
         secondary: { label: 'Ver la plataforma', href: '/es/features/' },
@@ -403,7 +403,7 @@ export const staffBrief: SubpageLocales = {
           { value: '12', label: 'semanas de historial de carga', tone: 'blue' },
           { value: '2', label: 'jugadores en protocolo de vuelta', tone: 'orange' },
         ],
-        foot: 'Cifras de ejemplo. En tu espacio describen tu plantilla — y se actualizan solas.',
+        foot: 'Cifras de ejemplo. En tu espacio describen tu plantilla y se actualizan solas.',
       },
       {
         kicker: 'LO QUE GANA CADA ROL',
@@ -413,7 +413,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'clipboard-list',
             title: 'Entrenador principal',
-            desc: 'La disponibilidad real llega en la convocatoria: quién está apto, quién está adaptado, quién está fuera — sin tener que preguntar.',
+            desc: 'La disponibilidad real llega en la convocatoria: quién está apto, quién está adaptado, quién está fuera, sin tener que preguntar.',
           },
           {
             icon: 'shield-check',

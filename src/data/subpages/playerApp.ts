@@ -10,7 +10,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'App joueur | STRIVN',
       description:
-        'Un lien d’invitation, pas de mot de passe. Agenda, convocations, check-in et programmes — et rien de ce qui appartient aux autres.',
+        'Un lien d’invitation, pas de mot de passe. Agenda, convocations, check-in et programmes. Rien de ce qui appartient aux autres.',
     },
     hero: {
       kicker: 'APP JOUEUR',
@@ -79,7 +79,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'L’ANALYSE',
             title: 'Vos analyses de match',
-            desc: 'Les erreurs qu’un coach attribue en analyse ne remontent jamais au joueur — la règle est dans le produit, pas dans une consigne.',
+            desc: 'Les erreurs qu’un coach attribue en analyse ne remontent jamais au joueur. La règle est dans le produit, pas dans une consigne.',
           },
           {
             eyebrow: 'LES ENFANTS',
@@ -95,7 +95,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'Player app | STRIVN',
       description:
-        'An invitation link, no password. Schedule, call-ups, check-in and programs — and nothing that belongs to anyone else.',
+        'An invitation link, no password. Schedule, call-ups, check-in and programs. Nothing that belongs to anyone else.',
     },
     hero: {
       kicker: 'PLAYER APP',
@@ -164,7 +164,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'THE ANALYSIS',
             title: 'Your match analysis',
-            desc: 'Errors a coach attributes in analysis never reach the player — the rule is in the product, not in a policy.',
+            desc: 'Errors a coach attributes in analysis never reach the player. The rule is in the product, not in a policy.',
           },
           {
             eyebrow: 'CHILDREN',
@@ -180,7 +180,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'Spelers-app | STRIVN',
       description:
-        'Een uitnodigingslink, geen wachtwoord. Agenda, oproepingen, check-in en programma’s — en niets wat aan iemand anders toebehoort.',
+        'Een uitnodigingslink, geen wachtwoord. Agenda, oproepingen, check-in en programma’s. Niets wat aan iemand anders toebehoort.',
     },
     hero: {
       kicker: 'SPELERS-APP',
@@ -249,7 +249,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'DE ANALYSE',
             title: 'Jouw wedstrijdanalyses',
-            desc: 'Fouten die een coach in de analyse toewijst bereiken de speler nooit — de regel zit in het product, niet in een afspraak.',
+            desc: 'Fouten die een coach in de analyse toewijst bereiken de speler nooit. De regel zit in het product, niet in een afspraak.',
           },
           {
             eyebrow: 'DE KINDEREN',
@@ -265,7 +265,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'Spieler-App | STRIVN',
       description:
-        'Ein Einladungslink, kein Passwort. Terminplan, Aufgebote, Check-in und Programme — und nichts, was anderen gehört.',
+        'Ein Einladungslink, kein Passwort. Terminplan, Aufgebote, Check-in und Programme. Nichts, was anderen gehört.',
     },
     hero: {
       kicker: 'SPIELER-APP',
@@ -334,7 +334,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'DIE ANALYSE',
             title: 'Ihre Spielanalysen',
-            desc: 'Fehler, die ein Trainer in der Analyse zuordnet, erreichen den Spieler nie — die Regel steckt im Produkt, nicht in einer Absprache.',
+            desc: 'Fehler, die ein Trainer in der Analyse zuordnet, erreichen den Spieler nie. Die Regel steckt im Produkt, nicht in einer Absprache.',
           },
           {
             eyebrow: 'DIE KINDER',
@@ -350,7 +350,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'App do jogador | STRIVN',
       description:
-        'Uma ligação de convite, sem palavra-passe. Agenda, convocatórias, check-in e programas — e nada do que pertence aos outros.',
+        'Uma ligação de convite, sem palavra-passe. Agenda, convocatórias, check-in e programas. Nada do que pertence aos outros.',
     },
     hero: {
       kicker: 'APP DO JOGADOR',
@@ -419,7 +419,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'A ANÁLISE',
             title: 'As suas análises de jogo',
-            desc: 'Os erros que um treinador atribui em análise nunca chegam ao jogador — a regra está no produto, não numa instrução.',
+            desc: 'Os erros que um treinador atribui em análise nunca chegam ao jogador. A regra está no produto, não numa instrução.',
           },
           {
             eyebrow: 'AS CRIANÇAS',
@@ -435,7 +435,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'App del jugador | STRIVN',
       description:
-        'Un enlace de invitación, sin contraseña. Agenda, convocatorias, check-in y programas — y nada que pertenezca a los demás.',
+        'Un enlace de invitación, sin contraseña. Agenda, convocatorias, check-in y programas. Nada que pertenezca a los demás.',
     },
     hero: {
       kicker: 'APP DEL JUGADOR',
@@ -504,7 +504,7 @@ export const playerApp: SubpageLocales = {
           {
             eyebrow: 'EL ANÁLISIS',
             title: 'Tus análisis de partido',
-            desc: 'Los errores que un entrenador atribuye en análisis nunca llegan al jugador — la regla está en el producto, no en una consigna.',
+            desc: 'Los errores que un entrenador atribuye en análisis nunca llegan al jugador. La regla está en el producto, no en una consigna.',
           },
           {
             eyebrow: 'LOS NIÑOS',
