@@ -1,0 +1,154 @@
+---
+/**
+ * The player's Fitness tab: today's readiness, the week behind it, and the
+ * fortnight behind that.
+ *
+ * This is the one capture on the page allowed to use the status colours —
+ * green, amber and red here describe the player's own state day by day,
+ * which is exactly what the system reserves them for.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, PLAYER_WEEK, PLAYER_TREND } from '../../../data/subpages/captures';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].playerForm;
+
+/* Fills carry enough chroma to tell amber from green at a 30px cell — the
+   whole point of the strip is that a week reads at a glance. */
+const STATUS = {
+  green: { fill: '#8CE99A2B', edge: '#8CE99ABF', dot: '#8CE99A' },
+  amber: { fill: '#FF84003D', edge: '#FF8400D9', dot: '#FF8400' },
+  red: { fill: '#FF5C332B', edge: '#FF5C33BF', dot: '#FF5C33' },
+} as const;
+
+/* Sparkline geometry, in percentages of the plot box. The band thresholds
+   are the same ones the week cells use, so a dot's colour and a cell's
+   colour mean the same thing.
+ *
+ * The line is an SVG stretched to the box; the readings are positioned
+ * elements over it. Stretching the SVG would turn a circle into an ellipse,
+ * and a fortnight of readings is fourteen chances to notice. */
+const points = PLAYER_TREND.map((v, i) => ({
+  x: (i / (PLAYER_TREND.length - 1)) * 100,
+  y: 100 - v,
+  tone: v >= 65 ? 'green' : v >= 50 ? 'amber' : 'red',
+  /** The last reading has no check-in behind it yet. */
+  estimated: i === PLAYER_TREND.length - 1,
+}));
+const path = points.map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(' ');
+---
+
+<div
+  class="rounded-[16px] bg-[#0C1120] p-5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] sm:p-6"
+>
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <p class="hl-display text-[1.15rem] tracking-[-0.02em]">{t.title}</p>
+      <p class="mt-1 font-mono text-[0.6rem] tracking-[0.08em] text-[#FF8400]">{t.verdict}</p>
+    </div>
+    {/* `data-count` rewrites its element's text, so it wraps the figure
+        alone — the unit beside it has to survive the count-up. */}
+    <p class="hl-display shrink-0 text-[2.2rem] leading-none tracking-[-0.05em] text-[#2D7FF9]">
+      <span data-count>{t.score}</span
+      ><span class="ml-0.5 align-top font-mono text-[0.7rem] text-[#68779A]">%</span>
+    </p>
+  </div>
+
+  <ul class="mt-5 grid grid-cols-2 gap-2.5">
+    {
+      t.tiles.map((tile) => (
+        <li class="rounded-[12px] bg-[#FFFFFF05] px-3.5 py-3 outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">
+          <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{tile.k}</p>
+          <p class="hl-display mt-1 text-[1.15rem] tracking-[-0.03em] text-[#F8FAFC]">{tile.v}</p>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-5 border-t border-[#FFFFFF12] pt-5">
+    <div class="flex items-baseline justify-between gap-3">
+      <p class="text-[0.8rem] font-semibold text-[#F8FAFC]">{t.weekTitle}</p>
+      <p class="font-mono text-[0.6rem] text-[#68779A]">{t.weekMeta}</p>
+    </div>
+
+    <div class="mt-3 grid grid-cols-7 gap-1.5">
+      {
+        PLAYER_WEEK.map((s, i) => (
+          <span
+            class={`hl-fill h-8 rounded-[7px] outline-1 -outline-offset-[0.5px] ${
+              i === PLAYER_WEEK.length - 1 ? 'outline-[#2D7FF9]' : ''
+            }`}
+            style={`background:${STATUS[s].fill}; ${i === PLAYER_WEEK.length - 1 ? '' : `outline-color:${STATUS[s].edge};`} --bd:${i * 60}ms;`}
+            aria-hidden="true"
+          />
+        ))
+      }
+    </div>
+    <ul class="mt-1.5 grid grid-cols-7 gap-1.5">
+      {
+        t.days.map((d, i) => (
+          <li
+            class={`text-center font-mono text-[0.53rem] ${i === t.days.length - 1 ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`}
+          >
+            {d}
+          </li>
+        ))
+      }
+    </ul>
+
+    <p
+      class="hl-late mt-3.5 flex items-start gap-2.5 rounded-[10px] bg-[#FF5C330F] px-3.5 py-2.5 text-[0.72rem] leading-[1.5] text-[#C3CDE0] outline-1 outline-[#FF5C332E] -outline-offset-[0.5px]"
+      style="--ld: 620ms;"
+    >
+      <span class="mt-[6px] size-[5px] shrink-0 rounded-full bg-[#FF5C33]" aria-hidden="true"></span>
+      {t.alert}
+    </p>
+  </div>
+
+  <div class="mt-5 border-t border-[#FFFFFF12] pt-5">
+    <p class="font-mono text-[0.6rem] tracking-[0.1em] text-[#68779A]">{t.trendTitle}</p>
+
+    <div class="relative mt-3.5 mr-1 ml-1 h-[62px]" role="img" aria-label={t.trendTitle}>
+      <svg
+        class="absolute inset-0 size-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <line x1="0" y1="35" x2="100" y2="35" stroke="#FFFFFF14" stroke-dasharray="2 4"></line>
+        <polyline
+          points={path}
+          fill="none"
+          stroke="#FFFFFF29"
+          stroke-width="1"
+          stroke-linejoin="round"
+          vector-effect="non-scaling-stroke"></polyline>
+      </svg>
+      {
+        points.map((p) => (
+          <span
+            class={`absolute size-[6px] -translate-x-1/2 -translate-y-1/2 rounded-full ${
+              p.estimated ? 'bg-[#0C1120] outline-1 outline-[#68779A] -outline-offset-[0.5px]' : ''
+            }`}
+            style={`left:${p.x}%; top:${p.y}%; ${p.estimated ? '' : `background:${STATUS[p.tone].dot};`}`}
+            aria-hidden="true"
+          />
+        ))
+      }
+    </div>
+
+    <ul class="mt-2.5 flex flex-wrap gap-x-4 gap-y-1.5" aria-hidden="true">
+      <li class="flex items-center gap-1.5 font-mono text-[0.56rem] text-[#68779A]">
+        <span class="size-[6px] rounded-full bg-[#8CE99A]"></span>{t.measured}
+      </li>
+      <li class="flex items-center gap-1.5 font-mono text-[0.56rem] text-[#68779A]">
+        <span class="size-[6px] rounded-full outline-1 outline-[#68779A] -outline-offset-[0.5px]"
+        ></span>{t.estimated}
+      </li>
+    </ul>
+  </div>
+</div>

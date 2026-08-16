@@ -1,0 +1,121 @@
+---
+/**
+ * The player's Stats tab: his season figures beside his last matches.
+ *
+ * Result letters stay neutral on purpose. The system reserves green, amber
+ * and red for readiness and risk, so a win rendered green would say "ready"
+ * to anyone who has read the rest of the site. The scoreline is mono type
+ * and the win carries Soft White — placement, not colour.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, PLAYER_STAT_TILES, PLAYER_MATCHES } from '../../../data/subpages/captures';
+import HomeIcon from '../../home/HomeIcon.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].playerStats;
+---
+
+<div
+  class="rounded-[16px] bg-[#0C1120] p-5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] sm:p-7"
+>
+  <div class="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1.5">
+    <p class="hl-display text-[1.15rem] tracking-[-0.02em]">{t.title}</p>
+    <p class="font-mono text-[0.6rem] tracking-[0.09em] text-[#68779A]">{t.who}</p>
+  </div>
+
+  <!-- Range filters. The selected one is the season, which is what the
+       figures below are counting. -->
+  <ul class="mt-4 flex flex-wrap gap-2" aria-hidden="true">
+    {
+      t.periods.map((p, i) => (
+        <li
+          class={`rounded-full px-3 py-1.5 font-mono text-[0.63rem] whitespace-nowrap outline-1 -outline-offset-[0.5px] ${
+            i === 2
+              ? 'bg-[#2D7FF91F] text-[#7AB8FF] outline-[#2D7FF959]'
+              : 'bg-[#FFFFFF05] text-[#68779A] outline-[#FFFFFF14]'
+          }`}
+        >
+          {p}
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-8">
+    <ul class="grid grid-cols-2 gap-2.5 sm:grid-cols-3" data-stagger>
+      {
+        PLAYER_STAT_TILES.map((tile, i) => (
+          <li class="rounded-[12px] bg-[#FFFFFF05] px-3.5 py-3 outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">
+            <p class="flex items-center gap-1.5 font-mono text-[0.53rem] leading-[1.3] tracking-[0.08em] text-[#68779A]">
+              <span class="shrink-0 text-[#4E627F]">
+                <HomeIcon name={tile.icon} size={11} />
+              </span>
+              {t.tiles[i]}
+            </p>
+            <p
+              class="hl-display mt-1.5 text-[1.5rem] tracking-[-0.04em] text-[#F8FAFC]"
+              data-count
+              data-count-delay={i * 70}
+            >
+              {tile.v}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="lg:border-l lg:border-[#FFFFFF12] lg:pl-8">
+      <p class="font-mono text-[0.6rem] tracking-[0.1em] text-[#68779A]">{t.matchTitle}</p>
+      <ul class="mt-3.5" data-stagger>
+        {
+          PLAYER_MATCHES.map((m, i) => (
+            <li class="border-t border-[#FFFFFF12] py-3 first:border-t-0 first:pt-0">
+              <div class="flex items-baseline gap-2.5">
+                <span class="shrink-0 font-mono text-[0.6rem] text-[#68779A]">{t.dates[i]}</span>
+                <span class="min-w-0 flex-1 truncate text-[0.8rem] font-medium text-[#DCE4F2]">
+                  {m.opp}
+                </span>
+                <span class="shrink-0 font-mono text-[0.56rem] tracking-[0.08em] text-[#4E627F]">
+                  {m.home ? t.home : t.away}
+                </span>
+                <span
+                  class={`shrink-0 font-mono text-[0.78rem] ${m.us > m.them ? 'text-[#F8FAFC]' : 'text-[#9AA8C4]'}`}
+                >
+                  {m.us}–{m.them}
+                </span>
+                <span
+                  class={`grid size-[19px] shrink-0 place-items-center rounded-full font-mono text-[0.56rem] outline-1 -outline-offset-[0.5px] ${
+                    m.us > m.them
+                      ? 'text-[#F8FAFC] outline-[#FFFFFF3D]'
+                      : 'text-[#68779A] outline-[#FFFFFF1A]'
+                  }`}
+                >
+                  {t.results[i]}
+                </span>
+              </div>
+              {/* His own line for that match, under the scoreline. Label
+                  before value, as the app itself prints it — a count after
+                  its noun needs no agreement in any of the six locales. */}
+              <p class="mt-1.5 flex flex-wrap gap-x-3 font-mono text-[0.6rem] text-[#68779A]">
+                {m.line.map((v, li) => (
+                  <span>
+                    {t.lineKeys[li]}{' '}
+                    <span class={v === '0' ? 'text-[#68779A]' : 'text-[#DCE4F2]'}>{v}</span>
+                  </span>
+                ))}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <p class="hl-late mt-5 border-t border-[#FFFFFF0F] pt-4 text-[0.75rem] text-[#68779A]" style="--ld: 620ms;">
+    {t.note}
+  </p>
+</div>
