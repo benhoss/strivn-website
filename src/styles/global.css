@@ -1816,7 +1816,12 @@ a {
 /* ════════════════════════════════════════════════════════════
    16 · Responsive
    ════════════════════════════════════════════════════════════ */
-@media (max-width: 60rem) {
+/* The nav collapses earlier than the page grids do. With seven entries the
+   French bar measures 1145px of content and needs a 1225px viewport; the pill
+   is capped at `100vw - 2 * gutter`, so below that it was simply clipped.
+   French is the widest of the six locales, so one threshold serves them all.
+   The layout rules below keep their own 60rem breakpoint. */
+@media (max-width: 77rem) {
   .s-nav {
     gap: var(--space-md);
   }
@@ -1825,6 +1830,16 @@ a {
     display: none;
   }
 
+  .s-nav__lang {
+    display: none;
+  }
+
+  .s-nav__brand img {
+    height: 2rem;
+  }
+}
+
+@media (max-width: 60rem) {
   .s-hero__grid,
   .s-reality__grid,
   .s-player__grid,
@@ -1870,14 +1885,6 @@ a {
     width: calc(100vw - 2 * var(--page-gutter));
     justify-content: space-between;
     padding: 0.5rem;
-  }
-
-  .s-nav__brand img {
-    height: 2rem;
-  }
-
-  .s-nav__lang {
-    display: none;
   }
 
   .s-hero {
