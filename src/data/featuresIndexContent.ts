@@ -366,7 +366,7 @@ const fr: FeaturesIndexContent = {
     modules: [
       {
         name: 'App STRIVN Player',
-        desc: 'Agenda, convocations, check-in, programmes — sans compte à créer',
+        desc: 'Agenda, convocations, check-in et programmes, sur iOS et Android',
       },
       {
         name: 'Portail parent',
@@ -540,7 +540,7 @@ const en: FeaturesIndexContent = {
     kicker: 'PLAYER & PARENT SIDE',
     title: 'What everyone else sees.',
     modules: [
-      { name: 'STRIVN Player app', desc: 'Schedule, call-ups, check-in, programmes — no account to create' },
+      { name: 'STRIVN Player app', desc: 'Schedule, call-ups, check-in and programmes, on iOS and Android' },
       { name: 'Parent portal', desc: 'On youth teams everything goes through the parent, with consent' },
     ],
   },
@@ -715,7 +715,7 @@ const nl: FeaturesIndexContent = {
     kicker: 'KANT SPELER & OUDERS',
     title: 'Wat de anderen zien.',
     modules: [
-      { name: 'App STRIVN Player', desc: 'Agenda, oproepen, check-in, programma’s — zonder account aan te maken' },
+      { name: 'App STRIVN Player', desc: 'Agenda, oproepen, check-in en programma’s, op iOS en Android' },
       { name: 'Ouderportaal', desc: 'Bij jeugdteams loopt alles via de ouder, met toestemming' },
     ],
   },
@@ -891,7 +891,7 @@ const de: FeaturesIndexContent = {
     kicker: 'SEITE SPIELER & ELTERN',
     title: 'Was die anderen sehen.',
     modules: [
-      { name: 'App STRIVN Player', desc: 'Kalender, Aufgebote, Check-in, Programme — ohne Konto anzulegen' },
+      { name: 'App STRIVN Player', desc: 'Kalender, Aufgebote, Check-in und Programme, für iOS und Android' },
       { name: 'Elternportal', desc: 'Bei Jugendteams läuft alles über die Eltern, mit Einwilligung' },
     ],
   },
@@ -1066,7 +1066,7 @@ const pt: FeaturesIndexContent = {
     kicker: 'LADO JOGADOR & PAIS',
     title: 'O que os outros veem.',
     modules: [
-      { name: 'App STRIVN Player', desc: 'Agenda, convocatórias, check-in, programas — sem conta a criar' },
+      { name: 'App STRIVN Player', desc: 'Agenda, convocatórias, check-in e programas, em iOS e Android' },
       { name: 'Portal dos pais', desc: 'Nas equipas de jovens tudo passa pelo pai, com consentimento' },
     ],
   },
@@ -1241,7 +1241,7 @@ const es: FeaturesIndexContent = {
     kicker: 'LADO JUGADOR & PADRES',
     title: 'Lo que ven los demás.',
     modules: [
-      { name: 'App STRIVN Player', desc: 'Agenda, convocatorias, check-in, programas — sin cuenta que crear' },
+      { name: 'App STRIVN Player', desc: 'Agenda, convocatorias, check-in y programas, en iOS y Android' },
       { name: 'Portal de padres', desc: 'En equipos de niños todo pasa por el padre, con consentimiento' },
     ],
   },
