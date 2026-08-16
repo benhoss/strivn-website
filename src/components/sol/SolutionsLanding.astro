@@ -6,6 +6,7 @@ import SiteHeader from '../SiteHeader.astro';
 import SiteMotion from '../SiteMotion.astro';
 import SolHero from './SolHero.astro';
 import SolCompo from './SolCompo.astro';
+import HomePlatform from '../home/HomePlatform.astro';
 import HomeFinalCta from '../home/HomeFinalCta.astro';
 import HomeFooter from '../home/HomeFooter.astro';
 import { solutionsContent } from '../../data/solutionsContent';
@@ -55,6 +56,17 @@ const skipLabelByLocale: Record<Locale, string> = {
 
   <main id="s-main" class="bg-[#05070F] font-sans text-[#F8FAFC] antialiased">
     <SolHero hero={c.hero} />
+    {/* The platform presentation, merged in from the homepage section the nav
+        used to jump to: what the system does, before who on the staff it
+        serves. Same component and same cards, so the modules stay in step on
+        both pages; only the heading and lede are this page's own, because the
+        homepage's lean on the monitoring block sitting directly above them. */}
+    <HomePlatform
+      platform={shared.platform}
+      index={null}
+      title={c.platformIntro.title}
+      body={c.platformIntro.body}
+    />
     <SolCompo locale={locale} compo={c.compo} />
     <HomeFinalCta locale={locale} finalCta={shared.finalCta} />
   </main>

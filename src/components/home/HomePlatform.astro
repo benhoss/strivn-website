@@ -4,9 +4,21 @@ import HomeIcon from './HomeIcon.astro';
 
 interface Props {
   platform: HomeContent['platform'];
+  /**
+   * Position in the host page's numbered sequence. The homepage runs one and
+   * passes nothing; the overview page has no such sequence, so it passes null
+   * and the chip drops the number rather than borrowing the homepage's "04".
+   */
+  index?: string | null;
+  /** Heading and lede, when the host page needs its own. */
+  title?: string;
+  body?: string;
 }
 
 const { platform: c } = Astro.props;
+const index = Astro.props.index === undefined ? c.index : Astro.props.index;
+const title = Astro.props.title ?? c.title;
+const body = Astro.props.body ?? c.body;
 ---
 
 <section id="plateforme" class="scroll-mt-24 bg-[#05070F] py-20 md:py-28" aria-labelledby="platform-title">
@@ -14,13 +26,13 @@ const { platform: c } = Astro.props;
     <div class="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-end">
       <div class="hl-reveal">
         <p class="hl-index text-[#7AB8FF]">
-          {c.index}
-          <span class="hl-index__rule"></span>
+          {index}
+          {index && <span class="hl-index__rule"></span>}
           <span class="text-[#68779A]">{c.kicker}</span>
         </p>
-        <h2 id="platform-title" class="hl-display mt-5 max-w-[18ch] text-[clamp(2.1rem,4.6vw,3.4rem)]">{c.title}</h2>
+        <h2 id="platform-title" class="hl-display mt-5 max-w-[18ch] text-[clamp(2.1rem,4.6vw,3.4rem)]">{title}</h2>
       </div>
-      <p class="hl-reveal text-[1rem] leading-[1.65] text-[#AAB8D4] lg:pb-2" style="--d: 100ms;">{c.body}</p>
+      <p class="hl-reveal text-[1rem] leading-[1.65] text-[#AAB8D4] lg:pb-2" style="--d: 100ms;">{body}</p>
     </div>
 
     <div class="mt-12 grid gap-4 lg:grid-cols-2">
