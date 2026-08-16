@@ -1816,12 +1816,15 @@ a {
 /* ════════════════════════════════════════════════════════════
    16 · Responsive
    ════════════════════════════════════════════════════════════ */
-/* The nav collapses earlier than the page grids do. With seven entries the
-   French bar measures 1145px of content and needs a 1225px viewport; the pill
-   is capped at `100vw - 2 * gutter`, so below that it was simply clipped.
-   French is the widest of the six locales, so one threshold serves them all.
-   The layout rules below keep their own 60rem breakpoint. */
-@media (max-width: 77rem) {
+/* The nav collapses earlier than the page grids do, so it gets its own
+   breakpoint; the layout rules in the 60rem block below keep theirs.
+
+   The pill is capped at `100vw - 2 * gutter`, so a bar wider than that is
+   simply clipped rather than wrapped. Seven entries measure 1043px in Spanish,
+   the widest of the six locales, which needs a 1123px viewport — hence 71rem.
+   Shortening a label lowers this; re-measure the widest locale before moving
+   it, and remember the language switcher alone accounts for ~211px. */
+@media (max-width: 71rem) {
   .s-nav {
     gap: var(--space-md);
   }

@@ -115,7 +115,7 @@ const langs = [
 
   <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="s-nav__cta">{cta}</a>
 
-  <!-- Mobile menu panel (≤77rem, where the inline links are hidden) -->
+  <!-- Mobile menu panel (≤71rem, where the inline links are hidden) -->
   <div class="s-nav__mobile" id="s-nav-mobile" hidden>
     <ul class="s-nav__mobile-list">
       {links.map((link) => (
@@ -145,7 +145,7 @@ const langs = [
 </nav>
 
 <style>
-  /* ── Desktop dropdown group (links hidden ≤77rem) ──────────── */
+  /* ── Desktop dropdown group (links hidden ≤71rem) ──────────── */
   .s-nav__group {
     position: relative;
   }
@@ -223,7 +223,7 @@ const langs = [
     color: var(--ink);
   }
 
-  /* ── Hamburger (shown only ≤77rem) ─────────────────────────── */
+  /* ── Hamburger (shown only ≤71rem) ─────────────────────────── */
   .s-nav__burger {
     display: none;
     align-items: center;
@@ -335,12 +335,10 @@ const langs = [
     color: var(--ink);
   }
 
-  /* 77rem, not 60: with seven entries the French bar measures 1145px of
-     content and needs a 1225px viewport. Below that it was clipped, because
-     the pill is capped at `100vw - 2 * gutter` and the burger only took over
-     at 960px. The flat bar now appears only where it actually fits — French
-     is the widest locale, so one threshold serves all six. */
-  @media (max-width: 77rem) {
+  /* 71rem, not 60: the pill is capped at `100vw - 2 * gutter`, and the burger
+     used to take over only at 960px, so the seven-entry bar was clipped in
+     between. Spanish is the widest of the six at 1043px of content. */
+  @media (max-width: 71rem) {
     .s-nav__burger {
       display: inline-flex;
       position: relative;
