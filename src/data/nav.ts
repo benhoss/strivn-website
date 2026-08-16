@@ -32,9 +32,9 @@ export const NAV: Record<Locale, Nav> = {
   fr: {
     links: [
       { label: 'Plateforme', href: '/fr/solutions/' },
-      { label: 'Préparateurs physiques', href: '/fr/preparateurs-physiques/' },
+      { label: 'Préparateurs', href: '/fr/preparateurs-physiques/' },
       { label: 'Fonctionnalités', href: '/fr/features/' },
-      { label: 'Application joueur', href: '/fr/features/player-app/' },
+      { label: 'App joueur', href: '/fr/features/player-app/' },
       { label: 'Blog', href: '/fr/blog/' },
       { label: 'Tarifs', href: '/fr/#tarifs' },
       { label: 'FAQ', href: '/fr/#faq' },
@@ -84,9 +84,9 @@ export const NAV: Record<Locale, Nav> = {
   pt: {
     links: [
       { label: 'Plataforma', href: '/pt/solutions/' },
-      { label: 'Preparadores físicos', href: '/pt/sc-coaches/' },
+      { label: 'Preparadores', href: '/pt/sc-coaches/' },
       { label: 'Funcionalidades', href: '/pt/features/' },
-      { label: 'App do jogador', href: '/pt/features/player-app/' },
+      { label: 'App jogador', href: '/pt/features/player-app/' },
       { label: 'Blog', href: '/fr/blog/' },
       { label: 'Preços', href: '/pt/#tarifs' },
       { label: 'FAQ', href: '/pt/#faq' },
@@ -97,9 +97,9 @@ export const NAV: Record<Locale, Nav> = {
   es: {
     links: [
       { label: 'Plataforma', href: '/es/solutions/' },
-      { label: 'Preparadores físicos', href: '/es/sc-coaches/' },
+      { label: 'Preparadores', href: '/es/sc-coaches/' },
       { label: 'Funcionalidades', href: '/es/features/' },
-      { label: 'App del jugador', href: '/es/features/player-app/' },
+      { label: 'App jugador', href: '/es/features/player-app/' },
       { label: 'Blog', href: '/fr/blog/' },
       { label: 'Precios', href: '/es/#tarifs' },
       { label: 'FAQ', href: '/es/#faq' },
