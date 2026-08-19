@@ -228,9 +228,9 @@ const APP_URL = 'https://app.strivn.net';
 export const landingContent: Record<Locale, LandingContent> = {
   fr: {
     meta: {
-      title: 'STRIVN | La plateforme d’intendance gratuite des coaches',
+      title: 'STRIVN | Toute l’équipe, sous un même toit',
       description:
-        "STRIVN centralise l'intendance d'une équipe : événements, présences, infirmerie, tactique, rapports, assistant IA, communications et RSVP. Gratuit pour les coaches.",
+        "WhatsApp, Excel, notes, mémoire : le quotidien d'un coach est éparpillé. STRIVN réunit convocations, présences, infirmerie, charge et séances dans une seule plateforme, partagée par tout le staff. Gratuit pour les coaches.",
     },
     nav: {
       reality: 'Le quotidien',
@@ -691,9 +691,9 @@ export const landingContent: Record<Locale, LandingContent> = {
 
   en: {
     meta: {
-      title: 'STRIVN | The free operations platform for coaches',
+      title: 'STRIVN | The whole team, under one roof',
       description:
-        'STRIVN centralizes one-team operations: events, attendance, injuries, tactics, reports, AI assistant, communication and RSVP. Free for coaches.',
+        "WhatsApp, Excel, notes, memory: a coach's daily life is scattered. STRIVN brings convocations, attendance, injury tracking, load and sessions together in one platform, shared by the whole staff. Free for coaches.",
     },
     nav: {
       reality: 'The reality',
