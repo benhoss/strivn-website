@@ -10,6 +10,7 @@
  * Product captures stay bespoke: they name a component in the visual registry.
  */
 import type { Locale } from '../landingContent';
+import type { PartnerSlug } from '../partners';
 export type { Locale };
 
 /** Accent used for chips, dots and panel outlines. */
@@ -140,6 +141,16 @@ export type Section = Head &
         /** App Store and Google Play badges for one of the mobile apps. */
         kind: 'stores';
         app: 'coach' | 'player';
+      }
+    | {
+        /**
+         * Tiles carrying the marks of the systems STRIVN reads from. The names
+         * come from `partners.ts`, so a page names slugs rather than brands and
+         * the strip cannot drift from the homepage's.
+         */
+        kind: 'logos';
+        /** Restrict the row, in the order given. Defaults to all of them. */
+        only?: PartnerSlug[];
       }
   );
 

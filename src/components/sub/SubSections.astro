@@ -15,6 +15,7 @@ import SubVisual from './SubVisual.astro';
 import SubCallout from './SubCallout.astro';
 import SubNote from './SubNote.astro';
 import SubStores from './SubStores.astro';
+import PartnerTiles from '../shared/PartnerTiles.astro';
 
 interface Props {
   sections: Section[];
@@ -384,6 +385,11 @@ const edge: Record<Tone, string> = {
             <div class={`hl-reveal ${head ? 'mt-9' : ''}`}>
               <SubVisual name={s.name} locale={locale} />
             </div>
+          )}
+
+          {/* ── Marks of the systems STRIVN reads from ────────────── */}
+          {s.kind === 'logos' && (
+            <PartnerTiles only={s.only} class={`hl-reveal ${head ? 'mt-8' : ''}`} />
           )}
 
           {/* ── Store badges ──────────────────────────────────────── */}
