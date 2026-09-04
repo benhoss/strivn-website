@@ -56,6 +56,18 @@ export const checkIn: SubpageLocales = {
         ],
       },
       {
+        kicker: 'INTÉGRATION WHOOP',
+        title: 'Le bracelet remplit le check-in du matin.',
+        body: 'STRIVN se connecte à WHOOP par son API développeur et récupère les mesures de la nuit : le score de récupération, la durée et la performance de sommeil, la VFC et la fréquence cardiaque au repos. Le check-in arrive pré-rempli — le joueur ouvre, vérifie, ajuste ce qui lui semble faux, et valide. Cent joueurs peuvent aujourd’hui connecter leur bracelet à STRIVN.',
+        kind: 'logos',
+        only: ['whoop'],
+        note: {
+          label: 'Ce qu’un bracelet ne mesure pas',
+          desc: 'La fatigue ressentie, l’humeur, les douleurs : ces réponses-là restent au joueur. Le pré-remplissage porte sur les mesures, pas sur le ressenti — c’est la différence entre un questionnaire à remplir et une réponse à confirmer.',
+        },
+        foot: 'Marques et logos cités appartiennent à leurs propriétaires respectifs. STRIVN n’est affilié à aucune de ces sociétés.',
+      },
+      {
         kicker: 'LE RESSENTI APRÈS SÉANCE',
         title: 'Le RPE, au moment qui vous arrange.',
         kind: 'cards',
@@ -132,6 +144,18 @@ export const checkIn: SubpageLocales = {
             desc: 'An unanswered check-in is never counted as “good”. Missing data stays visible as missing.',
           },
         ],
+      },
+      {
+        kicker: 'WHOOP INTEGRATION',
+        title: 'The strap fills in the morning check-in.',
+        body: 'STRIVN connects to WHOOP through its developer API and pulls the night’s measurements: the recovery score, sleep duration and performance, HRV and resting heart rate. The check-in arrives pre-filled — the player opens it, checks it, adjusts whatever looks wrong, and confirms. A hundred players can now connect their strap to STRIVN.',
+        kind: 'logos',
+        only: ['whoop'],
+        note: {
+          label: 'What a strap does not measure',
+          desc: 'Perceived fatigue, mood, soreness: those answers stay the player’s. Pre-filling covers the measurements, not the feeling — that is the difference between a form to fill in and an answer to confirm.',
+        },
+        foot: 'Trademarks and logos are the property of their respective owners. STRIVN is not affiliated with any of these companies.',
       },
       {
         kicker: 'HOW THE SESSION FELT',
@@ -212,6 +236,18 @@ export const checkIn: SubpageLocales = {
         ],
       },
       {
+        kicker: 'WHOOP-INTEGRATIE',
+        title: 'De band vult de check-in van de ochtend in.',
+        body: 'STRIVN maakt via de ontwikkelaars-API verbinding met WHOOP en haalt de metingen van de nacht op: de herstelscore, de duur en de prestatie van de slaap, HRV en hartslag in rust. De check-in komt vooraf ingevuld binnen — de speler opent hem, controleert, past aan wat fout lijkt, en bevestigt. Honderd spelers kunnen hun band nu met STRIVN verbinden.',
+        kind: 'logos',
+        only: ['whoop'],
+        note: {
+          label: 'Wat een band niet meet',
+          desc: 'Ervaren vermoeidheid, humeur, pijn: die antwoorden blijven van de speler. Het vooraf invullen gaat over de metingen, niet over het gevoel — dat is het verschil tussen een formulier dat ingevuld moet worden en een antwoord dat bevestigd wordt.',
+        },
+        foot: 'Vermelde merken en logo’s zijn eigendom van hun respectieve eigenaars. STRIVN is met geen van deze bedrijven verbonden.',
+      },
+      {
         kicker: 'HET GEVOEL NA DE TRAINING',
         title: 'De RPE, op het moment dat jou uitkomt.',
         kind: 'cards',
@@ -288,6 +324,18 @@ export const checkIn: SubpageLocales = {
             desc: 'Ein nicht ausgefüllter Check-in zählt nie als „gut“. Fehlende Daten bleiben sichtbar fehlend.',
           },
         ],
+      },
+      {
+        kicker: 'WHOOP-INTEGRATION',
+        title: 'Das Band füllt den Check-in am Morgen aus.',
+        body: 'STRIVN verbindet sich über die Entwickler-API mit WHOOP und holt die Messwerte der Nacht: den Regenerationsscore, Dauer und Performance des Schlafs, HRV und Ruhepuls. Der Check-in kommt vorausgefüllt an — der Spieler öffnet ihn, prüft, korrigiert, was nicht stimmt, und bestätigt. Hundert Spieler können ihr Band jetzt mit STRIVN verbinden.',
+        kind: 'logos',
+        only: ['whoop'],
+        note: {
+          label: 'Was ein Band nicht misst',
+          desc: 'Empfundene Müdigkeit, Stimmung, Schmerzen: Diese Antworten bleiben beim Spieler. Vorausgefüllt werden die Messwerte, nicht das Empfinden — das ist der Unterschied zwischen einem Formular, das auszufüllen ist, und einer Antwort, die zu bestätigen ist.',
+        },
+        foot: 'Genannte Marken und Logos sind Eigentum ihrer jeweiligen Inhaber. STRIVN ist mit keinem dieser Unternehmen verbunden.',
       },
       {
         kicker: 'DAS EMPFINDEN NACH DER EINHEIT',
@@ -368,6 +416,18 @@ export const checkIn: SubpageLocales = {
         ],
       },
       {
+        kicker: 'INTEGRAÇÃO WHOOP',
+        title: 'A pulseira preenche o check-in da manhã.',
+        body: 'O STRIVN liga-se ao WHOOP através da sua API de programador e recolhe as medições da noite: a pontuação de recuperação, a duração e o desempenho do sono, a VFC e a frequência cardíaca em repouso. O check-in chega pré-preenchido — o jogador abre, verifica, ajusta o que lhe parece errado e valida. Cem jogadores podem agora ligar a sua pulseira ao STRIVN.',
+        kind: 'logos',
+        only: ['whoop'],
+        note: {
+          label: 'O que uma pulseira não mede',
+          desc: 'O cansaço sentido, o humor, as dores: essas respostas continuam a ser do jogador. O pré-preenchimento cobre as medições, não o que se sente — é a diferença entre um questionário para preencher e uma resposta para confirmar.',
+        },
+        foot: 'As marcas e logótipos citados pertencem aos respetivos proprietários. A STRIVN não está associada a nenhuma destas empresas.',
+      },
+      {
         kicker: 'A SENSAÇÃO APÓS O TREINO',
         title: 'O RPE, no momento que lhe der jeito.',
         kind: 'cards',
@@ -444,6 +504,18 @@ export const checkIn: SubpageLocales = {
             desc: 'Un check-in sin rellenar nunca cuenta como «bueno». La ausencia de dato se ve.',
           },
         ],
+      },
+      {
+        kicker: 'INTEGRACIÓN WHOOP',
+        title: 'La pulsera rellena el check-in de la mañana.',
+        body: 'STRIVN se conecta a WHOOP mediante su API para desarrolladores y recupera las medidas de la noche: la puntuación de recuperación, la duración y el rendimiento del sueño, la VFC y la frecuencia cardíaca en reposo. El check-in llega rellenado de antemano — el jugador lo abre, lo revisa, corrige lo que le parece erróneo y lo valida. Cien jugadores pueden ya conectar su pulsera a STRIVN.',
+        kind: 'logos',
+        only: ['whoop'],
+        note: {
+          label: 'Lo que una pulsera no mide',
+          desc: 'El cansancio percibido, el ánimo, las molestias: esas respuestas siguen siendo del jugador. El rellenado previo cubre las medidas, no la sensación — esa es la diferencia entre un cuestionario que hay que rellenar y una respuesta que hay que confirmar.',
+        },
+        foot: 'Las marcas y logotipos citados pertenecen a sus respectivos propietarios. STRIVN no está afiliada a ninguna de estas empresas.',
       },
       {
         kicker: 'LA SENSACIÓN TRAS LA SESIÓN',

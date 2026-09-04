@@ -1,0 +1,72 @@
+---
+/**
+ * The row of white tiles carrying the marks of the systems STRIVN reads from.
+ *
+ * Shared by the homepage band and the check-in page, which shows WHOOP alone —
+ * one tile implementation, so the two never drift apart.
+ *
+ * The marks are already matched on cap height in the file (see
+ * `scripts/normalize-partners.mjs`), so each is emitted at its own intrinsic
+ * size times one shared factor rather than being constrained in CSS, which
+ * would undo that matching. `max-w-full` is the only guard, for the narrowest
+ * viewport where a tile is thinner than the mark inside it.
+ */
+import { PARTNERS, type PartnerSlug } from '../../data/partners';
+import { pngSize } from '../../lib/pngSize';
+
+interface Props {
+  /** Restrict the row, in the order given. Defaults to every partner. */
+  only?: PartnerSlug[];
+  /** Emitted at 3x for dense screens. */
+  class?: string;
+}
+
+const { only, class: klass = '' } = Astro.props;
+
+const SCALE = 1 / 3;
+
+const shown = only
+  ? only.flatMap((slug) => PARTNERS.filter((p) => p.slug === slug))
+  : [...PARTNERS];
+
+/**
+ * The row fits itself to whatever column it is dropped into — four across the
+ * width of a sub-page band, two inside the homepage's narrower right column —
+ * because a tile squeezed below ~9.5rem leaves less than the widest mark needs
+ * and starts scaling wordmarks down against each other. A lone tile is capped
+ * instead of stretched: one white panel the width of the page is a banner.
+ */
+const cols =
+  shown.length === 1
+    ? 'max-w-[13rem] grid-cols-1'
+    : 'grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))]';
+
+const marks = shown.map((partner) => {
+  const src = `partners/on-white/${partner.slug}.png`;
+  const size = pngSize(src);
+  return {
+    ...partner,
+    src: `/${src}`,
+    width: size ? Math.round(size.width * SCALE) : undefined,
+    height: size ? Math.round(size.height * SCALE) : undefined,
+  };
+});
+---
+
+<ul class:list={['grid gap-3', cols, klass]} data-stagger>
+  {
+    marks.map((mark) => (
+      <li class="grid h-[5.25rem] place-items-center rounded-[14px] bg-white px-5">
+        <img
+          src={mark.src}
+          alt={mark.name}
+          width={mark.width}
+          height={mark.height}
+          class="max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+        />
+      </li>
+    ))
+  }
+</ul>

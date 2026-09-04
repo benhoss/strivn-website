@@ -1,0 +1,79 @@
+---
+/**
+ * Compatibility band: the systems STRIVN reads from, and what WHOOP now sends.
+ *
+ * It sits straight after the workflow, where the reader has just been shown a
+ * GPS export being mapped — "which systems, then?" is the question that band
+ * raises, and this one answers it before the page moves on.
+ *
+ * Deliberately unnumbered. The homepage's chapters run 01–09; a strip of logos
+ * is connective tissue between two of them, not a tenth chapter, and the same
+ * choice was made for the club crests above.
+ *
+ * WHOOP is named in the copy rather than given a card of its own: the tile row
+ * beside it already carries the mark, and a second WHOOP lockup in the same
+ * band would read as a partner badge rather than as compatibility.
+ */
+import type { HomeContent } from '../../data/homeContent';
+import PartnerTiles from '../shared/PartnerTiles.astro';
+import HomeIcon from './HomeIcon.astro';
+
+interface Props {
+  compatible: HomeContent['compatible'];
+}
+
+const { compatible } = Astro.props;
+---
+
+<section class="bg-[#070A14] py-20 md:py-24" aria-labelledby="compat-title">
+  <div class="hl-wrap">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:items-center">
+      <div class="hl-reveal">
+        <p class="hl-kicker">{compatible.kicker}</p>
+        <h2 id="compat-title" class="hl-display mt-4 max-w-[20ch] text-[clamp(1.9rem,4vw,2.7rem)]">
+          {compatible.title}
+        </h2>
+        <p class="mt-4 max-w-[34rem] text-[0.99rem] leading-[1.65] text-[#AAB8D4]">
+          {compatible.body}
+        </p>
+
+        <div
+          class="mt-7 max-w-[34rem] rounded-[16px] bg-[#2D7FF90A] p-5 outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]"
+        >
+          <p class="flex flex-wrap items-center gap-3">
+            <span
+              class="rounded-full bg-[#2D7FF91F] px-2.5 py-1 font-mono text-[0.58rem] tracking-[0.12em] text-[#7AB8FF]"
+            >
+              {compatible.badge}
+            </span>
+            <span class="text-[1.02rem] leading-tight font-bold text-[#F8FAFC]">
+              {compatible.whoopTitle}
+            </span>
+          </p>
+          <ul class="hl-checks mt-4" data-stagger>
+            {
+              compatible.points.map((point) => (
+                <li>
+                  <HomeIcon name="check-circle" size={16} class="text-[#7AB8FF]" />
+                  {point}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <p class="mt-7">
+          <a href={compatible.href} class="hl-more text-[#7AB8FF]">
+            {compatible.cta}
+            <HomeIcon name="arrow-right" size={15} />
+          </a>
+        </p>
+      </div>
+
+      <div class="hl-reveal" style="--d: 120ms;">
+        <PartnerTiles />
+        <p class="mt-4 text-[0.72rem] leading-[1.5] text-[#68779A]">{compatible.note}</p>
+      </div>
+    </div>
+  </div>
+</section>

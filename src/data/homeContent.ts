@@ -106,6 +106,24 @@ export interface HomeContent {
       };
     };
   };
+  /**
+   * The compatibility band. Unnumbered, like `credibility` — the brand names
+   * themselves live in `partners.ts`, since they do not translate.
+   */
+  compatible: {
+    kicker: string;
+    title: string;
+    body: string;
+    /** Pill on the WHOOP line, for as long as the integration is the news. */
+    badge: string;
+    whoopTitle: string;
+    /** What WHOOP hands the check-in, one line each. */
+    points: [string, string, string];
+    cta: string;
+    href: string;
+    /** Trademark attribution, under the tiles. */
+    note: string;
+  };
   playerApp: {
     index: string;
     kicker: string;
@@ -547,6 +565,21 @@ const fr: HomeContent = {
         push: 'Disponibilités poussées vers la convocation de dimanche — 15 aptes, 2 à surveiller, 1 indisponible.',
       },
     },
+  },
+  compatible: {
+    kicker: 'COMPATIBILITÉ',
+    title: 'Ce que vos joueurs portent déjà entre dans STRIVN.',
+    body: 'Les systèmes GPS sortent un CSV — Catapult, STATSports ou un autre : les colonnes sont reconnues une fois, puis mémorisées. WHOOP, lui, n’attend aucun export : il pousse les mesures de la nuit dans le check-in du matin.',
+    badge: 'NOUVEAU',
+    whoopTitle: 'WHOOP pré-remplit le check-in du matin.',
+    points: [
+      'Récupération — le score du jour',
+      'Sommeil — durée et performance',
+      'VFC et fréquence cardiaque au repos',
+    ],
+    cta: 'Voir le check-in',
+    href: '/fr/features/check-in/',
+    note: 'Marques et logos cités appartiennent à leurs propriétaires respectifs. STRIVN n’est affilié à aucune de ces sociétés.',
   },
   playerApp: {
     index: '03',
@@ -1192,6 +1225,21 @@ const en: HomeContent = {
       },
     },
   },
+  compatible: {
+    kicker: 'COMPATIBILITY',
+    title: 'What your players already wear comes into STRIVN.',
+    body: 'GPS systems export a CSV — Catapult, STATSports or another: the columns are matched once, then remembered. WHOOP waits for no export: it pushes the night’s measurements into the morning check-in.',
+    badge: 'NEW',
+    whoopTitle: 'WHOOP pre-fills the morning check-in.',
+    points: [
+      'Recovery — the day’s score',
+      'Sleep — duration and performance',
+      'HRV and resting heart rate',
+    ],
+    cta: 'See the check-in',
+    href: '/en/features/check-in/',
+    note: 'Trademarks and logos are the property of their respective owners. STRIVN is not affiliated with any of these companies.',
+  },
   playerApp: {
     index: '03',
     kicker: 'PLAYER SIDE',
@@ -1835,6 +1883,21 @@ const nl: HomeContent = {
         push: 'Beschikbaarheid doorgestuurd naar de selectie van zondag — 15 fit, 2 op te volgen, 1 onbeschikbaar.',
       },
     },
+  },
+  compatible: {
+    kicker: 'COMPATIBILITEIT',
+    title: 'Wat uw spelers al dragen, komt binnen in STRIVN.',
+    body: 'GPS-systemen exporteren een CSV — Catapult, STATSports of een ander: de kolommen worden één keer toegewezen en daarna onthouden. WHOOP wacht op geen enkele export: het duwt de metingen van de nacht in de check-in van de ochtend.',
+    badge: 'NIEUW',
+    whoopTitle: 'WHOOP vult de ochtendcheck-in vooraf in.',
+    points: [
+      'Herstel — de score van de dag',
+      'Slaap — duur en prestatie',
+      'HRV en hartslag in rust',
+    ],
+    cta: 'Bekijk de check-in',
+    href: '/nl/features/check-in/',
+    note: 'Vermelde merken en logo’s zijn eigendom van hun respectieve eigenaars. STRIVN is met geen van deze bedrijven verbonden.',
   },
   playerApp: {
     index: '03',
@@ -2480,6 +2543,21 @@ const de: HomeContent = {
       },
     },
   },
+  compatible: {
+    kicker: 'KOMPATIBILITÄT',
+    title: 'Was Ihre Spieler ohnehin tragen, landet in STRIVN.',
+    body: 'GPS-Systeme exportieren eine CSV — Catapult, STATSports oder ein anderes: Die Spalten werden einmal zugeordnet und dann gespeichert. WHOOP wartet auf keinen Export: Es schreibt die Messwerte der Nacht in den Check-in am Morgen.',
+    badge: 'NEU',
+    whoopTitle: 'WHOOP füllt den Check-in am Morgen vor.',
+    points: [
+      'Regeneration — der Score des Tages',
+      'Schlaf — Dauer und Performance',
+      'HRV und Ruhepuls',
+    ],
+    cta: 'Zum Check-in',
+    href: '/de/features/check-in/',
+    note: 'Genannte Marken und Logos sind Eigentum ihrer jeweiligen Inhaber. STRIVN ist mit keinem dieser Unternehmen verbunden.',
+  },
   playerApp: {
     index: '03',
     kicker: 'SPIELERSEITE',
@@ -3124,6 +3202,21 @@ const pt: HomeContent = {
       },
     },
   },
+  compatible: {
+    kicker: 'COMPATIBILIDADE',
+    title: 'O que os seus jogadores já usam entra no STRIVN.',
+    body: 'Os sistemas GPS exportam um CSV — Catapult, STATSports ou outro: as colunas são reconhecidas uma vez e depois memorizadas. O WHOOP não espera por nenhuma exportação: envia as medições da noite para o check-in da manhã.',
+    badge: 'NOVO',
+    whoopTitle: 'O WHOOP pré-preenche o check-in da manhã.',
+    points: [
+      'Recuperação — a pontuação do dia',
+      'Sono — duração e desempenho',
+      'VFC e frequência cardíaca em repouso',
+    ],
+    cta: 'Ver o check-in',
+    href: '/pt/features/check-in/',
+    note: 'As marcas e logótipos citados pertencem aos respetivos proprietários. A STRIVN não está associada a nenhuma destas empresas.',
+  },
   playerApp: {
     index: '03',
     kicker: 'LADO DO JOGADOR',
@@ -3767,6 +3860,21 @@ const es: HomeContent = {
         push: 'Disponibilidades enviadas a la convocatoria del domingo — 15 aptos, 2 a vigilar, 1 no disponible.',
       },
     },
+  },
+  compatible: {
+    kicker: 'COMPATIBILIDAD',
+    title: 'Lo que sus jugadores ya llevan entra en STRIVN.',
+    body: 'Los sistemas GPS exportan un CSV — Catapult, STATSports u otro: las columnas se reconocen una vez y luego quedan memorizadas. WHOOP no espera ninguna exportación: envía las medidas de la noche al check-in de la mañana.',
+    badge: 'NUEVO',
+    whoopTitle: 'WHOOP rellena por adelantado el check-in de la mañana.',
+    points: [
+      'Recuperación — la puntuación del día',
+      'Sueño — duración y rendimiento',
+      'VFC y frecuencia cardíaca en reposo',
+    ],
+    cta: 'Ver el check-in',
+    href: '/es/features/check-in/',
+    note: 'Las marcas y logotipos citados pertenecen a sus respectivos propietarios. STRIVN no está afiliada a ninguna de estas empresas.',
   },
   playerApp: {
     index: '03',
