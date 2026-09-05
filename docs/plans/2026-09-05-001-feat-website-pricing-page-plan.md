@@ -15,7 +15,7 @@ execution: code
 
 - **Objective:** Ship a dedicated public pricing page at `/{locale}/pricing/` in all six locales, publishing the four-tier architecture (Free / Amateur / Semi-Pro / Pro) that `strivn-app/docs/STRATEGY.md` made the source of truth on 2026-08-30, replacing the homepage's obsolete three-plan section as the canonical pricing destination.
 - **Product authority:** `strivn-app/docs/STRATEGY.md` §4 (positioning + tier architecture) and `strivn-app/docs/specs/pricing-packaging-2026-08.md` (entitlement matrix, event-type axis, quotas). Brand voice per `PRODUCT.md`, visual system per `DESIGN.md`.
-- **Open blockers:** None for the page. Three commercial values are undecided upstream and are handled by explicit non-publication rules — see §3 and Open Questions. One copy decision (wearables tier) has a recommended default and an owner question — see §2 and §11.7.
+- **Open blockers:** None for the page. Three commercial values are undecided upstream and are handled by explicit non-publication rules — see §3 and Open Questions. The wearables tier was the one copy decision left hanging; it was settled on 2026-09-05 — see §2 and §4.
 - **Verified against code 2026-09-05:** `strivn-app` (`config/billing.php`, entitlement enforcement, wearables) and `Website` (`#tarifs` inventory, layout props, `appStartUrl`, `WaitlistForm`). Every file path and line number below was checked on that date; §2 corrects one claim STRATEGY §10 has since outgrown.
 
 ---
@@ -71,7 +71,9 @@ When `is_selectable` flips upstream, swapping a plan's `cta.kind` from `'waitlis
 2. **The site already sells it as current.** `HomeCompatible.astro` names WHOOP in the compatibility band on all six homepages, and `src/data/subpages/checkIn.ts` builds a whole subpage around what WHOOP hands the morning check-in. Commit `ad67ab0` — *"Show the systems STRIVN reads from, WHOOP included"* — is three weeks old.
 3. **`config/billing.php` places it at `club`**, i.e. the tier that maps to Semi-Pro, not to Pro.
 
-Publishing "objets connectés = Pro, sur devis" would tell a visitor that the feature the homepage just showed them is behind an unpriced enterprise quote. **Recommended default for v1: `wearable_sync` sits at Semi-Pro and above**, matching the shipped configuration and the homepage. §11.7 carries the question for the upstream owner; the matrix and the plan cards below already apply the recommendation.
+Publishing "objets connectés = Pro, sur devis" would tell a visitor that the feature the homepage just showed them is behind an unpriced enterprise quote.
+
+**Decided 2026-09-05 by the product owner: `wearable_sync` sits at Semi-Pro and above.** It matches the shipped configuration, it matches what the homepage already promises, and it is the only placement a visitor can read twice without catching the product in a contradiction. The matrix and the plan cards below apply it. This closes the question; `pricing-packaging-2026-08.md` §2 is the document that now carries the drift, and correcting it there is upstream work, not this page's.
 
 Worth flagging upward, though it does not block this page: **no self-serve visitor can reach WHOOP today.** `free_coach` has no `wearable_sync` key, and no paid plan is `is_selectable`. The band on the homepage promises a feature only `team:grant-plan` can currently unlock.
 
@@ -93,6 +95,7 @@ Three numbers are deliberately unpublished upstream. The page must respect that,
 - **The homepage section survives as a teaser.** `#tarifs` stays a live anchor — it is referenced by nav, both footers and outbound campaign links, and a URL fragment cannot be server-redirected. `HomePricing.astro` is rewritten to a condensed four-tier strip whose CTA is "voir le détail des offres" → `/{locale}/pricing/`. Removing the section would break `check:links`, which validates fragments against the target page.
 - **Nav and footers repoint to the page**, not the anchor (inventory in §8).
 - **Six locales in one shipment.** Every other page on the site exists in six; a pricing page missing in three would strand half the traffic on the obsolete anchor.
+- **Wearable sync is a Semi-Pro capability, not a Pro one.** Decided 2026-09-05, against `pricing-packaging-2026-08.md` §2 and in line with `config/billing.php` and the homepage. Reasoning in §2.
 - **No pricing A/B or experiment tooling.** Out of scope.
 
 ---
@@ -147,7 +150,7 @@ Derived from STRATEGY §4 and spec §1–§4. FR copy below is the specimen to t
   - Tests physiques
   - Plusieurs membres du staff, accès staff médical
   - Dashboards coach et reporting club
-  - Synchronisation des objets connectés (WHOOP) *(see §2 — moved up from Pro; shipped and already sold on the homepage)*
+  - Synchronisation des objets connectés (WHOOP)
 
 ### 5.4 Pro — sur devis
 
@@ -409,8 +412,7 @@ Carried from `strivn-app/docs/specs/pricing-packaging-2026-08.md` §8. None bloc
 4. **WhatsApp: bundled or add-on** (spec §6.6). If it becomes an add-on, this page needs an add-on section.
 5. **AI credit scale** (spec §5). Unlocks S3 numbers and a possible top-up pack section.
 6. **Semi-Pro annual rate.** Unlocks the monthly/annual toggle.
-7. **Which tier owns `wearable_sync`.** The spec says Pro; `config/billing.php` says `club`; the homepage sells WHOOP as available today. This page ships the Semi-Pro placement (§2) because it is the only one consistent with what a visitor has just read on the homepage. If the upstream owner confirms Pro, one card line and one matrix row change — and the homepage band needs a qualifier, which is the larger edit.
-8. **Nobody can buy WHOOP today.** Not a copy question and not this page's to fix: `free_coach` lacks the key, no paid plan is `is_selectable`, so the only route to wearable sync is `php artisan team:grant-plan`. This page makes the gap legible; it does not create it.
+7. **Nobody can buy WHOOP today.** Not a copy question and not this page's to fix: `free_coach` lacks the key, no paid plan is `is_selectable`, so the only route to wearable sync is `php artisan team:grant-plan`. This page makes the gap legible; it does not create it.
 
 ---
 
