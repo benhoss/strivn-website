@@ -1,0 +1,24 @@
+---
+import type { PricingContent } from '../../data/pricingContent';
+
+interface Props {
+  trial: PricingContent['trial'];
+}
+
+const { trial: c } = Astro.props;
+---
+
+{/* Placed above the cards rather than inside one: the trial is not a Semi-Pro
+    feature, it is what happens to every account that signs up, and it reframes
+    all four cards below it. */}
+<div
+  class="hl-reveal mt-12 flex flex-col gap-4 rounded-[16px] bg-gradient-to-r from-[#101B33] to-[#0B1020] p-6 outline-1 outline-[#2D7FF95C] -outline-offset-[0.5px] md:flex-row md:items-start md:gap-8 md:p-7"
+>
+  <p class="shrink-0 font-mono text-[0.62rem] font-semibold tracking-[0.12em] text-[#7AB8FF] uppercase md:pt-1">
+    {c.label}
+  </p>
+  <div>
+    <p class="text-[1.05rem] font-semibold leading-[1.35] text-[#F8FAFC]">{c.title}</p>
+    <p class="mt-2 max-w-[52rem] text-[0.92rem] leading-[1.6] text-[#AAB8D4]">{c.body}</p>
+  </div>
+</div>

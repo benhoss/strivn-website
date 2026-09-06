@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check:links": "node scripts/check-links.mjs",
-    "postbuild": "node scripts/check-links.mjs"
+    "check:pricing": "node scripts/check-pricing.mjs",
+    "postbuild": "node scripts/check-links.mjs && node scripts/check-pricing.mjs"
   },
   "dependencies": {
     "astro": "^5.9.0",

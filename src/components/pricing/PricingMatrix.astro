@@ -1,13 +1,14 @@
 ---
-import type { Cell, PlanCode, PricingContent } from '../../data/pricingContent';
-import { MATRIX } from '../../data/pricingContent';
+import type { Cell, Locale, PlanCode, PricingContent } from '../../data/pricingContent';
+import { MATRIX, formatCount } from '../../data/pricingContent';
 import HomeIcon from '../home/HomeIcon.astro';
 
 interface Props {
+  locale: Locale;
   matrix: PricingContent['matrix'];
 }
 
-const { matrix: c } = Astro.props;
+const { locale, matrix: c } = Astro.props;
 
 const PLAN_ORDER: PlanCode[] = ['free', 'amateur', 'semi_pro', 'pro'];
 /** Semi-Pro is the featured column; the tint runs the full height of the table. */
@@ -69,7 +70,10 @@ const isUniform = (cells: readonly Cell[]) => cells.every((cell) => cell === cel
                         <span class="pm__sr">{c.no}</span>
                       </>
                     )}
-                    {typeof cell === 'string' && <span class="pm__word">{c.cells[cell]}</span>}
+                    {typeof cell === 'number' && <span class="pm__word">{formatCount(cell, locale)}</span>}
+                    {typeof cell === 'string' && (
+                      <span class={cell === 'upcoming' ? 'pm__word pm__word--soon' : 'pm__word'}>{c.cells[cell]}</span>
+                    )}
                   </td>
                 ))}
               </tr>
@@ -217,6 +221,15 @@ const isUniform = (cells: readonly Cell[]) => cells.every((cell) => cell === cel
 
   .pm .is-featured .pm__word {
     color: #cfe0fb;
+  }
+
+  /* Announced, not shipped. It must not read like an included right, so it
+     sits below the included colour and carries its own dotted underline. */
+  .pm__word--soon {
+    color: #8ca3c7;
+    font-size: 0.76rem;
+    border-bottom: 1px dotted #4e5c7c;
+    padding-bottom: 1px;
   }
 
   /* Rows every tier shares recede — see the note in the component script. */

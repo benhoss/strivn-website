@@ -1,28 +1,29 @@
 ---
 import type { Locale, PricingContent, PricingPlan } from '../../data/pricingContent';
 import HomeIcon from '../home/HomeIcon.astro';
+import PricingTrial from './PricingTrial.astro';
+import { planPrice } from '../../lib/planPrice';
 import { appStartUrl } from '../../lib/appUrl';
 
 interface Props {
   locale: Locale;
   plans: PricingContent['plans'];
+  trial: PricingContent['trial'];
   email: string;
 }
 
-const { locale, plans: c, email } = Astro.props;
+const { locale, plans: c, trial, email } = Astro.props;
 
 /**
- * No CTA reaches a checkout, and that is not a placeholder: no paid plan is
- * `is_selectable` in the app, so a Stripe session for these tiers cannot be
- * created at all. Free goes to registration, the paid tiers go to a human.
- * When a tier opens upstream, its `kind` becomes `'app'` and this map is all
- * that moves.
+ * Every tier that has a price leads to registration, and that is honest even
+ * though none of them can be bought: a new account opens on a 30-day Semi-Pro
+ * trial, so signing up genuinely delivers the tier. The quoted tier leads to a
+ * person, because a tier without an amount opens no checkout at all.
  */
-const ctaHref = (plan: PricingPlan): string => {
-  if (plan.kind === 'app') return appStartUrl(locale);
-  if (plan.kind === 'waitlist') return `/${locale}/clubs/#waitlist`;
-  return `mailto:${email}?subject=${encodeURIComponent(`STRIVN ${plan.name}`)}`;
-};
+const ctaHref = (plan: PricingPlan): string =>
+  plan.kind === 'app'
+    ? appStartUrl(locale)
+    : `mailto:${email}?subject=${encodeURIComponent(`STRIVN ${plan.name}`)}`;
 ---
 
 <section id="plans" class="scroll-mt-24 bg-[#05070F] pb-20 md:pb-28" aria-labelledby="plans-title">
@@ -35,92 +36,99 @@ const ctaHref = (plan: PricingPlan): string => {
       <h2 id="plans-title" class="hl-display mt-5 text-[clamp(1.8rem,3.6vw,2.6rem)]">{c.title}</h2>
     </div>
 
+    <PricingTrial trial={trial} />
+
     {/* Four cards need the 4-up at xl: at lg they are too narrow to hold a
-        price and a nine-line list without wrapping every second word. */}
-    <div class="mt-12 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-4">
-      {c.items.map((plan, i) => (
-        <article
-          class={`hl-reveal hl-reveal--card flex flex-col rounded-[20px] p-6 outline-1 -outline-offset-[0.5px] ${
-            plan.featured
-              ? 'bg-gradient-to-b from-[#101B33] to-[#0B1020] outline-[#2D7FF95C] [box-shadow:0_30px_80px_-30px_rgba(45,127,249,0.35)]'
-              : 'hl-lift bg-[#0B1020] outline-[#FFFFFF0F]'
-          }`}
-          style={`--d: ${i * 80}ms;`}
-        >
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="text-[1.2rem] font-semibold text-[#F8FAFC]">{plan.name}</h3>
-            {/* Status colours are reserved for player state in this system, so
-                the featured badge is electric, never green. */}
-            <span
-              class={`shrink-0 rounded-full px-2.5 py-1 font-mono text-[0.56rem] tracking-[0.08em] outline-1 -outline-offset-[0.5px] ${
+        price, a struck rate and a nine-line list without wrapping every word. */}
+    <div class="mt-6 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {c.items.map((plan, i) => {
+        const price = planPrice(plan.code, locale, c, plan.quotePrice);
+        return (
+          <article
+            class={`hl-reveal hl-reveal--card flex flex-col rounded-[20px] p-6 outline-1 -outline-offset-[0.5px] ${
+              plan.featured
+                ? 'bg-gradient-to-b from-[#101B33] to-[#0B1020] outline-[#2D7FF95C] [box-shadow:0_30px_80px_-30px_rgba(45,127,249,0.35)]'
+                : 'hl-lift bg-[#0B1020] outline-[#FFFFFF0F]'
+            }`}
+            style={`--d: ${i * 80}ms;`}
+          >
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="text-[1.2rem] font-semibold text-[#F8FAFC]">{plan.name}</h3>
+              {/* Status colours describe player state in this system, so the
+                  featured badge is electric, never green. */}
+              <span
+                class={`shrink-0 rounded-full px-2.5 py-1 font-mono text-[0.56rem] tracking-[0.08em] outline-1 -outline-offset-[0.5px] ${
+                  plan.featured
+                    ? 'bg-[#2D7FF914] text-[#7AB8FF] outline-[#2D7FF947]'
+                    : 'bg-[#FFFFFF06] text-[#8CA3C7] outline-[#FFFFFF14]'
+                }`}
+              >
+                {plan.badge}
+              </span>
+            </div>
+
+            <p class="mt-5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <span class="hl-display text-[2.3rem] leading-none text-[#F8FAFC]">{price.headline}</span>
+              {price.period && <span class="text-[0.86rem] text-[#68779A]">{price.period}</span>}
+              {price.struck && (
+                <span class="text-[0.92rem] text-[#68779A] line-through">
+                  <span class="pp-sr">{c.fullMonthlyLabel} </span>{price.struck}
+                </span>
+              )}
+            </p>
+            {price.billed && (
+              <p class="mt-2 text-[0.76rem] leading-[1.5] text-[#8CA3C7]">
+                {price.billed}
+                {price.bonus && <> · <span class="text-[#7AB8FF]">{price.bonus}</span></>}
+              </p>
+            )}
+
+            <p class="mt-5 text-[0.98rem] font-medium leading-[1.5] text-[#F8FAFC]">{plan.promise}</p>
+            <p class="mt-2 text-[0.85rem] leading-[1.5] text-[#8CA3C7]">{plan.qualifier}</p>
+
+            <ul class="mt-5 flex flex-1 flex-col gap-2.5 border-t border-[#FFFFFF0A] pt-5">
+              {plan.inherits && (
+                <li class="pb-1 text-[0.85rem] leading-[1.45] font-medium text-[#8CA3C7]">{plan.inherits}</li>
+              )}
+              {plan.features.map((f) => (
+                <li class="flex items-start gap-2.5 text-[0.88rem] leading-[1.45] text-[#C6D2E8]">
+                  <HomeIcon name="check" size={13} class={`mt-1 shrink-0 ${plan.featured ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={ctaHref(plan)}
+              target={plan.kind === 'app' ? '_blank' : undefined}
+              rel={plan.kind === 'app' ? 'noopener' : undefined}
+              class={`hl-btn mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3.5 text-[0.92rem] font-semibold ${
                 plan.featured
-                  ? 'bg-[#2D7FF914] text-[#7AB8FF] outline-[#2D7FF947]'
-                  : 'bg-[#FFFFFF06] text-[#8CA3C7] outline-[#FFFFFF14]'
+                  ? 'bg-[#2D7FF9] text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]'
+                  : 'bg-[#FFFFFF08] text-[#F8FAFC] outline-1 outline-[#FFFFFF1F] -outline-offset-[0.5px] hover:bg-[#FFFFFF10]'
               }`}
             >
-              {plan.badge}
-            </span>
-          </div>
-
-          <p class="mt-5 flex items-baseline gap-2">
-            <span class={`hl-display text-[2.4rem] leading-none ${plan.kind === 'app' ? 'text-[#F8FAFC]' : 'text-[#DCE5F5]'}`}>
-              {plan.price}
-            </span>
-            {plan.period && <span class="text-[0.88rem] text-[#68779A]">{plan.period}</span>}
-          </p>
-          {plan.priceNote && <p class="mt-1.5 font-mono text-[0.68rem] tracking-[0.06em] text-[#7AB8FF]">{plan.priceNote}</p>}
-
-          <p class="mt-5 text-[0.98rem] font-medium leading-[1.5] text-[#F8FAFC]">{plan.promise}</p>
-          {/* Reads as a sentence, so it is set as one: mono at 0.68rem was a
-              label treatment, and this line is now the card's qualifier. */}
-          <p class="mt-2 text-[0.85rem] leading-[1.5] text-[#8CA3C7]">{plan.qualifier}</p>
-
-          <ul class="mt-5 flex flex-1 flex-col gap-2.5 border-t border-[#FFFFFF0A] pt-5">
-            {plan.inherits && (
-              <li class="pb-1 text-[0.85rem] leading-[1.45] font-medium text-[#8CA3C7]">{plan.inherits}</li>
-            )}
-            {plan.features.map((f) => (
-              <li class="flex items-start gap-2.5 text-[0.88rem] leading-[1.45] text-[#C6D2E8]">
-                <HomeIcon name="check" size={13} class={`mt-1 shrink-0 ${plan.featured ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`} />
-                {f}
-              </li>
-            ))}
-          </ul>
-
-          <a
-            href={ctaHref(plan)}
-            data-plan={plan.code}
-            target={plan.kind === 'app' ? '_blank' : undefined}
-            rel={plan.kind === 'app' ? 'noopener' : undefined}
-            class={`hl-btn mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3.5 text-[0.92rem] font-semibold ${
-              plan.featured
-                ? 'bg-[#2D7FF9] text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]'
-                : 'bg-[#FFFFFF08] text-[#F8FAFC] outline-1 outline-[#FFFFFF1F] -outline-offset-[0.5px] hover:bg-[#FFFFFF10]'
-            }`}
-          >
-            {plan.cta}
-            {plan.kind === 'app' && <HomeIcon name="arrow-right" size={14} />}
-          </a>
-        </article>
-      ))}
+              {plan.cta}
+              {plan.kind === 'app' && <HomeIcon name="arrow-right" size={14} />}
+            </a>
+          </article>
+        );
+      })}
     </div>
 
-    <p class="hl-reveal mx-auto mt-10 max-w-[42rem] text-center text-[0.9rem] leading-[1.6] text-[#8CA3C7]">{c.note}</p>
+    <p class="hl-reveal mx-auto mt-10 max-w-[44rem] text-center text-[0.9rem] leading-[1.6] text-[#8CA3C7]">{c.note}</p>
   </div>
 </section>
 
-<script>
-  /* Carries the tier a visitor clicked to the waitlist form on the clubs page,
-     so a submission says which plan prompted it. sessionStorage rather than a
-     query string: `check:links` normalises paths and would break `?plan=`.
-     Without JS the link still lands on the form; only the attribution is lost. */
-  document.querySelectorAll<HTMLAnchorElement>('a[data-plan]').forEach((link) => {
-    link.addEventListener('click', () => {
-      try {
-        sessionStorage.setItem('strivn:plan', link.dataset.plan ?? '');
-      } catch {
-        /* Private mode or blocked storage: the link still works. */
-      }
-    });
-  });
-</script>
+<style>
+  /* The struck figure needs a name in the accessibility tree: read alone,
+     "249 €" beside "207,50 €" is two prices with no relationship. */
+  .pp-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>
