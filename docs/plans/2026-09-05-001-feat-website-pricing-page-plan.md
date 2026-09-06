@@ -497,5 +497,7 @@ The page shipped with copy lifted from the strategy tables, which read as intern
 
 Constraints re-verified after the pass, in all six locales: no self-serve purchase promise, no AI-credit or discount figure, Pro carries no price including in JSON-LD, nine FAQ entries, structured data offers limited to Free / Amateur / Semi-Pro.
 
-**`PRODUCT.md` is stale and was not used for positioning.** It still describes the primary user as a coach in an amateur-to-semi-pro environment and STRIVN as "a free app for coaches to manage one team" — the wedge STRATEGY §2 replaced on 2026-08-30. Its voice section (factual, composed, "operating system", the anti-references) is still right and was followed. Reconciling it is upstream work.
+**`PRODUCT.md` was stale during this pass and was not used for positioning.** It described the primary user as a coach in an amateur-to-semi-pro environment and STRIVN as "a free app for coaches to manage one team" — the wedge STRATEGY §2 replaced on 2026-08-30. Only its voice section was followed. **It was rewritten against STRATEGY.md immediately after (2026-09-06)**: ICP moved to the S&C coach, purpose moved to the GPS intelligence layer, the four tiers gained a who-it-is-for table, and a new section states what may not be claimed yet — no vendor connector, no public API, no published credit scale, no purchasable paid tier, no shipped drill-level profile. The next copy pass reads a true file.
+
+`Strivn/PRODUCT.md`, one directory up, is a different file and remains stale: it still names the club coach as the primary user and does not mention GPS at all. Out of scope here.
 
