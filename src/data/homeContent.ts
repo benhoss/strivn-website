@@ -222,21 +222,12 @@ export interface HomeContent {
     title: string;
     cards: Array<{ icon: string; title: string; body: string; cta: string; href: string; featured?: boolean }>;
   };
+  /** Homepage teaser only. The four tiers themselves live in
+   *  `pricingContent`, so the strip and `/{locale}/pricing/` can never drift. */
   pricing: {
     index: string;
     kicker: string;
     title: string;
-    plans: Array<{
-      name: string;
-      badge: string;
-      price: string;
-      period?: string;
-      description: string;
-      features: string[];
-      cta: string;
-      kind: 'app' | 'demo' | 'contact';
-      featured?: boolean;
-    }>;
     note: string;
   };
   faq: {
@@ -815,58 +806,8 @@ const fr: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'TARIFS',
-    title: 'Gratuit pour le staff. Facturé à l’échelle du club.',
-    plans: [
-      {
-        name: 'Coach',
-        badge: 'Disponible maintenant',
-        price: '0€',
-        period: 'pour toujours',
-        description: 'Pour déployer STRIVN sur une équipe, sans solliciter de budget club.',
-        features: [
-          '1 équipe',
-          'Joueurs illimités',
-          'Staff illimité',
-          'Événements, séances et matchs',
-          'Présences, RSVP et communication',
-          'Infirmerie, tactique, rapports et assistant IA',
-        ],
-        cta: 'Créer mon équipe',
-        kind: 'app',
-        featured: true,
-      },
-      {
-        name: 'Club',
-        badge: 'Ouverture progressive',
-        price: 'Bientôt',
-        description: 'Pour coordonner toutes les équipes et les staffs d’un club.',
-        features: [
-          'Plusieurs équipes',
-          'Base joueurs partagée',
-          'Staff médical et coordinateurs partagés',
-          'Dashboards et reporting club',
-          'Suivi blessure inter-équipes',
-        ],
-        cta: 'Demander une démo',
-        kind: 'demo',
-      },
-      {
-        name: 'Club Pro',
-        badge: 'Sur demande',
-        price: 'Bientôt',
-        description: 'Pour les organisations qui veulent creuser leurs données.',
-        features: [
-          'Tout le plan Club',
-          'Reporting avancé',
-          'Analytics avancées',
-          'Accès API',
-          'Vue d’ensemble sur toutes les équipes',
-        ],
-        cta: 'Parler à l’équipe',
-        kind: 'contact',
-      },
-    ],
-    note: 'La facturation intervient lorsqu’un club coordonne plusieurs équipes et staffs dans STRIVN — jamais pour débloquer les outils du staff.',
+    title: 'Quatre paliers. Le gratuit tient une saison entière.',
+    note: 'Le palier performance ouvre l’import GPS, la charge et le croisement avec ce que les joueurs ressentent.',
   },
   faq: {
     index: '09',
@@ -921,7 +862,7 @@ const fr: HomeContent = {
         links: [
           { label: 'Plateforme', href: '/fr/solutions/' },
           { label: 'Fonctionnalités', href: '/fr/features/' },
-          { label: 'Tarifs', href: '/fr/#tarifs' },
+          { label: 'Tarifs', href: '/fr/pricing/' },
           { label: 'FAQ', href: '/fr/#faq' },
           { label: 'Blog', href: '/fr/blog/' },
         ],
@@ -1474,58 +1415,8 @@ const en: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PRICING',
-    title: 'Free for the staff. Billed at club scale.',
-    plans: [
-      {
-        name: 'Coach',
-        badge: 'Available now',
-        price: '€0',
-        period: 'forever',
-        description: 'To deploy STRIVN on one team, without asking for club budget.',
-        features: [
-          '1 team',
-          'Unlimited players',
-          'Unlimited staff',
-          'Events, sessions and matches',
-          'Attendance, RSVP and communication',
-          'Medical log, tactics, reports and AI assistant',
-        ],
-        cta: 'Create my team',
-        kind: 'app',
-        featured: true,
-      },
-      {
-        name: 'Club',
-        badge: 'Progressive rollout',
-        price: 'Soon',
-        description: 'To coordinate all of a club’s teams and staffs.',
-        features: [
-          'Several teams',
-          'Shared player base',
-          'Shared medical staff and coordinators',
-          'Club dashboards and reporting',
-          'Cross-team injury tracking',
-        ],
-        cta: 'Request a demo',
-        kind: 'demo',
-      },
-      {
-        name: 'Club Pro',
-        badge: 'On request',
-        price: 'Soon',
-        description: 'For organisations that want to dig into their data.',
-        features: [
-          'Everything in Club',
-          'Advanced reporting',
-          'Advanced analytics',
-          'API access',
-          'A view across every team',
-        ],
-        cta: 'Talk to the team',
-        kind: 'contact',
-      },
-    ],
-    note: 'Billing starts when a club coordinates several teams and staffs in STRIVN — never to unlock the staff’s tools.',
+    title: 'Four tiers. The free one runs a whole season.',
+    note: 'The performance tier opens GPS import, load and the crossing with what players feel.',
   },
   faq: {
     index: '09',
@@ -1580,7 +1471,7 @@ const en: HomeContent = {
         links: [
           { label: 'Platform', href: '/en/solutions/' },
           { label: 'Features', href: '/en/features/' },
-          { label: 'Pricing', href: '/en/#tarifs' },
+          { label: 'Pricing', href: '/en/pricing/' },
           { label: 'FAQ', href: '/en/#faq' },
           { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
@@ -2133,58 +2024,8 @@ const nl: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PRIJZEN',
-    title: 'Gratis voor de staf. Gefactureerd op clubniveau.',
-    plans: [
-      {
-        name: 'Coach',
-        badge: 'Nu beschikbaar',
-        price: '€0',
-        period: 'voor altijd',
-        description: 'Om STRIVN op één team uit te rollen, zonder clubbudget aan te vragen.',
-        features: [
-          '1 team',
-          'Onbeperkt aantal spelers',
-          'Onbeperkte staf',
-          'Events, trainingen en wedstrijden',
-          'Aanwezigheid, RSVP en communicatie',
-          'Ziekenboeg, tactiek, rapporten en AI-assistent',
-        ],
-        cta: 'Mijn team aanmaken',
-        kind: 'app',
-        featured: true,
-      },
-      {
-        name: 'Club',
-        badge: 'Geleidelijke uitrol',
-        price: 'Binnenkort',
-        description: 'Om alle teams en staffen van een club te coördineren.',
-        features: [
-          'Meerdere teams',
-          'Gedeelde spelersbasis',
-          'Gedeelde medische staf en coördinatoren',
-          'Clubdashboards en -rapportering',
-          'Blessureopvolging over teams heen',
-        ],
-        cta: 'Demo aanvragen',
-        kind: 'demo',
-      },
-      {
-        name: 'Club Pro',
-        badge: 'Op aanvraag',
-        price: 'Binnenkort',
-        description: 'Voor organisaties die dieper in hun data willen graven.',
-        features: [
-          'Alles uit het Club-plan',
-          'Geavanceerde rapportering',
-          'Geavanceerde analytics',
-          'API-toegang',
-          'Zicht op alle teams',
-        ],
-        cta: 'Praat met het team',
-        kind: 'contact',
-      },
-    ],
-    note: 'Facturatie start wanneer een club meerdere teams en staffen in STRIVN coördineert — nooit om de tools van de staf te ontgrendelen.',
+    title: 'Vier niveaus. Het gratis niveau draagt een heel seizoen.',
+    note: 'Het performance-niveau opent GPS-import, belasting en de kruising met wat spelers voelen.',
   },
   faq: {
     index: '09',
@@ -2239,7 +2080,7 @@ const nl: HomeContent = {
         links: [
           { label: 'Platform', href: '/nl/solutions/' },
           { label: 'Functies', href: '/nl/features/' },
-          { label: 'Prijzen', href: '/nl/#tarifs' },
+          { label: 'Prijzen', href: '/nl/pricing/' },
           { label: 'FAQ', href: '/nl/#faq' },
           { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
@@ -2792,58 +2633,8 @@ const de: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PREISE',
-    title: 'Kostenlos für den Staff. Abgerechnet auf Vereinsebene.',
-    plans: [
-      {
-        name: 'Coach',
-        badge: 'Jetzt verfügbar',
-        price: '0 €',
-        period: 'für immer',
-        description: 'Um STRIVN in einem Team einzuführen, ohne Vereinsbudget zu beantragen.',
-        features: [
-          '1 Team',
-          'Unbegrenzte Spieler',
-          'Unbegrenzter Staff',
-          'Termine, Einheiten und Spiele',
-          'Anwesenheit, RSVP und Kommunikation',
-          'Medizinbereich, Taktik, Berichte und KI-Assistent',
-        ],
-        cta: 'Mein Team erstellen',
-        kind: 'app',
-        featured: true,
-      },
-      {
-        name: 'Club',
-        badge: 'Schrittweise Öffnung',
-        price: 'Bald',
-        description: 'Um alle Teams und Staffs eines Vereins zu koordinieren.',
-        features: [
-          'Mehrere Teams',
-          'Geteilte Spielerbasis',
-          'Geteilter medizinischer Staff und Koordinatoren',
-          'Vereins-Dashboards und Reporting',
-          'Teamübergreifendes Verletzungs-Tracking',
-        ],
-        cta: 'Demo anfragen',
-        kind: 'demo',
-      },
-      {
-        name: 'Club Pro',
-        badge: 'Auf Anfrage',
-        price: 'Bald',
-        description: 'Für Organisationen, die tiefer in ihre Daten wollen.',
-        features: [
-          'Alles aus dem Club-Plan',
-          'Erweitertes Reporting',
-          'Erweiterte Analytics',
-          'API-Zugang',
-          'Überblick über alle Teams',
-        ],
-        cta: 'Mit dem Team sprechen',
-        kind: 'contact',
-      },
-    ],
-    note: 'Abgerechnet wird, wenn ein Verein mehrere Teams und Staffs in STRIVN koordiniert — nie, um die Tools des Staffs freizuschalten.',
+    title: 'Vier Stufen. Die kostenlose trägt eine ganze Saison.',
+    note: 'Die Performance-Stufe öffnet GPS-Import, Belastung und die Verschränkung mit dem Empfinden der Spieler.',
   },
   faq: {
     index: '09',
@@ -2898,7 +2689,7 @@ const de: HomeContent = {
         links: [
           { label: 'Plattform', href: '/de/solutions/' },
           { label: 'Funktionen', href: '/de/features/' },
-          { label: 'Preise', href: '/de/#tarifs' },
+          { label: 'Preise', href: '/de/pricing/' },
           { label: 'FAQ', href: '/de/#faq' },
           { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
@@ -3451,58 +3242,8 @@ const pt: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PREÇOS',
-    title: 'Grátis para o staff. Faturado à escala do clube.',
-    plans: [
-      {
-        name: 'Coach',
-        badge: 'Disponível agora',
-        price: '0 €',
-        period: 'para sempre',
-        description: 'Para implementar o STRIVN numa equipa, sem pedir orçamento ao clube.',
-        features: [
-          '1 equipa',
-          'Jogadores ilimitados',
-          'Staff ilimitado',
-          'Eventos, sessões e jogos',
-          'Presenças, RSVP e comunicação',
-          'Enfermaria, tática, relatórios e assistente IA',
-        ],
-        cta: 'Criar a minha equipa',
-        kind: 'app',
-        featured: true,
-      },
-      {
-        name: 'Club',
-        badge: 'Abertura progressiva',
-        price: 'Em breve',
-        description: 'Para coordenar todas as equipas e staffs de um clube.',
-        features: [
-          'Várias equipas',
-          'Base de jogadores partilhada',
-          'Staff médico e coordenadores partilhados',
-          'Dashboards e reporting de clube',
-          'Acompanhamento de lesões entre equipas',
-        ],
-        cta: 'Pedir uma demo',
-        kind: 'demo',
-      },
-      {
-        name: 'Club Pro',
-        badge: 'Sob pedido',
-        price: 'Em breve',
-        description: 'Para organizações que querem ir mais fundo nos seus dados.',
-        features: [
-          'Tudo do plano Club',
-          'Reporting avançado',
-          'Analytics avançadas',
-          'Acesso API',
-          'Visão sobre todas as equipas',
-        ],
-        cta: 'Falar com a equipa',
-        kind: 'contact',
-      },
-    ],
-    note: 'A faturação acontece quando um clube coordena várias equipas e staffs no STRIVN — nunca para desbloquear as ferramentas do staff.',
+    title: 'Quatro níveis. O gratuito aguenta uma época inteira.',
+    note: 'O nível performance abre a importação GPS, a carga e o cruzamento com o que os jogadores sentem.',
   },
   faq: {
     index: '09',
@@ -3557,7 +3298,7 @@ const pt: HomeContent = {
         links: [
           { label: 'Plataforma', href: '/pt/solutions/' },
           { label: 'Funcionalidades', href: '/pt/features/' },
-          { label: 'Preços', href: '/pt/#tarifs' },
+          { label: 'Preços', href: '/pt/pricing/' },
           { label: 'FAQ', href: '/pt/#faq' },
           { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],
@@ -4110,58 +3851,8 @@ const es: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PRECIOS',
-    title: 'Gratis para el staff. Facturado a escala de club.',
-    plans: [
-      {
-        name: 'Coach',
-        badge: 'Disponible ahora',
-        price: '0 €',
-        period: 'para siempre',
-        description: 'Para desplegar STRIVN en un equipo, sin pedir presupuesto al club.',
-        features: [
-          '1 equipo',
-          'Jugadores ilimitados',
-          'Staff ilimitado',
-          'Eventos, sesiones y partidos',
-          'Asistencia, RSVP y comunicación',
-          'Enfermería, táctica, informes y asistente IA',
-        ],
-        cta: 'Crear mi equipo',
-        kind: 'app',
-        featured: true,
-      },
-      {
-        name: 'Club',
-        badge: 'Apertura progresiva',
-        price: 'Pronto',
-        description: 'Para coordinar todos los equipos y staffs de un club.',
-        features: [
-          'Varios equipos',
-          'Base de jugadores compartida',
-          'Staff médico y coordinadores compartidos',
-          'Dashboards y reporting de club',
-          'Seguimiento de lesiones entre equipos',
-        ],
-        cta: 'Pedir una demo',
-        kind: 'demo',
-      },
-      {
-        name: 'Club Pro',
-        badge: 'Bajo petición',
-        price: 'Pronto',
-        description: 'Para organizaciones que quieren profundizar en sus datos.',
-        features: [
-          'Todo el plan Club',
-          'Reporting avanzado',
-          'Analytics avanzadas',
-          'Acceso API',
-          'Visión sobre todos los equipos',
-        ],
-        cta: 'Hablar con el equipo',
-        kind: 'contact',
-      },
-    ],
-    note: 'La facturación llega cuando un club coordina varios equipos y staffs en STRIVN — nunca para desbloquear las herramientas del staff.',
+    title: 'Cuatro niveles. El gratuito aguanta una temporada entera.',
+    note: 'El nivel rendimiento abre la importación GPS, la carga y el cruce con lo que sienten los jugadores.',
   },
   faq: {
     index: '09',
@@ -4216,7 +3907,7 @@ const es: HomeContent = {
         links: [
           { label: 'Plataforma', href: '/es/solutions/' },
           { label: 'Funcionalidades', href: '/es/features/' },
-          { label: 'Precios', href: '/es/#tarifs' },
+          { label: 'Precios', href: '/es/pricing/' },
           { label: 'FAQ', href: '/es/#faq' },
           { label: 'Blog', href: '/fr/blog/', hreflang: 'fr' },
         ],

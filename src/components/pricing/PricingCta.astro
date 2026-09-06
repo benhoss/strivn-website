@@ -1,0 +1,46 @@
+---
+import type { Locale, PricingContent } from '../../data/pricingContent';
+import HomeIcon from '../home/HomeIcon.astro';
+import { appStartUrl } from '../../lib/appUrl';
+
+interface Props {
+  locale: Locale;
+  cta: PricingContent['cta'];
+  email: string;
+}
+
+const { locale, cta: c, email } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-[#05070F] py-24 md:py-32" aria-labelledby="pricing-cta-title">
+  <div
+    class="hl-breathe pointer-events-none absolute inset-x-0 bottom-0 h-[420px] [background:radial-gradient(ellipse_55%_60%_at_50%_100%,rgba(45,127,249,0.2),transparent_72%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="hl-wrap relative text-center">
+    <h2 id="pricing-cta-title" class="hl-display hl-reveal mx-auto max-w-[18ch] text-[clamp(2rem,4.4vw,3.2rem)]">{c.title}</h2>
+    <p class="hl-reveal mx-auto mt-6 max-w-[42rem] text-[1rem] leading-[1.65] text-[#AAB8D4]" style="--d: 80ms;">{c.sub}</p>
+
+    <div class="hl-reveal mt-10 flex flex-wrap items-center justify-center gap-3" style="--d: 160ms;">
+      <a
+        href={appStartUrl(locale)}
+        target="_blank"
+        rel="noopener"
+        class="hl-btn inline-flex items-center justify-center gap-2 rounded-full bg-[#2D7FF9] px-7 py-4 text-[0.98rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
+      >
+        {c.primary}
+        <HomeIcon name="arrow-right" size={15} />
+      </a>
+      <a
+        href={`mailto:${email}`}
+        class="hl-btn inline-flex items-center justify-center rounded-full bg-[#FFFFFF08] px-7 py-4 text-[0.98rem] font-semibold text-[#F8FAFC] outline-1 outline-[#FFFFFF1F] -outline-offset-[0.5px] hover:bg-[#FFFFFF10]"
+      >
+        {c.secondary}
+      </a>
+    </div>
+
+    <p class="hl-reveal mt-6 font-mono text-[0.72rem] tracking-[0.06em] text-[#68779A]" style="--d: 220ms;">{c.trust}</p>
+  </div>
+</section>

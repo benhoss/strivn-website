@@ -1,0 +1,30 @@
+---
+import type { PricingContent } from '../../data/pricingContent';
+
+interface Props {
+  hero: PricingContent['hero'];
+}
+
+const { hero: c } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-[#05070F] pt-28 pb-16 md:pt-36 md:pb-24" aria-labelledby="pricing-hero-title">
+  <div
+    class="hl-breathe pointer-events-none absolute inset-x-0 top-0 h-[420px] [background:radial-gradient(ellipse_50%_60%_at_50%_0%,rgba(45,127,249,0.16),transparent_70%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="hl-wrap relative">
+    <p class="hl-index hl-reveal text-[#7AB8FF]">
+      <span class="hl-index__rule"></span>
+      {c.kicker}
+    </p>
+    <h1 id="pricing-hero-title" class="hl-display hl-reveal mt-6 max-w-[19ch] text-[clamp(2.3rem,5.4vw,4rem)]" style="--d: 60ms;">
+      {c.title}
+    </h1>
+    <p class="hl-reveal mt-6 max-w-[46rem] text-[1.05rem] leading-[1.65] text-[#AAB8D4]" style="--d: 140ms;">
+      {c.sub}
+    </p>
+  </div>
+</section>

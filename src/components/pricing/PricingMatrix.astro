@@ -1,0 +1,259 @@
+---
+import type { Cell, PlanCode, PricingContent } from '../../data/pricingContent';
+import { MATRIX } from '../../data/pricingContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  matrix: PricingContent['matrix'];
+}
+
+const { matrix: c } = Astro.props;
+
+const PLAN_ORDER: PlanCode[] = ['free', 'amateur', 'semi_pro', 'pro'];
+/** Semi-Pro is the featured column; the tint runs the full height of the table. */
+const FEATURED_INDEX = 2;
+
+/**
+ * A row where all four tiers agree carries no decision. It still belongs in the
+ * table — a reader wants to know the player app is in every tier — but it is
+ * not what they came to find, so it recedes. The rows that differ are the ones
+ * that answer "which tier do I need", and they get the contrast.
+ */
+const isUniform = (cells: readonly Cell[]) => cells.every((cell) => cell === cells[0]);
+---
+
+<section id="compare" class="scroll-mt-24 bg-[#05070F] py-20 md:py-28" aria-labelledby="matrix-title">
+  <div class="hl-wrap">
+    <div class="hl-reveal max-w-[46rem]">
+      <p class="hl-index text-[#7AB8FF]">
+        <span class="hl-index__rule"></span>
+        {c.kicker}
+      </p>
+      <h2 id="matrix-title" class="hl-display mt-5 text-[clamp(1.8rem,3.6vw,2.6rem)]">{c.title}</h2>
+      <p class="pm-hint">{c.scrollHint}</p>
+    </div>
+
+    <div class="pm-scroll hl-reveal" role="region" tabindex="0" aria-labelledby="matrix-title" style="--d: 100ms;">
+      <table class="pm">
+        <caption>{c.caption}</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="pm__corner"><span class="pm__sr">{c.caption}</span></th>
+            {PLAN_ORDER.map((code, i) => (
+              <th scope="col" class={i === FEATURED_INDEX ? 'pm__head is-featured' : 'pm__head'}>
+                {c.planNames[code]}
+              </th>
+            ))}
+          </tr>
+        </thead>
+
+        {MATRIX.map((group) => (
+          <tbody>
+            <tr class="pm__grouprow">
+              <th scope="rowgroup" colspan={PLAN_ORDER.length + 1}>{c.groups[group.key]}</th>
+            </tr>
+            {group.rows.map((row) => (
+              <tr data-uniform={isUniform(row.cells) ? '' : undefined}>
+                <th scope="row">{c.rows[row.key]}</th>
+                {row.cells.map((cell, i) => (
+                  <td class={i === FEATURED_INDEX ? 'is-featured' : undefined}>
+                    {cell === true && (
+                      <>
+                        <HomeIcon name="check" size={15} class="pm__mark" />
+                        <span class="pm__sr">{c.yes}</span>
+                      </>
+                    )}
+                    {cell === false && (
+                      <>
+                        <span class="pm__no" aria-hidden="true"></span>
+                        <span class="pm__sr">{c.no}</span>
+                      </>
+                    )}
+                    {typeof cell === 'string' && <span class="pm__word">{c.cells[cell]}</span>}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        ))}
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pm-hint {
+    margin-top: 1rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: #68779a;
+  }
+
+  @media (min-width: 64rem) {
+    .pm-hint {
+      display: none;
+    }
+  }
+
+  .pm-scroll {
+    margin-top: 2.5rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    border-radius: 16px;
+    background: #0b1020;
+    outline: 1px solid rgba(255, 255, 255, 0.08);
+    outline-offset: -0.5px;
+  }
+
+  .pm-scroll:focus-visible {
+    outline: 2px solid #2d7ff9;
+    outline-offset: 3px;
+  }
+
+  .pm {
+    width: 100%;
+    /* Below this the four columns stop being readable, so the region scrolls
+       rather than crushing the labels. */
+    min-width: 46rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.86rem;
+  }
+
+  /* The accessible name of the table; the visible heading sits above it. */
+  .pm caption,
+  .pm__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .pm th,
+  .pm td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.7rem 0.85rem;
+    vertical-align: middle;
+  }
+
+  /* Row labels stay put while the tiers scroll past on narrow screens. */
+  .pm th[scope='row'],
+  .pm__corner {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    min-width: 16rem;
+    background: #0b1020;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #c6d2e8;
+  }
+
+  .pm__head,
+  .pm__corner {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #0b1020;
+    padding-block: 1rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: #f8fafc;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  /* Pinned in both directions, so it has to outrank both. */
+  .pm__corner {
+    z-index: 3;
+  }
+
+  .pm__head.is-featured {
+    color: #7ab8ff;
+  }
+
+  .pm td {
+    text-align: center;
+  }
+
+  /* The featured tier reads as one continuous band through the whole table,
+     the way an in-band range is shaded in the product's own load charts —
+     rather than a badge that only marks the top. */
+  .pm .is-featured {
+    background: #101b33;
+  }
+
+  .pm thead .is-featured {
+    box-shadow: inset 0 1px 0 rgba(45, 127, 249, 0.36);
+  }
+
+  .pm__mark {
+    color: #68779a;
+  }
+
+  .pm .is-featured .pm__mark {
+    color: #7ab8ff;
+  }
+
+  /* "Not included" is drawn, not written: a dash reads as absence at a glance
+     where an X reads as an error. Screen readers get the words. */
+  .pm__no {
+    display: inline-block;
+    width: 12px;
+    height: 1px;
+    background: #3f4c68;
+    vertical-align: middle;
+  }
+
+  .pm__word {
+    color: #dce5f5;
+    font-size: 0.82rem;
+  }
+
+  .pm .is-featured .pm__word {
+    color: #cfe0fb;
+  }
+
+  /* Rows every tier shares recede — see the note in the component script. */
+  .pm tr[data-uniform] th[scope='row'] {
+    color: #7c8aa8;
+  }
+
+  .pm tr[data-uniform] .pm__mark {
+    color: #4e5c7c;
+  }
+
+  .pm tr[data-uniform] .is-featured .pm__mark {
+    color: #4c6e9e;
+  }
+
+  .pm tr[data-uniform] .pm__word {
+    color: #8ca3c7;
+  }
+
+  .pm__grouprow th {
+    position: sticky;
+    left: 0;
+    padding-top: 2rem;
+    padding-bottom: 0.6rem;
+    background: #0b1020;
+    text-align: left;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7ab8ff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .pm tbody:last-of-type tr:last-child th,
+  .pm tbody:last-of-type tr:last-child td {
+    border-bottom: 0;
+  }
+</style>
