@@ -482,3 +482,20 @@ The matrix mutes every row where all four tiers agree. A reader wants to know th
 - The comparison table is 34 rows; below 64rem it scrolls horizontally inside a labelled, focusable region with the row-label column pinned. Verified in the markup; **not yet verified on a real device.**
 - `.hl-display` is `font-weight: 700` (`home.css:76`), which the `DESIGN.md` 600 Ceiling Rule forbids. That predates this page and is site-wide — the page follows the code, not the doc. Worth reconciling in one place or the other.
 
+---
+
+## 14. Copy pass, 2026-09-06
+
+The page shipped with copy lifted from the strategy tables, which read as internal segmentation. A conversion pass replaced it. **§5 above is superseded for wording; it remains correct on structure, tiers and prices.**
+
+- **Headline.** « Le prix d'une plateforme de performance, pas celui d'un club pro » compared us to a competitor's price and used the forced-negation shape. Now: **« Le dernier kilomètre entre votre export GPS et votre décision »** — STRATEGY §2's own description of the pain, in the buyer's terms.
+- **`buyer` became `qualifier`, and changed register.** The field held CRM segments (« Préparateur physique, budget club ») set as a 0.68rem mono label. It now holds a second-person sentence set as body copy: « Vous exportez déjà du GPS, et vous le recroisez à la main dans Excel. » This is the line that does a pricing page's actual job — telling a visitor which tier is theirs before they read a feature.
+- **Promises stopped being infinitives from the strategy table.** « Monitorer la performance » → « Croiser le GPS avec le reste ».
+- **The note under the cards stopped apologising.** It stated that no paid tier is purchasable; it now states that the free plan opens in two minutes and the paid tiers go through us while online payment is being opened. Same fact, no excuse, and no invented response time.
+- **One FAQ entry added, in all six: « Pourquoi 19 € puis 249 € ? »** The first objection a two-price page raises, and the page had left the visitor to answer it alone.
+- **Secondary CTA:** « Parler à l'équipe » → **« Montrez-nous votre Excel »** (STRATEGY §6's pitch). The closing paragraph dropped its own mention of Excel so the button owns the word.
+
+Constraints re-verified after the pass, in all six locales: no self-serve purchase promise, no AI-credit or discount figure, Pro carries no price including in JSON-LD, nine FAQ entries, structured data offers limited to Free / Amateur / Semi-Pro.
+
+**`PRODUCT.md` is stale and was not used for positioning.** It still describes the primary user as a coach in an amateur-to-semi-pro environment and STRIVN as "a free app for coaches to manage one team" — the wedge STRATEGY §2 replaced on 2026-08-30. Its voice section (factual, composed, "operating system", the anti-references) is still right and was followed. Reconciling it is upstream work.
+

@@ -71,7 +71,9 @@ const ctaHref = (plan: PricingPlan): string => {
           {plan.priceNote && <p class="mt-1.5 font-mono text-[0.68rem] tracking-[0.06em] text-[#7AB8FF]">{plan.priceNote}</p>}
 
           <p class="mt-5 text-[0.98rem] font-medium leading-[1.5] text-[#F8FAFC]">{plan.promise}</p>
-          <p class="mt-1.5 font-mono text-[0.68rem] leading-[1.5] tracking-[0.04em] text-[#68779A]">{plan.buyer}</p>
+          {/* Reads as a sentence, so it is set as one: mono at 0.68rem was a
+              label treatment, and this line is now the card's qualifier. */}
+          <p class="mt-2 text-[0.85rem] leading-[1.5] text-[#8CA3C7]">{plan.qualifier}</p>
 
           <ul class="mt-5 flex flex-1 flex-col gap-2.5 border-t border-[#FFFFFF0A] pt-5">
             {plan.inherits && (

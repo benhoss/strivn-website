@@ -177,7 +177,9 @@ export interface PricingPlan {
   priceNote?: string;
   /** The ladder rung: Gérer → Entraîner → Monitorer → Optimiser. */
   promise: string;
-  buyer: string;
+  /** Second person, and the whole point of a pricing page: it tells a visitor
+   *  which tier is theirs before they read a single feature line. */
+  qualifier: string;
   /** "Everything in X, plus:" — absent on Free. */
   inherits?: string;
   features: string[];
@@ -228,19 +230,19 @@ export interface PricingContent {
 
 const fr: PricingContent = {
   meta: {
-    title: 'Tarifs STRIVN | Quatre paliers, du gratuit au sur-mesure',
+    title: 'Tarifs STRIVN | Gratuit pour une équipe, payant au GPS',
     description:
-      'Gratuit pour gérer une équipe. Le palier performance ouvre l’import GPS, la charge et le croisement avec le ressenti des joueurs. Quatre paliers, comparés ligne par ligne.',
+      'Quatre paliers comparés ligne par ligne. Le gratuit fait tourner une équipe toute une saison ; le palier performance reprend le croisement GPS, RPE et wellness que vous faites encore à la main.',
   },
   hero: {
     kicker: 'TARIFS',
-    title: 'Le prix d’une plateforme de performance, pas celui d’un club pro.',
-    sub: 'Gratuit pour gérer une équipe. Le palier performance ouvre l’import GPS, la charge, et le croisement avec ce que vos joueurs ressentent.',
+    title: 'Le dernier kilomètre entre votre export GPS et votre décision.',
+    sub: 'Quatre paliers. Le gratuit fait tourner une équipe toute une saison. Le palier performance reprend le croisement GPS, RPE et wellness que vous faites encore à la main.',
   },
   plans: {
     kicker: 'QUATRE PALIERS',
     title: 'Chaque palier reprend le précédent.',
-    note: 'Aucun palier payant n’est encore ouvert à l’achat en ligne. Amateur, Semi-Pro et Pro passent par nous : dites-nous où vous en êtes, nous ouvrons l’accès.',
+    note: 'Le plan gratuit s’ouvre en deux minutes, sans carte bancaire. Les paliers payants passent encore par nous, le temps d’ouvrir le paiement en ligne. Écrivez-nous, nous ouvrons l’accès.',
     items: [
       {
         code: 'free',
@@ -248,8 +250,8 @@ const fr: PricingContent = {
         badge: 'Disponible maintenant',
         price: '0 €',
         period: 'pour toujours',
-        promise: 'Gérer son équipe',
-        buyer: 'Le coach seul, une équipe',
+        promise: 'Faire tourner une équipe',
+        qualifier: 'Vous êtes seul avec une équipe, et aucun budget à demander.',
         features: [
           'Une équipe, joueurs et staff illimités',
           'Entraînements, matchs et repos au calendrier',
@@ -270,8 +272,8 @@ const fr: PricingContent = {
         badge: 'Ouverture progressive',
         price: '19 €',
         period: '/ mois',
-        promise: 'Entraîner son équipe',
-        buyer: 'Le coach, poche personnelle',
+        promise: 'Arrêter de tout ressaisir chaque semaine',
+        qualifier: 'Vous rejouez les mêmes séances et vous les reconstruisez à chaque fois.',
         inherits: 'Tout le plan Free, plus :',
         features: [
           'Bibliothèque d’exercices illimitée',
@@ -293,13 +295,13 @@ const fr: PricingContent = {
         price: '249 €',
         period: '/ mois',
         priceNote: 'Remise à l’année',
-        promise: 'Monitorer la performance',
-        buyer: 'Préparateur physique, budget club',
+        promise: 'Croiser le GPS avec le reste',
+        qualifier: 'Vous exportez déjà du GPS, et vous le recroisez à la main dans Excel.',
         inherits: 'Tout le plan Amateur, plus :',
         features: [
           'Import GPS par CSV, quel que soit le fournisseur',
-          'Charge externe, zones, seuils par joueur et cibles',
-          'Croisement GPS, RPE et wellness sur le même créneau',
+          'Seuils par joueur, cibles et bandes : l’écart se voit, il ne se calcule plus.',
+          'GPS, RPE et wellness sur le même créneau, sans le tableur du dimanche soir.',
           'Musculation : catalogue, programmes et runner',
           'Tableau médical et créneaux de soins',
           'Tests physiques',
@@ -316,8 +318,8 @@ const fr: PricingContent = {
         name: 'Pro',
         badge: 'Sur demande',
         price: 'Sur devis',
-        promise: 'Optimiser la performance',
-        buyer: 'Cellule performance, multi-équipes',
+        promise: 'Descendre au niveau de l’exercice',
+        qualifier: 'Plusieurs équipes équipées, une cellule performance, des données à faire sortir.',
         inherits: 'Tout le plan Semi-Pro, plus :',
         features: [
           'GPS au niveau de l’exercice : la signature de charge de chaque exercice',
@@ -335,7 +337,7 @@ const fr: PricingContent = {
   },
   credits: {
     kicker: 'CRÉDITS IA',
-    title: 'L’IA se consomme, elle ne s’abonne pas.',
+    title: 'L’IA est comptée à l’usage, pas au forfait.',
     body:
       'Chaque palier ouvre une dotation mensuelle de crédits. Une analyse coûte selon ce qu’elle mobilise : relire une semaine de charge ne coûte pas ce que coûte un rapport de saison.',
     points: [
@@ -461,6 +463,10 @@ const fr: PricingContent = {
         a: 'Free, Amateur et Semi-Pro se souscrivent par équipe. Le palier Pro couvre plusieurs équipes sous un même toit, et se chiffre sur devis.',
       },
       {
+        q: 'Pourquoi 19 € puis 249 € ?',
+        a: 'Parce que les deux paliers ne vendent pas la même chose. L’Amateur, c’est la logistique du staff, payée par un coach de sa poche. Le Semi-Pro, c’est une plateforme de performance sur un budget de club, et c’est le palier où vos GPS commencent à servir à quelque chose. Entre les deux, il n’y a pas un produit plus gros, il y a un autre métier.',
+      },
+      {
         q: 'Y a-t-il un engagement ?',
         a: 'Mensuel, sans engagement de durée. Le Semi-Pro ouvre une remise à l’année pour les clubs qui préfèrent raisonner en budget de saison.',
       },
@@ -472,9 +478,9 @@ const fr: PricingContent = {
   },
   cta: {
     title: 'Commencez par votre propre saison.',
-    sub: 'Créez votre équipe en quelques minutes sur le plan gratuit. Si vous avez déjà des GPS, montrez-nous ce que vous faites encore dans Excel : c’est la conversation la plus rapide que nous puissions avoir.',
+    sub: 'Créez votre équipe en quelques minutes sur le plan gratuit. Si vous exportez déjà du GPS, la conversation la plus rapide commence par ce que vous recroisez encore à la main.',
     primary: 'Créer mon équipe gratuitement',
-    secondary: 'Parler à l’équipe',
+    secondary: 'Montrez-nous votre Excel',
     trust: 'Sans carte bancaire. Sans engagement.',
   },
   teaserCta: 'Voir le détail des offres',
@@ -482,19 +488,19 @@ const fr: PricingContent = {
 
 const en: PricingContent = {
   meta: {
-    title: 'STRIVN pricing | Four tiers, from free to bespoke',
+    title: 'STRIVN pricing | Free to run a team, paid when the GPS arrives',
     description:
-      'Free to run a team. The performance tier opens GPS import, load, and the crossing with what players feel. Four tiers, compared line by line.',
+      'Four tiers compared line by line. The free one runs a team for a whole season; the performance tier takes over the GPS, RPE and wellness crossing you still do by hand.',
   },
   hero: {
     kicker: 'PRICING',
-    title: 'Performance platform pricing, without the pro club price tag.',
-    sub: 'Free to run a team. The performance tier opens GPS import, load, and the crossing with what your players feel.',
+    title: 'The last mile between your GPS export and your decision.',
+    sub: 'Four tiers. The free one runs a team for a whole season. The performance tier takes over the GPS, RPE and wellness crossing you still do by hand.',
   },
   plans: {
     kicker: 'FOUR TIERS',
     title: 'Every tier carries the one below it.',
-    note: 'No paid tier is open to online purchase yet. Amateur, Semi-Pro and Pro go through us: tell us where you stand and we open the access.',
+    note: 'The free plan opens in two minutes, no card. The paid tiers still go through us while we open online payment. Write to us and we open the access.',
     items: [
       {
         code: 'free',
@@ -502,8 +508,8 @@ const en: PricingContent = {
         badge: 'Available now',
         price: '€0',
         period: 'forever',
-        promise: 'Run your team',
-        buyer: 'A coach on their own, one team',
+        promise: 'Run a team',
+        qualifier: 'You are on your own with one team, and no budget to ask for.',
         features: [
           'One team, unlimited players and staff',
           'Training, matches and rest days on the calendar',
@@ -524,8 +530,8 @@ const en: PricingContent = {
         badge: 'Opening gradually',
         price: '€19',
         period: '/ month',
-        promise: 'Coach your team',
-        buyer: 'The coach, out of their own pocket',
+        promise: 'Stop rebuilding the same week twice',
+        qualifier: 'You run the same sessions again and rebuild them from scratch every time.',
         inherits: 'Everything in Free, plus:',
         features: [
           'Unlimited exercise library',
@@ -547,13 +553,13 @@ const en: PricingContent = {
         price: '€249',
         period: '/ month',
         priceNote: 'Annual discount',
-        promise: 'Monitor performance',
-        buyer: 'S&C coach, club budget',
+        promise: 'Cross the GPS with everything else',
+        qualifier: 'You already export GPS, and you cross it by hand in Excel.',
         inherits: 'Everything in Amateur, plus:',
         features: [
           'GPS import by CSV, whichever the vendor',
-          'External load, zones, per-player thresholds and targets',
-          'GPS, RPE and wellness crossed on the same slot',
+          'Per-player thresholds, targets and bands: the gap shows, it is no longer calculated.',
+          'GPS, RPE and wellness on the same slot, without the Sunday-night spreadsheet.',
           'Strength: catalogue, programmes and runner',
           'Medical board and treatment slots',
           'Physical tests',
@@ -570,8 +576,8 @@ const en: PricingContent = {
         name: 'Pro',
         badge: 'On request',
         price: 'Custom',
-        promise: 'Optimise performance',
-        buyer: 'Performance unit, several teams',
+        promise: 'Get down to the drill',
+        qualifier: 'Several teams on GPS, a performance unit, and data that has to get out.',
         inherits: 'Everything in Semi-Pro, plus:',
         features: [
           'GPS at exercise level: the load signature of every drill',
@@ -589,7 +595,7 @@ const en: PricingContent = {
   },
   credits: {
     kicker: 'AI CREDITS',
-    title: 'AI is consumed, not subscribed to.',
+    title: 'AI is metered by use, not by plan.',
     body:
       'Every tier opens a monthly credit allowance. An analysis costs what it draws on: re-reading a week of load does not cost what a season report costs.',
     points: [
@@ -715,6 +721,10 @@ const en: PricingContent = {
         a: 'Free, Amateur and Semi-Pro are taken per team. The Pro tier covers several teams under one roof and is quoted.',
       },
       {
+        q: 'Why €19 and then €249?',
+        a: 'Because the two tiers do not sell the same thing. Amateur is the staff’s logistics, paid out of a coach’s pocket. Semi-Pro is a performance platform on a club budget, and it is the tier where your GPS starts being worth something. Between them there is not a bigger product, there is a different job.',
+      },
+      {
         q: 'Is there a commitment?',
         a: 'Monthly, with no lock-in. Semi-Pro opens an annual discount for clubs that would rather think in season budgets.',
       },
@@ -726,9 +736,9 @@ const en: PricingContent = {
   },
   cta: {
     title: 'Start with your own season.',
-    sub: 'Create your team in minutes on the free plan. If you already run GPS, show us what still lives in Excel: it is the fastest conversation we can have.',
+    sub: 'Create your team in minutes on the free plan. If you already export GPS, the fastest conversation starts with whatever you still cross by hand.',
     primary: 'Create my team for free',
-    secondary: 'Talk to the team',
+    secondary: 'Show us your Excel',
     trust: 'No card. No commitment.',
   },
   teaserCta: 'See the full comparison',
@@ -736,19 +746,19 @@ const en: PricingContent = {
 
 const nl: PricingContent = {
   meta: {
-    title: 'STRIVN-tarieven | Vier niveaus, van gratis tot op maat',
+    title: 'STRIVN-tarieven | Gratis voor één team, betalend zodra de GPS meekomt',
     description:
-      'Gratis om een team te runnen. Het performance-niveau opent GPS-import, belasting en de kruising met wat spelers voelen. Vier niveaus, regel voor regel vergeleken.',
+      'Vier niveaus, regel voor regel vergeleken. Het gratis niveau draagt een team een heel seizoen; het performance-niveau neemt de kruising van GPS, RPE en wellness over die u nog met de hand doet.',
   },
   hero: {
     kicker: 'TARIEVEN',
-    title: 'De prijs van een performance-platform, niet die van een profclub.',
-    sub: 'Gratis om een team te runnen. Het performance-niveau opent GPS-import, belasting, en de kruising met wat uw spelers voelen.',
+    title: 'De laatste kilometer tussen uw GPS-export en uw beslissing.',
+    sub: 'Vier niveaus. Het gratis niveau draagt een team een heel seizoen. Het performance-niveau neemt de kruising van GPS, RPE en wellness over die u nog met de hand doet.',
   },
   plans: {
     kicker: 'VIER NIVEAUS',
     title: 'Elk niveau draagt het vorige mee.',
-    note: 'Geen enkel betaald niveau staat al open voor online aankoop. Amateur, Semi-Pro en Pro lopen via ons: laat weten waar u staat, wij openen de toegang.',
+    note: 'Het gratis plan opent in twee minuten, zonder kaart. De betaalde niveaus lopen nog via ons, tot de online betaling openstaat. Schrijf ons, wij openen de toegang.',
     items: [
       {
         code: 'free',
@@ -756,8 +766,8 @@ const nl: PricingContent = {
         badge: 'Nu beschikbaar',
         price: '€0',
         period: 'voor altijd',
-        promise: 'Uw team runnen',
-        buyer: 'De coach alleen, één team',
+        promise: 'Een team draaiende houden',
+        qualifier: 'U staat er alleen voor met één team, en zonder budget om te vragen.',
         features: [
           'Eén team, onbeperkt spelers en staf',
           'Trainingen, wedstrijden en rustdagen in de agenda',
@@ -778,8 +788,8 @@ const nl: PricingContent = {
         badge: 'Geleidelijke opening',
         price: '€19',
         period: '/ maand',
-        promise: 'Uw team trainen',
-        buyer: 'De coach, uit eigen zak',
+        promise: 'Niet elke week alles opnieuw ingeven',
+        qualifier: 'U speelt dezelfde sessies opnieuw en bouwt ze telkens opnieuw op.',
         inherits: 'Alles uit Free, plus:',
         features: [
           'Onbeperkte oefeningenbibliotheek',
@@ -801,13 +811,13 @@ const nl: PricingContent = {
         price: '€249',
         period: '/ maand',
         priceNote: 'Jaarkorting',
-        promise: 'Performance monitoren',
-        buyer: 'Fysieke trainer, clubbudget',
+        promise: 'De GPS kruisen met de rest',
+        qualifier: 'U exporteert al GPS, en u kruist het met de hand in Excel.',
         inherits: 'Alles uit Amateur, plus:',
         features: [
           'GPS-import via CSV, ongeacht de leverancier',
-          'Externe belasting, zones, drempels per speler en doelen',
-          'GPS, RPE en wellness gekruist op hetzelfde blok',
+          'Drempels per speler, doelen en banden: het verschil is zichtbaar, niet meer te berekenen.',
+          'GPS, RPE en wellness op hetzelfde blok, zonder de spreadsheet van zondagavond.',
           'Krachttraining: catalogus, programma’s en runner',
           'Medisch bord en verzorgingsblokken',
           'Fysieke testen',
@@ -824,8 +834,8 @@ const nl: PricingContent = {
         name: 'Pro',
         badge: 'Op aanvraag',
         price: 'Op maat',
-        promise: 'Performance optimaliseren',
-        buyer: 'Performancecel, meerdere teams',
+        promise: 'Afdalen tot op oefeningniveau',
+        qualifier: 'Meerdere teams met GPS, een performancecel, en data die eruit moet.',
         inherits: 'Alles uit Semi-Pro, plus:',
         features: [
           'GPS op oefeningniveau: de belastingsignatuur van elke oefening',
@@ -843,7 +853,7 @@ const nl: PricingContent = {
   },
   credits: {
     kicker: 'AI-KREDIETEN',
-    title: 'AI wordt verbruikt, niet geabonneerd.',
+    title: 'AI wordt afgerekend op gebruik, niet op abonnement.',
     body:
       'Elk niveau opent een maandelijks kredietbudget. Een analyse kost wat ze aanspreekt: een week belasting herlezen kost niet wat een seizoensrapport kost.',
     points: [
@@ -969,6 +979,10 @@ const nl: PricingContent = {
         a: 'Free, Amateur en Semi-Pro neemt u per team. Het Pro-niveau dekt meerdere teams onder één dak en werkt op maat.',
       },
       {
+        q: 'Waarom 19 € en dan 249 €?',
+        a: 'Omdat de twee niveaus niet hetzelfde verkopen. Amateur is de logistiek van de staf, betaald uit de zak van een coach. Semi-Pro is een performanceplatform op een clubbudget, en het is het niveau waarop uw GPS iets begint op te leveren. Tussen de twee zit geen groter product, maar een ander vak.',
+      },
+      {
         q: 'Is er een verbintenis?',
         a: 'Maandelijks, zonder looptijd. Semi-Pro opent een jaarkorting voor clubs die liever in seizoensbudgetten denken.',
       },
@@ -980,9 +994,9 @@ const nl: PricingContent = {
   },
   cta: {
     title: 'Begin met uw eigen seizoen.',
-    sub: 'Maak uw team in enkele minuten aan op het gratis plan. Werkt u al met GPS, toon ons dan wat nog in Excel leeft: dat is het snelste gesprek dat we kunnen voeren.',
+    sub: 'Maak uw team in enkele minuten aan op het gratis plan. Exporteert u al GPS, dan begint het snelste gesprek bij wat u nog met de hand kruist.',
     primary: 'Mijn team gratis aanmaken',
-    secondary: 'Spreek het team',
+    secondary: 'Toon ons uw Excel',
     trust: 'Geen kaart. Geen verbintenis.',
   },
   teaserCta: 'Bekijk de volledige vergelijking',
@@ -990,19 +1004,19 @@ const nl: PricingContent = {
 
 const de: PricingContent = {
   meta: {
-    title: 'STRIVN Preise | Vier Stufen, von kostenlos bis maßgeschneidert',
+    title: 'STRIVN Preise | Kostenlos für ein Team, bezahlt sobald GPS dazukommt',
     description:
-      'Kostenlos, um ein Team zu führen. Die Performance-Stufe öffnet GPS-Import, Belastung und die Verschränkung mit dem Empfinden der Spieler. Vier Stufen, Zeile für Zeile verglichen.',
+      'Vier Stufen, Zeile für Zeile verglichen. Die kostenlose trägt ein Team eine ganze Saison; die Performance-Stufe übernimmt die Verschränkung von GPS, RPE und Wellness, die Sie noch von Hand machen.',
   },
   hero: {
     kicker: 'PREISE',
-    title: 'Der Preis einer Performance-Plattform, nicht der eines Profiklubs.',
-    sub: 'Kostenlos, um ein Team zu führen. Die Performance-Stufe öffnet GPS-Import, Belastung und die Verschränkung mit dem, was Ihre Spieler empfinden.',
+    title: 'Der letzte Kilometer zwischen Ihrem GPS-Export und Ihrer Entscheidung.',
+    sub: 'Vier Stufen. Die kostenlose trägt ein Team eine ganze Saison. Die Performance-Stufe übernimmt die Verschränkung von GPS, RPE und Wellness, die Sie noch von Hand machen.',
   },
   plans: {
     kicker: 'VIER STUFEN',
     title: 'Jede Stufe trägt die vorige mit.',
-    note: 'Keine bezahlte Stufe ist bislang online buchbar. Amateur, Semi-Pro und Pro laufen über uns: Sagen Sie uns, wo Sie stehen, wir öffnen den Zugang.',
+    note: 'Der kostenlose Plan öffnet in zwei Minuten, ohne Karte. Die bezahlten Stufen laufen noch über uns, bis die Online-Zahlung offen ist. Schreiben Sie uns, wir öffnen den Zugang.',
     items: [
       {
         code: 'free',
@@ -1010,8 +1024,8 @@ const de: PricingContent = {
         badge: 'Jetzt verfügbar',
         price: '0 €',
         period: 'für immer',
-        promise: 'Sein Team führen',
-        buyer: 'Der Coach allein, ein Team',
+        promise: 'Ein Team am Laufen halten',
+        qualifier: 'Sie sind allein mit einem Team, und ohne Budget, das Sie erfragen könnten.',
         features: [
           'Ein Team, unbegrenzt Spieler und Staff',
           'Training, Spiele und Ruhetage im Kalender',
@@ -1032,8 +1046,8 @@ const de: PricingContent = {
         badge: 'Schrittweise Öffnung',
         price: '19 €',
         period: '/ Monat',
-        promise: 'Sein Team trainieren',
-        buyer: 'Der Coach, aus eigener Tasche',
+        promise: 'Nicht jede Woche alles neu eingeben',
+        qualifier: 'Sie spielen dieselben Einheiten erneut und bauen sie jedes Mal neu auf.',
         inherits: 'Alles aus Free, plus:',
         features: [
           'Unbegrenzte Übungsbibliothek',
@@ -1055,13 +1069,13 @@ const de: PricingContent = {
         price: '249 €',
         period: '/ Monat',
         priceNote: 'Jahresrabatt',
-        promise: 'Performance überwachen',
-        buyer: 'Athletiktrainer, Klubbudget',
+        promise: 'Das GPS mit dem Rest verschränken',
+        qualifier: 'Sie exportieren bereits GPS und verschränken es von Hand in Excel.',
         inherits: 'Alles aus Amateur, plus:',
         features: [
           'GPS-Import per CSV, unabhängig vom Anbieter',
-          'Externe Belastung, Zonen, Schwellen je Spieler und Ziele',
-          'GPS, RPE und Wellness auf demselben Block verschränkt',
+          'Schwellen je Spieler, Ziele und Bänder: die Abweichung ist sichtbar, sie wird nicht mehr gerechnet.',
+          'GPS, RPE und Wellness auf demselben Block, ohne die Tabelle am Sonntagabend.',
           'Kraft: Katalog, Programme und Runner',
           'Medizinisches Board und Behandlungsblöcke',
           'Leistungstests',
@@ -1078,8 +1092,8 @@ const de: PricingContent = {
         name: 'Pro',
         badge: 'Auf Anfrage',
         price: 'Individuell',
-        promise: 'Performance optimieren',
-        buyer: 'Performance-Abteilung, mehrere Teams',
+        promise: 'Bis auf die Übung hinunter',
+        qualifier: 'Mehrere Teams mit GPS, eine Performance-Abteilung, und Daten, die heraus müssen.',
         inherits: 'Alles aus Semi-Pro, plus:',
         features: [
           'GPS auf Übungsebene: die Belastungssignatur jeder Übung',
@@ -1097,7 +1111,7 @@ const de: PricingContent = {
   },
   credits: {
     kicker: 'KI-GUTHABEN',
-    title: 'KI wird verbraucht, nicht abonniert.',
+    title: 'KI wird nach Verbrauch abgerechnet, nicht pauschal.',
     body:
       'Jede Stufe öffnet ein monatliches Guthaben. Eine Analyse kostet, was sie beansprucht: eine Woche Belastung nachzulesen kostet nicht, was ein Saisonbericht kostet.',
     points: [
@@ -1223,6 +1237,10 @@ const de: PricingContent = {
         a: 'Free, Amateur und Semi-Pro werden je Team abgeschlossen. Die Pro-Stufe deckt mehrere Teams unter einem Dach ab und wird individuell kalkuliert.',
       },
       {
+        q: 'Warum 19 € und dann 249 €?',
+        a: 'Weil die beiden Stufen nicht dasselbe verkaufen. Amateur ist die Logistik des Staffs, aus der Tasche eines Coachs bezahlt. Semi-Pro ist eine Performance-Plattform auf einem Klubbudget, und es ist die Stufe, ab der Ihr GPS etwas einbringt. Dazwischen liegt kein größeres Produkt, sondern ein anderer Beruf.',
+      },
+      {
         q: 'Gibt es eine Bindung?',
         a: 'Monatlich, ohne Laufzeit. Semi-Pro öffnet einen Jahresrabatt für Klubs, die lieber in Saisonbudgets denken.',
       },
@@ -1234,9 +1252,9 @@ const de: PricingContent = {
   },
   cta: {
     title: 'Beginnen Sie mit Ihrer eigenen Saison.',
-    sub: 'Legen Sie Ihr Team in wenigen Minuten im kostenlosen Plan an. Wenn Sie bereits GPS nutzen, zeigen Sie uns, was noch in Excel lebt: das ist das schnellste Gespräch, das wir führen können.',
+    sub: 'Legen Sie Ihr Team in wenigen Minuten im kostenlosen Plan an. Wenn Sie bereits GPS exportieren, beginnt das schnellste Gespräch bei dem, was Sie noch von Hand verschränken.',
     primary: 'Mein Team kostenlos anlegen',
-    secondary: 'Mit dem Team sprechen',
+    secondary: 'Zeigen Sie uns Ihr Excel',
     trust: 'Ohne Karte. Ohne Bindung.',
   },
   teaserCta: 'Den vollständigen Vergleich ansehen',
@@ -1244,19 +1262,19 @@ const de: PricingContent = {
 
 const pt: PricingContent = {
   meta: {
-    title: 'Preços STRIVN | Quatro níveis, do gratuito ao à medida',
+    title: 'Preços STRIVN | Gratuito para uma equipa, pago quando entra o GPS',
     description:
-      'Gratuito para gerir uma equipa. O nível performance abre a importação GPS, a carga e o cruzamento com o que os jogadores sentem. Quatro níveis, comparados linha a linha.',
+      'Quatro níveis comparados linha a linha. O gratuito aguenta uma equipa uma época inteira; o nível performance assume o cruzamento de GPS, RPE e wellness que ainda faz à mão.',
   },
   hero: {
     kicker: 'PREÇOS',
-    title: 'O preço de uma plataforma de performance, não o de um clube profissional.',
-    sub: 'Gratuito para gerir uma equipa. O nível performance abre a importação GPS, a carga, e o cruzamento com o que os seus jogadores sentem.',
+    title: 'O último quilómetro entre a sua exportação GPS e a sua decisão.',
+    sub: 'Quatro níveis. O gratuito aguenta uma equipa uma época inteira. O nível performance assume o cruzamento de GPS, RPE e wellness que ainda faz à mão.',
   },
   plans: {
     kicker: 'QUATRO NÍVEIS',
     title: 'Cada nível carrega o anterior.',
-    note: 'Nenhum nível pago está ainda aberto a compra online. Amateur, Semi-Pro e Pro passam por nós: diga-nos onde está, abrimos o acesso.',
+    note: 'O plano gratuito abre em dois minutos, sem cartão. Os níveis pagos ainda passam por nós, enquanto abrimos o pagamento online. Escreva-nos e abrimos o acesso.',
     items: [
       {
         code: 'free',
@@ -1264,8 +1282,8 @@ const pt: PricingContent = {
         badge: 'Disponível agora',
         price: '0 €',
         period: 'para sempre',
-        promise: 'Gerir a sua equipa',
-        buyer: 'O treinador sozinho, uma equipa',
+        promise: 'Aguentar uma equipa',
+        qualifier: 'Está sozinho com uma equipa, e sem orçamento para pedir.',
         features: [
           'Uma equipa, jogadores e staff ilimitados',
           'Treinos, jogos e descanso no calendário',
@@ -1286,8 +1304,8 @@ const pt: PricingContent = {
         badge: 'Abertura gradual',
         price: '19 €',
         period: '/ mês',
-        promise: 'Treinar a sua equipa',
-        buyer: 'O treinador, do próprio bolso',
+        promise: 'Deixar de reintroduzir tudo todas as semanas',
+        qualifier: 'Repete as mesmas sessões e reconstrói-as de cada vez.',
         inherits: 'Tudo o do plano Free, mais:',
         features: [
           'Biblioteca de exercícios ilimitada',
@@ -1309,13 +1327,13 @@ const pt: PricingContent = {
         price: '249 €',
         period: '/ mês',
         priceNote: 'Desconto anual',
-        promise: 'Monitorizar a performance',
-        buyer: 'Preparador físico, orçamento do clube',
+        promise: 'Cruzar o GPS com o resto',
+        qualifier: 'Já exporta GPS, e cruza-o à mão no Excel.',
         inherits: 'Tudo o do plano Amateur, mais:',
         features: [
           'Importação GPS por CSV, seja qual for o fornecedor',
-          'Carga externa, zonas, limiares por jogador e alvos',
-          'GPS, RPE e wellness cruzados no mesmo bloco',
+          'Limiares por jogador, alvos e bandas: o desvio vê-se, já não se calcula.',
+          'GPS, RPE e wellness no mesmo bloco, sem a folha de cálculo de domingo à noite.',
           'Musculação: catálogo, programas e runner',
           'Quadro médico e blocos de tratamento',
           'Testes físicos',
@@ -1332,8 +1350,8 @@ const pt: PricingContent = {
         name: 'Pro',
         badge: 'A pedido',
         price: 'Sob consulta',
-        promise: 'Otimizar a performance',
-        buyer: 'Célula de performance, várias equipas',
+        promise: 'Descer ao nível do exercício',
+        qualifier: 'Várias equipas com GPS, uma célula de performance, e dados que têm de sair.',
         inherits: 'Tudo o do plano Semi-Pro, mais:',
         features: [
           'GPS ao nível do exercício: a assinatura de carga de cada exercício',
@@ -1351,7 +1369,7 @@ const pt: PricingContent = {
   },
   credits: {
     kicker: 'CRÉDITOS DE IA',
-    title: 'A IA consome-se, não se assina.',
+    title: 'A IA é contada ao uso, não por assinatura.',
     body:
       'Cada nível abre uma dotação mensal de créditos. Uma análise custa aquilo que mobiliza: reler uma semana de carga não custa o que custa um relatório de época.',
     points: [
@@ -1477,6 +1495,10 @@ const pt: PricingContent = {
         a: 'Free, Amateur e Semi-Pro subscrevem-se por equipa. O nível Pro cobre várias equipas sob o mesmo teto e é orçamentado.',
       },
       {
+        q: 'Porquê 19 € e depois 249 €?',
+        a: 'Porque os dois níveis não vendem a mesma coisa. O Amateur é a logística do staff, paga do bolso de um treinador. O Semi-Pro é uma plataforma de performance com orçamento de clube, e é o nível onde o seu GPS começa a valer alguma coisa. Entre os dois não há um produto maior, há outro ofício.',
+      },
+      {
         q: 'Existe fidelização?',
         a: 'Mensal, sem período mínimo. O Semi-Pro abre um desconto anual para clubes que preferem raciocinar em orçamento de época.',
       },
@@ -1488,9 +1510,9 @@ const pt: PricingContent = {
   },
   cta: {
     title: 'Comece pela sua própria época.',
-    sub: 'Crie a sua equipa em minutos no plano gratuito. Se já usa GPS, mostre-nos o que ainda vive no Excel: é a conversa mais rápida que podemos ter.',
+    sub: 'Crie a sua equipa em minutos no plano gratuito. Se já exporta GPS, a conversa mais rápida começa por aquilo que ainda cruza à mão.',
     primary: 'Criar a minha equipa gratuitamente',
-    secondary: 'Falar com a equipa',
+    secondary: 'Mostre-nos o seu Excel',
     trust: 'Sem cartão. Sem compromisso.',
   },
   teaserCta: 'Ver a comparação completa',
@@ -1498,19 +1520,19 @@ const pt: PricingContent = {
 
 const es: PricingContent = {
   meta: {
-    title: 'Precios STRIVN | Cuatro niveles, de gratis a medida',
+    title: 'Precios STRIVN | Gratis para un equipo, de pago cuando entra el GPS',
     description:
-      'Gratis para gestionar un equipo. El nivel rendimiento abre la importación GPS, la carga y el cruce con lo que sienten los jugadores. Cuatro niveles, comparados línea a línea.',
+      'Cuatro niveles comparados línea a línea. El gratuito aguanta un equipo una temporada entera; el nivel rendimiento asume el cruce de GPS, RPE y wellness que usted todavía hace a mano.',
   },
   hero: {
     kicker: 'PRECIOS',
-    title: 'El precio de una plataforma de rendimiento, no el de un club profesional.',
-    sub: 'Gratis para gestionar un equipo. El nivel rendimiento abre la importación GPS, la carga, y el cruce con lo que sienten sus jugadores.',
+    title: 'El último kilómetro entre su exportación GPS y su decisión.',
+    sub: 'Cuatro niveles. El gratuito aguanta un equipo una temporada entera. El nivel rendimiento asume el cruce de GPS, RPE y wellness que usted todavía hace a mano.',
   },
   plans: {
     kicker: 'CUATRO NIVELES',
     title: 'Cada nivel carga con el anterior.',
-    note: 'Ningún nivel de pago está todavía abierto a la compra en línea. Amateur, Semi-Pro y Pro pasan por nosotros: díganos dónde está y le abrimos el acceso.',
+    note: 'El plan gratuito se abre en dos minutos, sin tarjeta. Los niveles de pago pasan todavía por nosotros, mientras abrimos el pago en línea. Escríbanos y le abrimos el acceso.',
     items: [
       {
         code: 'free',
@@ -1518,8 +1540,8 @@ const es: PricingContent = {
         badge: 'Disponible ahora',
         price: '0 €',
         period: 'para siempre',
-        promise: 'Gestionar su equipo',
-        buyer: 'El entrenador solo, un equipo',
+        promise: 'Sacar adelante un equipo',
+        qualifier: 'Está solo con un equipo, y sin presupuesto que pedir.',
         features: [
           'Un equipo, jugadores y staff ilimitados',
           'Entrenamientos, partidos y descanso en el calendario',
@@ -1540,8 +1562,8 @@ const es: PricingContent = {
         badge: 'Apertura progresiva',
         price: '19 €',
         period: '/ mes',
-        promise: 'Entrenar a su equipo',
-        buyer: 'El entrenador, de su propio bolsillo',
+        promise: 'Dejar de reescribirlo todo cada semana',
+        qualifier: 'Repite las mismas sesiones y las reconstruye cada vez.',
         inherits: 'Todo el plan Free, y además:',
         features: [
           'Biblioteca de ejercicios ilimitada',
@@ -1563,13 +1585,13 @@ const es: PricingContent = {
         price: '249 €',
         period: '/ mes',
         priceNote: 'Descuento anual',
-        promise: 'Monitorizar el rendimiento',
-        buyer: 'Preparador físico, presupuesto del club',
+        promise: 'Cruzar el GPS con lo demás',
+        qualifier: 'Ya exporta GPS, y lo cruza a mano en Excel.',
         inherits: 'Todo el plan Amateur, y además:',
         features: [
           'Importación GPS por CSV, sea cual sea el proveedor',
-          'Carga externa, zonas, umbrales por jugador y objetivos',
-          'GPS, RPE y wellness cruzados en el mismo bloque',
+          'Umbrales por jugador, objetivos y bandas: la desviación se ve, ya no se calcula.',
+          'GPS, RPE y wellness en el mismo bloque, sin la hoja de cálculo del domingo por la noche.',
           'Fuerza: catálogo, programas y runner',
           'Cuadro médico y bloques de tratamiento',
           'Tests físicos',
@@ -1586,8 +1608,8 @@ const es: PricingContent = {
         name: 'Pro',
         badge: 'Bajo petición',
         price: 'A medida',
-        promise: 'Optimizar el rendimiento',
-        buyer: 'Célula de rendimiento, varios equipos',
+        promise: 'Bajar al nivel del ejercicio',
+        qualifier: 'Varios equipos con GPS, una célula de rendimiento, y datos que tienen que salir.',
         inherits: 'Todo el plan Semi-Pro, y además:',
         features: [
           'GPS a nivel de ejercicio: la firma de carga de cada ejercicio',
@@ -1605,7 +1627,7 @@ const es: PricingContent = {
   },
   credits: {
     kicker: 'CRÉDITOS DE IA',
-    title: 'La IA se consume, no se suscribe.',
+    title: 'La IA se cobra por uso, no por suscripción.',
     body:
       'Cada nivel abre una dotación mensual de créditos. Un análisis cuesta según lo que moviliza: releer una semana de carga no cuesta lo que cuesta un informe de temporada.',
     points: [
@@ -1731,6 +1753,10 @@ const es: PricingContent = {
         a: 'Free, Amateur y Semi-Pro se contratan por equipo. El nivel Pro cubre varios equipos bajo el mismo techo y se presupuesta a medida.',
       },
       {
+        q: '¿Por qué 19 € y luego 249 €?',
+        a: 'Porque los dos niveles no venden lo mismo. Amateur es la logística del staff, pagada del bolsillo de un entrenador. Semi-Pro es una plataforma de rendimiento con presupuesto de club, y es el nivel donde su GPS empieza a servir para algo. Entre los dos no hay un producto más grande, hay otro oficio.',
+      },
+      {
         q: '¿Hay permanencia?',
         a: 'Mensual, sin permanencia. Semi-Pro abre un descuento anual para los clubes que prefieren razonar en presupuesto de temporada.',
       },
@@ -1742,9 +1768,9 @@ const es: PricingContent = {
   },
   cta: {
     title: 'Empiece por su propia temporada.',
-    sub: 'Cree su equipo en unos minutos en el plan gratuito. Si ya usa GPS, muéstrenos lo que sigue viviendo en Excel: es la conversación más rápida que podemos tener.',
+    sub: 'Cree su equipo en unos minutos en el plan gratuito. Si ya exporta GPS, la conversación más rápida empieza por lo que todavía cruza a mano.',
     primary: 'Crear mi equipo gratis',
-    secondary: 'Hablar con el equipo',
+    secondary: 'Muéstrenos su Excel',
     trust: 'Sin tarjeta. Sin compromiso.',
   },
   teaserCta: 'Ver la comparativa completa',
