@@ -67,11 +67,18 @@ echo ""
 #   -v                verbose (file-by-file)
 #   --delete          remove files on remote that are no longer in dist/
 #   --exclude='.well-known/'  preserve Let's Encrypt / Forge metadata
+#   --exclude='_*.html'       social-post and carousel decks live in public/ so the
+#                             render server resolves /screenshots and the logo
+#                             against the same root. Anything prefixed with "_" is a
+#                             working file, not a page, and has no business on the
+#                             public site. Nothing the built site links to is
+#                             underscore-prefixed, so the pattern is safe to widen.
 #   -e ssh ...        enforce accept-new on first connect from a new host
 RSYNC_FLAGS=(
   -av
   --delete
   --exclude='.well-known/'
+  --exclude='_*.html'
   -e 'ssh -o StrictHostKeyChecking=accept-new -o ConnectTimeout=10'
 )
 [[ -n "$DRY_RUN_FLAG" ]] && RSYNC_FLAGS+=("$DRY_RUN_FLAG")
