@@ -248,8 +248,8 @@ const fr: PricingContent = {
   },
   trial: {
     label: 'ESSAI',
-    title: 'Un mois de Semi-Pro offert à l’inscription.',
-    body: 'Tout nouveau compte démarre au palier performance pendant 30 jours, sans carte bancaire et sans rien à demander. À l’échéance, le compte repasse au gratuit tout seul et rien n’est prélevé.',
+    title: '30 jours de Semi-Pro, offerts à l’inscription.',
+    body: 'Chaque nouveau compte s’ouvre au Semi-Pro, sans carte bancaire et sans rien demander à personne. À l’échéance il repasse au gratuit tout seul, rien n’est prélevé, et tout ce que vous avez produit reste lisible.',
   },
   plans: {
     kicker: 'QUATRE PALIERS',
@@ -498,8 +498,8 @@ const en: PricingContent = {
   },
   trial: {
     label: 'TRIAL',
-    title: 'One month of Semi-Pro, free when you sign up.',
-    body: 'Every new account opens on the performance tier for 30 days, with no card and nothing to ask for. At the end it returns to the free plan on its own, and nothing is charged.',
+    title: '30 days of Semi-Pro, free when you sign up.',
+    body: 'Every new account opens on Semi-Pro, with no card and nobody to ask. At the end it returns to the free plan on its own, nothing is charged, and everything you made stays readable.',
   },
   plans: {
     kicker: 'FOUR TIERS',
@@ -748,8 +748,8 @@ const nl: PricingContent = {
   },
   trial: {
     label: 'PROEFPERIODE',
-    title: 'Eén maand Semi-Pro, gratis bij inschrijving.',
-    body: 'Elk nieuw account start 30 dagen op het performance-niveau, zonder kaart en zonder iets te moeten vragen. Daarna keert het vanzelf terug naar het gratis plan, en er wordt niets afgerekend.',
+    title: '30 dagen Semi-Pro, gratis bij inschrijving.',
+    body: 'Elk nieuw account opent op Semi-Pro, zonder kaart en zonder iemand om toestemming te vragen. Op de vervaldag keert het vanzelf terug naar het gratis plan, er wordt niets afgerekend, en alles wat u maakte blijft leesbaar.',
   },
   plans: {
     kicker: 'VIER NIVEAUS',
@@ -998,8 +998,8 @@ const de: PricingContent = {
   },
   trial: {
     label: 'TESTPHASE',
-    title: 'Ein Monat Semi-Pro, gratis bei der Anmeldung.',
-    body: 'Jedes neue Konto startet 30 Tage auf der Performance-Stufe, ohne Karte und ohne etwas erfragen zu müssen. Danach kehrt es von selbst zum kostenlosen Plan zurück, und es wird nichts abgebucht.',
+    title: '30 Tage Semi-Pro, gratis bei der Anmeldung.',
+    body: 'Jedes neue Konto startet auf Semi-Pro, ohne Karte und ohne jemanden fragen zu müssen. Am Ende kehrt es von selbst zum kostenlosen Plan zurück, es wird nichts abgebucht, und alles, was Sie erzeugt haben, bleibt lesbar.',
   },
   plans: {
     kicker: 'VIER STUFEN',
@@ -1248,8 +1248,8 @@ const pt: PricingContent = {
   },
   trial: {
     label: 'PERÍODO DE TESTE',
-    title: 'Um mês de Semi-Pro, oferecido na inscrição.',
-    body: 'Cada nova conta começa no nível performance durante 30 dias, sem cartão e sem nada a pedir. No fim, a conta regressa sozinha ao plano gratuito e nada é cobrado.',
+    title: '30 dias de Semi-Pro, oferecidos na inscrição.',
+    body: 'Cada nova conta abre em Semi-Pro, sem cartão e sem ter de pedir nada a ninguém. No fim regressa sozinha ao plano gratuito, nada é cobrado, e tudo o que produziu continua legível.',
   },
   plans: {
     kicker: 'QUATRO NÍVEIS',
@@ -1498,8 +1498,8 @@ const es: PricingContent = {
   },
   trial: {
     label: 'PRUEBA',
-    title: 'Un mes de Semi-Pro, gratis al registrarse.',
-    body: 'Cada cuenta nueva empieza en el nivel rendimiento durante 30 días, sin tarjeta y sin nada que pedir. Al terminar, la cuenta vuelve sola al plan gratuito y no se cobra nada.',
+    title: '30 días de Semi-Pro, gratis al registrarse.',
+    body: 'Cada cuenta nueva se abre en Semi-Pro, sin tarjeta y sin tener que pedirle permiso a nadie. Al terminar vuelve sola al plan gratuito, no se cobra nada, y todo lo que haya creado sigue siendo legible.',
   },
   plans: {
     kicker: 'CUATRO NIVELES',
