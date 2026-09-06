@@ -501,3 +501,38 @@ Constraints re-verified after the pass, in all six locales: no self-serve purcha
 
 `Strivn/PRODUCT.md`, one directory up, is a different file and remains stale: it still names the club coach as the primary user and does not mention GPS at all. Out of scope here.
 
+---
+
+## 15. The catalogue caught up, 2026-09-06
+
+The app shipped the whole four-tier architecture between this page going live and today (`strivn-app` PRs up to #583, spec `docs/specs/tarifs-strivn-2026-09.md`). **The page was wrong on nine facts within a day of publishing**, because it authored its own numbers.
+
+| The page said | The catalogue says |
+|---|---|
+| Amateur €19 | **€25** |
+| Free: unlimited staff | **1 seat**, owner included |
+| Amateur: WhatsApp, reminders, check-ins | **Semi-Pro.** Amateur opens no module at all |
+| Meeting / task / team building at Amateur | **Free** |
+| Match history "limited" | **last 5** |
+| No AI scale publishable | **60 / 400 / 2 000 / uncapped** turns a month |
+| Nothing on WhatsApp volumes | **3 000** on Semi-Pro, **10 000** on Pro |
+| Pro: API and connectors included | **upcoming**, never among included rights |
+| No trial | **30 days of Semi-Pro on every signup**, no card |
+
+All nine corrected, in six locales. The matrix was rebuilt to 32 rows against what the catalogue proves; the rows whose entitlement flags were deleted upstream for having no reader (`api_access`, `advanced_analytics`, `club_reporting`, `priority_support`) came off the page rather than staying as decoration.
+
+### What the asks changed
+
+- **Every CTA is now "create an account"**, and that is honest for the first time: no tier is purchasable, but a new account opens on 30 days of Semi-Pro, so signing up genuinely delivers the tier. Pro alone still leads to a person — a tier with no amount opens no checkout, which is the catalogue's own rule (`is_quote_only`).
+- **The trial is a strip above the cards**, not a badge on one. It is not a Semi-Pro feature; it is what happens to every account, and it reframes all four cards under it.
+- **The headline figure is the yearly price per month** — €20.83 and €207.50 — with the full monthly struck through beside it and the yearly total below. The struck figure carries a visually-hidden "Monthly" label, because read alone it is two prices with no stated relationship.
+- **"2 months free" is derived**, never authored: `(monthly × 12 − yearly) / monthly`. A change of scale upstream corrects every surface at once, and no string can outlive the arithmetic.
+
+### The guard that should have existed first
+
+`scripts/check-pricing.mjs` runs on every build. It reads `PLAN_PRICES` and the numeric matrix rows out of `pricingContent.ts` and compares them against `https://app.strivn.net/pricing/{locale}.json`, the catalogue the app publishes for this site. **A disagreement fails the build; a network failure only warns**, so a plane or an app deploy cannot block a copy fix.
+
+Verified by putting €19 back: `✗ amateur monthly: site 1900, catalogue 2500`, exit 1.
+
+This does not make the site consume the feed at runtime — the copy is still authored here, in a marketing register the app's own strings do not have. It makes the numbers impossible to ship wrong, which is the half that actually burned.
+
