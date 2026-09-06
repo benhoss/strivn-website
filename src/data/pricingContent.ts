@@ -237,7 +237,7 @@ export interface PricingContent {
 
 const fr: PricingContent = {
   meta: {
-    title: 'Tarifs STRIVN | Un mois de Semi-Pro offert à l’inscription',
+    title: 'Tarifs STRIVN | 30 jours de Semi-Pro offerts à l’inscription',
     description:
       'Quatre paliers comparés ligne par ligne. Tout nouveau compte démarre avec 30 jours de Semi-Pro, sans carte. Le palier performance reprend le croisement GPS, RPE et wellness que vous faites encore à la main.',
   },
@@ -487,7 +487,7 @@ const fr: PricingContent = {
 
 const en: PricingContent = {
   meta: {
-    title: 'STRIVN pricing | One month of Semi-Pro free when you sign up',
+    title: 'STRIVN pricing | 30 days of Semi-Pro free when you sign up',
     description:
       'Four tiers compared line by line. Every new account starts on 30 days of Semi-Pro, no card. The performance tier takes over the GPS, RPE and wellness crossing you still do by hand.',
   },
@@ -737,7 +737,7 @@ const en: PricingContent = {
 
 const nl: PricingContent = {
   meta: {
-    title: 'STRIVN-tarieven | Eén maand Semi-Pro gratis bij inschrijving',
+    title: 'STRIVN-tarieven | 30 dagen Semi-Pro gratis bij inschrijving',
     description:
       'Vier niveaus, regel voor regel vergeleken. Elk nieuw account start met 30 dagen Semi-Pro, zonder kaart. Het performance-niveau neemt de kruising van GPS, RPE en wellness over die u nog met de hand doet.',
   },
@@ -987,7 +987,7 @@ const nl: PricingContent = {
 
 const de: PricingContent = {
   meta: {
-    title: 'STRIVN Preise | Ein Monat Semi-Pro gratis bei der Anmeldung',
+    title: 'STRIVN Preise | 30 Tage Semi-Pro gratis bei der Anmeldung',
     description:
       'Vier Stufen, Zeile für Zeile verglichen. Jedes neue Konto startet mit 30 Tagen Semi-Pro, ohne Karte. Die Performance-Stufe übernimmt die Verschränkung von GPS, RPE und Wellness, die Sie noch von Hand machen.',
   },
@@ -1237,7 +1237,7 @@ const de: PricingContent = {
 
 const pt: PricingContent = {
   meta: {
-    title: 'Preços STRIVN | Um mês de Semi-Pro oferecido na inscrição',
+    title: 'Preços STRIVN | 30 dias de Semi-Pro oferecidos na inscrição',
     description:
       'Quatro níveis comparados linha a linha. Cada nova conta começa com 30 dias de Semi-Pro, sem cartão. O nível performance assume o cruzamento de GPS, RPE e wellness que ainda faz à mão.',
   },
@@ -1487,7 +1487,7 @@ const pt: PricingContent = {
 
 const es: PricingContent = {
   meta: {
-    title: 'Precios STRIVN | Un mes de Semi-Pro gratis al registrarse',
+    title: 'Precios STRIVN | 30 días de Semi-Pro gratis al registrarse',
     description:
       'Cuatro niveles comparados línea a línea. Cada cuenta nueva empieza con 30 días de Semi-Pro, sin tarjeta. El nivel rendimiento asume el cruce de GPS, RPE y wellness que usted todavía hace a mano.',
   },
