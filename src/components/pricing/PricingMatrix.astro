@@ -51,7 +51,9 @@ const isUniform = (cells: readonly Cell[]) => cells.every((cell) => cell === cel
         {MATRIX.map((group) => (
           <tbody>
             <tr class="pm__grouprow">
-              <th scope="rowgroup" colspan={PLAN_ORDER.length + 1}>{c.groups[group.key]}</th>
+              <th scope="rowgroup" colspan={PLAN_ORDER.length + 1}>
+                <span class="pm__grouplabel">{c.groups[group.key]}</span>
+              </th>
             </tr>
             {group.rows.map((row) => (
               <tr data-uniform={isUniform(row.cells) ? '' : undefined}>
@@ -104,6 +106,14 @@ const isUniform = (cells: readonly Cell[]) => cells.every((cell) => cell === cel
     margin-top: 2.5rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
+    /* Without this the page itself scrolls sideways — but only for a visitor
+       who asked for reduced motion. The reveal animation sets a `transform` on
+       this element, which happens to make it a containing block that clips the
+       sticky cells inside; the reduced-motion rule drops the transform, the
+       sticky cells stop being clipped, and their width leaks into the document.
+       Paint containment gives the same clipping unconditionally, so the fix
+       does not depend on an animation being on. */
+    contain: paint;
     border-radius: 16px;
     background: #0b1020;
     outline: 1px solid rgba(255, 255, 255, 0.08);
@@ -113,6 +123,21 @@ const isUniform = (cells: readonly Cell[]) => cells.every((cell) => cell === cel
   .pm-scroll:focus-visible {
     outline: 2px solid #2d7ff9;
     outline-offset: 3px;
+  }
+
+  /* `overflow-x: auto` forces `overflow-y` to compute to `auto` as well, so the
+     sticky header was pinning to the top of a box that never scrolls
+     vertically — which is to say, never pinning at all. Above this width the
+     table fits and needs no horizontal scrolling, so the container stops being
+     one, and the header finally sticks to the viewport across 32 rows. */
+  /* 52rem: the table stops needing a scroller at about 810px of viewport
+     (measured, not guessed — 745px of content against a 736px table), so this
+     leaves roughly 28px of margin above the crossover. */
+  @media (min-width: 52rem) {
+    .pm-scroll {
+      overflow: visible;
+      contain: none;
+    }
   }
 
   .pm {
@@ -250,8 +275,6 @@ const isUniform = (cells: readonly Cell[]) => cells.every((cell) => cell === cel
   }
 
   .pm__grouprow th {
-    position: sticky;
-    left: 0;
     padding-top: 2rem;
     padding-bottom: 0.6rem;
     background: #0b1020;
@@ -265,8 +288,54 @@ const isUniform = (cells: readonly Cell[]) => cells.every((cell) => cell === cel
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
+  /* The group cell spans the whole table, so pinning IT does nothing: it is
+     already at left 0 and its text scrolls away with everything else. Pin the
+     label instead, and the section keeps naming itself however far right the
+     reader has scrolled. */
+  .pm__grouplabel {
+    position: sticky;
+    left: 0.85rem;
+    display: inline-block;
+  }
+
   .pm tbody:last-of-type tr:last-child th,
   .pm tbody:last-of-type tr:last-child td {
     border-bottom: 0;
+  }
+
+  /* On a phone the pinned label column was 16rem of a 320px scroller, which
+     left about ten pixels for the answers: you could read every question and
+     see none of the values. Narrow the label, shrink the type, and size the
+     table so TWO tier columns clear the fold at once — the comparison only
+     works when two columns can be seen side by side. */
+  @media (max-width: 47.99rem) {
+    .pm {
+      min-width: 31.5rem;
+      font-size: 0.78rem;
+    }
+
+    .pm th[scope='row'],
+    .pm__corner {
+      min-width: 8.5rem;
+    }
+
+    .pm th,
+    .pm td {
+      padding: 0.6rem 0.5rem;
+    }
+
+    .pm__head,
+    .pm__corner {
+      padding-block: 0.8rem;
+      font-size: 0.82rem;
+    }
+
+    .pm__word {
+      font-size: 0.74rem;
+    }
+
+    .pm__grouprow th {
+      padding-top: 1.5rem;
+    }
   }
 </style>
