@@ -249,7 +249,7 @@ const fr: PricingContent = {
   trial: {
     label: 'ESSAI',
     title: '30 jours de Semi-Pro, offerts à l’inscription.',
-    body: 'Chaque nouveau compte s’ouvre au Semi-Pro, sans carte bancaire et sans rien demander à personne. À l’échéance il repasse au gratuit tout seul, rien n’est prélevé, et tout ce que vous avez produit reste lisible.',
+    body: 'Chaque nouveau compte démarre au Semi-Pro, sans carte bancaire et sans rien demander à personne. À l’échéance il repasse au gratuit tout seul, rien n’est prélevé, et tout ce que vous avez produit reste lisible.',
   },
   plans: {
     kicker: 'QUATRE PALIERS',
@@ -499,7 +499,7 @@ const en: PricingContent = {
   trial: {
     label: 'TRIAL',
     title: '30 days of Semi-Pro, free when you sign up.',
-    body: 'Every new account opens on Semi-Pro, with no card and nobody to ask. At the end it returns to the free plan on its own, nothing is charged, and everything you made stays readable.',
+    body: 'Every new account starts on Semi-Pro, with no card and nobody to ask. At the end it returns to the free plan on its own, nothing is charged, and everything you made stays readable.',
   },
   plans: {
     kicker: 'FOUR TIERS',
@@ -749,7 +749,7 @@ const nl: PricingContent = {
   trial: {
     label: 'PROEFPERIODE',
     title: '30 dagen Semi-Pro, gratis bij inschrijving.',
-    body: 'Elk nieuw account opent op Semi-Pro, zonder kaart en zonder iemand om toestemming te vragen. Op de vervaldag keert het vanzelf terug naar het gratis plan, er wordt niets afgerekend, en alles wat u maakte blijft leesbaar.',
+    body: 'Elk nieuw account start op Semi-Pro, zonder kaart en zonder iemand om toestemming te vragen. Op de vervaldag keert het vanzelf terug naar het gratis plan, er wordt niets afgerekend, en alles wat u maakte blijft leesbaar.',
   },
   plans: {
     kicker: 'VIER NIVEAUS',
@@ -1249,7 +1249,7 @@ const pt: PricingContent = {
   trial: {
     label: 'PERÍODO DE TESTE',
     title: '30 dias de Semi-Pro, oferecidos na inscrição.',
-    body: 'Cada nova conta abre em Semi-Pro, sem cartão e sem ter de pedir nada a ninguém. No fim regressa sozinha ao plano gratuito, nada é cobrado, e tudo o que produziu continua legível.',
+    body: 'Cada nova conta começa em Semi-Pro, sem cartão e sem ter de pedir nada a ninguém. No fim regressa sozinha ao plano gratuito, nada é cobrado, e tudo o que produziu continua legível.',
   },
   plans: {
     kicker: 'QUATRO NÍVEIS',
@@ -1499,7 +1499,7 @@ const es: PricingContent = {
   trial: {
     label: 'PRUEBA',
     title: '30 días de Semi-Pro, gratis al registrarse.',
-    body: 'Cada cuenta nueva se abre en Semi-Pro, sin tarjeta y sin tener que pedirle permiso a nadie. Al terminar vuelve sola al plan gratuito, no se cobra nada, y todo lo que haya creado sigue siendo legible.',
+    body: 'Cada cuenta nueva empieza en Semi-Pro, sin tarjeta y sin tener que pedirle permiso a nadie. Al terminar vuelve sola al plan gratuito, no se cobra nada, y todo lo que haya creado sigue siendo legible.',
   },
   plans: {
     kicker: 'CUATRO NIVELES',
