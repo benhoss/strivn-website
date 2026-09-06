@@ -1,0 +1,34 @@
+---
+import type { PricingContent } from '../../data/pricingContent';
+
+interface Props {
+  credits: PricingContent['credits'];
+}
+
+const { credits: c } = Astro.props;
+---
+
+<!-- The one section on this page that deliberately carries no number. The AI
+     credit scale is unpublished upstream until it is calibrated on real costs,
+     so this block explains the model and states the absence plainly. -->
+<section class="bg-[#070A14] py-20 md:py-28" aria-labelledby="credits-title">
+  <div class="hl-wrap grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
+    <div class="hl-reveal">
+      <p class="hl-index text-[#7AB8FF]">
+        <span class="hl-index__rule"></span>
+        {c.kicker}
+      </p>
+      <h2 id="credits-title" class="hl-display mt-5 max-w-[16ch] text-[clamp(1.8rem,3.6vw,2.6rem)]">{c.title}</h2>
+      <p class="mt-5 max-w-[34rem] text-[0.98rem] leading-[1.65] text-[#AAB8D4]">{c.body}</p>
+    </div>
+
+    <div class="hl-reveal self-center" style="--d: 120ms;">
+      <ul class="flex flex-col gap-px overflow-hidden rounded-[16px] bg-[#FFFFFF0F]" data-stagger>
+        {c.points.map((point) => (
+          <li class="bg-[#0B1020] px-5 py-4 text-[0.95rem] leading-[1.6] text-[#C6D2E8]">{point}</li>
+        ))}
+      </ul>
+      <p class="mt-5 border-l-2 border-[#2D7FF95C] pl-4 text-[0.88rem] leading-[1.6] text-[#8CA3C7]">{c.note}</p>
+    </div>
+  </div>
+</section>

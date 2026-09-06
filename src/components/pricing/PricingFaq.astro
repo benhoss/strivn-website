@@ -1,0 +1,37 @@
+---
+import type { PricingContent } from '../../data/pricingContent';
+
+interface Props {
+  faq: PricingContent['faq'];
+}
+
+const { faq: c } = Astro.props;
+---
+
+<section id="faq" class="scroll-mt-24 bg-[#05070F] py-20 md:py-28" aria-labelledby="pricing-faq-title">
+  <div class="hl-wrap grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] lg:gap-20">
+    <div class="hl-reveal">
+      <p class="hl-index text-[#7AB8FF]">
+        <span class="hl-index__rule"></span>
+        {c.kicker}
+      </p>
+      <h2 id="pricing-faq-title" class="hl-display mt-5 max-w-[14ch] text-[clamp(1.8rem,3.6vw,2.6rem)]">{c.title}</h2>
+      <p class="mt-4 max-w-[26rem] text-[0.96rem] leading-[1.6] text-[#AAB8D4]">{c.body}</p>
+
+      <div class="mt-10 rounded-[16px] bg-[#0B1020] p-5 outline-1 outline-[#FFFFFF0F] -outline-offset-[0.5px]">
+        <p class="text-[0.96rem] font-semibold text-[#F8FAFC]">{c.contactTitle}</p>
+        <p class="mt-1 text-[0.88rem] leading-[1.55] text-[#AAB8D4]">{c.contactBody}</p>
+        <a href={`mailto:${c.email}`} class="mt-3 inline-block font-mono text-[0.82rem] text-[#7AB8FF] hover:underline">{c.email}</a>
+      </div>
+    </div>
+
+    <div class="hl-reveal hl-faq" style="--d: 120ms;" data-stagger>
+      {c.items.map((item, i) => (
+        <details open={i === 0}>
+          <summary>{item.q}</summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

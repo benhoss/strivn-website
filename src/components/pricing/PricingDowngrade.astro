@@ -1,0 +1,55 @@
+---
+import type { PricingContent } from '../../data/pricingContent';
+import HomeIcon from '../home/HomeIcon.astro';
+
+interface Props {
+  downgrade: PricingContent['downgrade'];
+}
+
+const { downgrade: c } = Astro.props;
+---
+
+<!-- "Lock creation, never reading" is the product rule for a downgraded team.
+     It belongs on a pricing page because it answers the question a buyer asks
+     silently: what happens to my season if I stop paying. -->
+<section class="bg-[#070A14] py-20 md:py-28" aria-labelledby="downgrade-title">
+  <div class="hl-wrap">
+    <div class="hl-reveal max-w-[46rem]">
+      <p class="hl-index text-[#7AB8FF]">
+        <span class="hl-index__rule"></span>
+        {c.kicker}
+      </p>
+      <h2 id="downgrade-title" class="hl-display mt-5 max-w-[18ch] text-[clamp(1.8rem,3.6vw,2.6rem)]">{c.title}</h2>
+      <p class="mt-5 text-[0.98rem] leading-[1.65] text-[#AAB8D4]">{c.body}</p>
+    </div>
+
+    <div class="mt-12 grid gap-4 md:grid-cols-2">
+      <div class="hl-reveal hl-reveal--card rounded-[16px] bg-[#0B1020] p-6 outline-1 outline-[#FFFFFF0F] -outline-offset-[0.5px]">
+        <h3 class="font-mono text-[0.68rem] font-semibold tracking-[0.1em] text-[#68779A] uppercase">{c.closesTitle}</h3>
+        <ul class="mt-5 flex flex-col gap-3">
+          {c.closes.map((item) => (
+            <li class="flex items-start gap-3 text-[0.92rem] leading-[1.5] text-[#8CA3C7]">
+              <span class="mt-2.5 h-px w-3 shrink-0 bg-[#3F4C68]" aria-hidden="true"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div
+        class="hl-reveal hl-reveal--card rounded-[16px] bg-gradient-to-b from-[#101B33] to-[#0B1020] p-6 outline-1 outline-[#2D7FF95C] -outline-offset-[0.5px]"
+        style="--d: 90ms;"
+      >
+        <h3 class="font-mono text-[0.68rem] font-semibold tracking-[0.1em] text-[#7AB8FF] uppercase">{c.staysTitle}</h3>
+        <ul class="mt-5 flex flex-col gap-3">
+          {c.stays.map((item) => (
+            <li class="flex items-start gap-3 text-[0.92rem] leading-[1.5] text-[#C6D2E8]">
+              <HomeIcon name="check" size={14} class="mt-1 shrink-0 text-[#7AB8FF]" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

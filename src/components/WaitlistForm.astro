@@ -23,6 +23,9 @@ const form = clubsContent[locale].form;
     />
     <input type="hidden" name="locale" value={locale} />
     <input type="hidden" name="_subject" value="STRIVN Club waitlist" />
+    <!-- Filled in when the visitor arrived from a plan card on the pricing
+         page, so a submission says which tier prompted it. Empty otherwise. -->
+    <input type="hidden" name="plan" value="" data-plan-field />
 
     <div class="wf__grid">
       <label class="wf__field">
@@ -65,6 +68,21 @@ const form = clubsContent[locale].form;
 </div>
 
 <script>
+  /* The pricing page stores the tier a visitor clicked just before navigating
+     here. Read it once, then clear it: a stale value on a later visit would
+     attribute the lead to a plan the visitor never clicked. */
+  try {
+    const plan = sessionStorage.getItem('strivn:plan');
+    if (plan) {
+      document.querySelectorAll<HTMLInputElement>('[data-plan-field]').forEach((field) => {
+        field.value = plan;
+      });
+      sessionStorage.removeItem('strivn:plan');
+    }
+  } catch {
+    /* Storage blocked: the form still submits, without attribution. */
+  }
+
   document.querySelectorAll<HTMLFormElement>('form[data-waitlist]').forEach((form) => {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();

@@ -446,3 +446,39 @@ Checked 2026-09-05. If any of these has drifted when the work starts, re-verify 
 | Paid access is granted by hand today | `php artisan team:grant-plan {team} --plan=club` |
 
 **The consequence that matters:** a visitor who reads this page, registers, and opens billing in the app sees three plans with different names and prices. That mismatch is upstream and accepted for the duration — which is why **no CTA on this page may link into `/teams/{team}/billing`**, and why the Free CTA goes through `appStartUrl()` (registration), which never passes through it.
+
+---
+
+## 13. What shipped, and where it departs from this plan
+
+Built 2026-09-06. `npm run build` passes, `check:links` reports 192 pages with every internal link and fragment resolving, and the twelve acceptance criteria of §10 were verified against the built HTML rather than the source.
+
+### Files
+
+`src/data/pricingContent.ts` (six locales) · `src/components/pricing/{PricingLanding,PricingHero,PricingPlans,PricingCredits,PricingMatrix,PricingDowngrade,PricingFaq,PricingCta}.astro` · `src/pages/{fr,en,nl,de,pt,es}/pricing.astro`. Rewired: `nav.ts`, `homeContent.ts`, `landingContent.ts` (18 `#tarifs` links), `HomePricing.astro`, `HomeLanding.astro`, `WaitlistForm.astro`, `astro.config.mjs`.
+
+### Seven departures, each with its reason
+
+1. **Shell is `BaseLayout`, not `SubpageLayout`.** `SubpageLayout` carries the `landingContent` / `SiteFooter` system; the pricing page needs the home visual system (`home.css`, the `hl-*` classes, `HomeFooter`). It follows `SolutionsLanding.astro` exactly, which is the real sibling. `jsonLdExtra` and `switchHrefs` are `BaseLayout` / `SiteHeader` props, so nothing was lost.
+
+2. **The matrix structure lives once, not six times.** §7 proposed a per-locale 4-tuple per row. Shipped instead: `MATRIX` holds who-gets-what a single time, and each locale translates only row labels plus a closed `CellToken` vocabulary (`unlimited`, `limited`, `full`, `several`, `allowance`, `onQuote`, and the three numerals). This serves the plan's own stated intent better — a missing row is still a type error, `Record<MatrixRowKey, string>` sees to that — and closes a hole the tuple design left open: a translator could have shipped `✅` where the French said `❌` and nothing would have failed. A commercial promise is no longer expressible in six diverging places.
+
+3. **`homeContent[locale].pricing` was shrunk, not deleted.** §8 recommended deleting it outright. It kept four fields — `index`, `kicker`, `title`, `note` — because the homepage numbers its sections from content (`'08'`), and deleting the block would have broken the 01–N sequence its neighbours rely on. The heading is the homepage's own narrative; the tiers, prices and promises now come from `pricingContent`, which is the drift this plan existed to close.
+
+4. **Waitlist CTAs link to `/{locale}/clubs/#waitlist`** rather than rendering the form inline. The form is styled for the `global.css` subpage system and would have had to be restyled for a dark home-system page. Plan attribution still works: the card writes the tier to `sessionStorage['strivn:plan']` and `WaitlistForm` reads it once into a hidden `plan` field, then clears it. **Not a query string on purpose** — `check-links.mjs` normalises a path by appending `/`, so `?plan=semi_pro` would fail the build.
+
+5. **No section numbers on this page.** The homepage numbers its sections because it is a narrative. A hero, a card grid, a table and a FAQ are not a sequence, so the mono kicker keeps its rule and drops the numeral. Precedent exists: `SolutionsLanding` already passes `index={null}` to a borrowed homepage section.
+
+6. **The featured badge is electric, not green.** `HomePricing.astro` used `#8CE99A` for the featured plan's badge and dot. `DESIGN.md` reserves green for player-ready state, so the rebuilt card uses `#7AB8FF` on a low-opacity electric tint. Same rule that keeps green out of the matrix — applied to the badge it had been leaking into.
+
+7. **`/fr/tarifs/` redirects to `/fr/pricing/`** (the optional item in §4). Campaign links reach for the French word; the page keeps the English slug like `/features/` and `/solutions/`.
+
+### The one design idea worth naming
+
+The matrix mutes every row where all four tiers agree. A reader wants to know the player app is in every tier, so the row stays — but it is not what they came to find. The rows that *differ* carry the decision, and they get the contrast. The Semi-Pro column is a continuous tinted band running the full height of the table rather than a badge at the top, the way an in-band range is shaded in the product's own load charts.
+
+### Known limits
+
+- The comparison table is 34 rows; below 64rem it scrolls horizontally inside a labelled, focusable region with the row-label column pinned. Verified in the markup; **not yet verified on a real device.**
+- `.hl-display` is `font-weight: 700` (`home.css:76`), which the `DESIGN.md` 600 Ceiling Rule forbids. That predates this page and is site-wide — the page follows the code, not the doc. Worth reconciling in one place or the other.
+

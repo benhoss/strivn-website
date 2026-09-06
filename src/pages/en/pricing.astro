@@ -1,0 +1,14 @@
+---
+import PricingLanding from '../../components/pricing/PricingLanding.astro';
+
+const alternates = [
+  { hreflang: 'en', href: '/en/pricing/' },
+  { hreflang: 'fr', href: '/fr/pricing/' },
+  { hreflang: 'nl', href: '/nl/pricing/' },
+  { hreflang: 'de', href: '/de/pricing/' },
+  { hreflang: 'pt', href: '/pt/pricing/' },
+  { hreflang: 'es', href: '/es/pricing/' },
+  { hreflang: 'x-default', href: '/fr/pricing/' },
+];
+---
+<PricingLanding locale="en" canonicalPath="/en/pricing/" alternates={alternates} />
