@@ -17,18 +17,18 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'App joueur STRIVN Player | STRIVN',
       description:
-        'STRIVN Player, l’app du joueur sur iOS et Android : agenda, convocations, check-in du matin, séances de musculation et créneaux de soins. Chaque joueur n’y voit que ses propres données.',
+        'STRIVN Player, l’app du joueur sur iOS et Android : agenda, convocations, check-in du matin, séances de musculation et créneaux de soins. Chaque joueur y voit seulement ses propres données.',
     },
     hero: {
       kicker: 'APP JOUEUR',
-      title: 'Vingt secondes par jour. Sa saison en retour.',
-      sub: 'STRIVN Player se télécharge sur l’App Store et Google Play. Le joueur y répond à son check-in, accepte ses convocations, suit ses séances de musculation — et consulte ses propres statistiques. Vous arrêtez de relancer par message.',
+      title: 'Rendez au joueur sa saison, vingt secondes par jour.',
+      sub: 'STRIVN Player se télécharge sur l’App Store et Google Play. Le joueur y répond à son check-in, accepte ses convocations, suit ses séances de musculation, et consulte ses propres statistiques. Les relances par message s’arrêtent.',
       bullets: [
         'Gratuite pour le joueur, sur iPhone et Android',
         'Le staff envoie l’invitation, le joueur rejoint son équipe',
         'Wellness au réveil, RPE après la séance',
         'Ses stats de match et sa courbe de forme, dans l’app',
-        'Ses réponses partent au staff, jamais au groupe',
+        'Ses réponses partent au staff, et seulement au staff',
       ],
       ctas: {
         primary: 'Commencer gratuitement',
@@ -136,14 +136,14 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'SES STATS',
         title: 'Sa saison, en chiffres qui lui appartiennent.',
-        body: 'Le staff saisit la feuille de match. Le joueur retrouve sa ligne dans l’onglet Stats : minutes, buts, passes décisives, cartons, match par match — sur les cinq derniers, sur la saison, ou depuis son arrivée au club.',
+        body: 'Le staff saisit la feuille de match. Le joueur retrouve sa ligne dans l’onglet Stats : minutes, buts, passes décisives, cartons, match par match, sur les cinq derniers, sur la saison, ou depuis son arrivée au club.',
         visual: 'player-stats',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'SES CHIFFRES',
             title: 'Ce qui se compte',
-            desc: 'Minutes, buts, passes décisives, tirs cadrés, cartons, et les arrêts pour un gardien. Chaque valeur vient de la feuille de match, pas d’une saisie du joueur.',
+            desc: 'Minutes, buts, passes décisives, tirs cadrés, cartons, et les arrêts pour un gardien. Chaque valeur vient de la feuille de match remplie par le staff.',
           },
           {
             eyebrow: 'MATCH PAR MATCH',
@@ -172,7 +172,7 @@ export const playerApp: SubpageLocales = {
         rows: [
           {
             name: 'Choisir son heure',
-            desc: 'Les créneaux libres s’affichent dans l’app. Le joueur prend celui qui tient dans sa journée, et personne ne fait la queue devant une porte.',
+            desc: 'Les créneaux libres s’affichent dans l’app. Le joueur prend celui qui tient dans sa journée, et la file devant la porte disparaît.',
           },
           {
             name: 'Dire pourquoi',
@@ -193,12 +193,12 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'eye-off',
           label: 'Motifs et notes',
-          desc: 'Le motif et la note d’un créneau restent visibles du staff. Un joueur voit son propre rendez-vous, jamais celui d’un coéquipier.',
+          desc: 'Le motif et la note d’un créneau restent visibles du staff. Un joueur voit son propre rendez-vous, et seulement le sien.',
         },
       },
       {
         kicker: 'CE QU’IL VOIT',
-        title: 'Ses chiffres, et rien que les siens.',
+        title: 'Ses chiffres, et seulement les siens.',
         body: 'Un écran de stats pose toujours la même question dans un vestiaire : qui voit les miens ? La réponse est dans le produit, pas dans une consigne d’usage.',
         kind: 'compare',
         heads: ['Dans son app', 'Jamais dans son app'],
@@ -227,7 +227,7 @@ export const playerApp: SubpageLocales = {
           {
             label: 'LES ENFANTS',
             a: 'Sur une équipe en mode enfants, le parent reçoit l’invitation et voit tout.',
-            b: 'Rien ne part au joueur mineur sans le consentement du parent.',
+            b: 'Tout envoi au joueur mineur attend le consentement du parent.',
           },
         ],
       },
@@ -240,7 +240,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'link',
           label: 'Sans installation',
-          desc: 'Un joueur qui préfère ne rien installer reçoit un lien et fait son check-in dans un navigateur. L’app lui apporte en plus l’agenda, les notifications et ses séances de musculation.',
+          desc: 'Un joueur sans l’app reçoit un lien et fait son check-in dans un navigateur. L’app lui apporte en plus l’agenda, les notifications et ses séances de musculation.',
         },
       },
     ],
@@ -255,14 +255,14 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'PLAYER APP',
-      title: 'Twenty seconds a day. Their season back.',
-      sub: 'STRIVN Player downloads from the App Store and Google Play. The player answers their check-in there, accepts call-ups, follows their strength sessions — and reads their own statistics. You stop chasing answers by message.',
+      title: 'Give players their season back, twenty seconds a day.',
+      sub: 'STRIVN Player downloads from the App Store and Google Play. The player answers their check-in there, accepts call-ups, follows their strength sessions, and reads their own statistics. Chasing answers by message stops.',
       bullets: [
         'Free for the player, on iPhone and Android',
         'The staff sends the invitation, the player joins their team',
         'Wellness on waking, RPE after the session',
         'Their match stats and their form curve, in the app',
-        'Their answers go to the staff, never to the group',
+        'Their answers go to the staff, and to the staff only',
       ],
       ctas: {
         primary: 'Start for free',
@@ -370,14 +370,14 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'THEIR STATS',
         title: 'Their season, in figures that belong to them.',
-        body: 'The staff fills in the match sheet. The player finds their own line in the Stats tab: minutes, goals, assists, cards, match by match — over the last five, over the season, or since they joined the club.',
+        body: 'The staff fills in the match sheet. The player finds their own line in the Stats tab: minutes, goals, assists, cards, match by match, over the last five, over the season, or since they joined the club.',
         visual: 'player-stats',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'THEIR FIGURES',
             title: 'What gets counted',
-            desc: 'Minutes, goals, assists, shots on target, cards, and saves for a keeper. Every value comes from the match sheet, not from the player typing it in.',
+            desc: 'Minutes, goals, assists, shots on target, cards, and saves for a keeper. Every value comes from the match sheet the staff fills in.',
           },
           {
             eyebrow: 'MATCH BY MATCH',
@@ -406,7 +406,7 @@ export const playerApp: SubpageLocales = {
         rows: [
           {
             name: 'Pick a time',
-            desc: 'Free slots show up in the app. The player takes the one that fits their day, and nobody queues outside a door.',
+            desc: 'Free slots show up in the app. The player takes the one that fits their day, and the queue outside the door disappears.',
           },
           {
             name: 'Say why',
@@ -427,7 +427,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'eye-off',
           label: 'Reasons and notes',
-          desc: 'The reason and the note on a slot stay visible to the staff. A player sees their own appointment, never a teammate’s.',
+          desc: 'The reason and the note on a slot stay visible to the staff. A player sees their own appointment, and theirs alone.',
         },
       },
       {
@@ -461,7 +461,7 @@ export const playerApp: SubpageLocales = {
           {
             label: 'CHILDREN',
             a: 'On a team in children mode, the parent gets the invitation and sees everything.',
-            b: 'Nothing reaches a minor without the parent’s consent.',
+            b: 'Anything sent to a minor waits for the parent’s consent.',
           },
         ],
       },
@@ -474,7 +474,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'link',
           label: 'Without installing',
-          desc: 'A player who would rather install nothing gets a link and does their check-in in a browser. The app adds the schedule, the notifications and their strength sessions.',
+          desc: 'A player without the app gets a link and does their check-in in a browser. The app adds the schedule, the notifications and their strength sessions.',
         },
       },
     ],
@@ -489,14 +489,14 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'SPELERS-APP',
-      title: 'Twintig seconden per dag. Zijn seizoen terug.',
-      sub: 'STRIVN Player download je in de App Store en op Google Play. Daar doet de speler zijn check-in, aanvaardt hij zijn oproepingen, volgt hij zijn krachttrainingen — en leest hij zijn eigen statistieken. Jij hoeft niets meer na te vragen via berichten.',
+      title: 'Geef spelers hun seizoen terug, twintig seconden per dag.',
+      sub: 'STRIVN Player download je in de App Store en op Google Play. Daar doet de speler zijn check-in, aanvaardt hij zijn oproepingen, volgt hij zijn krachttrainingen, en leest hij zijn eigen statistieken. Het navragen via berichten stopt.',
       bullets: [
         'Gratis voor de speler, op iPhone en Android',
         'De staf stuurt de uitnodiging, de speler vervoegt zijn ploeg',
         'Wellness bij het opstaan, RPE na de training',
         'Zijn wedstrijdcijfers en zijn conditiecurve, in de app',
-        'Zijn antwoorden gaan naar de staf, nooit naar de groep',
+        'Zijn antwoorden gaan naar de staf, en alleen naar de staf',
       ],
       ctas: {
         primary: 'Gratis beginnen',
@@ -604,19 +604,19 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'ZIJN STATS',
         title: 'Zijn seizoen, in cijfers die van hem zijn.',
-        body: 'De staf vult het wedstrijdblad in. De speler vindt zijn eigen lijn terug in het tabblad Stats: minuten, doelpunten, assists, kaarten, wedstrijd per wedstrijd — over de laatste vijf, over het seizoen, of sinds hij bij de club kwam.',
+        body: 'De staf vult het wedstrijdblad in. De speler vindt zijn eigen lijn terug in het tabblad Stats: minuten, doelpunten, assists, kaarten, wedstrijd per wedstrijd, over de laatste vijf, over het seizoen, of sinds hij bij de club kwam.',
         visual: 'player-stats',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'ZIJN CIJFERS',
             title: 'Wat geteld wordt',
-            desc: 'Minuten, doelpunten, assists, schoten op doel, kaarten, en reddingen voor een doelman. Elke waarde komt van het wedstrijdblad, niet van een invoer door de speler.',
+            desc: 'Minuten, doelpunten, assists, schoten op doel, kaarten, en reddingen voor een doelman. Elke waarde komt van het wedstrijdblad dat de staf invult.',
           },
           {
             eyebrow: 'WEDSTRIJD PER WEDSTRIJD',
             title: 'Zijn lijn, elk weekend',
-            desc: 'De tegenstander, de score, thuis of uit, en wat hij die dag deed. Een seizoen lees je terug wedstrijd per wedstrijd, niet als gemiddelde.',
+            desc: 'De tegenstander, de score, thuis of uit, en wat hij die dag deed. Een seizoen lees je terug wedstrijd per wedstrijd, in plaats van als gemiddelde.',
           },
           {
             eyebrow: 'DE PERIODES',
@@ -640,7 +640,7 @@ export const playerApp: SubpageLocales = {
         rows: [
           {
             name: 'Een uur kiezen',
-            desc: 'De vrije slots verschijnen in de app. De speler neemt het slot dat in zijn dag past, en niemand staat aan te schuiven voor een deur.',
+            desc: 'De vrije slots verschijnen in de app. De speler neemt het slot dat in zijn dag past, en de rij voor de deur verdwijnt.',
           },
           {
             name: 'Zeggen waarom',
@@ -661,7 +661,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'eye-off',
           label: 'Redenen en notities',
-          desc: 'De reden en de notitie bij een slot blijven zichtbaar voor de staf. Een speler ziet zijn eigen afspraak, nooit die van een ploegmaat.',
+          desc: 'De reden en de notitie bij een slot blijven zichtbaar voor de staf. Een speler ziet zijn eigen afspraak, en alleen die.',
         },
       },
       {
@@ -695,20 +695,20 @@ export const playerApp: SubpageLocales = {
           {
             label: 'DE KINDEREN',
             a: 'Bij een ploeg in kindermodus krijgt de ouder de uitnodiging en ziet die alles.',
-            b: 'Niets bereikt een minderjarige zonder toestemming van de ouder.',
+            b: 'Alles wat naar een minderjarige gaat, wacht op de toestemming van de ouder.',
           },
         ],
       },
       {
         kicker: 'DOWNLOAD',
-        title: 'STRIVN Player, in de App Store en op Google Play.',
+        title: 'STRIVN Player, in de App Store en Google Play.',
         body: 'De staf voegt de speler toe aan de kern en stuurt zijn uitnodiging. De speler installeert de app en vindt zijn ploeg terug bij de eerste opening.',
         kind: 'stores',
         app: 'player',
         note: {
           icon: 'link',
           label: 'Zonder installatie',
-          desc: 'Een speler die liever niets installeert, krijgt een link en doet zijn check-in in een browser. De app brengt daarbovenop de agenda, de meldingen en zijn krachttrainingen.',
+          desc: 'Een speler zonder de app krijgt een link en doet zijn check-in in een browser. De app brengt daarbovenop de agenda, de meldingen en zijn krachttrainingen.',
         },
       },
     ],
@@ -723,14 +723,14 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'SPIELER-APP',
-      title: 'Zwanzig Sekunden am Tag. Seine Saison zurück.',
-      sub: 'STRIVN Player lädt man im App Store und bei Google Play. Dort beantwortet der Spieler seinen Check-in, nimmt Aufgebote an, folgt seinen Krafteinheiten — und liest seine eigenen Statistiken. Sie hören auf, per Nachricht nachzuhaken.',
+      title: 'Geben Sie Spielern ihre Saison zurück, zwanzig Sekunden täglich.',
+      sub: 'STRIVN Player lädt man im App Store und bei Google Play. Dort beantwortet der Spieler seinen Check-in, nimmt Aufgebote an, folgt seinen Krafteinheiten und liest seine eigenen Statistiken. Das Nachhaken per Nachricht hört auf.',
       bullets: [
         'Für den Spieler kostenlos, auf iPhone und Android',
         'Der Staff schickt die Einladung, der Spieler tritt seiner Mannschaft bei',
         'Wellness nach dem Aufwachen, RPE nach der Einheit',
         'Seine Spielzahlen und seine Formkurve, in der App',
-        'Seine Antworten gehen an den Staff, nie an die Gruppe',
+        'Seine Antworten gehen an den Staff, und nur an den Staff',
       ],
       ctas: {
         primary: 'Kostenlos starten',
@@ -838,19 +838,19 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'SEINE STATISTIKEN',
         title: 'Seine Saison, in Zahlen, die ihm gehören.',
-        body: 'Der Staff trägt den Spielbericht ein. Der Spieler findet seine eigene Zeile im Reiter Statistiken: Minuten, Tore, Vorlagen, Karten, Spiel für Spiel — über die letzten fünf, über die Saison, oder seit seinem Wechsel zum Verein.',
+        body: 'Der Staff trägt den Spielbericht ein. Der Spieler findet seine eigene Zeile im Reiter Statistiken: Minuten, Tore, Vorlagen, Karten, Spiel für Spiel, über die letzten fünf, über die Saison, oder seit seinem Wechsel zum Verein.',
         visual: 'player-stats',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'SEINE ZAHLEN',
             title: 'Was gezählt wird',
-            desc: 'Minuten, Tore, Vorlagen, Schüsse aufs Tor, Karten, und Paraden bei einem Torhüter. Jeder Wert kommt aus dem Spielbericht, nicht aus einer Eingabe des Spielers.',
+            desc: 'Minuten, Tore, Vorlagen, Schüsse aufs Tor, Karten, und Paraden bei einem Torhüter. Jeder Wert kommt aus dem Spielbericht, den der Staff einträgt.',
           },
           {
             eyebrow: 'SPIEL FÜR SPIEL',
             title: 'Seine Zeile, jedes Wochenende',
-            desc: 'Der Gegner, das Ergebnis, heim oder auswärts, und was er an dem Tag gemacht hat. Eine Saison liest sich Spiel für Spiel, nicht als Mittelwert.',
+            desc: 'Der Gegner, das Ergebnis, heim oder auswärts, und was er an dem Tag gemacht hat. Eine Saison liest sich Spiel für Spiel statt als Mittelwert.',
           },
           {
             eyebrow: 'DIE ZEITRÄUME',
@@ -874,7 +874,7 @@ export const playerApp: SubpageLocales = {
         rows: [
           {
             name: 'Eine Uhrzeit wählen',
-            desc: 'Die freien Slots stehen in der App. Der Spieler nimmt den, der in seinen Tag passt, und niemand wartet vor einer Tür.',
+            desc: 'Die freien Slots stehen in der App. Der Spieler nimmt den, der in seinen Tag passt, und die Schlange vor der Tür verschwindet.',
           },
           {
             name: 'Den Grund angeben',
@@ -895,7 +895,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'eye-off',
           label: 'Gründe und Notizen',
-          desc: 'Grund und Notiz eines Slots bleiben beim Staff sichtbar. Ein Spieler sieht seinen eigenen Termin, nie den eines Mitspielers.',
+          desc: 'Grund und Notiz eines Slots bleiben beim Staff sichtbar. Ein Spieler sieht seinen eigenen Termin, und nur diesen.',
         },
       },
       {
@@ -929,7 +929,7 @@ export const playerApp: SubpageLocales = {
           {
             label: 'DIE KINDER',
             a: 'Bei einer Mannschaft im Kindermodus bekommen die Eltern die Einladung und sehen alles.',
-            b: 'Nichts erreicht einen Minderjährigen ohne Einwilligung der Eltern.',
+            b: 'Alles, was an einen Minderjährigen geht, wartet auf die Einwilligung der Eltern.',
           },
         ],
       },
@@ -942,7 +942,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'link',
           label: 'Ohne Installation',
-          desc: 'Wer lieber nichts installiert, bekommt einen Link und macht seinen Check-in im Browser. Die App bringt zusätzlich den Terminplan, die Benachrichtigungen und seine Krafteinheiten.',
+          desc: 'Ein Spieler ohne App bekommt einen Link und macht seinen Check-in im Browser. Die App bringt zusätzlich den Terminplan, die Benachrichtigungen und seine Krafteinheiten.',
         },
       },
     ],
@@ -957,14 +957,14 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'APP DO JOGADOR',
-      title: 'Vinte segundos por dia. A sua época de volta.',
-      sub: 'A STRIVN Player transfere-se na App Store e no Google Play. É aí que o jogador responde ao check-in, aceita as convocatórias, segue os treinos de força — e consulta as suas próprias estatísticas. Deixa de andar a insistir por mensagem.',
+      title: 'Devolva a época aos jogadores, vinte segundos por dia.',
+      sub: 'A STRIVN Player transfere-se na App Store e no Google Play. É aí que o jogador responde ao check-in, aceita as convocatórias, segue os treinos de força, e consulta as suas próprias estatísticas. A insistência por mensagem acaba.',
       bullets: [
         'Gratuita para o jogador, em iPhone e Android',
         'O staff envia o convite, o jogador entra na sua equipa',
         'Wellness ao acordar, RPE depois do treino',
         'Os seus números de jogo e a sua curva de forma, na app',
-        'As respostas vão para o staff, nunca para o grupo',
+        'As respostas vão para o staff, e só para o staff',
       ],
       ctas: {
         primary: 'Começar gratuitamente',
@@ -1072,19 +1072,19 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'AS SUAS ESTATÍSTICAS',
         title: 'A sua época, em números que lhe pertencem.',
-        body: 'O staff preenche a ficha de jogo. O jogador encontra a sua linha no separador Estatísticas: minutos, golos, assistências, cartões, jogo a jogo — nos últimos cinco, na época, ou desde que chegou ao clube.',
+        body: 'O staff preenche a ficha de jogo. O jogador encontra a sua linha no separador Estatísticas: minutos, golos, assistências, cartões, jogo a jogo, nos últimos cinco, na época, ou desde que chegou ao clube.',
         visual: 'player-stats',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'OS SEUS NÚMEROS',
             title: 'O que se conta',
-            desc: 'Minutos, golos, assistências, remates à baliza, cartões, e defesas para um guarda-redes. Cada valor vem da ficha de jogo, não de um registo do jogador.',
+            desc: 'Minutos, golos, assistências, remates à baliza, cartões, e defesas para um guarda-redes. Cada valor vem da ficha de jogo que o staff preenche.',
           },
           {
             eyebrow: 'JOGO A JOGO',
             title: 'A sua linha, todos os fins de semana',
-            desc: 'O adversário, o resultado, casa ou fora, e o que fez nesse dia. Uma época relê-se jogo a jogo, não em média.',
+            desc: 'O adversário, o resultado, casa ou fora, e o que fez nesse dia. Uma época relê-se jogo a jogo, em vez de em média.',
           },
           {
             eyebrow: 'OS PERÍODOS',
@@ -1108,7 +1108,7 @@ export const playerApp: SubpageLocales = {
         rows: [
           {
             name: 'Escolher a hora',
-            desc: 'As vagas livres aparecem na app. O jogador fica com a que cabe no seu dia, e ninguém faz fila à porta.',
+            desc: 'As vagas livres aparecem na app. O jogador fica com a que cabe no seu dia, e a fila à porta desaparece.',
           },
           {
             name: 'Dizer porquê',
@@ -1129,7 +1129,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'eye-off',
           label: 'Motivos e notas',
-          desc: 'O motivo e a nota de uma vaga ficam visíveis para o staff. Um jogador vê a sua própria marcação, nunca a de um colega.',
+          desc: 'O motivo e a nota de uma vaga ficam visíveis para o staff. Um jogador vê a sua própria marcação, e só essa.',
         },
       },
       {
@@ -1163,7 +1163,7 @@ export const playerApp: SubpageLocales = {
           {
             label: 'AS CRIANÇAS',
             a: 'Numa equipa em modo crianças, o encarregado de educação recebe o convite e vê tudo.',
-            b: 'Nada chega a um jogador menor sem o consentimento do encarregado.',
+            b: 'Tudo o que vai para um jogador menor espera pelo consentimento do encarregado.',
           },
         ],
       },
@@ -1176,7 +1176,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'link',
           label: 'Sem instalar',
-          desc: 'Quem prefere não instalar nada recebe uma ligação e faz o check-in num navegador. A app acrescenta a agenda, as notificações e os treinos de força.',
+          desc: 'Um jogador sem a app recebe uma ligação e faz o check-in num navegador. A app acrescenta a agenda, as notificações e os treinos de força.',
         },
       },
     ],
@@ -1191,14 +1191,14 @@ export const playerApp: SubpageLocales = {
     },
     hero: {
       kicker: 'APP DEL JUGADOR',
-      title: 'Veinte segundos al día. Su temporada de vuelta.',
-      sub: 'STRIVN Player se descarga en la App Store y en Google Play. Ahí el jugador responde su check-in, acepta sus convocatorias, sigue sus sesiones de fuerza — y consulta sus propias estadísticas. Dejas de reclamar respuestas por mensaje.',
+      title: 'Devuelve al jugador su temporada, veinte segundos al día.',
+      sub: 'STRIVN Player se descarga en la App Store y en Google Play. Ahí el jugador responde su check-in, acepta sus convocatorias, sigue sus sesiones de fuerza, y consulta sus propias estadísticas. Reclamar respuestas por mensaje se acaba.',
       bullets: [
         'Gratis para el jugador, en iPhone y Android',
         'El staff envía la invitación, el jugador entra en su equipo',
         'Wellness al despertar, RPE después de la sesión',
         'Sus cifras de partido y su curva de forma, en la app',
-        'Sus respuestas van al staff, nunca al grupo',
+        'Sus respuestas van al staff, y solo al staff',
       ],
       ctas: {
         primary: 'Empezar gratis',
@@ -1248,7 +1248,7 @@ export const playerApp: SubpageLocales = {
       },
       {
         kicker: 'UN DÍA',
-        title: 'Al despertar, antes de la sesión, después de la sesión.',
+        title: 'Al despertar, antes y después de la sesión.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -1306,19 +1306,19 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'SUS ESTADÍSTICAS',
         title: 'Su temporada, en cifras que le pertenecen.',
-        body: 'El staff rellena el acta del partido. El jugador encuentra su línea en la pestaña Estadísticas: minutos, goles, asistencias, tarjetas, partido a partido — en los últimos cinco, en la temporada, o desde que llegó al club.',
+        body: 'El staff rellena el acta del partido. El jugador encuentra su línea en la pestaña Estadísticas: minutos, goles, asistencias, tarjetas, partido a partido, en los últimos cinco, en la temporada, o desde que llegó al club.',
         visual: 'player-stats',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'SUS CIFRAS',
             title: 'Lo que se cuenta',
-            desc: 'Minutos, goles, asistencias, tiros a puerta, tarjetas, y paradas para un portero. Cada valor viene del acta del partido, no de algo que teclee el jugador.',
+            desc: 'Minutos, goles, asistencias, tiros a puerta, tarjetas, y paradas para un portero. Cada valor viene del acta del partido que rellena el staff.',
           },
           {
             eyebrow: 'PARTIDO A PARTIDO',
             title: 'Su línea, cada fin de semana',
-            desc: 'El rival, el resultado, casa o fuera, y lo que hizo ese día. Una temporada se relee partido a partido, no en promedio.',
+            desc: 'El rival, el resultado, casa o fuera, y lo que hizo ese día. Una temporada se relee partido a partido, en vez de en promedio.',
           },
           {
             eyebrow: 'LOS PERIODOS',
@@ -1342,7 +1342,7 @@ export const playerApp: SubpageLocales = {
         rows: [
           {
             name: 'Elegir la hora',
-            desc: 'Los huecos libres aparecen en la app. El jugador coge el que cabe en su día, y nadie hace cola delante de una puerta.',
+            desc: 'Los huecos libres aparecen en la app. El jugador coge el que cabe en su día, y la cola delante de la puerta desaparece.',
           },
           {
             name: 'Decir por qué',
@@ -1363,7 +1363,7 @@ export const playerApp: SubpageLocales = {
         note: {
           icon: 'eye-off',
           label: 'Motivos y notas',
-          desc: 'El motivo y la nota de un hueco quedan visibles para el staff. Un jugador ve su propia cita, nunca la de un compañero.',
+          desc: 'El motivo y la nota de un hueco quedan visibles para el staff. Un jugador ve su propia cita, y solo la suya.',
         },
       },
       {
@@ -1397,20 +1397,20 @@ export const playerApp: SubpageLocales = {
           {
             label: 'LOS NIÑOS',
             a: 'En un equipo en modo niños, el padre o la madre recibe la invitación y lo ve todo.',
-            b: 'Nada llega a un jugador menor sin el consentimiento de sus padres.',
+            b: 'Todo lo que va a un jugador menor espera el consentimiento de sus padres.',
           },
         ],
       },
       {
         kicker: 'DESCARGA',
-        title: 'STRIVN Player, en la App Store y en Google Play.',
+        title: 'STRIVN Player, en la App Store y Google Play.',
         body: 'El staff añade al jugador a la plantilla y le envía su invitación. El jugador instala la app y encuentra su equipo en la primera apertura.',
         kind: 'stores',
         app: 'player',
         note: {
           icon: 'link',
           label: 'Sin instalar',
-          desc: 'Quien prefiere no instalar nada recibe un enlace y hace su check-in en un navegador. La app añade la agenda, las notificaciones y sus sesiones de fuerza.',
+          desc: 'Un jugador sin la app recibe un enlace y hace su check-in en un navegador. La app añade la agenda, las notificaciones y sus sesiones de fuerza.',
         },
       },
     ],

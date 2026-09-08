@@ -15,7 +15,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · MESURES',
-      title: 'Le chiffre tombe. Reste à savoir ce qu’il vaut.',
+      title: 'Situez chaque test dans ses zones et son poste.',
       sub: 'Créez vos mesures, lancez une campagne de tests, saisissez sur le terrain. STRIVN place chaque résultat dans ses zones et sur le percentile du poste, pour que la valeur devienne une décision.',
       bullets: [
         'Mesures sur mesure : nom, unité, sens de la progression',
@@ -32,8 +32,8 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'LE VOCABULAIRE DE VOS TESTS',
-        title: 'Sur un 10 m, le meilleur est le plus petit.',
-        body: 'Un test n’est pas un champ libre. Vous définissez la mesure une fois — son nom, son unité, le sens de la progression, ses seuils — et elle reste comparable d’une campagne à l’autre.',
+        title: 'Sur 10 m, le meilleur est le plus petit.',
+        body: 'Vous définissez la mesure une fois (son nom, son unité, le sens de la progression, ses seuils) et elle reste comparable d’une campagne à l’autre.',
         visual: 'measure-editor',
         visualAside: true,
         kind: 'columns',
@@ -41,11 +41,11 @@ export const tests: SubpageLocales = {
           {
             eyebrow: 'UNITÉ',
             title: 'Le sens du meilleur',
-            desc: 'Sur un 10 m, le meilleur est le plus petit. Sur un CMJ, le plus grand. STRIVN le sait mesure par mesure, donc un classement n’est jamais à l’envers.',
+            desc: 'Sur un 10 m, le meilleur est le plus petit. Sur un CMJ, le plus grand. STRIVN le sait mesure par mesure, donc le classement reste dans le bon sens.',
           },
           {
             eyebrow: 'ZONES',
-            title: 'Vos seuils, pas les nôtres',
+            title: 'Vos seuils, vos couleurs',
             desc: 'Quatre zones, vos bornes, vos couleurs. Un résultat tombe dans une zone et en hérite partout : liste, fiche joueur, rapport.',
           },
           {
@@ -57,14 +57,14 @@ export const tests: SubpageLocales = {
       },
       {
         kicker: 'SITUER UNE VALEUR',
-        title: '« 17,4 km/h », c’est bien ou pas ?',
-        body: 'Seul, ce chiffre ne dit rien. Rapporté au poste, à l’historique du joueur et au reste du groupe, il devient une décision.',
+        title: 'Lisez « 17,4 km/h » face au poste, l’historique, le groupe.',
+        body: 'Rapporté au poste, à l’historique du joueur et au reste du groupe, ce chiffre devient une décision.',
         visual: 'percentile-scale',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'PAR POSTE',
-            title: 'Un ailier n’est pas un central',
+            title: 'Un repère par poste',
             desc: 'Le repère se construit par poste. Une valeur moyenne pour un latéral peut être un signal fort chez un gardien.',
           },
           {
@@ -80,7 +80,7 @@ export const tests: SubpageLocales = {
         ],
         note: {
           label: 'La campagne vit dans le calendrier',
-          desc: 'Une campagne de tests est un événement comme un autre : elle a une date, une liste de convoqués, un lieu. Les absents restent visibles comme non testés, jamais comme moyens.',
+          desc: 'Une campagne de tests est un événement comme un autre : elle a une date, une liste de convoqués, un lieu. Les absents restent visibles comme non testés, et hors des moyennes.',
         },
       },
     ],
@@ -95,7 +95,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · MEASURES',
-      title: 'The number lands. What it is worth is the other question.',
+      title: 'Place every test in its zones and its position.',
       sub: 'Define your measures, run a testing campaign, record results on the pitch. STRIVN places each one in its zones and on the percentile for the position, so the value becomes a decision.',
       bullets: [
         'Measures you define: name, unit, direction of progress',
@@ -112,8 +112,8 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'THE VOCABULARY OF YOUR TESTS',
-        title: 'On a 10 m sprint, the best score is the smallest.',
-        body: 'A test is not a free-text field. You define the measure once — its name, its unit, which direction counts as progress, its thresholds — and it stays comparable from one campaign to the next.',
+        title: 'On 10 m, the best score is the smallest.',
+        body: 'You define the measure once (its name, its unit, which direction counts as progress, its thresholds) and it stays comparable from one campaign to the next.',
         visual: 'measure-editor',
         visualAside: true,
         kind: 'columns',
@@ -121,11 +121,11 @@ export const tests: SubpageLocales = {
           {
             eyebrow: 'UNIT',
             title: 'Which way is better',
-            desc: 'On a 10 m sprint, lower is better. On a CMJ, higher is. STRIVN knows this measure by measure, so a ranking is never upside down.',
+            desc: 'On a 10 m sprint, lower is better. On a CMJ, higher is. STRIVN knows this measure by measure, so the ranking stays the right way up.',
           },
           {
             eyebrow: 'ZONES',
-            title: 'Your thresholds, not ours',
+            title: 'Your thresholds, your colours',
             desc: 'Four zones, your bounds, your colours. A result lands in a zone and carries it everywhere: list, player file, report.',
           },
           {
@@ -137,14 +137,14 @@ export const tests: SubpageLocales = {
       },
       {
         kicker: 'PLACING A VALUE',
-        title: 'Is “17.4 km/h” good or not?',
-        body: 'On its own, that number says nothing. Against the position, the player’s own history and the rest of the squad, it becomes a decision.',
+        title: 'Read “17.4 km/h” against position, history and squad.',
+        body: 'Against the position, the player’s own history and the rest of the squad, that number becomes a decision.',
         visual: 'percentile-scale',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'BY POSITION',
-            title: 'A winger is not a centre-back',
+            title: 'A reference per position',
             desc: 'The reference is built per position. An average value for a full-back can be a strong signal in a goalkeeper.',
           },
           {
@@ -160,7 +160,7 @@ export const tests: SubpageLocales = {
         ],
         note: {
           label: 'The campaign lives in the calendar',
-          desc: 'A testing campaign is an event like any other: a date, a call-up list, a venue. Absentees stay visible as untested, never as average.',
+          desc: 'A testing campaign is an event like any other: a date, a call-up list, a venue. Absentees stay visible as untested, and out of the averages.',
         },
       },
     ],
@@ -175,7 +175,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · METINGEN',
-      title: 'Het cijfer valt. Wat het waard is, is de vraag.',
+      title: 'Plaats elk testresultaat in zijn zones en zijn positie.',
       sub: 'Definieer je metingen, start een testcampagne, noteer op het veld. STRIVN plaatst elk resultaat in zijn zones en op het percentiel van de positie, zodat de waarde een beslissing wordt.',
       bullets: [
         'Eigen metingen: naam, eenheid, richting van vooruitgang',
@@ -193,7 +193,7 @@ export const tests: SubpageLocales = {
       {
         kicker: 'DE WOORDENSCHAT VAN JE TESTS',
         title: 'Op een 10 m is de beste de kleinste.',
-        body: 'Een test is geen vrij veld. Je definieert de meting één keer — naam, eenheid, welke richting vooruitgang is, de drempels — en ze blijft vergelijkbaar van campagne tot campagne.',
+        body: 'Je definieert de meting één keer (naam, eenheid, welke richting vooruitgang is, de drempels) en ze blijft vergelijkbaar van campagne tot campagne.',
         visual: 'measure-editor',
         visualAside: true,
         kind: 'columns',
@@ -201,11 +201,11 @@ export const tests: SubpageLocales = {
           {
             eyebrow: 'EENHEID',
             title: 'Welke kant is beter',
-            desc: 'Op een 10 m is de kleinste tijd de beste. Op een CMJ de grootste hoogte. STRIVN weet dat per meting, dus een ranking staat nooit op zijn kop.',
+            desc: 'Op een 10 m is de kleinste tijd de beste. Op een CMJ de grootste hoogte. STRIVN weet dat per meting, dus de ranking blijft in de juiste richting.',
           },
           {
             eyebrow: 'ZONES',
-            title: 'Jouw drempels, niet de onze',
+            title: 'Jouw drempels, jouw kleuren',
             desc: 'Vier zones, jouw grenzen, jouw kleuren. Een resultaat valt in een zone en neemt die overal mee: lijst, spelersfiche, rapport.',
           },
           {
@@ -217,14 +217,14 @@ export const tests: SubpageLocales = {
       },
       {
         kicker: 'EEN WAARDE PLAATSEN',
-        title: 'Is “17,4 km/u” goed of niet?',
-        body: 'Op zichzelf zegt dat cijfer niets. Tegenover de positie, de eigen geschiedenis van de speler en de rest van de groep wordt het een beslissing.',
+        title: 'Lees “17,4 km/u” tegenover positie, geschiedenis en groep.',
+        body: 'Tegenover de positie, de eigen geschiedenis van de speler en de rest van de groep wordt dat cijfer een beslissing.',
         visual: 'percentile-scale',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'PER POSITIE',
-            title: 'Een flankspeler is geen centrale verdediger',
+            title: 'Een ijkpunt per positie',
             desc: 'Het ijkpunt wordt per positie opgebouwd. Een gemiddelde waarde voor een back kan bij een keeper een sterk signaal zijn.',
           },
           {
@@ -240,7 +240,7 @@ export const tests: SubpageLocales = {
         ],
         note: {
           label: 'De campagne leeft in de kalender',
-          desc: 'Een testcampagne is een gebeurtenis zoals een andere: een datum, een lijst opgeroepenen, een locatie. Afwezigen blijven zichtbaar als niet getest, nooit als gemiddeld.',
+          desc: 'Een testcampagne is een gebeurtenis zoals een andere: een datum, een lijst opgeroepenen, een locatie. Afwezigen blijven zichtbaar als niet getest, en buiten de gemiddelden.',
         },
       },
     ],
@@ -255,7 +255,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · MESSGRÖSSEN',
-      title: 'Die Zahl steht. Was sie wert ist, ist die andere Frage.',
+      title: 'Jedes Testergebnis nach Zonen und Position einordnen.',
       sub: 'Definieren Sie Ihre Messgrößen, starten Sie eine Testkampagne, erfassen Sie auf dem Platz. STRIVN ordnet jedes Ergebnis seinen Zonen und dem Perzentil der Position zu, damit aus dem Wert eine Entscheidung wird.',
       bullets: [
         'Eigene Messgrößen: Name, Einheit, Richtung des Fortschritts',
@@ -273,7 +273,7 @@ export const tests: SubpageLocales = {
       {
         kicker: 'DAS VOKABULAR IHRER TESTS',
         title: 'Bei 10 m ist der beste Wert der kleinste.',
-        body: 'Ein Test ist kein freies Textfeld. Sie definieren die Messgröße einmal — Name, Einheit, welche Richtung Fortschritt bedeutet, ihre Schwellen — und sie bleibt von Kampagne zu Kampagne vergleichbar.',
+        body: 'Sie definieren die Messgröße einmal (Name, Einheit, welche Richtung Fortschritt bedeutet, ihre Schwellen) und sie bleibt von Kampagne zu Kampagne vergleichbar.',
         visual: 'measure-editor',
         visualAside: true,
         kind: 'columns',
@@ -281,11 +281,11 @@ export const tests: SubpageLocales = {
           {
             eyebrow: 'EINHEIT',
             title: 'Wohin „besser“ zeigt',
-            desc: 'Beim 10-m-Sprint ist der kleinere Wert der bessere, beim CMJ der größere. STRIVN weiß das je Messgröße — eine Rangliste steht nie auf dem Kopf.',
+            desc: 'Beim 10-m-Sprint ist der kleinere Wert der bessere, beim CMJ der größere. STRIVN weiß das je Messgröße, also bleibt die Rangliste richtig herum.',
           },
           {
             eyebrow: 'ZONEN',
-            title: 'Ihre Schwellen, nicht unsere',
+            title: 'Ihre Schwellen, Ihre Farben',
             desc: 'Vier Zonen, Ihre Grenzen, Ihre Farben. Ein Ergebnis fällt in eine Zone und trägt sie überall mit: Liste, Spielerakte, Bericht.',
           },
           {
@@ -297,14 +297,14 @@ export const tests: SubpageLocales = {
       },
       {
         kicker: 'EINEN WERT EINORDNEN',
-        title: 'Sind „17,4 km/h“ gut oder nicht?',
-        body: 'Für sich genommen sagt diese Zahl nichts. Gegen die Position, die eigene Historie des Spielers und den Rest der Mannschaft wird sie zur Entscheidung.',
+        title: 'Lesen Sie „17,4 km/h“ gegen Position, Historie und Mannschaft.',
+        body: 'Gegen die Position, die eigene Historie des Spielers und den Rest der Mannschaft wird diese Zahl zur Entscheidung.',
         visual: 'percentile-scale',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'JE POSITION',
-            title: 'Ein Flügelspieler ist kein Innenverteidiger',
+            title: 'Ein Bezugspunkt je Position',
             desc: 'Der Bezugspunkt entsteht je Position. Ein durchschnittlicher Wert beim Außenverteidiger kann beim Torhüter ein starkes Signal sein.',
           },
           {
@@ -320,7 +320,7 @@ export const tests: SubpageLocales = {
         ],
         note: {
           label: 'Die Kampagne lebt im Kalender',
-          desc: 'Eine Testkampagne ist ein Termin wie jeder andere: ein Datum, eine Aufgebotsliste, ein Ort. Abwesende bleiben sichtbar als nicht getestet, nie als durchschnittlich.',
+          desc: 'Eine Testkampagne ist ein Termin wie jeder andere: ein Datum, eine Aufgebotsliste, ein Ort. Abwesende bleiben sichtbar als nicht getestet, und außerhalb der Mittelwerte.',
         },
       },
     ],
@@ -335,7 +335,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · MEDIDAS',
-      title: 'O número sai. Falta saber o que vale.',
+      title: 'Situe cada teste nas suas zonas e posição.',
       sub: 'Defina as suas medidas, lance uma campanha de testes, registe no campo. A STRIVN coloca cada resultado nas suas zonas e no percentil da posição, para que o valor se torne uma decisão.',
       bullets: [
         'Medidas à sua medida: nome, unidade, sentido do progresso',
@@ -353,7 +353,7 @@ export const tests: SubpageLocales = {
       {
         kicker: 'O VOCABULÁRIO DOS SEUS TESTES',
         title: 'Num 10 m, o melhor é o mais pequeno.',
-        body: 'Um teste não é um campo livre. Define a medida uma vez — o nome, a unidade, o sentido do progresso, os limiares — e ela mantém-se comparável de campanha para campanha.',
+        body: 'Define a medida uma vez (o nome, a unidade, o sentido do progresso, os limiares) e ela mantém-se comparável de campanha para campanha.',
         visual: 'measure-editor',
         visualAside: true,
         kind: 'columns',
@@ -361,11 +361,11 @@ export const tests: SubpageLocales = {
           {
             eyebrow: 'UNIDADE',
             title: 'Para que lado é melhor',
-            desc: 'Num 10 m, o melhor é o mais baixo. Num CMJ, o mais alto. A STRIVN sabe-o medida a medida, por isso um ranking nunca fica ao contrário.',
+            desc: 'Num 10 m, o melhor é o mais baixo. Num CMJ, o mais alto. A STRIVN sabe-o medida a medida, por isso o ranking fica sempre no sentido certo.',
           },
           {
             eyebrow: 'ZONAS',
-            title: 'Os seus limiares, não os nossos',
+            title: 'Os seus limiares, as suas cores',
             desc: 'Quatro zonas, os seus limites, as suas cores. Um resultado cai numa zona e leva-a para todo o lado: lista, ficha do jogador, relatório.',
           },
           {
@@ -377,14 +377,14 @@ export const tests: SubpageLocales = {
       },
       {
         kicker: 'SITUAR UM VALOR',
-        title: '«17,4 km/h» é bom ou não?',
-        body: 'Sozinho, esse número não diz nada. Face à posição, ao histórico do próprio jogador e ao resto do grupo, torna-se uma decisão.',
+        title: 'Leia «17,4 km/h» face à posição, histórico e grupo.',
+        body: 'Face à posição, ao histórico do próprio jogador e ao resto do grupo, esse número torna-se uma decisão.',
         visual: 'percentile-scale',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'POR POSIÇÃO',
-            title: 'Um extremo não é um central',
+            title: 'Uma referência por posição',
             desc: 'A referência constrói-se por posição. Um valor médio para um lateral pode ser um sinal forte num guarda-redes.',
           },
           {
@@ -400,7 +400,7 @@ export const tests: SubpageLocales = {
         ],
         note: {
           label: 'A campanha vive no calendário',
-          desc: 'Uma campanha de testes é um evento como outro qualquer: tem data, lista de convocados e local. Os ausentes ficam visíveis como não testados, nunca como médios.',
+          desc: 'Uma campanha de testes é um evento como outro qualquer: tem data, lista de convocados e local. Os ausentes ficam visíveis como não testados, e fora das médias.',
         },
       },
     ],
@@ -415,7 +415,7 @@ export const tests: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · MEDIDAS',
-      title: 'El número cae. Queda saber lo que vale.',
+      title: 'Sitúa cada test en sus zonas y su puesto.',
       sub: 'Define tus medidas, lanza una campaña de tests, registra en el campo. STRIVN coloca cada resultado en sus zonas y en el percentil del puesto, para que el valor se convierta en una decisión.',
       bullets: [
         'Medidas a tu medida: nombre, unidad, sentido del progreso',
@@ -432,8 +432,8 @@ export const tests: SubpageLocales = {
     sections: [
       {
         kicker: 'EL VOCABULARIO DE TUS TESTS',
-        title: 'En un 10 m, el mejor es el más pequeño.',
-        body: 'Un test no es un campo libre. Defines la medida una vez — su nombre, su unidad, el sentido del progreso, sus umbrales — y sigue siendo comparable de una campaña a otra.',
+        title: 'En 10 m, el mejor es el más pequeño.',
+        body: 'Defines la medida una vez (su nombre, su unidad, el sentido del progreso, sus umbrales) y sigue siendo comparable de una campaña a otra.',
         visual: 'measure-editor',
         visualAside: true,
         kind: 'columns',
@@ -441,11 +441,11 @@ export const tests: SubpageLocales = {
           {
             eyebrow: 'UNIDAD',
             title: 'Hacia dónde está lo mejor',
-            desc: 'En un 10 m, lo mejor es lo más bajo. En un CMJ, lo más alto. STRIVN lo sabe medida a medida, así que una clasificación nunca sale del revés.',
+            desc: 'En un 10 m, lo mejor es lo más bajo. En un CMJ, lo más alto. STRIVN lo sabe medida a medida, así que la clasificación queda siempre en el sentido correcto.',
           },
           {
             eyebrow: 'ZONAS',
-            title: 'Tus umbrales, no los nuestros',
+            title: 'Tus umbrales, tus colores',
             desc: 'Cuatro zonas, tus límites, tus colores. Un resultado cae en una zona y se la lleva a todas partes: lista, ficha del jugador, informe.',
           },
           {
@@ -457,14 +457,14 @@ export const tests: SubpageLocales = {
       },
       {
         kicker: 'SITUAR UN VALOR',
-        title: '«17,4 km/h», ¿es bueno o no?',
-        body: 'Solo, ese número no dice nada. Frente al puesto, al historial del propio jugador y al resto del grupo, se convierte en una decisión.',
+        title: 'Lee «17,4 km/h» frente a puesto, historial y grupo.',
+        body: 'Frente al puesto, al historial del propio jugador y al resto del grupo, ese número se convierte en una decisión.',
         visual: 'percentile-scale',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'POR PUESTO',
-            title: 'Un extremo no es un central',
+            title: 'Una referencia por puesto',
             desc: 'La referencia se construye por puesto. Un valor medio para un lateral puede ser una señal fuerte en un portero.',
           },
           {
@@ -480,7 +480,7 @@ export const tests: SubpageLocales = {
         ],
         note: {
           label: 'La campaña vive en el calendario',
-          desc: 'Una campaña de tests es un evento como otro cualquiera: tiene fecha, lista de convocados y lugar. Los ausentes se ven como no testados, nunca como medios.',
+          desc: 'Una campaña de tests es un evento como otro cualquiera: tiene fecha, lista de convocados y lugar. Los ausentes se ven como no testados, y fuera de las medias.',
         },
       },
     ],

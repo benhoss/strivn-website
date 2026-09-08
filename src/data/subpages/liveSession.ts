@@ -11,12 +11,12 @@ export const liveSession: SubpageLocales = {
     meta: {
       title: 'Live séance | STRIVN',
       description:
-        'Composez le déroulé, déroulez-le en plein écran au bord du terrain — chrono, présences, équipes, score — puis clôturez par le bilan. Le runner fonctionne sans réseau.',
+        'Composez le déroulé, déroulez-le en plein écran au bord du terrain (chrono, présences, équipes, score), puis clôturez par le bilan. Le runner fonctionne sans réseau.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · TERRAIN',
-      title: 'La séance se pilote au pouce.',
-      sub: 'Vous composez le déroulé à l’avance, vous le déroulez en plein écran au bord du terrain — chrono, présences, équipes, score — puis vous clôturez par le bilan. Le runner fonctionne même sans réseau.',
+      title: 'Pilotez la séance au pouce, du déroulé au bilan.',
+      sub: 'Vous composez le déroulé à l’avance, vous le déroulez en plein écran au bord du terrain (chrono, présences, équipes, score), puis vous clôturez par le bilan. Le runner fonctionne même sans réseau.',
       bullets: [
         'Blocs numérotés : intitulé, durée, RPE cible, format',
         'Présences pointées en un tap, puis le chrono part',
@@ -32,7 +32,7 @@ export const liveSession: SubpageLocales = {
     sections: [
       {
         kicker: 'AVANT · PENDANT · APRÈS',
-        title: 'Un seul écran, du déroulé au bilan.',
+        title: 'Composez, déroulez, clôturez sur un seul écran.',
         kind: 'rail',
         activeIndex: 1,
         steps: [
@@ -72,18 +72,18 @@ export const liveSession: SubpageLocales = {
       },
       {
         kicker: 'CE QUE LE TERRAIN IMPOSE',
-        title: 'Le réseau du stade n’est pas votre problème.',
+        title: 'Pilotez hors ligne, synchronisez au retour du réseau.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'HORS LIGNE',
             title: 'Tout est enregistré sur place',
-            desc: 'Le runner ne dépend pas de la connexion. Présences, chronos, scores et équipes s’écrivent en local. Terminer la séance synchronise l’ensemble dès que le réseau revient.',
+            desc: 'Le runner fonctionne sans connexion : présences, chronos, scores et équipes s’écrivent en local. Terminer la séance synchronise l’ensemble dès que le réseau revient.',
           },
           {
             eyebrow: 'AU POUCE',
-            title: 'La double confirmation n’est pas une lourdeur',
-            desc: 'Terminer le bloc et le coup d’envoi demandent deux appuis. Au bord du terrain, avec une tablette dans une main, on tape vite — et parfois à côté.',
+            title: 'La double confirmation protège le chrono',
+            desc: 'Terminer le bloc et le coup d’envoi demandent deux appuis. Au bord du terrain, avec une tablette dans une main, on tape vite, et parfois à côté.',
           },
         ],
         callouts: [
@@ -103,12 +103,12 @@ export const liveSession: SubpageLocales = {
     meta: {
       title: 'Live session | STRIVN',
       description:
-        'Build the running order, run it full-screen pitch-side — timer, attendance, teams, score — then close with the debrief. The runner works without a network.',
+        'Build the running order, run it full-screen pitch-side (timer, attendance, teams, score), then close with the debrief. The runner works without a network.',
     },
     hero: {
       kicker: 'FEATURES · PITCH-SIDE',
-      title: 'The session runs under your thumb.',
-      sub: 'You build the running order in advance, you run it full-screen at the side of the pitch — timer, attendance, teams, score — then you close with the debrief. The runner works even with no network.',
+      title: 'Run the session by thumb, from plan to debrief.',
+      sub: 'You build the running order in advance, you run it full-screen at the side of the pitch (timer, attendance, teams, score), then you close with the debrief. The runner works even with no network.',
       bullets: [
         'Numbered blocks: name, duration, target RPE, format',
         'Attendance in a tap, then the clock starts',
@@ -124,7 +124,7 @@ export const liveSession: SubpageLocales = {
     sections: [
       {
         kicker: 'BEFORE · DURING · AFTER',
-        title: 'One screen, from running order to debrief.',
+        title: 'Build, run and close on a single screen.',
         kind: 'rail',
         activeIndex: 1,
         steps: [
@@ -164,18 +164,18 @@ export const liveSession: SubpageLocales = {
       },
       {
         kicker: 'WHAT THE PITCH IMPOSES',
-        title: 'The stadium’s network is not your problem.',
+        title: 'Run it offline; everything syncs when the network returns.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'OFFLINE',
             title: 'Everything is recorded on the spot',
-            desc: 'The runner does not depend on the connection. Attendance, timers, scores and teams are written locally. Ending the session syncs the lot as soon as the network comes back.',
+            desc: 'The runner works without a connection: attendance, timers, scores and teams are written locally. Ending the session syncs the lot as soon as the network comes back.',
           },
           {
             eyebrow: 'THUMB-FIRST',
-            title: 'The double confirmation is not friction',
-            desc: 'Ending a block and kicking off both ask for two taps. At the side of a pitch, with a tablet in one hand, you tap fast — and sometimes wide.',
+            title: 'The double confirmation protects the clock',
+            desc: 'Ending a block and kicking off both ask for two taps. At the side of a pitch, with a tablet in one hand, you tap fast, and sometimes wide.',
           },
         ],
         callouts: [
@@ -195,12 +195,12 @@ export const liveSession: SubpageLocales = {
     meta: {
       title: 'Live training | STRIVN',
       description:
-        'Stel het verloop samen, draai het schermvullend langs het veld — chrono, aanwezigheden, ploegen, score — en sluit af met de nabespreking. De runner werkt zonder netwerk.',
+        'Stel het verloop samen, draai het schermvullend langs het veld (chrono, aanwezigheden, ploegen, score) en sluit af met de nabespreking. De runner werkt zonder netwerk.',
     },
     hero: {
       kicker: 'FUNCTIES · LANGS HET VELD',
-      title: 'De training stuur je met je duim.',
-      sub: 'Je stelt het verloop vooraf samen, je draait het schermvullend langs het veld — chrono, aanwezigheden, ploegen, score — en dan sluit je af met de nabespreking. De runner werkt zelfs zonder netwerk.',
+      title: 'Stuur de training per duim, van verloop tot nabespreking.',
+      sub: 'Je stelt het verloop vooraf samen, je draait het schermvullend langs het veld (chrono, aanwezigheden, ploegen, score), en dan sluit je af met de nabespreking. De runner werkt zelfs zonder netwerk.',
       bullets: [
         'Genummerde blokken: titel, duur, doel-RPE, vorm',
         'Aanwezigheden in één tik, dan start de klok',
@@ -216,7 +216,7 @@ export const liveSession: SubpageLocales = {
     sections: [
       {
         kicker: 'VOOR · TIJDENS · NA',
-        title: 'Eén scherm, van verloop tot nabespreking.',
+        title: 'Stel samen, draai en sluit af op één scherm.',
         kind: 'rail',
         activeIndex: 1,
         steps: [
@@ -256,18 +256,18 @@ export const liveSession: SubpageLocales = {
       },
       {
         kicker: 'WAT HET VELD OPLEGT',
-        title: 'Het netwerk van het stadion is jouw probleem niet.',
+        title: 'Stuur offline; alles synchroniseert zodra het netwerk terugkeert.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'OFFLINE',
             title: 'Alles wordt ter plaatse opgeslagen',
-            desc: 'De runner hangt niet van de verbinding af. Aanwezigheden, chrono’s, scores en ploegen worden lokaal weggeschreven. De training beëindigen synchroniseert het geheel zodra het netwerk terug is.',
+            desc: 'De runner werkt zonder verbinding: aanwezigheden, chrono’s, scores en ploegen worden lokaal weggeschreven. De training beëindigen synchroniseert het geheel zodra het netwerk terug is.',
           },
           {
             eyebrow: 'MET DE DUIM',
-            title: 'De dubbele bevestiging is geen omslachtigheid',
-            desc: 'Blok beëindigen en aftrappen vragen twee tikken. Langs het veld, met een tablet in één hand, tik je snel — en soms ernaast.',
+            title: 'De dubbele bevestiging beschermt de chrono',
+            desc: 'Blok beëindigen en aftrappen vragen twee tikken. Langs het veld, met een tablet in één hand, tik je snel, en soms ernaast.',
           },
         ],
         callouts: [
@@ -287,12 +287,12 @@ export const liveSession: SubpageLocales = {
     meta: {
       title: 'Live-Einheit | STRIVN',
       description:
-        'Den Ablauf zusammenstellen, ihn am Platz im Vollbild abspulen — Uhr, Anwesenheiten, Teams, Ergebnis — und mit der Nachbesprechung schließen. Der Runner läuft ohne Netz.',
+        'Den Ablauf zusammenstellen, ihn am Platz im Vollbild abspulen (Uhr, Anwesenheiten, Teams, Ergebnis) und mit der Nachbesprechung schließen. Der Runner läuft ohne Netz.',
     },
     hero: {
       kicker: 'FUNKTIONEN · AM PLATZ',
-      title: 'Die Einheit steuert man mit dem Daumen.',
-      sub: 'Sie stellen den Ablauf im Voraus zusammen, spulen ihn am Spielfeldrand im Vollbild ab — Uhr, Anwesenheiten, Teams, Ergebnis — und schließen mit der Nachbesprechung. Der Runner läuft auch ohne Netz.',
+      title: 'Einheit per Daumen steuern, vom Ablauf bis zur Nachbesprechung.',
+      sub: 'Sie stellen den Ablauf im Voraus zusammen, spulen ihn am Spielfeldrand im Vollbild ab (Uhr, Anwesenheiten, Teams, Ergebnis) und schließen mit der Nachbesprechung. Der Runner läuft auch ohne Netz.',
       bullets: [
         'Nummerierte Blöcke: Titel, Dauer, Ziel-RPE, Format',
         'Anwesenheiten mit einem Tippen, dann läuft die Uhr',
@@ -308,7 +308,7 @@ export const liveSession: SubpageLocales = {
     sections: [
       {
         kicker: 'DAVOR · WÄHREND · DANACH',
-        title: 'Ein Bildschirm, vom Ablauf bis zur Nachbesprechung.',
+        title: 'Zusammenstellen, abspulen, abschließen auf einem Bildschirm.',
         kind: 'rail',
         activeIndex: 1,
         steps: [
@@ -348,18 +348,18 @@ export const liveSession: SubpageLocales = {
       },
       {
         kicker: 'WAS DER PLATZ VORGIBT',
-        title: 'Das Netz des Stadions ist nicht Ihr Problem.',
+        title: 'Offline steuern; alles synchronisiert sich, sobald das Netz zurückkommt.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'OFFLINE',
             title: 'Alles wird vor Ort gespeichert',
-            desc: 'Der Runner hängt nicht an der Verbindung. Anwesenheiten, Uhren, Ergebnisse und Teams werden lokal geschrieben. Die Einheit zu beenden synchronisiert alles, sobald das Netz zurück ist.',
+            desc: 'Der Runner läuft ohne Verbindung: Anwesenheiten, Uhren, Ergebnisse und Teams werden lokal geschrieben. Die Einheit zu beenden synchronisiert alles, sobald das Netz zurück ist.',
           },
           {
             eyebrow: 'MIT DEM DAUMEN',
-            title: 'Die doppelte Bestätigung ist keine Umständlichkeit',
-            desc: 'Block beenden und Anpfiff verlangen zwei Tipper. Am Spielfeldrand, mit einem Tablet in einer Hand, tippt man schnell — und manchmal daneben.',
+            title: 'Die doppelte Bestätigung schützt die Uhr',
+            desc: 'Block beenden und Anpfiff verlangen zwei Tipper. Am Spielfeldrand, mit einem Tablet in einer Hand, tippt man schnell, und manchmal daneben.',
           },
         ],
         callouts: [
@@ -379,12 +379,12 @@ export const liveSession: SubpageLocales = {
     meta: {
       title: 'Treino em direto | STRIVN',
       description:
-        'Componha o desenrolar, execute-o em ecrã cheio à beira do campo — cronómetro, presenças, equipas, resultado — e feche com o balanço. O runner funciona sem rede.',
+        'Componha o desenrolar, execute-o em ecrã cheio à beira do campo (cronómetro, presenças, equipas, resultado) e feche com o balanço. O runner funciona sem rede.',
     },
     hero: {
       kicker: 'FUNCIONALIDADES · NO CAMPO',
-      title: 'O treino conduz-se com o polegar.',
-      sub: 'Compõe o desenrolar antecipadamente, executa-o em ecrã cheio à beira do campo — cronómetro, presenças, equipas, resultado — e depois fecha com o balanço. O runner funciona mesmo sem rede.',
+      title: 'Conduza o treino ao polegar, do plano ao balanço.',
+      sub: 'Compõe o desenrolar antecipadamente, executa-o em ecrã cheio à beira do campo (cronómetro, presenças, equipas, resultado), e depois fecha com o balanço. O runner funciona mesmo sem rede.',
       bullets: [
         'Blocos numerados: título, duração, RPE alvo, formato',
         'Presenças marcadas num toque, depois o cronómetro arranca',
@@ -400,7 +400,7 @@ export const liveSession: SubpageLocales = {
     sections: [
       {
         kicker: 'ANTES · DURANTE · DEPOIS',
-        title: 'Um só ecrã, do desenrolar ao balanço.',
+        title: 'Componha, execute e feche num só ecrã.',
         kind: 'rail',
         activeIndex: 1,
         steps: [
@@ -440,18 +440,18 @@ export const liveSession: SubpageLocales = {
       },
       {
         kicker: 'O QUE O CAMPO IMPÕE',
-        title: 'A rede do estádio não é problema seu.',
+        title: 'Conduza offline; tudo sincroniza quando a rede voltar.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'OFFLINE',
             title: 'Tudo é registado no local',
-            desc: 'O runner não depende da ligação. Presenças, cronómetros, resultados e equipas escrevem-se localmente. Terminar o treino sincroniza o conjunto assim que a rede voltar.',
+            desc: 'O runner funciona sem ligação: presenças, cronómetros, resultados e equipas escrevem-se localmente. Terminar o treino sincroniza o conjunto assim que a rede voltar.',
           },
           {
             eyebrow: 'COM O POLEGAR',
-            title: 'A dupla confirmação não é um peso',
-            desc: 'Terminar o bloco e o pontapé de saída pedem dois toques. À beira do campo, com um tablet numa mão, toca-se depressa — e às vezes ao lado.',
+            title: 'A dupla confirmação protege o cronómetro',
+            desc: 'Terminar o bloco e o pontapé de saída pedem dois toques. À beira do campo, com um tablet numa mão, toca-se depressa, e às vezes ao lado.',
           },
         ],
         callouts: [
@@ -471,12 +471,12 @@ export const liveSession: SubpageLocales = {
     meta: {
       title: 'Sesión en directo | STRIVN',
       description:
-        'Compón el desarrollo, ejecútalo a pantalla completa a pie de campo — cronómetro, asistencias, equipos, marcador — y cierra con el balance. El runner funciona sin red.',
+        'Compón el desarrollo, ejecútalo a pantalla completa a pie de campo (cronómetro, asistencias, equipos, marcador) y cierra con el balance. El runner funciona sin red.',
     },
     hero: {
       kicker: 'FUNCIONALIDADES · A PIE DE CAMPO',
-      title: 'La sesión se conduce con el pulgar.',
-      sub: 'Compones el desarrollo por adelantado, lo ejecutas a pantalla completa a pie de campo — cronómetro, asistencias, equipos, marcador — y luego cierras con el balance. El runner funciona incluso sin red.',
+      title: 'Conduce la sesión con el pulgar, hasta el balance.',
+      sub: 'Compones el desarrollo por adelantado, lo ejecutas a pantalla completa a pie de campo (cronómetro, asistencias, equipos, marcador), y luego cierras con el balance. El runner funciona incluso sin red.',
       bullets: [
         'Bloques numerados: título, duración, RPE objetivo, formato',
         'Asistencias en un toque, y el cronómetro arranca',
@@ -492,7 +492,7 @@ export const liveSession: SubpageLocales = {
     sections: [
       {
         kicker: 'ANTES · DURANTE · DESPUÉS',
-        title: 'Una sola pantalla, del desarrollo al balance.',
+        title: 'Compón, ejecuta y cierra en una sola pantalla.',
         kind: 'rail',
         activeIndex: 1,
         steps: [
@@ -532,18 +532,18 @@ export const liveSession: SubpageLocales = {
       },
       {
         kicker: 'LO QUE IMPONE EL CAMPO',
-        title: 'La red del estadio no es tu problema.',
+        title: 'Conduce sin conexión, sincroniza cuando vuelve la red.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'SIN CONEXIÓN',
             title: 'Todo se guarda en el sitio',
-            desc: 'El runner no depende de la conexión. Asistencias, cronómetros, marcadores y equipos se escriben en local. Terminar la sesión sincroniza el conjunto en cuanto vuelve la red.',
+            desc: 'El runner funciona sin conexión: asistencias, cronómetros, marcadores y equipos se escriben en local. Terminar la sesión sincroniza el conjunto en cuanto vuelve la red.',
           },
           {
             eyebrow: 'CON EL PULGAR',
-            title: 'La doble confirmación no es una molestia',
-            desc: 'Terminar el bloque y el saque inicial piden dos pulsaciones. A pie de campo, con una tableta en una mano, se pulsa rápido — y a veces al lado.',
+            title: 'La doble confirmación protege el cronómetro',
+            desc: 'Terminar el bloque y el saque inicial piden dos pulsaciones. A pie de campo, con una tableta en una mano, se pulsa rápido, y a veces al lado.',
           },
         ],
         callouts: [

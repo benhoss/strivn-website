@@ -17,8 +17,8 @@ export const scouting: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · ADVERSAIRE',
-      title: 'Le prochain adversaire, préparé à plusieurs.',
-      sub: 'L’analyste observe, le coach tranche. Les sessions s’accumulent sous chaque adversaire — notes, clips, tableaux — et le rapport se construit dessus. Ce que l’IA propose reste une proposition tant que vous ne l’avez pas validée.',
+      title: 'Préparez le prochain adversaire à plusieurs.',
+      sub: 'L’analyste observe, le coach tranche. Les sessions s’accumulent sous chaque adversaire (notes, clips, tableaux) et le rapport se construit dessus. Ce que l’IA propose reste une proposition jusqu’à votre validation.',
       bullets: [
         'Sessions datées sous chaque adversaire',
         'Notes écrites ou vocales, transcrites automatiquement',
@@ -52,11 +52,11 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · ASSEMBLER',
             title: 'Le rapport',
-            desc: 'Un document en sections et en blocs, pas un champ libre. Coach et analyste écrivent dans le même. Il reste en brouillon jusqu’à ce que vous le partagiez.',
+            desc: 'Un document en sections et en blocs, structuré. Coach et analyste écrivent dans le même. Il reste en brouillon jusqu’à ce que vous le partagiez.',
             items: [
               'Sections ordonnées, blocs déplaçables',
               'L’effectif adverse et les clips à l’appui',
-              'Statut brouillon tant qu’il n’est pas partagé',
+              'Statut brouillon jusqu’au partage',
             ],
           },
           {
@@ -65,8 +65,8 @@ export const scouting: SubpageLocales = {
             desc: 'Vous choisissez qui reçoit : des joueurs, des membres du staff, ou les deux. Le lien ouvre le rapport sans compte à créer en face.',
             items: [
               'Destinataires nommés, joueurs et staff',
-              'Aucun compte à créer pour le lire',
-              'Un joueur n’y accède jamais de lui-même',
+              'Lisible sans compte à créer',
+              'Un joueur y accède seulement par votre envoi',
             ],
           },
         ],
@@ -80,7 +80,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-line',
             title: 'Note écrite',
-            desc: 'Du texte riche, taggé avec le vocabulaire tactique de votre équipe — construction, pressing, ce que vous voulez.',
+            desc: 'Du texte riche, taggé avec le vocabulaire tactique de votre équipe : construction, pressing, ce que vous voulez.',
           },
           {
             icon: 'mic',
@@ -106,24 +106,24 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'LA FEUILLE DE MATCH',
-        title: 'L’IA lit l’effectif. Elle ne l’écrit pas.',
+        title: 'L’IA lit l’effectif, vous le confirmez.',
         body: 'Vous photographiez la feuille de match, l’IA en extrait les joueurs, et s’arrête là. L’extraction produit une proposition ; les joueurs n’entrent dans l’effectif adverse qu’au moment où vous confirmez.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'EXTRACTION',
-            title: 'Une proposition, pas un import',
-            desc: 'Nom, numéro, poste. Chaque ligne arrive avec le degré de confiance de la lecture, parce qu’une feuille froissée ne se lit pas comme une feuille nette.',
+            title: 'Une proposition à confirmer',
+            desc: 'Nom, numéro, poste. Chaque ligne arrive avec le degré de confiance de la lecture, parce qu’une feuille froissée se lit moins bien qu’une feuille nette.',
           },
           {
             eyebrow: 'REVUE',
             title: 'Vous corrigez avant de valider',
-            desc: 'Les lignes douteuses se corrigent dans la proposition. Rien n’est écrit tant que vous n’avez pas confirmé.',
+            desc: 'Les lignes douteuses se corrigent dans la proposition. L’écriture attend votre confirmation.',
           },
           {
             eyebrow: 'ORIGINE',
             title: 'La provenance reste visible',
-            desc: 'Un joueur retenu garde sa source : observé par vous, ou extrait d’une feuille. Un effectif que personne n’a confirmé ne doit pas ressembler à un effectif confirmé.',
+            desc: 'Un joueur retenu garde sa source : observé par vous, ou extrait d’une feuille. Un effectif non confirmé reste visiblement distinct d’un effectif confirmé.',
           },
         ],
       },
@@ -138,7 +138,7 @@ export const scouting: SubpageLocales = {
           {
             label: 'STATUT',
             a: 'Une proposition, explicitement étiquetée comme générée. Elle attend votre lecture.',
-            b: 'Une conclusion appliquée d’office. Rien ne part au groupe sans votre geste.',
+            b: 'Une conclusion appliquée d’office. Tout envoi au groupe attend votre geste.',
           },
           {
             label: 'CE QU’ON EN FAIT',
@@ -148,7 +148,7 @@ export const scouting: SubpageLocales = {
           {
             label: 'SUR QUOI ELLE S’APPUIE',
             a: 'L’effectif confirmé, les notes de vos sessions, les titres de vos tableaux.',
-            b: 'Une base de données externe d’adversaires. Elle ne sait que ce que vous avez observé.',
+            b: 'Une base de données externe d’adversaires. Elle sait seulement ce que vous avez observé.',
           },
         ],
       },
@@ -160,7 +160,7 @@ export const scouting: SubpageLocales = {
           {
             eyebrow: 'BROUILLON',
             title: 'Personne d’autre que vous',
-            desc: 'Tant que le rapport n’est pas partagé, il vit côté staff. Les notes de travail n’en sortent jamais.',
+            desc: 'Tant que le rapport n’est pas partagé, il vit côté staff. Les notes de travail y restent.',
           },
           {
             eyebrow: 'PARTAGÉ',
@@ -169,8 +169,8 @@ export const scouting: SubpageLocales = {
           },
           {
             eyebrow: 'JAMAIS',
-            title: 'Pas de fouille libre',
-            desc: 'Un joueur ne parcourt pas les rapports de scouting. Il reçoit celui qu’on lui a envoyé, et rien d’autre.',
+            title: 'Envoi nominatif seulement',
+            desc: 'Un joueur reçoit le rapport qu’on lui a envoyé, et seulement celui-là.',
           },
         ],
         callouts: [
@@ -194,8 +194,8 @@ export const scouting: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · OPPONENT',
-      title: 'The next opponent, prepared together.',
-      sub: 'The analyst observes, the coach decides. Sessions stack up under each opponent — notes, clips, boards — and the report is built on them. What the AI proposes stays a proposal until you accept it.',
+      title: 'Prepare the next opponent together.',
+      sub: 'The analyst observes, the coach decides. Sessions stack up under each opponent (notes, clips, boards) and the report is built on them. What the AI proposes stays a proposal until you accept it.',
       bullets: [
         'Dated sessions under each opponent',
         'Written or voice notes, transcribed automatically',
@@ -211,7 +211,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'FROM THE TOUCHLINE TO THE CHANGING ROOM',
-        title: 'The analyst watches on Saturday. The coach decides on Tuesday.',
+        title: 'The analyst watches Saturday. The coach decides Tuesday.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -229,7 +229,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · ASSEMBLE',
             title: 'The report',
-            desc: 'A document of ordered sections and blocks, not a free-text field. Coach and analyst write in the same one. It stays a draft until you share it.',
+            desc: 'A structured document of ordered sections and blocks. Coach and analyst write in the same one. It stays a draft until you share it.',
             items: [
               'Ordered sections, movable blocks',
               'The opponent squad and the clips behind it',
@@ -242,8 +242,8 @@ export const scouting: SubpageLocales = {
             desc: 'You choose who receives it: players, staff members, or both. The link opens the report with no account to create at the other end.',
             items: [
               'Named recipients, players and staff',
-              'No account to create to read it',
-              'A player never reaches one on their own',
+              'Readable without an account to create',
+              'A player reaches one only through your sending',
             ],
           },
         ],
@@ -257,7 +257,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-line',
             title: 'Written note',
-            desc: 'Rich text, tagged with your team’s own tactical vocabulary — build-up, pressing, whatever you use.',
+            desc: 'Rich text, tagged with your team’s own tactical vocabulary: build-up, pressing, whatever you use.',
           },
           {
             icon: 'mic',
@@ -283,24 +283,24 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'THE TEAM SHEET',
-        title: 'The AI reads the squad. It does not write it.',
+        title: 'The AI reads the squad, you confirm it.',
         body: 'You photograph the team sheet, the AI extracts the players, and stops there. The extraction produces a proposal; players only enter the opponent squad the moment you confirm.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'EXTRACTION',
-            title: 'A proposal, not an import',
-            desc: 'Name, number, position. Each row arrives with how confident the read was, because a creased sheet does not read like a clean one.',
+            title: 'A proposal to confirm',
+            desc: 'Name, number, position. Each row arrives with how confident the read was, because a creased sheet reads less well than a clean one.',
           },
           {
             eyebrow: 'REVIEW',
             title: 'You correct before you commit',
-            desc: 'Doubtful rows are fixed inside the proposal. Nothing is written until you have confirmed.',
+            desc: 'Doubtful rows are fixed inside the proposal. Writing waits for your confirmation.',
           },
           {
             eyebrow: 'PROVENANCE',
             title: 'Where a row came from stays visible',
-            desc: 'A kept player keeps its source: observed by you, or extracted from a sheet. A squad nobody confirmed must not look like one that was.',
+            desc: 'A kept player keeps its source: observed by you, or extracted from a sheet. An unconfirmed squad stays visibly distinct from a confirmed one.',
           },
         ],
       },
@@ -315,7 +315,7 @@ export const scouting: SubpageLocales = {
           {
             label: 'STATUS',
             a: 'A proposal, explicitly labelled as generated. It waits for your read.',
-            b: 'A conclusion applied on its own. Nothing reaches the squad without your move.',
+            b: 'A conclusion applied on its own. Anything sent to the squad waits for your move.',
           },
           {
             label: 'WHAT YOU DO WITH IT',
@@ -337,7 +337,7 @@ export const scouting: SubpageLocales = {
           {
             eyebrow: 'DRAFT',
             title: 'Nobody but you',
-            desc: 'Until the report is shared it lives on the staff side. Working notes never leave it.',
+            desc: 'Until the report is shared it lives on the staff side. Working notes stay there.',
           },
           {
             eyebrow: 'SHARED',
@@ -346,8 +346,8 @@ export const scouting: SubpageLocales = {
           },
           {
             eyebrow: 'NEVER',
-            title: 'No browsing',
-            desc: 'A player does not browse the scouting reports. They receive the one sent to them, and nothing else.',
+            title: 'Named sending only',
+            desc: 'A player receives the report sent to them, and that one only.',
           },
         ],
         callouts: [
@@ -371,8 +371,8 @@ export const scouting: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · TEGENSTANDER',
-      title: 'De volgende tegenstander, samen voorbereid.',
-      sub: 'De analist observeert, de coach beslist. Sessies stapelen zich op onder elke tegenstander — notities, clips, borden — en het rapport wordt daarop gebouwd. Wat de AI voorstelt blijft een voorstel tot jij het aanvaardt.',
+      title: 'Bereid de volgende tegenstander samen voor.',
+      sub: 'De analist observeert, de coach beslist. Sessies stapelen zich op onder elke tegenstander (notities, clips, borden) en het rapport wordt daarop gebouwd. Wat de AI voorstelt blijft een voorstel tot jij het aanvaardt.',
       bullets: [
         'Gedateerde sessies onder elke tegenstander',
         'Geschreven of gesproken notities, automatisch getranscribeerd',
@@ -388,7 +388,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'VAN DE ZIJLIJN TOT DE KLEEDKAMER',
-        title: 'De analist kijkt op zaterdag. De coach beslist op dinsdag.',
+        title: 'De analist kijkt zaterdag. De coach beslist dinsdag.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -406,7 +406,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · SAMENSTELLEN',
             title: 'Het rapport',
-            desc: 'Een document van geordende secties en blokken, geen vrij tekstveld. Coach en analist schrijven in hetzelfde. Het blijft een concept tot je het deelt.',
+            desc: 'Een gestructureerd document van geordende secties en blokken. Coach en analist schrijven in hetzelfde. Het blijft een concept tot je het deelt.',
             items: [
               'Geordende secties, verplaatsbare blokken',
               'De kern van de tegenstander en de clips erachter',
@@ -419,8 +419,8 @@ export const scouting: SubpageLocales = {
             desc: 'Jij kiest wie het krijgt: spelers, stafleden, of beide. De link opent het rapport zonder account aan de andere kant.',
             items: [
               'Benoemde ontvangers, spelers en staf',
-              'Geen account nodig om het te lezen',
-              'Een speler komt er nooit uit zichzelf bij',
+              'Leesbaar zonder account aan te maken',
+              'Een speler komt er alleen bij via jouw verzending',
             ],
           },
         ],
@@ -434,7 +434,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-line',
             title: 'Geschreven notitie',
-            desc: 'Rijke tekst, getagd met de tactische woordenschat van jouw ploeg — opbouw, pressing, wat je ook gebruikt.',
+            desc: 'Rijke tekst, getagd met de tactische woordenschat van jouw ploeg: opbouw, pressing, wat je ook gebruikt.',
           },
           {
             icon: 'mic',
@@ -460,30 +460,30 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'HET WEDSTRIJDBLAD',
-        title: 'De AI leest de kern. Ze schrijft ze niet.',
+        title: 'De AI leest de kern, jij bevestigt ze.',
         body: 'Je fotografeert het wedstrijdblad, de AI haalt er de spelers uit, en stopt daar. De extractie levert een voorstel; spelers komen pas in de kern van de tegenstander op het moment dat jij bevestigt.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'EXTRACTIE',
-            title: 'Een voorstel, geen import',
-            desc: 'Naam, nummer, positie. Elke regel komt met de zekerheid van de lezing, want een verkreukeld blad leest niet als een net blad.',
+            title: 'Een voorstel om te bevestigen',
+            desc: 'Naam, nummer, positie. Elke regel komt met de zekerheid van de lezing, want een verkreukeld blad leest minder goed dan een net blad.',
           },
           {
             eyebrow: 'NAZICHT',
             title: 'Je corrigeert voor je bevestigt',
-            desc: 'Twijfelachtige regels verbeter je in het voorstel. Er wordt niets weggeschreven tot jij bevestigd hebt.',
+            desc: 'Twijfelachtige regels verbeter je in het voorstel. Het wegschrijven wacht op jouw bevestiging.',
           },
           {
             eyebrow: 'HERKOMST',
             title: 'Waar een regel vandaan komt blijft zichtbaar',
-            desc: 'Een behouden speler houdt zijn bron: door jou geobserveerd, of uit een blad gehaald. Een kern die niemand bevestigd heeft mag er niet uitzien als een bevestigde.',
+            desc: 'Een behouden speler houdt zijn bron: door jou geobserveerd, of uit een blad gehaald. Een onbevestigde kern blijft zichtbaar onderscheiden van een bevestigde.',
           },
         ],
       },
       {
         kicker: 'DE TACTISCHE BRIEFING',
-        title: 'Een briefing om na te lezen voor je ze verstuurt.',
+        title: 'Een briefing om na te lezen voor het versturen.',
         body: 'Op aanvraag stelt STRIVN een briefing samen uit de bevestigde kern, de recente notities en de tactische borden: sterktes, zwaktes, waarschijnlijke opstelling, voorgesteld plan.',
         kind: 'compare',
         heads: ['Wat de briefing is', 'Wat ze niet is'],
@@ -492,7 +492,7 @@ export const scouting: SubpageLocales = {
           {
             label: 'STATUS',
             a: 'Een voorstel, uitdrukkelijk gelabeld als gegenereerd. Het wacht op jouw lezing.',
-            b: 'Een conclusie die zichzelf toepast. Er gaat niets naar de groep zonder jouw handeling.',
+            b: 'Een conclusie die zichzelf toepast. Alles wat naar de groep gaat, wacht op jouw handeling.',
           },
           {
             label: 'WAT JE ERMEE DOET',
@@ -514,7 +514,7 @@ export const scouting: SubpageLocales = {
           {
             eyebrow: 'CONCEPT',
             title: 'Niemand behalve jij',
-            desc: 'Zolang het rapport niet gedeeld is leeft het aan de stafkant. Werknotities verlaten het nooit.',
+            desc: 'Zolang het rapport niet gedeeld is leeft het aan de stafkant. Werknotities blijven daar.',
           },
           {
             eyebrow: 'GEDEELD',
@@ -523,8 +523,8 @@ export const scouting: SubpageLocales = {
           },
           {
             eyebrow: 'NOOIT',
-            title: 'Geen vrij doorbladeren',
-            desc: 'Een speler bladert niet door de scoutingrapporten. Hij krijgt datgene wat naar hem gestuurd is, en niets anders.',
+            title: 'Alleen op naam verstuurd',
+            desc: 'Een speler krijgt het rapport dat naar hem gestuurd is, en alleen dat.',
           },
         ],
         callouts: [
@@ -548,8 +548,8 @@ export const scouting: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · GEGNER',
-      title: 'Der nächste Gegner, gemeinsam vorbereitet.',
-      sub: 'Der Analyst beobachtet, der Trainer entscheidet. Sitzungen sammeln sich unter jedem Gegner — Notizen, Clips, Tafeln — und der Bericht baut darauf auf. Was die KI vorschlägt, bleibt ein Vorschlag, bis Sie ihn annehmen.',
+      title: 'Bereiten Sie den nächsten Gegner gemeinsam vor.',
+      sub: 'Der Analyst beobachtet, der Trainer entscheidet. Sitzungen sammeln sich unter jedem Gegner (Notizen, Clips, Tafeln) und der Bericht baut darauf auf. Was die KI vorschlägt, bleibt ein Vorschlag, bis Sie ihn annehmen.',
       bullets: [
         'Datierte Sitzungen unter jedem Gegner',
         'Geschriebene oder gesprochene Notizen, automatisch transkribiert',
@@ -565,7 +565,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'VOM SPIELFELDRAND IN DIE KABINE',
-        title: 'Der Analyst beobachtet am Samstag. Der Coach entscheidet am Dienstag.',
+        title: 'Der Analyst beobachtet samstags. Der Coach entscheidet dienstags.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -583,7 +583,7 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · ZUSAMMENSTELLEN',
             title: 'Der Bericht',
-            desc: 'Ein Dokument aus geordneten Abschnitten und Blöcken, kein freies Textfeld. Trainer und Analyst schreiben im selben. Er bleibt Entwurf, bis Sie ihn teilen.',
+            desc: 'Ein strukturiertes Dokument aus geordneten Abschnitten und Blöcken. Trainer und Analyst schreiben im selben. Er bleibt Entwurf, bis Sie ihn teilen.',
             items: [
               'Geordnete Abschnitte, verschiebbare Blöcke',
               'Der Gegnerkader und die Clips dahinter',
@@ -596,8 +596,8 @@ export const scouting: SubpageLocales = {
             desc: 'Sie wählen, wer ihn bekommt: Spieler, Staff-Mitglieder oder beide. Der Link öffnet den Bericht ohne Konto auf der Gegenseite.',
             items: [
               'Benannte Empfänger, Spieler und Staff',
-              'Kein Konto nötig, um ihn zu lesen',
-              'Ein Spieler kommt von sich aus nie heran',
+              'Lesbar ohne Konto anzulegen',
+              'Ein Spieler kommt nur über Ihre Sendung heran',
             ],
           },
         ],
@@ -611,7 +611,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-line',
             title: 'Geschriebene Notiz',
-            desc: 'Rich Text, getaggt mit dem Taktikvokabular Ihrer Mannschaft — Spielaufbau, Pressing, was auch immer Sie verwenden.',
+            desc: 'Rich Text, getaggt mit dem Taktikvokabular Ihrer Mannschaft: Spielaufbau, Pressing, was auch immer Sie verwenden.',
           },
           {
             icon: 'mic',
@@ -637,30 +637,30 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'DER SPIELBERICHT',
-        title: 'Die KI liest den Kader. Sie schreibt ihn nicht.',
+        title: 'Die KI liest den Kader, Sie bestätigen ihn.',
         body: 'Sie fotografieren den Spielbericht, die KI extrahiert die Spieler, und hört dort auf. Die Extraktion erzeugt einen Vorschlag; Spieler kommen erst in dem Moment in den Gegnerkader, in dem Sie bestätigen.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'EXTRAKTION',
-            title: 'Ein Vorschlag, kein Import',
-            desc: 'Name, Nummer, Position. Jede Zeile kommt mit der Sicherheit der Lesung, denn ein zerknitterter Bogen liest sich nicht wie ein sauberer.',
+            title: 'Ein Vorschlag zum Bestätigen',
+            desc: 'Name, Nummer, Position. Jede Zeile kommt mit der Sicherheit der Lesung, denn ein zerknitterter Bogen liest sich schlechter als ein sauberer.',
           },
           {
             eyebrow: 'PRÜFUNG',
             title: 'Sie korrigieren vor dem Bestätigen',
-            desc: 'Zweifelhafte Zeilen werden im Vorschlag korrigiert. Nichts wird geschrieben, bevor Sie bestätigt haben.',
+            desc: 'Zweifelhafte Zeilen werden im Vorschlag korrigiert. Das Schreiben wartet auf Ihre Bestätigung.',
           },
           {
             eyebrow: 'HERKUNFT',
             title: 'Woher eine Zeile stammt, bleibt sichtbar',
-            desc: 'Ein übernommener Spieler behält seine Quelle: von Ihnen beobachtet oder aus einem Bogen extrahiert. Ein Kader, den niemand bestätigt hat, darf nicht aussehen wie ein bestätigter.',
+            desc: 'Ein übernommener Spieler behält seine Quelle: von Ihnen beobachtet oder aus einem Bogen extrahiert. Ein unbestätigter Kader bleibt sichtbar von einem bestätigten unterscheidbar.',
           },
         ],
       },
       {
         kicker: 'DAS TAKTISCHE BRIEFING',
-        title: 'Ein Briefing, das Sie vor dem Senden noch einmal lesen.',
+        title: 'Ein Briefing, das Sie vor dem Senden gegenlesen.',
         body: 'Auf Anforderung stellt STRIVN ein Briefing aus dem bestätigten Kader, den jüngsten Notizen und den Taktiktafeln zusammen: Stärken, Schwächen, wahrscheinliche Formation, vorgeschlagener Plan.',
         kind: 'compare',
         heads: ['Was das Briefing ist', 'Was es nicht ist'],
@@ -669,7 +669,7 @@ export const scouting: SubpageLocales = {
           {
             label: 'STATUS',
             a: 'Ein Vorschlag, ausdrücklich als generiert gekennzeichnet. Er wartet auf Ihre Lektüre.',
-            b: 'Eine Schlussfolgerung, die sich selbst anwendet. Ohne Ihr Zutun geht nichts an die Mannschaft.',
+            b: 'Eine Schlussfolgerung, die sich selbst anwendet. Alles, was an die Mannschaft geht, wartet auf Ihr Zutun.',
           },
           {
             label: 'WAS SIE DAMIT TUN',
@@ -691,7 +691,7 @@ export const scouting: SubpageLocales = {
           {
             eyebrow: 'ENTWURF',
             title: 'Niemand außer Ihnen',
-            desc: 'Solange der Bericht nicht geteilt ist, lebt er auf der Staff-Seite. Arbeitsnotizen verlassen ihn nie.',
+            desc: 'Solange der Bericht nicht geteilt ist, lebt er auf der Staff-Seite. Arbeitsnotizen bleiben dort.',
           },
           {
             eyebrow: 'GETEILT',
@@ -700,8 +700,8 @@ export const scouting: SubpageLocales = {
           },
           {
             eyebrow: 'NIE',
-            title: 'Kein freies Stöbern',
-            desc: 'Ein Spieler blättert nicht durch die Scouting-Berichte. Er erhält den, der ihm geschickt wurde, und sonst nichts.',
+            title: 'Nur namentlicher Versand',
+            desc: 'Ein Spieler erhält den Bericht, der ihm geschickt wurde, und nur diesen.',
           },
         ],
         callouts: [
@@ -725,8 +725,8 @@ export const scouting: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · ADVERSÁRIO',
-      title: 'O próximo adversário, preparado a várias mãos.',
-      sub: 'O analista observa, o treinador decide. As sessões acumulam-se sob cada adversário — notas, clips, quadros — e o relatório constrói-se sobre elas. O que a IA propõe continua uma proposta até o aceitar.',
+      title: 'Prepare o próximo adversário a várias mãos.',
+      sub: 'O analista observa, o treinador decide. As sessões acumulam-se sob cada adversário (notas, clips, quadros) e o relatório constrói-se sobre elas. O que a IA propõe continua uma proposta até o aceitar.',
       bullets: [
         'Sessões datadas sob cada adversário',
         'Notas escritas ou de voz, transcritas automaticamente',
@@ -742,7 +742,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'DA LINHA LATERAL AO BALNEÁRIO',
-        title: 'O analista observa no sábado. O treinador decide na terça.',
+        title: 'Sábado, o analista observa. Terça, o treinador decide.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -760,11 +760,11 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · MONTAR',
             title: 'O relatório',
-            desc: 'Um documento de secções e blocos ordenados, não um campo de texto livre. Treinador e analista escrevem no mesmo. Fica em rascunho até o partilhar.',
+            desc: 'Um documento estruturado em secções e blocos ordenados. Treinador e analista escrevem no mesmo. Fica em rascunho até o partilhar.',
             items: [
               'Secções ordenadas, blocos móveis',
               'O plantel adversário e os clips que o sustentam',
-              'Estado rascunho enquanto não for partilhado',
+              'Estado rascunho até à partilha',
             ],
           },
           {
@@ -773,8 +773,8 @@ export const scouting: SubpageLocales = {
             desc: 'Escolhe quem o recebe: jogadores, membros do staff, ou ambos. A ligação abre o relatório sem conta a criar do outro lado.',
             items: [
               'Destinatários nomeados, jogadores e staff',
-              'Nenhuma conta a criar para o ler',
-              'Um jogador nunca lá chega por si',
+              'Legível sem conta a criar',
+              'Um jogador só lá chega pelo seu envio',
             ],
           },
         ],
@@ -788,7 +788,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-line',
             title: 'Nota escrita',
-            desc: 'Texto rico, etiquetado com o vocabulário tático da sua equipa — construção, pressing, o que usar.',
+            desc: 'Texto rico, etiquetado com o vocabulário tático da sua equipa: construção, pressing, o que usar.',
           },
           {
             icon: 'mic',
@@ -814,24 +814,24 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'A FICHA DE JOGO',
-        title: 'A IA lê o plantel. Não o escreve.',
+        title: 'A IA lê o plantel, você confirma-o.',
         body: 'Fotografa a ficha de jogo, a IA extrai os jogadores, e para aí. A extração produz uma proposta; os jogadores só entram no plantel adversário no momento em que confirma.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'EXTRAÇÃO',
-            title: 'Uma proposta, não uma importação',
-            desc: 'Nome, número, posição. Cada linha chega com o grau de confiança da leitura, porque uma folha amarrotada não se lê como uma folha limpa.',
+            title: 'Uma proposta para confirmar',
+            desc: 'Nome, número, posição. Cada linha chega com o grau de confiança da leitura, porque uma folha amarrotada lê-se pior do que uma folha limpa.',
           },
           {
             eyebrow: 'REVISÃO',
             title: 'Corrige antes de confirmar',
-            desc: 'As linhas duvidosas corrigem-se dentro da proposta. Nada é escrito enquanto não confirmar.',
+            desc: 'As linhas duvidosas corrigem-se dentro da proposta. A escrita espera pela sua confirmação.',
           },
           {
             eyebrow: 'ORIGEM',
             title: 'De onde veio a linha fica visível',
-            desc: 'Um jogador mantido guarda a sua origem: observado por si, ou extraído de uma ficha. Um plantel que ninguém confirmou não pode parecer confirmado.',
+            desc: 'Um jogador mantido guarda a sua origem: observado por si, ou extraído de uma ficha. Um plantel não confirmado mantém-se visivelmente distinto de um confirmado.',
           },
         ],
       },
@@ -846,7 +846,7 @@ export const scouting: SubpageLocales = {
           {
             label: 'ESTADO',
             a: 'Uma proposta, explicitamente marcada como gerada. Espera pela sua leitura.',
-            b: 'Uma conclusão aplicada sozinha. Nada chega ao grupo sem um gesto seu.',
+            b: 'Uma conclusão aplicada sozinha. Tudo o que vai para o grupo espera por um gesto seu.',
           },
           {
             label: 'O QUE SE FAZ COM ELE',
@@ -868,7 +868,7 @@ export const scouting: SubpageLocales = {
           {
             eyebrow: 'RASCUNHO',
             title: 'Mais ninguém além de si',
-            desc: 'Enquanto o relatório não for partilhado, vive do lado do staff. As notas de trabalho nunca saem dele.',
+            desc: 'Enquanto o relatório não for partilhado, vive do lado do staff. As notas de trabalho ficam lá.',
           },
           {
             eyebrow: 'PARTILHADO',
@@ -877,8 +877,8 @@ export const scouting: SubpageLocales = {
           },
           {
             eyebrow: 'NUNCA',
-            title: 'Sem folhear livremente',
-            desc: 'Um jogador não folheia os relatórios de scouting. Recebe aquele que lhe foi enviado, e mais nada.',
+            title: 'Só envio nominativo',
+            desc: 'Um jogador recebe o relatório que lhe foi enviado, e só esse.',
           },
         ],
         callouts: [
@@ -902,8 +902,8 @@ export const scouting: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · RIVAL',
-      title: 'El próximo rival, preparado entre varios.',
-      sub: 'El analista observa, el entrenador decide. Las sesiones se acumulan bajo cada rival — notas, clips, pizarras — y el informe se construye sobre ellas. Lo que la IA propone sigue siendo una propuesta hasta que lo aceptas.',
+      title: 'Prepara al próximo rival entre varios.',
+      sub: 'El analista observa, el entrenador decide. Las sesiones se acumulan bajo cada rival (notas, clips, pizarras) y el informe se construye sobre ellas. Lo que la IA propone sigue siendo una propuesta hasta que lo aceptas.',
       bullets: [
         'Sesiones fechadas bajo cada rival',
         'Notas escritas o de voz, transcritas automáticamente',
@@ -919,7 +919,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'DE LA BANDA AL VESTUARIO',
-        title: 'El analista observa el sábado. El entrenador decide el martes.',
+        title: 'Sábado, el analista observa. Martes, el entrenador decide.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -937,11 +937,11 @@ export const scouting: SubpageLocales = {
           {
             num: '02 · MONTAR',
             title: 'El informe',
-            desc: 'Un documento de secciones y bloques ordenados, no un campo de texto libre. Entrenador y analista escriben en el mismo. Queda en borrador hasta que lo compartes.',
+            desc: 'Un documento estructurado en secciones y bloques ordenados. Entrenador y analista escriben en el mismo. Queda en borrador hasta que lo compartes.',
             items: [
               'Secciones ordenadas, bloques movibles',
               'La plantilla rival y los clips que la respaldan',
-              'Estado borrador mientras no se comparta',
+              'Estado borrador hasta compartirlo',
             ],
           },
           {
@@ -950,8 +950,8 @@ export const scouting: SubpageLocales = {
             desc: 'Eliges quién lo recibe: jugadores, miembros del staff, o ambos. El enlace abre el informe sin cuenta que crear enfrente.',
             items: [
               'Destinatarios nombrados, jugadores y staff',
-              'Ninguna cuenta que crear para leerlo',
-              'Un jugador nunca llega a él por su cuenta',
+              'Legible sin cuenta que crear',
+              'Un jugador solo llega a él a través de tu envío',
             ],
           },
         ],
@@ -965,7 +965,7 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-line',
             title: 'Nota escrita',
-            desc: 'Texto enriquecido, etiquetado con el vocabulario táctico de tu equipo — salida de balón, pressing, lo que uses.',
+            desc: 'Texto enriquecido, etiquetado con el vocabulario táctico de tu equipo: salida de balón, pressing, lo que uses.',
           },
           {
             icon: 'mic',
@@ -991,24 +991,24 @@ export const scouting: SubpageLocales = {
       },
       {
         kicker: 'EL ACTA DEL PARTIDO',
-        title: 'La IA lee la plantilla. No la escribe.',
+        title: 'La IA lee la plantilla, tú la confirmas.',
         body: 'Fotografías el acta, la IA extrae los jugadores, y se para ahí. La extracción produce una propuesta; los jugadores solo entran en la plantilla rival en el momento en que confirmas.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'EXTRACCIÓN',
-            title: 'Una propuesta, no una importación',
-            desc: 'Nombre, número, posición. Cada línea llega con el grado de confianza de la lectura, porque un acta arrugada no se lee como una limpia.',
+            title: 'Una propuesta por confirmar',
+            desc: 'Nombre, número, posición. Cada línea llega con el grado de confianza de la lectura, porque un acta arrugada se lee peor que una limpia.',
           },
           {
             eyebrow: 'REVISIÓN',
             title: 'Corriges antes de confirmar',
-            desc: 'Las líneas dudosas se corrigen dentro de la propuesta. No se escribe nada mientras no hayas confirmado.',
+            desc: 'Las líneas dudosas se corrigen dentro de la propuesta. La escritura espera tu confirmación.',
           },
           {
             eyebrow: 'ORIGEN',
             title: 'De dónde viene la línea sigue visible',
-            desc: 'Un jugador conservado guarda su origen: observado por ti, o extraído de un acta. Una plantilla que nadie ha confirmado no debe parecerse a una confirmada.',
+            desc: 'Un jugador conservado guarda su origen: observado por ti, o extraído de un acta. Una plantilla sin confirmar se mantiene visiblemente distinta de una confirmada.',
           },
         ],
       },
@@ -1023,7 +1023,7 @@ export const scouting: SubpageLocales = {
           {
             label: 'ESTADO',
             a: 'Una propuesta, marcada explícitamente como generada. Espera a que la leas.',
-            b: 'Una conclusión que se aplica sola. Nada llega al grupo sin un gesto tuyo.',
+            b: 'Una conclusión que se aplica sola. Todo lo que va al grupo espera un gesto tuyo.',
           },
           {
             label: 'QUÉ HACES CON ÉL',
@@ -1045,7 +1045,7 @@ export const scouting: SubpageLocales = {
           {
             eyebrow: 'BORRADOR',
             title: 'Nadie más que tú',
-            desc: 'Mientras el informe no se comparta, vive del lado del staff. Las notas de trabajo nunca salen de él.',
+            desc: 'Mientras el informe no se comparta, vive del lado del staff. Las notas de trabajo se quedan ahí.',
           },
           {
             eyebrow: 'COMPARTIDO',
@@ -1054,8 +1054,8 @@ export const scouting: SubpageLocales = {
           },
           {
             eyebrow: 'NUNCA',
-            title: 'Sin hojear libremente',
-            desc: 'Un jugador no hojea los informes de scouting. Recibe el que se le ha enviado, y nada más.',
+            title: 'Solo envío nominativo',
+            desc: 'Un jugador recibe el informe que se le ha enviado, y solo ese.',
           },
         ],
         callouts: [

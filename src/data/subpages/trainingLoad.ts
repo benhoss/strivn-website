@@ -17,7 +17,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · MONITORING',
-      title: 'Le ressenti d’un côté, le GPS de l’autre. Sur le même écran.',
+      title: 'Croisez le RPE et le GPS de chaque joueur.',
       sub: 'Le RPE du bilan et la durée donnent la charge interne. Votre export GPS donne la charge externe. STRIVN les met face à face. ACWR, monotonie, contrainte et ratio se calculent seuls.',
       bullets: [
         'Charge sRPE : RPE × durée, coefficients match et entraînement réglables',
@@ -31,13 +31,13 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'CE QUE VOUS LISEZ',
-        title: 'ACWR, monotonie, contrainte : ce qu’ils disent.',
+        title: 'Lisez ACWR, monotonie et contrainte sans les recalculer.',
         kind: 'rows',
         rows: [
           {
             name: 'ACWR',
             sub: 'charge 7 j ÷ charge 28 j',
-            desc: 'Le rapport entre ce que le joueur vient d’encaisser et ce à quoi il est habitué. Le classement trie par écart à la zone, pas par valeur.',
+            desc: 'Le rapport entre ce que le joueur vient d’encaisser et ce à quoi il est habitué. Le classement trie par écart à la zone.',
             chip: { label: '0,8 – 1,3', tone: 'green' },
           },
           {
@@ -55,70 +55,70 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Ratio externe ÷ interne',
             sub: 'charge GPS ÷ sRPE',
-            desc: 'Aucun sens absolu. Les deux mesures n’ont pas la même unité. Le seul repère est l’écart à la base 28 jours du joueur lui-même.',
+            desc: 'Les deux mesures ont des unités différentes : la valeur se lit seulement par rapport à la base 28 jours du joueur lui-même.',
             chip: { label: 'vs base 28 j' },
           },
         ],
         note: {
-          label: 'Acquitter n’est pas effacer',
-          desc: 'Une alerte de charge s’acquitte avec une note — le contexte, la décision prise. Elle reste visible, grisée, avec qui l’a traitée et quand, et ne redéclenche pas tant que la charge de la même semaine reste dans la norme.',
+          label: 'Acquitter garde la trace',
+          desc: 'Une alerte de charge s’acquitte avec une note : le contexte, la décision prise. Elle reste visible, grisée, avec qui l’a traitée et quand, et se tait tant que la charge de la même semaine reste dans la norme.',
         },
       },
       {
         kicker: 'GPS · VOS BLOCS DE VITESSE',
-        title: 'Un export GPS ne contient pas de colonne « aérobie ».',
-        body: 'Il contient des zones numérotées, souvent en distance et en temps. C’est vous qui décidez comment les regrouper : un bloc est un nom que vous donnez à une somme de zones. Vos blocs pilotent ensuite tout le reste — colonnes, graphiques, cibles individuelles.',
+        title: 'Nommez vos blocs de vitesse depuis les zones exportées.',
+        body: 'Votre export contient des zones numérotées, souvent en distance et en temps. Vous décidez comment les regrouper : un bloc est un nom que vous donnez à une somme de zones. Vos blocs pilotent ensuite colonnes, graphiques et cibles individuelles.',
         visual: 'gps-blocks',
         kind: 'columns',
         cols: [
           {
             title: 'Une zone peut servir dans plusieurs blocs',
-            desc: 'Rien n’empêche d’avoir Aérobie = Z1+Z2+Z3 et Volume total = Z1+…+Z6 côte à côte.',
+            desc: 'Aérobie = Z1+Z2+Z3 et Volume total = Z1+…+Z6 cohabitent côte à côte.',
           },
           {
-            title: 'Renommer un bloc ne perd rien',
-            desc: 'Ses cibles et vos colonnes enregistrées suivent le nouveau nom, sans rien retaper.',
+            title: 'Renommez un bloc, ses cibles suivent',
+            desc: 'Ses cibles et vos colonnes enregistrées suivent le nouveau nom.',
           },
           {
-            title: 'Retirer n’est pas supprimer',
+            title: 'Retirez un bloc, il reste archivé',
             desc: 'Un bloc retiré est archivé. Ses cibles restent en mémoire s’il revient la saison prochaine.',
           },
         ],
-        foot: 'Si vous ne configurez rien, l’équipe démarre avec quatre blocs classiques — Aérobie, Haute intensité, Course haute vitesse, Sprint — déjà associés aux colonnes que STRIVN a reconnues dans votre export.',
+        foot: 'Sans configuration, l’équipe démarre avec quatre blocs classiques (Aérobie, Haute intensité, Course haute vitesse, Sprint), déjà associés aux colonnes que STRIVN a reconnues dans votre export.',
       },
       {
         kicker: 'LE POINT À RETENIR',
-        title: 'L’un recalcule tout. L’autre change juste l’affichage.',
+        title: 'Le filtre Séances recalcule tout ; Période change l’affichage.',
         kind: 'panels',
         panels: [
           {
             title: 'Séances',
             eyebrow: 'Toutes · Entraînements · Matchs',
             lead: 'un filtre de comparabilité',
-            desc: 'Un match et un entraînement ne se comparent pas : la charge externe d’un match est structurellement plus élevée. Ce filtre change donc tout ce qui est calculé — la séance affichée, les valeurs, la cible suggérée, le ratio et sa base.',
+            desc: 'La charge externe d’un match est structurellement plus élevée que celle d’un entraînement. Ce filtre change donc tout ce qui est calculé : la séance affichée, les valeurs, la cible suggérée, le ratio et sa base.',
             tone: 'blue',
           },
           {
             title: 'Période',
             eyebrow: '7 j · 4 sem. · 12 sem. · Saison',
             lead: 'une simple fenêtre d’affichage',
-            desc: 'Elle change ce qui est listé et ce qui est tracé, et rien d’autre. La base du ratio reste calculée sur 28 jours, quelle que soit la période que vous choisissez.',
+            desc: 'Elle change ce qui est listé et ce qui est tracé. La base du ratio reste calculée sur 28 jours, quelle que soit la période que vous choisissez.',
           },
         ],
         callouts: [
           {
             tone: 'orange',
             icon: 'triangle-alert',
-            text: 'Choisir « 7 jours » ne rend pas un joueur « en manque de données » : STRIVN compte son historique réel, pas la fenêtre affichée. Choisir « Matchs », en revanche, recalcule sa cible sur ses matchs — sinon vous compareriez un match à une moyenne d’entraînements.',
+            text: 'STRIVN compte l’historique réel du joueur, quelle que soit la fenêtre affichée : « 7 jours » change la liste et laisse le badge de données intact. Choisir « Matchs » recalcule sa cible sur ses matchs, pour comparer un match à des matchs.',
           },
         ],
         note: {
           label: 'Le troisième : Mesure',
-          desc: 'Distance ou Temps : les mêmes blocs, dans l’autre unité. Chaque bloc a une cible par mesure : vous pouvez viser 4 200 m d’aérobie et 15 minutes, indépendamment. Enregistrer l’une ne touche pas l’autre.',
+          desc: 'Distance ou Temps : les mêmes blocs, dans l’autre unité. Chaque bloc a une cible par mesure ; vous pouvez viser 4 200 m d’aérobie et 15 minutes, indépendamment, et enregistrer l’une laisse l’autre intacte.',
         },
       },
       {
-        kicker: 'CE QUE STRIVN REFUSE D’AFFICHER',
+        kicker: 'CE QUE STRIVN LAISSE VIDE',
         title: 'Un chiffre faux est pire qu’une case vide.',
         kind: 'rows',
         pill: true,
@@ -129,15 +129,15 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             name: '—',
-            desc: 'Un bloc dont toutes les zones ne sont pas associées dans la mesure affichée reste vide. STRIVN n’additionne jamais une partie des zones : une somme incomplète est un chiffre faux, pas un chiffre approximatif.',
+            desc: 'Un bloc dont une zone manque dans la mesure affichée reste vide : une somme incomplète est un chiffre faux, pas un chiffre approximatif.',
           },
           {
             name: 'Pas assez de données',
-            desc: 'Le bloc interne / externe le dit tant que l’historique est trop court. Et quand un côté manque — pas de RPE saisi, ou pas de donnée GPS — le ratio reste vide.',
+            desc: 'Le bloc interne / externe l’affiche tant que l’historique est trop court. Quand un côté manque (RPE absent, ou donnée GPS absente), le ratio reste vide.',
           },
           {
             name: '(en cours)',
-            desc: 'La semaine en cours porte la mention tant qu’elle n’est pas terminée : ses valeurs ne sont pas encore définitives.',
+            desc: 'La semaine en cours porte la mention jusqu’à sa clôture : ses valeurs restent provisoires.',
           },
         ],
       },
@@ -146,21 +146,21 @@ export const trainingLoad: SubpageLocales = {
         kind: 'panels',
         panels: [
           {
-            title: 'Le seul signal qui vaut : l’écart du joueur à sa propre base.',
-            desc: 'Un ratio externe ÷ interne qui chute nettement sous sa base de 28 jours signale un découplage : le joueur fournit moins de travail mécanique pour un même ressenti — un signe de fatigue cachée. La tête de bloc passe au rouge. Comparé à un autre joueur, ce même ratio ne dit rien.',
+            title: 'Lisez chaque joueur par rapport à sa propre base de 28 jours.',
+            desc: 'Un ratio externe ÷ interne qui chute nettement sous sa base de 28 jours signale un découplage : le joueur fournit moins de travail mécanique pour un même ressenti, un signe de fatigue cachée. La tête de bloc passe au rouge. Le même ratio comparé à un autre joueur reste muet.',
           },
         ],
       },
       {
         kicker: 'TRAVAILLER DANS VOTRE PROPRE UNITÉ',
-        title: 'Si votre staff ne raisonne pas en UA, changez d’unité.',
-        body: 'Par défaut, une séance de 90 minutes à RPE 7 pèse 630 UA et une semaine tourne autour de 3 000. Des nombres qu’on n’annonce pas facilement en réunion. Déclarez votre unité maison — un multiple fixe de l’UA — et l’échelle redevient lisible.',
+        title: 'Déclarez votre propre unité de charge, l’échelle suit.',
+        body: 'Par défaut, une séance de 90 minutes à RPE 7 pèse 630 UA et une semaine tourne autour de 3 000, des nombres difficiles à annoncer en réunion. Déclarez votre unité maison, un multiple fixe de l’UA, et l’échelle redevient lisible.',
         visual: 'unit-conversion',
         kind: 'columns',
         cols: [
           {
-            title: 'Vos données ne bougent pas',
-            desc: 'La charge reste enregistrée en UA. L’unité ne change que ce que vous lisez et ce que vous saisissez. Vous pouvez revenir en arrière quand vous voulez, l’historique se relit simplement dans la nouvelle unité.',
+            title: 'Vos données restent en UA',
+            desc: 'La charge reste enregistrée en UA ; l’unité change seulement ce que vous lisez et ce que vous saisissez. Revenez en arrière quand vous voulez, l’historique se relit dans la nouvelle unité.',
           },
           {
             title: 'Tous les écrans suivent',
@@ -168,7 +168,7 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             title: 'Les ratios gardent leur échelle',
-            desc: 'ACWR, monotonie et ratio interne / externe sont des rapports calibrés, pas des quantités de charge. Seule la contrainte suit votre unité, puisqu’elle en est une.',
+            desc: 'ACWR, monotonie et ratio interne / externe sont des rapports calibrés ; seule la contrainte suit votre unité, puisqu’elle est une quantité de charge.',
           },
         ],
         callouts: [
@@ -180,7 +180,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'Le nom devient obligatoire dès que l’équivalence quitte 1. Sinon, des valeurs converties s’afficheraient sous le sigle « UA », qui n’est plus le bon.',
+            text: 'Le nom devient obligatoire dès que l’équivalence quitte 1 : des valeurs converties sous le sigle « UA » seraient fausses.',
           },
         ],
       },
@@ -196,7 +196,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · MONITORING',
-      title: 'Perceived effort on one side, GPS on the other. Same screen.',
+      title: 'Cross each player’s RPE and GPS on one screen.',
       sub: 'The RPE from the debrief and the duration give internal load. Your GPS export gives external load. STRIVN puts them side by side. ACWR, monotony, strain and the ratio compute themselves.',
       bullets: [
         'sRPE load: RPE × duration, with adjustable match and training coefficients',
@@ -210,13 +210,13 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'WHAT YOU READ',
-        title: 'ACWR, monotony, strain: what they say.',
+        title: 'Read ACWR, monotony and strain without recomputing them.',
         kind: 'rows',
         rows: [
           {
             name: 'ACWR',
             sub: '7-day load ÷ 28-day load',
-            desc: 'The ratio between what the player has just absorbed and what they are used to. The ranking sorts by distance from the range, not by value.',
+            desc: 'The ratio between what the player has just absorbed and what they are used to. The ranking sorts by distance from the range.',
             chip: { label: '0.8 – 1.3', tone: 'green' },
           },
           {
@@ -234,70 +234,70 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'External ÷ internal ratio',
             sub: 'GPS load ÷ sRPE',
-            desc: 'No absolute meaning. The two measures do not share a unit. The only reference is the gap to the player’s own 28-day baseline.',
+            desc: 'The two measures have different units: the value only reads against the player’s own 28-day baseline.',
             chip: { label: 'vs 28-day base' },
           },
         ],
         note: {
-          label: 'Acknowledging is not erasing',
-          desc: 'A load alert is acknowledged with a note — the context, the decision taken. It stays visible, greyed out, with who handled it and when, and does not fire again while that week’s load stays in range.',
+          label: 'Acknowledging keeps the trail',
+          desc: 'A load alert is acknowledged with a note: the context, the decision taken. It stays visible, greyed out, with who handled it and when, and stays quiet while that week’s load stays in range.',
         },
       },
       {
         kicker: 'GPS · YOUR SPEED BLOCKS',
-        title: 'A GPS export has no “aerobic” column.',
-        body: 'It has numbered zones, usually in distance and time. How to group them is your call: a block is a name you give to a sum of zones. Your blocks then drive everything else — columns, charts, individual targets.',
+        title: 'Name your speed blocks from the exported zones.',
+        body: 'Your export has numbered zones, usually in distance and time. You decide how to group them: a block is a name you give to a sum of zones. Your blocks then drive columns, charts and individual targets.',
         visual: 'gps-blocks',
         kind: 'columns',
         cols: [
           {
             title: 'A zone can serve several blocks',
-            desc: 'Nothing stops Aerobic = Z1+Z2+Z3 and Total volume = Z1+…+Z6 from sitting side by side.',
+            desc: 'Aerobic = Z1+Z2+Z3 and Total volume = Z1+…+Z6 sit side by side.',
           },
           {
-            title: 'Renaming a block loses nothing',
-            desc: 'Its targets and your saved columns follow the new name, with nothing to retype.',
+            title: 'Rename a block, its targets follow',
+            desc: 'Its targets and your saved columns follow the new name.',
           },
           {
-            title: 'Removing is not deleting',
+            title: 'Remove a block, it stays archived',
             desc: 'A removed block is archived. Its targets stay on file in case it returns next season.',
           },
         ],
-        foot: 'Configure nothing and the team starts with four familiar blocks — Aerobic, High intensity, High-speed running, Sprint — already mapped to the columns STRIVN recognised in your export.',
+        foot: 'Without configuration, the team starts with four familiar blocks (Aerobic, High intensity, High-speed running, Sprint), already mapped to the columns STRIVN recognised in your export.',
       },
       {
         kicker: 'THE THING TO REMEMBER',
-        title: 'One recalculates everything. The other only changes the display.',
+        title: 'The Sessions filter recomputes everything; Period changes the display.',
         kind: 'panels',
         panels: [
           {
             title: 'Sessions',
             eyebrow: 'All · Training · Matches',
             lead: 'a comparability filter',
-            desc: 'A match and a training session do not compare: a match’s external load is structurally higher. So this filter changes everything computed — the session shown, the values, the suggested target, the ratio and its baseline.',
+            desc: 'A match’s external load is structurally higher than a training session’s. So this filter changes everything computed: the session shown, the values, the suggested target, the ratio and its baseline.',
             tone: 'blue',
           },
           {
             title: 'Period',
             eyebrow: '7 d · 4 wk · 12 wk · Season',
             lead: 'a display window, nothing more',
-            desc: 'It changes what is listed and what is plotted, and nothing else. The ratio’s baseline stays computed over 28 days, whichever period you pick.',
+            desc: 'It changes what is listed and what is plotted. The ratio’s baseline stays computed over 28 days, whichever period you pick.',
           },
         ],
         callouts: [
           {
             tone: 'orange',
             icon: 'triangle-alert',
-            text: 'Choosing “7 days” does not make a player “short of data”: STRIVN counts their real history, not the window on screen. Choosing “Matches”, on the other hand, recomputes their target from their matches — otherwise you would be comparing a match to a training average.',
+            text: 'STRIVN counts the player’s real history whichever window is on screen: “7 days” changes the list and leaves the data badge intact. Choosing “Matches” recomputes their target from their matches, to compare a match with matches.',
           },
         ],
         note: {
           label: 'The third one: Measure',
-          desc: 'Distance or Time: the same blocks, in the other unit. Each block has a target per measure: you can aim for 4,200 m of aerobic work and 15 minutes, independently. Saving one does not touch the other.',
+          desc: 'Distance or Time: the same blocks, in the other unit. Each block has a target per measure; you can aim for 4,200 m of aerobic work and 15 minutes, independently, and saving one leaves the other intact.',
         },
       },
       {
-        kicker: 'WHAT STRIVN REFUSES TO SHOW',
+        kicker: 'WHAT STRIVN LEAVES EMPTY',
         title: 'A wrong number is worse than an empty cell.',
         kind: 'rows',
         pill: true,
@@ -308,15 +308,15 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             name: '—',
-            desc: 'A block whose zones are not all mapped in the displayed measure stays empty. STRIVN never adds up part of the zones: an incomplete sum is a wrong number, not an approximate one.',
+            desc: 'A block with a zone missing in the displayed measure stays empty: an incomplete sum is a wrong number, not an approximate one.',
           },
           {
             name: 'Not enough data',
-            desc: 'The internal / external block says so while the history is too short. And when one side is missing — no RPE entered, or no GPS data — the ratio stays empty.',
+            desc: 'The internal / external block shows it while the history is too short. When one side is missing (RPE absent, or GPS data absent), the ratio stays empty.',
           },
           {
             name: '(in progress)',
-            desc: 'The current week carries the label until it ends: its values are not final yet.',
+            desc: 'The current week carries the label until it closes: its values stay provisional.',
           },
         ],
       },
@@ -325,21 +325,21 @@ export const trainingLoad: SubpageLocales = {
         kind: 'panels',
         panels: [
           {
-            title: 'The only signal that counts: the player’s gap to their own baseline.',
-            desc: 'An external ÷ internal ratio that drops clearly below its 28-day baseline signals a decoupling: the player is producing less mechanical work for the same perceived effort — a sign of hidden fatigue. The block header turns red. Against another player, that same ratio says nothing.',
+            title: 'Read each player against their own 28-day baseline.',
+            desc: 'An external ÷ internal ratio that drops clearly below its 28-day baseline signals a decoupling: the player is producing less mechanical work for the same perceived effort, a sign of hidden fatigue. The block header turns red. The same ratio compared with another player stays silent.',
           },
         ],
       },
       {
         kicker: 'WORKING IN YOUR OWN UNIT',
-        title: 'If your staff does not think in AU, change the unit.',
-        body: 'By default a 90-minute session at RPE 7 weighs 630 AU and a week lands around 3,000. Not numbers you announce easily in a meeting. Declare your in-house unit — a fixed multiple of the AU — and the scale becomes readable again.',
+        title: 'Declare your own load unit; the scale follows.',
+        body: 'By default a 90-minute session at RPE 7 weighs 630 AU and a week lands around 3,000, numbers that are hard to announce in a meeting. Declare your in-house unit, a fixed multiple of the AU, and the scale becomes readable again.',
         visual: 'unit-conversion',
         kind: 'columns',
         cols: [
           {
-            title: 'Your data does not move',
-            desc: 'Load stays recorded in AU. The unit only changes what you read and what you type. You can switch back whenever you like, and the history simply reads in the new unit.',
+            title: 'Your data stays in AU',
+            desc: 'Load stays recorded in AU; the unit only changes what you read and what you type. Switch back whenever you like, and the history reads in the new unit.',
           },
           {
             title: 'Every screen follows',
@@ -347,7 +347,7 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             title: 'Ratios keep their scale',
-            desc: 'ACWR, monotony and the internal / external ratio are calibrated ratios, not load quantities. Only strain follows your unit, because it is one.',
+            desc: 'ACWR, monotony and the internal / external ratio are calibrated ratios; only strain follows your unit, because it is a load quantity.',
           },
         ],
         callouts: [
@@ -359,7 +359,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'The name becomes mandatory as soon as the equivalence leaves 1. Otherwise converted values would show under the symbol “AU”, which is no longer the right one.',
+            text: 'The name becomes mandatory as soon as the equivalence leaves 1: converted values under the symbol “AU” would be wrong.',
           },
         ],
       },
@@ -375,7 +375,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · MONITORING',
-      title: 'Het gevoel aan de ene kant, de GPS aan de andere. Zelfde scherm.',
+      title: 'Kruis de RPE en de gps van elke speler.',
       sub: 'De RPE uit de nabespreking en de duur geven de interne belasting. Je gps-export geeft de externe. STRIVN zet ze naast elkaar. ACWR, monotonie, strain en de verhouding rekenen zichzelf uit.',
       bullets: [
         'sRPE-belasting: RPE × duur, met instelbare coëfficiënten voor wedstrijd en training',
@@ -389,13 +389,13 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'WAT JE LEEST',
-        title: 'ACWR, monotonie, strain: wat ze zeggen.',
+        title: 'Lees ACWR, monotonie en strain zonder ze te herberekenen.',
         kind: 'rows',
         rows: [
           {
             name: 'ACWR',
             sub: 'belasting 7 d ÷ belasting 28 d',
-            desc: 'De verhouding tussen wat de speler net verwerkt heeft en waaraan hij gewend is. De rangschikking sorteert op afstand tot de zone, niet op waarde.',
+            desc: 'De verhouding tussen wat de speler net verwerkt heeft en waaraan hij gewend is. De rangschikking sorteert op afstand tot de zone.',
             chip: { label: '0,8 – 1,3', tone: 'green' },
           },
           {
@@ -413,70 +413,70 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Verhouding extern ÷ intern',
             sub: 'gps-belasting ÷ sRPE',
-            desc: 'Geen absolute betekenis. Beide metingen delen geen eenheid. Het enige ijkpunt is het verschil met de eigen basislijn van 28 dagen.',
+            desc: 'Beide metingen hebben een andere eenheid: de waarde leest alleen tegenover de eigen basislijn van 28 dagen van de speler.',
             chip: { label: 'vs basis 28 d' },
           },
         ],
         note: {
-          label: 'Bevestigen is niet wissen',
-          desc: 'Een belastingsmelding bevestig je met een notitie — de context, het genomen besluit. Ze blijft zichtbaar, grijs, met wie ze afhandelde en wanneer, en gaat niet opnieuw af zolang de belasting van diezelfde week binnen de norm blijft.',
+          label: 'Bevestigen houdt het spoor',
+          desc: 'Een belastingsmelding bevestig je met een notitie: de context, het genomen besluit. Ze blijft zichtbaar, grijs, met wie ze afhandelde en wanneer, en zwijgt zolang de belasting van diezelfde week binnen de norm blijft.',
         },
       },
       {
         kicker: 'GPS · JOUW SNELHEIDSBLOKKEN',
-        title: 'Een gps-export bevat geen kolom “aeroob”.',
-        body: 'Ze bevat genummerde zones, meestal in afstand en tijd. Hoe je ze groepeert bepaal jij: een blok is een naam die je aan een som van zones geeft. Je blokken sturen daarna al de rest aan — kolommen, grafieken, individuele doelen.',
+        title: 'Benoem je snelheidsblokken vanuit de zones van je export.',
+        body: 'Je export bevat genummerde zones, meestal in afstand en tijd. Jij bepaalt hoe je ze groepeert: een blok is een naam die je aan een som van zones geeft. Je blokken sturen daarna kolommen, grafieken en individuele doelen aan.',
         visual: 'gps-blocks',
         kind: 'columns',
         cols: [
           {
             title: 'Eén zone kan in meerdere blokken zitten',
-            desc: 'Niets belet dat Aeroob = Z1+Z2+Z3 en Totaal volume = Z1+…+Z6 naast elkaar staan.',
+            desc: 'Aeroob = Z1+Z2+Z3 en Totaal volume = Z1+…+Z6 staan naast elkaar.',
           },
           {
-            title: 'Een blok hernoemen verliest niets',
-            desc: 'De doelen en je opgeslagen kolommen volgen de nieuwe naam, zonder iets opnieuw te typen.',
+            title: 'Hernoem een blok, de doelen volgen',
+            desc: 'De doelen en je opgeslagen kolommen volgen de nieuwe naam.',
           },
           {
-            title: 'Verwijderen is niet wissen',
+            title: 'Verwijder een blok, het blijft gearchiveerd',
             desc: 'Een verwijderd blok wordt gearchiveerd. De doelen blijven bewaard mocht het volgend seizoen terugkomen.',
           },
         ],
-        foot: 'Stel je niets in, dan start het team met vier klassieke blokken — Aeroob, Hoge intensiteit, Hoge snelheid, Sprint — al gekoppeld aan de kolommen die STRIVN in je export herkende.',
+        foot: 'Zonder instelling start het team met vier klassieke blokken (Aeroob, Hoge intensiteit, Hoge snelheid, Sprint), al gekoppeld aan de kolommen die STRIVN in je export herkende.',
       },
       {
         kicker: 'HET PUNT OM TE ONTHOUDEN',
-        title: 'De ene herberekent alles. De andere verandert alleen de weergave.',
+        title: 'Het filter Sessies herberekent alles; Periode verandert de weergave.',
         kind: 'panels',
         panels: [
           {
             title: 'Sessies',
             eyebrow: 'Alle · Trainingen · Wedstrijden',
             lead: 'een filter op vergelijkbaarheid',
-            desc: 'Een wedstrijd en een training vergelijk je niet: de externe belasting van een wedstrijd ligt structureel hoger. Dit filter wijzigt dus alles wat berekend wordt — de getoonde sessie, de waarden, het voorgestelde doel, de verhouding en haar basislijn.',
+            desc: 'De externe belasting van een wedstrijd ligt structureel hoger dan die van een training. Dit filter wijzigt dus alles wat berekend wordt: de getoonde sessie, de waarden, het voorgestelde doel, de verhouding en haar basislijn.',
             tone: 'blue',
           },
           {
             title: 'Periode',
             eyebrow: '7 d · 4 wk · 12 wk · Seizoen',
             lead: 'enkel een weergavevenster',
-            desc: 'Ze wijzigt wat er wordt opgesomd en uitgezet, en niets anders. De basislijn van de verhouding blijft over 28 dagen berekend, welke periode je ook kiest.',
+            desc: 'Ze wijzigt wat er wordt opgesomd en uitgezet. De basislijn van de verhouding blijft over 28 dagen berekend, welke periode je ook kiest.',
           },
         ],
         callouts: [
           {
             tone: 'orange',
             icon: 'triangle-alert',
-            text: '“7 dagen” kiezen maakt een speler niet “met te weinig gegevens”: STRIVN telt zijn echte historiek, niet het getoonde venster. “Wedstrijden” kiezen herberekent zijn doel wél op zijn wedstrijden — anders vergelijk je een wedstrijd met een trainingsgemiddelde.',
+            text: 'STRIVN telt de echte historiek van de speler, welk venster ook getoond wordt: “7 dagen” verandert de lijst en laat het gegevenslabel intact. “Wedstrijden” kiezen herberekent zijn doel op zijn wedstrijden, om een wedstrijd met wedstrijden te vergelijken.',
           },
         ],
         note: {
           label: 'De derde: Meting',
-          desc: 'Afstand of Tijd: dezelfde blokken, in de andere eenheid. Elk blok heeft een doel per meting: je kunt onafhankelijk mikken op 4 200 m aeroob en 15 minuten. Het ene opslaan raakt het andere niet.',
+          desc: 'Afstand of Tijd: dezelfde blokken, in de andere eenheid. Elk blok heeft een doel per meting; je kunt onafhankelijk mikken op 4 200 m aeroob en 15 minuten, en het ene opslaan laat het andere intact.',
         },
       },
       {
-        kicker: 'WAT STRIVN WEIGERT TE TONEN',
+        kicker: 'WAT STRIVN LEEG LAAT',
         title: 'Een fout getal is erger dan een leeg vakje.',
         kind: 'rows',
         pill: true,
@@ -487,15 +487,15 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             name: '—',
-            desc: 'Een blok waarvan niet alle zones gekoppeld zijn in de getoonde meting blijft leeg. STRIVN telt nooit een deel van de zones op: een onvolledige som is een fout getal, geen benadering.',
+            desc: 'Een blok waarvan een zone ontbreekt in de getoonde meting blijft leeg: een onvolledige som is een fout getal, geen benadering.',
           },
           {
             name: 'Te weinig gegevens',
-            desc: 'Het blok intern / extern zegt het zolang de historiek te kort is. En ontbreekt één kant — geen RPE ingevoerd, of geen gps-gegeven — dan blijft de verhouding leeg.',
+            desc: 'Het blok intern / extern toont het zolang de historiek te kort is. Ontbreekt één kant (geen RPE, of geen gps-gegeven), dan blijft de verhouding leeg.',
           },
           {
             name: '(lopend)',
-            desc: 'De lopende week draagt de vermelding tot ze afgelopen is: haar waarden zijn nog niet definitief.',
+            desc: 'De lopende week draagt de vermelding tot ze afgesloten is: haar waarden blijven voorlopig.',
           },
         ],
       },
@@ -504,21 +504,21 @@ export const trainingLoad: SubpageLocales = {
         kind: 'panels',
         panels: [
           {
-            title: 'Het enige signaal dat telt: het verschil met de eigen basislijn.',
-            desc: 'Een verhouding extern ÷ intern die duidelijk onder haar basislijn van 28 dagen zakt, wijst op ontkoppeling: de speler levert minder mechanisch werk bij eenzelfde gevoel — een teken van verborgen vermoeidheid. De blokkop wordt rood. Tegenover een andere speler zegt diezelfde verhouding niets.',
+            title: 'Lees elke speler tegenover zijn eigen basislijn van 28 dagen.',
+            desc: 'Een verhouding extern ÷ intern die duidelijk onder haar basislijn van 28 dagen zakt, wijst op ontkoppeling: de speler levert minder mechanisch werk bij eenzelfde gevoel, een teken van verborgen vermoeidheid. De blokkop wordt rood. Diezelfde verhouding tegenover een andere speler blijft stom.',
           },
         ],
       },
       {
         kicker: 'WERKEN IN JE EIGEN EENHEID',
-        title: 'Denkt je staf niet in AE, verander dan van eenheid.',
-        body: 'Standaard weegt een training van 90 minuten op RPE 7 630 AE en komt een week rond 3 000 uit. Geen getallen die je makkelijk aankondigt in een vergadering. Geef je eigen eenheid op — een vast veelvoud van de AE — en de schaal wordt weer leesbaar.',
+        title: 'Geef je eigen belastingseenheid op, de schaal volgt.',
+        body: 'Standaard weegt een training van 90 minuten op RPE 7 630 AE en komt een week rond 3 000 uit, getallen die je moeilijk aankondigt in een vergadering. Geef je eigen eenheid op, een vast veelvoud van de AE, en de schaal wordt weer leesbaar.',
         visual: 'unit-conversion',
         kind: 'columns',
         cols: [
           {
-            title: 'Je gegevens verschuiven niet',
-            desc: 'De belasting blijft in AE opgeslagen. De eenheid wijzigt alleen wat je leest en wat je invoert. Je kunt altijd terug, en de historiek leest gewoon in de nieuwe eenheid.',
+            title: 'Je gegevens blijven in AE',
+            desc: 'De belasting blijft in AE opgeslagen; de eenheid wijzigt alleen wat je leest en wat je invoert. Ga terug wanneer je wilt, de historiek leest in de nieuwe eenheid.',
           },
           {
             title: 'Alle schermen volgen',
@@ -526,7 +526,7 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             title: 'Verhoudingen houden hun schaal',
-            desc: 'ACWR, monotonie en de verhouding intern / extern zijn geijkte verhoudingen, geen belastingshoeveelheden. Alleen strain volgt je eenheid, want dat ís er een.',
+            desc: 'ACWR, monotonie en de verhouding intern / extern zijn geijkte verhoudingen; alleen strain volgt je eenheid, want dat is een belastingshoeveelheid.',
           },
         ],
         callouts: [
@@ -538,7 +538,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'De naam wordt verplicht zodra de gelijkwaardigheid 1 verlaat. Anders zouden omgerekende waarden onder de afkorting “AE” verschijnen, die dan niet meer klopt.',
+            text: 'De naam wordt verplicht zodra de gelijkwaardigheid 1 verlaat: omgerekende waarden onder de afkorting “AE” zouden fout zijn.',
           },
         ],
       },
@@ -554,7 +554,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · MONITORING',
-      title: 'Das Empfinden auf der einen Seite, das GPS auf der anderen. Ein Bildschirm.',
+      title: 'RPE und GPS jedes Spielers auf einem Bildschirm kreuzen.',
       sub: 'RPE aus der Nachbesprechung und Dauer ergeben die interne Belastung. Ihr GPS-Export die externe. STRIVN stellt beide gegenüber. ACWR, Monotonie, Strain und Verhältnis rechnen sich von selbst.',
       bullets: [
         'sRPE-Belastung: RPE × Dauer, mit einstellbaren Koeffizienten für Spiel und Training',
@@ -568,13 +568,13 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'WAS SIE LESEN',
-        title: 'ACWR, Monotonie, Strain: was sie sagen.',
+        title: 'Lesen Sie ACWR, Monotonie und Strain, ohne sie nachzurechnen.',
         kind: 'rows',
         rows: [
           {
             name: 'ACWR',
             sub: 'Belastung 7 T ÷ Belastung 28 T',
-            desc: 'Das Verhältnis zwischen dem, was der Spieler gerade weggesteckt hat, und dem, was er gewohnt ist. Die Rangliste sortiert nach Abstand zur Zone, nicht nach Wert.',
+            desc: 'Das Verhältnis zwischen dem, was der Spieler gerade weggesteckt hat, und dem, was er gewohnt ist. Die Rangliste sortiert nach Abstand zur Zone.',
             chip: { label: '0,8 – 1,3', tone: 'green' },
           },
           {
@@ -592,70 +592,70 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Verhältnis extern ÷ intern',
             sub: 'GPS-Belastung ÷ sRPE',
-            desc: 'Keine absolute Bedeutung. Beide Größen teilen keine Einheit. Der einzige Bezug ist der Abstand zur eigenen 28-Tage-Basis des Spielers.',
+            desc: 'Beide Größen haben verschiedene Einheiten: Der Wert liest sich nur gegen die eigene 28-Tage-Basis des Spielers.',
             chip: { label: 'vs Basis 28 T' },
           },
         ],
         note: {
-          label: 'Quittieren heißt nicht löschen',
-          desc: 'Eine Belastungswarnung wird mit einer Notiz quittiert — Kontext, getroffene Entscheidung. Sie bleibt sichtbar, ausgegraut, mit Bearbeiter und Zeitpunkt, und löst nicht erneut aus, solange die Belastung derselben Woche im Rahmen bleibt.',
+          label: 'Quittieren behält die Spur',
+          desc: 'Eine Belastungswarnung wird mit einer Notiz quittiert: Kontext, getroffene Entscheidung. Sie bleibt sichtbar, ausgegraut, mit Bearbeiter und Zeitpunkt, und schweigt, solange die Belastung derselben Woche im Rahmen bleibt.',
         },
       },
       {
         kicker: 'GPS · IHRE TEMPOBLÖCKE',
-        title: 'Ein GPS-Export enthält keine Spalte „aerob“.',
-        body: 'Er enthält nummerierte Zonen, meist in Distanz und Zeit. Wie Sie sie bündeln, entscheiden Sie: Ein Block ist ein Name, den Sie einer Summe von Zonen geben. Ihre Blöcke steuern danach alles Weitere — Spalten, Diagramme, individuelle Ziele.',
+        title: 'Benennen Sie Ihre Tempoblöcke aus den Zonen Ihres Exports.',
+        body: 'Ihr Export enthält nummerierte Zonen, meist in Distanz und Zeit. Sie entscheiden, wie Sie sie bündeln: Ein Block ist ein Name, den Sie einer Summe von Zonen geben. Ihre Blöcke steuern danach Spalten, Diagramme und individuelle Ziele.',
         visual: 'gps-blocks',
         kind: 'columns',
         cols: [
           {
             title: 'Eine Zone darf in mehreren Blöcken stecken',
-            desc: 'Nichts hindert Sie, Aerob = Z1+Z2+Z3 und Gesamtvolumen = Z1+…+Z6 nebeneinander zu führen.',
+            desc: 'Aerob = Z1+Z2+Z3 und Gesamtvolumen = Z1+…+Z6 stehen nebeneinander.',
           },
           {
-            title: 'Umbenennen verliert nichts',
-            desc: 'Ziele und gespeicherte Spalten folgen dem neuen Namen, ohne dass Sie etwas neu tippen.',
+            title: 'Block umbenennen, die Ziele folgen',
+            desc: 'Ziele und gespeicherte Spalten folgen dem neuen Namen.',
           },
           {
-            title: 'Entfernen ist kein Löschen',
+            title: 'Block entfernen, er bleibt archiviert',
             desc: 'Ein entfernter Block wird archiviert. Seine Ziele bleiben gespeichert, falls er nächste Saison zurückkehrt.',
           },
         ],
-        foot: 'Konfigurieren Sie nichts, startet das Team mit vier klassischen Blöcken — Aerob, Hohe Intensität, Hochgeschwindigkeitslauf, Sprint — bereits den Spalten zugeordnet, die STRIVN in Ihrem Export erkannt hat.',
+        foot: 'Ohne Konfiguration startet das Team mit vier klassischen Blöcken (Aerob, Hohe Intensität, Hochgeschwindigkeitslauf, Sprint), bereits den Spalten zugeordnet, die STRIVN in Ihrem Export erkannt hat.',
       },
       {
         kicker: 'DER PUNKT, DEN MAN BEHÄLT',
-        title: 'Das eine rechnet alles neu. Das andere ändert nur die Anzeige.',
+        title: 'Der Filter Einheiten rechnet neu; Zeitraum ändert die Anzeige.',
         kind: 'panels',
         panels: [
           {
             title: 'Einheiten',
             eyebrow: 'Alle · Trainings · Spiele',
             lead: 'ein Filter auf Vergleichbarkeit',
-            desc: 'Ein Spiel und ein Training vergleicht man nicht: Die externe Belastung eines Spiels liegt strukturell höher. Dieser Filter ändert also alles Berechnete — die gezeigte Einheit, die Werte, das vorgeschlagene Ziel, das Verhältnis und seine Basis.',
+            desc: 'Die externe Belastung eines Spiels liegt strukturell höher als die eines Trainings. Dieser Filter ändert also alles Berechnete: die gezeigte Einheit, die Werte, das vorgeschlagene Ziel, das Verhältnis und seine Basis.',
             tone: 'blue',
           },
           {
             title: 'Zeitraum',
             eyebrow: '7 T · 4 Wo. · 12 Wo. · Saison',
             lead: 'nur ein Anzeigefenster',
-            desc: 'Er ändert, was aufgelistet und gezeichnet wird, und sonst nichts. Die Basis des Verhältnisses bleibt über 28 Tage berechnet, welchen Zeitraum Sie auch wählen.',
+            desc: 'Er ändert, was aufgelistet und gezeichnet wird. Die Basis des Verhältnisses bleibt über 28 Tage berechnet, welchen Zeitraum Sie auch wählen.',
           },
         ],
         callouts: [
           {
             tone: 'orange',
             icon: 'triangle-alert',
-            text: '„7 Tage“ zu wählen macht einen Spieler nicht „datenarm“: STRIVN zählt seine tatsächliche Historie, nicht das angezeigte Fenster. „Spiele“ zu wählen berechnet sein Ziel dagegen aus seinen Spielen neu — sonst verglichen Sie ein Spiel mit einem Trainingsmittel.',
+            text: 'STRIVN zählt die tatsächliche Historie des Spielers, welches Fenster auch angezeigt wird: „7 Tage“ ändert die Liste und lässt den Datenhinweis unberührt. „Spiele“ zu wählen berechnet sein Ziel aus seinen Spielen neu, um ein Spiel mit Spielen zu vergleichen.',
           },
         ],
         note: {
           label: 'Das dritte: Messgröße',
-          desc: 'Distanz oder Zeit: dieselben Blöcke in der anderen Einheit. Jeder Block hat ein Ziel je Messgröße: Sie können unabhängig 4 200 m aerob und 15 Minuten anpeilen. Das eine zu speichern rührt das andere nicht an.',
+          desc: 'Distanz oder Zeit: dieselben Blöcke in der anderen Einheit. Jeder Block hat ein Ziel je Messgröße; Sie können unabhängig 4 200 m aerob und 15 Minuten anpeilen, und das eine zu speichern lässt das andere unberührt.',
         },
       },
       {
-        kicker: 'WAS STRIVN NICHT ANZEIGT',
+        kicker: 'WAS STRIVN LEER LÄSST',
         title: 'Eine falsche Zahl ist schlimmer als ein leeres Feld.',
         kind: 'rows',
         pill: true,
@@ -666,15 +666,15 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             name: '—',
-            desc: 'Ein Block, dessen Zonen in der angezeigten Messgröße nicht alle zugeordnet sind, bleibt leer. STRIVN addiert nie einen Teil der Zonen: Eine unvollständige Summe ist eine falsche Zahl, keine ungefähre.',
+            desc: 'Ein Block, dem in der angezeigten Messgröße eine Zone fehlt, bleibt leer: Eine unvollständige Summe ist eine falsche Zahl, keine ungefähre.',
           },
           {
             name: 'Zu wenig Daten',
-            desc: 'Der Block intern / extern sagt es, solange die Historie zu kurz ist. Und fehlt eine Seite — kein RPE erfasst oder keine GPS-Daten —, bleibt das Verhältnis leer.',
+            desc: 'Der Block intern / extern zeigt es, solange die Historie zu kurz ist. Fehlt eine Seite (kein RPE oder keine GPS-Daten), bleibt das Verhältnis leer.',
           },
           {
             name: '(laufend)',
-            desc: 'Die laufende Woche trägt den Vermerk, bis sie beendet ist: Ihre Werte sind noch nicht endgültig.',
+            desc: 'Die laufende Woche trägt den Vermerk bis zu ihrem Abschluss: Ihre Werte bleiben vorläufig.',
           },
         ],
       },
@@ -683,21 +683,21 @@ export const trainingLoad: SubpageLocales = {
         kind: 'panels',
         panels: [
           {
-            title: 'Das einzige Signal, das zählt: der Abstand des Spielers zu seiner eigenen Basis.',
-            desc: 'Ein Verhältnis extern ÷ intern, das deutlich unter seine 28-Tage-Basis fällt, zeigt eine Entkopplung: Der Spieler leistet weniger mechanische Arbeit bei gleichem Empfinden — ein Zeichen verdeckter Ermüdung. Der Blockkopf wird rot. Gegen einen anderen Spieler gehalten sagt dasselbe Verhältnis nichts.',
+            title: 'Lesen Sie jeden Spieler gegen seine eigene 28-Tage-Basis.',
+            desc: 'Ein Verhältnis extern ÷ intern, das deutlich unter seine 28-Tage-Basis fällt, zeigt eine Entkopplung: Der Spieler leistet weniger mechanische Arbeit bei gleichem Empfinden, ein Zeichen verdeckter Ermüdung. Der Blockkopf wird rot. Dasselbe Verhältnis gegen einen anderen Spieler gehalten bleibt stumm.',
           },
         ],
       },
       {
         kicker: 'IN DER EIGENEN EINHEIT ARBEITEN',
-        title: 'Denkt Ihr Staff nicht in AE, wechseln Sie die Einheit.',
-        body: 'Standardmäßig wiegt eine 90-Minuten-Einheit bei RPE 7 630 AE, und eine Woche landet um 3 000. Zahlen, die man in einer Sitzung nicht leicht ausspricht. Erklären Sie Ihre Hauseinheit — ein festes Vielfaches der AE — und die Skala wird wieder lesbar.',
+        title: 'Erklären Sie Ihre eigene Belastungseinheit, die Skala folgt.',
+        body: 'Standardmäßig wiegt eine 90-Minuten-Einheit bei RPE 7 630 AE, und eine Woche landet um 3 000, Zahlen, die man in einer Sitzung schwer ausspricht. Erklären Sie Ihre Hauseinheit, ein festes Vielfaches der AE, und die Skala wird wieder lesbar.',
         visual: 'unit-conversion',
         kind: 'columns',
         cols: [
           {
-            title: 'Ihre Daten bewegen sich nicht',
-            desc: 'Die Belastung bleibt in AE gespeichert. Die Einheit ändert nur, was Sie lesen und eingeben. Sie können jederzeit zurück, und die Historie liest sich schlicht in der neuen Einheit.',
+            title: 'Ihre Daten bleiben in AE',
+            desc: 'Die Belastung bleibt in AE gespeichert; die Einheit ändert nur, was Sie lesen und eingeben. Wechseln Sie jederzeit zurück, die Historie liest sich in der neuen Einheit.',
           },
           {
             title: 'Alle Ansichten ziehen mit',
@@ -705,7 +705,7 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             title: 'Verhältnisse behalten ihre Skala',
-            desc: 'ACWR, Monotonie und das Verhältnis intern / extern sind kalibrierte Verhältnisse, keine Belastungsmengen. Nur der Strain folgt Ihrer Einheit, weil er selbst eine ist.',
+            desc: 'ACWR, Monotonie und das Verhältnis intern / extern sind kalibrierte Verhältnisse; nur der Strain folgt Ihrer Einheit, weil er eine Belastungsmenge ist.',
           },
         ],
         callouts: [
@@ -717,7 +717,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'Der Name wird Pflicht, sobald die Äquivalenz 1 verlässt. Sonst erschienen umgerechnete Werte unter dem Kürzel „AE“, das dann nicht mehr stimmt.',
+            text: 'Der Name wird Pflicht, sobald die Äquivalenz 1 verlässt: Umgerechnete Werte unter dem Kürzel „AE“ wären falsch.',
           },
         ],
       },
@@ -733,7 +733,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · MONITORIZAÇÃO',
-      title: 'O sentido de um lado, o GPS do outro. No mesmo ecrã.',
+      title: 'Cruze o RPE e o GPS de cada jogador.',
       sub: 'O RPE do balanço e a duração dão a carga interna. A sua exportação GPS dá a externa. A STRIVN põe-nas frente a frente. ACWR, monotonia, strain e rácio calculam-se sozinhos.',
       bullets: [
         'Carga sRPE: RPE × duração, com coeficientes de jogo e treino ajustáveis',
@@ -747,13 +747,13 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'O QUE VOCÊ LÊ',
-        title: 'ACWR, monotonia, strain: o que dizem.',
+        title: 'Leia ACWR, monotonia e strain sem os recalcular.',
         kind: 'rows',
         rows: [
           {
             name: 'ACWR',
             sub: 'carga 7 d ÷ carga 28 d',
-            desc: 'A relação entre o que o jogador acabou de absorver e aquilo a que está habituado. A ordenação usa a distância à zona, não o valor.',
+            desc: 'A relação entre o que o jogador acabou de absorver e aquilo a que está habituado. A ordenação usa a distância à zona.',
             chip: { label: '0,8 – 1,3', tone: 'green' },
           },
           {
@@ -771,71 +771,71 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Rácio externo ÷ interno',
             sub: 'carga GPS ÷ sRPE',
-            desc: 'Sem sentido absoluto. As duas medidas não partilham unidade. A única referência é o desvio à base de 28 dias do próprio jogador.',
+            desc: 'As duas medidas têm unidades diferentes: o valor só se lê face à base de 28 dias do próprio jogador.',
             chip: { label: 'vs base 28 d' },
           },
         ],
         note: {
-          label: 'Confirmar não é apagar',
-          desc: 'Um alerta de carga confirma-se com uma nota — o contexto, a decisão tomada. Fica visível, esbatido, com quem o tratou e quando, e não volta a disparar enquanto a carga da mesma semana se mantiver na norma.',
+          label: 'Confirmar guarda o rasto',
+          desc: 'Um alerta de carga confirma-se com uma nota: o contexto, a decisão tomada. Fica visível, esbatido, com quem o tratou e quando, e cala-se enquanto a carga da mesma semana se mantiver na norma.',
         },
       },
       {
         kicker: 'GPS · OS SEUS BLOCOS DE VELOCIDADE',
-        title: 'Uma exportação GPS não traz uma coluna «aeróbio».',
-        body: 'Traz zonas numeradas, muitas vezes em distância e em tempo. É você que decide como agrupá-las: um bloco é um nome que dá a uma soma de zonas. Os seus blocos comandam depois tudo o resto — colunas, gráficos, alvos individuais.',
+        title: 'Nomeie os seus blocos de velocidade pelas zonas exportadas.',
+        body: 'A sua exportação traz zonas numeradas, muitas vezes em distância e em tempo. Você decide como agrupá-las: um bloco é um nome que dá a uma soma de zonas. Os seus blocos comandam depois colunas, gráficos e alvos individuais.',
         visual: 'gps-blocks',
         kind: 'columns',
         cols: [
           {
             title: 'Uma zona pode servir vários blocos',
-            desc: 'Nada impede ter Aeróbio = Z1+Z2+Z3 e Volume total = Z1+…+Z6 lado a lado.',
+            desc: 'Aeróbio = Z1+Z2+Z3 e Volume total = Z1+…+Z6 convivem lado a lado.',
           },
           {
-            title: 'Renomear um bloco não perde nada',
-            desc: 'Os seus alvos e as colunas guardadas seguem o novo nome, sem nada para reescrever.',
+            title: 'Renomeie um bloco, os alvos seguem',
+            desc: 'Os seus alvos e as colunas guardadas seguem o novo nome.',
           },
           {
-            title: 'Retirar não é eliminar',
+            title: 'Retire um bloco, fica arquivado',
             desc: 'Um bloco retirado fica arquivado. Os alvos ficam em memória caso volte na época seguinte.',
           },
         ],
-        foot: 'Se não configurar nada, a equipa arranca com quatro blocos clássicos — Aeróbio, Alta intensidade, Corrida de alta velocidade, Sprint — já associados às colunas que a STRIVN reconheceu na sua exportação.',
+        foot: 'Sem configuração, a equipa arranca com quatro blocos clássicos (Aeróbio, Alta intensidade, Corrida de alta velocidade, Sprint), já associados às colunas que a STRIVN reconheceu na sua exportação.',
       },
       {
         kicker: 'O PONTO A RETER',
-        title: 'Um recalcula tudo. O outro só muda o que é mostrado.',
+        title: 'O filtro Sessões recalcula tudo; Período muda a vista.',
         kind: 'panels',
         panels: [
           {
             title: 'Sessões',
             eyebrow: 'Todas · Treinos · Jogos',
             lead: 'um filtro de comparabilidade',
-            desc: 'Um jogo e um treino não se comparam: a carga externa de um jogo é estruturalmente mais alta. Este filtro altera portanto tudo o que é calculado — a sessão mostrada, os valores, o alvo sugerido, o rácio e a sua base.',
+            desc: 'A carga externa de um jogo é estruturalmente mais alta do que a de um treino. Este filtro altera portanto tudo o que é calculado: a sessão mostrada, os valores, o alvo sugerido, o rácio e a sua base.',
             tone: 'blue',
           },
           {
             title: 'Período',
             eyebrow: '7 d · 4 sem. · 12 sem. · Época',
             lead: 'apenas uma janela de visualização',
-            desc: 'Altera o que é listado e o que é traçado, e nada mais. A base do rácio continua calculada em 28 dias, seja qual for o período escolhido.',
+            desc: 'Altera o que é listado e o que é traçado. A base do rácio continua calculada em 28 dias, seja qual for o período escolhido.',
           },
         ],
         callouts: [
           {
             tone: 'orange',
             icon: 'triangle-alert',
-            text: 'Escolher «7 dias» não torna um jogador «sem dados suficientes»: a STRIVN conta o histórico real, não a janela mostrada. Escolher «Jogos», esse sim, recalcula o alvo a partir dos jogos dele — caso contrário compararia um jogo com uma média de treinos.',
+            text: 'A STRIVN conta o histórico real do jogador, seja qual for a janela mostrada: «7 dias» muda a lista e deixa o rótulo de dados intacto. Escolher «Jogos» recalcula o alvo a partir dos jogos dele, para comparar um jogo com jogos.',
           },
         ],
         note: {
           label: 'O terceiro: Medida',
-          desc: 'Distância ou Tempo: os mesmos blocos, na outra unidade. Cada bloco tem um alvo por medida: pode visar 4 200 m de aeróbio e 15 minutos, de forma independente. Guardar um não toca no outro.',
+          desc: 'Distância ou Tempo: os mesmos blocos, na outra unidade. Cada bloco tem um alvo por medida; pode visar 4 200 m de aeróbio e 15 minutos, de forma independente, e guardar um deixa o outro intacto.',
         },
       },
       {
-        kicker: 'O QUE A STRIVN RECUSA MOSTRAR',
-        title: 'Um número errado é pior do que uma célula vazia.',
+        kicker: 'O QUE A STRIVN DEIXA VAZIO',
+        title: 'Um número errado é pior que uma célula vazia.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -845,15 +845,15 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             name: '—',
-            desc: 'Um bloco cujas zonas não estão todas associadas na medida mostrada fica vazio. A STRIVN nunca soma parte das zonas: uma soma incompleta é um número errado, não um número aproximado.',
+            desc: 'Um bloco a que falta uma zona na medida mostrada fica vazio: uma soma incompleta é um número errado, não um número aproximado.',
           },
           {
             name: 'Dados insuficientes',
-            desc: 'O bloco interno / externo di-lo enquanto o histórico for demasiado curto. E quando falta um lado — sem RPE inserido, ou sem dado GPS — o rácio fica vazio.',
+            desc: 'O bloco interno / externo mostra-o enquanto o histórico for demasiado curto. Quando falta um lado (RPE ausente, ou dado GPS ausente), o rácio fica vazio.',
           },
           {
             name: '(em curso)',
-            desc: 'A semana em curso leva a menção enquanto não terminar: os valores ainda não são definitivos.',
+            desc: 'A semana em curso leva a menção até ao fecho: os valores continuam provisórios.',
           },
         ],
       },
@@ -862,21 +862,21 @@ export const trainingLoad: SubpageLocales = {
         kind: 'panels',
         panels: [
           {
-            title: 'O único sinal que vale: o desvio do jogador à sua própria base.',
-            desc: 'Um rácio externo ÷ interno que cai claramente abaixo da base de 28 dias assinala um desacoplamento: o jogador produz menos trabalho mecânico para a mesma sensação — sinal de fadiga escondida. O cabeçalho do bloco fica vermelho. Comparado com outro jogador, esse mesmo rácio não diz nada.',
+            title: 'Leia cada jogador face à sua própria base de 28 dias.',
+            desc: 'Um rácio externo ÷ interno que cai claramente abaixo da base de 28 dias assinala um desacoplamento: o jogador produz menos trabalho mecânico para a mesma sensação, sinal de fadiga escondida. O cabeçalho do bloco fica vermelho. O mesmo rácio comparado com outro jogador fica mudo.',
           },
         ],
       },
       {
         kicker: 'TRABALHAR NA SUA PRÓPRIA UNIDADE',
-        title: 'Se a sua equipa técnica não raciocina em UA, mude de unidade.',
-        body: 'Por omissão, um treino de 90 minutos a RPE 7 pesa 630 UA e uma semana ronda os 3 000. Números que não se anunciam facilmente numa reunião. Declare a sua unidade da casa — um múltiplo fixo da UA — e a escala volta a ser legível.',
+        title: 'Declare a sua unidade de carga, a escala acompanha.',
+        body: 'Por omissão, um treino de 90 minutos a RPE 7 pesa 630 UA e uma semana ronda os 3 000, números difíceis de anunciar numa reunião. Declare a sua unidade da casa, um múltiplo fixo da UA, e a escala volta a ser legível.',
         visual: 'unit-conversion',
         kind: 'columns',
         cols: [
           {
-            title: 'Os seus dados não se mexem',
-            desc: 'A carga fica registada em UA. A unidade só muda o que você lê e o que insere. Pode voltar atrás quando quiser, e o histórico lê-se simplesmente na nova unidade.',
+            title: 'Os seus dados ficam em UA',
+            desc: 'A carga fica registada em UA; a unidade só muda o que você lê e o que insere. Volte atrás quando quiser, o histórico lê-se na nova unidade.',
           },
           {
             title: 'Todos os ecrãs acompanham',
@@ -884,7 +884,7 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             title: 'Os rácios mantêm a escala',
-            desc: 'ACWR, monotonia e rácio interno / externo são rácios calibrados, não quantidades de carga. Só o strain segue a sua unidade, já que é uma.',
+            desc: 'ACWR, monotonia e rácio interno / externo são rácios calibrados; só o strain segue a sua unidade, já que é uma quantidade de carga.',
           },
         ],
         callouts: [
@@ -896,7 +896,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'O nome torna-se obrigatório assim que a equivalência deixa de ser 1. Caso contrário, apareceriam valores convertidos sob a sigla «UA», que já não é a correta.',
+            text: 'O nome torna-se obrigatório assim que a equivalência deixa de ser 1: valores convertidos sob a sigla «UA» estariam errados.',
           },
         ],
       },
@@ -912,7 +912,7 @@ export const trainingLoad: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · MONITORIZACIÓN',
-      title: 'La percepción de un lado, el GPS del otro. En la misma pantalla.',
+      title: 'Cruza el RPE y el GPS de cada jugador.',
       sub: 'El RPE del balance y la duración dan la carga interna. Tu exportación GPS da la externa. STRIVN las pone frente a frente. ACWR, monotonía, strain y ratio se calculan solos.',
       bullets: [
         'Carga sRPE: RPE × duración, con coeficientes de partido y entrenamiento ajustables',
@@ -926,13 +926,13 @@ export const trainingLoad: SubpageLocales = {
     sections: [
       {
         kicker: 'LO QUE LEES',
-        title: 'ACWR, monotonía, strain: lo que dicen.',
+        title: 'Lee ACWR, monotonía y strain sin recalcularlos.',
         kind: 'rows',
         rows: [
           {
             name: 'ACWR',
             sub: 'carga 7 d ÷ carga 28 d',
-            desc: 'La relación entre lo que el jugador acaba de encajar y aquello a lo que está acostumbrado. La clasificación ordena por distancia a la zona, no por valor.',
+            desc: 'La relación entre lo que el jugador acaba de encajar y aquello a lo que está acostumbrado. La clasificación ordena por distancia a la zona.',
             chip: { label: '0,8 – 1,3', tone: 'green' },
           },
           {
@@ -950,70 +950,70 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Ratio externo ÷ interno',
             sub: 'carga GPS ÷ sRPE',
-            desc: 'Sin sentido absoluto. Las dos medidas no comparten unidad. La única referencia es la distancia a la base de 28 días del propio jugador.',
+            desc: 'Las dos medidas tienen unidades distintas: el valor solo se lee frente a la base de 28 días del propio jugador.',
             chip: { label: 'vs base 28 d' },
           },
         ],
         note: {
-          label: 'Marcar no es borrar',
-          desc: 'Una alerta de carga se marca con una nota — el contexto, la decisión tomada. Sigue visible, atenuada, con quién la trató y cuándo, y no vuelve a saltar mientras la carga de esa misma semana se mantenga en la norma.',
+          label: 'Marcar conserva el rastro',
+          desc: 'Una alerta de carga se marca con una nota: el contexto, la decisión tomada. Sigue visible, atenuada, con quién la trató y cuándo, y calla mientras la carga de esa misma semana se mantenga en la norma.',
         },
       },
       {
         kicker: 'GPS · TUS BLOQUES DE VELOCIDAD',
-        title: 'Una exportación GPS no trae una columna «aeróbico».',
-        body: 'Trae zonas numeradas, a menudo en distancia y en tiempo. Cómo agruparlas lo decides tú: un bloque es un nombre que das a una suma de zonas. Tus bloques mandan después sobre todo lo demás — columnas, gráficos, objetivos individuales.',
+        title: 'Nombra tus bloques de velocidad desde las zonas exportadas.',
+        body: 'Tu exportación trae zonas numeradas, a menudo en distancia y en tiempo. Tú decides cómo agruparlas: un bloque es un nombre que das a una suma de zonas. Tus bloques mandan después sobre columnas, gráficos y objetivos individuales.',
         visual: 'gps-blocks',
         kind: 'columns',
         cols: [
           {
             title: 'Una zona puede servir en varios bloques',
-            desc: 'Nada impide tener Aeróbico = Z1+Z2+Z3 y Volumen total = Z1+…+Z6 uno al lado del otro.',
+            desc: 'Aeróbico = Z1+Z2+Z3 y Volumen total = Z1+…+Z6 conviven uno al lado del otro.',
           },
           {
-            title: 'Renombrar un bloque no pierde nada',
-            desc: 'Sus objetivos y tus columnas guardadas siguen el nombre nuevo, sin volver a escribir nada.',
+            title: 'Renombra un bloque, sus objetivos siguen',
+            desc: 'Sus objetivos y tus columnas guardadas siguen el nombre nuevo.',
           },
           {
-            title: 'Retirar no es eliminar',
+            title: 'Retira un bloque, queda archivado',
             desc: 'Un bloque retirado queda archivado. Sus objetivos siguen en memoria por si vuelve la próxima temporada.',
           },
         ],
-        foot: 'Si no configuras nada, el equipo arranca con cuatro bloques clásicos — Aeróbico, Alta intensidad, Carrera de alta velocidad, Sprint — ya asociados a las columnas que STRIVN reconoció en tu exportación.',
+        foot: 'Sin configuración, el equipo arranca con cuatro bloques clásicos (Aeróbico, Alta intensidad, Carrera de alta velocidad, Sprint), ya asociados a las columnas que STRIVN reconoció en tu exportación.',
       },
       {
         kicker: 'LO QUE HAY QUE RETENER',
-        title: 'Uno recalcula todo. El otro solo cambia lo que se muestra.',
+        title: 'El filtro Sesiones recalcula todo; Periodo cambia la vista.',
         kind: 'panels',
         panels: [
           {
             title: 'Sesiones',
             eyebrow: 'Todas · Entrenamientos · Partidos',
             lead: 'un filtro de comparabilidad',
-            desc: 'Un partido y un entrenamiento no se comparan: la carga externa de un partido es estructuralmente más alta. Este filtro cambia por tanto todo lo que se calcula — la sesión mostrada, los valores, el objetivo sugerido, el ratio y su base.',
+            desc: 'La carga externa de un partido es estructuralmente más alta que la de un entrenamiento. Este filtro cambia por tanto todo lo que se calcula: la sesión mostrada, los valores, el objetivo sugerido, el ratio y su base.',
             tone: 'blue',
           },
           {
             title: 'Periodo',
             eyebrow: '7 d · 4 sem. · 12 sem. · Temporada',
             lead: 'solo una ventana de visualización',
-            desc: 'Cambia lo que se lista y lo que se traza, y nada más. La base del ratio sigue calculándose sobre 28 días, sea cual sea el periodo que elijas.',
+            desc: 'Cambia lo que se lista y lo que se traza. La base del ratio sigue calculándose sobre 28 días, sea cual sea el periodo que elijas.',
           },
         ],
         callouts: [
           {
             tone: 'orange',
             icon: 'triangle-alert',
-            text: 'Elegir «7 días» no convierte a un jugador en «falto de datos»: STRIVN cuenta su historial real, no la ventana mostrada. Elegir «Partidos», en cambio, recalcula su objetivo sobre sus partidos — de lo contrario compararías un partido con una media de entrenamientos.',
+            text: 'STRIVN cuenta el historial real del jugador, sea cual sea la ventana mostrada: «7 días» cambia la lista y deja intacta la etiqueta de datos. Elegir «Partidos» recalcula su objetivo sobre sus partidos, para comparar un partido con partidos.',
           },
         ],
         note: {
           label: 'El tercero: Medida',
-          desc: 'Distancia o Tiempo: los mismos bloques, en la otra unidad. Cada bloque tiene un objetivo por medida: puedes apuntar a 4 200 m de aeróbico y 15 minutos, de forma independiente. Guardar uno no toca el otro.',
+          desc: 'Distancia o Tiempo: los mismos bloques, en la otra unidad. Cada bloque tiene un objetivo por medida; puedes apuntar a 4 200 m de aeróbico y 15 minutos, de forma independiente, y guardar uno deja el otro intacto.',
         },
       },
       {
-        kicker: 'LO QUE STRIVN SE NIEGA A MOSTRAR',
+        kicker: 'LO QUE STRIVN DEJA VACÍO',
         title: 'Un número falso es peor que una casilla vacía.',
         kind: 'rows',
         pill: true,
@@ -1024,15 +1024,15 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             name: '—',
-            desc: 'Un bloque cuyas zonas no están todas asociadas en la medida mostrada queda vacío. STRIVN nunca suma una parte de las zonas: una suma incompleta es un número falso, no un número aproximado.',
+            desc: 'Un bloque al que le falta una zona en la medida mostrada queda vacío: una suma incompleta es un número falso, no un número aproximado.',
           },
           {
             name: 'Datos insuficientes',
-            desc: 'El bloque interno / externo lo dice mientras el historial sea demasiado corto. Y cuando falta un lado — sin RPE introducido, o sin dato GPS — el ratio queda vacío.',
+            desc: 'El bloque interno / externo lo muestra mientras el historial sea demasiado corto. Cuando falta un lado (RPE ausente, o dato GPS ausente), el ratio queda vacío.',
           },
           {
             name: '(en curso)',
-            desc: 'La semana en curso lleva la mención mientras no haya terminado: sus valores aún no son definitivos.',
+            desc: 'La semana en curso lleva la mención hasta su cierre: sus valores siguen siendo provisionales.',
           },
         ],
       },
@@ -1041,21 +1041,21 @@ export const trainingLoad: SubpageLocales = {
         kind: 'panels',
         panels: [
           {
-            title: 'La única señal que vale: la distancia del jugador a su propia base.',
-            desc: 'Un ratio externo ÷ interno que cae claramente por debajo de su base de 28 días señala un desacoplamiento: el jugador produce menos trabajo mecánico para la misma sensación — signo de fatiga oculta. La cabecera del bloque se pone en rojo. Frente a otro jugador, ese mismo ratio no dice nada.',
+            title: 'Lee a cada jugador frente a su propia base de 28 días.',
+            desc: 'Un ratio externo ÷ interno que cae claramente por debajo de su base de 28 días señala un desacoplamiento: el jugador produce menos trabajo mecánico para la misma sensación, signo de fatiga oculta. La cabecera del bloque se pone en rojo. Ese mismo ratio frente a otro jugador queda mudo.',
           },
         ],
       },
       {
         kicker: 'TRABAJAR EN TU PROPIA UNIDAD',
-        title: 'Si tu cuerpo técnico no razona en UA, cambia de unidad.',
-        body: 'Por defecto, una sesión de 90 minutos a RPE 7 pesa 630 UA y una semana ronda las 3 000. Números que no se anuncian fácilmente en una reunión. Declara tu unidad de la casa — un múltiplo fijo de la UA — y la escala vuelve a ser legible.',
+        title: 'Declara tu propia unidad de carga, la escala sigue.',
+        body: 'Por defecto, una sesión de 90 minutos a RPE 7 pesa 630 UA y una semana ronda las 3 000, números difíciles de anunciar en una reunión. Declara tu unidad de la casa, un múltiplo fijo de la UA, y la escala vuelve a ser legible.',
         visual: 'unit-conversion',
         kind: 'columns',
         cols: [
           {
-            title: 'Tus datos no se mueven',
-            desc: 'La carga sigue registrada en UA. La unidad solo cambia lo que lees y lo que introduces. Puedes volver atrás cuando quieras, y el historial se relee sin más en la nueva unidad.',
+            title: 'Tus datos siguen en UA',
+            desc: 'La carga sigue registrada en UA; la unidad solo cambia lo que lees y lo que introduces. Vuelve atrás cuando quieras, el historial se relee en la nueva unidad.',
           },
           {
             title: 'Todas las pantallas siguen',
@@ -1063,7 +1063,7 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             title: 'Los ratios mantienen su escala',
-            desc: 'ACWR, monotonía y ratio interno / externo son ratios calibrados, no cantidades de carga. Solo el strain sigue tu unidad, puesto que lo es.',
+            desc: 'ACWR, monotonía y ratio interno / externo son ratios calibrados; solo el strain sigue tu unidad, puesto que es una cantidad de carga.',
           },
         ],
         callouts: [
@@ -1075,7 +1075,7 @@ export const trainingLoad: SubpageLocales = {
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'El nombre pasa a ser obligatorio en cuanto la equivalencia deja de ser 1. Si no, aparecerían valores convertidos bajo la sigla «UA», que ya no es la correcta.',
+            text: 'El nombre pasa a ser obligatorio en cuanto la equivalencia deja de ser 1: valores convertidos bajo la sigla «UA» serían falsos.',
           },
         ],
       },

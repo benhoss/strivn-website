@@ -11,7 +11,7 @@ export const staffBrief: SubpageLocales = {
     meta: {
       title: 'Dossier staff | STRIVN',
       description:
-        'Une page à lire en deux minutes : ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace sans rien créer.',
+        'Une page à lire en deux minutes : ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace, sans compte à créer.',
     },
     hero: {
       kicker: 'PARTAGÉ PAR LE PRÉPARATEUR PHYSIQUE DE VOTRE ÉQUIPE',
@@ -19,7 +19,7 @@ export const staffBrief: SubpageLocales = {
       sub: 'Une page à lire en deux minutes. Elle résume ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace : sans compte à créer, sans engagement, sans validation du club.',
       ctas: {
         primary: 'Demander mon accès',
-        secondary: { label: 'Voir la plateforme', href: '/fr/features/' },
+        secondary: { label: 'Voir les fonctionnalités', href: '/fr/features/' },
       },
     },
     sections: [
@@ -37,7 +37,7 @@ export const staffBrief: SubpageLocales = {
       },
       {
         kicker: 'CE QUE CHAQUE RÔLE Y GAGNE',
-        title: 'Pas un outil de plus. Le même, pour tout le monde.',
+        title: 'Un seul outil, le même pour tout le staff.',
         kind: 'cards',
         cards: [
           {
@@ -58,7 +58,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'gauge',
             title: 'Préparateur physique',
-            desc: 'Charge, GPS, wellness et tests dans un seul système — la raison pour laquelle cette page vous arrive.',
+            desc: 'Charge, GPS, wellness et tests dans un seul système, la raison pour laquelle cette page vous arrive.',
           },
           {
             icon: 'chart-column',
@@ -68,7 +68,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'euro',
             title: 'Le club',
-            desc: 'Rien à payer pour une équipe. Aucun engagement, et un export de vos données à tout moment.',
+            desc: 'Zéro euro pour une équipe, sans engagement, et un export de vos données à tout moment.',
           },
         ],
       },
@@ -76,7 +76,7 @@ export const staffBrief: SubpageLocales = {
         kind: 'callout',
         icon: 'share-2',
         tone: 'blue',
-        text: 'Rejoindre l’espace de l’équipe : votre préparateur vous envoie un lien d’invitation. Aucun compte à créer, aucun mot de passe à retenir.',
+        text: 'Rejoindre l’espace de l’équipe : votre préparateur vous envoie un lien d’invitation. Sans compte à créer, sans mot de passe à retenir.',
       },
     ],
   },
@@ -85,7 +85,7 @@ export const staffBrief: SubpageLocales = {
     meta: {
       title: 'Staff brief | STRIVN',
       description:
-        'A page to read in two minutes: what the team already tracks, what each role gains, and how to join the space without creating anything.',
+        'A page to read in two minutes: what the team already tracks, what each role gains, and how to join the space, without an account to create.',
     },
     hero: {
       kicker: 'SHARED BY YOUR TEAM’S S&C COACH',
@@ -93,7 +93,7 @@ export const staffBrief: SubpageLocales = {
       sub: 'A page to read in two minutes. It sums up what the team already tracks, what each role gains, and how to join the space: no account to create, no commitment, no club sign-off.',
       ctas: {
         primary: 'Request my access',
-        secondary: { label: 'See the platform', href: '/en/features/' },
+        secondary: { label: 'See the features', href: '/en/features/' },
       },
     },
     sections: [
@@ -111,7 +111,7 @@ export const staffBrief: SubpageLocales = {
       },
       {
         kicker: 'WHAT EACH ROLE GAINS',
-        title: 'Not one more tool. The same one, for everybody.',
+        title: 'One tool, the same for the whole staff.',
         kind: 'cards',
         cards: [
           {
@@ -132,7 +132,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'gauge',
             title: 'S&C coach',
-            desc: 'Load, GPS, wellness and tests in one system — the reason this page reached you.',
+            desc: 'Load, GPS, wellness and tests in one system, the reason this page reached you.',
           },
           {
             icon: 'chart-column',
@@ -142,7 +142,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'euro',
             title: 'The club',
-            desc: 'Nothing to pay for one team. No commitment, and an export of your data at any time.',
+            desc: 'Zero euros for one team, without commitment, and an export of your data at any time.',
           },
         ],
       },
@@ -150,7 +150,7 @@ export const staffBrief: SubpageLocales = {
         kind: 'callout',
         icon: 'share-2',
         tone: 'blue',
-        text: 'Joining the team space: your S&C coach sends you an invitation link. No account to create, no password to remember.',
+        text: 'Joining the team space: your S&C coach sends you an invitation link. Without an account to create or a password to remember.',
       },
     ],
   },
@@ -167,7 +167,7 @@ export const staffBrief: SubpageLocales = {
       sub: 'Een pagina om in twee minuten te lezen. Ze vat samen wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe je de ruimte binnenstapt: geen account aan te maken, geen verbintenis, geen goedkeuring van de club.',
       ctas: {
         primary: 'Mijn toegang aanvragen',
-        secondary: { label: 'Het platform bekijken', href: '/nl/features/' },
+        secondary: { label: 'De functies bekijken', href: '/nl/features/' },
       },
     },
     sections: [
@@ -185,7 +185,7 @@ export const staffBrief: SubpageLocales = {
       },
       {
         kicker: 'WAT ELKE ROL ERBIJ WINT',
-        title: 'Niet nog een tool. Dezelfde, voor iedereen.',
+        title: 'Eén tool, dezelfde voor de hele staf.',
         kind: 'cards',
         cards: [
           {
@@ -206,7 +206,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'gauge',
             title: 'Fysiek trainer',
-            desc: 'Belasting, GPS, wellness en tests in één systeem — de reden waarom deze pagina bij jou komt.',
+            desc: 'Belasting, GPS, wellness en tests in één systeem, de reden waarom deze pagina bij jou komt.',
           },
           {
             icon: 'chart-column',
@@ -216,7 +216,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'euro',
             title: 'De club',
-            desc: 'Niets te betalen voor één ploeg. Geen verbintenis, en een export van je data op elk moment.',
+            desc: 'Nul euro voor één ploeg, zonder verbintenis, en een export van je data op elk moment.',
           },
         ],
       },
@@ -224,7 +224,7 @@ export const staffBrief: SubpageLocales = {
         kind: 'callout',
         icon: 'share-2',
         tone: 'blue',
-        text: 'De ploegruimte binnenstappen: je fysiek trainer stuurt je een uitnodigingslink. Geen account aan te maken, geen wachtwoord te onthouden.',
+        text: 'De ploegruimte binnenstappen: je fysiek trainer stuurt je een uitnodigingslink. Zonder account aan te maken, zonder wachtwoord te onthouden.',
       },
     ],
   },
@@ -241,7 +241,7 @@ export const staffBrief: SubpageLocales = {
       sub: 'Eine Seite für zwei Minuten. Sie fasst zusammen, was die Mannschaft bereits verfolgt, was jede Rolle davon hat, und wie man den Raum betritt: kein Konto anzulegen, keine Bindung, keine Freigabe des Vereins.',
       ctas: {
         primary: 'Zugang anfragen',
-        secondary: { label: 'Die Plattform ansehen', href: '/de/features/' },
+        secondary: { label: 'Die Funktionen ansehen', href: '/de/features/' },
       },
     },
     sections: [
@@ -259,7 +259,7 @@ export const staffBrief: SubpageLocales = {
       },
       {
         kicker: 'WAS JEDE ROLLE DAVON HAT',
-        title: 'Kein Werkzeug mehr. Dasselbe, für alle.',
+        title: 'Ein Werkzeug, dasselbe für den ganzen Staff.',
         kind: 'cards',
         cards: [
           {
@@ -280,7 +280,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'gauge',
             title: 'Athletiktrainer',
-            desc: 'Belastung, GPS, Wellness und Tests in einem System — der Grund, warum diese Seite bei Ihnen ankommt.',
+            desc: 'Belastung, GPS, Wellness und Tests in einem System, der Grund, warum diese Seite bei Ihnen ankommt.',
           },
           {
             icon: 'chart-column',
@@ -290,7 +290,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'euro',
             title: 'Der Verein',
-            desc: 'Für eine Mannschaft nichts zu zahlen. Keine Bindung, und ein Export Ihrer Daten jederzeit.',
+            desc: 'Null Euro für eine Mannschaft, ohne Bindung, und ein Export Ihrer Daten jederzeit.',
           },
         ],
       },
@@ -298,7 +298,7 @@ export const staffBrief: SubpageLocales = {
         kind: 'callout',
         icon: 'share-2',
         tone: 'blue',
-        text: 'Dem Mannschaftsraum beitreten: Ihr Athletiktrainer schickt Ihnen einen Einladungslink. Kein Konto anzulegen, kein Passwort zu merken.',
+        text: 'Dem Mannschaftsraum beitreten: Ihr Athletiktrainer schickt Ihnen einen Einladungslink. Ohne Konto anzulegen, ohne Passwort zu merken.',
       },
     ],
   },
@@ -315,7 +315,7 @@ export const staffBrief: SubpageLocales = {
       sub: 'Uma página para ler em dois minutos. Resume o que a equipa já acompanha, o que cada papel ganha, e como entrar no espaço: sem conta a criar, sem compromisso, sem validação do clube.',
       ctas: {
         primary: 'Pedir o meu acesso',
-        secondary: { label: 'Ver a plataforma', href: '/pt/features/' },
+        secondary: { label: 'Ver as funcionalidades', href: '/pt/features/' },
       },
     },
     sections: [
@@ -333,7 +333,7 @@ export const staffBrief: SubpageLocales = {
       },
       {
         kicker: 'O QUE CADA PAPEL GANHA',
-        title: 'Não mais uma ferramenta. A mesma, para toda a gente.',
+        title: 'Uma só ferramenta, a mesma para todo o staff.',
         kind: 'cards',
         cards: [
           {
@@ -354,7 +354,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'gauge',
             title: 'Preparador físico',
-            desc: 'Carga, GPS, wellness e testes num só sistema — a razão pela qual esta página lhe chega.',
+            desc: 'Carga, GPS, wellness e testes num só sistema, a razão pela qual esta página lhe chega.',
           },
           {
             icon: 'chart-column',
@@ -364,7 +364,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'euro',
             title: 'O clube',
-            desc: 'Nada a pagar por uma equipa. Nenhum compromisso, e uma exportação dos seus dados a qualquer momento.',
+            desc: 'Zero euros por uma equipa, sem compromisso, e uma exportação dos seus dados a qualquer momento.',
           },
         ],
       },
@@ -389,7 +389,7 @@ export const staffBrief: SubpageLocales = {
       sub: 'Una página para leer en dos minutos. Resume lo que el equipo ya sigue, lo que gana cada rol, y cómo entrar en el espacio: sin cuenta que crear, sin compromiso, sin validación del club.',
       ctas: {
         primary: 'Pedir mi acceso',
-        secondary: { label: 'Ver la plataforma', href: '/es/features/' },
+        secondary: { label: 'Ver las funcionalidades', href: '/es/features/' },
       },
     },
     sections: [
@@ -407,7 +407,7 @@ export const staffBrief: SubpageLocales = {
       },
       {
         kicker: 'LO QUE GANA CADA ROL',
-        title: 'No una herramienta más. La misma, para todos.',
+        title: 'Una sola herramienta, la misma para todo el staff.',
         kind: 'cards',
         cards: [
           {
@@ -428,7 +428,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'gauge',
             title: 'Preparador físico',
-            desc: 'Carga, GPS, wellness y tests en un solo sistema — la razón por la que esta página te llega.',
+            desc: 'Carga, GPS, wellness y tests en un solo sistema, la razón por la que esta página te llega.',
           },
           {
             icon: 'chart-column',
@@ -438,7 +438,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'euro',
             title: 'El club',
-            desc: 'Nada que pagar por un equipo. Ningún compromiso, y una exportación de tus datos en cualquier momento.',
+            desc: 'Cero euros por un equipo, sin compromiso, y una exportación de tus datos en cualquier momento.',
           },
         ],
       },

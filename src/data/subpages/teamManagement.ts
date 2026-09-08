@@ -13,7 +13,7 @@ export const teamManagement: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · ÉQUIPE',
-      title: 'L’intendance de l’équipe, sans le classeur.',
+      title: 'Tenez l’intendance de l’équipe sans le classeur.',
       sub: 'Effectif, calendrier, convocations, présences, feuille de match : le quotidien d’une équipe tient dans un seul espace et se nourrit des mêmes données que le monitoring.',
       bullets: [
         'Effectif : actifs, blessés, inactifs, joueurs à l’essai',
@@ -30,7 +30,7 @@ export const teamManagement: SubpageLocales = {
     sections: [
       {
         kicker: 'LE QUOTIDIEN D’ÉQUIPE',
-        title: 'Ce que le staff pilote depuis un seul écran.',
+        title: 'Pilotez le quotidien de l’équipe depuis un seul écran.',
         kind: 'cards',
         cards: [
           {
@@ -46,17 +46,17 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Présences',
-            desc: 'Présent, Adapté — présent avec restriction — ou absent. La nuance compte dans les moyennes.',
+            desc: 'Présent, Adapté (présent avec restriction) ou absent. La nuance compte dans les moyennes.',
           },
           {
             icon: 'timer',
             title: 'Séance en direct',
-            desc: '« Démarrer la séance » ouvre le runner plein écran : présences, chrono, blocs, équipes et score — même sans réseau.',
+            desc: '« Démarrer la séance » ouvre le runner plein écran : présences, chrono, blocs, équipes et score, même sans réseau.',
           },
           {
             icon: 'radio',
             title: 'Match en direct & analyse des buts',
-            desc: 'Feuille de match, minutes, événements. La saisie du coach fait foi et n’est jamais écrasée.',
+            desc: 'Feuille de match, minutes, événements. La saisie du coach fait foi et reste intacte.',
           },
           {
             icon: 'file-text',
@@ -76,7 +76,7 @@ export const teamManagement: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · TEAM',
-      title: 'Running the team, without the ring binder.',
+      title: 'Run the team without the ring binder.',
       sub: 'Squad, calendar, call-ups, attendance, team sheet: a team’s day-to-day fits in one space and feeds on the same data as the monitoring side.',
       bullets: [
         'Squad: active, injured, inactive, trialists',
@@ -93,7 +93,7 @@ export const teamManagement: SubpageLocales = {
     sections: [
       {
         kicker: 'THE TEAM’S DAY-TO-DAY',
-        title: 'What the staff runs from one screen.',
+        title: 'Run the team’s day-to-day from one screen.',
         kind: 'cards',
         cards: [
           {
@@ -109,17 +109,17 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Attendance',
-            desc: 'Present, Adapted — present with a restriction — or absent. The nuance counts in the averages.',
+            desc: 'Present, Adapted (present with a restriction) or absent. The nuance counts in the averages.',
           },
           {
             icon: 'timer',
             title: 'Live session',
-            desc: '“Start the session” opens the full-screen runner: attendance, timer, blocks, teams and score — even with no network.',
+            desc: '“Start the session” opens the full-screen runner: attendance, timer, blocks, teams and score, even with no network.',
           },
           {
             icon: 'radio',
             title: 'Live match & goal review',
-            desc: 'Team sheet, minutes, events. What the coach enters stands and is never overwritten.',
+            desc: 'Team sheet, minutes, events. What the coach enters stands and stays intact.',
           },
           {
             icon: 'file-text',
@@ -139,7 +139,7 @@ export const teamManagement: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · PLOEG',
-      title: 'Het beheer van de ploeg, zonder de ordner.',
+      title: 'Beheer de ploeg zonder de ordner.',
       sub: 'Kern, kalender, oproepingen, aanwezigheden, wedstrijdblad: het dagelijkse van een ploeg past in één ruimte en voedt zich met dezelfde data als de opvolging.',
       bullets: [
         'Kern: actief, geblesseerd, inactief, spelers op proef',
@@ -156,7 +156,7 @@ export const teamManagement: SubpageLocales = {
     sections: [
       {
         kicker: 'HET DAGELIJKSE VAN DE PLOEG',
-        title: 'Wat de staf vanaf één scherm bestuurt.',
+        title: 'Bestuur het dagelijkse van de ploeg vanaf één scherm.',
         kind: 'cards',
         cards: [
           {
@@ -172,17 +172,17 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Aanwezigheden',
-            desc: 'Aanwezig, Aangepast — aanwezig met beperking — of afwezig. De nuance telt mee in de gemiddelden.',
+            desc: 'Aanwezig, Aangepast (aanwezig met beperking) of afwezig. De nuance telt mee in de gemiddelden.',
           },
           {
             icon: 'timer',
             title: 'Live training',
-            desc: '“Training starten” opent de schermvullende runner: aanwezigheden, chrono, blokken, ploegen en score — ook zonder netwerk.',
+            desc: '“Training starten” opent de schermvullende runner: aanwezigheden, chrono, blokken, ploegen en score, ook zonder netwerk.',
           },
           {
             icon: 'radio',
             title: 'Live wedstrijd & doelpuntenanalyse',
-            desc: 'Wedstrijdblad, minuten, gebeurtenissen. Wat de coach invoert geldt en wordt nooit overschreven.',
+            desc: 'Wedstrijdblad, minuten, gebeurtenissen. Wat de coach invoert geldt en blijft intact.',
           },
           {
             icon: 'file-text',
@@ -202,7 +202,7 @@ export const teamManagement: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · MANNSCHAFT',
-      title: 'Die Organisation der Mannschaft, ohne Ordner.',
+      title: 'Organisieren Sie die Mannschaft ohne Ordner.',
       sub: 'Kader, Kalender, Aufgebote, Anwesenheiten, Spielberichtsbogen: der Alltag einer Mannschaft passt in einen Raum und speist sich aus denselben Daten wie das Monitoring.',
       bullets: [
         'Kader: aktiv, verletzt, inaktiv, Spieler im Probetraining',
@@ -219,7 +219,7 @@ export const teamManagement: SubpageLocales = {
     sections: [
       {
         kicker: 'DER MANNSCHAFTSALLTAG',
-        title: 'Was der Staff von einem Bildschirm aus steuert.',
+        title: 'Steuern Sie den Mannschaftsalltag von einem Bildschirm aus.',
         kind: 'cards',
         cards: [
           {
@@ -235,17 +235,17 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Anwesenheiten',
-            desc: 'Anwesend, Angepasst — anwesend mit Einschränkung — oder abwesend. Die Nuance zählt in den Mittelwerten.',
+            desc: 'Anwesend, Angepasst (anwesend mit Einschränkung) oder abwesend. Die Nuance zählt in den Mittelwerten.',
           },
           {
             icon: 'timer',
             title: 'Live-Einheit',
-            desc: '„Einheit starten“ öffnet den Vollbild-Runner: Anwesenheiten, Uhr, Blöcke, Teams und Ergebnis — auch ohne Netz.',
+            desc: '„Einheit starten“ öffnet den Vollbild-Runner: Anwesenheiten, Uhr, Blöcke, Teams und Ergebnis, auch ohne Netz.',
           },
           {
             icon: 'radio',
             title: 'Live-Spiel & Torauswertung',
-            desc: 'Spielberichtsbogen, Minuten, Ereignisse. Was der Trainer einträgt, gilt und wird nie überschrieben.',
+            desc: 'Spielberichtsbogen, Minuten, Ereignisse. Was der Trainer einträgt, gilt und bleibt unberührt.',
           },
           {
             icon: 'file-text',
@@ -265,7 +265,7 @@ export const teamManagement: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · EQUIPA',
-      title: 'A gestão da equipa, sem o dossiê.',
+      title: 'Gira a equipa sem o dossiê.',
       sub: 'Plantel, calendário, convocatórias, presenças, ficha de jogo: o dia a dia de uma equipa cabe num só espaço e alimenta-se dos mesmos dados do acompanhamento.',
       bullets: [
         'Plantel: ativos, lesionados, inativos, jogadores à experiência',
@@ -282,7 +282,7 @@ export const teamManagement: SubpageLocales = {
     sections: [
       {
         kicker: 'O DIA A DIA DA EQUIPA',
-        title: 'O que o staff conduz a partir de um só ecrã.',
+        title: 'Conduza o quotidiano da equipa num só ecrã.',
         kind: 'cards',
         cards: [
           {
@@ -298,17 +298,17 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Presenças',
-            desc: 'Presente, Adaptado — presente com restrição — ou ausente. A nuance conta nas médias.',
+            desc: 'Presente, Adaptado (presente com restrição) ou ausente. A nuance conta nas médias.',
           },
           {
             icon: 'timer',
             title: 'Treino em direto',
-            desc: '«Iniciar o treino» abre o runner em ecrã cheio: presenças, cronómetro, blocos, equipas e resultado — mesmo sem rede.',
+            desc: '«Iniciar o treino» abre o runner em ecrã cheio: presenças, cronómetro, blocos, equipas e resultado, mesmo sem rede.',
           },
           {
             icon: 'radio',
             title: 'Jogo em direto e análise dos golos',
-            desc: 'Ficha de jogo, minutos, eventos. O que o treinador regista vale e nunca é sobreposto.',
+            desc: 'Ficha de jogo, minutos, eventos. O que o treinador regista vale e fica intacto.',
           },
           {
             icon: 'file-text',
@@ -328,7 +328,7 @@ export const teamManagement: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · EQUIPO',
-      title: 'La gestión del equipo, sin el archivador.',
+      title: 'Gestiona el equipo sin el archivador.',
       sub: 'Plantilla, calendario, convocatorias, asistencias, acta: el día a día de un equipo cabe en un solo espacio y se alimenta de los mismos datos que el seguimiento.',
       bullets: [
         'Plantilla: activos, lesionados, inactivos, jugadores a prueba',
@@ -345,7 +345,7 @@ export const teamManagement: SubpageLocales = {
     sections: [
       {
         kicker: 'EL DÍA A DÍA DEL EQUIPO',
-        title: 'Lo que el staff dirige desde una sola pantalla.',
+        title: 'Dirige la rutina del equipo desde una sola pantalla.',
         kind: 'cards',
         cards: [
           {
@@ -361,17 +361,17 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Asistencias',
-            desc: 'Presente, Adaptado — presente con restricción — o ausente. El matiz cuenta en las medias.',
+            desc: 'Presente, Adaptado (presente con restricción) o ausente. El matiz cuenta en las medias.',
           },
           {
             icon: 'timer',
             title: 'Sesión en directo',
-            desc: '«Iniciar la sesión» abre el runner a pantalla completa: asistencias, cronómetro, bloques, equipos y marcador — incluso sin red.',
+            desc: '«Iniciar la sesión» abre el runner a pantalla completa: asistencias, cronómetro, bloques, equipos y marcador, incluso sin red.',
           },
           {
             icon: 'radio',
             title: 'Partido en directo y análisis de goles',
-            desc: 'Acta, minutos, eventos. Lo que registra el entrenador vale y nunca se sobrescribe.',
+            desc: 'Acta, minutos, eventos. Lo que registra el entrenador vale y queda intacto.',
           },
           {
             icon: 'file-text',

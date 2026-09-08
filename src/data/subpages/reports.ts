@@ -10,12 +10,12 @@ export const reports: SubpageLocales = {
     meta: {
       title: 'Rapports, IA & BI | STRIVN',
       description:
-        'Signaux du matin, briefing avant la séance, rapports enregistrés et tableaux de bord composés. Aucune saisie spécifique : tout part des données déjà là.',
+        'Signaux du matin, briefing avant la séance, rapports enregistrés et tableaux de bord composés. Sans saisie spécifique : tout part des données déjà là.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · INTELLIGENCE',
-      title: 'Un rapport retient la question, pas la réponse.',
-      sub: 'Aucune saisie spécifique : les rapports se nourrissent de la feuille de match, du check-in, de la charge et des imports GPS. Vous enregistrez une question, et elle se rejoue sur les données du jour à chaque ouverture.',
+      title: 'Enregistrez la question, les chiffres du jour suivent.',
+      sub: 'Sans saisie spécifique : les rapports se nourrissent de la feuille de match, du check-in, de la charge et des imports GPS. Vous enregistrez une question, et elle se rejoue sur les données du jour à chaque ouverture.',
       bullets: [
         'Sélection / forme : qui est en forme, qui aligner',
         'Générateur : sujet, statistiques, forme et comparaison',
@@ -43,7 +43,7 @@ export const reports: SubpageLocales = {
           {
             num: 'AVANT LA SÉANCE',
             title: 'Briefing IA',
-            desc: 'Les décisions du jour : chaque joueur rangé dans une case — s’entraîne, adapté, repos, absent, non convoqué, inconnu. « Inconnu » est une réponse, pas un trou.',
+            desc: 'Les décisions du jour : chaque joueur rangé dans une case (s’entraîne, adapté, repos, absent, non convoqué, inconnu). « Inconnu » est une réponse à part entière.',
           },
           {
             num: 'SUR LA PÉRIODE',
@@ -59,19 +59,19 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'LA PAGE LIBRE',
-        title: 'Sur qui, quelles statistiques, à quoi les comparer.',
+        title: 'Choisissez le sujet, les statistiques et le repère.',
         body: 'Le générateur assemble un rapport en trois choix : sur qui, quelles statistiques, et à quoi les comparer. Ce qui est enregistré, c’est la question. Les chiffres, eux, sont toujours ceux du jour.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'SUJET',
             title: 'Équipe, joueurs, adversaire',
-            desc: 'Le périmètre du rapport. Un même jeu de statistiques ne raconte pas la même chose selon qui il décrit.',
+            desc: 'Le périmètre du rapport. Un même jeu de statistiques raconte autre chose selon qui il décrit.',
           },
           {
             eyebrow: 'STATISTIQUES',
             title: 'Six familles, cochées à la carte',
-            desc: 'Performance en match, temps de jeu, charge, bien-être, GPS, disponibilité. Vous ne prenez que ce que vous lisez.',
+            desc: 'Performance en match, temps de jeu, charge, bien-être, GPS, disponibilité. Vous prenez seulement ce que vous lisez.',
           },
           {
             eyebrow: 'COMPARAISON',
@@ -81,7 +81,7 @@ export const reports: SubpageLocales = {
         ],
         note: {
           icon: 'circle-alert',
-          label: 'L’échantillon court est marqué, pas caché',
+          label: 'L’échantillon court porte une marque',
           desc: 'Une colonne dérivée d’un échantillon trop court affiche « * » plutôt qu’un chiffre confortable, et ses valeurs dérivées restent vides. Un rapport qui invente une moyenne sur deux matchs est pire qu’un rapport incomplet.',
         },
       },
@@ -92,12 +92,12 @@ export const reports: SubpageLocales = {
     meta: {
       title: 'Reports, AI & BI | STRIVN',
       description:
-        'Morning signals, a pre-session briefing, saved reports and composed dashboards. No dedicated data entry: everything starts from data already there.',
+        'Morning signals, a pre-session briefing, saved reports and composed dashboards. Without dedicated data entry: everything starts from data already there.',
     },
     hero: {
       kicker: 'FEATURES · INTELLIGENCE',
-      title: 'A report keeps the question, not the answer.',
-      sub: 'No dedicated data entry: reports feed on the team sheet, the check-in, the load and the GPS imports. You save a question, and it replays on today’s data every time it opens.',
+      title: 'Save the question; today’s figures follow.',
+      sub: 'Without dedicated data entry: reports feed on the team sheet, the check-in, the load and the GPS imports. You save a question, and it replays on today’s data every time it opens.',
       bullets: [
         'Selection / form: who is in form, who to pick',
         'Generator: subject, statistics, form and comparison',
@@ -125,7 +125,7 @@ export const reports: SubpageLocales = {
           {
             num: 'BEFORE THE SESSION',
             title: 'AI briefing',
-            desc: 'Today’s decisions: every player sorted into one call — training, adapted, resting, absent, not called up, unknown. “Unknown” is an answer, not a hole.',
+            desc: 'Today’s decisions: every player sorted into one call (training, adapted, resting, absent, not called up, unknown). “Unknown” is an answer in its own right.',
           },
           {
             num: 'OVER THE PERIOD',
@@ -141,14 +141,14 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'THE BLANK PAGE',
-        title: 'About whom, which statistics, against what.',
+        title: 'Choose the subject, the statistics and the reference.',
         body: 'The generator assembles a report from three choices: about whom, which statistics, and what to compare them against. What gets saved is the question. The figures are always today’s.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'SUBJECT',
             title: 'Team, players, opposition',
-            desc: 'The scope of the report. The same set of statistics does not say the same thing depending on who it describes.',
+            desc: 'The scope of the report. The same set of statistics says something different depending on who it describes.',
           },
           {
             eyebrow: 'STATISTICS',
@@ -163,7 +163,7 @@ export const reports: SubpageLocales = {
         ],
         note: {
           icon: 'circle-alert',
-          label: 'A short sample is marked, not hidden',
+          label: 'A short sample carries a mark',
           desc: 'A column derived from too short a sample shows “*” rather than a comfortable figure, and its derived values stay empty. A report that invents an average over two matches is worse than an incomplete one.',
         },
       },
@@ -174,12 +174,12 @@ export const reports: SubpageLocales = {
     meta: {
       title: 'Rapporten, AI & BI | STRIVN',
       description:
-        'Signalen ’s ochtends, een briefing voor de training, bewaarde rapporten en samengestelde dashboards. Geen aparte invoer: alles vertrekt van wat er al is.',
+        'Signalen ’s ochtends, een briefing voor de training, bewaarde rapporten en samengestelde dashboards. Zonder aparte invoer: alles vertrekt van wat er al is.',
     },
     hero: {
       kicker: 'FUNCTIES · INTELLIGENTIE',
-      title: 'Een rapport bewaart de vraag, niet het antwoord.',
-      sub: 'Geen aparte invoer: de rapporten voeden zich met het wedstrijdblad, de check-in, de belasting en de GPS-imports. Je bewaart een vraag, en ze wordt bij elke opening opnieuw op de data van vandaag gedraaid.',
+      title: 'Bewaar de vraag; de cijfers van vandaag volgen.',
+      sub: 'Zonder aparte invoer: de rapporten voeden zich met het wedstrijdblad, de check-in, de belasting en de GPS-imports. Je bewaart een vraag, en ze wordt bij elke opening opnieuw op de data van vandaag gedraaid.',
       bullets: [
         'Selectie / vorm: wie in vorm is, wie op te stellen',
         'Generator: onderwerp, statistieken, vorm en vergelijking',
@@ -207,7 +207,7 @@ export const reports: SubpageLocales = {
           {
             num: 'VOOR DE TRAINING',
             title: 'AI-briefing',
-            desc: 'De beslissingen van de dag: elke speler in één vakje — traint, aangepast, rust, afwezig, niet opgeroepen, onbekend. “Onbekend” is een antwoord, geen gat.',
+            desc: 'De beslissingen van de dag: elke speler in één vakje (traint, aangepast, rust, afwezig, niet opgeroepen, onbekend). “Onbekend” is een volwaardig antwoord.',
           },
           {
             num: 'OVER DE PERIODE',
@@ -223,14 +223,14 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'DE VRIJE PAGINA',
-        title: 'Over wie, welke statistieken, waarmee vergeleken.',
+        title: 'Kies het onderwerp, de statistieken en het ijkpunt.',
         body: 'De generator zet een rapport in elkaar met drie keuzes: over wie, welke statistieken, en waarmee te vergelijken. Wat bewaard wordt is de vraag. De cijfers zijn altijd die van vandaag.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'ONDERWERP',
             title: 'Ploeg, spelers, tegenstander',
-            desc: 'De reikwijdte van het rapport. Dezelfde set statistieken vertelt niet hetzelfde naargelang wie ze beschrijft.',
+            desc: 'De reikwijdte van het rapport. Dezelfde set statistieken vertelt iets anders naargelang wie ze beschrijft.',
           },
           {
             eyebrow: 'STATISTIEKEN',
@@ -245,7 +245,7 @@ export const reports: SubpageLocales = {
         ],
         note: {
           icon: 'circle-alert',
-          label: 'Een kleine steekproef wordt gemarkeerd, niet verborgen',
+          label: 'Een kleine steekproef draagt een markering',
           desc: 'Een kolom afgeleid uit een te kleine steekproef toont “*” in plaats van een comfortabel cijfer, en haar afgeleide waarden blijven leeg. Een rapport dat een gemiddelde over twee wedstrijden verzint is erger dan een onvolledig rapport.',
         },
       },
@@ -256,12 +256,12 @@ export const reports: SubpageLocales = {
     meta: {
       title: 'Berichte, KI & BI | STRIVN',
       description:
-        'Signale am Morgen, ein Briefing vor der Einheit, gespeicherte Berichte und zusammengestellte Dashboards. Keine eigene Eingabe: alles beginnt bei vorhandenen Daten.',
+        'Signale am Morgen, ein Briefing vor der Einheit, gespeicherte Berichte und zusammengestellte Dashboards. Ohne eigene Eingabe: alles beginnt bei vorhandenen Daten.',
     },
     hero: {
       kicker: 'FUNKTIONEN · INTELLIGENZ',
-      title: 'Ein Bericht behält die Frage, nicht die Antwort.',
-      sub: 'Keine eigene Eingabe: Die Berichte speisen sich aus dem Spielberichtsbogen, dem Check-in, der Belastung und den GPS-Importen. Sie speichern eine Frage, und sie läuft bei jedem Öffnen neu auf den heutigen Daten.',
+      title: 'Speichern Sie die Frage; die Zahlen von heute folgen.',
+      sub: 'Ohne eigene Eingabe: Die Berichte speisen sich aus dem Spielberichtsbogen, dem Check-in, der Belastung und den GPS-Importen. Sie speichern eine Frage, und sie läuft bei jedem Öffnen neu auf den heutigen Daten.',
       bullets: [
         'Auswahl / Form: wer in Form ist, wen man aufstellt',
         'Generator: Thema, Statistiken, Form und Vergleich',
@@ -289,7 +289,7 @@ export const reports: SubpageLocales = {
           {
             num: 'VOR DER EINHEIT',
             title: 'KI-Briefing',
-            desc: 'Die Entscheidungen des Tages: jeder Spieler in genau einer Kategorie — trainiert, angepasst, Ruhe, abwesend, nicht aufgeboten, unbekannt. „Unbekannt“ ist eine Antwort, keine Lücke.',
+            desc: 'Die Entscheidungen des Tages: jeder Spieler in genau einer Kategorie (trainiert, angepasst, Ruhe, abwesend, nicht aufgeboten, unbekannt). „Unbekannt“ ist eine vollwertige Antwort.',
           },
           {
             num: 'ÜBER DEN ZEITRAUM',
@@ -305,14 +305,14 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'DIE FREIE SEITE',
-        title: 'Über wen, welche Statistiken, verglichen womit.',
+        title: 'Wählen Sie das Thema, die Statistiken und den Bezug.',
         body: 'Der Generator baut einen Bericht aus drei Entscheidungen: über wen, welche Statistiken und wogegen verglichen wird. Gespeichert wird die Frage. Die Zahlen sind immer die von heute.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'THEMA',
             title: 'Mannschaft, Spieler, Gegner',
-            desc: 'Der Umfang des Berichts. Derselbe Satz Statistiken erzählt nicht dasselbe, je nachdem, wen er beschreibt.',
+            desc: 'Der Umfang des Berichts. Derselbe Satz Statistiken erzählt etwas anderes, je nachdem, wen er beschreibt.',
           },
           {
             eyebrow: 'STATISTIKEN',
@@ -327,7 +327,7 @@ export const reports: SubpageLocales = {
         ],
         note: {
           icon: 'circle-alert',
-          label: 'Eine kleine Stichprobe wird markiert, nicht versteckt',
+          label: 'Eine kleine Stichprobe trägt eine Markierung',
           desc: 'Eine aus zu wenigen Daten abgeleitete Spalte zeigt „*“ statt einer bequemen Zahl, und ihre abgeleiteten Werte bleiben leer. Ein Bericht, der einen Mittelwert über zwei Spiele erfindet, ist schlechter als ein unvollständiger.',
         },
       },
@@ -338,12 +338,12 @@ export const reports: SubpageLocales = {
     meta: {
       title: 'Relatórios, IA e BI | STRIVN',
       description:
-        'Sinais da manhã, briefing antes do treino, relatórios guardados e painéis compostos. Nenhuma introdução própria: tudo parte dos dados que já existem.',
+        'Sinais da manhã, briefing antes do treino, relatórios guardados e painéis compostos. Sem introdução própria: tudo parte dos dados que já existem.',
     },
     hero: {
       kicker: 'FUNCIONALIDADES · INTELIGÊNCIA',
-      title: 'Um relatório guarda a pergunta, não a resposta.',
-      sub: 'Nenhuma introdução própria: os relatórios alimentam-se da ficha de jogo, do check-in, da carga e das importações GPS. Guarda uma pergunta, e ela é recalculada sobre os dados de hoje a cada abertura.',
+      title: 'Guarde a pergunta; os números de hoje seguem.',
+      sub: 'Sem introdução própria: os relatórios alimentam-se da ficha de jogo, do check-in, da carga e das importações GPS. Guarda uma pergunta, e ela é recalculada sobre os dados de hoje a cada abertura.',
       bullets: [
         'Seleção / forma: quem está em forma, quem alinhar',
         'Gerador: assunto, estatísticas, forma e comparação',
@@ -371,7 +371,7 @@ export const reports: SubpageLocales = {
           {
             num: 'ANTES DO TREINO',
             title: 'Briefing IA',
-            desc: 'As decisões do dia: cada jogador numa só casa — treina, adaptado, repouso, ausente, não convocado, desconhecido. «Desconhecido» é uma resposta, não um buraco.',
+            desc: 'As decisões do dia: cada jogador numa só casa (treina, adaptado, repouso, ausente, não convocado, desconhecido). «Desconhecido» é uma resposta por inteiro.',
           },
           {
             num: 'NO PERÍODO',
@@ -387,14 +387,14 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'A PÁGINA LIVRE',
-        title: 'Sobre quem, que estatísticas, comparadas com o quê.',
+        title: 'Escolha o assunto, as estatísticas e a referência.',
         body: 'O gerador monta um relatório em três escolhas: sobre quem, que estatísticas, e com o que as comparar. O que fica guardado é a pergunta. Os números são sempre os de hoje.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'ASSUNTO',
             title: 'Equipa, jogadores, adversário',
-            desc: 'O perímetro do relatório. O mesmo conjunto de estatísticas não conta a mesma coisa consoante quem descreve.',
+            desc: 'O perímetro do relatório. O mesmo conjunto de estatísticas conta outra coisa consoante quem descreve.',
           },
           {
             eyebrow: 'ESTATÍSTICAS',
@@ -409,7 +409,7 @@ export const reports: SubpageLocales = {
         ],
         note: {
           icon: 'circle-alert',
-          label: 'A amostra curta é assinalada, não escondida',
+          label: 'A amostra curta leva uma marca',
           desc: 'Uma coluna derivada de uma amostra demasiado curta mostra «*» em vez de um número confortável, e os seus valores derivados ficam vazios. Um relatório que inventa uma média sobre dois jogos é pior do que um relatório incompleto.',
         },
       },
@@ -424,7 +424,7 @@ export const reports: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · INTELIGENCIA',
-      title: 'Un informe guarda la pregunta, no la respuesta.',
+      title: 'Guarda la pregunta; las cifras de hoy siguen.',
       sub: 'Sin entrada propia: los informes se alimentan del acta, del check-in, de la carga y de las importaciones GPS. Guardas una pregunta, y se recalcula sobre los datos de hoy en cada apertura.',
       bullets: [
         'Selección / forma: quién está en forma, a quién alinear',
@@ -441,7 +441,7 @@ export const reports: SubpageLocales = {
     sections: [
       {
         kicker: 'DE LA SEÑAL A LA DECISIÓN',
-        title: 'Antes del café, antes de la sesión, antes de la reunión.',
+        title: 'Antes del café, de la sesión, de la reunión.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -453,7 +453,7 @@ export const reports: SubpageLocales = {
           {
             num: 'ANTES DE LA SESIÓN',
             title: 'Briefing IA',
-            desc: 'Las decisiones del día: cada jugador en una sola casilla — entrena, adaptado, reposo, ausente, no convocado, desconocido. «Desconocido» es una respuesta, no un hueco.',
+            desc: 'Las decisiones del día: cada jugador en una sola casilla (entrena, adaptado, reposo, ausente, no convocado, desconocido). «Desconocido» es una respuesta por derecho propio.',
           },
           {
             num: 'EN EL PERIODO',
@@ -469,14 +469,14 @@ export const reports: SubpageLocales = {
       },
       {
         kicker: 'LA PÁGINA LIBRE',
-        title: 'Sobre quién, qué estadísticas, comparadas con qué.',
+        title: 'Elige el sujeto, las estadísticas y la referencia.',
         body: 'El generador arma un informe con tres elecciones: sobre quién, qué estadísticas, y con qué compararlas. Lo que se guarda es la pregunta. Las cifras son siempre las de hoy.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'SUJETO',
             title: 'Equipo, jugadores, rival',
-            desc: 'El perímetro del informe. El mismo conjunto de estadísticas no cuenta lo mismo según a quién describa.',
+            desc: 'El perímetro del informe. El mismo conjunto de estadísticas cuenta otra cosa según a quién describa.',
           },
           {
             eyebrow: 'ESTADÍSTICAS',
@@ -491,7 +491,7 @@ export const reports: SubpageLocales = {
         ],
         note: {
           icon: 'circle-alert',
-          label: 'La muestra corta se señala, no se esconde',
+          label: 'La muestra corta lleva una marca',
           desc: 'Una columna derivada de una muestra demasiado corta muestra «*» en vez de una cifra cómoda, y sus valores derivados quedan vacíos. Un informe que se inventa una media sobre dos partidos es peor que un informe incompleto.',
         },
       },

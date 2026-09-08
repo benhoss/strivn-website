@@ -14,7 +14,7 @@ export const staffSharing: SubpageLocales = {
     },
     hero: {
       kicker: 'STAFF & PARTAGE',
-      title: 'Tout le staff, la même lecture.',
+      title: 'Donnez au staff une même lecture, par périmètre.',
       sub: 'Coach principal, adjoints, staff médical : chacun accède à ce qui le concerne. Et ce qui sort de l’équipe sort par un lien que vous gardez sous contrôle : révocable, traçable, sans compte à créer en face.',
       ctas: {
         primary: 'Commencer gratuitement',
@@ -24,7 +24,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'À L’INTÉRIEUR DE L’ÉQUIPE',
-        title: 'L’adjoint lit la disponibilité. Pas le diagnostic.',
+        title: 'L’adjoint lit la disponibilité, le médical garde le diagnostic.',
         kind: 'columns',
         cols: [
           {
@@ -35,18 +35,18 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'STAFF MÉDICAL',
             title: 'Le dossier reste au médical',
-            desc: 'Le suivi des blessures, les protocoles de retour et les créneaux de soins restent dans leur périmètre. Le reste du staff lit la disponibilité, pas le diagnostic.',
+            desc: 'Le suivi des blessures, les protocoles de retour et les créneaux de soins restent dans leur périmètre. Le reste du staff lit seulement la disponibilité.',
           },
           {
             eyebrow: 'JAMAIS',
-            title: 'Ce qui ne remonte jamais',
+            title: 'Ce qui reste côté staff',
             desc: 'Les erreurs attribuées en analyse de match ne sont jamais visibles par le joueur concerné. La règle est dans le produit.',
           },
         ],
       },
       {
         kicker: 'CE QUI SORT DE L’ÉQUIPE',
-        title: 'Un lien envoyé reste un lien que vous pouvez couper.',
+        title: 'Coupez un lien envoyé quand vous le décidez.',
         kind: 'cards',
         cards: [
           {
@@ -67,12 +67,12 @@ export const staffSharing: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Rapports de scouting ciblés',
-            desc: 'Vous choisissez les joueurs et les membres du staff destinataires. Un joueur n’y accède jamais de lui-même.',
+            desc: 'Vous choisissez les joueurs et les membres du staff destinataires. Un joueur y accède seulement par votre envoi.',
           },
           {
             icon: 'baby',
             title: 'Portail parent',
-            desc: 'Sur une équipe « enfants », le parent reçoit un lien personnel, confirme son consentement, et suit son enfant — lui seul.',
+            desc: 'Sur une équipe « enfants », le parent reçoit un lien personnel, confirme son consentement, et suit son enfant, et lui seul.',
           },
           {
             icon: 'share-2',
@@ -92,7 +92,7 @@ export const staffSharing: SubpageLocales = {
     },
     hero: {
       kicker: 'STAFF & SHARING',
-      title: 'The whole staff, the same reading.',
+      title: 'Give the staff one reading, each within their scope.',
       sub: 'Head coach, assistants, medical staff: each reaches what concerns them. And what leaves the team leaves by a link you keep under control: revocable, traceable, with no account to create at the other end.',
       ctas: {
         primary: 'Start for free',
@@ -102,7 +102,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'INSIDE THE TEAM',
-        title: 'The assistant reads availability. Not the diagnosis.',
+        title: 'The assistant reads availability, medical keeps the diagnosis.',
         kind: 'columns',
         cols: [
           {
@@ -113,18 +113,18 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'MEDICAL STAFF',
             title: 'The file stays with medical',
-            desc: 'Injury tracking, return protocols and treatment slots stay in their perimeter. The rest of the staff reads the availability, not the diagnosis.',
+            desc: 'Injury tracking, return protocols and treatment slots stay in their perimeter. The rest of the staff reads only the availability.',
           },
           {
             eyebrow: 'NEVER',
-            title: 'What never travels back',
+            title: 'What stays with the staff',
             desc: 'Errors attributed in match analysis are never visible to the player concerned. The rule is in the product.',
           },
         ],
       },
       {
         kicker: 'WHAT LEAVES THE TEAM',
-        title: 'A link you sent is still a link you can cut.',
+        title: 'Cut a link you sent whenever you decide.',
         kind: 'cards',
         cards: [
           {
@@ -145,12 +145,12 @@ export const staffSharing: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Targeted scouting reports',
-            desc: 'You choose the players and the staff members who receive it. A player never reaches one on their own.',
+            desc: 'You choose the players and the staff members who receive it. A player reaches one only through your sending.',
           },
           {
             icon: 'baby',
             title: 'Parent portal',
-            desc: 'On a “children” team, the parent receives a personal link, confirms consent, and follows their own child — theirs alone.',
+            desc: 'On a “children” team, the parent receives a personal link, confirms consent, and follows their own child, and theirs alone.',
           },
           {
             icon: 'share-2',
@@ -170,7 +170,7 @@ export const staffSharing: SubpageLocales = {
     },
     hero: {
       kicker: 'STAF & DELEN',
-      title: 'De hele staf, dezelfde lezing.',
+      title: 'Geef de staf dezelfde lezing, elk binnen zijn perimeter.',
       sub: 'Hoofdcoach, assistenten, medische staf: elk komt bij wat hem aangaat. En wat de ploeg verlaat, vertrekt via een link die je onder controle houdt: intrekbaar, traceerbaar, zonder account aan de andere kant.',
       ctas: {
         primary: 'Gratis beginnen',
@@ -180,7 +180,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'BINNEN DE PLOEG',
-        title: 'De assistent leest de beschikbaarheid. Niet de diagnose.',
+        title: 'De assistent leest de beschikbaarheid, medisch houdt de diagnose.',
         kind: 'columns',
         cols: [
           {
@@ -191,18 +191,18 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'MEDISCHE STAF',
             title: 'Het dossier blijft bij medisch',
-            desc: 'De opvolging van blessures, de terugkeerprotocollen en de verzorgingsslots blijven binnen hun perimeter. De rest van de staf leest de beschikbaarheid, niet de diagnose.',
+            desc: 'De opvolging van blessures, de terugkeerprotocollen en de verzorgingsslots blijven binnen hun perimeter. De rest van de staf leest alleen de beschikbaarheid.',
           },
           {
             eyebrow: 'NOOIT',
-            title: 'Wat nooit terugkeert',
+            title: 'Wat bij de staf blijft',
             desc: 'Fouten die in de wedstrijdanalyse worden toegewezen zijn nooit zichtbaar voor de betrokken speler. De regel zit in het product.',
           },
         ],
       },
       {
         kicker: 'WAT DE PLOEG VERLAAT',
-        title: 'Een verstuurde link blijft een link die je kunt afsluiten.',
+        title: 'Sluit een verstuurde link af wanneer jij beslist.',
         kind: 'cards',
         cards: [
           {
@@ -223,12 +223,12 @@ export const staffSharing: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Gerichte scoutingrapporten',
-            desc: 'Jij kiest de spelers en de stafleden die het krijgen. Een speler komt er nooit uit zichzelf bij.',
+            desc: 'Jij kiest de spelers en de stafleden die het krijgen. Een speler komt er alleen bij via jouw verzending.',
           },
           {
             icon: 'baby',
             title: 'Ouderportaal',
-            desc: 'Bij een “kinderen”-ploeg krijgt de ouder een persoonlijke link, bevestigt zijn toestemming, en volgt zijn eigen kind — enkel dat.',
+            desc: 'Bij een “kinderen”-ploeg krijgt de ouder een persoonlijke link, bevestigt zijn toestemming, en volgt zijn eigen kind, en enkel dat.',
           },
           {
             icon: 'share-2',
@@ -248,7 +248,7 @@ export const staffSharing: SubpageLocales = {
     },
     hero: {
       kicker: 'STAFF & TEILEN',
-      title: 'Der ganze Staff, dieselbe Lesart.',
+      title: 'Geben Sie dem Staff eine Lesart, jedem sein Bereich.',
       sub: 'Cheftrainer, Assistenten, medizinischer Staff: Jeder erreicht, was ihn betrifft. Und was die Mannschaft verlässt, geht über einen Link, den Sie unter Kontrolle behalten: widerrufbar, nachvollziehbar, ohne Konto auf der Gegenseite.',
       ctas: {
         primary: 'Kostenlos starten',
@@ -258,7 +258,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'INNERHALB DER MANNSCHAFT',
-        title: 'Der Assistent liest die Verfügbarkeit. Nicht die Diagnose.',
+        title: 'Der Assistent sieht die Verfügbarkeit, der Medizinstaff die Diagnose.',
         kind: 'columns',
         cols: [
           {
@@ -269,18 +269,18 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'MEDIZINISCHER STAFF',
             title: 'Die Akte bleibt beim Medizinischen',
-            desc: 'Verletzungsverfolgung, Rückkehrprotokolle und Behandlungs-Slots bleiben in ihrem Bereich. Der übrige Staff liest die Verfügbarkeit, nicht die Diagnose.',
+            desc: 'Verletzungsverfolgung, Rückkehrprotokolle und Behandlungs-Slots bleiben in ihrem Bereich. Der übrige Staff liest nur die Verfügbarkeit.',
           },
           {
             eyebrow: 'NIE',
-            title: 'Was nie zurückläuft',
+            title: 'Was beim Staff bleibt',
             desc: 'In der Spielanalyse zugeordnete Fehler sind für den betroffenen Spieler nie sichtbar. Die Regel steckt im Produkt.',
           },
         ],
       },
       {
         kicker: 'WAS DIE MANNSCHAFT VERLÄSST',
-        title: 'Ein gesendeter Link bleibt ein Link, den Sie kappen können.',
+        title: 'Kappen Sie einen gesendeten Link, wann Sie wollen.',
         kind: 'cards',
         cards: [
           {
@@ -301,12 +301,12 @@ export const staffSharing: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Gezielte Scouting-Berichte',
-            desc: 'Sie wählen die Spieler und die Staff-Mitglieder, die ihn erhalten. Ein Spieler kommt von sich aus nie heran.',
+            desc: 'Sie wählen die Spieler und die Staff-Mitglieder, die ihn erhalten. Ein Spieler kommt nur über Ihre Sendung heran.',
           },
           {
             icon: 'baby',
             title: 'Elternportal',
-            desc: 'Bei einer „Kinder“-Mannschaft erhält der Elternteil einen persönlichen Link, bestätigt die Einwilligung und verfolgt sein eigenes Kind — nur dieses.',
+            desc: 'Bei einer „Kinder“-Mannschaft erhält der Elternteil einen persönlichen Link, bestätigt die Einwilligung und verfolgt sein eigenes Kind, und nur dieses.',
           },
           {
             icon: 'share-2',
@@ -326,7 +326,7 @@ export const staffSharing: SubpageLocales = {
     },
     hero: {
       kicker: 'STAFF E PARTILHA',
-      title: 'Todo o staff, a mesma leitura.',
+      title: 'Dê ao staff a mesma leitura, por perímetro.',
       sub: 'Treinador principal, adjuntos, staff médico: cada um acede ao que lhe diz respeito. E o que sai da equipa sai por uma ligação que mantém sob controlo: revogável, rastreável, sem conta a criar do outro lado.',
       ctas: {
         primary: 'Começar gratuitamente',
@@ -336,7 +336,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'DENTRO DA EQUIPA',
-        title: 'O adjunto lê a disponibilidade. Não o diagnóstico.',
+        title: 'O adjunto lê a disponibilidade, o médico o diagnóstico.',
         kind: 'columns',
         cols: [
           {
@@ -347,18 +347,18 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'STAFF MÉDICO',
             title: 'O processo fica no médico',
-            desc: 'O acompanhamento das lesões, os protocolos de regresso e as vagas de tratamento ficam no seu perímetro. O resto do staff lê a disponibilidade, não o diagnóstico.',
+            desc: 'O acompanhamento das lesões, os protocolos de regresso e as vagas de tratamento ficam no seu perímetro. O resto do staff lê apenas a disponibilidade.',
           },
           {
             eyebrow: 'NUNCA',
-            title: 'O que nunca volta atrás',
+            title: 'O que fica do lado do staff',
             desc: 'Os erros atribuídos em análise de jogo nunca são visíveis para o jogador em causa. A regra está no produto.',
           },
         ],
       },
       {
         kicker: 'O QUE SAI DA EQUIPA',
-        title: 'Uma ligação enviada continua a ser uma ligação que pode cortar.',
+        title: 'Corte uma ligação enviada quando decidir.',
         kind: 'cards',
         cards: [
           {
@@ -379,12 +379,12 @@ export const staffSharing: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Relatórios de scouting dirigidos',
-            desc: 'Escolhe os jogadores e os membros do staff destinatários. Um jogador nunca lá chega por si.',
+            desc: 'Escolhe os jogadores e os membros do staff destinatários. Um jogador só lá chega pelo seu envio.',
           },
           {
             icon: 'baby',
             title: 'Portal dos pais',
-            desc: 'Numa equipa «crianças», o pai recebe uma ligação pessoal, confirma o consentimento, e segue o seu próprio filho — só esse.',
+            desc: 'Numa equipa «crianças», o pai recebe uma ligação pessoal, confirma o consentimento, e segue o seu próprio filho, e só esse.',
           },
           {
             icon: 'share-2',
@@ -404,7 +404,7 @@ export const staffSharing: SubpageLocales = {
     },
     hero: {
       kicker: 'STAFF Y COMPARTIR',
-      title: 'Todo el staff, la misma lectura.',
+      title: 'Da al staff una lectura común, perímetro a perímetro.',
       sub: 'Entrenador principal, ayudantes, staff médico: cada uno accede a lo que le concierne. Y lo que sale del equipo sale por un enlace que mantienes bajo control: revocable, trazable, sin cuenta que crear enfrente.',
       ctas: {
         primary: 'Empezar gratis',
@@ -414,7 +414,7 @@ export const staffSharing: SubpageLocales = {
     sections: [
       {
         kicker: 'DENTRO DEL EQUIPO',
-        title: 'El adjunto lee la disponibilidad. No el diagnóstico.',
+        title: 'El adjunto lee la disponibilidad, médico guarda el diagnóstico.',
         kind: 'columns',
         cols: [
           {
@@ -425,18 +425,18 @@ export const staffSharing: SubpageLocales = {
           {
             eyebrow: 'STAFF MÉDICO',
             title: 'El expediente se queda en médico',
-            desc: 'El seguimiento de las lesiones, los protocolos de vuelta y los huecos de tratamiento se quedan en su perímetro. El resto del staff lee la disponibilidad, no el diagnóstico.',
+            desc: 'El seguimiento de las lesiones, los protocolos de vuelta y los huecos de tratamiento se quedan en su perímetro. El resto del staff lee solo la disponibilidad.',
           },
           {
             eyebrow: 'NUNCA',
-            title: 'Lo que nunca vuelve',
+            title: 'Lo que se queda en el staff',
             desc: 'Los errores atribuidos en análisis de partido nunca son visibles para el jugador afectado. La regla está en el producto.',
           },
         ],
       },
       {
         kicker: 'LO QUE SALE DEL EQUIPO',
-        title: 'Un enlace enviado sigue siendo un enlace que puedes cortar.',
+        title: 'Corta un enlace enviado cuando tú decidas.',
         kind: 'cards',
         cards: [
           {
@@ -457,12 +457,12 @@ export const staffSharing: SubpageLocales = {
           {
             icon: 'user-check',
             title: 'Informes de scouting dirigidos',
-            desc: 'Eliges los jugadores y los miembros del staff destinatarios. Un jugador nunca llega a uno por su cuenta.',
+            desc: 'Eliges los jugadores y los miembros del staff destinatarios. Un jugador solo llega a uno a través de tu envío.',
           },
           {
             icon: 'baby',
             title: 'Portal de padres',
-            desc: 'En un equipo «niños», el padre recibe un enlace personal, confirma su consentimiento, y sigue a su propio hijo — solo a él.',
+            desc: 'En un equipo «niños», el padre recibe un enlace personal, confirma su consentimiento, y sigue a su propio hijo, y solo a él.',
           },
           {
             icon: 'share-2',

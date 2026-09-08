@@ -16,7 +16,7 @@ export const medical: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · ÉQUIPE',
-      title: 'La blessure décide qui est convocable.',
+      title: 'Déclarez la blessure une fois, les convocations suivent.',
       sub: 'Le tableau médical réunit les blessures actives, les joueurs en revalidation et la disponibilité de chacun. C’est ce panneau, et lui seul, qui filtre les convocations.',
       bullets: [
         'Statut par joueur : OK, Blessé, Revalidation',
@@ -32,8 +32,8 @@ export const medical: SubpageLocales = {
     },
     sections: [
       {
-        kicker: 'DEUX OBJETS, PAS UN',
-        title: 'Une blessure dure des semaines. Un passage kiné, trente minutes.',
+        kicker: 'DEUX OBJETS DISTINCTS',
+        title: 'Une blessure, des semaines ; un passage kiné, trente minutes.',
         kind: 'compare',
         heads: ['Blessure', 'Créneau de soins'],
         tones: ['red', 'blue'],
@@ -45,8 +45,8 @@ export const medical: SubpageLocales = {
           },
           {
             label: 'EFFET SUR LA CHARGE',
-            a: 'Aucune charge, mais un statut de disponibilité qui filtre les convocations.',
-            b: 'Aucun. C’est un événement de coordination, jamais un événement de performance.',
+            a: 'Zéro charge ; un statut de disponibilité qui filtre les convocations.',
+            b: 'Zéro. C’est un événement de coordination, et seulement de coordination.',
           },
           {
             label: 'QUI AGIT',
@@ -56,20 +56,20 @@ export const medical: SubpageLocales = {
           {
             label: 'CE QU’ON Y LIT',
             a: 'Jours hors jeu, sévérité, retour estimé, progression, étapes validées.',
-            b: 'L’heure de chaque créneau, le joueur, son motif et sa note — staff uniquement.',
+            b: 'L’heure de chaque créneau, le joueur, son motif et sa note, visibles du staff uniquement.',
           },
         ],
       },
       {
         kicker: 'LA DISPONIBILITÉ',
         title: 'Vous bougez un cran. Les convocations suivent.',
-        body: 'C’est ce panneau, et lui seul, qui décide de ce que le joueur peut faire. Vous ne maintenez pas une liste de convocables en parallèle : elle se déduit d’ici.',
+        body: 'Ce panneau, et lui seul, décide de ce que le joueur peut faire. La liste des convocables se déduit d’ici, sans liste parallèle à maintenir.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'NON DISPONIBLE',
             title: 'Exclu des convocations',
-            desc: 'Le joueur n’apparaît sur aucune convocation tant que le cran n’a pas bougé.',
+            desc: 'Le joueur reste hors de toute convocation jusqu’à ce que le cran bouge.',
             tone: 'red',
           },
           {
@@ -87,18 +87,18 @@ export const medical: SubpageLocales = {
         ],
         note: {
           icon: 'clipboard-list',
-          label: 'Un retour qui se coche, pas qui se raconte',
-          desc: 'Le protocole n’est pas figé : ajoutez vos propres étapes. La progression et le retour estimé se recalculent à chaque étape validée, et les conseils kiné — un exercice, un protocole — partent directement dans l’app du joueur avec leur date.',
+          label: 'Un retour qui se coche, étape par étape',
+          desc: 'Le protocole s’adapte : ajoutez vos propres étapes. La progression et le retour estimé se recalculent à chaque étape validée, et les conseils kiné (un exercice, un protocole) partent directement dans l’app du joueur avec leur date.',
         },
       },
       {
         kicker: 'L’ÉVÉNEMENT SOINS',
-        title: 'Le kiné arrive avec un planning déjà connu.',
-        body: 'Le kiné est disponible sur une fenêtre — trente minutes avant l’entraînement, par exemple. Vous la posez dans le calendrier, elle se découpe en créneaux, et les joueurs réservent le leur avec un motif. Personne ne fait la queue devant une porte.',
+        title: 'Posez la fenêtre kiné ; les joueurs réservent leur créneau.',
+        body: 'Le kiné est disponible sur une fenêtre, trente minutes avant l’entraînement par exemple. Vous la posez dans le calendrier, elle se découpe en créneaux, et les joueurs réservent le leur avec un motif. La file devant la porte disparaît.',
         kind: 'callout',
         icon: 'calendar-days',
         tone: 'blue',
-        text: 'Les motifs et les notes de créneau restent visibles du staff uniquement. Un joueur voit son propre rendez-vous, jamais celui des autres.',
+        text: 'Les motifs et les notes de créneau restent visibles du staff uniquement. Un joueur voit son propre rendez-vous, et seulement le sien.',
       },
     ],
   },
@@ -111,7 +111,7 @@ export const medical: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · TEAM',
-      title: 'The injury decides who can be called up.',
+      title: 'Log the injury once: the call-ups adjust.',
       sub: 'The medical board brings together active injuries, players in rehab and everyone’s availability. This panel, and this panel alone, filters the call-ups.',
       bullets: [
         'Status per player: OK, Injured, Rehab',
@@ -127,7 +127,7 @@ export const medical: SubpageLocales = {
     },
     sections: [
       {
-        kicker: 'TWO OBJECTS, NOT ONE',
+        kicker: 'TWO DISTINCT OBJECTS',
         title: 'An injury lasts weeks. A physio slot, thirty minutes.',
         kind: 'compare',
         heads: ['Injury', 'Treatment slot'],
@@ -140,8 +140,8 @@ export const medical: SubpageLocales = {
           },
           {
             label: 'EFFECT ON LOAD',
-            a: 'No load, but an availability status that filters the call-ups.',
-            b: 'None. It is a coordination event, never a performance event.',
+            a: 'Zero load; an availability status that filters the call-ups.',
+            b: 'Zero. It is a coordination event, and coordination only.',
           },
           {
             label: 'WHO ACTS',
@@ -151,20 +151,20 @@ export const medical: SubpageLocales = {
           {
             label: 'WHAT YOU READ',
             a: 'Days out, severity, estimated return, progress, validated steps.',
-            b: 'The time of each slot, the player, their reason and their note — staff only.',
+            b: 'The time of each slot, the player, their reason and their note, visible to staff only.',
           },
         ],
       },
       {
         kicker: 'AVAILABILITY',
         title: 'You move one step. The call-ups follow.',
-        body: 'This panel, and only this panel, decides what a player can do. You do not maintain a parallel list of who is selectable: it follows from here.',
+        body: 'This panel, and only this panel, decides what a player can do. The list of who is selectable follows from here, with no parallel list to maintain.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'UNAVAILABLE',
             title: 'Out of the call-ups',
-            desc: 'The player appears on no call-up until the step moves.',
+            desc: 'The player stays out of every call-up until the step moves.',
             tone: 'red',
           },
           {
@@ -182,18 +182,18 @@ export const medical: SubpageLocales = {
         ],
         note: {
           icon: 'clipboard-list',
-          label: 'A return you tick off, not one you narrate',
-          desc: 'The protocol is not fixed: add your own steps. Progress and the estimated return recompute at each validated step, and physio advice — an exercise, a protocol — goes straight into the player’s app with its date.',
+          label: 'A return you tick off, step by step',
+          desc: 'The protocol adapts: add your own steps. Progress and the estimated return recompute at each validated step, and physio advice (an exercise, a protocol) goes straight into the player’s app with its date.',
         },
       },
       {
         kicker: 'THE TREATMENT EVENT',
-        title: 'The physio arrives to a schedule already known.',
-        body: 'The physio is available over a window — thirty minutes before training, say. You place it in the calendar, it splits into slots, and the players book theirs with a reason. Nobody queues outside a door.',
+        title: 'Set the physio window; the players book their slot.',
+        body: 'The physio is available over a window, thirty minutes before training say. You place it in the calendar, it splits into slots, and the players book theirs with a reason. The queue outside the door disappears.',
         kind: 'callout',
         icon: 'calendar-days',
         tone: 'blue',
-        text: 'Slot reasons and notes stay visible to the staff only. A player sees their own appointment, never anyone else’s.',
+        text: 'Slot reasons and notes stay visible to the staff only. A player sees their own appointment, and theirs alone.',
       },
     ],
   },
@@ -206,7 +206,7 @@ export const medical: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · PLOEG',
-      title: 'De blessure bepaalt wie opgeroepen kan worden.',
+      title: 'Meld de blessure één keer, oproepingen passen zich aan.',
       sub: 'Het medische bord brengt actieve blessures, spelers in revalidatie en ieders beschikbaarheid samen. Dit paneel, en dit paneel alleen, filtert de oproepingen.',
       bullets: [
         'Status per speler: OK, Geblesseerd, Revalidatie',
@@ -222,7 +222,7 @@ export const medical: SubpageLocales = {
     },
     sections: [
       {
-        kicker: 'TWEE DINGEN, GEEN ÉÉN',
+        kicker: 'TWEE APARTE DINGEN',
         title: 'Een blessure duurt weken. Een kinébeurt, dertig minuten.',
         kind: 'compare',
         heads: ['Blessure', 'Verzorgingsslot'],
@@ -235,8 +235,8 @@ export const medical: SubpageLocales = {
           },
           {
             label: 'EFFECT OP DE BELASTING',
-            a: 'Geen belasting, wel een beschikbaarheidsstatus die de oproepingen filtert.',
-            b: 'Geen. Het is een coördinatie-activiteit, nooit een prestatie-activiteit.',
+            a: 'Nul belasting; een beschikbaarheidsstatus die de oproepingen filtert.',
+            b: 'Nul. Het is een coördinatie-activiteit, en alleen coördinatie.',
           },
           {
             label: 'WIE HANDELT',
@@ -246,20 +246,20 @@ export const medical: SubpageLocales = {
           {
             label: 'WAT JE ER LEEST',
             a: 'Dagen buiten strijd, ernst, geschatte terugkeer, voortgang, gevalideerde stappen.',
-            b: 'Het uur van elk slot, de speler, zijn reden en zijn notitie — enkel staf.',
+            b: 'Het uur van elk slot, de speler, zijn reden en zijn notitie, enkel zichtbaar voor de staf.',
           },
         ],
       },
       {
         kicker: 'DE BESCHIKBAARHEID',
         title: 'Jij verzet één stand. De selecties volgen.',
-        body: 'Dit paneel, en enkel dit paneel, bepaalt wat de speler mag doen. Je houdt geen parallelle lijst van oproepbaren bij: die volgt hieruit.',
+        body: 'Dit paneel, en enkel dit paneel, bepaalt wat de speler mag doen. De lijst van oproepbaren volgt hieruit, zonder parallelle lijst bij te houden.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'NIET BESCHIKBAAR',
             title: 'Uit de oproepingen',
-            desc: 'De speler verschijnt op geen enkele oproeping zolang de stand niet beweegt.',
+            desc: 'De speler blijft buiten elke oproeping tot de stand beweegt.',
             tone: 'red',
           },
           {
@@ -277,18 +277,18 @@ export const medical: SubpageLocales = {
         ],
         note: {
           icon: 'clipboard-list',
-          label: 'Een terugkeer die je afvinkt, niet die je vertelt',
-          desc: 'Het protocol ligt niet vast: voeg je eigen stappen toe. Voortgang en geschatte terugkeer worden bij elke gevalideerde stap herrekend, en kinéadvies — een oefening, een protocol — vertrekt rechtstreeks naar de app van de speler, met datum.',
+          label: 'Een terugkeer die je afvinkt, stap voor stap',
+          desc: 'Het protocol past zich aan: voeg je eigen stappen toe. Voortgang en geschatte terugkeer worden bij elke gevalideerde stap herrekend, en kinéadvies (een oefening, een protocol) vertrekt rechtstreeks naar de app van de speler, met datum.',
         },
       },
       {
         kicker: 'DE VERZORGINGSACTIVITEIT',
-        title: 'De kiné komt aan met een planning die al bekend is.',
-        body: 'De kiné is beschikbaar over een venster — dertig minuten voor de training, bijvoorbeeld. Je zet het in de kalender, het splitst in slots, en de spelers reserveren het hunne met een reden. Niemand staat aan te schuiven voor een deur.',
+        title: 'Zet het kinévenster; de spelers reserveren hun slot.',
+        body: 'De kiné is beschikbaar over een venster, dertig minuten voor de training bijvoorbeeld. Je zet het in de kalender, het splitst in slots, en de spelers reserveren het hunne met een reden. De rij voor de deur verdwijnt.',
         kind: 'callout',
         icon: 'calendar-days',
         tone: 'blue',
-        text: 'Redenen en notities bij een slot blijven enkel zichtbaar voor de staf. Een speler ziet zijn eigen afspraak, nooit die van een ander.',
+        text: 'Redenen en notities bij een slot blijven enkel zichtbaar voor de staf. Een speler ziet zijn eigen afspraak, en alleen die.',
       },
     ],
   },
@@ -301,7 +301,7 @@ export const medical: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · MANNSCHAFT',
-      title: 'Die Verletzung entscheidet, wer aufgeboten werden kann.',
+      title: 'Verletzung einmal melden: Die Aufgebote passen sich an.',
       sub: 'Die medizinische Übersicht bündelt aktive Verletzungen, Spieler in Reha und die Verfügbarkeit jedes Einzelnen. Genau dieses Panel filtert die Aufgebote.',
       bullets: [
         'Status je Spieler: OK, Verletzt, Reha',
@@ -317,7 +317,7 @@ export const medical: SubpageLocales = {
     },
     sections: [
       {
-        kicker: 'ZWEI DINGE, NICHT EINS',
+        kicker: 'ZWEI GETRENNTE DINGE',
         title: 'Eine Verletzung dauert Wochen. Ein Physiotermin, dreißig Minuten.',
         kind: 'compare',
         heads: ['Verletzung', 'Behandlungs-Slot'],
@@ -330,8 +330,8 @@ export const medical: SubpageLocales = {
           },
           {
             label: 'WIRKUNG AUF DIE BELASTUNG',
-            a: 'Keine Belastung, aber ein Verfügbarkeitsstatus, der die Aufgebote filtert.',
-            b: 'Keine. Es ist ein Koordinationstermin, nie ein Leistungstermin.',
+            a: 'Null Belastung; ein Verfügbarkeitsstatus, der die Aufgebote filtert.',
+            b: 'Null. Es ist ein Koordinationstermin, und nur Koordination.',
           },
           {
             label: 'WER HANDELT',
@@ -341,20 +341,20 @@ export const medical: SubpageLocales = {
           {
             label: 'WAS MAN LIEST',
             a: 'Ausfalltage, Schweregrad, geschätzte Rückkehr, Fortschritt, bestätigte Stufen.',
-            b: 'Die Zeit jedes Slots, den Spieler, seinen Grund und seine Notiz — nur Staff.',
+            b: 'Die Zeit jedes Slots, den Spieler, seinen Grund und seine Notiz, sichtbar nur für den Staff.',
           },
         ],
       },
       {
         kicker: 'DIE VERFÜGBARKEIT',
         title: 'Sie verschieben eine Stufe. Die Aufgebote folgen.',
-        body: 'Dieses Panel, und nur dieses, entscheidet, was ein Spieler darf. Sie führen keine parallele Liste der Aufbietbaren: Sie ergibt sich von hier.',
+        body: 'Dieses Panel, und nur dieses, entscheidet, was ein Spieler darf. Die Liste der Aufbietbaren ergibt sich von hier, ohne parallele Liste zu führen.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'NICHT VERFÜGBAR',
             title: 'Von den Aufgeboten ausgeschlossen',
-            desc: 'Der Spieler erscheint auf keinem Aufgebot, solange die Stufe nicht wechselt.',
+            desc: 'Der Spieler bleibt außerhalb jedes Aufgebots, bis die Stufe wechselt.',
             tone: 'red',
           },
           {
@@ -372,18 +372,18 @@ export const medical: SubpageLocales = {
         ],
         note: {
           icon: 'clipboard-list',
-          label: 'Eine Rückkehr, die man abhakt, nicht erzählt',
-          desc: 'Das Protokoll ist nicht starr: Ergänzen Sie eigene Stufen. Fortschritt und geschätzte Rückkehr rechnen sich bei jeder bestätigten Stufe neu, und Physio-Hinweise — eine Übung, ein Protokoll — gehen mit Datum direkt in die App des Spielers.',
+          label: 'Eine Rückkehr, die man abhakt, Stufe für Stufe',
+          desc: 'Das Protokoll passt sich an: Ergänzen Sie eigene Stufen. Fortschritt und geschätzte Rückkehr rechnen sich bei jeder bestätigten Stufe neu, und Physio-Hinweise (eine Übung, ein Protokoll) gehen mit Datum direkt in die App des Spielers.',
         },
       },
       {
         kicker: 'DER BEHANDLUNGSTERMIN',
-        title: 'Der Physio kommt zu einem bereits bekannten Plan.',
-        body: 'Der Physio ist über ein Fenster verfügbar — dreißig Minuten vor dem Training etwa. Sie legen es in den Kalender, es teilt sich in Slots, und die Spieler buchen ihren mit einem Grund. Niemand steht vor einer Tür Schlange.',
+        title: 'Physio-Fenster anlegen; die Spieler buchen ihren Slot.',
+        body: 'Der Physio ist über ein Fenster verfügbar, dreißig Minuten vor dem Training etwa. Sie legen es in den Kalender, es teilt sich in Slots, und die Spieler buchen ihren mit einem Grund. Die Schlange vor der Tür verschwindet.',
         kind: 'callout',
         icon: 'calendar-days',
         tone: 'blue',
-        text: 'Gründe und Notizen zu einem Slot bleiben nur für den Staff sichtbar. Ein Spieler sieht seinen eigenen Termin, nie den eines anderen.',
+        text: 'Gründe und Notizen zu einem Slot bleiben nur für den Staff sichtbar. Ein Spieler sieht seinen eigenen Termin, und nur diesen.',
       },
     ],
   },
@@ -396,7 +396,7 @@ export const medical: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · EQUIPA',
-      title: 'A lesão decide quem pode ser convocado.',
+      title: 'Declare a lesão uma vez: as convocatórias ajustam-se.',
       sub: 'O quadro médico reúne as lesões ativas, os jogadores em reabilitação e a disponibilidade de cada um. É este painel, e só ele, que filtra as convocatórias.',
       bullets: [
         'Estado por jogador: OK, Lesionado, Reabilitação',
@@ -412,8 +412,8 @@ export const medical: SubpageLocales = {
     },
     sections: [
       {
-        kicker: 'DUAS COISAS, NÃO UMA',
-        title: 'Uma lesão dura semanas. Uma ida à fisioterapia, trinta minutos.',
+        kicker: 'DUAS COISAS DISTINTAS',
+        title: 'Uma lesão, semanas; uma ida à fisioterapia, trinta minutos.',
         kind: 'compare',
         heads: ['Lesão', 'Vaga de tratamento'],
         tones: ['red', 'blue'],
@@ -425,8 +425,8 @@ export const medical: SubpageLocales = {
           },
           {
             label: 'EFEITO NA CARGA',
-            a: 'Nenhuma carga, mas um estado de disponibilidade que filtra as convocatórias.',
-            b: 'Nenhum. É um evento de coordenação, nunca um evento de desempenho.',
+            a: 'Carga zero; um estado de disponibilidade que filtra as convocatórias.',
+            b: 'Zero. É um evento de coordenação, e só de coordenação.',
           },
           {
             label: 'QUEM AGE',
@@ -436,20 +436,20 @@ export const medical: SubpageLocales = {
           {
             label: 'O QUE SE LÊ',
             a: 'Dias fora, gravidade, regresso estimado, progresso, etapas validadas.',
-            b: 'A hora de cada vaga, o jogador, o motivo e a nota — só staff.',
+            b: 'A hora de cada vaga, o jogador, o motivo e a nota, visíveis só para o staff.',
           },
         ],
       },
       {
         kicker: 'A DISPONIBILIDADE',
         title: 'Muda um nível. As convocatórias seguem.',
-        body: 'É este painel, e só ele, que decide o que o jogador pode fazer. Não mantém uma lista paralela de convocáveis: ela deduz-se daqui.',
+        body: 'É este painel, e só ele, que decide o que o jogador pode fazer. A lista de convocáveis deduz-se daqui, sem lista paralela a manter.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'INDISPONÍVEL',
             title: 'Fora das convocatórias',
-            desc: 'O jogador não aparece em nenhuma convocatória enquanto o nível não mudar.',
+            desc: 'O jogador fica fora de qualquer convocatória até o nível mudar.',
             tone: 'red',
           },
           {
@@ -467,18 +467,18 @@ export const medical: SubpageLocales = {
         ],
         note: {
           icon: 'clipboard-list',
-          label: 'Um regresso que se assinala, não que se conta',
-          desc: 'O protocolo não é rígido: acrescente as suas próprias etapas. O progresso e o regresso estimado recalculam-se a cada etapa validada, e os conselhos de fisioterapia — um exercício, um protocolo — seguem diretamente para a app do jogador, com a sua data.',
+          label: 'Um regresso que se assinala, etapa a etapa',
+          desc: 'O protocolo adapta-se: acrescente as suas próprias etapas. O progresso e o regresso estimado recalculam-se a cada etapa validada, e os conselhos de fisioterapia (um exercício, um protocolo) seguem diretamente para a app do jogador, com a sua data.',
         },
       },
       {
         kicker: 'O EVENTO DE TRATAMENTO',
-        title: 'O fisioterapeuta chega com um horário já conhecido.',
-        body: 'O fisioterapeuta está disponível numa janela — trinta minutos antes do treino, por exemplo. Coloca-a no calendário, ela divide-se em vagas, e os jogadores reservam a sua com um motivo. Ninguém faz fila à porta.',
+        title: 'Marque a janela de fisioterapia; os jogadores reservam vaga.',
+        body: 'O fisioterapeuta está disponível numa janela, trinta minutos antes do treino por exemplo. Coloca-a no calendário, ela divide-se em vagas, e os jogadores reservam a sua com um motivo. A fila à porta desaparece.',
         kind: 'callout',
         icon: 'calendar-days',
         tone: 'blue',
-        text: 'Os motivos e as notas de vaga ficam visíveis apenas para o staff. Um jogador vê a sua própria marcação, nunca a dos outros.',
+        text: 'Os motivos e as notas de vaga ficam visíveis apenas para o staff. Um jogador vê a sua própria marcação, e só essa.',
       },
     ],
   },
@@ -491,7 +491,7 @@ export const medical: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · EQUIPO',
-      title: 'La lesión decide quién es convocable.',
+      title: 'Declara la lesión una vez: las convocatorias se ajustan.',
       sub: 'El cuadro médico reúne las lesiones activas, los jugadores en readaptación y la disponibilidad de cada uno. Es este panel, y solo este panel, el que filtra las convocatorias.',
       bullets: [
         'Estado por jugador: OK, Lesionado, Readaptación',
@@ -507,8 +507,8 @@ export const medical: SubpageLocales = {
     },
     sections: [
       {
-        kicker: 'DOS COSAS, NO UNA',
-        title: 'Una lesión dura semanas. Un pase por fisio, treinta minutos.',
+        kicker: 'DOS COSAS DISTINTAS',
+        title: 'Una lesión, semanas; un pase por fisio, treinta minutos.',
         kind: 'compare',
         heads: ['Lesión', 'Hueco de tratamiento'],
         tones: ['red', 'blue'],
@@ -520,8 +520,8 @@ export const medical: SubpageLocales = {
           },
           {
             label: 'EFECTO SOBRE LA CARGA',
-            a: 'Ninguna carga, pero un estado de disponibilidad que filtra las convocatorias.',
-            b: 'Ninguno. Es un evento de coordinación, nunca un evento de rendimiento.',
+            a: 'Carga cero; un estado de disponibilidad que filtra las convocatorias.',
+            b: 'Cero. Es un evento de coordinación, y solo de coordinación.',
           },
           {
             label: 'QUIÉN ACTÚA',
@@ -531,20 +531,20 @@ export const medical: SubpageLocales = {
           {
             label: 'QUÉ SE LEE',
             a: 'Días fuera, gravedad, vuelta estimada, progreso, etapas validadas.',
-            b: 'La hora de cada hueco, el jugador, su motivo y su nota — solo staff.',
+            b: 'La hora de cada hueco, el jugador, su motivo y su nota, visibles solo para el staff.',
           },
         ],
       },
       {
         kicker: 'LA DISPONIBILIDAD',
         title: 'Mueves un nivel. Las convocatorias siguen.',
-        body: 'Es este panel, y solo él, el que decide lo que el jugador puede hacer. No mantienes una lista paralela de convocables: se deduce de aquí.',
+        body: 'Es este panel, y solo él, el que decide lo que el jugador puede hacer. La lista de convocables se deduce de aquí, sin lista paralela que mantener.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'NO DISPONIBLE',
             title: 'Fuera de las convocatorias',
-            desc: 'El jugador no aparece en ninguna convocatoria mientras el nivel no cambie.',
+            desc: 'El jugador queda fuera de toda convocatoria hasta que el nivel cambie.',
             tone: 'red',
           },
           {
@@ -562,18 +562,18 @@ export const medical: SubpageLocales = {
         ],
         note: {
           icon: 'clipboard-list',
-          label: 'Una vuelta que se marca, no que se cuenta',
-          desc: 'El protocolo no es rígido: añade tus propias etapas. El progreso y la vuelta estimada se recalculan en cada etapa validada, y los consejos de fisio — un ejercicio, un protocolo — salen directamente a la app del jugador, con su fecha.',
+          label: 'Una vuelta que se marca, etapa a etapa',
+          desc: 'El protocolo se adapta: añade tus propias etapas. El progreso y la vuelta estimada se recalculan en cada etapa validada, y los consejos de fisio (un ejercicio, un protocolo) salen directamente a la app del jugador, con su fecha.',
         },
       },
       {
         kicker: 'EL EVENTO DE TRATAMIENTO',
-        title: 'El fisio llega con un horario ya conocido.',
-        body: 'El fisio está disponible en una ventana — treinta minutos antes del entrenamiento, por ejemplo. La colocas en el calendario, se divide en huecos, y los jugadores reservan el suyo con un motivo. Nadie hace cola delante de una puerta.',
+        title: 'Fija la ventana de fisio; los jugadores reservan hueco.',
+        body: 'El fisio está disponible en una ventana, treinta minutos antes del entrenamiento por ejemplo. La colocas en el calendario, se divide en huecos, y los jugadores reservan el suyo con un motivo. La cola delante de la puerta desaparece.',
         kind: 'callout',
         icon: 'calendar-days',
         tone: 'blue',
-        text: 'Los motivos y las notas de hueco solo son visibles para el staff. Un jugador ve su propia cita, nunca la de los demás.',
+        text: 'Los motivos y las notas de hueco solo son visibles para el staff. Un jugador ve su propia cita, y solo la suya.',
       },
     ],
   },

@@ -17,8 +17,8 @@ export const programs: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · PROGRAMMES',
-      title: 'Le même pourcentage. Un poids par joueur.',
-      sub: 'Vous prescrivez « Squat 4 × 5 @ 80 % » pour toute l’équipe. Chacun reçoit le poids réel calculé sur son propre 1RM, arrondi à vos disques. Vous ne tenez pas dix-huit feuilles.',
+      title: 'Prescrivez un pourcentage, chaque joueur reçoit son poids.',
+      sub: 'Vous prescrivez « Squat 4 × 5 @ 80 % » pour toute l’équipe. Chacun reçoit le poids réel calculé sur son propre 1RM, arrondi à vos disques. Dix-huit feuilles de moins à tenir.',
       bullets: [
         '1RM saisi en direct, ou estimé depuis une série sous-maximale',
         'Blocs en série simple, superset ou circuit',
@@ -50,7 +50,7 @@ export const programs: SubpageLocales = {
         ],
         note: {
           icon: 'trending-up',
-          label: 'Les records sont proposés, jamais imposés',
+          label: 'Les records sont proposés, à vous de confirmer',
           desc: 'Quand un joueur soulève plus lourd que son maximum enregistré, STRIVN vous propose le nouveau record : vous confirmez ou vous écartez. Vous pouvez aussi régler la mise à jour sur « automatique », ou sur « ne rien faire ».',
         },
       },
@@ -67,7 +67,7 @@ export const programs: SubpageLocales = {
           {
             icon: 'shuffle',
             title: 'Superset',
-            desc: 'Deux exercices alternés — étiquettes A1 / A2, rail bleu qui les relie. Le joueur enchaîne sans repos dans le tour ; la récupération tombe en fin de tour.',
+            desc: 'Deux exercices alternés, étiquettes A1 / A2, rail bleu qui les relie. Le joueur enchaîne sans repos dans le tour ; la récupération tombe en fin de tour.',
           },
           {
             icon: 'refresh-cw',
@@ -78,7 +78,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'LE MODE DE CHARGE',
-        title: 'Le squat en % de 1RM, les pompes au poids du corps.',
+        title: 'Squat en % de 1RM, pompes au poids du corps.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -115,7 +115,7 @@ export const programs: SubpageLocales = {
         ],
       },
       {
-        kicker: 'NE PAS CONFONDRE',
+        kicker: 'DEUX OBJETS SOUS UN MOT',
         title: 'Le mot « programme » recouvre deux objets.',
         kind: 'compare',
         heads: ['La séance de musculation', 'Le modèle de programme'],
@@ -128,8 +128,8 @@ export const programs: SubpageLocales = {
           },
           {
             label: 'CÔTÉ JOUEUR',
-            a: 'Chaque joueur convoqué la reçoit avec ses propres poids. Badge de complétion par joueur — « 3 / 4 séries ».',
-            b: 'Rien n’est envoyé tant que le modèle n’a pas produit des séances datées.',
+            a: 'Chaque joueur convoqué la reçoit avec ses propres poids. Badge de complétion par joueur, « 3 / 4 séries ».',
+            b: 'L’envoi attend que le modèle ait produit des séances datées.',
           },
           {
             label: 'AJUSTEMENTS',
@@ -158,8 +158,8 @@ export const programs: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · PROGRAMS',
-      title: 'The same percentage. A weight per player.',
-      sub: 'You prescribe “Squat 4 × 5 @ 80 %” for the whole squad. Each player gets the real weight worked out from their own 1RM, rounded to your plates. You are not keeping eighteen sheets.',
+      title: 'Prescribe one percentage, each player gets their weight.',
+      sub: 'You prescribe “Squat 4 × 5 @ 80 %” for the whole squad. Each player gets the real weight worked out from their own 1RM, rounded to your plates. Eighteen fewer sheets to keep.',
       bullets: [
         '1RM entered directly, or estimated from a sub-maximal set',
         'Blocks as straight sets, supersets or circuits',
@@ -191,7 +191,7 @@ export const programs: SubpageLocales = {
         ],
         note: {
           icon: 'trending-up',
-          label: 'Records are proposed, never imposed',
+          label: 'Records are proposed, you confirm them',
           desc: 'When a player lifts heavier than their recorded max, STRIVN proposes the new record: you confirm or you dismiss. You can also set the update to “automatic”, or to “do nothing”.',
         },
       },
@@ -208,7 +208,7 @@ export const programs: SubpageLocales = {
           {
             icon: 'shuffle',
             title: 'Superset',
-            desc: 'Two exercises alternated — A1 / A2 labels, a blue rail linking them. The player goes straight through within a round; the rest falls at the end of the round.',
+            desc: 'Two exercises alternated, A1 / A2 labels, a blue rail linking them. The player goes straight through within a round; the rest falls at the end of the round.',
           },
           {
             icon: 'refresh-cw',
@@ -256,7 +256,7 @@ export const programs: SubpageLocales = {
         ],
       },
       {
-        kicker: 'DO NOT CONFUSE THEM',
+        kicker: 'TWO OBJECTS UNDER ONE WORD',
         title: 'The word “program” covers two objects.',
         kind: 'compare',
         heads: ['The strength session', 'The program template'],
@@ -269,8 +269,8 @@ export const programs: SubpageLocales = {
           },
           {
             label: 'PLAYER SIDE',
-            a: 'Every called-up player receives it with their own weights. A completion badge per player — “3 / 4 sets”.',
-            b: 'Nothing is sent until the template has produced dated sessions.',
+            a: 'Every called-up player receives it with their own weights. A completion badge per player, “3 / 4 sets”.',
+            b: 'Sending waits until the template has produced dated sessions.',
           },
           {
             label: 'ADJUSTMENTS',
@@ -299,8 +299,8 @@ export const programs: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · PROGRAMMA’S',
-      title: 'Hetzelfde percentage. Eén gewicht per speler.',
-      sub: 'Je schrijft “Squat 4 × 5 @ 80 %” voor de hele ploeg voor. Iedereen krijgt het echte gewicht, berekend op zijn eigen 1RM en afgerond op jouw schijven. Je houdt geen achttien blaadjes bij.',
+      title: 'Schrijf één percentage voor; elke speler krijgt zijn gewicht.',
+      sub: 'Je schrijft “Squat 4 × 5 @ 80 %” voor de hele ploeg voor. Iedereen krijgt het echte gewicht, berekend op zijn eigen 1RM en afgerond op jouw schijven. Achttien blaadjes minder bij te houden.',
       bullets: [
         '1RM rechtstreeks ingevoerd, of geschat uit een submaximale reeks',
         'Blokken als enkelvoudige reeks, superset of circuit',
@@ -332,7 +332,7 @@ export const programs: SubpageLocales = {
         ],
         note: {
           icon: 'trending-up',
-          label: 'Records worden voorgesteld, nooit opgelegd',
+          label: 'Records worden voorgesteld, jij bevestigt ze',
           desc: 'Wanneer een speler zwaarder tilt dan zijn geregistreerde max, stelt STRIVN het nieuwe record voor: je bevestigt of je legt het weg. Je kan de bijwerking ook op “automatisch” zetten, of op “niets doen”.',
         },
       },
@@ -349,7 +349,7 @@ export const programs: SubpageLocales = {
           {
             icon: 'shuffle',
             title: 'Superset',
-            desc: 'Twee oefeningen afgewisseld — labels A1 / A2, een blauwe rail die ze verbindt. De speler gaat binnen de ronde door zonder rust; de rust valt op het einde van de ronde.',
+            desc: 'Twee oefeningen afgewisseld, labels A1 / A2, een blauwe rail die ze verbindt. De speler gaat binnen de ronde door zonder rust; de rust valt op het einde van de ronde.',
           },
           {
             icon: 'refresh-cw',
@@ -397,7 +397,7 @@ export const programs: SubpageLocales = {
         ],
       },
       {
-        kicker: 'NIET VERWARREN',
+        kicker: 'TWEE OBJECTEN ONDER ÉÉN WOORD',
         title: 'Het woord “programma” dekt twee objecten.',
         kind: 'compare',
         heads: ['De krachttraining', 'Het programmasjabloon'],
@@ -410,8 +410,8 @@ export const programs: SubpageLocales = {
           },
           {
             label: 'KANT VAN DE SPELER',
-            a: 'Elke opgeroepen speler krijgt ze met zijn eigen gewichten. Een voltooiingsbadge per speler — “3 / 4 reeksen”.',
-            b: 'Er wordt niets verstuurd zolang het sjabloon geen gedateerde trainingen heeft voortgebracht.',
+            a: 'Elke opgeroepen speler krijgt ze met zijn eigen gewichten. Een voltooiingsbadge per speler, “3 / 4 reeksen”.',
+            b: 'Het versturen wacht tot het sjabloon gedateerde trainingen heeft voortgebracht.',
           },
           {
             label: 'BIJSTELLINGEN',
@@ -440,8 +440,8 @@ export const programs: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · PROGRAMME',
-      title: 'Derselbe Prozentsatz. Ein Gewicht je Spieler.',
-      sub: 'Sie verordnen „Squat 4 × 5 @ 80 %“ für die ganze Mannschaft. Jeder erhält das reale Gewicht, berechnet aus seinem eigenen 1RM und auf Ihre Scheiben gerundet. Sie führen nicht achtzehn Zettel.',
+      title: 'Verordnen Sie einen Prozentsatz, jeder erhält sein Gewicht.',
+      sub: 'Sie verordnen „Squat 4 × 5 @ 80 %“ für die ganze Mannschaft. Jeder erhält das reale Gewicht, berechnet aus seinem eigenen 1RM und auf Ihre Scheiben gerundet. Achtzehn Zettel weniger zu führen.',
       bullets: [
         '1RM direkt eingetragen oder aus einem submaximalen Satz geschätzt',
         'Blöcke als einfacher Satz, Supersatz oder Zirkel',
@@ -473,7 +473,7 @@ export const programs: SubpageLocales = {
         ],
         note: {
           icon: 'trending-up',
-          label: 'Rekorde werden vorgeschlagen, nie aufgezwungen',
+          label: 'Rekorde werden vorgeschlagen, Sie bestätigen sie',
           desc: 'Hebt ein Spieler schwerer als sein gespeichertes Maximum, schlägt STRIVN den neuen Rekord vor: Sie bestätigen oder verwerfen. Sie können die Aktualisierung auch auf „automatisch“ oder auf „nichts tun“ stellen.',
         },
       },
@@ -490,7 +490,7 @@ export const programs: SubpageLocales = {
           {
             icon: 'shuffle',
             title: 'Supersatz',
-            desc: 'Zwei Übungen im Wechsel — Bezeichnungen A1 / A2, eine blaue Schiene verbindet sie. Der Spieler geht innerhalb der Runde ohne Pause durch; die Pause fällt am Rundenende.',
+            desc: 'Zwei Übungen im Wechsel, Bezeichnungen A1 / A2, eine blaue Schiene verbindet sie. Der Spieler geht innerhalb der Runde ohne Pause durch; die Pause fällt am Rundenende.',
           },
           {
             icon: 'refresh-cw',
@@ -538,7 +538,7 @@ export const programs: SubpageLocales = {
         ],
       },
       {
-        kicker: 'NICHT VERWECHSELN',
+        kicker: 'ZWEI OBJEKTE UNTER EINEM WORT',
         title: 'Das Wort „Programm“ deckt zwei Objekte ab.',
         kind: 'compare',
         heads: ['Die Krafteinheit', 'Die Programmvorlage'],
@@ -551,8 +551,8 @@ export const programs: SubpageLocales = {
           },
           {
             label: 'SEITE DES SPIELERS',
-            a: 'Jeder aufgebotene Spieler erhält sie mit seinen eigenen Gewichten. Ein Abschluss-Badge je Spieler — „3 / 4 Sätze“.',
-            b: 'Es wird nichts versendet, solange die Vorlage keine datierten Einheiten erzeugt hat.',
+            a: 'Jeder aufgebotene Spieler erhält sie mit seinen eigenen Gewichten. Ein Abschluss-Badge je Spieler, „3 / 4 Sätze“.',
+            b: 'Der Versand wartet, bis die Vorlage datierte Einheiten erzeugt hat.',
           },
           {
             label: 'ANPASSUNGEN',
@@ -581,8 +581,8 @@ export const programs: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · PROGRAMAS',
-      title: 'A mesma percentagem. Um peso por jogador.',
-      sub: 'Prescreve «Squat 4 × 5 @ 80 %» para toda a equipa. Cada um recebe o peso real calculado sobre a sua própria 1RM, arredondado aos seus discos. Não anda a gerir dezoito folhas.',
+      title: 'Prescreva uma percentagem, cada um recebe o seu peso.',
+      sub: 'Prescreve «Squat 4 × 5 @ 80 %» para toda a equipa. Cada um recebe o peso real calculado sobre a sua própria 1RM, arredondado aos seus discos. Dezoito folhas a menos para gerir.',
       bullets: [
         '1RM introduzida diretamente, ou estimada a partir de uma série submáxima',
         'Blocos em série simples, superset ou circuito',
@@ -614,7 +614,7 @@ export const programs: SubpageLocales = {
         ],
         note: {
           icon: 'trending-up',
-          label: 'Os recordes são propostos, nunca impostos',
+          label: 'Os recordes são propostos, você confirma-os',
           desc: 'Quando um jogador levanta mais do que o seu máximo registado, a STRIVN propõe o novo recorde: confirma ou descarta. Também pode definir a atualização como «automática», ou «não fazer nada».',
         },
       },
@@ -631,7 +631,7 @@ export const programs: SubpageLocales = {
           {
             icon: 'shuffle',
             title: 'Superset',
-            desc: 'Dois exercícios alternados — etiquetas A1 / A2, uma calha azul a ligá-los. O jogador encadeia sem descanso dentro da volta; o descanso cai no fim da volta.',
+            desc: 'Dois exercícios alternados, etiquetas A1 / A2, uma calha azul a ligá-los. O jogador encadeia sem descanso dentro da volta; o descanso cai no fim da volta.',
           },
           {
             icon: 'refresh-cw',
@@ -642,7 +642,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'O MODO DE CARGA',
-        title: 'O agachamento em % de 1RM, as flexões com peso do corpo.',
+        title: 'Agachamento em % de 1RM, flexões com peso do corpo.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -658,7 +658,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'O QUE CHEGA AO JOGADOR',
-        title: 'Você escreve «3010». O jogador lê «3 s a descer».',
+        title: 'Escreve «3010»; o jogador lê «3 s a descer».',
         kind: 'columns',
         cols: [
           {
@@ -679,7 +679,7 @@ export const programs: SubpageLocales = {
         ],
       },
       {
-        kicker: 'NÃO CONFUNDIR',
+        kicker: 'DOIS OBJETOS NUMA PALAVRA',
         title: 'A palavra «programa» cobre dois objetos.',
         kind: 'compare',
         heads: ['O treino de força', 'O modelo de programa'],
@@ -692,8 +692,8 @@ export const programs: SubpageLocales = {
           },
           {
             label: 'DO LADO DO JOGADOR',
-            a: 'Cada jogador convocado recebe-o com os seus próprios pesos. Emblema de conclusão por jogador — «3 / 4 séries».',
-            b: 'Nada é enviado enquanto o modelo não tiver produzido treinos datados.',
+            a: 'Cada jogador convocado recebe-o com os seus próprios pesos. Emblema de conclusão por jogador, «3 / 4 séries».',
+            b: 'O envio espera que o modelo tenha produzido treinos datados.',
           },
           {
             label: 'AJUSTES',
@@ -722,8 +722,8 @@ export const programs: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · PROGRAMAS',
-      title: 'El mismo porcentaje. Un peso por jugador.',
-      sub: 'Prescribes «Squat 4 × 5 @ 80 %» para todo el equipo. Cada uno recibe el peso real calculado sobre su propio 1RM, redondeado a tus discos. No llevas dieciocho hojas.',
+      title: 'Prescribe un porcentaje, cada jugador recibe su peso.',
+      sub: 'Prescribes «Squat 4 × 5 @ 80 %» para todo el equipo. Cada uno recibe el peso real calculado sobre su propio 1RM, redondeado a tus discos. Dieciocho hojas menos que llevar.',
       bullets: [
         '1RM introducido en directo, o estimado desde una serie submáxima',
         'Bloques en serie simple, superserie o circuito',
@@ -755,7 +755,7 @@ export const programs: SubpageLocales = {
         ],
         note: {
           icon: 'trending-up',
-          label: 'Los récords se proponen, nunca se imponen',
+          label: 'Los récords se proponen, tú los confirmas',
           desc: 'Cuando un jugador levanta más que su máximo registrado, STRIVN te propone el nuevo récord: confirmas o descartas. También puedes fijar la actualización en «automática», o en «no hacer nada».',
         },
       },
@@ -772,7 +772,7 @@ export const programs: SubpageLocales = {
           {
             icon: 'shuffle',
             title: 'Superserie',
-            desc: 'Dos ejercicios alternados — etiquetas A1 / A2, un raíl azul que los une. El jugador encadena sin descanso dentro de la vuelta; el descanso cae al final de la vuelta.',
+            desc: 'Dos ejercicios alternados, etiquetas A1 / A2, un raíl azul que los une. El jugador encadena sin descanso dentro de la vuelta; el descanso cae al final de la vuelta.',
           },
           {
             icon: 'refresh-cw',
@@ -783,7 +783,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'EL MODO DE CARGA',
-        title: 'La sentadilla en % de 1RM, las flexiones con peso corporal.',
+        title: 'Sentadilla en % de 1RM, flexiones con peso corporal.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -799,7 +799,7 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'LO QUE LLEGA AL JUGADOR',
-        title: 'Tú escribes «3010». El jugador lee «3 s de bajada».',
+        title: 'Escribes «3010»; el jugador lee «3 s de bajada».',
         kind: 'columns',
         cols: [
           {
@@ -820,7 +820,7 @@ export const programs: SubpageLocales = {
         ],
       },
       {
-        kicker: 'NO CONFUNDIR',
+        kicker: 'DOS OBJETOS BAJO UNA PALABRA',
         title: 'La palabra «programa» cubre dos objetos.',
         kind: 'compare',
         heads: ['La sesión de fuerza', 'La plantilla de programa'],
@@ -833,8 +833,8 @@ export const programs: SubpageLocales = {
           },
           {
             label: 'LADO JUGADOR',
-            a: 'Cada jugador convocado la recibe con sus propios pesos. Insignia de finalización por jugador — «3 / 4 series».',
-            b: 'No se envía nada mientras la plantilla no haya producido sesiones con fecha.',
+            a: 'Cada jugador convocado la recibe con sus propios pesos. Insignia de finalización por jugador, «3 / 4 series».',
+            b: 'El envío espera a que la plantilla haya producido sesiones con fecha.',
           },
           {
             label: 'AJUSTES',

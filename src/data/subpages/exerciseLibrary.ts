@@ -17,11 +17,11 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · PLANIFICATION',
-      title: 'Ce que vous croisez le soir finit dans la séance de jeudi.',
+      title: 'Gardez l’exercice croisé le soir, placez-le jeudi.',
       sub: 'Un lien TikTok, une photo prise au bord du terrain, un schéma dessiné sur le tableau tactique, ou simplement du texte. Tout arrive dans la même boîte de réception, se trie une fois, et se rattache ensuite à n’importe quelle séance.',
       bullets: [
         'Quatre façons de capturer : lien, photo, schéma, texte',
-        'Rien n’est visible par l’équipe tant que ce n’est pas trié',
+        'Visible par l’équipe seulement une fois trié',
         'Dossiers, tags, filtres et aperçu rapide plein écran',
         'Métriques clés : la charge externe estimée avant la séance',
       ],
@@ -46,7 +46,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'image',
             title: 'Photo / Vidéo',
-            desc: 'Importez un fichier depuis votre appareil — une photo prise au bord du terrain, une vidéo filmée à l’entraînement.',
+            desc: 'Importez un fichier depuis votre appareil : une photo prise au bord du terrain, une vidéo filmée à l’entraînement.',
           },
           {
             icon: 'pen-line',
@@ -56,7 +56,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'type',
             title: 'Texte',
-            desc: 'Rédigez directement la description : consignes, variantes, repères. Pas de média, pas de problème.',
+            desc: 'Rédigez directement la description : consignes, variantes, repères. Le texte seul suffit.',
           },
         ],
         note: {
@@ -68,13 +68,13 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'LA BOÎTE DE RÉCEPTION',
         title: 'Vous triez d’abord. L’équipe voit ensuite.',
-        body: 'Chaque capture arrive d’abord dans la boîte de réception. Vous ajustez le titre, vous la classez dans un dossier — existant ou créé à la volée — et vous ajoutez des tags. Sur les liens et les vidéos, un bandeau propose un titre et des tags : reprenez-les d’un clic, ou ignorez-les.',
+        body: 'Chaque capture arrive d’abord dans la boîte de réception. Vous ajustez le titre, vous la classez dans un dossier (existant ou créé à la volée) et vous ajoutez des tags. Sur les liens et les vidéos, un bandeau propose un titre et des tags : reprenez-les d’un clic, ou ignorez-les.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'CLASSER',
             title: 'Pour vous seul',
-            desc: 'L’exercice reste dans votre bibliothèque. Personne d’autre ne le voit.',
+            desc: 'L’exercice reste dans votre bibliothèque. Vous seul le voyez.',
           },
           {
             eyebrow: 'PUBLIER',
@@ -84,7 +84,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             eyebrow: 'SUPPRIMER',
             title: 'Écarter la capture',
-            desc: 'Ce qui ne vous intéresse pas ne reste pas là à vous encombrer.',
+            desc: 'Ce qui vous laisse froid sort de la boîte.',
           },
         ],
         note: {
@@ -95,8 +95,8 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'MÉTRIQUES CLÉS',
-        title: '« 1 200 m » ne veut rien dire. « 1 200 m sur 15 min », si.',
-        body: 'Les métriques clés décrivent ce qu’un exercice produit : la distance couverte, le nombre de sprints, le RPE attendu, la surface de jeu. Vous les renseignez une fois sur la fiche, avec leur durée de référence, et cette durée devient obligatoire dès la première métrique, parce que c’est elle qui rend la valeur exploitable.',
+        title: 'Donnez sa durée à chaque distance.',
+        body: 'Les métriques clés décrivent ce qu’un exercice produit : la distance couverte, le nombre de sprints, le RPE attendu, la surface de jeu. Vous les renseignez une fois sur la fiche, avec leur durée de référence, et cette durée devient obligatoire dès la première métrique, parce que c’est elle qui rend la valeur exploitable : 1 200 m sur 15 min.',
         kind: 'compare',
         heads: ['Cumulatif', 'Intensif'],
         tones: ['blue', 'green'],
@@ -121,24 +121,24 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'circle-alert',
             tone: 'orange',
-            text: 'Ces valeurs sont indicatives. Elles n’entrent dans aucun calcul de charge — ni sRPE, ni ACWR, ni les signaux. Elles décrivent vos exercices, elles ne pilotent rien.',
+            text: 'Ces valeurs sont indicatives. Elles restent hors de tout calcul de charge (sRPE, ACWR, signaux). Elles décrivent vos exercices, et s’arrêtent là.',
           },
         ],
       },
       {
         kicker: 'AVANT QUE LA SÉANCE AIT LIEU',
-        title: 'Ce que la séance produira, et sur quelle part du temps.',
+        title: 'Lisez à l’avance ce que la séance produira.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'COUVERTURE',
             title: 'Le total est toujours partiel',
-            desc: 'Un déroulé contient des blocs sans exercice — échauffement, jeu libre, étirements — et des exercices que vous n’avez pas encore décrits. La ligne de couverture dit quelle part du temps de séance le chiffre décrit réellement. Sous 50 %, elle passe en orange.',
+            desc: 'Un déroulé contient des blocs sans exercice (échauffement, jeu libre, étirements) et des exercices encore à décrire. La ligne de couverture dit quelle part du temps de séance le chiffre décrit réellement. Sous 50 %, elle passe en orange.',
           },
           {
             eyebrow: 'LECTURE',
-            title: 'Un taux bas n’est pas une erreur',
-            desc: 'Il dit simplement où l’estimation reste aveugle. Et la ligne suivante nomme les blocs à compléter : c’est votre liste de travail pour enrichir la bibliothèque.',
+            title: 'Un taux bas dit où compléter',
+            desc: 'Il montre où l’estimation reste aveugle, et la ligne suivante nomme les blocs à compléter : c’est votre liste de travail pour enrichir la bibliothèque.',
           },
           {
             eyebrow: 'TRAÇABILITÉ',
@@ -150,7 +150,7 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'CE QUE LES SÉANCES PASSÉES RÉPONDENT',
         title: 'Sous chaque métrique, ce que le terrain a mesuré.',
-        body: 'STRIVN affiche la valeur observée sur les séances où vous avez utilisé cet exercice. Elle sert de repère pour ajuster votre valeur déclarée. Elle ne la remplace jamais. Et son origine est toujours nommée, parce qu’elle ne pèse pas le même poids.',
+        body: 'STRIVN affiche la valeur observée sur les séances où vous avez utilisé cet exercice. Elle sert de repère pour ajuster votre valeur déclarée, qui reste la vôtre. Son origine est toujours nommée, parce que le poids d’une valeur dépend d’où elle vient.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -160,7 +160,7 @@ export const exerciseLibrary: SubpageLocales = {
           { name: 'déclaré par les joueurs', desc: 'RPE ressenti, remonté par l’effectif.' },
           {
             name: 'échantillon faible',
-            desc: 'Moyenne calculée sur trop peu de séances. À traiter comme une indication, pas comme une référence.',
+            desc: 'Moyenne calculée sur trop peu de séances. À traiter comme une indication.',
           },
         ],
         note: {
@@ -181,11 +181,11 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · PLANNING',
-      title: 'What you come across at night ends up in Thursday’s session.',
+      title: 'Save the drill you saw tonight, place it Thursday.',
       sub: 'A TikTok link, a photo taken at the side of the pitch, a diagram drawn on the tactics board, or simply text. Everything lands in the same inbox, is sorted once, and can then be attached to any session.',
       bullets: [
         'Four ways to capture: link, photo, diagram, text',
-        'Nothing is visible to the team until it is sorted',
+        'Visible to the team only once sorted',
         'Folders, tags, filters and a full-screen quick look',
         'Key metrics: estimated external load before the session',
       ],
@@ -198,7 +198,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'FOUR WAYS IN',
-        title: 'Paste a link, and it is already in the library.',
+        title: 'Paste a link; it lands in the library.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -210,7 +210,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'image',
             title: 'Photo / Video',
-            desc: 'Import a file from your device — a photo taken pitch-side, a video filmed at training.',
+            desc: 'Import a file from your device: a photo taken pitch-side, a video filmed at training.',
           },
           {
             icon: 'pen-line',
@@ -220,7 +220,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'type',
             title: 'Text',
-            desc: 'Write the description straight out: instructions, variations, cues. No media, no problem.',
+            desc: 'Write the description straight out: instructions, variations, cues. Text alone is enough.',
           },
         ],
         note: {
@@ -232,13 +232,13 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'THE INBOX',
         title: 'You sort first. The team sees after.',
-        body: 'Every capture lands in the inbox first. You adjust the title, you file it in a folder — existing or created on the spot — and you add tags. On links and videos, a banner suggests a title and tags: take them in a click, or ignore them.',
+        body: 'Every capture lands in the inbox first. You adjust the title, you file it in a folder (existing or created on the spot) and you add tags. On links and videos, a banner suggests a title and tags: take them in a click, or ignore them.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'FILE IT',
             title: 'For you alone',
-            desc: 'The exercise stays in your library. Nobody else sees it.',
+            desc: 'The exercise stays in your library. You alone see it.',
           },
           {
             eyebrow: 'PUBLISH',
@@ -248,7 +248,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             eyebrow: 'DELETE',
             title: 'Drop the capture',
-            desc: 'What does not interest you does not sit there getting in the way.',
+            desc: 'Whatever leaves you cold leaves the inbox.',
           },
         ],
         note: {
@@ -259,8 +259,8 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'KEY METRICS',
-        title: '“1,200 m” means nothing. “1,200 m over 15 min” does.',
-        body: 'Key metrics describe what an exercise produces: distance covered, number of sprints, expected RPE, playing area. You fill them in once on the card, with their reference duration, and that duration becomes mandatory from the first metric, because it is what makes the value usable.',
+        title: 'Give every distance its duration.',
+        body: 'Key metrics describe what an exercise produces: distance covered, number of sprints, expected RPE, playing area. You fill them in once on the card, with their reference duration, and that duration becomes mandatory from the first metric, because it is what makes the value usable: 1,200 m over 15 min.',
         kind: 'compare',
         heads: ['Cumulative', 'Intensive'],
         tones: ['blue', 'green'],
@@ -285,24 +285,24 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'circle-alert',
             tone: 'orange',
-            text: 'These values are indicative. They enter no load calculation — not sRPE, not ACWR, not the signals. They describe your exercises; they drive nothing.',
+            text: 'These values are indicative. They stay out of every load calculation (sRPE, ACWR, signals). They describe your exercises, and stop there.',
           },
         ],
       },
       {
         kicker: 'BEFORE THE SESSION HAPPENS',
-        title: 'What the session will produce, and over how much of its time.',
+        title: 'Read in advance what the session will produce.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'COVERAGE',
             title: 'The total is always partial',
-            desc: 'A running order contains blocks with no exercise — warm-up, free play, stretching — and exercises you have not described yet. The coverage line says how much of the session’s time the figure actually describes. Below 50 %, it turns amber.',
+            desc: 'A running order contains blocks with no exercise (warm-up, free play, stretching) and exercises still to describe. The coverage line says how much of the session’s time the figure actually describes. Below 50 %, it turns amber.',
           },
           {
             eyebrow: 'READING IT',
-            title: 'A low rate is not an error',
-            desc: 'It simply says where the estimate is still blind. And the next line names the blocks to complete: that is your work list for filling out the library.',
+            title: 'A low rate says where to fill in',
+            desc: 'It shows where the estimate is still blind, and the next line names the blocks to complete: that is your work list for filling out the library.',
           },
           {
             eyebrow: 'TRACEABILITY',
@@ -314,7 +314,7 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'WHAT PAST SESSIONS ANSWER',
         title: 'Under each metric, what the pitch measured.',
-        body: 'STRIVN shows the value observed in the sessions where you used this exercise. It is a reference point for adjusting your declared value. It never replaces it. And its origin is always named, because they do not carry the same weight.',
+        body: 'STRIVN shows the value observed in the sessions where you used this exercise. It is a reference point for adjusting your declared value, which stays yours. Its origin is always named, because a value’s weight depends on where it comes from.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -324,7 +324,7 @@ export const exerciseLibrary: SubpageLocales = {
           { name: 'reported by players', desc: 'Perceived RPE, returned by the squad.' },
           {
             name: 'small sample',
-            desc: 'An average over too few sessions. To be treated as an indication, not a reference.',
+            desc: 'An average over too few sessions. To be treated as an indication.',
           },
         ],
         note: {
@@ -345,11 +345,11 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · PLANNING',
-      title: 'Wat je ’s avonds tegenkomt, belandt in de training van donderdag.',
+      title: 'Bewaar de oefening van vanavond, plaats ze donderdag.',
       sub: 'Een TikTok-link, een foto genomen langs het veld, een schema getekend op het tactische bord, of gewoon tekst. Alles komt in hetzelfde postvak IN, wordt één keer gesorteerd, en kan daarna aan elke training worden gekoppeld.',
       bullets: [
         'Vier manieren om vast te leggen: link, foto, schema, tekst',
-        'Niets is zichtbaar voor de ploeg zolang het niet gesorteerd is',
+        'Zichtbaar voor de ploeg zodra het gesorteerd is',
         'Mappen, tags, filters en een schermvullende snelweergave',
         'Kernmetrieken: de geschatte externe belasting vóór de training',
       ],
@@ -362,7 +362,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'VIER INGANGEN',
-        title: 'Een link geplakt, en het staat al in de bibliotheek.',
+        title: 'Plak een link; hij staat in de bibliotheek.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -374,7 +374,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'image',
             title: 'Foto / Video',
-            desc: 'Importeer een bestand van je toestel — een foto genomen langs het veld, een video gefilmd op training.',
+            desc: 'Importeer een bestand van je toestel: een foto genomen langs het veld, een video gefilmd op training.',
           },
           {
             icon: 'pen-line',
@@ -384,7 +384,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'type',
             title: 'Tekst',
-            desc: 'Schrijf de beschrijving meteen uit: richtlijnen, varianten, aandachtspunten. Geen media, geen probleem.',
+            desc: 'Schrijf de beschrijving meteen uit: richtlijnen, varianten, aandachtspunten. Tekst alleen volstaat.',
           },
         ],
         note: {
@@ -396,13 +396,13 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'HET POSTVAK IN',
         title: 'Jij sorteert eerst. De ploeg ziet daarna.',
-        body: 'Elke capture komt eerst in het postvak IN. Je past de titel aan, je bergt ze op in een map — bestaand of ter plekke gemaakt — en je voegt tags toe. Bij links en video’s stelt een balk een titel en tags voor: neem ze over met één klik, of negeer ze.',
+        body: 'Elke capture komt eerst in het postvak IN. Je past de titel aan, je bergt ze op in een map (bestaand of ter plekke gemaakt) en je voegt tags toe. Bij links en video’s stelt een balk een titel en tags voor: neem ze over met één klik, of negeer ze.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'OPBERGEN',
             title: 'Voor jou alleen',
-            desc: 'De oefening blijft in jouw bibliotheek. Niemand anders ziet ze.',
+            desc: 'De oefening blijft in jouw bibliotheek. Alleen jij ziet ze.',
           },
           {
             eyebrow: 'PUBLICEREN',
@@ -412,7 +412,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             eyebrow: 'VERWIJDEREN',
             title: 'De capture wegleggen',
-            desc: 'Wat je niet interesseert blijft niet in de weg staan.',
+            desc: 'Wat je koud laat, verlaat het postvak.',
           },
         ],
         note: {
@@ -423,8 +423,8 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'KERNMETRIEKEN',
-        title: '“1 200 m” zegt niets. “1 200 m over 15 min” wel.',
-        body: 'Kernmetrieken beschrijven wat een oefening voortbrengt: afgelegde afstand, aantal sprints, verwachte RPE, speeloppervlak. Je vult ze één keer in op de fiche, met hun referentieduur, en die duur wordt verplicht vanaf de eerste metriek, want zij maakt de waarde bruikbaar.',
+        title: 'Geef elke afstand haar duur.',
+        body: 'Kernmetrieken beschrijven wat een oefening voortbrengt: afgelegde afstand, aantal sprints, verwachte RPE, speeloppervlak. Je vult ze één keer in op de fiche, met hun referentieduur, en die duur wordt verplicht vanaf de eerste metriek, want zij maakt de waarde bruikbaar: 1 200 m over 15 min.',
         kind: 'compare',
         heads: ['Cumulatief', 'Intensief'],
         tones: ['blue', 'green'],
@@ -449,24 +449,24 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'circle-alert',
             tone: 'orange',
-            text: 'Deze waarden zijn indicatief. Ze gaan in geen enkele belastingsberekening — niet sRPE, niet ACWR, niet de signalen. Ze beschrijven je oefeningen; ze sturen niets.',
+            text: 'Deze waarden zijn indicatief. Ze blijven buiten elke belastingsberekening (sRPE, ACWR, signalen). Ze beschrijven je oefeningen, en daar stopt het.',
           },
         ],
       },
       {
         kicker: 'VOOR DE TRAINING PLAATSVINDT',
-        title: 'Wat de training zal opleveren, en over welk deel van de tijd.',
+        title: 'Lees vooraf wat de training zal opleveren.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'DEKKING',
             title: 'Het totaal is altijd gedeeltelijk',
-            desc: 'Een verloop bevat blokken zonder oefening — opwarming, vrij spel, stretching — en oefeningen die je nog niet beschreven hebt. De dekkingslijn zegt welk deel van de trainingstijd het cijfer werkelijk beschrijft. Onder 50 % kleurt ze oranje.',
+            desc: 'Een verloop bevat blokken zonder oefening (opwarming, vrij spel, stretching) en oefeningen die nog te beschrijven zijn. De dekkingslijn zegt welk deel van de trainingstijd het cijfer werkelijk beschrijft. Onder 50 % kleurt ze oranje.',
           },
           {
             eyebrow: 'LEZEN',
-            title: 'Een laag percentage is geen fout',
-            desc: 'Het zegt gewoon waar de schatting blind blijft. En de volgende regel noemt de blokken die je nog moet aanvullen: dat is je werklijst om de bibliotheek te verrijken.',
+            title: 'Een laag percentage zegt waar aan te vullen',
+            desc: 'Het toont waar de schatting blind blijft, en de volgende regel noemt de blokken die je nog moet aanvullen: dat is je werklijst om de bibliotheek te verrijken.',
           },
           {
             eyebrow: 'TRACEERBAARHEID',
@@ -478,7 +478,7 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'WAT VOORBIJE TRAININGEN ANTWOORDEN',
         title: 'Onder elke metriek, wat het veld gemeten heeft.',
-        body: 'STRIVN toont de waarde die is waargenomen in de trainingen waar je deze oefening gebruikt hebt. Ze dient als ijkpunt om je opgegeven waarde bij te stellen. Ze vervangt die nooit. En haar oorsprong wordt altijd genoemd, want ze weegt niet even zwaar.',
+        body: 'STRIVN toont de waarde die is waargenomen in de trainingen waar je deze oefening gebruikt hebt. Ze dient als ijkpunt om je opgegeven waarde bij te stellen, die van jou blijft. Haar oorsprong wordt altijd genoemd, want het gewicht van een waarde hangt af van waar ze vandaan komt.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -488,7 +488,7 @@ export const exerciseLibrary: SubpageLocales = {
           { name: 'opgegeven door de spelers', desc: 'Ervaren RPE, gemeld door de kern.' },
           {
             name: 'kleine steekproef',
-            desc: 'Gemiddelde berekend over te weinig trainingen. Te behandelen als een aanwijzing, niet als een referentie.',
+            desc: 'Gemiddelde berekend over te weinig trainingen. Te behandelen als een aanwijzing.',
           },
         ],
         note: {
@@ -509,11 +509,11 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · PLANUNG',
-      title: 'Was Ihnen abends begegnet, landet in der Einheit am Donnerstag.',
+      title: 'Speichern Sie die Übung abends, planen Sie sie donnerstags.',
       sub: 'Ein TikTok-Link, ein am Spielfeldrand aufgenommenes Foto, eine auf der Taktiktafel gezeichnete Skizze oder schlicht Text. Alles landet im selben Posteingang, wird einmal sortiert und lässt sich danach an jede Einheit hängen.',
       bullets: [
         'Vier Wege zu erfassen: Link, Foto, Zeichnung, Text',
-        'Nichts ist für die Mannschaft sichtbar, solange es nicht sortiert ist',
+        'Für die Mannschaft sichtbar, sobald es sortiert ist',
         'Ordner, Tags, Filter und eine Schnellansicht im Vollbild',
         'Kennzahlen: die geschätzte externe Belastung vor der Einheit',
       ],
@@ -526,7 +526,7 @@ export const exerciseLibrary: SubpageLocales = {
     sections: [
       {
         kicker: 'VIER EINGÄNGE',
-        title: 'Ein Link eingefügt, und er liegt schon in der Bibliothek.',
+        title: 'Link einfügen, und er liegt in der Bibliothek.',
         kind: 'cards',
         per: 2,
         cards: [
@@ -538,7 +538,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'image',
             title: 'Foto / Video',
-            desc: 'Eine Datei vom Gerät importieren — ein Foto vom Spielfeldrand, ein im Training gefilmtes Video.',
+            desc: 'Eine Datei vom Gerät importieren: ein Foto vom Spielfeldrand, ein im Training gefilmtes Video.',
           },
           {
             icon: 'pen-line',
@@ -548,7 +548,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'type',
             title: 'Text',
-            desc: 'Die Beschreibung direkt schreiben: Anweisungen, Varianten, Merkpunkte. Kein Medium, kein Problem.',
+            desc: 'Die Beschreibung direkt schreiben: Anweisungen, Varianten, Merkpunkte. Text allein genügt.',
           },
         ],
         note: {
@@ -560,13 +560,13 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'DER POSTEINGANG',
         title: 'Sie sortieren zuerst. Die Mannschaft sieht danach.',
-        body: 'Jede Aufnahme landet zuerst im Posteingang. Sie passen den Titel an, legen sie in einen Ordner — bestehend oder spontan angelegt — und ergänzen Tags. Bei Links und Videos schlägt ein Band Titel und Tags vor: mit einem Klick übernehmen oder ignorieren.',
+        body: 'Jede Aufnahme landet zuerst im Posteingang. Sie passen den Titel an, legen sie in einen Ordner (bestehend oder spontan angelegt) und ergänzen Tags. Bei Links und Videos schlägt ein Band Titel und Tags vor: mit einem Klick übernehmen oder ignorieren.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'ABLEGEN',
             title: 'Nur für Sie',
-            desc: 'Die Übung bleibt in Ihrer Bibliothek. Niemand sonst sieht sie.',
+            desc: 'Die Übung bleibt in Ihrer Bibliothek. Nur Sie sehen sie.',
           },
           {
             eyebrow: 'VERÖFFENTLICHEN',
@@ -576,7 +576,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             eyebrow: 'LÖSCHEN',
             title: 'Die Aufnahme verwerfen',
-            desc: 'Was Sie nicht interessiert, bleibt nicht im Weg liegen.',
+            desc: 'Was Sie kaltlässt, verlässt den Posteingang.',
           },
         ],
         note: {
@@ -587,8 +587,8 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'KENNZAHLEN',
-        title: '„1 200 m“ heißt nichts. „1 200 m auf 15 Min“ schon.',
-        body: 'Kennzahlen beschreiben, was eine Übung erzeugt: zurückgelegte Distanz, Anzahl Sprints, erwarteter RPE, Spielfläche. Sie tragen sie einmal auf der Karte ein, mit ihrer Bezugsdauer, und diese Dauer wird ab der ersten Kennzahl Pflicht, weil sie den Wert erst brauchbar macht.',
+        title: 'Geben Sie jeder Distanz ihre Dauer.',
+        body: 'Kennzahlen beschreiben, was eine Übung erzeugt: zurückgelegte Distanz, Anzahl Sprints, erwarteter RPE, Spielfläche. Sie tragen sie einmal auf der Karte ein, mit ihrer Bezugsdauer, und diese Dauer wird ab der ersten Kennzahl Pflicht, weil sie den Wert erst brauchbar macht: 1 200 m auf 15 Min.',
         kind: 'compare',
         heads: ['Kumulativ', 'Intensiv'],
         tones: ['blue', 'green'],
@@ -613,24 +613,24 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'circle-alert',
             tone: 'orange',
-            text: 'Diese Werte sind Richtwerte. Sie gehen in keine Belastungsrechnung ein — weder sRPE noch ACWR noch die Signale. Sie beschreiben Ihre Übungen; sie steuern nichts.',
+            text: 'Diese Werte sind Richtwerte. Sie bleiben außerhalb jeder Belastungsrechnung (sRPE, ACWR, Signale). Sie beschreiben Ihre Übungen, und dabei bleibt es.',
           },
         ],
       },
       {
         kicker: 'BEVOR DIE EINHEIT STATTFINDET',
-        title: 'Was die Einheit erzeugen wird, und über welchen Anteil ihrer Zeit.',
+        title: 'Lesen Sie vorab, was die Einheit erzeugen wird.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'ABDECKUNG',
             title: 'Die Summe ist immer unvollständig',
-            desc: 'Ein Ablauf enthält Blöcke ohne Übung — Aufwärmen, freies Spiel, Dehnen — und Übungen, die Sie noch nicht beschrieben haben. Die Abdeckungszeile sagt, welchen Anteil der Einheitszeit die Zahl wirklich beschreibt. Unter 50 % wird sie gelb.',
+            desc: 'Ein Ablauf enthält Blöcke ohne Übung (Aufwärmen, freies Spiel, Dehnen) und Übungen, die noch zu beschreiben sind. Die Abdeckungszeile sagt, welchen Anteil der Einheitszeit die Zahl wirklich beschreibt. Unter 50 % wird sie gelb.',
           },
           {
             eyebrow: 'LESEN',
-            title: 'Eine niedrige Quote ist kein Fehler',
-            desc: 'Sie sagt nur, wo die Schätzung blind bleibt. Und die nächste Zeile nennt die zu ergänzenden Blöcke: Das ist Ihre Arbeitsliste, um die Bibliothek zu füllen.',
+            title: 'Eine niedrige Quote sagt, wo zu ergänzen ist',
+            desc: 'Sie zeigt, wo die Schätzung blind bleibt, und die nächste Zeile nennt die zu ergänzenden Blöcke: Das ist Ihre Arbeitsliste, um die Bibliothek zu füllen.',
           },
           {
             eyebrow: 'NACHVOLLZIEHBARKEIT',
@@ -642,7 +642,7 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'WAS VERGANGENE EINHEITEN ANTWORTEN',
         title: 'Unter jeder Kennzahl, was der Platz gemessen hat.',
-        body: 'STRIVN zeigt den Wert, der in den Einheiten beobachtet wurde, in denen Sie diese Übung eingesetzt haben. Er dient als Bezugspunkt, um Ihren angegebenen Wert zu justieren. Er ersetzt ihn nie. Und seine Herkunft wird immer genannt, denn sie wiegt nicht gleich schwer.',
+        body: 'STRIVN zeigt den Wert, der in den Einheiten beobachtet wurde, in denen Sie diese Übung eingesetzt haben. Er dient als Bezugspunkt, um Ihren angegebenen Wert zu justieren, der Ihrer bleibt. Seine Herkunft wird immer genannt, denn das Gewicht eines Wertes hängt davon ab, woher er kommt.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -652,7 +652,7 @@ export const exerciseLibrary: SubpageLocales = {
           { name: 'von den Spielern gemeldet', desc: 'Empfundener RPE, vom Kader zurückgemeldet.' },
           {
             name: 'kleine Stichprobe',
-            desc: 'Mittelwert über zu wenige Einheiten. Als Hinweis zu behandeln, nicht als Referenz.',
+            desc: 'Mittelwert über zu wenige Einheiten. Als Hinweis zu behandeln.',
           },
         ],
         note: {
@@ -673,11 +673,11 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · PLANEAMENTO',
-      title: 'O que encontra à noite acaba no treino de quinta.',
+      title: 'Guarde o exercício visto à noite, coloque-o na quinta.',
       sub: 'Uma ligação do TikTok, uma foto tirada à beira do campo, um esquema desenhado no quadro tático, ou simplesmente texto. Tudo chega à mesma caixa de entrada, tria-se uma vez, e depois associa-se a qualquer treino.',
       bullets: [
         'Quatro formas de capturar: ligação, foto, esquema, texto',
-        'Nada é visível para a equipa enquanto não estiver triado',
+        'Visível para a equipa só depois de triado',
         'Pastas, etiquetas, filtros e pré-visualização em ecrã cheio',
         'Métricas-chave: a carga externa estimada antes do treino',
       ],
@@ -702,7 +702,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'image',
             title: 'Foto / Vídeo',
-            desc: 'Importe um ficheiro do seu aparelho — uma foto tirada à beira do campo, um vídeo filmado no treino.',
+            desc: 'Importe um ficheiro do seu aparelho: uma foto tirada à beira do campo, um vídeo filmado no treino.',
           },
           {
             icon: 'pen-line',
@@ -724,13 +724,13 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'A CAIXA DE ENTRADA',
         title: 'Você tria primeiro. A equipa vê depois.',
-        body: 'Cada captura chega primeiro à caixa de entrada. Ajusta o título, arquiva-a numa pasta — existente ou criada na hora — e acrescenta etiquetas. Nas ligações e nos vídeos, uma faixa propõe um título e etiquetas: aceite-os num clique, ou ignore-os.',
+        body: 'Cada captura chega primeiro à caixa de entrada. Ajusta o título, arquiva-a numa pasta (existente ou criada na hora) e acrescenta etiquetas. Nas ligações e nos vídeos, uma faixa propõe um título e etiquetas: aceite-os num clique, ou ignore-os.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'ARQUIVAR',
             title: 'Só para si',
-            desc: 'O exercício fica na sua biblioteca. Mais ninguém o vê.',
+            desc: 'O exercício fica na sua biblioteca. Só você o vê.',
           },
           {
             eyebrow: 'PUBLICAR',
@@ -740,7 +740,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             eyebrow: 'ELIMINAR',
             title: 'Pôr a captura de lado',
-            desc: 'O que não lhe interessa não fica ali a estorvar.',
+            desc: 'O que o deixa indiferente sai da caixa.',
           },
         ],
         note: {
@@ -751,8 +751,8 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'MÉTRICAS-CHAVE',
-        title: '«1 200 m» não quer dizer nada. «1 200 m em 15 min», sim.',
-        body: 'As métricas-chave descrevem o que um exercício produz: a distância percorrida, o número de sprints, o RPE esperado, a superfície de jogo. Preenche-as uma vez na ficha, com a sua duração de referência, e essa duração torna-se obrigatória logo na primeira métrica, porque é ela que torna o valor utilizável.',
+        title: 'Dê a cada distância a sua duração.',
+        body: 'As métricas-chave descrevem o que um exercício produz: a distância percorrida, o número de sprints, o RPE esperado, a superfície de jogo. Preenche-as uma vez na ficha, com a sua duração de referência, e essa duração torna-se obrigatória logo na primeira métrica, porque é ela que torna o valor utilizável: 1 200 m em 15 min.',
         kind: 'compare',
         heads: ['Cumulativa', 'Intensiva'],
         tones: ['blue', 'green'],
@@ -777,24 +777,24 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'circle-alert',
             tone: 'orange',
-            text: 'Estes valores são indicativos. Não entram em nenhum cálculo de carga — nem sRPE, nem ACWR, nem os sinais. Descrevem os seus exercícios; não pilotam nada.',
+            text: 'Estes valores são indicativos. Ficam fora de qualquer cálculo de carga (sRPE, ACWR, sinais). Descrevem os seus exercícios, e ficam por aí.',
           },
         ],
       },
       {
         kicker: 'ANTES DE O TREINO ACONTECER',
-        title: 'O que o treino vai produzir, e sobre que parte do tempo.',
+        title: 'Leia antecipadamente o que o treino vai produzir.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'COBERTURA',
             title: 'O total é sempre parcial',
-            desc: 'Um desenrolar contém blocos sem exercício — aquecimento, jogo livre, alongamentos — e exercícios que ainda não descreveu. A linha de cobertura diz que parte do tempo de treino o número descreve realmente. Abaixo de 50 %, passa a laranja.',
+            desc: 'Um desenrolar contém blocos sem exercício (aquecimento, jogo livre, alongamentos) e exercícios ainda por descrever. A linha de cobertura diz que parte do tempo de treino o número descreve realmente. Abaixo de 50 %, passa a laranja.',
           },
           {
             eyebrow: 'LEITURA',
-            title: 'Uma taxa baixa não é um erro',
-            desc: 'Diz apenas onde a estimativa continua cega. E a linha seguinte nomeia os blocos a completar: é a sua lista de trabalho para enriquecer a biblioteca.',
+            title: 'Uma taxa baixa diz onde completar',
+            desc: 'Mostra onde a estimativa continua cega, e a linha seguinte nomeia os blocos a completar: é a sua lista de trabalho para enriquecer a biblioteca.',
           },
           {
             eyebrow: 'RASTREABILIDADE',
@@ -806,7 +806,7 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'O QUE OS TREINOS PASSADOS RESPONDEM',
         title: 'Sob cada métrica, o que o campo mediu.',
-        body: 'A STRIVN mostra o valor observado nos treinos em que usou este exercício. Serve de referência para ajustar o valor que declarou. Nunca o substitui. E a sua origem é sempre nomeada, porque não pesa o mesmo.',
+        body: 'A STRIVN mostra o valor observado nos treinos em que usou este exercício. Serve de referência para ajustar o valor que declarou, que continua seu. A sua origem é sempre nomeada, porque o peso de um valor depende de onde vem.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -816,7 +816,7 @@ export const exerciseLibrary: SubpageLocales = {
           { name: 'declarado pelos jogadores', desc: 'RPE sentido, reportado pelo plantel.' },
           {
             name: 'amostra pequena',
-            desc: 'Média calculada sobre poucos treinos. A tratar como indicação, não como referência.',
+            desc: 'Média calculada sobre poucos treinos. A tratar como indicação.',
           },
         ],
         note: {
@@ -837,11 +837,11 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · PLANIFICACIÓN',
-      title: 'Lo que ves por la noche acaba en la sesión del jueves.',
+      title: 'Guarda el ejercicio visto de noche, colócalo el jueves.',
       sub: 'Un enlace de TikTok, una foto tomada a pie de campo, un esquema dibujado en la pizarra táctica, o simplemente texto. Todo llega a la misma bandeja de entrada, se clasifica una vez, y luego se asocia a cualquier sesión.',
       bullets: [
         'Cuatro formas de capturar: enlace, foto, esquema, texto',
-        'Nada es visible para el equipo mientras no esté clasificado',
+        'Visible para el equipo solo una vez clasificado',
         'Carpetas, etiquetas, filtros y vista rápida a pantalla completa',
         'Métricas clave: la carga externa estimada antes de la sesión',
       ],
@@ -866,7 +866,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'image',
             title: 'Foto / Vídeo',
-            desc: 'Importa un archivo desde tu dispositivo — una foto tomada a pie de campo, un vídeo grabado en el entrenamiento.',
+            desc: 'Importa un archivo desde tu dispositivo: una foto tomada a pie de campo, un vídeo grabado en el entrenamiento.',
           },
           {
             icon: 'pen-line',
@@ -888,13 +888,13 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'LA BANDEJA DE ENTRADA',
         title: 'Tú clasificas primero. El equipo lo ve después.',
-        body: 'Cada captura llega primero a la bandeja de entrada. Ajustas el título, la archivas en una carpeta — existente o creada al vuelo — y añades etiquetas. En los enlaces y los vídeos, una franja propone un título y etiquetas: acéptalos en un clic, o ignóralos.',
+        body: 'Cada captura llega primero a la bandeja de entrada. Ajustas el título, la archivas en una carpeta (existente o creada al vuelo) y añades etiquetas. En los enlaces y los vídeos, una franja propone un título y etiquetas: acéptalos en un clic, o ignóralos.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'ARCHIVAR',
             title: 'Solo para ti',
-            desc: 'El ejercicio se queda en tu biblioteca. Nadie más lo ve.',
+            desc: 'El ejercicio se queda en tu biblioteca. Solo tú lo ves.',
           },
           {
             eyebrow: 'PUBLICAR',
@@ -904,7 +904,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             eyebrow: 'ELIMINAR',
             title: 'Descartar la captura',
-            desc: 'Lo que no te interesa no se queda ahí estorbando.',
+            desc: 'Lo que te deja frío sale de la bandeja.',
           },
         ],
         note: {
@@ -915,8 +915,8 @@ export const exerciseLibrary: SubpageLocales = {
       },
       {
         kicker: 'MÉTRICAS CLAVE',
-        title: '«1 200 m» no dice nada. «1 200 m en 15 min», sí.',
-        body: 'Las métricas clave describen lo que produce un ejercicio: la distancia recorrida, el número de sprints, el RPE esperado, la superficie de juego. Las rellenas una vez en la ficha, con su duración de referencia, y esa duración pasa a ser obligatoria desde la primera métrica, porque es la que hace el valor utilizable.',
+        title: 'Da a cada distancia su duración.',
+        body: 'Las métricas clave describen lo que produce un ejercicio: la distancia recorrida, el número de sprints, el RPE esperado, la superficie de juego. Las rellenas una vez en la ficha, con su duración de referencia, y esa duración pasa a ser obligatoria desde la primera métrica, porque es la que hace el valor utilizable: 1 200 m en 15 min.',
         kind: 'compare',
         heads: ['Acumulativa', 'Intensiva'],
         tones: ['blue', 'green'],
@@ -941,24 +941,24 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'circle-alert',
             tone: 'orange',
-            text: 'Estos valores son indicativos. No entran en ningún cálculo de carga — ni sRPE, ni ACWR, ni las señales. Describen tus ejercicios; no pilotan nada.',
+            text: 'Estos valores son indicativos. Quedan fuera de todo cálculo de carga (sRPE, ACWR, señales). Describen tus ejercicios, y ahí se quedan.',
           },
         ],
       },
       {
         kicker: 'ANTES DE QUE LA SESIÓN OCURRA',
-        title: 'Lo que la sesión producirá, y sobre qué parte del tiempo.',
+        title: 'Lee por adelantado lo que la sesión producirá.',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'COBERTURA',
             title: 'El total siempre es parcial',
-            desc: 'Un desarrollo contiene bloques sin ejercicio — calentamiento, juego libre, estiramientos — y ejercicios que aún no has descrito. La línea de cobertura dice qué parte del tiempo de sesión describe realmente la cifra. Por debajo del 50 %, pasa a naranja.',
+            desc: 'Un desarrollo contiene bloques sin ejercicio (calentamiento, juego libre, estiramientos) y ejercicios aún por describir. La línea de cobertura dice qué parte del tiempo de sesión describe realmente la cifra. Por debajo del 50 %, pasa a naranja.',
           },
           {
             eyebrow: 'LECTURA',
-            title: 'Una tasa baja no es un error',
-            desc: 'Solo dice dónde la estimación sigue ciega. Y la línea siguiente nombra los bloques por completar: esa es tu lista de trabajo para enriquecer la biblioteca.',
+            title: 'Una tasa baja dice dónde completar',
+            desc: 'Muestra dónde la estimación sigue ciega, y la línea siguiente nombra los bloques por completar: esa es tu lista de trabajo para enriquecer la biblioteca.',
           },
           {
             eyebrow: 'TRAZABILIDAD',
@@ -970,7 +970,7 @@ export const exerciseLibrary: SubpageLocales = {
       {
         kicker: 'LO QUE RESPONDEN LAS SESIONES PASADAS',
         title: 'Bajo cada métrica, lo que el campo ha medido.',
-        body: 'STRIVN muestra el valor observado en las sesiones donde has usado este ejercicio. Sirve de referencia para ajustar tu valor declarado. Nunca lo sustituye. Y su origen siempre se nombra, porque no pesan igual.',
+        body: 'STRIVN muestra el valor observado en las sesiones donde has usado este ejercicio. Sirve de referencia para ajustar tu valor declarado, que sigue siendo tuyo. Su origen siempre se nombra, porque el peso de un valor depende de dónde viene.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -980,7 +980,7 @@ export const exerciseLibrary: SubpageLocales = {
           { name: 'declarado por los jugadores', desc: 'RPE percibido, reportado por la plantilla.' },
           {
             name: 'muestra pequeña',
-            desc: 'Media calculada sobre demasiado pocas sesiones. A tratar como indicación, no como referencia.',
+            desc: 'Media calculada sobre demasiado pocas sesiones. A tratar como indicación.',
           },
         ],
         note: {
