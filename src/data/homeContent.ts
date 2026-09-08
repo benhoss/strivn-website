@@ -941,7 +941,7 @@ const en: HomeContent = {
   },
   spectre: {
     kicker: 'ONE SYSTEM, FROM MONDAY TO MATCHDAY',
-    title: 'Everything a team does in a week.',
+    title: 'Run the whole week in one space.',
     steps: [
       { icon: 'calendar', label: 'Planning' },
       { icon: 'send', label: 'Call-ups' },
@@ -952,7 +952,7 @@ const en: HomeContent = {
       { icon: 'heart-pulse', label: 'Medical room' },
       { icon: 'bar-chart', label: 'Reports & BI' },
     ],
-    note: 'Every module feeds the others. You enter data once.',
+    note: 'Every module feeds the others. Data entered once serves the seven others.',
   },
   credibility: {
     stat: '50',
@@ -965,8 +965,8 @@ const en: HomeContent = {
   beforeAfter: {
     index: '01',
     kicker: 'THE REALITY',
-    title: 'Your standards have outgrown your tools.',
-    body: 'Every morning, the same operations: export GPS data, consolidate RPEs, chase questionnaires, cross-reference several files just to establish the squad’s state of readiness.',
+    title: 'Bring GPS, RPE and wellness into one read.',
+    body: 'Every morning, the same operations: export the GPS, consolidate the RPEs, chase the questionnaires, cross three files to establish the squad’s state of form. STRIVN takes over that last step and computes it overnight.',
     beforeLabel: 'BEFORE · FRAGMENTED TOOLS',
     beforeChips: [
       { icon: 'table', label: 'Scattered Excel workbooks' },
@@ -978,7 +978,7 @@ const en: HomeContent = {
     ],
     afterLabel: 'WITH STRIVN · ONE UNIFIED SYSTEM',
     afterRows: [
-      { icon: 'satellite', label: 'Automated GPS import' },
+      { icon: 'satellite', label: 'GPS import from the CSV export' },
       { icon: 'moon', label: 'Daily wellness questionnaire, on mobile' },
       { icon: 'gauge', label: 'RPE collected after every session' },
       { icon: 'activity', label: 'Load and ACWR computed continuously' },
@@ -989,14 +989,14 @@ const en: HomeContent = {
   workflow: {
     index: '02',
     kicker: 'THE WORKFLOW',
-    title: 'Measure. Plan. Build. Run.',
-    sub: 'Analysis is only half the system: STRIVN plans the load, builds the sessions and workouts, and runs them live.',
+    title: 'Measure the load, plan the week, run the session.',
+    sub: 'STRIVN reads your data, then plans the load, builds the sessions and workouts, and runs them live. Six steps, from the GPS file to Monday’s report.',
     steps: [
       {
         index: '01 / 06',
         kicker: 'GPS IMPORT',
-        title: 'Your GPS data integrated, no re-typing.',
-        body: 'A CSV export from any system — Catapult, STATSports or another — is enough: the session is attached to the calendar, player by player.',
+        title: 'Import the GPS export, whatever the sensor.',
+        body: 'Drop the CSV from Catapult, STATSports or any other system. Columns are recognised on the first import and remembered; the session is attached to the calendar, player by player, and later imports take a few seconds.',
         points: [
           'Direct import of a CSV export',
           'Column mapping remembered',
@@ -1010,8 +1010,8 @@ const en: HomeContent = {
       {
         index: '02 / 06',
         kicker: 'READINESS',
-        title: 'The squad’s state of form, known before the session.',
-        body: 'Players complete their questionnaire on waking. Before the session you know who is fit, who is flagging and who needs holding back.',
+        title: 'Know who is fit before the session.',
+        body: 'Players answer the check-in on waking, in twenty seconds. Before the session you know who is fit, who is flagging and who needs holding back.',
         points: [
           'Wellness questionnaire on waking, on mobile',
           'Readiness score per player, weightable',
@@ -1025,8 +1025,8 @@ const en: HomeContent = {
       {
         index: '03 / 06',
         kicker: 'LOAD PLANNING',
-        title: 'Load planned on numbers, not on feel.',
-        body: 'Daily target load, ACWR computed continuously, per-player adjustments. The microcycle is built on the load the squad actually absorbed.',
+        title: 'Plan the week’s load in AU.',
+        body: 'Set a daily target; STRIVN computes the ACWR over 7 and 28 days and flags the gaps. The microcycle is built on the load the squad actually absorbed.',
         points: [
           'Target and actual load, day by day',
           'ACWR and monotony computed automatically',
@@ -1040,8 +1040,8 @@ const en: HomeContent = {
       {
         index: '04 / 06',
         kicker: 'SESSION & WORKOUT BUILDER',
-        title: 'Sessions and workouts, built on your numbers.',
-        body: 'The load plan becomes a real session: blocks, drills, target loads. Individual workouts generate from the same data — return protocols included.',
+        title: 'Build the session from the load plan.',
+        body: 'Assemble blocks, drills and target loads; the estimated load shows before the session. Individual workouts generate from the same data, return protocols included.',
         points: [
           'Library of reusable drills and blocks',
           'Estimated load per block, before the session',
@@ -1055,8 +1055,8 @@ const en: HomeContent = {
       {
         index: '05 / 06',
         kicker: 'LIVE SESSION',
-        title: 'The numbers climb while the session runs.',
-        body: 'Attendance ticked off, load accumulating block by block, gaps visible immediately. You adjust during the session — not the day after.',
+        title: 'Track the load during the session, block by block.',
+        body: 'Tick attendance pitch-side; the load accumulates block by block and the gap to the plan shows live. You adjust during the session.',
         points: [
           'Pitch-side check-in and participation',
           'Cumulative load in real time, per player',
@@ -1069,8 +1069,8 @@ const en: HomeContent = {
       {
         index: '06 / 06',
         kicker: 'STAFF SHARING',
-        title: 'The head coach reads the same picture as you.',
-        body: 'The weekly report generates automatically, the staff annotates, and availability feeds straight into the call-up. No document to rebuild, no summary to retype.',
+        title: 'Share the same read with the whole staff.',
+        body: 'The weekly report generates automatically, the staff annotates it, and availability feeds Sunday’s call-up. The head coach, the physio and the assistants read the same data, each with their own rights.',
         points: [
           'Readiness view shared with the whole staff',
           'Weekly report generated automatically',
@@ -1093,7 +1093,7 @@ const en: HomeContent = {
           { from: 'Sprint Count', to: 'Sprints' },
           { from: 'Player Load', to: 'External load' },
         ],
-        done: 'Import complete — linked to “Tuesday session · intensity block”',
+        done: 'Import complete · linked to “Tuesday session · intensity block”',
       },
       readiness: {
         title: 'Morning wellness · 16 / 18 responses',
@@ -1106,7 +1106,7 @@ const en: HomeContent = {
         ],
         alertsLabel: 'MORNING ALERTS',
         alerts: [
-          { name: 'L. Moreau', detail: 'Sleep 4 h · fatigue 8/10 — readiness 58', action: 'Adjust' },
+          { name: 'L. Moreau', detail: 'Sleep 4 h · fatigue 8/10 · readiness 58', action: 'Adjust' },
           { name: 'K. Nakamura', detail: 'High soreness after Tuesday’s block', action: 'Adjust' },
         ],
         chartLabel: 'SQUAD READINESS · LAST 14 DAYS',
@@ -1134,7 +1134,7 @@ const en: HomeContent = {
         workout: {
           title: 'Individual workout · L. Moreau',
           stamp: 'Published to the player app',
-          body: 'Nordic curls 3×8 · Copenhagen 3×10 / side · hip mobility 8 min — generated from the hamstring protocol, load deducted from the team session.',
+          body: 'Nordic curls 3×8 · Copenhagen 3×10 / side · hip mobility 8 min. Generated from the hamstring protocol, load deducted from the team session.',
         },
       },
       live: {
@@ -1149,7 +1149,7 @@ const en: HomeContent = {
           { name: 'M. Lefèvre', pct: 71, tone: 'blue' },
         ],
         alert: {
-          body: 'L. Moreau at 92% of his target by block 2 — pull him from the speed block?',
+          body: 'L. Moreau at 92% of his target by block 2. Pull him from the speed block?',
           primary: 'Pull out',
           secondary: 'Keep in',
         },
@@ -1161,38 +1161,38 @@ const en: HomeContent = {
         avatars: ['HC', 'AS', 'PH', 'SC'],
         shared: 'Shared with 4 staff members',
         commentAuthor: 'HEAD COACH · 09:12',
-        comment: 'Seen for Moreau — we adapt Thursday’s block as proposed.',
-        push: 'Availability pushed to Sunday’s call-up — 15 fit, 2 to monitor, 1 unavailable.',
+        comment: 'Seen for Moreau. We adapt Thursday’s block as proposed.',
+        push: 'Availability pushed to Sunday’s call-up: 15 fit, 2 to monitor, 1 unavailable.',
       },
     },
   },
   compatible: {
     kicker: 'COMPATIBILITY',
-    title: 'What your players already wear comes into STRIVN.',
-    body: 'GPS systems export a CSV — Catapult, STATSports or another: the columns are matched once, then remembered. WHOOP waits for no export: it pushes the night’s measurements into the morning check-in.',
+    title: 'Connect WHOOP, import any GPS export.',
+    body: 'GPS systems export a CSV; the columns are recognised on the first import, then remembered. WHOOP connects through its API and sends the night’s measurements into the morning check-in. A hundred players can connect their strap.',
     badge: 'NEW',
     whoopTitle: 'WHOOP pre-fills the morning check-in.',
     points: [
-      'Recovery — the day’s score',
-      'Sleep — duration and performance',
+      'The day’s recovery score',
+      'Sleep duration and performance',
       'HRV and resting heart rate',
     ],
     cta: 'See the check-in',
     href: '/en/features/check-in/',
-    note: 'Trademarks and logos are the property of their respective owners. STRIVN is not affiliated with any of these companies.',
+    note: 'Trademarks and logos are the property of their respective owners. STRIVN is independent of these companies.',
   },
   playerApp: {
     index: '03',
     kicker: 'PLAYER SIDE',
-    title: 'The data comes in without you chasing it.',
-    body: 'Monitoring is only worth it if players respond. The player app asks little, at the right moment: wellness on waking, RPE after the session, the day’s workout. Twenty seconds, not a form.',
+    title: 'Your players answer in twenty seconds.',
+    body: 'The player app asks for three things, at the right moment: wellness on waking, RPE after the session, the day’s workout. Each answer takes twenty seconds, and the reminder goes out on its own.',
     points: [
       { icon: 'moon', label: 'Wellness questionnaire on waking, in 20 seconds' },
       { icon: 'gauge', label: 'Post-session RPE in one tap, notification included' },
       { icon: 'dumbbell', label: 'Individual workouts with videos and instructions' },
       { icon: 'calendar', label: 'Call-ups, responses and availability' },
     ],
-    note: 'STRIVN Player downloads from the App Store and Google Play. A player who would rather install nothing answers from a link.',
+    note: 'STRIVN Player downloads from the App Store and Google Play. A player without the app answers from a link.',
     cta: 'See the player app',
     href: '/en/features/player-app/',
     stores: 'IOS · ANDROID',
@@ -1217,15 +1217,15 @@ const en: HomeContent = {
   platform: {
     index: '04',
     kicker: 'THE WHOLE TEAM',
-    title: 'Monitoring is one part of a complete platform.',
-    body: 'Call-ups, attendance, medical log, sessions and reports sit in the same environment as the monitoring, open to the whole staff.',
+    title: 'Call up, treat, plan and report in the same place.',
+    body: 'Call-ups, attendance, medical log, sessions and reports live in the same space as the monitoring, with access rights per role for every staff member.',
     featured: [
       {
         icon: 'activity',
         title: 'Load, RPE & GPS',
         badge: 'MONITORING',
         badgeTone: 'blue',
-        body: 'The core of the system: GPS import, RPE, internal and external load, ACWR and alerts. It is where the performance staff starts the day.',
+        body: 'GPS import, RPE, internal and external load, ACWR and alerts: the performance staff starts the day here.',
         cta: 'Load & RPE in detail',
         href: '/en/features/training-load/',
       },
@@ -1243,42 +1243,42 @@ const en: HomeContent = {
       {
         icon: 'send',
         title: 'Call-ups & RSVP',
-        body: 'Call-ups sent, responses consolidated, squad list up to date.',
+        body: 'Call up in one click; responses come back within the day and the squad list updates itself.',
         cta: 'In detail',
         href: '/en/features/communication/',
       },
       {
         icon: 'heart-pulse',
         title: 'Medical room',
-        body: 'Injuries and return to play, visible to authorised staff.',
+        body: 'Log the injury once; return to play and call-ups follow, visible to authorised staff.',
         cta: 'In detail',
         href: '/en/features/medical/',
       },
       {
         icon: 'target',
         title: 'Individual programmes',
-        body: 'Goals and drills linked to each player’s data.',
+        body: 'Set goals and drills linked to each player’s data.',
         cta: 'In detail',
         href: '/en/features/programs/',
       },
       {
         icon: 'clipboard',
         title: 'Sessions & tactics',
-        body: 'Session plans and boards connected to the squad’s state.',
+        body: 'Prepare sessions and boards from the squad’s state of form.',
         cta: 'In detail',
         href: '/en/features/sessions/',
       },
       {
         icon: 'radio',
         title: 'Live session & match',
-        body: 'Attendance, playing time and events captured pitch-side.',
+        body: 'Capture attendance, playing time and events pitch-side.',
         cta: 'In detail',
         href: '/en/features/live-session/',
       },
       {
         icon: 'sparkles',
         title: 'Reports, AI & dashboards',
-        body: 'AI-written summaries and composable dashboards, shared with staff and board.',
+        body: 'Receive AI-written summaries and compose your dashboards, shared with staff and board.',
         cta: 'In detail',
         href: '/en/features/reports/',
       },
@@ -1287,8 +1287,8 @@ const en: HomeContent = {
   intelligence: {
     index: '05',
     kicker: 'AI & BI BUILT IN',
-    title: 'AI and BI, integrated at every level.',
-    body: 'The AI reads load, wellness, GPS and medical history together, not each source on its own. And when a question deserves a chart, it builds one.',
+    title: 'Query all your data in one question.',
+    body: 'The AI reads load, wellness, GPS and medical history together, four sources at once. When a question deserves a chart, it builds one and you pin it to your dashboards.',
     console: {
       title: 'AI assistant',
       badge: 'AI · CONTINUOUS ANALYSIS',
@@ -1309,28 +1309,28 @@ const en: HomeContent = {
       {
         icon: 'sun',
         title: 'Morning briefing',
-        body: 'The squad’s state summarised by the AI before the session: readiness, alerts and proposed adjustments.',
+        body: 'Receive the squad’s state summarised by the AI before the session: readiness, alerts and proposed adjustments.',
       },
       {
         icon: 'radar',
         title: 'Signal detection',
-        body: 'The AI continuously crosses load × wellness × medical history. Drifts surface before the injury.',
+        body: 'The AI continuously crosses load, wellness and medical history. Drifts surface before the injury.',
       },
       {
         icon: 'layout',
         title: 'Dashboards on demand',
-        body: 'Ask a question, the AI builds the visualisation that answers it, then pins it to your dashboards in one click.',
+        body: 'Ask a question; the AI builds the visualisation that answers it, then you pin it to your dashboards in one click.',
       },
       {
         icon: 'file-text',
         title: 'AI-written reports',
-        body: 'Weekly and post-match summaries written by the AI, ready to hand to the board.',
+        body: 'Receive the weekly and post-match summaries written by the AI, ready to hand to the board.',
       },
     ],
     bi: {
       kicker: 'BI & DASHBOARDS',
-      title: 'Your dashboards, built or generated.',
-      body: 'A widget library to compose your reports: load, GPS, wellness, tests, availability. And for every one-off question, a visualisation generated on the fly, ready to pin.',
+      title: 'Compose your dashboards, or let the AI generate them.',
+      body: 'A widget library to compose your reports: load, GPS, wellness, tests, availability. For every one-off question, a visualisation generated on the fly, ready to pin.',
       points: [
         'Load, GPS, wellness, tests and availability widgets',
         'Drag-and-drop composition, per team or per player',
@@ -1351,7 +1351,7 @@ const en: HomeContent = {
         weekly: 'Weekly load · 6 wks',
         availability: 'Availability',
         availabilityValue: '83%',
-        hsr: 'HSR — match vs match',
+        hsr: 'HSR · match vs match',
         aiTag: 'AI-GENERATED',
       },
     },
@@ -1359,11 +1359,11 @@ const en: HomeContent = {
   convince: {
     index: '06',
     kicker: 'WINNING OVER THE STAFF',
-    title: 'Adopted by an S&C coach. Deployed by the whole staff.',
-    body: 'Deployment almost always follows the same path: an S&C coach adopts the platform, shows what the data changes, and the staff joins. The staff dossier sums up the argument for a head coach or club board. You send it as a link or a PDF.',
+    title: 'Start alone, then bring the staff in with the dossier.',
+    body: 'Three steps, almost always the same: an S&C coach adopts STRIVN, shows what the data changes, and the staff joins. The staff dossier sums up the argument for a head coach or club board; you send it as a link or a PDF.',
     steps: [
       {
-        title: 'You adopt the platform',
+        title: 'You adopt STRIVN',
         body: 'GPS import, wellness and load tracking on your team, no commitment.',
       },
       {
@@ -1372,7 +1372,7 @@ const en: HomeContent = {
       },
       {
         title: 'The staff joins your space',
-        body: 'Head coach, medical staff, assistants — one view per role, the same data.',
+        body: 'Head coach, medical staff, assistants: one view per role, the same data.',
       },
     ],
     dossier: {
@@ -1380,10 +1380,10 @@ const en: HomeContent = {
       kicker: 'STAFF DOSSIER',
       title: 'The value for each role',
       roles: [
-        { icon: 'users', body: 'Head coach — real availability at call-up time' },
-        { icon: 'heart-pulse', body: 'Medical staff — shared medical log and return protocols' },
-        { icon: 'clipboard', body: 'Assistants — sessions linked to the squad’s state' },
-        { icon: 'shield', body: 'Board — a structured team, with no upfront investment' },
+        { icon: 'users', body: 'Head coach: real availability at call-up time' },
+        { icon: 'heart-pulse', body: 'Medical staff: shared medical log and return protocols' },
+        { icon: 'clipboard', body: 'Assistants: sessions linked to the squad’s state' },
+        { icon: 'shield', body: 'Board: a structured team, with no upfront investment' },
       ],
       copyBtn: 'Copy the link',
       pdfBtn: 'Download the PDF',
@@ -1393,7 +1393,7 @@ const en: HomeContent = {
   solutions: {
     index: '07',
     kicker: 'BY ROLE',
-    title: 'An entry point for every role on the staff.',
+    title: 'Pick your page by your role on the staff.',
     cards: [
       {
         icon: 'dumbbell',
@@ -1415,8 +1415,8 @@ const en: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PRICING',
-    title: 'Four tiers. The free one runs a whole season.',
-    note: 'The performance tier opens GPS import, load and the crossing with what players feel.',
+    title: 'Four tiers. The free one runs the whole season.',
+    note: 'The Semi-Pro tier takes over the GPS, RPE and wellness crossing you still do by hand. Every new account has it for 30 days, no card.',
   },
   faq: {
     index: '09',
@@ -1424,45 +1424,45 @@ const en: HomeContent = {
     title: 'The questions staffs ask.',
     body: 'The players’ role, space governance and time to get set up.',
     contactTitle: 'Another question?',
-    contactBody: 'Write to us — the founding team replies directly.',
+    contactBody: 'Write to us. We answer ourselves.',
     email: 'hello@strivn.net',
     items: [
       {
         q: 'How do I import my GPS data?',
-        a: 'Via CSV export, from any system — Catapult, STATSports or another. Column mapping is remembered: subsequent imports take a few seconds.',
+        a: 'Via CSV export, from Catapult, STATSports or any other system. Column mapping is remembered on the first import; later ones take a few seconds.',
       },
       {
         q: 'Who keeps control of the team space?',
-        a: 'You do. You create the space, invite the staff and define each person’s access rights. No club validation is required.',
+        a: 'You do. You create the space, invite the staff and define each person’s rights, with no club validation.',
       },
       {
         q: 'How long does setup take?',
-        a: 'A few minutes: create the space, add your players, import your first session. History builds up over the weeks.',
+        a: 'A few minutes: create the space, add your players, import your first session. The first 30 days are on Semi-Pro, no card; history builds up over the weeks.',
       },
       {
-        q: 'Why is the Coach plan free?',
-        a: 'A staff member should not have to request budget to structure their work. Billing happens at club level, when several teams need to be coordinated.',
+        q: 'Why is the Free plan free?',
+        a: 'Because a coach must be able to structure their work without asking for budget. Free covers one team, unlimited players and one staff seat, for ever. The paid tiers open the second staff seat, then GPS import, the medical board and unlimited staff.',
       },
       {
         q: 'Is it suited to amateur and semi-professional football?',
-        a: 'That is precisely STRIVN’s home ground: small staffs, measured means, and players who will not use ten separate apps.',
+        a: 'Yes, that is STRIVN’s home ground: staffs of two or three people, measured means, and players who answer from a single app.',
       },
       {
         q: 'S&C coach: how do I get the head coach on board?',
-        a: 'Start with your own data, then share the staff dossier from the site. Once the head coach sees real availability in the call-up, you no longer have to sell it.',
+        a: 'Start with your own data, then share the staff dossier from the site. The head coach reads real availability in the call-up, and the argument is made.',
       },
     ],
   },
   finalCta: {
     kicker: 'START ALONE, FOR FREE',
-    title: 'Your data and your staff, under one roof.',
-    body: 'Create your space for free: GPS import, wellness, load and readiness are included from day one. Your staff joins once they see your first reports.',
+    title: 'Create your space and import your first session.',
+    body: 'The first 30 days are on Semi-Pro, GPS import included, no card. Then the Free plan runs the team for the whole season, and your staff joins once they see your first reports.',
     primaryCta: 'Create my space for free',
     secondaryCta: 'Share the staff dossier',
     trust: 'NO CREDIT CARD · NO CLUB APPROVAL · YOUR DATA STAYS YOURS',
   },
   footer: {
-    tagline: 'Performance tracking, at the professional standard.',
+    tagline: 'A professional staff’s monitoring, without a professional club’s budget.',
     body: 'STRIVN brings performance monitoring and team logistics together in one space shared by the staff.',
     email: 'hello@strivn.net',
     columns: [
@@ -1490,7 +1490,7 @@ const en: HomeContent = {
         ],
       },
     ],
-    copyright: '© 2026 STRIVN · Free for coaches, soon for clubs',
+    copyright: '© 2026 STRIVN · Free for one team, all season',
   },
 };
 
@@ -1550,7 +1550,7 @@ const nl: HomeContent = {
   },
   spectre: {
     kicker: 'ÉÉN SYSTEEM, VAN MAANDAG TOT DE WEDSTRIJD',
-    title: 'Alles wat een team in een week doet.',
+    title: 'Laat de hele week draaien in één omgeving.',
     steps: [
       { icon: 'calendar', label: 'Planning' },
       { icon: 'send', label: 'Oproepingen' },
@@ -1561,7 +1561,7 @@ const nl: HomeContent = {
       { icon: 'heart-pulse', label: 'Ziekenboeg' },
       { icon: 'bar-chart', label: 'Rapporten & BI' },
     ],
-    note: 'Elke module voedt de andere. Data voert u één keer in.',
+    note: 'Elke module voedt de andere. Data die u één keer invoert, dient de zeven andere.',
   },
   credibility: {
     stat: '50',
@@ -1574,8 +1574,8 @@ const nl: HomeContent = {
   beforeAfter: {
     index: '01',
     kicker: 'DE VASTSTELLING',
-    title: 'Uw eisen zijn uw tools ontgroeid.',
-    body: 'Elke ochtend dezelfde handelingen: GPS-data exporteren, RPE’s samenvoegen, vragenlijsten opvolgen, meerdere bestanden kruisen om de toestand van de groep te bepalen.',
+    title: 'Breng GPS, RPE en wellness samen in één lezing.',
+    body: 'Elke ochtend dezelfde handelingen: de GPS exporteren, de RPE’s samenvoegen, de vragenlijsten opvolgen, drie bestanden kruisen om de toestand van de groep te bepalen. STRIVN neemt die laatste stap over en berekent ze ’s nachts.',
     beforeLabel: 'VOORDIEN · VERSNIPPERDE TOOLS',
     beforeChips: [
       { icon: 'table', label: 'Verspreide Excel-werkmappen' },
@@ -1587,7 +1587,7 @@ const nl: HomeContent = {
     ],
     afterLabel: 'MET STRIVN · ÉÉN UNIFORM SYSTEEM',
     afterRows: [
-      { icon: 'satellite', label: 'Geautomatiseerde GPS-import' },
+      { icon: 'satellite', label: 'GPS-import vanuit de CSV-export' },
       { icon: 'moon', label: 'Dagelijkse wellnessvragenlijst, op mobiel' },
       { icon: 'gauge', label: 'RPE verzameld na elke training' },
       { icon: 'activity', label: 'Belasting en ACWR doorlopend berekend' },
@@ -1598,14 +1598,14 @@ const nl: HomeContent = {
   workflow: {
     index: '02',
     kicker: 'DE WORKFLOW',
-    title: 'Meten. Plannen. Bouwen. Sturen.',
-    sub: 'Analyse is maar de helft van het systeem: STRIVN plant de belasting, bouwt de trainingen en workouts, en stuurt ze live.',
+    title: 'Meet de belasting, plan de week, stuur de training.',
+    sub: 'STRIVN leest uw data, plant dan de belasting, bouwt de trainingen en workouts, en stuurt ze live. Zes stappen, van het GPS-bestand tot het rapport van maandag.',
     steps: [
       {
         index: '01 / 06',
         kicker: 'GPS-IMPORT',
-        title: 'Uw GPS-data geïntegreerd, zonder herinvoer.',
-        body: 'Een CSV-export uit eender welk systeem — Catapult, STATSports of een ander — volstaat: de training wordt aan de kalender gekoppeld, speler per speler.',
+        title: 'Importeer de GPS-export, welke sensor ook.',
+        body: 'Zet de CSV van Catapult, STATSports of eender welk ander systeem neer. De kolommen worden bij de eerste import herkend en onthouden; de training wordt aan de kalender gekoppeld, speler per speler, en volgende imports duren enkele seconden.',
         points: [
           'Directe import van een CSV-export',
           'Kolomtoewijzing onthouden',
@@ -1619,8 +1619,8 @@ const nl: HomeContent = {
       {
         index: '02 / 06',
         kicker: 'READINESS',
-        title: 'De toestand van de groep, gekend vóór de training.',
-        body: 'Spelers vullen hun vragenlijst in bij het opstaan. Vóór de training weet u wie fit is, wie een signaal geeft en wie ontzien moet worden.',
+        title: 'Weet wie fit is vóór de training.',
+        body: 'Spelers beantwoorden de check-in bij het opstaan, in twintig seconden. Vóór de training weet u wie fit is, wie een signaal geeft en wie ontzien moet worden.',
         points: [
           'Wellnessvragenlijst bij het opstaan, op mobiel',
           'Readiness-score per speler, weegbaar',
@@ -1634,8 +1634,8 @@ const nl: HomeContent = {
       {
         index: '03 / 06',
         kicker: 'BELASTINGSPLANNING',
-        title: 'Belasting plant u op cijfers, niet op gevoel.',
-        body: 'Dagelijkse doelbelasting, ACWR doorlopend berekend, aanpassingen per speler. De microcyclus wordt gebouwd op de belasting die de groep werkelijk absorbeerde.',
+        title: 'Plan de belasting van de week in AU.',
+        body: 'Leg een dagelijks doel vast; STRIVN berekent de ACWR over 7 en 28 dagen en meldt de afwijkingen. De microcyclus wordt gebouwd op de belasting die de groep werkelijk absorbeerde.',
         points: [
           'Doel- en werkelijke belasting, dag per dag',
           'ACWR en monotonie automatisch berekend',
@@ -1649,8 +1649,8 @@ const nl: HomeContent = {
       {
         index: '04 / 06',
         kicker: 'TRAININGS- & WORKOUTOPBOUW',
-        title: 'Trainingen en workouts, gebouwd op uw cijfers.',
-        body: 'Het belastingsplan wordt een echte training: blokken, oefeningen, doelbelastingen. Individuele workouts worden gegenereerd uit dezelfde data — terugkeerprotocollen inbegrepen.',
+        title: 'Bouw de training vanuit het belastingsplan.',
+        body: 'Stel blokken, oefeningen en doelbelastingen samen; de geschatte belasting verschijnt vóór de training. Individuele workouts worden gegenereerd uit dezelfde data, terugkeerprotocollen inbegrepen.',
         points: [
           'Bibliotheek van herbruikbare oefeningen en blokken',
           'Geschatte belasting per blok, vóór de training',
@@ -1664,8 +1664,8 @@ const nl: HomeContent = {
       {
         index: '05 / 06',
         kicker: 'TRAINING LIVE',
-        title: 'De cijfers lopen op terwijl de training draait.',
-        body: 'Aanwezigheid afgevinkt, belasting die blok per blok oploopt, afwijkingen meteen zichtbaar. U stuurt bij tijdens de training — niet de dag erna.',
+        title: 'Volg de belasting tijdens de training, blok per blok.',
+        body: 'Vink de aanwezigheid af langs het veld; de belasting loopt blok per blok op en de afwijking t.o.v. het plan verschijnt live. U stuurt bij tijdens de training.',
         points: [
           'Aanwezigheid en deelname langs het veld',
           'Cumulatieve belasting in realtime, per speler',
@@ -1678,8 +1678,8 @@ const nl: HomeContent = {
       {
         index: '06 / 06',
         kicker: 'DELEN MET DE STAF',
-        title: 'De hoofdcoach leest hetzelfde beeld als u.',
-        body: 'Het weekrapport wordt automatisch gegenereerd, de staf annoteert, en de beschikbaarheid voedt rechtstreeks de selectie. Geen document om opnieuw op te bouwen, geen samenvatting om over te typen.',
+        title: 'Deel dezelfde lezing met de hele staf.',
+        body: 'Het weekrapport wordt automatisch gegenereerd, de staf annoteert het, en de beschikbaarheid voedt de selectie van zondag. Hoofdcoach, kinesist en assistenten lezen dezelfde data, elk met eigen rechten.',
         points: [
           'Readiness-overzicht gedeeld met de hele staf',
           'Weekrapport automatisch gegenereerd',
@@ -1702,7 +1702,7 @@ const nl: HomeContent = {
           { from: 'Sprint Count', to: 'Sprints' },
           { from: 'Player Load', to: 'Externe belasting' },
         ],
-        done: 'Import voltooid — gekoppeld aan “Training dinsdag · intensiteitsblok”',
+        done: 'Import voltooid · gekoppeld aan “Training dinsdag · intensiteitsblok”',
       },
       readiness: {
         title: 'Ochtendwellness · 16 / 18 antwoorden',
@@ -1715,7 +1715,7 @@ const nl: HomeContent = {
         ],
         alertsLabel: 'OCHTENDALERTS',
         alerts: [
-          { name: 'L. Moreau', detail: 'Slaap 4 u · vermoeidheid 8/10 — readiness 58', action: 'Aanpassen' },
+          { name: 'L. Moreau', detail: 'Slaap 4 u · vermoeidheid 8/10 · readiness 58', action: 'Aanpassen' },
           { name: 'K. Nakamura', detail: 'Veel spierpijn na het blok van dinsdag', action: 'Aanpassen' },
         ],
         chartLabel: 'READINESS GROEP · LAATSTE 14 DAGEN',
@@ -1743,7 +1743,7 @@ const nl: HomeContent = {
         workout: {
           title: 'Individuele workout · L. Moreau',
           stamp: 'Gepubliceerd naar de spelers-app',
-          body: 'Nordic curls 3×8 · Copenhagen 3×10 / kant · heupmobiliteit 8 min — gegenereerd uit het hamstringprotocol, belasting afgetrokken van de groepstraining.',
+          body: 'Nordic curls 3×8 · Copenhagen 3×10 / kant · heupmobiliteit 8 min. Gegenereerd uit het hamstringprotocol, belasting afgetrokken van de groepstraining.',
         },
       },
       live: {
@@ -1758,7 +1758,7 @@ const nl: HomeContent = {
           { name: 'M. Lefèvre', pct: 71, tone: 'blue' },
         ],
         alert: {
-          body: 'L. Moreau op 92% van zijn doel al in blok 2 — hem uit het snelheidsblok halen?',
+          body: 'L. Moreau op 92% van zijn doel al in blok 2. Hem uit het snelheidsblok halen?',
           primary: 'Eruit halen',
           secondary: 'Behouden',
         },
@@ -1770,38 +1770,38 @@ const nl: HomeContent = {
         avatars: ['HC', 'AS', 'KI', 'FT'],
         shared: 'Gedeeld met 4 stafleden',
         commentAuthor: 'HOOFDCOACH · 09:12',
-        comment: 'Gezien voor Moreau — we passen het blok van donderdag aan zoals voorgesteld.',
-        push: 'Beschikbaarheid doorgestuurd naar de selectie van zondag — 15 fit, 2 op te volgen, 1 onbeschikbaar.',
+        comment: 'Gezien voor Moreau. We passen het blok van donderdag aan zoals voorgesteld.',
+        push: 'Beschikbaarheid doorgestuurd naar de selectie van zondag: 15 fit, 2 op te volgen, 1 onbeschikbaar.',
       },
     },
   },
   compatible: {
     kicker: 'COMPATIBILITEIT',
-    title: 'Wat uw spelers al dragen, komt binnen in STRIVN.',
-    body: 'GPS-systemen exporteren een CSV — Catapult, STATSports of een ander: de kolommen worden één keer toegewezen en daarna onthouden. WHOOP wacht op geen enkele export: het duwt de metingen van de nacht in de check-in van de ochtend.',
+    title: 'Verbind WHOOP, importeer elke GPS-export.',
+    body: 'GPS-systemen exporteren een CSV; de kolommen worden bij de eerste import herkend en daarna onthouden. WHOOP verbindt via zijn API en stuurt de metingen van de nacht naar de check-in van de ochtend. Honderd spelers kunnen hun band verbinden.',
     badge: 'NIEUW',
     whoopTitle: 'WHOOP vult de ochtendcheck-in vooraf in.',
     points: [
-      'Herstel — de score van de dag',
-      'Slaap — duur en prestatie',
+      'Herstelscore van de dag',
+      'Slaapduur en slaapprestatie',
       'HRV en hartslag in rust',
     ],
     cta: 'Bekijk de check-in',
     href: '/nl/features/check-in/',
-    note: 'Vermelde merken en logo’s zijn eigendom van hun respectieve eigenaars. STRIVN is met geen van deze bedrijven verbonden.',
+    note: 'Vermelde merken en logo’s zijn eigendom van hun respectieve eigenaars. STRIVN staat los van deze bedrijven.',
   },
   playerApp: {
     index: '03',
     kicker: 'SPELERSZIJDE',
-    title: 'De data komt binnen zonder dat u erachteraan moet.',
-    body: 'Monitoring werkt alleen als spelers antwoorden. De spelers-app vraagt weinig, op het juiste moment: wellness bij het opstaan, RPE na de training, de workout van de dag. Twintig seconden, geen formulier.',
+    title: 'Uw spelers antwoorden in twintig seconden.',
+    body: 'De spelers-app vraagt drie dingen, op het juiste moment: wellness bij het opstaan, RPE na de training, de workout van de dag. Elk antwoord kost twintig seconden, en de herinnering vertrekt vanzelf.',
     points: [
       { icon: 'moon', label: 'Wellnessvragenlijst bij het opstaan, in 20 seconden' },
       { icon: 'gauge', label: 'RPE na de training in één beweging, notificatie inbegrepen' },
       { icon: 'dumbbell', label: 'Individuele workouts met video’s en instructies' },
       { icon: 'calendar', label: 'Oproepingen, antwoorden en beschikbaarheid' },
     ],
-    note: 'STRIVN Player download je in de App Store en op Google Play. Een speler die liever niets installeert, antwoordt via een link.',
+    note: 'STRIVN Player download je in de App Store en op Google Play. Een speler zonder de app antwoordt via een link.',
     cta: 'Bekijk de spelers-app',
     href: '/nl/features/player-app/',
     stores: 'IOS · ANDROID',
@@ -1826,15 +1826,15 @@ const nl: HomeContent = {
   platform: {
     index: '04',
     kicker: 'HET HELE TEAM',
-    title: 'Monitoring is één deel van een volledig platform.',
-    body: 'Oproepingen, aanwezigheid, ziekenboeg, trainingen en rapporten zitten in dezelfde omgeving als de monitoring, open voor de hele staf.',
+    title: 'Roep op, verzorg, plan en rapporteer op één plek.',
+    body: 'Oproepingen, aanwezigheid, ziekenboeg, trainingen en rapporten leven in dezelfde omgeving als de monitoring, met toegangsrechten per rol voor elk staflid.',
     featured: [
       {
         icon: 'activity',
         title: 'Belasting, RPE & GPS',
         badge: 'MONITORING',
         badgeTone: 'blue',
-        body: 'De kern van het systeem: GPS-import, RPE, interne en externe belasting, ACWR en alerts. Daar begint de performance staff zijn dag.',
+        body: 'GPS-import, RPE, interne en externe belasting, ACWR en alerts: de performance staff begint hier zijn dag.',
         cta: 'Belasting & RPE in detail',
         href: '/nl/features/training-load/',
       },
@@ -1852,42 +1852,42 @@ const nl: HomeContent = {
       {
         icon: 'send',
         title: 'Oproepingen & RSVP',
-        body: 'Oproepingen verstuurd, antwoorden gebundeld, selectie up-to-date.',
+        body: 'Roep op in één klik; de antwoorden komen dezelfde dag terug en de selectie werkt zichzelf bij.',
         cta: 'In detail',
         href: '/nl/features/communication/',
       },
       {
         icon: 'heart-pulse',
         title: 'Ziekenboeg',
-        body: 'Blessures en return to play, zichtbaar voor de bevoegde staf.',
+        body: 'Registreer de blessure één keer; return to play en oproepingen volgen, zichtbaar voor de bevoegde staf.',
         cta: 'In detail',
         href: '/nl/features/medical/',
       },
       {
         icon: 'target',
         title: 'Individuele programma’s',
-        body: 'Doelen en oefeningen gekoppeld aan de data van elke speler.',
+        body: 'Leg doelen en oefeningen vast, gekoppeld aan de data van elke speler.',
         cta: 'In detail',
         href: '/nl/features/programs/',
       },
       {
         icon: 'clipboard',
         title: 'Trainingen & tactiek',
-        body: 'Trainingsplannen en borden verbonden met de toestand van de groep.',
+        body: 'Bereid trainingen en borden voor vanuit de toestand van de groep.',
         cta: 'In detail',
         href: '/nl/features/sessions/',
       },
       {
         icon: 'radio',
         title: 'Training & wedstrijd live',
-        body: 'Aanwezigheid, speeltijd en events geregistreerd langs het veld.',
+        body: 'Registreer aanwezigheid, speeltijd en events langs het veld.',
         cta: 'In detail',
         href: '/nl/features/live-session/',
       },
       {
         icon: 'sparkles',
         title: 'Rapporten, AI & dashboards',
-        body: 'Door AI geschreven verslagen en samenstelbare dashboards, gedeeld met staf en bestuur.',
+        body: 'Ontvang door AI geschreven verslagen en stel uw dashboards samen, gedeeld met staf en bestuur.',
         cta: 'In detail',
         href: '/nl/features/reports/',
       },
@@ -1896,8 +1896,8 @@ const nl: HomeContent = {
   intelligence: {
     index: '05',
     kicker: 'AI & BI INGEBOUWD',
-    title: 'AI en BI, geïntegreerd op elk niveau.',
-    body: 'De AI leest belasting, wellness, GPS en medische historiek samen, niet elke bron apart. En wanneer een vraag een grafiek verdient, bouwt ze die.',
+    title: 'Bevraag al uw data in één vraag.',
+    body: 'De AI leest belasting, wellness, GPS en medische historiek samen, vier bronnen tegelijk. Wanneer een vraag een grafiek verdient, bouwt ze die en pint u ze op uw dashboards.',
     console: {
       title: 'AI-assistent',
       badge: 'AI · CONTINUE ANALYSE',
@@ -1918,28 +1918,28 @@ const nl: HomeContent = {
       {
         icon: 'sun',
         title: 'Ochtendsynthese',
-        body: 'De toestand van de groep samengevat door de AI vóór de training: readiness, alerts en voorgestelde aanpassingen.',
+        body: 'Ontvang de toestand van de groep, samengevat door de AI vóór de training: readiness, alerts en voorgestelde aanpassingen.',
       },
       {
         icon: 'radar',
         title: 'Signaaldetectie',
-        body: 'De AI kruist doorlopend belasting × wellness × medische historiek. Afwijkingen komen boven vóór de blessure.',
+        body: 'De AI kruist doorlopend belasting, wellness en medische historiek. Afwijkingen komen boven vóór de blessure.',
       },
       {
         icon: 'layout',
         title: 'Dashboards op aanvraag',
-        body: 'Stel een vraag, de AI bouwt de visualisatie die erop antwoordt en pint ze daarna in één klik op uw dashboards.',
+        body: 'Stel een vraag; de AI bouwt de visualisatie die erop antwoordt, en u pint ze in één klik op uw dashboards.',
       },
       {
         icon: 'file-text',
         title: 'Rapporten geschreven door de AI',
-        body: 'Week- en wedstrijdverslagen geschreven door de AI, klaar om aan het bestuur te bezorgen.',
+        body: 'Ontvang de week- en wedstrijdverslagen geschreven door de AI, klaar om aan het bestuur te bezorgen.',
       },
     ],
     bi: {
       kicker: 'BI & DASHBOARDS',
-      title: 'Uw dashboards, gebouwd of gegenereerd.',
-      body: 'Een widgetbibliotheek om uw rapporten samen te stellen: belasting, GPS, wellness, testen, beschikbaarheid. En voor elke eenmalige vraag een visualisatie ter plekke gegenereerd, klaar om vast te pinnen.',
+      title: 'Stel uw dashboards samen, of laat de AI ze genereren.',
+      body: 'Een widgetbibliotheek om uw rapporten samen te stellen: belasting, GPS, wellness, testen, beschikbaarheid. Voor elke eenmalige vraag een visualisatie ter plekke gegenereerd, klaar om vast te pinnen.',
       points: [
         'Widgets voor belasting, GPS, wellness, testen en beschikbaarheid',
         'Samenstellen met slepen-en-neerzetten, per team of per speler',
@@ -1960,7 +1960,7 @@ const nl: HomeContent = {
         weekly: 'Weekbelasting · 6 wkn',
         availability: 'Beschikbaarheid',
         availabilityValue: '83%',
-        hsr: 'HSR — wedstrijd vs wedstrijd',
+        hsr: 'HSR · wedstrijd vs wedstrijd',
         aiTag: 'GEGENEREERD DOOR AI',
       },
     },
@@ -1968,11 +1968,11 @@ const nl: HomeContent = {
   convince: {
     index: '06',
     kicker: 'DE STAF OVERTUIGEN',
-    title: 'Geadopteerd door een fysieke trainer. Uitgerold door de hele staf.',
-    body: 'De uitrol volgt bijna altijd hetzelfde patroon: een fysieke trainer adopteert het platform, toont wat de data veranderen, en de staf volgt. Het stafdossier vat het argument samen voor een hoofdcoach of clubbestuur. U stuurt het door als link of pdf.',
+    title: 'Begin alleen, en haal de staf erbij met het dossier.',
+    body: 'Drie stappen, bijna altijd dezelfde: een fysieke trainer adopteert STRIVN, toont wat de data veranderen, en de staf volgt. Het stafdossier vat het argument samen voor een hoofdcoach of clubbestuur; u stuurt het door als link of pdf.',
     steps: [
       {
-        title: 'U adopteert het platform',
+        title: 'U adopteert STRIVN',
         body: 'GPS-import, wellness en belastingsopvolging op uw team, zonder engagement.',
       },
       {
@@ -1981,7 +1981,7 @@ const nl: HomeContent = {
       },
       {
         title: 'De staf sluit aan bij uw omgeving',
-        body: 'Hoofdcoach, medische staf, assistenten — één weergave per rol, dezelfde data.',
+        body: 'Hoofdcoach, medische staf, assistenten: één weergave per rol, dezelfde data.',
       },
     ],
     dossier: {
@@ -1989,10 +1989,10 @@ const nl: HomeContent = {
       kicker: 'STAFDOSSIER',
       title: 'De waarde voor elke rol',
       roles: [
-        { icon: 'users', body: 'Hoofdcoach — werkelijke beschikbaarheid bij de selectie' },
-        { icon: 'heart-pulse', body: 'Medische staf — gedeelde ziekenboeg en terugkeerprotocollen' },
-        { icon: 'clipboard', body: 'Assistenten — trainingen gekoppeld aan de toestand van de groep' },
-        { icon: 'shield', body: 'Bestuur — een gestructureerd team, zonder initiële investering' },
+        { icon: 'users', body: 'Hoofdcoach: werkelijke beschikbaarheid bij de selectie' },
+        { icon: 'heart-pulse', body: 'Medische staf: gedeelde ziekenboeg en terugkeerprotocollen' },
+        { icon: 'clipboard', body: 'Assistenten: trainingen gekoppeld aan de toestand van de groep' },
+        { icon: 'shield', body: 'Bestuur: een gestructureerd team, zonder initiële investering' },
       ],
       copyBtn: 'Link kopiëren',
       pdfBtn: 'PDF downloaden',
@@ -2002,7 +2002,7 @@ const nl: HomeContent = {
   solutions: {
     index: '07',
     kicker: 'PER FUNCTIE',
-    title: 'Een toegangspoort voor elke functie in de staf.',
+    title: 'Kies uw pagina volgens uw rol in de staf.',
     cards: [
       {
         icon: 'dumbbell',
@@ -2024,8 +2024,8 @@ const nl: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PRIJZEN',
-    title: 'Vier niveaus. Het gratis niveau draagt een heel seizoen.',
-    note: 'Het performance-niveau opent GPS-import, belasting en de kruising met wat spelers voelen.',
+    title: 'Vier niveaus. Het gratis niveau draagt het hele seizoen.',
+    note: 'Het Semi-Pro-niveau neemt de kruising van GPS, RPE en wellness over die u nog met de hand doet. Elk nieuw account beschikt er 30 dagen over, zonder kaart.',
   },
   faq: {
     index: '09',
@@ -2033,45 +2033,45 @@ const nl: HomeContent = {
     title: 'De vragen die staffen stellen.',
     body: 'De rol van de spelers, het beheer van de omgeving en de opstarttijd.',
     contactTitle: 'Nog een vraag?',
-    contactBody: 'Schrijf ons — het oprichtersteam antwoordt rechtstreeks.',
+    contactBody: 'Schrijf ons. Wij antwoorden zelf.',
     email: 'hello@strivn.net',
     items: [
       {
         q: 'Hoe importeer ik mijn GPS-data?',
-        a: 'Via CSV-export, uit eender welk systeem — Catapult, STATSports of een ander. De kolomtoewijzing wordt onthouden: volgende imports duren enkele seconden.',
+        a: 'Via CSV-export, uit Catapult, STATSports of eender welk ander systeem. De kolomtoewijzing wordt bij de eerste import onthouden; de volgende duren enkele seconden.',
       },
       {
         q: 'Wie houdt de controle over de teamomgeving?',
-        a: 'U. U maakt de omgeving aan, nodigt de staf uit en bepaalt ieders toegangsrechten. Er is geen validatie van de club nodig.',
+        a: 'U. U maakt de omgeving aan, nodigt de staf uit en bepaalt ieders rechten, zonder validatie van de club.',
       },
       {
         q: 'Hoelang duurt de opstart?',
-        a: 'Enkele minuten: maak de omgeving aan, voeg uw spelers toe, importeer uw eerste training. De historiek bouwt zich doorheen de weken op.',
+        a: 'Enkele minuten: maak de omgeving aan, voeg uw spelers toe, importeer uw eerste training. De eerste 30 dagen zitten op Semi-Pro, zonder kaart; de historiek bouwt zich doorheen de weken op.',
       },
       {
-        q: 'Waarom is het Coach-plan gratis?',
-        a: 'Een staflid zou geen budget moeten aanvragen om zijn werk te structureren. Facturatie gebeurt op clubniveau, wanneer meerdere teams gecoördineerd moeten worden.',
+        q: 'Waarom is het Free-plan gratis?',
+        a: 'Omdat een coach zijn werk moet kunnen structureren zonder een budget aan te vragen. Free dekt één team, spelers zonder plafond en één stafplaats, voor altijd. De betalende niveaus openen de tweede stafplaats, daarna GPS-import, het medisch bord en staf zonder plafond.',
       },
       {
         q: 'Is het geschikt voor amateur- en semiprofessioneel voetbal?',
-        a: 'Dat is precies het terrein van STRIVN: kleine staffen, beperkte middelen, en spelers die geen tien aparte apps zullen gebruiken.',
+        a: 'Ja, dat is het terrein van STRIVN: staffen van twee of drie mensen, beperkte middelen, en spelers die vanuit één app antwoorden.',
       },
       {
         q: 'Fysieke trainer: hoe krijg ik de hoofdcoach mee?',
-        a: 'Begin met uw eigen data en deel daarna het stafdossier vanaf de site. Zodra de hoofdcoach de werkelijke beschikbaarheid in de selectie ziet, hoeft u hem niet meer te overtuigen.',
+        a: 'Begin met uw eigen data en deel daarna het stafdossier vanaf de site. De hoofdcoach leest de werkelijke beschikbaarheid in de selectie, en het argument is gemaakt.',
       },
     ],
   },
   finalCta: {
     kicker: 'BEGIN ALLEEN, GRATIS',
-    title: 'Uw data en uw staf, onder één dak.',
-    body: 'Maak uw omgeving gratis aan: GPS-import, wellness, belasting en readiness zitten er vanaf dag één in. Uw staf sluit aan zodra ze uw eerste rapporten zien.',
+    title: 'Maak uw omgeving aan en importeer uw eerste training.',
+    body: 'De eerste 30 dagen zitten op Semi-Pro, GPS-import inbegrepen, zonder kaart. Daarna draait het Free-plan het team het hele seizoen, en uw staf sluit aan zodra ze uw eerste rapporten zien.',
     primaryCta: 'Mijn omgeving gratis aanmaken',
     secondaryCta: 'Het stafdossier delen',
-    trust: 'GEEN KREDIETKAART · GEEN CLUBGOEDKEURING · UW DATA BLIJFT VAN U',
+    trust: 'ZONDER KREDIETKAART · ZONDER CLUBGOEDKEURING · UW DATA BLIJFT VAN U',
   },
   footer: {
-    tagline: 'Prestatieopvolging, volgens professionele standaard.',
+    tagline: 'De monitoring van een professionele staf, zonder het budget van een profclub.',
     body: 'STRIVN verenigt prestatiemonitoring en teamorganisatie in één omgeving, gedeeld door de staf.',
     email: 'hello@strivn.net',
     columns: [
@@ -2099,7 +2099,7 @@ const nl: HomeContent = {
         ],
       },
     ],
-    copyright: '© 2026 STRIVN · Gratis voor coaches, binnenkort voor clubs',
+    copyright: '© 2026 STRIVN · Gratis voor één team, het hele seizoen',
   },
 };
 
@@ -2159,7 +2159,7 @@ const de: HomeContent = {
   },
   spectre: {
     kicker: 'EIN SYSTEM, VON MONTAG BIS ZUM SPIELTAG',
-    title: 'Alles, was ein Team in einer Woche macht.',
+    title: 'Lassen Sie die ganze Woche in einem Bereich laufen.',
     steps: [
       { icon: 'calendar', label: 'Planung' },
       { icon: 'send', label: 'Aufgebote' },
@@ -2170,7 +2170,7 @@ const de: HomeContent = {
       { icon: 'heart-pulse', label: 'Medizinbereich' },
       { icon: 'bar-chart', label: 'Berichte & BI' },
     ],
-    note: 'Jedes Modul speist die anderen. Daten erfassen Sie einmal.',
+    note: 'Jedes Modul speist die anderen. Einmal erfasste Daten dienen den sieben anderen.',
   },
   credibility: {
     stat: '50',
@@ -2183,8 +2183,8 @@ const de: HomeContent = {
   beforeAfter: {
     index: '01',
     kicker: 'DER BEFUND',
-    title: 'Ihr Anspruch ist Ihren Tools entwachsen.',
-    body: 'Jeden Morgen dieselben Handgriffe: GPS-Daten exportieren, RPEs zusammenführen, Fragebögen nachfassen, mehrere Dateien abgleichen, um den Zustand der Gruppe zu bestimmen.',
+    title: 'Führen Sie GPS, RPE und Wellness in einer Lesart zusammen.',
+    body: 'Jeden Morgen dieselben Handgriffe: GPS exportieren, RPEs zusammenführen, Fragebögen nachfassen, drei Dateien abgleichen, um den Zustand der Gruppe zu bestimmen. STRIVN übernimmt diesen letzten Schritt und rechnet ihn über Nacht.',
     beforeLabel: 'VORHER · FRAGMENTIERTE TOOLS',
     beforeChips: [
       { icon: 'table', label: 'Verstreute Excel-Mappen' },
@@ -2196,7 +2196,7 @@ const de: HomeContent = {
     ],
     afterLabel: 'MIT STRIVN · EIN EINHEITLICHES SYSTEM',
     afterRows: [
-      { icon: 'satellite', label: 'Automatisierter GPS-Import' },
+      { icon: 'satellite', label: 'GPS-Import aus dem CSV-Export' },
       { icon: 'moon', label: 'Täglicher Wellness-Fragebogen, mobil' },
       { icon: 'gauge', label: 'RPE nach jeder Einheit erfasst' },
       { icon: 'activity', label: 'Belastung und ACWR laufend berechnet' },
@@ -2207,14 +2207,14 @@ const de: HomeContent = {
   workflow: {
     index: '02',
     kicker: 'DER WORKFLOW',
-    title: 'Messen. Planen. Bauen. Steuern.',
-    sub: 'Analyse ist nur die halbe Miete: STRIVN plant die Belastung, baut Einheiten und Workouts und steuert sie live.',
+    title: 'Belastung messen, Woche planen, Einheit steuern.',
+    sub: 'STRIVN liest Ihre Daten, plant dann die Belastung, baut Einheiten und Workouts und steuert sie live. Sechs Schritte, von der GPS-Datei bis zum Bericht am Montag.',
     steps: [
       {
         index: '01 / 06',
         kicker: 'GPS-IMPORT',
-        title: 'Ihre GPS-Daten integriert, ohne Neueingabe.',
-        body: 'Ein CSV-Export aus jedem System — Catapult, STATSports oder einem anderen — genügt: Die Einheit wird dem Kalender zugeordnet, Spieler für Spieler.',
+        title: 'Importieren Sie den GPS-Export, egal von welchem Sensor.',
+        body: 'Legen Sie die CSV von Catapult, STATSports oder jedem anderen System ab. Die Spalten werden beim ersten Import erkannt und gespeichert; die Einheit wird dem Kalender zugeordnet, Spieler für Spieler, und die folgenden Importe dauern wenige Sekunden.',
         points: [
           'Direkter Import eines CSV-Exports',
           'Spaltenzuordnung wird gespeichert',
@@ -2228,8 +2228,8 @@ const de: HomeContent = {
       {
         index: '02 / 06',
         kicker: 'READINESS',
-        title: 'Der Zustand der Gruppe, bekannt vor der Einheit.',
-        body: 'Die Spieler füllen ihren Fragebogen beim Aufwachen aus. Vor der Einheit wissen Sie, wer fit ist, wer ein Signal sendet und wer geschont werden muss.',
+        title: 'Wissen Sie vor der Einheit, wer fit ist.',
+        body: 'Die Spieler beantworten den Check-in beim Aufwachen, in zwanzig Sekunden. Vor der Einheit wissen Sie, wer fit ist, wer ein Signal sendet und wer geschont werden muss.',
         points: [
           'Wellness-Fragebogen beim Aufwachen, mobil',
           'Readiness-Score pro Spieler, gewichtbar',
@@ -2243,8 +2243,8 @@ const de: HomeContent = {
       {
         index: '03 / 06',
         kicker: 'BELASTUNGSPLANUNG',
-        title: 'Belastung planen Sie nach Zahlen, nicht nach Gefühl.',
-        body: 'Tägliche Zielbelastung, laufend berechneter ACWR, Anpassungen pro Spieler. Der Mikrozyklus entsteht auf Basis der tatsächlich absorbierten Belastung der Gruppe.',
+        title: 'Planen Sie die Wochenbelastung in AU.',
+        body: 'Legen Sie ein Tagesziel fest; STRIVN berechnet den ACWR über 7 und 28 Tage und meldet die Abweichungen. Der Mikrozyklus entsteht auf Basis der tatsächlich absorbierten Belastung der Gruppe.',
         points: [
           'Ziel- und Ist-Belastung, Tag für Tag',
           'ACWR und Monotonie automatisch berechnet',
@@ -2258,8 +2258,8 @@ const de: HomeContent = {
       {
         index: '04 / 06',
         kicker: 'EINHEITEN- & WORKOUT-AUFBAU',
-        title: 'Einheiten und Workouts, gebaut auf Ihren Zahlen.',
-        body: 'Der Belastungsplan wird zur echten Einheit: Blöcke, Übungen, Zielbelastungen. Individuelle Workouts entstehen aus denselben Daten — Rückkehrprotokolle inklusive.',
+        title: 'Bauen Sie die Einheit aus dem Belastungsplan.',
+        body: 'Stellen Sie Blöcke, Übungen und Zielbelastungen zusammen; die geschätzte Belastung erscheint vor der Einheit. Individuelle Workouts entstehen aus denselben Daten, Rückkehrprotokolle inklusive.',
         points: [
           'Bibliothek wiederverwendbarer Übungen und Blöcke',
           'Geschätzte Belastung pro Block, vor der Einheit',
@@ -2273,8 +2273,8 @@ const de: HomeContent = {
       {
         index: '05 / 06',
         kicker: 'EINHEIT LIVE',
-        title: 'Die Werte steigen, während die Einheit läuft.',
-        body: 'Anwesenheit abgehakt, Belastung, die sich Block für Block aufbaut, Abweichungen sofort sichtbar. Sie steuern während der Einheit nach — nicht am Tag danach.',
+        title: 'Verfolgen Sie die Belastung während der Einheit, Block für Block.',
+        body: 'Haken Sie die Anwesenheit am Spielfeldrand ab; die Belastung baut sich Block für Block auf und die Abweichung zum Plan erscheint live. Sie steuern während der Einheit nach.',
         points: [
           'Check-in und Teilnahme am Spielfeldrand',
           'Kumulierte Belastung in Echtzeit, pro Spieler',
@@ -2287,8 +2287,8 @@ const de: HomeContent = {
       {
         index: '06 / 06',
         kicker: 'STAFF-SHARING',
-        title: 'Der Cheftrainer liest dasselbe Bild wie Sie.',
-        body: 'Der Wochenbericht wird automatisch erstellt, der Staff kommentiert, und die Verfügbarkeiten fließen direkt ins Aufgebot. Kein Dokument neu bauen, keine Zusammenfassung abtippen.',
+        title: 'Teilen Sie dieselbe Lesart mit dem ganzen Staff.',
+        body: 'Der Wochenbericht wird automatisch erstellt, der Staff kommentiert ihn, und die Verfügbarkeiten fließen ins Aufgebot für Sonntag. Cheftrainer, Physio und Co-Trainer lesen dieselben Daten, jeder mit eigenen Rechten.',
         points: [
           'Readiness-Ansicht mit dem gesamten Staff geteilt',
           'Wochenbericht automatisch erstellt',
@@ -2311,7 +2311,7 @@ const de: HomeContent = {
           { from: 'Sprint Count', to: 'Sprints' },
           { from: 'Player Load', to: 'Externe Belastung' },
         ],
-        done: 'Import abgeschlossen — verknüpft mit „Einheit Dienstag · Intensitätsblock“',
+        done: 'Import abgeschlossen · verknüpft mit „Einheit Dienstag · Intensitätsblock“',
       },
       readiness: {
         title: 'Morgen-Wellness · 16 / 18 Antworten',
@@ -2324,7 +2324,7 @@ const de: HomeContent = {
         ],
         alertsLabel: 'MORGEN-ALARME',
         alerts: [
-          { name: 'L. Moreau', detail: 'Schlaf 4 h · Ermüdung 8/10 — Readiness 58', action: 'Anpassen' },
+          { name: 'L. Moreau', detail: 'Schlaf 4 h · Ermüdung 8/10 · Readiness 58', action: 'Anpassen' },
           { name: 'K. Nakamura', detail: 'Starker Muskelkater nach dem Dienstagsblock', action: 'Anpassen' },
         ],
         chartLabel: 'READINESS GRUPPE · LETZTE 14 TAGE',
@@ -2352,7 +2352,7 @@ const de: HomeContent = {
         workout: {
           title: 'Individuelles Workout · L. Moreau',
           stamp: 'In die Spieler-App veröffentlicht',
-          body: 'Nordic Curls 3×8 · Copenhagen 3×10 / Seite · Hüftmobilität 8 min — erstellt aus dem Ischio-Protokoll, Belastung von der Teameinheit abgezogen.',
+          body: 'Nordic Curls 3×8 · Copenhagen 3×10 / Seite · Hüftmobilität 8 min. Erstellt aus dem Ischio-Protokoll, Belastung von der Teameinheit abgezogen.',
         },
       },
       live: {
@@ -2367,7 +2367,7 @@ const de: HomeContent = {
           { name: 'M. Lefèvre', pct: 71, tone: 'blue' },
         ],
         alert: {
-          body: 'L. Moreau schon in Block 2 bei 92% seines Ziels — aus dem Schnelligkeitsblock nehmen?',
+          body: 'L. Moreau schon in Block 2 bei 92% seines Ziels. Aus dem Schnelligkeitsblock nehmen?',
           primary: 'Rausnehmen',
           secondary: 'Drinlassen',
         },
@@ -2379,38 +2379,38 @@ const de: HomeContent = {
         avatars: ['CT', 'AS', 'PH', 'AT'],
         shared: 'Geteilt mit 4 Staff-Mitgliedern',
         commentAuthor: 'CHEFTRAINER · 09:12',
-        comment: 'Gesehen für Moreau — wir passen den Donnerstagsblock wie vorgeschlagen an.',
-        push: 'Verfügbarkeiten ins Aufgebot für Sonntag übertragen — 15 fit, 2 zu beobachten, 1 nicht verfügbar.',
+        comment: 'Gesehen für Moreau. Wir passen den Donnerstagsblock wie vorgeschlagen an.',
+        push: 'Verfügbarkeiten ins Aufgebot für Sonntag übertragen: 15 fit, 2 zu beobachten, 1 nicht verfügbar.',
       },
     },
   },
   compatible: {
     kicker: 'KOMPATIBILITÄT',
-    title: 'Was Ihre Spieler ohnehin tragen, landet in STRIVN.',
-    body: 'GPS-Systeme exportieren eine CSV — Catapult, STATSports oder ein anderes: Die Spalten werden einmal zugeordnet und dann gespeichert. WHOOP wartet auf keinen Export: Es schreibt die Messwerte der Nacht in den Check-in am Morgen.',
+    title: 'Verbinden Sie WHOOP, importieren Sie jeden GPS-Export.',
+    body: 'GPS-Systeme exportieren eine CSV; die Spalten werden beim ersten Import erkannt und dann gespeichert. WHOOP verbindet sich über seine API und schickt die Messwerte der Nacht in den Check-in am Morgen. Hundert Spieler können ihr Band verbinden.',
     badge: 'NEU',
     whoopTitle: 'WHOOP füllt den Check-in am Morgen vor.',
     points: [
-      'Regeneration — der Score des Tages',
-      'Schlaf — Dauer und Performance',
+      'Regenerationsscore des Tages',
+      'Schlafdauer und Schlafperformance',
       'HRV und Ruhepuls',
     ],
     cta: 'Zum Check-in',
     href: '/de/features/check-in/',
-    note: 'Genannte Marken und Logos sind Eigentum ihrer jeweiligen Inhaber. STRIVN ist mit keinem dieser Unternehmen verbunden.',
+    note: 'Genannte Marken und Logos sind Eigentum ihrer jeweiligen Inhaber. STRIVN ist von diesen Unternehmen unabhängig.',
   },
   playerApp: {
     index: '03',
     kicker: 'SPIELERSEITE',
-    title: 'Die Erfassung hängt nicht an Ihrem Nachhaken.',
-    body: 'Monitoring funktioniert nur, wenn die Spieler antworten. Die Spieler-App fragt wenig, im richtigen Moment: Wellness beim Aufwachen, RPE nach der Einheit, das Workout des Tages. Zwanzig Sekunden, kein Formular.',
+    title: 'Ihre Spieler antworten in zwanzig Sekunden.',
+    body: 'Die Spieler-App fragt drei Dinge ab, im richtigen Moment: Wellness beim Aufwachen, RPE nach der Einheit, das Workout des Tages. Jede Antwort dauert zwanzig Sekunden, und die Erinnerung geht von selbst raus.',
     points: [
       { icon: 'moon', label: 'Wellness-Fragebogen beim Aufwachen, in 20 Sekunden' },
       { icon: 'gauge', label: 'RPE nach der Einheit mit einem Tipp, Benachrichtigung inklusive' },
       { icon: 'dumbbell', label: 'Individuelle Workouts mit Videos und Anleitungen' },
       { icon: 'calendar', label: 'Aufgebote, Antworten und Verfügbarkeit' },
     ],
-    note: 'STRIVN Player lädt man im App Store und bei Google Play. Wer lieber nichts installiert, antwortet über einen Link.',
+    note: 'STRIVN Player lädt man im App Store und bei Google Play. Ein Spieler ohne App antwortet über einen Link.',
     cta: 'Die Spieler-App ansehen',
     href: '/de/features/player-app/',
     stores: 'IOS · ANDROID',
@@ -2435,15 +2435,15 @@ const de: HomeContent = {
   platform: {
     index: '04',
     kicker: 'DAS GANZE TEAM',
-    title: 'Monitoring ist ein Teil einer vollständigen Plattform.',
-    body: 'Aufgebote, Anwesenheit, Medizinbereich, Einheiten und Berichte liegen in derselben Umgebung wie das Monitoring, offen für den gesamten Staff.',
+    title: 'Aufbieten, behandeln, planen und berichten am selben Ort.',
+    body: 'Aufgebote, Anwesenheit, Medizinbereich, Einheiten und Berichte liegen im selben Bereich wie das Monitoring, mit Zugriffsrechten pro Rolle für jedes Staff-Mitglied.',
     featured: [
       {
         icon: 'activity',
         title: 'Belastung, RPE & GPS',
         badge: 'MONITORING',
         badgeTone: 'blue',
-        body: 'Der Kern des Systems: GPS-Import, RPE, interne und externe Belastung, ACWR und Alarme. Hier startet der Performance-Staff in den Tag.',
+        body: 'GPS-Import, RPE, interne und externe Belastung, ACWR und Alarme: Hier startet der Performance-Staff in den Tag.',
         cta: 'Belastung & RPE im Detail',
         href: '/de/features/training-load/',
       },
@@ -2461,42 +2461,42 @@ const de: HomeContent = {
       {
         icon: 'send',
         title: 'Aufgebote & RSVP',
-        body: 'Aufgebote verschickt, Antworten gebündelt, Kader aktuell.',
+        body: 'Bieten Sie mit einem Klick auf; die Antworten kommen am selben Tag zurück und der Kader aktualisiert sich selbst.',
         cta: 'Im Detail',
         href: '/de/features/communication/',
       },
       {
         icon: 'heart-pulse',
         title: 'Medizinbereich',
-        body: 'Verletzungen und Return to Play, sichtbar für den berechtigten Staff.',
+        body: 'Erfassen Sie die Verletzung einmal; Return to Play und Aufgebote folgen, sichtbar für den berechtigten Staff.',
         cta: 'Im Detail',
         href: '/de/features/medical/',
       },
       {
         icon: 'target',
         title: 'Individuelle Programme',
-        body: 'Ziele und Übungen, verknüpft mit den Daten jedes Spielers.',
+        body: 'Legen Sie Ziele und Übungen fest, verknüpft mit den Daten jedes Spielers.',
         cta: 'Im Detail',
         href: '/de/features/programs/',
       },
       {
         icon: 'clipboard',
         title: 'Einheiten & Taktik',
-        body: 'Trainingspläne und Boards, verbunden mit dem Zustand der Gruppe.',
+        body: 'Bereiten Sie Einheiten und Boards aus dem Zustand der Gruppe vor.',
         cta: 'Im Detail',
         href: '/de/features/sessions/',
       },
       {
         icon: 'radio',
         title: 'Training & Spiel live',
-        body: 'Anwesenheit, Spielzeit und Ereignisse am Spielfeldrand erfasst.',
+        body: 'Erfassen Sie Anwesenheit, Spielzeit und Ereignisse am Spielfeldrand.',
         cta: 'Im Detail',
         href: '/de/features/live-session/',
       },
       {
         icon: 'sparkles',
         title: 'Berichte, KI & Dashboards',
-        body: 'KI-geschriebene Zusammenfassungen und modulare Dashboards, geteilt mit Staff und Vorstand.',
+        body: 'Erhalten Sie KI-geschriebene Zusammenfassungen und stellen Sie Ihre Dashboards zusammen, geteilt mit Staff und Vorstand.',
         cta: 'Im Detail',
         href: '/de/features/reports/',
       },
@@ -2505,8 +2505,8 @@ const de: HomeContent = {
   intelligence: {
     index: '05',
     kicker: 'KI & BI INTEGRIERT',
-    title: 'KI und BI, integriert auf jeder Ebene.',
-    body: 'Die KI liest Belastung, Wellness, GPS und Krankengeschichte zusammen, nicht jede Quelle für sich. Und wenn eine Frage ein Diagramm verdient, baut sie eines.',
+    title: 'Befragen Sie alle Ihre Daten mit einer Frage.',
+    body: 'Die KI liest Belastung, Wellness, GPS und Krankengeschichte zusammen, vier Quellen auf einmal. Wenn eine Frage ein Diagramm verdient, baut sie eines, und Sie pinnen es an Ihre Dashboards.',
     console: {
       title: 'KI-Assistent',
       badge: 'KI · KONTINUIERLICHE ANALYSE',
@@ -2527,28 +2527,28 @@ const de: HomeContent = {
       {
         icon: 'sun',
         title: 'Morgen-Briefing',
-        body: 'Der Zustand der Gruppe, von der KI vor der Einheit zusammengefasst: Readiness, Alarme und vorgeschlagene Anpassungen.',
+        body: 'Erhalten Sie den Zustand der Gruppe, von der KI vor der Einheit zusammengefasst: Readiness, Alarme und vorgeschlagene Anpassungen.',
       },
       {
         icon: 'radar',
         title: 'Signalerkennung',
-        body: 'Die KI kreuzt laufend Belastung × Wellness × Krankengeschichte. Abweichungen tauchen vor der Verletzung auf.',
+        body: 'Die KI kreuzt laufend Belastung, Wellness und Krankengeschichte. Abweichungen tauchen vor der Verletzung auf.',
       },
       {
         icon: 'layout',
         title: 'Dashboards auf Abruf',
-        body: 'Stellen Sie eine Frage: Die KI baut die passende Visualisierung und pinnt sie mit einem Klick an Ihre Dashboards.',
+        body: 'Stellen Sie eine Frage; die KI baut die passende Visualisierung, und Sie pinnen sie mit einem Klick an Ihre Dashboards.',
       },
       {
         icon: 'file-text',
         title: 'KI-geschriebene Berichte',
-        body: 'Wochen- und Nachspielberichte, von der KI geschrieben, bereit für den Vorstand.',
+        body: 'Erhalten Sie Wochen- und Nachspielberichte, von der KI geschrieben, bereit für den Vorstand.',
       },
     ],
     bi: {
       kicker: 'BI & DASHBOARDS',
-      title: 'Ihre Dashboards, gebaut oder generiert.',
-      body: 'Eine Widget-Bibliothek für Ihre Berichte: Belastung, GPS, Wellness, Tests, Verfügbarkeit. Und für jede Einzelfrage eine spontan generierte Visualisierung, bereit zum Anpinnen.',
+      title: 'Dashboards bauen oder von der KI generieren lassen.',
+      body: 'Eine Widget-Bibliothek für Ihre Berichte: Belastung, GPS, Wellness, Tests, Verfügbarkeit. Für jede Einzelfrage eine spontan generierte Visualisierung, bereit zum Anpinnen.',
       points: [
         'Widgets für Belastung, GPS, Wellness, Tests und Verfügbarkeit',
         'Zusammenstellung per Drag-and-drop, pro Team oder Spieler',
@@ -2569,7 +2569,7 @@ const de: HomeContent = {
         weekly: 'Wochenbelastung · 6 Wo.',
         availability: 'Verfügbarkeit',
         availabilityValue: '83%',
-        hsr: 'HSR — Spiel vs Spiel',
+        hsr: 'HSR · Spiel vs Spiel',
         aiTag: 'KI-GENERIERT',
       },
     },
@@ -2577,11 +2577,11 @@ const de: HomeContent = {
   convince: {
     index: '06',
     kicker: 'DEN STAFF ÜBERZEUGEN',
-    title: 'Von einem Athletiktrainer eingeführt. Vom ganzen Staff genutzt.',
-    body: 'Die Einführung folgt fast immer demselben Muster: Ein Athletiktrainer übernimmt die Plattform, zeigt, was die Daten verändern, und der Staff zieht nach. Das Staff-Dossier fasst das Argument für Cheftrainer oder Vereinsführung zusammen. Sie schicken es als Link oder PDF.',
+    title: 'Allein starten, dann den Staff mit dem Dossier dazuholen.',
+    body: 'Drei Schritte, fast immer dieselben: Ein Athletiktrainer übernimmt STRIVN, zeigt, was die Daten verändern, und der Staff zieht nach. Das Staff-Dossier fasst das Argument für Cheftrainer oder Vereinsführung zusammen; Sie schicken es als Link oder PDF.',
     steps: [
       {
-        title: 'Sie übernehmen die Plattform',
+        title: 'Sie übernehmen STRIVN',
         body: 'GPS-Import, Wellness und Belastungssteuerung für Ihr Team, ohne Verpflichtung.',
       },
       {
@@ -2590,7 +2590,7 @@ const de: HomeContent = {
       },
       {
         title: 'Der Staff tritt Ihrem Bereich bei',
-        body: 'Cheftrainer, medizinischer Staff, Co-Trainer — eine Ansicht pro Rolle, dieselben Daten.',
+        body: 'Cheftrainer, medizinischer Staff, Co-Trainer: eine Ansicht pro Rolle, dieselben Daten.',
       },
     ],
     dossier: {
@@ -2598,10 +2598,10 @@ const de: HomeContent = {
       kicker: 'STAFF-DOSSIER',
       title: 'Der Wert für jede Rolle',
       roles: [
-        { icon: 'users', body: 'Cheftrainer — reale Verfügbarkeit im Aufgebot' },
-        { icon: 'heart-pulse', body: 'Medizinischer Staff — geteilter Medizinbereich und Rückkehrprotokolle' },
-        { icon: 'clipboard', body: 'Co-Trainer — Einheiten, verknüpft mit dem Zustand der Gruppe' },
-        { icon: 'shield', body: 'Vorstand — ein strukturiertes Team, ohne Anfangsinvestition' },
+        { icon: 'users', body: 'Cheftrainer: reale Verfügbarkeit im Aufgebot' },
+        { icon: 'heart-pulse', body: 'Medizinischer Staff: geteilter Medizinbereich und Rückkehrprotokolle' },
+        { icon: 'clipboard', body: 'Co-Trainer: Einheiten, verknüpft mit dem Zustand der Gruppe' },
+        { icon: 'shield', body: 'Vorstand: ein strukturiertes Team, ohne Anfangsinvestition' },
       ],
       copyBtn: 'Link kopieren',
       pdfBtn: 'PDF herunterladen',
@@ -2611,7 +2611,7 @@ const de: HomeContent = {
   solutions: {
     index: '07',
     kicker: 'NACH FUNKTION',
-    title: 'Ein Einstieg für jede Funktion im Staff.',
+    title: 'Wählen Sie Ihre Seite nach Ihrer Rolle im Staff.',
     cards: [
       {
         icon: 'dumbbell',
@@ -2633,8 +2633,8 @@ const de: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PREISE',
-    title: 'Vier Stufen. Die kostenlose trägt eine ganze Saison.',
-    note: 'Die Performance-Stufe öffnet GPS-Import, Belastung und die Verschränkung mit dem Empfinden der Spieler.',
+    title: 'Vier Stufen. Die kostenlose trägt die ganze Saison.',
+    note: 'Die Semi-Pro-Stufe übernimmt die Verschränkung von GPS, RPE und Wellness, die Sie noch von Hand machen. Jedes neue Konto hat sie 30 Tage lang, ohne Karte.',
   },
   faq: {
     index: '09',
@@ -2642,45 +2642,45 @@ const de: HomeContent = {
     title: 'Die Fragen, die Staffs stellen.',
     body: 'Die Rolle der Spieler, die Kontrolle über den Bereich und die Einrichtungszeit.',
     contactTitle: 'Noch eine Frage?',
-    contactBody: 'Schreiben Sie uns — das Gründerteam antwortet direkt.',
+    contactBody: 'Schreiben Sie uns. Wir antworten selbst.',
     email: 'hello@strivn.net',
     items: [
       {
         q: 'Wie importiere ich meine GPS-Daten?',
-        a: 'Per CSV-Export, aus jedem System — Catapult, STATSports oder einem anderen. Die Spaltenzuordnung wird gespeichert: Folgende Importe dauern wenige Sekunden.',
+        a: 'Per CSV-Export, aus Catapult, STATSports oder jedem anderen System. Die Spaltenzuordnung wird beim ersten Import gespeichert; die folgenden dauern wenige Sekunden.',
       },
       {
         q: 'Wer behält die Kontrolle über den Teambereich?',
-        a: 'Sie. Sie erstellen den Bereich, laden den Staff ein und legen die Zugriffsrechte fest. Eine Freigabe des Vereins ist nicht nötig.',
+        a: 'Sie. Sie erstellen den Bereich, laden den Staff ein und legen die Rechte jedes Einzelnen fest, ohne Freigabe des Vereins.',
       },
       {
         q: 'Wie lange dauert die Einrichtung?',
-        a: 'Wenige Minuten: Bereich erstellen, Spieler hinzufügen, erste Einheit importieren. Die Historie baut sich über die Wochen auf.',
+        a: 'Wenige Minuten: Bereich erstellen, Spieler hinzufügen, erste Einheit importieren. Die ersten 30 Tage laufen auf Semi-Pro, ohne Karte; die Historie baut sich über die Wochen auf.',
       },
       {
-        q: 'Warum ist der Coach-Plan kostenlos?',
-        a: 'Ein Staff-Mitglied sollte kein Budget beantragen müssen, um seine Arbeit zu strukturieren. Abgerechnet wird auf Vereinsebene, wenn mehrere Teams koordiniert werden müssen.',
+        q: 'Warum ist der Free-Plan kostenlos?',
+        a: 'Weil ein Coach seine Arbeit strukturieren können muss, ohne ein Budget zu beantragen. Free deckt ein Team, Spieler ohne Obergrenze und einen Staff-Platz ab, für immer. Die bezahlten Stufen öffnen den zweiten Staff-Platz, dann GPS-Import, Medizinbereich und Staff ohne Obergrenze.',
       },
       {
         q: 'Passt es zu Amateur- und Halbprofifußball?',
-        a: 'Genau das ist das Terrain von STRIVN: kleine Staffs, begrenzte Mittel und Spieler, die keine zehn verschiedenen Apps nutzen werden.',
+        a: 'Ja, genau das ist das Terrain von STRIVN: Staffs aus zwei oder drei Personen, begrenzte Mittel und Spieler, die aus einer einzigen App antworten.',
       },
       {
         q: 'Athletiktrainer: Wie gewinne ich den Cheftrainer?',
-        a: 'Starten Sie mit Ihren eigenen Daten und teilen Sie dann das Staff-Dossier von der Website. Sobald der Cheftrainer die reale Verfügbarkeit im Aufgebot sieht, müssen Sie ihn nicht mehr überzeugen.',
+        a: 'Starten Sie mit Ihren eigenen Daten und teilen Sie dann das Staff-Dossier von der Website. Der Cheftrainer liest die reale Verfügbarkeit im Aufgebot, und das Argument ist gemacht.',
       },
     ],
   },
   finalCta: {
     kicker: 'ALLEIN STARTEN, KOSTENLOS',
-    title: 'Ihre Daten und Ihr Staff, unter einem Dach.',
-    body: 'Erstellen Sie Ihren Bereich kostenlos: GPS-Import, Wellness, Belastung und Readiness sind ab Tag eins dabei. Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.',
+    title: 'Bereich erstellen und die erste Einheit importieren.',
+    body: 'Die ersten 30 Tage laufen auf Semi-Pro, GPS-Import inklusive, ohne Karte. Danach trägt der Free-Plan das Team die ganze Saison, und Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.',
     primaryCta: 'Meinen Bereich kostenlos erstellen',
     secondaryCta: 'Staff-Dossier teilen',
-    trust: 'KEINE KREDITKARTE · KEINE VEREINSFREIGABE · IHRE DATEN BLEIBEN IHRE',
+    trust: 'OHNE KREDITKARTE · OHNE VEREINSFREIGABE · IHRE DATEN BLEIBEN IHRE',
   },
   footer: {
-    tagline: 'Leistungssteuerung auf professionellem Standard.',
+    tagline: 'Das Monitoring eines Profi-Staffs, ohne das Budget eines Profivereins.',
     body: 'STRIVN vereint Performance-Monitoring und Teamorganisation in einem Bereich, geteilt vom Staff.',
     email: 'hello@strivn.net',
     columns: [
@@ -2708,7 +2708,7 @@ const de: HomeContent = {
         ],
       },
     ],
-    copyright: '© 2026 STRIVN · Kostenlos für Coaches, bald für Vereine',
+    copyright: '© 2026 STRIVN · Kostenlos für ein Team, die ganze Saison',
   },
 };
 
@@ -2768,7 +2768,7 @@ const pt: HomeContent = {
   },
   spectre: {
     kicker: 'UM SÓ SISTEMA, DE SEGUNDA AO JOGO',
-    title: 'Tudo o que uma equipa faz numa semana.',
+    title: 'Faça girar toda a semana num único espaço.',
     steps: [
       { icon: 'calendar', label: 'Planeamento' },
       { icon: 'send', label: 'Convocatórias' },
@@ -2779,7 +2779,7 @@ const pt: HomeContent = {
       { icon: 'heart-pulse', label: 'Enfermaria' },
       { icon: 'bar-chart', label: 'Relatórios & BI' },
     ],
-    note: 'Cada módulo alimenta os outros. Os dados introduzem-se uma vez.',
+    note: 'Cada módulo alimenta os outros. Um dado introduzido uma vez serve aos outros sete.',
   },
   credibility: {
     stat: '50',
@@ -2792,8 +2792,8 @@ const pt: HomeContent = {
   beforeAfter: {
     index: '01',
     kicker: 'O DIAGNÓSTICO',
-    title: 'A sua exigência ultrapassou as suas ferramentas.',
-    body: 'Todas as manhãs, as mesmas operações: exportar os dados GPS, consolidar os RPE, insistir nos questionários, cruzar vários ficheiros para estabelecer o estado de forma do plantel.',
+    title: 'Reúna GPS, RPE e wellness numa só leitura.',
+    body: 'Todas as manhãs, as mesmas operações: exportar o GPS, consolidar os RPE, insistir nos questionários, cruzar três ficheiros para estabelecer o estado de forma do plantel. O STRIVN assume esta última etapa e calcula-a durante a noite.',
     beforeLabel: 'ANTES · FERRAMENTAS FRAGMENTADAS',
     beforeChips: [
       { icon: 'table', label: 'Ficheiros Excel dispersos' },
@@ -2805,7 +2805,7 @@ const pt: HomeContent = {
     ],
     afterLabel: 'COM O STRIVN · UM SISTEMA UNIFICADO',
     afterRows: [
-      { icon: 'satellite', label: 'Importação GPS automatizada' },
+      { icon: 'satellite', label: 'Importação GPS a partir da exportação CSV' },
       { icon: 'moon', label: 'Questionário wellness diário, no telemóvel' },
       { icon: 'gauge', label: 'RPE recolhido no fim de cada sessão' },
       { icon: 'activity', label: 'Carga e ACWR calculados em contínuo' },
@@ -2816,14 +2816,14 @@ const pt: HomeContent = {
   workflow: {
     index: '02',
     kicker: 'O WORKFLOW',
-    title: 'Medir. Planear. Construir. Conduzir.',
-    sub: 'A análise é só metade do sistema: o STRIVN planeia a carga, constrói as sessões e os workouts, e conduz tudo em direto.',
+    title: 'Meça a carga, planeie a semana, conduza a sessão.',
+    sub: 'O STRIVN lê os seus dados, depois planeia a carga, constrói as sessões e os workouts, e conduz tudo em direto. Seis etapas, do ficheiro GPS ao relatório de segunda-feira.',
     steps: [
       {
         index: '01 / 06',
         kicker: 'IMPORTAÇÃO GPS',
-        title: 'Os seus dados GPS integrados, sem reintrodução.',
-        body: 'Uma exportação CSV de qualquer sistema — Catapult, STATSports ou outro — chega: a sessão fica ligada ao calendário, jogador a jogador.',
+        title: 'Importe a exportação GPS, seja qual for o sensor.',
+        body: 'Carregue o CSV do Catapult, do STATSports ou de qualquer outro sistema. As colunas são reconhecidas na primeira importação e memorizadas; a sessão fica ligada ao calendário, jogador a jogador, e as importações seguintes demoram segundos.',
         points: [
           'Importação direta de uma exportação CSV',
           'Correspondência de colunas memorizada',
@@ -2837,8 +2837,8 @@ const pt: HomeContent = {
       {
         index: '02 / 06',
         kicker: 'READINESS',
-        title: 'O estado de forma do plantel, conhecido antes da sessão.',
-        body: 'Os jogadores preenchem o questionário ao acordar. Antes da sessão sabe quem está apto, quem dá sinal e quem tem de ser aliviado.',
+        title: 'Saiba quem está apto antes da sessão.',
+        body: 'Os jogadores respondem ao check-in ao acordar, em vinte segundos. Antes da sessão sabe quem está apto, quem dá sinal e quem tem de ser aliviado.',
         points: [
           'Questionário wellness ao acordar, no telemóvel',
           'Score de readiness por jogador, ponderável',
@@ -2852,8 +2852,8 @@ const pt: HomeContent = {
       {
         index: '03 / 06',
         kicker: 'PLANEAMENTO DE CARGA',
-        title: 'A carga planeia-se com números, não a sentimento.',
-        body: 'Carga-alvo diária, ACWR calculado em contínuo, ajustes por jogador. O microciclo constrói-se sobre a carga realmente absorvida pelo plantel.',
+        title: 'Planeie a carga da semana em UA.',
+        body: 'Fixe um alvo diário; o STRIVN calcula o ACWR a 7 e 28 dias e assinala os desvios. O microciclo constrói-se sobre a carga realmente absorvida pelo plantel.',
         points: [
           'Carga alvo e realizada, dia a dia',
           'ACWR e monotonia calculados automaticamente',
@@ -2867,8 +2867,8 @@ const pt: HomeContent = {
       {
         index: '04 / 06',
         kicker: 'CONSTRUÇÃO DE SESSÃO & WORKOUTS',
-        title: 'A sessão e os workouts, construídos sobre os seus números.',
-        body: 'O plano de carga torna-se uma sessão real: blocos, exercícios, cargas-alvo. Os workouts individuais geram-se a partir dos mesmos dados — protocolos de regresso incluídos.',
+        title: 'Construa a sessão a partir do plano de carga.',
+        body: 'Monte blocos, exercícios e cargas-alvo; a carga estimada aparece antes da sessão. Os workouts individuais geram-se a partir dos mesmos dados, protocolos de regresso incluídos.',
         points: [
           'Biblioteca de exercícios e blocos reutilizáveis',
           'Carga estimada por bloco, antes da sessão',
@@ -2882,8 +2882,8 @@ const pt: HomeContent = {
       {
         index: '05 / 06',
         kicker: 'SESSÃO EM DIRETO',
-        title: 'Os números sobem enquanto a sessão decorre.',
-        body: 'Presenças registadas, carga que se acumula bloco a bloco, desvios visíveis de imediato. Ajusta durante a sessão — não no dia seguinte.',
+        title: 'Acompanhe a carga durante a sessão, bloco a bloco.',
+        body: 'Registe as presenças à beira do campo; a carga acumula-se bloco a bloco e o desvio face ao plano aparece em direto. Ajusta durante a sessão.',
         points: [
           'Registo de presenças à beira do campo',
           'Carga acumulada em tempo real, por jogador',
@@ -2896,8 +2896,8 @@ const pt: HomeContent = {
       {
         index: '06 / 06',
         kicker: 'PARTILHA COM O STAFF',
-        title: 'O treinador principal lê o mesmo que você.',
-        body: 'O relatório semanal gera-se automaticamente, o staff anota, e as disponibilidades alimentam diretamente a convocatória. Nenhum documento a reconstruir, nenhum resumo a retranscrever.',
+        title: 'Partilhe a mesma leitura com todo o staff.',
+        body: 'O relatório da semana gera-se automaticamente, o staff anota-o, e as disponibilidades alimentam a convocatória de domingo. Treinador principal, fisioterapeuta e adjuntos leem os mesmos dados, cada um com os seus direitos.',
         points: [
           'Vista de readiness partilhada com todo o staff',
           'Relatório semanal gerado automaticamente',
@@ -2920,7 +2920,7 @@ const pt: HomeContent = {
           { from: 'Sprint Count', to: 'Sprints' },
           { from: 'Player Load', to: 'Carga externa' },
         ],
-        done: 'Importação concluída — ligada a «Sessão de terça · bloco de intensidade»',
+        done: 'Importação concluída · ligada a «Sessão de terça · bloco de intensidade»',
       },
       readiness: {
         title: 'Wellness da manhã · 16 / 18 respostas',
@@ -2933,7 +2933,7 @@ const pt: HomeContent = {
         ],
         alertsLabel: 'ALERTAS DA MANHÃ',
         alerts: [
-          { name: 'L. Moreau', detail: 'Sono 4 h · fadiga 8/10 — readiness 58', action: 'Ajustar' },
+          { name: 'L. Moreau', detail: 'Sono 4 h · fadiga 8/10 · readiness 58', action: 'Ajustar' },
           { name: 'K. Nakamura', detail: 'Dores musculares elevadas após o bloco de terça', action: 'Ajustar' },
         ],
         chartLabel: 'READINESS DO PLANTEL · ÚLTIMOS 14 DIAS',
@@ -2961,7 +2961,7 @@ const pt: HomeContent = {
         workout: {
           title: 'Workout individual · L. Moreau',
           stamp: 'Publicado para a app do jogador',
-          body: 'Nordic curls 3×8 · Copenhagen 3×10 / lado · mobilidade da anca 8 min — gerado a partir do protocolo de isquiotibiais, carga deduzida da sessão coletiva.',
+          body: 'Nordic curls 3×8 · Copenhagen 3×10 / lado · mobilidade da anca 8 min. Gerado a partir do protocolo de isquiotibiais, carga deduzida da sessão coletiva.',
         },
       },
       live: {
@@ -2976,7 +2976,7 @@ const pt: HomeContent = {
           { name: 'M. Lefèvre', pct: 71, tone: 'blue' },
         ],
         alert: {
-          body: 'L. Moreau a 92% do alvo logo no bloco 2 — retirá-lo do bloco de velocidade?',
+          body: 'L. Moreau a 92% do alvo logo no bloco 2. Retirá-lo do bloco de velocidade?',
           primary: 'Retirar',
           secondary: 'Manter',
         },
@@ -2988,38 +2988,38 @@ const pt: HomeContent = {
         avatars: ['TP', 'AD', 'FI', 'PF'],
         shared: 'Partilhado com 4 membros do staff',
         commentAuthor: 'TREINADOR PRINCIPAL · 09:12',
-        comment: 'Visto para o Moreau — adaptamos o bloco de quinta como proposto.',
-        push: 'Disponibilidades enviadas para a convocatória de domingo — 15 aptos, 2 a vigiar, 1 indisponível.',
+        comment: 'Visto para o Moreau. Adaptamos o bloco de quinta como proposto.',
+        push: 'Disponibilidades enviadas para a convocatória de domingo: 15 aptos, 2 a vigiar, 1 indisponível.',
       },
     },
   },
   compatible: {
     kicker: 'COMPATIBILIDADE',
-    title: 'O que os seus jogadores já usam entra no STRIVN.',
-    body: 'Os sistemas GPS exportam um CSV — Catapult, STATSports ou outro: as colunas são reconhecidas uma vez e depois memorizadas. O WHOOP não espera por nenhuma exportação: envia as medições da noite para o check-in da manhã.',
+    title: 'Ligue o WHOOP, importe qualquer exportação GPS.',
+    body: 'Os sistemas GPS exportam um CSV; as colunas são reconhecidas na primeira importação e depois memorizadas. O WHOOP liga-se pela sua API e envia as medições da noite para o check-in da manhã. Cem jogadores podem ligar a sua pulseira.',
     badge: 'NOVO',
     whoopTitle: 'O WHOOP pré-preenche o check-in da manhã.',
     points: [
-      'Recuperação — a pontuação do dia',
-      'Sono — duração e desempenho',
+      'Pontuação de recuperação do dia',
+      'Duração e desempenho do sono',
       'VFC e frequência cardíaca em repouso',
     ],
     cta: 'Ver o check-in',
     href: '/pt/features/check-in/',
-    note: 'As marcas e logótipos citados pertencem aos respetivos proprietários. A STRIVN não está associada a nenhuma destas empresas.',
+    note: 'As marcas e logótipos citados pertencem aos respetivos proprietários. A STRIVN é independente destas empresas.',
   },
   playerApp: {
     index: '03',
     kicker: 'LADO DO JOGADOR',
-    title: 'A recolha não depende da sua insistência.',
-    body: 'A monitorização só vale se os jogadores responderem. A app do jogador pede pouco, no momento certo: wellness ao acordar, RPE depois da sessão, o workout do dia. Vinte segundos, não um formulário.',
+    title: 'Os seus jogadores respondem em vinte segundos.',
+    body: 'A app do jogador pede três coisas, no momento certo: o wellness ao acordar, o RPE depois da sessão, o workout do dia. Cada resposta demora vinte segundos, e o lembrete parte sozinho.',
     points: [
       { icon: 'moon', label: 'Questionário wellness ao acordar, em 20 segundos' },
       { icon: 'gauge', label: 'RPE pós-sessão num gesto, notificação incluída' },
       { icon: 'dumbbell', label: 'Workouts individuais com vídeos e instruções' },
       { icon: 'calendar', label: 'Convocatórias, respostas e disponibilidade' },
     ],
-    note: 'A STRIVN Player transfere-se na App Store e no Google Play. Quem prefere não instalar nada responde a partir de uma ligação.',
+    note: 'A STRIVN Player transfere-se na App Store e no Google Play. Um jogador sem a app responde a partir de uma ligação.',
     cta: 'Ver a app do jogador',
     href: '/pt/features/player-app/',
     stores: 'IOS · ANDROID',
@@ -3044,15 +3044,15 @@ const pt: HomeContent = {
   platform: {
     index: '04',
     kicker: 'TODA A EQUIPA',
-    title: 'A monitorização é uma parte de uma plataforma completa.',
-    body: 'Convocatórias, presenças, enfermaria, sessões e relatórios estão no mesmo ambiente que a monitorização, aberto a todo o staff.',
+    title: 'Convoque, trate, planeie e reporte no mesmo sítio.',
+    body: 'Convocatórias, presenças, enfermaria, sessões e relatórios vivem no mesmo espaço que a monitorização, com um direito de acesso por função para cada membro do staff.',
     featured: [
       {
         icon: 'activity',
         title: 'Carga, RPE & GPS',
         badge: 'MONITORIZAÇÃO',
         badgeTone: 'blue',
-        body: 'O coração do sistema: importação GPS, RPE, carga interna e externa, ACWR e alertas. É por aqui que o staff de performance começa o dia.',
+        body: 'Importação GPS, RPE, carga interna e externa, ACWR e alertas: é por aqui que o staff de performance começa o dia.',
         cta: 'Carga & RPE em detalhe',
         href: '/pt/features/training-load/',
       },
@@ -3070,42 +3070,42 @@ const pt: HomeContent = {
       {
         icon: 'send',
         title: 'Convocatórias & RSVP',
-        body: 'Convocatórias enviadas, respostas consolidadas, plantel atualizado.',
+        body: 'Convoque num clique; as respostas voltam no próprio dia e o plantel atualiza-se sozinho.',
         cta: 'Em detalhe',
         href: '/pt/features/communication/',
       },
       {
         icon: 'heart-pulse',
         title: 'Enfermaria',
-        body: 'Lesões e regresso ao jogo, visíveis para o staff autorizado.',
+        body: 'Declare a lesão uma vez; o regresso ao jogo e as convocatórias seguem, visíveis para o staff autorizado.',
         cta: 'Em detalhe',
         href: '/pt/features/medical/',
       },
       {
         icon: 'target',
         title: 'Programas individuais',
-        body: 'Objetivos e exercícios ligados aos dados de cada jogador.',
+        body: 'Fixe objetivos e exercícios ligados aos dados de cada jogador.',
         cta: 'Em detalhe',
         href: '/pt/features/programs/',
       },
       {
         icon: 'clipboard',
         title: 'Sessões & tática',
-        body: 'Planos de sessão e quadros ligados ao estado do plantel.',
+        body: 'Prepare as sessões e os quadros a partir do estado de forma do plantel.',
         cta: 'Em detalhe',
         href: '/pt/features/sessions/',
       },
       {
         icon: 'radio',
         title: 'Sessão & jogo em direto',
-        body: 'Presenças, tempo de jogo e eventos registados à beira do campo.',
+        body: 'Registe presenças, tempo de jogo e eventos à beira do campo.',
         cta: 'Em detalhe',
         href: '/pt/features/live-session/',
       },
       {
         icon: 'sparkles',
         title: 'Relatórios, IA & dashboards',
-        body: 'Resumos redigidos pela IA e dashboards componíveis, partilhados com o staff e a direção.',
+        body: 'Receba resumos redigidos pela IA e componha os seus dashboards, partilhados com o staff e a direção.',
         cta: 'Em detalhe',
         href: '/pt/features/reports/',
       },
@@ -3114,8 +3114,8 @@ const pt: HomeContent = {
   intelligence: {
     index: '05',
     kicker: 'IA & BI INTEGRADAS',
-    title: 'A IA e a BI, integradas em todos os níveis.',
-    body: 'A IA lê carga, wellness, GPS e histórico médico em conjunto, não cada fonte por si. E quando uma pergunta merece um gráfico, constrói-o.',
+    title: 'Interrogue todos os seus dados numa só pergunta.',
+    body: 'A IA lê carga, wellness, GPS e histórico médico em conjunto, quatro fontes de uma vez. Quando uma pergunta merece um gráfico, constrói-o e você fixa-o nos seus dashboards.',
     console: {
       title: 'Assistente IA',
       badge: 'IA · ANÁLISE CONTÍNUA',
@@ -3136,28 +3136,28 @@ const pt: HomeContent = {
       {
         icon: 'sun',
         title: 'Síntese da manhã',
-        body: 'O estado do plantel resumido pela IA antes da sessão: readiness, alertas e ajustes propostos.',
+        body: 'Receba o estado do plantel resumido pela IA antes da sessão: readiness, alertas e ajustes propostos.',
       },
       {
         icon: 'radar',
         title: 'Deteção de sinais',
-        body: 'A IA cruza em contínuo carga × wellness × histórico médico. Os desvios sobem antes da lesão.',
+        body: 'A IA cruza em contínuo carga, wellness e histórico médico. Os desvios sobem antes da lesão.',
       },
       {
         icon: 'layout',
         title: 'Dashboards a pedido',
-        body: 'Faça uma pergunta, a IA constrói a visualização que responde e depois fixa-a nos seus dashboards num clique.',
+        body: 'Faça uma pergunta; a IA constrói a visualização que responde, e você fixa-a nos seus dashboards num clique.',
       },
       {
         icon: 'file-text',
         title: 'Relatórios redigidos pela IA',
-        body: 'Resumos semanais e pós-jogo redigidos pela IA, prontos a entregar à direção.',
+        body: 'Receba os resumos semanais e pós-jogo redigidos pela IA, prontos a entregar à direção.',
       },
     ],
     bi: {
       kicker: 'BI & DASHBOARDS',
-      title: 'Os seus dashboards, construídos ou gerados.',
-      body: 'Uma biblioteca de widgets para compor os seus relatórios: carga, GPS, wellness, testes, disponibilidade. E para cada pergunta pontual, uma visualização gerada na hora, pronta a fixar.',
+      title: 'Componha os seus dashboards, ou deixe a IA gerá-los.',
+      body: 'Uma biblioteca de widgets para compor os seus relatórios: carga, GPS, wellness, testes, disponibilidade. Para cada pergunta pontual, uma visualização gerada na hora, pronta a fixar.',
       points: [
         'Widgets de carga, GPS, wellness, testes e disponibilidade',
         'Composição por arrastar e largar, por equipa ou por jogador',
@@ -3178,7 +3178,7 @@ const pt: HomeContent = {
         weekly: 'Carga semanal · 6 sem.',
         availability: 'Disponibilidade',
         availabilityValue: '83%',
-        hsr: 'HSR — jogo vs jogo',
+        hsr: 'HSR · jogo vs jogo',
         aiTag: 'GERADO PELA IA',
       },
     },
@@ -3186,11 +3186,11 @@ const pt: HomeContent = {
   convince: {
     index: '06',
     kicker: 'CONVENCER O STAFF',
-    title: 'Adotado por um preparador. Implementado por todo o staff.',
-    body: 'A implementação segue quase sempre o mesmo esquema: um preparador adota a plataforma, mostra o que os dados mudam, e o staff junta-se. O dossiê de staff resume o argumento para um treinador principal ou uma direção de clube. Envia-o num link ou num PDF.',
+    title: 'Comece sozinho, depois traga o staff com o dossiê.',
+    body: 'Três etapas, quase sempre as mesmas: um preparador adota o STRIVN, mostra o que os dados mudam, e o staff junta-se. O dossiê de staff resume o argumento para um treinador principal ou uma direção de clube; envia-o num link ou num PDF.',
     steps: [
       {
-        title: 'Adota a plataforma',
+        title: 'Adota o STRIVN',
         body: 'Importação GPS, wellness e controlo de carga na sua equipa, sem compromisso.',
       },
       {
@@ -3199,7 +3199,7 @@ const pt: HomeContent = {
       },
       {
         title: 'O staff junta-se ao seu espaço',
-        body: 'Treinador principal, staff médico, adjuntos — uma vista por função, os mesmos dados.',
+        body: 'Treinador principal, staff médico, adjuntos: uma vista por função, os mesmos dados.',
       },
     ],
     dossier: {
@@ -3207,10 +3207,10 @@ const pt: HomeContent = {
       kicker: 'DOSSIÊ DE STAFF',
       title: 'O valor para cada função',
       roles: [
-        { icon: 'users', body: 'Treinador principal — disponibilidade real na convocatória' },
-        { icon: 'heart-pulse', body: 'Staff médico — enfermaria e protocolos de regresso partilhados' },
-        { icon: 'clipboard', body: 'Adjuntos — sessões ligadas ao estado do plantel' },
-        { icon: 'shield', body: 'Direção — uma equipa estruturada, sem investimento inicial' },
+        { icon: 'users', body: 'Treinador principal: disponibilidade real na convocatória' },
+        { icon: 'heart-pulse', body: 'Staff médico: enfermaria e protocolos de regresso partilhados' },
+        { icon: 'clipboard', body: 'Adjuntos: sessões ligadas ao estado do plantel' },
+        { icon: 'shield', body: 'Direção: uma equipa estruturada, sem investimento inicial' },
       ],
       copyBtn: 'Copiar o link',
       pdfBtn: 'Descarregar o PDF',
@@ -3220,7 +3220,7 @@ const pt: HomeContent = {
   solutions: {
     index: '07',
     kicker: 'POR FUNÇÃO',
-    title: 'Uma porta de entrada para cada função do staff.',
+    title: 'Escolha a sua página consoante a sua função no staff.',
     cards: [
       {
         icon: 'dumbbell',
@@ -3242,8 +3242,8 @@ const pt: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PREÇOS',
-    title: 'Quatro níveis. O gratuito aguenta uma época inteira.',
-    note: 'O nível performance abre a importação GPS, a carga e o cruzamento com o que os jogadores sentem.',
+    title: 'Quatro níveis. O gratuito aguenta toda a época.',
+    note: 'O nível Semi-Pro assume o cruzamento GPS, RPE e wellness que ainda faz à mão. Cada nova conta dispõe dele durante 30 dias, sem cartão.',
   },
   faq: {
     index: '09',
@@ -3251,45 +3251,45 @@ const pt: HomeContent = {
     title: 'As perguntas que os staffs fazem.',
     body: 'O papel dos jogadores, a governação do espaço e os prazos de implementação.',
     contactTitle: 'Outra pergunta?',
-    contactBody: 'Escreva-nos — a equipa fundadora responde diretamente.',
+    contactBody: 'Escreva-nos. Respondemos nós próprios.',
     email: 'hello@strivn.net',
     items: [
       {
         q: 'Como importo os meus dados GPS?',
-        a: 'Por exportação CSV, a partir de qualquer sistema — Catapult, STATSports ou outro. A correspondência de colunas fica memorizada: as importações seguintes demoram segundos.',
+        a: 'Por exportação CSV, a partir do Catapult, do STATSports ou de qualquer outro sistema. A correspondência de colunas fica memorizada na primeira importação; as seguintes demoram segundos.',
       },
       {
         q: 'Quem mantém o controlo do espaço de equipa?',
-        a: 'Você. Cria o espaço, convida o staff e define os direitos de acesso de cada um. Não é necessária nenhuma validação do clube.',
+        a: 'Você. Cria o espaço, convida o staff e define os direitos de cada um, sem validação do clube.',
       },
       {
         q: 'Qual é o prazo de implementação?',
-        a: 'Alguns minutos: crie o espaço, adicione os seus jogadores, importe a primeira sessão. O histórico constrói-se ao longo das semanas.',
+        a: 'Alguns minutos: crie o espaço, adicione os seus jogadores, importe a primeira sessão. Os primeiros 30 dias são em Semi-Pro, sem cartão; o histórico constrói-se ao longo das semanas.',
       },
       {
-        q: 'Porque é que o plano Coach é gratuito?',
-        a: 'Um membro do staff não deveria pedir orçamento para estruturar o seu trabalho. A faturação acontece ao nível do clube, quando várias equipas têm de ser coordenadas.',
+        q: 'Porque é que o plano Free é gratuito?',
+        a: 'Porque um treinador tem de poder estruturar o seu trabalho sem pedir orçamento. O Free cobre uma equipa, jogadores sem limite e um lugar de staff, para sempre. Os níveis pagos abrem o segundo lugar de staff, depois a importação GPS, o quadro médico e o staff sem limite.',
       },
       {
         q: 'Adequa-se ao futebol amador e semiprofissional?',
-        a: 'É precisamente o terreno do STRIVN: staffs reduzidos, meios medidos, e jogadores que não vão usar dez aplicações distintas.',
+        a: 'Sim, é o terreno do STRIVN: staffs de duas ou três pessoas, meios medidos, e jogadores que respondem a partir de uma única app.',
       },
       {
         q: 'Preparador: como obter a adesão do treinador principal?',
-        a: 'Comece com os seus próprios dados e depois transmita o dossiê de staff a partir do site. Quando o treinador principal constata a disponibilidade real na convocatória, já não é preciso convencê-lo.',
+        a: 'Comece com os seus próprios dados e depois transmita o dossiê de staff a partir do site. O treinador principal lê a disponibilidade real na convocatória, e o argumento está feito.',
       },
     ],
   },
   finalCta: {
     kicker: 'COMECE SOZINHO, GRATUITAMENTE',
-    title: 'Os seus dados e o seu staff, sob o mesmo teto.',
-    body: 'Crie o seu espaço gratuitamente: importação GPS, wellness, carga e readiness estão incluídos desde o primeiro dia. O seu staff junta-se quando vir os seus primeiros relatórios.',
+    title: 'Crie o seu espaço e importe a sua primeira sessão.',
+    body: 'Os primeiros 30 dias são em Semi-Pro, importação GPS incluída, sem cartão. Depois o plano Free faz girar a equipa toda a época, e o seu staff junta-se quando vir os seus primeiros relatórios.',
     primaryCta: 'Criar o meu espaço gratuitamente',
     secondaryCta: 'Partilhar o dossiê de staff',
     trust: 'SEM CARTÃO DE CRÉDITO · SEM VALIDAÇÃO DO CLUBE · OS SEUS DADOS SÃO SEUS',
   },
   footer: {
-    tagline: 'O acompanhamento da performance, ao padrão profissional.',
+    tagline: 'A monitorização de um staff profissional, sem o orçamento de um clube profissional.',
     body: 'O STRIVN reúne a monitorização da performance e a gestão de equipa num único espaço partilhado pelo staff.',
     email: 'hello@strivn.net',
     columns: [
@@ -3317,7 +3317,7 @@ const pt: HomeContent = {
         ],
       },
     ],
-    copyright: '© 2026 STRIVN · Grátis para os coaches, em breve para os clubes',
+    copyright: '© 2026 STRIVN · Grátis para uma equipa, toda a época',
   },
 };
 
@@ -3377,7 +3377,7 @@ const es: HomeContent = {
   },
   spectre: {
     kicker: 'UN SOLO SISTEMA, DEL LUNES AL PARTIDO',
-    title: 'Todo lo que hace un equipo en una semana.',
+    title: 'Haga girar toda la semana en un solo espacio.',
     steps: [
       { icon: 'calendar', label: 'Planificación' },
       { icon: 'send', label: 'Convocatorias' },
@@ -3388,7 +3388,7 @@ const es: HomeContent = {
       { icon: 'heart-pulse', label: 'Enfermería' },
       { icon: 'bar-chart', label: 'Informes & BI' },
     ],
-    note: 'Cada módulo alimenta a los demás. Los datos se introducen una vez.',
+    note: 'Cada módulo alimenta a los demás. Un dato introducido una vez sirve a los otros siete.',
   },
   credibility: {
     stat: '50',
@@ -3401,8 +3401,8 @@ const es: HomeContent = {
   beforeAfter: {
     index: '01',
     kicker: 'EL DIAGNÓSTICO',
-    title: 'Su exigencia ha superado sus herramientas.',
-    body: 'Cada mañana, las mismas operaciones: exportar los datos GPS, consolidar los RPE, insistir con los cuestionarios, cruzar varios archivos para establecer el estado de forma de la plantilla.',
+    title: 'Reúna GPS, RPE y wellness en una sola lectura.',
+    body: 'Cada mañana, las mismas operaciones: exportar el GPS, consolidar los RPE, insistir con los cuestionarios, cruzar tres archivos para establecer el estado de forma de la plantilla. STRIVN asume esa última etapa y la calcula durante la noche.',
     beforeLabel: 'ANTES · HERRAMIENTAS FRAGMENTADAS',
     beforeChips: [
       { icon: 'table', label: 'Libros de Excel dispersos' },
@@ -3414,7 +3414,7 @@ const es: HomeContent = {
     ],
     afterLabel: 'CON STRIVN · UN SISTEMA UNIFICADO',
     afterRows: [
-      { icon: 'satellite', label: 'Importación GPS automatizada' },
+      { icon: 'satellite', label: 'Importación GPS desde la exportación CSV' },
       { icon: 'moon', label: 'Cuestionario wellness diario, en el móvil' },
       { icon: 'gauge', label: 'RPE recogido al final de cada sesión' },
       { icon: 'activity', label: 'Carga y ACWR calculados en continuo' },
@@ -3425,14 +3425,14 @@ const es: HomeContent = {
   workflow: {
     index: '02',
     kicker: 'EL WORKFLOW',
-    title: 'Medir. Planificar. Construir. Dirigir.',
-    sub: 'El análisis es solo la mitad del sistema: STRIVN planifica la carga, construye las sesiones y los workouts, y los dirige en directo.',
+    title: 'Mida la carga, planifique la semana, dirija la sesión.',
+    sub: 'STRIVN lee sus datos, luego planifica la carga, construye las sesiones y los workouts, y los dirige en directo. Seis etapas, del archivo GPS al informe del lunes.',
     steps: [
       {
         index: '01 / 06',
         kicker: 'IMPORTACIÓN GPS',
-        title: 'Sus datos GPS integrados, sin volver a teclear.',
-        body: 'Una exportación CSV de cualquier sistema — Catapult, STATSports u otro — basta: la sesión queda vinculada al calendario, jugador a jugador.',
+        title: 'Importe la exportación GPS, sea cual sea el sensor.',
+        body: 'Suba el CSV de Catapult, STATSports o cualquier otro sistema. Las columnas se reconocen en la primera importación y quedan memorizadas; la sesión queda vinculada al calendario, jugador a jugador, y las siguientes importaciones tardan unos segundos.',
         points: [
           'Importación directa de una exportación CSV',
           'Correspondencia de columnas memorizada',
@@ -3446,8 +3446,8 @@ const es: HomeContent = {
       {
         index: '02 / 06',
         kicker: 'READINESS',
-        title: 'El estado de forma del grupo, conocido antes de la sesión.',
-        body: 'Los jugadores completan su cuestionario al despertar. Antes de la sesión sabe quién está apto, quién da una señal y a quién hay que aliviar.',
+        title: 'Sepa quién está apto antes de la sesión.',
+        body: 'Los jugadores responden al check-in al despertar, en veinte segundos. Antes de la sesión sabe quién está apto, quién da una señal y a quién hay que aliviar.',
         points: [
           'Cuestionario wellness al despertar, en el móvil',
           'Score de readiness por jugador, ponderable',
@@ -3461,8 +3461,8 @@ const es: HomeContent = {
       {
         index: '03 / 06',
         kicker: 'PLANIFICACIÓN DE CARGA',
-        title: 'La carga se planifica con cifras, no a sensación.',
-        body: 'Carga objetivo diaria, ACWR calculado en continuo, ajustes por jugador. El microciclo se construye sobre la carga realmente absorbida por el grupo.',
+        title: 'Planifique la carga de la semana en UA.',
+        body: 'Fije un objetivo diario; STRIVN calcula el ACWR a 7 y 28 días y señala los desvíos. El microciclo se construye sobre la carga realmente absorbida por el grupo.',
         points: [
           'Carga objetivo y realizada, día a día',
           'ACWR y monotonía calculados automáticamente',
@@ -3476,8 +3476,8 @@ const es: HomeContent = {
       {
         index: '04 / 06',
         kicker: 'CONSTRUCCIÓN DE SESIÓN & WORKOUTS',
-        title: 'La sesión y los workouts, construidos sobre sus cifras.',
-        body: 'El plan de carga se convierte en una sesión real: bloques, ejercicios, cargas objetivo. Los workouts individuales se generan desde los mismos datos — protocolos de regreso incluidos.',
+        title: 'Construya la sesión desde el plan de carga.',
+        body: 'Monte bloques, ejercicios y cargas objetivo; la carga estimada aparece antes de la sesión. Los workouts individuales se generan desde los mismos datos, protocolos de regreso incluidos.',
         points: [
           'Biblioteca de ejercicios y bloques reutilizables',
           'Carga estimada por bloque, antes de la sesión',
@@ -3491,8 +3491,8 @@ const es: HomeContent = {
       {
         index: '05 / 06',
         kicker: 'SESIÓN EN DIRECTO',
-        title: 'Los números suben mientras la sesión avanza.',
-        body: 'Asistencia registrada, carga que se acumula bloque a bloque, desvíos visibles al instante. Ajusta durante la sesión — no al día siguiente.',
+        title: 'Siga la carga durante la sesión, bloque a bloque.',
+        body: 'Registre la asistencia a pie de campo; la carga se acumula bloque a bloque y el desvío respecto al plan aparece en directo. Ajusta durante la sesión.',
         points: [
           'Registro de asistencia a pie de campo',
           'Carga acumulada en tiempo real, por jugador',
@@ -3505,8 +3505,8 @@ const es: HomeContent = {
       {
         index: '06 / 06',
         kicker: 'COMPARTIR CON EL STAFF',
-        title: 'El primer entrenador lee lo mismo que usted.',
-        body: 'El informe semanal se genera automáticamente, el staff anota, y las disponibilidades alimentan directamente la convocatoria. Ningún documento que reconstruir, ningún resumen que transcribir.',
+        title: 'Comparta la misma lectura con todo el staff.',
+        body: 'El informe de la semana se genera automáticamente, el staff lo anota, y las disponibilidades alimentan la convocatoria del domingo. Primer entrenador, fisio y ayudantes leen los mismos datos, cada uno con sus derechos.',
         points: [
           'Vista de readiness compartida con todo el staff',
           'Informe semanal generado automáticamente',
@@ -3529,7 +3529,7 @@ const es: HomeContent = {
           { from: 'Sprint Count', to: 'Sprints' },
           { from: 'Player Load', to: 'Carga externa' },
         ],
-        done: 'Importación completada — vinculada a «Sesión del martes · bloque de intensidad»',
+        done: 'Importación completada · vinculada a «Sesión del martes · bloque de intensidad»',
       },
       readiness: {
         title: 'Wellness de la mañana · 16 / 18 respuestas',
@@ -3542,7 +3542,7 @@ const es: HomeContent = {
         ],
         alertsLabel: 'ALERTAS DE LA MAÑANA',
         alerts: [
-          { name: 'L. Moreau', detail: 'Sueño 4 h · fatiga 8/10 — readiness 58', action: 'Ajustar' },
+          { name: 'L. Moreau', detail: 'Sueño 4 h · fatiga 8/10 · readiness 58', action: 'Ajustar' },
           { name: 'K. Nakamura', detail: 'Agujetas elevadas tras el bloque del martes', action: 'Ajustar' },
         ],
         chartLabel: 'READINESS DEL GRUPO · ÚLTIMOS 14 DÍAS',
@@ -3570,7 +3570,7 @@ const es: HomeContent = {
         workout: {
           title: 'Workout individual · L. Moreau',
           stamp: 'Publicado a la app del jugador',
-          body: 'Nordic curls 3×8 · Copenhagen 3×10 / lado · movilidad de cadera 8 min — generado desde el protocolo de isquios, carga deducida de la sesión colectiva.',
+          body: 'Nordic curls 3×8 · Copenhagen 3×10 / lado · movilidad de cadera 8 min. Generado desde el protocolo de isquios, carga deducida de la sesión colectiva.',
         },
       },
       live: {
@@ -3585,7 +3585,7 @@ const es: HomeContent = {
           { name: 'M. Lefèvre', pct: 71, tone: 'blue' },
         ],
         alert: {
-          body: 'L. Moreau al 92% de su objetivo ya en el bloque 2 — ¿sacarlo del bloque de velocidad?',
+          body: 'L. Moreau al 92% de su objetivo ya en el bloque 2. ¿Sacarlo del bloque de velocidad?',
           primary: 'Sacar',
           secondary: 'Mantener',
         },
@@ -3597,38 +3597,38 @@ const es: HomeContent = {
         avatars: ['ET', 'AY', 'FI', 'PF'],
         shared: 'Compartido con 4 miembros del staff',
         commentAuthor: 'PRIMER ENTRENADOR · 09:12',
-        comment: 'Visto lo de Moreau — adaptamos el bloque del jueves como se propone.',
-        push: 'Disponibilidades enviadas a la convocatoria del domingo — 15 aptos, 2 a vigilar, 1 no disponible.',
+        comment: 'Visto lo de Moreau. Adaptamos el bloque del jueves como se propone.',
+        push: 'Disponibilidades enviadas a la convocatoria del domingo: 15 aptos, 2 a vigilar, 1 no disponible.',
       },
     },
   },
   compatible: {
     kicker: 'COMPATIBILIDAD',
-    title: 'Lo que sus jugadores ya llevan entra en STRIVN.',
-    body: 'Los sistemas GPS exportan un CSV — Catapult, STATSports u otro: las columnas se reconocen una vez y luego quedan memorizadas. WHOOP no espera ninguna exportación: envía las medidas de la noche al check-in de la mañana.',
+    title: 'Conecte WHOOP, importe cualquier exportación GPS.',
+    body: 'Los sistemas GPS exportan un CSV; las columnas se reconocen en la primera importación y luego quedan memorizadas. WHOOP se conecta por su API y envía las medidas de la noche al check-in de la mañana. Cien jugadores pueden conectar su pulsera.',
     badge: 'NUEVO',
     whoopTitle: 'WHOOP rellena por adelantado el check-in de la mañana.',
     points: [
-      'Recuperación — la puntuación del día',
-      'Sueño — duración y rendimiento',
+      'Puntuación de recuperación del día',
+      'Duración y rendimiento del sueño',
       'VFC y frecuencia cardíaca en reposo',
     ],
     cta: 'Ver el check-in',
     href: '/es/features/check-in/',
-    note: 'Las marcas y logotipos citados pertenecen a sus respectivos propietarios. STRIVN no está afiliada a ninguna de estas empresas.',
+    note: 'Las marcas y logotipos citados pertenecen a sus respectivos propietarios. STRIVN es independiente de estas empresas.',
   },
   playerApp: {
     index: '03',
     kicker: 'LADO DEL JUGADOR',
-    title: 'La recogida no depende de su insistencia.',
-    body: 'La monitorización solo vale si los jugadores responden. La app del jugador pide poco, en el momento adecuado: wellness al despertar, RPE después de la sesión, el workout del día. Veinte segundos, no un formulario.',
+    title: 'Sus jugadores responden en veinte segundos.',
+    body: 'La app del jugador pide tres cosas, en el momento adecuado: el wellness al despertar, el RPE después de la sesión, el workout del día. Cada respuesta lleva veinte segundos, y el recordatorio sale solo.',
     points: [
       { icon: 'moon', label: 'Cuestionario wellness al despertar, en 20 segundos' },
       { icon: 'gauge', label: 'RPE post-sesión en un gesto, notificación incluida' },
       { icon: 'dumbbell', label: 'Workouts individuales con vídeos e instrucciones' },
       { icon: 'calendar', label: 'Convocatorias, respuestas y disponibilidad' },
     ],
-    note: 'STRIVN Player se descarga en la App Store y en Google Play. Quien prefiere no instalar nada responde desde un enlace.',
+    note: 'STRIVN Player se descarga en la App Store y en Google Play. Un jugador sin la app responde desde un enlace.',
     cta: 'Ver la app del jugador',
     href: '/es/features/player-app/',
     stores: 'IOS · ANDROID',
@@ -3653,15 +3653,15 @@ const es: HomeContent = {
   platform: {
     index: '04',
     kicker: 'TODO EL EQUIPO',
-    title: 'La monitorización es una parte de una plataforma completa.',
-    body: 'Convocatorias, asistencia, enfermería, sesiones e informes están en el mismo entorno que la monitorización, abierto a todo el staff.',
+    title: 'Convoque, trate, planifique e informe en el mismo sitio.',
+    body: 'Convocatorias, asistencia, enfermería, sesiones e informes viven en el mismo espacio que la monitorización, con un derecho de acceso por rol para cada miembro del staff.',
     featured: [
       {
         icon: 'activity',
         title: 'Carga, RPE & GPS',
         badge: 'MONITORIZACIÓN',
         badgeTone: 'blue',
-        body: 'El corazón del sistema: importación GPS, RPE, carga interna y externa, ACWR y alertas. Ahí empieza el día el staff de rendimiento.',
+        body: 'Importación GPS, RPE, carga interna y externa, ACWR y alertas: ahí empieza el día el staff de rendimiento.',
         cta: 'Carga & RPE en detalle',
         href: '/es/features/training-load/',
       },
@@ -3679,42 +3679,42 @@ const es: HomeContent = {
       {
         icon: 'send',
         title: 'Convocatorias & RSVP',
-        body: 'Convocatorias enviadas, respuestas consolidadas, plantilla al día.',
+        body: 'Convoque en un clic; las respuestas vuelven el mismo día y la plantilla se actualiza sola.',
         cta: 'En detalle',
         href: '/es/features/communication/',
       },
       {
         icon: 'heart-pulse',
         title: 'Enfermería',
-        body: 'Lesiones y regreso al juego, visibles para el staff autorizado.',
+        body: 'Declare la lesión una vez; el regreso al juego y las convocatorias siguen, visibles para el staff autorizado.',
         cta: 'En detalle',
         href: '/es/features/medical/',
       },
       {
         icon: 'target',
         title: 'Programas individuales',
-        body: 'Objetivos y ejercicios vinculados a los datos de cada jugador.',
+        body: 'Fije objetivos y ejercicios vinculados a los datos de cada jugador.',
         cta: 'En detalle',
         href: '/es/features/programs/',
       },
       {
         icon: 'clipboard',
         title: 'Sesiones & táctica',
-        body: 'Planes de sesión y pizarras conectados al estado del grupo.',
+        body: 'Prepare las sesiones y las pizarras desde el estado de forma del grupo.',
         cta: 'En detalle',
         href: '/es/features/sessions/',
       },
       {
         icon: 'radio',
         title: 'Sesión & partido en directo',
-        body: 'Asistencia, tiempo de juego y eventos registrados a pie de campo.',
+        body: 'Registre asistencia, tiempo de juego y eventos a pie de campo.',
         cta: 'En detalle',
         href: '/es/features/live-session/',
       },
       {
         icon: 'sparkles',
         title: 'Informes, IA & dashboards',
-        body: 'Resúmenes redactados por la IA y dashboards componibles, compartidos con el staff y la directiva.',
+        body: 'Reciba resúmenes redactados por la IA y componga sus dashboards, compartidos con el staff y la directiva.',
         cta: 'En detalle',
         href: '/es/features/reports/',
       },
@@ -3723,8 +3723,8 @@ const es: HomeContent = {
   intelligence: {
     index: '05',
     kicker: 'IA & BI INTEGRADAS',
-    title: 'La IA y la BI, integradas a cada nivel.',
-    body: 'La IA lee carga, wellness, GPS e historial médico en conjunto, no cada fuente por su lado. Y cuando una pregunta merece un gráfico, lo construye.',
+    title: 'Interrogue todos sus datos en una sola pregunta.',
+    body: 'La IA lee carga, wellness, GPS e historial médico en conjunto, cuatro fuentes a la vez. Cuando una pregunta merece un gráfico, lo construye y usted lo fija a sus dashboards.',
     console: {
       title: 'Asistente IA',
       badge: 'IA · ANÁLISIS CONTINUO',
@@ -3745,28 +3745,28 @@ const es: HomeContent = {
       {
         icon: 'sun',
         title: 'Síntesis de la mañana',
-        body: 'El estado del grupo resumido por la IA antes de la sesión: readiness, alertas y ajustes propuestos.',
+        body: 'Reciba el estado del grupo resumido por la IA antes de la sesión: readiness, alertas y ajustes propuestos.',
       },
       {
         icon: 'radar',
         title: 'Detección de señales',
-        body: 'La IA cruza en continuo carga × wellness × historial médico. Las derivas afloran antes de la lesión.',
+        body: 'La IA cruza en continuo carga, wellness e historial médico. Las derivas afloran antes de la lesión.',
       },
       {
         icon: 'layout',
         title: 'Dashboards bajo demanda',
-        body: 'Haga una pregunta, la IA construye la visualización que la responde y luego la fija a sus dashboards en un clic.',
+        body: 'Haga una pregunta; la IA construye la visualización que la responde, y usted la fija a sus dashboards en un clic.',
       },
       {
         icon: 'file-text',
         title: 'Informes redactados por la IA',
-        body: 'Resúmenes semanales y post-partido redactados por la IA, listos para entregar a la directiva.',
+        body: 'Reciba los resúmenes semanales y post-partido redactados por la IA, listos para entregar a la directiva.',
       },
     ],
     bi: {
       kicker: 'BI & DASHBOARDS',
-      title: 'Sus dashboards, construidos o generados.',
-      body: 'Una biblioteca de widgets para componer sus informes: carga, GPS, wellness, tests, disponibilidad. Y para cada pregunta puntual, una visualización generada al vuelo, lista para fijar.',
+      title: 'Componga sus dashboards, o deje que la IA los genere.',
+      body: 'Una biblioteca de widgets para componer sus informes: carga, GPS, wellness, tests, disponibilidad. Para cada pregunta puntual, una visualización generada al vuelo, lista para fijar.',
       points: [
         'Widgets de carga, GPS, wellness, tests y disponibilidad',
         'Composición con arrastrar y soltar, por equipo o por jugador',
@@ -3787,7 +3787,7 @@ const es: HomeContent = {
         weekly: 'Carga semanal · 6 sem.',
         availability: 'Disponibilidad',
         availabilityValue: '83%',
-        hsr: 'HSR — partido vs partido',
+        hsr: 'HSR · partido vs partido',
         aiTag: 'GENERADO POR LA IA',
       },
     },
@@ -3795,11 +3795,11 @@ const es: HomeContent = {
   convince: {
     index: '06',
     kicker: 'CONVENCER AL STAFF',
-    title: 'Adoptado por un preparador. Desplegado por todo el staff.',
-    body: 'El despliegue sigue casi siempre el mismo esquema: un preparador adopta la plataforma, muestra lo que cambian los datos, y el staff se une. El dossier de staff resume el argumento para un primer entrenador o una directiva de club. Lo envía en un enlace o un PDF.',
+    title: 'Empiece solo, luego sume al staff con el dossier.',
+    body: 'Tres etapas, casi siempre las mismas: un preparador adopta STRIVN, muestra lo que cambian los datos, y el staff se une. El dossier de staff resume el argumento para un primer entrenador o una directiva de club; lo envía en un enlace o un PDF.',
     steps: [
       {
-        title: 'Usted adopta la plataforma',
+        title: 'Usted adopta STRIVN',
         body: 'Importación GPS, wellness y seguimiento de carga en su equipo, sin compromiso.',
       },
       {
@@ -3808,7 +3808,7 @@ const es: HomeContent = {
       },
       {
         title: 'El staff se une a su espacio',
-        body: 'Primer entrenador, staff médico, ayudantes — una vista por rol, los mismos datos.',
+        body: 'Primer entrenador, staff médico, ayudantes: una vista por rol, los mismos datos.',
       },
     ],
     dossier: {
@@ -3816,10 +3816,10 @@ const es: HomeContent = {
       kicker: 'DOSSIER DE STAFF',
       title: 'El valor para cada rol',
       roles: [
-        { icon: 'users', body: 'Primer entrenador — disponibilidad real en la convocatoria' },
-        { icon: 'heart-pulse', body: 'Staff médico — enfermería y protocolos de regreso compartidos' },
-        { icon: 'clipboard', body: 'Ayudantes — sesiones vinculadas al estado del grupo' },
-        { icon: 'shield', body: 'Directiva — un equipo estructurado, sin inversión inicial' },
+        { icon: 'users', body: 'Primer entrenador: disponibilidad real en la convocatoria' },
+        { icon: 'heart-pulse', body: 'Staff médico: enfermería y protocolos de regreso compartidos' },
+        { icon: 'clipboard', body: 'Ayudantes: sesiones vinculadas al estado del grupo' },
+        { icon: 'shield', body: 'Directiva: un equipo estructurado, sin inversión inicial' },
       ],
       copyBtn: 'Copiar el enlace',
       pdfBtn: 'Descargar el PDF',
@@ -3829,7 +3829,7 @@ const es: HomeContent = {
   solutions: {
     index: '07',
     kicker: 'POR FUNCIÓN',
-    title: 'Una puerta de entrada para cada función del staff.',
+    title: 'Elija su página según su rol en el staff.',
     cards: [
       {
         icon: 'dumbbell',
@@ -3851,8 +3851,8 @@ const es: HomeContent = {
   pricing: {
     index: '08',
     kicker: 'PRECIOS',
-    title: 'Cuatro niveles. El gratuito aguanta una temporada entera.',
-    note: 'El nivel rendimiento abre la importación GPS, la carga y el cruce con lo que sienten los jugadores.',
+    title: 'Cuatro niveles. El gratuito aguanta toda la temporada.',
+    note: 'El nivel Semi-Pro asume el cruce GPS, RPE y wellness que todavía hace a mano. Cada cuenta nueva dispone de él durante 30 días, sin tarjeta.',
   },
   faq: {
     index: '09',
@@ -3860,45 +3860,45 @@ const es: HomeContent = {
     title: 'Las preguntas que hacen los staffs.',
     body: 'El papel de los jugadores, la gobernanza del espacio y los plazos de puesta en marcha.',
     contactTitle: '¿Otra pregunta?',
-    contactBody: 'Escríbanos — el equipo fundador responde directamente.',
+    contactBody: 'Escríbanos. Respondemos nosotros mismos.',
     email: 'hello@strivn.net',
     items: [
       {
         q: '¿Cómo importo mis datos GPS?',
-        a: 'Por exportación CSV, desde cualquier sistema — Catapult, STATSports u otro. La correspondencia de columnas queda memorizada: las siguientes importaciones tardan unos segundos.',
+        a: 'Por exportación CSV, desde Catapult, STATSports o cualquier otro sistema. La correspondencia de columnas queda memorizada en la primera importación; las siguientes tardan unos segundos.',
       },
       {
         q: '¿Quién mantiene el control del espacio de equipo?',
-        a: 'Usted. Crea el espacio, invita al staff y define los derechos de acceso de cada uno. No se requiere ninguna validación del club.',
+        a: 'Usted. Crea el espacio, invita al staff y define los derechos de cada uno, sin validación del club.',
       },
       {
         q: '¿Cuál es el plazo de puesta en marcha?',
-        a: 'Unos minutos: cree el espacio, añada a sus jugadores, importe su primera sesión. El histórico se construye con las semanas.',
+        a: 'Unos minutos: cree el espacio, añada a sus jugadores, importe su primera sesión. Los primeros 30 días son en Semi-Pro, sin tarjeta; el histórico se construye con las semanas.',
       },
       {
-        q: '¿Por qué el plan Coach es gratuito?',
-        a: 'Un miembro del staff no debería pedir presupuesto para estructurar su trabajo. La facturación llega a nivel de club, cuando hay que coordinar varios equipos.',
+        q: '¿Por qué el plan Free es gratuito?',
+        a: 'Porque un entrenador tiene que poder estructurar su trabajo sin pedir presupuesto. Free cubre un equipo, jugadores sin límite y una plaza de staff, para siempre. Los niveles de pago abren la segunda plaza de staff, luego la importación GPS, el cuadro médico y el staff sin límite.',
       },
       {
         q: '¿Se adapta al fútbol amateur y semiprofesional?',
-        a: 'Es precisamente el terreno de STRIVN: staffs reducidos, medios medidos, y jugadores que no van a usar diez aplicaciones distintas.',
+        a: 'Sí, es el terreno de STRIVN: staffs de dos o tres personas, medios medidos, y jugadores que responden desde una sola app.',
       },
       {
         q: 'Preparador: ¿cómo lograr la adhesión del primer entrenador?',
-        a: 'Empiece con sus propios datos y luego transmita el dossier de staff desde el sitio. Cuando el primer entrenador constata la disponibilidad real en la convocatoria, ya no hace falta convencerlo.',
+        a: 'Empiece con sus propios datos y luego transmita el dossier de staff desde el sitio. El primer entrenador lee la disponibilidad real en la convocatoria, y el argumento está hecho.',
       },
     ],
   },
   finalCta: {
     kicker: 'EMPIECE SOLO, GRATIS',
-    title: 'Sus datos y su staff, bajo un mismo techo.',
-    body: 'Cree su espacio gratis: importación GPS, wellness, carga y readiness están incluidos desde el primer día. Su staff se une cuando vea sus primeros informes.',
+    title: 'Cree su espacio e importe su primera sesión.',
+    body: 'Los primeros 30 días son en Semi-Pro, importación GPS incluida, sin tarjeta. Después el plan Free hace girar al equipo toda la temporada, y su staff se une cuando vea sus primeros informes.',
     primaryCta: 'Crear mi espacio gratis',
     secondaryCta: 'Compartir el dossier de staff',
     trust: 'SIN TARJETA DE CRÉDITO · SIN VALIDACIÓN DEL CLUB · SUS DATOS SIGUEN SIENDO SUYOS',
   },
   footer: {
-    tagline: 'El seguimiento del rendimiento, al estándar profesional.',
+    tagline: 'La monitorización de un staff profesional, sin el presupuesto de un club profesional.',
     body: 'STRIVN reúne la monitorización del rendimiento y la gestión de equipo en un solo espacio compartido por el staff.',
     email: 'hello@strivn.net',
     columns: [
@@ -3926,7 +3926,7 @@ const es: HomeContent = {
         ],
       },
     ],
-    copyright: '© 2026 STRIVN · Gratis para los coaches, pronto para los clubes',
+    copyright: '© 2026 STRIVN · Gratis para un equipo, toda la temporada',
   },
 };
 
