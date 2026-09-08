@@ -50,9 +50,91 @@ The product is ahead of the thesis in places and behind it in others. These are 
 - **No paid tier can be bought online.** Nothing in the app is purchasable above Free. Every paid CTA routes to a human.
 - **Exercise-level GPS exists as measurement, not yet as a profile over time.** The aggregated load signature of a drill is the missing brick, and it is what justifies Pro. Do not describe it as shipped.
 
-## Brand Personality
+## Voice
 
-STRIVN is intelligent, calm, and elite. Its voice is factual, modern, composed, and concise. It should feel like a high-performance operating system for a performance staff, not a consumer fitness app, a medical portal, or a loud sports brand. The emotional effect should be confidence, clarity, and control.
+STRIVN is intelligent, calm and elite. Those are outcomes of the rules below,
+not instructions: an aphorism satisfies every one of those adjectives, and the
+site spent a year proving it.
+
+STRIVN writes the way a performance coach who has done the work explains, to a
+peer, what they are about to gain: second person, verb first, numbers where an
+adjective would go, the trade's vocabulary as is, the marketer's vocabulary
+banned. Formal "vous". STRIVN says "we" when it commits to something. Benoit
+says "I" in mail.
+
+Between the two references we hold, the grammar is Stripe's and the proof
+structure is Teamworks'. The lexicon is neither: no growth verbs, no capitalised
+abstractions. Analysis and before/after in `docs/audits/2026-09-08-tone-of-voice.md`.
+
+Every rule below is testable. Copy that breaks one is rewritten, not argued.
+
+1. **The reader is the subject.** Headlines and body in the second person. A
+   headline that promises starts with the verb: « Importez l'export GPS, quel
+   que soit le capteur », not « Vos données GPS intégrées, sans ressaisie ».
+   The product is the subject only to describe a mechanism (« STRIVN calcule
+   l'ACWR chaque nuit »).
+2. **Promise before riddle.** Read alone, a headline says what the staff
+   gains. If the body is needed to understand the headline, the headline is
+   wrong.
+3. **Assert, do not rebut.** No negation in an H1 or H2. In body copy, at most
+   one rebuttal per page (« X, pas Y », « Aucun… », « Rien à… », « n'est pas
+   votre problème »), kept for a product truth that cannot be said otherwise.
+4. **One sentence, one idea.** Subject, verb, object. No em dashes. Colons
+   only before a list or a figure. Body sentences 12 to 20 words. Headlines
+   9 words or fewer.
+5. **A number is worth an adjective.** Every section carries at least one
+   verifiable quantity. No intensity adjectives: *puissant, ultime, incroyable,
+   révolutionnaire, complet, intelligent* (as a selling point). Numbers are
+   real or from the product; "What we may not claim yet" applies.
+6. **Proof has a name.** Customer result: `[club or staff] + verb + figure +
+   avec STRIVN`. Testimonial: quote + first and last name + role + club. Until
+   the name exists, the proof is not published; « des staffs pro nous font
+   confiance » is banned.
+7. **"Nous" exists.** STRIVN speaks in the first person plural for what it
+   commits to (support, data, delays, roadmap), never to describe itself.
+8. **The trade's words, untranslated; the marketer's words, banned.** Keep:
+   ACWR, RPE, UA, HSR, readiness, check-in, microcycle, wellness, séance,
+   convocation, staff, préparateur, kiné, analyste. Banned: *solution,
+   plateforme (unifiée, tout-en-un), écosystème, expérience, booster,
+   transformer, révolutionner, accélérer* (except literal), *seamless,
+   holistique, agentique, native IA, opérateur*, and English where French
+   exists. Navigation labels that already say « Plateforme » are labels, not
+   copy; they change with the nav, not with a page.
+9. **Quiet punctuation.** Site: no exclamation marks, no emoji, no em dashes,
+   no emphatic capitals. A headline that is a sentence ends with a period.
+   Mail: same, with one emoji tolerated per send, never in the subject line.
+10. **One spelling.** STRIVN, everywhere, mail included.
+11. **The hero phrase does not spread.** « Le système d'exploitation du staff
+    performance » is the positioning Benoit chose and keeps (decided
+    2026-09-08); it is also Teamworks' registered H1 in translation. It stays
+    in the hero and the meta title and nowhere else: no section, mail or post
+    reuses « système d'exploitation » or « operating system ».
+12. **Mail is the same voice, signed with a first name.** Subject: one concrete
+    gain, 50 characters or fewer, never « nouveautés de la semaine ». Opening:
+    the news in one sentence, no « Hello ! », no « Voici ce qui est arrivé ».
+    Section headings imperative. "Je" allowed for a personal commitment
+    (« je bascule votre compte »). Sign-off « Bonne journée, Benoit » stays.
+
+Product mock-ups inside the pages (the CSS-drawn dashboards, phones and
+consoles) show product strings, not copy: player names, KPIs and UI labels
+stay as the product shows them. Rules 4 and 9 still apply to their sentences.
+
+### Patterns
+
+- **H2**: `imperative verb + object + measurable gain`.
+  « Importez l'export GPS, quel que soit le capteur. »
+- **Body**: one or two mechanism sentences, then a figure.
+- **Proof**: « [Club] suit [N] joueurs sur STRIVN depuis [mois]. »
+- **CTA pair**: self-serve and human. « Commencer gratuitement » / « Parler à Benoit ».
+- **Mail**: subject ≤ 50 chars → preheader = the gesture that enables it →
+  first sentence = the news → imperative H2s → one primary CTA → signature.
+
+### Targets (to be checked by `scripts/lint-copy.mjs`)
+
+H2 imperative or "vous"-subject ≥ 60 % · negation in H1/H2 = 0 · rebuttals per
+page ≤ 1 · em dashes = 0 · exclamation = 0 · emoji site 0, mail ≤ 1 · figures
+per section ≥ 1 · "nous" 0.3–0.8 per 100 words · banned words = 0 · "Strivn" = 0
+· median body sentence 12–18 words.
 
 ## Anti-references
 
