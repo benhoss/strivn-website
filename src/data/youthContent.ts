@@ -41,20 +41,20 @@ type YouthContent = {
 export const youthContent: Record<Locale, YouthContent> = {
   fr: {
     meta: {
-      title: 'STRIVN pour les équipes de jeunes : parents dans la boucle, mode jeunes',
+      title: 'STRIVN pour les équipes de jeunes | Les parents répondent',
       description:
-        'Les parents répondent à la convocation à la place du joueur, suivent le match en direct sans compte et gèrent les consentements : STRIVN aide les coaches d’équipes de jeunes à garder les parents dans la boucle, sans groupe WhatsApp qui déborde.',
+        'Les tuteurs répondent à la convocation à la place du joueur et suivent le match en direct. Le mode jeunes masque deux fonctions aux mineurs et recueille les consentements des tuteurs.',
     },
     eyebrow: 'STRIVN pour les équipes de jeunes',
     hero: {
-      title: 'Les parents dans la boucle. Les jeunes protégés. Vous, sur le terrain.',
-      lede: 'Les parents répondent à la convocation à la place de leur enfant et suivent le match en direct depuis la tribune, sans créer de compte. Les consentements sont gérés proprement, et le mode jeunes masque ce qui n’est pas de leur âge.',
+      title: 'Laissez les parents répondre à la convocation.',
+      lede: 'Chaque tuteur reçoit son lien personnel et répond Présent, Incertain ou Absent à la place du joueur. Le mode jeunes masque deux fonctions aux mineurs et recueille les consentements des tuteurs. Le jour du match, un lien public ouvre le direct à toute la famille.',
       cta: 'Commencer gratuitement',
     },
     showcase: [
       {
-        title: 'La convocation ? Les parents répondent.',
-        blurb: 'Chaque tuteur est relié à son enfant et reçoit la convocation avec un lien personnel. Il répond en un tap — Présent, Incertain ou Absent — et peut laisser un mot pour le staff. Le premier qui répond règle la présence.',
+        title: 'Envoyez la convocation, les tuteurs répondent en un tap.',
+        blurb: 'Chaque tuteur est relié à son enfant et reçoit la convocation par un lien personnel. Il choisit entre trois réponses, Présent, Incertain ou Absent, et laisse un mot au staff. Le premier tuteur qui répond règle la présence, et la relance part seule.',
         slides: [
           {
             img: '/screenshots/youth-guardians-card-fr.png',
@@ -65,20 +65,20 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
       {
-        title: 'Le match en direct, depuis la tribune',
-        blurb: 'Partagez un lien avant le coup d’envoi : parents en tribune, grands-parents à la maison, tout le monde suit le score et les événements du match en direct, sans compte et sans rien installer.',
+        title: 'Partagez le direct du match en un seul lien.',
+        blurb: 'Envoyez le lien public avant le coup d’envoi, aux parents en tribune comme aux grands-parents restés à la maison. Ils suivent le score et les événements du match en direct, depuis un navigateur.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone-fr.png',
             kind: 'mobile',
             alt: 'Viewer de match public STRIVN sur téléphone : score et événements du match en direct, sans compte',
-            caption: 'Le viewer public : score et événements en direct, sans compte.',
+            caption: 'Le viewer public : score et événements du match en direct.',
           },
         ],
       },
       {
-        title: 'Un mode pensé pour les jeunes',
-        blurb: 'Activez le mode jeunes et l’espace s’adapte à l’âge du groupe : le coach IA compagnon et les amendes sont automatiquement masqués pour les joueurs, et les consentements des tuteurs sont recueillis et suivis au même endroit.',
+        title: 'Activez le mode jeunes, deux fonctions se masquent.',
+        blurb: 'Choisissez la catégorie d’âge du groupe et l’espace s’adapte en quelques secondes. Le coach IA compagnon et les amendes disparaissent de l’app des joueurs mineurs. Les consentements des tuteurs se recueillent au même endroit, révocables à tout moment.',
         slides: [
           {
             img: '/screenshots/youth-team-setting-fr.png',
@@ -89,80 +89,80 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Et tout le reste du quotidien d’un coach de jeunes.',
+    featuresLead: 'Six fonctions couvrent le reste de la semaine d’un coach de jeunes.',
     features: {
-      title: 'Ce que STRIVN apporte aux équipes de jeunes',
+      title: 'Réunissez le groupe, les tuteurs et les consentements.',
       items: [
         {
           title: 'RSVP parental',
-          text: 'Chaque tuteur reçoit la convocation avec son lien personnel et indique Présent, Incertain ou Absent à la place du joueur. Vous voyez la présence se remplir en temps réel, sans courir après les réponses.',
+          text: 'Chaque tuteur reçoit la convocation par un lien personnel et choisit entre trois réponses. La feuille de présence se remplit en direct, et la relance part seule.',
         },
         {
           title: 'Viewer de match public',
-          text: 'Un lien à partager, aucun compte à créer : la famille suit le score et les événements du match en direct, de la tribune ou de la maison.',
+          text: 'Un lien public ouvre le direct du match dans le navigateur de chaque famille. Le score et les événements arrivent en direct, depuis la tribune ou la maison.',
         },
         {
           title: 'Consentements des tuteurs',
-          text: 'Recueillez et suivez les consentements parentaux au même endroit : qui a consenti à quoi, et quand. Retirables à tout moment, conformément au RGPD.',
+          text: 'Recueillez et suivez les consentements au même endroit : qui a consenti à quoi, et quand. Aucun message n’atteint un joueur mineur avant le consentement du parent. Chaque consentement se retire à tout moment, conformément au RGPD.',
         },
         {
           title: 'Mode jeunes',
-          text: 'Le coach IA compagnon et les amendes sont automatiquement masqués pour les joueurs. Les jeunes ne voient que ce qui est de leur âge.',
+          text: 'Choisissez la catégorie d’âge du groupe : deux fonctions se masquent pour les joueurs. Le coach IA compagnon et les amendes restent visibles pour le staff seul.',
         },
         {
           title: 'Communication aux parents',
-          text: 'Annonces, changements d’horaire, infos pratiques : un seul canal vers tous les parents, au lieu d’un groupe WhatsApp qui déborde. Chaque famille reçoit ce qui concerne son enfant.',
+          text: 'Annonces, changements d’horaire et infos pratiques partent dans un seul canal vers tous les parents. Chaque famille lit ce qui concerne son enfant.',
         },
         {
           title: 'Votre groupe, centralisé',
-          text: 'Joueurs, tuteurs, présences et agenda au même endroit, partagés avec tout le staff. Vous gérez votre groupe depuis une seule plateforme.',
+          text: 'Joueurs, tuteurs, présences et agenda vivent au même endroit, partagés avec tout le staff. Le plan Free couvre une équipe, ses joueurs sans plafond et une place de staff.',
         },
       ],
     },
     howItWorks: {
-      title: 'La semaine d’une équipe de jeunes avec STRIVN',
+      title: 'Montez le groupe en quatre étapes.',
       steps: [
         {
           title: 'Reliez les parents au groupe',
-          text: 'Ajoutez vos joueurs et leurs tuteurs, puis activez le mode jeunes. L’espace s’adapte à l’âge du groupe et les consentements se gèrent dès l’inscription.',
+          text: 'Ajoutez vos joueurs et leurs tuteurs, puis activez le mode jeunes sur l’équipe. Les consentements se recueillent dès l’inscription, et l’espace s’adapte à la catégorie d’âge.',
         },
         {
           title: 'Envoyez la convocation',
-          text: 'Chaque tuteur reçoit son lien personnel et répond à la place du joueur en un tap. La feuille de présence se remplit toute seule, relances comprises.',
+          text: 'Chaque tuteur reçoit son lien personnel et répond en un tap à la place du joueur. La feuille de présence se remplit toute seule, relances comprises.',
         },
         {
-          title: 'Le jour du match, partagez le direct',
-          text: 'Un lien envoyé avant le coup d’envoi : les parents en tribune comme ceux restés à la maison suivent le score et les événements en direct, sans compte.',
+          title: 'Partagez le direct le jour du match',
+          text: 'Un lien envoyé avant le coup d’envoi ouvre le direct à toute la famille. Les parents en tribune et ceux restés à la maison suivent le même score.',
         },
         {
-          title: 'Après, tenez tout le monde au courant',
-          text: 'Prochaines dates, annonces, infos pratiques : un seul message dans STRIVN et tous les parents sont prévenus.',
+          title: 'Tenez les parents au courant',
+          text: 'Prochaines dates, annonces et infos pratiques partent en un message vers tous les parents. Le staff, les tuteurs et vous lisez le même agenda, mis à jour au même moment.',
         },
       ],
     },
     finalCta: {
-      title: 'Commencez gratuitement dès aujourd’hui.',
-      body: 'STRIVN est gratuit pour une équipe, sans carte bancaire. Créez votre équipe de jeunes, invitez votre staff et reliez les parents en quelques minutes.',
+      title: 'Créez votre espace et reliez les parents.',
+      body: 'Chaque nouveau compte démarre avec 30 jours de Semi-Pro, sans carte bancaire. Ensuite le plan Free fait tourner une équipe toute la saison, ses joueurs sans plafond compris.',
       cta: 'Créer mon espace équipe',
     },
   },
 
   en: {
     meta: {
-      title: 'STRIVN for youth teams: parents in the loop, youth mode',
+      title: 'STRIVN for youth teams | Parents answer the call-up',
       description:
-        'Parents answer call-ups on the player’s behalf, follow the match live without an account and manage consents: STRIVN helps youth-team coaches keep parents in the loop, without an overflowing WhatsApp group.',
+        'Guardians answer the call-up on the player’s behalf and follow the match live through a public link. Youth mode hides two features from minors and collects the guardians’ consents.',
     },
     eyebrow: 'STRIVN for youth teams',
     hero: {
-      title: 'Parents in the loop. Young players protected. You, on the pitch.',
-      lede: 'Parents answer the call-up on their child’s behalf and follow the match live from the stands, no account needed. Consents are handled properly, and youth mode hides what isn’t age-appropriate.',
+      title: 'Let parents answer the call-up.',
+      lede: 'Every guardian gets a personal link and answers Present, Unsure or Absent on the player’s behalf. Youth mode hides two features from minors and collects the guardians’ consents. On match day, a public link opens the live score to the whole family.',
       cta: 'Start for free',
     },
     showcase: [
       {
-        title: 'The call-up? Parents answer it.',
-        blurb: 'Every guardian is linked to their child and receives the call-up with a personal link. One tap — Present, Unsure or Absent — plus a note for the staff if needed. The first to answer settles the attendance.',
+        title: 'Send the call-up, guardians answer in one tap.',
+        blurb: 'Every guardian is linked to their child and receives the call-up through a personal link. They pick one of three answers, Present, Unsure or Absent, and leave a note for the staff. The first guardian to answer settles attendance, and the reminder goes out on its own.',
         slides: [
           {
             img: '/screenshots/youth-guardians-card.png',
@@ -173,20 +173,20 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
       {
-        title: 'The match, live from the stands',
-        blurb: 'Share a link before kick-off: parents in the stand, grandparents at home, everyone follows the score and the match events live, with no account and nothing to install.',
+        title: 'Share the live match through one public link.',
+        blurb: 'Send the public link before kick-off, to parents in the stand and grandparents at home. They follow the score and the match events live, from a browser.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
             kind: 'mobile',
             alt: 'STRIVN public match viewer on a phone: live score and match events, no account',
-            caption: 'The public viewer: live score and events, no account needed.',
+            caption: 'The public viewer: live score and match events.',
           },
         ],
       },
       {
-        title: 'A mode built for young players',
-        blurb: 'Turn on youth mode and the space adapts to the group’s age: the AI coach companion and fines are automatically hidden from players, and guardian consents are collected and tracked in one place.',
+        title: 'Turn on youth mode, two features hide themselves.',
+        blurb: 'Pick the group’s age category and the space adapts in a few seconds. The AI coach companion and the fines disappear from the minors’ app. Guardian consents are collected in one place, withdrawable at any time.',
         slides: [
           {
             img: '/screenshots/youth-team-setting.png',
@@ -197,80 +197,80 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'And everything else in a youth coach’s week.',
+    featuresLead: 'Six features cover the rest of a youth coach’s week.',
     features: {
-      title: 'What STRIVN brings to youth teams',
+      title: 'Bring your group, the guardians and the consents together.',
       items: [
         {
           title: 'Parental RSVP',
-          text: 'Every guardian gets the call-up with a personal link and marks Present, Unsure or Absent on the player’s behalf. You watch attendance fill in real time instead of chasing replies.',
+          text: 'Every guardian receives the call-up through a personal link and picks one of three answers. The attendance sheet fills in live, and the reminder goes out on its own.',
         },
         {
           title: 'Public match viewer',
-          text: 'One link to share, no account to create: the family follows the score and match events live, from the stands or from home.',
+          text: 'A public link opens the live match in every family’s browser. The score and the match events arrive live, from the stands or from home.',
         },
         {
           title: 'Guardian consents',
-          text: 'Collect and track parental consents in one place: who agreed to what, and when. Withdrawable at any time, in line with GDPR.',
+          text: 'Collect and track consents in one place: who agreed to what, and when. No message reaches a minor before the parent has given consent. Each consent is withdrawn at any time, in line with GDPR.',
         },
         {
           title: 'Youth mode',
-          text: 'The AI coach companion and fines are automatically hidden from players. Young players only see what fits their age.',
+          text: 'Pick the group’s age category: two features hide themselves from the players. The AI coach companion and the fines stay visible to the staff alone.',
         },
         {
           title: 'Parent communication',
-          text: 'Announcements, schedule changes, practical info: one channel to every parent instead of an overflowing WhatsApp group. Each family gets what concerns their child.',
+          text: 'Announcements, schedule changes and practical info go out in one channel to every parent. Each family reads what concerns their own child.',
         },
         {
           title: 'Your group, centralised',
-          text: 'Players, guardians, attendance and agenda in one place, shared with your whole staff. You manage your group from a single platform.',
+          text: 'Players, guardians, attendance and the calendar live in one place, shared with your whole staff. The Free plan covers one team, its players uncapped and one staff seat.',
         },
       ],
     },
     howItWorks: {
-      title: 'A youth team’s week with STRIVN',
+      title: 'Set the group up in four steps.',
       steps: [
         {
           title: 'Link parents to the group',
-          text: 'Add your players and their guardians, then switch on youth mode. The space adapts to the group’s age and consents are handled from sign-up.',
+          text: 'Add your players and their guardians, then turn on youth mode for the team. Consents are collected from sign-up, and the space adapts to the age category.',
         },
         {
           title: 'Send the call-up',
-          text: 'Every guardian gets a personal link and answers on the player’s behalf in one tap. The attendance sheet fills itself, reminders included.',
+          text: 'Every guardian gets a personal link and answers in one tap on the player’s behalf. The attendance sheet fills itself, reminders included.',
         },
         {
-          title: 'On match day, share the live link',
-          text: 'One link sent before kick-off: parents in the stands and family at home follow the score and events live, without an account.',
+          title: 'Share the live link on match day',
+          text: 'A link sent before kick-off opens the live match to the whole family. Parents in the stands and family at home follow the same score.',
         },
         {
-          title: 'Afterwards, keep everyone posted',
-          text: 'Next dates, announcements, practical info: one message in STRIVN and every parent is informed.',
+          title: 'Keep the parents posted',
+          text: 'Next dates, announcements and practical info go out in one message to every parent. Your staff, the guardians and you read the same calendar, updated at the same moment.',
         },
       ],
     },
     finalCta: {
-      title: 'Start free today.',
-      body: 'STRIVN is free for one team, no credit card required. Create your youth team, invite your staff and link the parents in minutes.',
+      title: 'Create your space and link the parents.',
+      body: 'Every new account starts on 30 days of Semi-Pro, without a card. The Free plan then runs one team for a whole season, its players uncapped.',
       cta: 'Create my team space',
     },
   },
 
   nl: {
     meta: {
-      title: 'STRIVN voor jeugdploegen: ouders mee aan boord, jeugdmodus',
+      title: 'STRIVN voor jeugdploegen | Ouders antwoorden op de oproeping',
       description:
-        'Ouders antwoorden op de oproeping in naam van de speler, volgen de wedstrijd live zonder account en beheren toestemmingen: STRIVN helpt jeugdcoaches om ouders te betrekken, zonder overlopende WhatsApp-groep.',
+        'Voogden antwoorden op de oproeping in naam van de speler en volgen de wedstrijd live via een publieke link. De jeugdmodus verbergt twee functies voor minderjarigen en verzamelt de toestemmingen van de voogden.',
     },
     eyebrow: 'STRIVN voor jeugdploegen',
     hero: {
-      title: 'Ouders mee aan boord. Jonge spelers beschermd. Jij op het veld.',
-      lede: 'Ouders antwoorden op de oproeping in naam van hun kind en volgen de wedstrijd live vanuit de tribune, zonder account. Toestemmingen worden netjes beheerd en de jeugdmodus verbergt wat niet bij hun leeftijd past.',
+      title: 'Laat de ouders op de oproeping antwoorden.',
+      lede: 'Elke voogd krijgt zijn persoonlijke link en antwoordt Aanwezig, Onzeker of Afwezig in naam van de speler. De jeugdmodus verbergt twee functies voor minderjarigen en verzamelt de toestemmingen van de voogden. Op wedstrijddag opent één publieke link de live score voor de hele familie.',
       cta: 'Gratis beginnen',
     },
     showcase: [
       {
-        title: 'De oproeping? De ouders antwoorden.',
-        blurb: 'Elke voogd is gekoppeld aan zijn kind en ontvangt de oproeping met een persoonlijke link. Eén tik — Aanwezig, Onzeker of Afwezig — en eventueel een woordje voor de staf. Wie eerst antwoordt, regelt de aanwezigheid.',
+        title: 'Verstuur de oproeping, de voogden antwoorden met één tik.',
+        blurb: 'Elke voogd is gekoppeld aan zijn kind en ontvangt de oproeping via een persoonlijke link. Hij kiest uit drie antwoorden, Aanwezig, Onzeker of Afwezig, en laat een woordje na voor de staf. Wie eerst antwoordt, regelt de aanwezigheid, en de herinnering vertrekt vanzelf.',
         slides: [
           {
             img: '/screenshots/youth-guardians-card.png',
@@ -281,20 +281,20 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
       {
-        title: 'De wedstrijd live, vanuit de tribune',
-        blurb: 'Deel een link voor de aftrap: ouders in de tribune, grootouders thuis, iedereen volgt de score en de wedstrijdgebeurtenissen live, zonder account en zonder iets te installeren.',
+        title: 'Deel de live wedstrijd via één publieke link.',
+        blurb: 'Stuur de publieke link voor de aftrap, naar ouders in de tribune en grootouders thuis. Zij volgen de score en de wedstrijdgebeurtenissen live, gewoon in een browser.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
             kind: 'mobile',
             alt: 'Publieke STRIVN-wedstrijdviewer op een telefoon: live score en wedstrijdgebeurtenissen, zonder account',
-            caption: 'De publieke viewer: live score en gebeurtenissen, zonder account.',
+            caption: 'De publieke viewer: live score en wedstrijdgebeurtenissen.',
           },
         ],
       },
       {
-        title: 'Een modus op maat van jongeren',
-        blurb: 'Zet de jeugdmodus aan en de ruimte past zich aan de leeftijd van de groep aan: de AI-coachcompagnon en de boetes worden automatisch verborgen voor de spelers, en de toestemmingen van voogden worden op één plek verzameld en opgevolgd.',
+        title: 'Zet de jeugdmodus aan, twee functies verdwijnen.',
+        blurb: 'Kies de leeftijdscategorie van de groep en de ruimte past zich in enkele seconden aan. De AI-coachcompagnon en de boetes verdwijnen uit de app van minderjarige spelers. De toestemmingen van de voogden worden op één plek verzameld, op elk moment intrekbaar.',
         slides: [
           {
             img: '/screenshots/youth-team-setting.png',
@@ -305,80 +305,80 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'En al de rest van de week van een jeugdcoach.',
+    featuresLead: 'Zes functies dekken de rest van de week van een jeugdcoach.',
     features: {
-      title: 'Wat STRIVN jeugdploegen biedt',
+      title: 'Breng je groep, de voogden en de toestemmingen samen.',
       items: [
         {
           title: 'Ouder-RSVP',
-          text: 'Elke voogd krijgt de oproeping met een persoonlijke link en duidt Aanwezig, Onzeker of Afwezig aan in naam van de speler. Je ziet de aanwezigheid in realtime binnenlopen, zonder achter antwoorden aan te zitten.',
+          text: 'Elke voogd krijgt de oproeping via een persoonlijke link en kiest uit drie antwoorden. De aanwezigheidslijst vult zich live, en de herinnering vertrekt vanzelf.',
         },
         {
           title: 'Publieke wedstrijdviewer',
-          text: 'Eén link om te delen, geen account nodig: de familie volgt de score en de wedstrijdgebeurtenissen live, vanuit de tribune of van thuis.',
+          text: 'Eén publieke link opent de live wedstrijd in de browser van elke familie. De score en de wedstrijdgebeurtenissen komen live binnen, vanuit de tribune of van thuis.',
         },
         {
           title: 'Toestemmingen van voogden',
-          text: 'Verzamel en volg ouderlijke toestemmingen op één plek: wie waarmee instemde, en wanneer. Op elk moment intrekbaar, conform de GDPR.',
+          text: 'Verzamel en volg de toestemmingen op één plek: wie waarmee instemde, en wanneer. Geen enkel bericht bereikt een minderjarige speler voor de ouder toestemming gaf. Elke toestemming wordt op elk moment ingetrokken, conform de GDPR.',
         },
         {
           title: 'Jeugdmodus',
-          text: 'De AI-coachcompagnon en de boetes worden automatisch verborgen voor de spelers. Jongeren zien alleen wat bij hun leeftijd past.',
+          text: 'Kies de leeftijdscategorie van de groep: twee functies verdwijnen bij de spelers. De AI-coachcompagnon en de boetes blijven enkel voor de staf zichtbaar.',
         },
         {
           title: 'Communicatie met ouders',
-          text: 'Aankondigingen, uurwijzigingen, praktische info: één kanaal naar alle ouders, in plaats van een overlopende WhatsApp-groep. Elk gezin krijgt wat zijn kind aanbelangt.',
+          text: 'Aankondigingen, uurwijzigingen en praktische info vertrekken via één kanaal naar alle ouders. Elk gezin leest wat zijn eigen kind aanbelangt.',
         },
         {
           title: 'Je groep, gecentraliseerd',
-          text: 'Spelers, voogden, aanwezigheid en agenda op één plek, gedeeld met je hele staf. Je beheert je groep vanaf één platform.',
+          text: 'Spelers, voogden, aanwezigheden en agenda staan op één plek, gedeeld met je hele staf. Het Free-plan dekt één ploeg, haar spelers zonder plafond en één stafplaats.',
         },
       ],
     },
     howItWorks: {
-      title: 'De week van een jeugdploeg met STRIVN',
+      title: 'Zet de groep op in vier stappen.',
       steps: [
         {
           title: 'Koppel de ouders aan de groep',
-          text: 'Voeg je spelers en hun voogden toe en zet de jeugdmodus aan. De ruimte past zich aan de leeftijd van de groep aan en de toestemmingen worden vanaf de inschrijving geregeld.',
+          text: 'Voeg je spelers en hun voogden toe en zet daarna de jeugdmodus aan voor de ploeg. De toestemmingen worden vanaf de inschrijving verzameld en de ruimte past zich aan de leeftijd aan.',
         },
         {
           title: 'Verstuur de oproeping',
-          text: 'Elke voogd krijgt zijn persoonlijke link en antwoordt in naam van de speler met één tik. De aanwezigheidslijst vult zichzelf, herinneringen inbegrepen.',
+          text: 'Elke voogd krijgt zijn persoonlijke link en antwoordt met één tik in naam van de speler. De aanwezigheidslijst vult zichzelf, herinneringen inbegrepen.',
         },
         {
-          title: 'Op wedstrijddag: deel de livelink',
-          text: 'Eén link voor de aftrap: ouders in de tribune en familie thuis volgen de score en de gebeurtenissen live, zonder account.',
+          title: 'Deel de livelink op wedstrijddag',
+          text: 'Eén link voor de aftrap opent de live wedstrijd voor de hele familie. Ouders in de tribune en familie thuis volgen dezelfde score.',
         },
         {
-          title: 'Nadien: hou iedereen op de hoogte',
-          text: 'Volgende data, aankondigingen, praktische info: één bericht in STRIVN en alle ouders zijn op de hoogte.',
+          title: 'Hou de ouders op de hoogte',
+          text: 'Volgende data, aankondigingen en praktische info vertrekken in één bericht naar alle ouders. Je staf, de voogden en jij lezen dezelfde agenda, op hetzelfde moment bijgewerkt.',
         },
       ],
     },
     finalCta: {
-      title: 'Begin vandaag gratis.',
-      body: 'STRIVN is gratis voor één team, zonder bankkaart. Maak je jeugdploeg aan, nodig je staf uit en koppel de ouders in enkele minuten.',
+      title: 'Maak je ruimte aan en koppel de ouders.',
+      body: 'Elk nieuw account start met 30 dagen Semi-Pro, zonder bankkaart. Daarna laat het Free-plan één ploeg een heel seizoen draaien, haar spelers zonder plafond.',
       cta: 'Mijn teamruimte aanmaken',
     },
   },
 
   de: {
     meta: {
-      title: 'STRIVN für Jugendteams: Eltern eingebunden, Jugendmodus',
+      title: 'STRIVN für Jugendteams | Eltern antworten auf das Aufgebot',
       description:
-        'Eltern antworten auf Aufgebote im Namen des Spielers, verfolgen das Spiel live ohne Konto und verwalten Einwilligungen: STRIVN hilft Jugendtrainern, die Eltern einzubinden — ohne überlaufende WhatsApp-Gruppe.',
+        'Erziehungsberechtigte antworten im Namen des Spielers auf das Aufgebot und verfolgen das Spiel live über einen öffentlichen Link. Der Jugendmodus blendet zwei Funktionen für Minderjährige aus und erfasst die Einwilligungen der Eltern.',
     },
     eyebrow: 'STRIVN für Jugendteams',
     hero: {
-      title: 'Eltern eingebunden. Junge Spieler geschützt. Sie auf dem Platz.',
-      lede: 'Eltern antworten auf das Aufgebot im Namen ihres Kindes und verfolgen das Spiel live von der Tribüne, ganz ohne Konto. Einwilligungen werden sauber verwaltet, und der Jugendmodus blendet aus, was nicht altersgerecht ist.',
+      title: 'Eltern aufs Aufgebot antworten lassen.',
+      lede: 'Jeder Erziehungsberechtigte erhält seinen persönlichen Link und antwortet im Namen des Spielers Dabei, Unsicher oder Abwesend. Der Jugendmodus blendet zwei Funktionen für Minderjährige aus und erfasst die Einwilligungen der Eltern. Am Spieltag öffnet ein öffentlicher Link den Live-Spielstand für die ganze Familie.',
       cta: 'Kostenlos starten',
     },
     showcase: [
       {
-        title: 'Das Aufgebot? Die Eltern antworten.',
-        blurb: 'Jeder Erziehungsberechtigte ist mit seinem Kind verknüpft und erhält das Aufgebot mit einem persönlichen Link. Ein Tipp — Dabei, Unsicher oder Abwesend — plus eine Notiz an den Staff, wenn nötig. Wer zuerst antwortet, regelt die Anwesenheit.',
+        title: 'Senden Sie das Aufgebot, die Eltern antworten.',
+        blurb: 'Jeder Erziehungsberechtigte ist mit seinem Kind verknüpft und erhält das Aufgebot über einen persönlichen Link. Er wählt eine von drei Antworten, Dabei, Unsicher oder Abwesend, und hinterlässt eine Notiz für den Staff. Wer zuerst antwortet, regelt die Anwesenheit, und die Erinnerung geht von selbst raus.',
         slides: [
           {
             img: '/screenshots/youth-guardians-card.png',
@@ -389,20 +389,20 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
       {
-        title: 'Das Spiel live, von der Tribüne',
-        blurb: 'Teilen Sie vor dem Anpfiff einen Link: Eltern auf der Tribüne, Großeltern zu Hause, alle verfolgen den Spielstand und die Ereignisse live, ohne Konto und ohne etwas zu installieren.',
+        title: 'Teilen Sie das Live-Spiel über einen Link.',
+        blurb: 'Senden Sie den öffentlichen Link vor dem Anpfiff, an Eltern auf der Tribüne und Großeltern zu Hause. Sie verfolgen den Spielstand und die Spielereignisse live, direkt im Browser.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
             kind: 'mobile',
             alt: 'Öffentlicher STRIVN-Spielviewer auf dem Handy: Live-Spielstand und Spielereignisse, ohne Konto',
-            caption: 'Der öffentliche Viewer: Spielstand und Ereignisse live, ohne Konto.',
+            caption: 'Der öffentliche Viewer: Spielstand und Spielereignisse live.',
           },
         ],
       },
       {
-        title: 'Ein Modus für junge Spieler',
-        blurb: 'Aktivieren Sie den Jugendmodus und der Bereich passt sich dem Alter der Gruppe an: der KI-Coach-Begleiter und die Strafkasse werden für die Spieler automatisch ausgeblendet, und die Einwilligungen der Erziehungsberechtigten werden an einem Ort erfasst und verfolgt.',
+        title: 'Jugendmodus an: zwei Funktionen verschwinden.',
+        blurb: 'Wählen Sie die Alterskategorie der Gruppe und der Bereich passt sich in Sekunden an. Der KI-Coach-Begleiter und die Strafkasse verschwinden aus der App minderjähriger Spieler. Die Einwilligungen der Eltern werden an einem Ort erfasst, jederzeit widerrufbar.',
         slides: [
           {
             img: '/screenshots/youth-team-setting.png',
@@ -413,80 +413,80 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Und alles andere in der Woche eines Jugendtrainers.',
+    featuresLead: 'Sechs Funktionen decken den Rest der Woche eines Jugendtrainers ab.',
     features: {
-      title: 'Was STRIVN Jugendteams bietet',
+      title: 'Führen Sie Gruppe, Eltern und Einwilligungen zusammen.',
       items: [
         {
           title: 'Eltern-RSVP',
-          text: 'Jeder Erziehungsberechtigte erhält das Aufgebot mit einem persönlichen Link und markiert Dabei, Unsicher oder Abwesend im Namen des Spielers. Sie sehen die Anwesenheit in Echtzeit eintreffen, ohne Antworten hinterherzulaufen.',
+          text: 'Jeder Erziehungsberechtigte erhält das Aufgebot über einen persönlichen Link und wählt eine von drei Antworten. Die Anwesenheitsliste füllt sich live, und die Erinnerung geht von selbst raus.',
         },
         {
           title: 'Öffentlicher Spielviewer',
-          text: 'Ein Link zum Teilen, kein Konto nötig: die Familie verfolgt Spielstand und Spielereignisse live, von der Tribüne oder von zu Hause.',
+          text: 'Ein öffentlicher Link öffnet das Live-Spiel im Browser jeder Familie. Spielstand und Spielereignisse treffen live ein, von der Tribüne oder von zu Hause.',
         },
         {
           title: 'Einwilligungen der Eltern',
-          text: 'Erfassen und verfolgen Sie elterliche Einwilligungen an einem Ort: wer wann wozu eingewilligt hat. Jederzeit widerrufbar, DSGVO-konform.',
+          text: 'Erfassen und verfolgen Sie die Einwilligungen an einem Ort: wer wann wozu eingewilligt hat. Keine Nachricht erreicht einen minderjährigen Spieler vor der Einwilligung des Elternteils. Jede Einwilligung lässt sich jederzeit widerrufen, wie es die DSGVO verlangt.',
         },
         {
           title: 'Jugendmodus',
-          text: 'Der KI-Coach-Begleiter und die Strafkasse werden für die Spieler automatisch ausgeblendet. Junge Spieler sehen nur, was zu ihrem Alter passt.',
+          text: 'Wählen Sie die Alterskategorie der Gruppe: zwei Funktionen verschwinden bei den Spielern. Der KI-Coach-Begleiter und die Strafkasse bleiben allein für den Staff sichtbar.',
         },
         {
           title: 'Kommunikation mit den Eltern',
-          text: 'Ankündigungen, Terminänderungen, praktische Infos: ein Kanal zu allen Eltern statt einer überlaufenden WhatsApp-Gruppe. Jede Familie bekommt, was ihr Kind betrifft.',
+          text: 'Ankündigungen, Terminänderungen und praktische Infos gehen über einen Kanal an alle Eltern. Jede Familie liest, was ihr eigenes Kind betrifft.',
         },
         {
           title: 'Ihre Gruppe, zentralisiert',
-          text: 'Spieler, Erziehungsberechtigte, Anwesenheit und Kalender an einem Ort, geteilt mit dem gesamten Staff. Sie verwalten Ihre Gruppe auf einer einzigen Plattform.',
+          text: 'Spieler, Erziehungsberechtigte, Anwesenheiten und Kalender liegen an einem Ort, geteilt mit dem gesamten Staff. Der Free-Plan deckt ein Team, seine Spieler ohne Limit und einen Staff-Platz.',
         },
       ],
     },
     howItWorks: {
-      title: 'Die Woche eines Jugendteams mit STRIVN',
+      title: 'Richten Sie die Gruppe in vier Schritten ein.',
       steps: [
         {
           title: 'Eltern mit der Gruppe verknüpfen',
-          text: 'Fügen Sie Ihre Spieler und deren Erziehungsberechtigte hinzu und aktivieren Sie den Jugendmodus. Der Bereich passt sich dem Alter der Gruppe an, und die Einwilligungen werden ab der Anmeldung geregelt.',
+          text: 'Fügen Sie Ihre Spieler und deren Erziehungsberechtigte hinzu und aktivieren Sie den Jugendmodus. Die Einwilligungen werden ab der Anmeldung erfasst, und der Bereich passt sich der Alterskategorie an.',
         },
         {
           title: 'Das Aufgebot senden',
           text: 'Jeder Erziehungsberechtigte erhält seinen persönlichen Link und antwortet mit einem Tipp im Namen des Spielers. Die Anwesenheitsliste füllt sich von selbst, Erinnerungen inklusive.',
         },
         {
-          title: 'Am Spieltag: den Live-Link teilen',
-          text: 'Ein Link vor dem Anpfiff: Eltern auf der Tribüne und Familie zu Hause verfolgen Spielstand und Ereignisse live, ohne Konto.',
+          title: 'Den Live-Link am Spieltag teilen',
+          text: 'Ein Link vor dem Anpfiff öffnet das Live-Spiel für die ganze Familie. Eltern auf der Tribüne und Familie zu Hause verfolgen denselben Spielstand.',
         },
         {
-          title: 'Danach: alle auf dem Laufenden halten',
-          text: 'Nächste Termine, Ankündigungen, praktische Infos: eine Nachricht in STRIVN und alle Eltern sind informiert.',
+          title: 'Die Eltern auf dem Laufenden halten',
+          text: 'Nächste Termine, Ankündigungen und praktische Infos gehen in einer Nachricht an alle Eltern. Ihr Staff, die Eltern und Sie lesen denselben Kalender, im selben Moment aktualisiert.',
         },
       ],
     },
     finalCta: {
-      title: 'Starte heute kostenlos.',
-      body: 'STRIVN ist kostenlos für ein Team, ohne Kreditkarte. Erstellen Sie Ihr Jugendteam, laden Sie Ihren Staff ein und verknüpfen Sie die Eltern in wenigen Minuten.',
+      title: 'Erstellen Sie Ihren Bereich, verknüpfen Sie die Eltern.',
+      body: 'Jedes neue Konto startet mit 30 Tagen Semi-Pro, ohne Kreditkarte. Danach lässt der Free-Plan ein Team eine ganze Saison laufen, seine Spieler ohne Limit.',
       cta: 'Meinen Teambereich erstellen',
     },
   },
 
   pt: {
     meta: {
-      title: 'STRIVN para equipas de formação: pais a par, modo formação',
+      title: 'STRIVN para equipas de formação | Os pais respondem',
       description:
-        'Os pais respondem às convocatórias em nome do jogador, acompanham o jogo em direto sem conta e gerem consentimentos: STRIVN ajuda os treinadores de formação a manter os pais a par, sem um grupo de WhatsApp a transbordar.',
+        'Os encarregados de educação respondem à convocatória em nome do jogador e acompanham o jogo em direto. O modo formação esconde duas funcionalidades aos menores e recolhe os consentimentos.',
     },
     eyebrow: 'STRIVN para equipas de formação',
     hero: {
-      title: 'Pais a par. Jovens protegidos. E o treinador, no campo.',
-      lede: 'Os pais respondem à convocatória em nome do filho e acompanham o jogo em direto a partir da bancada, sem precisar de conta. Os consentimentos são tratados como deve ser e o modo formação esconde o que não é adequado à idade.',
+      title: 'Deixe os pais responderem à convocatória.',
+      lede: 'Cada encarregado de educação recebe o seu link pessoal e responde Presente, Incerto ou Ausente em nome do jogador. O modo formação esconde duas funcionalidades aos menores e recolhe os consentimentos dos encarregados. No dia de jogo, um link público abre o resultado em direto a toda a família.',
       cta: 'Começar gratuitamente',
     },
     showcase: [
       {
-        title: 'A convocatória? São os pais que respondem.',
-        blurb: 'Cada encarregado de educação está associado ao seu filho e recebe a convocatória com um link pessoal. Um toque — Presente, Incerto ou Ausente — e uma nota para o staff, se for preciso. Quem responder primeiro fecha a presença.',
+        title: 'Envie a convocatória, os pais respondem num toque.',
+        blurb: 'Cada encarregado de educação está associado ao seu filho e recebe a convocatória por um link pessoal. Escolhe entre três respostas, Presente, Incerto ou Ausente, e deixa uma nota para o staff. Quem responder primeiro fecha a presença, e o lembrete parte sozinho.',
         slides: [
           {
             img: '/screenshots/youth-guardians-card.png',
@@ -497,20 +497,20 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
       {
-        title: 'O jogo, em direto a partir da bancada',
-        blurb: 'Partilhe um link antes do apito inicial: pais na bancada, avós em casa, todos acompanham o resultado e os lances em direto, sem conta e sem instalar nada.',
+        title: 'Partilhe o jogo em direto num link público.',
+        blurb: 'Envie o link público antes do apito inicial, aos pais na bancada e aos avós em casa. Acompanham o resultado e os lances em direto, a partir de um navegador.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
             kind: 'mobile',
             alt: 'Vista pública de jogo STRIVN num telemóvel: resultado e lances em direto, sem conta',
-            caption: 'A vista pública: resultado e lances em direto, sem conta.',
+            caption: 'A vista pública: resultado e lances em direto.',
           },
         ],
       },
       {
-        title: 'Um modo pensado para os mais novos',
-        blurb: 'Ative o modo formação e o espaço adapta-se à idade do grupo: o assistente de IA e as multas ficam automaticamente ocultos para os jogadores, e os consentimentos dos encarregados de educação são recolhidos e acompanhados no mesmo sítio.',
+        title: 'Ative o modo formação, duas funcionalidades desaparecem.',
+        blurb: 'Escolha o escalão etário do grupo e o espaço adapta-se em poucos segundos. O assistente de IA e as multas desaparecem da app dos jogadores menores. Os consentimentos dos encarregados de educação são recolhidos no mesmo sítio, revogáveis a qualquer momento.',
         slides: [
           {
             img: '/screenshots/youth-team-setting.png',
@@ -521,80 +521,80 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'E tudo o resto da semana de um treinador de formação.',
+    featuresLead: 'Seis funcionalidades cobrem o resto da semana de um treinador de formação.',
     features: {
-      title: 'O que STRIVN traz às equipas de formação',
+      title: 'Reúna o grupo, os encarregados e os consentimentos.',
       items: [
         {
           title: 'Confirmação pelos pais',
-          text: 'Cada encarregado de educação recebe a convocatória com um link pessoal e marca Presente, Incerto ou Ausente em nome do jogador. Vê as presenças a preencherem-se em tempo real em vez de andar atrás das respostas.',
+          text: 'Cada encarregado de educação recebe a convocatória por um link pessoal e escolhe entre três respostas. A folha de presenças preenche-se em direto, e o lembrete parte sozinho.',
         },
         {
           title: 'Vista pública do jogo',
-          text: 'Um link para partilhar, sem conta para criar: a família acompanha o resultado e os lances em direto, da bancada ou de casa.',
+          text: 'Um link público abre o jogo em direto no navegador de cada família. O resultado e os lances chegam em direto, da bancada ou de casa.',
         },
         {
           title: 'Consentimentos dos encarregados de educação',
-          text: 'Recolha e acompanhe os consentimentos parentais no mesmo sítio: quem autorizou o quê e quando. Revogáveis a qualquer momento, em linha com o RGPD.',
+          text: 'Recolha e acompanhe os consentimentos no mesmo sítio: quem autorizou o quê e quando. Nenhuma mensagem chega a um jogador menor antes do consentimento do encarregado. Cada consentimento é revogável a qualquer momento, em linha com o RGPD.',
         },
         {
           title: 'Modo formação',
-          text: 'O assistente de IA e as multas ficam automaticamente ocultos para os jogadores. Os mais novos veem apenas o que é adequado à sua idade.',
+          text: 'Escolha o escalão etário do grupo: duas funcionalidades desaparecem para os jogadores. O assistente de IA e as multas ficam visíveis apenas para o staff.',
         },
         {
           title: 'Comunicação com os pais',
-          text: 'Avisos, alterações de horário, informações práticas: um canal para todos os pais em vez de um grupo de WhatsApp a transbordar. Cada família recebe o que diz respeito ao seu filho.',
+          text: 'Avisos, alterações de horário e informações práticas seguem num só canal para todos os pais. Cada família lê o que diz respeito ao seu filho.',
         },
         {
           title: 'O seu grupo, centralizado',
-          text: 'Jogadores, encarregados de educação, presenças e agenda no mesmo sítio, partilhados com todo o staff. Gere o seu grupo a partir de uma só plataforma.',
+          text: 'Jogadores, encarregados de educação, presenças e agenda ficam no mesmo sítio, partilhados com todo o staff. O plano Free cobre uma equipa, os seus jogadores sem limite e um lugar de staff.',
         },
       ],
     },
     howItWorks: {
-      title: 'A semana de uma equipa de formação com STRIVN',
+      title: 'Monte o grupo em quatro passos.',
       steps: [
         {
           title: 'Associar os pais ao grupo',
-          text: 'Adicione os jogadores e os respetivos encarregados de educação e ative o modo formação. O espaço adapta-se à idade do grupo e os consentimentos ficam tratados desde a inscrição.',
+          text: 'Adicione os jogadores e os respetivos encarregados de educação e ative o modo formação. Os consentimentos são recolhidos desde a inscrição, e o espaço adapta-se ao escalão etário.',
         },
         {
           title: 'Enviar a convocatória',
-          text: 'Cada encarregado de educação recebe um link pessoal e responde em nome do jogador com um toque. A folha de presenças preenche-se sozinha, lembretes incluídos.',
+          text: 'Cada encarregado de educação recebe um link pessoal e responde em nome do jogador num toque. A folha de presenças preenche-se sozinha, lembretes incluídos.',
         },
         {
-          title: 'No dia de jogo, partilhar o link em direto',
-          text: 'Um link enviado antes do apito inicial: os pais na bancada e a família em casa acompanham o resultado e os lances em direto, sem conta.',
+          title: 'Partilhar o link em direto no dia de jogo',
+          text: 'Um link enviado antes do apito inicial abre o jogo em direto a toda a família. Os pais na bancada e a família em casa acompanham o mesmo resultado.',
         },
         {
-          title: 'Depois, manter todos a par',
-          text: 'Próximas datas, avisos, informações práticas: uma mensagem em STRIVN e todos os pais ficam informados.',
+          title: 'Manter os pais a par',
+          text: 'Próximas datas, avisos e informações práticas seguem numa mensagem para todos os pais. O staff, os encarregados de educação e o treinador leem a mesma agenda, atualizada ao mesmo tempo.',
         },
       ],
     },
     finalCta: {
-      title: 'Comece hoje gratuitamente.',
-      body: 'STRIVN é gratuito para uma equipa, sem cartão de crédito. Crie a sua equipa de formação, convide o seu staff e associe os pais em poucos minutos.',
+      title: 'Crie o seu espaço e associe os pais.',
+      body: 'Cada nova conta começa com 30 dias de Semi-Pro, sem cartão de crédito. Depois o plano Free faz rodar uma equipa toda a época, com os seus jogadores sem limite.',
       cta: 'Criar o meu espaço de equipa',
     },
   },
 
   es: {
     meta: {
-      title: 'STRIVN para fútbol base: familias informadas, modo formación',
+      title: 'STRIVN para fútbol base | Las familias confirman la convocatoria',
       description:
-        'Las familias responden a las convocatorias en nombre del jugador, siguen el partido en directo sin cuenta y gestionan los consentimientos: STRIVN ayuda a los entrenadores de fútbol base a mantener a las familias informadas, sin un grupo de WhatsApp desbordado.',
+        'Los tutores responden a la convocatoria en nombre del jugador y siguen el partido en directo con un enlace público. El modo formación oculta dos funciones a los menores y recoge los consentimientos.',
     },
     eyebrow: 'STRIVN para fútbol base',
     hero: {
-      title: 'Familias informadas. Jugadores protegidos. Y tú, en el campo.',
-      lede: 'Las familias responden a la convocatoria en nombre de su hijo y siguen el partido en directo desde la grada, sin necesidad de cuenta. Los consentimientos se gestionan como toca y el modo formación oculta lo que no corresponde a su edad.',
+      title: 'Deja que las familias respondan.',
+      lede: 'Cada tutor recibe su enlace personal y responde Voy, Duda o No voy en nombre del jugador. El modo formación oculta dos funciones a los menores y recoge los consentimientos de los tutores. El día del partido, un enlace público abre el marcador en directo a toda la familia.',
       cta: 'Empezar gratis',
     },
     showcase: [
       {
-        title: '¿La convocatoria? La responden las familias.',
-        blurb: 'Cada tutor está vinculado a su hijo y recibe la convocatoria con un enlace personal. Un toque —Voy, Duda o No voy— y una nota para el cuerpo técnico si hace falta. Quien responde primero cierra la asistencia.',
+        title: 'Envía la convocatoria, los tutores responden en un toque.',
+        blurb: 'Cada tutor está vinculado a su hijo y recibe la convocatoria con un enlace personal. Elige entre tres respuestas, Voy, Duda o No voy, y deja una nota para el cuerpo técnico. Quien responde primero cierra la asistencia, y el recordatorio sale solo.',
         slides: [
           {
             img: '/screenshots/youth-guardians-card.png',
@@ -605,20 +605,20 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
       {
-        title: 'El partido, en directo desde la grada',
-        blurb: 'Comparte un enlace antes del pitido inicial: familias en la grada, abuelos en casa, todos siguen el marcador y las jugadas en directo, sin cuenta y sin instalar nada.',
+        title: 'Comparte el directo del partido con un enlace.',
+        blurb: 'Envía el enlace público antes del pitido inicial, a las familias en la grada y a los abuelos en casa. Siguen el marcador y las jugadas en directo, desde un navegador.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
             kind: 'mobile',
             alt: 'Vista pública del partido en STRIVN desde el móvil: marcador y jugadas en directo, sin cuenta',
-            caption: 'La vista pública: marcador y jugadas en directo, sin cuenta.',
+            caption: 'La vista pública: marcador y jugadas en directo.',
           },
         ],
       },
       {
-        title: 'Un modo pensado para los más jóvenes',
-        blurb: 'Activa el modo formación y el espacio se adapta a la edad del grupo: el asistente de IA y las multas se ocultan automáticamente a los jugadores, y los consentimientos de los tutores se recogen y se siguen en un mismo sitio.',
+        title: 'Activa el modo formación, dos funciones se ocultan.',
+        blurb: 'Elige la categoría de edad del grupo y el espacio se adapta en unos segundos. El asistente de IA y las multas desaparecen de la app de los jugadores menores. Los consentimientos de los tutores se recogen en un mismo sitio, revocables en cualquier momento.',
         slides: [
           {
             img: '/screenshots/youth-team-setting.png',
@@ -629,60 +629,60 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Y todo lo demás de la semana de un entrenador de fútbol base.',
+    featuresLead: 'Seis funciones cubren el resto de la semana de un entrenador de fútbol base.',
     features: {
-      title: 'Lo que STRIVN aporta al fútbol base',
+      title: 'Reúne el grupo, los tutores y los consentimientos.',
       items: [
         {
           title: 'Confirmación por parte de las familias',
-          text: 'Cada tutor recibe la convocatoria con un enlace personal y marca Voy, Duda o No voy en nombre del jugador. Ves cómo se llena la asistencia en tiempo real en lugar de perseguir respuestas.',
+          text: 'Cada tutor recibe la convocatoria con un enlace personal y elige entre tres respuestas. La asistencia se llena en directo, y el recordatorio sale solo.',
         },
         {
           title: 'Vista pública del partido',
-          text: 'Un enlace para compartir, sin cuenta que crear: la familia sigue el marcador y las jugadas en directo, desde la grada o desde casa.',
+          text: 'Un enlace público abre el partido en directo en el navegador de cada familia. El marcador y las jugadas llegan en directo, desde la grada o desde casa.',
         },
         {
           title: 'Consentimientos de los tutores',
-          text: 'Recoge y sigue los consentimientos parentales en un mismo sitio: quién ha autorizado qué y cuándo. Revocables en cualquier momento, conforme al RGPD.',
+          text: 'Recoge y sigue los consentimientos en un mismo sitio: quién ha autorizado qué y cuándo. Ningún mensaje llega a un jugador menor antes del consentimiento de sus padres. Cada consentimiento se revoca en cualquier momento, conforme al RGPD.',
         },
         {
           title: 'Modo formación',
-          text: 'El asistente de IA y las multas se ocultan automáticamente a los jugadores. Los más jóvenes solo ven lo que corresponde a su edad.',
+          text: 'Elige la categoría de edad del grupo: dos funciones se ocultan a los jugadores. El asistente de IA y las multas quedan visibles solo para el cuerpo técnico.',
         },
         {
           title: 'Comunicación con las familias',
-          text: 'Avisos, cambios de horario, información práctica: un canal para todas las familias en lugar de un grupo de WhatsApp desbordado. Cada familia recibe lo que afecta a su hijo.',
+          text: 'Avisos, cambios de horario e información práctica salen por un solo canal a todas las familias. Cada familia lee lo que afecta a su propio hijo.',
         },
         {
           title: 'Tu grupo, centralizado',
-          text: 'Jugadores, tutores, asistencias y agenda en un mismo sitio, compartidos con todo tu cuerpo técnico. Gestionas tu grupo desde una sola plataforma.',
+          text: 'Jugadores, tutores, asistencias y agenda viven en un mismo sitio, compartidos con todo tu cuerpo técnico. El plan Free cubre un equipo, sus jugadores sin límite y una plaza de staff.',
         },
       ],
     },
     howItWorks: {
-      title: 'La semana de un equipo de fútbol base con STRIVN',
+      title: 'Monta el grupo en cuatro pasos.',
       steps: [
         {
           title: 'Vincular a las familias con el grupo',
-          text: 'Añade a tus jugadores y a sus tutores y activa el modo formación. El espacio se adapta a la edad del grupo y los consentimientos quedan resueltos desde el alta.',
+          text: 'Añade a tus jugadores y a sus tutores y activa el modo formación en el equipo. Los consentimientos se recogen desde el alta, y el espacio se adapta a la categoría de edad.',
         },
         {
           title: 'Enviar la convocatoria',
-          text: 'Cada tutor recibe un enlace personal y responde en nombre del jugador con un toque. La lista de asistencia se llena sola, recordatorios incluidos.',
+          text: 'Cada tutor recibe un enlace personal y responde en nombre del jugador en un toque. La lista de asistencia se llena sola, recordatorios incluidos.',
         },
         {
-          title: 'El día del partido, comparte el enlace en directo',
-          text: 'Un enlace enviado antes del pitido inicial: las familias en la grada y los que se quedan en casa siguen el marcador y las jugadas en directo, sin cuenta.',
+          title: 'Comparte el directo el día del partido',
+          text: 'Un enlace enviado antes del pitido inicial abre el directo a toda la familia. Las familias en la grada y quienes se quedan en casa siguen el mismo marcador.',
         },
         {
-          title: 'Después, mantén a todos al día',
-          text: 'Próximas fechas, avisos, información práctica: un mensaje en STRIVN y todas las familias quedan informadas.',
+          title: 'Mantén a las familias al día',
+          text: 'Próximas fechas, avisos e información práctica salen en un mensaje a todas las familias. Tu cuerpo técnico, los tutores y tú veis la misma agenda, actualizada a la vez.',
         },
       ],
     },
     finalCta: {
-      title: 'Empieza gratis hoy.',
-      body: 'STRIVN es gratis para un equipo, sin tarjeta de crédito. Crea tu equipo de fútbol base, invita a tu cuerpo técnico y vincula a las familias en unos minutos.',
+      title: 'Crea tu espacio y vincula a las familias.',
+      body: 'Cada cuenta nueva empieza con 30 días de Semi-Pro, sin tarjeta de crédito. Después el plan Free hace funcionar un equipo toda la temporada, con sus jugadores sin límite.',
       cta: 'Crear mi espacio de equipo',
     },
   },

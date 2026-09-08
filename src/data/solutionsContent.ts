@@ -89,41 +89,41 @@ export interface SolutionsContent {
 
 const fr: SolutionsContent = {
   meta: {
-    title: 'Solutions STRIVN | La compo de votre staff performance',
+    title: 'Solutions STRIVN | Six rôles, une seule base de données',
     description:
-      'Six fonctions, six écrans, une seule base de données : préparateur physique, head coach, analyste, kiné, joueur et direction sportive.',
+      'Trouvez votre poste dans le staff : préparateur physique, head coach, analyste, kiné, joueur et directeur sportif. Six rôles, une seule base de données.',
   },
   hero: {
-    kicker: 'SOLUTIONS · LA FEUILLE DE MATCH',
-    title: 'La compo de votre staff performance.',
-    sub: 'Sur le terrain, chacun a son poste. Dans STRIVN aussi : six fonctions, six écrans, et un seul terrain de jeu — la donnée. Trouvez votre numéro.',
+    kicker: 'LA FEUILLE DE MATCH',
+    title: 'Trouvez votre poste dans la compo du staff.',
+    sub: 'Chacun a son poste sur le terrain et son écran dans STRIVN : six rôles, une seule base de données.',
   },
   platformIntro: {
-    title: 'De la convocation au rapport d’après-match.',
-    body: 'Convocations, présences, infirmerie, séances, monitoring et rapports vivent dans le même environnement, ouvert à tout le staff.',
+    title: 'Couvrez la semaine entière, du lundi au match.',
+    body: 'Convocations, présences, infirmerie, séances, monitoring et rapports vivent au même endroit. Les modules ci-dessous partagent une base de données, avec un droit d’accès par rôle.',
   },
   compo: {
     kicker: 'SIX POSTES, UN TERRAIN',
-    title: 'Tout le monde joue sur le même terrain : la donnée.',
-    body: 'Chaque numéro renvoie à une page dédiée. Le brassard est au préparateur physique : c’est lui qui fait entrer STRIVN au club, gratuitement.',
-    caption: 'LE TERRAIN — UNE SEULE BASE : GPS · WELLNESS · CHARGE · PRÉSENCES · MÉDICAL',
+    title: 'Partagez la même base entre six rôles.',
+    body: 'Chaque numéro ouvre sa page. Le brassard revient au préparateur physique, qui fait entrer STRIVN au club.',
+    caption: 'LE TERRAIN · UNE SEULE BASE : GPS · WELLNESS · CHARGE · PRÉSENCES · MÉDICAL',
     captain: '(C)',
     soon: 'BIENTÔT',
     spots: ['JOUEUR', 'HEAD COACH', 'ANALYSTE', 'PRÉPA PHYSIQUE', 'KINÉ & MÉDICAL', 'DIR. SPORTIF'],
     roster: [
       {
         name: 'Préparateur physique',
-        desc: 'Monitoring, tests, programmes, planification — le cœur S&C de STRIVN. Gratuit pour une équipe.',
+        desc: 'Le cœur S&C de STRIVN : monitoring, tests, programmes et planification. Gratuit pour une équipe.',
         cta: 'Voir la page dédiée',
       },
       {
         name: 'Head coach & staff',
-        desc: 'Présences, convocations, séances et live match : le quotidien du groupe.',
+        desc: 'Le quotidien du groupe : présences, convocations, séances et match en direct.',
         cta: 'Voir la gestion d’équipe',
       },
       {
         name: 'Analyste & data',
-        desc: 'Rapports, IA & BI : la restitution qui parle à tout le staff.',
+        desc: 'Cinq rapports types, un générateur et des dashboards composables, lus par tout le staff.',
         cta: 'Voir rapports & IA',
       },
       {
@@ -133,12 +133,12 @@ const fr: SolutionsContent = {
       },
       {
         name: 'Joueur',
-        desc: 'Check-in du matin, RSVP et séances dans l’app joueur.',
+        desc: 'Check-in du matin en vingt secondes, RSVP et séances dans l’app joueur.',
         cta: 'Voir l’app joueur',
       },
       {
         name: 'Directeur sportif',
-        desc: 'Multi-équipes et vue direction — en ouverture avec les structures pilotes.',
+        desc: 'Multi-équipes et vue direction, en préparation. Nous vous prévenons à l’ouverture.',
         cta: 'Rejoindre la liste d’attente',
       },
     ],
@@ -149,41 +149,41 @@ const fr: SolutionsContent = {
 
 const en: SolutionsContent = {
   meta: {
-    title: 'STRIVN solutions | The team sheet of your performance staff',
+    title: 'STRIVN solutions | Six staff roles, one single database',
     description:
-      'Six roles, six screens, one single database: S&C coach, head coach, analyst, physio, player and sporting director.',
+      'Find your position in the staff: S&C coach, head coach, analyst, physio, player and sporting director. Six roles, one single database.',
   },
   hero: {
-    kicker: 'SOLUTIONS · THE TEAM SHEET',
-    title: 'The line-up of your performance staff.',
-    sub: 'On the pitch, everyone has a position. In STRIVN too: six roles, six screens, and one playing surface — the data. Find your number.',
+    kicker: 'THE TEAM SHEET',
+    title: 'Find your position in the staff line-up.',
+    sub: 'Everyone has a position on the pitch and a screen in STRIVN: six roles, one single database.',
   },
   platformIntro: {
-    title: 'From the call-up to the post-match report.',
-    body: 'Call-ups, attendance, medical log, sessions, monitoring and reports live in the same environment, open to the whole staff.',
+    title: 'Run the whole week, from Monday to match day.',
+    body: 'Call-ups, attendance, medical log, sessions, monitoring and reports live in the same place. The modules below share one database, with an access right per role.',
   },
   compo: {
     kicker: 'SIX POSITIONS, ONE PITCH',
-    title: 'Everyone plays on the same pitch: the data.',
-    body: 'Each number leads to its own page. The armband goes to the S&C coach: they are the one who brings STRIVN into the club, for free.',
-    caption: 'THE PITCH — ONE SINGLE BASE: GPS · WELLNESS · LOAD · ATTENDANCE · MEDICAL',
+    title: 'Share the same database across six roles.',
+    body: 'Each number opens its own page. The armband goes to the S&C coach, who brings STRIVN into the club.',
+    caption: 'THE PITCH · ONE SINGLE BASE: GPS · WELLNESS · LOAD · ATTENDANCE · MEDICAL',
     captain: '(C)',
     soon: 'SOON',
     spots: ['PLAYER', 'HEAD COACH', 'ANALYST', 'S&C COACH', 'PHYSIO & MEDICAL', 'SPORTING DIR.'],
     roster: [
       {
         name: 'S&C coach',
-        desc: 'Monitoring, tests, programmes, planning — the S&C core of STRIVN. Free for one team.',
+        desc: 'The S&C core of STRIVN: monitoring, tests, programmes and planning. Free for one team.',
         cta: 'See the dedicated page',
       },
       {
         name: 'Head coach & staff',
-        desc: 'Attendance, call-ups, sessions and live match: the squad’s day-to-day.',
+        desc: 'The squad’s day-to-day: attendance, call-ups, sessions and live match.',
         cta: 'See squad management',
       },
       {
         name: 'Analyst & data',
-        desc: 'Reports, AI & BI: the read-out that speaks to the whole staff.',
+        desc: 'Five report types, a generator and composable dashboards, read by the whole staff.',
         cta: 'See reports & AI',
       },
       {
@@ -193,12 +193,12 @@ const en: SolutionsContent = {
       },
       {
         name: 'Player',
-        desc: 'Morning check-in, RSVP and sessions in the player app.',
+        desc: 'Morning check-in in twenty seconds, RSVP and sessions in the player app.',
         cta: 'See the player app',
       },
       {
         name: 'Sporting director',
-        desc: 'Multi-team and board-level view — opening with the pilot clubs.',
+        desc: 'Multi-team and board-level view, in the making. We tell you when it opens.',
         cta: 'Join the waiting list',
       },
     ],
@@ -209,41 +209,41 @@ const en: SolutionsContent = {
 
 const nl: SolutionsContent = {
   meta: {
-    title: 'STRIVN-oplossingen | De opstelling van uw performance-staf',
+    title: 'STRIVN-oplossingen | Zes rollen, één enkele database',
     description:
-      'Zes functies, zes schermen, één enkele database: fysieke trainer, hoofdcoach, analist, kine, speler en sportief directeur.',
+      'Vind uw positie in de staf: fysieke trainer, hoofdcoach, analist, kine, speler en sportief directeur. Zes rollen, één enkele database.',
   },
   hero: {
-    kicker: 'OPLOSSINGEN · HET WEDSTRIJDBLAD',
-    title: 'De opstelling van uw performance-staf.',
-    sub: 'Op het veld heeft iedereen zijn positie. In STRIVN ook: zes functies, zes schermen, en één speelveld — de data. Vind uw nummer.',
+    kicker: 'HET WEDSTRIJDBLAD',
+    title: 'Vind uw positie in de opstelling van de staf.',
+    sub: 'Iedereen heeft een positie op het veld en een scherm in STRIVN: zes rollen, één enkele database.',
   },
   platformIntro: {
-    title: 'Van de oproeping tot het wedstrijdrapport.',
-    body: 'Oproepingen, aanwezigheid, ziekenboeg, trainingen, monitoring en rapporten zitten in dezelfde omgeving, open voor de hele staf.',
+    title: 'Draai de hele week, van maandag tot de wedstrijd.',
+    body: 'Oproepingen, aanwezigheid, ziekenboeg, trainingen, monitoring en rapporten zitten op dezelfde plek. De modules hieronder delen één database, met een toegangsrecht per rol.',
   },
   compo: {
     kicker: 'ZES POSITIES, ÉÉN VELD',
-    title: 'Iedereen speelt op hetzelfde veld: de data.',
-    body: 'Elk nummer leidt naar een eigen pagina. De band gaat naar de fysieke trainer: hij brengt STRIVN de club binnen, gratis.',
-    caption: 'HET VELD — ÉÉN ENKELE BASIS: GPS · WELLNESS · BELASTING · AANWEZIGHEID · MEDISCH',
+    title: 'Deel dezelfde database met zes rollen.',
+    body: 'Elk nummer opent een eigen pagina. De band gaat naar de fysieke trainer, die STRIVN de club binnenbrengt.',
+    caption: 'HET VELD · ÉÉN ENKELE BASIS: GPS · WELLNESS · BELASTING · AANWEZIGHEID · MEDISCH',
     captain: '(C)',
     soon: 'BINNENKORT',
     spots: ['SPELER', 'HOOFDCOACH', 'ANALIST', 'FYSIEK TRAINER', 'KINE & MEDISCH', 'SPORTIEF DIR.'],
     roster: [
       {
         name: 'Fysieke trainer',
-        desc: 'Monitoring, testen, programma’s, planning — de S&C-kern van STRIVN. Gratis voor één team.',
+        desc: 'De S&C-kern van STRIVN: monitoring, testen, programma’s en planning. Gratis voor één team.',
         cta: 'Bekijk de eigen pagina',
       },
       {
         name: 'Hoofdcoach & staf',
-        desc: 'Aanwezigheid, oproepen, trainingen en live wedstrijd: de dagelijkse werking.',
+        desc: 'De dagelijkse werking: aanwezigheid, oproepen, trainingen en wedstrijd live.',
         cta: 'Bekijk teambeheer',
       },
       {
         name: 'Analist & data',
-        desc: 'Rapporten, AI & BI: de weergave die de hele staf begrijpt.',
+        desc: 'Vijf rapporttypes, een generator en samen te stellen dashboards, gelezen door de hele staf.',
         cta: 'Bekijk rapporten & AI',
       },
       {
@@ -253,12 +253,12 @@ const nl: SolutionsContent = {
       },
       {
         name: 'Speler',
-        desc: 'Check-in in de ochtend, RSVP en trainingen in de spelersapp.',
+        desc: 'Check-in in de ochtend in twintig seconden, RSVP en trainingen in de spelersapp.',
         cta: 'Bekijk de spelersapp',
       },
       {
         name: 'Sportief directeur',
-        desc: 'Multi-team en directieoverzicht — in opening met de pilootclubs.',
+        desc: 'Multi-team en directieoverzicht, in de maak. Wij verwittigen u zodra het opent.',
         cta: 'Op de wachtlijst',
       },
     ],
@@ -269,41 +269,41 @@ const nl: SolutionsContent = {
 
 const de: SolutionsContent = {
   meta: {
-    title: 'STRIVN Lösungen | Die Aufstellung Ihres Performance-Staffs',
+    title: 'STRIVN Lösungen | Sechs Rollen, eine einzige Datenbasis',
     description:
-      'Sechs Rollen, sechs Bildschirme, eine einzige Datenbasis: Athletiktrainer, Cheftrainer, Analyst, Physio, Spieler und Sportdirektor.',
+      'Finden Sie Ihre Position im Staff: Athletiktrainer, Cheftrainer, Analyst, Physio, Spieler und Sportdirektor. Sechs Rollen, eine einzige Datenbasis.',
   },
   hero: {
-    kicker: 'LÖSUNGEN · DER SPIELBERICHT',
-    title: 'Die Aufstellung Ihres Performance-Staffs.',
-    sub: 'Auf dem Platz hat jeder seine Position. In STRIVN auch: sechs Rollen, sechs Bildschirme, und ein Spielfeld — die Daten. Finden Sie Ihre Nummer.',
+    kicker: 'DER SPIELBERICHT',
+    title: 'Finden Sie Ihre Position in der Aufstellung.',
+    sub: 'Jeder hat eine Position auf dem Platz und einen Bildschirm in STRIVN: sechs Rollen, eine einzige Datenbasis.',
   },
   platformIntro: {
-    title: 'Vom Aufgebot bis zum Spielbericht.',
-    body: 'Aufgebote, Anwesenheit, Medizinbereich, Einheiten, Monitoring und Berichte liegen in derselben Umgebung, offen für den gesamten Staff.',
+    title: 'Führen Sie die ganze Woche, von Montag bis Spieltag.',
+    body: 'Aufgebote, Anwesenheit, Medizinbereich, Einheiten, Monitoring und Berichte liegen am selben Ort. Die Module unten teilen eine Datenbasis, mit einem Zugriffsrecht je Rolle.',
   },
   compo: {
     kicker: 'SECHS POSITIONEN, EIN PLATZ',
-    title: 'Alle spielen auf demselben Platz: den Daten.',
-    body: 'Jede Nummer führt zu einer eigenen Seite. Die Binde trägt der Athletiktrainer: Er holt STRIVN in den Verein, kostenlos.',
-    caption: 'DER PLATZ — EINE EINZIGE BASIS: GPS · WELLNESS · BELASTUNG · ANWESENHEIT · MEDIZIN',
+    title: 'Teilen Sie dieselbe Datenbasis mit sechs Rollen.',
+    body: 'Jede Nummer öffnet eine eigene Seite. Die Binde trägt der Athletiktrainer, der STRIVN in den Verein holt.',
+    caption: 'DER PLATZ · EINE EINZIGE BASIS: GPS · WELLNESS · BELASTUNG · ANWESENHEIT · MEDIZIN',
     captain: '(C)',
     soon: 'BALD',
     spots: ['SPIELER', 'CHEFTRAINER', 'ANALYST', 'ATHLETIKTRAINER', 'PHYSIO & MEDIZIN', 'SPORTDIREKTOR'],
     roster: [
       {
         name: 'Athletiktrainer',
-        desc: 'Monitoring, Tests, Programme, Planung — der S&C-Kern von STRIVN. Kostenlos für ein Team.',
+        desc: 'Der S&C-Kern von STRIVN: Monitoring, Tests, Programme und Planung. Kostenlos für ein Team.',
         cta: 'Zur eigenen Seite',
       },
       {
         name: 'Cheftrainer & Staff',
-        desc: 'Anwesenheit, Aufgebote, Einheiten und Spiel live: der Alltag der Gruppe.',
+        desc: 'Der Alltag der Gruppe: Anwesenheit, Aufgebote, Einheiten und Spiel live.',
         cta: 'Zur Teamverwaltung',
       },
       {
         name: 'Analyst & Daten',
-        desc: 'Berichte, KI & BI: die Auswertung, die der ganze Staff versteht.',
+        desc: 'Fünf Berichtstypen, ein Generator und frei baubare Dashboards, gelesen vom ganzen Staff.',
         cta: 'Zu Berichten & KI',
       },
       {
@@ -313,12 +313,12 @@ const de: SolutionsContent = {
       },
       {
         name: 'Spieler',
-        desc: 'Check-in am Morgen, RSVP und Einheiten in der Spieler-App.',
+        desc: 'Check-in am Morgen in zwanzig Sekunden, RSVP und Einheiten in der Spieler-App.',
         cta: 'Zur Spieler-App',
       },
       {
         name: 'Sportdirektor',
-        desc: 'Mehrere Teams und Führungssicht — in Öffnung mit den Pilotvereinen.',
+        desc: 'Mehrere Teams und Führungssicht, in Vorbereitung. Wir sagen Bescheid, sobald es öffnet.',
         cta: 'Auf die Warteliste',
       },
     ],
@@ -329,41 +329,41 @@ const de: SolutionsContent = {
 
 const pt: SolutionsContent = {
   meta: {
-    title: 'Soluções STRIVN | O onze do seu staff de performance',
+    title: 'Soluções STRIVN | Seis funções, uma só base de dados',
     description:
-      'Seis funções, seis ecrãs, uma única base de dados: preparador físico, treinador principal, analista, fisioterapeuta, jogador e diretor desportivo.',
+      'Encontre a sua posição no staff: preparador físico, treinador principal, analista, fisioterapeuta, jogador e diretor desportivo. Seis funções, uma só base de dados.',
   },
   hero: {
-    kicker: 'SOLUÇÕES · A FICHA DE JOGO',
-    title: 'O onze do seu staff de performance.',
-    sub: 'No campo cada um tem a sua posição. No STRIVN também: seis funções, seis ecrãs, e um só terreno de jogo — os dados. Encontre o seu número.',
+    kicker: 'A FICHA DE JOGO',
+    title: 'Encontre a sua posição no onze do staff.',
+    sub: 'Cada um tem a sua posição no campo e o seu ecrã no STRIVN: seis funções, uma só base de dados.',
   },
   platformIntro: {
-    title: 'Da convocatória ao relatório pós-jogo.',
-    body: 'Convocatórias, presenças, enfermaria, sessões, monitorização e relatórios vivem no mesmo ambiente, aberto a todo o staff.',
+    title: 'Conduza a semana inteira, de segunda ao jogo.',
+    body: 'Convocatórias, presenças, enfermaria, sessões, monitorização e relatórios vivem no mesmo sítio. Os módulos abaixo partilham uma base de dados, com um direito de acesso por função.',
   },
   compo: {
     kicker: 'SEIS POSIÇÕES, UM CAMPO',
-    title: 'Toda a gente joga no mesmo campo: os dados.',
-    body: 'Cada número leva a uma página dedicada. A braçadeira é do preparador físico: é ele que faz entrar o STRIVN no clube, gratuitamente.',
-    caption: 'O CAMPO — UMA SÓ BASE: GPS · BEM-ESTAR · CARGA · PRESENÇAS · MÉDICO',
+    title: 'Partilhe a mesma base entre seis funções.',
+    body: 'Cada número abre a sua página. A braçadeira é do preparador físico, que faz entrar o STRIVN no clube.',
+    caption: 'O CAMPO · UMA SÓ BASE: GPS · BEM-ESTAR · CARGA · PRESENÇAS · MÉDICO',
     captain: '(C)',
     soon: 'EM BREVE',
     spots: ['JOGADOR', 'TREINADOR', 'ANALISTA', 'PREPARADOR FÍSICO', 'FISIO & MÉDICO', 'DIR. DESPORTIVO'],
     roster: [
       {
         name: 'Preparador físico',
-        desc: 'Monitorização, testes, programas, planeamento — o núcleo S&C do STRIVN. Grátis para uma equipa.',
+        desc: 'O núcleo S&C do STRIVN: monitorização, testes, programas e planeamento. Grátis para uma equipa.',
         cta: 'Ver a página dedicada',
       },
       {
         name: 'Treinador principal & staff',
-        desc: 'Presenças, convocatórias, sessões e jogo em direto: o dia a dia do grupo.',
+        desc: 'O dia a dia do grupo: presenças, convocatórias, sessões e jogo em direto.',
         cta: 'Ver a gestão de equipa',
       },
       {
         name: 'Analista & dados',
-        desc: 'Relatórios, IA & BI: a restituição que fala a todo o staff.',
+        desc: 'Cinco tipos de relatório, um gerador e dashboards à medida, lidos por todo o staff.',
         cta: 'Ver relatórios & IA',
       },
       {
@@ -373,12 +373,12 @@ const pt: SolutionsContent = {
       },
       {
         name: 'Jogador',
-        desc: 'Check-in da manhã, RSVP e sessões na app do jogador.',
+        desc: 'Check-in da manhã em vinte segundos, RSVP e sessões na app do jogador.',
         cta: 'Ver a app do jogador',
       },
       {
         name: 'Diretor desportivo',
-        desc: 'Multi-equipas e vista de direção — em abertura com os clubes piloto.',
+        desc: 'Multi-equipas e vista de direção, em preparação. Avisamos assim que abrir.',
         cta: 'Entrar na lista de espera',
       },
     ],
@@ -389,41 +389,41 @@ const pt: SolutionsContent = {
 
 const es: SolutionsContent = {
   meta: {
-    title: 'Soluciones STRIVN | La alineación de tu staff de rendimiento',
+    title: 'Soluciones STRIVN | Seis funciones, una sola base de datos',
     description:
-      'Seis funciones, seis pantallas, una sola base de datos: preparador físico, entrenador, analista, fisio, jugador y director deportivo.',
+      'Encuentra tu posición en el staff: preparador físico, entrenador, analista, fisio, jugador y director deportivo. Seis funciones, una sola base de datos.',
   },
   hero: {
-    kicker: 'SOLUCIONES · EL ACTA DE PARTIDO',
-    title: 'La alineación de tu staff de rendimiento.',
-    sub: 'En el campo cada uno tiene su posición. En STRIVN también: seis funciones, seis pantallas, y un solo terreno de juego — los datos. Encuentra tu número.',
+    kicker: 'EL ACTA DE PARTIDO',
+    title: 'Encuentra tu posición en la alineación del staff.',
+    sub: 'Cada uno tiene su posición en el campo y su pantalla en STRIVN: seis funciones, una sola base de datos.',
   },
   platformIntro: {
-    title: 'De la convocatoria al informe pospartido.',
-    body: 'Convocatorias, asistencia, enfermería, sesiones, monitorización e informes viven en el mismo entorno, abierto a todo el staff.',
+    title: 'Lleva la semana entera, del lunes al partido.',
+    body: 'Convocatorias, asistencia, enfermería, sesiones, monitorización e informes viven en el mismo sitio. Los módulos de abajo comparten una base de datos, con un permiso de acceso por función.',
   },
   compo: {
     kicker: 'SEIS POSICIONES, UN CAMPO',
-    title: 'Todos juegan en el mismo campo: los datos.',
-    body: 'Cada número lleva a una página dedicada. El brazalete es del preparador físico: es él quien mete STRIVN en el club, gratis.',
-    caption: 'EL CAMPO — UNA SOLA BASE: GPS · BIENESTAR · CARGA · ASISTENCIA · MÉDICO',
+    title: 'Comparte la misma base entre seis funciones.',
+    body: 'Cada número abre su página. El brazalete es del preparador físico, que mete STRIVN en el club.',
+    caption: 'EL CAMPO · UNA SOLA BASE: GPS · BIENESTAR · CARGA · ASISTENCIA · MÉDICO',
     captain: '(C)',
     soon: 'PRONTO',
     spots: ['JUGADOR', 'ENTRENADOR', 'ANALISTA', 'PREPARADOR FÍSICO', 'FISIO & MÉDICO', 'DIR. DEPORTIVO'],
     roster: [
       {
         name: 'Preparador físico',
-        desc: 'Monitorización, tests, programas, planificación — el núcleo S&C de STRIVN. Gratis para un equipo.',
+        desc: 'El núcleo S&C de STRIVN: monitorización, tests, programas y planificación. Gratis para un equipo.',
         cta: 'Ver la página dedicada',
       },
       {
         name: 'Entrenador & staff',
-        desc: 'Asistencia, convocatorias, sesiones y partido en directo: el día a día del grupo.',
+        desc: 'El día a día del grupo: asistencia, convocatorias, sesiones y partido en directo.',
         cta: 'Ver la gestión de equipo',
       },
       {
         name: 'Analista & datos',
-        desc: 'Informes, IA & BI: la lectura que entiende todo el staff.',
+        desc: 'Cinco tipos de informe, un generador y cuadros de mando a medida, leídos por todo el staff.',
         cta: 'Ver informes & IA',
       },
       {
@@ -433,12 +433,12 @@ const es: SolutionsContent = {
       },
       {
         name: 'Jugador',
-        desc: 'Check-in de la mañana, RSVP y sesiones en la app del jugador.',
+        desc: 'Check-in de la mañana en veinte segundos, RSVP y sesiones en la app del jugador.',
         cta: 'Ver la app del jugador',
       },
       {
         name: 'Director deportivo',
-        desc: 'Multiequipo y vista de dirección — en apertura con los clubes piloto.',
+        desc: 'Multiequipo y vista de dirección, en preparación. Te avisamos en cuanto abra.',
         cta: 'Unirme a la lista de espera',
       },
     ],
