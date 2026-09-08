@@ -238,22 +238,22 @@ const fr: PricingContent = {
   meta: {
     title: 'Tarifs STRIVN | 30 jours de Semi-Pro offerts à l’inscription',
     description:
-      'Quatre paliers comparés ligne par ligne. Tout nouveau compte démarre avec 30 jours de Semi-Pro, sans carte. Le palier performance reprend le croisement GPS, RPE et wellness que vous faites encore à la main.',
+      'Comparez les quatre paliers ligne par ligne. Chaque nouveau compte démarre avec 30 jours de Semi-Pro, sans carte. Le Semi-Pro reprend le croisement GPS, RPE et wellness que vous faites à la main.',
   },
   hero: {
     kicker: 'TARIFS',
-    title: 'Le dernier kilomètre entre votre export GPS et votre décision.',
-    sub: 'Quatre paliers. Le gratuit fait tourner une équipe toute une saison. Le palier performance reprend le croisement GPS, RPE et wellness que vous faites encore à la main.',
+    title: 'Démarrez gratuitement, croisez le GPS.',
+    sub: 'Quatre paliers. Le gratuit fait tourner une équipe toute la saison. Le Semi-Pro reprend le croisement GPS, RPE et wellness que vous faites à la main.',
   },
   trial: {
     label: 'ESSAI',
-    title: '30 jours de Semi-Pro, offerts à l’inscription.',
-    body: 'Chaque nouveau compte démarre au Semi-Pro, sans carte bancaire et sans rien demander à personne. À l’échéance il repasse au gratuit tout seul, rien n’est prélevé, et tout ce que vous avez produit reste lisible.',
+    title: 'Testez le Semi-Pro pendant 30 jours, sans carte.',
+    body: 'Chaque nouveau compte démarre au Semi-Pro, sans carte bancaire et sans validation du club. À l’échéance, il repasse au gratuit tout seul et vous gardez l’accès à tout ce que vous avez produit.',
   },
   plans: {
     kicker: 'QUATRE PALIERS',
-    title: 'Chaque palier reprend le précédent.',
-    note: 'Aucun palier payant n’est encore ouvert à la vente. Créez votre compte : l’essai vous met au Semi-Pro pendant un mois, et nous vous prévenons quand la vente ouvre.',
+    title: 'Montez de palier, gardez tout le précédent.',
+    note: 'Les paliers payants ouvrent à la vente prochainement. Créez votre compte, l’essai vous met au Semi-Pro pendant 30 jours, et nous vous prévenons à l’ouverture.',
     perMonth: '/ mois',
     billedYearly: 'Facturé {total} par an',
     monthsFree: '{count} mois offerts',
@@ -264,8 +264,8 @@ const fr: PricingContent = {
         code: 'free',
         name: 'Free',
         badge: 'Disponible maintenant',
-        promise: 'Faire tourner une équipe',
-        qualifier: 'Vous êtes seul avec une équipe, et aucun budget à demander.',
+        promise: 'Faites tourner une équipe',
+        qualifier: 'Vous encadrez une équipe seul, sans budget à demander.',
         features: [
           'Une équipe, joueurs sans plafond, une place de staff',
           'Entraînement, match, repos, réunion, tâche, team building',
@@ -284,7 +284,7 @@ const fr: PricingContent = {
         code: 'amateur',
         name: 'Amateur',
         badge: 'Bientôt en vente',
-        promise: 'Arrêter de tout ressaisir chaque semaine',
+        promise: 'Arrêtez de tout ressaisir chaque semaine',
         qualifier: 'Vous rejouez les mêmes séances et vous les reconstruisez à chaque fois.',
         inherits: 'Tout le plan Free, plus :',
         features: [
@@ -292,7 +292,7 @@ const fr: PricingContent = {
           'Tableaux tactiques et modèles sans plafond',
           'Historique de matchs complet',
           'Entraînement individuel et récupération au calendrier',
-          'Une seconde place de staff : votre préparateur avec vous',
+          'Une seconde place de staff, pour votre préparateur',
           '400 appels à l’assistant IA par mois',
         ],
         cta: 'Créer un compte',
@@ -302,13 +302,13 @@ const fr: PricingContent = {
         code: 'semi_pro',
         name: 'Semi-Pro',
         badge: 'Le palier performance',
-        promise: 'Croiser le GPS avec le reste',
+        promise: 'Croisez le GPS avec le reste',
         qualifier: 'Vous exportez déjà du GPS, et vous le recroisez à la main dans Excel.',
         inherits: 'Tout le plan Amateur, plus :',
         features: [
           'Import GPS par CSV, quel que soit le fournisseur',
-          'Seuils par joueur, cibles et bandes : l’écart se voit, il ne se calcule plus.',
-          'GPS, RPE et wellness sur le même créneau, sans le tableur du dimanche soir.',
+          'Seuils par joueur, cibles et bandes, écart calculé pour vous',
+          'GPS, RPE et wellness croisés sur le même créneau',
           'Musculation, tests physiques et tableau médical',
           'Synchronisation des objets connectés',
           'Relances et check-ins automatiques par WhatsApp',
@@ -324,7 +324,7 @@ const fr: PricingContent = {
         name: 'Pro',
         badge: 'Sur demande',
         quotePrice: 'Sur devis',
-        promise: 'Descendre au niveau de l’exercice',
+        promise: 'Descendez au niveau de l’exercice',
         qualifier: 'Plusieurs équipes équipées, une cellule performance, des données à faire sortir.',
         inherits: 'Tout le plan Semi-Pro, plus :',
         features: [
@@ -340,19 +340,19 @@ const fr: PricingContent = {
   },
   credits: {
     kicker: 'ASSISTANT IA',
-    title: 'L’assistant se compte en tours, pas en forfait.',
+    title: 'Comptez l’assistant en tours de conversation.',
     body:
-      'Chaque palier ouvre une dotation mensuelle d’appels à l’assistant, remise à zéro chaque mois. Un appel est un tour de conversation, pas une requête technique, et la prise en main puise au même compteur.',
+      'Chaque palier ouvre une dotation mensuelle d’appels à l’assistant, remise à zéro chaque mois. Un appel vaut un tour de conversation, et la prise en main puise au même compteur.',
     points: [
-      '60 tours par mois dès le plan gratuit. Personne ne paie pour une fonctionnalité qu’il n’a jamais essayée.',
+      '60 tours par mois dès le plan gratuit, pour essayer avant de payer.',
       '400 à l’Amateur, 2 000 au Semi-Pro, sans plafond au Pro.',
       'La dotation repart à zéro chaque mois.',
     ],
-    note: 'Ces dotations sont des valeurs de travail. Nous les recalerons sur l’usage réel plutôt que de les défendre par principe.',
+    note: 'Ces dotations sont des valeurs de travail. Nous les recalerons sur l’usage réel des premiers mois.',
   },
   matrix: {
     kicker: 'COMPARATIF',
-    title: 'Ce qui change vraiment d’un palier à l’autre.',
+    title: 'Comparez les quatre paliers ligne par ligne.',
     caption: 'Comparatif des quatre paliers STRIVN, ligne par ligne.',
     scrollHint: 'Tableau défilant horizontalement.',
     yes: 'Inclus',
@@ -409,9 +409,9 @@ const fr: PricingContent = {
   },
   downgrade: {
     kicker: 'RÉTROGRADATION',
-    title: 'Vos données ne sont jamais prises en otage.',
+    title: 'Redescendez de palier, gardez tout votre historique.',
     body:
-      'On verrouille la création, jamais la lecture. Une équipe qui redescend garde l’accès à tout ce qu’elle a produit : le créneau de soins posé par le kiné reste au calendrier, la séance de musculation passée reste consultable, l’import GPS confirmé reste visible. Remonter d’un palier rouvre tout, tel quel.',
+      'Nous verrouillons la création et laissons la lecture ouverte, sur les quatre paliers. Une équipe qui redescend garde l’accès à tout ce qu’elle a produit : créneaux de soins posés par le kiné, séances de musculation passées, imports GPS confirmés. Remonter d’un palier rouvre la création, telle quelle.',
     closesTitle: 'Ce qui ferme',
     closes: [
       'Créer un événement du palier supérieur',
@@ -429,23 +429,23 @@ const fr: PricingContent = {
   },
   faq: {
     kicker: 'QUESTIONS',
-    title: 'Ce qu’on nous demande avant de signer.',
+    title: 'Trouvez la réponse avant de choisir votre palier.',
     body: 'Les réponses valent pour les quatre paliers, sauf mention contraire.',
-    contactTitle: 'Une question que cette page ne couvre pas ?',
-    contactBody: 'Écrivez-nous. Nous répondons nous-mêmes, et une question précise vaut mieux qu’un formulaire.',
+    contactTitle: 'Posez votre question à l’équipe.',
+    contactBody: 'Écrivez-nous. Nous répondons nous-mêmes, et nous vous disons ce qui est déjà livré.',
     email: 'hello@strivn.net',
     items: [
       {
-        q: 'Que se passe-t-il à la fin du mois d’essai ?',
-        a: 'Le compte repasse au plan gratuit tout seul. Rien n’est prélevé, aucune carte n’a été demandée, et tout ce que vous avez produit pendant l’essai reste consultable. Nous prévenons trois jours avant l’échéance pour que la date ne surprenne personne.',
+        q: 'Que se passe-t-il après les 30 jours d’essai ?',
+        a: 'Le compte repasse au plan gratuit tout seul, et votre facture reste à zéro. Nous prévenons trois jours avant l’échéance, et tout ce que vous avez produit reste consultable.',
       },
       {
         q: 'Le plan gratuit est-il limité dans le temps ?',
-        a: 'Non. Il est limité en volume — une équipe, une place de staff, 20 exercices, 3 tableaux tactiques, les 5 derniers matchs en historique — jamais en durée. Il n’expire pas et ne demande pas de carte bancaire.',
+        a: 'Le gratuit tient toute la saison, puis la suivante, sans carte bancaire. Il est limité en volume : une équipe, une place de staff, 20 exercices, 3 tableaux tactiques, les 5 derniers matchs en historique.',
       },
       {
         q: 'Pourquoi 25 € puis 249 € ?',
-        a: 'Parce que les deux paliers ne vendent pas la même chose. L’Amateur, c’est la logistique du staff, payée par un coach de sa poche : il lève les plafonds et ouvre une seconde place de staff, il n’ouvre aucun module. Le Semi-Pro, c’est une plateforme de performance sur un budget de club, et c’est le palier où vos GPS commencent à servir à quelque chose. Entre les deux, il n’y a pas un produit plus gros, il y a un autre métier.',
+        a: 'Les deux paliers vendent deux métiers différents. L’Amateur couvre la logistique du staff, payée par un coach de sa poche. Il lève les plafonds et ouvre une seconde place de staff. Le Semi-Pro ouvre la performance sur un budget de club, avec l’import GPS et le croisement qui va avec.',
       },
       {
         q: 'Pourquoi le prix affiché est-il le tarif annuel ?',
@@ -453,29 +453,29 @@ const fr: PricingContent = {
       },
       {
         q: 'Qu’est-ce qui compte dans les 20 exercices ?',
-        a: 'Les exercices que vous créez. Le catalogue de musculation central, maintenu par STRIVN et lisible par tout le monde, ne compte pas dans votre plafond.',
+        a: 'Seuls les exercices que vous créez comptent. Le catalogue de musculation central, maintenu par STRIVN, reste lisible par tout le monde en dehors de votre plafond.',
       },
       {
         q: 'Puis-je importer mon GPS sans changer de fournisseur ?',
-        a: 'Oui, par CSV, quel que soit le système. STRIVN analyse les en-têtes de votre fichier au lieu d’attendre un format précis, et retient le mapping de vos colonnes pour les imports suivants. Les connecteurs directs vers les GPS du marché sont annoncés au palier Pro, et ne sont pas encore livrés.',
+        a: 'Oui, par CSV, quel que soit le système. STRIVN lit les en-têtes de votre fichier et retient la correspondance de vos colonnes pour les imports suivants. Les connecteurs directs vers les GPS du marché sont prévus au palier Pro, livraison à venir.',
       },
       {
         q: 'Comment se comptent les appels à l’assistant IA ?',
-        a: 'En tours de conversation, pas en requêtes techniques : 60 par mois au gratuit, 400 à l’Amateur, 2 000 au Semi-Pro, sans plafond au Pro. La dotation repart à zéro chaque mois, et la prise en main puise au même compteur.',
+        a: 'Un tour de conversation vaut un appel : 60 par mois au gratuit, 400 à l’Amateur, 2 000 au Semi-Pro, sans plafond au Pro. La dotation repart à zéro chaque mois, et la prise en main puise au même compteur.',
       },
       {
         q: 'Que se passe-t-il si je redescends de palier ?',
-        a: 'Vous gardez l’accès en lecture à tout ce que vous avez produit. Ce qui ferme, c’est la création : poser un créneau du palier supérieur, importer, prescrire, inviter au-delà du plafond de staff. Le staff déjà en place ne bouge pas.',
+        a: 'Vous gardez l’accès en lecture à tout ce que vous avez produit. Ce qui ferme, c’est la création : poser un créneau du palier supérieur, importer, prescrire, inviter au-delà du plafond de staff. Le staff déjà en place garde son accès.',
       },
       {
-        q: 'Et un club qui ne paie pas par carte bancaire ?',
-        a: 'Bon de commande et facture, sur le Semi-Pro et le Pro. À l’échelle d’un budget de saison, la validation passe rarement par une carte, et nous en tenons compte.',
+        q: 'Un club peut-il payer sur facture ?',
+        a: 'Oui, bon de commande et facture, sur le Semi-Pro et le Pro. Un budget de saison se valide par la comptabilité du club, et nous travaillons avec ce circuit.',
       },
     ],
   },
   cta: {
     title: 'Commencez par votre propre saison.',
-    sub: 'Créez votre compte en quelques minutes : le premier mois est au palier Semi-Pro, sans carte. Si vous exportez déjà du GPS, la conversation la plus rapide commence par ce que vous recroisez encore à la main.',
+    sub: 'Créez votre compte en quelques minutes. Les 30 premiers jours sont au Semi-Pro, sans carte bancaire. Si vous exportez déjà du GPS, montrez-nous le tableur que vous recroisez à la main.',
     primary: 'Créer un compte',
     secondary: 'Montrez-nous votre Excel',
     trust: 'Sans carte bancaire. Sans engagement.',
@@ -487,22 +487,22 @@ const en: PricingContent = {
   meta: {
     title: 'STRIVN pricing | 30 days of Semi-Pro free when you sign up',
     description:
-      'Four tiers compared line by line. Every new account starts on 30 days of Semi-Pro, no card. The performance tier takes over the GPS, RPE and wellness crossing you still do by hand.',
+      'Compare four tiers line by line. Every new account starts on 30 days of Semi-Pro, without a card. Semi-Pro takes over the GPS, RPE and wellness crossing you do by hand.',
   },
   hero: {
     kicker: 'PRICING',
-    title: 'The last mile between your GPS export and your decision.',
-    sub: 'Four tiers. The free one runs a team for a whole season. The performance tier takes over the GPS, RPE and wellness crossing you still do by hand.',
+    title: 'Start free, cross your GPS from the first month.',
+    sub: 'Four tiers. The free one runs a team for a whole season. Semi-Pro takes over the GPS, RPE and wellness crossing you do by hand.',
   },
   trial: {
     label: 'TRIAL',
-    title: '30 days of Semi-Pro, free when you sign up.',
-    body: 'Every new account starts on Semi-Pro, with no card and nobody to ask. At the end it returns to the free plan on its own, nothing is charged, and everything you made stays readable.',
+    title: 'Try Semi-Pro for 30 days, without a card.',
+    body: 'Every new account starts on Semi-Pro, without a card and without club approval. At the end it returns to the free plan on its own, and you keep access to everything you produced.',
   },
   plans: {
     kicker: 'FOUR TIERS',
-    title: 'Every tier carries the one below it.',
-    note: 'No paid tier is open for sale yet. Create your account: the trial puts you on Semi-Pro for a month, and we tell you when the sale opens.',
+    title: 'Step up a tier, keep everything below it.',
+    note: 'Paid tiers open for sale soon. Create your account, the trial puts you on Semi-Pro for 30 days, and we tell you when the sale opens.',
     perMonth: '/ month',
     billedYearly: 'Billed {total} per year',
     monthsFree: '{count} months free',
@@ -514,7 +514,7 @@ const en: PricingContent = {
         name: 'Free',
         badge: 'Available now',
         promise: 'Run a team',
-        qualifier: 'You are on your own with one team, and no budget to ask for.',
+        qualifier: 'You run one team on your own, without a budget to ask for.',
         features: [
           'One team, unlimited players, one staff seat',
           'Training, match, rest, meeting, task, team building',
@@ -541,7 +541,7 @@ const en: PricingContent = {
           'Unlimited tactical boards and templates',
           'Full match history',
           'Individual training and recovery on the calendar',
-          'A second staff seat: your S&C coach alongside you',
+          'A second staff seat for your S&C coach',
           '400 AI assistant calls a month',
         ],
         cta: 'Create an account',
@@ -556,8 +556,8 @@ const en: PricingContent = {
         inherits: 'Everything in Amateur, plus:',
         features: [
           'GPS import by CSV, whichever the vendor',
-          'Per-player thresholds, targets and bands: the gap shows, it is no longer calculated.',
-          'GPS, RPE and wellness on the same slot, without the Sunday-night spreadsheet.',
+          'Per-player thresholds, targets and bands, with the gap calculated for you',
+          'GPS, RPE and wellness crossed on the same slot',
           'Strength, physical tests and the medical board',
           'Wearable sync',
           'Automatic reminders and check-ins over WhatsApp',
@@ -589,19 +589,19 @@ const en: PricingContent = {
   },
   credits: {
     kicker: 'AI ASSISTANT',
-    title: 'The assistant is counted in turns, not in a bundle.',
+    title: 'Count the assistant in turns of conversation.',
     body:
-      'Every tier opens a monthly allowance of assistant calls, reset each month. A call is a turn of conversation, not a technical request, and getting started draws on the same counter.',
+      'Every tier opens a monthly allowance of assistant calls, reset each month. A call is worth one turn of conversation, and getting started draws on the same counter.',
     points: [
-      '60 turns a month from the free plan on. Nobody pays for a feature they have never tried.',
+      '60 turns a month from the free plan on, so you try before you pay.',
       '400 on Amateur, 2,000 on Semi-Pro, uncapped on Pro.',
       'The allowance resets every month.',
     ],
-    note: 'These allowances are working figures. We will recalibrate them on real usage rather than defend them on principle.',
+    note: 'These allowances are working figures. We will recalibrate them on the real usage of the first months.',
   },
   matrix: {
     kicker: 'COMPARISON',
-    title: 'What actually changes from one tier to the next.',
+    title: 'Compare the four tiers row by row.',
     caption: 'The four STRIVN tiers compared, line by line.',
     scrollHint: 'Table scrolls horizontally.',
     yes: 'Included',
@@ -658,9 +658,9 @@ const en: PricingContent = {
   },
   downgrade: {
     kicker: 'STEPPING DOWN',
-    title: 'Your data is never held hostage.',
+    title: 'Step down a tier, keep your whole history.',
     body:
-      'We lock creation, never reading. A team that steps down keeps access to everything it produced: the treatment slot the physio booked stays on the calendar, the past strength session stays readable, the confirmed GPS import stays visible. Stepping back up reopens all of it, as it was.',
+      'We lock creation and leave reading open, on all four tiers. A team that steps down keeps access to everything it produced: treatment slots booked by the physio, past strength sessions, confirmed GPS imports. Stepping back up reopens creation, exactly as it was.',
     closesTitle: 'What closes',
     closes: [
       'Creating an event from the tier above',
@@ -678,23 +678,23 @@ const en: PricingContent = {
   },
   faq: {
     kicker: 'QUESTIONS',
-    title: 'What we get asked before signing.',
+    title: 'Find your answer before you choose a tier.',
     body: 'The answers hold for all four tiers unless stated otherwise.',
-    contactTitle: 'A question this page does not cover?',
-    contactBody: 'Write to us. We answer ourselves, and a precise question beats a form.',
+    contactTitle: 'Ask the team your question.',
+    contactBody: 'Write to us. We answer ourselves, and we tell you what is already shipped.',
     email: 'hello@strivn.net',
     items: [
       {
-        q: 'What happens at the end of the trial month?',
-        a: 'The account returns to the free plan on its own. Nothing is charged, no card was ever asked for, and everything you produced during the trial stays readable. We warn you three days before the date so it surprises nobody.',
+        q: 'What happens after the 30 trial days?',
+        a: 'The account returns to the free plan on its own, and your invoice stays at zero. We warn you three days before the date, and everything you produced stays readable.',
       },
       {
         q: 'Is the free plan time-limited?',
-        a: 'No. It is capped by volume — one team, one staff seat, 20 exercises, 3 tactical boards, the last 5 matches in history — never by time. It does not expire and it asks for no card.',
+        a: 'The free plan runs a whole season, then the next one, without a card. It is capped by volume: one team, one staff seat, 20 exercises, 3 tactical boards, the last 5 matches in history.',
       },
       {
         q: 'Why €25 and then €249?',
-        a: 'Because the two tiers do not sell the same thing. Amateur is the staff’s logistics, paid out of a coach’s pocket: it lifts the caps and opens a second staff seat, it opens no module. Semi-Pro is a performance platform on a club budget, and it is the tier where your GPS starts being worth something. Between them there is not a bigger product, there is a different job.',
+        a: 'The two tiers sell two different jobs. Amateur covers the staff’s logistics, paid out of a coach’s pocket. It lifts the caps and opens a second staff seat. Semi-Pro opens performance on a club budget, with GPS import and the crossing that goes with it.',
       },
       {
         q: 'Why is the price shown the annual one?',
@@ -702,32 +702,32 @@ const en: PricingContent = {
       },
       {
         q: 'What counts towards the 20 exercises?',
-        a: 'The exercises you create. The central strength catalogue, maintained by STRIVN and readable by everyone, does not count against your cap.',
+        a: 'Only the exercises you create count. The central strength catalogue, maintained by STRIVN, stays readable by everyone outside your cap.',
       },
       {
         q: 'Can I import my GPS without changing vendor?',
-        a: 'Yes, by CSV, whichever the system. STRIVN reads your file’s headers instead of expecting one format, and remembers your column mapping for the next import. Direct connectors to market GPS systems are announced on the Pro tier and are not shipped yet.',
+        a: 'Yes, by CSV, whichever the system. STRIVN reads your file’s headers and remembers your column matching for the next import. Direct connectors to market GPS systems are planned on the Pro tier, delivery to come.',
       },
       {
         q: 'How are AI assistant calls counted?',
-        a: 'In turns of conversation, not technical requests: 60 a month on free, 400 on Amateur, 2,000 on Semi-Pro, uncapped on Pro. The allowance resets every month, and getting started draws on the same counter.',
+        a: 'One turn of conversation is one call: 60 a month on free, 400 on Amateur, 2,000 on Semi-Pro, uncapped on Pro. The allowance resets every month, and getting started draws on the same counter.',
       },
       {
         q: 'What happens if I step down a tier?',
-        a: 'You keep read access to everything you produced. What closes is creation: booking a slot from the tier above, importing, prescribing, inviting beyond the staff cap. The staff already in place does not move.',
+        a: 'You keep read access to everything you produced. What closes is creation: booking a slot from the tier above, importing, prescribing, inviting beyond the staff cap. The staff already in place keeps its access.',
       },
       {
-        q: 'What about a club that does not pay by card?',
-        a: 'Purchase order and invoice, on Semi-Pro and Pro. At the scale of a season budget, approval rarely goes through a card, and we work with that.',
+        q: 'Can a club pay on invoice?',
+        a: 'Yes, purchase order and invoice, on Semi-Pro and Pro. A season budget is approved through the club’s accounts, and we work with that route.',
       },
     ],
   },
   cta: {
     title: 'Start with your own season.',
-    sub: 'Create your account in minutes: the first month is on the Semi-Pro tier, with no card. If you already export GPS, the fastest conversation starts with whatever you still cross by hand.',
+    sub: 'Create your account in minutes. The first 30 days are on Semi-Pro, without a card. If you already export GPS, show us the spreadsheet you cross by hand.',
     primary: 'Create an account',
     secondary: 'Show us your Excel',
-    trust: 'No card. No commitment.',
+    trust: 'Without a card. Without a commitment.',
   },
   teaserCta: 'See the full comparison',
 };
@@ -736,22 +736,22 @@ const nl: PricingContent = {
   meta: {
     title: 'STRIVN-tarieven | 30 dagen Semi-Pro gratis bij inschrijving',
     description:
-      'Vier niveaus, regel voor regel vergeleken. Elk nieuw account start met 30 dagen Semi-Pro, zonder kaart. Het performance-niveau neemt de kruising van GPS, RPE en wellness over die u nog met de hand doet.',
+      'Vergelijk vier niveaus, regel voor regel. Elk nieuw account start met 30 dagen Semi-Pro, zonder kaart. Semi-Pro neemt de kruising van GPS, RPE en wellness over die u met de hand doet.',
   },
   hero: {
     kicker: 'TARIEVEN',
-    title: 'De laatste kilometer tussen uw GPS-export en uw beslissing.',
-    sub: 'Vier niveaus. Het gratis niveau draagt een team een heel seizoen. Het performance-niveau neemt de kruising van GPS, RPE en wellness over die u nog met de hand doet.',
+    title: 'Start gratis, kruis uw GPS vanaf de eerste maand.',
+    sub: 'Vier niveaus. Het gratis niveau draagt een team een heel seizoen. Semi-Pro neemt de kruising van GPS, RPE en wellness over die u met de hand doet.',
   },
   trial: {
     label: 'PROEFPERIODE',
-    title: '30 dagen Semi-Pro, gratis bij inschrijving.',
-    body: 'Elk nieuw account start op Semi-Pro, zonder kaart en zonder iemand om toestemming te vragen. Op de vervaldag keert het vanzelf terug naar het gratis plan, er wordt niets afgerekend, en alles wat u maakte blijft leesbaar.',
+    title: 'Test Semi-Pro 30 dagen, zonder kaart.',
+    body: 'Elk nieuw account start op Semi-Pro, zonder kaart en zonder goedkeuring van de club. Op de vervaldag keert het vanzelf terug naar het gratis plan en houdt u toegang tot alles wat u maakte.',
   },
   plans: {
     kicker: 'VIER NIVEAUS',
-    title: 'Elk niveau draagt het vorige mee.',
-    note: 'Geen enkel betaald niveau staat al te koop. Maak uw account aan: de proefperiode zet u een maand op Semi-Pro, en wij verwittigen u zodra de verkoop opent.',
+    title: 'Ga een niveau hoger en houd alles daaronder.',
+    note: 'Betaalde niveaus komen binnenkort te koop. Maak uw account aan, de proefperiode zet u 30 dagen op Semi-Pro, en wij verwittigen u zodra de verkoop opent.',
     perMonth: '/ maand',
     billedYearly: 'Gefactureerd {total} per jaar',
     monthsFree: '{count} maanden gratis',
@@ -762,8 +762,8 @@ const nl: PricingContent = {
         code: 'free',
         name: 'Free',
         badge: 'Nu beschikbaar',
-        promise: 'Een team draaiende houden',
-        qualifier: 'U staat er alleen voor met één team, en zonder budget om te vragen.',
+        promise: 'Houd een team draaiende',
+        qualifier: 'U leidt één team alleen, zonder budget om te vragen.',
         features: [
           'Eén team, onbeperkt spelers, één stafplaats',
           'Training, wedstrijd, rust, vergadering, taak, teambuilding',
@@ -782,7 +782,7 @@ const nl: PricingContent = {
         code: 'amateur',
         name: 'Amateur',
         badge: 'Binnenkort te koop',
-        promise: 'Niet elke week alles opnieuw ingeven',
+        promise: 'Stop met elke week alles opnieuw ingeven',
         qualifier: 'U speelt dezelfde sessies opnieuw en bouwt ze telkens opnieuw op.',
         inherits: 'Alles uit Free, plus:',
         features: [
@@ -790,7 +790,7 @@ const nl: PricingContent = {
           'Onbeperkte tactische borden en sjablonen',
           'Volledige wedstrijdgeschiedenis',
           'Individuele training en recuperatie in de agenda',
-          'Een tweede stafplaats: uw fysieke trainer naast u',
+          'Een tweede stafplaats voor uw fysieke trainer',
           '400 oproepen naar de AI-assistent per maand',
         ],
         cta: 'Account aanmaken',
@@ -800,13 +800,13 @@ const nl: PricingContent = {
         code: 'semi_pro',
         name: 'Semi-Pro',
         badge: 'Het performance-niveau',
-        promise: 'De GPS kruisen met de rest',
+        promise: 'Kruis de GPS met de rest',
         qualifier: 'U exporteert al GPS, en u kruist het met de hand in Excel.',
         inherits: 'Alles uit Amateur, plus:',
         features: [
           'GPS-import via CSV, ongeacht de leverancier',
-          'Drempels per speler, doelen en banden: het verschil is zichtbaar, niet meer te berekenen.',
-          'GPS, RPE en wellness op hetzelfde blok, zonder de spreadsheet van zondagavond.',
+          'Drempels per speler, doelen en banden, met het verschil al berekend',
+          'GPS, RPE en wellness gekruist op hetzelfde blok',
           'Krachttraining, fysieke testen en het medisch bord',
           'Synchronisatie van wearables',
           'Automatische herinneringen en check-ins via WhatsApp',
@@ -822,7 +822,7 @@ const nl: PricingContent = {
         name: 'Pro',
         badge: 'Op aanvraag',
         quotePrice: 'Op maat',
-        promise: 'Afdalen tot op oefeningniveau',
+        promise: 'Daal af tot op oefeningniveau',
         qualifier: 'Meerdere teams met GPS, een performancecel, en data die eruit moet.',
         inherits: 'Alles uit Semi-Pro, plus:',
         features: [
@@ -838,19 +838,19 @@ const nl: PricingContent = {
   },
   credits: {
     kicker: 'AI-ASSISTENT',
-    title: 'De assistent telt beurten, geen abonnement.',
+    title: 'Tel de assistent in gespreksbeurten.',
     body:
-      'Elk niveau opent een maandelijks budget aan oproepen naar de assistent, dat elke maand opnieuw start. Een oproep is een gespreksbeurt, geen technische aanvraag, en de kennismaking put uit dezelfde teller.',
+      'Elk niveau opent een maandelijks budget aan oproepen naar de assistent, dat elke maand opnieuw start. Eén oproep staat gelijk aan één gespreksbeurt, en de kennismaking put uit dezelfde teller.',
     points: [
-      '60 beurten per maand vanaf het gratis plan. Niemand betaalt voor iets wat hij nooit geprobeerd heeft.',
+      '60 beurten per maand vanaf het gratis plan, zodat u eerst probeert en dan betaalt.',
       '400 op Amateur, 2.000 op Semi-Pro, zonder plafond op Pro.',
       'Het budget start elke maand opnieuw.',
     ],
-    note: 'Deze budgetten zijn werkcijfers. We stemmen ze af op het werkelijke gebruik in plaats van ze uit principe te verdedigen.',
+    note: 'Deze budgetten zijn werkcijfers. We stemmen ze af op het werkelijke gebruik van de eerste maanden.',
   },
   matrix: {
     kicker: 'VERGELIJKING',
-    title: 'Wat er echt verandert van niveau tot niveau.',
+    title: 'Vergelijk de vier niveaus regel voor regel.',
     caption: 'De vier STRIVN-niveaus vergeleken, regel voor regel.',
     scrollHint: 'Tabel schuift horizontaal.',
     yes: 'Inbegrepen',
@@ -907,9 +907,9 @@ const nl: PricingContent = {
   },
   downgrade: {
     kicker: 'TERUGSCHAKELEN',
-    title: 'Uw gegevens worden nooit gegijzeld.',
+    title: 'Zak een niveau en houd uw hele geschiedenis.',
     body:
-      'We vergrendelen het aanmaken, nooit het lezen. Een team dat een niveau zakt, behoudt toegang tot alles wat het gemaakt heeft: het verzorgingsblok van de kine blijft in de agenda, de voorbije krachtsessie blijft raadpleegbaar, de bevestigde GPS-import blijft zichtbaar. Weer opschalen opent alles opnieuw, zoals het was.',
+      'We vergrendelen het aanmaken en houden het lezen open, op alle vier de niveaus. Een team dat een niveau zakt, behoudt toegang tot alles wat het gemaakt heeft: verzorgingsblokken van de kine, voorbije krachtsessies, bevestigde GPS-imports. Weer opschalen opent het aanmaken opnieuw, precies zoals het was.',
     closesTitle: 'Wat sluit',
     closes: [
       'Een evenement van het hogere niveau aanmaken',
@@ -927,23 +927,23 @@ const nl: PricingContent = {
   },
   faq: {
     kicker: 'VRAGEN',
-    title: 'Wat men ons vraagt voor de handtekening.',
+    title: 'Vind het antwoord voordat u uw niveau kiest.',
     body: 'De antwoorden gelden voor alle vier de niveaus, tenzij anders vermeld.',
-    contactTitle: 'Een vraag die deze pagina niet dekt?',
-    contactBody: 'Schrijf ons. Wij antwoorden zelf, en een precieze vraag is beter dan een formulier.',
+    contactTitle: 'Stel uw vraag aan het team.',
+    contactBody: 'Schrijf ons. Wij antwoorden zelf, en wij zeggen u wat er al geleverd is.',
     email: 'hello@strivn.net',
     items: [
       {
-        q: 'Wat gebeurt er na de proefmaand?',
-        a: 'Het account keert vanzelf terug naar het gratis plan. Er wordt niets afgerekend, er is nooit een kaart gevraagd, en alles wat u tijdens de proefperiode maakte blijft leesbaar. Drie dagen voor de vervaldag verwittigen we u, zodat de datum niemand verrast.',
+        q: 'Wat gebeurt er na de 30 proefdagen?',
+        a: 'Het account keert vanzelf terug naar het gratis plan, en uw factuur blijft op nul. Drie dagen voor de vervaldag verwittigen we u, en alles wat u maakte blijft leesbaar.',
       },
       {
         q: 'Is het gratis plan beperkt in de tijd?',
-        a: 'Nee. Het is beperkt in volume — één team, één stafplaats, 20 oefeningen, 3 tactische borden, de laatste 5 wedstrijden in de geschiedenis — nooit in duur. Het vervalt niet en vraagt geen kaart.',
+        a: 'Het gratis plan draagt een heel seizoen, en het volgende, zonder kaart. Het is beperkt in volume: één team, één stafplaats, 20 oefeningen, 3 tactische borden, de laatste 5 wedstrijden in de geschiedenis.',
       },
       {
         q: 'Waarom 25 € en dan 249 €?',
-        a: 'Omdat de twee niveaus niet hetzelfde verkopen. Amateur is de logistiek van de staf, betaald uit de zak van een coach: het licht de plafonds op en opent een tweede stafplaats, het opent geen enkele module. Semi-Pro is een performanceplatform op een clubbudget, en het is het niveau waarop uw GPS iets begint op te leveren. Tussen de twee zit geen groter product, maar een ander vak.',
+        a: 'De twee niveaus verkopen twee verschillende vakken. Amateur dekt de logistiek van de staf, betaald uit de zak van een coach. Het licht de plafonds op en opent een tweede stafplaats. Semi-Pro opent de performance op een clubbudget, met GPS-import en de kruising die erbij hoort.',
       },
       {
         q: 'Waarom is de getoonde prijs het jaartarief?',
@@ -951,29 +951,29 @@ const nl: PricingContent = {
       },
       {
         q: 'Wat telt mee in die 20 oefeningen?',
-        a: 'De oefeningen die u zelf aanmaakt. De centrale krachtcatalogus, onderhouden door STRIVN en leesbaar voor iedereen, telt niet mee.',
+        a: 'Alleen de oefeningen die u zelf aanmaakt tellen mee. De centrale krachtcatalogus, onderhouden door STRIVN, blijft leesbaar voor iedereen buiten uw plafond.',
       },
       {
         q: 'Kan ik mijn GPS importeren zonder van leverancier te wisselen?',
-        a: 'Ja, via CSV, ongeacht het systeem. STRIVN analyseert de hoofdingen van uw bestand in plaats van één formaat te verwachten, en onthoudt uw kolommapping voor de volgende import. Rechtstreekse koppelingen met GPS-systemen op de markt zijn aangekondigd op Pro en zijn nog niet geleverd.',
+        a: 'Ja, via CSV, ongeacht het systeem. STRIVN leest de hoofdingen van uw bestand en onthoudt de overeenkomst van uw kolommen voor de volgende import. Rechtstreekse koppelingen met GPS-systemen op de markt staan gepland op Pro, levering volgt.',
       },
       {
         q: 'Hoe worden de oproepen naar de AI-assistent geteld?',
-        a: 'In gespreksbeurten, niet in technische aanvragen: 60 per maand op gratis, 400 op Amateur, 2.000 op Semi-Pro, zonder plafond op Pro. Het budget start elke maand opnieuw, en de kennismaking put uit dezelfde teller.',
+        a: 'Eén gespreksbeurt telt als één oproep: 60 per maand op gratis, 400 op Amateur, 2.000 op Semi-Pro, zonder plafond op Pro. Het budget start elke maand opnieuw, en de kennismaking put uit dezelfde teller.',
       },
       {
         q: 'Wat gebeurt er als ik een niveau zak?',
-        a: 'U behoudt leestoegang tot alles wat u gemaakt hebt. Wat sluit, is het aanmaken: een blok van het hogere niveau plaatsen, importeren, voorschrijven, uitnodigen boven het stafplafond. De staf die er al is beweegt niet.',
+        a: 'U behoudt leestoegang tot alles wat u gemaakt hebt. Wat sluit, is het aanmaken: een blok van het hogere niveau plaatsen, importeren, voorschrijven, uitnodigen boven het stafplafond. De staf die er al is houdt zijn toegang.',
       },
       {
-        q: 'En een club die niet met kaart betaalt?',
-        a: 'Bestelbon en factuur, op Semi-Pro en Pro. Op de schaal van een seizoensbudget verloopt de goedkeuring zelden via een kaart, en daar houden wij rekening mee.',
+        q: 'Kan een club op factuur betalen?',
+        a: 'Ja, bestelbon en factuur, op Semi-Pro en Pro. Een seizoensbudget wordt goedgekeurd via de boekhouding van de club, en met dat circuit werken wij.',
       },
     ],
   },
   cta: {
     title: 'Begin met uw eigen seizoen.',
-    sub: 'Maak uw account in enkele minuten aan: de eerste maand staat op Semi-Pro, zonder kaart. Exporteert u al GPS, dan begint het snelste gesprek bij wat u nog met de hand kruist.',
+    sub: 'Maak uw account in enkele minuten aan. De eerste 30 dagen staan op Semi-Pro, zonder kaart. Exporteert u al GPS, toon ons dan de spreadsheet die u met de hand kruist.',
     primary: 'Account aanmaken',
     secondary: 'Toon ons uw Excel',
     trust: 'Geen kaart. Geen verbintenis.',
@@ -985,22 +985,22 @@ const de: PricingContent = {
   meta: {
     title: 'STRIVN Preise | 30 Tage Semi-Pro gratis bei der Anmeldung',
     description:
-      'Vier Stufen, Zeile für Zeile verglichen. Jedes neue Konto startet mit 30 Tagen Semi-Pro, ohne Karte. Die Performance-Stufe übernimmt die Verschränkung von GPS, RPE und Wellness, die Sie noch von Hand machen.',
+      'Vergleichen Sie vier Stufen, Zeile für Zeile. Jedes neue Konto startet mit 30 Tagen Semi-Pro, ohne Karte. Semi-Pro übernimmt die Verschränkung von GPS, RPE und Wellness, die Sie von Hand machen.',
   },
   hero: {
     kicker: 'PREISE',
-    title: 'Der letzte Kilometer zwischen Ihrem GPS-Export und Ihrer Entscheidung.',
-    sub: 'Vier Stufen. Die kostenlose trägt ein Team eine ganze Saison. Die Performance-Stufe übernimmt die Verschränkung von GPS, RPE und Wellness, die Sie noch von Hand machen.',
+    title: 'Starten Sie gratis, verschränken Sie GPS ab Monat eins.',
+    sub: 'Vier Stufen. Die kostenlose trägt ein Team eine ganze Saison. Semi-Pro übernimmt die Verschränkung von GPS, RPE und Wellness, die Sie von Hand machen.',
   },
   trial: {
     label: 'TESTPHASE',
-    title: '30 Tage Semi-Pro, gratis bei der Anmeldung.',
-    body: 'Jedes neue Konto startet auf Semi-Pro, ohne Karte und ohne jemanden fragen zu müssen. Am Ende kehrt es von selbst zum kostenlosen Plan zurück, es wird nichts abgebucht, und alles, was Sie erzeugt haben, bleibt lesbar.',
+    title: 'Testen Sie Semi-Pro 30 Tage lang, ohne Karte.',
+    body: 'Jedes neue Konto startet auf Semi-Pro, ohne Karte und ohne Freigabe des Klubs. Am Ende kehrt es von selbst zum kostenlosen Plan zurück, und Sie behalten Zugang zu allem, was Sie erzeugt haben.',
   },
   plans: {
     kicker: 'VIER STUFEN',
-    title: 'Jede Stufe trägt die vorige mit.',
-    note: 'Keine bezahlte Stufe ist bislang im Verkauf. Legen Sie Ihr Konto an: die Testphase setzt Sie einen Monat auf Semi-Pro, und wir sagen Bescheid, sobald der Verkauf öffnet.',
+    title: 'Steigen Sie eine Stufe höher, behalten Sie alles.',
+    note: 'Die bezahlten Stufen gehen demnächst in den Verkauf. Legen Sie Ihr Konto an, die Testphase setzt Sie 30 Tage auf Semi-Pro, und wir sagen Bescheid, sobald der Verkauf öffnet.',
     perMonth: '/ Monat',
     billedYearly: 'Abgerechnet {total} pro Jahr',
     monthsFree: '{count} Monate gratis',
@@ -1011,8 +1011,8 @@ const de: PricingContent = {
         code: 'free',
         name: 'Free',
         badge: 'Jetzt verfügbar',
-        promise: 'Ein Team am Laufen halten',
-        qualifier: 'Sie sind allein mit einem Team, und ohne Budget, das Sie erfragen könnten.',
+        promise: 'Halten Sie ein Team am Laufen',
+        qualifier: 'Sie führen ein Team allein, ohne Budget, das Sie erfragen könnten.',
         features: [
           'Ein Team, unbegrenzt Spieler, ein Staff-Platz',
           'Training, Spiel, Ruhe, Besprechung, Aufgabe, Teambuilding',
@@ -1031,7 +1031,7 @@ const de: PricingContent = {
         code: 'amateur',
         name: 'Amateur',
         badge: 'Bald im Verkauf',
-        promise: 'Nicht jede Woche alles neu eingeben',
+        promise: 'Bauen Sie jede Woche nur einmal auf',
         qualifier: 'Sie spielen dieselben Einheiten erneut und bauen sie jedes Mal neu auf.',
         inherits: 'Alles aus Free, plus:',
         features: [
@@ -1039,7 +1039,7 @@ const de: PricingContent = {
           'Unbegrenzte Taktiktafeln und Vorlagen',
           'Vollständige Spielhistorie',
           'Einzeltraining und Regeneration im Kalender',
-          'Ein zweiter Staff-Platz: Ihr Athletiktrainer neben Ihnen',
+          'Ein zweiter Staff-Platz für Ihren Athletiktrainer',
           '400 Aufrufe des KI-Assistenten pro Monat',
         ],
         cta: 'Konto anlegen',
@@ -1049,13 +1049,13 @@ const de: PricingContent = {
         code: 'semi_pro',
         name: 'Semi-Pro',
         badge: 'Die Performance-Stufe',
-        promise: 'Das GPS mit dem Rest verschränken',
+        promise: 'Verschränken Sie GPS mit dem Rest',
         qualifier: 'Sie exportieren bereits GPS und verschränken es von Hand in Excel.',
         inherits: 'Alles aus Amateur, plus:',
         features: [
           'GPS-Import per CSV, unabhängig vom Anbieter',
-          'Schwellen je Spieler, Ziele und Bänder: die Abweichung ist sichtbar, sie wird nicht mehr gerechnet.',
-          'GPS, RPE und Wellness auf demselben Block, ohne die Tabelle am Sonntagabend.',
+          'Schwellen je Spieler, Ziele und Bänder, Abweichung bereits gerechnet',
+          'GPS, RPE und Wellness verschränkt auf demselben Block',
           'Kraft, Leistungstests und medizinisches Board',
           'Synchronisation von Wearables',
           'Automatische Erinnerungen und Check-ins über WhatsApp',
@@ -1071,7 +1071,7 @@ const de: PricingContent = {
         name: 'Pro',
         badge: 'Auf Anfrage',
         quotePrice: 'Individuell',
-        promise: 'Bis auf die Übung hinunter',
+        promise: 'Gehen Sie bis auf die Übung',
         qualifier: 'Mehrere Teams mit GPS, eine Performance-Abteilung, und Daten, die heraus müssen.',
         inherits: 'Alles aus Semi-Pro, plus:',
         features: [
@@ -1087,19 +1087,19 @@ const de: PricingContent = {
   },
   credits: {
     kicker: 'KI-ASSISTENT',
-    title: 'Der Assistent zählt Züge, keine Pauschale.',
+    title: 'Zählen Sie den Assistenten in Gesprächszügen.',
     body:
-      'Jede Stufe öffnet ein monatliches Kontingent an Aufrufen des Assistenten, das jeden Monat neu beginnt. Ein Aufruf ist ein Gesprächszug, keine technische Anfrage, und der Einstieg schöpft aus demselben Zähler.',
+      'Jede Stufe öffnet ein monatliches Kontingent an Aufrufen des Assistenten, das jeden Monat neu beginnt. Ein Aufruf entspricht einem Gesprächszug, und der Einstieg schöpft aus demselben Zähler.',
     points: [
-      '60 Züge pro Monat ab dem kostenlosen Plan. Niemand zahlt für eine Funktion, die er nie ausprobiert hat.',
+      '60 Züge pro Monat ab dem kostenlosen Plan, damit Sie vor dem Bezahlen ausprobieren.',
       '400 bei Amateur, 2.000 bei Semi-Pro, ohne Deckel bei Pro.',
       'Das Kontingent beginnt jeden Monat neu.',
     ],
-    note: 'Diese Kontingente sind Arbeitswerte. Wir richten sie an der tatsächlichen Nutzung aus, statt sie aus Prinzip zu verteidigen.',
+    note: 'Diese Kontingente sind Arbeitswerte. Wir richten sie an der tatsächlichen Nutzung der ersten Monate aus.',
   },
   matrix: {
     kicker: 'VERGLEICH',
-    title: 'Was sich von Stufe zu Stufe wirklich ändert.',
+    title: 'Vergleichen Sie die vier Stufen Zeile für Zeile.',
     caption: 'Die vier STRIVN-Stufen im Vergleich, Zeile für Zeile.',
     scrollHint: 'Tabelle scrollt horizontal.',
     yes: 'Enthalten',
@@ -1156,9 +1156,9 @@ const de: PricingContent = {
   },
   downgrade: {
     kicker: 'HERUNTERSTUFEN',
-    title: 'Ihre Daten werden nie als Geisel genommen.',
+    title: 'Steigen Sie ab und behalten Sie Ihre Historie.',
     body:
-      'Wir sperren das Anlegen, nie das Lesen. Ein Team, das eine Stufe absteigt, behält den Zugang zu allem, was es erzeugt hat: der vom Physio gesetzte Behandlungsblock bleibt im Kalender, die vergangene Krafteinheit bleibt einsehbar, der bestätigte GPS-Import bleibt sichtbar. Ein Aufstieg öffnet alles wieder, so wie es war.',
+      'Wir sperren das Anlegen und halten das Lesen offen, auf allen vier Stufen. Ein Team, das eine Stufe absteigt, behält den Zugang zu allem, was es erzeugt hat: Behandlungsblöcke des Physios, vergangene Krafteinheiten, bestätigte GPS-Importe. Ein Aufstieg öffnet das Anlegen wieder, genau wie zuvor.',
     closesTitle: 'Was schließt',
     closes: [
       'Ein Ereignis der höheren Stufe anlegen',
@@ -1176,23 +1176,23 @@ const de: PricingContent = {
   },
   faq: {
     kicker: 'FRAGEN',
-    title: 'Was man uns vor der Unterschrift fragt.',
+    title: 'Finden Sie die Antwort, bevor Sie Ihre Stufe wählen.',
     body: 'Die Antworten gelten für alle vier Stufen, sofern nicht anders vermerkt.',
-    contactTitle: 'Eine Frage, die diese Seite nicht abdeckt?',
-    contactBody: 'Schreiben Sie uns. Wir antworten selbst, und eine präzise Frage ist besser als ein Formular.',
+    contactTitle: 'Stellen Sie dem Team Ihre Frage.',
+    contactBody: 'Schreiben Sie uns. Wir antworten selbst, und wir sagen Ihnen, was bereits ausgeliefert ist.',
     email: 'hello@strivn.net',
     items: [
       {
-        q: 'Was passiert am Ende des Testmonats?',
-        a: 'Das Konto kehrt von selbst zum kostenlosen Plan zurück. Es wird nichts abgebucht, es wurde nie eine Karte verlangt, und alles, was Sie während der Testphase erzeugt haben, bleibt lesbar. Drei Tage vorher melden wir uns, damit das Datum niemanden überrascht.',
+        q: 'Was passiert nach den 30 Testtagen?',
+        a: 'Das Konto kehrt von selbst zum kostenlosen Plan zurück, und Ihre Rechnung bleibt bei null. Drei Tage vorher melden wir uns, und alles, was Sie erzeugt haben, bleibt lesbar.',
       },
       {
         q: 'Ist der kostenlose Plan zeitlich begrenzt?',
-        a: 'Nein. Er ist im Umfang begrenzt — ein Team, ein Staff-Platz, 20 Übungen, 3 Taktiktafeln, die letzten 5 Spiele in der Historie — nie in der Dauer. Er läuft nicht ab und verlangt keine Karte.',
+        a: 'Der kostenlose Plan trägt eine ganze Saison, dann die nächste, ohne Karte. Er ist im Umfang begrenzt: ein Team, ein Staff-Platz, 20 Übungen, 3 Taktiktafeln, die letzten 5 Spiele in der Historie.',
       },
       {
         q: 'Warum 25 € und dann 249 €?',
-        a: 'Weil die beiden Stufen nicht dasselbe verkaufen. Amateur ist die Logistik des Staffs, aus der Tasche eines Coachs bezahlt: sie hebt die Limits und öffnet einen zweiten Staff-Platz, sie öffnet kein einziges Modul. Semi-Pro ist eine Performance-Plattform auf einem Klubbudget, und es ist die Stufe, ab der Ihr GPS etwas einbringt. Dazwischen liegt kein größeres Produkt, sondern ein anderer Beruf.',
+        a: 'Die beiden Stufen verkaufen zwei verschiedene Berufe. Amateur deckt die Logistik des Staffs, aus der Tasche eines Coachs bezahlt. Sie hebt die Limits und öffnet einen zweiten Staff-Platz. Semi-Pro öffnet die Performance auf einem Klubbudget, mit GPS-Import und der Verschränkung, die dazugehört.',
       },
       {
         q: 'Warum ist der gezeigte Preis der Jahrestarif?',
@@ -1200,29 +1200,29 @@ const de: PricingContent = {
       },
       {
         q: 'Was zählt auf die 20 Übungen?',
-        a: 'Die Übungen, die Sie selbst anlegen. Der zentrale Kraftkatalog, von STRIVN gepflegt und für alle lesbar, zählt nicht auf Ihr Limit.',
+        a: 'Nur die Übungen, die Sie selbst anlegen, zählen. Der zentrale Kraftkatalog, von STRIVN gepflegt, bleibt für alle lesbar und liegt außerhalb Ihres Limits.',
       },
       {
         q: 'Kann ich mein GPS importieren, ohne den Anbieter zu wechseln?',
-        a: 'Ja, per CSV, unabhängig vom System. STRIVN wertet die Kopfzeilen Ihrer Datei aus, statt ein Format zu erwarten, und merkt sich Ihre Spaltenzuordnung für den nächsten Import. Direkte Anbindungen an GPS-Systeme am Markt sind für die Pro-Stufe angekündigt und noch nicht ausgeliefert.',
+        a: 'Ja, per CSV, unabhängig vom System. STRIVN wertet die Kopfzeilen Ihrer Datei aus und merkt sich Ihre Spaltenzuordnung für den nächsten Import. Direkte Anbindungen an GPS-Systeme am Markt sind für die Pro-Stufe geplant, Auslieferung folgt.',
       },
       {
         q: 'Wie werden die Aufrufe des KI-Assistenten gezählt?',
-        a: 'In Gesprächszügen, nicht in technischen Anfragen: 60 pro Monat kostenlos, 400 bei Amateur, 2.000 bei Semi-Pro, ohne Deckel bei Pro. Das Kontingent beginnt jeden Monat neu, und der Einstieg schöpft aus demselben Zähler.',
+        a: 'Ein Gesprächszug zählt als ein Aufruf: 60 pro Monat kostenlos, 400 bei Amateur, 2.000 bei Semi-Pro, ohne Deckel bei Pro. Das Kontingent beginnt jeden Monat neu, und der Einstieg schöpft aus demselben Zähler.',
       },
       {
         q: 'Was passiert, wenn ich eine Stufe absteige?',
         a: 'Sie behalten den Lesezugriff auf alles, was Sie erzeugt haben. Was schließt, ist das Anlegen: einen Block der höheren Stufe setzen, importieren, verordnen, über das Staff-Limit hinaus einladen. Der bereits vorhandene Staff bleibt unberührt.',
       },
       {
-        q: 'Und ein Klub, der nicht per Karte zahlt?',
-        a: 'Bestellschein und Rechnung, bei Semi-Pro und Pro. Auf der Ebene eines Saisonbudgets läuft die Freigabe selten über eine Karte, und darauf stellen wir uns ein.',
+        q: 'Kann ein Klub auf Rechnung zahlen?',
+        a: 'Ja, Bestellschein und Rechnung, bei Semi-Pro und Pro. Ein Saisonbudget wird über die Buchhaltung des Klubs freigegeben, und mit diesem Weg arbeiten wir.',
       },
     ],
   },
   cta: {
     title: 'Beginnen Sie mit Ihrer eigenen Saison.',
-    sub: 'Legen Sie Ihr Konto in wenigen Minuten an: der erste Monat läuft auf der Semi-Pro-Stufe, ohne Karte. Wenn Sie bereits GPS exportieren, beginnt das schnellste Gespräch bei dem, was Sie noch von Hand verschränken.',
+    sub: 'Legen Sie Ihr Konto in wenigen Minuten an. Die ersten 30 Tage laufen auf Semi-Pro, ohne Karte. Wenn Sie bereits GPS exportieren, zeigen Sie uns die Tabelle, die Sie von Hand verschränken.',
     primary: 'Konto anlegen',
     secondary: 'Zeigen Sie uns Ihr Excel',
     trust: 'Ohne Karte. Ohne Bindung.',
@@ -1234,22 +1234,22 @@ const pt: PricingContent = {
   meta: {
     title: 'Preços STRIVN | 30 dias de Semi-Pro oferecidos na inscrição',
     description:
-      'Quatro níveis comparados linha a linha. Cada nova conta começa com 30 dias de Semi-Pro, sem cartão. O nível performance assume o cruzamento de GPS, RPE e wellness que ainda faz à mão.',
+      'Compare quatro níveis linha a linha. Cada nova conta começa com 30 dias de Semi-Pro, sem cartão. O Semi-Pro assume o cruzamento de GPS, RPE e wellness que faz à mão.',
   },
   hero: {
     kicker: 'PREÇOS',
-    title: 'O último quilómetro entre a sua exportação GPS e a sua decisão.',
-    sub: 'Quatro níveis. O gratuito aguenta uma equipa uma época inteira. O nível performance assume o cruzamento de GPS, RPE e wellness que ainda faz à mão.',
+    title: 'Comece grátis e cruze o GPS no primeiro mês.',
+    sub: 'Quatro níveis. O gratuito aguenta uma equipa uma época inteira. O Semi-Pro assume o cruzamento de GPS, RPE e wellness que faz à mão.',
   },
   trial: {
     label: 'PERÍODO DE TESTE',
-    title: '30 dias de Semi-Pro, oferecidos na inscrição.',
-    body: 'Cada nova conta começa em Semi-Pro, sem cartão e sem ter de pedir nada a ninguém. No fim regressa sozinha ao plano gratuito, nada é cobrado, e tudo o que produziu continua legível.',
+    title: 'Teste o Semi-Pro durante 30 dias, sem cartão.',
+    body: 'Cada nova conta começa em Semi-Pro, sem cartão e sem aprovação do clube. No fim regressa sozinha ao plano gratuito e mantém o acesso a tudo o que produziu.',
   },
   plans: {
     kicker: 'QUATRO NÍVEIS',
-    title: 'Cada nível carrega o anterior.',
-    note: 'Nenhum nível pago está ainda à venda. Crie a sua conta: o período de teste coloca-o em Semi-Pro durante um mês, e avisamos quando a venda abrir.',
+    title: 'Suba de nível e leve tudo o anterior.',
+    note: 'Os níveis pagos abrem à venda em breve. Crie a sua conta, o período de teste coloca-o em Semi-Pro durante 30 dias, e avisamos quando a venda abrir.',
     perMonth: '/ mês',
     billedYearly: 'Faturado {total} por ano',
     monthsFree: '{count} meses oferecidos',
@@ -1260,8 +1260,8 @@ const pt: PricingContent = {
         code: 'free',
         name: 'Free',
         badge: 'Disponível agora',
-        promise: 'Aguentar uma equipa',
-        qualifier: 'Está sozinho com uma equipa, e sem orçamento para pedir.',
+        promise: 'Aguente uma equipa',
+        qualifier: 'Gere uma equipa sozinho, sem orçamento para pedir.',
         features: [
           'Uma equipa, jogadores sem limite, um lugar de staff',
           'Treino, jogo, descanso, reunião, tarefa, team building',
@@ -1280,7 +1280,7 @@ const pt: PricingContent = {
         code: 'amateur',
         name: 'Amateur',
         badge: 'Brevemente à venda',
-        promise: 'Deixar de reintroduzir tudo todas as semanas',
+        promise: 'Deixe de reintroduzir tudo todas as semanas',
         qualifier: 'Repete as mesmas sessões e reconstrói-as de cada vez.',
         inherits: 'Tudo o do plano Free, mais:',
         features: [
@@ -1288,7 +1288,7 @@ const pt: PricingContent = {
           'Quadros táticos e modelos sem limite',
           'Histórico de jogos completo',
           'Treino individual e recuperação no calendário',
-          'Um segundo lugar de staff: o seu preparador físico consigo',
+          'Um segundo lugar de staff para o seu preparador físico',
           '400 chamadas ao assistente de IA por mês',
         ],
         cta: 'Criar uma conta',
@@ -1298,13 +1298,13 @@ const pt: PricingContent = {
         code: 'semi_pro',
         name: 'Semi-Pro',
         badge: 'O nível performance',
-        promise: 'Cruzar o GPS com o resto',
+        promise: 'Cruze o GPS com o resto',
         qualifier: 'Já exporta GPS, e cruza-o à mão no Excel.',
         inherits: 'Tudo o do plano Amateur, mais:',
         features: [
           'Importação GPS por CSV, seja qual for o fornecedor',
-          'Limiares por jogador, alvos e bandas: o desvio vê-se, já não se calcula.',
-          'GPS, RPE e wellness no mesmo bloco, sem a folha de cálculo de domingo à noite.',
+          'Limiares por jogador, alvos e bandas, com o desvio já calculado',
+          'GPS, RPE e wellness cruzados no mesmo bloco',
           'Musculação, testes físicos e quadro médico',
           'Sincronização de wearables',
           'Lembretes e check-ins automáticos por WhatsApp',
@@ -1320,7 +1320,7 @@ const pt: PricingContent = {
         name: 'Pro',
         badge: 'A pedido',
         quotePrice: 'Sob consulta',
-        promise: 'Descer ao nível do exercício',
+        promise: 'Desça ao nível do exercício',
         qualifier: 'Várias equipas com GPS, uma célula de performance, e dados que têm de sair.',
         inherits: 'Tudo o do plano Semi-Pro, mais:',
         features: [
@@ -1336,19 +1336,19 @@ const pt: PricingContent = {
   },
   credits: {
     kicker: 'ASSISTENTE DE IA',
-    title: 'O assistente conta-se em turnos, não em pacote.',
+    title: 'Conte o assistente em turnos de conversa.',
     body:
-      'Cada nível abre uma dotação mensal de chamadas ao assistente, reposta todos os meses. Uma chamada é um turno de conversa, não um pedido técnico, e a primeira utilização puxa do mesmo contador.',
+      'Cada nível abre uma dotação mensal de chamadas ao assistente, reposta todos os meses. Uma chamada vale um turno de conversa, e a primeira utilização puxa do mesmo contador.',
     points: [
-      '60 turnos por mês já no plano gratuito. Ninguém paga por uma funcionalidade que nunca experimentou.',
+      '60 turnos por mês já no plano gratuito, para experimentar antes de pagar.',
       '400 no Amateur, 2 000 no Semi-Pro, sem limite no Pro.',
       'A dotação recomeça todos os meses.',
     ],
-    note: 'Estas dotações são valores de trabalho. Vamos ajustá-las ao uso real em vez de as defender por princípio.',
+    note: 'Estas dotações são valores de trabalho. Vamos ajustá-las ao uso real dos primeiros meses.',
   },
   matrix: {
     kicker: 'COMPARATIVO',
-    title: 'O que muda mesmo de um nível para o outro.',
+    title: 'Compare os quatro níveis linha a linha.',
     caption: 'Os quatro níveis STRIVN comparados, linha a linha.',
     scrollHint: 'A tabela desliza na horizontal.',
     yes: 'Incluído',
@@ -1405,9 +1405,9 @@ const pt: PricingContent = {
   },
   downgrade: {
     kicker: 'DESCER DE NÍVEL',
-    title: 'Os seus dados nunca ficam reféns.',
+    title: 'Desça de nível e mantenha todo o histórico.',
     body:
-      'Bloqueamos a criação, nunca a leitura. Uma equipa que desce de nível mantém o acesso a tudo o que produziu: o bloco de tratamento marcado pelo fisioterapeuta continua no calendário, a sessão de musculação passada continua consultável, a importação GPS confirmada continua visível. Voltar a subir reabre tudo, tal como estava.',
+      'Bloqueamos a criação e mantemos a leitura aberta, nos quatro níveis. Uma equipa que desce de nível mantém o acesso a tudo o que produziu: blocos de tratamento marcados pelo fisioterapeuta, sessões de musculação passadas, importações GPS confirmadas. Voltar a subir reabre a criação, tal como estava.',
     closesTitle: 'O que fecha',
     closes: [
       'Criar um evento do nível superior',
@@ -1425,23 +1425,23 @@ const pt: PricingContent = {
   },
   faq: {
     kicker: 'PERGUNTAS',
-    title: 'O que nos perguntam antes de assinar.',
+    title: 'Encontre a resposta antes de escolher.',
     body: 'As respostas valem para os quatro níveis, salvo indicação em contrário.',
-    contactTitle: 'Uma pergunta que esta página não cobre?',
-    contactBody: 'Escreva-nos. Respondemos nós próprios, e uma pergunta precisa vale mais do que um formulário.',
+    contactTitle: 'Faça a sua pergunta à equipa.',
+    contactBody: 'Escreva-nos. Respondemos nós próprios, e dizemos-lhe o que já está entregue.',
     email: 'hello@strivn.net',
     items: [
       {
-        q: 'O que acontece no fim do mês de teste?',
-        a: 'A conta regressa sozinha ao plano gratuito. Nada é cobrado, nunca foi pedido um cartão, e tudo o que produziu durante o teste continua legível. Avisamos três dias antes para que a data não apanhe ninguém de surpresa.',
+        q: 'O que acontece no fim dos 30 dias de teste?',
+        a: 'A conta regressa sozinha ao plano gratuito, e a sua fatura fica a zero. Avisamos três dias antes do fim, e tudo o que produziu continua legível.',
       },
       {
         q: 'O plano gratuito é limitado no tempo?',
-        a: 'Não. É limitado em volume — uma equipa, um lugar de staff, 20 exercícios, 3 quadros táticos, os últimos 5 jogos no histórico — nunca na duração. Não expira e não pede cartão.',
+        a: 'O plano gratuito aguenta uma época inteira, e a seguinte, sem cartão. É limitado em volume: uma equipa, um lugar de staff, 20 exercícios, 3 quadros táticos, os últimos 5 jogos no histórico.',
       },
       {
         q: 'Porquê 25 € e depois 249 €?',
-        a: 'Porque os dois níveis não vendem a mesma coisa. O Amateur é a logística do staff, paga do bolso de um treinador: levanta os limites e abre um segundo lugar de staff, não abre módulo nenhum. O Semi-Pro é uma plataforma de performance com orçamento de clube, e é o nível onde o seu GPS começa a valer alguma coisa. Entre os dois não há um produto maior, há outro ofício.',
+        a: 'Os dois níveis vendem dois ofícios diferentes. O Amateur cobre a logística do staff, paga do bolso de um treinador. Levanta os limites e abre um segundo lugar de staff. O Semi-Pro abre a performance com orçamento de clube, com importação GPS e o cruzamento que vem com ela.',
       },
       {
         q: 'Porque é que o preço mostrado é o anual?',
@@ -1449,29 +1449,29 @@ const pt: PricingContent = {
       },
       {
         q: 'O que conta nos 20 exercícios?',
-        a: 'Os exercícios que cria. O catálogo central de musculação, mantido pela STRIVN e legível por todos, não conta para o seu limite.',
+        a: 'Contam apenas os exercícios que cria. O catálogo central de musculação, mantido pela STRIVN, continua legível por todos e fica fora do seu limite.',
       },
       {
         q: 'Posso importar o meu GPS sem mudar de fornecedor?',
-        a: 'Sim, por CSV, seja qual for o sistema. A STRIVN analisa os cabeçalhos do seu ficheiro em vez de esperar um formato, e guarda o mapeamento das colunas para a importação seguinte. As ligações diretas aos GPS do mercado estão anunciadas no nível Pro e ainda não foram entregues.',
+        a: 'Sim, por CSV, seja qual for o sistema. A STRIVN lê os cabeçalhos do seu ficheiro e guarda a correspondência das colunas para a importação seguinte. As ligações diretas aos GPS do mercado estão previstas no nível Pro, com entrega ainda por chegar.',
       },
       {
         q: 'Como se contam as chamadas ao assistente de IA?',
-        a: 'Em turnos de conversa, não em pedidos técnicos: 60 por mês no gratuito, 400 no Amateur, 2 000 no Semi-Pro, sem limite no Pro. A dotação recomeça todos os meses, e a primeira utilização puxa do mesmo contador.',
+        a: 'Um turno de conversa vale uma chamada: 60 por mês no gratuito, 400 no Amateur, 2 000 no Semi-Pro, sem limite no Pro. A dotação recomeça todos os meses, e a primeira utilização puxa do mesmo contador.',
       },
       {
         q: 'O que acontece se descer de nível?',
-        a: 'Mantém o acesso de leitura a tudo o que produziu. O que fecha é a criação: marcar um bloco do nível superior, importar, prescrever, convidar acima do limite de staff. O staff que já está no lugar não se mexe.',
+        a: 'Mantém o acesso de leitura a tudo o que produziu. O que fecha é a criação: marcar um bloco do nível superior, importar, prescrever, convidar acima do limite de staff. O staff que já está no lugar mantém o seu acesso.',
       },
       {
-        q: 'E um clube que não paga com cartão?',
-        a: 'Nota de encomenda e fatura, no Semi-Pro e no Pro. À escala de um orçamento de época, a aprovação passa raramente por um cartão, e contamos com isso.',
+        q: 'Um clube pode pagar por fatura?',
+        a: 'Sim, nota de encomenda e fatura, no Semi-Pro e no Pro. Um orçamento de época é aprovado pela contabilidade do clube, e trabalhamos com esse circuito.',
       },
     ],
   },
   cta: {
     title: 'Comece pela sua própria época.',
-    sub: 'Crie a sua conta em minutos: o primeiro mês é no nível Semi-Pro, sem cartão. Se já exporta GPS, a conversa mais rápida começa por aquilo que ainda cruza à mão.',
+    sub: 'Crie a sua conta em minutos. Os primeiros 30 dias são em Semi-Pro, sem cartão. Se já exporta GPS, mostre-nos a folha de cálculo que cruza à mão.',
     primary: 'Criar uma conta',
     secondary: 'Mostre-nos o seu Excel',
     trust: 'Sem cartão. Sem compromisso.',
@@ -1483,22 +1483,22 @@ const es: PricingContent = {
   meta: {
     title: 'Precios STRIVN | 30 días de Semi-Pro gratis al registrarse',
     description:
-      'Cuatro niveles comparados línea a línea. Cada cuenta nueva empieza con 30 días de Semi-Pro, sin tarjeta. El nivel rendimiento asume el cruce de GPS, RPE y wellness que usted todavía hace a mano.',
+      'Compare cuatro niveles línea a línea. Cada cuenta nueva empieza con 30 días de Semi-Pro, sin tarjeta. El Semi-Pro asume el cruce de GPS, RPE y wellness que usted hace a mano.',
   },
   hero: {
     kicker: 'PRECIOS',
-    title: 'El último kilómetro entre su exportación GPS y su decisión.',
-    sub: 'Cuatro niveles. El gratuito aguanta un equipo una temporada entera. El nivel rendimiento asume el cruce de GPS, RPE y wellness que usted todavía hace a mano.',
+    title: 'Empiece gratis y cruce el GPS el primer mes.',
+    sub: 'Cuatro niveles. El gratuito aguanta un equipo una temporada entera. El Semi-Pro asume el cruce de GPS, RPE y wellness que usted hace a mano.',
   },
   trial: {
     label: 'PRUEBA',
-    title: '30 días de Semi-Pro, gratis al registrarse.',
-    body: 'Cada cuenta nueva empieza en Semi-Pro, sin tarjeta y sin tener que pedirle permiso a nadie. Al terminar vuelve sola al plan gratuito, no se cobra nada, y todo lo que haya creado sigue siendo legible.',
+    title: 'Pruebe el Semi-Pro 30 días, sin tarjeta.',
+    body: 'Cada cuenta nueva empieza en Semi-Pro, sin tarjeta y sin aprobación del club. Al terminar vuelve sola al plan gratuito y usted conserva el acceso a todo lo que haya creado.',
   },
   plans: {
     kicker: 'CUATRO NIVELES',
-    title: 'Cada nivel carga con el anterior.',
-    note: 'Ningún nivel de pago está todavía a la venta. Cree su cuenta: la prueba le pone en Semi-Pro durante un mes, y le avisamos cuando abra la venta.',
+    title: 'Suba de nivel y conserve todo el anterior.',
+    note: 'Los niveles de pago abren a la venta pronto. Cree su cuenta, la prueba le pone en Semi-Pro durante 30 días, y le avisamos cuando abra la venta.',
     perMonth: '/ mes',
     billedYearly: 'Facturado {total} al año',
     monthsFree: '{count} meses gratis',
@@ -1509,8 +1509,8 @@ const es: PricingContent = {
         code: 'free',
         name: 'Free',
         badge: 'Disponible ahora',
-        promise: 'Sacar adelante un equipo',
-        qualifier: 'Está solo con un equipo, y sin presupuesto que pedir.',
+        promise: 'Saque adelante un equipo',
+        qualifier: 'Lleva un equipo solo, sin presupuesto que pedir.',
         features: [
           'Un equipo, jugadores sin límite, un puesto de staff',
           'Entrenamiento, partido, descanso, reunión, tarea, team building',
@@ -1529,7 +1529,7 @@ const es: PricingContent = {
         code: 'amateur',
         name: 'Amateur',
         badge: 'Pronto a la venta',
-        promise: 'Dejar de reescribirlo todo cada semana',
+        promise: 'Deje de reescribirlo todo cada semana',
         qualifier: 'Repite las mismas sesiones y las reconstruye cada vez.',
         inherits: 'Todo el plan Free, y además:',
         features: [
@@ -1537,7 +1537,7 @@ const es: PricingContent = {
           'Pizarras tácticas y plantillas sin límite',
           'Histórico de partidos completo',
           'Entrenamiento individual y recuperación en el calendario',
-          'Un segundo puesto de staff: su preparador físico con usted',
+          'Un segundo puesto de staff para su preparador físico',
           '400 llamadas al asistente de IA al mes',
         ],
         cta: 'Crear una cuenta',
@@ -1547,13 +1547,13 @@ const es: PricingContent = {
         code: 'semi_pro',
         name: 'Semi-Pro',
         badge: 'El nivel rendimiento',
-        promise: 'Cruzar el GPS con lo demás',
+        promise: 'Cruce el GPS con lo demás',
         qualifier: 'Ya exporta GPS, y lo cruza a mano en Excel.',
         inherits: 'Todo el plan Amateur, y además:',
         features: [
           'Importación GPS por CSV, sea cual sea el proveedor',
-          'Umbrales por jugador, objetivos y bandas: la desviación se ve, ya no se calcula.',
-          'GPS, RPE y wellness en el mismo bloque, sin la hoja de cálculo del domingo por la noche.',
+          'Umbrales por jugador, objetivos y bandas, con la desviación ya calculada',
+          'GPS, RPE y wellness cruzados en el mismo bloque',
           'Fuerza, tests físicos y cuadro médico',
           'Sincronización de wearables',
           'Recordatorios y check-ins automáticos por WhatsApp',
@@ -1569,7 +1569,7 @@ const es: PricingContent = {
         name: 'Pro',
         badge: 'Bajo petición',
         quotePrice: 'A medida',
-        promise: 'Bajar al nivel del ejercicio',
+        promise: 'Baje al nivel del ejercicio',
         qualifier: 'Varios equipos con GPS, una célula de rendimiento, y datos que tienen que salir.',
         inherits: 'Todo el plan Semi-Pro, y además:',
         features: [
@@ -1585,19 +1585,19 @@ const es: PricingContent = {
   },
   credits: {
     kicker: 'ASISTENTE DE IA',
-    title: 'El asistente se cuenta en turnos, no en tarifa plana.',
+    title: 'Cuente el asistente en turnos de conversación.',
     body:
-      'Cada nivel abre una dotación mensual de llamadas al asistente, que vuelve a empezar cada mes. Una llamada es un turno de conversación, no una petición técnica, y la puesta en marcha bebe del mismo contador.',
+      'Cada nivel abre una dotación mensual de llamadas al asistente, que vuelve a empezar cada mes. Una llamada equivale a un turno de conversación, y la puesta en marcha bebe del mismo contador.',
     points: [
-      '60 turnos al mes ya en el plan gratuito. Nadie paga por una función que nunca ha probado.',
+      '60 turnos al mes ya en el plan gratuito, para probar antes de pagar.',
       '400 en Amateur, 2.000 en Semi-Pro, sin tope en Pro.',
       'La dotación vuelve a empezar cada mes.',
     ],
-    note: 'Estas dotaciones son cifras de trabajo. Las ajustaremos al uso real en vez de defenderlas por principio.',
+    note: 'Estas dotaciones son cifras de trabajo. Las ajustaremos al uso real de los primeros meses.',
   },
   matrix: {
     kicker: 'COMPARATIVA',
-    title: 'Lo que cambia de verdad de un nivel a otro.',
+    title: 'Compare los cuatro niveles línea a línea.',
     caption: 'Los cuatro niveles STRIVN comparados, línea a línea.',
     scrollHint: 'La tabla se desplaza en horizontal.',
     yes: 'Incluido',
@@ -1654,9 +1654,9 @@ const es: PricingContent = {
   },
   downgrade: {
     kicker: 'BAJAR DE NIVEL',
-    title: 'Sus datos nunca quedan retenidos.',
+    title: 'Baje de nivel y conserve todo su histórico.',
     body:
-      'Bloqueamos la creación, nunca la lectura. Un equipo que baja de nivel conserva el acceso a todo lo que ha producido: el bloque de tratamiento que puso el fisio sigue en el calendario, la sesión de fuerza pasada sigue consultable, la importación GPS confirmada sigue visible. Volver a subir lo reabre todo, tal cual.',
+      'Bloqueamos la creación y dejamos la lectura abierta, en los cuatro niveles. Un equipo que baja de nivel conserva el acceso a todo lo que ha producido: bloques de tratamiento puestos por el fisio, sesiones de fuerza pasadas, importaciones GPS confirmadas. Volver a subir reabre la creación, tal cual.',
     closesTitle: 'Lo que se cierra',
     closes: [
       'Crear un evento del nivel superior',
@@ -1674,23 +1674,23 @@ const es: PricingContent = {
   },
   faq: {
     kicker: 'PREGUNTAS',
-    title: 'Lo que nos preguntan antes de firmar.',
+    title: 'Encuentre la respuesta antes de elegir su nivel.',
     body: 'Las respuestas valen para los cuatro niveles, salvo mención contraria.',
-    contactTitle: '¿Una pregunta que esta página no cubre?',
-    contactBody: 'Escríbanos. Respondemos nosotros mismos, y una pregunta precisa vale más que un formulario.',
+    contactTitle: 'Haga su pregunta al equipo.',
+    contactBody: 'Escríbanos. Respondemos nosotros mismos, y le decimos qué está ya entregado.',
     email: 'hello@strivn.net',
     items: [
       {
-        q: '¿Qué pasa al final del mes de prueba?',
-        a: 'La cuenta vuelve sola al plan gratuito. No se cobra nada, nunca se pidió una tarjeta, y todo lo que produjo durante la prueba sigue siendo legible. Avisamos tres días antes para que la fecha no sorprenda a nadie.',
+        q: '¿Qué pasa al final de los 30 días de prueba?',
+        a: 'La cuenta vuelve sola al plan gratuito, y su factura se queda en cero. Avisamos tres días antes del final, y todo lo que produjo sigue siendo legible.',
       },
       {
         q: '¿El plan gratuito está limitado en el tiempo?',
-        a: 'No. Está limitado en volumen — un equipo, un puesto de staff, 20 ejercicios, 3 pizarras tácticas, los 5 últimos partidos en el histórico — nunca en duración. No caduca y no pide tarjeta.',
+        a: 'El plan gratuito aguanta una temporada entera, y la siguiente, sin tarjeta. Está limitado en volumen: un equipo, un puesto de staff, 20 ejercicios, 3 pizarras tácticas, los 5 últimos partidos en el histórico.',
       },
       {
         q: '¿Por qué 25 € y luego 249 €?',
-        a: 'Porque los dos niveles no venden lo mismo. Amateur es la logística del staff, pagada del bolsillo de un entrenador: levanta los límites y abre un segundo puesto de staff, no abre ningún módulo. Semi-Pro es una plataforma de rendimiento con presupuesto de club, y es el nivel donde su GPS empieza a servir para algo. Entre los dos no hay un producto más grande, hay otro oficio.',
+        a: 'Los dos niveles venden dos oficios distintos. Amateur cubre la logística del staff, pagada del bolsillo de un entrenador. Levanta los límites y abre un segundo puesto de staff. Semi-Pro abre el rendimiento con presupuesto de club, con importación GPS y el cruce que viene con ella.',
       },
       {
         q: '¿Por qué el precio mostrado es el anual?',
@@ -1698,29 +1698,29 @@ const es: PricingContent = {
       },
       {
         q: '¿Qué cuenta dentro de los 20 ejercicios?',
-        a: 'Los ejercicios que usted crea. El catálogo central de fuerza, mantenido por STRIVN y legible por todos, no cuenta para su límite.',
+        a: 'Cuentan solo los ejercicios que usted crea. El catálogo central de fuerza, mantenido por STRIVN, sigue legible para todos y queda fuera de su límite.',
       },
       {
         q: '¿Puedo importar mi GPS sin cambiar de proveedor?',
-        a: 'Sí, por CSV, sea cual sea el sistema. STRIVN analiza las cabeceras de su archivo en lugar de esperar un formato, y recuerda el mapeo de columnas para la siguiente importación. Los conectores directos con los GPS del mercado están anunciados en el nivel Pro y todavía no se han entregado.',
+        a: 'Sí, por CSV, sea cual sea el sistema. STRIVN lee las cabeceras de su archivo y recuerda la correspondencia de columnas para la siguiente importación. Los conectores directos con los GPS del mercado están previstos en el nivel Pro, con la entrega aún por llegar.',
       },
       {
         q: '¿Cómo se cuentan las llamadas al asistente de IA?',
-        a: 'En turnos de conversación, no en peticiones técnicas: 60 al mes en gratuito, 400 en Amateur, 2.000 en Semi-Pro, sin tope en Pro. La dotación vuelve a empezar cada mes, y la puesta en marcha bebe del mismo contador.',
+        a: 'Un turno de conversación equivale a una llamada: 60 al mes en gratuito, 400 en Amateur, 2.000 en Semi-Pro, sin tope en Pro. La dotación vuelve a empezar cada mes, y la puesta en marcha bebe del mismo contador.',
       },
       {
         q: '¿Qué pasa si bajo de nivel?',
-        a: 'Conserva el acceso de lectura a todo lo que ha producido. Lo que se cierra es la creación: poner un bloque del nivel superior, importar, prescribir, invitar por encima del límite de staff. El staff que ya está no se mueve.',
+        a: 'Conserva el acceso de lectura a todo lo que ha producido. Lo que se cierra es la creación: poner un bloque del nivel superior, importar, prescribir, invitar por encima del límite de staff. El staff que ya está conserva su acceso.',
       },
       {
-        q: '¿Y un club que no paga con tarjeta?',
-        a: 'Pedido y factura, en Semi-Pro y Pro. A escala de un presupuesto de temporada, la aprobación pasa pocas veces por una tarjeta, y lo tenemos en cuenta.',
+        q: '¿Puede un club pagar por factura?',
+        a: 'Sí, pedido y factura, en Semi-Pro y Pro. Un presupuesto de temporada lo aprueba la contabilidad del club, y trabajamos con ese circuito.',
       },
     ],
   },
   cta: {
     title: 'Empiece por su propia temporada.',
-    sub: 'Cree su cuenta en unos minutos: el primer mes es en el nivel Semi-Pro, sin tarjeta. Si ya exporta GPS, la conversación más rápida empieza por lo que todavía cruza a mano.',
+    sub: 'Cree su cuenta en unos minutos. Los primeros 30 días son en Semi-Pro, sin tarjeta. Si ya exporta GPS, muéstrenos la hoja de cálculo que cruza a mano.',
     primary: 'Crear una cuenta',
     secondary: 'Muéstrenos su Excel',
     trust: 'Sin tarjeta. Sin compromiso.',

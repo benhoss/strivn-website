@@ -202,16 +202,16 @@ export interface ScPageContent {
 
 const fr: ScPageContent = {
   meta: {
-    title: 'STRIVN pour les préparateurs physiques | Votre méthodologie, industrialisée',
+    title: 'STRIVN pour les préparateurs physiques | Charge, tests, rapports',
     description:
-      'Charge, check-in bien-être, état de forme, tests : ce que vous faites déjà dans Excel, exécuté par un système. Import GPS, ACWR, planification et restitution au staff.',
+      'Mesurez la charge, suivez l’état de forme et lancez vos campagnes de tests. STRIVN importe vos exports Catapult ou STATSports, puis calcule ACWR, monotonie et contrainte.',
   },
   hero: {
     kicker: 'POUR LES PRÉPARATEURS PHYSIQUES',
-    title: 'Votre méthodologie, industrialisée.',
-    sub: 'Ce que vous faites déjà dans Excel — charge, check-in bien-être, état de forme, tests — exécuté par un système : la collecte se fait seule, les indicateurs sont ceux de la littérature, et le staff voit le résultat.',
+    title: 'Dosez, planifiez, pilotez chaque séance.',
+    sub: 'Vos joueurs déclarent leur ressenti, vos exports GPS arrivent, STRIVN en tire ACWR, monotonie et contrainte. Vous planifiez la semaine en UA, vous prescrivez en % du 1RM, et le staff lit le résultat.',
     primaryCta: 'Commencer gratuitement',
-    secondaryCta: 'Voir la méthodologie',
+    secondaryCta: 'Voir votre quotidien',
     board: {
       title: 'Readiness du jour · Olympique Montverne',
       stamp: 'MER 07:45',
@@ -226,14 +226,14 @@ const fr: ScPageContent = {
   },
   daily: {
     kicker: 'VOTRE QUOTIDIEN',
-    title: 'Les mêmes tâches. Sans la logistique.',
-    sub: 'Une séance par semaine ou six, GPS complet ou simple RPE, seul ou en staff : le contexte change, les tâches restent les mêmes.',
+    title: 'Retrouvez vos neuf tâches quotidiennes, exécutées par STRIVN.',
+    sub: 'Une séance par semaine ou six, un export GPS ou un simple RPE, le déroulé reste le même.',
     colBefore: 'CE QUE VOUS FAITES DÉJÀ',
     colAfter: 'COMMENT ÇA SE PASSE DANS STRIVN',
     rows: [
       {
         before: 'Savoir qui est frais avant la séance',
-        after: 'État de forme calculé depuis le check-in bien-être — vert, orange, rouge',
+        after: 'État de forme calculé depuis le check-in bien-être : vert, orange, rouge',
       },
       {
         before: 'Intégrer les données GPS de la séance',
@@ -245,18 +245,18 @@ const fr: ScPageContent = {
       },
       {
         before: 'Construire les séances de la semaine',
-        after: 'Constructeur par blocs — charge externe estimée depuis les métriques d’exercice',
+        after: 'Constructeur par blocs, charge externe estimée depuis les métriques d’exercice',
       },
       {
         before: 'Individualiser : force, prévention, retour',
-        after: 'Musculation en % du 1RM — chaque joueur reçoit sa charge dans l’app',
+        after: 'Musculation en % du 1RM, chaque joueur reçoit sa charge dans l’app',
       },
       {
         before: 'Ajuster pendant la séance',
         after: 'Séance en direct : charge cumulée et écart vs prévu, en temps réel',
       },
       {
-        before: 'Répondre au coach : « il peut jouer ? »',
+        before: 'Dire au coach qui peut jouer samedi',
         after: 'État de forme et suivi médical remontent dans la convocation',
       },
       {
@@ -271,8 +271,8 @@ const fr: ScPageContent = {
   },
   metrics: {
     kicker: 'INDICATEURS',
-    title: 'Les indicateurs du métier, calculés en continu.',
-    body: 'Repris de la littérature, calculés depuis ce que vous saisissez déjà. Les coefficients restent ajustables depuis le panneau Formule. Aucune boîte noire.',
+    title: 'Lisez douze indicateurs calculés depuis vos saisies.',
+    body: 'Chaque indicateur reprend une définition de la littérature et se calcule depuis ce que vous saisissez déjà. Les coefficients de match et d’entraînement restent ajustables depuis le panneau Formule.',
     items: [
       { name: 'ACWR', detail: 'charge aiguë 7 j ÷ (chronique 28 j ÷ 4) · zone 0.8–1.3' },
       { name: 'Monotonie', detail: 'moyenne quotidienne ÷ écart-type de la semaine' },
@@ -285,16 +285,16 @@ const fr: ScPageContent = {
       { name: 'Blocs de vitesse', detail: 'Aérobie, Haute intensité, Course haute vitesse, Sprint' },
       { name: 'Charge externe estimée', detail: 'somme des métriques d’exercice, ajustée aux durées' },
       { name: 'Taux de couverture', detail: 'part de la séance décrite par des métriques' },
-      { name: '1RM', detail: 'saisi ou estimé — formule Epley ou Brzycki' },
+      { name: '1RM', detail: 'saisi, ou estimé par la formule Epley ou Brzycki' },
     ],
   },
   planning: {
     tag: 'PLANIFICATION DE CHARGE',
-    title: 'La semaine se dessine avant d’être jouée.',
-    body: 'L’outil du préparateur : vous fixez l’objectif hebdomadaire en UA et le répartissez par catégorie. Chaque composant s’accroche à une séance du calendrier, ou reste en attente. Puis « Prévu vs réalisé » confronte le plan à ce que le groupe a encaissé.',
+    title: 'Fixez l’objectif hebdomadaire en UA, par catégorie.',
+    body: 'Vous fixez l’objectif hebdomadaire en UA, puis le répartissez entre terrain, musculation et récupération. Chaque composant s’accroche à une séance du calendrier, ou reste en attente. « Prévu vs réalisé » confronte ensuite le plan à ce que le groupe a encaissé.',
     points: [
       'Objectif hebdomadaire en UA, budget par catégorie',
-      'Charge = RPE × durée × coefficient de catégorie',
+      'Charge = RPE × durée × coefficient : 90 min à RPE 7 valent 630 UA',
       'Composants rattachés à une séance, ou laissés en attente',
       'Prévu vs réalisé, par équipe et par joueur',
       'Cycles et saison pour les blocs de récupération ou de compétition',
@@ -323,13 +323,13 @@ const fr: ScPageContent = {
   },
   library: {
     tag: 'BIBLIOTHÈQUE D’EXERCICES & MÉTRIQUES',
-    title: 'Vos exercices terrain, quantifiés.',
-    body: 'Capturez un exercice depuis un lien, une vidéo, un schéma ou du texte. Attachez-lui ses métriques — sprints, distance, RPE attendu, surface — et la séance calcule sa charge externe estimée toute seule.',
+    title: 'Quantifiez vos exercices terrain, la charge externe se calcule.',
+    body: 'Capturez un exercice depuis un lien, une vidéo, un schéma ou du texte. Attachez-lui ses métriques (sprints, distance, RPE attendu, surface) et la séance calcule sa charge externe estimée. Passer le bloc de 15 à 20 minutes met les cumuls à l’échelle, les intensités restent inchangées.',
     points: [
       'Capture par lien, photo, vidéo, schéma tactique ou texte',
       'Dossiers, tags et boîte de réception avant publication',
       'Métriques standard, colonnes GPS et métriques personnalisées',
-      'Partage par lien public sans compte — révocable à tout moment',
+      'Partage par lien public sans compte, révocable à tout moment',
     ],
     cta: 'Voir la bibliothèque d’exercices',
     href: '/fr/features/exercise-library/',
@@ -361,8 +361,8 @@ const fr: ScPageContent = {
   },
   strength: {
     tag: 'MUSCULATION & 1RM',
-    title: 'Un pourcentage pour l’équipe. Une charge par joueur.',
-    body: 'Le 1RM est saisi directement, ou estimé depuis une série sous-maximale — formule Epley ou Brzycki, plus sûre en cours de saison. Vous prescrivez « Squat 4×5 @ 82 % » pour tout le groupe : chacun reçoit sa charge réelle.',
+    title: 'Prescrivez un pourcentage, chaque joueur reçoit ses kilos.',
+    body: 'Vous saisissez le 1RM, ou vous l’estimez depuis une série sous-maximale avec la formule Epley ou Brzycki. Vous prescrivez « Squat 4×5 @ 82 % » pour tout le groupe, et chacun reçoit ses kilos dans l’app.',
     points: [
       'Blocs en série simple, superset ou circuit',
       'Modes de charge : % 1RM, kg fixe, RPE ou poids de corps',
@@ -386,8 +386,8 @@ const fr: ScPageContent = {
   },
   tests: {
     tag: 'TESTS PHYSIQUES & AUTO-MESURE',
-    title: 'Des mesures collectées sans transcription.',
-    body: 'Lancez une campagne sur ce que vous voulez mesurer : VMA, poids, ou un test que vous définissez vous-même. Le staff saisit, ou les joueurs renseignent eux-mêmes depuis un lien magique reçu par e-mail, WhatsApp ou notification.',
+    title: 'Lancez une campagne de tests, les joueurs saisissent eux-mêmes.',
+    body: 'Lancez une campagne sur ce que vous voulez mesurer : VMA, poids, ou un test que vous définissez vous-même. Le staff saisit les valeurs, ou les joueurs les renseignent depuis un lien magique. Les invitations partent par trois canaux : e-mail, WhatsApp et notification push.',
     points: [
       'Mesures personnalisées, créées par vos soins',
       'Saisie par le staff ou auto-mesure par les joueurs',
@@ -411,8 +411,8 @@ const fr: ScPageContent = {
   },
   reports: {
     tag: 'RAPPORTS & TABLEAU DE BORD',
-    title: 'Rendre des comptes sans y passer la soirée.',
-    body: 'Les données viennent de ce que vous saisissez déjà. Aucun double encodage. Cinq rapports couvrent la sélection, la charge, l’équipe et le joueur, le générateur construit tout le reste, et l’IA rédige la synthèse comme les signaux de risque.',
+    title: 'Livrez cinq rapports au staff, l’IA rédige la synthèse.',
+    body: 'Les rapports se remplissent depuis ce que vous saisissez déjà, du check-in bien-être aux exports GPS. Cinq rapports couvrent la sélection, la charge, l’équipe et le joueur. Le générateur construit les autres, et l’IA rédige la synthèse comme les signaux de risque.',
     dashboard: {
       title: 'Dashboard · Charge & disponibilité',
       widgetBtn: 'Widget',
@@ -425,7 +425,7 @@ const fr: ScPageContent = {
       weekly: 'Charge hebdomadaire · 6 sem.',
       availability: 'Disponibilité',
       availabilityValue: '83%',
-      hsr: 'HSR — match vs match',
+      hsr: 'HSR · match vs match',
       aiTag: 'GÉNÉRÉ PAR L’IA',
     },
     report: {
@@ -433,12 +433,12 @@ const fr: ScPageContent = {
       aiBadge: 'RÉDIGÉ PAR L’IA',
       body: 'Taux de réponse au check-in 89 %. Fatigue moyenne 2.4 / 5, motivation 4.1 / 5. ACWR groupe 1.08. Deux joueurs hors zone, un protocole de reprise en cours.',
       items: [
-        { icon: 'list-ordered', label: 'Sélection / forme — effectif classé sur la période' },
-        { icon: 'trophy', label: 'Charge & disponibilité — sur 4 semaines' },
-        { icon: 'download', label: 'Rapport par joueur — synthèse 7 jours' },
-        { icon: 'users', label: 'Générateur de rapports — sujet, filtres, graphique' },
+        { icon: 'list-ordered', label: 'Sélection / forme · effectif classé sur la période' },
+        { icon: 'trophy', label: 'Charge & disponibilité · sur 4 semaines' },
+        { icon: 'download', label: 'Rapport par joueur · synthèse 7 jours' },
+        { icon: 'users', label: 'Générateur de rapports · sujet, filtres, graphique' },
       ],
-      aiStrip: 'Briefing IA et signaux de risque : recommandations générées, avec niveau de gravité et action directe.',
+      aiStrip: 'Le briefing IA liste les signaux de risque, avec leur niveau de gravité et l’action à prendre.',
     },
   },
 };
@@ -447,16 +447,16 @@ const fr: ScPageContent = {
 
 const en: ScPageContent = {
   meta: {
-    title: 'STRIVN for S&C coaches | Your methodology, industrialised',
+    title: 'STRIVN for S&C coaches | Load, readiness, tests, reports',
     description:
-      'Load, wellness check-in, readiness, tests: what you already do in Excel, run by a system. GPS import, ACWR, planning and staff reporting.',
+      'Measure load, track readiness and run your test campaigns. STRIVN imports your Catapult or STATSports exports, then computes ACWR, monotony and strain.',
   },
   hero: {
     kicker: 'FOR STRENGTH & CONDITIONING COACHES',
-    title: 'Your methodology, industrialised.',
-    sub: 'What you already do in Excel — load, wellness check-in, readiness, tests — run by a system: collection happens on its own, the metrics are the ones from the literature, and the staff sees the result.',
+    title: 'Dose the load, plan the week, run the session.',
+    sub: 'Your players log how they feel, your GPS exports land, STRIVN turns them into ACWR, monotony and strain. You plan the week in AU, you prescribe as a % of 1RM, and the staff reads the result.',
     primaryCta: 'Start for free',
-    secondaryCta: 'See the methodology',
+    secondaryCta: 'See your week',
     board: {
       title: 'Today’s readiness · Olympique Montverne',
       stamp: 'WED 07:45',
@@ -471,14 +471,14 @@ const en: ScPageContent = {
   },
   daily: {
     kicker: 'YOUR WEEK',
-    title: 'The same tasks. Without the logistics.',
-    sub: 'One session a week or six, full GPS or plain RPE, alone or with a staff: the context changes, the tasks stay the same.',
+    title: 'Find your nine daily tasks, run by STRIVN.',
+    sub: 'One session a week or six, a GPS export or a plain RPE, the flow stays the same.',
     colBefore: 'WHAT YOU ALREADY DO',
     colAfter: 'HOW IT WORKS IN STRIVN',
     rows: [
       {
         before: 'Know who is fresh before the session',
-        after: 'Readiness computed from the wellness check-in — green, amber, red',
+        after: 'Readiness computed from the wellness check-in: green, amber, red',
       },
       {
         before: 'Bring in the session’s GPS data',
@@ -490,18 +490,18 @@ const en: ScPageContent = {
       },
       {
         before: 'Build the week’s sessions',
-        after: 'Block builder — external load estimated from drill metrics',
+        after: 'Block builder, external load estimated from drill metrics',
       },
       {
         before: 'Individualise: strength, prevention, return',
-        after: 'Strength work as a % of 1RM — every player gets their own load in the app',
+        after: 'Strength work as a % of 1RM, every player gets their own load in the app',
       },
       {
         before: 'Adjust during the session',
         after: 'Live session: cumulative load and gap vs plan, in real time',
       },
       {
-        before: 'Answer the coach: “can he play?”',
+        before: 'Tell the coach who can play on Saturday',
         after: 'Readiness and medical tracking feed straight into the call-up',
       },
       {
@@ -516,8 +516,8 @@ const en: ScPageContent = {
   },
   metrics: {
     kicker: 'METRICS',
-    title: 'The metrics of the trade, computed continuously.',
-    body: 'Taken from the literature, computed from what you already enter. The coefficients stay adjustable from the Formula panel. No black box.',
+    title: 'Read twelve metrics computed from what you enter.',
+    body: 'Each metric follows a definition from the literature and computes from what you already enter. The match and training coefficients stay adjustable from the Formula panel.',
     items: [
       { name: 'ACWR', detail: 'acute 7 d ÷ (chronic 28 d ÷ 4) · zone 0.8–1.3' },
       { name: 'Monotony', detail: 'daily mean ÷ standard deviation of the week' },
@@ -530,16 +530,16 @@ const en: ScPageContent = {
       { name: 'Speed blocks', detail: 'Aerobic, High intensity, High-speed running, Sprint' },
       { name: 'Estimated external load', detail: 'sum of drill metrics, scaled to durations' },
       { name: 'Coverage rate', detail: 'share of the session described by metrics' },
-      { name: '1RM', detail: 'entered or estimated — Epley or Brzycki formula' },
+      { name: '1RM', detail: 'entered, or estimated with the Epley or Brzycki formula' },
     ],
   },
   planning: {
     tag: 'LOAD PLANNING',
-    title: 'The week takes shape before it is played.',
-    body: 'The S&C coach’s tool: you set the weekly target in AU and split it by category. Each component attaches to a session in the calendar, or stays pending. Then “planned vs actual” puts the plan against what the squad really absorbed.',
+    title: 'Set a weekly AU target, split it by category.',
+    body: 'You set the weekly target in AU, then split it between pitch, strength and recovery. Each component attaches to a session in the calendar, or stays pending. “Planned vs actual” then puts the plan against what the squad absorbed.',
     points: [
       'Weekly target in AU, budget per category',
-      'Load = RPE × duration × category coefficient',
+      'Load = RPE × duration × coefficient: 90 min at RPE 7 is 630 AU',
       'Components attached to a session, or left pending',
       'Planned vs actual, per team and per player',
       'Cycles and season for recovery or competition blocks',
@@ -568,13 +568,13 @@ const en: ScPageContent = {
   },
   library: {
     tag: 'DRILL LIBRARY & METRICS',
-    title: 'Your pitch drills, quantified.',
-    body: 'Capture a drill from a link, a video, a diagram or plain text. Attach its metrics — sprints, distance, expected RPE, pitch area — and the session computes its estimated external load on its own.',
+    title: 'Quantify your pitch drills, external load computes itself.',
+    body: 'Capture a drill from a link, a video, a diagram or plain text. Attach its metrics (sprints, distance, expected RPE, pitch area) and the session computes its estimated external load. Taking the block from 15 to 20 minutes scales the cumulative metrics up in proportion.',
     points: [
       'Capture from a link, photo, video, tactical diagram or text',
       'Folders, tags and an inbox before publishing',
       'Standard metrics, GPS columns and custom metrics',
-      'Public link sharing with no account — revocable at any time',
+      'Public link sharing without an account, revocable at any time',
     ],
     cta: 'See the drill library',
     href: '/en/features/exercise-library/',
@@ -606,8 +606,8 @@ const en: ScPageContent = {
   },
   strength: {
     tag: 'STRENGTH & 1RM',
-    title: 'One percentage for the squad. One load per player.',
-    body: 'The 1RM is entered directly, or estimated from a sub-maximal set — Epley or Brzycki formula, safer mid-season. You prescribe “Squat 4×5 @ 82 %” for the whole group: each player gets their real load.',
+    title: 'Prescribe one percentage, every player gets their kilos.',
+    body: 'You enter the 1RM, or you estimate it from a sub-maximal set with the Epley or Brzycki formula. You prescribe “Squat 4×5 @ 82 %” for the whole group, and each player gets their kilos in the app.',
     points: [
       'Blocks as straight sets, supersets or circuits',
       'Load modes: % 1RM, fixed kg, RPE or bodyweight',
@@ -631,8 +631,8 @@ const en: ScPageContent = {
   },
   tests: {
     tag: 'PHYSICAL TESTS & SELF-MEASUREMENT',
-    title: 'Measurements collected without transcription.',
-    body: 'Launch a campaign on whatever you want to measure: MAS, weight, or a test you define yourself. The staff enters the values, or players fill them in themselves from a magic link received by email, WhatsApp or notification.',
+    title: 'Launch a test campaign, players enter the values themselves.',
+    body: 'Launch a campaign on whatever you want to measure: MAS, weight, or a test you define yourself. The staff enters the values, or the players fill them in from a magic link. Invitations go out on three channels: email, WhatsApp and push notification.',
     points: [
       'Custom measures, created by you',
       'Staff entry or player self-measurement',
@@ -656,8 +656,8 @@ const en: ScPageContent = {
   },
   reports: {
     tag: 'REPORTS & DASHBOARD',
-    title: 'Report back without losing your evening.',
-    body: 'The data comes from what you already enter. No double encoding. Five reports cover selection, load, the team and the player, the generator builds everything else, and the AI writes both the summary and the risk signals.',
+    title: 'Hand the staff five reports, AI writes the summary.',
+    body: 'The reports fill themselves from what you already enter, from the wellness check-in to the GPS exports. Five reports cover selection, load, the team and the player. The generator builds the others, and the AI writes both the summary and the risk signals.',
     dashboard: {
       title: 'Dashboard · Load & availability',
       widgetBtn: 'Widget',
@@ -670,7 +670,7 @@ const en: ScPageContent = {
       weekly: 'Weekly load · 6 wks',
       availability: 'Availability',
       availabilityValue: '83%',
-      hsr: 'HSR — match vs match',
+      hsr: 'HSR · match vs match',
       aiTag: 'AI-GENERATED',
     },
     report: {
@@ -678,12 +678,12 @@ const en: ScPageContent = {
       aiBadge: 'WRITTEN BY AI',
       body: 'Check-in response rate 89 %. Average fatigue 2.4 / 5, motivation 4.1 / 5. Squad ACWR 1.08. Two players out of zone, one return protocol in progress.',
       items: [
-        { icon: 'list-ordered', label: 'Selection / form — squad ranked over the period' },
-        { icon: 'trophy', label: 'Load & availability — over 4 weeks' },
-        { icon: 'download', label: 'Per-player report — 7-day summary' },
-        { icon: 'users', label: 'Report generator — subject, filters, chart' },
+        { icon: 'list-ordered', label: 'Selection / form · squad ranked over the period' },
+        { icon: 'trophy', label: 'Load & availability · over 4 weeks' },
+        { icon: 'download', label: 'Per-player report · 7-day summary' },
+        { icon: 'users', label: 'Report generator · subject, filters, chart' },
       ],
-      aiStrip: 'AI briefing and risk signals: generated recommendations, with severity level and a direct action.',
+      aiStrip: 'The AI briefing lists the risk signals, with their severity level and the action to take.',
     },
   },
 };
@@ -692,16 +692,16 @@ const en: ScPageContent = {
 
 const nl: ScPageContent = {
   meta: {
-    title: 'STRIVN voor fysieke trainers | Uw methodologie, geïndustrialiseerd',
+    title: 'STRIVN voor fysieke trainers | Belasting, readiness, testen, rapporten',
     description:
-      'Belasting, wellness-check-in, readiness, testen: wat u al in Excel doet, uitgevoerd door een systeem. GPS-import, ACWR, planning en rapportage aan de staf.',
+      'Doseer de belasting, volg de readiness en start uw testcampagnes. STRIVN importeert uw Catapult- of STATSports-export en berekent ACWR, monotonie en strain.',
   },
   hero: {
     kicker: 'VOOR FYSIEKE TRAINERS',
-    title: 'Uw methodologie, geïndustrialiseerd.',
-    sub: 'Wat u al in Excel doet — belasting, wellness-check-in, readiness, testen — uitgevoerd door een systeem: de verzameling gebeurt vanzelf, de indicatoren zijn die uit de literatuur, en de staf ziet het resultaat.',
+    title: 'Doseer, plan en stuur elke training.',
+    sub: 'Uw spelers geven hun beleving door, uw GPS-exports komen binnen, STRIVN haalt er ACWR, monotonie en strain uit. U plant de week in AU, u schrijft voor in % van het 1RM, en de staf leest het resultaat.',
     primaryCta: 'Gratis beginnen',
-    secondaryCta: 'Bekijk de methodologie',
+    secondaryCta: 'Bekijk uw week',
     board: {
       title: 'Readiness vandaag · Olympique Montverne',
       stamp: 'WOE 07:45',
@@ -716,14 +716,14 @@ const nl: ScPageContent = {
   },
   daily: {
     kicker: 'UW WEEK',
-    title: 'Dezelfde taken. Zonder de logistiek.',
-    sub: 'Eén training per week of zes, volledige GPS of gewoon RPE, alleen of met een staf: de context verandert, de taken blijven dezelfde.',
+    title: 'Vind uw negen dagelijkse taken terug in STRIVN.',
+    sub: 'Eén training per week of zes, een GPS-export of gewoon RPE, het verloop blijft hetzelfde.',
     colBefore: 'WAT U AL DOET',
     colAfter: 'HOE HET WERKT IN STRIVN',
     rows: [
       {
         before: 'Weten wie fris is vóór de training',
-        after: 'Readiness berekend uit de wellness-check-in — groen, oranje, rood',
+        after: 'Readiness berekend uit de wellness-check-in: groen, oranje, rood',
       },
       {
         before: 'De GPS-data van de training verwerken',
@@ -735,18 +735,18 @@ const nl: ScPageContent = {
       },
       {
         before: 'De trainingen van de week opbouwen',
-        after: 'Blokkenbouwer — externe belasting geschat uit oefenmetrieken',
+        after: 'Blokkenbouwer, externe belasting geschat uit oefenmetrieken',
       },
       {
         before: 'Individualiseren: kracht, preventie, terugkeer',
-        after: 'Krachttraining in % van het 1RM — elke speler krijgt zijn eigen belasting in de app',
+        after: 'Krachttraining in % van het 1RM, elke speler krijgt zijn eigen belasting in de app',
       },
       {
         before: 'Bijsturen tijdens de training',
         after: 'Live training: cumulatieve belasting en afwijking t.o.v. plan, in realtime',
       },
       {
-        before: 'De coach antwoorden: “kan hij spelen?”',
+        before: 'De coach zeggen wie zaterdag kan spelen',
         after: 'Readiness en medische opvolging komen rechtstreeks in de selectie',
       },
       {
@@ -761,8 +761,8 @@ const nl: ScPageContent = {
   },
   metrics: {
     kicker: 'INDICATOREN',
-    title: 'De indicatoren van het vak, doorlopend berekend.',
-    body: 'Overgenomen uit de literatuur, berekend op basis van wat u al invoert. De coëfficiënten blijven aanpasbaar via het Formule-paneel. Geen black box.',
+    title: 'Lees twaalf indicatoren berekend uit uw eigen invoer.',
+    body: 'Elke indicator volgt een definitie uit de literatuur en wordt berekend uit wat u al invoert. De coëfficiënten voor wedstrijd en training blijven aanpasbaar via het Formule-paneel.',
     items: [
       { name: 'ACWR', detail: 'acuut 7 d ÷ (chronisch 28 d ÷ 4) · zone 0,8–1,3' },
       { name: 'Monotonie', detail: 'daggemiddelde ÷ standaardafwijking van de week' },
@@ -775,16 +775,16 @@ const nl: ScPageContent = {
       { name: 'Snelheidsblokken', detail: 'Aeroob, Hoge intensiteit, Hoge-snelheidsloop, Sprint' },
       { name: 'Geschatte externe belasting', detail: 'som van de oefenmetrieken, geschaald naar de duur' },
       { name: 'Dekkingsgraad', detail: 'deel van de training beschreven door metrieken' },
-      { name: '1RM', detail: 'ingevoerd of geschat — formule Epley of Brzycki' },
+      { name: '1RM', detail: 'ingevoerd, of geschat met de formule Epley of Brzycki' },
     ],
   },
   planning: {
     tag: 'BELASTINGSPLANNING',
-    title: 'De week krijgt vorm voordat ze gespeeld wordt.',
-    body: 'Het instrument van de fysieke trainer: u bepaalt het weekdoel in AU en verdeelt het per categorie. Elk onderdeel hangt aan een training in de kalender, of blijft in wacht. Daarna zet “Gepland vs gerealiseerd” het plan naast wat de groep werkelijk verwerkte.',
+    title: 'Bepaal het weekdoel in AU, verdeel het per categorie.',
+    body: 'U bepaalt het weekdoel in AU en verdeelt het over veld, kracht en herstel. Elk onderdeel hangt aan een training in de kalender, of blijft in wacht. Daarna zet “Gepland vs gerealiseerd” het plan naast wat de groep werkelijk verwerkte.',
     points: [
       'Weekdoel in AU, budget per categorie',
-      'Belasting = RPE × duur × categoriecoëfficiënt',
+      'Belasting = RPE × duur × coëfficiënt: 90 min bij RPE 7 is 630 AU',
       'Onderdelen gekoppeld aan een training, of in wacht gelaten',
       'Gepland vs gerealiseerd, per team en per speler',
       'Cycli en seizoen voor herstel- of competitieblokken',
@@ -813,13 +813,13 @@ const nl: ScPageContent = {
   },
   library: {
     tag: 'OEFENBIBLIOTHEEK & METRIEKEN',
-    title: 'Uw veldoefeningen, gekwantificeerd.',
-    body: 'Leg een oefening vast via een link, een video, een schema of tekst. Koppel er de metrieken aan — sprints, afstand, verwachte RPE, oppervlakte — en de training berekent haar geschatte externe belasting vanzelf.',
+    title: 'Kwantificeer uw veldoefeningen, de externe belasting volgt.',
+    body: 'Leg een oefening vast via een link, een video, een schema of tekst. Koppel er de metrieken aan (sprints, afstand, verwachte RPE, oppervlakte) en de training berekent haar geschatte externe belasting. Gaat het blok van 15 naar 20 minuten, dan schalen de cumulatieve metrieken evenredig mee.',
     points: [
       'Vastleggen via link, foto, video, tactisch schema of tekst',
       'Mappen, tags en een postvak vóór publicatie',
       'Standaardmetrieken, GPS-kolommen en eigen metrieken',
-      'Delen via publieke link zonder account — altijd intrekbaar',
+      'Delen via publieke link zonder account, altijd intrekbaar',
     ],
     cta: 'Bekijk de oefenbibliotheek',
     href: '/nl/features/exercise-library/',
@@ -851,8 +851,8 @@ const nl: ScPageContent = {
   },
   strength: {
     tag: 'KRACHTTRAINING & 1RM',
-    title: 'Eén percentage voor het team. Eén belasting per speler.',
-    body: 'Het 1RM wordt rechtstreeks ingevoerd, of geschat uit een submaximale set — formule Epley of Brzycki, veiliger in de loop van het seizoen. U schrijft “Squat 4×5 @ 82 %” voor de hele groep voor: elke speler krijgt zijn werkelijke belasting.',
+    title: 'Schrijf één percentage voor, elke speler krijgt zijn kilo’s.',
+    body: 'U voert het 1RM rechtstreeks in, of u schat het uit een submaximale set met de formule Epley of Brzycki. U schrijft “Squat 4×5 @ 82 %” voor de hele groep voor, en elke speler krijgt zijn kilo’s in de app.',
     points: [
       'Blokken als enkele set, superset of circuit',
       'Belastingsmodi: % 1RM, vaste kg, RPE of lichaamsgewicht',
@@ -876,8 +876,8 @@ const nl: ScPageContent = {
   },
   tests: {
     tag: 'FYSIEKE TESTEN & ZELFMETING',
-    title: 'Metingen verzameld zonder overtypen.',
-    body: 'Start een campagne op wat u wilt meten: MAS, gewicht, of een test die u zelf definieert. De staf voert in, of de spelers vullen zelf in via een magische link ontvangen per e-mail, WhatsApp of notificatie.',
+    title: 'Start een testcampagne, de spelers vullen zelf in.',
+    body: 'Start een campagne op wat u wilt meten: MAS, gewicht, of een test die u zelf definieert. De staf voert de waarden in, of de spelers vullen ze zelf in via een magische link. De uitnodigingen vertrekken via drie kanalen: e-mail, WhatsApp en pushnotificatie.',
     points: [
       'Eigen metingen, door uzelf aangemaakt',
       'Invoer door de staf of zelfmeting door de spelers',
@@ -901,8 +901,8 @@ const nl: ScPageContent = {
   },
   reports: {
     tag: 'RAPPORTEN & DASHBOARD',
-    title: 'Verantwoording afleggen zonder er uw avond aan te besteden.',
-    body: 'De data komt uit wat u al invoert. Geen dubbele invoer. Vijf rapporten dekken de selectie, de belasting, het team en de speler, de generator bouwt al de rest, en de AI schrijft zowel de synthese als de risicosignalen.',
+    title: 'Lever de staf vijf rapporten, door AI samengevat.',
+    body: 'De rapporten vullen zich uit wat u al invoert, van de wellness-check-in tot de GPS-exports. Vijf rapporten dekken de selectie, de belasting, het team en de speler. De generator bouwt de rest, en de AI schrijft zowel de synthese als de risicosignalen.',
     dashboard: {
       title: 'Dashboard · Belasting & beschikbaarheid',
       widgetBtn: 'Widget',
@@ -915,7 +915,7 @@ const nl: ScPageContent = {
       weekly: 'Weekbelasting · 6 wkn',
       availability: 'Beschikbaarheid',
       availabilityValue: '83%',
-      hsr: 'HSR — wedstrijd vs wedstrijd',
+      hsr: 'HSR · wedstrijd vs wedstrijd',
       aiTag: 'GEGENEREERD DOOR AI',
     },
     report: {
@@ -923,12 +923,12 @@ const nl: ScPageContent = {
       aiBadge: 'GESCHREVEN DOOR AI',
       body: 'Antwoordgraad op de check-in 89 %. Gemiddelde vermoeidheid 2,4 / 5, motivatie 4,1 / 5. ACWR groep 1,08. Twee spelers buiten zone, één terugkeerprotocol lopend.',
       items: [
-        { icon: 'list-ordered', label: 'Selectie / vorm — kern gerangschikt over de periode' },
-        { icon: 'trophy', label: 'Belasting & beschikbaarheid — over 4 weken' },
-        { icon: 'download', label: 'Rapport per speler — synthese 7 dagen' },
-        { icon: 'users', label: 'Rapportgenerator — onderwerp, filters, grafiek' },
+        { icon: 'list-ordered', label: 'Selectie / vorm · kern gerangschikt over de periode' },
+        { icon: 'trophy', label: 'Belasting & beschikbaarheid · over 4 weken' },
+        { icon: 'download', label: 'Rapport per speler · synthese 7 dagen' },
+        { icon: 'users', label: 'Rapportgenerator · onderwerp, filters, grafiek' },
       ],
-      aiStrip: 'AI-briefing en risicosignalen: gegenereerde aanbevelingen, met ernstniveau en directe actie.',
+      aiStrip: 'De AI-briefing somt de risicosignalen op, met hun ernstniveau en de actie die volgt.',
     },
   },
 };
@@ -937,16 +937,16 @@ const nl: ScPageContent = {
 
 const de: ScPageContent = {
   meta: {
-    title: 'STRIVN für Athletiktrainer | Ihre Methodik, industrialisiert',
+    title: 'STRIVN für Athletiktrainer | Belastung, Readiness, Tests, Berichte',
     description:
-      'Belastung, Wellness-Check-in, Readiness, Tests: was Sie längst in Excel machen, ausgeführt von einem System. GPS-Import, ACWR, Planung und Rückmeldung an den Staff.',
+      'Belastung dosieren, Readiness verfolgen, Testkampagnen starten. STRIVN importiert Ihre Catapult- oder STATSports-Exporte und berechnet ACWR, Monotonie und Strain.',
   },
   hero: {
     kicker: 'FÜR ATHLETIKTRAINER',
-    title: 'Ihre Methodik, industrialisiert.',
-    sub: 'Was Sie längst in Excel machen — Belastung, Wellness-Check-in, Readiness, Tests — ausgeführt von einem System: Die Erfassung läuft von selbst, die Kennzahlen sind die aus der Literatur, und der Staff sieht das Ergebnis.',
+    title: 'Belastung messen, Woche planen, Einheit steuern.',
+    sub: 'Ihre Spieler melden ihr Empfinden, Ihre GPS-Exporte laufen ein, STRIVN bildet daraus ACWR, Monotonie und Strain. Sie planen die Woche in AU, Sie verschreiben in % des 1RM, und der Staff liest das Ergebnis.',
     primaryCta: 'Kostenlos starten',
-    secondaryCta: 'Methodik ansehen',
+    secondaryCta: 'Ihre Woche ansehen',
     board: {
       title: 'Readiness heute · Olympique Montverne',
       stamp: 'MI 07:45',
@@ -961,14 +961,14 @@ const de: ScPageContent = {
   },
   daily: {
     kicker: 'IHRE WOCHE',
-    title: 'Dieselben Aufgaben. Ohne die Logistik.',
-    sub: 'Eine Einheit pro Woche oder sechs, volles GPS oder nur RPE, allein oder im Staff: Der Kontext ändert sich, die Aufgaben bleiben dieselben.',
+    title: 'Finden Sie Ihre neun täglichen Aufgaben in STRIVN.',
+    sub: 'Eine Einheit pro Woche oder sechs, ein GPS-Export oder nur RPE, der Ablauf bleibt derselbe.',
     colBefore: 'WAS SIE OHNEHIN TUN',
     colAfter: 'WIE ES IN STRIVN LÄUFT',
     rows: [
       {
         before: 'Wissen, wer vor der Einheit frisch ist',
-        after: 'Readiness aus dem Wellness-Check-in berechnet — grün, orange, rot',
+        after: 'Readiness aus dem Wellness-Check-in berechnet: grün, orange, rot',
       },
       {
         before: 'Die GPS-Daten der Einheit einbinden',
@@ -980,18 +980,18 @@ const de: ScPageContent = {
       },
       {
         before: 'Die Einheiten der Woche aufbauen',
-        after: 'Block-Builder — externe Belastung aus Übungsmetriken geschätzt',
+        after: 'Block-Builder, externe Belastung aus Übungsmetriken geschätzt',
       },
       {
         before: 'Individualisieren: Kraft, Prävention, Rückkehr',
-        after: 'Krafttraining in % des 1RM — jeder Spieler erhält seine Last in der App',
+        after: 'Krafttraining in % des 1RM, jeder Spieler erhält seine Last in der App',
       },
       {
         before: 'Während der Einheit nachsteuern',
         after: 'Einheit live: kumulierte Belastung und Abweichung zum Plan, in Echtzeit',
       },
       {
-        before: 'Dem Cheftrainer antworten: „Kann er spielen?“',
+        before: 'Dem Cheftrainer sagen, wer am Samstag spielen kann',
         after: 'Readiness und medizinische Daten fließen direkt ins Aufgebot',
       },
       {
@@ -1006,8 +1006,8 @@ const de: ScPageContent = {
   },
   metrics: {
     kicker: 'KENNZAHLEN',
-    title: 'Die Kennzahlen des Fachs, laufend berechnet.',
-    body: 'Aus der Literatur übernommen, berechnet aus dem, was Sie ohnehin erfassen. Die Koeffizienten bleiben im Formel-Panel einstellbar. Keine Blackbox.',
+    title: 'Zwölf Kennzahlen lesen, aus Ihren Eingaben berechnet.',
+    body: 'Jede Kennzahl folgt einer Definition aus der Literatur und wird aus dem berechnet, was Sie ohnehin erfassen. Die Koeffizienten für Spiel und Training bleiben im Formel-Panel einstellbar.',
     items: [
       { name: 'ACWR', detail: 'akut 7 T ÷ (chronisch 28 T ÷ 4) · Zone 0,8–1,3' },
       { name: 'Monotonie', detail: 'Tagesmittel ÷ Standardabweichung der Woche' },
@@ -1020,16 +1020,16 @@ const de: ScPageContent = {
       { name: 'Geschwindigkeitsblöcke', detail: 'Aerob, Hohe Intensität, Hochgeschwindigkeitslauf, Sprint' },
       { name: 'Geschätzte externe Belastung', detail: 'Summe der Übungsmetriken, auf die Dauer skaliert' },
       { name: 'Abdeckungsgrad', detail: 'Anteil der Einheit, der durch Metriken beschrieben ist' },
-      { name: '1RM', detail: 'erfasst oder geschätzt — Formel Epley oder Brzycki' },
+      { name: '1RM', detail: 'erfasst, oder mit der Formel Epley oder Brzycki geschätzt' },
     ],
   },
   planning: {
     tag: 'BELASTUNGSPLANUNG',
-    title: 'Die Woche entsteht, bevor sie gespielt wird.',
-    body: 'Das Werkzeug des Athletiktrainers: Sie setzen das Wochenziel in AU und verteilen es nach Kategorie. Jede Komponente hängt an einer Einheit im Kalender, oder bleibt offen. Danach stellt „Plan vs Ist“ den Plan dem gegenüber, was die Gruppe tatsächlich aufgenommen hat.',
+    title: 'Wochenziel in AU setzen, nach Kategorie verteilen.',
+    body: 'Sie setzen das Wochenziel in AU und verteilen es auf Platz, Kraft und Regeneration. Jede Komponente hängt an einer Einheit im Kalender, oder bleibt offen. Danach stellt „Plan vs Ist“ den Plan dem gegenüber, was die Gruppe aufgenommen hat.',
     points: [
       'Wochenziel in AU, Budget je Kategorie',
-      'Belastung = RPE × Dauer × Kategoriekoeffizient',
+      'Belastung = RPE × Dauer × Koeffizient: 90 min bei RPE 7 sind 630 AU',
       'Komponenten an eine Einheit gehängt oder offen gelassen',
       'Plan vs Ist, je Team und je Spieler',
       'Zyklen und Saison für Regenerations- oder Wettkampfblöcke',
@@ -1058,13 +1058,13 @@ const de: ScPageContent = {
   },
   library: {
     tag: 'ÜBUNGSBIBLIOTHEK & METRIKEN',
-    title: 'Ihre Platzübungen, quantifiziert.',
-    body: 'Erfassen Sie eine Übung über einen Link, ein Video, eine Skizze oder Text. Hängen Sie ihre Metriken an — Sprints, Distanz, erwarteter RPE, Fläche — und die Einheit berechnet ihre geschätzte externe Belastung von selbst.',
+    title: 'Platzübungen quantifizieren, die externe Belastung folgt.',
+    body: 'Erfassen Sie eine Übung über einen Link, ein Video, eine Skizze oder Text. Hängen Sie ihre Metriken an (Sprints, Distanz, erwarteter RPE, Fläche) und die Einheit berechnet ihre geschätzte externe Belastung. Geht der Block von 15 auf 20 Minuten, skalieren die kumulierten Metriken proportional mit.',
     points: [
       'Erfassung per Link, Foto, Video, Taktikskizze oder Text',
       'Ordner, Tags und Posteingang vor der Veröffentlichung',
       'Standardmetriken, GPS-Spalten und eigene Metriken',
-      'Teilen per öffentlichem Link ohne Konto — jederzeit widerrufbar',
+      'Teilen per öffentlichem Link ohne Konto, jederzeit widerrufbar',
     ],
     cta: 'Übungsbibliothek ansehen',
     href: '/de/features/exercise-library/',
@@ -1096,8 +1096,8 @@ const de: ScPageContent = {
   },
   strength: {
     tag: 'KRAFTTRAINING & 1RM',
-    title: 'Ein Prozentsatz für das Team. Eine Last je Spieler.',
-    body: 'Das 1RM wird direkt erfasst oder aus einem submaximalen Satz geschätzt — Formel Epley oder Brzycki, sicherer im Saisonverlauf. Sie verschreiben „Squat 4×5 @ 82 %“ für die ganze Gruppe: Jeder erhält seine reale Last.',
+    title: 'Einen Prozentsatz verschreiben, jeder erhält seine Kilos.',
+    body: 'Sie erfassen das 1RM direkt, oder Sie schätzen es aus einem submaximalen Satz mit der Formel Epley oder Brzycki. Sie verschreiben „Squat 4×5 @ 82 %“ für die ganze Gruppe, und jeder Spieler erhält seine Kilos in der App.',
     points: [
       'Blöcke als einfacher Satz, Superset oder Zirkel',
       'Lastmodi: % 1RM, feste kg, RPE oder Körpergewicht',
@@ -1121,8 +1121,8 @@ const de: ScPageContent = {
   },
   tests: {
     tag: 'LEISTUNGSTESTS & SELBSTMESSUNG',
-    title: 'Messwerte erfassen, ohne sie abzutippen.',
-    body: 'Starten Sie eine Kampagne auf dem, was Sie messen wollen: MAS, Gewicht oder ein Test, den Sie selbst definieren. Der Staff trägt ein, oder die Spieler erfassen selbst über einen Magic Link per E-Mail, WhatsApp oder Benachrichtigung.',
+    title: 'Kampagne starten, die Spieler tragen selbst ein.',
+    body: 'Starten Sie eine Kampagne auf dem, was Sie messen wollen: MAS, Gewicht oder ein Test, den Sie selbst definieren. Der Staff trägt die Werte ein, oder die Spieler erfassen sie selbst über einen Magic Link. Die Einladungen gehen über drei Kanäle: E-Mail, WhatsApp und Push-Benachrichtigung.',
     points: [
       'Eigene Messgrößen, von Ihnen angelegt',
       'Eingabe durch den Staff oder Selbstmessung durch die Spieler',
@@ -1146,8 +1146,8 @@ const de: ScPageContent = {
   },
   reports: {
     tag: 'BERICHTE & DASHBOARD',
-    title: 'Rechenschaft geben, ohne den Abend zu opfern.',
-    body: 'Die Daten stammen aus dem, was Sie ohnehin erfassen. Keine Doppelerfassung. Fünf Berichte decken Auswahl, Belastung, Team und Spieler ab, der Generator baut alles Weitere, und die KI schreibt sowohl die Synthese als auch die Risikosignale.',
+    title: 'Liefern Sie dem Staff fünf Berichte, KI-Synthese inklusive.',
+    body: 'Die Berichte füllen sich aus dem, was Sie ohnehin erfassen, vom Wellness-Check-in bis zu den GPS-Exporten. Fünf Berichte decken Auswahl, Belastung, Team und Spieler ab. Der Generator baut die übrigen, und die KI schreibt die Synthese wie auch die Risikosignale.',
     dashboard: {
       title: 'Dashboard · Belastung & Verfügbarkeit',
       widgetBtn: 'Widget',
@@ -1160,7 +1160,7 @@ const de: ScPageContent = {
       weekly: 'Wochenbelastung · 6 Wo.',
       availability: 'Verfügbarkeit',
       availabilityValue: '83%',
-      hsr: 'HSR — Spiel vs Spiel',
+      hsr: 'HSR · Spiel vs Spiel',
       aiTag: 'KI-GENERIERT',
     },
     report: {
@@ -1168,12 +1168,12 @@ const de: ScPageContent = {
       aiBadge: 'VON DER KI GESCHRIEBEN',
       body: 'Antwortquote beim Check-in 89 %. Mittlere Ermüdung 2,4 / 5, Motivation 4,1 / 5. ACWR Gruppe 1,08. Zwei Spieler außerhalb der Zone, ein Rückkehrprotokoll läuft.',
       items: [
-        { icon: 'list-ordered', label: 'Auswahl / Form — Kader über den Zeitraum gereiht' },
-        { icon: 'trophy', label: 'Belastung & Verfügbarkeit — über 4 Wochen' },
-        { icon: 'download', label: 'Bericht je Spieler — Synthese 7 Tage' },
-        { icon: 'users', label: 'Berichtsgenerator — Thema, Filter, Diagramm' },
+        { icon: 'list-ordered', label: 'Auswahl / Form · Kader über den Zeitraum gereiht' },
+        { icon: 'trophy', label: 'Belastung & Verfügbarkeit · über 4 Wochen' },
+        { icon: 'download', label: 'Bericht je Spieler · Synthese 7 Tage' },
+        { icon: 'users', label: 'Berichtsgenerator · Thema, Filter, Diagramm' },
       ],
-      aiStrip: 'KI-Briefing und Risikosignale: generierte Empfehlungen, mit Schweregrad und direkter Aktion.',
+      aiStrip: 'Das KI-Briefing listet die Risikosignale auf, mit Schweregrad und der nächsten Aktion.',
     },
   },
 };
@@ -1182,16 +1182,16 @@ const de: ScPageContent = {
 
 const pt: ScPageContent = {
   meta: {
-    title: 'STRIVN para preparadores físicos | A sua metodologia, industrializada',
+    title: 'STRIVN para preparadores físicos | Carga, readiness, testes, relatórios',
     description:
-      'Carga, check-in de bem-estar, readiness, testes: o que já faz em Excel, executado por um sistema. Importação GPS, ACWR, planeamento e devolução ao staff.',
+      'Doseie a carga, siga o readiness e lance as suas campanhas de testes. O STRIVN importa as suas exportações Catapult ou STATSports e calcula ACWR, monotonia e constrangimento.',
   },
   hero: {
     kicker: 'PARA PREPARADORES FÍSICOS',
-    title: 'A sua metodologia, industrializada.',
-    sub: 'O que já faz em Excel — carga, check-in de bem-estar, readiness, testes — executado por um sistema: a recolha faz-se sozinha, os indicadores são os da literatura, e o staff vê o resultado.',
+    title: 'Doseie a carga, planeie a semana, conduza a sessão.',
+    sub: 'Os seus jogadores declaram o que sentem, as suas exportações GPS chegam, o STRIVN retira daí ACWR, monotonia e constrangimento. Planeia a semana em UA, prescreve em % do 1RM, e o staff lê o resultado.',
     primaryCta: 'Começar gratuitamente',
-    secondaryCta: 'Ver a metodologia',
+    secondaryCta: 'Ver a sua semana',
     board: {
       title: 'Readiness do dia · Olympique Montverne',
       stamp: 'QUA 07:45',
@@ -1206,14 +1206,14 @@ const pt: ScPageContent = {
   },
   daily: {
     kicker: 'A SUA SEMANA',
-    title: 'As mesmas tarefas. Sem a logística.',
-    sub: 'Uma sessão por semana ou seis, GPS completo ou apenas RPE, sozinho ou com staff: o contexto muda, as tarefas mantêm-se.',
+    title: 'Encontre as suas nove tarefas diárias no STRIVN.',
+    sub: 'Uma sessão por semana ou seis, uma exportação GPS ou apenas RPE, o percurso mantém-se igual.',
     colBefore: 'O QUE JÁ FAZ',
     colAfter: 'COMO ACONTECE NO STRIVN',
     rows: [
       {
         before: 'Saber quem está fresco antes da sessão',
-        after: 'Readiness calculado a partir do check-in de bem-estar — verde, laranja, vermelho',
+        after: 'Readiness calculado a partir do check-in de bem-estar: verde, laranja, vermelho',
       },
       {
         before: 'Integrar os dados GPS da sessão',
@@ -1225,18 +1225,18 @@ const pt: ScPageContent = {
       },
       {
         before: 'Construir as sessões da semana',
-        after: 'Construtor por blocos — carga externa estimada a partir das métricas de exercício',
+        after: 'Construtor por blocos, carga externa estimada a partir das métricas de exercício',
       },
       {
         before: 'Individualizar: força, prevenção, regresso',
-        after: 'Musculação em % do 1RM — cada jogador recebe a sua carga na app',
+        after: 'Musculação em % do 1RM, cada jogador recebe a sua carga na app',
       },
       {
         before: 'Ajustar durante a sessão',
         after: 'Sessão em direto: carga acumulada e desvio vs previsto, em tempo real',
       },
       {
-        before: 'Responder ao treinador: «pode jogar?»',
+        before: 'Dizer ao treinador quem pode jogar no sábado',
         after: 'Readiness e acompanhamento médico entram diretamente na convocatória',
       },
       {
@@ -1251,8 +1251,8 @@ const pt: ScPageContent = {
   },
   metrics: {
     kicker: 'INDICADORES',
-    title: 'Os indicadores da profissão, calculados em contínuo.',
-    body: 'Retirados da literatura, calculados a partir do que já introduz. Os coeficientes ficam ajustáveis no painel Fórmula. Nenhuma caixa negra.',
+    title: 'Leia doze indicadores calculados a partir do que introduz.',
+    body: 'Cada indicador segue uma definição da literatura e é calculado a partir do que já introduz. Os coeficientes de jogo e de treino ficam ajustáveis no painel Fórmula.',
     items: [
       { name: 'ACWR', detail: 'carga aguda 7 d ÷ (crónica 28 d ÷ 4) · zona 0,8–1,3' },
       { name: 'Monotonia', detail: 'média diária ÷ desvio-padrão da semana' },
@@ -1265,16 +1265,16 @@ const pt: ScPageContent = {
       { name: 'Blocos de velocidade', detail: 'Aeróbio, Alta intensidade, Corrida de alta velocidade, Sprint' },
       { name: 'Carga externa estimada', detail: 'soma das métricas de exercício, ajustada às durações' },
       { name: 'Taxa de cobertura', detail: 'parte da sessão descrita por métricas' },
-      { name: '1RM', detail: 'introduzido ou estimado — fórmula Epley ou Brzycki' },
+      { name: '1RM', detail: 'introduzido, ou estimado pela fórmula Epley ou Brzycki' },
     ],
   },
   planning: {
     tag: 'PLANEAMENTO DE CARGA',
-    title: 'A semana desenha-se antes de ser jogada.',
-    body: 'A ferramenta do preparador: define o objetivo semanal em UA e reparte-o por categoria. Cada componente liga-se a uma sessão do calendário, ou fica em espera. Depois, «Previsto vs realizado» confronta o plano com o que o plantel absorveu.',
+    title: 'Defina o objetivo semanal em UA, reparta-o por categoria.',
+    body: 'Define o objetivo semanal em UA e reparte-o por campo, musculação e recuperação. Cada componente liga-se a uma sessão do calendário, ou fica em espera. Depois, «Previsto vs realizado» confronta o plano com o que o plantel absorveu.',
     points: [
       'Objetivo semanal em UA, orçamento por categoria',
-      'Carga = RPE × duração × coeficiente de categoria',
+      'Carga = RPE × duração × coeficiente: 90 min a RPE 7 dão 630 UA',
       'Componentes ligados a uma sessão, ou deixados em espera',
       'Previsto vs realizado, por equipa e por jogador',
       'Ciclos e época para os blocos de recuperação ou de competição',
@@ -1303,13 +1303,13 @@ const pt: ScPageContent = {
   },
   library: {
     tag: 'BIBLIOTECA DE EXERCÍCIOS & MÉTRICAS',
-    title: 'Os seus exercícios de campo, quantificados.',
-    body: 'Capture um exercício a partir de um link, um vídeo, um esquema ou texto. Junte-lhe as métricas — sprints, distância, RPE esperado, área — e a sessão calcula sozinha a sua carga externa estimada.',
+    title: 'Quantifique os exercícios de campo, a carga externa segue.',
+    body: 'Capture um exercício a partir de um link, um vídeo, um esquema ou texto. Junte-lhe as métricas (sprints, distância, RPE esperado, área) e a sessão calcula a sua carga externa estimada. Se o bloco passa de 15 para 20 minutos, os acumulados escalam na mesma proporção.',
     points: [
       'Captura por link, foto, vídeo, esquema tático ou texto',
       'Pastas, etiquetas e caixa de entrada antes da publicação',
       'Métricas padrão, colunas GPS e métricas personalizadas',
-      'Partilha por link público sem conta — revogável a qualquer momento',
+      'Partilha por link público sem conta, revogável a qualquer momento',
     ],
     cta: 'Ver a biblioteca de exercícios',
     href: '/pt/features/exercise-library/',
@@ -1341,8 +1341,8 @@ const pt: ScPageContent = {
   },
   strength: {
     tag: 'MUSCULAÇÃO & 1RM',
-    title: 'Uma percentagem para a equipa. Uma carga por jogador.',
-    body: 'O 1RM é introduzido diretamente, ou estimado a partir de uma série submáxima — fórmula Epley ou Brzycki, mais segura a meio da época. Prescreve «Squat 4×5 @ 82 %» para todo o grupo: cada um recebe a sua carga real.',
+    title: 'Prescreva uma percentagem, cada um recebe os quilos.',
+    body: 'Introduz o 1RM diretamente, ou estima-o a partir de uma série submáxima com a fórmula Epley ou Brzycki. Prescreve «Squat 4×5 @ 82 %» para todo o grupo, e cada jogador recebe os seus quilos na app.',
     points: [
       'Blocos em série simples, superset ou circuito',
       'Modos de carga: % 1RM, kg fixo, RPE ou peso corporal',
@@ -1366,8 +1366,8 @@ const pt: ScPageContent = {
   },
   tests: {
     tag: 'TESTES FÍSICOS & AUTOMEDIÇÃO',
-    title: 'Medições recolhidas sem transcrição.',
-    body: 'Lance uma campanha sobre o que quiser medir: VAM, peso, ou um teste que defina você mesmo. O staff introduz, ou os jogadores preenchem eles próprios a partir de um link mágico recebido por e-mail, WhatsApp ou notificação.',
+    title: 'Lance uma campanha, os jogadores introduzem os valores.',
+    body: 'Lance uma campanha sobre o que quiser medir: VAM, peso, ou um teste que defina você mesmo. O staff introduz os valores, ou os jogadores preenchem-nos a partir de um link mágico. Os convites saem por três canais: e-mail, WhatsApp e notificação push.',
     points: [
       'Medidas personalizadas, criadas por si',
       'Introdução pelo staff ou automedição pelos jogadores',
@@ -1391,8 +1391,8 @@ const pt: ScPageContent = {
   },
   reports: {
     tag: 'RELATÓRIOS & PAINEL',
-    title: 'Prestar contas sem lá passar a noite.',
-    body: 'Os dados vêm do que já introduz. Nenhuma dupla codificação. Cinco relatórios cobrem a seleção, a carga, a equipa e o jogador, o gerador constrói tudo o resto, e a IA redige tanto a síntese como os sinais de risco.',
+    title: 'Entregue cinco relatórios ao staff, com síntese da IA.',
+    body: 'Os relatórios preenchem-se a partir do que já introduz, do check-in de bem-estar às exportações GPS. Cinco relatórios cobrem a seleção, a carga, a equipa e o jogador. O gerador constrói os restantes, e a IA redige a síntese e os sinais de risco.',
     dashboard: {
       title: 'Dashboard · Carga & disponibilidade',
       widgetBtn: 'Widget',
@@ -1405,7 +1405,7 @@ const pt: ScPageContent = {
       weekly: 'Carga semanal · 6 sem.',
       availability: 'Disponibilidade',
       availabilityValue: '83%',
-      hsr: 'HSR — jogo vs jogo',
+      hsr: 'HSR · jogo vs jogo',
       aiTag: 'GERADO PELA IA',
     },
     report: {
@@ -1413,12 +1413,12 @@ const pt: ScPageContent = {
       aiBadge: 'REDIGIDO PELA IA',
       body: 'Taxa de resposta ao check-in 89 %. Fadiga média 2,4 / 5, motivação 4,1 / 5. ACWR do plantel 1,08. Dois jogadores fora de zona, um protocolo de retoma em curso.',
       items: [
-        { icon: 'list-ordered', label: 'Seleção / forma — plantel classificado no período' },
-        { icon: 'trophy', label: 'Carga & disponibilidade — em 4 semanas' },
-        { icon: 'download', label: 'Relatório por jogador — síntese de 7 dias' },
-        { icon: 'users', label: 'Gerador de relatórios — tema, filtros, gráfico' },
+        { icon: 'list-ordered', label: 'Seleção / forma · plantel classificado no período' },
+        { icon: 'trophy', label: 'Carga & disponibilidade · em 4 semanas' },
+        { icon: 'download', label: 'Relatório por jogador · síntese de 7 dias' },
+        { icon: 'users', label: 'Gerador de relatórios · tema, filtros, gráfico' },
       ],
-      aiStrip: 'Briefing IA e sinais de risco: recomendações geradas, com nível de gravidade e ação direta.',
+      aiStrip: 'O briefing da IA lista os sinais de risco, com o nível de gravidade e a ação a tomar.',
     },
   },
 };
@@ -1427,16 +1427,16 @@ const pt: ScPageContent = {
 
 const es: ScPageContent = {
   meta: {
-    title: 'STRIVN para preparadores físicos | Su metodología, industrializada',
+    title: 'STRIVN para preparadores físicos | Carga, readiness, tests, informes',
     description:
-      'Carga, check-in de bienestar, readiness, tests: lo que ya hace en Excel, ejecutado por un sistema. Importación GPS, ACWR, planificación y devolución al staff.',
+      'Dosifique la carga, siga el readiness y lance sus campañas de tests. STRIVN importa sus exportaciones Catapult o STATSports y calcula ACWR, monotonía y strain.',
   },
   hero: {
     kicker: 'PARA PREPARADORES FÍSICOS',
-    title: 'Su metodología, industrializada.',
-    sub: 'Lo que ya hace en Excel — carga, check-in de bienestar, readiness, tests — ejecutado por un sistema: la recogida se hace sola, los indicadores son los de la literatura, y el staff ve el resultado.',
+    title: 'Dosifique, planifique y guíe cada sesión.',
+    sub: 'Sus jugadores declaran cómo se sienten, sus exportaciones GPS llegan, STRIVN saca de ahí ACWR, monotonía y strain. Usted planifica la semana en UA, prescribe en % del 1RM, y el staff lee el resultado.',
     primaryCta: 'Empezar gratis',
-    secondaryCta: 'Ver la metodología',
+    secondaryCta: 'Ver su semana',
     board: {
       title: 'Readiness del día · Olympique Montverne',
       stamp: 'MIÉ 07:45',
@@ -1451,14 +1451,14 @@ const es: ScPageContent = {
   },
   daily: {
     kicker: 'SU SEMANA',
-    title: 'Las mismas tareas. Sin la logística.',
-    sub: 'Una sesión por semana o seis, GPS completo o solo RPE, solo o con staff: el contexto cambia, las tareas siguen siendo las mismas.',
+    title: 'Encuentre sus nueve tareas diarias en STRIVN.',
+    sub: 'Una sesión por semana o seis, una exportación GPS o solo RPE, el recorrido sigue siendo el mismo.',
     colBefore: 'LO QUE YA HACE',
     colAfter: 'CÓMO OCURRE EN STRIVN',
     rows: [
       {
         before: 'Saber quién está fresco antes de la sesión',
-        after: 'Readiness calculado a partir del check-in de bienestar — verde, naranja, rojo',
+        after: 'Readiness calculado a partir del check-in de bienestar: verde, naranja, rojo',
       },
       {
         before: 'Integrar los datos GPS de la sesión',
@@ -1470,18 +1470,18 @@ const es: ScPageContent = {
       },
       {
         before: 'Construir las sesiones de la semana',
-        after: 'Constructor por bloques — carga externa estimada desde las métricas de ejercicio',
+        after: 'Constructor por bloques, carga externa estimada desde las métricas de ejercicio',
       },
       {
         before: 'Individualizar: fuerza, prevención, retorno',
-        after: 'Fuerza en % del 1RM — cada jugador recibe su carga en la app',
+        after: 'Fuerza en % del 1RM, cada jugador recibe su carga en la app',
       },
       {
         before: 'Ajustar durante la sesión',
         after: 'Sesión en directo: carga acumulada y desvío vs previsto, en tiempo real',
       },
       {
-        before: 'Responder al entrenador: «¿puede jugar?»',
+        before: 'Decir al entrenador quién puede jugar el sábado',
         after: 'Readiness y seguimiento médico entran directamente en la convocatoria',
       },
       {
@@ -1496,8 +1496,8 @@ const es: ScPageContent = {
   },
   metrics: {
     kicker: 'INDICADORES',
-    title: 'Los indicadores del oficio, calculados en continuo.',
-    body: 'Tomados de la literatura, calculados desde lo que ya introduce. Los coeficientes siguen siendo ajustables desde el panel Fórmula. Ninguna caja negra.',
+    title: 'Lea doce indicadores calculados desde lo que introduce.',
+    body: 'Cada indicador sigue una definición de la literatura y se calcula desde lo que ya introduce. Los coeficientes de partido y de entrenamiento siguen siendo ajustables desde el panel Fórmula.',
     items: [
       { name: 'ACWR', detail: 'carga aguda 7 d ÷ (crónica 28 d ÷ 4) · zona 0,8–1,3' },
       { name: 'Monotonía', detail: 'media diaria ÷ desviación típica de la semana' },
@@ -1510,16 +1510,16 @@ const es: ScPageContent = {
       { name: 'Bloques de velocidad', detail: 'Aeróbico, Alta intensidad, Carrera de alta velocidad, Sprint' },
       { name: 'Carga externa estimada', detail: 'suma de las métricas de ejercicio, ajustada a las duraciones' },
       { name: 'Tasa de cobertura', detail: 'parte de la sesión descrita por métricas' },
-      { name: '1RM', detail: 'introducido o estimado — fórmula Epley o Brzycki' },
+      { name: '1RM', detail: 'introducido, o estimado con la fórmula Epley o Brzycki' },
     ],
   },
   planning: {
     tag: 'PLANIFICACIÓN DE CARGA',
-    title: 'La semana se dibuja antes de jugarse.',
-    body: 'La herramienta del preparador: fija el objetivo semanal en UA y lo reparte por categoría. Cada componente se engancha a una sesión del calendario, o queda en espera. Después, «Previsto vs realizado» confronta el plan con lo que el grupo ha encajado.',
+    title: 'Fije el objetivo semanal en UA, repártalo por categoría.',
+    body: 'Usted fija el objetivo semanal en UA y lo reparte entre campo, fuerza y recuperación. Cada componente se engancha a una sesión del calendario, o queda en espera. Después, «Previsto vs realizado» confronta el plan con lo que el grupo ha encajado.',
     points: [
       'Objetivo semanal en UA, presupuesto por categoría',
-      'Carga = RPE × duración × coeficiente de categoría',
+      'Carga = RPE × duración × coeficiente: 90 min a RPE 7 son 630 UA',
       'Componentes ligados a una sesión, o dejados en espera',
       'Previsto vs realizado, por equipo y por jugador',
       'Ciclos y temporada para los bloques de recuperación o de competición',
@@ -1548,13 +1548,13 @@ const es: ScPageContent = {
   },
   library: {
     tag: 'BIBLIOTECA DE EJERCICIOS & MÉTRICAS',
-    title: 'Sus ejercicios de campo, cuantificados.',
-    body: 'Capture un ejercicio desde un enlace, un vídeo, un esquema o texto. Adjúntele sus métricas — sprints, distancia, RPE esperado, superficie — y la sesión calcula sola su carga externa estimada.',
+    title: 'Cuantifique sus ejercicios de campo, la carga externa sigue.',
+    body: 'Capture un ejercicio desde un enlace, un vídeo, un esquema o texto. Adjúntele sus métricas (sprints, distancia, RPE esperado, superficie) y la sesión calcula su carga externa estimada. Si el bloque pasa de 15 a 20 minutos, los acumulados escalan en la misma proporción.',
     points: [
       'Captura por enlace, foto, vídeo, esquema táctico o texto',
       'Carpetas, etiquetas y bandeja de entrada antes de publicar',
       'Métricas estándar, columnas GPS y métricas personalizadas',
-      'Compartir por enlace público sin cuenta — revocable en cualquier momento',
+      'Compartir por enlace público sin cuenta, revocable en cualquier momento',
     ],
     cta: 'Ver la biblioteca de ejercicios',
     href: '/es/features/exercise-library/',
@@ -1586,8 +1586,8 @@ const es: ScPageContent = {
   },
   strength: {
     tag: 'FUERZA & 1RM',
-    title: 'Un porcentaje para el equipo. Una carga por jugador.',
-    body: 'El 1RM se introduce directamente, o se estima desde una serie submáxima — fórmula Epley o Brzycki, más segura a mitad de temporada. Prescribe «Squat 4×5 @ 82 %» para todo el grupo: cada uno recibe su carga real.',
+    title: 'Prescriba un porcentaje, cada jugador recibe sus kilos.',
+    body: 'Usted introduce el 1RM directamente, o lo estima desde una serie submáxima con la fórmula Epley o Brzycki. Prescribe «Squat 4×5 @ 82 %» para todo el grupo, y cada jugador recibe sus kilos en la app.',
     points: [
       'Bloques en serie simple, superserie o circuito',
       'Modos de carga: % 1RM, kg fijo, RPE o peso corporal',
@@ -1611,8 +1611,8 @@ const es: ScPageContent = {
   },
   tests: {
     tag: 'TESTS FÍSICOS & AUTOMEDICIÓN',
-    title: 'Mediciones recogidas sin transcripción.',
-    body: 'Lance una campaña sobre lo que quiera medir: VAM, peso, o un test que usted mismo defina. El staff introduce, o los jugadores lo rellenan ellos mismos desde un enlace mágico recibido por correo, WhatsApp o notificación.',
+    title: 'Lance una campaña, los jugadores introducen los valores.',
+    body: 'Lance una campaña sobre lo que quiera medir: VAM, peso, o un test que usted mismo defina. El staff introduce los valores, o los jugadores los rellenan desde un enlace mágico. Las invitaciones salen por tres canales: correo, WhatsApp y notificación push.',
     points: [
       'Medidas personalizadas, creadas por usted',
       'Introducción por el staff o automedición por los jugadores',
@@ -1636,8 +1636,8 @@ const es: ScPageContent = {
   },
   reports: {
     tag: 'INFORMES & PANEL',
-    title: 'Rendir cuentas sin dedicarle la noche.',
-    body: 'Los datos vienen de lo que ya introduce. Ninguna doble codificación. Cinco informes cubren la selección, la carga, el equipo y el jugador, el generador construye todo lo demás, y la IA redacta tanto la síntesis como las señales de riesgo.',
+    title: 'Entregue cinco informes con síntesis redactada por la IA.',
+    body: 'Los informes se llenan desde lo que ya introduce, del check-in de bienestar a las exportaciones GPS. Cinco informes cubren la selección, la carga, el equipo y el jugador. El generador construye los demás, y la IA redacta la síntesis y las señales de riesgo.',
     dashboard: {
       title: 'Dashboard · Carga & disponibilidad',
       widgetBtn: 'Widget',
@@ -1650,7 +1650,7 @@ const es: ScPageContent = {
       weekly: 'Carga semanal · 6 sem.',
       availability: 'Disponibilidad',
       availabilityValue: '83%',
-      hsr: 'HSR — partido vs partido',
+      hsr: 'HSR · partido vs partido',
       aiTag: 'GENERADO POR LA IA',
     },
     report: {
@@ -1658,12 +1658,12 @@ const es: ScPageContent = {
       aiBadge: 'REDACTADO POR LA IA',
       body: 'Tasa de respuesta al check-in 89 %. Fatiga media 2,4 / 5, motivación 4,1 / 5. ACWR del grupo 1,08. Dos jugadores fuera de zona, un protocolo de reinicio en curso.',
       items: [
-        { icon: 'list-ordered', label: 'Selección / forma — plantilla clasificada en el periodo' },
-        { icon: 'trophy', label: 'Carga & disponibilidad — sobre 4 semanas' },
-        { icon: 'download', label: 'Informe por jugador — síntesis de 7 días' },
-        { icon: 'users', label: 'Generador de informes — tema, filtros, gráfico' },
+        { icon: 'list-ordered', label: 'Selección / forma · plantilla clasificada en el periodo' },
+        { icon: 'trophy', label: 'Carga & disponibilidad · sobre 4 semanas' },
+        { icon: 'download', label: 'Informe por jugador · síntesis de 7 días' },
+        { icon: 'users', label: 'Generador de informes · tema, filtros, gráfico' },
       ],
-      aiStrip: 'Briefing IA y señales de riesgo: recomendaciones generadas, con nivel de gravedad y acción directa.',
+      aiStrip: 'El briefing de la IA lista las señales de riesgo, con su nivel de gravedad y la acción a tomar.',
     },
   },
 };
