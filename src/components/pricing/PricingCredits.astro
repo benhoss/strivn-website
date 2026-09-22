@@ -1,34 +1,96 @@
 ---
-import type { PricingContent } from '../../data/pricingContent';
+import { MATRIX, formatCount, type Locale, type PlanCode, type PricingContent } from '../../data/pricingContent';
 
 interface Props {
+  locale: Locale;
   credits: PricingContent['credits'];
+  matrix: PricingContent['matrix'];
 }
 
-const { credits: c } = Astro.props;
+const { locale, credits: c, matrix } = Astro.props;
+
+const PLAN_ORDER: PlanCode[] = ['free', 'amateur', 'semi_pro', 'pro'];
+
+/** The allowances come from the matrix row the pricing check validates, so
+ *  this section can never quote a figure the table does not. */
+const aiRow = MATRIX.flatMap((g) => g.rows).find((r) => r.key === 'aiCalls')!;
+const rows = PLAN_ORDER.map((code, i) => {
+  const cell = aiRow.cells[i];
+  return {
+    code,
+    name: matrix.planNames[code],
+    value: typeof cell === 'number' ? formatCount(cell, locale) : matrix.cells.unlimited,
+  };
+});
 ---
 
-<!-- The one section on this page that deliberately carries no number. The AI
-     credit scale is unpublished upstream until it is calibrated on real costs,
-     so this block explains the model and states the absence plainly. -->
-<section class="bg-[#070A14] py-20 md:py-28" aria-labelledby="credits-title">
-  <div class="hl-wrap grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
-    <div class="hl-reveal">
-      <p class="hl-index text-[#7AB8FF]">
-        <span class="hl-index__rule"></span>
-        {c.kicker}
-      </p>
-      <h2 id="credits-title" class="hl-display mt-5 max-w-[16ch] text-[clamp(1.8rem,3.6vw,2.6rem)]">{c.title}</h2>
-      <p class="mt-5 max-w-[34rem] text-[0.98rem] leading-[1.65] text-[#AAB8D4]">{c.body}</p>
+<section class="st-sec" aria-labelledby="credits-title">
+  <div class="st-wrap st-split st-split--top">
+    <div class="st-head pp-credits__head">
+      <span class="st-label st-eyebrow">{c.kicker}</span>
+      <h2 id="credits-title" class="st-h2 st-h2--sm">{c.title}</h2>
+      <p class="st-body">{c.body}</p>
+      <p class="st-small pp-credits__note">{c.note}</p>
     </div>
 
-    <div class="hl-reveal self-center" style="--d: 120ms;">
-      <ul class="flex flex-col gap-px overflow-hidden rounded-[16px] bg-[#FFFFFF0F]" data-stagger>
-        {c.points.map((point) => (
-          <li class="bg-[#0B1020] px-5 py-4 text-[0.95rem] leading-[1.6] text-[#C6D2E8]">{point}</li>
+    <div class="st-panel">
+      <div class="st-panel__bar">
+        <span class="st-label">{matrix.rows.aiCalls}</span>
+      </div>
+      <ul class="pp-credits__rows">
+        {rows.map((r) => (
+          <li class:list={{ 'is-featured': r.code === 'semi_pro' }}>
+            <span>{r.name}</span>
+            <span class="st-num pp-credits__v">{r.value}</span>
+          </li>
         ))}
       </ul>
-      <p class="mt-5 border-l-2 border-[#2D7FF95C] pl-4 text-[0.88rem] leading-[1.6] text-[#8CA3C7]">{c.note}</p>
+      <p class="pp-credits__reset st-label">{c.reset}</p>
     </div>
   </div>
 </section>
+
+<style>
+  .pp-credits__head {
+    margin-bottom: 0;
+  }
+
+  .pp-credits__note {
+    color: var(--color-ink-3);
+    padding-top: 16px;
+    border-top: 1px solid var(--color-line);
+    max-width: 52ch;
+  }
+
+  .pp-credits__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  .pp-credits__rows li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 15px;
+    color: var(--color-ink-2);
+  }
+
+  .pp-credits__v {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+
+  .pp-credits__reset {
+    margin: 0;
+    padding: 14px 20px 16px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 12px;
+  }
+</style>
