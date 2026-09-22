@@ -16,21 +16,12 @@ export const BLOG_CATEGORY_LABELS: Record<BlogCategory, string> = {
   'charge': 'Charge',
 };
 
-/** Couleurs de badge catégorie — alignées sur la palette strivn (electric / performance / warning / risk / ink-2). */
-export const BLOG_CATEGORY_COLORS: Record<BlogCategory, { bg: string; fg: string; border: string }> = {
-  'prépa physique':  { bg: 'rgba(45,127,249,0.14)',  fg: '#4f94fb', border: 'rgba(45,127,249,0.45)' },
-  'gestion équipe':  { bg: 'rgba(248,250,252,0.08)', fg: '#b5c2d7', border: 'rgba(248,250,252,0.18)' },
-  'séances':         { bg: 'rgba(39,215,161,0.14)',  fg: '#27d7a1', border: 'rgba(39,215,161,0.45)' },
-  'blessures':       { bg: 'rgba(255,176,32,0.14)',  fg: '#ffb020', border: 'rgba(255,176,32,0.45)' },
-  'charge':          { bg: 'rgba(255,92,92,0.14)',   fg: '#ff8b8b', border: 'rgba(255,92,92,0.45)' },
-};
-
 export const BLOG_CATEGORY_DESCRIPTIONS: Record<BlogCategory, string> = {
-  'prépa physique': 'Construire un programme annuel cohérent pour ton équipe, sans laboratoire ni doctorat.',
-  'gestion équipe': 'Convoquer, suivre les présences, remplacer WhatsApp. Les bases du club amateur.',
-  'séances': 'Structurer tes entraînements : échauffement, técnico, opposition, retour au calme.',
-  'blessures': 'Suivre les pépins physiques sans transformer ton club en hôpital de campagne.',
-  'charge': 'RPE, ACWR, pic de mars. Quantifier ce que tes joueurs encaissent pour mieux doser.',
+  'prépa physique': 'Construisez un programme annuel cohérent pour votre équipe, de la reprise au dernier match.',
+  'gestion équipe': 'Convoquez, suivez les présences et sortez l’organisation de WhatsApp. Les bases du club amateur.',
+  'séances': 'Structurez vos entraînements en 4 temps : échauffement, technique, opposition, retour au calme.',
+  'blessures': 'Suivez les pépins physiques de 20 joueurs sans transformer le vestiaire en infirmerie.',
+  'charge': 'RPE, ACWR, pic de mars. Mesurez ce que vos joueurs encaissent pour mieux doser la semaine.',
 };
 
 /** Date formatée en français. */
@@ -98,4 +89,15 @@ export function findRelated(entries: BlogEntry[], current: BlogEntry, max = 3): 
 /** Convertit un path FR en EN counterpart si jamais le blog EN voit le jour. (Préparé, non câblé.) */
 export function alternateBlogPath(locale: Locale, slug: string): string {
   return locale === 'fr' ? `/fr/blog/${slug}/` : `/en/blog/${slug}/`;
+}
+
+/** French typography: a no-break space before « : ; ? ! » and after «, so a
+ *  line never starts with a colon. Plain text only. */
+export function frenchSpacing(text: string): string {
+  return text.replace(/ ([:;?!»])/g, ' $1').replace(/« /g, '« ');
+}
+
+/** Same, applied to the text between the tags of rendered HTML. */
+export function frenchSpacingHtml(html: string): string {
+  return html.replace(/>([^<]+)</g, (_m, t: string) => `>${frenchSpacing(t)}<`);
 }
