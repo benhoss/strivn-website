@@ -14,9 +14,8 @@
  *   - Paper (the light surface) is only for the spreadsheet STRIVN replaces.
  */
 @import 'tailwindcss/theme.css';
-@import 'tailwindcss/utilities.css';
 
-@theme {
+@theme static {
   --color-void: #07080f;
   --color-void-deep: #050610;
   --color-navy-950: #03091a;
@@ -885,3 +884,7 @@
     transition: none;
   }
 }
+
+/* Utilities last: a Tailwind class on an st-* element (st-label text-ready)
+ * must win over the primitive's default at equal specificity. */
+@tailwind utilities;
