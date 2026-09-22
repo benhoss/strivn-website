@@ -142,7 +142,6 @@ export const trainingLoad: SubpageLocales = {
         ],
       },
       {
-        bg: 'a',
         kind: 'panels',
         panels: [
           {
@@ -321,7 +320,6 @@ export const trainingLoad: SubpageLocales = {
         ],
       },
       {
-        bg: 'a',
         kind: 'panels',
         panels: [
           {
@@ -500,7 +498,6 @@ export const trainingLoad: SubpageLocales = {
         ],
       },
       {
-        bg: 'a',
         kind: 'panels',
         panels: [
           {
@@ -679,7 +676,6 @@ export const trainingLoad: SubpageLocales = {
         ],
       },
       {
-        bg: 'a',
         kind: 'panels',
         panels: [
           {
@@ -858,7 +854,6 @@ export const trainingLoad: SubpageLocales = {
         ],
       },
       {
-        bg: 'a',
         kind: 'panels',
         panels: [
           {
@@ -1037,7 +1032,6 @@ export const trainingLoad: SubpageLocales = {
         ],
       },
       {
-        bg: 'a',
         kind: 'panels',
         panels: [
           {

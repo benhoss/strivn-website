@@ -1,7 +1,10 @@
 ---
 /**
- * Sub-page hero. Splits copy and product capture when the page names a
- * visual; centres the copy when it does not — the two shapes the mockups use.
+ * Sub-page hero. Two columns when the page names a visual (copy on the left,
+ * the product panel on the right); one centred column when it does not.
+ *
+ * The header is sticky in the flow now, so the hero carries no top padding
+ * for a fixed nav. Nothing here waits for a scroll to appear.
  */
 import type { SubpageContent } from '../../data/subpages/types';
 import { appStartUrl } from '../../lib/appUrl';
@@ -13,85 +16,49 @@ import SubVisual from './SubVisual.astro';
 interface Props {
   locale: Locale;
   hero: SubpageContent['hero'];
+  /** Features index label and URL, and this page's short name. */
+  crumbs: { label: string; href: string; page: string };
 }
 
-const { locale, hero } = Astro.props;
+const { locale, hero, crumbs } = Astro.props;
 const split = Boolean(hero.visual);
 ---
 
 <section
-  class:list={[
-    'relative overflow-hidden bg-[#05070F]',
-    split
-      ? '[background-image:radial-gradient(ellipse_65%_55%_at_25%_0%,rgba(45,127,249,0.24),transparent_72%)]'
-      : '[background-image:radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(45,127,249,0.24),transparent_72%)]',
-  ]}
+  class:list={['sub-hero st-grid-bg', split ? 'sub-hero--split' : 'sub-hero--center']}
   aria-labelledby="sub-hero-title"
 >
-  <!-- Ambient layer: one slow-drifting glow, as on every other landing. -->
-  <span
-    class:list={[
-      'hl-drift pointer-events-none absolute -top-56 size-[44rem] rounded-full [background:radial-gradient(circle,rgba(45,127,249,0.13),transparent_65%)]',
-      split ? '-left-40' : 'left-1/2 -translate-x-1/2',
-    ]}
-    aria-hidden="true"></span>
+  <div class="st-wrap sub-hero__grid">
+    <div class="sub-hero__copy">
+      <ol class="st-crumbs sub-hero__crumbs">
+        <li><a href={crumbs.href}>{crumbs.label}</a></li>
+        <li aria-current="page">{crumbs.page}</li>
+      </ol>
 
-  <div
-    class:list={[
-      'hl-wrap relative pt-20 pb-16 md:pt-24 md:pb-20',
-      split
-        ? 'grid items-center gap-12 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-16'
-        : 'flex flex-col items-center text-center',
-    ]}
-  >
-    <div class={split ? '' : 'flex flex-col items-center'}>
       {
         hero.badge && (
-          <p class="hl-reveal mb-5 inline-flex items-center gap-2.5 rounded-full bg-[#FFFFFF08] py-1.5 pr-4 pl-2.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-            <span class="text-[#7AB8FF]">
-              <HomeIcon name={hero.badge.icon} size={13} />
-            </span>
-            <span class="font-mono text-[0.6rem] tracking-[0.11em] text-[#C6D2E8]">
-              {hero.badge.label}
-            </span>
+          <p class="st-tag sub-hero__badge">
+            <HomeIcon name={hero.badge.icon} size={12} />
+            {hero.badge.label}
           </p>
         )
       }
 
-      <p class="hl-reveal hl-kicker">{hero.kicker}</p>
+      {hero.kickerShown && <p class="st-label st-eyebrow sub-hero__kicker">{hero.kicker}</p>}
 
-      <h1
-        id="sub-hero-title"
-        class:list={[
-          'hl-reveal hl-display mt-5',
-          split
-            ? 'text-[clamp(2.1rem,4.6vw,3.2rem)]'
-            : 'max-w-[19ch] text-[clamp(2.3rem,5.6vw,3.6rem)]',
-        ]}
-        style="--d: 70ms;"
-      >
-        {hero.title}
-      </h1>
+      <h1 id="sub-hero-title" class="st-h1 sub-hero__title">{hero.title}</h1>
 
-      <p
-        class:list={[
-          'hl-reveal mt-6 text-[1rem] leading-[1.65] text-[#9AA8C4]',
-          split ? 'max-w-[36rem]' : 'max-w-[40rem]',
-        ]}
-        style="--d: 140ms;"
-      >
-        {hero.sub}
-      </p>
+      <p class="st-lede">{hero.sub}</p>
 
       {
         hero.bullets && (
-          <ul class="hl-reveal mt-7 grid gap-3" data-stagger style="--d: 200ms;">
+          <ul class="sub-hero__points">
             {hero.bullets.map((b) => (
-              <li class="flex items-start gap-3">
-                <span class="mt-px shrink-0 text-[#2D7FF9]" aria-hidden="true">
-                  <HomeIcon name="check-circle" size={15} />
+              <li>
+                <span class="sub-hero__tick" aria-hidden="true">
+                  <HomeIcon name="check" size={14} />
                 </span>
-                <span class="text-[0.875rem] leading-[1.5] text-[#C3CDE0]">{b}</span>
+                <span>{b}</span>
               </li>
             ))}
           </ul>
@@ -100,18 +67,23 @@ const split = Boolean(hero.visual);
 
       {
         hero.ctas && (
-          <div class="hl-reveal mt-9 flex flex-wrap items-center gap-3" style="--d: 260ms;">
-            <a
-              href={appStartUrl(locale)}
-              class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#2D7FF9] px-[26px] py-[14px] text-[0.92rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
-            >
+          <div class="st-ctas sub-hero__ctas">
+            <a class="st-btn st-btn--primary" href={appStartUrl(locale)}>
               {hero.ctas.primary}
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </a>
             {hero.ctas.secondary && (
-              <a
-                href={hero.ctas.secondary.href}
-                class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#FFFFFF0A] px-6 py-[14px] text-[0.92rem] font-medium text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
-              >
+              <a class="st-btn st-btn--ghost" href={hero.ctas.secondary.href}>
                 {hero.ctas.secondary.label}
               </a>
             )}
@@ -121,19 +93,108 @@ const split = Boolean(hero.visual);
 
       {
         hero.stores && (
-          <div class="hl-reveal mt-6" style="--d: 320ms;">
-            <SubStores locale={locale} app={hero.stores} class={split ? '' : 'justify-center'} />
-          </div>
+          <SubStores locale={locale} app={hero.stores} class={split ? '' : 'justify-center'} />
         )
       }
     </div>
 
     {
       split && (
-        <div class="hl-reveal hl-reveal--right" style="--d: 180ms;">
+        <div class="sub-hero__visual">
           <SubVisual name={hero.visual!} locale={locale} />
         </div>
       )
     }
   </div>
 </section>
+
+<style>
+  .sub-hero {
+    padding-block: clamp(40px, 6vw, 88px) clamp(56px, 8vw, 104px);
+  }
+  .sub-hero__grid {
+    position: relative;
+  }
+  .sub-hero--split .sub-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  .sub-hero__copy {
+    display: grid;
+    gap: 24px;
+    align-content: start;
+    min-width: 0;
+  }
+  .sub-hero--center .sub-hero__copy {
+    max-width: 860px;
+    margin-inline: auto;
+    justify-items: center;
+    text-align: center;
+  }
+  .sub-hero__crumbs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sub-hero--center .sub-hero__crumbs,
+  .sub-hero--center .sub-hero__ctas {
+    justify-content: center;
+  }
+  .sub-hero__crumbs [aria-current] {
+    color: var(--color-ink-3);
+  }
+  .sub-hero__badge,
+  .sub-hero__kicker {
+    margin: 0;
+    justify-self: start;
+  }
+  .sub-hero--center .sub-hero__badge,
+  .sub-hero--center .sub-hero__kicker {
+    justify-self: center;
+  }
+  /* In two columns the title shares the row with a panel: the display voice
+     one step down, so a long German compound still fits the measure. */
+  .sub-hero--split .sub-hero__title {
+    font-size: clamp(38px, 4.3vw, 62px);
+  }
+  .sub-hero--center .sub-hero__title {
+    max-width: 18ch;
+  }
+  .sub-hero__points {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sub-hero__points li {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--color-ink-2);
+  }
+  .sub-hero__tick {
+    flex: none;
+    color: var(--color-ink-3);
+    transform: translateY(2px);
+  }
+  .sub-hero__ctas {
+    margin-top: 4px;
+  }
+  .sub-hero__visual {
+    min-width: 0;
+  }
+  .sub-hero__visual :global(.st-panel) {
+    box-shadow: var(--shadow-float-lg);
+  }
+  @media (max-width: 1000px) {
+    .sub-hero--split .sub-hero__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

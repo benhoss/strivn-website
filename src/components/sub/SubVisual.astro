@@ -3,7 +3,7 @@
  * Registry of sub-page product captures.
  *
  * Content names a capture with a string; this resolves it to a component. An
- * unknown name renders nothing rather than throwing — a half-written page
+ * unknown name renders nothing rather than throwing: a half-written page
  * should still build, and the gap is obvious on screen.
  */
 import type { Locale } from '../../data/landingContent';
@@ -62,3 +62,251 @@ const Capture = registry[name];
 ---
 
 {Capture && <Capture locale={locale} />}
+
+<style is:global>
+  /* Shared vocabulary of the product captures (visuals/*). Every capture is
+     rendered through this registry, so these rules are always on the page
+     with it. Panels are `st-panel`; statuses are `st-chip`; numbers are mono. */
+  .cap {
+    margin: 0;
+    min-width: 0;
+    font-size: 13.5px;
+    color: var(--color-ink-2);
+  }
+  .cap .cap-bar {
+    gap: 4px 16px;
+    padding: 12px 16px;
+  }
+  .cap-title {
+    min-width: 0;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .cap-meta {
+    margin-left: auto;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-ink-3);
+  }
+  .cap-meta:first-child {
+    margin-left: 0;
+  }
+  .cap-body {
+    display: grid;
+    gap: 16px;
+    padding: 16px;
+    min-width: 0;
+  }
+  .cap-body--flush {
+    padding: 0;
+    gap: 0;
+  }
+  .cap-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px 12px;
+    padding: 14px 16px;
+    border-top: 1px solid var(--color-line);
+    background: var(--color-navy-900);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-ink-2);
+  }
+  .cap-foot > p {
+    flex: 1 1 14rem;
+    min-width: 0;
+    margin: 0;
+  }
+  .cap-foot svg {
+    flex: none;
+    margin-top: 2px;
+  }
+  .cap-k {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+  .cap-sub {
+    display: block;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-3);
+  }
+  .cap-name {
+    display: block;
+    min-width: 0;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--color-ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cap-num {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  /* Rows under hairlines. */
+  .cap-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cap-rows > li {
+    display: flex;
+    align-items: center;
+    gap: 10px 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-line);
+    min-width: 0;
+  }
+  .cap-rows > li:last-child {
+    border-bottom: 0;
+  }
+  .cap-rows--pad > li {
+    padding-inline: 16px;
+  }
+  .cap-rows .cap-grow {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  /* Data table, as the mockup's hero table. Wraps in .cap-scroll. */
+  .cap-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cap-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .cap-table th {
+    padding: 10px 12px 8px;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-align: right;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-ink-3);
+  }
+  .cap-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--color-line);
+    text-align: right;
+    white-space: nowrap;
+    color: var(--color-ink-2);
+  }
+  .cap-table th:first-child,
+  .cap-table td:first-child {
+    padding-left: 16px;
+    text-align: left;
+  }
+  .cap-table th:last-child,
+  .cap-table td:last-child {
+    padding-right: 16px;
+  }
+  .cap-table tr:last-child td {
+    border-bottom: 0;
+  }
+  .cap-table td.cap-td-name {
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  /* A read-only field: looks like an input, is not one. */
+  .cap-field {
+    margin: 6px 0 0;
+    padding: 8px 10px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 6px;
+    background: var(--color-navy-900);
+    font-size: 13.5px;
+    color: var(--color-ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* Mini buttons inside a capture, as the mockup's .mini. Not focusable. */
+  .cap-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cap-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 6px;
+    font: 500 12.5px/1 var(--font-sans);
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .cap-btn--primary {
+    background: var(--color-electric);
+    border-color: var(--color-electric);
+  }
+  .cap-kpis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+  }
+  .cap-kpis .st-kpi__v {
+    font-size: 20px;
+  }
+  .cap-dot {
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-ink-4);
+  }
+  /* Ink overrides that must beat the st-* type rules (they come later in the
+     cascade than Tailwind's text utilities). */
+  .cap .ink-1 {
+    color: var(--color-ink);
+  }
+  .cap .ink-2 {
+    color: var(--color-ink-2);
+  }
+  .cap .ink-3 {
+    color: var(--color-ink-3);
+  }
+  .cap .ink-4 {
+    color: var(--color-ink-4);
+  }
+  .cap .ink-ready {
+    color: var(--color-ready);
+  }
+  .cap .ink-watch {
+    color: var(--color-watch);
+  }
+  .cap .ink-risk {
+    color: var(--color-risk);
+  }
+  .cap .st-chip {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+</style>

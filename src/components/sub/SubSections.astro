@@ -2,11 +2,16 @@
 /**
  * Renders a feature sub-page's sections from data.
  *
- * Backgrounds alternate on their own so a page reads as bands without every
- * content file having to say so; `bg` overrides where the mockup breaks the
- * rhythm. Each section may close with an aside, a banner or a last paragraph
- * — those are trailing slots rather than sections of their own, so the band
- * keeps one set of vertical padding.
+ * Every section is one `st-sec` band: one hairline above, no alternating
+ * background. Groups of items are hairline columns or hairline rows, never
+ * boxed cards. Each section may close with an aside, a banner or a last
+ * paragraph; those are trailing slots rather than sections of their own, so
+ * the band keeps one set of vertical padding.
+ *
+ * Colour: green / orange / red become ready / watch / risk, and only where the
+ * item describes a player's state (row chips and names, column labels, card
+ * icons). Panels, comparisons and figures stay neutral. Blue is the electric
+ * label accent.
  */
 import type { Section, Tone } from '../../data/subpages/types';
 import type { Locale } from '../../data/landingContent';
@@ -24,56 +29,37 @@ interface Props {
 
 const { sections, locale } = Astro.props;
 
-const BG = { a: 'bg-[#05070F]', b: 'bg-[#070A14]' } as const;
-
-/**
- * The hero above and the closing CTA below are both #05070F, so the bands
- * alternate *backward* from the end: the last one always contrasts with the
- * CTA, which is the seam that hands the reader off. Two shades cannot keep
- * every seam visible on an even count — there, the repeat lands against the
- * hero, where a hairline reads as the hero closing rather than a stray rule.
- */
-const tone = sections.map((s, i) => s.bg ?? ((sections.length - 1 - i) % 2 === 0 ? 'b' : 'a'));
-const seam = tone.map((t, i) => (i === 0 ? t === 'a' : t === tone[i - 1]));
-
-const ink: Record<Tone, string> = {
-  blue: 'text-[#7AB8FF]',
-  green: 'text-[#8CE99A]',
-  orange: 'text-[#FF8400]',
-  red: 'text-[#FF5C33]',
-  plain: 'text-[#68779A]',
+/** Status ink, for content that is a player's state. Scoped classes rather
+ *  than Tailwind utilities: the `st-*` type rules come later in the cascade
+ *  and would win over a utility's colour. */
+const status: Partial<Record<Tone, string>> = {
+  green: 'ink-ready',
+  orange: 'ink-watch',
+  red: 'ink-risk',
 };
-const dot: Record<Tone, string> = {
-  blue: 'bg-[#7AB8FF]',
-  green: 'bg-[#8CE99A]',
-  orange: 'bg-[#FF8400]',
-  red: 'bg-[#FF5C33]',
-  plain: 'bg-[#68779A]',
-};
-/* Icon tiles: a tone means the card is *about* that colour, so the tile wears
-   it. Red borrows the softer #FF7A6B the captures use, so a card and the
-   screenshot beside it never show two different reds. */
-const tile: Record<Tone, string> = {
-  blue: 'bg-[#2D7FF914] text-[#7AB8FF] outline-[#2D7FF92E]',
-  green: 'bg-[#8CE99A14] text-[#8CE99A] outline-[#8CE99A2E]',
-  orange: 'bg-[#FF840014] text-[#FF8400] outline-[#FF84002E]',
-  red: 'bg-[#FF7A6B14] text-[#FF7A6B] outline-[#FF7A6B2E]',
-  plain: 'bg-[#FFFFFF0A] text-[#9AA8C4] outline-[#FFFFFF1F]',
-};
-const edge: Record<Tone, string> = {
-  blue: 'outline-[#2D7FF959]',
-  green: 'outline-[#8CE99A4D]',
-  orange: 'outline-[#FF84004D]',
-  red: 'outline-[#FF5C334D]',
-  plain: 'outline-[#FFFFFF14]',
-};
+/** Mono label: electric for blue, status ink for a state, neutral otherwise. */
+const label = (tone?: Tone) =>
+  tone === 'blue' ? 'st-label st-label--accent' : `st-label ${(tone && status[tone]) ?? ''}`;
+/** Chip on a definition row. A state gets a status chip; anything else a tag. */
+const chip = (tone?: Tone) =>
+  tone === 'green'
+    ? 'st-chip st-chip--ready'
+    : tone === 'orange'
+      ? 'st-chip st-chip--watch'
+      : tone === 'red'
+        ? 'st-chip st-chip--risk'
+        : tone === 'blue'
+          ? 'st-tag st-tag--accent'
+          : 'st-tag';
+/** Hairline grid class for n items: 2, 3 or 4 across at desktop width. */
+const grid = (n: number) => `sub-grid sub-grid--${Math.min(Math.max(n, 2), 4)}`;
 ---
 
 {
   sections.map((s, i) => {
-    const bg = BG[tone[i]];
     const head = s.kicker || s.title || s.body;
-    /* A section that is only a banner or an aside needs no top margin on it. */
+    /* A section that is only a banner or an aside carries its content in the
+       body; the trailing slots would repeat it. */
     const bare = s.kind === 'callout' || s.kind === 'note';
     /* A narrow capture shares the opening row with the heading instead of
        stranding half the band; a wide one keeps the row to itself. */
@@ -82,60 +68,41 @@ const edge: Record<Tone, string> = {
     return (
       <section
         id={s.id}
-        class={`${bg} py-16 md:py-[88px] ${seam[i] ? 'border-t border-[#FFFFFF0F]' : ''} ${s.id ? 'scroll-mt-20' : ''}`}
+        class:list={['st-sec sub-sec', bare && !head && 'st-sec--tight']}
         aria-labelledby={s.title ? `sub-s${i}` : undefined}
       >
-        <div class="hl-wrap">
-          <div
-            class={
-              aside ? 'grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)]' : ''
-            }
-          >
-            {head && (
-              <div class={`hl-reveal ${aside ? '' : 'max-w-[55rem]'}`}>
-                {s.kicker && (
-                  <p class="font-mono text-[0.63rem] tracking-[0.13em] text-[#68779A]">
-                    {s.kicker}
-                  </p>
-                )}
-                {s.title && (
-                  <h2 id={`sub-s${i}`} class="hl-display mt-3.5 text-[clamp(1.75rem,3.6vw,2.4rem)]">
-                    {s.title}
-                  </h2>
-                )}
-                {/* Headlines take the full 55rem; the lead is capped at the
-                    widest measure the rest of the site uses (~79 characters). */}
-                {s.body && (
-                  <p class="mt-4 max-w-[62ch] text-[0.94rem] leading-[1.66] text-[#68779A]">
-                    {s.body}
-                  </p>
-                )}
-              </div>
-            )}
+        <div class="st-wrap">
+          {(head || s.visual) && (
+            <div class:list={['sub-open', aside && 'sub-open--aside']}>
+              {head && (
+                <div class="st-head sub-head">
+                  {s.kicker && <p class="st-label st-eyebrow">{s.kicker}</p>}
+                  {s.title && (
+                    <h2 id={`sub-s${i}`} class="st-h2">
+                      {s.title}
+                    </h2>
+                  )}
+                  {s.body && <p class="st-body">{s.body}</p>}
+                </div>
+              )}
+              {s.visual && (
+                <div class="sub-vis">
+                  <SubVisual name={s.visual} locale={locale} />
+                </div>
+              )}
+            </div>
+          )}
 
-            {/* Capture above the section body, when the band opens on one. */}
-            {s.visual && (
-              <div class={`hl-reveal ${head && !aside ? 'mt-9' : ''}`}>
-                <SubVisual name={s.visual} locale={locale} />
-              </div>
-            )}
-          </div>
-
-          {/* ── Card grid ─────────────────────────────────────────── */}
+          {/* ── Items with an icon: hairline columns ─────────────── */}
           {s.kind === 'cards' && (
-            <ul
-              class={`hl-reveal mt-9 grid gap-5 sm:grid-cols-2 ${s.per === 2 ? '' : 'lg:grid-cols-3'}`}
-              data-stagger
-            >
+            <ul class={grid(s.per ?? 3)}>
               {s.cards.map((c) => (
-                <li class="hl-lift flex flex-col gap-3 rounded-[16px] bg-[#0C1120] p-6 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-                  <span
-                    class={`grid size-[38px] place-items-center rounded-[11px] outline-1 -outline-offset-[0.5px] ${tile[c.tone ?? 'blue']}`}
-                  >
-                    <HomeIcon name={c.icon} size={17} />
+                <li>
+                  <span class:list={['sub-ico', c.tone && status[c.tone]]}>
+                    <HomeIcon name={c.icon} size={18} />
                   </span>
-                  <h3 class="hl-display text-[1.09rem] tracking-[-0.02em]">{c.title}</h3>
-                  <p class="text-[0.84rem] leading-[1.63] text-[#9AA8C4]">{c.desc}</p>
+                  <h3 class="st-h4">{c.title}</h3>
+                  <p class="st-small">{c.desc}</p>
                 </li>
               ))}
             </ul>
@@ -143,31 +110,21 @@ const edge: Record<Tone, string> = {
 
           {/* ── Definition rows ───────────────────────────────────── */}
           {s.kind === 'rows' && (
-            <ul class="hl-reveal mt-9" data-stagger>
+            <ul class="sub-rows">
               {s.rows.map((r) => (
-                <li class="grid gap-x-10 gap-y-3 border-t border-[#FFFFFF14] py-6 md:grid-cols-[minmax(0,280px)_minmax(0,1fr)] md:items-start lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)_minmax(0,180px)]">
-                  <div>
+                <li class:list={[r.chip && 'has-chip']}>
+                  <div class="sub-rows__name">
                     {s.pill ? (
-                      <span class="inline-flex rounded-full bg-[#FFFFFF08] px-3.5 py-1.5 font-mono text-[0.72rem] text-[#9AA8C4] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-                        {r.name}
-                      </span>
+                      <span class="sub-pill">{r.name}</span>
                     ) : (
-                      <h3
-                        class={`hl-display text-[1.25rem] tracking-[-0.03em] ${r.tone ? ink[r.tone] : ''}`}
-                      >
-                        {r.name}
-                      </h3>
+                      <h3 class:list={['st-h4', r.tone && status[r.tone]]}>{r.name}</h3>
                     )}
-                    {r.sub && <p class="mt-1.5 font-mono text-[0.69rem] text-[#68779A]">{r.sub}</p>}
+                    {r.sub && <p class="sub-rows__sub">{r.sub}</p>}
                   </div>
-                  <p class="text-[0.875rem] leading-[1.64] text-[#B4C0D6]">{r.desc}</p>
+                  <p class="st-small">{r.desc}</p>
                   {r.chip && (
-                    <div class="lg:justify-self-end">
-                      <span
-                        class={`inline-flex rounded-full bg-[#FFFFFF08] px-3 py-1 font-mono text-[0.63rem] whitespace-nowrap outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] ${ink[r.chip.tone ?? 'plain']}`}
-                      >
-                        {r.chip.label}
-                      </span>
+                    <div class="sub-rows__chip">
+                      <span class={chip(r.chip.tone)}>{r.chip.label}</span>
                     </div>
                   )}
                 </li>
@@ -177,92 +134,70 @@ const edge: Record<Tone, string> = {
 
           {/* ── Columns split by hairlines ────────────────────────── */}
           {s.kind === 'columns' && (
-            <ul class="hl-reveal mt-9 grid gap-x-0 gap-y-8 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(0,1fr))]" data-stagger>
-              {s.cols.map((c, ci) => (
-                <li
-                  class={`sm:px-7 sm:first:pl-0 ${ci > 0 ? 'sm:border-l sm:border-[#FFFFFF14]' : ''}`}
-                >
-                  {c.eyebrow && (
-                    <p class={`font-mono text-[0.66rem] tracking-[0.1em] ${ink[c.tone ?? 'blue']}`}>
-                      {c.eyebrow}
-                    </p>
-                  )}
-                  <h3
-                    class={`hl-display text-[1.2rem] tracking-[-0.03em] ${c.eyebrow ? 'mt-2.5' : ''} ${c.tone && !c.eyebrow ? ink[c.tone] : ''}`}
-                  >
-                    {c.title}
-                  </h3>
-                  <p class="mt-2.5 text-[0.84rem] leading-[1.63] text-[#68779A]">{c.desc}</p>
+            <ul class={grid(s.cols.length)}>
+              {s.cols.map((c) => (
+                <li>
+                  {c.eyebrow && <p class={label(c.tone)}>{c.eyebrow}</p>}
+                  <h3 class:list={['st-h4', !c.eyebrow && c.tone && status[c.tone]]}>{c.title}</h3>
+                  <p class="st-small">{c.desc}</p>
                 </li>
               ))}
             </ul>
           )}
 
-          {/* ── Panels compared ───────────────────────────────────── */}
-          {s.kind === 'panels' && (
-            <ul
-              class={`hl-reveal mt-9 grid gap-6 ${
-                s.panels.length === 1 ? '' : s.panels.length > 2 ? 'md:grid-cols-3' : 'md:grid-cols-2'
-              }`}
-              data-stagger
-            >
-              {s.panels.map((p) => (
-                <li
-                  class={`flex flex-col gap-3 rounded-[16px] bg-[#FFFFFF05] p-7 outline-1 -outline-offset-[0.5px] ${edge[p.tone ?? 'plain']}`}
-                >
-                  <h3 class="hl-display text-[1.35rem] tracking-[-0.03em]">{p.title}</h3>
-                  {p.eyebrow && (
-                    <p class={`font-mono text-[0.7rem] ${ink[p.tone ?? 'plain']}`}>{p.eyebrow}</p>
-                  )}
-                  {p.lead && (
-                    <p class="text-[1rem] leading-[1.35] font-semibold text-[#F8FAFC]">{p.lead}</p>
-                  )}
-                  {p.desc && <p class="text-[0.875rem] leading-[1.64] text-[#9AA8C4]">{p.desc}</p>}
-                  {p.items && (
-                    <ul class="mt-1 grid gap-2.5">
-                      {p.items.map((it) => (
-                        <li class="flex items-start gap-2.5">
-                          <span
-                            class={`mt-[7px] size-[5px] shrink-0 rounded-full ${dot[p.tone ?? 'blue']}`}
-                            aria-hidden="true"
-                          />
-                          <span class="text-[0.81rem] leading-[1.55] text-[#9AA8C4]">{it}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
+          {/* ── One statement, or panels compared ─────────────────── */}
+          {s.kind === 'panels' &&
+            (s.panels.length === 1 ? (
+              <div class="sub-statement">
+                <h3 class="st-h2 st-h2--sm">{s.panels[0].title}</h3>
+                <div class="sub-statement__body">
+                  {s.panels[0].lead && <p class="sub-lead">{s.panels[0].lead}</p>}
+                  {s.panels[0].desc && <p class="st-body">{s.panels[0].desc}</p>}
+                </div>
+              </div>
+            ) : (
+              <ul class={grid(s.panels.length)}>
+                {s.panels.map((p) => (
+                  <li class="sub-panel">
+                    {p.eyebrow && (
+                      <p class={p.tone === 'blue' ? 'st-label st-label--accent' : 'st-label'}>
+                        {p.eyebrow}
+                      </p>
+                    )}
+                    <h3 class="st-h3">{p.title}</h3>
+                    {p.lead && <p class="sub-lead">{p.lead}</p>}
+                    {p.desc && <p class="st-small">{p.desc}</p>}
+                    {p.items && (
+                      <ul class="sub-items">
+                        {p.items.map((it) => (
+                          <li>{it}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ))}
 
           {/* ── Comparison table ──────────────────────────────────── */}
           {s.kind === 'compare' && (
-            <div class="hl-reveal mt-9">
-              <div class="hidden gap-10 pb-4 md:grid md:grid-cols-[minmax(0,190px)_minmax(0,1fr)_minmax(0,1fr)]">
-                <span aria-hidden="true" />
-                {s.heads.map((h, hi) => (
-                  <h3
-                    class={`hl-display text-[1.18rem] tracking-[-0.03em] ${ink[s.tones?.[hi] ?? 'plain']}`}
-                  >
-                    {h}
-                  </h3>
+            <div class="sub-cmp">
+              <div class="sub-cmp__heads" aria-hidden="true">
+                <span />
+                {s.heads.map((h) => (
+                  <p class="st-h4">{h}</p>
                 ))}
               </div>
-              <ul data-stagger>
+              <ul>
                 {s.rows.map((r) => (
-                  <li class="grid gap-x-10 gap-y-2 border-t border-[#FFFFFF14] py-6 md:grid-cols-[minmax(0,190px)_minmax(0,1fr)_minmax(0,1fr)]">
-                    <p class="font-mono text-[0.69rem] tracking-[0.06em] text-[#68779A]">{r.label}</p>
-                    <p class="text-[0.875rem] leading-[1.6] text-[#C3CDE0]">
-                      <span class={`font-semibold md:hidden ${ink[s.tones?.[0] ?? 'plain']}`}>
-                        {s.heads[0]} —{' '}
-                      </span>
+                  <li>
+                    <p class="st-label">{r.label}</p>
+                    <p class="st-small">
+                      <span class="sub-cmp__mh">{s.heads[0]}</span>
                       {r.a}
                     </p>
-                    <p class="text-[0.875rem] leading-[1.6] text-[#C3CDE0]">
-                      <span class={`font-semibold md:hidden ${ink[s.tones?.[1] ?? 'plain']}`}>
-                        {s.heads[1]} —{' '}
-                      </span>
+                    <p class="st-small">
+                      <span class="sub-cmp__mh">{s.heads[1]}</span>
                       {r.b}
                     </p>
                   </li>
@@ -271,45 +206,20 @@ const edge: Record<Tone, string> = {
             </div>
           )}
 
-          {/* ── Before / during / after rail ───────────────────────
-              Three steps read as a rail; four would leave an orphan on a
-              three-column grid, so a four-step rail gets its own tracks. */}
+          {/* ── Before / during / after rail ─────────────────────── */}
           {s.kind === 'rail' && (
-            <ol
-              class={`hl-reveal mt-11 grid gap-8 md:gap-7 ${s.steps.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}
-              data-stagger
-            >
+            <ol class={`${grid(s.steps.length)} sub-rail`}>
               {s.steps.map((st, si) => {
                 const live = si === (s.activeIndex ?? -1);
                 return (
-                  <li>
-                    <span
-                      class={`block size-[9px] rounded-full ${live ? 'bg-[#2D7FF9]' : 'bg-[#68779A]'}`}
-                      aria-hidden="true"
-                    />
-                    <span
-                      class={`mt-2.5 block h-px w-full ${live ? 'bg-[#2D7FF9]' : 'bg-[#FFFFFF29]'}`}
-                      aria-hidden="true"
-                    />
-                    <p
-                      class={`mt-6 font-mono text-[0.66rem] tracking-[0.11em] ${live ? 'text-[#2D7FF9]' : 'text-[#68779A]'}`}
-                    >
-                      {st.num}
-                    </p>
-                    <h3 class="hl-display mt-3 text-[1.2rem] tracking-[-0.03em]">{st.title}</h3>
-                    <p class="mt-3 text-[0.84rem] leading-[1.63] text-[#68779A]">{st.desc}</p>
+                  <li class:list={[live && 'is-live']}>
+                    <p class={live ? 'st-label st-label--accent' : 'st-label'}>{st.num}</p>
+                    <h3 class="st-h4">{st.title}</h3>
+                    <p class="st-small">{st.desc}</p>
                     {st.items && (
-                      <ul class="mt-4 grid gap-2.5">
+                      <ul class="sub-items">
                         {st.items.map((it) => (
-                          <li class="flex items-start gap-2.5">
-                            <span
-                              class={`shrink-0 font-mono text-[0.72rem] ${live ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`}
-                              aria-hidden="true"
-                            >
-                              —
-                            </span>
-                            <span class="text-[0.81rem] leading-[1.55] text-[#B4C0D6]">{it}</span>
-                          </li>
+                          <li>{it}</li>
                         ))}
                       </ul>
                     )}
@@ -321,26 +231,23 @@ const edge: Record<Tone, string> = {
 
           {/* ── Nested scales ─────────────────────────────────────── */}
           {s.kind === 'nested' && (
-            <ol class="hl-reveal mt-9" data-stagger>
+            <ol class="sub-nest">
               {s.levels.map((lv, li) => (
-                <li style={`padding-left: ${li * 2.25}rem;`}>
-                  <div
-                    class={`border-t border-[#FFFFFF14] py-6 ${li > 0 ? 'border-l border-l-[#FFFFFF14] pl-6' : ''}`}
-                  >
-                    <div class="flex flex-wrap items-baseline gap-x-3.5 gap-y-1">
-                      <h3
-                        class={`hl-display text-[1.3rem] tracking-[-0.02em] ${li === (s.activeIndex ?? -1) ? 'text-[#7AB8FF]' : ''}`}
-                      >
-                        {lv.name}
-                      </h3>
-                      <p class="font-mono text-[0.69rem] text-[#68779A]">{lv.where}</p>
-                    </div>
-                    {/* Same measure at every depth, so the indent reads as
-                        hierarchy rather than as varying line length. */}
-                    <p class="mt-2.5 max-w-[62ch] text-[0.875rem] leading-[1.64] text-[#68779A]">
-                      {lv.desc}
+                <li
+                  class:list={[li === (s.activeIndex ?? -1) && 'is-live']}
+                  style={`--depth: ${li};`}
+                >
+                  <div class="sub-nest__line">
+                    <h3 class="st-h3">{lv.name}</h3>
+                    <p
+                      class={
+                        li === (s.activeIndex ?? -1) ? 'st-label st-label--accent' : 'st-label'
+                      }
+                    >
+                      {lv.where}
                     </p>
                   </div>
+                  <p class="st-small">{lv.desc}</p>
                 </li>
               ))}
             </ol>
@@ -348,22 +255,11 @@ const edge: Record<Tone, string> = {
 
           {/* ── Headline figures ──────────────────────────────────── */}
           {s.kind === 'stats' && (
-            <ul
-              class={`hl-reveal ${head ? 'mt-8' : ''} grid gap-4 sm:grid-cols-2 ${s.stats.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}
-              data-stagger
-            >
+            <ul class={`${grid(s.stats.length)} sub-stats`}>
               {s.stats.map((st) => (
-                <li class="rounded-[14px] bg-[#0C1120] px-6 py-5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-                  {/* The figure counts to the string that is already in the
-                      HTML, so no-JS, reduced-motion and background-tab loads
-                      all read the real localised value. */}
-                  <p
-                    class={`hl-display text-[2.1rem] tracking-[-0.04em] ${st.tone ? ink[st.tone] : 'text-[#F8FAFC]'}`}
-                    data-count
-                  >
-                    {st.value}
-                  </p>
-                  <p class="mt-1.5 text-[0.81rem] leading-[1.45] text-[#9AA8C4]">{st.label}</p>
+                <li>
+                  <p class="sub-n">{st.value}</p>
+                  <p class="st-small">{st.label}</p>
                 </li>
               ))}
             </ul>
@@ -371,74 +267,385 @@ const edge: Record<Tone, string> = {
 
           {/* ── Pointer to a neighbouring page ────────────────────── */}
           {s.kind === 'crosslink' && (
-            <a
-              href={s.link.href}
-              class="hl-row hl-btn hl-reveal mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#FFFFFF0D] px-6 py-[14px] text-[0.9rem] font-semibold text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
-            >
+            <a href={s.link.href} class="st-btn st-btn--ghost">
               {s.link.label}
-              <HomeIcon name="arrow-right" size={15} class="hl-row__icon text-[#7AB8FF]" />
+              <HomeIcon name="arrow-right" size={16} />
             </a>
           )}
 
           {/* ── Bespoke capture ───────────────────────────────────── */}
-          {s.kind === 'visual' && (
-            <div class={`hl-reveal ${head ? 'mt-9' : ''}`}>
-              <SubVisual name={s.name} locale={locale} />
-            </div>
-          )}
+          {s.kind === 'visual' && <SubVisual name={s.name} locale={locale} />}
 
           {/* ── Marks of the systems STRIVN reads from ────────────── */}
-          {s.kind === 'logos' && (
-            <PartnerTiles only={s.only} class={`hl-reveal ${head ? 'mt-8' : ''}`} />
-          )}
+          {s.kind === 'logos' && <PartnerTiles only={s.only} />}
 
           {/* ── Store badges ──────────────────────────────────────── */}
-          {s.kind === 'stores' && (
-            <SubStores locale={locale} app={s.app} class={`hl-reveal ${head ? 'mt-8' : ''}`} />
-          )}
+          {s.kind === 'stores' && <SubStores locale={locale} app={s.app} />}
 
           {/* ── Standalone banner / aside ─────────────────────────── */}
           {s.kind === 'callout' && (
-            <SubCallout
-              tone={s.tone}
-              icon={s.icon}
-              text={s.text}
-              link={s.link}
-              class={`hl-reveal ${head ? 'mt-8' : ''}`}
-            />
+            <SubCallout tone={s.tone} icon={s.icon} text={s.text} link={s.link} />
           )}
-          {s.kind === 'note' && (
-            <SubNote
-              label={s.label}
-              desc={s.desc}
-              icon={s.icon}
-              class={`hl-reveal ${head ? 'mt-8' : ''}`}
-            />
-          )}
+          {s.kind === 'note' && <SubNote label={s.label} desc={s.desc} icon={s.icon} />}
 
           {/* ── Trailing slots, inside the same band ──────────────── */}
           {!bare && s.callouts && (
-            <div class="mt-9 grid gap-4">
+            <div class="sub-trail sub-trail--callouts">
               {s.callouts.map((c) => (
-                <SubCallout tone={c.tone} icon={c.icon} text={c.text} link={c.link} class="hl-reveal" />
+                <SubCallout tone={c.tone} icon={c.icon} text={c.text} link={c.link} />
               ))}
             </div>
           )}
           {!bare && s.note && (
-            <SubNote
-              label={s.note.label}
-              desc={s.note.desc}
-              icon={s.note.icon}
-              class="hl-reveal mt-9"
-            />
+            <div class="sub-trail">
+              <SubNote label={s.note.label} desc={s.note.desc} icon={s.note.icon} />
+            </div>
           )}
-          {!bare && s.foot && (
-            <p class="hl-reveal mt-9 max-w-[58rem] text-[0.84rem] leading-[1.63] text-[#68779A]">
-              {s.foot}
-            </p>
-          )}
+          {!bare && s.foot && <p class="sub-trail sub-foot">{s.foot}</p>}
         </div>
       </section>
     );
   })
 }
+
+<style>
+  /* ── Opening: heading, then the band's capture ─────────────────── */
+  .sub-open {
+    margin-bottom: clamp(32px, 4vw, 48px);
+  }
+  .sub-open:last-child {
+    margin-bottom: 0;
+  }
+  .sub-open .sub-head {
+    margin-bottom: 0;
+  }
+  .sub-open:not(.sub-open--aside) .sub-head + .sub-vis {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+  .sub-open--aside {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
+    gap: 40px clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  @media (max-width: 1000px) {
+    .sub-open--aside {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* ── Hairline grid: columns split by rules, rows closed by one ───── */
+  .sub-grid {
+    --cols: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sub-grid > li {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    min-width: 0;
+    padding: 24px 0 26px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  @media (min-width: 621px) {
+    .sub-grid--2,
+    .sub-grid--3,
+    .sub-grid--4 {
+      --cols: 2;
+    }
+    .sub-grid > li {
+      padding-inline: 28px;
+      border-left: 1px solid var(--color-line);
+    }
+    .sub-grid--2 > li:nth-child(2n + 1) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .sub-grid--2 > li:nth-child(2n) {
+      padding-right: 0;
+    }
+  }
+  @media (min-width: 621px) and (max-width: 1080px) {
+    .sub-grid--3 > li:nth-child(2n + 1),
+    .sub-grid--4 > li:nth-child(2n + 1) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .sub-grid--3 > li:nth-child(2n),
+    .sub-grid--4 > li:nth-child(2n) {
+      padding-right: 0;
+    }
+  }
+  @media (min-width: 1081px) {
+    .sub-grid--3 {
+      --cols: 3;
+    }
+    .sub-grid--4 {
+      --cols: 4;
+    }
+    .sub-grid--3 > li:nth-child(3n + 1),
+    .sub-grid--4 > li:nth-child(4n + 1) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .sub-grid--3 > li:nth-child(3n),
+    .sub-grid--4 > li:nth-child(4n) {
+      padding-right: 0;
+    }
+  }
+  .sub-ico {
+    display: inline-flex;
+    margin-bottom: 4px;
+    color: var(--color-ink-3);
+  }
+  .ink-ready {
+    color: var(--color-ready);
+  }
+  .ink-watch {
+    color: var(--color-watch);
+  }
+  .ink-risk {
+    color: var(--color-risk);
+  }
+
+  /* ── Definition rows ─────────────────────────────────────────── */
+  .sub-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sub-rows > li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px 40px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .sub-rows__name {
+    display: grid;
+    gap: 6px;
+    align-content: start;
+    justify-items: start;
+  }
+  .sub-rows__sub {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-ink-3);
+  }
+  .sub-rows > li > .st-small {
+    max-width: 68ch;
+  }
+  .sub-pill {
+    display: inline-flex;
+    padding: 5px 10px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--color-ink);
+  }
+  @media (min-width: 761px) {
+    .sub-rows > li {
+      grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+    }
+  }
+  @media (min-width: 1081px) {
+    .sub-rows > li.has-chip {
+      grid-template-columns: minmax(0, 280px) minmax(0, 1fr) minmax(0, 200px);
+    }
+    .sub-rows__chip {
+      justify-self: end;
+    }
+  }
+  @media (min-width: 761px) and (max-width: 1080px) {
+    .sub-rows__chip {
+      grid-column: 2;
+    }
+  }
+
+  /* ── Panels and statement ────────────────────────────────────── */
+  .sub-lead {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-ink);
+  }
+  .sub-panel .st-h3 {
+    margin-bottom: 2px;
+  }
+  .sub-items {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+  }
+  .sub-items > li {
+    display: flex;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-ink-2);
+  }
+  .sub-items > li::before {
+    content: '';
+    flex: none;
+    width: 5px;
+    height: 5px;
+    margin-top: 8px;
+    border-radius: 1px;
+    background: var(--color-ink-4);
+  }
+  .sub-rail > li.is-live .sub-items > li::before {
+    background: var(--color-electric-500);
+  }
+  .sub-statement {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 24px clamp(32px, 5vw, 72px);
+    align-items: start;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sub-statement__body {
+    display: grid;
+    gap: 14px;
+  }
+  @media (max-width: 900px) {
+    .sub-statement {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* ── Comparison ──────────────────────────────────────────────── */
+  .sub-cmp ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sub-cmp__heads,
+  .sub-cmp li {
+    display: grid;
+    grid-template-columns: minmax(0, 200px) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px 40px;
+  }
+  .sub-cmp__heads {
+    padding-bottom: 16px;
+  }
+  .sub-cmp li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .sub-cmp li > .st-label {
+    margin: 0;
+    padding-top: 3px;
+  }
+  /* Column name before each value: read aloud everywhere, shown only once
+     the columns stack and the heads row is gone. */
+  .sub-cmp__mh {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  @media (max-width: 760px) {
+    .sub-cmp__heads {
+      display: none;
+    }
+    .sub-cmp li {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .sub-cmp__mh {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip-path: none;
+      white-space: normal;
+      display: block;
+      margin-bottom: 2px;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+  }
+
+  /* ── Rail: the active step carries the electric rule ─────────── */
+  .sub-rail > li.is-live {
+    box-shadow: inset 0 2px 0 var(--color-electric);
+  }
+
+  /* ── Nested scales ───────────────────────────────────────────── */
+  .sub-nest {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .sub-nest > li {
+    display: grid;
+    gap: 8px;
+    margin-left: calc(var(--depth) * clamp(12px, 3vw, 40px));
+    padding: 22px 0 22px;
+    border-top: 1px solid var(--color-line);
+  }
+  .sub-nest > li:first-child {
+    border-top-color: var(--color-line-strong);
+  }
+  .sub-nest > li + li {
+    padding-left: 24px;
+    border-left: 1px solid var(--color-line);
+  }
+  .sub-nest > li.is-live {
+    border-left-color: var(--color-electric);
+  }
+  .sub-nest__line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 16px;
+  }
+  .sub-nest .st-small {
+    max-width: 62ch;
+  }
+
+  /* ── Figures ─────────────────────────────────────────────────── */
+  .sub-n {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: clamp(26px, 2.6vw, 32px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink);
+  }
+
+  /* ── Trailing slots ──────────────────────────────────────────── */
+  .sub-trail {
+    margin-top: clamp(28px, 3.5vw, 40px);
+  }
+  .sub-trail--callouts {
+    display: grid;
+    gap: 12px;
+  }
+  .sub-foot {
+    max-width: 72ch;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-ink-2);
+  }
+  .sub-sec .st-small {
+    margin: 0;
+  }
+</style>

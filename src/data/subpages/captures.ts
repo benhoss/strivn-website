@@ -11,12 +11,15 @@ import type { Locale } from '../landingContent';
 
 /* ── Locale-invariant fixtures ────────────────────────────────── */
 
-/** Load feed: icon and accent per row, in order. */
+/**
+ * Load feed: icon and ink per row, in order. Only the two rows that describe
+ * a player's or the squad's state carry a status colour.
+ */
 export const LOAD_ROW_STYLE = [
-  { icon: 'satellite', tone: 'blue' },
-  { icon: 'gauge', tone: 'green' },
-  { icon: 'triangle-alert', tone: 'orange' },
-  { icon: 'check', tone: 'green' },
+  { icon: 'satellite', tone: 'neutral' },
+  { icon: 'gauge', tone: 'neutral' },
+  { icon: 'triangle-alert', tone: 'risk' },
+  { icon: 'check', tone: 'ready' },
 ] as const;
 
 /** Morning check-in table. `pain: null` marks a player who has not answered. */
@@ -42,8 +45,8 @@ export const CAMPAIGN_ROWS: Array<{ name: string; pos: number; value: string | n
   { name: 'K. Nakamura', pos: 3, value: null, zone: 3 },
 ];
 
-/** Zone dot colours, in `CAMPAIGN_ROWS.zone` order. */
-export const CAMPAIGN_ZONE_DOTS = ['#8CE99A', '#B8E986', '#FF8400', '#68779A'] as const;
+/** Zone chip per `CAMPAIGN_ROWS.zone`: excellent, good, average, not entered. */
+export const CAMPAIGN_ZONE_TONES = ['ready', 'ready', 'watch', 'wait'] as const;
 
 /** Results entered, out of the squad — drives the progress bar. */
 export const CAMPAIGN_PROGRESS = { done: 12, total: 18 };
@@ -70,14 +73,25 @@ export const GPS_BLOCKS: Array<{ zones: number[] | 'all' }> = [
 ];
 
 
-/** Zone swatches for the measure editor, best to worst. */
-export const MEASURE_ZONE_DOTS = ['#8CE99A', '#B8E986', '#FF8400', '#FF5C33'] as const;
+/** Zone swatches for the measure editor, best to worst, as token colours. */
+export const MEASURE_ZONE_DOTS = [
+  'var(--color-ready)',
+  'color-mix(in srgb, var(--color-ready) 50%, transparent)',
+  'var(--color-watch)',
+  'var(--color-risk)',
+] as const;
 
 /**
  * Percentile bands, left to right. The marker sits on index 3 — the page's
  * point is that a value only means something once it is placed on this scale.
  */
-export const SCALE_BANDS = ['#FF5C332E', '#FF84002E', '#FFFFFF12', '#8CE99A38', '#8CE99A5C'] as const;
+export const SCALE_BANDS = [
+  'color-mix(in srgb, var(--color-risk) 22%, transparent)',
+  'color-mix(in srgb, var(--color-watch) 22%, transparent)',
+  'var(--color-navy-800)',
+  'color-mix(in srgb, var(--color-ready) 24%, transparent)',
+  'color-mix(in srgb, var(--color-ready) 42%, transparent)',
+] as const;
 export const SCALE_MARKER_INDEX = 3;
 
 /**
@@ -483,9 +497,9 @@ const fr: CaptureText = {
       { k: 'ALERTES', v: '2' },
     ],
     rows: [
-      { text: 'Séance mardi — GPS importé · 18 joueurs', meta: '30 s' },
-      { text: 'RPE consolidés — moyenne 6,4', meta: '20:45' },
-      { text: 'L. Moreau — ACWR 1,31, hors zone', meta: 'alerte' },
+      { text: 'Séance mardi · GPS importé · 18 joueurs', meta: '30 s' },
+      { text: 'RPE consolidés · moyenne 6,4', meta: '20:45' },
+      { text: 'L. Moreau · ACWR 1,31, hors zone', meta: 'alerte' },
       { text: 'Charge dans la cible du microcycle', meta: '−2 %' },
     ],
   },
@@ -496,7 +510,7 @@ const fr: CaptureText = {
     yes: 'oui',
     no: 'non',
     ready: { green: 'Vert', amber: 'Jaune', red: 'Rouge', missing: 'Manquant' },
-    alert: 'L. Moreau — rouge : 4 h de sommeil, douleur signalée. Acquitter avec une note ?',
+    alert: 'L. Moreau · rouge : 4 h de sommeil, douleur signalée. Acquitter avec une note ?',
   },
   campaign: {
     title: 'VMA · campagne du 14 avril',
@@ -505,7 +519,7 @@ const fr: CaptureText = {
     progress: 'RÉSULTATS SAISIS',
     positions: ['Milieu', 'Ailier', 'Défenseur', 'Attaquant'],
     zones: ['Excellent', 'Bon', 'Moyen', 'à saisir'],
-    note: 'Chaque résultat garde sa note — conditions, ressenti, matériel utilisé.',
+    note: 'Chaque résultat garde sa note · conditions, ressenti, matériel utilisé.',
   },
   gps: {
     colsTitle: 'VOS COLONNES PAR ZONE',
@@ -547,7 +561,7 @@ const fr: CaptureText = {
     acwr: { k: 'ACWR PROJETÉ', v: '1,06' },
     shape: 'LA FORME DE LA SEMAINE',
     days: ['L', 'M', 'M', 'J', 'V', 'S', 'D'],
-    session: 'Jeudi 18:00 — Séance collective',
+    session: 'Jeudi 18:00 · Séance collective',
     sessionTotal: '340 UA',
     parts: ['VAMEVAL', 'Opposition', 'Prévention'],
     attached: 'rattachée',
@@ -564,9 +578,9 @@ const fr: CaptureText = {
     finish: 'Terminer le bloc',
     rows: [
       { t: 'Présents pointés', m: '17 / 20' },
-      { t: 'Équipes créées — 2 × 8', m: 'auto' },
-      { t: 'Prochain bloc — Vitesse', m: '15 min' },
-      { t: 'Hors ligne — 3 actions en attente', m: 'sync' },
+      { t: 'Équipes créées · 2 × 8', m: 'auto' },
+      { t: 'Prochain bloc · Vitesse', m: '15 min' },
+      { t: 'Hors ligne · 3 actions en attente', m: 'sync' },
     ],
   },
   match: {
@@ -576,10 +590,10 @@ const fr: CaptureText = {
     them: 'ADV.',
     facts: ['Tir cadré', 'Duel gagné', 'Perte balle'],
     events: [
-      'But — A. Diallo · chaîne complétée',
-      'Entrée — K. Nakamura · sortie T. Mendes',
-      'Observation — croquis bloc bas',
-      'Carton jaune — S. Petit',
+      'But · A. Diallo · chaîne complétée',
+      'Entrée · K. Nakamura · sortie T. Mendes',
+      'Observation · croquis bloc bas',
+      'Carton jaune · S. Petit',
     ],
   },
   library: {
@@ -589,21 +603,21 @@ const fr: CaptureText = {
     via: 'via WhatsApp',
     titleKey: 'TITRE',
     ai: 'suggéré par l’IA',
-    name: 'Rondo 4v2 — sortie sous pression',
+    name: 'Rondo 4v2 · sortie sous pression',
     folderKey: 'DOSSIER',
     folder: 'Conservation',
     tags: ['rondo', 'pressing', 'U19'],
     file: 'Classer',
     publish: 'Publier à l’équipe',
     queue: [
-      { t: 'Photo — coordination échelle', m: 'hier' },
-      { t: 'Schéma — bloc médian 4-4-2', m: 'hier' },
+      { t: 'Photo · coordination échelle', m: 'hier' },
+      { t: 'Schéma · bloc médian 4-4-2', m: 'hier' },
     ],
   },
   program: {
     title: 'Bas du corps · mercredi',
     meta: 'PUBLIÉE · 18 JOUEURS',
-    lift: 'Back Squat — 4 × 5 @ 80 % du 1RM',
+    lift: 'Back Squat · 4 × 5 @ 80 % du 1RM',
     detail: 'tempo 3010 · repos 2 min · A1 du superset',
     maxLabel: '1RM',
     modLabel: 'modulé',
@@ -624,11 +638,11 @@ const fr: CaptureText = {
     counts: ['présents', 'adaptés', 'incertains', 'absents', 'en attente'],
     positions: ['Milieu', 'Défenseur', 'Ailier', 'Gardien'],
     answers: ['Présent', 'Adapté', 'Incertain', 'Absent', 'En attente'],
-    nudge: 'Relance ciblée — 2 joueurs restent en attente',
+    nudge: 'Relance ciblée · 2 joueurs restent en attente',
     send: 'Envoyer',
   },
   rtp: {
-    who: 'T. Mendes — ischio-jambiers',
+    who: 'T. Mendes · ischio-jambiers',
     detail: 'Aiguë · sévérité 2 / 5 · J+13',
     status: 'REVALIDATION',
     progressKey: 'PROGRESSION ESTIMÉE · RETOUR J+18',
@@ -695,7 +709,7 @@ const fr: CaptureText = {
     title: 'Sélection / forme · 5 derniers matchs',
     meta: '18 JOUEURS',
     cols: ['JOUEUR', 'MIN', 'NOTE', 'ACWR'],
-    note: 'Rapport enregistré — rejoué sur les données du jour. « * » signale un échantillon trop court.',
+    note: 'Rapport enregistré · rejoué sur les données du jour. « * » signale un échantillon trop court.',
   },
   scout: {
     title: 'FC Boisval · J-6',
@@ -704,7 +718,7 @@ const fr: CaptureText = {
     positions: ['Attaquant', 'Meneur', 'Défenseur', 'Gardien'],
     sources: ['observé', 'feuille de match'],
     danger: 'à surveiller',
-    proposal: 'Brief tactique — proposition IA',
+    proposal: 'Brief tactique · proposition IA',
     proposalNote: 'Bloc médian haut, sorties courtes. Rien n’est appliqué tant que vous n’avez pas tranché.',
     accept: 'Relire',
   },
@@ -729,9 +743,9 @@ const en: CaptureText = {
       { k: 'ALERTS', v: '2' },
     ],
     rows: [
-      { text: 'Tuesday session — GPS imported · 18 players', meta: '30 s' },
-      { text: 'RPE consolidated — average 6.4', meta: '20:45' },
-      { text: 'L. Moreau — ACWR 1.31, out of range', meta: 'alert' },
+      { text: 'Tuesday session · GPS imported · 18 players', meta: '30 s' },
+      { text: 'RPE consolidated · average 6.4', meta: '20:45' },
+      { text: 'L. Moreau · ACWR 1.31, out of range', meta: 'alert' },
       { text: 'Load on the microcycle target', meta: '−2%' },
     ],
   },
@@ -742,7 +756,7 @@ const en: CaptureText = {
     yes: 'yes',
     no: 'no',
     ready: { green: 'Green', amber: 'Amber', red: 'Red', missing: 'Missing' },
-    alert: 'L. Moreau — red: 4 h of sleep, pain reported. Acknowledge with a note?',
+    alert: 'L. Moreau · red: 4 h of sleep, pain reported. Acknowledge with a note?',
   },
   campaign: {
     title: 'MAS · campaign of 14 April',
@@ -751,7 +765,7 @@ const en: CaptureText = {
     progress: 'RESULTS ENTERED',
     positions: ['Midfielder', 'Winger', 'Defender', 'Forward'],
     zones: ['Excellent', 'Good', 'Average', 'to enter'],
-    note: 'Every result keeps its note — conditions, how it felt, kit used.',
+    note: 'Every result keeps its note · conditions, how it felt, kit used.',
   },
   gps: {
     colsTitle: 'YOUR COLUMNS BY ZONE',
@@ -793,7 +807,7 @@ const en: CaptureText = {
     acwr: { k: 'PROJECTED ACWR', v: '1.06' },
     shape: 'THE SHAPE OF THE WEEK',
     days: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-    session: 'Thursday 18:00 — Squad session',
+    session: 'Thursday 18:00 · Squad session',
     sessionTotal: '340 AU',
     parts: ['VAMEVAL', 'Small-sided games', 'Prevention'],
     attached: 'attached',
@@ -810,9 +824,9 @@ const en: CaptureText = {
     finish: 'End the block',
     rows: [
       { t: 'Attendance taken', m: '17 / 20' },
-      { t: 'Teams created — 2 × 8', m: 'auto' },
-      { t: 'Next block — Speed', m: '15 min' },
-      { t: 'Offline — 3 actions queued', m: 'sync' },
+      { t: 'Teams created · 2 × 8', m: 'auto' },
+      { t: 'Next block · Speed', m: '15 min' },
+      { t: 'Offline · 3 actions queued', m: 'sync' },
     ],
   },
   match: {
@@ -822,10 +836,10 @@ const en: CaptureText = {
     them: 'OPP.',
     facts: ['Shot on target', 'Duel won', 'Turnover'],
     events: [
-      'Goal — A. Diallo · chain completed',
-      'On — K. Nakamura · off T. Mendes',
-      'Observation — low block sketch',
-      'Yellow card — S. Petit',
+      'Goal · A. Diallo · chain completed',
+      'On · K. Nakamura · off T. Mendes',
+      'Observation · low block sketch',
+      'Yellow card · S. Petit',
     ],
   },
   library: {
@@ -835,21 +849,21 @@ const en: CaptureText = {
     via: 'via WhatsApp',
     titleKey: 'TITLE',
     ai: 'suggested by AI',
-    name: 'Rondo 4v2 — playing out under pressure',
+    name: 'Rondo 4v2 · playing out under pressure',
     folderKey: 'FOLDER',
     folder: 'Possession',
     tags: ['rondo', 'pressing', 'U19'],
     file: 'File it',
     publish: 'Publish to the team',
     queue: [
-      { t: 'Photo — ladder coordination', m: 'yesterday' },
-      { t: 'Diagram — mid block 4-4-2', m: 'yesterday' },
+      { t: 'Photo · ladder coordination', m: 'yesterday' },
+      { t: 'Diagram · mid block 4-4-2', m: 'yesterday' },
     ],
   },
   program: {
     title: 'Lower body · Wednesday',
     meta: 'PUBLISHED · 18 PLAYERS',
-    lift: 'Back Squat — 4 × 5 @ 80 % of 1RM',
+    lift: 'Back Squat · 4 × 5 @ 80 % of 1RM',
     detail: 'tempo 3010 · rest 2 min · A1 of the superset',
     maxLabel: '1RM',
     modLabel: 'scaled',
@@ -870,11 +884,11 @@ const en: CaptureText = {
     counts: ['available', 'adapted', 'unsure', 'unavailable', 'pending'],
     positions: ['Midfielder', 'Defender', 'Winger', 'Goalkeeper'],
     answers: ['Available', 'Adapted', 'Unsure', 'Unavailable', 'Pending'],
-    nudge: 'Targeted reminder — 2 players still pending',
+    nudge: 'Targeted reminder · 2 players still pending',
     send: 'Send',
   },
   rtp: {
-    who: 'T. Mendes — hamstring',
+    who: 'T. Mendes · hamstring',
     detail: 'Acute · severity 2 / 5 · day 13',
     status: 'REHAB',
     progressKey: 'ESTIMATED PROGRESS · RETURN DAY 18',
@@ -941,7 +955,7 @@ const en: CaptureText = {
     title: 'Selection / form · last 5 matches',
     meta: '18 PLAYERS',
     cols: ['PLAYER', 'MIN', 'RATING', 'ACWR'],
-    note: 'Saved report — replayed on today’s data. “*” marks too short a sample.',
+    note: 'Saved report · replayed on today’s data. “*” marks too short a sample.',
   },
   scout: {
     title: 'FC Boisval · MD-6',
@@ -950,7 +964,7 @@ const en: CaptureText = {
     positions: ['Striker', 'Playmaker', 'Defender', 'Goalkeeper'],
     sources: ['observed', 'team sheet'],
     danger: 'danger man',
-    proposal: 'Tactical brief — AI proposal',
+    proposal: 'Tactical brief · AI proposal',
     proposalNote: 'High mid block, short build-up. Nothing is applied until you decide.',
     accept: 'Review',
   },
@@ -975,9 +989,9 @@ const nl: CaptureText = {
       { k: 'MELDINGEN', v: '2' },
     ],
     rows: [
-      { text: 'Training dinsdag — gps geïmporteerd · 18 spelers', meta: '30 s' },
-      { text: 'RPE samengevoegd — gemiddeld 6,4', meta: '20:45' },
-      { text: 'L. Moreau — ACWR 1,31, buiten de zone', meta: 'melding' },
+      { text: 'Training dinsdag · gps geïmporteerd · 18 spelers', meta: '30 s' },
+      { text: 'RPE samengevoegd · gemiddeld 6,4', meta: '20:45' },
+      { text: 'L. Moreau · ACWR 1,31, buiten de zone', meta: 'melding' },
       { text: 'Belasting binnen het doel van de microcyclus', meta: '−2 %' },
     ],
   },
@@ -988,7 +1002,7 @@ const nl: CaptureText = {
     yes: 'ja',
     no: 'nee',
     ready: { green: 'Groen', amber: 'Oranje', red: 'Rood', missing: 'Ontbreekt' },
-    alert: 'L. Moreau — rood: 4 u slaap, pijn gemeld. Bevestigen met een notitie?',
+    alert: 'L. Moreau · rood: 4 u slaap, pijn gemeld. Bevestigen met een notitie?',
   },
   campaign: {
     title: 'MAS · campagne van 14 april',
@@ -997,7 +1011,7 @@ const nl: CaptureText = {
     progress: 'INGEVOERDE RESULTATEN',
     positions: ['Middenvelder', 'Vleugelspeler', 'Verdediger', 'Aanvaller'],
     zones: ['Uitstekend', 'Goed', 'Gemiddeld', 'in te vullen'],
-    note: 'Elk resultaat houdt zijn notitie — omstandigheden, gevoel, gebruikt materiaal.',
+    note: 'Elk resultaat houdt zijn notitie · omstandigheden, gevoel, gebruikt materiaal.',
   },
   gps: {
     colsTitle: 'JOUW KOLOMMEN PER ZONE',
@@ -1039,7 +1053,7 @@ const nl: CaptureText = {
     acwr: { k: 'VERWACHTE ACWR', v: '1,06' },
     shape: 'DE VORM VAN DE WEEK',
     days: ['M', 'D', 'W', 'D', 'V', 'Z', 'Z'],
-    session: 'Donderdag 18:00 — Groepstraining',
+    session: 'Donderdag 18:00 · Groepstraining',
     sessionTotal: '340 AE',
     parts: ['VAMEVAL', 'Partijvormen', 'Preventie'],
     attached: 'gekoppeld',
@@ -1056,9 +1070,9 @@ const nl: CaptureText = {
     finish: 'Blok beëindigen',
     rows: [
       { t: 'Aanwezigheden genoteerd', m: '17 / 20' },
-      { t: 'Ploegen gemaakt — 2 × 8', m: 'auto' },
-      { t: 'Volgend blok — Snelheid', m: '15 min' },
-      { t: 'Offline — 3 acties in wacht', m: 'sync' },
+      { t: 'Ploegen gemaakt · 2 × 8', m: 'auto' },
+      { t: 'Volgend blok · Snelheid', m: '15 min' },
+      { t: 'Offline · 3 acties in wacht', m: 'sync' },
     ],
   },
   match: {
@@ -1068,10 +1082,10 @@ const nl: CaptureText = {
     them: 'TEG.',
     facts: ['Schot op doel', 'Duel gewonnen', 'Balverlies'],
     events: [
-      'Doelpunt — A. Diallo · keten voltooid',
-      'In — K. Nakamura · uit T. Mendes',
-      'Observatie — schets laag blok',
-      'Gele kaart — S. Petit',
+      'Doelpunt · A. Diallo · keten voltooid',
+      'In · K. Nakamura · uit T. Mendes',
+      'Observatie · schets laag blok',
+      'Gele kaart · S. Petit',
     ],
   },
   library: {
@@ -1081,21 +1095,21 @@ const nl: CaptureText = {
     via: 'via WhatsApp',
     titleKey: 'TITEL',
     ai: 'voorgesteld door AI',
-    name: 'Rondo 4v2 — uitvoetballen onder druk',
+    name: 'Rondo 4v2 · uitvoetballen onder druk',
     folderKey: 'MAP',
     folder: 'Balbezit',
     tags: ['rondo', 'pressing', 'U19'],
     file: 'Opbergen',
     publish: 'Publiceren naar de ploeg',
     queue: [
-      { t: 'Foto — coördinatie ladder', m: 'gisteren' },
-      { t: 'Schema — middenblok 4-4-2', m: 'gisteren' },
+      { t: 'Foto · coördinatie ladder', m: 'gisteren' },
+      { t: 'Schema · middenblok 4-4-2', m: 'gisteren' },
     ],
   },
   program: {
     title: 'Onderlichaam · woensdag',
     meta: 'GEPUBLICEERD · 18 SPELERS',
-    lift: 'Back Squat — 4 × 5 @ 80 % van 1RM',
+    lift: 'Back Squat · 4 × 5 @ 80 % van 1RM',
     detail: 'tempo 3010 · rust 2 min · A1 van de superset',
     maxLabel: '1RM',
     modLabel: 'aangepast',
@@ -1116,11 +1130,11 @@ const nl: CaptureText = {
     counts: ['beschikbaar', 'aangepast', 'onzeker', 'afwezig', 'in afwachting'],
     positions: ['Middenvelder', 'Verdediger', 'Flankspeler', 'Doelman'],
     answers: ['Beschikbaar', 'Aangepast', 'Onzeker', 'Afwezig', 'In afwachting'],
-    nudge: 'Gerichte herinnering — 2 spelers blijven in afwachting',
+    nudge: 'Gerichte herinnering · 2 spelers blijven in afwachting',
     send: 'Versturen',
   },
   rtp: {
-    who: 'T. Mendes — hamstring',
+    who: 'T. Mendes · hamstring',
     detail: 'Acuut · ernst 2 / 5 · dag 13',
     status: 'REVALIDATIE',
     progressKey: 'GESCHATTE VOORTGANG · TERUGKEER DAG 18',
@@ -1187,7 +1201,7 @@ const nl: CaptureText = {
     title: 'Selectie / vorm · laatste 5 wedstrijden',
     meta: '18 SPELERS',
     cols: ['SPELER', 'MIN', 'SCORE', 'ACWR'],
-    note: 'Bewaard rapport — opnieuw gedraaid op de data van vandaag. “*” markeert een te kleine steekproef.',
+    note: 'Bewaard rapport · opnieuw gedraaid op de data van vandaag. “*” markeert een te kleine steekproef.',
   },
   scout: {
     title: 'FC Boisval · W-6',
@@ -1196,7 +1210,7 @@ const nl: CaptureText = {
     positions: ['Aanvaller', 'Spelmaker', 'Verdediger', 'Doelman'],
     sources: ['geobserveerd', 'wedstrijdblad'],
     danger: 'in de gaten houden',
-    proposal: 'Tactische briefing — AI-voorstel',
+    proposal: 'Tactische briefing · AI-voorstel',
     proposalNote: 'Hoog middenblok, korte opbouw. Er wordt niets toegepast tot jij beslist.',
     accept: 'Nalezen',
   },
@@ -1221,9 +1235,9 @@ const de: CaptureText = {
       { k: 'WARNUNGEN', v: '2' },
     ],
     rows: [
-      { text: 'Einheit Dienstag — GPS importiert · 18 Spieler', meta: '30 s' },
-      { text: 'RPE zusammengeführt — Mittel 6,4', meta: '20:45' },
-      { text: 'L. Moreau — ACWR 1,31, außerhalb der Zone', meta: 'Warnung' },
+      { text: 'Einheit Dienstag · GPS importiert · 18 Spieler', meta: '30 s' },
+      { text: 'RPE zusammengeführt · Mittel 6,4', meta: '20:45' },
+      { text: 'L. Moreau · ACWR 1,31, außerhalb der Zone', meta: 'Warnung' },
       { text: 'Belastung im Ziel des Mikrozyklus', meta: '−2 %' },
     ],
   },
@@ -1234,7 +1248,7 @@ const de: CaptureText = {
     yes: 'ja',
     no: 'nein',
     ready: { green: 'Grün', amber: 'Gelb', red: 'Rot', missing: 'Fehlt' },
-    alert: 'L. Moreau — rot: 4 Std. Schlaf, Schmerz gemeldet. Mit Notiz quittieren?',
+    alert: 'L. Moreau · rot: 4 Std. Schlaf, Schmerz gemeldet. Mit Notiz quittieren?',
   },
   campaign: {
     title: 'MAS · Kampagne vom 14. April',
@@ -1243,7 +1257,7 @@ const de: CaptureText = {
     progress: 'ERFASSTE ERGEBNISSE',
     positions: ['Mittelfeld', 'Flügel', 'Abwehr', 'Angriff'],
     zones: ['Ausgezeichnet', 'Gut', 'Mittel', 'zu erfassen'],
-    note: 'Jedes Ergebnis behält seine Notiz — Bedingungen, Empfinden, verwendetes Material.',
+    note: 'Jedes Ergebnis behält seine Notiz · Bedingungen, Empfinden, verwendetes Material.',
   },
   gps: {
     colsTitle: 'IHRE SPALTEN JE ZONE',
@@ -1285,7 +1299,7 @@ const de: CaptureText = {
     acwr: { k: 'PROGNOSE ACWR', v: '1,06' },
     shape: 'DIE FORM DER WOCHE',
     days: ['M', 'D', 'M', 'D', 'F', 'S', 'S'],
-    session: 'Donnerstag 18:00 — Mannschaftseinheit',
+    session: 'Donnerstag 18:00 · Mannschaftseinheit',
     sessionTotal: '340 AE',
     parts: ['VAMEVAL', 'Spielformen', 'Prävention'],
     attached: 'zugeordnet',
@@ -1302,9 +1316,9 @@ const de: CaptureText = {
     finish: 'Block beenden',
     rows: [
       { t: 'Anwesenheiten erfasst', m: '17 / 20' },
-      { t: 'Teams gebildet — 2 × 8', m: 'auto' },
-      { t: 'Nächster Block — Schnelligkeit', m: '15 Min' },
-      { t: 'Offline — 3 Aktionen in Warteschlange', m: 'sync' },
+      { t: 'Teams gebildet · 2 × 8', m: 'auto' },
+      { t: 'Nächster Block · Schnelligkeit', m: '15 Min' },
+      { t: 'Offline · 3 Aktionen in Warteschlange', m: 'sync' },
     ],
   },
   match: {
@@ -1314,10 +1328,10 @@ const de: CaptureText = {
     them: 'GEG.',
     facts: ['Schuss aufs Tor', 'Zweikampf gewonnen', 'Ballverlust'],
     events: [
-      'Tor — A. Diallo · Kette vollständig',
-      'Ein — K. Nakamura · aus T. Mendes',
-      'Beobachtung — Skizze tiefer Block',
-      'Gelbe Karte — S. Petit',
+      'Tor · A. Diallo · Kette vollständig',
+      'Ein · K. Nakamura · aus T. Mendes',
+      'Beobachtung · Skizze tiefer Block',
+      'Gelbe Karte · S. Petit',
     ],
   },
   library: {
@@ -1327,21 +1341,21 @@ const de: CaptureText = {
     via: 'über WhatsApp',
     titleKey: 'TITEL',
     ai: 'von der KI vorgeschlagen',
-    name: 'Rondo 4v2 — Spielaufbau unter Druck',
+    name: 'Rondo 4v2 · Spielaufbau unter Druck',
     folderKey: 'ORDNER',
     folder: 'Ballbesitz',
     tags: ['Rondo', 'Pressing', 'U19'],
     file: 'Ablegen',
     publish: 'An die Mannschaft veröffentlichen',
     queue: [
-      { t: 'Foto — Koordinationsleiter', m: 'gestern' },
-      { t: 'Zeichnung — Mittelfeldblock 4-4-2', m: 'gestern' },
+      { t: 'Foto · Koordinationsleiter', m: 'gestern' },
+      { t: 'Zeichnung · Mittelfeldblock 4-4-2', m: 'gestern' },
     ],
   },
   program: {
     title: 'Unterkörper · Mittwoch',
     meta: 'VERÖFFENTLICHT · 18 SPIELER',
-    lift: 'Back Squat — 4 × 5 @ 80 % des 1RM',
+    lift: 'Back Squat · 4 × 5 @ 80 % des 1RM',
     detail: 'Tempo 3010 · Pause 2 Min · A1 des Supersatzes',
     maxLabel: '1RM',
     modLabel: 'angepasst',
@@ -1362,11 +1376,11 @@ const de: CaptureText = {
     counts: ['verfügbar', 'angepasst', 'unsicher', 'abwesend', 'ausstehend'],
     positions: ['Mittelfeld', 'Abwehr', 'Flügel', 'Torhüter'],
     answers: ['Verfügbar', 'Angepasst', 'Unsicher', 'Abwesend', 'Ausstehend'],
-    nudge: 'Gezielte Erinnerung — 2 Spieler stehen noch aus',
+    nudge: 'Gezielte Erinnerung · 2 Spieler stehen noch aus',
     send: 'Senden',
   },
   rtp: {
-    who: 'T. Mendes — Oberschenkelrückseite',
+    who: 'T. Mendes · Oberschenkelrückseite',
     detail: 'Akut · Schweregrad 2 / 5 · Tag 13',
     status: 'REHA',
     progressKey: 'GESCHÄTZTER FORTSCHRITT · RÜCKKEHR TAG 18',
@@ -1433,7 +1447,7 @@ const de: CaptureText = {
     title: 'Auswahl / Form · letzte 5 Spiele',
     meta: '18 SPIELER',
     cols: ['SPIELER', 'MIN', 'NOTE', 'ACWR'],
-    note: 'Gespeicherter Bericht — auf den heutigen Daten neu gerechnet. „*“ markiert eine zu kleine Stichprobe.',
+    note: 'Gespeicherter Bericht · auf den heutigen Daten neu gerechnet. „*“ markiert eine zu kleine Stichprobe.',
   },
   scout: {
     title: 'FC Boisval · ST-6',
@@ -1442,7 +1456,7 @@ const de: CaptureText = {
     positions: ['Stürmer', 'Spielmacher', 'Verteidiger', 'Torhüter'],
     sources: ['beobachtet', 'Spielbericht'],
     danger: 'im Auge behalten',
-    proposal: 'Taktisches Briefing — KI-Vorschlag',
+    proposal: 'Taktisches Briefing · KI-Vorschlag',
     proposalNote: 'Hoher Mittelfeldblock, kurzer Spielaufbau. Nichts wird angewandt, bevor Sie entscheiden.',
     accept: 'Prüfen',
   },
@@ -1467,9 +1481,9 @@ const pt: CaptureText = {
       { k: 'ALERTAS', v: '2' },
     ],
     rows: [
-      { text: 'Treino de terça — GPS importado · 18 jogadores', meta: '30 s' },
-      { text: 'RPE consolidados — média 6,4', meta: '20:45' },
-      { text: 'L. Moreau — ACWR 1,31, fora de zona', meta: 'alerta' },
+      { text: 'Treino de terça · GPS importado · 18 jogadores', meta: '30 s' },
+      { text: 'RPE consolidados · média 6,4', meta: '20:45' },
+      { text: 'L. Moreau · ACWR 1,31, fora de zona', meta: 'alerta' },
       { text: 'Carga dentro do alvo do microciclo', meta: '−2 %' },
     ],
   },
@@ -1480,7 +1494,7 @@ const pt: CaptureText = {
     yes: 'sim',
     no: 'não',
     ready: { green: 'Verde', amber: 'Amarelo', red: 'Vermelho', missing: 'Em falta' },
-    alert: 'L. Moreau — vermelho: 4 h de sono, dor assinalada. Confirmar com uma nota?',
+    alert: 'L. Moreau · vermelho: 4 h de sono, dor assinalada. Confirmar com uma nota?',
   },
   campaign: {
     title: 'VAM · campanha de 14 de abril',
@@ -1489,7 +1503,7 @@ const pt: CaptureText = {
     progress: 'RESULTADOS INSERIDOS',
     positions: ['Médio', 'Extremo', 'Defesa', 'Avançado'],
     zones: ['Excelente', 'Bom', 'Médio', 'a inserir'],
-    note: 'Cada resultado guarda a sua nota — condições, sensação, material usado.',
+    note: 'Cada resultado guarda a sua nota · condições, sensação, material usado.',
   },
   gps: {
     colsTitle: 'AS SUAS COLUNAS POR ZONA',
@@ -1531,7 +1545,7 @@ const pt: CaptureText = {
     acwr: { k: 'ACWR PREVISTO', v: '1,06' },
     shape: 'A FORMA DA SEMANA',
     days: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-    session: 'Quinta-feira 18:00 — Treino coletivo',
+    session: 'Quinta-feira 18:00 · Treino coletivo',
     sessionTotal: '340 UA',
     parts: ['VAMEVAL', 'Jogos reduzidos', 'Prevenção'],
     attached: 'associada',
@@ -1548,9 +1562,9 @@ const pt: CaptureText = {
     finish: 'Terminar o bloco',
     rows: [
       { t: 'Presenças marcadas', m: '17 / 20' },
-      { t: 'Equipas criadas — 2 × 8', m: 'auto' },
-      { t: 'Próximo bloco — Velocidade', m: '15 min' },
-      { t: 'Offline — 3 ações em espera', m: 'sync' },
+      { t: 'Equipas criadas · 2 × 8', m: 'auto' },
+      { t: 'Próximo bloco · Velocidade', m: '15 min' },
+      { t: 'Offline · 3 ações em espera', m: 'sync' },
     ],
   },
   match: {
@@ -1560,10 +1574,10 @@ const pt: CaptureText = {
     them: 'ADV.',
     facts: ['Remate enquadrado', 'Duelo ganho', 'Perda de bola'],
     events: [
-      'Golo — A. Diallo · cadeia completa',
-      'Entrada — K. Nakamura · saída T. Mendes',
-      'Observação — esboço bloco baixo',
-      'Cartão amarelo — S. Petit',
+      'Golo · A. Diallo · cadeia completa',
+      'Entrada · K. Nakamura · saída T. Mendes',
+      'Observação · esboço bloco baixo',
+      'Cartão amarelo · S. Petit',
     ],
   },
   library: {
@@ -1573,21 +1587,21 @@ const pt: CaptureText = {
     via: 'via WhatsApp',
     titleKey: 'TÍTULO',
     ai: 'sugerido pela IA',
-    name: 'Rondo 4v2 — saída sob pressão',
+    name: 'Rondo 4v2 · saída sob pressão',
     folderKey: 'PASTA',
     folder: 'Posse de bola',
     tags: ['rondo', 'pressing', 'Sub-19'],
     file: 'Arquivar',
     publish: 'Publicar para a equipa',
     queue: [
-      { t: 'Foto — coordenação escada', m: 'ontem' },
-      { t: 'Esquema — bloco médio 4-4-2', m: 'ontem' },
+      { t: 'Foto · coordenação escada', m: 'ontem' },
+      { t: 'Esquema · bloco médio 4-4-2', m: 'ontem' },
     ],
   },
   program: {
     title: 'Membros inferiores · quarta',
     meta: 'PUBLICADA · 18 JOGADORES',
-    lift: 'Back Squat — 4 × 5 @ 80 % da 1RM',
+    lift: 'Back Squat · 4 × 5 @ 80 % da 1RM',
     detail: 'tempo 3010 · descanso 2 min · A1 do superset',
     maxLabel: '1RM',
     modLabel: 'modulado',
@@ -1608,11 +1622,11 @@ const pt: CaptureText = {
     counts: ['disponíveis', 'adaptados', 'incertos', 'ausentes', 'em espera'],
     positions: ['Médio', 'Defesa', 'Extremo', 'Guarda-redes'],
     answers: ['Disponível', 'Adaptado', 'Incerto', 'Ausente', 'Em espera'],
-    nudge: 'Lembrete dirigido — faltam 2 jogadores',
+    nudge: 'Lembrete dirigido · faltam 2 jogadores',
     send: 'Enviar',
   },
   rtp: {
-    who: 'T. Mendes — isquiotibiais',
+    who: 'T. Mendes · isquiotibiais',
     detail: 'Aguda · gravidade 2 / 5 · dia 13',
     status: 'REABILITAÇÃO',
     progressKey: 'PROGRESSO ESTIMADO · REGRESSO DIA 18',
@@ -1679,7 +1693,7 @@ const pt: CaptureText = {
     title: 'Seleção / forma · últimos 5 jogos',
     meta: '18 JOGADORES',
     cols: ['JOGADOR', 'MIN', 'NOTA', 'ACWR'],
-    note: 'Relatório guardado — recalculado sobre os dados de hoje. «*» assinala uma amostra curta.',
+    note: 'Relatório guardado · recalculado sobre os dados de hoje. «*» assinala uma amostra curta.',
   },
   scout: {
     title: 'FC Boisval · J-6',
@@ -1688,7 +1702,7 @@ const pt: CaptureText = {
     positions: ['Avançado', 'Construtor', 'Defesa', 'Guarda-redes'],
     sources: ['observado', 'ficha de jogo'],
     danger: 'a vigiar',
-    proposal: 'Briefing tático — proposta da IA',
+    proposal: 'Briefing tático · proposta da IA',
     proposalNote: 'Bloco médio alto, saídas curtas. Nada é aplicado enquanto não decidir.',
     accept: 'Rever',
   },
@@ -1713,9 +1727,9 @@ const es: CaptureText = {
       { k: 'ALERTAS', v: '2' },
     ],
     rows: [
-      { text: 'Sesión del martes — GPS importado · 18 jugadores', meta: '30 s' },
-      { text: 'RPE consolidados — media 6,4', meta: '20:45' },
-      { text: 'L. Moreau — ACWR 1,31, fuera de zona', meta: 'alerta' },
+      { text: 'Sesión del martes · GPS importado · 18 jugadores', meta: '30 s' },
+      { text: 'RPE consolidados · media 6,4', meta: '20:45' },
+      { text: 'L. Moreau · ACWR 1,31, fuera de zona', meta: 'alerta' },
       { text: 'Carga dentro del objetivo del microciclo', meta: '−2 %' },
     ],
   },
@@ -1726,7 +1740,7 @@ const es: CaptureText = {
     yes: 'sí',
     no: 'no',
     ready: { green: 'Verde', amber: 'Ámbar', red: 'Rojo', missing: 'Ausente' },
-    alert: 'L. Moreau — rojo: 4 h de sueño, dolor señalado. ¿Marcar con una nota?',
+    alert: 'L. Moreau · rojo: 4 h de sueño, dolor señalado. ¿Marcar con una nota?',
   },
   campaign: {
     title: 'VAM · campaña del 14 de abril',
@@ -1735,7 +1749,7 @@ const es: CaptureText = {
     progress: 'RESULTADOS INTRODUCIDOS',
     positions: ['Centrocampista', 'Extremo', 'Defensa', 'Delantero'],
     zones: ['Excelente', 'Bueno', 'Medio', 'por introducir'],
-    note: 'Cada resultado conserva su nota — condiciones, sensación, material utilizado.',
+    note: 'Cada resultado conserva su nota · condiciones, sensación, material utilizado.',
   },
   gps: {
     colsTitle: 'TUS COLUMNAS POR ZONA',
@@ -1777,7 +1791,7 @@ const es: CaptureText = {
     acwr: { k: 'ACWR PREVISTO', v: '1,06' },
     shape: 'LA FORMA DE LA SEMANA',
     days: ['L', 'M', 'X', 'J', 'V', 'S', 'D'],
-    session: 'Jueves 18:00 — Sesión colectiva',
+    session: 'Jueves 18:00 · Sesión colectiva',
     sessionTotal: '340 UA',
     parts: ['VAMEVAL', 'Juegos reducidos', 'Prevención'],
     attached: 'asociada',
@@ -1794,9 +1808,9 @@ const es: CaptureText = {
     finish: 'Terminar el bloque',
     rows: [
       { t: 'Asistencias marcadas', m: '17 / 20' },
-      { t: 'Equipos creados — 2 × 8', m: 'auto' },
-      { t: 'Siguiente bloque — Velocidad', m: '15 min' },
-      { t: 'Sin conexión — 3 acciones en espera', m: 'sync' },
+      { t: 'Equipos creados · 2 × 8', m: 'auto' },
+      { t: 'Siguiente bloque · Velocidad', m: '15 min' },
+      { t: 'Sin conexión · 3 acciones en espera', m: 'sync' },
     ],
   },
   match: {
@@ -1806,10 +1820,10 @@ const es: CaptureText = {
     them: 'RIV.',
     facts: ['Tiro a puerta', 'Duelo ganado', 'Pérdida de balón'],
     events: [
-      'Gol — A. Diallo · cadena completada',
-      'Entra — K. Nakamura · sale T. Mendes',
-      'Observación — croquis bloque bajo',
-      'Tarjeta amarilla — S. Petit',
+      'Gol · A. Diallo · cadena completada',
+      'Entra · K. Nakamura · sale T. Mendes',
+      'Observación · croquis bloque bajo',
+      'Tarjeta amarilla · S. Petit',
     ],
   },
   library: {
@@ -1819,21 +1833,21 @@ const es: CaptureText = {
     via: 'vía WhatsApp',
     titleKey: 'TÍTULO',
     ai: 'sugerido por la IA',
-    name: 'Rondo 4v2 — salida bajo presión',
+    name: 'Rondo 4v2 · salida bajo presión',
     folderKey: 'CARPETA',
     folder: 'Posesión',
     tags: ['rondo', 'pressing', 'Sub-19'],
     file: 'Archivar',
     publish: 'Publicar al equipo',
     queue: [
-      { t: 'Foto — coordinación escalera', m: 'ayer' },
-      { t: 'Esquema — bloque medio 4-4-2', m: 'ayer' },
+      { t: 'Foto · coordinación escalera', m: 'ayer' },
+      { t: 'Esquema · bloque medio 4-4-2', m: 'ayer' },
     ],
   },
   program: {
     title: 'Tren inferior · miércoles',
     meta: 'PUBLICADA · 18 JUGADORES',
-    lift: 'Back Squat — 4 × 5 @ 80 % del 1RM',
+    lift: 'Back Squat · 4 × 5 @ 80 % del 1RM',
     detail: 'tempo 3010 · descanso 2 min · A1 del superset',
     maxLabel: '1RM',
     modLabel: 'modulado',
@@ -1854,11 +1868,11 @@ const es: CaptureText = {
     counts: ['disponibles', 'adaptados', 'inseguros', 'ausentes', 'en espera'],
     positions: ['Centrocampista', 'Defensa', 'Extremo', 'Portero'],
     answers: ['Disponible', 'Adaptado', 'Inseguro', 'Ausente', 'En espera'],
-    nudge: 'Recordatorio dirigido — quedan 2 jugadores en espera',
+    nudge: 'Recordatorio dirigido · quedan 2 jugadores en espera',
     send: 'Enviar',
   },
   rtp: {
-    who: 'T. Mendes — isquiotibiales',
+    who: 'T. Mendes · isquiotibiales',
     detail: 'Aguda · gravedad 2 / 5 · día 13',
     status: 'READAPTACIÓN',
     progressKey: 'PROGRESO ESTIMADO · REGRESO DÍA 18',
@@ -1925,7 +1939,7 @@ const es: CaptureText = {
     title: 'Selección / forma · últimos 5 partidos',
     meta: '18 JUGADORES',
     cols: ['JUGADOR', 'MIN', 'NOTA', 'ACWR'],
-    note: 'Informe guardado — recalculado sobre los datos de hoy. «*» señala una muestra corta.',
+    note: 'Informe guardado · recalculado sobre los datos de hoy. «*» señala una muestra corta.',
   },
   scout: {
     title: 'FC Boisval · J-6',
@@ -1934,7 +1948,7 @@ const es: CaptureText = {
     positions: ['Delantero', 'Organizador', 'Defensa', 'Portero'],
     sources: ['observado', 'acta del partido'],
     danger: 'a vigilar',
-    proposal: 'Briefing táctico — propuesta de la IA',
+    proposal: 'Briefing táctico · propuesta de la IA',
     proposalNote: 'Bloque medio alto, salidas cortas. No se aplica nada hasta que decidas.',
     accept: 'Revisar',
   },

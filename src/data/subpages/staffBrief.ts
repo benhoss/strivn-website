@@ -15,6 +15,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'PARTAGÉ PAR LE PRÉPARATEUR PHYSIQUE DE VOTRE ÉQUIPE',
+      kickerShown: true,
       title: 'Votre préparateur a déjà commencé.',
       sub: 'Une page à lire en deux minutes. Elle résume ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace : sans compte à créer, sans engagement, sans validation du club.',
       ctas: {
@@ -89,6 +90,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'SHARED BY YOUR TEAM’S S&C COACH',
+      kickerShown: true,
       title: 'Your S&C coach has already started.',
       sub: 'A page to read in two minutes. It sums up what the team already tracks, what each role gains, and how to join the space: no account to create, no commitment, no club sign-off.',
       ctas: {
@@ -162,7 +164,8 @@ export const staffBrief: SubpageLocales = {
         'Een pagina om in twee minuten te lezen: wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe je de ruimte binnenstapt zonder iets aan te maken.',
     },
     hero: {
-      kicker: 'GEDEELD DOOR DE FYSIEK TRAINER VAN JE PLOEG',
+      kicker: 'GEDEELD DOOR DE FYSIEK TRAINER VAN UW PLOEG',
+      kickerShown: true,
       title: 'Jullie fysiek trainer is al begonnen.',
       sub: 'Een pagina om in twee minuten te lezen. Ze vat samen wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe je de ruimte binnenstapt: geen account aan te maken, geen verbintenis, geen goedkeuring van de club.',
       ctas: {
@@ -237,6 +240,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'GETEILT VOM ATHLETIKTRAINER IHRER MANNSCHAFT',
+      kickerShown: true,
       title: 'Ihr Athletiktrainer hat schon angefangen.',
       sub: 'Eine Seite für zwei Minuten. Sie fasst zusammen, was die Mannschaft bereits verfolgt, was jede Rolle davon hat, und wie man den Raum betritt: kein Konto anzulegen, keine Bindung, keine Freigabe des Vereins.',
       ctas: {
@@ -311,6 +315,7 @@ export const staffBrief: SubpageLocales = {
     },
     hero: {
       kicker: 'PARTILHADO PELO PREPARADOR FÍSICO DA SUA EQUIPA',
+      kickerShown: true,
       title: 'O seu preparador físico já começou.',
       sub: 'Uma página para ler em dois minutos. Resume o que a equipa já acompanha, o que cada papel ganha, e como entrar no espaço: sem conta a criar, sem compromisso, sem validação do clube.',
       ctas: {
@@ -384,7 +389,8 @@ export const staffBrief: SubpageLocales = {
         'Una página para leer en dos minutos: lo que el equipo ya sigue, lo que gana cada rol, y cómo entrar en el espacio sin crear nada.',
     },
     hero: {
-      kicker: 'COMPARTIDO POR EL PREPARADOR FÍSICO DE TU EQUIPO',
+      kicker: 'COMPARTIDO POR EL PREPARADOR FÍSICO DE SU EQUIPO',
+      kickerShown: true,
       title: 'Vuestro preparador físico ya ha empezado.',
       sub: 'Una página para leer en dos minutos. Resume lo que el equipo ya sigue, lo que gana cada rol, y cómo entrar en el espacio: sin cuenta que crear, sin compromiso, sin validación del club.',
       ctas: {
