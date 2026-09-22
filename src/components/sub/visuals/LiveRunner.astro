@@ -3,9 +3,9 @@
  * The session runner as it looks pitch-side: the running block in full, its
  * chrono, and the actions queued behind it.
  *
- * The live dot pulses because the page's claim is that this screen is running
- * right now — the one place on these captures where motion says something. It
- * stops under `prefers-reduced-motion`.
+ * The live marker is the system's `st-live`, the one place on these captures
+ * where motion says something: this screen is running right now. It stops
+ * under `prefers-reduced-motion`.
  */
 import type { Locale } from '../../../data/landingContent';
 import { captureText, RUNNER_SEGMENTS, RUNNER_ROW_ICONS } from '../../../data/subpages/captures';
@@ -18,89 +18,91 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = captureText[locale].runner;
-
-const seg: Record<(typeof RUNNER_SEGMENTS)[number], string> = {
-  done: 'bg-[#2D7FF980]',
-  live: 'bg-[#2D7FF9]',
-  todo: 'bg-[#FFFFFF14]',
-};
 ---
 
-<CaptureFrame>
-  <div class="flex items-center justify-between gap-4">
-    <p class="min-w-0 truncate text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
-    <p
-      class="flex shrink-0 items-center gap-2 rounded-full bg-[#FF7A6B14] px-2.5 py-1 font-mono text-[0.56rem] tracking-[0.09em] text-[#FF7A6B]"
-    >
-      <span class="cap-live size-[5px] rounded-full bg-[#FF7A6B]" aria-hidden="true"></span>
-      {t.live}
-    </p>
-  </div>
+<CaptureFrame title={t.title}>
+  <span slot="meta" class="st-live">{t.live}</span>
 
-  <div class="rounded-[11px] bg-[#FFFFFF05] p-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-    <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{t.block}</p>
-
-    <div class="mt-2.5 flex items-baseline justify-between gap-4">
-      <p class="min-w-0 truncate text-[1.05rem] font-semibold text-[#F8FAFC]">{t.name}</p>
-      <p class="shrink-0 font-mono text-[1.25rem] tracking-[-0.02em] text-[#7AB8FF]">{t.chrono}</p>
+  <div class="runner">
+    <p class="cap-k">{t.block}</p>
+    <div class="runner__head">
+      <p class="runner__name">{t.name}</p>
+      <p class="runner__chrono">{t.chrono}</p>
     </div>
-
-    <ul class="mt-3.5 flex gap-1.5">
-      {
-        RUNNER_SEGMENTS.map((state) => (
-          <li
-            class={`h-1 flex-1 rounded-full ${state === 'live' ? 'hl-fill' : ''} ${seg[state]}`}
-            style={state === 'live' ? '--bd: 260ms;' : undefined}
-            aria-hidden="true"
-          />
-        ))
-      }
+    <ul class="runner__segs" aria-hidden="true">
+      {RUNNER_SEGMENTS.map((state) => <li class={`is-${state}`} />)}
     </ul>
-
-    <div class="mt-4 flex gap-2.5">
-      <span
-        class="rounded-full bg-[#FFFFFF0A] px-4 py-2 text-[0.72rem] text-[#C3CDE0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
-        >{t.pause}</span
-      >
-      <span class="rounded-full bg-[#2D7FF9] px-4 py-2 text-[0.72rem] font-semibold text-[#F8FAFC]"
-        >{t.finish}</span
-      >
+    <div class="cap-btns">
+      <span class="cap-btn">{t.pause}</span>
+      <span class="cap-btn cap-btn--primary">{t.finish}</span>
     </div>
   </div>
 
-  <ul class="grid gap-2.5">
+  <ul class="cap-rows">
     {
       t.rows.map((r, i) => (
-        <li class="flex items-center gap-2.5">
-          <span class="shrink-0 text-[#68779A]">
-            <HomeIcon name={RUNNER_ROW_ICONS[i]} size={13} />
+        <li>
+          <span class="inline-flex shrink-0 text-ink-3">
+            <HomeIcon name={RUNNER_ROW_ICONS[i]} size={14} />
           </span>
-          <span class="min-w-0 flex-1 truncate text-[0.75rem] text-[#C3CDE0]">{r.t}</span>
-          <span class="shrink-0 font-mono text-[0.66rem] whitespace-nowrap text-[#68779A]">
-            {r.m}
-          </span>
+          <span class="cap-grow text-ink-2">{r.t}</span>
+          <span class="cap-num shrink-0 text-ink-3">{r.m}</span>
         </li>
       ))
     }
   </ul>
 </CaptureFrame>
 
-<style is:global>
-  .cap-live {
-    animation: cap-live-pulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+<style>
+  .runner {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 8px;
+    background: var(--color-navy-900);
   }
-  @keyframes cap-live-pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.25;
-    }
+  .runner__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .cap-live {
-      animation: none;
-    }
+  .runner__name {
+    margin: 0;
+    min-width: 0;
+    font-size: 17px;
+    font-weight: 600;
+    font-variation-settings: 'wdth' 90;
+    color: var(--color-ink);
+  }
+  .runner__chrono {
+    margin: 0;
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink);
+  }
+  .runner__segs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 6px;
+  }
+  .runner__segs li {
+    flex: 1 1 0;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-navy-800);
+  }
+  .runner__segs li.is-done {
+    background: color-mix(in srgb, var(--color-electric) 45%, transparent);
+  }
+  .runner__segs li.is-live {
+    background: var(--color-electric);
   }
 </style>

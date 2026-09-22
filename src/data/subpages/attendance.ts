@@ -10,17 +10,17 @@ export const attendance: SubpageLocales = {
     meta: {
       title: 'Présences & RSVP | STRIVN',
       description:
-        'Une convocation, cinq réponses possibles dont « Adapté », une relance qui vise seulement les joueurs sans réponse, et trois taux de saison calculés honnêtement.',
+        'Une convocation, cinq réponses possibles dont « Adapté », une relance qui vise seulement les joueurs sans réponse, et trois taux de saison calculés honnêtement.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · ÉQUIPE',
       title: 'Convoquez en un clic, lisez les réponses au calendrier.',
       sub: 'Une convocation invite les joueurs à confirmer leur présence sur un événement. Les réponses remontent dans le calendrier, alimentent les présences, et deviennent des taux de saison sans une seule saisie supplémentaire.',
       bullets: [
-        'Portée au choix : tout l’effectif actif, ou une sélection',
+        'Portée au choix : tout l’effectif actif, ou une sélection',
         'E-mail, push et WhatsApp selon les canaux du joueur',
         'Cinq statuts, dont Adapté pour une présence sous restriction',
-        'Relance ciblée : seuls les joueurs sans réponse la reçoivent',
+        'Relance ciblée : seuls les joueurs sans réponse la reçoivent',
       ],
       ctas: {
         primary: 'Commencer gratuitement',
@@ -31,8 +31,8 @@ export const attendance: SubpageLocales = {
     sections: [
       {
         kicker: 'LE VOCABULAIRE DES RÉPONSES',
-        title: 'Recevez cinq réponses, dont « Adapté » pour la présence restreinte.',
-        body: 'Un ischio qui tire, une reprise en cours, un rendez-vous qui déborde : la réponse doit pouvoir dire ce qui se passe vraiment, entre là et pas là.',
+        title: 'Recevez cinq réponses, dont « Adapté » pour la présence restreinte.',
+        body: 'Un ischio qui tire, une reprise en cours, un rendez-vous qui déborde : la réponse doit pouvoir dire ce qui se passe vraiment, entre là et pas là.',
         kind: 'rows',
         pill: true,
         rows: [
@@ -40,7 +40,7 @@ export const attendance: SubpageLocales = {
           { name: 'Absent', desc: 'Le joueur a décliné.' },
           {
             name: 'Adapté',
-            desc: 'Présent, mais sous restriction : blessure légère, charge réduite.',
+            desc: 'Présent, mais sous restriction : blessure légère, charge réduite.',
             chip: { label: 'la nuance qui compte', tone: 'orange' },
           },
           { name: 'Incertain', desc: 'Réponse provisoire, qui reste modifiable.' },
@@ -52,7 +52,7 @@ export const attendance: SubpageLocales = {
         note: {
           icon: 'bell',
           label: 'La relance vise seulement les joueurs en attente',
-          desc: '« Envoyer un rappel » notifie seulement les joueurs en attente ; ceux qui ont déjà répondu sont laissés tranquilles. C’est ce qui garde une relance crédible la fois d’après.',
+          desc: '« Envoyer un rappel » notifie seulement les joueurs en attente ; ceux qui ont déjà répondu sont laissés tranquilles. C’est ce qui garde une relance crédible la fois d’après.',
         },
       },
       {
@@ -63,7 +63,7 @@ export const attendance: SubpageLocales = {
         stats: [
           { value: '91 %', label: 'Présence saison, détaillée en entraînements et en matchs, pour repérer l’assidu à l’entraînement qui manque les matchs.', tone: 'green' },
           { value: '76 %', label: 'Complétion programme, affichée seulement si le joueur a un programme actif, et laissée vide faute de données.', tone: 'blue' },
-          { value: '84 %', label: 'Réponses check-ins sur 30 jours, avec « — » en l’absence de check-in envoyé sur la période.', tone: 'blue' },
+          { value: '84 %', label: 'Réponses check-ins sur 30 jours, avec « — » en l’absence de check-in envoyé sur la période.', tone: 'blue' },
         ],
       },
       {
@@ -79,7 +79,7 @@ export const attendance: SubpageLocales = {
           {
             eyebrow: 'ARRIVÉE EN COURS',
             title: 'Compté depuis la date d’arrivée',
-            desc: 'Les événements antérieurs à l’arrivée du joueur restent hors du calcul : un renfort de janvier démarre à 100 %.',
+            desc: 'Les événements antérieurs à l’arrivée du joueur restent hors du calcul : un renfort de janvier démarre à 100 %.',
           },
           {
             eyebrow: 'ÉVÉNEMENTS ANNULÉS',
@@ -92,7 +92,7 @@ export const attendance: SubpageLocales = {
             desc: 'Le taux se base sur les jours où un check-in a effectivement été envoyé au joueur, et sur eux seulement.',
           },
         ],
-        foot: 'Sous 5 événements ou 5 check-ins envoyés, un joueur reste hors des « 5 joueurs à surveiller » : un pourcentage calculé sur trois lignes n’est pas un signal.',
+        foot: 'Sous 5 événements ou 5 check-ins envoyés, un joueur reste hors des « 5 joueurs à surveiller » : un pourcentage calculé sur trois lignes n’est pas un signal.',
       },
     ],
   },

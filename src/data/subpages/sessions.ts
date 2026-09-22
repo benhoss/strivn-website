@@ -11,14 +11,14 @@ export const sessions: SubpageLocales = {
     meta: {
       title: 'Séances & planification | STRIVN',
       description:
-        'Saison, cycle, semaine, séance : quatre échelles emboîtées. Le planificateur pose une couche de charge sur le calendrier du coach, sans créer d’événement.',
+        'Saison, cycle, semaine, séance : quatre échelles emboîtées. Le planificateur pose une couche de charge sur le calendrier du coach, sans créer d’événement.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · PLANIFICATION',
       title: 'Planifiez de la saison à la séance de jeudi.',
       sub: 'La saison porte vos cycles, le cycle donne son objectif à chaque semaine, la semaine se remplit de charge rattachée à des séances réelles. Le planificateur pose une couche de charge sur votre calendrier, et laisse les événements au coach.',
       bullets: [
-        'Cycles de périodisation : reprise, compétition, affûtage',
+        'Cycles de périodisation : reprise, compétition, affûtage',
         'Chaque nouvelle semaine hérite de son cycle',
         'Charge rattachée à une séance, ou laissée en attente',
         'Prévu vs réalisé, joueur par joueur et jour par jour',
@@ -39,7 +39,7 @@ export const sessions: SubpageLocales = {
           {
             name: 'Saison',
             where: '· Réglages de l’équipe',
-            desc: 'La fenêtre de référence : toutes les vues « saison » s’y calent, présences, charge et tests compris. La clôturer archive l’ancienne en lecture seule : blessures, tests, charges, wellness et présences restent dans l’historique des joueurs.',
+            desc: 'La fenêtre de référence : toutes les vues « saison » s’y calent, présences, charge et tests compris. La clôturer archive l’ancienne en lecture seule : blessures, tests, charges, wellness et présences restent dans l’historique des joueurs.',
           },
           {
             name: 'Cycle',
@@ -49,18 +49,18 @@ export const sessions: SubpageLocales = {
           {
             name: 'Semaine',
             where: '· Onglet Planning',
-            desc: 'Une semaine ouverte à l’intérieur d’un cycle hérite de sa phase, de son objectif et de ses budgets par catégorie. C’est une copie : modifier le cycle plus tard laisse intacte une semaine déjà planifiée.',
+            desc: 'Une semaine ouverte à l’intérieur d’un cycle hérite de sa phase, de son objectif et de ses budgets par catégorie. C’est une copie : modifier le cycle plus tard laisse intacte une semaine déjà planifiée.',
           },
           {
             name: 'Séance',
             where: '· Le calendrier',
-            desc: 'La charge se rattache aux séances réelles que le coach a programmées. Une composante se rattache à une séance du même jour ; sinon elle reste en attente.',
+            desc: 'La charge se rattache aux séances réelles que le coach a programmées. Une composante se rattache à une séance du même jour ; sinon elle reste en attente.',
           },
         ],
         note: {
           icon: 'copy',
-          label: '« Appliquer la semaine type »',
-          desc: 'Remplit d’un coup toutes les semaines vides d’un cycle et laisse intactes celles déjà planifiées. L’action est ré-exécutable sans risque : elle vous dit combien de semaines ont été remplies et combien étaient déjà faites.',
+          label: '« Appliquer la semaine type »',
+          desc: 'Remplit d’un coup toutes les semaines vides d’un cycle et laisse intactes celles déjà planifiées. L’action est ré-exécutable sans risque : elle vous dit combien de semaines ont été remplies et combien étaient déjà faites.',
         },
       },
       {
@@ -94,7 +94,7 @@ export const sessions: SubpageLocales = {
           {
             eyebrow: 'CATÉGORIES',
             title: 'Catégories de charge',
-            desc: 'Renommer, ajouter ou repondérer : le coefficient pèse la charge. Une prévisualisation « 60 min @ RPE 7 ≈ N UA » montre l’effet avant d’enregistrer.',
+            desc: 'Renommer, ajouter ou repondérer : le coefficient pèse la charge. Une prévisualisation « 60 min @ RPE 7 ≈ N UA » montre l’effet avant d’enregistrer.',
           },
           {
             eyebrow: 'MODÈLES',
@@ -105,7 +105,7 @@ export const sessions: SubpageLocales = {
         note: {
           icon: 'user-check',
           label: 'Ajuster un seul joueur',
-          desc: 'Sous chaque composante, « + Ajuster un joueur » module sa charge d’un pourcentage (50 % au retour de blessure), l’exclut, ou la bascule en travail individuel. L’ajustement touche seulement la charge prévue : la convocation se gère dans le calendrier.',
+          desc: 'Sous chaque composante, « + Ajuster un joueur » module sa charge d’un pourcentage (50 % au retour de blessure), l’exclut, ou la bascule en travail individuel. L’ajustement touche seulement la charge prévue : la convocation se gère dans le calendrier.',
         },
       },
       {
@@ -127,25 +127,25 @@ export const sessions: SubpageLocales = {
           },
           {
             name: 'Tâche',
-            desc: 'Un à-faire avant une date limite : rendre un questionnaire, régler une cotisation. Rappel quotidien ou hebdomadaire au choix, amende optionnelle en cas de non-complétion. Le joueur coche, sans preuve demandée.',
+            desc: 'Un à-faire avant une date limite : rendre un questionnaire, régler une cotisation. Rappel quotidien ou hebdomadaire au choix, amende optionnelle en cas de non-complétion. Le joueur coche, sans preuve demandée.',
           },
           {
             name: 'Entraînement individuel',
-            desc: 'Une séance seul, avec preuve : capture, lien Strava ou photo. Vous choisissez les formats acceptés, et vous validez ou refusez avec motif.',
+            desc: 'Une séance seul, avec preuve : capture, lien Strava ou photo. Vous choisissez les formats acceptés, et vous validez ou refusez avec motif.',
           },
         ],
         callouts: [
           {
             icon: 'copy',
             tone: 'blue',
-            text: '« Copier → » duplique tous les événements de la semaine courante sur la suivante, en un clic. Pratique pour les semaines type, et sans effet sur les réponses déjà données.',
+            text: '« Copier → » duplique tous les événements de la semaine courante sur la suivante, en un clic. Pratique pour les semaines type, et sans effet sur les réponses déjà données.',
           },
         ],
       },
       {
         kicker: 'APRÈS COUP',
         title: 'Vous aviez prévu 630. Ils ont produit 780.',
-        body: 'Le prévu est connu à l’avance ; le réalisé se remplit au fil des check-ins, des imports et des bilans. L’écart entre les deux devient la matière du plan de la semaine suivante.',
+        body: 'Le prévu est connu à l’avance ; le réalisé se remplit au fil des check-ins, des imports et des bilans. L’écart entre les deux devient la matière du plan de la semaine suivante.',
         kind: 'panels',
         panels: [
           {
@@ -163,7 +163,7 @@ export const sessions: SubpageLocales = {
             tone: 'green',
             desc: 'Deux minutes dans le vestiaire suffisent, et c’est là que le bilan est le plus fiable.',
             items: [
-              'Intensité ressentie : RPE 1 à 10, ou décimal si votre équipe l’active',
+              'Intensité ressentie : RPE 1 à 10, ou décimal si votre équipe l’active',
               'Durée réelle, avec la durée prévue affichée en référence',
               'Note de séance sur 10, et un champ de notes libre',
             ],
@@ -172,7 +172,7 @@ export const sessions: SubpageLocales = {
         note: {
           icon: 'arrow-left-right',
           label: 'Votre 7 face à leur 9',
-          desc: 'Le bilan met votre RPE et la moyenne de ceux qui ont couru côte à côte. Un écart marqué ne dit pas qui a raison : il dit que la séance a été vécue autrement que vous l’aviez pensée, et que ça vaut une question.',
+          desc: 'Le bilan met votre RPE et la moyenne de ceux qui ont couru côte à côte. Un écart marqué ne dit pas qui a raison : il dit que la séance a été vécue autrement que vous l’aviez pensée, et que ça vaut une question.',
         },
       },
     ],

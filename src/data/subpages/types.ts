@@ -13,7 +13,13 @@ import type { Locale } from '../landingContent';
 import type { PartnerSlug } from '../partners';
 export type { Locale };
 
-/** Accent used for chips, dots and panel outlines. */
+/**
+ * Accent for chips, labels and dots. `green`, `orange` and `red` render as the
+ * ready / watch / risk status tokens, so they belong on content that describes
+ * a player's state; `blue` is the electric label accent; `plain` is neutral.
+ * Section kinds that are not about a player (panels, compare, stats) render
+ * every tone neutral except `blue`.
+ */
 export type Tone = 'blue' | 'green' | 'orange' | 'red' | 'plain';
 
 /** A banner: icon, sentence, optional trailing link. */
@@ -37,7 +43,8 @@ interface Note {
  * The mockups routinely close a band with an aside, a warning or a last
  * paragraph rather than starting a new one, so those three live here as
  * trailing slots instead of forcing a section split that would double the
- * vertical padding and break the alternating backgrounds.
+ * vertical padding. Bands are separated by one hairline, never by alternating
+ * backgrounds.
  */
 interface Head {
   kicker?: string;
@@ -54,8 +61,6 @@ interface Head {
   callouts?: Callout[];
   note?: Note;
   foot?: string;
-  /** Force a background instead of the automatic alternation. */
-  bg?: 'a' | 'b';
   /** Anchor target, for pages whose hero offers jump pills. */
   id?: string;
 }
@@ -157,7 +162,12 @@ export type Section = Head &
 export interface SubpageContent {
   meta: { title: string; description: string };
   hero: {
+    /** Category line ("FEATURES · MONITORING"). The breadcrumb already says
+     *  where the page sits, so it is not printed unless `kickerShown`. */
     kicker: string;
+    /** Print the kicker above the title, for a page whose kicker says
+     *  something the breadcrumb does not (the shared staff brief). */
+    kickerShown?: boolean;
     title: string;
     sub: string;
     /** Ticked lines under the sub-heading. */

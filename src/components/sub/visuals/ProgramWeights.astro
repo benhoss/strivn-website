@@ -22,48 +22,62 @@ const t = captureText[locale].program;
 const fmt = (n: number) => new Intl.NumberFormat(locale).format(n);
 ---
 
-<CaptureFrame>
-  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5">
-    <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
-    <p class="font-mono text-[0.56rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">
-      {t.meta}
-    </p>
+<CaptureFrame title={t.title} meta={t.meta}>
+  <div class="lift">
+    <p class="lift__name">{t.lift}</p>
+    <p class="cap-sub">{t.detail}</p>
   </div>
 
-  <div class="rounded-[11px] bg-[#2D7FF90F] px-4 py-3.5 outline-1 outline-[#2D7FF92E] -outline-offset-[0.5px]">
-    <p class="text-[0.84rem] font-semibold text-[#F8FAFC]">{t.lift}</p>
-    <p class="mt-1 font-mono text-[0.63rem] text-[#7AB8FF]">{t.detail}</p>
-  </div>
-
-  <ul class="grid gap-2.5">
+  <ul class="cap-rows">
     {
       PROGRAM_ROWS.map((r) => (
-        <li class="flex items-center gap-3">
-          <span class="min-w-0 flex-1">
-            <span class="block truncate text-[0.78rem] text-[#DCE4F2]">{r.name}</span>
-            <span class="block font-mono text-[0.63rem] text-[#68779A]">
+        <li>
+          <span class="cap-grow">
+            <span class="cap-name">{r.name}</span>
+            <span class="cap-sub">
               {r.max === null
                 ? t.untested
                 : `${t.maxLabel} ${r.max} kg${r.mod ? ` · ${t.modLabel} ${r.mod} %` : ''}`}
             </span>
           </span>
-          <span
-            class={`shrink-0 font-mono text-[0.84rem] whitespace-nowrap ${r.weight === null ? 'text-[#68779A]' : 'text-[#F8FAFC]'}`}
-          >
-            {r.weight === null ? '—' : `${fmt(r.weight)} kg`}
+          <span class:list={['lift__kg', r.weight === null && 'is-empty']}>
+            {r.weight === null ? '·' : `${fmt(r.weight)} kg`}
           </span>
         </li>
       ))
     }
   </ul>
 
-  <ul class="flex flex-wrap gap-1.5">
-    {
-      t.settings.map((setting) => (
-        <li class="rounded-full bg-[#FFFFFF0A] px-2.5 py-1 font-mono text-[0.59rem] text-[#68779A]">
-          {setting}
-        </li>
-      ))
-    }
+  <ul class="m-0 flex list-none flex-wrap gap-1.5 p-0">
+    {t.settings.map((setting) => <li class="st-tag">{setting}</li>)}
   </ul>
 </CaptureFrame>
+
+<style>
+  .lift {
+    display: grid;
+    gap: 4px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 8px;
+    background: var(--color-navy-900);
+  }
+  .lift__name {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .lift__kg {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--color-ink);
+  }
+  .lift__kg.is-empty {
+    color: var(--color-ink-4);
+  }
+</style>

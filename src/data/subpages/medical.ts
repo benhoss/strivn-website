@@ -19,7 +19,7 @@ export const medical: SubpageLocales = {
       title: 'Déclarez la blessure une fois, les convocations suivent.',
       sub: 'Le tableau médical réunit les blessures actives, les joueurs en revalidation et la disponibilité de chacun. C’est ce panneau, et lui seul, qui filtre les convocations.',
       bullets: [
-        'Statut par joueur : OK, Blessé, Revalidation',
+        'Statut par joueur : OK, Blessé, Revalidation',
         'Plan de retour au jeu en étapes, personnalisable',
         'Trois niveaux de disponibilité reliés aux convocations',
         'Créneaux kiné réservés par les joueurs eux-mêmes',
@@ -33,19 +33,19 @@ export const medical: SubpageLocales = {
     sections: [
       {
         kicker: 'DEUX OBJETS DISTINCTS',
-        title: 'Une blessure, des semaines ; un passage kiné, trente minutes.',
+        title: 'Une blessure, des semaines ; un passage kiné, trente minutes.',
         kind: 'compare',
         heads: ['Blessure', 'Créneau de soins'],
         tones: ['red', 'blue'],
         rows: [
           {
             label: 'CE QUE C’EST',
-            a: 'Un dossier ouvert sur un joueur : zone, type, sévérité, date de survenue.',
-            b: 'Un événement du calendrier : une fenêtre de temps découpée en créneaux réservables.',
+            a: 'Un dossier ouvert sur un joueur : zone, type, sévérité, date de survenue.',
+            b: 'Un événement du calendrier : une fenêtre de temps découpée en créneaux réservables.',
           },
           {
             label: 'EFFET SUR LA CHARGE',
-            a: 'Zéro charge ; un statut de disponibilité qui filtre les convocations.',
+            a: 'Zéro charge ; un statut de disponibilité qui filtre les convocations.',
             b: 'Zéro. C’est un événement de coordination, et seulement de coordination.',
           },
           {
@@ -88,12 +88,12 @@ export const medical: SubpageLocales = {
         note: {
           icon: 'clipboard-list',
           label: 'Un retour qui se coche, étape par étape',
-          desc: 'Le protocole s’adapte : ajoutez vos propres étapes. La progression et le retour estimé se recalculent à chaque étape validée, et les conseils kiné (un exercice, un protocole) partent directement dans l’app du joueur avec leur date.',
+          desc: 'Le protocole s’adapte : ajoutez vos propres étapes. La progression et le retour estimé se recalculent à chaque étape validée, et les conseils kiné (un exercice, un protocole) partent directement dans l’app du joueur avec leur date.',
         },
       },
       {
         kicker: 'L’ÉVÉNEMENT SOINS',
-        title: 'Posez la fenêtre kiné ; les joueurs réservent leur créneau.',
+        title: 'Posez la fenêtre kiné ; les joueurs réservent leur créneau.',
         body: 'Le kiné est disponible sur une fenêtre, trente minutes avant l’entraînement par exemple. Vous la posez dans le calendrier, elle se découpe en créneaux, et les joueurs réservent le leur avec un motif. La file devant la porte disparaît.',
         kind: 'callout',
         icon: 'calendar-days',

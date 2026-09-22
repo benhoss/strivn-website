@@ -4,6 +4,8 @@
  *
  * K. Nakamura's row is the point: a short sample is starred and its derived
  * columns stay empty rather than showing a figure the data cannot support.
+ * Deltas are neutral (a minute count is not a state); the ACWR above the
+ * watch threshold is the one status colour, as on the readiness board.
  */
 import type { Locale } from '../../../data/landingContent';
 import { captureText, REPORT_ROWS } from '../../../data/subpages/captures';
@@ -16,70 +18,52 @@ interface Props {
 const { locale } = Astro.props;
 const t = captureText[locale].report;
 
-const cols = 'grid grid-cols-[minmax(0,1fr)_minmax(0,72px)_minmax(0,66px)_minmax(0,52px)] gap-2';
 const fmt = (n: number) => new Intl.NumberFormat(locale).format(n);
+/** ACWR ink: watch from 1.2, risk from 1.3, as the readiness board reads it. */
+const acwrInk = (v: string | null) => {
+  const n = v === null ? NaN : Number(v.replace(',', '.'));
+  return n >= 1.3 ? 'ink-risk' : n >= 1.2 ? 'ink-watch' : '';
+};
 ---
 
-<CaptureFrame>
-  <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5">
-    <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
-    <p class="font-mono text-[0.56rem] tracking-[0.09em] whitespace-nowrap text-[#68779A]">
-      {t.meta}
-    </p>
+<CaptureFrame title={t.title} meta={t.meta} flush>
+  <div class="cap-scroll">
+    <table class="cap-table report">
+      <thead>
+        <tr>{t.cols.map((c) => <th scope="col">{c}</th>)}</tr>
+      </thead>
+      <tbody>
+        {
+          REPORT_ROWS.map((r) => (
+            <tr>
+              <td class="cap-td-name">{r.name}</td>
+              <td>
+                {fmt(r.min)}
+                <span class="ink-3">
+                  {r.minDelta === null
+                    ? ' *'
+                    : ` ${r.minDelta > 0 ? '+' : '−'}${fmt(Math.abs(r.minDelta))}`}
+                </span>
+              </td>
+              <td>
+                {r.rating}
+                {r.ratingDelta && <span class="ink-3"> {r.ratingDelta}</span>}
+              </td>
+              <td class={acwrInk(r.acwr)}>{r.acwr ?? '·'}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
   </div>
 
-  <div class="overflow-hidden rounded-[11px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-    <div class={`${cols} border-b border-[#FFFFFF14] bg-[#FFFFFF0A] px-3.5 py-2.5`}>
-      {
-        t.cols.map((c, i) => (
-          <p
-            class={`font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A] ${i === 0 ? '' : 'text-right'}`}
-          >
-            {c}
-          </p>
-        ))
-      }
-    </div>
-
-    <ul>
-      {
-        REPORT_ROWS.map((r, i) => (
-          <li
-            class={`${cols} items-center px-3.5 py-2.5 ${i < REPORT_ROWS.length - 1 ? 'border-b border-[#FFFFFF14]' : ''}`}
-          >
-            <span class="min-w-0 truncate text-[0.78rem] font-medium text-[#DCE4F2]">{r.name}</span>
-
-            <span class="text-right font-mono text-[0.72rem] whitespace-nowrap text-[#9AA8C4]">
-              {fmt(r.min)}
-              {r.minDelta === null ? (
-                <span class="text-[#FF8400]"> *</span>
-              ) : (
-                <span class={r.minDelta > 0 ? 'text-[#8CE99A]' : 'text-[#FF7A6B]'}>
-                  {' '}
-                  {r.minDelta > 0 ? '+' : '−'}
-                  {fmt(Math.abs(r.minDelta))}
-                </span>
-              )}
-            </span>
-
-            <span class="text-right font-mono text-[0.72rem] whitespace-nowrap text-[#9AA8C4]">
-              {r.rating}
-              {r.ratingDelta && (
-                <span class={r.ratingDelta.startsWith('+') ? 'text-[#8CE99A]' : 'text-[#FF7A6B]'}>
-                  {' '}
-                  {r.ratingDelta}
-                </span>
-              )}
-            </span>
-
-            <span class="text-right font-mono text-[0.72rem] whitespace-nowrap text-[#9AA8C4]">
-              {r.acwr ?? '—'}
-            </span>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-
-  <p class="text-[0.72rem] leading-[1.5] text-[#68779A]">{t.note}</p>
+  <Fragment slot="foot">
+    <p class="text-ink-3">{t.note}</p>
+  </Fragment>
 </CaptureFrame>
+
+<style>
+  .report {
+    min-width: 320px;
+  }
+</style>

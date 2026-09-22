@@ -41,7 +41,7 @@ export const scouting: SubpageLocales = {
           {
             num: '01 · OBSERVER',
             title: 'La session',
-            desc: 'Une session datée sous l’adversaire. C’est la surface de capture : tout ce que vous notez au bord du terrain ou devant la vidéo s’y accroche.',
+            desc: 'Une session datée sous l’adversaire. C’est la surface de capture : tout ce que vous notez au bord du terrain ou devant la vidéo s’y accroche.',
             items: [
               'Notes écrites, en texte riche',
               'Notes vocales, transcrites après coup',
@@ -62,7 +62,7 @@ export const scouting: SubpageLocales = {
           {
             num: '03 · PARTAGER',
             title: 'Les destinataires',
-            desc: 'Vous choisissez qui reçoit : des joueurs, des membres du staff, ou les deux. Le lien ouvre le rapport sans compte à créer en face.',
+            desc: 'Vous choisissez qui reçoit : des joueurs, des membres du staff, ou les deux. Le lien ouvre le rapport sans compte à créer en face.',
             items: [
               'Destinataires nommés, joueurs et staff',
               'Lisible sans compte à créer',
@@ -80,17 +80,17 @@ export const scouting: SubpageLocales = {
           {
             icon: 'pen-line',
             title: 'Note écrite',
-            desc: 'Du texte riche, taggé avec le vocabulaire tactique de votre équipe : construction, pressing, ce que vous voulez.',
+            desc: 'Du texte riche, taggé avec le vocabulaire tactique de votre équipe : construction, pressing, ce que vous voulez.',
           },
           {
             icon: 'mic',
             title: 'Note vocale',
-            desc: 'Vous parlez au bord du terrain, la transcription arrive après. Elle porte son état : prête, en cours, ou à relire quand l’audio était mauvais.',
+            desc: 'Vous parlez au bord du terrain, la transcription arrive après. Elle porte son état : prête, en cours, ou à relire quand l’audio était mauvais.',
           },
           {
             icon: 'video',
             title: 'Clip vidéo',
-            desc: 'Un fichier importé, ou une URL. YouTube et Vimeo se jouent dans la page ; Veo, Hudl et les autres s’affichent en carte-lien.',
+            desc: 'Un fichier importé, ou une URL. YouTube et Vimeo se jouent dans la page ; Veo, Hudl et les autres s’affichent en carte-lien.',
           },
           {
             icon: 'pen-tool',
@@ -101,13 +101,13 @@ export const scouting: SubpageLocales = {
         note: {
           icon: 'circle-alert',
           label: 'Une transcription ratée le dit',
-          desc: 'Une note vocale enregistrée dans le vent porte l’état « à relire » plutôt qu’un texte approximatif présenté comme fidèle. Vous savez ce qu’il faut vérifier.',
+          desc: 'Une note vocale enregistrée dans le vent porte l’état « à relire » plutôt qu’un texte approximatif présenté comme fidèle. Vous savez ce qu’il faut vérifier.',
         },
       },
       {
         kicker: 'LA FEUILLE DE MATCH',
         title: 'L’IA lit l’effectif, vous le confirmez.',
-        body: 'Vous photographiez la feuille de match, l’IA en extrait les joueurs, et s’arrête là. L’extraction produit une proposition ; les joueurs n’entrent dans l’effectif adverse qu’au moment où vous confirmez.',
+        body: 'Vous photographiez la feuille de match, l’IA en extrait les joueurs, et s’arrête là. L’extraction produit une proposition ; les joueurs n’entrent dans l’effectif adverse qu’au moment où vous confirmez.',
         kind: 'columns',
         cols: [
           {
@@ -123,14 +123,14 @@ export const scouting: SubpageLocales = {
           {
             eyebrow: 'ORIGINE',
             title: 'La provenance reste visible',
-            desc: 'Un joueur retenu garde sa source : observé par vous, ou extrait d’une feuille. Un effectif non confirmé reste visiblement distinct d’un effectif confirmé.',
+            desc: 'Un joueur retenu garde sa source : observé par vous, ou extrait d’une feuille. Un effectif non confirmé reste visiblement distinct d’un effectif confirmé.',
           },
         ],
       },
       {
         kicker: 'LE BRIEF TACTIQUE',
         title: 'Un brief à relire avant de l’envoyer.',
-        body: 'À la demande, STRIVN synthétise un brief à partir de l’effectif confirmé, des notes récentes et des tableaux tactiques : forces, faiblesses, système probable, plan suggéré.',
+        body: 'À la demande, STRIVN synthétise un brief à partir de l’effectif confirmé, des notes récentes et des tableaux tactiques : forces, faiblesses, système probable, plan suggéré.',
         kind: 'compare',
         heads: ['Ce que le brief est', 'Ce qu’il n’est pas'],
         tones: ['blue', 'plain'],
@@ -143,7 +143,7 @@ export const scouting: SubpageLocales = {
           {
             label: 'CE QU’ON EN FAIT',
             a: 'Vous l’éditez, vous en gardez ce qui tient, vous l’écartez si elle se trompe.',
-            b: 'Une source de vérité. Le rapport reste le vôtre ; le brief n’est qu’une matière première.',
+            b: 'Une source de vérité. Le rapport reste le vôtre ; le brief n’est qu’une matière première.',
           },
           {
             label: 'SUR QUOI ELLE S’APPUIE',

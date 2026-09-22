@@ -1,11 +1,12 @@
 ---
 /**
  * The measure editor: a name, a unit, a description, and the zones a value
- * will fall into. Rendered as a read-only mock — the fields are styled inputs,
- * not real ones, so nothing here is focusable or announced as a form.
+ * will fall into. Rendered as a read-only mock: the fields are styled blocks,
+ * not real inputs, so nothing here is focusable or announced as a form.
  */
 import type { Locale } from '../../../data/landingContent';
 import { captureText, MEASURE_ZONE_DOTS } from '../../../data/subpages/captures';
+import CaptureFrame from './CaptureFrame.astro';
 
 interface Props {
   locale: Locale;
@@ -15,42 +16,34 @@ const { locale } = Astro.props;
 const t = captureText[locale].measure;
 ---
 
-<div class="w-full max-w-[460px] overflow-hidden rounded-[14px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-  <p class="border-b border-[#FFFFFF14] px-4.5 py-4 text-[0.81rem] font-semibold text-[#F8FAFC]">
-    {t.title}
-  </p>
-
-  <div class="grid gap-3 border-b border-[#FFFFFF14] p-4.5">
+<CaptureFrame title={t.title} class="w-full max-w-[480px]">
+  <div class="grid gap-3">
     {
       t.fields.map((fl) => (
         <div>
-          <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{fl.k}</p>
-          <p class="mt-1.5 rounded-[8px] bg-[#FFFFFF07] px-3 py-2.5 text-[0.78rem] text-[#DCE4F2] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-            {fl.v}
-          </p>
+          <p class="cap-k">{fl.k}</p>
+          <p class="cap-field">{fl.v}</p>
         </div>
       ))
     }
   </div>
 
-  <div class="p-4.5">
-    <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{t.zonesLabel}</p>
-    <ul class="mt-2.5 grid gap-2.5">
+  <div class="border-t border-line pt-4">
+    <p class="cap-k">{t.zonesLabel}</p>
+    <ul class="cap-rows mt-1">
       {
         t.zones.map((z, i) => (
-          <li class="flex items-center gap-2.5">
+          <li>
             <span
-              class="size-2 shrink-0 rounded-[2px]"
+              class="size-2.5 shrink-0 rounded-[2px]"
               style={`background:${MEASURE_ZONE_DOTS[i]};`}
               aria-hidden="true"
             />
-            <span class="min-w-0 flex-1 text-[0.78rem] text-[#DCE4F2]">{z.name}</span>
-            <span class="shrink-0 font-mono text-[0.69rem] whitespace-nowrap text-[#68779A]">
-              {z.bound}
-            </span>
+            <span class="cap-grow text-ink">{z.name}</span>
+            <span class="cap-num shrink-0 text-ink-3">{z.bound}</span>
           </li>
         ))
       }
     </ul>
   </div>
-</div>
+</CaptureFrame>
