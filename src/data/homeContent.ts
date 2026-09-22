@@ -10,10 +10,7 @@
  * and the chart) does not translate and sits in the shared constants below,
  * so the six locales can never show six different squads.
  *
- * Two blocks are kept for other templates while they are redesigned:
- * `platform` feeds the modules grid on /{locale}/solutions/, and
- * `playerApp.phone` feeds the phone on /{locale}/features/. `finalCta` and
- * `footer` close every landing page on the site.
+ * `finalCta` and `footer` also close the other landing pages of the site.
  */
 import type { Locale } from './landingContent';
 export type { Locale };
@@ -157,7 +154,7 @@ export interface HomeContent {
     partnersAria: string;
     partnersNote: string;
     whoop: { recovery: string; hrv: string };
-    /** Morning phone. Also drawn on /{locale}/features/. */
+    /** Morning phone: wellness, then the WHOOP reading. */
     phone: {
       time: string;
       greeting: string;
@@ -222,15 +219,6 @@ export interface HomeContent {
     primaryCta: string;
     secondaryCta: string;
     fine: string[];
-  };
-  /** Modules grid, rendered on /{locale}/solutions/ by `HomePlatform`. */
-  platform: {
-    index: string;
-    kicker: string;
-    title: string;
-    body: string;
-    featured: Array<{ icon: string; title: string; badge: string; badgeTone: 'blue' | 'green'; body: string; cta: string; href: string }>;
-    cards: Array<{ icon: string; title: string; body: string; cta: string; href: string }>;
   };
   footer: {
     tagline: string;
@@ -614,76 +602,6 @@ const fr: HomeContent = {
     secondaryCta: 'Parler à Benoit',
     fine: ['Sans carte bancaire', 'Vos données restent les vôtres'],
   },
-  platform: {
-    index: '04',
-    kicker: 'TOUTE L’ÉQUIPE',
-    title: 'Convoquez, soignez, planifiez et rapportez au même endroit.',
-    body: 'Convocations, présences, infirmerie, séances et rapports vivent dans le même espace que le monitoring, avec un droit d’accès par rôle pour chaque membre du staff.',
-    featured: [
-      {
-        icon: 'activity',
-        title: 'Charge, RPE & GPS',
-        badge: 'MONITORING',
-        badgeTone: 'blue',
-        body: 'Import GPS, RPE, charge interne et externe, ACWR et alertes : le staff performance y commence sa journée.',
-        cta: 'Charge & RPE en détail',
-        href: '/fr/features/training-load/',
-      },
-      {
-        icon: 'gauge',
-        title: 'Tests & évaluations',
-        badge: 'MONITORING',
-        badgeTone: 'green',
-        body: 'Sprint, VMA, CMJ, tests techniques : les batteries se suivent dans le temps et alimentent les programmes individuels.',
-        cta: 'Tests en détail',
-        href: '/fr/features/tests/',
-      },
-    ],
-    cards: [
-      {
-        icon: 'send',
-        title: 'Convocations & RSVP',
-        body: 'Convoquez en un clic ; les réponses reviennent dans la journée et l’effectif se met à jour seul.',
-        cta: 'En détail',
-        href: '/fr/features/communication/',
-      },
-      {
-        icon: 'heart-pulse',
-        title: 'Infirmerie',
-        body: 'Déclarez la blessure une fois ; le retour au jeu et les convocations suivent, visibles par le staff autorisé.',
-        cta: 'En détail',
-        href: '/fr/features/medical/',
-      },
-      {
-        icon: 'target',
-        title: 'Programmes individuels',
-        body: 'Fixez des objectifs et des exercices reliés aux données de chaque joueur.',
-        cta: 'En détail',
-        href: '/fr/features/programs/',
-      },
-      {
-        icon: 'clipboard',
-        title: 'Séances & tactique',
-        body: 'Préparez les séances et les tableaux depuis l’état de forme du groupe.',
-        cta: 'En détail',
-        href: '/fr/features/sessions/',
-      },
-      {
-        icon: 'radio',
-        title: 'Séance & match en direct',
-        body: 'Saisissez présences, temps de jeu et événements au bord du terrain.',
-        cta: 'En détail',
-        href: '/fr/features/live-session/',
-      },
-      {
-        icon: 'sparkles',
-        title: 'Rapports, IA & dashboards',
-        body: 'Recevez des comptes-rendus rédigés par l’IA et composez vos dashboards, partagés avec le staff et la direction.',
-        cta: 'En détail',
-        href: '/fr/features/reports/',
-      },
-    ],
-  },
   footer: {
     tagline: 'Le monitoring d’un staff professionnel, sans le budget d’un club professionnel.',
     body: 'STRIVN réunit le monitoring de la performance et l’intendance d’équipe dans un seul espace partagé par le staff.',
@@ -956,76 +874,6 @@ const en: HomeContent = {
     primaryCta: 'Create my space for free',
     secondaryCta: 'Talk to Benoit',
     fine: ['No credit card', 'Your data stays yours'],
-  },
-  platform: {
-    index: '04',
-    kicker: 'THE WHOLE TEAM',
-    title: 'Call up, treat, plan and report in the same place.',
-    body: 'Call-ups, attendance, medical log, sessions and reports live in the same space as the monitoring, with access rights per role for every staff member.',
-    featured: [
-      {
-        icon: 'activity',
-        title: 'Load, RPE & GPS',
-        badge: 'MONITORING',
-        badgeTone: 'blue',
-        body: 'GPS import, RPE, internal and external load, ACWR and alerts: the performance staff starts the day here.',
-        cta: 'Load & RPE in detail',
-        href: '/en/features/training-load/',
-      },
-      {
-        icon: 'gauge',
-        title: 'Tests & assessments',
-        badge: 'MONITORING',
-        badgeTone: 'green',
-        body: 'Sprint, MAS, CMJ, technical tests: batteries are tracked over time and feed the individual programmes.',
-        cta: 'Tests in detail',
-        href: '/en/features/tests/',
-      },
-    ],
-    cards: [
-      {
-        icon: 'send',
-        title: 'Call-ups & RSVP',
-        body: 'Call up in one click; responses come back within the day and the squad list updates itself.',
-        cta: 'In detail',
-        href: '/en/features/communication/',
-      },
-      {
-        icon: 'heart-pulse',
-        title: 'Medical room',
-        body: 'Log the injury once; return to play and call-ups follow, visible to authorised staff.',
-        cta: 'In detail',
-        href: '/en/features/medical/',
-      },
-      {
-        icon: 'target',
-        title: 'Individual programmes',
-        body: 'Set goals and drills linked to each player’s data.',
-        cta: 'In detail',
-        href: '/en/features/programs/',
-      },
-      {
-        icon: 'clipboard',
-        title: 'Sessions & tactics',
-        body: 'Prepare sessions and boards from the squad’s state of form.',
-        cta: 'In detail',
-        href: '/en/features/sessions/',
-      },
-      {
-        icon: 'radio',
-        title: 'Live session & match',
-        body: 'Capture attendance, playing time and events pitch-side.',
-        cta: 'In detail',
-        href: '/en/features/live-session/',
-      },
-      {
-        icon: 'sparkles',
-        title: 'Reports, AI & dashboards',
-        body: 'Receive AI-written summaries and compose your dashboards, shared with staff and board.',
-        cta: 'In detail',
-        href: '/en/features/reports/',
-      },
-    ],
   },
   footer: {
     tagline: 'A professional staff’s monitoring, without a professional club’s budget.',
@@ -1300,76 +1148,6 @@ const nl: HomeContent = {
     secondaryCta: 'Praat met Benoit',
     fine: ['Zonder kredietkaart', 'Uw data blijft van u'],
   },
-  platform: {
-    index: '04',
-    kicker: 'HET HELE TEAM',
-    title: 'Roep op, verzorg, plan en rapporteer op één plek.',
-    body: 'Oproepingen, aanwezigheid, ziekenboeg, trainingen en rapporten leven in dezelfde omgeving als de monitoring, met toegangsrechten per rol voor elk staflid.',
-    featured: [
-      {
-        icon: 'activity',
-        title: 'Belasting, RPE & GPS',
-        badge: 'MONITORING',
-        badgeTone: 'blue',
-        body: 'GPS-import, RPE, interne en externe belasting, ACWR en alerts: de performance staff begint hier zijn dag.',
-        cta: 'Belasting & RPE in detail',
-        href: '/nl/features/training-load/',
-      },
-      {
-        icon: 'gauge',
-        title: 'Testen & evaluaties',
-        badge: 'MONITORING',
-        badgeTone: 'green',
-        body: 'Sprint, MAS, CMJ, technische testen: batterijen worden doorheen de tijd opgevolgd en voeden de individuele programma’s.',
-        cta: 'Testen in detail',
-        href: '/nl/features/tests/',
-      },
-    ],
-    cards: [
-      {
-        icon: 'send',
-        title: 'Oproepingen & RSVP',
-        body: 'Roep op in één klik; de antwoorden komen dezelfde dag terug en de selectie werkt zichzelf bij.',
-        cta: 'In detail',
-        href: '/nl/features/communication/',
-      },
-      {
-        icon: 'heart-pulse',
-        title: 'Ziekenboeg',
-        body: 'Registreer de blessure één keer; return to play en oproepingen volgen, zichtbaar voor de bevoegde staf.',
-        cta: 'In detail',
-        href: '/nl/features/medical/',
-      },
-      {
-        icon: 'target',
-        title: 'Individuele programma’s',
-        body: 'Leg doelen en oefeningen vast, gekoppeld aan de data van elke speler.',
-        cta: 'In detail',
-        href: '/nl/features/programs/',
-      },
-      {
-        icon: 'clipboard',
-        title: 'Trainingen & tactiek',
-        body: 'Bereid trainingen en borden voor vanuit de toestand van de groep.',
-        cta: 'In detail',
-        href: '/nl/features/sessions/',
-      },
-      {
-        icon: 'radio',
-        title: 'Training & wedstrijd live',
-        body: 'Registreer aanwezigheid, speeltijd en events langs het veld.',
-        cta: 'In detail',
-        href: '/nl/features/live-session/',
-      },
-      {
-        icon: 'sparkles',
-        title: 'Rapporten, AI & dashboards',
-        body: 'Ontvang door AI geschreven verslagen en stel uw dashboards samen, gedeeld met staf en bestuur.',
-        cta: 'In detail',
-        href: '/nl/features/reports/',
-      },
-    ],
-  },
   footer: {
     tagline: 'De monitoring van een professionele staf, zonder het budget van een profclub.',
     body: 'STRIVN verenigt prestatiemonitoring en teamorganisatie in één omgeving, gedeeld door de staf.',
@@ -1642,76 +1420,6 @@ const de: HomeContent = {
     primaryCta: 'Meinen Bereich kostenlos erstellen',
     secondaryCta: 'Mit Benoit sprechen',
     fine: ['Ohne Kreditkarte', 'Ihre Daten bleiben Ihre'],
-  },
-  platform: {
-    index: '04',
-    kicker: 'DAS GANZE TEAM',
-    title: 'Aufbieten, behandeln, planen und berichten am selben Ort.',
-    body: 'Aufgebote, Anwesenheit, Medizinbereich, Einheiten und Berichte liegen im selben Bereich wie das Monitoring, mit Zugriffsrechten pro Rolle für jedes Staff-Mitglied.',
-    featured: [
-      {
-        icon: 'activity',
-        title: 'Belastung, RPE & GPS',
-        badge: 'MONITORING',
-        badgeTone: 'blue',
-        body: 'GPS-Import, RPE, interne und externe Belastung, ACWR und Alarme: Hier startet der Performance-Staff in den Tag.',
-        cta: 'Belastung & RPE im Detail',
-        href: '/de/features/training-load/',
-      },
-      {
-        icon: 'gauge',
-        title: 'Tests & Diagnostik',
-        badge: 'MONITORING',
-        badgeTone: 'green',
-        body: 'Sprint, MAS, CMJ, technische Tests: Testbatterien werden über die Zeit verfolgt und speisen die individuellen Programme.',
-        cta: 'Tests im Detail',
-        href: '/de/features/tests/',
-      },
-    ],
-    cards: [
-      {
-        icon: 'send',
-        title: 'Aufgebote & RSVP',
-        body: 'Bieten Sie mit einem Klick auf; die Antworten kommen am selben Tag zurück und der Kader aktualisiert sich selbst.',
-        cta: 'Im Detail',
-        href: '/de/features/communication/',
-      },
-      {
-        icon: 'heart-pulse',
-        title: 'Medizinbereich',
-        body: 'Erfassen Sie die Verletzung einmal; Return to Play und Aufgebote folgen, sichtbar für den berechtigten Staff.',
-        cta: 'Im Detail',
-        href: '/de/features/medical/',
-      },
-      {
-        icon: 'target',
-        title: 'Individuelle Programme',
-        body: 'Legen Sie Ziele und Übungen fest, verknüpft mit den Daten jedes Spielers.',
-        cta: 'Im Detail',
-        href: '/de/features/programs/',
-      },
-      {
-        icon: 'clipboard',
-        title: 'Einheiten & Taktik',
-        body: 'Bereiten Sie Einheiten und Boards aus dem Zustand der Gruppe vor.',
-        cta: 'Im Detail',
-        href: '/de/features/sessions/',
-      },
-      {
-        icon: 'radio',
-        title: 'Training & Spiel live',
-        body: 'Erfassen Sie Anwesenheit, Spielzeit und Ereignisse am Spielfeldrand.',
-        cta: 'Im Detail',
-        href: '/de/features/live-session/',
-      },
-      {
-        icon: 'sparkles',
-        title: 'Berichte, KI & Dashboards',
-        body: 'Erhalten Sie KI-geschriebene Zusammenfassungen und stellen Sie Ihre Dashboards zusammen, geteilt mit Staff und Vorstand.',
-        cta: 'Im Detail',
-        href: '/de/features/reports/',
-      },
-    ],
   },
   footer: {
     tagline: 'Das Monitoring eines Profi-Staffs, ohne das Budget eines Profivereins.',
@@ -1986,76 +1694,6 @@ const pt: HomeContent = {
     secondaryCta: 'Falar com o Benoit',
     fine: ['Sem cartão de crédito', 'Os seus dados são seus'],
   },
-  platform: {
-    index: '04',
-    kicker: 'TODA A EQUIPA',
-    title: 'Convoque, trate, planeie e reporte no mesmo sítio.',
-    body: 'Convocatórias, presenças, enfermaria, sessões e relatórios vivem no mesmo espaço que a monitorização, com um direito de acesso por função para cada membro do staff.',
-    featured: [
-      {
-        icon: 'activity',
-        title: 'Carga, RPE & GPS',
-        badge: 'MONITORIZAÇÃO',
-        badgeTone: 'blue',
-        body: 'Importação GPS, RPE, carga interna e externa, ACWR e alertas: é por aqui que o staff de performance começa o dia.',
-        cta: 'Carga & RPE em detalhe',
-        href: '/pt/features/training-load/',
-      },
-      {
-        icon: 'gauge',
-        title: 'Testes & avaliações',
-        badge: 'MONITORIZAÇÃO',
-        badgeTone: 'green',
-        body: 'Sprint, VAM, CMJ, testes técnicos: as baterias seguem-se no tempo e alimentam os programas individuais.',
-        cta: 'Testes em detalhe',
-        href: '/pt/features/tests/',
-      },
-    ],
-    cards: [
-      {
-        icon: 'send',
-        title: 'Convocatórias & RSVP',
-        body: 'Convoque num clique; as respostas voltam no próprio dia e o plantel atualiza-se sozinho.',
-        cta: 'Em detalhe',
-        href: '/pt/features/communication/',
-      },
-      {
-        icon: 'heart-pulse',
-        title: 'Enfermaria',
-        body: 'Declare a lesão uma vez; o regresso ao jogo e as convocatórias seguem, visíveis para o staff autorizado.',
-        cta: 'Em detalhe',
-        href: '/pt/features/medical/',
-      },
-      {
-        icon: 'target',
-        title: 'Programas individuais',
-        body: 'Fixe objetivos e exercícios ligados aos dados de cada jogador.',
-        cta: 'Em detalhe',
-        href: '/pt/features/programs/',
-      },
-      {
-        icon: 'clipboard',
-        title: 'Sessões & tática',
-        body: 'Prepare as sessões e os quadros a partir do estado de forma do plantel.',
-        cta: 'Em detalhe',
-        href: '/pt/features/sessions/',
-      },
-      {
-        icon: 'radio',
-        title: 'Sessão & jogo em direto',
-        body: 'Registe presenças, tempo de jogo e eventos à beira do campo.',
-        cta: 'Em detalhe',
-        href: '/pt/features/live-session/',
-      },
-      {
-        icon: 'sparkles',
-        title: 'Relatórios, IA & dashboards',
-        body: 'Receba resumos redigidos pela IA e componha os seus dashboards, partilhados com o staff e a direção.',
-        cta: 'Em detalhe',
-        href: '/pt/features/reports/',
-      },
-    ],
-  },
   footer: {
     tagline: 'A monitorização de um staff profissional, sem o orçamento de um clube profissional.',
     body: 'O STRIVN reúne a monitorização da performance e a gestão de equipa num único espaço partilhado pelo staff.',
@@ -2328,76 +1966,6 @@ const es: HomeContent = {
     primaryCta: 'Crear mi espacio gratis',
     secondaryCta: 'Hablar con Benoit',
     fine: ['Sin tarjeta de crédito', 'Sus datos siguen siendo suyos'],
-  },
-  platform: {
-    index: '04',
-    kicker: 'TODO EL EQUIPO',
-    title: 'Convoque, trate, planifique e informe en el mismo sitio.',
-    body: 'Convocatorias, asistencia, enfermería, sesiones e informes viven en el mismo espacio que la monitorización, con un derecho de acceso por rol para cada miembro del staff.',
-    featured: [
-      {
-        icon: 'activity',
-        title: 'Carga, RPE & GPS',
-        badge: 'MONITORIZACIÓN',
-        badgeTone: 'blue',
-        body: 'Importación GPS, RPE, carga interna y externa, ACWR y alertas: ahí empieza el día el staff de rendimiento.',
-        cta: 'Carga & RPE en detalle',
-        href: '/es/features/training-load/',
-      },
-      {
-        icon: 'gauge',
-        title: 'Tests & evaluaciones',
-        badge: 'MONITORIZACIÓN',
-        badgeTone: 'green',
-        body: 'Sprint, VAM, CMJ, tests técnicos: las baterías se siguen en el tiempo y alimentan los programas individuales.',
-        cta: 'Tests en detalle',
-        href: '/es/features/tests/',
-      },
-    ],
-    cards: [
-      {
-        icon: 'send',
-        title: 'Convocatorias & RSVP',
-        body: 'Convoque en un clic; las respuestas vuelven el mismo día y la plantilla se actualiza sola.',
-        cta: 'En detalle',
-        href: '/es/features/communication/',
-      },
-      {
-        icon: 'heart-pulse',
-        title: 'Enfermería',
-        body: 'Declare la lesión una vez; el regreso al juego y las convocatorias siguen, visibles para el staff autorizado.',
-        cta: 'En detalle',
-        href: '/es/features/medical/',
-      },
-      {
-        icon: 'target',
-        title: 'Programas individuales',
-        body: 'Fije objetivos y ejercicios vinculados a los datos de cada jugador.',
-        cta: 'En detalle',
-        href: '/es/features/programs/',
-      },
-      {
-        icon: 'clipboard',
-        title: 'Sesiones & táctica',
-        body: 'Prepare las sesiones y las pizarras desde el estado de forma del grupo.',
-        cta: 'En detalle',
-        href: '/es/features/sessions/',
-      },
-      {
-        icon: 'radio',
-        title: 'Sesión & partido en directo',
-        body: 'Registre asistencia, tiempo de juego y eventos a pie de campo.',
-        cta: 'En detalle',
-        href: '/es/features/live-session/',
-      },
-      {
-        icon: 'sparkles',
-        title: 'Informes, IA & dashboards',
-        body: 'Reciba resúmenes redactados por la IA y componga sus dashboards, compartidos con el staff y la directiva.',
-        cta: 'En detalle',
-        href: '/es/features/reports/',
-      },
-    ],
   },
   footer: {
     tagline: 'La monitorización de un staff profesional, sin el presupuesto de un club profesional.',
