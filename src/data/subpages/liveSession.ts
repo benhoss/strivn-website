@@ -18,7 +18,7 @@ export const liveSession: SubpageLocales = {
       title: 'Pilotez la séance au pouce, du déroulé au bilan.',
       sub: 'Vous composez le déroulé à l’avance, vous le déroulez en plein écran au bord du terrain (chrono, présences, équipes, score), puis vous clôturez par le bilan. Le runner fonctionne même sans réseau.',
       bullets: [
-        'Blocs numérotés : intitulé, durée, RPE cible, format',
+        'Blocs numérotés : intitulé, durée, RPE cible, format',
         'Présences pointées en un tap, puis le chrono part',
         'Équipes réparties automatiquement sur un jeu réduit',
         'Hors ligne au bord du terrain, synchronisé à la reconnexion',
@@ -53,9 +53,9 @@ export const liveSession: SubpageLocales = {
             desc: 'Démarrer la séance bascule le runner en plein écran, pensé pour être utilisé au pouce.',
             items: [
               'Présences en un tap, puis Lancer le chrono',
-              'Le bloc en cours en grand : temps écoulé, progression',
+              'Le bloc en cours en grand : temps écoulé, progression',
               'Terminer le bloc, avec double confirmation',
-              'Créer les équipes répartit les présents ; le score se tape',
+              'Créer les équipes répartit les présents ; le score se tape',
             ],
           },
           {
@@ -78,7 +78,7 @@ export const liveSession: SubpageLocales = {
           {
             eyebrow: 'HORS LIGNE',
             title: 'Tout est enregistré sur place',
-            desc: 'Le runner fonctionne sans connexion : présences, chronos, scores et équipes s’écrivent en local. Terminer la séance synchronise l’ensemble dès que le réseau revient.',
+            desc: 'Le runner fonctionne sans connexion : présences, chronos, scores et équipes s’écrivent en local. Terminer la séance synchronise l’ensemble dès que le réseau revient.',
           },
           {
             eyebrow: 'AU POUCE',
@@ -90,7 +90,7 @@ export const liveSession: SubpageLocales = {
           {
             icon: 'radio',
             tone: 'blue',
-            text: 'Sur un événement de type match, le même direct passe en configuration match : score, faits attribués, chaîne de joueurs et observations dessinées.',
+            text: 'Sur un événement de type match, le même direct passe en configuration match : score, faits attribués, chaîne de joueurs et observations dessinées.',
             link: { label: 'Live match', href: '/fr/features/live-match/' },
           },
         ],

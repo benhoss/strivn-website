@@ -105,6 +105,11 @@ const Capture = registry[name];
     padding: 16px;
     min-width: 0;
   }
+  /* Grid items default to min-width: auto, which lets one nowrap row widen
+     the whole panel past a phone screen. */
+  .cap-body > * {
+    min-width: 0;
+  }
   .cap-body--flush {
     padding: 0;
     gap: 0;
@@ -227,6 +232,12 @@ const Capture = registry[name];
   }
   .cap-table tr:last-child td {
     border-bottom: 0;
+  }
+  @media (max-width: 480px) {
+    .cap-table th,
+    .cap-table td {
+      padding-inline: 6px;
+    }
   }
   .cap-table td.cap-td-name {
     font-family: var(--font-sans);

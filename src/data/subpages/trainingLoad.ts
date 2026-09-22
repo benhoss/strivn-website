@@ -20,9 +20,9 @@ export const trainingLoad: SubpageLocales = {
       title: 'Croisez le RPE et le GPS de chaque joueur.',
       sub: 'Le RPE du bilan et la durée donnent la charge interne. Votre export GPS donne la charge externe. STRIVN les met face à face. ACWR, monotonie, contrainte et ratio se calculent seuls.',
       bullets: [
-        'Charge sRPE : RPE × durée, coefficients match et entraînement réglables',
+        'Charge sRPE : RPE × durée, coefficients match et entraînement réglables',
         'ACWR, monotonie et contrainte, semaine après semaine',
-        'GPS : vos zones regroupées en blocs que vous nommez vous-même',
+        'GPS : vos zones regroupées en blocs que vous nommez vous-même',
         'Alertes de charge à acquitter, avec note et traçabilité',
       ],
       ctas: { primary: 'Commencer gratuitement' },
@@ -55,19 +55,19 @@ export const trainingLoad: SubpageLocales = {
           {
             name: 'Ratio externe ÷ interne',
             sub: 'charge GPS ÷ sRPE',
-            desc: 'Les deux mesures ont des unités différentes : la valeur se lit seulement par rapport à la base 28 jours du joueur lui-même.',
+            desc: 'Les deux mesures ont des unités différentes : la valeur se lit seulement par rapport à la base 28 jours du joueur lui-même.',
             chip: { label: 'vs base 28 j' },
           },
         ],
         note: {
           label: 'Acquitter garde la trace',
-          desc: 'Une alerte de charge s’acquitte avec une note : le contexte, la décision prise. Elle reste visible, grisée, avec qui l’a traitée et quand, et se tait tant que la charge de la même semaine reste dans la norme.',
+          desc: 'Une alerte de charge s’acquitte avec une note : le contexte, la décision prise. Elle reste visible, grisée, avec qui l’a traitée et quand, et se tait tant que la charge de la même semaine reste dans la norme.',
         },
       },
       {
         kicker: 'GPS · VOS BLOCS DE VITESSE',
         title: 'Nommez vos blocs de vitesse depuis les zones exportées.',
-        body: 'Votre export contient des zones numérotées, souvent en distance et en temps. Vous décidez comment les regrouper : un bloc est un nom que vous donnez à une somme de zones. Vos blocs pilotent ensuite colonnes, graphiques et cibles individuelles.',
+        body: 'Votre export contient des zones numérotées, souvent en distance et en temps. Vous décidez comment les regrouper : un bloc est un nom que vous donnez à une somme de zones. Vos blocs pilotent ensuite colonnes, graphiques et cibles individuelles.',
         visual: 'gps-blocks',
         kind: 'columns',
         cols: [
@@ -88,14 +88,14 @@ export const trainingLoad: SubpageLocales = {
       },
       {
         kicker: 'LE POINT À RETENIR',
-        title: 'Le filtre Séances recalcule tout ; Période change l’affichage.',
+        title: 'Le filtre Séances recalcule tout ; Période change l’affichage.',
         kind: 'panels',
         panels: [
           {
             title: 'Séances',
             eyebrow: 'Toutes · Entraînements · Matchs',
             lead: 'un filtre de comparabilité',
-            desc: 'La charge externe d’un match est structurellement plus élevée que celle d’un entraînement. Ce filtre change donc tout ce qui est calculé : la séance affichée, les valeurs, la cible suggérée, le ratio et sa base.',
+            desc: 'La charge externe d’un match est structurellement plus élevée que celle d’un entraînement. Ce filtre change donc tout ce qui est calculé : la séance affichée, les valeurs, la cible suggérée, le ratio et sa base.',
             tone: 'blue',
           },
           {
@@ -109,12 +109,12 @@ export const trainingLoad: SubpageLocales = {
           {
             tone: 'orange',
             icon: 'triangle-alert',
-            text: 'STRIVN compte l’historique réel du joueur, quelle que soit la fenêtre affichée : « 7 jours » change la liste et laisse le badge de données intact. Choisir « Matchs » recalcule sa cible sur ses matchs, pour comparer un match à des matchs.',
+            text: 'STRIVN compte l’historique réel du joueur, quelle que soit la fenêtre affichée : « 7 jours » change la liste et laisse le badge de données intact. Choisir « Matchs » recalcule sa cible sur ses matchs, pour comparer un match à des matchs.',
           },
         ],
         note: {
-          label: 'Le troisième : Mesure',
-          desc: 'Distance ou Temps : les mêmes blocs, dans l’autre unité. Chaque bloc a une cible par mesure ; vous pouvez viser 4 200 m d’aérobie et 15 minutes, indépendamment, et enregistrer l’une laisse l’autre intacte.',
+          label: 'Le troisième : Mesure',
+          desc: 'Distance ou Temps : les mêmes blocs, dans l’autre unité. Chaque bloc a une cible par mesure ; vous pouvez viser 4 200 m d’aérobie et 15 minutes, indépendamment, et enregistrer l’une laisse l’autre intacte.',
         },
       },
       {
@@ -125,11 +125,11 @@ export const trainingLoad: SubpageLocales = {
         rows: [
           {
             name: 'Données insuffisantes',
-            desc: 'Moins de deux semaines complètes d’historique : le joueur apparaît à part, avec le badge, plutôt qu’avec un ACWR trompeur.',
+            desc: 'Moins de deux semaines complètes d’historique : le joueur apparaît à part, avec le badge, plutôt qu’avec un ACWR trompeur.',
           },
           {
             name: '—',
-            desc: 'Un bloc dont une zone manque dans la mesure affichée reste vide : une somme incomplète est un chiffre faux, pas un chiffre approximatif.',
+            desc: 'Un bloc dont une zone manque dans la mesure affichée reste vide : une somme incomplète est un chiffre faux, pas un chiffre approximatif.',
           },
           {
             name: 'Pas assez de données',
@@ -137,7 +137,7 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             name: '(en cours)',
-            desc: 'La semaine en cours porte la mention jusqu’à sa clôture : ses valeurs restent provisoires.',
+            desc: 'La semaine en cours porte la mention jusqu’à sa clôture : ses valeurs restent provisoires.',
           },
         ],
       },
@@ -146,7 +146,7 @@ export const trainingLoad: SubpageLocales = {
         panels: [
           {
             title: 'Lisez chaque joueur par rapport à sa propre base de 28 jours.',
-            desc: 'Un ratio externe ÷ interne qui chute nettement sous sa base de 28 jours signale un découplage : le joueur fournit moins de travail mécanique pour un même ressenti, un signe de fatigue cachée. La tête de bloc passe au rouge. Le même ratio comparé à un autre joueur reste muet.',
+            desc: 'Un ratio externe ÷ interne qui chute nettement sous sa base de 28 jours signale un découplage : le joueur fournit moins de travail mécanique pour un même ressenti, un signe de fatigue cachée. La tête de bloc passe au rouge. Le même ratio comparé à un autre joueur reste muet.',
           },
         ],
       },
@@ -159,7 +159,7 @@ export const trainingLoad: SubpageLocales = {
         cols: [
           {
             title: 'Vos données restent en UA',
-            desc: 'La charge reste enregistrée en UA ; l’unité change seulement ce que vous lisez et ce que vous saisissez. Revenez en arrière quand vous voulez, l’historique se relit dans la nouvelle unité.',
+            desc: 'La charge reste enregistrée en UA ; l’unité change seulement ce que vous lisez et ce que vous saisissez. Revenez en arrière quand vous voulez, l’historique se relit dans la nouvelle unité.',
           },
           {
             title: 'Tous les écrans suivent',
@@ -167,19 +167,19 @@ export const trainingLoad: SubpageLocales = {
           },
           {
             title: 'Les ratios gardent leur échelle',
-            desc: 'ACWR, monotonie et ratio interne / externe sont des rapports calibrés ; seule la contrainte suit votre unité, puisqu’elle est une quantité de charge.',
+            desc: 'ACWR, monotonie et ratio interne / externe sont des rapports calibrés ; seule la contrainte suit votre unité, puisqu’elle est une quantité de charge.',
           },
         ],
         callouts: [
           {
             icon: 'sparkles',
             tone: 'blue',
-            text: 'L’assistant IA connaît votre unité : il cite les chiffres avec votre sigle et comprend « passe l’objectif de la semaine à 29 ».',
+            text: 'L’assistant IA connaît votre unité : il cite les chiffres avec votre sigle et comprend « passe l’objectif de la semaine à 29 ».',
           },
           {
             icon: 'triangle-alert',
             tone: 'orange',
-            text: 'Le nom devient obligatoire dès que l’équivalence quitte 1 : des valeurs converties sous le sigle « UA » seraient fausses.',
+            text: 'Le nom devient obligatoire dès que l’équivalence quitte 1 : des valeurs converties sous le sigle « UA » seraient fausses.',
           },
         ],
       },
@@ -547,7 +547,7 @@ export const trainingLoad: SubpageLocales = {
     meta: {
       title: 'Belastung, RPE & GPS | STRIVN',
       description:
-        'Interne Belastung über sRPE, externe über Ihren GPS-Export. ACWR, Monotonie, Strain und das Verhältnis extern ÷ intern rechnen sich von selbst — in Ihrer eigenen Belastungseinheit.',
+        'Interne Belastung über sRPE, externe über Ihren GPS-Export. ACWR, Monotonie, Strain und das Verhältnis extern ÷ intern rechnen sich von selbst, in Ihrer eigenen Belastungseinheit.',
     },
     hero: {
       kicker: 'FUNKTIONEN · MONITORING',

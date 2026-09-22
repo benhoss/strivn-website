@@ -510,7 +510,7 @@ const fr: CaptureText = {
     yes: 'oui',
     no: 'non',
     ready: { green: 'Vert', amber: 'Jaune', red: 'Rouge', missing: 'Manquant' },
-    alert: 'L. Moreau · rouge : 4 h de sommeil, douleur signalée. Acquitter avec une note ?',
+    alert: 'L. Moreau · rouge : 4 h de sommeil, douleur signalée. Acquitter avec une note ?',
   },
   campaign: {
     title: 'VMA · campagne du 14 avril',
@@ -709,7 +709,7 @@ const fr: CaptureText = {
     title: 'Sélection / forme · 5 derniers matchs',
     meta: '18 JOUEURS',
     cols: ['JOUEUR', 'MIN', 'NOTE', 'ACWR'],
-    note: 'Rapport enregistré · rejoué sur les données du jour. « * » signale un échantillon trop court.',
+    note: 'Rapport enregistré · rejoué sur les données du jour. « * » signale un échantillon trop court.',
   },
   scout: {
     title: 'FC Boisval · J-6',

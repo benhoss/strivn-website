@@ -59,7 +59,35 @@ const empty = '·';
 </CaptureFrame>
 
 <style>
+  /* The readiness chip is the point of the table, so on a phone the table is
+     tightened to fit rather than scrolled with the chip out of view. */
   .checkin-table {
-    min-width: 440px;
+    min-width: 340px;
+  }
+  @media (max-width: 480px) {
+    .checkin-table th {
+      font-size: 9px;
+      letter-spacing: 0.03em;
+    }
+    .checkin-table th,
+    .checkin-table td {
+      padding-inline: 5px;
+    }
+    .checkin-table th:first-child,
+    .checkin-table td:first-child {
+      padding-left: 12px;
+    }
+    .checkin-table th:last-child,
+    .checkin-table td:last-child {
+      padding-right: 12px;
+    }
+    .checkin-table td:first-child {
+      font-size: 13px;
+    }
+    .checkin-table .st-chip {
+      gap: 4px;
+      padding: 2px 6px;
+      font-size: 9.5px;
+    }
   }
 </style>

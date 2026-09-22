@@ -18,7 +18,7 @@ export const tests: SubpageLocales = {
       title: 'Situez chaque test dans ses zones et son poste.',
       sub: 'Créez vos mesures, lancez une campagne de tests, saisissez sur le terrain. STRIVN place chaque résultat dans ses zones et sur le percentile du poste, pour que la valeur devienne une décision.',
       bullets: [
-        'Mesures sur mesure : nom, unité, sens de la progression',
+        'Mesures sur mesure : nom, unité, sens de la progression',
         'Zones colorées, vos bornes',
         'Saisie terrain, un joueur après l’autre',
         'Percentile par poste et évolution dans le temps',
@@ -46,7 +46,7 @@ export const tests: SubpageLocales = {
           {
             eyebrow: 'ZONES',
             title: 'Vos seuils, vos couleurs',
-            desc: 'Quatre zones, vos bornes, vos couleurs. Un résultat tombe dans une zone et en hérite partout : liste, fiche joueur, rapport.',
+            desc: 'Quatre zones, vos bornes, vos couleurs. Un résultat tombe dans une zone et en hérite partout : liste, fiche joueur, rapport.',
           },
           {
             eyebrow: 'RÉUTILISATION',
@@ -57,7 +57,7 @@ export const tests: SubpageLocales = {
       },
       {
         kicker: 'SITUER UNE VALEUR',
-        title: 'Lisez « 17,4 km/h » face au poste, l’historique, le groupe.',
+        title: 'Lisez « 17,4 km/h » face au poste, l’historique, le groupe.',
         body: 'Rapporté au poste, à l’historique du joueur et au reste du groupe, ce chiffre devient une décision.',
         visual: 'percentile-scale',
         kind: 'columns',
@@ -80,7 +80,7 @@ export const tests: SubpageLocales = {
         ],
         note: {
           label: 'La campagne vit dans le calendrier',
-          desc: 'Une campagne de tests est un événement comme un autre : elle a une date, une liste de convoqués, un lieu. Les absents restent visibles comme non testés, et hors des moyennes.',
+          desc: 'Une campagne de tests est un événement comme un autre : elle a une date, une liste de convoqués, un lieu. Les absents restent visibles comme non testés, et hors des moyennes.',
         },
       },
     ],

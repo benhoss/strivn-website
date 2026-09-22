@@ -11,13 +11,13 @@ export const staffBrief: SubpageLocales = {
     meta: {
       title: 'Dossier staff | STRIVN',
       description:
-        'Une page à lire en deux minutes : ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace, sans compte à créer.',
+        'Une page à lire en deux minutes : ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace, sans compte à créer.',
     },
     hero: {
       kicker: 'PARTAGÉ PAR LE PRÉPARATEUR PHYSIQUE DE VOTRE ÉQUIPE',
       kickerShown: true,
       title: 'Votre préparateur a déjà commencé.',
-      sub: 'Une page à lire en deux minutes. Elle résume ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace : sans compte à créer, sans engagement, sans validation du club.',
+      sub: 'Une page à lire en deux minutes. Elle résume ce que l’équipe suit déjà, ce que chaque rôle y gagne, et comment rejoindre l’espace : sans compte à créer, sans engagement, sans validation du club.',
       ctas: {
         primary: 'Demander mon accès',
         secondary: { label: 'Voir les fonctionnalités', href: '/fr/features/' },
@@ -44,7 +44,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'clipboard-list',
             title: 'Head coach',
-            desc: 'La disponibilité réelle arrive dans la convocation : qui est apte, qui est adapté, qui est hors jeu, sans demander.',
+            desc: 'La disponibilité réelle arrive dans la convocation : qui est apte, qui est adapté, qui est hors jeu, sans demander.',
           },
           {
             icon: 'shield-check',
@@ -64,7 +64,7 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'chart-column',
             title: 'Direction',
-            desc: 'Des rapports lisibles sans être analyste : charge, disponibilité, assiduité, sur la période de votre choix.',
+            desc: 'Des rapports lisibles sans être analyste : charge, disponibilité, assiduité, sur la période de votre choix.',
           },
           {
             icon: 'euro',
@@ -77,7 +77,7 @@ export const staffBrief: SubpageLocales = {
         kind: 'callout',
         icon: 'share-2',
         tone: 'blue',
-        text: 'Rejoindre l’espace de l’équipe : votre préparateur vous envoie un lien d’invitation. Sans compte à créer, sans mot de passe à retenir.',
+        text: 'Rejoindre l’espace de l’équipe : votre préparateur vous envoie un lien d’invitation. Sans compte à créer, sans mot de passe à retenir.',
       },
     ],
   },
@@ -161,13 +161,13 @@ export const staffBrief: SubpageLocales = {
     meta: {
       title: 'Stafdossier | STRIVN',
       description:
-        'Een pagina om in twee minuten te lezen: wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe je de ruimte binnenstapt zonder iets aan te maken.',
+        'Een pagina om in twee minuten te lezen: wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe u de ruimte binnenstapt zonder iets aan te maken.',
     },
     hero: {
       kicker: 'GEDEELD DOOR DE FYSIEK TRAINER VAN UW PLOEG',
       kickerShown: true,
-      title: 'Jullie fysiek trainer is al begonnen.',
-      sub: 'Een pagina om in twee minuten te lezen. Ze vat samen wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe je de ruimte binnenstapt: geen account aan te maken, geen verbintenis, geen goedkeuring van de club.',
+      title: 'Uw fysiek trainer is al begonnen.',
+      sub: 'Een pagina om in twee minuten te lezen. Ze vat samen wat de ploeg al opvolgt, wat elke rol erbij wint, en hoe u de ruimte binnenstapt: geen account aan te maken, geen verbintenis, geen goedkeuring van de club.',
       ctas: {
         primary: 'Mijn toegang aanvragen',
         secondary: { label: 'De functies bekijken', href: '/nl/features/' },
@@ -184,7 +184,7 @@ export const staffBrief: SubpageLocales = {
           { value: '12', label: 'weken belastingshistoriek', tone: 'blue' },
           { value: '2', label: 'spelers in een terugkeerprotocol', tone: 'orange' },
         ],
-        foot: 'Voorbeeldcijfers. Op jouw ruimte beschrijven ze jouw kern en werken ze zichzelf bij.',
+        foot: 'Voorbeeldcijfers. In uw ruimte beschrijven ze uw kern en werken ze zichzelf bij.',
       },
       {
         kicker: 'WAT ELKE ROL ERBIJ WINT',
@@ -209,17 +209,17 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'gauge',
             title: 'Fysiek trainer',
-            desc: 'Belasting, GPS, wellness en tests in één systeem, de reden waarom deze pagina bij jou komt.',
+            desc: 'Belasting, GPS, wellness en tests in één systeem, de reden waarom deze pagina bij u komt.',
           },
           {
             icon: 'chart-column',
             title: 'Directie',
-            desc: 'Rapporten die je leest zonder analist te zijn: belasting, beschikbaarheid, aanwezigheid, over de periode van je keuze.',
+            desc: 'Rapporten die u leest zonder analist te zijn: belasting, beschikbaarheid, aanwezigheid, over de periode van uw keuze.',
           },
           {
             icon: 'euro',
             title: 'De club',
-            desc: 'Nul euro voor één ploeg, zonder verbintenis, en een export van je data op elk moment.',
+            desc: 'Nul euro voor één ploeg, zonder verbintenis, en een export van uw data op elk moment.',
           },
         ],
       },
@@ -227,7 +227,7 @@ export const staffBrief: SubpageLocales = {
         kind: 'callout',
         icon: 'share-2',
         tone: 'blue',
-        text: 'De ploegruimte binnenstappen: je fysiek trainer stuurt je een uitnodigingslink. Zonder account aan te maken, zonder wachtwoord te onthouden.',
+        text: 'De ploegruimte binnenstappen: uw fysiek trainer stuurt u een uitnodigingslink. Zonder account aan te maken, zonder wachtwoord te onthouden.',
       },
     ],
   },
@@ -391,7 +391,7 @@ export const staffBrief: SubpageLocales = {
     hero: {
       kicker: 'COMPARTIDO POR EL PREPARADOR FÍSICO DE SU EQUIPO',
       kickerShown: true,
-      title: 'Vuestro preparador físico ya ha empezado.',
+      title: 'Su preparador físico ya ha empezado.',
       sub: 'Una página para leer en dos minutos. Resume lo que el equipo ya sigue, lo que gana cada rol, y cómo entrar en el espacio: sin cuenta que crear, sin compromiso, sin validación del club.',
       ctas: {
         primary: 'Pedir mi acceso',
@@ -409,7 +409,7 @@ export const staffBrief: SubpageLocales = {
           { value: '12', label: 'semanas de historial de carga', tone: 'blue' },
           { value: '2', label: 'jugadores en protocolo de vuelta', tone: 'orange' },
         ],
-        foot: 'Cifras de ejemplo. En tu espacio describen tu plantilla y se actualizan solas.',
+        foot: 'Cifras de ejemplo. En su espacio describen su plantilla y se actualizan solas.',
       },
       {
         kicker: 'LO QUE GANA CADA ROL',
@@ -434,17 +434,17 @@ export const staffBrief: SubpageLocales = {
           {
             icon: 'gauge',
             title: 'Preparador físico',
-            desc: 'Carga, GPS, wellness y tests en un solo sistema, la razón por la que esta página te llega.',
+            desc: 'Carga, GPS, wellness y tests en un solo sistema, la razón por la que esta página le llega.',
           },
           {
             icon: 'chart-column',
             title: 'Dirección',
-            desc: 'Informes legibles sin ser analista: carga, disponibilidad, asistencia, en el periodo que elijas.',
+            desc: 'Informes legibles sin ser analista: carga, disponibilidad, asistencia, en el periodo que elija.',
           },
           {
             icon: 'euro',
             title: 'El club',
-            desc: 'Cero euros por un equipo, sin compromiso, y una exportación de tus datos en cualquier momento.',
+            desc: 'Cero euros por un equipo, sin compromiso, y una exportación de sus datos en cualquier momento.',
           },
         ],
       },
@@ -452,7 +452,7 @@ export const staffBrief: SubpageLocales = {
         kind: 'callout',
         icon: 'share-2',
         tone: 'blue',
-        text: 'Entrar en el espacio del equipo: tu preparador te envía un enlace de invitación. Sin cuenta que crear, sin contraseña que recordar.',
+        text: 'Entrar en el espacio del equipo: su preparador le envía un enlace de invitación. Sin cuenta que crear, sin contraseña que recordar.',
       },
     ],
   },

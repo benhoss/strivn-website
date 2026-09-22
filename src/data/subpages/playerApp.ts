@@ -17,7 +17,7 @@ export const playerApp: SubpageLocales = {
     meta: {
       title: 'App joueur STRIVN Player | STRIVN',
       description:
-        'STRIVN Player, l’app du joueur sur iOS et Android : agenda, convocations, check-in du matin, séances de musculation et créneaux de soins. Chaque joueur y voit seulement ses propres données.',
+        'STRIVN Player, l’app du joueur sur iOS et Android : agenda, convocations, check-in du matin, séances de musculation et créneaux de soins. Chaque joueur y voit seulement ses propres données.',
     },
     hero: {
       kicker: 'APP JOUEUR',
@@ -109,7 +109,7 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'SA FORME',
         title: 'Plus il en donne, plus il en voit.',
-        body: 'Le check-in du matin et le RPE d’après-séance alimentent la même courbe de readiness. Le joueur ouvre la sienne dans l’app : son score du jour, sa semaine à sept cases, sa charge récente.',
+        body: 'Le check-in du matin et le RPE d’après-séance alimentent la même courbe de readiness. Le joueur ouvre la sienne dans l’app : son score du jour, sa semaine à sept cases, sa charge récente.',
         visual: 'player-form',
         visualAside: true,
         kind: 'panels',
@@ -136,7 +136,7 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'SES STATS',
         title: 'Sa saison, en chiffres qui lui appartiennent.',
-        body: 'Le staff saisit la feuille de match. Le joueur retrouve sa ligne dans l’onglet Stats : minutes, buts, passes décisives, cartons, match par match, sur les cinq derniers, sur la saison, ou depuis son arrivée au club.',
+        body: 'Le staff saisit la feuille de match. Le joueur retrouve sa ligne dans l’onglet Stats : minutes, buts, passes décisives, cartons, match par match, sur les cinq derniers, sur la saison, ou depuis son arrivée au club.',
         visual: 'player-stats',
         kind: 'columns',
         cols: [
@@ -199,7 +199,7 @@ export const playerApp: SubpageLocales = {
       {
         kicker: 'CE QU’IL VOIT',
         title: 'Ses chiffres, et seulement les siens.',
-        body: 'Un écran de stats pose toujours la même question dans un vestiaire : qui voit les miens ? La réponse est dans le produit, pas dans une consigne d’usage.',
+        body: 'Un écran de stats pose toujours la même question dans un vestiaire : qui voit les miens ? La réponse est dans le produit, pas dans une consigne d’usage.',
         kind: 'compare',
         heads: ['Dans son app', 'Jamais dans son app'],
         tones: ['blue', 'plain'],

@@ -39,15 +39,11 @@ const acwrInk = (v: string | null) => {
               <td class="cap-td-name">{r.name}</td>
               <td>
                 {fmt(r.min)}
-                {r.minDelta === null ? (
-                  <span class="ink-3"> *</span>
-                ) : (
-                  <span class="ink-3">
-                    {' '}
-                    {r.minDelta > 0 ? '+' : '−'}
-                    {fmt(Math.abs(r.minDelta))}
-                  </span>
-                )}
+                <span class="ink-3">
+                  {r.minDelta === null
+                    ? ' *'
+                    : ` ${r.minDelta > 0 ? '+' : '−'}${fmt(Math.abs(r.minDelta))}`}
+                </span>
               </td>
               <td>
                 {r.rating}
@@ -68,6 +64,6 @@ const acwrInk = (v: string | null) => {
 
 <style>
   .report {
-    min-width: 380px;
+    min-width: 320px;
   }
 </style>

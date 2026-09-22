@@ -10,15 +10,15 @@ export const reports: SubpageLocales = {
     meta: {
       title: 'Rapports, IA & BI | STRIVN',
       description:
-        'Signaux du matin, briefing avant la séance, rapports enregistrés et tableaux de bord composés. Sans saisie spécifique : tout part des données déjà là.',
+        'Signaux du matin, briefing avant la séance, rapports enregistrés et tableaux de bord composés. Sans saisie spécifique : tout part des données déjà là.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · INTELLIGENCE',
       title: 'Enregistrez la question, les chiffres du jour suivent.',
-      sub: 'Sans saisie spécifique : les rapports se nourrissent de la feuille de match, du check-in, de la charge et des imports GPS. Vous enregistrez une question, et elle se rejoue sur les données du jour à chaque ouverture.',
+      sub: 'Sans saisie spécifique : les rapports se nourrissent de la feuille de match, du check-in, de la charge et des imports GPS. Vous enregistrez une question, et elle se rejoue sur les données du jour à chaque ouverture.',
       bullets: [
-        'Sélection / forme : qui est en forme, qui aligner',
-        'Générateur : sujet, statistiques, forme et comparaison',
+        'Sélection / forme : qui est en forme, qui aligner',
+        'Générateur : sujet, statistiques, forme et comparaison',
         'Tableaux de bord composés, rejoués à chaque ouverture',
         'Assistant qui pose une question plutôt que de deviner',
       ],
@@ -38,12 +38,12 @@ export const reports: SubpageLocales = {
           {
             num: 'LE MATIN',
             title: 'Signaux & alertes',
-            desc: 'Votre boîte de réception du jour : les joueurs qui demandent votre attention, en une lecture, avant le café.',
+            desc: 'Votre boîte de réception du jour : les joueurs qui demandent votre attention, en une lecture, avant le café.',
           },
           {
             num: 'AVANT LA SÉANCE',
             title: 'Briefing IA',
-            desc: 'Les décisions du jour : chaque joueur rangé dans une case (s’entraîne, adapté, repos, absent, non convoqué, inconnu). « Inconnu » est une réponse à part entière.',
+            desc: 'Les décisions du jour : chaque joueur rangé dans une case (s’entraîne, adapté, repos, absent, non convoqué, inconnu). « Inconnu » est une réponse à part entière.',
           },
           {
             num: 'SUR LA PÉRIODE',
@@ -53,14 +53,14 @@ export const reports: SubpageLocales = {
           {
             num: 'À VOUS',
             title: 'Tableaux de bord',
-            desc: 'Vos propres vues : les chiffres que vous regardez vraiment, disposés comme vous les lisez.',
+            desc: 'Vos propres vues : les chiffres que vous regardez vraiment, disposés comme vous les lisez.',
           },
         ],
       },
       {
         kicker: 'LA PAGE LIBRE',
         title: 'Choisissez le sujet, les statistiques et le repère.',
-        body: 'Le générateur assemble un rapport en trois choix : sur qui, quelles statistiques, et à quoi les comparer. Ce qui est enregistré, c’est la question. Les chiffres, eux, sont toujours ceux du jour.',
+        body: 'Le générateur assemble un rapport en trois choix : sur qui, quelles statistiques, et à quoi les comparer. Ce qui est enregistré, c’est la question. Les chiffres, eux, sont toujours ceux du jour.',
         kind: 'columns',
         cols: [
           {
@@ -82,7 +82,7 @@ export const reports: SubpageLocales = {
         note: {
           icon: 'circle-alert',
           label: 'L’échantillon court porte une marque',
-          desc: 'Une colonne dérivée d’un échantillon trop court affiche « * » plutôt qu’un chiffre confortable, et ses valeurs dérivées restent vides. Un rapport qui invente une moyenne sur deux matchs est pire qu’un rapport incomplet.',
+          desc: 'Une colonne dérivée d’un échantillon trop court affiche « * » plutôt qu’un chiffre confortable, et ses valeurs dérivées restent vides. Un rapport qui invente une moyenne sur deux matchs est pire qu’un rapport incomplet.',
         },
       },
     ],

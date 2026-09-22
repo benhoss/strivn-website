@@ -11,7 +11,7 @@ export const checkIn: SubpageLocales = {
     meta: {
       title: 'Check-in & Readiness | STRIVN',
       description:
-        'Sommeil, fatigue, douleur, motivation : moins d’une minute par joueur. STRIVN en tire un score Readiness vert / jaune / rouge, projeté sur la charge réellement encaissée.',
+        'Sommeil, fatigue, douleur, motivation : moins d’une minute par joueur. STRIVN en tire un score Readiness vert / jaune / rouge, projeté sur la charge réellement encaissée.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · SUIVI QUOTIDIEN',
@@ -45,25 +45,25 @@ export const checkIn: SubpageLocales = {
             icon: 'circle-check',
             tone: 'green',
             title: 'Vert = état correct',
-            desc: 'Le joueur est dans sa zone et la donnée est fraîche : vous passez au suivant.',
+            desc: 'Le joueur est dans sa zone et la donnée est fraîche : vous passez au suivant.',
           },
           {
             icon: 'minus',
             tone: 'plain',
             title: 'Gris = donnée manquante',
-            desc: 'Un check-in non rempli n’est jamais compté comme « bon ». L’absence de donnée se voit.',
+            desc: 'Un check-in non rempli n’est jamais compté comme « bon ». L’absence de donnée se voit.',
           },
         ],
       },
       {
         kicker: 'INTÉGRATION WHOOP',
         title: 'Le bracelet remplit le check-in du matin.',
-        body: 'STRIVN se connecte à WHOOP par son API développeur et récupère les mesures de la nuit : le score de récupération, la durée et la performance de sommeil, la VFC et la fréquence cardiaque au repos. Le check-in arrive pré-rempli. Le joueur ouvre, vérifie, ajuste ce qui lui semble faux, et valide. Cent joueurs peuvent aujourd’hui connecter leur bracelet à STRIVN.',
+        body: 'STRIVN se connecte à WHOOP par son API développeur et récupère les mesures de la nuit : le score de récupération, la durée et la performance de sommeil, la VFC et la fréquence cardiaque au repos. Le check-in arrive pré-rempli. Le joueur ouvre, vérifie, ajuste ce qui lui semble faux, et valide. Cent joueurs peuvent aujourd’hui connecter leur bracelet à STRIVN.',
         kind: 'logos',
         only: ['whoop'],
         note: {
           label: 'Ce qui reste au joueur',
-          desc: 'La fatigue ressentie, l’humeur, les douleurs : ces réponses-là restent au joueur. Le pré-remplissage couvre les mesures, et le joueur confirme le reste au lieu de tout saisir.',
+          desc: 'La fatigue ressentie, l’humeur, les douleurs : ces réponses-là restent au joueur. Le pré-remplissage couvre les mesures, et le joueur confirme le reste au lieu de tout saisir.',
         },
         foot: 'Marques et logos cités appartiennent à leurs propriétaires respectifs. STRIVN est indépendant de ces sociétés.',
       },
@@ -75,12 +75,12 @@ export const checkIn: SubpageLocales = {
           {
             icon: 'clock-3',
             title: 'Par défaut, au check-in du lendemain',
-            desc: 'Le joueur note sa séance en même temps que son état du matin : une seule sollicitation.',
+            desc: 'Le joueur note sa séance en même temps que son état du matin : une seule sollicitation.',
           },
           {
             icon: 'zap',
             title: 'Ou juste après la séance',
-            desc: 'Activez « Demander le ressenti après la séance » pour un retour à chaud, dans l’heure.',
+            desc: 'Activez « Demander le ressenti après la séance » pour un retour à chaud, dans l’heure.',
           },
           {
             icon: 'sliders-horizontal',
@@ -90,7 +90,7 @@ export const checkIn: SubpageLocales = {
         ],
         note: {
           label: 'Pourquoi le décimal change quelque chose',
-          desc: 'Une séance de 90 minutes notée « 4 » pèse 360. La même notée 4,17 pèse 375. La charge sRPE se calcule en RPE × durée : c’est cette précision-là que l’échelle décimale préserve, sur toutes les surfaces de saisie.',
+          desc: 'Une séance de 90 minutes notée « 4 » pèse 360. La même notée 4,17 pèse 375. La charge sRPE se calcule en RPE × durée : c’est cette précision-là que l’échelle décimale préserve, sur toutes les surfaces de saisie.',
         },
       },
     ],

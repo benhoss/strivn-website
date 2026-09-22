@@ -9,14 +9,14 @@ export const teamManagement: SubpageLocales = {
     meta: {
       title: 'Gestion d’équipe | STRIVN',
       description:
-        'Effectif, calendrier, convocations, présences, feuille de match : le quotidien d’une équipe tient dans un seul espace, nourri des mêmes données que le monitoring.',
+        'Effectif, calendrier, convocations, présences, feuille de match : le quotidien d’une équipe tient dans un seul espace, nourri des mêmes données que le monitoring.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · ÉQUIPE',
       title: 'Tenez l’intendance de l’équipe sans le classeur.',
-      sub: 'Effectif, calendrier, convocations, présences, feuille de match : le quotidien d’une équipe tient dans un seul espace et se nourrit des mêmes données que le monitoring.',
+      sub: 'Effectif, calendrier, convocations, présences, feuille de match : le quotidien d’une équipe tient dans un seul espace et se nourrit des mêmes données que le monitoring.',
       bullets: [
-        'Effectif : actifs, blessés, inactifs, joueurs à l’essai',
+        'Effectif : actifs, blessés, inactifs, joueurs à l’essai',
         'Calendrier avec duplication de semaine',
         'Convocations avec réponses et relances',
         'Séance et match en direct, même sans réseau',
@@ -36,7 +36,7 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'calendar-days',
             title: 'Calendrier & événements',
-            desc: 'Séances, matchs et soins. « Copier → » duplique toute une semaine vers la suivante.',
+            desc: 'Séances, matchs et soins. « Copier → » duplique toute une semaine vers la suivante.',
           },
           {
             icon: 'bell',
@@ -51,7 +51,7 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'timer',
             title: 'Séance en direct',
-            desc: '« Démarrer la séance » ouvre le runner plein écran : présences, chrono, blocs, équipes et score, même sans réseau.',
+            desc: '« Démarrer la séance » ouvre le runner plein écran : présences, chrono, blocs, équipes et score, même sans réseau.',
           },
           {
             icon: 'radio',
@@ -61,7 +61,7 @@ export const teamManagement: SubpageLocales = {
           {
             icon: 'file-text',
             title: 'Documents',
-            desc: 'Fichiers partagés avec suivi de lecture : compteur X/Y vu et date par joueur.',
+            desc: 'Fichiers partagés avec suivi de lecture : compteur X/Y vu et date par joueur.',
           },
         ],
       },
