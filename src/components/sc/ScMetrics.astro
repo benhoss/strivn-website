@@ -1,5 +1,6 @@
 ---
 import type { ScPageContent } from '../../data/scPageContent';
+import ScFrame from './ScFrame.astro';
 
 interface Props {
   metrics: ScPageContent['metrics'];
@@ -8,25 +9,59 @@ interface Props {
 const { metrics: c } = Astro.props;
 ---
 
-<section class="bg-[#05070F] py-20 md:py-28" aria-labelledby="sc-metrics-title">
-  <div class="hl-wrap">
-    <div class="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:gap-20">
-      <div class="hl-reveal">
-        <p class="hl-kicker text-[#68779A]">{c.kicker}</p>
-        <h2 id="sc-metrics-title" class="hl-display mt-4 max-w-[20ch] text-[clamp(2rem,4.4vw,2.75rem)]">{c.title}</h2>
-      </div>
-      <p class="hl-reveal text-[0.9rem] leading-[1.6] text-[#9AA8C4] lg:pb-1.5" style="--d: 100ms;">{c.body}</p>
-    </div>
-
-    <!-- `hl-reveal` here is load-bearing: the stagger cascade only unhides its
-         children once an ancestor (or the list itself) carries `.is-in`. -->
-    <ul class="hl-reveal mt-10 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
-      {c.items.map((item) => (
-        <li class="hl-lift rounded-[12px] bg-[#0C1120] px-[18px] py-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-          <p class="font-mono text-[0.76rem] font-medium text-[#7AB8FF]">{item.name}</p>
-          <p class="mt-1.5 text-[0.75rem] leading-[1.45] text-[#68779A]">{item.detail}</p>
-        </li>
-      ))}
-    </ul>
+<ScFrame id="indicateurs" labelledby="sc-metrics-title" stamp={c.stamp}>
+  <div class="st-head">
+    <h2 id="sc-metrics-title" class="st-h2">{c.title}</h2>
+    <p class="st-body">{c.body}</p>
   </div>
-</section>
+
+  <dl class="sc-defs">
+    {c.items.map((item) => (
+      <div>
+        <dt>{item.name}</dt>
+        <dd class="st-num">{item.detail}</dd>
+      </div>
+    ))}
+  </dl>
+</ScFrame>
+
+<style>
+  .sc-defs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+    margin: 0;
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sc-defs > div {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 16px;
+    align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-line);
+    min-width: 0;
+  }
+  .sc-defs dt {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .sc-defs dd {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--color-ink-3);
+  }
+  @media (max-width: 1080px) {
+    .sc-defs {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
+    .sc-defs > div {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 4px;
+    }
+  }
+</style>

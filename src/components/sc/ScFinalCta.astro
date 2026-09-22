@@ -1,0 +1,62 @@
+---
+import type { ScPageContent, Locale } from '../../data/scPageContent';
+import HomeIcon from '../home/HomeIcon.astro';
+import { appStartUrl } from '../../lib/appUrl';
+
+interface Props {
+  locale: Locale;
+  finalCta: ScPageContent['finalCta'];
+  /** The human CTA, shared with the hero. */
+  talk: { label: string; href: string };
+}
+
+const { locale, finalCta: c, talk } = Astro.props;
+---
+
+<section id="commencer" class="st-sec sc-final" aria-labelledby="sc-final-title">
+  <div class="st-wrap sc-final__in">
+    <div class="sc-final__head">
+      <p class="st-label st-eyebrow">{c.kicker}</p>
+      <h2 id="sc-final-title" class="st-h2">{c.title}</h2>
+    </div>
+    <div class="sc-final__side">
+      <p class="st-lede">{c.body}</p>
+      <div class="st-ctas">
+        <a class="st-btn st-btn--primary" href={appStartUrl(locale)} target="_blank" rel="noopener">
+          {c.primaryCta}
+          <HomeIcon name="arrow-right" size={16} />
+        </a>
+        <a class="st-btn st-btn--ghost" href={talk.href}>{talk.label}</a>
+      </div>
+      <p class="st-fine">
+        {c.trust.map((t) => <span>{t}</span>)}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sc-final__in {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: end;
+  }
+  .sc-final__head {
+    display: grid;
+    gap: 20px;
+  }
+  .sc-final__side {
+    display: grid;
+    gap: 24px;
+  }
+  .st-fine {
+    margin: 0;
+  }
+  @media (max-width: 1000px) {
+    .sc-final__in {
+      grid-template-columns: minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+/** Copy column of an S&C section: the points as a rule list, then the link to
+ * the detailed feature page. */
+interface Props {
+  points: string[];
+  cta: string;
+  href: string;
+}
+
+const { points, cta, href } = Astro.props;
+---
+
+<div class="sc-points">
+  <ul class="st-rules">
+    {points.map((p) => <li>{p}</li>)}
+  </ul>
+  <a class="st-link" href={href}>{cta}</a>
+</div>
+
+<style>
+  .sc-points {
+    display: grid;
+    gap: 24px;
+    align-content: start;
+  }
+</style>
