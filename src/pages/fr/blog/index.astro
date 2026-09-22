@@ -40,40 +40,36 @@ const jsonLdExtra = [
   description={description}
   canonicalPath={canonicalPath}
   jsonLdExtra={jsonLdExtra}
-  bodyClass="b-page"
   switchHrefs={{ fr: '/fr/blog/' }}
 >
-  <header class="b-hero">
-    <span class="b-hero__eyebrow">Blog · Coach foot amateur</span>
-    <h1 class="b-hero__title">Notes de terrain pour coachs amateurs.</h1>
-    <p class="b-hero__lede">
-      Prépa physique, séances, charge, blessures, gestion d'équipe. Le genre de trucs
-      qu'on se refile entre coachs après le match du samedi — version écrite.
-    </p>
+  <div class="st-wrap b-index">
+    <header class="b-index__head">
+      <p class="st-label st-eyebrow">Blog · {all.length} articles</p>
+      <h1 class="st-h1">Dosez la charge, construisez la séance, suivez le groupe.</h1>
+      <p class="st-lede">
+        Des articles pour les coachs de foot amateur et semi-pro : prépa physique, séances,
+        charge, blessures et gestion d’équipe. Chaque article donne une méthode, des seuils
+        chiffrés et ses sources.
+      </p>
+    </header>
 
-    <ul class="b-chips" aria-label="Filtrer par catégorie">
-      <li class="b-chips__item">
-        <a class="b-chip" href="/fr/blog/" aria-current="page">Tous ({all.length})</a>
-      </li>
+    <nav class="b-filter" aria-label="Filtrer par catégorie">
+      <a class="b-filter__tag" href="/fr/blog/" aria-current="page">
+        Tous <span class="b-filter__n">{all.length}</span>
+      </a>
       {BLOG_CATEGORIES.map((c) => (
-        <li class="b-chips__item">
-          <a
-            class="b-chip"
-            href={`/fr/blog/categorie/${c}/`}
-            title={BLOG_CATEGORY_DESCRIPTIONS[c]}
-          >
-            {BLOG_CATEGORY_LABELS[c]} <span class="b-chip__count">({counts[c]})</span>
-          </a>
-        </li>
+        <a class="b-filter__tag" href={`/fr/blog/categorie/${c}/`} title={BLOG_CATEGORY_DESCRIPTIONS[c]}>
+          {BLOG_CATEGORY_LABELS[c]} <span class="b-filter__n">{counts[c]}</span>
+        </a>
       ))}
-    </ul>
-  </header>
+    </nav>
 
-  {all.length === 0 ? (
-    <div class="b-empty">Aucun article publié pour l'instant. Reviens bientôt.</div>
-  ) : (
-    <div class="b-grid">
-      {all.map((entry) => <BlogCard entry={entry} />)}
-    </div>
-  )}
+    {all.length === 0 ? (
+      <p class="b-empty">Aucun article publié pour l’instant.</p>
+    ) : (
+      <ul class="b-list">
+        {all.map((entry) => <BlogCard entry={entry} />)}
+      </ul>
+    )}
+  </div>
 </BlogLayout>

@@ -24,6 +24,8 @@ export type Showcase = {
 type YouthContent = {
   meta: { title: string; description: string };
   eyebrow: string;
+  /** Page name in the breadcrumb above the title. */
+  crumb: string;
   hero: { title: string; lede: string; cta: string };
   showcase: Showcase[];
   featuresLead: string;
@@ -33,6 +35,8 @@ type YouthContent = {
   };
   howItWorks: {
     title: string;
+    /** Rail stamp word before the step number: "Étape 01". */
+    stepLabel: string;
     steps: Array<{ title: string; text: string }>;
   };
   finalCta: { title: string; body: string; cta: string };
@@ -46,6 +50,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         'Les tuteurs répondent à la convocation à la place du joueur et suivent le match en direct. Le mode jeunes masque deux fonctions aux mineurs et recueille les consentements des tuteurs.',
     },
     eyebrow: 'STRIVN pour les équipes de jeunes',
+    crumb: 'Équipes de jeunes',
     hero: {
       title: 'Laissez les parents répondre à la convocation.',
       lede: 'Chaque tuteur reçoit son lien personnel et répond Présent, Incertain ou Absent à la place du joueur. Le mode jeunes masque deux fonctions aux mineurs et recueille les consentements des tuteurs. Le jour du match, un lien public ouvre le direct à toute la famille.',
@@ -121,6 +126,7 @@ export const youthContent: Record<Locale, YouthContent> = {
     },
     howItWorks: {
       title: 'Montez le groupe en quatre étapes.',
+      stepLabel: 'Étape',
       steps: [
         {
           title: 'Reliez les parents au groupe',
@@ -154,6 +160,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         'Guardians answer the call-up on the player’s behalf and follow the match live through a public link. Youth mode hides two features from minors and collects the guardians’ consents.',
     },
     eyebrow: 'STRIVN for youth teams',
+    crumb: 'Youth teams',
     hero: {
       title: 'Let parents answer the call-up.',
       lede: 'Every guardian gets a personal link and answers Present, Unsure or Absent on the player’s behalf. Youth mode hides two features from minors and collects the guardians’ consents. On match day, a public link opens the live score to the whole family.',
@@ -229,6 +236,7 @@ export const youthContent: Record<Locale, YouthContent> = {
     },
     howItWorks: {
       title: 'Set the group up in four steps.',
+      stepLabel: 'Step',
       steps: [
         {
           title: 'Link parents to the group',
@@ -262,6 +270,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         'Voogden antwoorden op de oproeping in naam van de speler en volgen de wedstrijd live via een publieke link. De jeugdmodus verbergt twee functies voor minderjarigen en verzamelt de toestemmingen van de voogden.',
     },
     eyebrow: 'STRIVN voor jeugdploegen',
+    crumb: 'Jeugdploegen',
     hero: {
       title: 'Laat de ouders op de oproeping antwoorden.',
       lede: 'Elke voogd krijgt zijn persoonlijke link en antwoordt Aanwezig, Onzeker of Afwezig in naam van de speler. De jeugdmodus verbergt twee functies voor minderjarigen en verzamelt de toestemmingen van de voogden. Op wedstrijddag opent één publieke link de live score voor de hele familie.',
@@ -300,14 +309,14 @@ export const youthContent: Record<Locale, YouthContent> = {
             img: '/screenshots/youth-team-setting.png',
             kind: 'desktop',
             alt: 'Jeugdmodus-instelling van een STRIVN-team: leeftijdscategorie en functies verborgen voor spelers',
-            caption: 'De jeugdmodus zet je in enkele seconden aan in de teaminstellingen.',
+            caption: 'U zet de jeugdmodus in enkele seconden aan in de teaminstellingen.',
           },
         ],
       },
     ],
     featuresLead: 'Zes functies dekken de rest van de week van een jeugdcoach.',
     features: {
-      title: 'Breng je groep, de voogden en de toestemmingen samen.',
+      title: 'Breng uw groep, de voogden en de toestemmingen samen.',
       items: [
         {
           title: 'Ouder-RSVP',
@@ -330,17 +339,18 @@ export const youthContent: Record<Locale, YouthContent> = {
           text: 'Aankondigingen, uurwijzigingen en praktische info vertrekken via één kanaal naar alle ouders. Elk gezin leest wat zijn eigen kind aanbelangt.',
         },
         {
-          title: 'Je groep, gecentraliseerd',
-          text: 'Spelers, voogden, aanwezigheden en agenda staan op één plek, gedeeld met je hele staf. Het Free-plan dekt één ploeg, haar spelers zonder plafond en één stafplaats.',
+          title: 'Uw groep, gecentraliseerd',
+          text: 'Spelers, voogden, aanwezigheden en agenda staan op één plek, gedeeld met uw hele staf. Het Free-plan dekt één ploeg, haar spelers zonder plafond en één stafplaats.',
         },
       ],
     },
     howItWorks: {
       title: 'Zet de groep op in vier stappen.',
+      stepLabel: 'Stap',
       steps: [
         {
           title: 'Koppel de ouders aan de groep',
-          text: 'Voeg je spelers en hun voogden toe en zet daarna de jeugdmodus aan voor de ploeg. De toestemmingen worden vanaf de inschrijving verzameld en de ruimte past zich aan de leeftijd aan.',
+          text: 'Voeg uw spelers en hun voogden toe en zet daarna de jeugdmodus aan voor de ploeg. De toestemmingen worden vanaf de inschrijving verzameld en de ruimte past zich aan de leeftijd aan.',
         },
         {
           title: 'Verstuur de oproeping',
@@ -352,12 +362,12 @@ export const youthContent: Record<Locale, YouthContent> = {
         },
         {
           title: 'Hou de ouders op de hoogte',
-          text: 'Volgende data, aankondigingen en praktische info vertrekken in één bericht naar alle ouders. Je staf, de voogden en jij lezen dezelfde agenda, op hetzelfde moment bijgewerkt.',
+          text: 'Volgende data, aankondigingen en praktische info vertrekken in één bericht naar alle ouders. Uw staf, de voogden en u lezen dezelfde agenda, op hetzelfde moment bijgewerkt.',
         },
       ],
     },
     finalCta: {
-      title: 'Maak je ruimte aan en koppel de ouders.',
+      title: 'Maak uw ruimte aan en koppel de ouders.',
       body: 'Elk nieuw account start met 30 dagen Semi-Pro, zonder bankkaart. Daarna laat het Free-plan één ploeg een heel seizoen draaien, haar spelers zonder plafond.',
       cta: 'Mijn teamruimte aanmaken',
     },
@@ -370,6 +380,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         'Erziehungsberechtigte antworten im Namen des Spielers auf das Aufgebot und verfolgen das Spiel live über einen öffentlichen Link. Der Jugendmodus blendet zwei Funktionen für Minderjährige aus und erfasst die Einwilligungen der Eltern.',
     },
     eyebrow: 'STRIVN für Jugendteams',
+    crumb: 'Jugendteams',
     hero: {
       title: 'Eltern aufs Aufgebot antworten lassen.',
       lede: 'Jeder Erziehungsberechtigte erhält seinen persönlichen Link und antwortet im Namen des Spielers Dabei, Unsicher oder Abwesend. Der Jugendmodus blendet zwei Funktionen für Minderjährige aus und erfasst die Einwilligungen der Eltern. Am Spieltag öffnet ein öffentlicher Link den Live-Spielstand für die ganze Familie.',
@@ -445,6 +456,7 @@ export const youthContent: Record<Locale, YouthContent> = {
     },
     howItWorks: {
       title: 'Richten Sie die Gruppe in vier Schritten ein.',
+      stepLabel: 'Schritt',
       steps: [
         {
           title: 'Eltern mit der Gruppe verknüpfen',
@@ -478,6 +490,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         'Os encarregados de educação respondem à convocatória em nome do jogador e acompanham o jogo em direto. O modo formação esconde duas funcionalidades aos menores e recolhe os consentimentos.',
     },
     eyebrow: 'STRIVN para equipas de formação',
+    crumb: 'Equipas de formação',
     hero: {
       title: 'Deixe os pais responderem à convocatória.',
       lede: 'Cada encarregado de educação recebe o seu link pessoal e responde Presente, Incerto ou Ausente em nome do jogador. O modo formação esconde duas funcionalidades aos menores e recolhe os consentimentos dos encarregados. No dia de jogo, um link público abre o resultado em direto a toda a família.',
@@ -553,6 +566,7 @@ export const youthContent: Record<Locale, YouthContent> = {
     },
     howItWorks: {
       title: 'Monte o grupo em quatro passos.',
+      stepLabel: 'Passo',
       steps: [
         {
           title: 'Associar os pais ao grupo',
@@ -586,14 +600,15 @@ export const youthContent: Record<Locale, YouthContent> = {
         'Los tutores responden a la convocatoria en nombre del jugador y siguen el partido en directo con un enlace público. El modo formación oculta dos funciones a los menores y recoge los consentimientos.',
     },
     eyebrow: 'STRIVN para fútbol base',
+    crumb: 'Fútbol base',
     hero: {
-      title: 'Deja que las familias respondan.',
+      title: 'Deje que las familias respondan.',
       lede: 'Cada tutor recibe su enlace personal y responde Voy, Duda o No voy en nombre del jugador. El modo formación oculta dos funciones a los menores y recoge los consentimientos de los tutores. El día del partido, un enlace público abre el marcador en directo a toda la familia.',
       cta: 'Empezar gratis',
     },
     showcase: [
       {
-        title: 'Envía la convocatoria, los tutores responden en un toque.',
+        title: 'Envíe la convocatoria, los tutores responden en un toque.',
         blurb: 'Cada tutor está vinculado a su hijo y recibe la convocatoria con un enlace personal. Elige entre tres respuestas, Voy, Duda o No voy, y deja una nota para el cuerpo técnico. Quien responde primero cierra la asistencia, y el recordatorio sale solo.',
         slides: [
           {
@@ -605,8 +620,8 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
       {
-        title: 'Comparte el directo del partido con un enlace.',
-        blurb: 'Envía el enlace público antes del pitido inicial, a las familias en la grada y a los abuelos en casa. Siguen el marcador y las jugadas en directo, desde un navegador.',
+        title: 'Comparta el directo del partido con un enlace.',
+        blurb: 'Envíe el enlace público antes del pitido inicial, a las familias en la grada y a los abuelos en casa. Siguen el marcador y las jugadas en directo, desde un navegador.',
         slides: [
           {
             img: '/screenshots/live-viewer-phone.png',
@@ -617,8 +632,8 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
       {
-        title: 'Activa el modo formación, dos funciones se ocultan.',
-        blurb: 'Elige la categoría de edad del grupo y el espacio se adapta en unos segundos. El asistente de IA y las multas desaparecen de la app de los jugadores menores. Los consentimientos de los tutores se recogen en un mismo sitio, revocables en cualquier momento.',
+        title: 'Active el modo formación, dos funciones se ocultan.',
+        blurb: 'Elija la categoría de edad del grupo y el espacio se adapta en unos segundos. El asistente de IA y las multas desaparecen de la app de los jugadores menores. Los consentimientos de los tutores se recogen en un mismo sitio, revocables en cualquier momento.',
         slides: [
           {
             img: '/screenshots/youth-team-setting.png',
@@ -643,45 +658,46 @@ export const youthContent: Record<Locale, YouthContent> = {
         },
         {
           title: 'Consentimientos de los tutores',
-          text: 'Recoge y sigue los consentimientos en un mismo sitio: quién ha autorizado qué y cuándo. Ningún mensaje llega a un jugador menor antes del consentimiento de sus padres. Cada consentimiento se revoca en cualquier momento, conforme al RGPD.',
+          text: 'Recoja y siga los consentimientos en un mismo sitio: quién ha autorizado qué y cuándo. Ningún mensaje llega a un jugador menor antes del consentimiento de sus padres. Cada consentimiento se revoca en cualquier momento, conforme al RGPD.',
         },
         {
           title: 'Modo formación',
-          text: 'Elige la categoría de edad del grupo: dos funciones se ocultan a los jugadores. El asistente de IA y las multas quedan visibles solo para el cuerpo técnico.',
+          text: 'Elija la categoría de edad del grupo: dos funciones se ocultan a los jugadores. El asistente de IA y las multas quedan visibles solo para el cuerpo técnico.',
         },
         {
           title: 'Comunicación con las familias',
           text: 'Avisos, cambios de horario e información práctica salen por un solo canal a todas las familias. Cada familia lee lo que afecta a su propio hijo.',
         },
         {
-          title: 'Tu grupo, centralizado',
-          text: 'Jugadores, tutores, asistencias y agenda viven en un mismo sitio, compartidos con todo tu cuerpo técnico. El plan Free cubre un equipo, sus jugadores sin límite y una plaza de staff.',
+          title: 'Su grupo, centralizado',
+          text: 'Jugadores, tutores, asistencias y agenda viven en un mismo sitio, compartidos con todo su cuerpo técnico. El plan Free cubre un equipo, sus jugadores sin límite y una plaza de staff.',
         },
       ],
     },
     howItWorks: {
-      title: 'Monta el grupo en cuatro pasos.',
+      title: 'Monte el grupo en cuatro pasos.',
+      stepLabel: 'Paso',
       steps: [
         {
           title: 'Vincular a las familias con el grupo',
-          text: 'Añade a tus jugadores y a sus tutores y activa el modo formación en el equipo. Los consentimientos se recogen desde el alta, y el espacio se adapta a la categoría de edad.',
+          text: 'Añada a sus jugadores y a sus tutores y active el modo formación en el equipo. Los consentimientos se recogen desde el alta, y el espacio se adapta a la categoría de edad.',
         },
         {
           title: 'Enviar la convocatoria',
           text: 'Cada tutor recibe un enlace personal y responde en nombre del jugador en un toque. La lista de asistencia se llena sola, recordatorios incluidos.',
         },
         {
-          title: 'Comparte el directo el día del partido',
+          title: 'Comparta el directo el día del partido',
           text: 'Un enlace enviado antes del pitido inicial abre el directo a toda la familia. Las familias en la grada y quienes se quedan en casa siguen el mismo marcador.',
         },
         {
-          title: 'Mantén a las familias al día',
-          text: 'Próximas fechas, avisos e información práctica salen en un mensaje a todas las familias. Tu cuerpo técnico, los tutores y tú veis la misma agenda, actualizada a la vez.',
+          title: 'Mantenga a las familias al día',
+          text: 'Próximas fechas, avisos e información práctica salen en un mensaje a todas las familias. Su cuerpo técnico, los tutores y usted ven la misma agenda, actualizada a la vez.',
         },
       ],
     },
     finalCta: {
-      title: 'Crea tu espacio y vincula a las familias.',
+      title: 'Cree su espacio y vincule a las familias.',
       body: 'Cada cuenta nueva empieza con 30 días de Semi-Pro, sin tarjeta de crédito. Después el plan Free hace funcionar un equipo toda la temporada, con sus jugadores sin límite.',
       cta: 'Crear mi espacio de equipo',
     },

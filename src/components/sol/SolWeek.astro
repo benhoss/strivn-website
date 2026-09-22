@@ -1,0 +1,130 @@
+---
+/**
+ * The week the modules cover: the six moments of the features index, each a
+ * link to its band there, then the link to the full index.
+ */
+import type { SolutionsContent, Locale } from '../../data/solutionsContent';
+import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
+import { GROUPS } from '../../data/featuresIndexContent';
+
+interface Props {
+  locale: Locale;
+  week: SolutionsContent['week'];
+  feat: FeaturesIndexContent;
+}
+
+const { locale, week: c, feat } = Astro.props;
+const base = `/${locale}/features/`;
+const names = (ids: readonly string[]) =>
+  ids.map((id) => feat.modules[id as keyof FeaturesIndexContent['modules']].name);
+---
+
+<section id="semaine" class="st-sec" aria-labelledby="sx-week-title">
+  <div class="st-wrap">
+    <div class="st-head">
+      <h2 id="sx-week-title" class="st-h2 st-h2--sm">{c.title}</h2>
+      <p class="st-body">{c.body}</p>
+    </div>
+
+    <ol class="sx-week">
+      {GROUPS.map((g) => {
+        const group = feat.groups[g.id];
+        const list = g.id === 'ai' ? feat.ai.moments.map((m) => m.name) : names(g.modules);
+        return (
+          <li>
+            <a href={`${base}#${g.id}`}>
+              <span class="st-label">
+                {group.day} · <span class="st-num">{g.time}</span>
+              </span>
+              <span class="st-h4 sx-week__label">{group.label}</span>
+              <span class="sx-week__mods">{list.join(' · ')}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ol>
+
+    <p class="mt-8">
+      <a class="st-link" href={base}>{c.cta}</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .sx-week {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sx-week li {
+    border-bottom: 1px solid var(--color-line);
+  }
+  .sx-week li:not(:nth-child(3n + 1)) {
+    border-left: 1px solid var(--color-line);
+  }
+  .sx-week a {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    height: 100%;
+    padding: 22px 24px;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+  }
+  .sx-week li:nth-child(3n + 1) a {
+    padding-left: 0;
+  }
+  .sx-week a:hover .sx-week__label {
+    color: var(--color-electric-500);
+  }
+  .sx-week a:focus-visible {
+    outline: 2px solid var(--color-electric-500);
+    outline-offset: -2px;
+  }
+  .sx-week__label {
+    transition: color 150ms ease;
+  }
+  .sx-week__mods {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-ink-3);
+  }
+  @media (max-width: 1000px) {
+    .sx-week {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sx-week li:not(:nth-child(3n + 1)) {
+      border-left: 0;
+    }
+    .sx-week li:nth-child(3n + 1) a {
+      padding-left: 24px;
+    }
+    .sx-week li:nth-child(2n) {
+      border-left: 1px solid var(--color-line);
+    }
+    .sx-week li:nth-child(2n + 1) a {
+      padding-left: 0;
+    }
+  }
+  @media (max-width: 620px) {
+    .sx-week {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .sx-week li:nth-child(2n) {
+      border-left: 0;
+    }
+    .sx-week li a,
+    .sx-week li:nth-child(3n + 1) a {
+      padding-inline: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sx-week a,
+    .sx-week__label {
+      transition: none;
+    }
+  }
+</style>

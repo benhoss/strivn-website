@@ -11,6 +11,8 @@ export const CLUBS_FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 type ClubsContent = {
   meta: { title: string; description: string };
   eyebrow: string;
+  /** Page name in the breadcrumb above the title. */
+  crumb: string;
   hero: { title: string; lede: string; status: string };
   benefits: { title: string; items: Array<{ title: string; text: string }> };
   form: {
@@ -41,6 +43,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         'Coordonnez les équipes, les staffs et le suivi médical de votre club sur une base commune. Nous ouvrons le plan Club progressivement. Inscrivez votre club sur la liste d’attente.',
     },
     eyebrow: 'STRIVN pour les clubs',
+    crumb: 'Clubs',
     hero: {
       title: 'Coordonnez vos équipes sur une même base.',
       lede: 'Le plan Club réunit vos équipes sur une base commune : joueurs partagés, staff médical mutualisé, tableaux de bord inter-équipes. Nous ouvrons progressivement, et les clubs inscrits passent en premier. Vos coaches démarrent aujourd’hui, avec 30 jours de Semi-Pro à l’inscription.',
@@ -105,6 +108,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         'Coordinate the teams, the staff and the medical follow-up of your club on one shared base. We open the Club plan gradually. Put your club on the waitlist.',
     },
     eyebrow: 'STRIVN for clubs',
+    crumb: 'Clubs',
     hero: {
       title: 'Coordinate every team on one shared base.',
       lede: 'The Club plan brings your teams onto one shared base: shared players, shared medical staff, dashboards across squads. We open gradually, and clubs on the waitlist go first. Your coaches start today, with 30 days of Semi-Pro at sign-up.',
@@ -164,14 +168,15 @@ export const clubsContent: Record<Locale, ClubsContent> = {
 
   nl: {
     meta: {
-      title: 'STRIVN voor clubs | Coördineer al je teams',
+      title: 'STRIVN voor clubs | Coördineer al uw teams',
       description:
-        'Coördineer de teams, de staf en de medische opvolging van je club op één gedeelde basis. We openen het Club-plan geleidelijk. Zet je club op de wachtlijst.',
+        'Coördineer de teams, de staf en de medische opvolging van uw club op één gedeelde basis. We openen het Club-plan geleidelijk. Zet uw club op de wachtlijst.',
     },
     eyebrow: 'STRIVN voor clubs',
+    crumb: 'Clubs',
     hero: {
-      title: 'Coördineer al je teams op één basis.',
-      lede: 'Het Club-plan brengt je teams samen op één basis: gedeelde spelers, gedeelde medische staf, dashboards over alle teams heen. We openen geleidelijk, en clubs op de wachtlijst komen eerst aan de beurt. Je coaches starten vandaag, met 30 dagen Semi-Pro bij inschrijving.',
+      title: 'Coördineer al uw teams op één basis.',
+      lede: 'Het Club-plan brengt uw teams samen op één basis: gedeelde spelers, gedeelde medische staf, dashboards over alle teams heen. We openen geleidelijk, en clubs op de wachtlijst komen eerst aan de beurt. Uw coaches starten vandaag, met 30 dagen Semi-Pro bij inschrijving.',
       status: 'Binnenkort · geleidelijke uitrol',
     },
     benefits: {
@@ -200,28 +205,28 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       ],
     },
     form: {
-      title: 'Zet je club op de wachtlijst.',
-      body: 'Beschrijf je club hieronder. We schrijven je zodra de uitrol jou bereikt.',
+      title: 'Zet uw club op de wachtlijst.',
+      body: 'Beschrijf uw club hieronder. We schrijven u zodra de uitrol bij u aankomt.',
       fields: {
-        name: { label: 'Je naam', placeholder: 'Voornaam Achternaam' },
-        email: { label: 'E-mail', placeholder: 'jij@club.be' },
+        name: { label: 'Uw naam', placeholder: 'Voornaam Achternaam' },
+        email: { label: 'E-mail', placeholder: 'naam@club.be' },
         club: { label: 'Naam van de club', placeholder: 'FC Voorbeeld' },
-        role: { label: 'Je rol binnen de club', placeholder: 'Voorzitter, coördinator, technisch verantwoordelijke…' },
+        role: { label: 'Uw rol binnen de club', placeholder: 'Voorzitter, coördinator, technisch verantwoordelijke…' },
         teams: { label: 'Aantal teams', placeholder: 'bv. 12' },
       },
       submit: 'Inschrijven op de wachtlijst',
       sending: 'Verzenden…',
       success: {
-        title: 'Je club staat op de lijst.',
-        body: 'Bedankt. We schrijven je naarmate het Club-plan wordt uitgerold. Ondertussen maken je coaches hun account aan, met 30 dagen Semi-Pro bij inschrijving.',
+        title: 'Uw club staat op de lijst.',
+        body: 'Bedankt. We schrijven u naarmate het Club-plan wordt uitgerold. Ondertussen maken uw coaches hun account aan, met 30 dagen Semi-Pro bij inschrijving.',
       },
       error: 'Het formulier kon niet worden verzonden. Probeer het opnieuw, of schrijf naar hello@strivn.net.',
-      privacyNote: 'We gebruiken deze gegevens enkel voor de opvolging van je aanvraag over het Club-plan.',
+      privacyNote: 'We gebruiken deze gegevens enkel voor de opvolging van uw aanvraag over het Club-plan.',
       privacyLink: { label: 'Privacybeleid', href: '/nl/privacy' },
     },
     finalCta: {
-      title: 'Laat je coaches vandaag starten.',
-      body: 'Het gratis plan draagt één team een heel seizoen, zonder kaart. Elk nieuw account start met 30 dagen Semi-Pro. We verwittigen je zodra het Club-plan opent.',
+      title: 'Laat uw coaches vandaag starten.',
+      body: 'Het gratis plan draagt één team een heel seizoen, zonder kaart. Elk nieuw account start met 30 dagen Semi-Pro. We verwittigen u zodra het Club-plan opent.',
       cta: 'Gratis starten als coach',
     },
   },
@@ -233,6 +238,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         'Koordinieren Sie die Teams, den Staff und die medizinische Nachverfolgung Ihres Vereins auf einer gemeinsamen Basis. Wir öffnen den Verein-Tarif schrittweise. Tragen Sie Ihren Verein in die Warteliste ein.',
     },
     eyebrow: 'STRIVN für Vereine',
+    crumb: 'Vereine',
     hero: {
       title: 'Koordinieren Sie alle Teams auf einer Basis.',
       lede: 'Der Verein-Tarif führt Ihre Teams auf einer Basis zusammen: gemeinsame Spieler, gemeinsamer medizinischer Staff, Dashboards über alle Teams hinweg. Wir öffnen schrittweise, und Vereine auf der Warteliste kommen zuerst dran. Ihre Coaches starten heute, mit 30 Tagen Semi-Pro bei der Anmeldung.',
@@ -297,6 +303,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         'Coordene as equipas, os staffs e o acompanhamento médico do seu clube numa base comum. Vamos abrir o plano Clube por fases. Inscreva o seu clube na lista de espera.',
     },
     eyebrow: 'STRIVN para clubes',
+    crumb: 'Clubes',
     hero: {
       title: 'Coordene todas as equipas numa só base.',
       lede: 'O plano Clube reúne as suas equipas numa base comum: jogadores partilhados, staff médico partilhado, painéis transversais aos escalões. Abrimos por fases, e os clubes na lista de espera entram primeiro. Os seus treinadores começam hoje, com 30 dias de Semi-Pro na inscrição.',
@@ -356,18 +363,19 @@ export const clubsContent: Record<Locale, ClubsContent> = {
 
   es: {
     meta: {
-      title: 'STRIVN para clubes | Coordina todos tus equipos',
+      title: 'STRIVN para clubes | Coordine todos sus equipos',
       description:
-        'Coordina los equipos, los cuerpos técnicos y el seguimiento médico de tu club sobre una base común. Abrimos el plan Club por fases. Apunta a tu club en la lista de espera.',
+        'Coordine los equipos, los cuerpos técnicos y el seguimiento médico de su club sobre una base común. Abrimos el plan Club por fases. Apunte a su club en la lista de espera.',
     },
     eyebrow: 'STRIVN para clubes',
+    crumb: 'Clubes',
     hero: {
-      title: 'Coordina todos los equipos sobre una base.',
-      lede: 'El plan Club reúne tus equipos sobre una base común: jugadores compartidos, personal médico compartido, paneles que cruzan las plantillas. Abrimos por fases, y los clubes de la lista de espera entran primero. Tus entrenadores empiezan hoy, con 30 días de Semi-Pro al registrarse.',
+      title: 'Coordine todos los equipos sobre una base.',
+      lede: 'El plan Club reúne sus equipos sobre una base común: jugadores compartidos, personal médico compartido, paneles que cruzan las plantillas. Abrimos por fases, y los clubes de la lista de espera entran primero. Sus entrenadores empiezan hoy, con 30 días de Semi-Pro al registrarse.',
       status: 'Muy pronto · despliegue progresivo',
     },
     benefits: {
-      title: 'Pasa del seguimiento de un equipo al club.',
+      title: 'Pase del seguimiento de un equipo al club.',
       items: [
         {
           title: 'Cada equipo sobre la misma base',
@@ -383,7 +391,7 @@ export const clubsContent: Record<Locale, ClubsContent> = {
         },
         {
           title: 'Paneles e informes de club',
-          text: 'Lee disponibilidad, lesiones y carga en todos los equipos, en una vista pensada para la dirección deportiva.',
+          text: 'Lea disponibilidad, lesiones y carga en todos los equipos, en una vista pensada para la dirección deportiva.',
         },
         {
           title: 'Seguimiento de lesiones entre equipos',
@@ -392,28 +400,28 @@ export const clubsContent: Record<Locale, ClubsContent> = {
       ],
     },
     form: {
-      title: 'Apunta a tu club en la lista de espera.',
-      body: 'Describe tu club a continuación. Te escribimos en cuanto el despliegue llegue a ti.',
+      title: 'Apunte a su club en la lista de espera.',
+      body: 'Describa su club a continuación. Le escribimos en cuanto el despliegue llegue a su club.',
       fields: {
-        name: { label: 'Tu nombre', placeholder: 'Nombre Apellido' },
-        email: { label: 'Email', placeholder: 'tu@club.es' },
+        name: { label: 'Su nombre', placeholder: 'Nombre Apellido' },
+        email: { label: 'Email', placeholder: 'nombre@club.es' },
         club: { label: 'Nombre del club', placeholder: 'CF Ejemplo' },
-        role: { label: 'Tu cargo en el club', placeholder: 'Presidente, coordinador, director deportivo…' },
+        role: { label: 'Su cargo en el club', placeholder: 'Presidente, coordinador, director deportivo…' },
         teams: { label: 'Número de equipos', placeholder: 'p. ej. 12' },
       },
       submit: 'Apuntarme a la lista de espera',
       sending: 'Enviando…',
       success: {
-        title: 'Tu club ya está en la lista.',
-        body: 'Gracias. Te escribimos a medida que se despliegue el plan Club. Mientras tanto, tus entrenadores crean su cuenta, con 30 días de Semi-Pro.',
+        title: 'Su club ya está en la lista.',
+        body: 'Gracias. Le escribimos a medida que se despliegue el plan Club. Mientras tanto, sus entrenadores crean su cuenta, con 30 días de Semi-Pro.',
       },
-      error: 'No se ha podido enviar el formulario. Inténtalo de nuevo o escríbenos a hello@strivn.net.',
-      privacyNote: 'Usamos estos datos únicamente para dar seguimiento a tu solicitud sobre el plan Club.',
+      error: 'No se ha podido enviar el formulario. Inténtelo de nuevo o escríbanos a hello@strivn.net.',
+      privacyNote: 'Usamos estos datos únicamente para dar seguimiento a su solicitud sobre el plan Club.',
       privacyLink: { label: 'Política de privacidad', href: '/es/privacy' },
     },
     finalCta: {
-      title: 'Pon a tus entrenadores en marcha hoy.',
-      body: 'El plan gratuito aguanta un equipo una temporada entera, sin tarjeta. Cada cuenta nueva empieza con 30 días de Semi-Pro. Te avisamos cuando abra el plan Club.',
+      title: 'Ponga a sus entrenadores en marcha hoy.',
+      body: 'El plan gratuito aguanta un equipo una temporada entera, sin tarjeta. Cada cuenta nueva empieza con 30 días de Semi-Pro. Le avisamos cuando abra el plan Club.',
       cta: 'Empezar gratis como entrenador',
     },
   },

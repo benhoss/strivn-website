@@ -1,9 +1,10 @@
 ---
 /**
- * The composable "Charge & availability" dashboard capture.
+ * The composable "Load & availability" dashboard surface.
  *
  * Shared by the S&C reporting section and the features index. Chart data is
- * locale-invariant; only labels come from the caller's locale.
+ * locale-invariant (`WEEKLY_BARS`, `HSR_BARS`); only labels come from the
+ * caller's locale. Bars are drawn to scale in CSS and are complete at rest.
  */
 import type { ScPageContent } from '../../data/scPageContent';
 import { WEEKLY_BARS, HSR_BARS } from '../../data/scPageContent';
@@ -17,90 +18,193 @@ interface Props {
 
 const { dashboard: d, class: className = '', style } = Astro.props;
 
-const toneText: Record<string, string> = {
-  green: 'text-[#8CE99A]',
-  blue: 'text-[#7AB8FF]',
-  plain: 'text-[#F8FAFC]',
+const toneClass: Record<string, string> = {
+  green: 'text-ready',
+  orange: 'text-watch',
+  coral: 'text-risk',
+  blue: 'text-ink',
+  plain: 'text-ink',
 };
 
-/** Availability donut, drawn with a conic gradient rather than an SVG arc. */
 const availabilityPct = Number.parseInt(d.availabilityValue, 10) || 0;
 ---
 
-<div
-  class={`flex flex-col gap-3 overflow-hidden rounded-[18px] p-5 [background-image:linear-gradient(90deg,#121A31_0%,#090D19_100%)] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] [box-shadow:0_30px_70px_-16px_rgba(0,0,0,0.8)] ${className}`}
-  style={style}
->
-  <div class="flex flex-wrap items-center justify-between gap-3">
-    <p class="flex items-center gap-2.5 text-[0.82rem] font-semibold text-[#F8FAFC]">
-      <HomeIcon name="layout-dashboard" size={15} class="text-[#7AB8FF]" />
+<div class={`rd st-panel st-panel--float ${className}`} style={style}>
+  <div class="st-panel__bar">
+    <span class="rd__title">
+      <HomeIcon name="layout-dashboard" size={15} class="text-ink-3" />
       {d.title}
-    </p>
-    <p class="flex gap-2">
-      <span class="flex items-center gap-1.5 rounded-full bg-[#FFFFFF0A] px-3 py-1.5 text-[0.69rem] text-[#9AA8C4] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-        <HomeIcon name="plus" size={11} />
-        {d.widgetBtn}
-      </span>
-      <span class="flex items-center gap-1.5 rounded-full bg-[#2D7FF921] px-3 py-1.5 text-[0.69rem] font-medium text-[#7AB8FF] outline-1 outline-[#2D7FF947] -outline-offset-[0.5px]">
-        <HomeIcon name="sparkles" size={11} />
-        {d.aiBtn}
-      </span>
-    </p>
+    </span>
+    <span class="rd__tools" aria-hidden="true">
+      <span class="st-tag">+ {d.widgetBtn}</span>
+      <span class="st-tag st-tag--accent"><HomeIcon name="sparkles" size={11} />{d.aiBtn}</span>
+    </span>
   </div>
 
-  <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-3" data-stagger>
+  <dl class="rd__kpis">
     {d.kpis.map((kpi) => (
-      <div class="rounded-[10px] bg-[#FFFFFF07] px-3.5 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-        <p class="font-mono text-[0.5rem] tracking-[0.09em] text-[#68779A]">{kpi.label}</p>
-        <p class={`hl-display mt-1 text-[1.18rem] leading-none ${toneText[kpi.tone]}`}>{kpi.value}</p>
+      <div class="st-kpi">
+        <dt class="st-label">{kpi.label}</dt>
+        <dd class={`st-kpi__v ${toneClass[kpi.tone] ?? 'text-ink'}`}>{kpi.value}</dd>
       </div>
     ))}
-  </div>
+  </dl>
 
-  <div class="grid gap-2.5 sm:grid-cols-[minmax(0,1fr)_170px]">
-    <div class="rounded-[12px] bg-[#FFFFFF06] px-3.5 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-      <p class="text-[0.69rem] font-semibold text-[#DCE4F2]">{d.weekly}</p>
-      <div class="mt-3 flex h-[4.6rem] items-end gap-[7px]">
+  <div class="rd__grid">
+    <div class="rd__cell">
+      <p class="rd__h">{d.weekly}</p>
+      <div class="rd__weekly" aria-hidden="true">
         {WEEKLY_BARS.map((h, i) => (
-          <span
-            class={`hl-bar flex-1 rounded-[3px] ${i === WEEKLY_BARS.length - 1 ? 'bg-[#2D7FF9]' : 'bg-[#FFFFFF1F]'}`}
-            style={`height: ${h}%; --bd: ${i * 60}ms;`}
-          ></span>
+          <span class:list={['rd__bar', { 'is-now': i === WEEKLY_BARS.length - 1 }]} style={`height: ${h}%;`}></span>
         ))}
       </div>
     </div>
 
-    <div class="flex flex-col items-center gap-2 rounded-[12px] bg-[#FFFFFF06] px-3.5 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-      <p class="text-[0.69rem] font-semibold text-[#DCE4F2]">{d.availability}</p>
-      <div
-        class="grid size-[84px] place-items-center rounded-full"
-        style={`background: conic-gradient(#8CE99A 0% ${availabilityPct}%, rgba(255,255,255,0.07) ${availabilityPct}% 100%);`}
-        aria-hidden="true"
-      >
-        <span class="grid size-[60px] place-items-center rounded-full bg-[#0B111F]">
-          <span class="hl-display text-[1.05rem] leading-none">{d.availabilityValue}</span>
-        </span>
+    <div class="rd__cell">
+      <p class="rd__h">{d.availability}</p>
+      <p class="rd__avail st-num">{d.availabilityValue}</p>
+      <span class="st-meter" aria-hidden="true">
+        <i style={`width: ${availabilityPct}%; background: var(--color-ready);`}></i>
+      </span>
+    </div>
+
+    <div class="rd__cell rd__cell--wide">
+      <div class="rd__hsrhead">
+        <p class="rd__h">{d.hsr}</p>
+        <span class="st-tag st-tag--accent"><HomeIcon name="sparkles" size={10} />{d.aiTag}</span>
+      </div>
+      <div class="rd__hsr" aria-hidden="true">
+        {HSR_BARS.map(([a, b]) => (
+          <div class="rd__pair">
+            <span class="rd__bar rd__bar--prev" style={`height: ${a * 2}%;`}></span>
+            <span class="rd__bar is-now" style={`height: ${b * 2}%;`}></span>
+          </div>
+        ))}
       </div>
     </div>
   </div>
-
-  <div class="rounded-[12px] bg-[#2D7FF912] px-3.5 py-3 outline-1 outline-[#2D7FF95C] -outline-offset-[0.5px]">
-    <div class="flex flex-wrap items-center justify-between gap-2">
-      <p class="text-[0.69rem] font-semibold text-[#DCE4F2]">{d.hsr}</p>
-      <span class="flex items-center gap-1.5 rounded-full bg-[#2D7FF929] px-2.5 py-[3px] font-mono text-[0.47rem] tracking-[0.07em] text-[#7AB8FF]">
-        <HomeIcon name="sparkles" size={9} />
-        {d.aiTag}
-      </span>
-    </div>
-    <div class="mt-3 flex h-[3.4rem] items-end gap-2.5">
-      {HSR_BARS.map(([a, b], i) => (
-        <!-- h-full is required: the bars size in %, which only resolves
-             against a parent with a definite height. -->
-        <div class="flex h-full flex-1 items-end justify-center gap-[3px]">
-          <span class="hl-bar w-[11px] rounded-t-[3px] bg-[#FFFFFF26]" style={`height: ${a}%; --bd: ${i * 70}ms;`}></span>
-          <span class="hl-bar w-[11px] rounded-t-[3px] bg-[#2D7FF9]" style={`height: ${b}%; --bd: ${i * 70 + 35}ms;`}></span>
-        </div>
-      ))}
-    </div>
-  </div>
 </div>
+
+<style>
+  .rd {
+    container-type: inline-size;
+    text-align: left;
+  }
+  .rd__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .rd__tools {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .rd__kpis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 32px;
+    margin: 0;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .rd__kpis dd {
+    margin: 0;
+  }
+  .rd__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  }
+  .rd__cell {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--color-line);
+    min-width: 0;
+  }
+  .rd__cell + .rd__cell {
+    border-left: 1px solid var(--color-line);
+  }
+  .rd__cell--wide {
+    grid-column: 1 / -1;
+    border-left: 0 !important;
+    border-bottom: 0;
+  }
+  .rd__h {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-ink-2);
+  }
+  .rd__weekly,
+  .rd__hsr {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 76px;
+    border-bottom: 1px solid var(--color-line-strong);
+  }
+  .rd__hsr {
+    gap: 14px;
+    height: 64px;
+  }
+  .rd__bar {
+    flex: 1;
+    display: block;
+    border-radius: 3px 3px 0 0;
+    background: var(--color-navy-700);
+  }
+  .rd__bar.is-now {
+    background: var(--color-electric);
+  }
+  .rd__bar--prev {
+    background: var(--color-navy-500);
+  }
+  .rd__pair {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+  }
+  .rd__pair .rd__bar {
+    flex: 0 1 12px;
+  }
+  .rd__avail {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+  .rd__hsrhead {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @container (max-width: 480px) {
+    .rd__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .rd__cell + .rd__cell {
+      border-left: 0;
+    }
+    .rd__kpis {
+      padding: 16px;
+      gap: 14px 24px;
+    }
+    .rd__cell {
+      padding: 16px;
+    }
+    .rd__tools {
+      margin-left: 0;
+    }
+  }
+</style>

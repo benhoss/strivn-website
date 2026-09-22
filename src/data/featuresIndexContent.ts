@@ -1,110 +1,133 @@
 /**
  * Content for the features index ("Fonctionnalités") in all six locales.
  *
- * Three of the page's product captures already exist, fully translated,
- * elsewhere: the readiness board and the reporting dashboard come from
- * `scPageContent`, the player phone from `homeContent`. This file only
- * carries what is genuinely new, and icon names — being locale-invariant —
- * live in the constants below rather than repeated inside every locale.
+ * The page is the product's table of contents: every module, grouped by the
+ * moment of the staff's week it serves (Monday import → Wednesday plan →
+ * Thursday pitch → Friday call-up → Sunday assistant → Monday report). Which
+ * module sits in which group, its sub-page and the invariant figures of the
+ * captures live in the constants below; each locale carries only text, keyed
+ * by id, so a missing module or group is a type error.
+ *
+ * Two captures come from `scPageContent` (readiness board, reporting
+ * dashboard): same screen, same numbers as on the S&C page.
  */
 import type { Locale } from './landingContent';
 export type { Locale };
 
-/** A module row: icon comes from the section's invariant list, by index. */
+/** A module row: name and one-line description. */
 export interface ModuleText {
   name: string;
   desc: string;
 }
 
-interface SectionHead {
-  kicker: string;
-  title: string;
-  body: string;
-}
-
 /* ── Locale-invariant fixtures ────────────────────────────────── */
 
-export const SECTION_ICONS = {
-  monitoring: ['activity', 'satellite', 'calendar', 'moon', 'gauge', 'ruler', 'dumbbell', 'target'],
-  sessions: ['calendar', 'layout', 'check-circle', 'radio', 'trophy', 'clipboard', 'target'],
-  team: ['users', 'plus', 'send', 'bar-chart', 'heart-pulse', 'shield', 'file-text', 'table'],
-  ai: ['sun', 'message-circle', 'bar-chart', 'sparkles', 'clock', 'send', 'camera'],
-  reporting: ['layout-dashboard', 'file-text', 'bar-chart', 'calendar'],
-  opponent: ['radar', 'link'],
-  player: ['smartphone', 'users'],
-} as const;
+export type ModuleId =
+  | 'load'
+  | 'gps'
+  | 'wellness'
+  | 'readiness'
+  | 'tests'
+  | 'loadPlan'
+  | 'strength'
+  | 'programs'
+  | 'calendar'
+  | 'library'
+  | 'drillMetrics'
+  | 'liveSession'
+  | 'liveMatch'
+  | 'sessionReview'
+  | 'goals'
+  | 'scouting'
+  | 'scoutingReports'
+  | 'roster'
+  | 'trial'
+  | 'rsvp'
+  | 'attendance'
+  | 'medical'
+  | 'care'
+  | 'playerApp'
+  | 'parents'
+  | 'fines'
+  | 'dashboard'
+  | 'reports'
+  | 'bi'
+  | 'season'
+  | 'documents'
+  | 'staffBrief';
 
 /**
- * The sub-page each module row leads to, in `SECTION_ICONS` order. `null`
- * marks a module with no page of its own yet — the row stays plain text
- * rather than linking somewhere that only half answers it.
+ * The sub-page each module leads to. `null` marks a module with no page of
+ * its own yet: the row stays plain text rather than linking somewhere that
+ * only half answers it.
  */
-export const SECTION_SLUGS = {
-  monitoring: [
-    'training-load',
-    'training-load',
-    'sessions',
-    'check-in',
-    'check-in',
-    'tests',
-    'programs',
-    'programs',
-  ],
-  sessions: [
-    'sessions',
-    'exercise-library',
-    'exercise-library',
-    'live-session',
-    'live-match',
-    'live-session',
-    'live-match',
-  ],
-  team: [
-    'communication',
-    'communication',
-    'attendance',
-    'attendance',
-    'medical',
-    'medical',
-    'staff',
-    null,
-  ],
-  ai: ['reports', 'reports', 'reports', 'reports', 'reports', 'attendance', 'live-match'],
-  reporting: ['reports', 'reports', 'reports', 'sessions'],
-  opponent: ['scouting', 'staff'],
-  player: ['player-app', 'staff'],
-} as const;
+export const MODULE_SLUGS: Record<ModuleId, string | null> = {
+  load: 'training-load',
+  gps: 'training-load',
+  wellness: 'check-in',
+  readiness: 'check-in',
+  tests: 'tests',
+  loadPlan: 'sessions',
+  strength: 'programs',
+  programs: 'programs',
+  calendar: 'sessions',
+  library: 'exercise-library',
+  drillMetrics: 'exercise-library',
+  liveSession: 'live-session',
+  liveMatch: 'live-match',
+  sessionReview: 'live-session',
+  goals: 'live-match',
+  scouting: 'scouting',
+  scoutingReports: 'staff',
+  roster: 'communication',
+  trial: 'communication',
+  rsvp: 'attendance',
+  attendance: 'attendance',
+  medical: 'medical',
+  care: 'medical',
+  playerApp: 'player-app',
+  parents: 'staff',
+  fines: null,
+  dashboard: 'reports',
+  reports: 'reports',
+  bi: 'reports',
+  season: 'sessions',
+  documents: 'staff',
+  staffBrief: 'staff-brief',
+};
+
+export type GroupId = 'monitoring' | 'plan' | 'pitch' | 'players' | 'ai' | 'staff';
 
 /**
- * Anchor targets for the hero jump pills — order matches `hero.jump`, and
- * each entry must be a section id the page actually renders. The last band
- * carries both the opponent and the player columns, so it gets one pill.
+ * The six moments of the week, in the order the staff lives them. `time` is
+ * the stamp's clock; `modules` is empty for the assistant, whose rows are the
+ * moments of `ai.moments`.
  */
-export const JUMP_HREFS = [
-  '#monitoring',
-  '#seances',
-  '#equipe',
-  '#ia',
-  '#pilotage',
-  '#adversaire',
-] as const;
+export const GROUPS: ReadonlyArray<{ id: GroupId; time: string; modules: readonly ModuleId[] }> = [
+  { id: 'monitoring', time: '08:10', modules: ['load', 'gps', 'wellness', 'readiness', 'tests'] },
+  { id: 'plan', time: '10:00', modules: ['loadPlan', 'strength', 'programs', 'calendar', 'library', 'drillMetrics'] },
+  { id: 'pitch', time: '17:30', modules: ['liveSession', 'liveMatch', 'sessionReview', 'goals', 'scouting', 'scoutingReports'] },
+  {
+    id: 'players',
+    time: '12:00',
+    modules: ['rsvp', 'attendance', 'roster', 'trial', 'medical', 'care', 'playerApp', 'parents', 'fines'],
+  },
+  { id: 'ai', time: '18:30', modules: [] },
+  { id: 'staff', time: '09:00', modules: ['dashboard', 'reports', 'bi', 'season', 'documents', 'staffBrief'] },
+];
 
-/**
- * One pill per anchor: a locale that gains or loses a label becomes a type
- * error rather than a pill whose href resolves to `undefined` — which is how
- * the pills silently drifted a section out of step. The mapping goes through
- * a type parameter because that is the only form TypeScript treats as
- * homomorphic; mapping a concrete tuple would rewrite `length` to `string`.
- */
-type SameLength<T extends readonly unknown[]> = { -readonly [K in keyof T]: string };
-export type JumpLabels = SameLength<typeof JUMP_HREFS>;
+/** Sub-page for each assistant moment, in `ai.moments` order. */
+export const AI_SLUGS = ['reports', 'reports', 'reports', 'reports', 'reports', 'attendance', 'live-match'] as const;
+
+/** Where the "reads" group ends and the "acts" group begins in `ai.moments`. */
+export const AI_ACTS_FROM = 3;
 
 /** Session builder capture: block durations and load, identical everywhere. */
 export const SESSION_BLOCKS = [
-  { min: '12 min', ua: '48 UA' },
-  { min: '24 min', ua: '186 UA' },
-  { min: '15 min', ua: '124 UA' },
-  { min: '14 min', ua: '87 UA' },
+  { min: '12 min', ua: '48' },
+  { min: '24 min', ua: '186' },
+  { min: '15 min', ua: '124' },
+  { min: '14 min', ua: '87' },
 ];
 
 /** Call-up responses: player names and state keys are invariant. */
@@ -116,7 +139,7 @@ export const RSVP_ROWS: Array<{ name: string; state: 'yes' | 'no' | 'maybe' | 'n
   { name: 'S. Petit', state: 'none' },
 ];
 
-/** AI comparison chart — [previous match, current match] as % heights. */
+/** AI comparison chart: [previous match, current match] as % heights. */
 export const AI_CHART: Array<[number, number]> = [
   [70, 76],
   [56, 66],
@@ -124,40 +147,63 @@ export const AI_CHART: Array<[number, number]> = [
   [60, 68],
 ];
 
-/** Where the "reads" group ends and the "acts" group begins in `ai.moments`. */
-export const AI_ACTS_FROM = 3;
-
 /* ── Content shape ────────────────────────────────────────────── */
 
 export interface FeaturesIndexContent {
   meta: { title: string; description: string };
-  hero: { kicker: string; title: string; sub: string; jump: JumpLabels };
-  monitoring: SectionHead & { modules: ModuleText[] };
-  sessions: SectionHead & {
-    modules: ModuleText[];
-    visual: {
+  hero: {
+    kicker: string;
+    title: string;
+    sub: string;
+    /** Label over the table of contents. */
+    toc: string;
+    units: { modules: string; moments: string };
+    /** Mono fine print under the CTA pair, one figure each. */
+    fine: string[];
+  };
+  /** Self-serve and human CTA pair, shared with the Solutions page. */
+  cta: { primary: string; secondary: string };
+  groups: Record<GroupId, { day: string; label: string; title: string; body: string }>;
+  modules: Record<ModuleId, ModuleText>;
+  sessionsVisual: {
+    title: string;
+    sub: string;
+    badge: string;
+    blocks: string[];
+    workoutTitle: string;
+    published: string;
+    workoutBody: string;
+  };
+  teamVisual: {
+    to: string;
+    type: string;
+    body: string;
+    sent: string;
+    auto: string;
+    responsesLabel: string;
+    states: { yes: string; no: string; maybe: string; none: string };
+  };
+  /** Player-app phone screen (product strings). */
+  phone: {
+    time: string;
+    greeting: string;
+    team: string;
+    wellness: {
       title: string;
-      sub: string;
       badge: string;
-      blocks: string[];
-      workoutTitle: string;
-      published: string;
-      workoutBody: string;
+      /** `value` is the selected step on a 1–5 scale */
+      rows: Array<{ label: string; value: number }>;
+      submit: string;
     };
+    rpe: { title: string; value: string };
+    workout: { title: string; meta: string };
   };
-  team: SectionHead & {
-    modules: ModuleText[];
-    visual: {
-      to: string;
-      type: string;
-      body: string;
-      sent: string;
-      auto: string;
-      responsesLabel: string;
-      states: { yes: string; no: string; maybe: string; none: string };
-    };
+  opponentVisual: {
+    title: string;
+    meta: string;
+    items: Array<{ label: string; meta: string }>;
   };
-  ai: SectionHead & {
+  ai: {
     readsLabel: string;
     actsLabel: string;
     moments: ModuleText[];
@@ -180,18 +226,8 @@ export interface FeaturesIndexContent {
     };
     note: string;
   };
-  reporting: SectionHead & { modules: ModuleText[] };
-  opponent: {
-    kicker: string;
-    title: string;
-    modules: ModuleText[];
-    visual: {
-      title: string;
-      meta: string;
-      items: Array<{ label: string; meta: string }>;
-    };
-  };
-  player: { kicker: string; title: string; modules: ModuleText[] };
+  /** Closing band, shared with the Solutions page. */
+  close: { title: string; body: string; primary: string; secondary: string; fine: string[] };
 }
 
 /* ────────────────────────────── FR ────────────────────────────── */
@@ -199,87 +235,171 @@ export interface FeaturesIndexContent {
 const fr: FeaturesIndexContent = {
   meta: {
     title: 'Fonctionnalités STRIVN | Chaque module en détail, du monitoring au joueur',
-    description:
-      'Parcourez chaque module de STRIVN en détail : monitoring, séances, équipe, IA, rapports, adversaire et app joueur.',
+    description: 'Parcourez chaque module de STRIVN en détail : monitoring, séances, équipe, IA, rapports, adversaire et app joueur.',
   },
   hero: {
     kicker: 'FONCTIONNALITÉS',
     title: 'Parcourez les six familles de modules.',
     sub: 'Chaque module tient debout seul et tous partagent la même base de données. Une donnée saisie une fois sert aux six familles de modules, du lundi au match.',
-    jump: ['Monitoring', 'Séances & terrain', 'Équipe', 'Intelligence', 'Pilotage', 'Adversaire & joueur'],
+    toc: 'SOMMAIRE · SIX MOMENTS DE LA SEMAINE',
+    units: { modules: 'modules', moments: 'moments' },
+    fine: ['16 pages détaillées', '6 moments de la semaine', '1 base de données'],
   },
-  monitoring: {
-    kicker: 'MONITORING & PERFORMANCE',
-    title: 'Lisez readiness, charge et alertes sur un seul écran.',
-    body: 'Vous ouvrez cet écran avant la séance : readiness par joueur, charge du jour et alertes IA. Le check-in du matin et votre export GPS alimentent les huit modules ci-dessous.',
-    modules: [
-      { name: 'Charge d’entraînement', desc: 'sRPE, ACWR, monotonie et contrainte en continu' },
-      { name: 'GPS & blocs de vitesse', desc: 'Exports regroupés en zones nommées' },
-      { name: 'Planification de charge', desc: 'Objectif hebdo, puis prévu vs réalisé' },
-      { name: 'Check-in bien-être', desc: 'Sommeil, fatigue, douleur, motivation' },
-      { name: 'État de forme', desc: 'Readiness vert / jaune / rouge, projeté' },
-      { name: 'Tests & auto-mesure', desc: 'Campagnes saisies par le staff ou les joueurs' },
-      { name: 'Musculation & 1RM', desc: 'Un pourcentage, une charge par joueur' },
-      { name: 'Programmes', desc: 'Force, prévention, retour au jeu' },
-    ],
+  cta: { primary: 'Commencer gratuitement', secondary: 'Parler à Benoit' },
+  groups: {
+    monitoring: {
+      day: 'LUNDI',
+      label: 'Monitoring & GPS',
+      title: 'Lisez readiness, charge et alertes sur un seul écran.',
+      body: 'Vous ouvrez cet écran avant la séance : readiness par joueur, charge du jour et alertes IA. Le check-in du matin et votre export GPS alimentent les cinq modules ci-dessous.',
+    },
+    plan: {
+      day: 'MERCREDI',
+      label: 'Planifier & construire',
+      title: 'Planifiez la charge de la semaine en UA.',
+      body: 'Fixez une cible hebdomadaire, puis montez chaque séance depuis votre bibliothèque d’exercices. Le constructeur estime la charge de chaque bloc avant l’entraînement, ici 445 UA pour quatre blocs.',
+    },
+    pitch: {
+      day: 'JEUDI',
+      label: 'Terrain & match',
+      title: 'Pilotez séance et match depuis le banc.',
+      body: 'Le mode live compare la charge estimée au réalisé, pendant que la séance tourne. Le jour du match, le banc saisit minutes et événements. Le scouting du prochain adversaire se prépare à plusieurs, dès J-6.',
+    },
+    players: {
+      day: 'VENDREDI',
+      label: 'Joueurs & effectif',
+      title: 'Envoyez la convocation, les réponses reviennent seules.',
+      body: 'Les joueurs répondent depuis un simple lien, et la relance part seule à l’heure que vous fixez. Sur la capture, vendredi midi, et 14 réponses sur 18, l’infirmerie déjà déduite de la disponibilité.',
+    },
+    ai: {
+      day: 'DIMANCHE',
+      label: 'Assistant IA',
+      title: 'Déléguez à l’IA le briefing et les relances.',
+      body: 'Elle restitue ce que vous saisissez, puis elle agit : un bouton applique la recommandation, une file retient les propositions. Sept moments jalonnent la journée, trois en lecture et quatre en action.',
+    },
+    staff: {
+      day: 'LUNDI',
+      label: 'Staff & rapports',
+      title: 'Composez le dashboard que la direction lit.',
+      body: 'Le dashboard composable, les cinq rapports types et le générateur puisent dans la même base. Vos widgets se réutilisent d’un rapport à l’autre, semaine après semaine.',
+    },
   },
-  sessions: {
-    kicker: 'SÉANCES & TERRAIN',
-    title: 'Construisez la séance, pilotez-la au bord du terrain.',
-    body: 'Le constructeur estime la charge de chaque bloc avant l’entraînement, ici 445 UA pour quatre blocs. Le mode live compare ensuite cette estimation au réalisé, pendant que la séance tourne.',
-    modules: [
-      { name: 'Calendrier & événements', desc: 'Une semaine se duplique vers la suivante' },
-      { name: 'Bibliothèque d’exercices', desc: 'Lien, vidéo, schéma ou texte, en dossiers' },
-      { name: 'Métriques d’exercice', desc: 'La séance annonce sa charge estimée' },
-      { name: 'Séance en direct', desc: 'Runner plein écran, même sans réseau' },
-      { name: 'Match en direct', desc: 'Minutes et événements depuis le banc' },
-      { name: 'Bilan de séance', desc: 'RPE et participation consolidés' },
-      { name: 'Analyse des buts', desc: 'Vocabulaire de stats propre à l’équipe' },
+  modules: {
+    load: {
+      name: 'Charge d’entraînement',
+      desc: 'sRPE, ACWR, monotonie et contrainte en continu',
+    },
+    gps: { name: 'GPS & blocs de vitesse', desc: 'Exports regroupés en zones nommées' },
+    loadPlan: { name: 'Planification de charge', desc: 'Objectif hebdo, puis prévu vs réalisé' },
+    wellness: { name: 'Check-in bien-être', desc: 'Sommeil, fatigue, douleur, motivation' },
+    readiness: { name: 'État de forme', desc: 'Readiness vert / jaune / rouge, projeté' },
+    tests: {
+      name: 'Tests & auto-mesure',
+      desc: 'Campagnes saisies par le staff ou les joueurs',
+    },
+    strength: { name: 'Musculation & 1RM', desc: 'Un pourcentage, une charge par joueur' },
+    programs: { name: 'Programmes', desc: 'Force, prévention, retour au jeu' },
+    calendar: { name: 'Calendrier & événements', desc: 'Une semaine se duplique vers la suivante' },
+    library: {
+      name: 'Bibliothèque d’exercices',
+      desc: 'Lien, vidéo, schéma ou texte, en dossiers',
+    },
+    drillMetrics: { name: 'Métriques d’exercice', desc: 'La séance annonce sa charge estimée' },
+    liveSession: { name: 'Séance en direct', desc: 'Runner plein écran, même sans réseau' },
+    liveMatch: { name: 'Match en direct', desc: 'Minutes et événements depuis le banc' },
+    sessionReview: { name: 'Bilan de séance', desc: 'RPE et participation consolidés' },
+    goals: { name: 'Analyse des buts', desc: 'Vocabulaire de stats propre à l’équipe' },
+    roster: { name: 'Gérer l’effectif', desc: 'Actifs, blessés, inactifs, archivage RGPD' },
+    trial: { name: 'Joueurs à l’essai', desc: 'Convoqués, mais hors des moyennes' },
+    rsvp: { name: 'Convocations (RSVP)', desc: 'Réponses et relances automatiques' },
+    attendance: { name: 'Assiduité', desc: 'Présence, programmes et check-ins sur 30 j' },
+    medical: { name: 'Suivi médical & blessures', desc: 'Protocoles de retour, accès restreint' },
+    care: { name: 'Soins & créneaux kiné', desc: 'Les joueurs réservent leur slot' },
+    documents: { name: 'Documents', desc: 'Suivi de lecture X/Y vu par joueur' },
+    fines: { name: 'Amendes', desc: 'Catalogue importé depuis votre règlement' },
+    dashboard: {
+      name: 'Tableau de bord & signaux',
+      desc: 'KPIs du jour et risques détectés par l’IA',
+    },
+    reports: { name: 'Rapports', desc: 'Cinq rapports types plus le générateur' },
+    bi: { name: 'BI & dashboards', desc: 'Widgets composables et visualisations générées' },
+    season: { name: 'Saison & cycles', desc: 'Blocs de périodisation hérités par semaine' },
+    scouting: {
+      name: 'Scouting des adversaires',
+      desc: 'Notes, schémas, vidéos et photos enrichies',
+    },
+    scoutingReports: { name: 'Rapports de scouting', desc: 'Partagés aux joueurs et staff désignés' },
+    playerApp: {
+      name: 'App STRIVN Player',
+      desc: 'Quatre usages : agenda, convocations, check-in et programmes, sur iOS et Android',
+    },
+    parents: {
+      name: 'Portail parent',
+      desc: 'Sur les équipes de jeunes, tout passe par le parent, avec son consentement',
+    },
+    staffBrief: {
+      name: 'Dossier staff',
+      desc: 'Une page à transmettre à votre head coach et à la direction',
+    },
+  },
+  sessionsVisual: {
+    title: 'Séance jeudi · bloc intensité',
+    sub: 'Charge estimée 445 UA · cible 460',
+    badge: 'DANS LA CIBLE',
+    blocks: [
+      'Échauffement + activation',
+      'Bloc pressing · 8v8',
+      'Vitesse · sprints lancés',
+      'Jeu réduit + retour au calme',
     ],
-    visual: {
-      title: 'Séance jeudi · bloc intensité',
-      sub: 'Charge estimée 445 UA · cible 460',
-      badge: 'DANS LA CIBLE',
-      blocks: [
-        'Échauffement + activation',
-        'Bloc pressing · 8v8',
-        'Vitesse · sprints lancés',
-        'Jeu réduit + retour au calme',
+    workoutTitle: 'Workout individuel · L. Moreau',
+    published: 'Publié vers l’app joueur',
+    workoutBody: 'Nordic curls 3×8 · Copenhagen 3×10 / côté · mobilité hanche 8 min. Généré depuis le protocole ischio, charge déduite de la séance collective.',
+  },
+  teamVisual: {
+    to: '→ Olympique Montverne · 18 joueurs',
+    type: 'MATCH',
+    body: 'Dimanche 15h00 · Stade des Trois Chênes. RDV 13h30 au vestiaire. Merci de répondre avant vendredi 20h.',
+    sent: 'Envoyée 22:41',
+    auto: 'Relance auto vendredi 12h',
+    responsesLabel: 'RÉPONSES · 14 / 18',
+    states: {
+      yes: 'Présent',
+      no: 'Absent · infirmerie',
+      maybe: 'Incertain',
+      none: 'Sans réponse',
+    },
+  },
+  phone: {
+    time: '7:42',
+    greeting: 'Bonjour, Adam',
+    team: 'Olympique Montverne',
+    wellness: {
+      title: 'Wellness du matin',
+      badge: '20 s',
+      rows: [
+        { label: 'Sommeil', value: 4 },
+        { label: 'Fatigue', value: 3 },
+        { label: 'Courbatures', value: 4 },
       ],
-      workoutTitle: 'Workout individuel · L. Moreau',
-      published: 'Publié vers l’app joueur',
-      workoutBody:
-        'Nordic curls 3×8 · Copenhagen 3×10 / côté · mobilité hanche 8 min. Généré depuis le protocole ischio, charge déduite de la séance collective.',
+      submit: 'Envoyer',
+    },
+    rpe: { title: 'RPE · séance d’hier', value: '7' },
+    workout: {
+      title: 'Workout du jour · prévention',
+      meta: '3 exercices · 12 min · vidéos incluses',
     },
   },
-  team: {
-    kicker: 'ÉQUIPE & QUOTIDIEN',
-    title: 'Envoyez la convocation, les réponses reviennent seules.',
-    body: 'Les joueurs répondent depuis un simple lien, et la relance part seule à l’heure que vous fixez. Sur la capture, vendredi midi, et 14 réponses sur 18, l’infirmerie déjà déduite de la disponibilité.',
-    modules: [
-      { name: 'Gérer l’effectif', desc: 'Actifs, blessés, inactifs, archivage RGPD' },
-      { name: 'Joueurs à l’essai', desc: 'Convoqués, mais hors des moyennes' },
-      { name: 'Convocations (RSVP)', desc: 'Réponses et relances automatiques' },
-      { name: 'Assiduité', desc: 'Présence, programmes et check-ins sur 30 j' },
-      { name: 'Suivi médical & blessures', desc: 'Protocoles de retour, accès restreint' },
-      { name: 'Soins & créneaux kiné', desc: 'Les joueurs réservent leur slot' },
-      { name: 'Documents', desc: 'Suivi de lecture X/Y vu par joueur' },
-      { name: 'Amendes', desc: 'Catalogue importé depuis votre règlement' },
+  opponentVisual: {
+    title: 'Session scouting · RC Valbonne',
+    meta: 'J-6',
+    items: [
+      { label: 'Schéma · sortie de balle à 3', meta: 'annoté' },
+      { label: 'Clip coup de pied arrêté (0:42)', meta: 'Veo' },
+      { label: 'Photo composition probable', meta: 'IA · feuille importée' },
     ],
-    visual: {
-      to: '→ Olympique Montverne · 18 joueurs',
-      type: 'MATCH',
-      body: 'Dimanche 15h00 · Stade des Trois Chênes. RDV 13h30 au vestiaire. Merci de répondre avant vendredi 20h.',
-      sent: 'Envoyée 22:41',
-      auto: 'Relance auto vendredi 12h',
-      responsesLabel: 'RÉPONSES · 14 / 18',
-      states: { yes: 'Présent', no: 'Absent · infirmerie', maybe: 'Incertain', none: 'Sans réponse' },
-    },
   },
   ai: {
-    kicker: 'INTELLIGENCE ARTIFICIELLE',
-    title: 'Déléguez à l’IA le briefing et les relances.',
-    body: 'Elle restitue ce que vous saisissez, puis elle agit : un bouton applique la recommandation, une file retient les propositions. Sept moments jalonnent la journée, trois en lecture et quatre en action.',
     readsLabel: 'ELLE LIT ET RESTITUE',
     actsLabel: 'ELLE AGIT · VOUS VALIDEZ',
     moments: [
@@ -322,8 +442,7 @@ const fr: FeaturesIndexContent = {
       legendA: 'J13',
       legendB: 'J14',
       metrics: ['DISTANCE', 'HSR', 'SPRINTS', 'CHARGE'],
-      insight:
-        'HSR +9 % et sprints +21 % pour un volume quasi stable. L’intensité progresse à charge égale.',
+      insight: 'HSR +9 % et sprints +21 % pour un volume quasi stable. L’intensité progresse à charge égale.',
       pin: 'Épingler au dashboard',
       refine: 'Affiner la question',
       signalTitle: 'Signal remonté par l’IA, de sa propre initiative',
@@ -332,47 +451,12 @@ const fr: FeaturesIndexContent = {
     },
     note: '« L’assistant éclaire la décision ; vous la prenez. » Deux questions de clarification au maximum, des réponses tirées de vos données, et votre validation avant chaque action.',
   },
-  reporting: {
-    kicker: 'PILOTAGE & RAPPORTS',
-    title: 'Composez le dashboard que la direction lit.',
-    body: 'Le dashboard composable, les cinq rapports types et le générateur puisent dans la même base. Vos widgets se réutilisent d’un rapport à l’autre, semaine après semaine.',
-    modules: [
-      { name: 'Tableau de bord & signaux', desc: 'KPIs du jour et risques détectés par l’IA' },
-      { name: 'Rapports', desc: 'Cinq rapports types plus le générateur' },
-      { name: 'BI & dashboards', desc: 'Widgets composables et visualisations générées' },
-      { name: 'Saison & cycles', desc: 'Blocs de périodisation hérités par semaine' },
-    ],
-  },
-  opponent: {
-    kicker: 'ADVERSAIRE',
-    title: 'Préparez le prochain adversaire à plusieurs.',
-    modules: [
-      { name: 'Scouting des adversaires', desc: 'Notes, schémas, vidéos et photos enrichies' },
-      { name: 'Rapports de scouting', desc: 'Partagés aux joueurs et staff désignés' },
-    ],
-    visual: {
-      title: 'Session scouting · RC Valbonne',
-      meta: 'J-6',
-      items: [
-        { label: 'Schéma · sortie de balle à 3', meta: 'annoté' },
-        { label: 'Clip coup de pied arrêté (0:42)', meta: 'Veo' },
-        { label: 'Photo composition probable', meta: 'IA · feuille importée' },
-      ],
-    },
-  },
-  player: {
-    kicker: 'CÔTÉ JOUEUR & PARENTS',
-    title: 'Ouvrez un accès joueur et parent.',
-    modules: [
-      {
-        name: 'App STRIVN Player',
-        desc: 'Quatre usages : agenda, convocations, check-in et programmes, sur iOS et Android',
-      },
-      {
-        name: 'Portail parent',
-        desc: 'Sur les équipes de jeunes, tout passe par le parent, avec son consentement',
-      },
-    ],
+  close: {
+    title: 'Créez votre espace et importez votre première séance.',
+    body: 'Les 30 premiers jours sont au Semi-Pro, import GPS compris, sans carte. Ensuite le plan Free fait tourner l’équipe toute la saison, et votre staff vous rejoint quand il voit vos premiers rapports.',
+    primary: 'Créer mon espace gratuitement',
+    secondary: 'Parler à Benoit',
+    fine: ['SANS CARTE BANCAIRE', 'SANS VALIDATION DU CLUB', 'VOS DONNÉES RESTENT LES VÔTRES'],
   },
 };
 
@@ -381,82 +465,151 @@ const fr: FeaturesIndexContent = {
 const en: FeaturesIndexContent = {
   meta: {
     title: 'STRIVN features | Every module in detail, from monitoring to the player app',
-    description:
-      'Browse every STRIVN module in detail: monitoring, sessions, squad, AI, reports, opponents and the player app.',
+    description: 'Browse every STRIVN module in detail: monitoring, sessions, squad, AI, reports, opponents and the player app.',
   },
   hero: {
     kicker: 'FEATURES',
     title: 'Browse the six module families.',
     sub: 'Every module stands on its own and all of them share the same database. Data entered once serves all six families of modules, from Monday to matchday.',
-    jump: ['Monitoring', 'Sessions & pitch', 'Squad', 'Intelligence', 'Reports', 'Opponent & player'],
+    toc: 'CONTENTS · SIX MOMENTS OF THE WEEK',
+    units: { modules: 'modules', moments: 'moments' },
+    fine: ['16 detailed pages', '6 moments of the week', '1 database'],
   },
-  monitoring: {
-    kicker: 'MONITORING & PERFORMANCE',
-    title: 'Read readiness, load and alerts on one screen.',
-    body: 'You open this screen before the session: readiness per player, today’s load and AI alerts. The morning check-in and your GPS export feed the eight modules below.',
-    modules: [
-      { name: 'Training load', desc: 'sRPE, ACWR, monotony and strain, continuously' },
-      { name: 'GPS & speed blocks', desc: 'Exports grouped into named zones' },
-      { name: 'Load planning', desc: 'Weekly target, then planned vs actual' },
-      { name: 'Wellness check-in', desc: 'Sleep, fatigue, soreness, motivation' },
-      { name: 'Readiness', desc: 'Green / amber / red, projected' },
-      { name: 'Tests & self-measurement', desc: 'Campaigns entered by staff or players' },
-      { name: 'Strength & 1RM', desc: 'One percentage, one load per player' },
-      { name: 'Programmes', desc: 'Strength, prevention, return to play' },
-    ],
-  },
-  sessions: {
-    kicker: 'SESSIONS & PITCH',
-    title: 'Build the session, run it from the touchline.',
-    body: 'The builder estimates each block’s load before training, here 445 AU across four blocks. Live mode then compares that estimate with the actual, while the session runs.',
-    modules: [
-      { name: 'Calendar & events', desc: 'A week duplicates onto the next' },
-      { name: 'Drill library', desc: 'Link, video, diagram or text, in folders' },
-      { name: 'Drill metrics', desc: 'The session announces its estimated load' },
-      { name: 'Live session', desc: 'Full-screen runner, offline too' },
-      { name: 'Live match', desc: 'Minutes and events from the bench' },
-      { name: 'Session review', desc: 'RPE and attendance consolidated' },
-      { name: 'Goal analysis', desc: 'A stats vocabulary of your own' },
-    ],
-    visual: {
-      title: 'Thursday session · intensity block',
-      sub: 'Estimated load 445 AU · target 460',
-      badge: 'ON TARGET',
-      blocks: ['Warm-up + activation', 'Pressing block · 8v8', 'Speed · flying sprints', 'Small-sided + cool-down'],
-      workoutTitle: 'Individual workout · L. Moreau',
-      published: 'Published to the player app',
-      workoutBody:
-        'Nordic curls 3×8 · Copenhagen 3×10 / side · hip mobility 8 min. Generated from the hamstring protocol, load derived from the team session.',
+  cta: { primary: 'Start for free', secondary: 'Talk to Benoit' },
+  groups: {
+    monitoring: {
+      day: 'MONDAY',
+      label: 'Monitoring & GPS',
+      title: 'Read readiness, load and alerts on one screen.',
+      body: 'You open this screen before the session: readiness per player, today’s load and AI alerts. The morning check-in and your GPS export feed the five modules below.',
+    },
+    plan: {
+      day: 'WEDNESDAY',
+      label: 'Plan & build',
+      title: 'Plan the week’s load in AU.',
+      body: 'Set a weekly target, then build each session from your drill library. The builder estimates each block’s load before training, here 445 AU across four blocks.',
+    },
+    pitch: {
+      day: 'THURSDAY',
+      label: 'Pitch & match',
+      title: 'Run session and match from the bench.',
+      body: 'Live mode compares the estimated load with the actual, while the session runs. On match day, the bench logs minutes and events. You prepare the next opponent’s scouting together, from MD-6.',
+    },
+    players: {
+      day: 'FRIDAY',
+      label: 'Players & squad',
+      title: 'Send the call-up, answers come back on their own.',
+      body: 'Players answer from a plain link, and the reminder goes out on its own at the time you set. In the screenshot, Friday noon, and 14 answers out of 18, with the treatment room already in the availability.',
+    },
+    ai: {
+      day: 'SUNDAY',
+      label: 'AI assistant',
+      title: 'Hand the briefing and the reminders to the AI.',
+      body: 'It gives back what you enter, then it acts: one button applies the recommendation, a queue holds the proposals. Seven moments cover the day, three that read and four that act.',
+    },
+    staff: {
+      day: 'MONDAY',
+      label: 'Staff & reports',
+      title: 'Compose the dashboard your board reads.',
+      body: 'The composable dashboard, the five standard reports and the generator draw on the same base. Your widgets carry over from one report to the next, week after week.',
     },
   },
-  team: {
-    kicker: 'SQUAD & DAY-TO-DAY',
-    title: 'Send the call-up, answers come back on their own.',
-    body: 'Players answer from a plain link, and the reminder goes out on its own at the time you set. In the screenshot, Friday noon, and 14 answers out of 18, with the treatment room already in the availability.',
-    modules: [
-      { name: 'Manage the squad', desc: 'Active, injured, inactive, GDPR archiving' },
-      { name: 'Trialists', desc: 'Called up, but kept out of the averages' },
-      { name: 'Call-ups (RSVP)', desc: 'Answers and automatic reminders' },
-      { name: 'Attendance', desc: 'Presence, programmes and check-ins over 30 d' },
-      { name: 'Medical & injuries', desc: 'Return protocols, restricted access' },
-      { name: 'Treatment & physio slots', desc: 'Players book their own slot' },
-      { name: 'Documents', desc: 'Read tracking X/Y seen, per player' },
-      { name: 'Fines', desc: 'Catalogue imported from your own rules' },
-    ],
-    visual: {
-      to: '→ Olympique Montverne · 18 players',
-      type: 'MATCH',
-      body: 'Sunday 3:00 pm · Stade des Trois Chênes. Meet 1:30 pm in the changing room. Please answer before Friday 8 pm.',
-      sent: 'Sent 22:41',
-      auto: 'Auto reminder Friday 12:00',
-      responsesLabel: 'ANSWERS · 14 / 18',
-      states: { yes: 'Available', no: 'Out · treatment', maybe: 'Unsure', none: 'No answer' },
+  modules: {
+    load: { name: 'Training load', desc: 'sRPE, ACWR, monotony and strain, continuously' },
+    gps: { name: 'GPS & speed blocks', desc: 'Exports grouped into named zones' },
+    loadPlan: { name: 'Load planning', desc: 'Weekly target, then planned vs actual' },
+    wellness: { name: 'Wellness check-in', desc: 'Sleep, fatigue, soreness, motivation' },
+    readiness: { name: 'Readiness', desc: 'Green / amber / red, projected' },
+    tests: { name: 'Tests & self-measurement', desc: 'Campaigns entered by staff or players' },
+    strength: { name: 'Strength & 1RM', desc: 'One percentage, one load per player' },
+    programs: { name: 'Programmes', desc: 'Strength, prevention, return to play' },
+    calendar: { name: 'Calendar & events', desc: 'A week duplicates onto the next' },
+    library: { name: 'Drill library', desc: 'Link, video, diagram or text, in folders' },
+    drillMetrics: { name: 'Drill metrics', desc: 'The session announces its estimated load' },
+    liveSession: { name: 'Live session', desc: 'Full-screen runner, offline too' },
+    liveMatch: { name: 'Live match', desc: 'Minutes and events from the bench' },
+    sessionReview: { name: 'Session review', desc: 'RPE and attendance consolidated' },
+    goals: { name: 'Goal analysis', desc: 'A stats vocabulary of your own' },
+    roster: { name: 'Manage the squad', desc: 'Active, injured, inactive, GDPR archiving' },
+    trial: { name: 'Trialists', desc: 'Called up, but kept out of the averages' },
+    rsvp: { name: 'Call-ups (RSVP)', desc: 'Answers and automatic reminders' },
+    attendance: { name: 'Attendance', desc: 'Presence, programmes and check-ins over 30 d' },
+    medical: { name: 'Medical & injuries', desc: 'Return protocols, restricted access' },
+    care: { name: 'Treatment & physio slots', desc: 'Players book their own slot' },
+    documents: { name: 'Documents', desc: 'Read tracking X/Y seen, per player' },
+    fines: { name: 'Fines', desc: 'Catalogue imported from your own rules' },
+    dashboard: { name: 'Dashboard & signals', desc: 'Today’s KPIs and risks detected by the AI' },
+    reports: { name: 'Reports', desc: 'Five standard reports plus the generator' },
+    bi: { name: 'BI & dashboards', desc: 'Composable widgets and generated visualisations' },
+    season: { name: 'Season & cycles', desc: 'Periodisation blocks inherited by week' },
+    scouting: { name: 'Opponent scouting', desc: 'Notes, diagrams, videos and enriched photos' },
+    scoutingReports: { name: 'Scouting reports', desc: 'Shared with named players and staff' },
+    playerApp: {
+      name: 'STRIVN Player app',
+      desc: 'Four uses: schedule, call-ups, check-in and programmes, on iOS and Android',
     },
+    parents: {
+      name: 'Parent portal',
+      desc: 'On youth teams everything goes through the parent, with their consent',
+    },
+    staffBrief: {
+      name: 'Staff brief',
+      desc: 'One page to forward to your head coach and your board',
+    },
+  },
+  sessionsVisual: {
+    title: 'Thursday session · intensity block',
+    sub: 'Estimated load 445 AU · target 460',
+    badge: 'ON TARGET',
+    blocks: [
+      'Warm-up + activation',
+      'Pressing block · 8v8',
+      'Speed · flying sprints',
+      'Small-sided + cool-down',
+    ],
+    workoutTitle: 'Individual workout · L. Moreau',
+    published: 'Published to the player app',
+    workoutBody: 'Nordic curls 3×8 · Copenhagen 3×10 / side · hip mobility 8 min. Generated from the hamstring protocol, load derived from the team session.',
+  },
+  teamVisual: {
+    to: '→ Olympique Montverne · 18 players',
+    type: 'MATCH',
+    body: 'Sunday 3:00 pm · Stade des Trois Chênes. Meet 1:30 pm in the changing room. Please answer before Friday 8 pm.',
+    sent: 'Sent 22:41',
+    auto: 'Auto reminder Friday 12:00',
+    responsesLabel: 'ANSWERS · 14 / 18',
+    states: { yes: 'Available', no: 'Out · treatment', maybe: 'Unsure', none: 'No answer' },
+  },
+  phone: {
+    time: '7:42',
+    greeting: 'Hello, Adam',
+    team: 'Olympique Montverne',
+    wellness: {
+      title: 'Morning wellness',
+      badge: '20 s',
+      rows: [
+        { label: 'Sleep', value: 4 },
+        { label: 'Fatigue', value: 3 },
+        { label: 'Soreness', value: 4 },
+      ],
+      submit: 'Send',
+    },
+    rpe: { title: 'RPE · yesterday’s session', value: '7' },
+    workout: {
+      title: 'Today’s workout · prevention',
+      meta: '3 exercises · 12 min · videos included',
+    },
+  },
+  opponentVisual: {
+    title: 'Scouting session · RC Valbonne',
+    meta: 'MD-6',
+    items: [
+      { label: 'Diagram · building out with three', meta: 'annotated' },
+      { label: 'Set-piece clip (0:42)', meta: 'Veo' },
+      { label: 'Photo of the likely line-up', meta: 'AI · imported sheet' },
+    ],
   },
   ai: {
-    kicker: 'ARTIFICIAL INTELLIGENCE',
-    title: 'Hand the briefing and the reminders to the AI.',
-    body: 'It gives back what you enter, then it acts: one button applies the recommendation, a queue holds the proposals. Seven moments cover the day, three that read and four that act.',
     readsLabel: 'IT READS AND REPORTS',
     actsLabel: 'IT ACTS · YOU APPROVE',
     moments: [
@@ -508,41 +661,12 @@ const en: FeaturesIndexContent = {
     },
     note: '“The assistant informs the decision; you make it.” Two clarifying questions at most, answers drawn from your data, and your approval before every action.',
   },
-  reporting: {
-    kicker: 'STEERING & REPORTS',
-    title: 'Compose the dashboard your board reads.',
-    body: 'The composable dashboard, the five standard reports and the generator draw on the same base. Your widgets carry over from one report to the next, week after week.',
-    modules: [
-      { name: 'Dashboard & signals', desc: 'Today’s KPIs and risks detected by the AI' },
-      { name: 'Reports', desc: 'Five standard reports plus the generator' },
-      { name: 'BI & dashboards', desc: 'Composable widgets and generated visualisations' },
-      { name: 'Season & cycles', desc: 'Periodisation blocks inherited by week' },
-    ],
-  },
-  opponent: {
-    kicker: 'OPPONENT',
-    title: 'Prepare the next opponent together.',
-    modules: [
-      { name: 'Opponent scouting', desc: 'Notes, diagrams, videos and enriched photos' },
-      { name: 'Scouting reports', desc: 'Shared with named players and staff' },
-    ],
-    visual: {
-      title: 'Scouting session · RC Valbonne',
-      meta: 'MD-6',
-      items: [
-        { label: 'Diagram · building out with three', meta: 'annotated' },
-        { label: 'Set-piece clip (0:42)', meta: 'Veo' },
-        { label: 'Photo of the likely line-up', meta: 'AI · imported sheet' },
-      ],
-    },
-  },
-  player: {
-    kicker: 'PLAYER & PARENT SIDE',
-    title: 'Give player and parent their own access.',
-    modules: [
-      { name: 'STRIVN Player app', desc: 'Four uses: schedule, call-ups, check-in and programmes, on iOS and Android' },
-      { name: 'Parent portal', desc: 'On youth teams everything goes through the parent, with their consent' },
-    ],
+  close: {
+    title: 'Create your space and import your first session.',
+    body: 'The first 30 days are on Semi-Pro, GPS import included, no card. Then the Free plan runs the team for the whole season, and your staff joins once they see your first reports.',
+    primary: 'Create my space for free',
+    secondary: 'Talk to Benoit',
+    fine: ['NO CREDIT CARD', 'NO CLUB APPROVAL', 'YOUR DATA STAYS YOURS'],
   },
 };
 
@@ -551,87 +675,165 @@ const en: FeaturesIndexContent = {
 const nl: FeaturesIndexContent = {
   meta: {
     title: 'STRIVN-functies | Elke module in detail, van monitoring tot spelersapp',
-    description:
-      'Doorloop elke module van STRIVN in detail: monitoring, trainingen, kern, AI, rapporten, tegenstander en spelersapp.',
+    description: 'Doorloop elke module van STRIVN in detail: monitoring, trainingen, kern, AI, rapporten, tegenstander en spelersapp.',
   },
   hero: {
     kicker: 'FUNCTIES',
     title: 'Doorloop de zes modulefamilies.',
     sub: 'Elke module staat op zichzelf en ze delen allemaal dezelfde databank. Eén keer ingevoerde data bedient alle zes de families, van maandag tot de wedstrijd.',
-    jump: ['Monitoring', 'Trainingen & veld', 'Kern', 'Intelligentie', 'Rapporten', 'Tegenstander & speler'],
+    toc: 'INHOUD · ZES MOMENTEN VAN DE WEEK',
+    units: { modules: 'modules', moments: 'momenten' },
+    fine: ['16 detailpagina’s', '6 momenten van de week', '1 databank'],
   },
-  monitoring: {
-    kicker: 'MONITORING & PRESTATIE',
-    title: 'Lees readiness, belasting en signalen op één scherm.',
-    body: 'U opent dit scherm vóór de training: readiness per speler, belasting van de dag en AI-signalen. De check-in van de ochtend en uw gps-export voeden de acht modules hieronder.',
-    modules: [
-      { name: 'Trainingsbelasting', desc: 'sRPE, ACWR, monotonie en strain, doorlopend' },
-      { name: 'GPS & snelheidsblokken', desc: 'Exports gegroepeerd in benoemde zones' },
-      { name: 'Belastingsplanning', desc: 'Weekdoel, daarna gepland vs gerealiseerd' },
-      { name: 'Wellness-check-in', desc: 'Slaap, vermoeidheid, pijn, motivatie' },
-      { name: 'Readiness', desc: 'Groen / oranje / rood, geprojecteerd' },
-      { name: 'Testen & zelfmeting', desc: 'Campagnes ingevuld door staf of spelers' },
-      { name: 'Kracht & 1RM', desc: 'Eén percentage, één belasting per speler' },
-      { name: 'Programma’s', desc: 'Kracht, preventie, terugkeer naar het veld' },
-    ],
+  cta: { primary: 'Gratis beginnen', secondary: 'Spreek met Benoit' },
+  groups: {
+    monitoring: {
+      day: 'MAANDAG',
+      label: 'Monitoring & GPS',
+      title: 'Lees readiness, belasting en signalen op één scherm.',
+      body: 'U opent dit scherm vóór de training: readiness per speler, belasting van de dag en AI-signalen. De check-in van de ochtend en uw gps-export voeden de vijf modules hieronder.',
+    },
+    plan: {
+      day: 'WOENSDAG',
+      label: 'Plannen & bouwen',
+      title: 'Plan de belasting van de week in AU.',
+      body: 'Stel een weekdoel in en bouw elke training op vanuit uw oefeningenbibliotheek. De bouwer schat de belasting van elk blok vóór de training, hier 445 AU over vier blokken.',
+    },
+    pitch: {
+      day: 'DONDERDAG',
+      label: 'Veld & wedstrijd',
+      title: 'Stuur training en wedstrijd vanaf de bank.',
+      body: 'De live-modus vergelijkt de geschatte belasting met het gerealiseerde, terwijl de training loopt. Op wedstrijddag noteert de bank minuten en gebeurtenissen. De scouting van de volgende tegenstander bereidt u samen voor, vanaf W-6.',
+    },
+    players: {
+      day: 'VRIJDAG',
+      label: 'Spelers & selectie',
+      title: 'Verstuur de oproep, de antwoorden komen vanzelf terug.',
+      body: 'Spelers antwoorden via een simpele link, en de herinnering vertrekt vanzelf op het tijdstip dat u instelt. Op de afbeelding vrijdagmiddag, en 14 antwoorden op 18, met de ziekenboeg al verrekend in de beschikbaarheid.',
+    },
+    ai: {
+      day: 'ZONDAG',
+      label: 'AI-assistent',
+      title: 'Geef de briefing en de herinneringen aan de AI.',
+      body: 'Ze geeft terug wat u invoert, daarna handelt ze: één knop past de aanbeveling toe, een wachtrij houdt de voorstellen vast. Zeven momenten dekken de dag, drie die lezen en vier die handelen.',
+    },
+    staff: {
+      day: 'MAANDAG',
+      label: 'Staf & rapporten',
+      title: 'Stel het dashboard samen dat het bestuur leest.',
+      body: 'Het samenstelbare dashboard, de vijf standaardrapporten en de generator putten uit dezelfde basis. Uw widgets gaan mee van het ene rapport naar het andere, week na week.',
+    },
   },
-  sessions: {
-    kicker: 'TRAININGEN & VELD',
-    title: 'Bouw de training, stuur ze langs de lijn.',
-    body: 'De bouwer schat de belasting van elk blok vóór de training, hier 445 AU over vier blokken. De live-modus vergelijkt die schatting daarna met het gerealiseerde, terwijl de training loopt.',
-    modules: [
-      { name: 'Kalender & events', desc: 'Een week kopieert naar de volgende' },
-      { name: 'Oefenbibliotheek', desc: 'Link, video, schema of tekst, in mappen' },
-      { name: 'Oefenmetrieken', desc: 'De training kondigt haar geschatte belasting aan' },
-      { name: 'Training live', desc: 'Runner op volledig scherm, ook zonder netwerk' },
-      { name: 'Wedstrijd live', desc: 'Minuten en events vanaf de bank' },
-      { name: 'Trainingsverslag', desc: 'RPE en deelname geconsolideerd' },
-      { name: 'Doelpuntanalyse', desc: 'Een statistiekvocabulaire van het team zelf' },
+  modules: {
+    load: { name: 'Trainingsbelasting', desc: 'sRPE, ACWR, monotonie en strain, doorlopend' },
+    gps: { name: 'GPS & snelheidsblokken', desc: 'Exports gegroepeerd in benoemde zones' },
+    loadPlan: { name: 'Belastingsplanning', desc: 'Weekdoel, daarna gepland vs gerealiseerd' },
+    wellness: { name: 'Wellness-check-in', desc: 'Slaap, vermoeidheid, pijn, motivatie' },
+    readiness: { name: 'Readiness', desc: 'Groen / oranje / rood, geprojecteerd' },
+    tests: { name: 'Testen & zelfmeting', desc: 'Campagnes ingevuld door staf of spelers' },
+    strength: { name: 'Kracht & 1RM', desc: 'Eén percentage, één belasting per speler' },
+    programs: { name: 'Programma’s', desc: 'Kracht, preventie, terugkeer naar het veld' },
+    calendar: { name: 'Kalender & events', desc: 'Een week kopieert naar de volgende' },
+    library: { name: 'Oefenbibliotheek', desc: 'Link, video, schema of tekst, in mappen' },
+    drillMetrics: { name: 'Oefenmetrieken', desc: 'De training kondigt haar geschatte belasting aan' },
+    liveSession: { name: 'Training live', desc: 'Runner op volledig scherm, ook zonder netwerk' },
+    liveMatch: { name: 'Wedstrijd live', desc: 'Minuten en events vanaf de bank' },
+    sessionReview: { name: 'Trainingsverslag', desc: 'RPE en deelname geconsolideerd' },
+    goals: { name: 'Doelpuntanalyse', desc: 'Een statistiekvocabulaire van het team zelf' },
+    roster: { name: 'Kern beheren', desc: 'Actief, geblesseerd, inactief, AVG-archivering' },
+    trial: { name: 'Spelers op proef', desc: 'Opgeroepen, maar buiten de gemiddelden' },
+    rsvp: { name: 'Oproepen (RSVP)', desc: 'Antwoorden en automatische herinneringen' },
+    attendance: { name: 'Aanwezigheid', desc: 'Presentie, programma’s en check-ins over 30 d' },
+    medical: { name: 'Medisch & blessures', desc: 'Terugkeerprotocollen, beperkte toegang' },
+    care: { name: 'Verzorging & kinéslots', desc: 'Spelers boeken hun eigen slot' },
+    documents: { name: 'Documenten', desc: 'Leesopvolging X/Y gezien, per speler' },
+    fines: { name: 'Boetes', desc: 'Catalogus ingevoerd uit uw eigen reglement' },
+    dashboard: {
+      name: 'Dashboard & signalen',
+      desc: 'KPI’s van de dag en risico’s gedetecteerd door de AI',
+    },
+    reports: { name: 'Rapporten', desc: 'Vijf standaardrapporten plus de generator' },
+    bi: {
+      name: 'BI & dashboards',
+      desc: 'Samenstelbare widgets en gegenereerde visualisaties',
+    },
+    season: { name: 'Seizoen & cycli', desc: 'Periodiseringsblokken per week overgeërfd' },
+    scouting: {
+      name: 'Scouting van tegenstanders',
+      desc: 'Notities, schema’s, video’s en verrijkte foto’s',
+    },
+    scoutingReports: { name: 'Scoutingrapporten', desc: 'Gedeeld met aangeduide spelers en staf' },
+    playerApp: {
+      name: 'App STRIVN Player',
+      desc: 'Vier toepassingen: agenda, oproepen, check-in en programma’s, op iOS en Android',
+    },
+    parents: {
+      name: 'Ouderportaal',
+      desc: 'Bij jeugdteams loopt alles via de ouder, met diens toestemming',
+    },
+    staffBrief: {
+      name: 'Stafdossier',
+      desc: 'Eén pagina om door te sturen naar uw hoofdtrainer en het bestuur',
+    },
+  },
+  sessionsVisual: {
+    title: 'Training donderdag · intensiteitsblok',
+    sub: 'Geschatte belasting 445 AU · doel 460',
+    badge: 'BINNEN DOEL',
+    blocks: [
+      'Opwarming + activatie',
+      'Pressingblok · 8v8',
+      'Snelheid · vliegende sprints',
+      'Klein spel + cooling-down',
     ],
-    visual: {
-      title: 'Training donderdag · intensiteitsblok',
-      sub: 'Geschatte belasting 445 AU · doel 460',
-      badge: 'BINNEN DOEL',
-      blocks: [
-        'Opwarming + activatie',
-        'Pressingblok · 8v8',
-        'Snelheid · vliegende sprints',
-        'Klein spel + cooling-down',
+    workoutTitle: 'Individuele workout · L. Moreau',
+    published: 'Gepubliceerd naar de spelersapp',
+    workoutBody: 'Nordic curls 3×8 · Copenhagen 3×10 / kant · heupmobiliteit 8 min. Gegenereerd vanuit het hamstringprotocol, belasting afgeleid uit de groepstraining.',
+  },
+  teamVisual: {
+    to: '→ Olympique Montverne · 18 spelers',
+    type: 'WEDSTRIJD',
+    body: 'Zondag 15u00 · Stade des Trois Chênes. Afspraak 13u30 in de kleedkamer. Graag antwoorden vóór vrijdag 20u.',
+    sent: 'Verzonden 22:41',
+    auto: 'Auto-herinnering vrijdag 12u',
+    responsesLabel: 'ANTWOORDEN · 14 / 18',
+    states: {
+      yes: 'Aanwezig',
+      no: 'Afwezig · ziekenboeg',
+      maybe: 'Onzeker',
+      none: 'Geen antwoord',
+    },
+  },
+  phone: {
+    time: '7:42',
+    greeting: 'Hallo, Adam',
+    team: 'Olympique Montverne',
+    wellness: {
+      title: 'Wellness van vanochtend',
+      badge: '20 s',
+      rows: [
+        { label: 'Slaap', value: 4 },
+        { label: 'Vermoeidheid', value: 3 },
+        { label: 'Spierpijn', value: 4 },
       ],
-      workoutTitle: 'Individuele workout · L. Moreau',
-      published: 'Gepubliceerd naar de spelersapp',
-      workoutBody:
-        'Nordic curls 3×8 · Copenhagen 3×10 / kant · heupmobiliteit 8 min. Gegenereerd vanuit het hamstringprotocol, belasting afgeleid uit de groepstraining.',
+      submit: 'Versturen',
+    },
+    rpe: { title: 'RPE · training van gisteren', value: '7' },
+    workout: {
+      title: 'Workout van vandaag · preventie',
+      meta: '3 oefeningen · 12 min · video’s inbegrepen',
     },
   },
-  team: {
-    kicker: 'KERN & DAGELIJKSE WERKING',
-    title: 'Verstuur de oproep, de antwoorden komen vanzelf terug.',
-    body: 'Spelers antwoorden via een simpele link, en de herinnering vertrekt vanzelf op het tijdstip dat u instelt. Op de afbeelding vrijdagmiddag, en 14 antwoorden op 18, met de ziekenboeg al verrekend in de beschikbaarheid.',
-    modules: [
-      { name: 'Kern beheren', desc: 'Actief, geblesseerd, inactief, AVG-archivering' },
-      { name: 'Spelers op proef', desc: 'Opgeroepen, maar buiten de gemiddelden' },
-      { name: 'Oproepen (RSVP)', desc: 'Antwoorden en automatische herinneringen' },
-      { name: 'Aanwezigheid', desc: 'Presentie, programma’s en check-ins over 30 d' },
-      { name: 'Medisch & blessures', desc: 'Terugkeerprotocollen, beperkte toegang' },
-      { name: 'Verzorging & kinéslots', desc: 'Spelers boeken hun eigen slot' },
-      { name: 'Documenten', desc: 'Leesopvolging X/Y gezien, per speler' },
-      { name: 'Boetes', desc: 'Catalogus ingevoerd uit uw eigen reglement' },
+  opponentVisual: {
+    title: 'Scoutingsessie · RC Valbonne',
+    meta: 'W-6',
+    items: [
+      { label: 'Schema · opbouw met drie', meta: 'geannoteerd' },
+      { label: 'Clip stilstaande fase (0:42)', meta: 'Veo' },
+      { label: 'Foto vermoedelijke opstelling', meta: 'AI · geïmporteerd blad' },
     ],
-    visual: {
-      to: '→ Olympique Montverne · 18 spelers',
-      type: 'WEDSTRIJD',
-      body: 'Zondag 15u00 · Stade des Trois Chênes. Afspraak 13u30 in de kleedkamer. Graag antwoorden vóór vrijdag 20u.',
-      sent: 'Verzonden 22:41',
-      auto: 'Auto-herinnering vrijdag 12u',
-      responsesLabel: 'ANTWOORDEN · 14 / 18',
-      states: { yes: 'Aanwezig', no: 'Afwezig · ziekenboeg', maybe: 'Onzeker', none: 'Geen antwoord' },
-    },
   },
   ai: {
-    kicker: 'ARTIFICIËLE INTELLIGENTIE',
-    title: 'Geef de briefing en de herinneringen aan de AI.',
-    body: 'Ze geeft terug wat u invoert, daarna handelt ze: één knop past de aanbeveling toe, een wachtrij houdt de voorstellen vast. Zeven momenten dekken de dag, drie die lezen en vier die handelen.',
     readsLabel: 'ZE LEEST EN RAPPORTEERT',
     actsLabel: 'ZE HANDELT · U VALIDEERT',
     moments: [
@@ -683,41 +885,12 @@ const nl: FeaturesIndexContent = {
     },
     note: '« De assistent verheldert de beslissing; u neemt ze. » Maximaal twee verduidelijkende vragen, antwoorden uit uw eigen data, en uw validatie vóór elke actie.',
   },
-  reporting: {
-    kicker: 'STURING & RAPPORTEN',
-    title: 'Stel het dashboard samen dat het bestuur leest.',
-    body: 'Het samenstelbare dashboard, de vijf standaardrapporten en de generator putten uit dezelfde basis. Uw widgets gaan mee van het ene rapport naar het andere, week na week.',
-    modules: [
-      { name: 'Dashboard & signalen', desc: 'KPI’s van de dag en risico’s gedetecteerd door de AI' },
-      { name: 'Rapporten', desc: 'Vijf standaardrapporten plus de generator' },
-      { name: 'BI & dashboards', desc: 'Samenstelbare widgets en gegenereerde visualisaties' },
-      { name: 'Seizoen & cycli', desc: 'Periodiseringsblokken per week overgeërfd' },
-    ],
-  },
-  opponent: {
-    kicker: 'TEGENSTANDER',
-    title: 'Bereid de volgende tegenstander samen voor.',
-    modules: [
-      { name: 'Scouting van tegenstanders', desc: 'Notities, schema’s, video’s en verrijkte foto’s' },
-      { name: 'Scoutingrapporten', desc: 'Gedeeld met aangeduide spelers en staf' },
-    ],
-    visual: {
-      title: 'Scoutingsessie · RC Valbonne',
-      meta: 'W-6',
-      items: [
-        { label: 'Schema · opbouw met drie', meta: 'geannoteerd' },
-        { label: 'Clip stilstaande fase (0:42)', meta: 'Veo' },
-        { label: 'Foto vermoedelijke opstelling', meta: 'AI · geïmporteerd blad' },
-      ],
-    },
-  },
-  player: {
-    kicker: 'KANT SPELER & OUDERS',
-    title: 'Geef speler en ouder hun eigen toegang.',
-    modules: [
-      { name: 'App STRIVN Player', desc: 'Vier toepassingen: agenda, oproepen, check-in en programma’s, op iOS en Android' },
-      { name: 'Ouderportaal', desc: 'Bij jeugdteams loopt alles via de ouder, met diens toestemming' },
-    ],
+  close: {
+    title: 'Maak uw omgeving aan en importeer uw eerste training.',
+    body: 'De eerste 30 dagen zitten op Semi-Pro, GPS-import inbegrepen, zonder kaart. Daarna draait het Free-plan het team het hele seizoen, en uw staf sluit aan zodra ze uw eerste rapporten zien.',
+    primary: 'Mijn omgeving gratis aanmaken',
+    secondary: 'Spreek met Benoit',
+    fine: ['ZONDER KREDIETKAART', 'ZONDER CLUBGOEDKEURING', 'UW DATA BLIJFT VAN U'],
   },
 };
 
@@ -726,87 +899,166 @@ const nl: FeaturesIndexContent = {
 const de: FeaturesIndexContent = {
   meta: {
     title: 'STRIVN Funktionen | Jedes Modul im Detail, vom Monitoring bis zur App',
-    description:
-      'Gehen Sie jedes Modul von STRIVN im Detail durch: Monitoring, Einheiten, Kader, KI, Berichte, Gegner und Spieler-App.',
+    description: 'Gehen Sie jedes Modul von STRIVN im Detail durch: Monitoring, Einheiten, Kader, KI, Berichte, Gegner und Spieler-App.',
   },
   hero: {
     kicker: 'FUNKTIONEN',
     title: 'Alle sechs Modulfamilien durchgehen.',
     sub: 'Jedes Modul steht für sich, und alle teilen dieselbe Datenbasis. Einmal erfasste Daten bedienen alle sechs Familien, von Montag bis zum Spiel.',
-    jump: ['Monitoring', 'Einheiten & Platz', 'Kader', 'Intelligenz', 'Berichte', 'Gegner & Spieler'],
+    toc: 'INHALT · SECHS MOMENTE DER WOCHE',
+    units: { modules: 'Module', moments: 'Momente' },
+    fine: ['16 Detailseiten', '6 Momente der Woche', '1 Datenbasis'],
   },
-  monitoring: {
-    kicker: 'MONITORING & LEISTUNG',
-    title: 'Readiness und Belastung auf einem Bildschirm lesen.',
-    body: 'Diesen Bildschirm öffnen Sie vor der Einheit: Readiness je Spieler, Belastung des Tages und KI-Warnungen. Der Check-in am Morgen und Ihr GPS-Export speisen die acht Module darunter.',
-    modules: [
-      { name: 'Trainingsbelastung', desc: 'sRPE, ACWR, Monotonie und Strain, fortlaufend' },
-      { name: 'GPS & Geschwindigkeitsblöcke', desc: 'Exporte in benannte Zonen gebündelt' },
-      { name: 'Belastungsplanung', desc: 'Wochenziel, dann Plan vs Ist' },
-      { name: 'Wellness-Check-in', desc: 'Schlaf, Ermüdung, Schmerz, Motivation' },
-      { name: 'Readiness', desc: 'Grün / gelb / rot, prognostiziert' },
-      { name: 'Tests & Selbstmessung', desc: 'Kampagnen durch Staff oder Spieler erfasst' },
-      { name: 'Kraft & 1RM', desc: 'Ein Prozentsatz, eine Last je Spieler' },
-      { name: 'Programme', desc: 'Kraft, Prävention, Rückkehr ins Spiel' },
-    ],
+  cta: { primary: 'Kostenlos starten', secondary: 'Mit Benoit sprechen' },
+  groups: {
+    monitoring: {
+      day: 'MONTAG',
+      label: 'Monitoring & GPS',
+      title: 'Readiness und Belastung auf einem Bildschirm lesen.',
+      body: 'Diesen Bildschirm öffnen Sie vor der Einheit: Readiness je Spieler, Belastung des Tages und KI-Warnungen. Der Check-in am Morgen und Ihr GPS-Export speisen die fünf Module darunter.',
+    },
+    plan: {
+      day: 'MITTWOCH',
+      label: 'Planen & bauen',
+      title: 'Die Wochenbelastung in AU planen.',
+      body: 'Legen Sie ein Wochenziel fest und bauen Sie jede Einheit aus Ihrer Übungsbibliothek. Der Builder schätzt die Belastung jedes Blocks vor dem Training, hier 445 AU auf vier Blöcke.',
+    },
+    pitch: {
+      day: 'DONNERSTAG',
+      label: 'Platz & Spiel',
+      title: 'Einheit und Spiel von der Bank steuern.',
+      body: 'Der Live-Modus vergleicht die geschätzte Belastung mit dem Ist, während die Einheit läuft. Am Spieltag erfasst die Bank Minuten und Ereignisse. Das Scouting des nächsten Gegners bereiten Sie gemeinsam vor, ab ST-6.',
+    },
+    players: {
+      day: 'FREITAG',
+      label: 'Spieler & Kader',
+      title: 'Aufgebot senden, Antworten kommen von allein zurück.',
+      body: 'Spieler antworten über einen simplen Link, und die Erinnerung geht von allein zu der Uhrzeit raus, die Sie festlegen. Auf dem Screenshot Freitagmittag, und 14 Antworten von 18, die Behandlungsliege bereits in der Verfügbarkeit verrechnet.',
+    },
+    ai: {
+      day: 'SONNTAG',
+      label: 'KI-Assistent',
+      title: 'Briefing und Nachfassen an die KI übergeben.',
+      body: 'Sie gibt wieder, was Sie erfassen, und sie handelt: Ein Knopf wendet die Empfehlung an, eine Warteschlange hält die Vorschläge. Sieben Momente decken den Tag ab, drei lesend und vier handelnd.',
+    },
+    staff: {
+      day: 'MONTAG',
+      label: 'Staff & Berichte',
+      title: 'Das Dashboard bauen, das die Führung liest.',
+      body: 'Das zusammenstellbare Dashboard, die fünf Standardberichte und der Generator schöpfen aus derselben Basis. Ihre Widgets wandern von einem Bericht zum nächsten, Woche für Woche.',
+    },
   },
-  sessions: {
-    kicker: 'EINHEITEN & PLATZ',
-    title: 'Einheit bauen, an der Linie steuern.',
-    body: 'Der Builder schätzt die Belastung jedes Blocks vor dem Training, hier 445 AU auf vier Blöcke. Der Live-Modus vergleicht diese Schätzung danach mit dem Ist, während die Einheit läuft.',
-    modules: [
-      { name: 'Kalender & Termine', desc: 'Eine Woche dupliziert sich auf die nächste' },
-      { name: 'Übungsbibliothek', desc: 'Link, Video, Skizze oder Text, in Ordnern' },
-      { name: 'Übungsmetriken', desc: 'Die Einheit nennt ihre geschätzte Belastung' },
-      { name: 'Einheit live', desc: 'Vollbild-Runner, auch ohne Netz' },
-      { name: 'Spiel live', desc: 'Minuten und Ereignisse von der Bank' },
-      { name: 'Einheiten-Bilanz', desc: 'RPE und Teilnahme konsolidiert' },
-      { name: 'Toranalyse', desc: 'Ein eigenes Statistik-Vokabular des Teams' },
+  modules: {
+    load: { name: 'Trainingsbelastung', desc: 'sRPE, ACWR, Monotonie und Strain, fortlaufend' },
+    gps: { name: 'GPS & Geschwindigkeitsblöcke', desc: 'Exporte in benannte Zonen gebündelt' },
+    loadPlan: { name: 'Belastungsplanung', desc: 'Wochenziel, dann Plan vs Ist' },
+    wellness: { name: 'Wellness-Check-in', desc: 'Schlaf, Ermüdung, Schmerz, Motivation' },
+    readiness: { name: 'Readiness', desc: 'Grün / gelb / rot, prognostiziert' },
+    tests: { name: 'Tests & Selbstmessung', desc: 'Kampagnen durch Staff oder Spieler erfasst' },
+    strength: { name: 'Kraft & 1RM', desc: 'Ein Prozentsatz, eine Last je Spieler' },
+    programs: { name: 'Programme', desc: 'Kraft, Prävention, Rückkehr ins Spiel' },
+    calendar: { name: 'Kalender & Termine', desc: 'Eine Woche dupliziert sich auf die nächste' },
+    library: { name: 'Übungsbibliothek', desc: 'Link, Video, Skizze oder Text, in Ordnern' },
+    drillMetrics: { name: 'Übungsmetriken', desc: 'Die Einheit nennt ihre geschätzte Belastung' },
+    liveSession: { name: 'Einheit live', desc: 'Vollbild-Runner, auch ohne Netz' },
+    liveMatch: { name: 'Spiel live', desc: 'Minuten und Ereignisse von der Bank' },
+    sessionReview: { name: 'Einheiten-Bilanz', desc: 'RPE und Teilnahme konsolidiert' },
+    goals: { name: 'Toranalyse', desc: 'Ein eigenes Statistik-Vokabular des Teams' },
+    roster: { name: 'Kader verwalten', desc: 'Aktiv, verletzt, inaktiv, DSGVO-Archivierung' },
+    trial: {
+      name: 'Spieler im Probetraining',
+      desc: 'Aufgeboten, aber außerhalb der Mittelwerte',
+    },
+    rsvp: { name: 'Aufgebote (RSVP)', desc: 'Antworten und automatische Erinnerungen' },
+    attendance: { name: 'Verlässlichkeit', desc: 'Anwesenheit, Programme und Check-ins über 30 T' },
+    medical: {
+      name: 'Medizin & Verletzungen',
+      desc: 'Rückkehrprotokolle, eingeschränkter Zugriff',
+    },
+    care: { name: 'Behandlung & Physio-Slots', desc: 'Spieler buchen ihren Slot selbst' },
+    documents: { name: 'Dokumente', desc: 'Leseverfolgung X/Y gesehen, je Spieler' },
+    fines: { name: 'Strafen', desc: 'Katalog aus Ihrer eigenen Ordnung importiert' },
+    dashboard: {
+      name: 'Dashboard & Signale',
+      desc: 'KPIs des Tages und von der KI erkannte Risiken',
+    },
+    reports: { name: 'Berichte', desc: 'Fünf Standardberichte plus der Generator' },
+    bi: {
+      name: 'BI & Dashboards',
+      desc: 'Zusammenstellbare Widgets und erzeugte Visualisierungen',
+    },
+    season: { name: 'Saison & Zyklen', desc: 'Periodisierungsblöcke wochenweise vererbt' },
+    scouting: { name: 'Gegner-Scouting', desc: 'Notizen, Skizzen, Videos und angereicherte Fotos' },
+    scoutingReports: { name: 'Scouting-Berichte', desc: 'Mit benannten Spielern und Staff geteilt' },
+    playerApp: {
+      name: 'App STRIVN Player',
+      desc: 'Vier Anwendungen: Kalender, Aufgebote, Check-in und Programme, für iOS und Android',
+    },
+    parents: {
+      name: 'Elternportal',
+      desc: 'Bei Jugendteams läuft alles über die Eltern, mit deren Einwilligung',
+    },
+    staffBrief: {
+      name: 'Staff-Dossier',
+      desc: 'Eine Seite für Ihren Cheftrainer und die Vereinsführung',
+    },
+  },
+  sessionsVisual: {
+    title: 'Einheit Donnerstag · Intensitätsblock',
+    sub: 'Geschätzte Belastung 445 AU · Ziel 460',
+    badge: 'IM ZIELBEREICH',
+    blocks: [
+      'Aufwärmen + Aktivierung',
+      'Pressing-Block · 8v8',
+      'Schnelligkeit · fliegende Sprints',
+      'Kleinfeld + Auslaufen',
     ],
-    visual: {
-      title: 'Einheit Donnerstag · Intensitätsblock',
-      sub: 'Geschätzte Belastung 445 AU · Ziel 460',
-      badge: 'IM ZIELBEREICH',
-      blocks: [
-        'Aufwärmen + Aktivierung',
-        'Pressing-Block · 8v8',
-        'Schnelligkeit · fliegende Sprints',
-        'Kleinfeld + Auslaufen',
+    workoutTitle: 'Individuelles Workout · L. Moreau',
+    published: 'In die Spieler-App veröffentlicht',
+    workoutBody: 'Nordic Curls 3×8 · Copenhagen 3×10 / Seite · Hüftmobilität 8 min. Aus dem Ischio-Protokoll erzeugt, Last aus der Teameinheit abgeleitet.',
+  },
+  teamVisual: {
+    to: '→ Olympique Montverne · 18 Spieler',
+    type: 'SPIEL',
+    body: 'Sonntag 15:00 · Stade des Trois Chênes. Treffpunkt 13:30 in der Kabine. Bitte bis Freitag 20 Uhr antworten.',
+    sent: 'Gesendet 22:41',
+    auto: 'Auto-Erinnerung Freitag 12 Uhr',
+    responsesLabel: 'ANTWORTEN · 14 / 18',
+    states: { yes: 'Dabei', no: 'Fehlt · Behandlung', maybe: 'Unsicher', none: 'Keine Antwort' },
+  },
+  phone: {
+    time: '7:42',
+    greeting: 'Hallo, Adam',
+    team: 'Olympique Montverne',
+    wellness: {
+      title: 'Wellness am Morgen',
+      badge: '20 s',
+      rows: [
+        { label: 'Schlaf', value: 4 },
+        { label: 'Ermüdung', value: 3 },
+        { label: 'Muskelkater', value: 4 },
       ],
-      workoutTitle: 'Individuelles Workout · L. Moreau',
-      published: 'In die Spieler-App veröffentlicht',
-      workoutBody:
-        'Nordic Curls 3×8 · Copenhagen 3×10 / Seite · Hüftmobilität 8 min. Aus dem Ischio-Protokoll erzeugt, Last aus der Teameinheit abgeleitet.',
+      submit: 'Senden',
+    },
+    rpe: { title: 'RPE · Einheit von gestern', value: '7' },
+    workout: {
+      title: 'Workout des Tages · Prävention',
+      meta: '3 Übungen · 12 min · Videos inklusive',
     },
   },
-  team: {
-    kicker: 'KADER & ALLTAG',
-    title: 'Aufgebot senden, Antworten kommen von allein zurück.',
-    body: 'Spieler antworten über einen simplen Link, und die Erinnerung geht von allein zu der Uhrzeit raus, die Sie festlegen. Auf dem Screenshot Freitagmittag, und 14 Antworten von 18, die Behandlungsliege bereits in der Verfügbarkeit verrechnet.',
-    modules: [
-      { name: 'Kader verwalten', desc: 'Aktiv, verletzt, inaktiv, DSGVO-Archivierung' },
-      { name: 'Spieler im Probetraining', desc: 'Aufgeboten, aber außerhalb der Mittelwerte' },
-      { name: 'Aufgebote (RSVP)', desc: 'Antworten und automatische Erinnerungen' },
-      { name: 'Verlässlichkeit', desc: 'Anwesenheit, Programme und Check-ins über 30 T' },
-      { name: 'Medizin & Verletzungen', desc: 'Rückkehrprotokolle, eingeschränkter Zugriff' },
-      { name: 'Behandlung & Physio-Slots', desc: 'Spieler buchen ihren Slot selbst' },
-      { name: 'Dokumente', desc: 'Leseverfolgung X/Y gesehen, je Spieler' },
-      { name: 'Strafen', desc: 'Katalog aus Ihrer eigenen Ordnung importiert' },
+  opponentVisual: {
+    title: 'Scouting-Session · RC Valbonne',
+    meta: 'ST-6',
+    items: [
+      { label: 'Skizze · Spielaufbau zu dritt', meta: 'annotiert' },
+      { label: 'Clip Standardsituation (0:42)', meta: 'Veo' },
+      {
+        label: 'Foto der wahrscheinlichen Aufstellung',
+        meta: 'KI · importierter Bericht',
+      },
     ],
-    visual: {
-      to: '→ Olympique Montverne · 18 Spieler',
-      type: 'SPIEL',
-      body: 'Sonntag 15:00 · Stade des Trois Chênes. Treffpunkt 13:30 in der Kabine. Bitte bis Freitag 20 Uhr antworten.',
-      sent: 'Gesendet 22:41',
-      auto: 'Auto-Erinnerung Freitag 12 Uhr',
-      responsesLabel: 'ANTWORTEN · 14 / 18',
-      states: { yes: 'Dabei', no: 'Fehlt · Behandlung', maybe: 'Unsicher', none: 'Keine Antwort' },
-    },
   },
   ai: {
-    kicker: 'KÜNSTLICHE INTELLIGENZ',
-    title: 'Briefing und Nachfassen an die KI übergeben.',
-    body: 'Sie gibt wieder, was Sie erfassen, und sie handelt: Ein Knopf wendet die Empfehlung an, eine Warteschlange hält die Vorschläge. Sieben Momente decken den Tag ab, drei lesend und vier handelnd.',
     readsLabel: 'SIE LIEST UND BERICHTET',
     actsLabel: 'SIE HANDELT · SIE GEBEN FREI',
     moments: [
@@ -849,8 +1101,7 @@ const de: FeaturesIndexContent = {
       legendA: 'ST13',
       legendB: 'ST14',
       metrics: ['DISTANZ', 'HSR', 'SPRINTS', 'LAST'],
-      insight:
-        'HSR +9 % und Sprints +21 % bei nahezu gleichem Volumen. Die Intensität steigt bei gleicher Last.',
+      insight: 'HSR +9 % und Sprints +21 % bei nahezu gleichem Volumen. Die Intensität steigt bei gleicher Last.',
       pin: 'Ans Dashboard heften',
       refine: 'Frage verfeinern',
       signalTitle: 'Signal von der KI gemeldet, aus eigener Initiative',
@@ -859,41 +1110,12 @@ const de: FeaturesIndexContent = {
     },
     note: '„Der Assistent klärt die Entscheidung; Sie treffen sie.“ Höchstens zwei Rückfragen, Antworten aus Ihren Daten, und Ihre Freigabe vor jeder Aktion.',
   },
-  reporting: {
-    kicker: 'STEUERUNG & BERICHTE',
-    title: 'Das Dashboard bauen, das die Führung liest.',
-    body: 'Das zusammenstellbare Dashboard, die fünf Standardberichte und der Generator schöpfen aus derselben Basis. Ihre Widgets wandern von einem Bericht zum nächsten, Woche für Woche.',
-    modules: [
-      { name: 'Dashboard & Signale', desc: 'KPIs des Tages und von der KI erkannte Risiken' },
-      { name: 'Berichte', desc: 'Fünf Standardberichte plus der Generator' },
-      { name: 'BI & Dashboards', desc: 'Zusammenstellbare Widgets und erzeugte Visualisierungen' },
-      { name: 'Saison & Zyklen', desc: 'Periodisierungsblöcke wochenweise vererbt' },
-    ],
-  },
-  opponent: {
-    kicker: 'GEGNER',
-    title: 'Den nächsten Gegner gemeinsam vorbereiten.',
-    modules: [
-      { name: 'Gegner-Scouting', desc: 'Notizen, Skizzen, Videos und angereicherte Fotos' },
-      { name: 'Scouting-Berichte', desc: 'Mit benannten Spielern und Staff geteilt' },
-    ],
-    visual: {
-      title: 'Scouting-Session · RC Valbonne',
-      meta: 'ST-6',
-      items: [
-        { label: 'Skizze · Spielaufbau zu dritt', meta: 'annotiert' },
-        { label: 'Clip Standardsituation (0:42)', meta: 'Veo' },
-        { label: 'Foto der wahrscheinlichen Aufstellung', meta: 'KI · importierter Bericht' },
-      ],
-    },
-  },
-  player: {
-    kicker: 'SEITE SPIELER & ELTERN',
-    title: 'Spielern und Eltern einen Zugang geben.',
-    modules: [
-      { name: 'App STRIVN Player', desc: 'Vier Anwendungen: Kalender, Aufgebote, Check-in und Programme, für iOS und Android' },
-      { name: 'Elternportal', desc: 'Bei Jugendteams läuft alles über die Eltern, mit deren Einwilligung' },
-    ],
+  close: {
+    title: 'Bereich erstellen und die erste Einheit importieren.',
+    body: 'Die ersten 30 Tage laufen auf Semi-Pro, GPS-Import inklusive, ohne Karte. Danach trägt der Free-Plan das Team die ganze Saison, und Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.',
+    primary: 'Meinen Bereich kostenlos erstellen',
+    secondary: 'Mit Benoit sprechen',
+    fine: ['OHNE KREDITKARTE', 'OHNE VEREINSFREIGABE', 'IHRE DATEN BLEIBEN IHRE'],
   },
 };
 
@@ -902,87 +1124,177 @@ const de: FeaturesIndexContent = {
 const pt: FeaturesIndexContent = {
   meta: {
     title: 'Funcionalidades STRIVN | Cada módulo em detalhe, um a um',
-    description:
-      'Percorra cada módulo do STRIVN em detalhe: monitorização, sessões, plantel, IA, relatórios, adversário e app do jogador.',
+    description: 'Percorra cada módulo do STRIVN em detalhe: monitorização, sessões, plantel, IA, relatórios, adversário e app do jogador.',
   },
   hero: {
     kicker: 'FUNCIONALIDADES',
     title: 'Percorra as seis famílias de módulos.',
     sub: 'Cada módulo sustenta-se sozinho e todos partilham a mesma base de dados. Um dado introduzido uma vez serve as seis famílias, de segunda ao jogo.',
-    jump: ['Monitorização', 'Sessões & campo', 'Plantel', 'Inteligência', 'Relatórios', 'Adversário & jogador'],
+    toc: 'ÍNDICE · SEIS MOMENTOS DA SEMANA',
+    units: { modules: 'módulos', moments: 'momentos' },
+    fine: ['16 páginas detalhadas', '6 momentos da semana', '1 base de dados'],
   },
-  monitoring: {
-    kicker: 'MONITORIZAÇÃO & DESEMPENHO',
-    title: 'Leia readiness, carga e alertas num só ecrã.',
-    body: 'Abre este ecrã antes da sessão: readiness por jogador, carga do dia e alertas de IA. O check-in da manhã e a sua exportação GPS alimentam os oito módulos abaixo.',
-    modules: [
-      { name: 'Carga de treino', desc: 'sRPE, ACWR, monotonia e constrangimento em contínuo' },
-      { name: 'GPS & blocos de velocidade', desc: 'Exportações agrupadas em zonas nomeadas' },
-      { name: 'Planeamento de carga', desc: 'Objetivo semanal, depois previsto vs realizado' },
-      { name: 'Check-in de bem-estar', desc: 'Sono, fadiga, dor, motivação' },
-      { name: 'Readiness', desc: 'Verde / laranja / vermelho, projetado' },
-      { name: 'Testes & automedição', desc: 'Campanhas preenchidas pelo staff ou pelos jogadores' },
-      { name: 'Musculação & 1RM', desc: 'Uma percentagem, uma carga por jogador' },
-      { name: 'Programas', desc: 'Força, prevenção, regresso ao jogo' },
-    ],
+  cta: { primary: 'Começar gratuitamente', secondary: 'Falar com o Benoit' },
+  groups: {
+    monitoring: {
+      day: 'SEGUNDA',
+      label: 'Monitorização & GPS',
+      title: 'Leia readiness, carga e alertas num só ecrã.',
+      body: 'Abre este ecrã antes da sessão: readiness por jogador, carga do dia e alertas de IA. O check-in da manhã e a sua exportação GPS alimentam os cinco módulos abaixo.',
+    },
+    plan: {
+      day: 'QUARTA',
+      label: 'Planear & construir',
+      title: 'Planeie a carga da semana em UA.',
+      body: 'Defina um objetivo semanal e construa cada sessão a partir da sua biblioteca de exercícios. O construtor estima a carga de cada bloco antes do treino, aqui 445 UA em quatro blocos.',
+    },
+    pitch: {
+      day: 'QUINTA',
+      label: 'Campo & jogo',
+      title: 'Conduza sessão e jogo a partir do banco.',
+      body: 'O modo direto compara a carga estimada com o realizado, enquanto a sessão decorre. No dia de jogo, o banco regista minutos e eventos. O scouting do próximo adversário prepara-se em conjunto, desde J-6.',
+    },
+    players: {
+      day: 'SEXTA',
+      label: 'Jogadores & plantel',
+      title: 'Envie a convocatória, as respostas voltam sozinhas.',
+      body: 'Os jogadores respondem por um simples link, e o lembrete parte sozinho à hora que definir. Na captura, sexta ao meio-dia, e 14 respostas em 18, com a enfermaria já descontada da disponibilidade.',
+    },
+    ai: {
+      day: 'DOMINGO',
+      label: 'Assistente IA',
+      title: 'Entregue à IA o briefing e os lembretes.',
+      body: 'Restitui o que introduz, e depois age: um botão aplica a recomendação, uma fila retém as propostas. Sete momentos cobrem o dia, três de leitura e quatro de ação.',
+    },
+    staff: {
+      day: 'SEGUNDA',
+      label: 'Staff & relatórios',
+      title: 'Componha o dashboard que a direção lê.',
+      body: 'O dashboard componível, os cinco relatórios tipo e o gerador bebem da mesma base. Os seus widgets passam de um relatório para o outro, semana após semana.',
+    },
   },
-  sessions: {
-    kicker: 'SESSÕES & CAMPO',
-    title: 'Construa a sessão, conduza-a à beira do campo.',
-    body: 'O construtor estima a carga de cada bloco antes do treino, aqui 445 UA em quatro blocos. Depois o modo direto compara essa estimativa com o realizado, enquanto a sessão decorre.',
-    modules: [
-      { name: 'Calendário & eventos', desc: 'Uma semana duplica-se para a seguinte' },
-      { name: 'Biblioteca de exercícios', desc: 'Link, vídeo, esquema ou texto, em pastas' },
-      { name: 'Métricas de exercício', desc: 'A sessão anuncia a sua carga estimada' },
-      { name: 'Sessão em direto', desc: 'Runner em ecrã inteiro, mesmo sem rede' },
-      { name: 'Jogo em direto', desc: 'Minutos e eventos a partir do banco' },
-      { name: 'Balanço de sessão', desc: 'RPE e participação consolidados' },
-      { name: 'Análise dos golos', desc: 'Vocabulário de estatísticas próprio da equipa' },
+  modules: {
+    load: {
+      name: 'Carga de treino',
+      desc: 'sRPE, ACWR, monotonia e constrangimento em contínuo',
+    },
+    gps: {
+      name: 'GPS & blocos de velocidade',
+      desc: 'Exportações agrupadas em zonas nomeadas',
+    },
+    loadPlan: {
+      name: 'Planeamento de carga',
+      desc: 'Objetivo semanal, depois previsto vs realizado',
+    },
+    wellness: { name: 'Check-in de bem-estar', desc: 'Sono, fadiga, dor, motivação' },
+    readiness: { name: 'Readiness', desc: 'Verde / laranja / vermelho, projetado' },
+    tests: {
+      name: 'Testes & automedição',
+      desc: 'Campanhas preenchidas pelo staff ou pelos jogadores',
+    },
+    strength: { name: 'Musculação & 1RM', desc: 'Uma percentagem, uma carga por jogador' },
+    programs: { name: 'Programas', desc: 'Força, prevenção, regresso ao jogo' },
+    calendar: { name: 'Calendário & eventos', desc: 'Uma semana duplica-se para a seguinte' },
+    library: {
+      name: 'Biblioteca de exercícios',
+      desc: 'Link, vídeo, esquema ou texto, em pastas',
+    },
+    drillMetrics: { name: 'Métricas de exercício', desc: 'A sessão anuncia a sua carga estimada' },
+    liveSession: { name: 'Sessão em direto', desc: 'Runner em ecrã inteiro, mesmo sem rede' },
+    liveMatch: { name: 'Jogo em direto', desc: 'Minutos e eventos a partir do banco' },
+    sessionReview: { name: 'Balanço de sessão', desc: 'RPE e participação consolidados' },
+    goals: { name: 'Análise dos golos', desc: 'Vocabulário de estatísticas próprio da equipa' },
+    roster: { name: 'Gerir o plantel', desc: 'Ativos, lesionados, inativos, arquivo RGPD' },
+    trial: { name: 'Jogadores à experiência', desc: 'Convocados, mas fora das médias' },
+    rsvp: { name: 'Convocatórias (RSVP)', desc: 'Respostas e lembretes automáticos' },
+    attendance: { name: 'Assiduidade', desc: 'Presença, programas e check-ins em 30 d' },
+    medical: { name: 'Médico & lesões', desc: 'Protocolos de regresso, acesso restrito' },
+    care: { name: 'Tratamentos & vagas de fisio', desc: 'Os jogadores reservam a sua vaga' },
+    documents: { name: 'Documentos', desc: 'Registo de leitura X/Y visto, por jogador' },
+    fines: { name: 'Multas', desc: 'Catálogo importado do seu regulamento' },
+    dashboard: { name: 'Painel & sinais', desc: 'KPIs do dia e riscos detetados pela IA' },
+    reports: { name: 'Relatórios', desc: 'Cinco relatórios tipo mais o gerador' },
+    bi: { name: 'BI & dashboards', desc: 'Widgets componíveis e visualizações geradas' },
+    season: { name: 'Época & ciclos', desc: 'Blocos de periodização herdados por semana' },
+    scouting: {
+      name: 'Scouting dos adversários',
+      desc: 'Notas, esquemas, vídeos e fotos enriquecidas',
+    },
+    scoutingReports: {
+      name: 'Relatórios de scouting',
+      desc: 'Partilhados com jogadores e staff designados',
+    },
+    playerApp: {
+      name: 'App STRIVN Player',
+      desc: 'Quatro usos: agenda, convocatórias, check-in e programas, em iOS e Android',
+    },
+    parents: {
+      name: 'Portal dos pais',
+      desc: 'Nas equipas de jovens tudo passa pelo encarregado, com o seu consentimento',
+    },
+    staffBrief: {
+      name: 'Dossiê de staff',
+      desc: 'Uma página para enviar ao seu treinador principal e à direção',
+    },
+  },
+  sessionsVisual: {
+    title: 'Sessão quinta · bloco intensidade',
+    sub: 'Carga estimada 445 UA · alvo 460',
+    badge: 'DENTRO DO ALVO',
+    blocks: [
+      'Aquecimento + ativação',
+      'Bloco pressão · 8v8',
+      'Velocidade · sprints lançados',
+      'Jogo reduzido + retorno à calma',
     ],
-    visual: {
-      title: 'Sessão quinta · bloco intensidade',
-      sub: 'Carga estimada 445 UA · alvo 460',
-      badge: 'DENTRO DO ALVO',
-      blocks: [
-        'Aquecimento + ativação',
-        'Bloco pressão · 8v8',
-        'Velocidade · sprints lançados',
-        'Jogo reduzido + retorno à calma',
+    workoutTitle: 'Treino individual · L. Moreau',
+    published: 'Publicado para a app do jogador',
+    workoutBody: 'Nordic curls 3×8 · Copenhagen 3×10 / lado · mobilidade da anca 8 min. Gerado a partir do protocolo isquiotibial, carga deduzida da sessão coletiva.',
+  },
+  teamVisual: {
+    to: '→ Olympique Montverne · 18 jogadores',
+    type: 'JOGO',
+    body: 'Domingo 15h00 · Stade des Trois Chênes. Encontro 13h30 no balneário. Responder até sexta-feira 20h.',
+    sent: 'Enviada 22:41',
+    auto: 'Lembrete automático sexta 12h',
+    responsesLabel: 'RESPOSTAS · 14 / 18',
+    states: {
+      yes: 'Presente',
+      no: 'Ausente · enfermaria',
+      maybe: 'Incerto',
+      none: 'Sem resposta',
+    },
+  },
+  phone: {
+    time: '7:42',
+    greeting: 'Olá, Adam',
+    team: 'Olympique Montverne',
+    wellness: {
+      title: 'Wellness da manhã',
+      badge: '20 s',
+      rows: [
+        { label: 'Sono', value: 4 },
+        { label: 'Fadiga', value: 3 },
+        { label: 'Dores', value: 4 },
       ],
-      workoutTitle: 'Treino individual · L. Moreau',
-      published: 'Publicado para a app do jogador',
-      workoutBody:
-        'Nordic curls 3×8 · Copenhagen 3×10 / lado · mobilidade da anca 8 min. Gerado a partir do protocolo isquiotibial, carga deduzida da sessão coletiva.',
+      submit: 'Enviar',
+    },
+    rpe: { title: 'RPE · sessão de ontem', value: '7' },
+    workout: {
+      title: 'Workout de hoje · prevenção',
+      meta: '3 exercícios · 12 min · vídeos incluídos',
     },
   },
-  team: {
-    kicker: 'PLANTEL & DIA A DIA',
-    title: 'Envie a convocatória, as respostas voltam sozinhas.',
-    body: 'Os jogadores respondem por um simples link, e o lembrete parte sozinho à hora que definir. Na captura, sexta ao meio-dia, e 14 respostas em 18, com a enfermaria já descontada da disponibilidade.',
-    modules: [
-      { name: 'Gerir o plantel', desc: 'Ativos, lesionados, inativos, arquivo RGPD' },
-      { name: 'Jogadores à experiência', desc: 'Convocados, mas fora das médias' },
-      { name: 'Convocatórias (RSVP)', desc: 'Respostas e lembretes automáticos' },
-      { name: 'Assiduidade', desc: 'Presença, programas e check-ins em 30 d' },
-      { name: 'Médico & lesões', desc: 'Protocolos de regresso, acesso restrito' },
-      { name: 'Tratamentos & vagas de fisio', desc: 'Os jogadores reservam a sua vaga' },
-      { name: 'Documentos', desc: 'Registo de leitura X/Y visto, por jogador' },
-      { name: 'Multas', desc: 'Catálogo importado do seu regulamento' },
+  opponentVisual: {
+    title: 'Sessão de scouting · RC Valbonne',
+    meta: 'J-6',
+    items: [
+      { label: 'Esquema · saída de bola a 3', meta: 'anotado' },
+      { label: 'Clip bola parada (0:42)', meta: 'Veo' },
+      { label: 'Foto do onze provável', meta: 'IA · ficha importada' },
     ],
-    visual: {
-      to: '→ Olympique Montverne · 18 jogadores',
-      type: 'JOGO',
-      body: 'Domingo 15h00 · Stade des Trois Chênes. Encontro 13h30 no balneário. Responder até sexta-feira 20h.',
-      sent: 'Enviada 22:41',
-      auto: 'Lembrete automático sexta 12h',
-      responsesLabel: 'RESPOSTAS · 14 / 18',
-      states: { yes: 'Presente', no: 'Ausente · enfermaria', maybe: 'Incerto', none: 'Sem resposta' },
-    },
   },
   ai: {
-    kicker: 'INTELIGÊNCIA ARTIFICIAL',
-    title: 'Entregue à IA o briefing e os lembretes.',
-    body: 'Restitui o que introduz, e depois age: um botão aplica a recomendação, uma fila retém as propostas. Sete momentos cobrem o dia, três de leitura e quatro de ação.',
     readsLabel: 'ELA LÊ E RESTITUI',
     actsLabel: 'ELA AGE · VOCÊ VALIDA',
     moments: [
@@ -1034,41 +1346,12 @@ const pt: FeaturesIndexContent = {
     },
     note: '«O assistente esclarece a decisão; você toma-a.» Duas perguntas de clarificação no máximo, respostas tiradas dos seus dados, e a sua validação antes de cada ação.',
   },
-  reporting: {
-    kicker: 'PILOTAGEM & RELATÓRIOS',
-    title: 'Componha o dashboard que a direção lê.',
-    body: 'O dashboard componível, os cinco relatórios tipo e o gerador bebem da mesma base. Os seus widgets passam de um relatório para o outro, semana após semana.',
-    modules: [
-      { name: 'Painel & sinais', desc: 'KPIs do dia e riscos detetados pela IA' },
-      { name: 'Relatórios', desc: 'Cinco relatórios tipo mais o gerador' },
-      { name: 'BI & dashboards', desc: 'Widgets componíveis e visualizações geradas' },
-      { name: 'Época & ciclos', desc: 'Blocos de periodização herdados por semana' },
-    ],
-  },
-  opponent: {
-    kicker: 'ADVERSÁRIO',
-    title: 'Prepare o próximo adversário em conjunto.',
-    modules: [
-      { name: 'Scouting dos adversários', desc: 'Notas, esquemas, vídeos e fotos enriquecidas' },
-      { name: 'Relatórios de scouting', desc: 'Partilhados com jogadores e staff designados' },
-    ],
-    visual: {
-      title: 'Sessão de scouting · RC Valbonne',
-      meta: 'J-6',
-      items: [
-        { label: 'Esquema · saída de bola a 3', meta: 'anotado' },
-        { label: 'Clip bola parada (0:42)', meta: 'Veo' },
-        { label: 'Foto do onze provável', meta: 'IA · ficha importada' },
-      ],
-    },
-  },
-  player: {
-    kicker: 'LADO JOGADOR & PAIS',
-    title: 'Equipe o jogador e o encarregado.',
-    modules: [
-      { name: 'App STRIVN Player', desc: 'Quatro usos: agenda, convocatórias, check-in e programas, em iOS e Android' },
-      { name: 'Portal dos pais', desc: 'Nas equipas de jovens tudo passa pelo encarregado, com o seu consentimento' },
-    ],
+  close: {
+    title: 'Crie o seu espaço e importe a sua primeira sessão.',
+    body: 'Os primeiros 30 dias são em Semi-Pro, importação GPS incluída, sem cartão. Depois o plano Free faz girar a equipa toda a época, e o seu staff junta-se quando vir os seus primeiros relatórios.',
+    primary: 'Criar o meu espaço gratuitamente',
+    secondary: 'Falar com o Benoit',
+    fine: ['SEM CARTÃO DE CRÉDITO', 'SEM VALIDAÇÃO DO CLUBE', 'OS SEUS DADOS SÃO SEUS'],
   },
 };
 
@@ -1077,87 +1360,180 @@ const pt: FeaturesIndexContent = {
 const es: FeaturesIndexContent = {
   meta: {
     title: 'Funcionalidades STRIVN | Cada módulo en detalle, uno por uno',
-    description:
-      'Recorra cada módulo de STRIVN en detalle: monitorización, sesiones, plantilla, IA, informes, rival y app del jugador.',
+    description: 'Recorra cada módulo de STRIVN en detalle: monitorización, sesiones, plantilla, IA, informes, rival y app del jugador.',
   },
   hero: {
     kicker: 'FUNCIONALIDADES',
     title: 'Recorra las seis familias de módulos.',
     sub: 'Cada módulo se sostiene solo y todos comparten la misma base de datos. Un dato introducido una vez sirve a las seis familias, del lunes al partido.',
-    jump: ['Monitorización', 'Sesiones & campo', 'Plantilla', 'Inteligencia', 'Informes', 'Rival & jugador'],
+    toc: 'ÍNDICE · SEIS MOMENTOS DE LA SEMANA',
+    units: { modules: 'módulos', moments: 'momentos' },
+    fine: ['16 páginas detalladas', '6 momentos de la semana', '1 base de datos'],
   },
-  monitoring: {
-    kicker: 'MONITORIZACIÓN & RENDIMIENTO',
-    title: 'Lea readiness, carga y alertas en una pantalla.',
-    body: 'Abre esta pantalla antes de la sesión: readiness por jugador, carga del día y alertas de IA. El check-in de la mañana y su exportación GPS alimentan los ocho módulos de abajo.',
-    modules: [
-      { name: 'Carga de entrenamiento', desc: 'sRPE, ACWR, monotonía y strain en continuo' },
-      { name: 'GPS & bloques de velocidad', desc: 'Exportaciones agrupadas en zonas nombradas' },
-      { name: 'Planificación de carga', desc: 'Objetivo semanal, luego previsto vs realizado' },
-      { name: 'Check-in de bienestar', desc: 'Sueño, fatiga, dolor, motivación' },
-      { name: 'Readiness', desc: 'Verde / naranja / rojo, proyectado' },
-      { name: 'Tests & automedición', desc: 'Campañas cumplimentadas por el staff o los jugadores' },
-      { name: 'Fuerza & 1RM', desc: 'Un porcentaje, una carga por jugador' },
-      { name: 'Programas', desc: 'Fuerza, prevención, vuelta a jugar' },
-    ],
+  cta: { primary: 'Empezar gratis', secondary: 'Hablar con Benoit' },
+  groups: {
+    monitoring: {
+      day: 'LUNES',
+      label: 'Monitorización & GPS',
+      title: 'Lea readiness, carga y alertas en una pantalla.',
+      body: 'Abre esta pantalla antes de la sesión: readiness por jugador, carga del día y alertas de IA. El check-in de la mañana y su exportación GPS alimentan los cinco módulos de abajo.',
+    },
+    plan: {
+      day: 'MIÉRCOLES',
+      label: 'Planificar & construir',
+      title: 'Planifique la carga de la semana en UA.',
+      body: 'Fije un objetivo semanal y construya cada sesión desde su biblioteca de ejercicios. El constructor estima la carga de cada bloque antes del entrenamiento, aquí 445 UA en cuatro bloques.',
+    },
+    pitch: {
+      day: 'JUEVES',
+      label: 'Campo & partido',
+      title: 'Dirija sesión y partido desde el banquillo.',
+      body: 'El modo en directo compara la carga estimada con lo real, mientras la sesión ocurre. El día de partido, el banquillo registra minutos y eventos. El scouting del próximo rival se prepara entre varios, desde J-6.',
+    },
+    players: {
+      day: 'VIERNES',
+      label: 'Jugadores & plantilla',
+      title: 'Envíe la convocatoria, las respuestas vuelven solas.',
+      body: 'Los jugadores responden por un simple enlace, y el recordatorio sale solo a la hora que usted fije. En la captura, viernes al mediodía, y 14 respuestas de 18, con la enfermería ya descontada de la disponibilidad.',
+    },
+    ai: {
+      day: 'DOMINGO',
+      label: 'Asistente IA',
+      title: 'Confíe a la IA el briefing y los recordatorios.',
+      body: 'Devuelve lo que usted introduce, y después actúa: un botón aplica la recomendación, una cola retiene las propuestas. Siete momentos cubren el día, tres de lectura y cuatro de acción.',
+    },
+    staff: {
+      day: 'LUNES',
+      label: 'Staff & informes',
+      title: 'Componga el panel que lee la dirección.',
+      body: 'El dashboard componible, los cinco informes tipo y el generador beben de la misma base. Sus widgets pasan de un informe a otro, semana tras semana.',
+    },
   },
-  sessions: {
-    kicker: 'SESIONES & CAMPO',
-    title: 'Construya la sesión, dirígala a pie de campo.',
-    body: 'El constructor estima la carga de cada bloque antes del entrenamiento, aquí 445 UA en cuatro bloques. Luego el modo en directo compara esa estimación con lo real, mientras la sesión ocurre.',
-    modules: [
-      { name: 'Calendario & eventos', desc: 'Una semana se duplica en la siguiente' },
-      { name: 'Biblioteca de ejercicios', desc: 'Enlace, vídeo, esquema o texto, en carpetas' },
-      { name: 'Métricas de ejercicio', desc: 'La sesión anuncia su carga estimada' },
-      { name: 'Sesión en directo', desc: 'Runner a pantalla completa, incluso sin red' },
-      { name: 'Partido en directo', desc: 'Minutos y eventos desde el banquillo' },
-      { name: 'Balance de sesión', desc: 'RPE y participación consolidados' },
-      { name: 'Análisis de los goles', desc: 'Vocabulario de estadísticas propio del equipo' },
+  modules: {
+    load: {
+      name: 'Carga de entrenamiento',
+      desc: 'sRPE, ACWR, monotonía y strain en continuo',
+    },
+    gps: {
+      name: 'GPS & bloques de velocidad',
+      desc: 'Exportaciones agrupadas en zonas nombradas',
+    },
+    loadPlan: {
+      name: 'Planificación de carga',
+      desc: 'Objetivo semanal, luego previsto vs realizado',
+    },
+    wellness: { name: 'Check-in de bienestar', desc: 'Sueño, fatiga, dolor, motivación' },
+    readiness: { name: 'Readiness', desc: 'Verde / naranja / rojo, proyectado' },
+    tests: {
+      name: 'Tests & automedición',
+      desc: 'Campañas cumplimentadas por el staff o los jugadores',
+    },
+    strength: { name: 'Fuerza & 1RM', desc: 'Un porcentaje, una carga por jugador' },
+    programs: { name: 'Programas', desc: 'Fuerza, prevención, vuelta a jugar' },
+    calendar: { name: 'Calendario & eventos', desc: 'Una semana se duplica en la siguiente' },
+    library: {
+      name: 'Biblioteca de ejercicios',
+      desc: 'Enlace, vídeo, esquema o texto, en carpetas',
+    },
+    drillMetrics: { name: 'Métricas de ejercicio', desc: 'La sesión anuncia su carga estimada' },
+    liveSession: { name: 'Sesión en directo', desc: 'Runner a pantalla completa, incluso sin red' },
+    liveMatch: { name: 'Partido en directo', desc: 'Minutos y eventos desde el banquillo' },
+    sessionReview: { name: 'Balance de sesión', desc: 'RPE y participación consolidados' },
+    goals: {
+      name: 'Análisis de los goles',
+      desc: 'Vocabulario de estadísticas propio del equipo',
+    },
+    roster: {
+      name: 'Gestionar la plantilla',
+      desc: 'Activos, lesionados, inactivos, archivado RGPD',
+    },
+    trial: { name: 'Jugadores a prueba', desc: 'Convocados, pero fuera de las medias' },
+    rsvp: { name: 'Convocatorias (RSVP)', desc: 'Respuestas y recordatorios automáticos' },
+    attendance: { name: 'Asistencia', desc: 'Presencia, programas y check-ins en 30 d' },
+    medical: { name: 'Médico & lesiones', desc: 'Protocolos de vuelta, acceso restringido' },
+    care: { name: 'Tratamientos & huecos de fisio', desc: 'Los jugadores reservan su hueco' },
+    documents: { name: 'Documentos', desc: 'Seguimiento de lectura X/Y visto, por jugador' },
+    fines: { name: 'Multas', desc: 'Catálogo importado de su propio reglamento' },
+    dashboard: { name: 'Panel & señales', desc: 'KPIs del día y riesgos detectados por la IA' },
+    reports: { name: 'Informes', desc: 'Cinco informes tipo más el generador' },
+    bi: { name: 'BI & dashboards', desc: 'Widgets componibles y visualizaciones generadas' },
+    season: { name: 'Temporada & ciclos', desc: 'Bloques de periodización heredados por semana' },
+    scouting: { name: 'Scouting de rivales', desc: 'Notas, esquemas, vídeos y fotos enriquecidas' },
+    scoutingReports: {
+      name: 'Informes de scouting',
+      desc: 'Compartidos con jugadores y staff designados',
+    },
+    playerApp: {
+      name: 'App STRIVN Player',
+      desc: 'Cuatro usos: agenda, convocatorias, check-in y programas, en iOS y Android',
+    },
+    parents: {
+      name: 'Portal de padres',
+      desc: 'En equipos de jóvenes todo pasa por el padre, con su consentimiento',
+    },
+    staffBrief: {
+      name: 'Dossier de staff',
+      desc: 'Una página para enviar a su primer entrenador y a la dirección',
+    },
+  },
+  sessionsVisual: {
+    title: 'Sesión jueves · bloque intensidad',
+    sub: 'Carga estimada 445 UA · objetivo 460',
+    badge: 'EN OBJETIVO',
+    blocks: [
+      'Calentamiento + activación',
+      'Bloque presión · 8v8',
+      'Velocidad · sprints lanzados',
+      'Juego reducido + vuelta a la calma',
     ],
-    visual: {
-      title: 'Sesión jueves · bloque intensidad',
-      sub: 'Carga estimada 445 UA · objetivo 460',
-      badge: 'EN OBJETIVO',
-      blocks: [
-        'Calentamiento + activación',
-        'Bloque presión · 8v8',
-        'Velocidad · sprints lanzados',
-        'Juego reducido + vuelta a la calma',
+    workoutTitle: 'Entreno individual · L. Moreau',
+    published: 'Publicado a la app del jugador',
+    workoutBody: 'Nordic curls 3×8 · Copenhagen 3×10 / lado · movilidad de cadera 8 min. Generado desde el protocolo isquiotibial, carga deducida de la sesión colectiva.',
+  },
+  teamVisual: {
+    to: '→ Olympique Montverne · 18 jugadores',
+    type: 'PARTIDO',
+    body: 'Domingo 15h00 · Stade des Trois Chênes. Cita 13h30 en el vestuario. Responder antes del viernes 20h.',
+    sent: 'Enviada 22:41',
+    auto: 'Recordatorio automático viernes 12h',
+    responsesLabel: 'RESPUESTAS · 14 / 18',
+    states: {
+      yes: 'Presente',
+      no: 'Ausente · enfermería',
+      maybe: 'Dudoso',
+      none: 'Sin respuesta',
+    },
+  },
+  phone: {
+    time: '7:42',
+    greeting: 'Hola, Adam',
+    team: 'Olympique Montverne',
+    wellness: {
+      title: 'Wellness de la mañana',
+      badge: '20 s',
+      rows: [
+        { label: 'Sueño', value: 4 },
+        { label: 'Fatiga', value: 3 },
+        { label: 'Agujetas', value: 4 },
       ],
-      workoutTitle: 'Entreno individual · L. Moreau',
-      published: 'Publicado a la app del jugador',
-      workoutBody:
-        'Nordic curls 3×8 · Copenhagen 3×10 / lado · movilidad de cadera 8 min. Generado desde el protocolo isquiotibial, carga deducida de la sesión colectiva.',
+      submit: 'Enviar',
+    },
+    rpe: { title: 'RPE · sesión de ayer', value: '7' },
+    workout: {
+      title: 'Workout de hoy · prevención',
+      meta: '3 ejercicios · 12 min · vídeos incluidos',
     },
   },
-  team: {
-    kicker: 'PLANTILLA & DÍA A DÍA',
-    title: 'Envíe la convocatoria, las respuestas vuelven solas.',
-    body: 'Los jugadores responden por un simple enlace, y el recordatorio sale solo a la hora que usted fije. En la captura, viernes al mediodía, y 14 respuestas de 18, con la enfermería ya descontada de la disponibilidad.',
-    modules: [
-      { name: 'Gestionar la plantilla', desc: 'Activos, lesionados, inactivos, archivado RGPD' },
-      { name: 'Jugadores a prueba', desc: 'Convocados, pero fuera de las medias' },
-      { name: 'Convocatorias (RSVP)', desc: 'Respuestas y recordatorios automáticos' },
-      { name: 'Asistencia', desc: 'Presencia, programas y check-ins en 30 d' },
-      { name: 'Médico & lesiones', desc: 'Protocolos de vuelta, acceso restringido' },
-      { name: 'Tratamientos & huecos de fisio', desc: 'Los jugadores reservan su hueco' },
-      { name: 'Documentos', desc: 'Seguimiento de lectura X/Y visto, por jugador' },
-      { name: 'Multas', desc: 'Catálogo importado de su propio reglamento' },
+  opponentVisual: {
+    title: 'Sesión de scouting · RC Valbonne',
+    meta: 'J-6',
+    items: [
+      { label: 'Esquema · salida de balón a 3', meta: 'anotado' },
+      { label: 'Clip balón parado (0:42)', meta: 'Veo' },
+      { label: 'Foto de la alineación probable', meta: 'IA · acta importada' },
     ],
-    visual: {
-      to: '→ Olympique Montverne · 18 jugadores',
-      type: 'PARTIDO',
-      body: 'Domingo 15h00 · Stade des Trois Chênes. Cita 13h30 en el vestuario. Responder antes del viernes 20h.',
-      sent: 'Enviada 22:41',
-      auto: 'Recordatorio automático viernes 12h',
-      responsesLabel: 'RESPUESTAS · 14 / 18',
-      states: { yes: 'Presente', no: 'Ausente · enfermería', maybe: 'Dudoso', none: 'Sin respuesta' },
-    },
   },
   ai: {
-    kicker: 'INTELIGENCIA ARTIFICIAL',
-    title: 'Confíe a la IA el briefing y los recordatorios.',
-    body: 'Devuelve lo que usted introduce, y después actúa: un botón aplica la recomendación, una cola retiene las propuestas. Siete momentos cubren el día, tres de lectura y cuatro de acción.',
     readsLabel: 'ELLA LEE Y DEVUELVE',
     actsLabel: 'ELLA ACTÚA · USTED VALIDA',
     moments: [
@@ -1209,40 +1585,15 @@ const es: FeaturesIndexContent = {
     },
     note: '«El asistente aclara la decisión; usted la toma.» Dos preguntas de aclaración como máximo, respuestas sacadas de sus datos, y su validación antes de cada acción.',
   },
-  reporting: {
-    kicker: 'PILOTAJE & INFORMES',
-    title: 'Componga el panel que lee la dirección.',
-    body: 'El dashboard componible, los cinco informes tipo y el generador beben de la misma base. Sus widgets pasan de un informe a otro, semana tras semana.',
-    modules: [
-      { name: 'Panel & señales', desc: 'KPIs del día y riesgos detectados por la IA' },
-      { name: 'Informes', desc: 'Cinco informes tipo más el generador' },
-      { name: 'BI & dashboards', desc: 'Widgets componibles y visualizaciones generadas' },
-      { name: 'Temporada & ciclos', desc: 'Bloques de periodización heredados por semana' },
-    ],
-  },
-  opponent: {
-    kicker: 'RIVAL',
-    title: 'Prepare al próximo rival entre varios.',
-    modules: [
-      { name: 'Scouting de rivales', desc: 'Notas, esquemas, vídeos y fotos enriquecidas' },
-      { name: 'Informes de scouting', desc: 'Compartidos con jugadores y staff designados' },
-    ],
-    visual: {
-      title: 'Sesión de scouting · RC Valbonne',
-      meta: 'J-6',
-      items: [
-        { label: 'Esquema · salida de balón a 3', meta: 'anotado' },
-        { label: 'Clip balón parado (0:42)', meta: 'Veo' },
-        { label: 'Foto de la alineación probable', meta: 'IA · acta importada' },
-      ],
-    },
-  },
-  player: {
-    kicker: 'LADO JUGADOR & PADRES',
-    title: 'Dé acceso al jugador y al padre.',
-    modules: [
-      { name: 'App STRIVN Player', desc: 'Cuatro usos: agenda, convocatorias, check-in y programas, en iOS y Android' },
-      { name: 'Portal de padres', desc: 'En equipos de jóvenes todo pasa por el padre, con su consentimiento' },
+  close: {
+    title: 'Cree su espacio e importe su primera sesión.',
+    body: 'Los primeros 30 días son en Semi-Pro, importación GPS incluida, sin tarjeta. Después el plan Free hace girar al equipo toda la temporada, y su staff se une cuando vea sus primeros informes.',
+    primary: 'Crear mi espacio gratis',
+    secondary: 'Hablar con Benoit',
+    fine: [
+      'SIN TARJETA DE CRÉDITO',
+      'SIN VALIDACIÓN DEL CLUB',
+      'SUS DATOS SIGUEN SIENDO SUYOS',
     ],
   },
 };

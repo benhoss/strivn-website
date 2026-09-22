@@ -1,18 +1,17 @@
 ---
 import type { Locale, PricingContent, PricingPlan } from '../../data/pricingContent';
 import HomeIcon from '../home/HomeIcon.astro';
-import PricingTrial from './PricingTrial.astro';
 import { planPrice } from '../../lib/planPrice';
 import { appStartUrl } from '../../lib/appUrl';
 
 interface Props {
   locale: Locale;
   plans: PricingContent['plans'];
-  trial: PricingContent['trial'];
+  matrix: PricingContent['matrix'];
   email: string;
 }
 
-const { locale, plans: c, trial, email } = Astro.props;
+const { locale, plans: c, matrix, email } = Astro.props;
 
 /**
  * Every tier that has a price leads to registration, and that is honest even
@@ -26,74 +25,53 @@ const ctaHref = (plan: PricingPlan): string =>
     : `mailto:${email}?subject=${encodeURIComponent(`STRIVN ${plan.name}`)}`;
 ---
 
-<section id="plans" class="scroll-mt-24 bg-[#05070F] pb-20 md:pb-28" aria-labelledby="plans-title">
-  <div class="hl-wrap">
-    <div class="hl-reveal max-w-[46rem]">
-      <p class="hl-index text-[#7AB8FF]">
-        <span class="hl-index__rule"></span>
-        {c.kicker}
-      </p>
-      <h2 id="plans-title" class="hl-display mt-5 text-[clamp(1.8rem,3.6vw,2.6rem)]">{c.title}</h2>
+<section id="plans" class="st-sec" aria-labelledby="plans-title">
+  <div class="st-wrap">
+    <div class="st-head">
+      <span class="st-label st-eyebrow">{c.kicker}</span>
+      <h2 id="plans-title" class="st-h2">{c.title}</h2>
     </div>
 
-    <PricingTrial trial={trial} />
-
-    {/* Four cards need the 4-up at xl: at lg they are too narrow to hold a
-        price, a struck rate and a nine-line list without wrapping every word. */}
-    <div class="mt-6 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-4">
-      {c.items.map((plan, i) => {
+    {/* One bordered object, four columns. Each tier is a subgrid over the
+        same six rows, so names, prices, promises and buttons line up across
+        the strip however long a feature list runs. */}
+    <div class="pp-tiers">
+      {c.items.map((plan) => {
         const price = planPrice(plan.code, locale, c, plan.quotePrice);
         return (
-          <article
-            class={`hl-reveal hl-reveal--card flex flex-col rounded-[20px] p-6 outline-1 -outline-offset-[0.5px] ${
-              plan.featured
-                ? 'bg-gradient-to-b from-[#101B33] to-[#0B1020] outline-[#2D7FF95C] [box-shadow:0_30px_80px_-30px_rgba(45,127,249,0.35)]'
-                : 'hl-lift bg-[#0B1020] outline-[#FFFFFF0F]'
-            }`}
-            style={`--d: ${i * 80}ms;`}
-          >
-            <div class="flex items-start justify-between gap-3">
-              <h3 class="text-[1.2rem] font-semibold text-[#F8FAFC]">{plan.name}</h3>
-              {/* Status colours describe player state in this system, so the
-                  featured badge is electric, never green. */}
-              <span
-                class={`shrink-0 rounded-full px-2.5 py-1 font-mono text-[0.56rem] tracking-[0.08em] outline-1 -outline-offset-[0.5px] ${
-                  plan.featured
-                    ? 'bg-[#2D7FF914] text-[#7AB8FF] outline-[#2D7FF947]'
-                    : 'bg-[#FFFFFF06] text-[#8CA3C7] outline-[#FFFFFF14]'
-                }`}
-              >
-                {plan.badge}
-              </span>
+          <article class:list={['pp-tier', { 'is-featured': plan.featured }]} aria-labelledby={`tier-${plan.code}`}>
+            <div class="pp-tier__name">
+              <h3 id={`tier-${plan.code}`}>{plan.name}</h3>
+              <span class:list={['st-tag', { 'st-tag--accent': plan.featured }]}>{plan.badge}</span>
             </div>
 
-            <p class="mt-5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span class="hl-display text-[2.3rem] leading-none text-[#F8FAFC]">{price.headline}</span>
-              {price.period && <span class="text-[0.86rem] text-[#68779A]">{price.period}</span>}
+            <p class="pp-price">
+              <span class="pp-price__p">{price.headline}</span>
               {price.struck && (
-                <span class="text-[0.92rem] text-[#68779A] line-through">
-                  <span class="pp-sr">{c.fullMonthlyLabel} </span>{price.struck}
-                </span>
+                <s class="pp-price__s">
+                  <span class="pp-sr">{c.fullMonthlyLabel} </span>
+                  {price.struck}
+                </s>
               )}
+              {price.period && <span class="pp-price__per">{price.period}</span>}
             </p>
-            {price.billed && (
-              <p class="mt-2 text-[0.76rem] leading-[1.5] text-[#8CA3C7]">
-                {price.billed}
-                {price.bonus && <> · <span class="text-[#7AB8FF]">{price.bonus}</span></>}
-              </p>
-            )}
 
-            <p class="mt-5 text-[0.98rem] font-medium leading-[1.5] text-[#F8FAFC]">{plan.promise}</p>
-            <p class="mt-2 text-[0.85rem] leading-[1.5] text-[#8CA3C7]">{plan.qualifier}</p>
+            <p class="pp-billed">
+              {price.billed}
+              {price.bonus && <> · {price.bonus}</>}
+            </p>
 
-            <ul class="mt-5 flex flex-1 flex-col gap-2.5 border-t border-[#FFFFFF0A] pt-5">
-              {plan.inherits && (
-                <li class="pb-1 text-[0.85rem] leading-[1.45] font-medium text-[#8CA3C7]">{plan.inherits}</li>
-              )}
+            <div class="pp-tier__promise">
+              <p class="st-h4">{plan.promise}.</p>
+              <p class="st-small pp-tier__qual">{plan.qualifier}</p>
+            </div>
+
+            <ul class="pp-feats">
+              {plan.inherits && <li class="pp-feats__inherits">{plan.inherits}</li>}
               {plan.features.map((f) => (
-                <li class="flex items-start gap-2.5 text-[0.88rem] leading-[1.45] text-[#C6D2E8]">
-                  <HomeIcon name="check" size={13} class={`mt-1 shrink-0 ${plan.featured ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`} />
-                  {f}
+                <li>
+                  <HomeIcon name="check" size={13} class="pp-feats__mark" />
+                  <span>{f}</span>
                 </li>
               ))}
             </ul>
@@ -102,25 +80,198 @@ const ctaHref = (plan: PricingPlan): string =>
               href={ctaHref(plan)}
               target={plan.kind === 'app' ? '_blank' : undefined}
               rel={plan.kind === 'app' ? 'noopener' : undefined}
-              class={`hl-btn mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3.5 text-[0.92rem] font-semibold ${
-                plan.featured
-                  ? 'bg-[#2D7FF9] text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]'
-                  : 'bg-[#FFFFFF08] text-[#F8FAFC] outline-1 outline-[#FFFFFF1F] -outline-offset-[0.5px] hover:bg-[#FFFFFF10]'
-              }`}
+              class:list={['st-btn st-btn--sm pp-tier__cta', plan.featured ? 'st-btn--primary' : 'st-btn--ghost']}
             >
               {plan.cta}
-              {plan.kind === 'app' && <HomeIcon name="arrow-right" size={14} />}
             </a>
           </article>
         );
       })}
     </div>
 
-    <p class="hl-reveal mx-auto mt-10 max-w-[44rem] text-center text-[0.9rem] leading-[1.6] text-[#8CA3C7]">{c.note}</p>
+    <div class="pp-line">
+      <p class="pp-line__gps">
+        <span>{c.gpsLine.semi}</span>
+        <span>
+          {c.gpsLine.pro}
+          <span class="st-tag">{matrix.cells.upcoming}</span>
+        </span>
+      </p>
+      <a href="#compare" class="st-link">{matrix.title.replace(/\.$/, '')}</a>
+    </div>
+
+    <p class="st-small pp-note">{c.note}</p>
   </div>
 </section>
 
 <style>
+  .pp-tiers {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .pp-tier {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+    row-gap: 14px;
+    padding: 24px;
+    min-width: 0;
+  }
+
+  .pp-tier + .pp-tier {
+    border-left: 1px solid var(--color-line);
+  }
+
+  .pp-tier.is-featured {
+    background: var(--color-navy-850);
+  }
+
+  .pp-tier__name {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pp-tier__name h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    font-variation-settings: 'wdth' 85;
+    color: var(--color-ink);
+  }
+
+  .pp-tier.is-featured .st-tag {
+    white-space: normal;
+  }
+
+  .pp-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+    margin: 4px 0 0;
+  }
+
+  .pp-price__p {
+    font-weight: 600;
+    font-variation-settings: 'wdth' 78;
+    font-size: clamp(34px, 3vw, 40px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink);
+  }
+
+  .pp-price__s {
+    color: var(--color-ink-4);
+    font-size: 14px;
+  }
+
+  .pp-price__per {
+    color: var(--color-ink-3);
+    font-size: 13.5px;
+  }
+
+  .pp-billed {
+    margin: -6px 0 0;
+    min-height: 1.4em;
+    font-size: 12.5px;
+    color: var(--color-ink-3);
+  }
+
+  .pp-tier__promise {
+    display: grid;
+    gap: 6px;
+    align-content: start;
+  }
+
+  .pp-tier__qual {
+    color: var(--color-ink-3);
+  }
+
+  .pp-feats {
+    list-style: none;
+    margin: 0;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--color-line);
+    display: grid;
+    gap: 9px;
+    align-content: start;
+  }
+
+  .pp-feats li {
+    display: grid;
+    grid-template-columns: 13px minmax(0, 1fr);
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--color-ink-2);
+  }
+
+  .pp-feats .pp-feats__inherits {
+    display: block;
+    padding-bottom: 2px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  .pp-feats :global(.pp-feats__mark) {
+    margin-top: 3px;
+    color: var(--color-ink-4);
+  }
+
+  .pp-tier.is-featured :global(.pp-feats__mark) {
+    color: var(--color-electric-500);
+  }
+
+  .pp-tier__cta {
+    align-self: end;
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .pp-line {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 24px;
+    font-size: 14px;
+    color: var(--color-ink-2);
+  }
+
+  .pp-line__gps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    margin: 0;
+  }
+
+  .pp-line__gps .st-tag {
+    margin-left: 6px;
+    vertical-align: 1px;
+  }
+
+  .pp-note {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-line);
+    max-width: 72ch;
+    color: var(--color-ink-3);
+  }
+
   /* The struck figure needs a name in the accessibility tree: read alone,
      "249 €" beside "207,50 €" is two prices with no relationship. */
   .pp-sr {
@@ -130,5 +281,34 @@ const ctaHref = (plan: PricingPlan): string =>
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
+  }
+
+  @media (max-width: 1080px) {
+    .pp-tiers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pp-tier:nth-child(3) {
+      border-left: 0;
+    }
+
+    .pp-tier:nth-child(n + 3) {
+      border-top: 1px solid var(--color-line);
+    }
+  }
+
+  @media (max-width: 620px) {
+    .pp-tiers {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pp-tier + .pp-tier {
+      border-left: 0;
+      border-top: 1px solid var(--color-line);
+    }
+
+    .pp-tier {
+      padding: 22px 20px;
+    }
   }
 </style>

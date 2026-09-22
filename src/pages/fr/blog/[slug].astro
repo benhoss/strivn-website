@@ -2,11 +2,12 @@
 import BlogLayout from '../../../layouts/BlogLayout.astro';
 import BlogCard from '../../../components/BlogCard.astro';
 import {
-  BLOG_CATEGORY_COLORS,
   BLOG_CATEGORY_LABELS,
   buildTocFromHeadings,
   findRelated,
   formatDateFr,
+  frenchSpacing,
+  frenchSpacingHtml,
   slugFromEntry,
 } from '../../../lib/blog';
 import { getCollection, render } from 'astro:content';
@@ -24,12 +25,19 @@ const { entry } = Astro.props;
 const slug = slugFromEntry(entry);
 const { Content, headings } = await render(entry);
 
+/* Wide Markdown tables scroll inside their own box on a phone instead of
+   widening the page: wrap each <table> of the rendered HTML once. */
+const renderedHtml = entry.rendered?.html;
+const proseHtml = renderedHtml
+  ? frenchSpacingHtml(renderedHtml).replace(/<table>/g, '<div class="b-table"><table>').replace(/<\/table>/g, '</table></div>')
+  : undefined;
+
 const { data } = entry;
-const colors = BLOG_CATEGORY_COLORS[data.category];
-const toc = buildTocFromHeadings(headings);
+const toc = buildTocFromHeadings(headings).filter((h) => h.depth === 2);
 const showToc = toc.length >= 3;
 
 const canonicalPath = `/fr/blog/${slug}/`;
+const categoryHref = `/fr/blog/categorie/${data.category}/`;
 
 const all = await getCollection('blog', ({ data }) => !data.draft);
 const related = findRelated(all, entry, 3);
@@ -71,6 +79,9 @@ const jsonLdExtra = [
     ],
   },
 ];
+
+const showUpdated =
+  data.updatedDate && data.updatedDate.toDateString() !== data.pubDate.toDateString();
 ---
 
 <BlogLayout
@@ -79,85 +90,69 @@ const jsonLdExtra = [
   description={data.description}
   canonicalPath={canonicalPath}
   jsonLdExtra={jsonLdExtra}
-  bodyClass="b-article"
   ogImage={`/og-blog-${slug}.png`}
+  ogImageAlt={data.title}
   switchHrefs={{ fr: `/fr/blog/${slug}/` }}
 >
-  <nav aria-label="Fil d'Ariane">
-    <ol class="b-crumb">
-      <li><a href="/fr/">Accueil</a></li>
-      <li class="b-crumb__sep" aria-hidden="true">/</li>
-      <li><a href="/fr/blog/">Blog</a></li>
-      <li class="b-crumb__sep" aria-hidden="true">/</li>
-      <li>
-        <a href={`/fr/blog/categorie/${data.category}/`}>
-          {BLOG_CATEGORY_LABELS[data.category]}
-        </a>
-      </li>
-      <li class="b-crumb__sep" aria-hidden="true">/</li>
-      <li class="b-crumb__here" aria-current="page">{data.title}</li>
-    </ol>
-  </nav>
+  <article class="st-narrow b-article">
+    <header class="b-article__head">
+      <nav class="st-crumbs" aria-label="Fil d’Ariane">
+        <a href="/fr/">Accueil</a>
+        <a href="/fr/blog/">Blog</a>
+      </nav>
 
-  <header class="b-article__head">
-    <div class="b-article__meta">
-      <span
-        class="b-article__cat"
-        style={`background:${colors.bg};color:${colors.fg};border-color:${colors.border};`}
-      >
-        {BLOG_CATEGORY_LABELS[data.category]}
-      </span>
-      <span>
+      <p class="b-article__meta">
+        <a href={categoryHref} class="b-article__cat">{BLOG_CATEGORY_LABELS[data.category]}</a>
         <time datetime={data.pubDate.toISOString()}>{formatDateFr(data.pubDate)}</time>
-      </span>
-      <span aria-hidden="true">·</span>
-      <span>{data.readingTime} min de lecture</span>
-      {data.updatedDate && (
-        <>
-          <span aria-hidden="true">·</span>
+        <span>{data.readingTime} min de lecture</span>
+        <span>Par {data.author}</span>
+        {showUpdated && data.updatedDate && (
           <span>Mis à jour le {formatDateFr(data.updatedDate)}</span>
-        </>
-      )}
-    </div>
-    <h1 class="b-article__title">{data.title}</h1>
-    <p class="b-article__lede">{data.description}</p>
-    <p class="b-article__byline">Par {data.author}</p>
-  </header>
+        )}
+      </p>
 
-  {showToc && (
-    <aside class="b-toc" aria-label="Sommaire de l'article">
-      <span class="b-toc__label">Sommaire</span>
-      <ol class="b-toc__list">
-        {toc.map((h) => (
-          <li class={h.depth === 3 ? 'b-toc__sub' : undefined}>
-            <a href={`#${h.slug}`}>{h.text}</a>
-          </li>
-        ))}
-      </ol>
-    </aside>
-  )}
+      <h1 class="st-h1 b-article__title">{frenchSpacing(data.title)}</h1>
+      <p class="st-lede b-article__lede">{frenchSpacing(data.description)}</p>
+    </header>
 
-  <div class="b-prose">
-    <Content />
-  </div>
+    {showToc && (
+      <nav class="b-toc" aria-label="Sommaire de l’article">
+        <p class="st-label">Sommaire</p>
+        <ol class="b-toc__list">
+          {toc.map((h) => (
+            <li><a href={`#${h.slug}`}>{h.text}</a></li>
+          ))}
+        </ol>
+      </nav>
+    )}
 
-  <section class="b-cta" aria-label="Mise en pratique">
-    <p class="b-cta__text">
-      <strong>Tu veux arrêter de tout noter à la main ?</strong>
-      Convocations, présences, charge, séances : strivn rassemble ton intendance
-      sur une seule page, partagée avec ton staff.
-    </p>
-    <a href={appStartUrl('fr')} target="_blank" rel="noopener" class="b-cta__btn">
-      Tester strivn gratuitement →
-    </a>
-  </section>
+    {proseHtml ? (
+      <div class="b-prose" set:html={proseHtml} />
+    ) : (
+      <div class="b-prose"><Content /></div>
+    )}
 
-  {related.length > 0 && (
-    <section class="b-related" aria-label="Articles similaires">
-      <h2 class="b-related__title">Sur le même sujet</h2>
-      <div class="b-related__grid">
-        {related.map((r) => <BlogCard entry={r} compact />)}
+    <aside class="b-cta" aria-label="Mise en pratique">
+      <p class="b-cta__title">Rassemblez convocations, présences, charge et séances sur une page.</p>
+      <p class="b-cta__text">
+        Le staff lit la même semaine, au même endroit. Chaque compte démarre sur 30 jours
+        de Semi-Pro, sans carte.
+      </p>
+      <div class="st-ctas">
+        <a href={appStartUrl('fr')} target="_blank" rel="noopener" class="st-btn st-btn--primary">
+          Commencer gratuitement
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
-    </section>
-  )}
+    </aside>
+
+    {related.length > 0 && (
+      <section class="b-related" aria-labelledby="b-related-title">
+        <h2 id="b-related-title" class="st-label">Sur le même sujet</h2>
+        <ul class="b-list">
+          {related.map((r) => <BlogCard entry={r} compact level={3} />)}
+        </ul>
+      </section>
+    )}
+  </article>
 </BlogLayout>
