@@ -1,33 +1,129 @@
 ---
-import type { SolutionsContent } from '../../data/solutionsContent';
+/**
+ * Platform hero: headline, lede and CTA pair on the left; on the right, the
+ * four steps of the composition as a short index, each an anchor to its step.
+ */
+import type { SolutionsContent, Locale } from '../../data/solutionsContent';
+import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
+import { appStartUrl } from '../../lib/appUrl';
 
 interface Props {
+  locale: Locale;
   hero: SolutionsContent['hero'];
+  cta: FeaturesIndexContent['cta'];
+  steps: SolutionsContent['compo']['steps'];
 }
 
-const { hero } = Astro.props;
+const { locale, hero, cta, steps } = Astro.props;
 ---
 
-<section
-  class="relative overflow-hidden bg-[#05070F] [background-image:radial-gradient(ellipse_65%_55%_at_50%_0%,rgba(45,127,249,0.24),transparent_72%)]"
-  aria-labelledby="sol-hero-title"
->
-  <!-- Ambient layer: one slow-drifting glow behind the title. -->
-  <span
-    class="hl-drift pointer-events-none absolute -top-56 left-1/2 size-[44rem] -translate-x-1/2 rounded-full [background:radial-gradient(circle,rgba(45,127,249,0.13),transparent_65%)]"
-    aria-hidden="true"></span>
+<section class="st-sec st-sec--flush st-grid-bg sx-hero" aria-labelledby="sx-hero-title">
+  <div class="st-wrap st-split">
+    <div class="sx-hero__copy">
+      <p class="st-label st-eyebrow">{hero.kicker}</p>
+      <h1 id="sx-hero-title" class="st-h1">{hero.title}</h1>
+      <p class="st-lede">{hero.sub}</p>
+      <div class="st-ctas">
+        <a class="st-btn st-btn--primary" href={appStartUrl(locale)} target="_blank" rel="noopener">
+          {cta.primary}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="st-btn st-btn--ghost" href="mailto:hello@strivn.net">{cta.secondary}</a>
+      </div>
+      <p class="st-fine">{hero.fine.map((f) => <span>{f}</span>)}</p>
+    </div>
 
-  <div class="hl-wrap relative flex flex-col items-center pt-24 pb-16 text-center md:pt-28">
-    <p class="hl-reveal hl-kicker">{hero.kicker}</p>
-    <h1
-      id="sol-hero-title"
-      class="hl-reveal hl-display mt-5 max-w-[17ch] text-[clamp(2.4rem,6.2vw,3.75rem)]"
-      style="--d: 70ms;"
-    >
-      {hero.title}
-    </h1>
-    <p class="hl-reveal mt-6 max-w-[40rem] text-[1rem] leading-[1.65] text-[#9AA8C4]" style="--d: 140ms;">
-      {hero.sub}
-    </p>
+    <nav class="st-panel sx-chain" aria-label={steps.map((s) => s.label).join(' · ')}>
+      <p class="st-panel__bar st-label" aria-hidden="true">
+        {steps.map((s, i) => (
+          <>
+            {i > 0 && <span class="sx-chain__arrow">→</span>}
+            <span>{s.label}</span>
+          </>
+        ))}
+      </p>
+      <ol>
+        {steps.map((s, i) => (
+          <li>
+            <a href={`#step-${i + 1}`}>
+              <span class="st-num sx-chain__n">{String(i + 1).padStart(2, '0')}</span>
+              <span class="sx-chain__what">
+                <span class="st-label">{s.label}</span>
+                <span class="sx-chain__title">{s.title}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
   </div>
 </section>
+
+<style>
+  .sx-hero {
+    padding-block: clamp(56px, 8vw, 104px) clamp(64px, 9vw, 112px);
+  }
+  .sx-hero__copy {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
+  }
+  .sx-hero__copy .st-ctas {
+    margin-top: 8px;
+  }
+  .sx-chain .st-panel__bar {
+    margin: 0;
+    gap: 8px 10px;
+  }
+  .sx-chain__arrow {
+    color: var(--color-ink-4);
+  }
+  .sx-chain ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .sx-chain li + li {
+    border-top: 1px solid var(--color-line);
+  }
+  .sx-chain a {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 14px;
+    align-items: baseline;
+    padding: 16px 20px;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+  }
+  .sx-chain a:hover {
+    background: var(--color-navy-900);
+  }
+  .sx-chain a:hover .sx-chain__title {
+    color: var(--color-electric-500);
+  }
+  .sx-chain a:focus-visible {
+    outline: 2px solid var(--color-electric-500);
+    outline-offset: -2px;
+  }
+  .sx-chain__n {
+    font-size: 13px;
+    color: var(--color-ink-3);
+  }
+  .sx-chain__what {
+    display: grid;
+    gap: 4px;
+  }
+  .sx-chain__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--color-ink);
+    transition: color 150ms ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sx-chain a,
+    .sx-chain__title {
+      transition: none;
+    }
+  }
+</style>

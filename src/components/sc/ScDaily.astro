@@ -1,6 +1,6 @@
 ---
 import type { ScPageContent } from '../../data/scPageContent';
-import HomeIcon from '../home/HomeIcon.astro';
+import ScFrame from './ScFrame.astro';
 
 interface Props {
   daily: ScPageContent['daily'];
@@ -9,37 +9,79 @@ interface Props {
 const { daily: c } = Astro.props;
 ---
 
-<section id="quotidien" class="scroll-mt-24 bg-[#070A14] py-20 md:py-28" aria-labelledby="sc-daily-title">
-  <div class="hl-wrap">
-    <div class="hl-reveal">
-      <p class="hl-kicker text-[#68779A]">{c.kicker}</p>
-      <h2 id="sc-daily-title" class="hl-display mt-4 max-w-[18ch] text-[clamp(2rem,4.4vw,2.75rem)]">{c.title}</h2>
-      <p class="mt-4 max-w-[40rem] text-[0.97rem] leading-[1.6] text-[#9AA8C4]">{c.sub}</p>
-    </div>
-
-    <div class="hl-reveal mt-11" style="--d: 120ms;">
-      <!-- Column heads (desktop only — on mobile each row carries its own labels) -->
-      <div class="hidden gap-14 pb-3.5 lg:grid lg:grid-cols-[minmax(0,1fr)_16px_minmax(0,1fr)]">
-        <p class="font-mono text-[0.59rem] tracking-[0.11em] text-[#68779A]">{c.colBefore}</p>
-        <span></span>
-        <p class="font-mono text-[0.59rem] tracking-[0.11em] text-[#7AB8FF]">{c.colAfter}</p>
-      </div>
-
-      <ul data-stagger>
-        {c.rows.map((row) => (
-          <li class="hl-row grid gap-4 border-t border-[#FFFFFF14] py-[17px] text-[#2D7FF9] lg:grid-cols-[minmax(0,1fr)_16px_minmax(0,1fr)] lg:items-center lg:gap-14">
-            <p class="flex items-start gap-3 text-[0.9rem] leading-[1.45] text-[#8B99B8]">
-              <HomeIcon name="circle-dashed" size={15} class="mt-0.5 shrink-0 text-[#68779A]" />
-              {row.before}
-            </p>
-            <HomeIcon name="arrow-right" size={16} class="hl-row__icon hidden shrink-0 text-[#2D7FF9] lg:block" />
-            <p class="flex items-start gap-3 pl-[27px] text-[0.9rem] leading-[1.45] font-medium text-[#DCE4F2] lg:pl-0">
-              <HomeIcon name="check-circle" size={15} class="mt-0.5 shrink-0 text-[#8CE99A]" />
-              {row.after}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
+<ScFrame id="quotidien" labelledby="sc-daily-title" stamp={c.stamp}>
+  <div class="st-head">
+    <h2 id="sc-daily-title" class="st-h2">{c.title}</h2>
+    <p class="st-body">{c.sub}</p>
   </div>
-</section>
+
+  <div class="sc-week" role="table" aria-labelledby="sc-daily-title">
+    <div class="sc-week__row sc-week__row--head" role="row">
+      <span class="st-label" role="columnheader">{c.colWhen}</span>
+      <span class="st-label" role="columnheader">{c.colBefore}</span>
+      <span class="st-label" role="columnheader">{c.colAfter}</span>
+    </div>
+    {c.rows.map((row) => (
+      <div class="sc-week__row" role="row">
+        <span class="sc-week__when st-num" role="cell">{row.when}</span>
+        <span class="sc-week__before" role="cell">{row.before}</span>
+        <span class="sc-week__after" role="cell">{row.after}</span>
+      </div>
+    ))}
+  </div>
+</ScFrame>
+
+<style>
+  .sc-week {
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sc-week__row {
+    display: grid;
+    grid-template-columns: 148px minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 24px;
+    align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .sc-week__row--head {
+    padding: 12px 0;
+  }
+  .sc-week__when {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .sc-week__before {
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--color-ink-3);
+  }
+  .sc-week__after {
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--color-ink);
+  }
+  @media (max-width: 760px) {
+    .sc-week__row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 4px;
+      padding: 14px 0;
+    }
+    .sc-week__row--head {
+      display: none;
+    }
+    .sc-week__when {
+      margin-bottom: 2px;
+      color: var(--color-ink-2);
+    }
+    .sc-week__before {
+      font-size: 14px;
+    }
+    .sc-week__after::before {
+      content: '→ ';
+      font-family: var(--font-mono);
+      color: var(--color-ink-4);
+    }
+  }
+</style>

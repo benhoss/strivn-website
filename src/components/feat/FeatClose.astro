@@ -1,0 +1,51 @@
+---
+/**
+ * Closing band of the features index and the Platform page: headline on the
+ * left, lede, CTA pair and fine print on the right (as the homepage's).
+ */
+import type { FeaturesIndexContent, Locale } from '../../data/featuresIndexContent';
+import { appStartUrl } from '../../lib/appUrl';
+
+interface Props {
+  locale: Locale;
+  close: FeaturesIndexContent['close'];
+}
+
+const { locale, close: c } = Astro.props;
+---
+
+<section class="st-sec fx-close" aria-labelledby="fx-close-title">
+  <div class="st-wrap fx-close__in">
+    <h2 id="fx-close-title" class="st-h2">{c.title}</h2>
+    <div class="fx-close__side">
+      <p class="st-lede">{c.body}</p>
+      <div class="st-ctas">
+        <a class="st-btn st-btn--primary" href={appStartUrl(locale)} target="_blank" rel="noopener">
+          {c.primary}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="st-btn st-btn--ghost" href="mailto:hello@strivn.net">{c.secondary}</a>
+      </div>
+      <p class="st-fine">{c.fine.map((f) => <span>{f}</span>)}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fx-close__in {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: end;
+  }
+  .fx-close__side {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
+  }
+  @media (max-width: 900px) {
+    .fx-close__in {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

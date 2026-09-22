@@ -1,6 +1,8 @@
 ---
 import type { ScPageContent } from '../../data/scPageContent';
 import HomeIcon from '../home/HomeIcon.astro';
+import ScFrame from './ScFrame.astro';
+import ScPoints from './ScPoints.astro';
 
 interface Props {
   library: ScPageContent['library'];
@@ -8,90 +10,174 @@ interface Props {
 
 const { library: c } = Astro.props;
 const v = c.visual;
-
-const tagTone: Record<string, string> = {
-  blue: 'bg-[#2D7FF91C] text-[#7AB8FF]',
-  orange: 'bg-[#FF84001A] text-[#FF8400]',
-  plain: 'bg-[#FFFFFF0A] text-[#9AA8C4]',
-};
 ---
 
-<section class="bg-[#070A14] py-20 md:py-28" aria-labelledby="sc-library-title">
-  <div class="hl-wrap grid items-center gap-12 lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)] lg:gap-[72px]">
-    <!-- Text -->
-    <div class="hl-reveal">
-      <p class="font-mono text-[0.63rem] tracking-[0.11em] text-[#7AB8FF]">{c.tag}</p>
-      <h2 id="sc-library-title" class="hl-display mt-4 text-[clamp(1.85rem,3.6vw,2.5rem)]">{c.title}</h2>
-      <p class="mt-5 text-[0.97rem] leading-[1.65] text-[#9AA8C4]">{c.body}</p>
-      <ul class="hl-checks mt-6" data-stagger>
-        {c.points.map((p) => (
-          <li><HomeIcon name="check-circle" size={15} class="text-[#7AB8FF]" />{p}</li>
-        ))}
-      </ul>
-      <p class="mt-7">
-        <a href={c.href} class="hl-more text-[0.88rem] text-[#7AB8FF]">{c.cta}<HomeIcon name="arrow-right" size={15} /></a>
-      </p>
-    </div>
+<ScFrame id="bibliotheque" labelledby="sc-library-title" stamp={c.stamp}>
+  <div class="st-head">
+    <h2 id="sc-library-title" class="st-h2">{c.title}</h2>
+    <p class="st-body">{c.body}</p>
+  </div>
 
-    <!-- Visual -->
-    <div
-      class="hl-reveal hl-reveal--card hl-parallax flex flex-col gap-3.5 overflow-hidden rounded-[18px] bg-[#0B1020] p-6 [background-image:radial-gradient(ellipse_50%_50%_at_85%_0%,rgba(45,127,249,0.15),transparent_70%)] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
-      style="--d: 120ms;"
-    >
-      <div class="flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <p class="text-[0.92rem] font-semibold text-[#F8FAFC]">{v.title}</p>
-          <p class="mt-0.5 text-[0.72rem] text-[#9AA8C4]">{v.sub}</p>
+  <div class="st-split st-split--wide-right st-split--top">
+    <ScPoints points={c.points} cta={c.cta} href={c.href} />
+
+    <div class="st-panel lb">
+      <div class="st-panel__bar">
+        <div class="lb__head">
+          <span class="lb__title">{v.title}</span>
+          <span class="st-small text-ink-3">{v.sub}</span>
         </div>
-        <span class="flex items-center gap-1.5 rounded-full bg-[#FFFFFF0A] px-[11px] py-[5px] font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-          <HomeIcon name="pen-tool" size={11} />
-          {v.badge}
-        </span>
+        <span class="st-tag lb__badge"><HomeIcon name="pen-tool" size={11} />{v.badge}</span>
       </div>
 
-      <p class="font-mono text-[0.59rem] tracking-[0.1em] text-[#68779A]">{v.metricsLabel}</p>
-      <ul class="flex flex-col gap-1.5" data-stagger>
-        {v.metrics.map((m) => (
-          <li class="flex items-center gap-2.5 rounded-[9px] bg-[#FFFFFF06] px-3.5 py-2.5">
-            <span class="min-w-0 flex-1 truncate text-[0.75rem] text-[#C3CDE0]">{m.name}</span>
-            <span class={`shrink-0 rounded-[5px] px-[7px] py-0.5 font-mono text-[0.47rem] tracking-[0.07em] ${tagTone[m.tagTone]}`}>{m.tag}</span>
-            <span class="shrink-0 font-mono text-[0.71rem] font-medium whitespace-nowrap text-[#DCE4F2]">{m.value}</span>
-          </li>
-        ))}
-      </ul>
-
-      <div class="rounded-[11px] bg-[#2D7FF912] px-[15px] py-3.5 outline-1 outline-[#2D7FF93D] -outline-offset-[0.5px]">
-        <p class="flex items-center gap-2 text-[0.75rem] font-semibold text-[#F8FAFC]">
-          <HomeIcon name="clock" size={13} class="text-[#7AB8FF]" />
-          {v.scalingTitle}
-        </p>
-        <div class="mt-2.5 grid gap-4 sm:grid-cols-3">
-          {v.scaling.map((s) => (
-            <div>
-              <p class="font-mono text-[0.5rem] tracking-[0.07em] text-[#68779A]">{s.label}</p>
-              <p class="mt-1 flex items-center gap-1.5 font-mono text-[0.66rem] whitespace-nowrap">
-                <span class="text-[#68779A]">{s.from}</span>
-                {!s.unchanged && <HomeIcon name="arrow-right" size={10} class="shrink-0 text-[#68779A]" />}
-                <span class={s.unchanged ? 'text-[#8CE99A]' : 'font-medium text-[#7AB8FF]'}>{s.to}</span>
-              </p>
-            </div>
-          ))}
+      <div class="st-panel__body lb__body">
+        <div class="lb__group">
+          <span class="st-label">{v.metricsLabel}</span>
+          <ul class="lb__metrics">
+            {v.metrics.map((m) => (
+              <li>
+                <span class="lb__name">{m.name}</span>
+                <span class="st-tag">{m.tag}</span>
+                <span class="st-num lb__val">{m.value}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
 
-      <div class="rounded-[12px] bg-[#FFFFFF08] px-4 py-3.5 outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px]">
-        <p class="flex flex-wrap items-center justify-between gap-2">
-          <span class="text-[0.78rem] font-semibold text-[#F8FAFC]">{v.totalTitle}</span>
-          <span class="font-mono text-[0.75rem] font-medium text-[#7AB8FF]">{v.totalValue}</span>
-        </p>
-        <p class="mt-2.5 flex items-center justify-between gap-2">
-          <span class="text-[0.7rem] text-[#9AA8C4]">{v.coverageLabel}</span>
-          <span class="font-mono text-[0.7rem] font-medium text-[#8CE99A]">{v.coverageValue}</span>
-        </p>
-        <span class="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[#FFFFFF10]">
-          <span class="hl-fill block h-full rounded-full bg-[#8CE99A]" style={`width: ${v.coveragePct}%; --bd: 260ms;`}></span>
-        </span>
+        <div class="lb__scale">
+          <span class="lb__scaletitle">
+            <HomeIcon name="clock" size={13} class="text-ink-3" />
+            {v.scalingTitle}
+          </span>
+          <div class="lb__scalecols">
+            {v.scaling.map((s) => (
+              <div>
+                <span class="st-label">{s.label}</span>
+                <span class="st-num lb__from">
+                  <span class="text-ink-3">{s.from}</span>
+                  {!s.unchanged && <span class="text-ink-4">→</span>}
+                  <span class="text-ink">{s.to}</span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="lb__total">
+          <div class="lb__totalrow">
+            <span class="lb__name">{v.totalTitle}</span>
+            <span class="st-num lb__val">{v.totalValue}</span>
+          </div>
+          <div class="lb__totalrow">
+            <span class="st-small text-ink-3">{v.coverageLabel}</span>
+            <span class="st-num lb__val">{v.coverageValue}</span>
+          </div>
+          <span class="st-meter" aria-hidden="true"><i style={`width: ${v.coveragePct}%;`}></i></span>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</ScFrame>
+
+<style>
+  .lb__head {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+  .lb__title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .lb__badge {
+    margin-left: auto;
+  }
+  .lb__body {
+    display: grid;
+    gap: 22px;
+  }
+  .lb__group {
+    display: grid;
+    gap: 10px;
+  }
+  .lb__metrics {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+  }
+  .lb__metrics li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 104px;
+    gap: 12px;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .lb__name {
+    font-size: 14px;
+    color: var(--color-ink);
+    min-width: 0;
+  }
+  .lb__val {
+    font-size: 12.5px;
+    color: var(--color-ink);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .lb__scale {
+    display: grid;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: var(--color-navy-900);
+  }
+  .lb__scaletitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .lb__scalecols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .lb__scalecols > div {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+  }
+  .lb__from {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 6px;
+    font-size: 12.5px;
+  }
+  .lb__total {
+    display: grid;
+    gap: 10px;
+  }
+  .lb__totalrow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 12px;
+    align-items: baseline;
+  }
+  @media (max-width: 520px) {
+    .lb__metrics li {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .lb__metrics .st-tag {
+      display: none;
+    }
+    .lb__scalecols {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

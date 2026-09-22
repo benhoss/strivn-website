@@ -1,77 +1,108 @@
 ---
+/**
+ * Session builder screen: four blocks with duration and estimated load, the
+ * total against the target, and the individual workout sent to the player
+ * app. Block figures are invariant (`SESSION_BLOCKS`).
+ */
 import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
-import type { Locale } from '../../data/landingContent';
-import { SECTION_ICONS, SECTION_SLUGS, SESSION_BLOCKS } from '../../data/featuresIndexContent';
-import HomeIcon from '../home/HomeIcon.astro';
-import FeatHead from './FeatHead.astro';
-import FeatModules from './FeatModules.astro';
+import { SESSION_BLOCKS } from '../../data/featuresIndexContent';
 
 interface Props {
-  sessions: FeaturesIndexContent['sessions'];
-  locale: Locale;
+  visual: FeaturesIndexContent['sessionsVisual'];
 }
 
-const { sessions: c, locale } = Astro.props;
-const v = c.visual;
+const { visual: v } = Astro.props;
+const total = SESSION_BLOCKS.reduce((s, b) => s + Number(b.ua), 0);
+const TARGET = 460;
+/** The locale's own load unit, as its subtitle writes it (UA or AU). */
+const unit = /\bAU\b/.test(v.sub) ? 'AU' : 'UA';
 ---
 
-<section id="seances" class="scroll-mt-20 bg-[#05070F] py-20 md:py-24" aria-labelledby="feat-sessions-title">
-  <div class="hl-wrap">
-    <FeatHead kicker={c.kicker} title={c.title} body={c.body} id="feat-sessions-title" accent="text-[#8CE99A]" />
+<figure class="st-panel fx-sess" aria-label={v.title}>
+  <figcaption class="st-panel__bar fx-sess__bar">
+    <span class="grid gap-1">
+      <span class="st-h4">{v.title}</span>
+      <span class="st-label">{v.sub}</span>
+    </span>
+    <span class="st-tag st-tag--accent">{v.badge}</span>
+  </figcaption>
 
-    <div class="mt-11 grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,600px)] lg:gap-16">
-      <FeatModules
-        modules={c.modules}
-        icons={SECTION_ICONS.sessions}
-        slugs={SECTION_SLUGS.sessions}
-        locale={locale}
-        accent="text-[#8CE99A]"
-        class="order-2 lg:order-1 lg:pt-2"
-      />
+  <div class="st-panel__body grid gap-5">
+    <table class="fx-sess__table">
+      <tbody>
+        {v.blocks.map((name, i) => (
+          <tr>
+            <th scope="row">{name}</th>
+            <td class="st-num">{SESSION_BLOCKS[i].min}</td>
+            <td class="st-num fx-sess__ua">{SESSION_BLOCKS[i].ua} {unit}</td>
+          </tr>
+        ))}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">
+            <span class="st-meter" aria-hidden="true"><i style={`width: ${Math.round((total / TARGET) * 100)}%`}></i></span>
+          </th>
+          <td class="st-num">65 min</td>
+          <td class="st-num fx-sess__ua">{total} / {TARGET}</td>
+        </tr>
+      </tfoot>
+    </table>
 
-      <!-- Session builder capture -->
-      <div
-        class="hl-reveal hl-reveal--card hl-parallax order-1 flex flex-col gap-3.5 overflow-hidden rounded-[18px] bg-[#0B1020] p-6 [background-image:radial-gradient(ellipse_50%_50%_at_85%_0%,rgba(45,127,249,0.15),transparent_70%)] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] lg:order-2"
-        style="--d: 120ms;"
-      >
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <p class="text-[0.84rem] font-semibold text-[#F8FAFC]">{v.title}</p>
-            <p class="mt-0.5 text-[0.72rem] text-[#9AA8C4]">{v.sub}</p>
-          </div>
-          <span class="flex items-center gap-1.5 rounded-full bg-[#8CE99A14] px-[11px] py-[5px] font-mono text-[0.53rem] tracking-[0.08em] text-[#8CE99A] outline-1 outline-[#8CE99A2E] -outline-offset-[0.5px]">
-            <HomeIcon name="target" size={11} />
-            {v.badge}
-          </span>
-        </div>
-
-        <ul class="flex flex-col gap-[7px]" data-stagger>
-          {v.blocks.map((name, i) => (
-            <li class="flex items-center gap-3 rounded-[10px] bg-[#FFFFFF07] px-3.5 py-3 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-              <HomeIcon name="table" size={13} class="shrink-0 text-[#3D4A68]" />
-              <span class="min-w-0 flex-1 truncate text-[0.78rem] font-medium text-[#DCE4F2]">{name}</span>
-              <span class="shrink-0 font-mono text-[0.66rem] whitespace-nowrap text-[#68779A]">{SESSION_BLOCKS[i].min}</span>
-              <span class="shrink-0 rounded-full bg-[#2D7FF91C] px-2.5 py-[3px] font-mono text-[0.63rem] whitespace-nowrap text-[#7AB8FF]">
-                {SESSION_BLOCKS[i].ua}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <div class="rounded-[12px] bg-[#2D7FF910] px-[15px] py-3.5 outline-1 outline-[#2D7FF947] -outline-offset-[0.5px]">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <p class="flex items-center gap-2 text-[0.75rem] font-semibold text-[#F8FAFC]">
-              <HomeIcon name="dumbbell" size={13} class="text-[#7AB8FF]" />
-              {v.workoutTitle}
-            </p>
-            <p class="flex items-center gap-1.5 text-[0.66rem] text-[#8CE99A]">
-              <HomeIcon name="smartphone" size={11} />
-              {v.published}
-            </p>
-          </div>
-          <p class="mt-2.5 text-[0.72rem] leading-[1.55] text-[#C3D4EE]">{v.workoutBody}</p>
-        </div>
+    <div class="st-block fx-sess__workout">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <span class="st-h4">{v.workoutTitle}</span>
+        <span class="st-label st-label--accent">{v.published}</span>
       </div>
+      <p class="st-small">{v.workoutBody}</p>
     </div>
   </div>
-</section>
+</figure>
+
+<style>
+  .fx-sess {
+    margin: 0;
+  }
+  .fx-sess__bar {
+    justify-content: space-between;
+  }
+  .fx-sess__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .fx-sess__table th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--color-ink);
+    padding: 11px 12px 11px 0;
+  }
+  .fx-sess__table td {
+    text-align: right;
+    white-space: nowrap;
+    color: var(--color-ink-3);
+    padding: 11px 0 11px 16px;
+    font-size: 13px;
+  }
+  .fx-sess__table tbody tr {
+    border-bottom: 1px solid var(--color-line);
+  }
+  .fx-sess__table tbody tr:first-child {
+    border-top: 1px solid var(--color-line);
+  }
+  .fx-sess__table td.fx-sess__ua {
+    color: var(--color-ink);
+  }
+  .fx-sess__table tfoot th {
+    vertical-align: middle;
+  }
+  .fx-sess__table tfoot td.fx-sess__ua {
+    color: var(--color-electric-500);
+  }
+  .fx-sess__workout {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+</style>

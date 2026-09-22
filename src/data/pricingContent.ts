@@ -191,7 +191,13 @@ export interface PricingPlan {
 export interface PricingContent {
   meta: { title: string; description: string };
   hero: { kicker: string; title: string; sub: string };
-  trial: { label: string; title: string; body: string };
+  trial: {
+    label: string;
+    title: string;
+    body: string;
+    /** Words after the day count on the trial panel: "30 | jours de Semi-Pro". */
+    unit: string;
+  };
   plans: {
     kicker: string;
     title: string;
@@ -206,8 +212,19 @@ export interface PricingContent {
     /** Screen-reader name for the struck-through full monthly price. */
     fullMonthlyLabel: string;
     freePeriod: string;
+    /** The one line under the four tiers: import on Semi-Pro, connect on Pro
+     *  (connectors are upcoming, so the Pro half carries the upcoming tag). */
+    gpsLine: { semi: string; pro: string };
   };
-  credits: { kicker: string; title: string; body: string; points: string[]; note: string };
+  credits: {
+    kicker: string;
+    title: string;
+    body: string;
+    /** The allowances themselves are rendered from `MATRIX` (row `aiCalls`),
+     *  so the figures on this section can never drift from the table. */
+    reset: string;
+    note: string;
+  };
   matrix: {
     kicker: string;
     title: string;
@@ -249,6 +266,7 @@ const fr: PricingContent = {
     label: 'ESSAI',
     title: 'Testez le Semi-Pro pendant 30 jours, sans carte.',
     body: 'Chaque nouveau compte démarre au Semi-Pro, sans carte bancaire et sans validation du club. À l’échéance, il repasse au gratuit tout seul et vous gardez l’accès à tout ce que vous avez produit.',
+    unit: 'jours de Semi-Pro',
   },
   plans: {
     kicker: 'QUATRE PALIERS',
@@ -259,6 +277,10 @@ const fr: PricingContent = {
     monthsFree: '{count} mois offerts',
     fullMonthlyLabel: 'Au mois',
     freePeriod: 'pour toujours',
+    gpsLine: {
+      semi: 'Semi-Pro, importez votre GPS.',
+      pro: 'Pro, connectez votre GPS.',
+    },
     items: [
       {
         code: 'free',
@@ -343,11 +365,7 @@ const fr: PricingContent = {
     title: 'Comptez l’assistant en tours de conversation.',
     body:
       'Chaque palier ouvre une dotation mensuelle d’appels à l’assistant, remise à zéro chaque mois. Un appel vaut un tour de conversation, et la prise en main puise au même compteur.',
-    points: [
-      '60 tours par mois dès le plan gratuit, pour essayer avant de payer.',
-      '400 à l’Amateur, 2 000 au Semi-Pro, sans plafond au Pro.',
-      'La dotation repart à zéro chaque mois.',
-    ],
+    reset: 'La dotation repart à zéro chaque mois.',
     note: 'Ces dotations sont des valeurs de travail. Nous les recalerons sur l’usage réel des premiers mois.',
   },
   matrix: {
@@ -498,6 +516,7 @@ const en: PricingContent = {
     label: 'TRIAL',
     title: 'Try Semi-Pro for 30 days, without a card.',
     body: 'Every new account starts on Semi-Pro, without a card and without club approval. At the end it returns to the free plan on its own, and you keep access to everything you produced.',
+    unit: 'days of Semi-Pro',
   },
   plans: {
     kicker: 'FOUR TIERS',
@@ -508,6 +527,10 @@ const en: PricingContent = {
     monthsFree: '{count} months free',
     fullMonthlyLabel: 'Monthly',
     freePeriod: 'forever',
+    gpsLine: {
+      semi: 'Semi-Pro, import your GPS.',
+      pro: 'Pro, connect your GPS.',
+    },
     items: [
       {
         code: 'free',
@@ -592,11 +615,7 @@ const en: PricingContent = {
     title: 'Count the assistant in turns of conversation.',
     body:
       'Every tier opens a monthly allowance of assistant calls, reset each month. A call is worth one turn of conversation, and getting started draws on the same counter.',
-    points: [
-      '60 turns a month from the free plan on, so you try before you pay.',
-      '400 on Amateur, 2,000 on Semi-Pro, uncapped on Pro.',
-      'The allowance resets every month.',
-    ],
+    reset: 'The allowance resets every month.',
     note: 'These allowances are working figures. We will recalibrate them on the real usage of the first months.',
   },
   matrix: {
@@ -747,6 +766,7 @@ const nl: PricingContent = {
     label: 'PROEFPERIODE',
     title: 'Test Semi-Pro 30 dagen, zonder kaart.',
     body: 'Elk nieuw account start op Semi-Pro, zonder kaart en zonder goedkeuring van de club. Op de vervaldag keert het vanzelf terug naar het gratis plan en houdt u toegang tot alles wat u maakte.',
+    unit: 'dagen Semi-Pro',
   },
   plans: {
     kicker: 'VIER NIVEAUS',
@@ -757,6 +777,10 @@ const nl: PricingContent = {
     monthsFree: '{count} maanden gratis',
     fullMonthlyLabel: 'Per maand',
     freePeriod: 'voor altijd',
+    gpsLine: {
+      semi: 'Met Semi-Pro importeert u uw GPS.',
+      pro: 'Met Pro koppelt u uw GPS.',
+    },
     items: [
       {
         code: 'free',
@@ -841,11 +865,7 @@ const nl: PricingContent = {
     title: 'Tel de assistent in gespreksbeurten.',
     body:
       'Elk niveau opent een maandelijks budget aan oproepen naar de assistent, dat elke maand opnieuw start. Eén oproep staat gelijk aan één gespreksbeurt, en de kennismaking put uit dezelfde teller.',
-    points: [
-      '60 beurten per maand vanaf het gratis plan, zodat u eerst probeert en dan betaalt.',
-      '400 op Amateur, 2.000 op Semi-Pro, zonder plafond op Pro.',
-      'Het budget start elke maand opnieuw.',
-    ],
+    reset: 'Het budget start elke maand opnieuw.',
     note: 'Deze budgetten zijn werkcijfers. We stemmen ze af op het werkelijke gebruik van de eerste maanden.',
   },
   matrix: {
@@ -996,6 +1016,7 @@ const de: PricingContent = {
     label: 'TESTPHASE',
     title: 'Testen Sie Semi-Pro 30 Tage lang, ohne Karte.',
     body: 'Jedes neue Konto startet auf Semi-Pro, ohne Karte und ohne Freigabe des Klubs. Am Ende kehrt es von selbst zum kostenlosen Plan zurück, und Sie behalten Zugang zu allem, was Sie erzeugt haben.',
+    unit: 'Tage Semi-Pro',
   },
   plans: {
     kicker: 'VIER STUFEN',
@@ -1006,6 +1027,10 @@ const de: PricingContent = {
     monthsFree: '{count} Monate gratis',
     fullMonthlyLabel: 'Monatlich',
     freePeriod: 'für immer',
+    gpsLine: {
+      semi: 'Mit Semi-Pro importieren Sie Ihr GPS.',
+      pro: 'Mit Pro verbinden Sie Ihr GPS.',
+    },
     items: [
       {
         code: 'free',
@@ -1090,11 +1115,7 @@ const de: PricingContent = {
     title: 'Zählen Sie den Assistenten in Gesprächszügen.',
     body:
       'Jede Stufe öffnet ein monatliches Kontingent an Aufrufen des Assistenten, das jeden Monat neu beginnt. Ein Aufruf entspricht einem Gesprächszug, und der Einstieg schöpft aus demselben Zähler.',
-    points: [
-      '60 Züge pro Monat ab dem kostenlosen Plan, damit Sie vor dem Bezahlen ausprobieren.',
-      '400 bei Amateur, 2.000 bei Semi-Pro, ohne Deckel bei Pro.',
-      'Das Kontingent beginnt jeden Monat neu.',
-    ],
+    reset: 'Das Kontingent beginnt jeden Monat neu.',
     note: 'Diese Kontingente sind Arbeitswerte. Wir richten sie an der tatsächlichen Nutzung der ersten Monate aus.',
   },
   matrix: {
@@ -1245,6 +1266,7 @@ const pt: PricingContent = {
     label: 'PERÍODO DE TESTE',
     title: 'Teste o Semi-Pro durante 30 dias, sem cartão.',
     body: 'Cada nova conta começa em Semi-Pro, sem cartão e sem aprovação do clube. No fim regressa sozinha ao plano gratuito e mantém o acesso a tudo o que produziu.',
+    unit: 'dias de Semi-Pro',
   },
   plans: {
     kicker: 'QUATRO NÍVEIS',
@@ -1255,6 +1277,10 @@ const pt: PricingContent = {
     monthsFree: '{count} meses oferecidos',
     fullMonthlyLabel: 'Ao mês',
     freePeriod: 'para sempre',
+    gpsLine: {
+      semi: 'No Semi-Pro, importe o seu GPS.',
+      pro: 'No Pro, ligue o seu GPS.',
+    },
     items: [
       {
         code: 'free',
@@ -1339,11 +1365,7 @@ const pt: PricingContent = {
     title: 'Conte o assistente em turnos de conversa.',
     body:
       'Cada nível abre uma dotação mensal de chamadas ao assistente, reposta todos os meses. Uma chamada vale um turno de conversa, e a primeira utilização puxa do mesmo contador.',
-    points: [
-      '60 turnos por mês já no plano gratuito, para experimentar antes de pagar.',
-      '400 no Amateur, 2 000 no Semi-Pro, sem limite no Pro.',
-      'A dotação recomeça todos os meses.',
-    ],
+    reset: 'A dotação recomeça todos os meses.',
     note: 'Estas dotações são valores de trabalho. Vamos ajustá-las ao uso real dos primeiros meses.',
   },
   matrix: {
@@ -1494,6 +1516,7 @@ const es: PricingContent = {
     label: 'PRUEBA',
     title: 'Pruebe el Semi-Pro 30 días, sin tarjeta.',
     body: 'Cada cuenta nueva empieza en Semi-Pro, sin tarjeta y sin aprobación del club. Al terminar vuelve sola al plan gratuito y usted conserva el acceso a todo lo que haya creado.',
+    unit: 'días de Semi-Pro',
   },
   plans: {
     kicker: 'CUATRO NIVELES',
@@ -1504,6 +1527,10 @@ const es: PricingContent = {
     monthsFree: '{count} meses gratis',
     fullMonthlyLabel: 'Al mes',
     freePeriod: 'para siempre',
+    gpsLine: {
+      semi: 'En Semi-Pro, importe su GPS.',
+      pro: 'En Pro, conecte su GPS.',
+    },
     items: [
       {
         code: 'free',
@@ -1588,11 +1615,7 @@ const es: PricingContent = {
     title: 'Cuente el asistente en turnos de conversación.',
     body:
       'Cada nivel abre una dotación mensual de llamadas al asistente, que vuelve a empezar cada mes. Una llamada equivale a un turno de conversación, y la puesta en marcha bebe del mismo contador.',
-    points: [
-      '60 turnos al mes ya en el plan gratuito, para probar antes de pagar.',
-      '400 en Amateur, 2.000 en Semi-Pro, sin tope en Pro.',
-      'La dotación vuelve a empezar cada mes.',
-    ],
+    reset: 'La dotación vuelve a empezar cada mes.',
     note: 'Estas dotaciones son cifras de trabajo. Las ajustaremos al uso real de los primeros meses.',
   },
   matrix: {

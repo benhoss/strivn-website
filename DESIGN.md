@@ -20,30 +20,32 @@ colors:
   performance: "#27D7A1"
   warning: "#FFB020"
   risk: "#FF5C5C"
+  paper: "#E6EAF1"
+  paper-ink: "#1C2638"
 typography:
   display:
-    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    fontSize: "clamp(36px, 5.6vw, 56px)"
+    fontFamily: "Archivo (wdth 78), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    fontSize: "clamp(44px, 6.6vw, 96px)"
     fontWeight: 600
-    lineHeight: 1.08
-    letterSpacing: "-0.02em"
+    lineHeight: 0.95
+    letterSpacing: "-0.025em"
   headline:
-    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    fontSize: "clamp(28px, 3.6vw, 44px)"
+    fontFamily: "Archivo (wdth 82), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    fontSize: "clamp(32px, 4.6vw, 58px)"
     fontWeight: 600
-    lineHeight: 1.2
+    lineHeight: 1.02
     letterSpacing: "-0.02em"
   title:
-    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    fontSize: "28px"
+    fontFamily: "Archivo (wdth 90), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    fontSize: "21px"
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "-0.01em"
   body:
-    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    fontSize: "15px"
+    fontFamily: "Archivo (wdth 100), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    fontSize: "16px"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.6
     letterSpacing: "0"
   label:
     fontFamily: "JetBrains Mono, ui-monospace, 'SF Mono', Menlo, monospace"
@@ -134,19 +136,19 @@ The palette is a restrained dark system with one action accent and three strict 
 
 ## 3. Typography
 
-**Display Font:** Inter with system sans fallbacks.
-**Body Font:** Inter with system sans fallbacks.
-**Label/Mono Font:** JetBrains Mono for timestamps, technical labels, and compact metadata only.
+**Display Font:** Archivo (variable width) at a narrow width, with system sans fallbacks. Since the 2026-09 redesign it replaces Inter.
+**Body Font:** Archivo at normal width.
+**Label/Mono Font:** JetBrains Mono for figures, timestamps, section stamps, technical labels and compact metadata.
 
-**Character:** precise, composed, and readable under pressure. Inter stays below weight 700 so the system feels controlled rather than loud.
+**Character:** a scoreboard register without the shouting. The narrow display width gives headlines the density of a match sheet; the 600 ceiling keeps them calm.
 
 ### Hierarchy
 
-- **Display** (600, `clamp(36px, 5.6vw, 56px)`, 1.08): marketing hero statements only.
-- **Headline** (600, `clamp(28px, 3.6vw, 44px)`, 1.2): section heads and high-level narrative turns.
-- **Title** (600, 28px, 1.2): compact page or panel titles.
-- **Body** (400 or 500, 15px, 1.5): default copy, capped around 65-75ch.
-- **Label** (600, 11px, +0.08em): short overlines, chips, timestamps, and compact metadata.
+- **Display** (600, wdth 78, `clamp(44px, 6.6vw, 96px)`, 0.95): one hero statement per page (`st-display`; sub-page heroes use `st-h1`).
+- **Headline** (600, wdth 82, `clamp(32px, 4.6vw, 58px)`, 1.02): section heads (`st-h2`).
+- **Title** (600, wdth 90, 21px, 1.2): panel and item titles (`st-h3`).
+- **Body** (400, 16px, 1.6; lede 17-19px): default copy, capped around 60-65ch.
+- **Label** (500, 11px mono, +0.08em, uppercase): overlines, stamps, chips, metadata.
 
 ### Named Rules
 
@@ -200,9 +202,25 @@ Depth is mostly tonal. Panels separate through navy ramp shifts and 1px hairline
 - **Style:** compact, logo-led, muted by default, Soft White on hover or active state.
 - **Mobile:** prioritize readable labels and stable touch targets over cramming every chapter link into a single row.
 
+### Week rail and stamps
+
+The homepage follows the performance coach's week. A rail under the header lists the days; each section carries a mono stamp in a left column (day, time, what: `MERCREDI · 07:45 · READINESS`). Use a stamp only when it encodes a real moment or sequence; otherwise a plain section head.
+
+### Paper
+
+`paper` is the only light surface: the spreadsheet STRIVN replaces, drawn slightly askew with its `#REF!`. Never use it for anything else.
+
+### At rest
+
+Every page is legible without scrolling or JavaScript: no section waits at opacity 0, no figure counts up from zero. Motion starts from the complete state.
+
+### Implementation
+
+Tokens and primitives live in `src/styles/system.css` (Tailwind theme colours `bg-void`, `text-ink-2`, `border-line`, `text-ready`… and `st-*` classes). Components never write hex literals. Reference rendering: `redesign-mockup.html`.
+
 ### Signature Product Demo
 
-The landing page's demo device is the primary proof component. It should show the loop from creating an event to sending the message, collecting player replies, and updating the coach view, using paced motion and visible state changes rather than static screenshots.
+The homepage hero is the primary proof component: a raw GPS export whose rows resolve, one by one, into a decision per player (Prêt, Surveiller, Alléger) with the proposal and its sources. It starts from the resolved state and replays the scan.
 
 ## 6. Do's and Don'ts
 

@@ -1,22 +1,32 @@
 ---
-import '../../styles/home.css';
+/**
+ * Features index: the product's table of contents.
+ *
+ * Hero with the contents, then one band per moment of the staff's week. Each
+ * band names its moment in the rail, lists its modules (each linking to its
+ * sub-page) and shows the product screen that proves it.
+ */
 import { NAV } from '../../data/nav';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
 import SiteMotion from '../SiteMotion.astro';
-import FeatHero from './FeatHero.astro';
-import FeatMonitoring from './FeatMonitoring.astro';
-import FeatSessions from './FeatSessions.astro';
-import FeatTeam from './FeatTeam.astro';
-import FeatAi from './FeatAi.astro';
-import FeatReporting from './FeatReporting.astro';
-import FeatOpponentPlayer from './FeatOpponentPlayer.astro';
-import HomeFinalCta from '../home/HomeFinalCta.astro';
 import HomeFooter from '../home/HomeFooter.astro';
-import { featuresIndexContent } from '../../data/featuresIndexContent';
+import ReadinessBoard from '../shared/ReadinessBoard.astro';
+import ReportingDashboard from '../shared/ReportingDashboard.astro';
+import FeatHero from './FeatHero.astro';
+import FeatGroup from './FeatGroup.astro';
+import FeatModules from './FeatModules.astro';
+import FeatSessions from './FeatSessions.astro';
+import FeatScouting from './FeatScouting.astro';
+import FeatTeam from './FeatTeam.astro';
+import FeatPhone from './FeatPhone.astro';
+import FeatAi from './FeatAi.astro';
+import FeatClose from './FeatClose.astro';
+import { featuresIndexContent, GROUPS, AI_ACTS_FROM, AI_SLUGS, MODULE_SLUGS } from '../../data/featuresIndexContent';
+import type { GroupId, Locale } from '../../data/featuresIndexContent';
 import { scPageContent } from '../../data/scPageContent';
 import { homeContent } from '../../data/homeContent';
-import type { Locale } from '../../data/featuresIndexContent';
+import { SKIP_LABEL } from '../../lib/skipLabel';
 
 interface Props {
   locale: Locale;
@@ -26,52 +36,92 @@ interface Props {
 
 const { locale, canonicalPath, alternates } = Astro.props;
 const c = featuresIndexContent[locale];
-/** Captures that already exist elsewhere, reused rather than re-translated. */
+/** The readiness board and the reporting dashboard are the S&C page's own. */
 const sc = scPageContent[locale];
+/** Footer only: shared with every page. */
 const home = homeContent[locale];
 
-/**
- * The switcher falls back to a locale's homepage only for pages with no
- * counterpart. This one exists in all six, so hand the header the real targets.
- */
 const LOCALES: Locale[] = ['en', 'fr', 'nl', 'de', 'pt', 'es'];
-const switchHrefs = Object.fromEntries(
-  LOCALES.map((l) => [l, `/${l}/features/`]),
-) as Record<Locale, string>;
+const switchHrefs = Object.fromEntries(LOCALES.map((l) => [l, `/${l}/features/`])) as Record<Locale, string>;
 
-const skipLabelByLocale: Record<Locale, string> = {
-  fr: 'Aller au contenu',
-  nl: 'Naar de inhoud',
-  de: 'Zum Inhalt springen',
-  pt: 'Ir para o conteúdo',
-  es: 'Ir al contenido',
-  en: 'Skip to content',
-};
+const href = (slug: string | null | undefined) => (slug ? `/${locale}/features/${slug}/` : null);
+const rows = (id: GroupId) =>
+  GROUPS.find((g) => g.id === id)!.modules.map((m) => ({ ...c.modules[m], href: href(MODULE_SLUGS[m]) }));
+const time = (id: GroupId) => GROUPS.find((g) => g.id === id)!.time;
+
+const moments = c.ai.moments.map((m, i) => ({ ...m, href: href(AI_SLUGS[i]) }));
 ---
 
-<BaseLayout
-  lang={locale}
-  title={c.meta.title}
-  description={c.meta.description}
-  canonicalPath={canonicalPath}
-  alternates={alternates}
->
-  <a href="#s-main" class="s-skip">{skipLabelByLocale[locale]}</a>
+<BaseLayout lang={locale} title={c.meta.title} description={c.meta.description} canonicalPath={canonicalPath} alternates={alternates}>
+  <a href="#s-main" class="s-skip">{SKIP_LABEL[locale]}</a>
 
   <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} switchHrefs={switchHrefs} />
 
-  <main id="s-main" class="bg-[#05070F] font-sans text-[#F8FAFC] antialiased">
-    <FeatHero hero={c.hero} />
-    <FeatMonitoring monitoring={c.monitoring} board={sc.hero.board} locale={locale} />
-    <FeatSessions sessions={c.sessions} locale={locale} />
-    <FeatTeam team={c.team} locale={locale} />
-    <FeatAi ai={c.ai} />
-    <FeatReporting reporting={c.reporting} dashboard={sc.reports.dashboard} locale={locale} />
-    <FeatOpponentPlayer opponent={c.opponent} player={c.player} phone={home.playerApp.phone} locale={locale} />
-    <HomeFinalCta locale={locale} finalCta={home.finalCta} />
+  <main id="s-main" class="bg-void text-ink">
+    <FeatHero locale={locale} hero={c.hero} cta={c.cta} groups={c.groups} aiCount={c.ai.moments.length} />
+
+    <FeatGroup id="monitoring" group={c.groups.monitoring} time={time('monitoring')}>
+      <FeatModules slot="list" rows={rows('monitoring')} />
+      <ReadinessBoard slot="proof" board={sc.hero.board} />
+    </FeatGroup>
+
+    <FeatGroup id="plan" group={c.groups.plan} time={time('plan')}>
+      <FeatModules slot="list" rows={rows('plan')} />
+      <FeatSessions slot="proof" visual={c.sessionsVisual} />
+    </FeatGroup>
+
+    <FeatGroup id="pitch" group={c.groups.pitch} time={time('pitch')}>
+      <FeatModules slot="list" rows={rows('pitch')} />
+      <FeatScouting slot="proof" visual={c.opponentVisual} />
+    </FeatGroup>
+
+    <FeatGroup id="players" group={c.groups.players} time={time('players')} wide>
+      <FeatModules slot="list" rows={rows('players')} />
+      <div slot="proof" class="fx-pair">
+        <FeatTeam visual={c.teamVisual} />
+        <FeatPhone phone={c.phone} />
+      </div>
+    </FeatGroup>
+
+    <FeatGroup id="ai" group={c.groups.ai} time={time('ai')}>
+      <div slot="list" class="grid gap-8">
+        <FeatModules label={c.ai.readsLabel} rows={moments.slice(0, AI_ACTS_FROM)} />
+        <FeatModules label={c.ai.actsLabel} rows={moments.slice(AI_ACTS_FROM)} />
+      </div>
+      <FeatAi slot="proof" visual={c.ai.visual} />
+      <p slot="after" class="fx-note st-small">{c.ai.note}</p>
+    </FeatGroup>
+
+    <FeatGroup id="staff" group={c.groups.staff} time={time('staff')}>
+      <FeatModules slot="list" rows={rows('staff')} />
+      <ReportingDashboard slot="proof" dashboard={sc.reports.dashboard} />
+    </FeatGroup>
+
+    <FeatClose locale={locale} close={c.close} />
   </main>
 
   <HomeFooter locale={locale} footer={home.footer} />
 
   <SiteMotion />
 </BaseLayout>
+
+<style>
+  /* Players: the call-up and the phone that answers it, side by side. */
+  .fx-pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 232px;
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 560px) {
+    .fx-pair {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .fx-note {
+    max-width: 72ch;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-ink-3);
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+/**
+ * One band of the S&C page on the rail frame: the stamp says when in the
+ * coach's week this happens, the slot holds the section. Sections follow the
+ * real working order (readiness, planning, session build, strength, tests,
+ * Monday report).
+ */
+import type { Stamp } from '../../data/scPageContent';
+
+interface Props {
+  id?: string;
+  labelledby: string;
+  stamp: Stamp;
+}
+
+const { id, labelledby, stamp } = Astro.props;
+---
+
+<section id={id} class="st-sec" aria-labelledby={labelledby}>
+  <div class="st-wrap st-frame">
+    <p class="st-stamp">
+      <span class="st-stamp__a">{stamp.a}</span>
+      <span class="st-stamp__b">{stamp.b}</span>
+      <span class="st-stamp__c">{stamp.c}</span>
+    </p>
+    <div class="sc-frame__body">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .st-stamp {
+    margin: 0;
+  }
+  .sc-frame__body {
+    min-width: 0;
+  }
+</style>

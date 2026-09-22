@@ -1,6 +1,9 @@
 ---
-import '../styles/blog.css';
+/* Blog shell (v2). The blog is French only. Header and footer are the shared
+   ones; the reading styles (list rows, article, prose) live in blog.css,
+   which LegalLayout loads too so both read the same way. */
 import BaseLayout from './BaseLayout.astro';
+import '../styles/blog.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import type { Locale } from '../data/landingContent';
@@ -15,12 +18,15 @@ interface Props {
   canonicalPath: string;
   /** JSON-LD extra nodes (BlogPosting, BreadcrumbList). */
   jsonLdExtra?: Record<string, unknown>[];
-  /** Public body class to apply on <main>. */
+  /** Class applied on <main>. */
   bodyClass?: string;
   /** Override the language-switcher targets. */
   switchHrefs?: { en?: string; fr?: string; nl?: string; de?: string; pt?: string; es?: string };
   /** Brand href override (locale root). */
   brandHref?: string;
+  /** Open Graph image path (an article passes its own card). */
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -32,19 +38,19 @@ const {
   bodyClass,
   switchHrefs,
   brandHref,
+  ogImage,
+  ogImageAlt,
 } = Astro.props;
 
 const c = landingContent[locale];
-const isFrench = locale === 'fr';
 const skipLabel = SKIP_LABEL[locale];
-const blogHref = isFrench ? '/fr/blog/' : '/en/blog/';
+const blogHref = locale === 'fr' ? '/fr/blog/' : '/en/blog/';
 
-/* Add a Blog link only if the shared nav does not already carry one. It does
-   now, so appending unconditionally printed "Blog" twice on every blog page. */
+/* Add a Blog link only if the shared nav does not already carry one. */
 const hasBlog = NAV[locale].links.some((l) => 'href' in l && l.href === blogHref);
 const navLinks = hasBlog ? NAV[locale].links : [...NAV[locale].links, { label: 'Blog', href: blogHref }];
-/* The blog is French-only, so only FR ever gets a page-specific target;
-   the rest fall back to their home page in SiteHeader. */
+/* The blog is French only, so only FR gets a page-specific target; the other
+   languages fall back to their home page in SiteHeader. */
 const finalSwitchHrefs = switchHrefs ?? {};
 ---
 
@@ -54,6 +60,8 @@ const finalSwitchHrefs = switchHrefs ?? {};
   description={description}
   canonicalPath={canonicalPath}
   jsonLdExtra={jsonLdExtra}
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
 >
   <a href="#b-main" class="s-skip">{skipLabel}</a>
 
@@ -65,7 +73,7 @@ const finalSwitchHrefs = switchHrefs ?? {};
     switchHrefs={finalSwitchHrefs}
   />
 
-  <main id="b-main" class={bodyClass}>
+  <main id="b-main" class:list={['b-main', bodyClass]}>
     <slot />
   </main>
 
