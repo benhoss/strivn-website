@@ -82,3 +82,20 @@ Règle de possession : un lot ne modifie que ses fichiers. `system.css`, `global
 - **Parité des six langues** dans `homeContent.ts` : le type `HomeContent` doit rester unique pour que le compilateur signale un champ manquant.
 - **SEO** : garder titres, descriptions, H1 uniques, FAQ JSON-LD rendue telle quelle.
 - **Poids** : Archivo variable (wdth + wght) ; un seul appel Google Fonts, via `global.css`.
+
+## 8. Bilan (2026-09-22, fin de soirée)
+
+Les sept lots sont fusionnés sur la branche. 179 pages construites, `check-links` passe. Contrôle automatique des 186 URL à 390 et 1440 px : aucun débordement horizontal, aucune erreur JavaScript, aucune ressource manquante, aucun texte caché au repos.
+
+Changements transverses faits pendant l'intégration :
+- Polices hébergées sur le site (`public/fonts`). L'`@import` Google Fonts était ignoré : Archivo ne s'était jamais chargée, donc la chasse étroite n'apparaissait nulle part.
+- Utilitaires Tailwind émis après les `st-*`, pour qu'une classe de couleur l'emporte sur la couleur par défaut d'une primitive.
+- `home.css` supprimé, `global.css` réduit à la base.
+
+À décider par Benoit :
+- Pages confidentialité : passées au vouvoiement et sans tirets cadratins, dans les six langues. C'est un texte juridique publié : relecture à faire.
+- Articles de blog : encore au tutoiement et avec tirets cadratins. Le cadre des pages est au vouvoiement. Réécriture à décider.
+- NL et ES Clubs, Jeunes, Dossier staff : passés du tutoiement au vouvoiement (u, usted), meta compris.
+- Meta titles de /solutions/ : contiennent « Solutions », mot banni. Laissés pour ne pas toucher au SEO sans accord.
+- « Parler à Benoit » pointe vers `mailto:hello@strivn.net` : il n'existe pas de lien de prise de rendez-vous dans le dépôt.
+- `check-pricing` n'a pas pu comparer les prix au catalogue de l'app (HTTP 403 depuis l'environnement). `PLAN_PRICES` et `MATRIX` sont inchangés ; relancer `npm run check:pricing` depuis un réseau qui atteint app.strivn.net.
