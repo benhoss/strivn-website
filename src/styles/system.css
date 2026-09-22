@@ -401,9 +401,10 @@
   text-transform: uppercase;
   color: var(--color-ink-4);
 }
-.st-fine > * + *::before {
+/* The separator trails its item, so a wrapped line never opens on a dot. */
+.st-fine > :not(:last-child)::after {
   content: '·';
-  margin-right: 18px;
+  margin-left: 18px;
   color: var(--color-navy-700);
 }
 
