@@ -1,0 +1,97 @@
+---
+/**
+ * The six staff roles that read the same base: one row each, name, what they
+ * find in STRIVN, and the page that answers them. The S&C row carries the
+ * entry-point tag; the sporting director's is still in the making.
+ */
+import type { SolutionsContent, Locale } from '../../data/solutionsContent';
+import { LEAD_INDEX, ROSTER_TARGETS, SC_SLUG, SOON_INDEX } from '../../data/solutionsContent';
+
+interface Props {
+  locale: Locale;
+  roles: SolutionsContent['roles'];
+}
+
+const { locale, roles: c } = Astro.props;
+const hrefs = ROSTER_TARGETS.map((t) =>
+  t.kind === 'sc'
+    ? `/${locale}/${SC_SLUG[locale]}/`
+    : t.kind === 'feature'
+      ? `/${locale}/features/${t.slug}/`
+      : 'mailto:hello@strivn.net',
+);
+---
+
+<section id="roles" class="st-sec" aria-labelledby="sx-roles-title">
+  <div class="st-wrap">
+    <div class="st-head">
+      <h2 id="sx-roles-title" class="st-h2">{c.title}</h2>
+      <p class="st-body">{c.body}</p>
+    </div>
+
+    <ul class="sx-roles">
+      {c.roster.map((row, i) => (
+        <li class:list={['sx-role', { 'sx-role--lead': i === LEAD_INDEX }]}>
+          <div class="sx-role__name">
+            <h3 class="st-h4">{row.name}</h3>
+            {i === LEAD_INDEX && <span class="st-tag st-tag--accent">{c.lead}</span>}
+            {i === SOON_INDEX && <span class="st-tag">{c.soon}</span>}
+          </div>
+          <p class="st-small sx-role__desc">{row.desc}</p>
+          <a class="st-link sx-role__cta" href={hrefs[i]}>{row.cta}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .sx-roles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .sx-role {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr) minmax(0, 0.8fr);
+    gap: 10px 40px;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .sx-role--lead {
+    padding-inline: 20px;
+    margin-inline: -20px;
+    border-radius: 8px;
+    border-bottom-color: transparent;
+    background: rgba(45, 127, 249, 0.07);
+    box-shadow: inset 0 0 0 1px rgba(45, 127, 249, 0.3);
+  }
+  .sx-role__name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+  }
+  .sx-role__desc {
+    max-width: 56ch;
+  }
+  .sx-role__cta {
+    justify-self: end;
+    text-align: right;
+  }
+  @media (max-width: 900px) {
+    .sx-role {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .sx-role--lead {
+      margin-inline: -12px;
+      padding-inline: 12px;
+    }
+    .sx-role__cta {
+      justify-self: start;
+      text-align: left;
+    }
+  }
+</style>
