@@ -1,0 +1,187 @@
+---
+/**
+ * Player app, morning screen: wellness check-in, yesterday's RPE and the
+ * workout of the day. Drawn in CSS; strings are the product's.
+ */
+import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
+
+interface Props {
+  phone: FeaturesIndexContent['phone'];
+}
+
+const { phone } = Astro.props;
+const rpe = Number.parseInt(phone.rpe.value, 10) || 7;
+---
+
+<figure class="fx-phone" aria-label={phone.wellness.title}>
+  <div class="fx-phone__screen">
+    <div class="fx-phone__status st-num">
+      <span>{phone.time}</span>
+      <span class="fx-phone__signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    </div>
+
+    <div>
+      <p class="fx-phone__hello">{phone.greeting}</p>
+      <p class="fx-phone__team">{phone.team}</p>
+    </div>
+
+    <div class="fx-phone__card fx-phone__card--accent">
+      <div class="fx-phone__row">
+        <span class="fx-phone__title">{phone.wellness.title}</span>
+        <span class="st-num fx-phone__badge">{phone.wellness.badge}</span>
+      </div>
+      {phone.wellness.rows.map((row) => (
+        <div class="fx-phone__row">
+          <span class="fx-phone__muted">{row.label}</span>
+          <span class="fx-phone__scale" aria-label={`${row.value} / 5`}>
+            {Array.from({ length: 5 }, (_, i) => <i class:list={{ on: i + 1 === row.value }}></i>)}
+          </span>
+        </div>
+      ))}
+      <span class="fx-phone__submit">{phone.wellness.submit}</span>
+    </div>
+
+    <div class="fx-phone__card">
+      <div class="fx-phone__row">
+        <span class="fx-phone__title">{phone.rpe.title}</span>
+        <span class="st-num fx-phone__rpe">{phone.rpe.value}</span>
+      </div>
+      <span class="fx-phone__bar" aria-hidden="true">
+        {Array.from({ length: 10 }, (_, i) => <i class:list={{ on: i + 1 === rpe, past: i + 1 < rpe }}></i>)}
+      </span>
+    </div>
+
+    <div class="fx-phone__card">
+      <span class="fx-phone__title">{phone.workout.title}</span>
+      <span class="fx-phone__muted">{phone.workout.meta}</span>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .fx-phone {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 232px;
+    padding: 8px;
+    border-radius: 34px;
+    background: var(--color-navy-850);
+    border: 1px solid var(--color-line-strong);
+    box-shadow: var(--shadow-float-lg);
+  }
+  .fx-phone__screen {
+    display: grid;
+    gap: 10px;
+    padding: 14px 14px 20px;
+    border-radius: 27px;
+    background: var(--color-navy-950);
+  }
+  .fx-phone__status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--color-ink);
+  }
+  .fx-phone__signal {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+  }
+  .fx-phone__signal i {
+    width: 2px;
+    border-radius: 1px;
+    background: var(--color-ink-3);
+  }
+  .fx-phone__signal i:nth-child(1) { height: 4px; }
+  .fx-phone__signal i:nth-child(2) { height: 6px; }
+  .fx-phone__signal i:nth-child(3) { height: 8px; }
+  .fx-phone__signal i:nth-child(4) { height: 10px; }
+  .fx-phone__hello {
+    margin: 4px 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    font-variation-settings: 'wdth' 82;
+    color: var(--color-ink);
+  }
+  .fx-phone__team {
+    margin: 2px 0 0;
+    font-size: 11px;
+    color: var(--color-ink-3);
+  }
+  .fx-phone__card {
+    display: grid;
+    gap: 8px;
+    padding: 11px;
+    border-radius: 12px;
+    background: var(--color-navy-900);
+    border: 1px solid var(--color-line);
+  }
+  .fx-phone__card--accent {
+    border-color: rgba(45, 127, 249, 0.35);
+    background: rgba(45, 127, 249, 0.08);
+  }
+  .fx-phone__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .fx-phone__title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .fx-phone__muted {
+    font-size: 11px;
+    color: var(--color-ink-3);
+  }
+  .fx-phone__badge,
+  .fx-phone__rpe {
+    font-size: 11px;
+    color: var(--color-electric-500);
+  }
+  .fx-phone__rpe {
+    font-size: 15px;
+  }
+  .fx-phone__scale {
+    display: flex;
+    gap: 3px;
+  }
+  .fx-phone__scale i {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: var(--color-navy-800);
+  }
+  .fx-phone__scale i.on {
+    background: var(--color-electric);
+  }
+  .fx-phone__submit {
+    display: block;
+    margin-top: 2px;
+    padding: 7px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--color-electric);
+    color: var(--color-ink);
+  }
+  .fx-phone__bar {
+    display: flex;
+    gap: 3px;
+  }
+  .fx-phone__bar i {
+    flex: 1;
+    height: 16px;
+    border-radius: 4px;
+    background: var(--color-navy-800);
+  }
+  .fx-phone__bar i.past {
+    background: rgba(45, 127, 249, 0.4);
+  }
+  .fx-phone__bar i.on {
+    background: var(--color-electric);
+  }
+</style>

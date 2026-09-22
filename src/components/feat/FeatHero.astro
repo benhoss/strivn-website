@@ -1,45 +1,142 @@
 ---
-import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
-import { JUMP_HREFS } from '../../data/featuresIndexContent';
+/**
+ * Features index hero: headline, lede and CTA pair on the left, the page's
+ * table of contents on the right (the six moments of the week, each with its
+ * module count, each an anchor to its band).
+ */
+import type { FeaturesIndexContent, GroupId, Locale } from '../../data/featuresIndexContent';
+import { GROUPS } from '../../data/featuresIndexContent';
+import { appStartUrl } from '../../lib/appUrl';
 
 interface Props {
+  locale: Locale;
   hero: FeaturesIndexContent['hero'];
+  cta: FeaturesIndexContent['cta'];
+  groups: FeaturesIndexContent['groups'];
+  /** The assistant band lists moments, not modules. */
+  aiCount: number;
 }
 
-const { hero } = Astro.props;
+const { locale, hero, cta, groups, aiCount } = Astro.props;
+const count = (id: GroupId, n: number) =>
+  id === 'ai' ? `${aiCount} ${hero.units.moments}` : `${n} ${hero.units.modules}`;
 ---
 
-<section
-  class="relative overflow-hidden bg-[#05070F] [background-image:radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(45,127,249,0.24),transparent_72%)]"
-  aria-labelledby="feat-hero-title"
->
-  <!-- Ambient layer: one slow-drifting glow behind the title. -->
-  <span
-    class="hl-drift pointer-events-none absolute -top-56 left-1/2 size-[46rem] -translate-x-1/2 rounded-full [background:radial-gradient(circle,rgba(45,127,249,0.13),transparent_65%)]"
-    aria-hidden="true"></span>
-
-  <div class="hl-wrap relative flex flex-col items-center pt-24 pb-16 text-center md:pt-28">
-    <p class="hl-reveal hl-kicker">{hero.kicker}</p>
-    <h1
-      id="feat-hero-title"
-      class="hl-reveal hl-display mt-5 max-w-[16ch] text-[clamp(2.4rem,6.2vw,3.75rem)]"
-      style="--d: 70ms;"
-    >
-      {hero.title}
-    </h1>
-    <p class="hl-reveal mt-6 max-w-[38rem] text-[1rem] leading-[1.65] text-[#9AA8C4]" style="--d: 140ms;">
-      {hero.sub}
-    </p>
-
-    <nav class="hl-reveal mt-9 flex flex-wrap justify-center gap-2" style="--d: 220ms;" aria-label={hero.kicker}>
-      {hero.jump.map((label, i) => (
-        <a
-          href={JUMP_HREFS[i]}
-          class="hl-btn rounded-full bg-[#FFFFFF07] px-3.5 py-[7px] text-[0.78rem] font-medium text-[#C3CDE0] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] hover:bg-[#FFFFFF12] hover:text-[#F8FAFC]"
-        >
-          {label}
+<section class="st-sec st-sec--flush st-grid-bg fx-hero" aria-labelledby="fx-hero-title">
+  <div class="st-wrap st-split st-split--top">
+    <div class="fx-hero__copy">
+      <p class="st-label st-eyebrow">{hero.kicker}</p>
+      <h1 id="fx-hero-title" class="st-h1">{hero.title}</h1>
+      <p class="st-lede">{hero.sub}</p>
+      <div class="st-ctas">
+        <a class="st-btn st-btn--primary" href={appStartUrl(locale)} target="_blank" rel="noopener">
+          {cta.primary}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
         </a>
-      ))}
+        <a class="st-btn st-btn--ghost" href="mailto:hello@strivn.net">{cta.secondary}</a>
+      </div>
+      <p class="st-fine">{hero.fine.map((f) => <span>{f}</span>)}</p>
+    </div>
+
+    <nav class="st-panel fx-toc" aria-labelledby="fx-toc-label">
+      <p id="fx-toc-label" class="st-panel__bar st-label">{hero.toc}</p>
+      <ol>
+        {GROUPS.map((g) => (
+          <li>
+            <a href={`#${g.id}`}>
+              <span class="fx-toc__when st-num">
+                {groups[g.id].day}
+                <b>{g.time}</b>
+              </span>
+              <span class="fx-toc__what">{groups[g.id].label}</span>
+              <span class="fx-toc__n st-num">{count(g.id, g.modules.length)}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
     </nav>
   </div>
 </section>
+
+<style>
+  .fx-hero {
+    padding-block: clamp(56px, 8vw, 104px) clamp(64px, 9vw, 112px);
+  }
+  .fx-hero__copy {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
+  }
+  .fx-hero__copy .st-ctas {
+    margin-top: 8px;
+  }
+  .fx-toc {
+    align-self: center;
+  }
+  .fx-toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+  }
+  .fx-toc li + li {
+    border-top: 1px solid var(--color-line);
+  }
+  .fx-toc a {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: background-color 150ms ease;
+  }
+  .fx-toc a:hover {
+    background: var(--color-navy-900);
+  }
+  .fx-toc a:hover .fx-toc__what {
+    color: var(--color-electric-500);
+  }
+  .fx-toc a:focus-visible {
+    outline: 2px solid var(--color-electric-500);
+    outline-offset: -2px;
+  }
+  .fx-toc__when {
+    display: flex;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--color-ink-3);
+  }
+  .fx-toc__when b {
+    font-weight: 500;
+    color: var(--color-ink-2);
+  }
+  .fx-toc__what {
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 150ms ease;
+  }
+  .fx-toc__n {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--color-ink-3);
+    white-space: nowrap;
+  }
+  @media (max-width: 520px) {
+    .fx-toc a {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4px 12px;
+      padding: 14px 16px;
+    }
+    .fx-toc__when {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fx-toc a,
+    .fx-toc__what {
+      transition: none;
+    }
+  }
+</style>

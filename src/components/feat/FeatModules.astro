@@ -1,73 +1,82 @@
 ---
 /**
- * The module list that sits opposite each section's product capture.
- *
- * Rows carry `hl-row` so the pointer gets a response: surface tint, an accent
- * rule growing at the left edge, and the icon nudging right. Without it a
- * column of eight rows reads as inert body text.
+ * A group's module list: one row per module, hairlines between. A row with a
+ * sub-page is a link (name in `st-link`); a row without one stays plain text
+ * rather than pointing somewhere that only half answers it.
  */
-import type { ModuleText } from '../../data/featuresIndexContent';
-import type { Locale } from '../../data/landingContent';
-import HomeIcon from '../home/HomeIcon.astro';
-
 interface Props {
-  modules: ModuleText[];
-  icons: readonly string[];
-  /** Accent colour driving the hover rule; defaults to the house blue. */
-  accent?: string;
-  /**
-   * Keep name and description stacked at every width. Required in narrow
-   * columns: the side-by-side layout needs ~400px, and below that the
-   * description collapses to one word per line.
-   */
-  compact?: boolean;
-  /**
-   * Sub-page slug per row, parallel to `icons`. A row with a slug becomes a
-   * link; a row without one stays plain text rather than pointing somewhere
-   * that only half answers it. Requires `locale`.
-   */
-  slugs?: readonly (string | null)[];
-  locale?: Locale;
-  class?: string;
+  rows: Array<{ name: string; desc: string; href: string | null }>;
+  /** Optional mono label over the list. */
+  label?: string;
 }
 
-const {
-  modules,
-  icons,
-  accent = 'text-[#2D7FF9]',
-  compact = false,
-  slugs,
-  locale,
-  class: className = '',
-} = Astro.props;
-
-const href = (i: number) =>
-  locale && slugs?.[i] ? `/${locale}/features/${slugs[i]}/` : undefined;
-
-/* Name and description live in their own nested grid rather than sharing the
- * row's grid with the icon. Placing them by flow instead of `col-start`
- * avoids relying on a `col-start-2` / `sm:col-start-3` pair, which carry equal
- * specificity and so resolve by stylesheet order — the description landed in
- * the 200px name column and collapsed. */
-const textCols = compact
-  ? 'grid gap-1'
-  : 'grid gap-1 sm:grid-cols-[minmax(0,200px)_minmax(0,1fr)] sm:items-center sm:gap-3.5';
+const { rows, label } = Astro.props;
 ---
 
-<ul class={`hl-reveal ${className}`} data-stagger>
-  {modules.map((m, i) => {
-    const to = href(i);
-    const Row = to ? 'a' : 'div';
-    return (
-      <li class={`hl-row border-t border-[#FFFFFF14] first:border-t-0 ${accent}`}>
-        <Row href={to} class="flex items-start gap-3.5 py-[13px]">
-          <HomeIcon name={icons[i] ?? 'check-circle'} size={16} class="hl-row__icon mt-1 shrink-0 text-[#68779A]" />
-          <div class={`min-w-0 flex-1 ${textCols}`}>
-            <p class="text-[0.9rem] leading-[1.4] font-medium text-[#F8FAFC]">{m.name}</p>
-            <p class="text-[0.78rem] leading-[1.45] text-[#9AA8C4]">{m.desc}</p>
+<div class="fx-mods">
+  {label && <p class="st-label fx-mods__label">{label}</p>}
+  <ul>
+    {rows.map((r) => (
+      <li>
+        {r.href ? (
+          <a href={r.href} class="fx-mods__row">
+            <span class="st-link fx-mods__name">{r.name}</span>
+            <span class="fx-mods__desc">{r.desc}</span>
+          </a>
+        ) : (
+          <div class="fx-mods__row">
+            <span class="fx-mods__name">{r.name}</span>
+            <span class="fx-mods__desc">{r.desc}</span>
           </div>
-        </Row>
+        )}
       </li>
-    );
-  })}
-</ul>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .fx-mods ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .fx-mods__label {
+    margin: 0 0 12px;
+  }
+  .fx-mods li {
+    border-bottom: 1px solid var(--color-line);
+  }
+  .fx-mods__row {
+    display: grid;
+    gap: 3px;
+    padding: 13px 0;
+    text-decoration: none;
+  }
+  .fx-mods__name {
+    font-size: 15.5px;
+    line-height: 1.35;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .fx-mods__name.st-link {
+    color: var(--color-electric-500);
+  }
+  .fx-mods__desc {
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--color-ink-3);
+  }
+  a.fx-mods__row:hover .st-link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  a.fx-mods__row:hover .st-link::after {
+    transform: translateX(3px);
+  }
+  a.fx-mods__row:focus-visible {
+    outline: 2px solid var(--color-electric-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+</style>
