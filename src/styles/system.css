@@ -1,0 +1,845 @@
+/* STRIVN · design system v2 (refonte 2026-09)
+ *
+ * The one stylesheet every page loads, through BaseLayout. It carries:
+ *   1. Tailwind v4 theme + utilities (no preflight: global.css owns the base),
+ *      with the brand tokens exposed as theme colours, so components write
+ *      `bg-void text-ink-2 border-line` and never a hex literal;
+ *   2. the `st-` primitives the redesigned pages are composed from.
+ *
+ * Source of truth for the values: DESIGN.md. Reference rendering:
+ * redesign-mockup.html at the repo root. Rules that are easy to break:
+ *   - Electric is the only CTA colour. Ready / watch / risk describe a player.
+ *   - Weight never exceeds 600. Display type is Archivo at a narrow width.
+ *   - Everything is legible at rest. No section waits at opacity 0.
+ *   - Paper (the light surface) is only for the spreadsheet STRIVN replaces.
+ */
+@import 'tailwindcss/theme.css';
+@import 'tailwindcss/utilities.css';
+
+@theme {
+  --color-void: #07080f;
+  --color-void-deep: #050610;
+  --color-navy-950: #03091a;
+  --color-navy-900: #06152b;
+  --color-navy-850: #0b1e3a;
+  --color-navy-800: #112849;
+  --color-navy-700: #1a3258;
+  --color-navy-600: #294471;
+  --color-navy-500: #3d5a8a;
+  --color-navy-300: #8497bd;
+  --color-navy-200: #b5c2d7;
+  --color-ink: #f8fafc;
+  --color-ink-2: #b5c2d7;
+  --color-ink-3: #8497bd;
+  --color-ink-4: #3d5a8a;
+  --color-electric: #2d7ff9;
+  --color-electric-500: #4f94fb;
+  --color-ready: #27d7a1;
+  --color-watch: #ffb020;
+  --color-risk: #ff5c5c;
+  --color-paper: #e6eaf1;
+  --color-paper-ink: #1c2638;
+  --color-paper-rule: #c3cbd8;
+  --color-line: rgba(255, 255, 255, 0.07);
+  --color-line-strong: rgba(255, 255, 255, 0.14);
+
+  --font-sans: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --radius-chip: 999px;
+  --shadow-float: 0 4px 12px rgba(3, 9, 26, 0.4), 0 2px 4px rgba(3, 9, 26, 0.2);
+  --shadow-float-lg: 0 16px 48px rgba(3, 9, 26, 0.55), 0 4px 12px rgba(3, 9, 26, 0.3);
+}
+
+:root {
+  --st-max: 1240px;
+  --st-gutter: clamp(16px, 4vw, 48px);
+  --st-rail: 132px;
+  --st-header: 64px;
+  --st-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ════════════════════════════════════════════════════════════
+   Layout
+   ════════════════════════════════════════════════════════════ */
+.st-wrap {
+  width: 100%;
+  max-width: var(--st-max);
+  margin-inline: auto;
+  padding-inline: var(--st-gutter);
+}
+
+.st-narrow {
+  width: 100%;
+  max-width: 820px;
+  margin-inline: auto;
+  padding-inline: var(--st-gutter);
+}
+
+/* A band of the page. Bands are separated by one hairline, never by
+ * alternating backgrounds. */
+.st-sec {
+  padding-block: clamp(72px, 10vw, 128px);
+  border-top: 1px solid var(--color-line);
+  scroll-margin-top: calc(var(--st-header) + 32px);
+}
+.st-sec--tight {
+  padding-block: clamp(48px, 6vw, 80px);
+}
+.st-sec--flush {
+  border-top: 0;
+}
+
+/* Rail frame: a narrow left column for the stamp (day · time · what, or any
+ * short mono locator), the content on the right. Collapses under 820px. */
+.st-frame {
+  display: grid;
+  grid-template-columns: var(--st-rail) minmax(0, 1fr);
+  gap: 0 40px;
+}
+.st-stamp {
+  position: sticky;
+  top: calc(var(--st-header) + 32px);
+  align-self: start;
+  display: grid;
+  gap: 4px;
+  padding-top: 6px;
+  border-top: 1px solid var(--color-line-strong);
+}
+.st-stamp__a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.st-stamp__b {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+}
+.st-stamp__c {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+@media (max-width: 820px) {
+  .st-frame {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .st-stamp {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    align-items: baseline;
+    margin-bottom: 20px;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .st-stamp__b {
+    font-size: 13px;
+  }
+}
+
+/* Section head: optional label, headline, body. */
+.st-head {
+  display: grid;
+  gap: 20px;
+  max-width: 820px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+.st-head--center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+/* ════════════════════════════════════════════════════════════
+   Type
+   ════════════════════════════════════════════════════════════ */
+.st-display,
+.st-h1,
+.st-h2,
+.st-h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+/* Hero statement. One per page. */
+.st-display {
+  font-variation-settings: 'wdth' 78;
+  font-size: clamp(44px, 6.6vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+/* Sub-page hero title: the display voice at a smaller size. */
+.st-h1 {
+  font-variation-settings: 'wdth' 80;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.024em;
+}
+.st-h2 {
+  font-variation-settings: 'wdth' 82;
+  font-size: clamp(32px, 4.6vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.st-h2--sm {
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.06;
+}
+.st-h3 {
+  font-variation-settings: 'wdth' 90;
+  font-size: 21px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.st-h4 {
+  font-variation-settings: 'wdth' 90;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--color-ink);
+}
+.st-muted {
+  color: var(--color-navy-300);
+}
+.st-lede {
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.55;
+  color: var(--color-ink-2);
+  max-width: 58ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+.st-body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-ink-2);
+  max-width: 62ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+.st-small {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-ink-2);
+  margin: 0;
+}
+.st-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+.st-label--accent {
+  color: var(--color-electric-500);
+}
+.st-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.st-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--color-navy-300);
+  flex: none;
+}
+.st-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+/* Big figure, for a stat that is the point of its block. */
+.st-figure {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-variation-settings: 'wdth' 75;
+  font-size: clamp(44px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+.st-link {
+  color: var(--color-electric-500);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.st-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.st-link::after {
+  content: '→';
+  font-family: var(--font-mono);
+  transition: transform 160ms var(--st-ease);
+}
+.st-link:hover::after {
+  transform: translateX(3px);
+}
+
+/* ════════════════════════════════════════════════════════════
+   Controls
+   ════════════════════════════════════════════════════════════ */
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font: 500 15px/1.1 var(--font-sans);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+.st-btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.st-btn--primary {
+  background: var(--color-electric);
+  color: var(--color-ink);
+}
+.st-btn--primary:hover {
+  background: var(--color-electric-500);
+}
+.st-btn--ghost {
+  background: transparent;
+  border-color: var(--color-line-strong);
+  color: var(--color-ink);
+}
+.st-btn--ghost:hover {
+  border-color: var(--color-navy-300);
+}
+.st-btn--sm {
+  min-height: 38px;
+  padding: 9px 14px;
+  font-size: 14px;
+}
+.st-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+/* Mono fine print under a CTA pair: "30 JOURS · SANS CARTE · …". */
+.st-fine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-4);
+}
+.st-fine > * + *::before {
+  content: '·';
+  margin-right: 18px;
+  color: var(--color-navy-700);
+}
+
+/* Status chip. Colour = player state, never decoration. */
+.st-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-ink-3);
+}
+.st-chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.st-chip--ready {
+  color: var(--color-ready);
+  background: rgba(39, 215, 161, 0.08);
+}
+.st-chip--watch {
+  color: var(--color-watch);
+  background: rgba(255, 176, 32, 0.08);
+}
+.st-chip--risk {
+  color: var(--color-risk);
+  background: rgba(255, 92, 92, 0.08);
+}
+.st-chip--wait {
+  color: var(--color-ink-4);
+  border-style: dashed;
+}
+.st-chip--wait::before {
+  background: transparent;
+  border: 1px solid currentColor;
+}
+/* Neutral tag: a category or state that is not a player's. */
+.st-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-line-strong);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  white-space: nowrap;
+}
+.st-tag--accent {
+  color: var(--color-electric-500);
+  border-color: rgba(79, 148, 251, 0.5);
+}
+
+/* ════════════════════════════════════════════════════════════
+   Surfaces
+   ════════════════════════════════════════════════════════════ */
+/* Product surface: anything that shows the app (board, console, chart). */
+.st-panel {
+  background: var(--color-navy-950);
+  border: 1px solid var(--color-line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.st-panel--float {
+  box-shadow: var(--shadow-float-lg);
+}
+.st-panel__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-navy-900);
+}
+.st-panel__body {
+  padding: 20px;
+}
+/* Quiet raised block inside a page, for grouped copy. No shadow. */
+.st-block {
+  background: var(--color-navy-900);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 24px;
+}
+/* Real app capture (PNG) in a frame. */
+.st-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-navy-950);
+  box-shadow: var(--shadow-float-lg);
+}
+/* The spreadsheet STRIVN replaces. The only light surface on the site. */
+.st-paper {
+  background: var(--color-paper);
+  color: var(--color-paper-ink);
+  border-radius: 6px;
+  box-shadow: var(--shadow-float-lg);
+  overflow: hidden;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 12px;
+}
+/* White tile for third-party marks and club crests (many are near-black). */
+.st-tile {
+  display: inline-grid;
+  place-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+/* Proposal box: a decision STRIVN suggests, awaiting the staff. */
+.st-proposal {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(45, 127, 249, 0.35);
+  background: rgba(45, 127, 249, 0.08);
+  font-size: 14px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   Lists and grids that are one object
+   ════════════════════════════════════════════════════════════ */
+/* Figure + sentence rows: "20 s — Questionnaire au réveil". */
+.st-facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--color-line-strong);
+}
+.st-facts > li {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-ink-2);
+  font-size: 15px;
+}
+.st-facts > li > b,
+.st-facts > li > strong {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+/* Plain rule list: one item per row, hairlines between. */
+.st-rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px solid var(--color-line-strong);
+}
+.st-rules > li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-ink-2);
+  font-size: 15px;
+}
+/* Columns separated by hairlines instead of cards. Set the count with
+ * --cols; it drops to 2 then 1 on narrow screens. */
+.st-cols {
+  --cols: 3;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  border-top: 1px solid var(--color-line-strong);
+}
+.st-cols > * {
+  padding: 22px 24px 22px 0;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-width: 0;
+}
+.st-cols > * + * {
+  padding-left: 24px;
+  border-left: 1px solid var(--color-line);
+}
+@media (max-width: 1080px) {
+  .st-cols {
+    --cols: 2 !important;
+  }
+  .st-cols > * {
+    border-bottom: 1px solid var(--color-line);
+  }
+  .st-cols > :nth-child(2n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+@media (max-width: 620px) {
+  .st-cols {
+    --cols: 1 !important;
+  }
+  .st-cols > * + * {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .st-cols > * {
+    padding-right: 0;
+  }
+}
+
+/* Two-column split: copy and visual. */
+.st-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+.st-split--wide-left {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+.st-split--wide-right {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+}
+.st-split--top {
+  align-items: start;
+}
+@media (max-width: 1000px) {
+  .st-split,
+  .st-split--wide-left,
+  .st-split--wide-right {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* KPI: mono label over a mono value. */
+.st-kpi {
+  display: grid;
+  gap: 2px;
+}
+.st-kpi__v {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+}
+/* Horizontal meter. Colour it with a status token inline. */
+.st-meter {
+  height: 6px;
+  background: var(--color-navy-800);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.st-meter > i {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--color-electric);
+}
+
+/* FAQ: details/summary with hairlines. */
+.st-faq {
+  display: grid;
+  border-top: 1px solid var(--color-line-strong);
+}
+.st-faq details {
+  border-bottom: 1px solid var(--color-line);
+}
+.st-faq summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 20px 36px 20px 0;
+  font-weight: 500;
+  font-size: 16.5px;
+  color: var(--color-ink);
+}
+.st-faq summary::-webkit-details-marker {
+  display: none;
+}
+.st-faq summary::after {
+  content: '+';
+  position: absolute;
+  right: 4px;
+  top: 18px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--color-ink-3);
+}
+.st-faq details[open] summary::after {
+  content: '−';
+}
+.st-faq details > :not(summary) {
+  margin: 0 0 20px;
+  color: var(--color-ink-2);
+  max-width: 62ch;
+}
+
+/* Hero backdrop: the pitch in plan view, barely there. Put on a
+ * position:relative, overflow:hidden element. */
+.st-grid-bg {
+  position: relative;
+  isolation: isolate;
+}
+.st-grid-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 75% 40%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 75% 40%, #000 20%, transparent 75%);
+  opacity: 0.7;
+}
+
+/* Breadcrumb line above a sub-page title. */
+.st-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-4);
+}
+.st-crumbs a {
+  color: var(--color-ink-3);
+  text-decoration: none;
+}
+.st-crumbs a:hover {
+  color: var(--color-ink);
+}
+.st-crumbs > * + *::before {
+  content: '/';
+  margin-right: 10px;
+  color: var(--color-navy-700);
+}
+
+/* ════════════════════════════════════════════════════════════
+   Footer (HomeFooter and SiteFooter share it)
+   ════════════════════════════════════════════════════════════ */
+.st-foot {
+  border-top: 1px solid var(--color-line);
+  background: var(--color-void);
+  padding-block: 56px 28px;
+  color: var(--color-ink-3);
+  font-size: 14px;
+}
+.st-foot__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 2fr);
+  gap: 40px 64px;
+}
+.st-foot__brand {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  max-width: 30rem;
+}
+.st-foot__brand img {
+  height: 22px;
+  width: auto;
+}
+.st-foot__tag {
+  margin: 6px 0 0;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+.st-foot__mail {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-ink-2);
+  user-select: all;
+}
+.st-foot__cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 32px;
+}
+.st-foot__cols ul {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+.st-foot a {
+  color: var(--color-ink-2);
+  text-decoration: none;
+}
+.st-foot a:hover {
+  color: var(--color-ink);
+}
+.st-foot__bottom {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-4);
+}
+.st-foot__langs {
+  display: flex;
+  gap: 14px;
+}
+.st-foot__langs a {
+  color: var(--color-ink-4);
+}
+.st-foot__langs a[aria-current='page'] {
+  color: var(--color-ink);
+}
+@media (max-width: 860px) {
+  .st-foot__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   Motion. Everything is legible at rest; motion only adds.
+   ════════════════════════════════════════════════════════════ */
+@keyframes st-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+.st-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-risk);
+}
+.st-live::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: st-pulse 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-live::before {
+    animation: none;
+  }
+  .st-link::after {
+    transition: none;
+  }
+}

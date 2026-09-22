@@ -5,9 +5,7 @@
  * Utilities are imported unlayered on purpose — global.css element rules stay
  * unlayered too, and utility classes need to win by specificity.
  */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap');
-@import 'tailwindcss/theme.css';
-@import 'tailwindcss/utilities.css';
+/* Tailwind and the fonts now load once, from system.css via BaseLayout. */
 
 /* ── Home palette (mockup-locked values, on top of global.css tokens) ── */
 :root {
@@ -27,9 +25,6 @@
   --hl-orange: #ff8400;
   --hl-coral: #ff7a6b;
   --hl-font-display: 'Archivo', 'Inter', system-ui, sans-serif;
-  /* Tailwind's theme layer redefines --font-mono; pin it back to the brand mono. */
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Motion identity — Premium archetype: long decelerations, no overshoot.
    * One signature curve for entrances, one for on-screen state changes,
