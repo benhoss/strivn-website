@@ -1,5 +1,8 @@
 ---
+/* Legal and support shell (v2): one narrow reading column, the st-h1 title,
+   the update date in mono, and the prose styles the blog uses (blog.css). */
 import BaseLayout from './BaseLayout.astro';
+import '../styles/blog.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { landingContent, type Locale } from '../data/landingContent';
@@ -16,18 +19,19 @@ interface Props {
   heading?: string;
   /** Localized "last updated" line, already formatted */
   updated?: string;
+  /** Short mono label above the heading (e.g. the app the page covers). */
+  eyebrow?: string;
 }
 
-const { title, description, lang = 'en', canonicalPath, alternates = [], heading, updated } =
+const { title, description, lang = 'en', canonicalPath, alternates = [], heading, updated, eyebrow } =
   Astro.props;
 
 /* `lang` is a free string on these pages; narrow it before indexing content. */
 const locale: Locale = lang in landingContent ? (lang as Locale) : 'en';
 const c = landingContent[locale];
 
-/* The language switcher should land on this same document in the chosen
-   language, not on the homepage. Every legal page already declares that
-   mapping as hreflang alternates — reuse it rather than restate it. */
+/* The language switcher lands on this same document in the chosen language.
+   Every legal page already declares that mapping as hreflang alternates. */
 const switchHrefs: Partial<Record<Locale, string>> = Object.fromEntries(
   alternates
     .filter((a) => a.hreflang in landingContent)
@@ -45,95 +49,18 @@ const switchHrefs: Partial<Record<Locale, string>> = Object.fromEntries(
 
   <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} switchHrefs={switchHrefs} />
 
-  <main id="s-main" class="legal">
-    <header class="legal__header">
-      <h1>{heading ?? title}</h1>
-      {updated && <p class="legal__updated">{updated}</p>}
-    </header>
-    <div class="legal__prose">
-      <slot />
-    </div>
+  <main id="s-main" class="b-main">
+    <article class="st-narrow b-doc">
+      <header class="b-doc__head">
+        {eyebrow && <p class="st-label st-eyebrow">{eyebrow}</p>}
+        <h1 class="st-h1 b-doc__title">{heading ?? title}</h1>
+        {updated && <p class="b-doc__updated">{updated}</p>}
+      </header>
+      <div class="b-prose">
+        <slot />
+      </div>
+    </article>
   </main>
 
   <SiteFooter locale={locale} footer={c.footer} />
 </BaseLayout>
-
-<style>
-  .legal {
-    max-width: 46rem;
-    margin: 0 auto;
-    /* The nav is fixed and overlays the page: the top padding has to clear it
-       before the heading starts, the same reserve the sub-pages keep. */
-    padding: clamp(7.5rem, 6vw + 5rem, 9rem) var(--space-lg) var(--space-3xl);
-    color: var(--ink-2);
-    font-family: var(--font-body);
-    font-size: var(--text-body);
-    line-height: 1.7;
-  }
-  .legal__header { margin-bottom: var(--space-2xl); }
-  .legal__header h1 {
-    margin: 0;
-    color: var(--ink);
-    font-family: var(--font-display);
-    font-size: var(--text-headline);
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-  .legal__updated {
-    margin: var(--space-sm) 0 0;
-    color: var(--ink-3);
-    font-family: var(--font-mono);
-    font-size: var(--text-frag);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .legal__prose :global(h2) {
-    margin: var(--space-2xl) 0 var(--space-sm);
-    color: var(--ink);
-    font-family: var(--font-display);
-    font-size: var(--text-title);
-    font-weight: 600;
-    line-height: 1.25;
-  }
-  .legal__prose :global(h3) {
-    margin: var(--space-xl) 0 var(--space-xs);
-    color: var(--ink);
-    font-size: 1.0625rem;
-    font-weight: 600;
-  }
-  .legal__prose :global(p) { margin: 0 0 var(--space-md); }
-  .legal__prose :global(ul) {
-    margin: 0 0 var(--space-md);
-    padding-left: var(--space-lg);
-    list-style: none;
-  }
-  .legal__prose :global(li) {
-    position: relative;
-    margin: 0 0 var(--space-xs);
-    padding-left: var(--space-md);
-  }
-  .legal__prose :global(li)::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.65em;
-    width: 5px;
-    height: 5px;
-    border-radius: var(--radius-pill);
-    background: var(--electric);
-  }
-  .legal__prose :global(strong) { color: var(--ink); font-weight: 600; }
-  .legal__prose :global(a) {
-    color: var(--electric-500);
-    text-decoration: none;
-    border-bottom: 1px solid var(--electric-border);
-  }
-  .legal__prose :global(a:hover) { color: var(--ink); }
-  .legal__prose :global(hr) {
-    margin: var(--space-2xl) 0;
-    border: 0;
-    border-top: 1px solid var(--rule);
-  }
-</style>
