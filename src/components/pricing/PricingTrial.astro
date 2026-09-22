@@ -1,24 +1,71 @@
 ---
-import type { PricingContent } from '../../data/pricingContent';
+import { TRIAL, type Locale, type PricingContent } from '../../data/pricingContent';
+import HomeIcon from '../home/HomeIcon.astro';
+import { appStartUrl } from '../../lib/appUrl';
 
 interface Props {
+  locale: Locale;
   trial: PricingContent['trial'];
+  cta: PricingContent['cta'];
 }
 
-const { trial: c } = Astro.props;
+const { locale, trial: c, cta } = Astro.props;
+
+/** "Sans carte bancaire. Sans engagement." → two fine-print items. */
+const fine = cta.trust
+  .split(/\.\s*/)
+  .map((s) => s.trim())
+  .filter(Boolean);
 ---
 
-{/* Placed above the cards rather than inside one: the trial is not a Semi-Pro
-    feature, it is what happens to every account that signs up, and it reframes
-    all four cards below it. */}
-<div
-  class="hl-reveal mt-12 flex flex-col gap-4 rounded-[16px] bg-gradient-to-r from-[#101B33] to-[#0B1020] p-6 outline-1 outline-[#2D7FF95C] -outline-offset-[0.5px] md:flex-row md:items-start md:gap-8 md:p-7"
->
-  <p class="shrink-0 font-mono text-[0.62rem] font-semibold tracking-[0.12em] text-[#7AB8FF] uppercase md:pt-1">
-    {c.label}
-  </p>
-  <div>
-    <p class="text-[1.05rem] font-semibold leading-[1.35] text-[#F8FAFC]">{c.title}</p>
-    <p class="mt-2 max-w-[52rem] text-[0.92rem] leading-[1.6] text-[#AAB8D4]">{c.body}</p>
+{/* Placed in the hero rather than inside a card: the trial is not a Semi-Pro
+    feature, it is what happens to every account that signs up, and it
+    reframes all four tiers below it. */}
+<aside class="st-panel st-panel--float pp-trial" aria-labelledby="pricing-trial-title">
+  <div class="st-panel__bar">
+    <span class="st-label st-label--accent">{c.label}</span>
   </div>
-</div>
+  <div class="st-panel__body pp-trial__body">
+    <p class="pp-trial__figure">
+      <span class="st-figure">{TRIAL.days}</span>
+      <span class="st-label">{c.unit}</span>
+    </p>
+    <h2 id="pricing-trial-title" class="st-h3">{c.title}</h2>
+    <p class="st-small">{c.body}</p>
+    <a href={appStartUrl(locale)} target="_blank" rel="noopener" class="st-btn st-btn--primary">
+      {cta.primary}
+      <HomeIcon name="arrow-right" size={16} />
+    </a>
+    <p class="st-fine">{fine.map((f) => <span>{f}</span>)}</p>
+  </div>
+</aside>
+
+<style>
+  .pp-trial__body {
+    display: grid;
+    gap: 16px;
+    padding: 28px;
+  }
+
+  .pp-trial__figure {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0 0 4px;
+  }
+
+  .pp-trial .st-btn {
+    justify-self: start;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 480px) {
+    .pp-trial__body {
+      padding: 20px;
+    }
+
+    .pp-trial .st-btn {
+      justify-self: stretch;
+    }
+  }
+</style>
