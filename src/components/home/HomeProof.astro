@@ -1,0 +1,120 @@
+---
+import type { HomeContent } from '../../data/homeContent';
+import { CLUBS } from '../../data/clubs';
+import { pngSize } from '../../lib/pngSize';
+
+interface Props {
+  c: HomeContent['proof'];
+}
+
+const { c } = Astro.props;
+
+/** Crests are normalized to a common optical area on white by
+ *  `scripts/normalize-logos.mjs`; the tile only caps their height. */
+const crests = CLUBS.map((club) => {
+  const src = `logos/clubs/${club.slug}.png`;
+  const size = pngSize(src);
+  return { ...club, src: `/${src}`, width: size?.width, height: size?.height };
+});
+const hub = pngSize('logos/barca-innovation-hub.png');
+---
+
+<section class="home-proof" aria-label={c.aria}>
+  <div class="st-wrap home-proof__in">
+    <div class="home-proof__stat">
+      <span class="home-proof__big">{c.stat}</span>
+      <p>{c.line}</p>
+    </div>
+    <ul class="home-proof__crests" aria-label={c.crestsAria}>
+      {crests.map((crest) => (
+        <li class="st-tile home-proof__crest">
+          <img src={crest.src} alt={crest.name} width={crest.width} height={crest.height} loading="lazy" decoding="async" />
+        </li>
+      ))}
+    </ul>
+    <div class="home-proof__method">
+      <span class="st-label">{c.method}</span>
+      <span class="st-tile home-proof__hub">
+        <img
+          src="/logos/barca-innovation-hub.png"
+          alt="Alumni Barça Innovation Hub"
+          width={hub?.width}
+          height={hub?.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-proof {
+    padding-block: 40px;
+    border-top: 1px solid var(--color-line);
+  }
+  .home-proof__in {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 32px 48px;
+    align-items: center;
+  }
+  .home-proof__stat {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .home-proof__big {
+    font-weight: 600;
+    font-variation-settings: 'wdth' 75;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink);
+  }
+  .home-proof__stat p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--color-ink-2);
+    max-width: 24ch;
+  }
+  .home-proof__crests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .home-proof__crest {
+    width: 52px;
+    height: 52px;
+    padding: 6px;
+  }
+  .home-proof__crest img {
+    max-height: 40px;
+    max-width: 40px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  .home-proof__method {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .home-proof__hub {
+    padding: 8px 12px;
+  }
+  .home-proof__hub img {
+    height: 30px;
+    width: auto;
+  }
+  @media (max-width: 1080px) {
+    .home-proof__in {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

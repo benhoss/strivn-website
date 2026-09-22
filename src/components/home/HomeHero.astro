@@ -1,224 +1,336 @@
 ---
-import type { HomeContent } from '../../data/homeContent';
-import HomeIcon from './HomeIcon.astro';
+import {
+  CONTACT_EMAIL,
+  FOCUS_PLAYER,
+  HERO_FILE,
+  HERO_ROWS,
+  HERO_TIME,
+  type HomeContent,
+  type Locale,
+} from '../../data/homeContent';
 import { appStartUrl } from '../../lib/appUrl';
-import type { Locale } from '../../data/homeContent';
 
 interface Props {
   locale: Locale;
-  hero: HomeContent['hero'];
+  c: HomeContent;
 }
 
-const { locale, hero } = Astro.props;
+const { locale, c } = Astro.props;
+const h = c.hero;
+const p = h.panel;
+const status = c.status;
 
-const toneText: Record<string, string> = {
-  blue: 'text-[#7AB8FF]',
-  green: 'text-[#8CE99A]',
-  orange: 'text-[#FF8400]',
-  coral: 'text-[#FF7A6B]',
-  plain: 'text-[#F8FAFC]',
-};
-const toneBar: Record<string, string> = {
-  green: 'bg-[#8CE99A]',
-  coral: 'bg-[#FF7A6B]',
-  orange: 'bg-[#FF8400]',
-  plain: 'bg-[#7AB8FF]',
-};
-const toneChip: Record<string, string> = {
-  green: 'text-[#8CE99A] bg-[#8CE99A14] outline-[#8CE99A2E]',
-  coral: 'text-[#FF7A6B] bg-[#FF7A6B14] outline-[#FF7A6B2E]',
-  orange: 'text-[#FF8400] bg-[#FF840014] outline-[#FF84002E]',
-  plain: 'text-[#AAB8D4] bg-[#FFFFFF08] outline-[#FFFFFF14]',
-};
+type Cell = 'hsr' | 'rpe' | 'sleep' | 'acwr';
+const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
+  row.risk?.includes(cell) ? 'is-risk' : row.hot?.includes(cell) ? 'is-hot' : undefined;
 ---
 
-<section class="relative overflow-hidden bg-[#05070F]" aria-labelledby="hero-title">
-  <!-- Radial glow behind the hero copy (ambient layer: slow breathing) -->
-  <div
-    class="hl-breathe pointer-events-none absolute inset-x-0 top-0 h-[560px] [background:radial-gradient(ellipse_52%_44%_at_50%_0%,rgba(45,127,249,0.17),transparent_72%)]"
-    aria-hidden="true"
-  >
-  </div>
-
-  <!-- The claim owns the first screen. The board below used to start at a
-       constant 666px whatever the display, so on a 1080p screen the whole
-       three-and-a-half-second sequence was already on screen at load and
-       played to nobody.
-
-       `100svh` minus a fixed reserve rather than a percentage: a percentage
-       cannot hold the peek steady across screen heights, this can. The band
-       adds ~95px of its own padding, so the reserve leaves the board about a
-       hundred pixels above the fold — enough to say there is more below,
-       nowhere near enough to start the sequence. `min-h` means a short laptop
-       keeps its natural height instead of being squeezed. -->
-  <div
-    class="hl-wrap relative flex min-h-[calc(100svh-12rem)] flex-col items-center justify-center pt-[7.5rem] pb-12 text-center md:pt-[8.5rem]"
-  >
-    <p
-      class="hl-reveal inline-flex items-center gap-2.5 rounded-full bg-[#FFFFFF08] py-[7px] pr-4 pl-2.5 text-[0.82rem] font-medium text-[#AAB8D4] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]"
-    >
-      <span class="size-1.5 rounded-full bg-[#8CE99A]" aria-hidden="true"></span>
-      {hero.eyebrow}
-    </p>
-
-    <h1
-      id="hero-title"
-      class="hl-display hl-reveal mt-7 max-w-[26ch] text-[clamp(2.55rem,7.2vw,5rem)]"
-      style="--d: 70ms;"
-    >
-      <span class="block text-[#7E93BE]">{hero.titleMuted}</span>
-      <span class="block text-[#F8FAFC]">{hero.titleMain}</span>
-    </h1>
-
-    <p class="hl-reveal mt-6 max-w-[42rem] text-[1.05rem] leading-[1.65] text-[#AAB8D4]" style="--d: 140ms;">
-      {hero.sub}
-    </p>
-
-    <div class="hl-reveal mt-8 flex flex-wrap items-center justify-center gap-3" style="--d: 300ms;">
-      <a
-        href={appStartUrl(locale)}
-        target="_blank"
-        rel="noopener"
-        class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#2D7FF9] px-[26px] py-[15px] text-[0.98rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
-      >
-        {hero.primaryCta}
-        <HomeIcon name="arrow-right" size={17} />
-      </a>
-      <a
-        href="#workflow"
-        class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#FFFFFF0A] px-6 py-[15px] text-[0.98rem] font-semibold text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
-      >
-        <HomeIcon name="play" size={15} />
-        {hero.secondaryCta}
-      </a>
-    </div>
-  </div>
-
-  <!-- ── Product shot · CSS-drawn "OS" dashboard ── -->
-  <!-- `data-reveal-band` holds every reveal in here to a stricter trigger, so
-       the sliver peeking above the fold does not start the sequence early. -->
-  <div class="hl-wrap relative max-w-[1240px] pt-14 pb-16 md:pt-16 md:pb-24" data-reveal-band>
-    <div class="hl-reveal hl-reveal--card relative mx-auto max-w-[780px]" style="--d: 460ms;">
-      <!-- Main readiness board -->
-      <div
-        class="relative z-10 rounded-[20px] bg-[#0A0E1AF2] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] [box-shadow:0_30px_80px_-20px_rgba(2,6,18,0.9)] backdrop-blur-sm"
-      >
-        <div class="flex items-center justify-between border-b border-[#FFFFFF0A] px-5 py-4">
-          <p class="flex items-center gap-2.5 text-[0.92rem] font-semibold text-[#F8FAFC]">
-            <HomeIcon name="gauge" size={16} class="text-[#7AB8FF]" />
-            {hero.shot.title}
-          </p>
-          <span class="font-mono text-[0.62rem] tracking-[0.1em] text-[#68779A]">{hero.shot.stamp}</span>
-        </div>
-
-        <div class="grid grid-cols-2 gap-2.5 px-5 pt-4 sm:grid-cols-4" data-stagger>
-          {hero.shot.kpis.map((kpi, i) => (
-            <div class="rounded-[12px] bg-[#FFFFFF05] px-3.5 py-3 outline-1 outline-[#FFFFFF0F] -outline-offset-[0.5px]">
-              <p class="font-mono text-[0.58rem] tracking-[0.12em] text-[#68779A]">{kpi.label}</p>
-              <p
-                class={`mt-1 text-[1.3rem] leading-none font-bold tracking-[-0.02em] ${toneText[kpi.tone]}`}
-                data-count
-                data-count-delay={1650 + i * 140}
-              >
-                {kpi.value}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <p class="px-5 pt-4 pb-1 font-mono text-[0.58rem] tracking-[0.12em] text-[#68779A]">{hero.shot.alertsLabel}</p>
-        <ul class="flex flex-col px-2.5 pb-3" data-stagger>
-          {hero.shot.rows.map((row, i) => (
-            <li class="flex items-center gap-3 rounded-[10px] px-2.5 py-2 odd:bg-[#FFFFFF03]">
-              <span class="w-24 shrink-0 truncate text-[0.82rem] font-medium text-[#E2E8F0]">{row.name}</span>
-              <span class="h-1.5 flex-1 overflow-hidden rounded-full bg-[#FFFFFF0A]">
-                <span
-                  class={`hl-fill block h-full rounded-full ${toneBar[row.tone]}`}
-                  style={`width: ${row.bar}%; --bd: ${950 + i * 150}ms;`}
-                ></span>
-              </span>
-              <span class="hidden w-8 text-right font-mono text-[0.7rem] text-[#8CA3C7] sm:block">{row.bar}</span>
-              <span class="hidden w-10 text-right font-mono text-[0.7rem] text-[#8CA3C7] sm:block">{row.acwr}</span>
-              <span
-                class={`hl-late w-[4.6rem] shrink-0 rounded-full px-2 py-0.5 text-center text-[0.66rem] font-semibold outline-1 -outline-offset-[0.5px] ${toneChip[row.tone]}`}
-                style={`--ld: ${1350 + i * 150}ms;`}
-              >
-                {row.status}
-              </span>
-            </li>
-          ))}
-        </ul>
+<section class="home-hero st-grid-bg" id="hero" aria-labelledby="hero-title">
+  <div class="st-wrap home-hero__grid">
+    <div class="home-hero__copy">
+      <span class="st-label st-eyebrow">{h.eyebrow}</span>
+      <h1 id="hero-title" class="st-display">
+        <span class="st-muted home-hero__muted">{h.titleMuted}</span>
+        {h.titleMain}
+      </h1>
+      <p class="st-lede">{h.sub}</p>
+      <div class="st-ctas">
+        <a class="st-btn st-btn--primary" href={appStartUrl(locale)} target="_blank" rel="noopener">
+          {h.primaryCta}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="st-btn st-btn--ghost" href={`mailto:${CONTACT_EMAIL}`}>{h.secondaryCta}</a>
       </div>
+      <p class="st-fine home-hero__fine">{h.fine.map((f) => <span>{f}</span>)}</p>
+    </div>
 
-      <!-- Floating cards — absolute on lg, tucked into a grid below on smaller screens -->
-      <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:static lg:mt-0 lg:contents">
-        <!-- Wellness (left) -->
-        <div
-          class="hl-reveal hl-reveal--left hl-float rounded-[16px] bg-[#0B1020E6] p-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] backdrop-blur-md lg:absolute lg:top-[38%] lg:-left-[15.5rem] lg:z-20 lg:w-[15.5rem] lg:[box-shadow:0_24px_60px_-18px_rgba(2,6,18,0.85)]"
-          style="--d: 1150ms;"
-        >
-          <p class="flex items-center gap-2 text-[0.8rem] font-semibold text-[#F8FAFC]">
-            <HomeIcon name="moon" size={14} class="text-[#7AB8FF]" />
-            {hero.shot.wellness.title}
-          </p>
-          <ul class="mt-3 flex flex-col gap-2.5">
-            {hero.shot.wellness.rows.map((w, i) => (
-              <li class="flex items-center gap-2.5">
-                <span class="w-20 text-[0.74rem] text-[#AAB8D4]">{w.label}</span>
-                <span class="h-1 flex-1 overflow-hidden rounded-full bg-[#FFFFFF0A]">
-                  <span
-                    class={`hl-fill block h-full rounded-full ${w.tone === 'green' ? 'bg-[#8CE99A]' : 'bg-[#FF8400]'}`}
-                    style={`width: ${Number(w.value) * 10}%; --bd: ${1350 + i * 110}ms;`}
-                  ></span>
-                </span>
-                <span class={`font-mono text-[0.7rem] ${w.tone === 'green' ? 'text-[#8CE99A]' : 'text-[#FF8400]'}`}>{w.value}</span>
-              </li>
+    {/* Tuesday's export resolves into Wednesday's read. At rest the table is
+        resolved; the scan replays on a loop while the panel is on screen. */}
+    <figure
+      class="st-panel st-panel--float home-xform"
+      aria-label={p.aria}
+      data-st-inview
+      data-xform
+      data-read={p.read}
+      data-busy={p.busy}
+      data-busy-value={p.busyValue}
+      data-importing={status.importing}
+    >
+      <div class="home-xform__bar">
+        <span class="home-xform__file">{HERO_FILE}</span>
+        <span class="home-xform__state" data-xstate>{p.read} <i>{HERO_TIME}</i></span>
+      </div>
+      <div class="home-xform__scroll">
+        <table class="home-xtable">
+          <thead>
+            <tr>
+              <th scope="col">{p.cols[0]}</th>
+              <th scope="col" class="opt">{p.cols[1]}</th>
+              <th scope="col">{p.cols[2]}</th>
+              <th scope="col">{p.cols[3]}</th>
+              <th scope="col">{p.cols[4]}</th>
+              <th scope="col">{p.cols[5]}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {HERO_ROWS.map((r) => (
+              <tr data-state={r.state} data-label={status[r.state]}>
+                <td class="name">{r.name}</td>
+                <td class:list={['opt', tone(r, 'hsr')]}>{r.hsr}</td>
+                <td class={tone(r, 'rpe')}>{r.rpe}</td>
+                <td class={tone(r, 'sleep')}>{r.sleep}</td>
+                <td class={tone(r, 'acwr')}>{r.acwr}</td>
+                <td class="dec"><span class={`st-chip st-chip--${r.state}`}>{status[r.state]}</span></td>
+              </tr>
             ))}
-          </ul>
-        </div>
-
-        <!-- Import toast (top right) -->
-        <div
-          class="hl-reveal hl-reveal--right hl-float--late hl-float flex items-center gap-3 rounded-[14px] bg-[#0B1020E6] p-3.5 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] backdrop-blur-md lg:absolute lg:-top-6 lg:-right-[10.5rem] lg:z-20 lg:w-[15.5rem] lg:[box-shadow:0_24px_60px_-18px_rgba(2,6,18,0.85)]"
-          style="--d: 700ms;"
-        >
-          <span class="grid size-9 shrink-0 place-items-center rounded-[10px] bg-[#2D7FF91F] text-[#7AB8FF]">
-            <HomeIcon name="satellite" size={17} />
-          </span>
-          <span>
-            <span class="block text-[0.8rem] font-semibold text-[#F8FAFC]">{hero.shot.toast.title}</span>
-            <span class="block text-[0.7rem] text-[#68779A]">{hero.shot.toast.sub}</span>
-          </span>
-        </div>
-
-        <!-- Load alert (right) -->
-        <div
-          class="hl-reveal hl-reveal--right hl-flash rounded-[14px] bg-[#0B1020E6] p-3.5 outline-1 outline-[#FF84002E] -outline-offset-[0.5px] backdrop-blur-md lg:absolute lg:top-[36%] lg:-right-[15.5rem] lg:z-20 lg:w-[17rem] lg:[box-shadow:0_24px_60px_-18px_rgba(2,6,18,0.85)]"
-          style="--d: 2050ms; --fd: 550ms;"
-        >
-          <p class="flex items-center gap-2 text-[0.78rem] font-semibold text-[#FF8400]">
-            <HomeIcon name="bell" size={14} />
-            {hero.shot.alert.title}
-          </p>
-          <p class="mt-1.5 text-[0.72rem] leading-[1.5] text-[#AAB8D4]">{hero.shot.alert.body}</p>
-        </div>
-
-        <!-- AI assistant (bottom right) -->
-        <div
-          class="hl-reveal hl-reveal--right hl-float rounded-[16px] bg-[#0B1020E6] p-4 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] backdrop-blur-md lg:absolute lg:-right-[13rem] lg:-bottom-10 lg:z-20 lg:w-[19rem] lg:[box-shadow:0_24px_60px_-18px_rgba(2,6,18,0.85)]"
-          style="--d: 2500ms;"
-        >
-          <p class="flex items-center gap-2 text-[0.8rem] font-semibold text-[#F8FAFC]">
-            <HomeIcon name="sparkles" size={14} class="text-[#7AB8FF]" />
-            {hero.shot.ai.title}
-          </p>
-          <p class="mt-2.5 w-fit rounded-full bg-[#FFFFFF08] px-3 py-1.5 text-[0.72rem] text-[#E2E8F0] outline-1 outline-[#FFFFFF12] -outline-offset-[0.5px]">
-            {hero.shot.ai.q}<span class="hl-caret" style="--cd: 2550ms;" aria-hidden="true"></span>
-          </p>
-          <p class="hl-late mt-2 text-[0.72rem] leading-[1.55] text-[#AAB8D4]" style="--ld: 3000ms;">{hero.shot.ai.a}</p>
-          <p class="hl-late mt-2.5 font-mono text-[0.56rem] tracking-[0.12em] text-[#68779A]" style="--ld: 3450ms;">{hero.shot.ai.sources}</p>
-        </div>
+          </tbody>
+        </table>
       </div>
-    </div>
+      <figcaption class="home-xform__foot">
+        <span class="st-label st-label--accent">{p.proposed}</span>
+        <p><strong>{FOCUS_PLAYER}</strong>{p.proposal}</p>
+        <span class="st-label home-xform__sources">{p.sources}</span>
+      </figcaption>
+    </figure>
   </div>
 </section>
+
+<style>
+  .home-hero {
+    overflow: hidden;
+    padding-block: clamp(48px, 7vw, 96px) clamp(56px, 8vw, 104px);
+  }
+  .home-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: end;
+  }
+  .home-hero__copy {
+    display: grid;
+    gap: 28px;
+    justify-items: start;
+    min-width: 0;
+  }
+  .home-hero__muted {
+    display: block;
+  }
+  .home-hero__fine {
+    margin: 0;
+  }
+
+  /* ── The transform panel ── */
+  .home-xform {
+    margin: 0;
+    min-width: 0;
+  }
+  .home-xform__bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .home-xform__file {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-ink-2);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .home-xform__file::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 10px;
+    margin-right: 8px;
+    border: 1px solid var(--color-navy-300);
+    border-radius: 1px;
+    vertical-align: -1px;
+  }
+  .home-xform__state {
+    margin-left: auto;
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: var(--color-ink-3);
+    white-space: nowrap;
+  }
+  .home-xform__state :global(i) {
+    font-style: normal;
+    color: var(--color-ready);
+  }
+  .home-xform__state :global(i.is-busy) {
+    color: var(--color-electric-500);
+  }
+  .home-xform__scroll {
+    overflow-x: auto;
+  }
+  .home-xtable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .home-xtable th {
+    text-align: right;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-4);
+    padding: 10px 12px 8px;
+    border-bottom: 1px solid var(--color-line);
+    white-space: nowrap;
+  }
+  .home-xtable th:first-child,
+  .home-xtable td:first-child {
+    text-align: left;
+  }
+  .home-xtable td {
+    text-align: right;
+    padding: 9px 12px;
+    color: var(--color-ink-3);
+    border-bottom: 1px solid var(--color-line);
+    white-space: nowrap;
+  }
+  .home-xtable td.name {
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .home-xtable td.is-hot {
+    color: var(--color-watch);
+  }
+  .home-xtable td.is-risk {
+    color: var(--color-risk);
+  }
+  .home-xtable td.dec {
+    width: 116px;
+  }
+  .home-xtable tr {
+    transition: background-color 0.3s ease;
+  }
+  .home-xtable tr.is-scan {
+    background: color-mix(in srgb, var(--color-electric) 10%, transparent);
+  }
+  .home-xtable .st-chip {
+    transition:
+      color 0.35s ease,
+      background-color 0.35s ease;
+  }
+  .home-xform__foot {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 8px 14px;
+    align-items: start;
+    padding: 14px 16px 16px;
+    border-top: 1px solid var(--color-line);
+    background: var(--color-navy-900);
+  }
+  .home-xform__foot .st-label--accent {
+    padding-top: 3px;
+  }
+  .home-xform__foot p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-ink-2);
+  }
+  .home-xform__foot strong {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+  .home-xform__sources {
+    grid-column: 2;
+    color: var(--color-ink-4);
+  }
+
+  @media (max-width: 1080px) {
+    .home-hero__grid {
+      grid-template-columns: minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+  @media (max-width: 560px) {
+    .home-xtable .opt {
+      display: none;
+    }
+    .home-xtable th,
+    .home-xtable td {
+      padding-inline: 8px;
+    }
+    .home-xtable td.dec {
+      width: auto;
+    }
+    .home-xform__foot {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .home-xform__sources {
+      grid-column: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .home-xtable tr,
+    .home-xtable .st-chip {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Rows resolve one by one: Import → the call. The table starts resolved
+  // (legible at rest) and replays the scan while it is on screen. Reduced
+  // motion keeps it static.
+  const panel = document.querySelector<HTMLElement>('[data-xform]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (panel && !reduce) {
+    const rows = [...panel.querySelectorAll<HTMLTableRowElement>('tbody tr')];
+    const state = panel.querySelector<HTMLElement>('[data-xstate]');
+    const restState = state?.innerHTML ?? '';
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    const chip = (tr: HTMLTableRowElement) => tr.querySelector<HTMLElement>('.st-chip');
+    const onScreen = () => panel.classList.contains('is-inview') && !document.hidden;
+
+    const setWaiting = (tr: HTMLTableRowElement) => {
+      const c = chip(tr);
+      if (!c) return;
+      c.className = 'st-chip st-chip--wait';
+      c.textContent = panel.dataset.importing ?? '';
+    };
+    const resolve = (tr: HTMLTableRowElement) => {
+      const c = chip(tr);
+      if (!c) return;
+      c.className = `st-chip st-chip--${tr.dataset.state}`;
+      c.textContent = tr.dataset.label ?? '';
+    };
+
+    const loop = async () => {
+      for (;;) {
+        await sleep(4200);
+        if (!onScreen()) continue;
+        rows.forEach(setWaiting);
+        if (state) {
+          state.textContent = `${panel.dataset.busy} `;
+          const i = document.createElement('i');
+          i.className = 'is-busy';
+          i.textContent = panel.dataset.busyValue ?? '';
+          state.append(i);
+        }
+        await sleep(700);
+        for (const tr of rows) {
+          tr.classList.add('is-scan');
+          await sleep(520);
+          resolve(tr);
+          tr.classList.remove('is-scan');
+        }
+        if (state) state.innerHTML = restState;
+      }
+    };
+    loop();
+  }
+</script>

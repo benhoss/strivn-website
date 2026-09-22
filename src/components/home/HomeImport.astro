@@ -1,0 +1,263 @@
+---
+import HomeWeek from './HomeWeek.astro';
+import {
+  HERO_FILE,
+  IMPORT_COLUMNS,
+  SHEET_FILE,
+  SHEET_ROWS,
+  SHEET_TABS,
+  type HomeContent,
+} from '../../data/homeContent';
+
+interface Props {
+  c: HomeContent['import'];
+}
+
+const { c } = Astro.props;
+---
+
+<HomeWeek id="import" stamp={c.stamp} links={c.links} labelledby="import-title">
+  <div class="st-head">
+    <h2 id="import-title" class="st-h2">{c.title}</h2>
+    <p class="st-body">{c.body}</p>
+  </div>
+
+  <div class="home-ba">
+    {/* Before: the spreadsheet, the one light surface on the site. */}
+    <figure class="st-paper home-sheet" aria-label={c.sheet.aria}>
+      <div class="home-sheet__title"><span>{SHEET_FILE}</span><span>{c.sheet.edited}</span></div>
+      <div class="home-sheet__scroll">
+        <table class="home-sheet__grid">
+          <thead>
+            <tr>
+              {c.sheet.cols.map((col, i) => (
+                <th scope="col" class:list={[i === 0 && 'w-name', i === 5 && 'w-acwr']}>{col}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {SHEET_ROWS.map((row) => (
+              <tr>{row.map((cell) => <td class={cell.tone}>{cell.v}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="home-sheet__tabs" aria-hidden="true">
+        {SHEET_TABS.map((t, i) => <span class:list={[i === 0 && 'is-on']}>{t}</span>)}
+      </div>
+    </figure>
+
+    <div class="home-ba__arrow" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"></path></svg>
+    </div>
+
+    {/* After: the same export, read by STRIVN. */}
+    <div class="home-map">
+      <span class="st-label">{c.mapping.label} · {HERO_FILE}</span>
+      <ul class="home-map__rows">
+        {IMPORT_COLUMNS.map((from, i) => (
+          <li>
+            <span class="from">{from}</span>
+            <span class="arr" aria-hidden="true">→</span>
+            <span class="to">{c.mapping.to[i]}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="home-map__done"><span class="dot" aria-hidden="true"></span>{c.mapping.done}</p>
+    </div>
+  </div>
+
+  <ul class="st-cols home-sources" id="crossing" style="--cols: 4">
+    {c.facts.map((f) => (
+      <li>
+        <span class="home-sources__n">{f.n}</span>
+        <p class="st-small">{f.body}</p>
+      </li>
+    ))}
+  </ul>
+</HomeWeek>
+
+<style>
+  .home-ba {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
+    align-items: center;
+  }
+
+  /* ── The spreadsheet ── */
+  .home-sheet {
+    margin: 0;
+    transform: rotate(-1.2deg);
+    min-width: 0;
+  }
+  .home-sheet__title {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    background: color-mix(in srgb, var(--color-paper-rule) 70%, var(--color-paper));
+    font-size: 11.5px;
+    color: color-mix(in srgb, var(--color-paper-ink) 80%, var(--color-paper));
+  }
+  .home-sheet__title span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .home-sheet__scroll {
+    overflow-x: auto;
+  }
+  .home-sheet__grid {
+    width: 100%;
+    min-width: 400px;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .home-sheet__grid td,
+  .home-sheet__grid th {
+    border: 1px solid var(--color-paper-rule);
+    padding: 5px 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+    text-align: left;
+    height: 27px;
+  }
+  .home-sheet__grid th {
+    background: color-mix(in srgb, var(--color-paper-rule) 45%, var(--color-paper));
+    color: color-mix(in srgb, var(--color-paper-ink) 65%, var(--color-paper));
+    font-size: 10.5px;
+  }
+  .home-sheet__grid th.w-name {
+    width: 22%;
+  }
+  .home-sheet__grid th.w-acwr {
+    width: 24%;
+  }
+  .home-sheet__grid td.hl {
+    background: color-mix(in srgb, var(--color-watch) 28%, var(--color-paper));
+  }
+  .home-sheet__grid td.err {
+    color: color-mix(in srgb, var(--color-risk) 70%, var(--color-paper-ink));
+  }
+  .home-sheet__grid td.formula {
+    color: color-mix(in srgb, var(--color-paper-ink) 65%, var(--color-paper));
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+  }
+  .home-sheet__tabs {
+    display: flex;
+    gap: 2px;
+    padding: 6px 8px 0;
+    background: color-mix(in srgb, var(--color-paper-rule) 70%, var(--color-paper));
+    font-size: 11px;
+    overflow: hidden;
+  }
+  .home-sheet__tabs span {
+    background: color-mix(in srgb, var(--color-paper-rule) 30%, var(--color-paper));
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    color: color-mix(in srgb, var(--color-paper-ink) 65%, var(--color-paper));
+    white-space: nowrap;
+  }
+  .home-sheet__tabs span.is-on {
+    background: var(--color-paper);
+    color: var(--color-paper-ink);
+  }
+
+  .home-ba__arrow {
+    display: grid;
+    place-items: center;
+    color: var(--color-ink-4);
+  }
+  .home-ba__arrow svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* ── The mapping ── */
+  .home-map {
+    display: grid;
+    gap: 14px;
+    padding: 20px;
+    background: var(--color-navy-900);
+    border: 1px solid var(--color-line-strong);
+    border-radius: 12px;
+    min-width: 0;
+  }
+  .home-map__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+  .home-map__rows li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    font-size: 13.5px;
+  }
+  .home-map__rows .from {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-ink-3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .home-map__rows .arr {
+    color: var(--color-electric-500);
+    font-family: var(--font-mono);
+  }
+  .home-map__rows .to {
+    color: var(--color-ink);
+  }
+  .home-map__done {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-line);
+    font-size: 13.5px;
+    color: var(--color-ink-2);
+  }
+  .home-map__done .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-ready);
+    flex: none;
+  }
+
+  /* ── Four figures ── */
+  .home-sources {
+    list-style: none;
+    margin: clamp(40px, 5vw, 64px) 0 0;
+    padding: 0;
+  }
+  .home-sources__n {
+    font-family: var(--font-mono);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 820px) {
+    .home-ba {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+    }
+    .home-ba__arrow svg {
+      transform: rotate(90deg);
+    }
+    .home-sheet {
+      transform: none;
+    }
+  }
+</style>
