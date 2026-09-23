@@ -1,8 +1,8 @@
 /**
  * Content for the S&C-first homepage (all six locales).
  *
- * The page follows the performance coach's week, from Monday's GPS export to
- * the next Monday's report (redesign 2026-09, `redesign-mockup.html`). Every
+ * The page runs from the GPS export to the report, one topic per section,
+ * with no weekly schedule (redesign 2026-09, `redesign-mockup.html`). Every
  * user-visible string lives here, including the labels inside the drawn
  * product panels, so the whole page localises from one place.
  *
@@ -17,13 +17,6 @@ export type { Locale };
 
 /** A player's state. The colour follows it; nothing else is coloured. */
 export type PlayerState = 'ready' | 'watch' | 'risk' | 'wait';
-
-/** Day · time · what, in the left rail of a week section. */
-export interface Stamp {
-  day: string;
-  time: string;
-  what: string;
-}
 
 export interface MoreLink {
   label: string;
@@ -40,11 +33,6 @@ export interface HomeContent {
   meta: { title: string; description: string };
   /** The percent sign as this locale sets it after a figure (" %" in French). */
   pct: string;
-  /** The seven entries of the week rail under the header, in page order. */
-  week: {
-    aria: string;
-    days: [WeekDay, WeekDay, WeekDay, WeekDay, WeekDay, WeekDay, WeekDay];
-  };
   /** Status chip labels, shared by every panel on the page. */
   status: Record<PlayerState, string> & { importing: string };
   hero: {
@@ -76,9 +64,10 @@ export interface HomeContent {
     crestsAria: string;
     method: string;
   };
-  /** Monday 08:10 · the GPS import, and the spreadsheet it replaces. */
+  /** The GPS import, and the spreadsheet it replaces. */
   import: {
-    stamp: Stamp;
+    /** The section's topic, shown as an eyebrow above its head. */
+    label: string;
     title: string;
     body: string;
     sheet: {
@@ -95,9 +84,10 @@ export interface HomeContent {
     facts: [Fact, Fact, Fact, Fact];
     links: MoreLink[];
   };
-  /** Wednesday 07:45 · the readiness board and the evidence behind a call. */
+  /** The readiness board and the evidence behind a call. */
   readiness: {
-    stamp: Stamp;
+    /** The section's topic, shown as an eyebrow above its head. */
+    label: string;
     title: string;
     body: string;
     kpis: [Kpi, Kpi, Kpi, Kpi, Kpi];
@@ -111,9 +101,10 @@ export interface HomeContent {
     edit: string;
     links: MoreLink[];
   };
-  /** Wednesday 10:00 · the microcycle, target against actual, to scale. */
+  /** Load planning: the microcycle, target against actual, to scale. */
   plan: {
-    stamp: Stamp;
+    /** The section's topic, shown as an eyebrow above its head. */
+    label: string;
     title: string;
     body: string;
     chartLabel: string;
@@ -129,9 +120,10 @@ export interface HomeContent {
     adjustments: [string, string, string];
     links: MoreLink[];
   };
-  /** Thursday 18:34 · the live session. */
+  /** The live session. */
   live: {
-    stamp: Stamp;
+    /** The section's topic, shown as an eyebrow above its head. */
+    label: string;
     title: string;
     body: string;
     badge: string;
@@ -145,9 +137,10 @@ export interface HomeContent {
     secondary: string;
     links: MoreLink[];
   };
-  /** Every day 07:42 · the player app. */
+  /** The player app. */
   playerApp: {
-    stamp: Stamp;
+    /** The section's topic, shown as an eyebrow above its head. */
+    label: string;
     title: string;
     body: string;
     facts: [Fact, Fact, Fact, Fact];
@@ -180,9 +173,10 @@ export interface HomeContent {
     };
     links: MoreLink[];
   };
-  /** Sunday 21:05 · the assistant, then Monday's report. */
+  /** The assistant, then the generated report. */
   assistant: {
-    stamp: Stamp;
+    /** The section's topic, shown as an eyebrow above its head. */
+    label: string;
     title: string;
     body: string;
     initials: string;
@@ -237,10 +231,6 @@ export interface HomeContent {
   };
 }
 
-interface WeekDay {
-  day: string;
-  label: string;
-}
 interface Kpi {
   label: string;
   value: string;
@@ -283,7 +273,7 @@ export const HERO_ROWS: Array<{
 /** The player every panel follows through the week. */
 export const FOCUS_PLAYER = 'L. Moreau';
 
-/** Monday's spreadsheet, the one light surface on the site. */
+/** The spreadsheet STRIVN replaces, the one light surface on the site. */
 export const SHEET_FILE = 'croisement_S12_v4_FINAL.xlsx';
 export const SHEET_TABS = ['croisement', 'export_gps', 'rpe_messagerie', 'wellness_forms', 'plan'];
 export const SHEET_ROWS: Array<Array<{ v: string; tone?: 'hl' | 'err' | 'formula' }>> = [
@@ -371,18 +361,6 @@ const fr: HomeContent = {
       'Import GPS, wellness, charge et planification dans un seul outil. L’IA lit les données du groupe et signale qui alléger. Gratuit pour une équipe, partagé par tout le staff.',
   },
   pct: ' %',
-  week: {
-    aria: 'La semaine type',
-    days: [
-      { day: 'LUN', label: 'import GPS' },
-      { day: 'MAR', label: 'le croisement' },
-      { day: 'MER', label: 'readiness' },
-      { day: 'JEU', label: 'séance live' },
-      { day: 'VEN', label: 'joueurs' },
-      { day: 'DIM', label: 'match' },
-      { day: 'LUN', label: 'rapport' },
-    ],
-  },
   status: { ready: 'Prêt', watch: 'Surveiller', risk: 'Alléger', wait: 'Protocole', importing: 'Import' },
   hero: {
     eyebrow: 'Pour le préparateur physique et le head of performance',
@@ -393,7 +371,7 @@ const fr: HomeContent = {
     secondaryCta: 'Parler à Benoit',
     fine: ['30 jours de Semi-Pro offerts', 'Sans carte', 'Sans validation du club'],
     panel: {
-      aria: 'Exemple : l’export GPS de mardi devient la lecture de mercredi matin',
+      aria: 'Exemple : l’export GPS de la veille devient la lecture du matin',
       cols: ['Joueur', 'HSR m', 'RPE', 'Sommeil', 'ACWR', 'Lecture'],
       read: 'LECTURE',
       busy: 'CROISEMENT',
@@ -411,11 +389,11 @@ const fr: HomeContent = {
     method: 'Méthodologie',
   },
   import: {
-    stamp: { day: 'LUNDI', time: '08:10', what: 'Import GPS' },
+    label: 'Import GPS',
     title: 'Importez l’export GPS, quel que soit le capteur.',
     body: 'Déposez le CSV de Catapult, STATSports ou d’un autre système. Les colonnes sont reconnues au premier import, puis mémorisées pour les suivants.',
     sheet: {
-      aria: 'Avant : le tableur de croisement du lundi',
+      aria: 'Avant : le tableur de croisement',
       edited: 'Modifié par 3 personnes',
       cols: ['Joueur', 'HSR', 'RPE', 'Sommeil', 'UA 7 j', 'ACWR'],
     },
@@ -428,12 +406,12 @@ const fr: HomeContent = {
       { n: '4', body: 'sources croisées sur le même créneau : GPS, RPE, wellness et plan.' },
       { n: '18', body: 'joueurs rattachés au calendrier, un par un, dès l’import.' },
       { n: '7 / 28', body: 'jours de fenêtre pour l’ACWR, recalculé chaque nuit.' },
-      { n: '1', body: 'version de la semaine, partagée par tout le staff.' },
+      { n: '1', body: 'version des données, partagée par tout le staff.' },
     ],
     links: [{ label: 'Voir l’import GPS', href: '/fr/features/training-load/' }],
   },
   readiness: {
-    stamp: { day: 'MERCREDI', time: '07:45', what: 'Readiness' },
+    label: 'Readiness',
     title: 'Sachez qui est apte avant la séance.',
     body: 'Les joueurs répondent au check-in au réveil. Chaque décision affiche les données qui la justifient, pour que le staff la valide en un geste.',
     kpis: [
@@ -453,9 +431,9 @@ const fr: HomeContent = {
     links: [{ label: 'Voir le check-in', href: '/fr/features/check-in/' }],
   },
   plan: {
-    stamp: { day: 'MERCREDI', time: '10:00', what: 'Microcycle S12' },
-    title: 'Planifiez la charge de la semaine en UA.',
-    body: 'Fixez une cible par jour. STRIVN compare au réalisé, calcule l’ACWR et la monotonie, puis signale chaque écart joueur par joueur.',
+    label: 'Planification de charge',
+    title: 'Planifiez la charge en UA, séance par séance.',
+    body: 'Fixez une cible par séance. STRIVN compare au réalisé, calcule l’ACWR et la monotonie, puis signale chaque écart joueur par joueur.',
     chartLabel: 'Microcycle S12 · match dimanche',
     legendTarget: 'Cible',
     legendActual: 'Réalisée',
@@ -472,7 +450,7 @@ const fr: HomeContent = {
     links: [{ label: 'Voir la planification de charge', href: '/fr/features/training-load/' }],
   },
   live: {
-    stamp: { day: 'JEUDI', time: '18:34', what: 'Séance live' },
+    label: 'Séance live',
     title: 'Suivez la charge pendant la séance, bloc par bloc.',
     body: 'Pointez les présences au bord du terrain. La charge se cumule par bloc et l’écart au plan s’affiche pendant que vous pouvez encore agir.',
     badge: 'LIVE',
@@ -491,7 +469,7 @@ const fr: HomeContent = {
     links: [{ label: 'Voir la séance en direct', href: '/fr/features/live-session/' }],
   },
   playerApp: {
-    stamp: { day: 'CHAQUE JOUR', time: '07:42', what: 'App joueur' },
+    label: 'App joueur',
     title: 'Vos joueurs répondent en vingt secondes.',
     body: 'L’app demande trois choses au bon moment : le wellness au réveil, le RPE après la séance, le workout du jour. La relance part seule.',
     facts: [
@@ -531,7 +509,7 @@ const fr: HomeContent = {
     links: [{ label: 'Voir l’app joueur', href: '/fr/features/player-app/' }],
   },
   assistant: {
-    stamp: { day: 'DIMANCHE', time: '21:05', what: 'Après le match' },
+    label: 'Assistant & rapports',
     title: 'Interrogez toutes vos données en une question.',
     body: 'L’assistant lit la charge, le wellness, le GPS et l’infirmerie ensemble. Chaque réponse cite ses sources, et chaque graphique s’épingle à vos dashboards.',
     initials: 'PR',
@@ -547,9 +525,9 @@ const fr: HomeContent = {
     pin: 'Épingler au dashboard',
     refine: 'Affiner',
     report: [
-      { label: 'Lundi 08:00 · rapport S12', body: 'Le rapport de la semaine se génère seul : charge conforme au plan à −2 %, readiness en hausse.' },
+      { label: 'Rapport généré', body: 'Le rapport se génère seul : charge conforme au plan à −2 %, readiness en hausse.' },
       { label: 'Partagé avec 4 membres', body: 'Head coach, kiné et adjoints lisent les mêmes données, chacun avec ses droits.' },
-      { label: 'Vers la convocation', body: 'Disponibilités poussées vers dimanche : 15 aptes, 2 à surveiller, 1 indisponible.' },
+      { label: 'Vers la convocation', body: 'Disponibilités poussées vers le prochain match : 15 aptes, 2 à surveiller, 1 indisponible.' },
     ],
     links: [
       { label: 'Voir les rapports', href: '/fr/features/reports/' },
@@ -644,18 +622,6 @@ const en: HomeContent = {
       'GPS import, wellness, load and planning in one tool. The AI reads the squad data and tells you who to hold back. Free for one team, shared by the whole staff.',
   },
   pct: '%',
-  week: {
-    aria: 'A typical week',
-    days: [
-      { day: 'MON', label: 'GPS import' },
-      { day: 'TUE', label: 'the cross-check' },
-      { day: 'WED', label: 'readiness' },
-      { day: 'THU', label: 'live session' },
-      { day: 'FRI', label: 'players' },
-      { day: 'SUN', label: 'match' },
-      { day: 'MON', label: 'report' },
-    ],
-  },
   status: { ready: 'Ready', watch: 'Monitor', risk: 'Reduce', wait: 'Protocol', importing: 'Import' },
   hero: {
     eyebrow: 'For the S&C coach and the head of performance',
@@ -666,7 +632,7 @@ const en: HomeContent = {
     secondaryCta: 'Talk to Benoit',
     fine: ['30 days of Semi-Pro included', 'No card', 'No club approval'],
     panel: {
-      aria: 'Example: Tuesday’s GPS export becomes Wednesday morning’s read',
+      aria: 'Example: yesterday’s GPS export becomes this morning’s read',
       cols: ['Player', 'HSR m', 'RPE', 'Sleep', 'ACWR', 'Read'],
       read: 'READ',
       busy: 'CROSSING',
@@ -684,11 +650,11 @@ const en: HomeContent = {
     method: 'Methodology',
   },
   import: {
-    stamp: { day: 'MONDAY', time: '08:10', what: 'GPS import' },
+    label: 'GPS import',
     title: 'Import the GPS export, whatever the sensor.',
     body: 'Drop the CSV from Catapult, STATSports or any other system. Columns are recognised on the first import, then remembered for the next ones.',
     sheet: {
-      aria: 'Before: Monday’s cross-reference spreadsheet',
+      aria: 'Before: the cross-reference spreadsheet',
       edited: 'Edited by 3 people',
       cols: ['Player', 'HSR', 'RPE', 'Sleep', 'AU 7 d', 'ACWR'],
     },
@@ -701,12 +667,12 @@ const en: HomeContent = {
       { n: '4', body: 'sources crossed on the same slot: GPS, RPE, wellness and plan.' },
       { n: '18', body: 'players attached to the calendar, one by one, from the import.' },
       { n: '7 / 28', body: 'day windows for the ACWR, recomputed every night.' },
-      { n: '1', body: 'version of the week, shared by the whole staff.' },
+      { n: '1', body: 'version of the data, shared by the whole staff.' },
     ],
     links: [{ label: 'See GPS import', href: '/en/features/training-load/' }],
   },
   readiness: {
-    stamp: { day: 'WEDNESDAY', time: '07:45', what: 'Readiness' },
+    label: 'Readiness',
     title: 'Know who is fit before the session.',
     body: 'Players answer the check-in on waking. Every decision shows the data behind it, so the staff can confirm it in one tap.',
     kpis: [
@@ -726,9 +692,9 @@ const en: HomeContent = {
     links: [{ label: 'See the check-in', href: '/en/features/check-in/' }],
   },
   plan: {
-    stamp: { day: 'WEDNESDAY', time: '10:00', what: 'Microcycle W12' },
-    title: 'Plan the week’s load in AU.',
-    body: 'Set a target for each day. STRIVN compares it with the actual load, computes ACWR and monotony, then flags every gap player by player.',
+    label: 'Load planning',
+    title: 'Plan the load in AU, session by session.',
+    body: 'Set a target for each session. STRIVN compares it with the actual load, computes ACWR and monotony, then flags every gap player by player.',
     chartLabel: 'Microcycle W12 · Sunday match',
     legendTarget: 'Target',
     legendActual: 'Actual',
@@ -745,7 +711,7 @@ const en: HomeContent = {
     links: [{ label: 'See load planning', href: '/en/features/training-load/' }],
   },
   live: {
-    stamp: { day: 'THURSDAY', time: '18:34', what: 'Live session' },
+    label: 'Live session',
     title: 'Track the load during the session, block by block.',
     body: 'Tick attendance pitch-side. The load builds up block by block, and the gap to the plan shows while you can still act.',
     badge: 'LIVE',
@@ -764,7 +730,7 @@ const en: HomeContent = {
     links: [{ label: 'See the live session', href: '/en/features/live-session/' }],
   },
   playerApp: {
-    stamp: { day: 'EVERY DAY', time: '07:42', what: 'Player app' },
+    label: 'Player app',
     title: 'Your players answer in twenty seconds.',
     body: 'The app asks for three things at the right moment: wellness on waking, RPE after the session, the day’s workout. The reminder goes out on its own.',
     facts: [
@@ -804,7 +770,7 @@ const en: HomeContent = {
     links: [{ label: 'See the player app', href: '/en/features/player-app/' }],
   },
   assistant: {
-    stamp: { day: 'SUNDAY', time: '21:05', what: 'After the match' },
+    label: 'Assistant & reports',
     title: 'Query all your data in one question.',
     body: 'The assistant reads load, wellness, GPS and the medical room together. Every answer cites its sources, and every chart pins to your dashboards.',
     initials: 'SC',
@@ -820,9 +786,9 @@ const en: HomeContent = {
     pin: 'Pin to dashboard',
     refine: 'Refine',
     report: [
-      { label: 'Monday 08:00 · W12 report', body: 'The weekly report builds itself: load 2% under plan, readiness trending up.' },
+      { label: 'Report, built for you', body: 'The report builds itself: load 2% under plan, readiness trending up.' },
       { label: 'Shared with 4 members', body: 'Head coach, physio and assistants read the same data, each with their own rights.' },
-      { label: 'Into the call-up', body: 'Availability pushed to Sunday: 15 fit, 2 to monitor, 1 unavailable.' },
+      { label: 'Into the call-up', body: 'Availability pushed to the next match: 15 fit, 2 to monitor, 1 unavailable.' },
     ],
     links: [
       { label: 'See reports', href: '/en/features/reports/' },
@@ -917,18 +883,6 @@ const nl: HomeContent = {
       'GPS-import, wellness, belasting en planning in één tool. De AI leest de groepsdata en geeft aan wie u moet ontzien. Gratis voor één team, gedeeld door de hele staf.',
   },
   pct: '%',
-  week: {
-    aria: 'Een typische week',
-    days: [
-      { day: 'MA', label: 'GPS-import' },
-      { day: 'DI', label: 'de kruising' },
-      { day: 'WO', label: 'readiness' },
-      { day: 'DO', label: 'live training' },
-      { day: 'VR', label: 'spelers' },
-      { day: 'ZO', label: 'wedstrijd' },
-      { day: 'MA', label: 'rapport' },
-    ],
-  },
   status: { ready: 'Klaar', watch: 'Opvolgen', risk: 'Ontlasten', wait: 'Protocol', importing: 'Import' },
   hero: {
     eyebrow: 'Voor de fysieke trainer en de head of performance',
@@ -939,7 +893,7 @@ const nl: HomeContent = {
     secondaryCta: 'Praat met Benoit',
     fine: ['30 dagen Semi-Pro inbegrepen', 'Zonder kaart', 'Zonder goedkeuring van de club'],
     panel: {
-      aria: 'Voorbeeld: de GPS-export van dinsdag wordt de lezing van woensdagochtend',
+      aria: 'Voorbeeld: de GPS-export van gisteren wordt de lezing van vanochtend',
       cols: ['Speler', 'HSR m', 'RPE', 'Slaap', 'ACWR', 'Lezing'],
       read: 'LEZING',
       busy: 'KRUISING',
@@ -957,11 +911,11 @@ const nl: HomeContent = {
     method: 'Methodologie',
   },
   import: {
-    stamp: { day: 'MAANDAG', time: '08:10', what: 'GPS-import' },
+    label: 'GPS-import',
     title: 'Importeer de GPS-export, welke sensor ook.',
     body: 'Zet de CSV van Catapult, STATSports of een ander systeem neer. De kolommen worden bij de eerste import herkend en voor de volgende onthouden.',
     sheet: {
-      aria: 'Vooraf: de kruistabel van maandag',
+      aria: 'Vooraf: de kruistabel',
       edited: 'Bewerkt door 3 personen',
       cols: ['Speler', 'HSR', 'RPE', 'Slaap', 'AU 7 d', 'ACWR'],
     },
@@ -974,12 +928,12 @@ const nl: HomeContent = {
       { n: '4', body: 'bronnen gekruist op hetzelfde tijdslot: GPS, RPE, wellness en plan.' },
       { n: '18', body: 'spelers vanaf de import aan de kalender gekoppeld, één voor één.' },
       { n: '7 / 28', body: 'dagen venster voor de ACWR, elke nacht herberekend.' },
-      { n: '1', body: 'versie van de week, gedeeld door de hele staf.' },
+      { n: '1', body: 'versie van de data, gedeeld door de hele staf.' },
     ],
     links: [{ label: 'Bekijk de GPS-import', href: '/nl/features/training-load/' }],
   },
   readiness: {
-    stamp: { day: 'WOENSDAG', time: '07:45', what: 'Readiness' },
+    label: 'Readiness',
     title: 'Weet wie fit is vóór de training.',
     body: 'Spelers beantwoorden de check-in bij het opstaan. Elke beslissing toont de data waarop ze steunt, zodat de staf ze in één beweging bevestigt.',
     kpis: [
@@ -999,9 +953,9 @@ const nl: HomeContent = {
     links: [{ label: 'Bekijk de check-in', href: '/nl/features/check-in/' }],
   },
   plan: {
-    stamp: { day: 'WOENSDAG', time: '10:00', what: 'Microcyclus W12' },
-    title: 'Plan de belasting van de week in AU.',
-    body: 'Leg voor elke dag een doel vast. STRIVN vergelijkt met de werkelijke belasting, berekent ACWR en monotonie en meldt elke afwijking per speler.',
+    label: 'Belastingsplanning',
+    title: 'Plan de belasting in AU, training per training.',
+    body: 'Leg voor elke training een doel vast. STRIVN vergelijkt met de werkelijke belasting, berekent ACWR en monotonie en meldt elke afwijking per speler.',
     chartLabel: 'Microcyclus W12 · wedstrijd zondag',
     legendTarget: 'Doel',
     legendActual: 'Werkelijk',
@@ -1018,7 +972,7 @@ const nl: HomeContent = {
     links: [{ label: 'Bekijk de belastingsplanning', href: '/nl/features/training-load/' }],
   },
   live: {
-    stamp: { day: 'DONDERDAG', time: '18:34', what: 'Live training' },
+    label: 'Live training',
     title: 'Volg de belasting tijdens de training, blok per blok.',
     body: 'Vink de aanwezigheid af langs het veld. De belasting loopt blok per blok op, en de afwijking van het plan verschijnt terwijl u nog kunt bijsturen.',
     badge: 'LIVE',
@@ -1037,7 +991,7 @@ const nl: HomeContent = {
     links: [{ label: 'Bekijk de live training', href: '/nl/features/live-session/' }],
   },
   playerApp: {
-    stamp: { day: 'ELKE DAG', time: '07:42', what: 'Spelers-app' },
+    label: 'Spelers-app',
     title: 'Uw spelers antwoorden in twintig seconden.',
     body: 'De app vraagt drie dingen op het juiste moment: wellness bij het opstaan, RPE na de training, de workout van de dag. De herinnering vertrekt vanzelf.',
     facts: [
@@ -1077,7 +1031,7 @@ const nl: HomeContent = {
     links: [{ label: 'Bekijk de spelers-app', href: '/nl/features/player-app/' }],
   },
   assistant: {
-    stamp: { day: 'ZONDAG', time: '21:05', what: 'Na de wedstrijd' },
+    label: 'Assistent & rapporten',
     title: 'Bevraag al uw data in één vraag.',
     body: 'De assistent leest belasting, wellness, GPS en de medische ruimte samen. Elk antwoord vermeldt zijn bronnen, en elke grafiek pint u op uw dashboards.',
     initials: 'FT',
@@ -1093,9 +1047,9 @@ const nl: HomeContent = {
     pin: 'Vastpinnen op dashboard',
     refine: 'Verfijnen',
     report: [
-      { label: 'Maandag 08:00 · rapport W12', body: 'Het weekrapport maakt zichzelf aan: belasting 2% onder het plan, readiness in stijgende lijn.' },
+      { label: 'Rapport, vanzelf opgesteld', body: 'Het rapport maakt zichzelf aan: belasting 2% onder het plan, readiness in stijgende lijn.' },
       { label: 'Gedeeld met 4 leden', body: 'Hoofdcoach, kinesist en assistenten lezen dezelfde data, elk met eigen rechten.' },
-      { label: 'Naar de selectie', body: 'Beschikbaarheid doorgestuurd naar zondag: 15 fit, 2 op te volgen, 1 onbeschikbaar.' },
+      { label: 'Naar de selectie', body: 'Beschikbaarheid doorgestuurd naar de volgende wedstrijd: 15 fit, 2 op te volgen, 1 onbeschikbaar.' },
     ],
     links: [
       { label: 'Bekijk de rapporten', href: '/nl/features/reports/' },
@@ -1190,18 +1144,6 @@ const de: HomeContent = {
       'GPS-Import, Wellness, Belastung und Planung in einem Tool. Die KI liest die Teamdaten und sagt Ihnen, wen Sie schonen sollten. Kostenlos für ein Team, geteilt vom gesamten Staff.',
   },
   pct: '%',
-  week: {
-    aria: 'Eine typische Woche',
-    days: [
-      { day: 'MO', label: 'GPS-Import' },
-      { day: 'DI', label: 'der Abgleich' },
-      { day: 'MI', label: 'Readiness' },
-      { day: 'DO', label: 'Live-Einheit' },
-      { day: 'FR', label: 'Spieler' },
-      { day: 'SO', label: 'Spiel' },
-      { day: 'MO', label: 'Bericht' },
-    ],
-  },
   status: { ready: 'Bereit', watch: 'Beobachten', risk: 'Entlasten', wait: 'Protokoll', importing: 'Import' },
   hero: {
     eyebrow: 'Für Athletiktrainer und Head of Performance',
@@ -1212,7 +1154,7 @@ const de: HomeContent = {
     secondaryCta: 'Mit Benoit sprechen',
     fine: ['30 Tage Semi-Pro inklusive', 'Ohne Karte', 'Ohne Vereinsfreigabe'],
     panel: {
-      aria: 'Beispiel: Der GPS-Export vom Dienstag wird zur Lesart am Mittwochmorgen',
+      aria: 'Beispiel: Der GPS-Export von gestern wird zur Lesart von heute Morgen',
       cols: ['Spieler', 'HSR m', 'RPE', 'Schlaf', 'ACWR', 'Lesart'],
       read: 'LESART',
       busy: 'ABGLEICH',
@@ -1230,11 +1172,11 @@ const de: HomeContent = {
     method: 'Methodik',
   },
   import: {
-    stamp: { day: 'MONTAG', time: '08:10', what: 'GPS-Import' },
+    label: 'GPS-Import',
     title: 'Importieren Sie den GPS-Export, egal von welchem Sensor.',
     body: 'Legen Sie die CSV von Catapult, STATSports oder einem anderen System ab. Die Spalten werden beim ersten Import erkannt und für alle weiteren gespeichert.',
     sheet: {
-      aria: 'Vorher: die Abgleichstabelle vom Montag',
+      aria: 'Vorher: die Abgleichstabelle',
       edited: 'Bearbeitet von 3 Personen',
       cols: ['Spieler', 'HSR', 'RPE', 'Schlaf', 'AU 7 T', 'ACWR'],
     },
@@ -1247,12 +1189,12 @@ const de: HomeContent = {
       { n: '4', body: 'Quellen im selben Zeitfenster abgeglichen: GPS, RPE, Wellness und Plan.' },
       { n: '18', body: 'Spieler schon beim Import dem Kalender zugeordnet, einer nach dem anderen.' },
       { n: '7 / 28', body: 'Tage Fenster für den ACWR, jede Nacht neu berechnet.' },
-      { n: '1', body: 'Version der Woche, geteilt vom gesamten Staff.' },
+      { n: '1', body: 'Version der Daten, geteilt vom gesamten Staff.' },
     ],
     links: [{ label: 'GPS-Import ansehen', href: '/de/features/training-load/' }],
   },
   readiness: {
-    stamp: { day: 'MITTWOCH', time: '07:45', what: 'Readiness' },
+    label: 'Readiness',
     title: 'Wissen Sie vor der Einheit, wer fit ist.',
     body: 'Die Spieler beantworten den Check-in beim Aufwachen. Jede Entscheidung zeigt die Daten, auf denen sie beruht, damit der Staff sie mit einem Klick bestätigt.',
     kpis: [
@@ -1272,9 +1214,9 @@ const de: HomeContent = {
     links: [{ label: 'Check-in ansehen', href: '/de/features/check-in/' }],
   },
   plan: {
-    stamp: { day: 'MITTWOCH', time: '10:00', what: 'Mikrozyklus W12' },
-    title: 'Planen Sie die Wochenbelastung in AU.',
-    body: 'Legen Sie für jeden Tag ein Ziel fest. STRIVN vergleicht es mit der Ist-Belastung, berechnet ACWR und Monotonie und meldet jede Abweichung Spieler für Spieler.',
+    label: 'Belastungsplanung',
+    title: 'Planen Sie die Belastung in AU, Einheit für Einheit.',
+    body: 'Legen Sie für jede Einheit ein Ziel fest. STRIVN vergleicht es mit der Ist-Belastung, berechnet ACWR und Monotonie und meldet jede Abweichung Spieler für Spieler.',
     chartLabel: 'Mikrozyklus W12 · Spiel am Sonntag',
     legendTarget: 'Ziel',
     legendActual: 'Ist',
@@ -1291,7 +1233,7 @@ const de: HomeContent = {
     links: [{ label: 'Belastungsplanung ansehen', href: '/de/features/training-load/' }],
   },
   live: {
-    stamp: { day: 'DONNERSTAG', time: '18:34', what: 'Live-Einheit' },
+    label: 'Live-Einheit',
     title: 'Verfolgen Sie die Belastung während der Einheit, Block für Block.',
     body: 'Haken Sie die Anwesenheit am Spielfeldrand ab. Die Belastung summiert sich Block für Block, und die Abweichung zum Plan erscheint, solange Sie noch eingreifen können.',
     badge: 'LIVE',
@@ -1310,7 +1252,7 @@ const de: HomeContent = {
     links: [{ label: 'Live-Einheit ansehen', href: '/de/features/live-session/' }],
   },
   playerApp: {
-    stamp: { day: 'JEDEN TAG', time: '07:42', what: 'Spieler-App' },
+    label: 'Spieler-App',
     title: 'Ihre Spieler antworten in zwanzig Sekunden.',
     body: 'Die App fragt drei Dinge im richtigen Moment ab: Wellness beim Aufwachen, RPE nach der Einheit, das Workout des Tages. Die Erinnerung geht von selbst raus.',
     facts: [
@@ -1350,7 +1292,7 @@ const de: HomeContent = {
     links: [{ label: 'Spieler-App ansehen', href: '/de/features/player-app/' }],
   },
   assistant: {
-    stamp: { day: 'SONNTAG', time: '21:05', what: 'Nach dem Spiel' },
+    label: 'Assistent & Berichte',
     title: 'Befragen Sie alle Ihre Daten mit einer Frage.',
     body: 'Der Assistent liest Belastung, Wellness, GPS und Medizinbereich zusammen. Jede Antwort nennt ihre Quellen, und jedes Diagramm lässt sich an Ihre Dashboards pinnen.',
     initials: 'AT',
@@ -1366,9 +1308,9 @@ const de: HomeContent = {
     pin: 'Ans Dashboard pinnen',
     refine: 'Verfeinern',
     report: [
-      { label: 'Montag 08:00 · Bericht W12', body: 'Der Wochenbericht erstellt sich selbst: Belastung 2% unter Plan, Readiness steigend.' },
+      { label: 'Bericht, automatisch erstellt', body: 'Der Bericht erstellt sich selbst: Belastung 2% unter Plan, Readiness steigend.' },
       { label: 'Geteilt mit 4 Mitgliedern', body: 'Cheftrainer, Physio und Co-Trainer lesen dieselben Daten, jeder mit eigenen Rechten.' },
-      { label: 'Ins Aufgebot', body: 'Verfügbarkeiten für Sonntag übertragen: 15 fit, 2 zu beobachten, 1 nicht verfügbar.' },
+      { label: 'Ins Aufgebot', body: 'Verfügbarkeiten fürs nächste Spiel übertragen: 15 fit, 2 zu beobachten, 1 nicht verfügbar.' },
     ],
     links: [
       { label: 'Berichte ansehen', href: '/de/features/reports/' },
@@ -1463,18 +1405,6 @@ const pt: HomeContent = {
       'Importação GPS, wellness, carga e planeamento numa só ferramenta. A IA lê os dados do plantel e diz quem aliviar. Grátis para uma equipa, partilhado por todo o staff.',
   },
   pct: '%',
-  week: {
-    aria: 'A semana tipo',
-    days: [
-      { day: 'SEG', label: 'importação GPS' },
-      { day: 'TER', label: 'o cruzamento' },
-      { day: 'QUA', label: 'readiness' },
-      { day: 'QUI', label: 'sessão ao vivo' },
-      { day: 'SEX', label: 'jogadores' },
-      { day: 'DOM', label: 'jogo' },
-      { day: 'SEG', label: 'relatório' },
-    ],
-  },
   status: { ready: 'Apto', watch: 'Vigiar', risk: 'Aliviar', wait: 'Protocolo', importing: 'Importação' },
   hero: {
     eyebrow: 'Para o preparador físico e o head of performance',
@@ -1485,7 +1415,7 @@ const pt: HomeContent = {
     secondaryCta: 'Falar com o Benoit',
     fine: ['30 dias de Semi-Pro oferecidos', 'Sem cartão', 'Sem validação do clube'],
     panel: {
-      aria: 'Exemplo: a exportação GPS de terça torna-se a leitura de quarta de manhã',
+      aria: 'Exemplo: a exportação GPS de ontem torna-se a leitura desta manhã',
       cols: ['Jogador', 'HSR m', 'RPE', 'Sono', 'ACWR', 'Leitura'],
       read: 'LEITURA',
       busy: 'CRUZAMENTO',
@@ -1503,11 +1433,11 @@ const pt: HomeContent = {
     method: 'Metodologia',
   },
   import: {
-    stamp: { day: 'SEGUNDA', time: '08:10', what: 'Importação GPS' },
+    label: 'Importação GPS',
     title: 'Importe a exportação GPS, seja qual for o sensor.',
     body: 'Carregue o CSV do Catapult, do STATSports ou de outro sistema. As colunas são reconhecidas na primeira importação e memorizadas para as seguintes.',
     sheet: {
-      aria: 'Antes: a folha de cruzamento de segunda-feira',
+      aria: 'Antes: a folha de cruzamento',
       edited: 'Editado por 3 pessoas',
       cols: ['Jogador', 'HSR', 'RPE', 'Sono', 'UA 7 d', 'ACWR'],
     },
@@ -1520,12 +1450,12 @@ const pt: HomeContent = {
       { n: '4', body: 'fontes cruzadas no mesmo horário: GPS, RPE, wellness e plano.' },
       { n: '18', body: 'jogadores ligados ao calendário, um a um, logo na importação.' },
       { n: '7 / 28', body: 'dias de janela para o ACWR, recalculado todas as noites.' },
-      { n: '1', body: 'versão da semana, partilhada por todo o staff.' },
+      { n: '1', body: 'versão dos dados, partilhada por todo o staff.' },
     ],
     links: [{ label: 'Ver a importação GPS', href: '/pt/features/training-load/' }],
   },
   readiness: {
-    stamp: { day: 'QUARTA', time: '07:45', what: 'Readiness' },
+    label: 'Readiness',
     title: 'Saiba quem está apto antes da sessão.',
     body: 'Os jogadores respondem ao check-in ao acordar. Cada decisão mostra os dados que a justificam, para que o staff a valide num gesto.',
     kpis: [
@@ -1545,9 +1475,9 @@ const pt: HomeContent = {
     links: [{ label: 'Ver o check-in', href: '/pt/features/check-in/' }],
   },
   plan: {
-    stamp: { day: 'QUARTA', time: '10:00', what: 'Microciclo S12' },
-    title: 'Planeie a carga da semana em UA.',
-    body: 'Fixe um alvo por dia. O STRIVN compara-o com a carga realizada, calcula o ACWR e a monotonia e assinala cada desvio, jogador a jogador.',
+    label: 'Planeamento de carga',
+    title: 'Planeie a carga em UA, sessão a sessão.',
+    body: 'Fixe um alvo por sessão. O STRIVN compara-o com a carga realizada, calcula o ACWR e a monotonia e assinala cada desvio, jogador a jogador.',
     chartLabel: 'Microciclo S12 · jogo no domingo',
     legendTarget: 'Alvo',
     legendActual: 'Realizada',
@@ -1564,7 +1494,7 @@ const pt: HomeContent = {
     links: [{ label: 'Ver o planeamento de carga', href: '/pt/features/training-load/' }],
   },
   live: {
-    stamp: { day: 'QUINTA', time: '18:34', what: 'Sessão ao vivo' },
+    label: 'Sessão ao vivo',
     title: 'Acompanhe a carga durante a sessão, bloco a bloco.',
     body: 'Registe as presenças à beira do campo. A carga acumula-se bloco a bloco, e o desvio face ao plano aparece enquanto ainda pode agir.',
     badge: 'LIVE',
@@ -1583,7 +1513,7 @@ const pt: HomeContent = {
     links: [{ label: 'Ver a sessão em direto', href: '/pt/features/live-session/' }],
   },
   playerApp: {
-    stamp: { day: 'TODOS OS DIAS', time: '07:42', what: 'App do jogador' },
+    label: 'App do jogador',
     title: 'Os seus jogadores respondem em vinte segundos.',
     body: 'A app pede três coisas no momento certo: o wellness ao acordar, o RPE depois da sessão, o workout do dia. O lembrete parte sozinho.',
     facts: [
@@ -1623,7 +1553,7 @@ const pt: HomeContent = {
     links: [{ label: 'Ver a app do jogador', href: '/pt/features/player-app/' }],
   },
   assistant: {
-    stamp: { day: 'DOMINGO', time: '21:05', what: 'Depois do jogo' },
+    label: 'Assistente & relatórios',
     title: 'Interrogue todos os seus dados numa só pergunta.',
     body: 'O assistente lê a carga, o wellness, o GPS e o departamento médico em conjunto. Cada resposta cita as suas fontes, e cada gráfico fixa-se nos seus dashboards.',
     initials: 'PF',
@@ -1639,9 +1569,9 @@ const pt: HomeContent = {
     pin: 'Fixar no dashboard',
     refine: 'Afinar',
     report: [
-      { label: 'Segunda 08:00 · relatório S12', body: 'O relatório da semana gera-se sozinho: carga 2% abaixo do plano, readiness a subir.' },
+      { label: 'Relatório gerado automaticamente', body: 'O relatório gera-se sozinho: carga 2% abaixo do plano, readiness a subir.' },
       { label: 'Partilhado com 4 membros', body: 'Treinador principal, fisioterapeuta e adjuntos leem os mesmos dados, cada um com os seus direitos.' },
-      { label: 'Para a convocatória', body: 'Disponibilidades enviadas para domingo: 15 aptos, 2 a vigiar, 1 indisponível.' },
+      { label: 'Para a convocatória', body: 'Disponibilidades enviadas para o próximo jogo: 15 aptos, 2 a vigiar, 1 indisponível.' },
     ],
     links: [
       { label: 'Ver os relatórios', href: '/pt/features/reports/' },
@@ -1736,18 +1666,6 @@ const es: HomeContent = {
       'Importación GPS, wellness, carga y planificación en una sola herramienta. La IA lee los datos de la plantilla y señala a quién aliviar. Gratis para un equipo, compartido por todo el staff.',
   },
   pct: '%',
-  week: {
-    aria: 'La semana tipo',
-    days: [
-      { day: 'LUN', label: 'importación GPS' },
-      { day: 'MAR', label: 'el cruce' },
-      { day: 'MIÉ', label: 'readiness' },
-      { day: 'JUE', label: 'sesión en directo' },
-      { day: 'VIE', label: 'jugadores' },
-      { day: 'DOM', label: 'partido' },
-      { day: 'LUN', label: 'informe' },
-    ],
-  },
   status: { ready: 'Apto', watch: 'Vigilar', risk: 'Aliviar', wait: 'Protocolo', importing: 'Importación' },
   hero: {
     eyebrow: 'Para el preparador físico y el head of performance',
@@ -1758,7 +1676,7 @@ const es: HomeContent = {
     secondaryCta: 'Hablar con Benoit',
     fine: ['30 días de Semi-Pro incluidos', 'Sin tarjeta', 'Sin validación del club'],
     panel: {
-      aria: 'Ejemplo: la exportación GPS del martes se convierte en la lectura del miércoles por la mañana',
+      aria: 'Ejemplo: la exportación GPS de ayer se convierte en la lectura de esta mañana',
       cols: ['Jugador', 'HSR m', 'RPE', 'Sueño', 'ACWR', 'Lectura'],
       read: 'LECTURA',
       busy: 'CRUCE',
@@ -1776,11 +1694,11 @@ const es: HomeContent = {
     method: 'Metodología',
   },
   import: {
-    stamp: { day: 'LUNES', time: '08:10', what: 'Importación GPS' },
+    label: 'Importación GPS',
     title: 'Importe la exportación GPS, sea cual sea el sensor.',
     body: 'Suba el CSV de Catapult, STATSports u otro sistema. Las columnas se reconocen en la primera importación y quedan memorizadas para las siguientes.',
     sheet: {
-      aria: 'Antes: la hoja de cruce del lunes',
+      aria: 'Antes: la hoja de cruce',
       edited: 'Modificado por 3 personas',
       cols: ['Jugador', 'HSR', 'RPE', 'Sueño', 'UA 7 d', 'ACWR'],
     },
@@ -1793,12 +1711,12 @@ const es: HomeContent = {
       { n: '4', body: 'fuentes cruzadas en la misma franja: GPS, RPE, wellness y plan.' },
       { n: '18', body: 'jugadores vinculados al calendario, uno a uno, desde la importación.' },
       { n: '7 / 28', body: 'días de ventana para el ACWR, recalculado cada noche.' },
-      { n: '1', body: 'versión de la semana, compartida por todo el staff.' },
+      { n: '1', body: 'versión de los datos, compartida por todo el staff.' },
     ],
     links: [{ label: 'Ver la importación GPS', href: '/es/features/training-load/' }],
   },
   readiness: {
-    stamp: { day: 'MIÉRCOLES', time: '07:45', what: 'Readiness' },
+    label: 'Readiness',
     title: 'Sepa quién está apto antes de la sesión.',
     body: 'Los jugadores responden al check-in al despertar. Cada decisión muestra los datos que la justifican, para que el staff la valide en un gesto.',
     kpis: [
@@ -1818,9 +1736,9 @@ const es: HomeContent = {
     links: [{ label: 'Ver el check-in', href: '/es/features/check-in/' }],
   },
   plan: {
-    stamp: { day: 'MIÉRCOLES', time: '10:00', what: 'Microciclo S12' },
-    title: 'Planifique la carga de la semana en UA.',
-    body: 'Fije un objetivo por día. STRIVN lo compara con lo realizado, calcula el ACWR y la monotonía y señala cada desvío jugador a jugador.',
+    label: 'Planificación de carga',
+    title: 'Planifique la carga en UA, sesión a sesión.',
+    body: 'Fije un objetivo por sesión. STRIVN lo compara con lo realizado, calcula el ACWR y la monotonía y señala cada desvío jugador a jugador.',
     chartLabel: 'Microciclo S12 · partido el domingo',
     legendTarget: 'Objetivo',
     legendActual: 'Realizada',
@@ -1837,7 +1755,7 @@ const es: HomeContent = {
     links: [{ label: 'Ver la planificación de carga', href: '/es/features/training-load/' }],
   },
   live: {
-    stamp: { day: 'JUEVES', time: '18:34', what: 'Sesión en directo' },
+    label: 'Sesión en directo',
     title: 'Siga la carga durante la sesión, bloque a bloque.',
     body: 'Registre la asistencia a pie de campo. La carga se acumula bloque a bloque, y el desvío respecto al plan aparece mientras todavía puede actuar.',
     badge: 'LIVE',
@@ -1856,7 +1774,7 @@ const es: HomeContent = {
     links: [{ label: 'Ver la sesión en directo', href: '/es/features/live-session/' }],
   },
   playerApp: {
-    stamp: { day: 'CADA DÍA', time: '07:42', what: 'App del jugador' },
+    label: 'App del jugador',
     title: 'Sus jugadores responden en veinte segundos.',
     body: 'La app pide tres cosas en el momento adecuado: el wellness al despertar, el RPE después de la sesión, el workout del día. El recordatorio sale solo.',
     facts: [
@@ -1896,7 +1814,7 @@ const es: HomeContent = {
     links: [{ label: 'Ver la app del jugador', href: '/es/features/player-app/' }],
   },
   assistant: {
-    stamp: { day: 'DOMINGO', time: '21:05', what: 'Después del partido' },
+    label: 'Asistente e informes',
     title: 'Interrogue todos sus datos en una sola pregunta.',
     body: 'El asistente lee la carga, el wellness, el GPS y la enfermería en conjunto. Cada respuesta cita sus fuentes, y cada gráfico se fija a sus dashboards.',
     initials: 'PF',
@@ -1912,9 +1830,9 @@ const es: HomeContent = {
     pin: 'Fijar al dashboard',
     refine: 'Afinar',
     report: [
-      { label: 'Lunes 08:00 · informe S12', body: 'El informe de la semana se genera solo: carga un 2% por debajo del plan, readiness al alza.' },
+      { label: 'Informe generado automáticamente', body: 'El informe se genera solo: carga un 2% por debajo del plan, readiness al alza.' },
       { label: 'Compartido con 4 miembros', body: 'Primer entrenador, fisio y ayudantes leen los mismos datos, cada uno con sus derechos.' },
-      { label: 'Hacia la convocatoria', body: 'Disponibilidades enviadas al domingo: 15 aptos, 2 a vigilar, 1 no disponible.' },
+      { label: 'Hacia la convocatoria', body: 'Disponibilidades enviadas al próximo partido: 15 aptos, 2 a vigilar, 1 no disponible.' },
     ],
     links: [
       { label: 'Ver los informes', href: '/es/features/reports/' },

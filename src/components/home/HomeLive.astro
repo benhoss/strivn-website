@@ -1,5 +1,5 @@
 ---
-import HomeWeek from './HomeWeek.astro';
+import HomeSection from './HomeSection.astro';
 import { FOCUS_PLAYER, LIVE_PLAN_MARK, LIVE_ROWS, type HomeContent } from '../../data/homeContent';
 
 interface Props {
@@ -12,7 +12,7 @@ const { c, pct } = Astro.props;
 const blockState = ['done', 'now', 'next', 'next'] as const;
 ---
 
-<HomeWeek id="live" stamp={c.stamp} links={c.links} labelledby="live-title">
+<HomeSection id="live" label={c.label} links={c.links} labelledby="live-title">
   <div class="st-head">
     <h2 id="live-title" class="st-h2">{c.title}</h2>
     <p class="st-body">{c.body}</p>
@@ -52,7 +52,7 @@ const blockState = ['done', 'now', 'next', 'next'] as const;
       </div>
     </div>
   </div>
-</HomeWeek>
+</HomeSection>
 
 <style>
   .home-live__bar {

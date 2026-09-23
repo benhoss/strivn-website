@@ -1,39 +1,28 @@
 ---
 /**
- * One band of the S&C page on the rail frame: the stamp says when in the
- * coach's week this happens, the slot holds the section. Sections follow the
- * real working order (readiness, planning, session build, strength, tests,
- * Monday report).
+ * One band of the S&C page. The label is the section's topic (Charge,
+ * Tests…), shown as an eyebrow above the section head. The page used to hang
+ * each band on a day and a time of the coach's week; that read as a
+ * prescribed routine and was dropped: sections are topics, not a schedule.
  */
-import type { Stamp } from '../../data/scPageContent';
-
 interface Props {
   id?: string;
   labelledby: string;
-  stamp: Stamp;
+  label: string;
 }
 
-const { id, labelledby, stamp } = Astro.props;
+const { id, labelledby, label } = Astro.props;
 ---
 
 <section id={id} class="st-sec" aria-labelledby={labelledby}>
-  <div class="st-wrap st-frame">
-    <p class="st-stamp">
-      <span class="st-stamp__a">{stamp.a}</span>
-      <span class="st-stamp__b">{stamp.b}</span>
-      <span class="st-stamp__c">{stamp.c}</span>
-    </p>
-    <div class="sc-frame__body">
-      <slot />
-    </div>
+  <div class="st-wrap">
+    <p class="st-label st-eyebrow sc-frame__label">{label}</p>
+    <slot />
   </div>
 </section>
 
 <style>
-  .st-stamp {
-    margin: 0;
-  }
-  .sc-frame__body {
-    min-width: 0;
+  .sc-frame__label {
+    margin: 0 0 20px;
   }
 </style>

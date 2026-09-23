@@ -1,7 +1,7 @@
 ---
 /**
- * The week the modules cover: the six moments of the features index, each a
- * link to its band there, then the link to the full index.
+ * The six module families of the features index, each a link to its band
+ * there, then the link to the full index.
  */
 import type { SolutionsContent, Locale } from '../../data/solutionsContent';
 import type { FeaturesIndexContent } from '../../data/featuresIndexContent';
@@ -19,7 +19,7 @@ const names = (ids: readonly string[]) =>
   ids.map((id) => feat.modules[id as keyof FeaturesIndexContent['modules']].name);
 ---
 
-<section id="semaine" class="st-sec" aria-labelledby="sx-week-title">
+<section id="familles" class="st-sec" aria-labelledby="sx-week-title">
   <div class="st-wrap">
     <div class="st-head">
       <h2 id="sx-week-title" class="st-h2 st-h2--sm">{c.title}</h2>
@@ -33,9 +33,6 @@ const names = (ids: readonly string[]) =>
         return (
           <li>
             <a href={`${base}#${g.id}`}>
-              <span class="st-label">
-                {group.day} · <span class="st-num">{g.time}</span>
-              </span>
               <span class="st-h4 sx-week__label">{group.label}</span>
               <span class="sx-week__mods">{list.join(' · ')}</span>
             </a>

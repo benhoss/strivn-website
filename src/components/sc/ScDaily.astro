@@ -9,76 +9,64 @@ interface Props {
 const { daily: c } = Astro.props;
 ---
 
-<ScFrame id="quotidien" labelledby="sc-daily-title" stamp={c.stamp}>
+<ScFrame id="quotidien" labelledby="sc-daily-title" label={c.kicker}>
   <div class="st-head">
     <h2 id="sc-daily-title" class="st-h2">{c.title}</h2>
     <p class="st-body">{c.sub}</p>
   </div>
 
-  <div class="sc-week" role="table" aria-labelledby="sc-daily-title">
-    <div class="sc-week__row sc-week__row--head" role="row">
-      <span class="st-label" role="columnheader">{c.colWhen}</span>
+  <div class="sc-tasks" role="table" aria-labelledby="sc-daily-title">
+    <div class="sc-tasks__row sc-tasks__row--head" role="row">
       <span class="st-label" role="columnheader">{c.colBefore}</span>
       <span class="st-label" role="columnheader">{c.colAfter}</span>
     </div>
     {c.rows.map((row) => (
-      <div class="sc-week__row" role="row">
-        <span class="sc-week__when st-num" role="cell">{row.when}</span>
-        <span class="sc-week__before" role="cell">{row.before}</span>
-        <span class="sc-week__after" role="cell">{row.after}</span>
+      <div class="sc-tasks__row" role="row">
+        <span class="sc-tasks__before" role="cell">{row.before}</span>
+        <span class="sc-tasks__after" role="cell">{row.after}</span>
       </div>
     ))}
   </div>
 </ScFrame>
 
 <style>
-  .sc-week {
+  .sc-tasks {
     border-top: 1px solid var(--color-line-strong);
   }
-  .sc-week__row {
+  .sc-tasks__row {
     display: grid;
-    grid-template-columns: 148px minmax(0, 0.85fr) minmax(0, 1.15fr);
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: 24px;
     align-items: baseline;
     padding: 15px 0;
     border-bottom: 1px solid var(--color-line);
   }
-  .sc-week__row--head {
+  .sc-tasks__row--head {
     padding: 12px 0;
   }
-  .sc-week__when {
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    color: var(--color-ink);
-    white-space: nowrap;
-  }
-  .sc-week__before {
+  .sc-tasks__before {
     font-size: 15px;
     line-height: 1.45;
     color: var(--color-ink-3);
   }
-  .sc-week__after {
+  .sc-tasks__after {
     font-size: 15px;
     line-height: 1.45;
     color: var(--color-ink);
   }
   @media (max-width: 760px) {
-    .sc-week__row {
+    .sc-tasks__row {
       grid-template-columns: minmax(0, 1fr);
       gap: 4px;
       padding: 14px 0;
     }
-    .sc-week__row--head {
+    .sc-tasks__row--head {
       display: none;
     }
-    .sc-week__when {
-      margin-bottom: 2px;
-      color: var(--color-ink-2);
-    }
-    .sc-week__before {
+    .sc-tasks__before {
       font-size: 14px;
     }
-    .sc-week__after::before {
+    .sc-tasks__after::before {
       content: '→ ';
       font-family: var(--font-mono);
       color: var(--color-ink-4);

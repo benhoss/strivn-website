@@ -202,9 +202,9 @@ Depth is mostly tonal. Panels separate through navy ramp shifts and 1px hairline
 - **Style:** compact, logo-led, muted by default, Soft White on hover or active state.
 - **Mobile:** prioritize readable labels and stable touch targets over cramming every chapter link into a single row.
 
-### Week rail and stamps
+### Section labels
 
-The homepage follows the performance coach's week. A rail under the header lists the days; each section carries a mono stamp in a left column (day, time, what: `MERCREDI · 07:45 · READINESS`). Use a stamp only when it encodes a real moment or sequence; otherwise a plain section head.
+Each section opens with a mono eyebrow naming its topic (`st-label st-eyebrow`: IMPORT GPS, READINESS, PLANIFICATION DE CHARGE). Pages do not hang sections on days or times of a week: a schedule reads as a routine the reader must adopt, and staffs work on many rhythms. The rail frame (`st-frame` + `st-stamp`) stays in the system for content that is a real sequence, such as set-up steps.
 
 ### Paper
 
@@ -237,7 +237,7 @@ The homepage hero is the primary proof component: a raw GPS export whose rows re
 - **Do** use Electric Blue for primary actions and focus states.
 - **Do** keep panels dense but calm with 1px hairlines, 8-12px radii, and clear typography.
 - **Do** respect reduced motion and keep choreography under control.
-- **Do** make the weekly coach routine, player reply loop, and channel-agnostic communication concrete when explaining the product.
+- **Do** make the coach's work, the player reply loop, and channel-agnostic communication concrete when explaining the product, without prescribing a weekly schedule.
 
 ### Don't:
 

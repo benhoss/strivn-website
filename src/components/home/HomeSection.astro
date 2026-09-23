@@ -1,0 +1,42 @@
+---
+import type { MoreLink } from '../../data/homeContent';
+
+/**
+ * One homepage section: its topic as an eyebrow, the content, then the
+ * "Voir …" links to the feature pages that tell the rest. Sections are
+ * topics, not days: the page no longer hangs them on a weekly schedule.
+ */
+interface Props {
+  id: string;
+  label: string;
+  links?: MoreLink[];
+  labelledby?: string;
+}
+
+const { id, label, links = [], labelledby } = Astro.props;
+---
+
+<section class="st-sec home-section" id={id} aria-labelledby={labelledby}>
+  <div class="st-wrap">
+    <p class="st-label st-eyebrow home-section__label">{label}</p>
+    <slot />
+    {links.length > 0 && (
+      <p class="home-section__more">
+        {links.map((l) => <a class="st-link" href={l.href}>{l.label}</a>)}
+      </p>
+    )}
+  </div>
+</section>
+
+<style>
+  .home-section__label {
+    margin: 0 0 20px;
+  }
+  .home-section__more {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin: clamp(28px, 4vw, 40px) 0 0;
+    font-size: 15px;
+  }
+</style>
