@@ -237,7 +237,7 @@ The homepage hero is the primary proof component: a raw GPS export whose rows re
 - **Do** use Electric Blue for primary actions and focus states.
 - **Do** keep panels dense but calm with 1px hairlines, 8-12px radii, and clear typography.
 - **Do** respect reduced motion and keep choreography under control.
-- **Do** make the weekly coach routine, player reply loop, and channel-agnostic communication concrete when explaining the product.
+- **Do** make the coach's work, the player reply loop, and channel-agnostic communication concrete when explaining the product, without prescribing a weekly schedule.
 
 ### Don't:
 
