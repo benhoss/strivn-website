@@ -97,7 +97,12 @@ export function frenchSpacing(text: string): string {
   return text.replace(/ ([:;?!»])/g, ' $1').replace(/« /g, '« ');
 }
 
-/** Same, applied to the text between the tags of rendered HTML. */
+/** Same, applied to the text between the tags of rendered HTML. Code is
+ *  left untouched: a no-break space inside `a ? b : c` would break the
+ *  snippet for anyone who copies it. */
 export function frenchSpacingHtml(html: string): string {
-  return html.replace(/>([^<]+)</g, (_m, t: string) => `>${frenchSpacing(t)}<`);
+  return html
+    .split(/(<pre[\s>][\s\S]*?<\/pre>|<code[\s>][\s\S]*?<\/code>)/)
+    .map((part, i) => (i % 2 ? part : part.replace(/(^|>)([^<]+)/g, (_m, open: string, t: string) => open + frenchSpacing(t))))
+    .join('');
 }

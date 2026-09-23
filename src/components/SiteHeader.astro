@@ -417,6 +417,12 @@ const langs = [
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       panel.hidden = !open;
     };
+    // Past the breakpoint the burger is hidden, so an open panel would have
+    // no visible control left to close it (a tablet rotated to landscape).
+    const wide = window.matchMedia('(min-width: 1081px)');
+    wide.addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
     burger.addEventListener('click', () => {
       setOpen(burger.getAttribute('aria-expanded') !== 'true');
     });
