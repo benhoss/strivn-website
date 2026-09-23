@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
-import SiteMotion from '../SiteMotion.astro';
 import HomeFooter from '../home/HomeFooter.astro';
 import PricingHero from './PricingHero.astro';
 import PricingPlans from './PricingPlans.astro';
@@ -137,6 +136,4 @@ const jsonLdExtra: Record<string, unknown>[] = [
   </main>
 
   <HomeFooter locale={locale} footer={shared.footer} />
-
-  <SiteMotion />
 </BaseLayout>

@@ -54,12 +54,12 @@ const bars = PLAN_DAYS.map((d, i) => {
           <g class="axis" text-anchor="end">
             {GRID.map((v) => <text x="28" y={y(v) + 4}>{v}</text>)}
           </g>
-          <g class="target">
+          <g class="target" data-st-bars>
             {bars.map((b) => (
               <rect x={b.x - 22} y={y(b.target)} width="44" height={+(BASE - y(b.target)).toFixed(1)} rx="3" />
             ))}
           </g>
-          <g class="actual">
+          <g class="actual" data-st-bars>
             {bars
               .filter((b) => b.actual !== null)
               .map((b) => (

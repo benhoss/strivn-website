@@ -22,7 +22,7 @@ const { c, pct } = Astro.props;
       <p>{c.question}</p>
     </div>
     <div class="home-console__a">
-      <p>{c.answer.intro}<strong>{c.answer.strong}</strong>{c.answer.outro}</p>
+      <p data-st-type>{c.answer.intro}<strong>{c.answer.strong}</strong>{c.answer.outro}</p>
       <ul class="home-compare">
         {COMPARE.map((m, i) => (
           <li>

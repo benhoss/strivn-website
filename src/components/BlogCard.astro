@@ -20,7 +20,7 @@ const { data } = entry;
 const Heading = level === 2 ? 'h2' : 'h3';
 ---
 
-<li class:list={['b-row', { 'b-row--compact': compact }]}>
+<li class:list={['b-row st-hover-row', { 'b-row--compact': compact }]}>
   <p class="b-row__meta">
     <time datetime={data.pubDate.toISOString()}>{formatDateFr(data.pubDate)}</time>
     <span class="b-row__cat">{BLOG_CATEGORY_LABELS[data.category]}</span>

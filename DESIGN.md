@@ -210,9 +210,16 @@ The homepage follows the performance coach's week. A rail under the header lists
 
 `paper` is the only light surface: the spreadsheet STRIVN replaces, drawn slightly askew with its `#REF!`. Never use it for anything else.
 
-### At rest
+### Motion
 
-Every page is legible without scrolling or JavaScript: no section waits at opacity 0, no figure counts up from zero. Motion starts from the complete state.
+`src/styles/motion.css` and `SiteMotion.astro` (loaded by BaseLayout on every page) carry the motion vocabulary:
+
+- **Reveal on scroll.** Blocks below the fold rise and fade in as they arrive; lists cascade. The first screen is never hidden, so link previews and screenshots show the real page.
+- **Product visuals compute on arrival.** Inside a panel, fills grow, bars rise, rows read in, verdict chips land after them, figures count up to the value in the HTML, a proposal flashes once, the assistant types its answer.
+- **Feedback.** Buttons lift and press, link rows tint and show an electric rule, the FAQ opens with its height and its + turns to ×.
+- **Ambient.** The hero grid drifts over 26 s; captures and floating panels move a few pixels against the scroll where the browser supports scroll timelines.
+
+Without JavaScript, with `prefers-reduced-motion`, or if the runtime fails, none of it applies and every page is complete. Components opt out with `data-st-manual` and opt in with `data-st-compute`, `data-st-bars`, `data-st-count`, `data-st-type`, `data-st-flash`, `data-st-reveal`, `data-st-stagger`.
 
 ### Implementation
 

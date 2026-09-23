@@ -7,7 +7,6 @@
 import { NAV } from '../../data/nav';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
-import SiteMotion from '../SiteMotion.astro';
 import HomeFooter from '../home/HomeFooter.astro';
 import FeatClose from '../feat/FeatClose.astro';
 import SolHero from './SolHero.astro';
@@ -51,6 +50,4 @@ const switchHrefs = Object.fromEntries(LOCALES.map((l) => [l, `/${l}/solutions/`
   </main>
 
   <HomeFooter locale={locale} footer={home.footer} />
-
-  <SiteMotion />
 </BaseLayout>
