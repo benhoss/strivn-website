@@ -1,7 +1,7 @@
 ---
 /**
  * Features index hero: headline, lede and CTA pair on the left, the page's
- * table of contents on the right (the six moments of the week, each with its
+ * table of contents on the right (the six module families, each with its
  * module count, each an anchor to its band).
  */
 import type { FeaturesIndexContent, GroupId, Locale } from '../../data/featuresIndexContent';
@@ -44,10 +44,6 @@ const count = (id: GroupId, n: number) =>
         {GROUPS.map((g) => (
           <li>
             <a href={`#${g.id}`}>
-              <span class="fx-toc__when st-num">
-                {groups[g.id].day}
-                <b>{g.time}</b>
-              </span>
               <span class="fx-toc__what">{groups[g.id].label}</span>
               <span class="fx-toc__n st-num">{count(g.id, g.modules.length)}</span>
             </a>
@@ -83,7 +79,7 @@ const count = (id: GroupId, n: number) =>
   }
   .fx-toc a {
     display: grid;
-    grid-template-columns: 150px minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 16px;
     align-items: baseline;
     padding: 15px 20px;
@@ -101,17 +97,6 @@ const count = (id: GroupId, n: number) =>
     outline: 2px solid var(--color-electric-500);
     outline-offset: -2px;
   }
-  .fx-toc__when {
-    display: flex;
-    gap: 10px;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    color: var(--color-ink-3);
-  }
-  .fx-toc__when b {
-    font-weight: 500;
-    color: var(--color-ink-2);
-  }
   .fx-toc__what {
     font-size: 16px;
     font-weight: 500;
@@ -128,9 +113,6 @@ const count = (id: GroupId, n: number) =>
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 4px 12px;
       padding: 14px 16px;
-    }
-    .fx-toc__when {
-      grid-column: 1 / -1;
     }
   }
   @media (prefers-reduced-motion: reduce) {

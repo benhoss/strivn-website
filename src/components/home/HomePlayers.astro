@@ -1,5 +1,5 @@
 ---
-import HomeWeek from './HomeWeek.astro';
+import HomeSection from './HomeSection.astro';
 import { EVENING_RPE, WHOOP_READING, type HomeContent } from '../../data/homeContent';
 import { PARTNERS } from '../../data/partners';
 import { pngSize } from '../../lib/pngSize';
@@ -20,7 +20,7 @@ const partners = PARTNERS.map((p) => {
 });
 ---
 
-<HomeWeek id="players" stamp={c.stamp} links={c.links} labelledby="players-title">
+<HomeSection id="players" label={c.label} links={c.links} labelledby="players-title">
   <div class="home-players">
     <div class="home-players__copy">
       <div class="st-head home-players__head">
@@ -81,7 +81,7 @@ const partners = PARTNERS.map((p) => {
       </div>
     </div>
   </div>
-</HomeWeek>
+</HomeSection>
 
 <style>
   .home-players {

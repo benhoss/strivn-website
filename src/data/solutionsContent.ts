@@ -3,7 +3,7 @@
  *
  * The page shows what STRIVN connects, as the sequence it really runs:
  * data → context → reading → action. Then the six staff roles that read the
- * same base, and the week the modules cover. Link targets, player figures and
+ * same base, and the six module families. Link targets, player figures and
  * step order are locale-invariant and live below; only text is translated.
  */
 import type { Locale } from './landingContent';
@@ -89,7 +89,7 @@ export interface SolutionsContent {
     /** Role rows, in `ROSTER_TARGETS` order. */
     roster: Array<{ name: string; desc: string; cta: string }>;
   };
-  /** Closing link to the features index, grouped by moment of the week. */
+  /** Closing link to the features index, grouped by module family. */
   week: { title: string; body: string; cta: string };
 }
 
@@ -195,7 +195,7 @@ const fr: SolutionsContent = {
     ],
   },
   week: {
-    title: 'Couvrez la semaine entière, du lundi au match.',
+    title: 'Réunissez six familles de modules au même endroit.',
     body: 'Convocations, présences, infirmerie, séances, monitoring et rapports vivent au même endroit. Les modules ci-dessous partagent une base de données, avec un droit d’accès par rôle.',
     cta: 'Parcourir les fonctionnalités',
   },
@@ -303,7 +303,7 @@ const en: SolutionsContent = {
     ],
   },
   week: {
-    title: 'Run the whole week, from Monday to match day.',
+    title: 'Bring six module families into one place.',
     body: 'Call-ups, attendance, medical log, sessions, monitoring and reports live in the same place. The modules below share one database, with an access right per role.',
     cta: 'Browse the features',
   },
@@ -411,7 +411,7 @@ const nl: SolutionsContent = {
     ],
   },
   week: {
-    title: 'Draai de hele week, van maandag tot de wedstrijd.',
+    title: 'Breng zes modulefamilies samen op één plek.',
     body: 'Oproepingen, aanwezigheid, ziekenboeg, trainingen, monitoring en rapporten zitten op dezelfde plek. De modules hieronder delen één database, met een toegangsrecht per rol.',
     cta: 'Bekijk de functies',
   },
@@ -519,7 +519,7 @@ const de: SolutionsContent = {
     ],
   },
   week: {
-    title: 'Führen Sie die ganze Woche, von Montag bis Spieltag.',
+    title: 'Bündeln Sie sechs Modulfamilien an einem Ort.',
     body: 'Aufgebote, Anwesenheit, Medizinbereich, Einheiten, Monitoring und Berichte liegen am selben Ort. Die Module unten teilen eine Datenbasis, mit einem Zugriffsrecht je Rolle.',
     cta: 'Funktionen durchgehen',
   },
@@ -627,7 +627,7 @@ const pt: SolutionsContent = {
     ],
   },
   week: {
-    title: 'Conduza a semana inteira, de segunda ao jogo.',
+    title: 'Reúna seis famílias de módulos no mesmo sítio.',
     body: 'Convocatórias, presenças, enfermaria, sessões, monitorização e relatórios vivem no mesmo sítio. Os módulos abaixo partilham uma base de dados, com um direito de acesso por função.',
     cta: 'Percorrer as funcionalidades',
   },
@@ -735,7 +735,7 @@ const es: SolutionsContent = {
     ],
   },
   week: {
-    title: 'Lleve la semana entera, del lunes al partido.',
+    title: 'Reúna seis familias de módulos en un mismo lugar.',
     body: 'Convocatorias, asistencia, enfermería, sesiones, monitorización e informes viven en el mismo sitio. Los módulos de abajo comparten una base de datos, con un permiso de acceso por función.',
     cta: 'Recorrer las funcionalidades',
   },

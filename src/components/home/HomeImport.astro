@@ -1,5 +1,5 @@
 ---
-import HomeWeek from './HomeWeek.astro';
+import HomeSection from './HomeSection.astro';
 import {
   HERO_FILE,
   IMPORT_COLUMNS,
@@ -16,7 +16,7 @@ interface Props {
 const { c } = Astro.props;
 ---
 
-<HomeWeek id="import" stamp={c.stamp} links={c.links} labelledby="import-title">
+<HomeSection id="import" label={c.label} links={c.links} labelledby="import-title">
   <div class="st-head">
     <h2 id="import-title" class="st-h2">{c.title}</h2>
     <p class="st-body">{c.body}</p>
@@ -75,7 +75,7 @@ const { c } = Astro.props;
       </li>
     ))}
   </ul>
-</HomeWeek>
+</HomeSection>
 
 <style>
   .home-ba {

@@ -1,31 +1,25 @@
 ---
 /**
- * One moment of the week on the features index: rail stamp (day, time, group
- * name), headline and body, then the module list beside the product screen
+ * One module family on the features index: its name as an eyebrow, headline
+ * and body, then the module list beside the product screen
  * that proves it. Slots: `list` (modules), `proof` (panel), `after` (a note
  * under both).
  */
 interface Props {
   id: string;
-  group: { day: string; label: string; title: string; body: string };
-  time: string;
+  group: { label: string; title: string; body: string };
   /** Give the proof column more room (two panels side by side). */
   wide?: boolean;
 }
 
-const { id, group, time, wide = false } = Astro.props;
+const { id, group, wide = false } = Astro.props;
 const titleId = `fx-${id}-title`;
 ---
 
 <section id={id} class="st-sec" aria-labelledby={titleId}>
-  <div class="st-wrap st-frame">
-    <p class="st-stamp">
-      <span class="st-stamp__a">{group.day}</span>
-      <span class="st-stamp__b">{time}</span>
-      <span class="st-stamp__c">{group.label}</span>
-    </p>
-
+  <div class="st-wrap">
     <div class="min-w-0">
+      <p class="st-label st-eyebrow fx-group__label">{group.label}</p>
       <div class="st-head">
         <h2 id={titleId} class="st-h2 st-h2--sm">{group.title}</h2>
         <p class="st-body">{group.body}</p>
@@ -50,6 +44,9 @@ const titleId = `fx-${id}-title`;
 </section>
 
 <style>
+  .fx-group__label {
+    margin: 0 0 20px;
+  }
   .fx-grid {
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);

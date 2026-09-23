@@ -36,20 +36,6 @@ const faqJsonLd = {
   })),
 };
 
-/**
- * The week rail: seven days, in page order. `watch` lists the sections that
- * light a day up; Wednesday covers both the readiness board and the plan.
- * The ids are the same in every locale, so a link to /de/#live works too.
- */
-const RAIL: Array<{ href: string; watch: string[]; match?: boolean }> = [
-  { href: '#import', watch: ['import'] },
-  { href: '#crossing', watch: ['crossing'] },
-  { href: '#readiness', watch: ['readiness', 'plan'] },
-  { href: '#live', watch: ['live'] },
-  { href: '#players', watch: ['players'] },
-  { href: '#match', watch: ['match'], match: true },
-  { href: '#report', watch: ['report'] },
-];
 ---
 
 <BaseLayout
@@ -62,16 +48,7 @@ const RAIL: Array<{ href: string; watch: string[]; match?: boolean }> = [
 >
   <a href="#s-main" class="s-skip">{SKIP_LABEL[locale]}</a>
 
-  <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta}>
-    <nav slot="sub" class="st-wrap home-rail" aria-label={c.week.aria} data-home-rail>
-      {RAIL.map((d, i) => (
-        <a href={d.href} data-watch={d.watch.join(' ')} class:list={[d.match && 'is-match']}>
-          <b>{c.week.days[i].day}</b>
-          <span>{c.week.days[i].label}</span>
-        </a>
-      ))}
-    </nav>
-  </SiteHeader>
+  <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} />
 
   <main id="s-main" class="home bg-void text-ink">
     <HomeHero locale={locale} c={c} />
@@ -91,59 +68,6 @@ const RAIL: Array<{ href: string; watch: string[]; match?: boolean }> = [
 </BaseLayout>
 
 <style>
-  /* Week rail, the header's second row. Hidden under 820px, where the
-     stamps sit inline above each section instead. */
-  .home-rail {
-    display: flex;
-    gap: 2px;
-    align-items: stretch;
-    height: 30px;
-    border-top: 1px solid var(--color-line);
-  }
-  .home-rail a {
-    flex: 1 1 0;
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-inline: 10px;
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-ink-4);
-    border-bottom: 2px solid transparent;
-    transition:
-      color 0.2s ease,
-      border-color 0.2s ease;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  .home-rail a span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .home-rail a:hover {
-    color: var(--color-ink-2);
-  }
-  .home-rail b {
-    font-weight: 600;
-    color: var(--color-ink-3);
-  }
-  .home-rail a.is-match b,
-  .home-rail a.is-on b {
-    color: var(--color-ink);
-  }
-  .home-rail a.is-on {
-    color: var(--color-ink-2);
-    border-bottom-color: var(--color-electric);
-  }
-  @media (max-width: 820px) {
-    .home-rail {
-      display: none;
-    }
-  }
   /* Buttons drawn inside a product panel: they show the product and do
      nothing on the site, so they are spans, not buttons. */
   .home :global(.home-actions) {
@@ -165,43 +89,5 @@ const RAIL: Array<{ href: string; watch: string[]; match?: boolean }> = [
     background: var(--color-electric);
     border-color: var(--color-electric);
   }
-  @media (prefers-reduced-motion: reduce) {
-    .home-rail a {
-      transition: none;
-    }
-  }
 </style>
 
-<script>
-  // The rail follows the section in view. Progressive: without the observer
-  // the rail is a plain list of anchors.
-  const rail = document.querySelector<HTMLElement>('[data-home-rail]');
-  if (rail && 'IntersectionObserver' in window) {
-    const links = [...rail.querySelectorAll<HTMLAnchorElement>('a')];
-    const owner = new Map<string, HTMLAnchorElement>();
-    links.forEach((a) => (a.dataset.watch ?? '').split(' ').forEach((id) => owner.set(id, a)));
-    const setOn = (a: HTMLAnchorElement | null) =>
-      links.forEach((l) => {
-        l.classList.toggle('is-on', l === a);
-        if (l === a) l.setAttribute('aria-current', 'true');
-        else l.removeAttribute('aria-current');
-      });
-    // Hero and pricing switch the rail off: they are not a day. Some days
-    // sit inside another's section (Tuesday's figures close Monday's), so
-    // the day shown is the last one, in page order, crossing the band.
-    const order = ['hero', ...owner.keys(), 'tarifs'];
-    const inBand = new Set<string>();
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => (e.isIntersecting ? inBand.add(e.target.id) : inBand.delete(e.target.id)));
-        const current = [...order].reverse().find((id) => inBand.has(id));
-        if (current) setOn(owner.get(current) ?? null);
-      },
-      { rootMargin: '-40% 0px -55% 0px' },
-    );
-    order.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) io.observe(el);
-    });
-  }
-</script>

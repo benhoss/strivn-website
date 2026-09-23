@@ -1,9 +1,8 @@
 /**
  * Content for the features index ("Fonctionnalités") in all six locales.
  *
- * The page is the product's table of contents: every module, grouped by the
- * moment of the staff's week it serves (Monday import → Wednesday plan →
- * Thursday pitch → Friday call-up → Sunday assistant → Monday report). Which
+ * The page is the product's table of contents: every module, grouped into six
+ * families (monitoring, planning, pitch, players, assistant, staff). Which
  * module sits in which group, its sub-page and the invariant figures of the
  * captures live in the constants below; each locale carries only text, keyed
  * by id, so a missing module or group is a type error.
@@ -99,21 +98,19 @@ export const MODULE_SLUGS: Record<ModuleId, string | null> = {
 export type GroupId = 'monitoring' | 'plan' | 'pitch' | 'players' | 'ai' | 'staff';
 
 /**
- * The six moments of the week, in the order the staff lives them. `time` is
- * the stamp's clock; `modules` is empty for the assistant, whose rows are the
- * moments of `ai.moments`.
+ * The six module families, in page order. `modules` is empty for the
+ * assistant, whose rows are the moments of `ai.moments`.
  */
-export const GROUPS: ReadonlyArray<{ id: GroupId; time: string; modules: readonly ModuleId[] }> = [
-  { id: 'monitoring', time: '08:10', modules: ['load', 'gps', 'wellness', 'readiness', 'tests'] },
-  { id: 'plan', time: '10:00', modules: ['loadPlan', 'strength', 'programs', 'calendar', 'library', 'drillMetrics'] },
-  { id: 'pitch', time: '17:30', modules: ['liveSession', 'liveMatch', 'sessionReview', 'goals', 'scouting', 'scoutingReports'] },
+export const GROUPS: ReadonlyArray<{ id: GroupId; modules: readonly ModuleId[] }> = [
+  { id: 'monitoring', modules: ['load', 'gps', 'wellness', 'readiness', 'tests'] },
+  { id: 'plan', modules: ['loadPlan', 'strength', 'programs', 'calendar', 'library', 'drillMetrics'] },
+  { id: 'pitch', modules: ['liveSession', 'liveMatch', 'sessionReview', 'goals', 'scouting', 'scoutingReports'] },
   {
     id: 'players',
-    time: '12:00',
     modules: ['rsvp', 'attendance', 'roster', 'trial', 'medical', 'care', 'playerApp', 'parents', 'fines'],
   },
-  { id: 'ai', time: '18:30', modules: [] },
-  { id: 'staff', time: '09:00', modules: ['dashboard', 'reports', 'bi', 'season', 'documents', 'staffBrief'] },
+  { id: 'ai', modules: [] },
+  { id: 'staff', modules: ['dashboard', 'reports', 'bi', 'season', 'documents', 'staffBrief'] },
 ];
 
 /** Sub-page for each assistant moment, in `ai.moments` order. */
@@ -163,7 +160,7 @@ export interface FeaturesIndexContent {
   };
   /** Self-serve and human CTA pair, shared with the Solutions page. */
   cta: { primary: string; secondary: string };
-  groups: Record<GroupId, { day: string; label: string; title: string; body: string }>;
+  groups: Record<GroupId, { label: string; title: string; body: string }>;
   modules: Record<ModuleId, ModuleText>;
   sessionsVisual: {
     title: string;
@@ -240,48 +237,42 @@ const fr: FeaturesIndexContent = {
   hero: {
     kicker: 'FONCTIONNALITÉS',
     title: 'Parcourez les six familles de modules.',
-    sub: 'Chaque module tient debout seul et tous partagent la même base de données. Une donnée saisie une fois sert aux six familles de modules, du lundi au match.',
-    toc: 'SOMMAIRE · SIX MOMENTS DE LA SEMAINE',
+    sub: 'Chaque module tient debout seul et tous partagent la même base de données. Une donnée saisie une fois sert aux six familles de modules.',
+    toc: 'SOMMAIRE · SIX FAMILLES DE MODULES',
     units: { modules: 'modules', moments: 'moments' },
-    fine: ['16 pages détaillées', '6 moments de la semaine', '1 base de données'],
+    fine: ['16 pages détaillées', '6 familles de modules', '1 base de données'],
   },
   cta: { primary: 'Commencer gratuitement', secondary: 'Parler à Benoit' },
   groups: {
     monitoring: {
-      day: 'LUNDI',
       label: 'Monitoring & GPS',
       title: 'Lisez readiness, charge et alertes sur un seul écran.',
       body: 'Vous ouvrez cet écran avant la séance : readiness par joueur, charge du jour et alertes IA. Le check-in du matin et votre export GPS alimentent les cinq modules ci-dessous.',
     },
     plan: {
-      day: 'MERCREDI',
       label: 'Planifier & construire',
-      title: 'Planifiez la charge de la semaine en UA.',
-      body: 'Fixez une cible hebdomadaire, puis montez chaque séance depuis votre bibliothèque d’exercices. Le constructeur estime la charge de chaque bloc avant l’entraînement, ici 445 UA pour quatre blocs.',
+      title: 'Planifiez la charge en UA, séance par séance.',
+      body: 'Fixez une cible de charge, puis montez chaque séance depuis votre bibliothèque d’exercices. Le constructeur estime la charge de chaque bloc avant l’entraînement, ici 445 UA pour quatre blocs.',
     },
     pitch: {
-      day: 'JEUDI',
       label: 'Terrain & match',
       title: 'Pilotez séance et match depuis le banc.',
       body: 'Le mode live compare la charge estimée au réalisé, pendant que la séance tourne. Le jour du match, le banc saisit minutes et événements. Le scouting du prochain adversaire se prépare à plusieurs, dès J-6.',
     },
     players: {
-      day: 'VENDREDI',
       label: 'Joueurs & effectif',
       title: 'Envoyez la convocation, les réponses reviennent seules.',
       body: 'Les joueurs répondent depuis un simple lien, et la relance part seule à l’heure que vous fixez. Sur la capture, vendredi midi, et 14 réponses sur 18, l’infirmerie déjà déduite de la disponibilité.',
     },
     ai: {
-      day: 'DIMANCHE',
       label: 'Assistant IA',
       title: 'Déléguez à l’IA le briefing et les relances.',
       body: 'Elle restitue ce que vous saisissez, puis elle agit : un bouton applique la recommandation, une file retient les propositions. Sept moments jalonnent la journée, trois en lecture et quatre en action.',
     },
     staff: {
-      day: 'LUNDI',
       label: 'Staff & rapports',
       title: 'Composez le dashboard que la direction lit.',
-      body: 'Le dashboard composable, les cinq rapports types et le générateur puisent dans la même base. Vos widgets se réutilisent d’un rapport à l’autre, semaine après semaine.',
+      body: 'Le dashboard composable, les cinq rapports types et le générateur puisent dans la même base. Vos widgets se réutilisent d’un rapport à l’autre.',
     },
   },
   modules: {
@@ -470,48 +461,42 @@ const en: FeaturesIndexContent = {
   hero: {
     kicker: 'FEATURES',
     title: 'Browse the six module families.',
-    sub: 'Every module stands on its own and all of them share the same database. Data entered once serves all six families of modules, from Monday to matchday.',
-    toc: 'CONTENTS · SIX MOMENTS OF THE WEEK',
+    sub: 'Every module stands on its own and all of them share the same database. Data entered once serves all six families of modules.',
+    toc: 'CONTENTS · SIX MODULE FAMILIES',
     units: { modules: 'modules', moments: 'moments' },
-    fine: ['16 detailed pages', '6 moments of the week', '1 database'],
+    fine: ['16 detailed pages', '6 module families', '1 database'],
   },
   cta: { primary: 'Start for free', secondary: 'Talk to Benoit' },
   groups: {
     monitoring: {
-      day: 'MONDAY',
       label: 'Monitoring & GPS',
       title: 'Read readiness, load and alerts on one screen.',
       body: 'You open this screen before the session: readiness per player, today’s load and AI alerts. The morning check-in and your GPS export feed the five modules below.',
     },
     plan: {
-      day: 'WEDNESDAY',
       label: 'Plan & build',
-      title: 'Plan the week’s load in AU.',
-      body: 'Set a weekly target, then build each session from your drill library. The builder estimates each block’s load before training, here 445 AU across four blocks.',
+      title: 'Plan the load in AU, session by session.',
+      body: 'Set a load target, then build each session from your drill library. The builder estimates each block’s load before training, here 445 AU across four blocks.',
     },
     pitch: {
-      day: 'THURSDAY',
       label: 'Pitch & match',
       title: 'Run session and match from the bench.',
       body: 'Live mode compares the estimated load with the actual, while the session runs. On match day, the bench logs minutes and events. You prepare the next opponent’s scouting together, from MD-6.',
     },
     players: {
-      day: 'FRIDAY',
       label: 'Players & squad',
       title: 'Send the call-up, answers come back on their own.',
       body: 'Players answer from a plain link, and the reminder goes out on its own at the time you set. In the screenshot, Friday noon, and 14 answers out of 18, with the treatment room already in the availability.',
     },
     ai: {
-      day: 'SUNDAY',
       label: 'AI assistant',
       title: 'Hand the briefing and the reminders to the AI.',
       body: 'It gives back what you enter, then it acts: one button applies the recommendation, a queue holds the proposals. Seven moments cover the day, three that read and four that act.',
     },
     staff: {
-      day: 'MONDAY',
       label: 'Staff & reports',
       title: 'Compose the dashboard your board reads.',
-      body: 'The composable dashboard, the five standard reports and the generator draw on the same base. Your widgets carry over from one report to the next, week after week.',
+      body: 'The composable dashboard, the five standard reports and the generator draw on the same base. Your widgets carry over from one report to the next.',
     },
   },
   modules: {
@@ -680,48 +665,42 @@ const nl: FeaturesIndexContent = {
   hero: {
     kicker: 'FUNCTIES',
     title: 'Doorloop de zes modulefamilies.',
-    sub: 'Elke module staat op zichzelf en ze delen allemaal dezelfde databank. Eén keer ingevoerde data bedient alle zes de families, van maandag tot de wedstrijd.',
-    toc: 'INHOUD · ZES MOMENTEN VAN DE WEEK',
+    sub: 'Elke module staat op zichzelf en ze delen allemaal dezelfde databank. Eén keer ingevoerde data bedient alle zes de families.',
+    toc: 'INHOUD · ZES MODULEFAMILIES',
     units: { modules: 'modules', moments: 'momenten' },
-    fine: ['16 detailpagina’s', '6 momenten van de week', '1 databank'],
+    fine: ['16 detailpagina’s', '6 modulefamilies', '1 databank'],
   },
   cta: { primary: 'Gratis beginnen', secondary: 'Spreek met Benoit' },
   groups: {
     monitoring: {
-      day: 'MAANDAG',
       label: 'Monitoring & GPS',
       title: 'Lees readiness, belasting en signalen op één scherm.',
       body: 'U opent dit scherm vóór de training: readiness per speler, belasting van de dag en AI-signalen. De check-in van de ochtend en uw gps-export voeden de vijf modules hieronder.',
     },
     plan: {
-      day: 'WOENSDAG',
       label: 'Plannen & bouwen',
-      title: 'Plan de belasting van de week in AU.',
-      body: 'Stel een weekdoel in en bouw elke training op vanuit uw oefeningenbibliotheek. De bouwer schat de belasting van elk blok vóór de training, hier 445 AU over vier blokken.',
+      title: 'Plan de belasting in AU, training per training.',
+      body: 'Stel een belastingsdoel in en bouw elke training op vanuit uw oefeningenbibliotheek. De bouwer schat de belasting van elk blok vóór de training, hier 445 AU over vier blokken.',
     },
     pitch: {
-      day: 'DONDERDAG',
       label: 'Veld & wedstrijd',
       title: 'Stuur training en wedstrijd vanaf de bank.',
       body: 'De live-modus vergelijkt de geschatte belasting met het gerealiseerde, terwijl de training loopt. Op wedstrijddag noteert de bank minuten en gebeurtenissen. De scouting van de volgende tegenstander bereidt u samen voor, vanaf W-6.',
     },
     players: {
-      day: 'VRIJDAG',
       label: 'Spelers & selectie',
       title: 'Verstuur de oproep, de antwoorden komen vanzelf terug.',
       body: 'Spelers antwoorden via een simpele link, en de herinnering vertrekt vanzelf op het tijdstip dat u instelt. Op de afbeelding vrijdagmiddag, en 14 antwoorden op 18, met de ziekenboeg al verrekend in de beschikbaarheid.',
     },
     ai: {
-      day: 'ZONDAG',
       label: 'AI-assistent',
       title: 'Geef de briefing en de herinneringen aan de AI.',
       body: 'Ze geeft terug wat u invoert, daarna handelt ze: één knop past de aanbeveling toe, een wachtrij houdt de voorstellen vast. Zeven momenten dekken de dag, drie die lezen en vier die handelen.',
     },
     staff: {
-      day: 'MAANDAG',
       label: 'Staf & rapporten',
       title: 'Stel het dashboard samen dat het bestuur leest.',
-      body: 'Het samenstelbare dashboard, de vijf standaardrapporten en de generator putten uit dezelfde basis. Uw widgets gaan mee van het ene rapport naar het andere, week na week.',
+      body: 'Het samenstelbare dashboard, de vijf standaardrapporten en de generator putten uit dezelfde basis. Uw widgets gaan mee van het ene rapport naar het andere.',
     },
   },
   modules: {
@@ -904,48 +883,42 @@ const de: FeaturesIndexContent = {
   hero: {
     kicker: 'FUNKTIONEN',
     title: 'Alle sechs Modulfamilien durchgehen.',
-    sub: 'Jedes Modul steht für sich, und alle teilen dieselbe Datenbasis. Einmal erfasste Daten bedienen alle sechs Familien, von Montag bis zum Spiel.',
-    toc: 'INHALT · SECHS MOMENTE DER WOCHE',
+    sub: 'Jedes Modul steht für sich, und alle teilen dieselbe Datenbasis. Einmal erfasste Daten bedienen alle sechs Familien.',
+    toc: 'INHALT · SECHS MODULFAMILIEN',
     units: { modules: 'Module', moments: 'Momente' },
-    fine: ['16 Detailseiten', '6 Momente der Woche', '1 Datenbasis'],
+    fine: ['16 Detailseiten', '6 Modulfamilien', '1 Datenbasis'],
   },
   cta: { primary: 'Kostenlos starten', secondary: 'Mit Benoit sprechen' },
   groups: {
     monitoring: {
-      day: 'MONTAG',
       label: 'Monitoring & GPS',
       title: 'Readiness und Belastung auf einem Bildschirm lesen.',
       body: 'Diesen Bildschirm öffnen Sie vor der Einheit: Readiness je Spieler, Belastung des Tages und KI-Warnungen. Der Check-in am Morgen und Ihr GPS-Export speisen die fünf Module darunter.',
     },
     plan: {
-      day: 'MITTWOCH',
       label: 'Planen & bauen',
-      title: 'Die Wochenbelastung in AU planen.',
-      body: 'Legen Sie ein Wochenziel fest und bauen Sie jede Einheit aus Ihrer Übungsbibliothek. Der Builder schätzt die Belastung jedes Blocks vor dem Training, hier 445 AU auf vier Blöcke.',
+      title: 'Die Belastung in AU planen, Einheit für Einheit.',
+      body: 'Legen Sie ein Belastungsziel fest und bauen Sie jede Einheit aus Ihrer Übungsbibliothek. Der Builder schätzt die Belastung jedes Blocks vor dem Training, hier 445 AU auf vier Blöcke.',
     },
     pitch: {
-      day: 'DONNERSTAG',
       label: 'Platz & Spiel',
       title: 'Einheit und Spiel von der Bank steuern.',
       body: 'Der Live-Modus vergleicht die geschätzte Belastung mit dem Ist, während die Einheit läuft. Am Spieltag erfasst die Bank Minuten und Ereignisse. Das Scouting des nächsten Gegners bereiten Sie gemeinsam vor, ab ST-6.',
     },
     players: {
-      day: 'FREITAG',
       label: 'Spieler & Kader',
       title: 'Aufgebot senden, Antworten kommen von allein zurück.',
       body: 'Spieler antworten über einen simplen Link, und die Erinnerung geht von allein zu der Uhrzeit raus, die Sie festlegen. Auf dem Screenshot Freitagmittag, und 14 Antworten von 18, die Behandlungsliege bereits in der Verfügbarkeit verrechnet.',
     },
     ai: {
-      day: 'SONNTAG',
       label: 'KI-Assistent',
       title: 'Briefing und Nachfassen an die KI übergeben.',
       body: 'Sie gibt wieder, was Sie erfassen, und sie handelt: Ein Knopf wendet die Empfehlung an, eine Warteschlange hält die Vorschläge. Sieben Momente decken den Tag ab, drei lesend und vier handelnd.',
     },
     staff: {
-      day: 'MONTAG',
       label: 'Staff & Berichte',
       title: 'Das Dashboard bauen, das die Führung liest.',
-      body: 'Das zusammenstellbare Dashboard, die fünf Standardberichte und der Generator schöpfen aus derselben Basis. Ihre Widgets wandern von einem Bericht zum nächsten, Woche für Woche.',
+      body: 'Das zusammenstellbare Dashboard, die fünf Standardberichte und der Generator schöpfen aus derselben Basis. Ihre Widgets wandern von einem Bericht zum nächsten.',
     },
   },
   modules: {
@@ -1129,48 +1102,42 @@ const pt: FeaturesIndexContent = {
   hero: {
     kicker: 'FUNCIONALIDADES',
     title: 'Percorra as seis famílias de módulos.',
-    sub: 'Cada módulo sustenta-se sozinho e todos partilham a mesma base de dados. Um dado introduzido uma vez serve as seis famílias, de segunda ao jogo.',
-    toc: 'ÍNDICE · SEIS MOMENTOS DA SEMANA',
+    sub: 'Cada módulo sustenta-se sozinho e todos partilham a mesma base de dados. Um dado introduzido uma vez serve as seis famílias.',
+    toc: 'ÍNDICE · SEIS FAMÍLIAS DE MÓDULOS',
     units: { modules: 'módulos', moments: 'momentos' },
-    fine: ['16 páginas detalhadas', '6 momentos da semana', '1 base de dados'],
+    fine: ['16 páginas detalhadas', '6 famílias de módulos', '1 base de dados'],
   },
   cta: { primary: 'Começar gratuitamente', secondary: 'Falar com o Benoit' },
   groups: {
     monitoring: {
-      day: 'SEGUNDA',
       label: 'Monitorização & GPS',
       title: 'Leia readiness, carga e alertas num só ecrã.',
       body: 'Abre este ecrã antes da sessão: readiness por jogador, carga do dia e alertas de IA. O check-in da manhã e a sua exportação GPS alimentam os cinco módulos abaixo.',
     },
     plan: {
-      day: 'QUARTA',
       label: 'Planear & construir',
-      title: 'Planeie a carga da semana em UA.',
-      body: 'Defina um objetivo semanal e construa cada sessão a partir da sua biblioteca de exercícios. O construtor estima a carga de cada bloco antes do treino, aqui 445 UA em quatro blocos.',
+      title: 'Planeie a carga em UA, sessão a sessão.',
+      body: 'Defina um objetivo de carga e construa cada sessão a partir da sua biblioteca de exercícios. O construtor estima a carga de cada bloco antes do treino, aqui 445 UA em quatro blocos.',
     },
     pitch: {
-      day: 'QUINTA',
       label: 'Campo & jogo',
       title: 'Conduza sessão e jogo a partir do banco.',
       body: 'O modo direto compara a carga estimada com o realizado, enquanto a sessão decorre. No dia de jogo, o banco regista minutos e eventos. O scouting do próximo adversário prepara-se em conjunto, desde J-6.',
     },
     players: {
-      day: 'SEXTA',
       label: 'Jogadores & plantel',
       title: 'Envie a convocatória, as respostas voltam sozinhas.',
       body: 'Os jogadores respondem por um simples link, e o lembrete parte sozinho à hora que definir. Na captura, sexta ao meio-dia, e 14 respostas em 18, com a enfermaria já descontada da disponibilidade.',
     },
     ai: {
-      day: 'DOMINGO',
       label: 'Assistente IA',
       title: 'Entregue à IA o briefing e os lembretes.',
       body: 'Restitui o que introduz, e depois age: um botão aplica a recomendação, uma fila retém as propostas. Sete momentos cobrem o dia, três de leitura e quatro de ação.',
     },
     staff: {
-      day: 'SEGUNDA',
       label: 'Staff & relatórios',
       title: 'Componha o dashboard que a direção lê.',
-      body: 'O dashboard componível, os cinco relatórios tipo e o gerador bebem da mesma base. Os seus widgets passam de um relatório para o outro, semana após semana.',
+      body: 'O dashboard componível, os cinco relatórios tipo e o gerador bebem da mesma base. Os seus widgets passam de um relatório para o outro.',
     },
   },
   modules: {
@@ -1365,48 +1332,42 @@ const es: FeaturesIndexContent = {
   hero: {
     kicker: 'FUNCIONALIDADES',
     title: 'Recorra las seis familias de módulos.',
-    sub: 'Cada módulo se sostiene solo y todos comparten la misma base de datos. Un dato introducido una vez sirve a las seis familias, del lunes al partido.',
-    toc: 'ÍNDICE · SEIS MOMENTOS DE LA SEMANA',
+    sub: 'Cada módulo se sostiene solo y todos comparten la misma base de datos. Un dato introducido una vez sirve a las seis familias.',
+    toc: 'ÍNDICE · SEIS FAMILIAS DE MÓDULOS',
     units: { modules: 'módulos', moments: 'momentos' },
-    fine: ['16 páginas detalladas', '6 momentos de la semana', '1 base de datos'],
+    fine: ['16 páginas detalladas', '6 familias de módulos', '1 base de datos'],
   },
   cta: { primary: 'Empezar gratis', secondary: 'Hablar con Benoit' },
   groups: {
     monitoring: {
-      day: 'LUNES',
       label: 'Monitorización & GPS',
       title: 'Lea readiness, carga y alertas en una pantalla.',
       body: 'Abre esta pantalla antes de la sesión: readiness por jugador, carga del día y alertas de IA. El check-in de la mañana y su exportación GPS alimentan los cinco módulos de abajo.',
     },
     plan: {
-      day: 'MIÉRCOLES',
       label: 'Planificar & construir',
-      title: 'Planifique la carga de la semana en UA.',
-      body: 'Fije un objetivo semanal y construya cada sesión desde su biblioteca de ejercicios. El constructor estima la carga de cada bloque antes del entrenamiento, aquí 445 UA en cuatro bloques.',
+      title: 'Planifique la carga en UA, sesión a sesión.',
+      body: 'Fije un objetivo de carga y construya cada sesión desde su biblioteca de ejercicios. El constructor estima la carga de cada bloque antes del entrenamiento, aquí 445 UA en cuatro bloques.',
     },
     pitch: {
-      day: 'JUEVES',
       label: 'Campo & partido',
       title: 'Dirija sesión y partido desde el banquillo.',
       body: 'El modo en directo compara la carga estimada con lo real, mientras la sesión ocurre. El día de partido, el banquillo registra minutos y eventos. El scouting del próximo rival se prepara entre varios, desde J-6.',
     },
     players: {
-      day: 'VIERNES',
       label: 'Jugadores & plantilla',
       title: 'Envíe la convocatoria, las respuestas vuelven solas.',
       body: 'Los jugadores responden por un simple enlace, y el recordatorio sale solo a la hora que usted fije. En la captura, viernes al mediodía, y 14 respuestas de 18, con la enfermería ya descontada de la disponibilidad.',
     },
     ai: {
-      day: 'DOMINGO',
       label: 'Asistente IA',
       title: 'Confíe a la IA el briefing y los recordatorios.',
       body: 'Devuelve lo que usted introduce, y después actúa: un botón aplica la recomendación, una cola retiene las propuestas. Siete momentos cubren el día, tres de lectura y cuatro de acción.',
     },
     staff: {
-      day: 'LUNES',
       label: 'Staff & informes',
       title: 'Componga el panel que lee la dirección.',
-      body: 'El dashboard componible, los cinco informes tipo y el generador beben de la misma base. Sus widgets pasan de un informe a otro, semana tras semana.',
+      body: 'El dashboard componible, los cinco informes tipo y el generador beben de la misma base. Sus widgets pasan de un informe a otro.',
     },
   },
   modules: {
