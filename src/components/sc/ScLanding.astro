@@ -59,10 +59,9 @@ const skipLabelByLocale: Record<Locale, string> = {
 
   <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} switchHrefs={switchHrefs} />
 
-  <!-- The page follows the S&C coach's week, in working order: the 07:45
-       readiness board (hero), the week at a glance, the overnight metrics,
-       Monday's load plan, Tuesday's session build, Wednesday's strength
-       prescription, the test campaign, Monday's report. -->
+  <!-- Topics in the order a performance lead weighs them: the readiness
+       board (hero), what STRIVN takes over, the metrics, load planning,
+       session build, strength, tests, reports. -->
   <main id="s-main" class="bg-void font-sans text-ink antialiased">
     <ScHero locale={locale} hero={c.hero} />
     <ScDaily daily={c.daily} />

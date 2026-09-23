@@ -12,7 +12,7 @@ const { reports: c } = Astro.props;
 const r = c.report;
 ---
 
-<ScFrame id="rapports" labelledby="sc-reports-title" stamp={c.stamp}>
+<ScFrame id="rapports" labelledby="sc-reports-title" label={c.tag}>
   <div class="st-head">
     <h2 id="sc-reports-title" class="st-h2">{c.title}</h2>
     <p class="st-body">{c.body}</p>
