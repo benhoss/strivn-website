@@ -1,6 +1,6 @@
 ---
 /**
- * The week the modules cover: the six moments of the features index, each a
+ * What the modules cover: the six families of the features index, each a
  * link to its band there, then the link to the full index.
  */
 import type { SolutionsContent, Locale } from '../../data/solutionsContent';
@@ -33,9 +33,7 @@ const names = (ids: readonly string[]) =>
         return (
           <li>
             <a href={`${base}#${g.id}`}>
-              <span class="st-label">
-                {group.day} · <span class="st-num">{g.time}</span>
-              </span>
+              <span class="st-label">{group.day}</span>
               <span class="st-h4 sx-week__label">{group.label}</span>
               <span class="sx-week__mods">{list.join(' · ')}</span>
             </a>

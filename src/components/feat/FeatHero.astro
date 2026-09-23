@@ -1,8 +1,8 @@
 ---
 /**
  * Features index hero: headline, lede and CTA pair on the left, the page's
- * table of contents on the right (the six moments of the week, each with its
- * module count, each an anchor to its band).
+ * table of contents on the right (the six families, each with its moment
+ * relative to the session and its module count, each an anchor to its band).
  */
 import type { FeaturesIndexContent, GroupId, Locale } from '../../data/featuresIndexContent';
 import { GROUPS } from '../../data/featuresIndexContent';
@@ -46,7 +46,6 @@ const count = (id: GroupId, n: number) =>
             <a href={`#${g.id}`}>
               <span class="fx-toc__when st-num">
                 {groups[g.id].day}
-                <b>{g.time}</b>
               </span>
               <span class="fx-toc__what">{groups[g.id].label}</span>
               <span class="fx-toc__n st-num">{count(g.id, g.modules.length)}</span>
@@ -107,10 +106,6 @@ const count = (id: GroupId, n: number) =>
     font-size: 11px;
     letter-spacing: 0.08em;
     color: var(--color-ink-3);
-  }
-  .fx-toc__when b {
-    font-weight: 500;
-    color: var(--color-ink-2);
   }
   .fx-toc__what {
     font-size: 16px;

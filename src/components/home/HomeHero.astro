@@ -44,8 +44,15 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
       <p class="st-fine home-hero__fine">{h.fine.map((f) => <span>{f}</span>)}</p>
     </div>
 
-    {/* Tuesday's export resolves into Wednesday's read. At rest the table is
-        resolved; the scan replays on a loop while the panel is on screen. */}
+    {/* A session's data resolves into the next morning's read. At rest the
+        table is resolved; the crossing replays while the panel is on screen.
+        The switch shows the same read with or without GPS (JS only: hidden
+        until the script reveals it, the GPS version is the static page). */}
+    <div class="home-hero__demo">
+    <div class="home-xsource" role="group" aria-label={p.noGps.toggleAria} data-xsource hidden>
+      <button type="button" aria-pressed="true" data-set="gps">{p.noGps.toggle[0]}</button>
+      <button type="button" aria-pressed="false" data-set="rpe">{p.noGps.toggle[1]}</button>
+    </div>
     <figure
       class="st-panel st-panel--float home-xform"
       aria-label={p.aria}
@@ -58,16 +65,17 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
       data-importing={status.importing}
     >
       <div class="home-xform__bar">
-        <span class="home-xform__file">{HERO_FILE}</span>
+        <span class="home-xform__file"><span data-src="gps">{HERO_FILE}</span><span data-src="rpe">{p.noGps.file}</span></span>
         <span class="home-xform__state" data-xstate>{p.read} <i>{HERO_TIME}</i></span>
       </div>
       <div class="home-xform__scroll">
+        <span class="home-xform__cursor" aria-hidden="true" data-xcursor></span>
         <table class="home-xtable">
           <thead>
             <tr>
               <th scope="col">{p.cols[0]}</th>
-              <th scope="col" class="opt">{p.cols[1]}</th>
-              <th scope="col">{p.cols[2]}</th>
+              <th scope="col" class="opt"><span data-src="gps">{p.cols[1]}</span><span data-src="rpe">{p.noGps.col}</span></th>
+              <th scope="col" class="opt-xs">{p.cols[2]}</th>
               <th scope="col">{p.cols[3]}</th>
               <th scope="col">{p.cols[4]}</th>
               <th scope="col">{p.cols[5]}</th>
@@ -75,10 +83,10 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
           </thead>
           <tbody>
             {HERO_ROWS.map((r) => (
-              <tr data-state={r.state} data-label={status[r.state]}>
+              <tr data-state={r.state} data-label={status[r.state]} data-focus={r.name === FOCUS_PLAYER ? '' : undefined}>
                 <td class="name">{r.name}</td>
-                <td class:list={['opt', tone(r, 'hsr')]}>{r.hsr}</td>
-                <td class={tone(r, 'rpe')}>{r.rpe}</td>
+                <td class:list={['opt', tone(r, 'hsr')]}><span data-src="gps">{r.hsr}</span><span data-src="rpe">{r.load}</span></td>
+                <td class:list={['opt-xs', tone(r, 'rpe')]}>{r.rpe}</td>
                 <td class={tone(r, 'sleep')}>{r.sleep}</td>
                 <td class={tone(r, 'acwr')}>{r.acwr}</td>
                 <td class="dec"><span class={`st-chip st-chip--${r.state}`}>{status[r.state]}</span></td>
@@ -89,10 +97,11 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
       </div>
       <figcaption class="home-xform__foot">
         <span class="st-label st-label--accent">{p.proposed}</span>
-        <p><strong>{FOCUS_PLAYER}</strong>{p.proposal}</p>
-        <span class="st-label home-xform__sources">{p.sources}</span>
+        <p data-xproposal><strong>{FOCUS_PLAYER}</strong>{p.proposal}</p>
+        <span class="st-label home-xform__sources"><span data-src="gps">{p.sources}</span><span data-src="rpe">{p.noGps.sources}</span></span>
       </figcaption>
     </figure>
+    </div>
   </div>
 </section>
 
@@ -121,9 +130,60 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
   }
 
   /* ── The transform panel ── */
+  .home-hero__demo {
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+  }
   .home-xform {
     margin: 0;
     min-width: 0;
+  }
+  /* One source shows at a time; the GPS one is the static default. */
+  .home-xform:not([data-source='rpe']) [data-src='rpe'],
+  .home-xform[data-source='rpe'] [data-src='gps'] {
+    display: none;
+  }
+
+  /* With GPS / without GPS: a two-way switch over the panel. */
+  .home-xsource {
+    justify-self: end;
+    display: inline-flex;
+    padding: 3px;
+    gap: 2px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 999px;
+  }
+  .home-xsource[hidden] {
+    display: none;
+  }
+  .home-xsource button {
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    padding: 6px 12px;
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .home-xsource button:hover {
+    color: var(--color-ink);
+  }
+  .home-xsource button[aria-pressed='true'] {
+    background: var(--color-navy-800);
+    color: var(--color-ink);
+  }
+  .home-xsource button:focus-visible {
+    outline: 2px solid var(--color-electric-500);
+    outline-offset: 2px;
   }
   .home-xform__bar {
     display: flex;
@@ -168,9 +228,11 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
     color: var(--color-electric-500);
   }
   .home-xform__scroll {
+    position: relative;
     overflow-x: auto;
   }
   .home-xtable {
+    position: relative;
     width: 100%;
     border-collapse: collapse;
     font-family: var(--font-mono);
@@ -198,6 +260,9 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
     color: var(--color-ink-3);
     border-bottom: 1px solid var(--color-line);
     white-space: nowrap;
+    transition:
+      color 0.35s ease,
+      text-shadow 0.35s ease;
   }
   .home-xtable td.name {
     color: var(--color-ink);
@@ -214,16 +279,109 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
   .home-xtable td.dec {
     width: 116px;
   }
-  .home-xtable tr {
-    transition: background-color 0.3s ease;
+
+  /* ── The crossing (runtime-driven, see script) ──
+     .is-crossing: the table is back to raw numbers, verdicts pending.
+     tr.is-done: that row has been read, its tones come back.
+     td.is-read: the cell the cursor is reading right now. */
+  .home-xform.is-crossing tr:not(.is-done) td.is-hot,
+  .home-xform.is-crossing tr:not(.is-done) td.is-risk {
+    color: var(--color-ink-3);
   }
-  .home-xtable tr.is-scan {
-    background: color-mix(in srgb, var(--color-electric) 10%, transparent);
+  .home-xform.is-crossing tr:not(.is-done) td.name {
+    color: var(--color-ink-2);
+  }
+  .home-xtable td.is-read {
+    color: var(--color-ink);
+    text-shadow: 0 0 12px rgba(79, 148, 251, 0.7);
+    transition-duration: 0.08s;
+  }
+
+  .home-xform__cursor {
+    --x-rgb: 45, 127, 249;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(90deg, rgba(var(--x-rgb), 0.16), rgba(var(--x-rgb), 0.05) 70%, rgba(var(--x-rgb), 0.1));
+    box-shadow:
+      inset 2px 0 0 rgb(var(--x-rgb)),
+      inset 0 1px 0 rgba(var(--x-rgb), 0.35),
+      inset 0 -1px 0 rgba(var(--x-rgb), 0.35);
+    transition:
+      translate 460ms var(--st-ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+      height 460ms var(--st-ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+      opacity 300ms ease,
+      background 260ms ease,
+      box-shadow 260ms ease;
+  }
+  .home-xform__cursor.is-on {
+    opacity: 1;
+  }
+  .home-xform__cursor[data-tone='ready'] {
+    --x-rgb: 39, 215, 161;
+  }
+  .home-xform__cursor[data-tone='watch'] {
+    --x-rgb: 255, 176, 32;
+  }
+  .home-xform__cursor[data-tone='risk'] {
+    --x-rgb: 255, 92, 92;
+  }
+
+  @keyframes xchip-land {
+    0% {
+      scale: 0.82;
+      box-shadow: 0 0 0 0 currentColor;
+    }
+    45% {
+      scale: 1.07;
+    }
+    100% {
+      scale: 1;
+      box-shadow: 0 0 0 7px transparent;
+    }
   }
   .home-xtable .st-chip {
     transition:
       color 0.35s ease,
-      background-color 0.35s ease;
+      background-color 0.35s ease,
+      opacity 0.3s ease;
+  }
+  .home-xtable .st-chip.is-landed {
+    animation: xchip-land 520ms cubic-bezier(0.05, 0.7, 0.1, 1);
+  }
+  .home-xform.is-crossing .st-chip--wait {
+    opacity: 0.7;
+  }
+
+  /* The proposal is the conclusion of the crossing: it dims while the rows
+     are read, then is written out once the last verdict lands. */
+  .home-xform__foot p {
+    transition: opacity 0.4s ease;
+  }
+  .home-xform.is-crossing .home-xform__foot p {
+    opacity: 0.25;
+  }
+  .home-xform__foot p.is-writing {
+    opacity: 1;
+    animation: xwrite 900ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  @keyframes xwrite {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  .home-xform__foot .st-label--accent {
+    transition: text-shadow 0.4s ease;
+  }
+  .home-xform.is-concluding .home-xform__foot .st-label--accent {
+    text-shadow: 0 0 14px rgba(79, 148, 251, 0.8);
   }
   .home-xform__foot {
     display: grid;
@@ -261,12 +419,34 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
     .home-xtable .opt {
       display: none;
     }
+    /* Five columns and the widest verdict (SURVEILLER) must fit a 320 px
+       screen: tighter cells, and the chip drops its dot (the colour and
+       the word still carry the state). */
     .home-xtable th,
     .home-xtable td {
-      padding-inline: 8px;
+      padding-inline: 5px;
+    }
+    .home-xtable th:first-child,
+    .home-xtable td:first-child {
+      padding-left: 12px;
+    }
+    .home-xtable th:last-child,
+    .home-xtable td:last-child {
+      padding-right: 10px;
+    }
+    .home-xtable td.name {
+      font-size: 13px;
     }
     .home-xtable td.dec {
       width: auto;
+    }
+    .home-xtable .st-chip {
+      padding: 3px 7px;
+      font-size: 10px;
+      letter-spacing: 0.03em;
+    }
+    .home-xtable .st-chip::before {
+      display: none;
     }
     .home-xform__foot {
       grid-template-columns: minmax(0, 1fr);
@@ -275,27 +455,76 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
       grid-column: 1;
     }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .home-xtable tr,
+  /* Narrowest phones: RPE goes too. Sleep and ACWR, the cells that explain
+     the red call, stay. */
+  @media (max-width: 359px) {
+    .home-xtable .opt-xs {
+      display: none;
+    }
     .home-xtable .st-chip {
+      padding-inline: 6px;
+      letter-spacing: 0.02em;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .home-xtable td,
+    .home-xtable .st-chip,
+    .home-xform__cursor {
       transition: none;
     }
   }
 </style>
 
 <script>
-  // Rows resolve one by one: Import → the call. The table starts resolved
-  // (legible at rest) and replays the scan while it is on screen. Reduced
-  // motion keeps it static.
+  // The crossing: a session's data is read row by row, cell by cell, and
+  // each verdict follows from the cells that explain it. The table starts
+  // resolved (legible at rest, in screenshots and without JS); the crossing
+  // plays shortly after load, then replays while the panel is on screen.
+  // Reduced motion keeps it static. The source switch works either way.
   const panel = document.querySelector<HTMLElement>('[data-xform]');
+  const switcher = document.querySelector<HTMLElement>('[data-xsource]');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Between two crossings the loop waits; switching the source cuts the wait
+  // short so the new data is read at once.
+  let wake: (() => void) | null = null;
+  let running = false;
+  let again = false;
+  const wait = (ms: number) =>
+    new Promise<void>((r) => {
+      const t = setTimeout(r, ms);
+      wake = () => {
+        clearTimeout(t);
+        r();
+      };
+    });
+
+  if (panel && switcher) {
+    const buttons = [...switcher.querySelectorAll<HTMLButtonElement>('button')];
+    switcher.hidden = false;
+    buttons.forEach((b) =>
+      b.addEventListener('click', () => {
+        if (b.getAttribute('aria-pressed') === 'true') return;
+        buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        panel.dataset.source = b.dataset.set;
+        if (running) again = true;
+        else wake?.();
+      }),
+    );
+  }
+
   if (panel && !reduce) {
     const rows = [...panel.querySelectorAll<HTMLTableRowElement>('tbody tr')];
     const state = panel.querySelector<HTMLElement>('[data-xstate]');
+    const cursor = panel.querySelector<HTMLElement>('[data-xcursor]');
+    const scroll = panel.querySelector<HTMLElement>('.home-xform__scroll');
+    const table = panel.querySelector<HTMLElement>('table');
+    const proposal = panel.querySelector<HTMLElement>('[data-xproposal]');
     const restState = state?.innerHTML ?? '';
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
     const chip = (tr: HTMLTableRowElement) => tr.querySelector<HTMLElement>('.st-chip');
     const onScreen = () => panel.classList.contains('is-inview') && !document.hidden;
+    const visible = (el: Element) => (el as HTMLElement).offsetParent !== null;
 
     const setWaiting = (tr: HTMLTableRowElement) => {
       const c = chip(tr);
@@ -306,30 +535,92 @@ const tone = (row: (typeof HERO_ROWS)[number], cell: Cell) =>
     const resolve = (tr: HTMLTableRowElement) => {
       const c = chip(tr);
       if (!c) return;
-      c.className = `st-chip st-chip--${tr.dataset.state}`;
+      c.className = `st-chip st-chip--${tr.dataset.state} is-landed`;
       c.textContent = tr.dataset.label ?? '';
+    };
+    const moveCursor = (tr: HTMLTableRowElement) => {
+      if (!cursor || !scroll) return;
+      const top = tr.getBoundingClientRect().top - scroll.getBoundingClientRect().top;
+      cursor.style.width = `${table?.scrollWidth ?? scroll.clientWidth}px`;
+      cursor.style.height = `${tr.offsetHeight}px`;
+      cursor.style.translate = `0 ${top}px`;
+    };
+    const setBusy = () => {
+      if (!state) return;
+      state.textContent = `${panel.dataset.busy} `;
+      const i = document.createElement('i');
+      i.className = 'is-busy';
+      i.textContent = panel.dataset.busyValue ?? '';
+      state.append(i);
+    };
+
+    const cross = async () => {
+      // Back to the raw data: verdicts pending, tones off.
+      panel.classList.add('is-crossing');
+      proposal?.classList.remove('is-writing');
+      rows.forEach((tr) => tr.classList.remove('is-done'));
+      setBusy();
+      for (const tr of rows) {
+        setWaiting(tr);
+        await sleep(45);
+      }
+      await sleep(420);
+
+      if (cursor && rows[0]) {
+        cursor.style.transition = 'none';
+        moveCursor(rows[0]);
+        cursor.offsetHeight;
+        cursor.style.transition = '';
+        cursor.removeAttribute('data-tone');
+        cursor.classList.add('is-on');
+      }
+
+      for (const tr of rows) {
+        cursor?.removeAttribute('data-tone');
+        moveCursor(tr);
+        await sleep(300);
+        const cells = [...tr.querySelectorAll<HTMLElement>('td:not(.name):not(.dec)')].filter(visible);
+        for (const td of cells) {
+          td.classList.add('is-read');
+          await sleep(tr.dataset.focus !== undefined ? 150 : 85);
+          td.classList.remove('is-read');
+        }
+        tr.classList.add('is-done');
+        resolve(tr);
+        cursor?.setAttribute('data-tone', tr.dataset.state ?? '');
+        await sleep(tr.dataset.focus !== undefined ? 820 : 360);
+      }
+
+      // Conclusion: the proposal is written from what was just read.
+      cursor?.classList.remove('is-on');
+      panel.classList.add('is-concluding');
+      if (state) state.innerHTML = restState;
+      panel.classList.remove('is-crossing');
+      if (proposal) {
+        proposal.classList.remove('is-writing');
+        proposal.offsetWidth;
+        proposal.classList.add('is-writing');
+      }
+      await sleep(1400);
+      panel.classList.remove('is-concluding');
+      rows.forEach((tr) => chip(tr)?.classList.remove('is-landed'));
     };
 
     const loop = async () => {
+      await wait(1100);
       for (;;) {
-        await sleep(4200);
-        if (!onScreen()) continue;
-        rows.forEach(setWaiting);
-        if (state) {
-          state.textContent = `${panel.dataset.busy} `;
-          const i = document.createElement('i');
-          i.className = 'is-busy';
-          i.textContent = panel.dataset.busyValue ?? '';
-          state.append(i);
+        if (onScreen()) {
+          running = true;
+          await cross();
+          running = false;
+          if (again) {
+            again = false;
+            continue;
+          }
+          await wait(5200);
+        } else {
+          await sleep(400);
         }
-        await sleep(700);
-        for (const tr of rows) {
-          tr.classList.add('is-scan');
-          await sleep(520);
-          resolve(tr);
-          tr.classList.remove('is-scan');
-        }
-        if (state) state.innerHTML = restState;
       }
     };
     loop();

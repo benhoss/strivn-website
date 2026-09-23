@@ -1,6 +1,6 @@
 ---
 /**
- * One moment of the week on the features index: rail stamp (day, time, group
+ * One family of modules on the features index: rail stamp (moment, group
  * name), headline and body, then the module list beside the product screen
  * that proves it. Slots: `list` (modules), `proof` (panel), `after` (a note
  * under both).
@@ -8,12 +8,11 @@
 interface Props {
   id: string;
   group: { day: string; label: string; title: string; body: string };
-  time: string;
   /** Give the proof column more room (two panels side by side). */
   wide?: boolean;
 }
 
-const { id, group, time, wide = false } = Astro.props;
+const { id, group, wide = false } = Astro.props;
 const titleId = `fx-${id}-title`;
 ---
 
@@ -21,7 +20,6 @@ const titleId = `fx-${id}-title`;
   <div class="st-wrap st-frame">
     <p class="st-stamp">
       <span class="st-stamp__a">{group.day}</span>
-      <span class="st-stamp__b">{time}</span>
       <span class="st-stamp__c">{group.label}</span>
     </p>
 

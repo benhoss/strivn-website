@@ -2,8 +2,8 @@
 import type { MoreLink, Stamp } from '../../data/homeContent';
 
 /**
- * One day of the week the homepage follows: the mono stamp in the left rail
- * (day · time · what), the section's own content, then the "Voir …" links
+ * One moment of the session cycle the homepage follows: the mono stamp in the
+ * left rail (when · what), the section's own content, then the "Voir …" links
  * to the feature pages that tell the rest.
  */
 interface Props {
@@ -20,7 +20,6 @@ const { id, stamp, links = [], labelledby } = Astro.props;
   <div class="st-wrap st-frame">
     <div class="st-stamp" aria-hidden="true">
       <span class="st-stamp__a">{stamp.day}</span>
-      <span class="st-stamp__b">{stamp.time}</span>
       <span class="st-stamp__c">{stamp.what}</span>
     </div>
     <div class="home-week__body">
@@ -35,7 +34,7 @@ const { id, stamp, links = [], labelledby } = Astro.props;
 </section>
 
 <style>
-  /* The header carries the week rail on this page: 64px bar + 30px rail. */
+  /* The header carries the session rail on this page: 64px bar + 30px rail. */
   .home-week {
     scroll-margin-top: 126px;
   }

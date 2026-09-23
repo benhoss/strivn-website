@@ -2,8 +2,8 @@
 /**
  * Features index: the product's table of contents.
  *
- * Hero with the contents, then one band per moment of the staff's week. Each
- * band names its moment in the rail, lists its modules (each linking to its
+ * Hero with the contents, then one band per family of modules. Each band
+ * names its moment relative to the session in the rail, lists its modules (each linking to its
  * sub-page) and shows the product screen that proves it.
  */
 import { NAV } from '../../data/nav';
@@ -46,7 +46,6 @@ const switchHrefs = Object.fromEntries(LOCALES.map((l) => [l, `/${l}/features/`]
 const href = (slug: string | null | undefined) => (slug ? `/${locale}/features/${slug}/` : null);
 const rows = (id: GroupId) =>
   GROUPS.find((g) => g.id === id)!.modules.map((m) => ({ ...c.modules[m], href: href(MODULE_SLUGS[m]) }));
-const time = (id: GroupId) => GROUPS.find((g) => g.id === id)!.time;
 
 const moments = c.ai.moments.map((m, i) => ({ ...m, href: href(AI_SLUGS[i]) }));
 ---
@@ -59,22 +58,22 @@ const moments = c.ai.moments.map((m, i) => ({ ...m, href: href(AI_SLUGS[i]) }));
   <main id="s-main" class="bg-void text-ink">
     <FeatHero locale={locale} hero={c.hero} cta={c.cta} groups={c.groups} aiCount={c.ai.moments.length} />
 
-    <FeatGroup id="monitoring" group={c.groups.monitoring} time={time('monitoring')}>
+    <FeatGroup id="monitoring" group={c.groups.monitoring}>
       <FeatModules slot="list" rows={rows('monitoring')} />
       <ReadinessBoard slot="proof" board={sc.hero.board} />
     </FeatGroup>
 
-    <FeatGroup id="plan" group={c.groups.plan} time={time('plan')}>
+    <FeatGroup id="plan" group={c.groups.plan}>
       <FeatModules slot="list" rows={rows('plan')} />
       <FeatSessions slot="proof" visual={c.sessionsVisual} />
     </FeatGroup>
 
-    <FeatGroup id="pitch" group={c.groups.pitch} time={time('pitch')}>
+    <FeatGroup id="pitch" group={c.groups.pitch}>
       <FeatModules slot="list" rows={rows('pitch')} />
       <FeatScouting slot="proof" visual={c.opponentVisual} />
     </FeatGroup>
 
-    <FeatGroup id="players" group={c.groups.players} time={time('players')} wide>
+    <FeatGroup id="players" group={c.groups.players} wide>
       <FeatModules slot="list" rows={rows('players')} />
       <div slot="proof" class="fx-pair">
         <FeatTeam visual={c.teamVisual} />
@@ -82,7 +81,7 @@ const moments = c.ai.moments.map((m, i) => ({ ...m, href: href(AI_SLUGS[i]) }));
       </div>
     </FeatGroup>
 
-    <FeatGroup id="ai" group={c.groups.ai} time={time('ai')}>
+    <FeatGroup id="ai" group={c.groups.ai}>
       <div slot="list" class="grid gap-8">
         <FeatModules label={c.ai.readsLabel} rows={moments.slice(0, AI_ACTS_FROM)} />
         <FeatModules label={c.ai.actsLabel} rows={moments.slice(AI_ACTS_FROM)} />
@@ -91,7 +90,7 @@ const moments = c.ai.moments.map((m, i) => ({ ...m, href: href(AI_SLUGS[i]) }));
       <p slot="after" class="fx-note st-small">{c.ai.note}</p>
     </FeatGroup>
 
-    <FeatGroup id="staff" group={c.groups.staff} time={time('staff')}>
+    <FeatGroup id="staff" group={c.groups.staff}>
       <FeatModules slot="list" rows={rows('staff')} />
       <ReportingDashboard slot="proof" dashboard={sc.reports.dashboard} />
     </FeatGroup>

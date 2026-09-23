@@ -1,5 +1,5 @@
 ---
-import type { HomeContent } from '../../data/homeContent';
+import { PROOF_FIGURES, type HomeContent } from '../../data/homeContent';
 import { CLUBS } from '../../data/clubs';
 import { pngSize } from '../../lib/pngSize';
 
@@ -19,66 +19,111 @@ const crests = CLUBS.map((club) => {
 const hub = pngSize('logos/barca-innovation-hub.png');
 ---
 
+{/* Who uses STRIVN, counted rather than rounded: four exact figures with the
+    date they were counted, then the clubs and the methodology. The figures
+    count up once when the band arrives (SiteMotion, data-st-count). */}
 <section class="home-proof" aria-label={c.aria}>
-  <div class="st-wrap home-proof__in">
-    <div class="home-proof__stat">
-      <span class="home-proof__big">{c.stat}</span>
-      <p>{c.line}</p>
-    </div>
-    <ul class="home-proof__crests" aria-label={c.crestsAria}>
-      {crests.map((crest) => (
-        <li class="st-tile home-proof__crest">
-          <img src={crest.src} alt={crest.name} width={crest.width} height={crest.height} loading="lazy" decoding="async" />
-        </li>
+  <div class="st-wrap">
+    <dl class="home-proof__figures">
+      {PROOF_FIGURES.map((n, i) => (
+        <div>
+          <dt>{c.figures[i]}</dt>
+          <dd data-st-count>{n}</dd>
+        </div>
       ))}
-    </ul>
-    <div class="home-proof__method">
-      <span class="st-label">{c.method}</span>
-      <span class="st-tile home-proof__hub">
-        <img
-          src="/logos/barca-innovation-hub.png"
-          alt="Alumni Barça Innovation Hub"
-          width={hub?.width}
-          height={hub?.height}
-          loading="lazy"
-          decoding="async"
-        />
-      </span>
+    </dl>
+    <div class="home-proof__foot">
+      <p class="home-proof__line">
+        {c.line}
+        <span class="st-label">{c.asOf}</span>
+      </p>
+      <ul class="home-proof__crests" aria-label={c.crestsAria}>
+        {crests.map((crest) => (
+          <li class="st-tile home-proof__crest">
+            <img src={crest.src} alt={crest.name} width={crest.width} height={crest.height} loading="lazy" decoding="async" />
+          </li>
+        ))}
+      </ul>
+      <div class="home-proof__method">
+        <span class="st-label">{c.method}</span>
+        <span class="st-tile home-proof__hub">
+          <img
+            src="/logos/barca-innovation-hub.png"
+            alt="Alumni Barça Innovation Hub"
+            width={hub?.width}
+            height={hub?.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </span>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .home-proof {
-    padding-block: 40px;
+    padding-block: 44px 40px;
     border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
   }
-  .home-proof__in {
+
+  /* Four figures on one line, divided by hairlines like the columns of a
+     stat sheet. <dt> comes first for the markup; column-reverse puts the
+     figure on top and its label under it, read as "141 · équipes". */
+  .home-proof__figures {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 32px 48px;
-    align-items: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
   }
-  .home-proof__stat {
+  .home-proof__figures > div {
     display: flex;
-    align-items: baseline;
-    gap: 14px;
+    flex-direction: column-reverse;
+    gap: 6px;
+    padding: 0 24px;
+    border-left: 1px solid var(--color-line);
   }
-  .home-proof__big {
+  .home-proof__figures > div:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .home-proof__figures dd {
+    margin: 0;
     font-weight: 600;
     font-variation-settings: 'wdth' 75;
-    font-size: 56px;
-    line-height: 1;
-    letter-spacing: -0.03em;
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
     font-variant-numeric: tabular-nums;
     color: var(--color-ink);
   }
-  .home-proof__stat p {
+  .home-proof__figures dt {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  .home-proof__foot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 24px 40px;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-line);
+  }
+  .home-proof__line {
     margin: 0;
-    font-size: 14px;
-    line-height: 1.35;
+    display: grid;
+    gap: 6px;
+    font-size: 15px;
+    line-height: 1.4;
     color: var(--color-ink-2);
-    max-width: 24ch;
+  }
+  .home-proof__line .st-label {
+    color: var(--color-ink-4);
   }
   .home-proof__crests {
     display: flex;
@@ -89,13 +134,13 @@ const hub = pngSize('logos/barca-innovation-hub.png');
     list-style: none;
   }
   .home-proof__crest {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     padding: 6px;
   }
   .home-proof__crest img {
-    max-height: 40px;
-    max-width: 40px;
+    max-height: 36px;
+    max-width: 36px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -109,11 +154,32 @@ const hub = pngSize('logos/barca-innovation-hub.png');
     padding: 8px 12px;
   }
   .home-proof__hub img {
-    height: 30px;
+    height: 28px;
     width: auto;
   }
+
   @media (max-width: 1080px) {
-    .home-proof__in {
+    .home-proof__foot {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .home-proof__line {
+      grid-column: 1 / -1;
+    }
+  }
+  /* Two by two on phones; the hairlines follow the new grid. */
+  @media (max-width: 640px) {
+    .home-proof__figures {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 24px;
+    }
+    .home-proof__figures > div:nth-child(odd) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .home-proof__figures > div {
+      padding-right: 0;
+    }
+    .home-proof__foot {
       grid-template-columns: minmax(0, 1fr);
     }
   }
