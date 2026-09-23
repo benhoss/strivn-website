@@ -64,7 +64,7 @@ export interface HomeContent {
     crestsAria: string;
     method: string;
   };
-  /** Monday 08:10 · the GPS import, and the spreadsheet it replaces. */
+  /** The GPS import, and the spreadsheet it replaces. */
   import: {
     /** The section's topic, shown as an eyebrow above its head. */
     label: string;
@@ -84,7 +84,7 @@ export interface HomeContent {
     facts: [Fact, Fact, Fact, Fact];
     links: MoreLink[];
   };
-  /** Wednesday 07:45 · the readiness board and the evidence behind a call. */
+  /** The readiness board and the evidence behind a call. */
   readiness: {
     /** The section's topic, shown as an eyebrow above its head. */
     label: string;
@@ -101,7 +101,7 @@ export interface HomeContent {
     edit: string;
     links: MoreLink[];
   };
-  /** Wednesday 10:00 · the microcycle, target against actual, to scale. */
+  /** Load planning: the microcycle, target against actual, to scale. */
   plan: {
     /** The section's topic, shown as an eyebrow above its head. */
     label: string;
@@ -120,7 +120,7 @@ export interface HomeContent {
     adjustments: [string, string, string];
     links: MoreLink[];
   };
-  /** Thursday 18:34 · the live session. */
+  /** The live session. */
   live: {
     /** The section's topic, shown as an eyebrow above its head. */
     label: string;
@@ -137,7 +137,7 @@ export interface HomeContent {
     secondary: string;
     links: MoreLink[];
   };
-  /** Every day 07:42 · the player app. */
+  /** The player app. */
   playerApp: {
     /** The section's topic, shown as an eyebrow above its head. */
     label: string;
@@ -273,7 +273,7 @@ export const HERO_ROWS: Array<{
 /** The player every panel follows through the week. */
 export const FOCUS_PLAYER = 'L. Moreau';
 
-/** Monday's spreadsheet, the one light surface on the site. */
+/** The spreadsheet STRIVN replaces, the one light surface on the site. */
 export const SHEET_FILE = 'croisement_S12_v4_FINAL.xlsx';
 export const SHEET_TABS = ['croisement', 'export_gps', 'rpe_messagerie', 'wellness_forms', 'plan'];
 export const SHEET_ROWS: Array<Array<{ v: string; tone?: 'hl' | 'err' | 'formula' }>> = [
