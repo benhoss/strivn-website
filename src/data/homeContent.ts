@@ -1,8 +1,8 @@
 /**
  * Content for the S&C-first homepage (all six locales).
  *
- * The page follows the performance coach's week, from Monday's GPS export to
- * the next Monday's report (redesign 2026-09, `redesign-mockup.html`). Every
+ * The page runs from the GPS export to the report, one topic per section,
+ * with no weekly schedule (redesign 2026-09, `redesign-mockup.html`). Every
  * user-visible string lives here, including the labels inside the drawn
  * product panels, so the whole page localises from one place.
  *
@@ -173,7 +173,7 @@ export interface HomeContent {
     };
     links: MoreLink[];
   };
-  /** Sunday 21:05 · the assistant, then Monday's report. */
+  /** The assistant, then the generated report. */
   assistant: {
     /** The section's topic, shown as an eyebrow above its head. */
     label: string;
