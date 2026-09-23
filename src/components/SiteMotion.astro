@@ -1,120 +1,25 @@
 ---
 /**
- * Shared motion runtime for the marketing pages built on `home.css`.
+ * Shared motion runtime for the marketing pages.
  *
- * Two behaviours, both progressive enhancements:
- *  - reveal-once: adds `.is-in` to `.hl-reveal` elements when they enter view;
- *  - count-up: rewinds `[data-count]` values to zero and counts them back to
- *    the exact string already in the HTML, so no-JS, reduced-motion and
- *    background-tab loads all read the real, localised figure.
+ * Since the 2026-09 redesign every page is legible at rest: nothing waits at
+ * opacity 0 for an observer, and no figure is rewound to zero to count back
+ * up. Screenshots, link previews and a reader who skims all get the real page.
+ *
+ * What is left is one progressive enhancement: `[data-st-inview]` gets
+ * `.is-inview` while it is on screen, for components that want to *start* an
+ * animation (a scan, a pulse) only when someone is looking. The resting state
+ * must already be complete without it.
  */
 ---
 
-<script is:inline>
-  // Before first paint: flag JS so reveal targets start hidden (no flash),
-  // while no-JS visitors and reduced-motion users get the settled state.
-  document.documentElement.classList.add('js-anim');
-</script>
-
 <script>
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // ── Reveal-once ──
-  const targets = document.querySelectorAll('.hl-reveal');
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    targets.forEach((el) => el.classList.add('is-in'));
-  } else {
-    // Two triggers, same behaviour, different patience. The default fires as
-    // soon as an element clears the bottom 8% of the viewport. Anything inside
-    // a `[data-reveal-band]` waits until it is a third of the way up the
-    // screen — that is for a staged sequence whose opening beats would
-    // otherwise be spent on the sliver peeking above the fold.
-    const watch = (rootMargin) =>
-      new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-in');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { rootMargin },
-      );
-
-    const near = watch('0px 0px -8% 0px');
-    const patient = watch('0px 0px -38% 0px');
-    targets.forEach((el) => (el.closest('[data-reveal-band]') ? patient : near).observe(el));
-  }
-
-  // ── Count-up ──
-  // Skipped when the tab is hidden: rAF is frozen there and counters would
-  // freeze at 0 instead of showing the real figure.
-  const counters = document.querySelectorAll<HTMLElement>('[data-count]');
-  if (!reduceMotion && document.visibilityState === 'visible' && 'IntersectionObserver' in window && counters.length) {
-    const lang = document.documentElement.lang || 'en';
-    const targetsMap = new Map<
-      HTMLElement,
-      { template: string; numStr: string; end: number; decimals: number; grouped: boolean; delay: number }
-    >();
-
-    counters.forEach((el) => {
-      const template = el.textContent ?? '';
-      const explicit = el.dataset.count;
-      const match = template.match(/\d[\d\s  .,]*\d|\d/);
-      const numStr = explicit && explicit !== '' ? explicit : match ? match[0] : '';
-      if (!numStr) return;
-      const decimals = numStr.includes('.') ? numStr.length - numStr.lastIndexOf('.') - 1 : 0;
-      const end = Number(numStr.replace(/[\s  ,]/g, ''));
-      if (!Number.isFinite(end)) return;
-      targetsMap.set(el, {
-        template,
-        numStr: match ? match[0] : numStr,
-        end,
-        decimals,
-        grouped: /[\s  ,]/.test(numStr),
-        delay: parseInt(el.dataset.countDelay || '0', 10),
-      });
-    });
-
-    const render = (el: HTMLElement, value: number) => {
-      const t = targetsMap.get(el);
-      if (!t) return;
-      const formatted =
-        t.decimals > 0
-          ? value.toFixed(t.decimals)
-          : new Intl.NumberFormat(lang, { maximumFractionDigits: 0, useGrouping: t.grouped }).format(Math.round(value));
-      el.textContent = t.template.replace(t.numStr, formatted);
-    };
-
-    targetsMap.forEach((_, el) => render(el, 0));
-
-    const countIo = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          countIo.unobserve(entry.target);
-          const el = entry.target as HTMLElement;
-          const t = targetsMap.get(el);
-          if (!t) return;
-          window.setTimeout(() => {
-            const start = performance.now();
-            const dur = 1100;
-            const tick = (now: number) => {
-              const p = Math.min((now - start) / dur, 1);
-              if (p >= 1) {
-                el.textContent = t.template;
-                return;
-              }
-              render(el, t.end * (1 - Math.pow(1 - p, 3)));
-              requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-          }, t.delay);
-        });
-      },
-      { threshold: 0.4 },
+  const els = document.querySelectorAll<HTMLElement>('[data-st-inview]');
+  if (els.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.target.classList.toggle('is-inview', e.isIntersecting)),
+      { rootMargin: '0px 0px -10% 0px' },
     );
-    targetsMap.forEach((_, el) => countIo.observe(el));
+    els.forEach((el) => io.observe(el));
   }
 </script>

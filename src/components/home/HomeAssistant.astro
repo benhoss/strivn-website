@@ -1,0 +1,186 @@
+---
+import HomeWeek from './HomeWeek.astro';
+import { COMPARE, type HomeContent } from '../../data/homeContent';
+
+interface Props {
+  c: HomeContent['assistant'];
+  pct: string;
+}
+
+const { c, pct } = Astro.props;
+---
+
+<HomeWeek id="match" stamp={c.stamp} links={c.links} labelledby="match-title">
+  <div class="st-head">
+    <h2 id="match-title" class="st-h2">{c.title}</h2>
+    <p class="st-body">{c.body}</p>
+  </div>
+
+  <div class="st-panel home-console">
+    <div class="home-console__q">
+      <span class="who" aria-hidden="true">{c.initials}</span>
+      <p>{c.question}</p>
+    </div>
+    <div class="home-console__a">
+      <p>{c.answer.intro}<strong>{c.answer.strong}</strong>{c.answer.outro}</p>
+      <ul class="home-compare">
+        {COMPARE.map((m, i) => (
+          <li>
+            <span class="k">{c.metrics[i]}</span>
+            <span class="bars" aria-hidden="true">
+              <i class="a" style={`width:${m.a}%`}></i>
+              <i class="b" style={`width:${m.b}%`}></i>
+            </span>
+            <span class="d">{m.d}{pct}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="home-console__src">
+        <span class="st-label">
+          {c.sources} · <span class="sw sw--a" aria-hidden="true"></span> {c.legend[0]}
+          <span class="sw sw--b" aria-hidden="true"></span> {c.legend[1]}
+        </span>
+        <div class="home-actions" aria-hidden="true">
+          <span class="home-mini">{c.pin}</span>
+          <span class="home-mini">{c.refine}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="st-cols home-report" id="report">
+    {c.report.map((r) => (
+      <li>
+        <span class="st-label">{r.label}</span>
+        <p>{r.body}</p>
+      </li>
+    ))}
+  </ul>
+</HomeWeek>
+
+<style>
+  .home-console__q {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .home-console__q .who {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-navy-700);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .home-console__q p {
+    margin: 0;
+    padding-top: 2px;
+    font-size: 16px;
+    color: var(--color-ink);
+  }
+  .home-console__a {
+    display: grid;
+    gap: 16px;
+    padding: 20px 24px 24px;
+  }
+  .home-console__a > p {
+    margin: 0;
+    max-width: 62ch;
+    font-size: 15px;
+    color: var(--color-ink-2);
+  }
+  .home-console__a strong {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .home-compare {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .home-compare li {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr) 64px;
+    gap: 14px;
+    align-items: center;
+    font-size: 12.5px;
+  }
+  .home-compare .k {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .home-compare .bars {
+    display: grid;
+    gap: 3px;
+  }
+  .home-compare .bars i {
+    display: block;
+    height: 7px;
+    border-radius: 2px;
+  }
+  .home-compare .bars i.a,
+  .sw--a {
+    background: var(--color-navy-500);
+  }
+  .home-compare .bars i.b,
+  .sw--b {
+    background: var(--color-electric);
+  }
+  .home-compare .d {
+    font-family: var(--font-mono);
+    text-align: right;
+    color: var(--color-ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .sw {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    border-radius: 1px;
+  }
+  .home-console__src {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .home-report {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    --cols: 3;
+  }
+  .home-report p {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--color-ink-2);
+  }
+  @media (max-width: 560px) {
+    .home-console__q,
+    .home-console__a {
+      padding-inline: 16px;
+    }
+    .home-compare li {
+      grid-template-columns: 72px minmax(0, 1fr) 48px;
+      gap: 10px;
+    }
+  }
+</style>

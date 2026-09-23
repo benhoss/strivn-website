@@ -1,0 +1,81 @@
+---
+/**
+ * Closing band of a feature sub-page: the mockup's final CTA. A large
+ * statement on the left, the lede and the CTA pair on the right, aligned on
+ * their last line.
+ */
+import type { Locale } from '../../data/landingContent';
+import { subClosing } from '../../data/subpages/closing';
+import { appStartUrl } from '../../lib/appUrl';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = subClosing[locale];
+
+/* The secondary button opens the staff brief; on that page it would reload
+   the page being read, so it is left out there. */
+const briefHref = `/${locale}/features/staff-brief/`;
+const showSecondary = Astro.url.pathname !== briefHref;
+---
+
+<section class="sub-close" aria-labelledby="sub-close-title">
+  <div class="st-wrap sub-close__in">
+    <h2 id="sub-close-title" class="st-display sub-close__title">{c.title}</h2>
+    <div class="sub-close__side">
+      <p class="st-lede">{c.body}</p>
+      <div class="st-ctas">
+        <a class="st-btn st-btn--primary" href={appStartUrl(locale)} target="_blank" rel="noopener">
+          {c.primaryCta}
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg
+          >
+        </a>
+        {
+          showSecondary && (
+            <a class="st-btn st-btn--ghost" href={briefHref}>
+              {c.secondaryCta}
+            </a>
+          )
+        }
+      </div>
+      <p class="st-fine">{c.fine.map((f) => <span>{f}</span>)}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sub-close {
+    padding-block: clamp(80px, 11vw, 144px);
+    border-top: 1px solid var(--color-line);
+  }
+  .sub-close__in {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 40px clamp(32px, 5vw, 72px);
+    align-items: end;
+  }
+  .sub-close__title {
+    font-size: clamp(40px, 6.4vw, 84px);
+  }
+  .sub-close__side {
+    display: grid;
+    gap: 24px;
+  }
+  .sub-close .st-fine {
+    margin: 0;
+  }
+  @media (max-width: 900px) {
+    .sub-close__in {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

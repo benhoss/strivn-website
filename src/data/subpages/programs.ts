@@ -13,12 +13,12 @@ export const programs: SubpageLocales = {
     meta: {
       title: 'Programmes & workouts | STRIVN',
       description:
-        'Prescrivez « Squat 4 × 5 @ 80 % » pour toute l’équipe. Chacun reçoit le poids réel calculé sur son propre 1RM, arrondi à vos disques.',
+        'Prescrivez « Squat 4 × 5 @ 80 % » pour toute l’équipe. Chacun reçoit le poids réel calculé sur son propre 1RM, arrondi à vos disques.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · PROGRAMMES',
       title: 'Prescrivez un pourcentage, chaque joueur reçoit son poids.',
-      sub: 'Vous prescrivez « Squat 4 × 5 @ 80 % » pour toute l’équipe. Chacun reçoit le poids réel calculé sur son propre 1RM, arrondi à vos disques. Dix-huit feuilles de moins à tenir.',
+      sub: 'Vous prescrivez « Squat 4 × 5 @ 80 % » pour toute l’équipe. Chacun reçoit le poids réel calculé sur son propre 1RM, arrondi à vos disques. Dix-huit feuilles de moins à tenir.',
       bullets: [
         '1RM saisi en direct, ou estimé depuis une série sous-maximale',
         'Blocs en série simple, superset ou circuit',
@@ -51,7 +51,7 @@ export const programs: SubpageLocales = {
         note: {
           icon: 'trending-up',
           label: 'Les records sont proposés, à vous de confirmer',
-          desc: 'Quand un joueur soulève plus lourd que son maximum enregistré, STRIVN vous propose le nouveau record : vous confirmez ou vous écartez. Vous pouvez aussi régler la mise à jour sur « automatique », ou sur « ne rien faire ».',
+          desc: 'Quand un joueur soulève plus lourd que son maximum enregistré, STRIVN vous propose le nouveau record : vous confirmez ou vous écartez. Vous pouvez aussi régler la mise à jour sur « automatique », ou sur « ne rien faire ».',
         },
       },
       {
@@ -67,7 +67,7 @@ export const programs: SubpageLocales = {
           {
             icon: 'shuffle',
             title: 'Superset',
-            desc: 'Deux exercices alternés, étiquettes A1 / A2, rail bleu qui les relie. Le joueur enchaîne sans repos dans le tour ; la récupération tombe en fin de tour.',
+            desc: 'Deux exercices alternés, étiquettes A1 / A2, rail bleu qui les relie. Le joueur enchaîne sans repos dans le tour ; la récupération tombe en fin de tour.',
           },
           {
             icon: 'refresh-cw',
@@ -94,29 +94,29 @@ export const programs: SubpageLocales = {
       },
       {
         kicker: 'CE QUI ARRIVE JUSQU’AU JOUEUR',
-        title: 'Vous écrivez « 3010 ». Il lit « 3 s de descente ».',
+        title: 'Vous écrivez « 3010 ». Il lit « 3 s de descente ».',
         kind: 'columns',
         cols: [
           {
             eyebrow: 'TEMPO',
             title: 'Il arrive en clair',
-            desc: 'Vous notez « 3010 ». Le joueur lit « 3 s de descente · 1 s de montée ».',
+            desc: 'Vous notez « 3010 ». Le joueur lit « 3 s de descente · 1 s de montée ».',
           },
           {
             eyebrow: 'CONSIGNES',
             title: 'La fiche d’exercice suit le joueur',
-            desc: 'Consignes, photo et vidéo posées sur l’exercice de la bibliothèque réapparaissent dans son exécuteur, sous « Comment faire ».',
+            desc: 'Consignes, photo et vidéo posées sur l’exercice de la bibliothèque réapparaissent dans son exécuteur, sous « Comment faire ».',
           },
           {
             eyebrow: 'AVANT D’ASSIGNER',
             title: 'L’aperçu par joueur',
-            desc: 'Le poids réel de chacun, série par série. Les joueurs sans 1RM apparaissent « à tester » plutôt que chargés au hasard.',
+            desc: 'Le poids réel de chacun, série par série. Les joueurs sans 1RM apparaissent « à tester » plutôt que chargés au hasard.',
           },
         ],
       },
       {
         kicker: 'DEUX OBJETS SOUS UN MOT',
-        title: 'Le mot « programme » recouvre deux objets.',
+        title: 'Le mot « programme » recouvre deux objets.',
         kind: 'compare',
         heads: ['La séance de musculation', 'Le modèle de programme'],
         tones: ['blue', 'green'],
@@ -124,11 +124,11 @@ export const programs: SubpageLocales = {
           {
             label: 'CE QUE C’EST',
             a: 'Elle se construit dans le constructeur, s’assigne à un événement du calendrier, et s’exécute dans l’app avec les poids déjà résolus.',
-            b: 'Une trame réutilisable : la structure d’un cycle de renforcement, à décliner sur plusieurs semaines.',
+            b: 'Une trame réutilisable : la structure d’un cycle de renforcement, à décliner sur plusieurs semaines.',
           },
           {
             label: 'CÔTÉ JOUEUR',
-            a: 'Chaque joueur convoqué la reçoit avec ses propres poids. Badge de complétion par joueur, « 3 / 4 séries ».',
+            a: 'Chaque joueur convoqué la reçoit avec ses propres poids. Badge de complétion par joueur, « 3 / 4 séries ».',
             b: 'L’envoi attend que le modèle ait produit des séances datées.',
           },
           {
@@ -141,7 +141,7 @@ export const programs: SubpageLocales = {
           {
             icon: 'library',
             tone: 'blue',
-            text: 'Tout ce que vous placez dans une séance sort de la bibliothèque : capture depuis un lien, une photo ou un schéma, tri en boîte de réception, métriques clés et charge externe estimée.',
+            text: 'Tout ce que vous placez dans une séance sort de la bibliothèque : capture depuis un lien, une photo ou un schéma, tri en boîte de réception, métriques clés et charge externe estimée.',
             link: { label: 'La bibliothèque d’exercices', href: '/fr/features/exercise-library/' },
           },
         ],

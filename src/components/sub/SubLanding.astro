@@ -3,17 +3,17 @@
  * Shell for every feature sub-page: header, hero, data-driven sections, then
  * the closing CTA and footer shared with the homepage.
  *
- * Nav and footer come from `homeContent` rather than each page's own file —
- * fifteen copies of the same six-locale nav would be fifteen places to forget.
+ * Nav comes from `nav.ts` and the footer from `homeContent`, rather than each
+ * page's own file: sixteen copies of the same six-locale nav would be sixteen
+ * places to forget. The closing band has its own copy in `subpages/closing.ts`.
  */
-import '../../styles/home.css';
 import { NAV } from '../../data/nav';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
 import SiteMotion from '../SiteMotion.astro';
 import SubHero from './SubHero.astro';
 import SubSections from './SubSections.astro';
-import HomeFinalCta from '../home/HomeFinalCta.astro';
+import SubClosing from './SubClosing.astro';
 import HomeFooter from '../home/HomeFooter.astro';
 import { homeContent } from '../../data/homeContent';
 import type { Locale } from '../../data/landingContent';
@@ -48,6 +48,18 @@ const skipLabel: Record<Locale, string> = {
   en: 'Skip to content',
 };
 
+/**
+ * Short page name ("Charge, RPE & GPS") for the visible breadcrumb and the
+ * JSON-LD one: the meta title without its brand suffix. The hero title is a
+ * sentence, which reads badly as a crumb.
+ */
+const pageName = content.meta.title.replace(/\s*\|\s*STRIVN\s*$/, '');
+
+/** The features index entry of the nav, found by URL rather than position. */
+const featuresHref = `/${locale}/features/`;
+const featuresLabel =
+  NAV[locale].links.find((l) => 'href' in l && l.href === featuresHref)?.label ?? 'Features';
+
 /** Breadcrumb so the sub-page reads as a child of the features index. */
 const site = 'https://strivn.net';
 const jsonLdExtra = [
@@ -58,10 +70,10 @@ const jsonLdExtra = [
       {
         '@type': 'ListItem',
         position: 2,
-        name: NAV[locale].links[1]?.label ?? 'Features',
-        item: `${site}/${locale}/features/`,
+        name: featuresLabel,
+        item: `${site}${featuresHref}`,
       },
-      { '@type': 'ListItem', position: 3, name: content.hero.title, item: `${site}${canonicalPath}` },
+      { '@type': 'ListItem', position: 3, name: pageName, item: `${site}${canonicalPath}` },
     ],
   },
 ];
@@ -84,10 +96,14 @@ const jsonLdExtra = [
     switchHrefs={switchHrefs}
   />
 
-  <main id="s-main" class="bg-[#05070F] font-sans text-[#F8FAFC] antialiased">
-    <SubHero locale={locale} hero={content.hero} />
+  <main id="s-main" class="bg-void font-sans text-ink antialiased">
+    <SubHero
+      locale={locale}
+      hero={content.hero}
+      crumbs={{ label: featuresLabel, href: featuresHref, page: pageName }}
+    />
     <SubSections sections={content.sections} locale={locale} />
-    <HomeFinalCta locale={locale} finalCta={shared.finalCta} />
+    <SubClosing locale={locale} />
   </main>
 
   <HomeFooter locale={locale} footer={shared.footer} />

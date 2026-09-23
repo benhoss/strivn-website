@@ -13,17 +13,17 @@ export const exerciseLibrary: SubpageLocales = {
     meta: {
       title: 'Bibliothèque d’exercices | STRIVN',
       description:
-        'Lien, photo, schéma ou texte : tout arrive dans la même boîte de réception, se trie une fois, et se rattache ensuite à n’importe quelle séance.',
+        'Lien, photo, schéma ou texte : tout arrive dans la même boîte de réception, se trie une fois, et se rattache ensuite à n’importe quelle séance.',
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · PLANIFICATION',
       title: 'Gardez l’exercice croisé le soir, placez-le jeudi.',
       sub: 'Un lien TikTok, une photo prise au bord du terrain, un schéma dessiné sur le tableau tactique, ou simplement du texte. Tout arrive dans la même boîte de réception, se trie une fois, et se rattache ensuite à n’importe quelle séance.',
       bullets: [
-        'Quatre façons de capturer : lien, photo, schéma, texte',
+        'Quatre façons de capturer : lien, photo, schéma, texte',
         'Visible par l’équipe seulement une fois trié',
         'Dossiers, tags, filtres et aperçu rapide plein écran',
-        'Métriques clés : la charge externe estimée avant la séance',
+        'Métriques clés : la charge externe estimée avant la séance',
       ],
       ctas: {
         primary: 'Commencer gratuitement',
@@ -41,12 +41,12 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'external-link',
             title: 'Lien',
-            desc: 'Collez une URL. TikTok et X s’affichent directement dans la bibliothèque ; Instagram et Facebook apparaissent en carte-lien.',
+            desc: 'Collez une URL. TikTok et X s’affichent directement dans la bibliothèque ; Instagram et Facebook apparaissent en carte-lien.',
           },
           {
             icon: 'image',
             title: 'Photo / Vidéo',
-            desc: 'Importez un fichier depuis votre appareil : une photo prise au bord du terrain, une vidéo filmée à l’entraînement.',
+            desc: 'Importez un fichier depuis votre appareil : une photo prise au bord du terrain, une vidéo filmée à l’entraînement.',
           },
           {
             icon: 'pen-line',
@@ -56,19 +56,19 @@ export const exerciseLibrary: SubpageLocales = {
           {
             icon: 'type',
             title: 'Texte',
-            desc: 'Rédigez directement la description : consignes, variantes, repères. Le texte seul suffit.',
+            desc: 'Rédigez directement la description : consignes, variantes, repères. Le texte seul suffit.',
           },
         ],
         note: {
           icon: 'share-2',
           label: 'Depuis le canapé, aussi',
-          desc: 'Transférez un lien au numéro WhatsApp de STRIVN depuis votre téléphone : la capture arrive dans la même boîte de réception, exactement comme depuis le web.',
+          desc: 'Transférez un lien au numéro WhatsApp de STRIVN depuis votre téléphone : la capture arrive dans la même boîte de réception, exactement comme depuis le web.',
         },
       },
       {
         kicker: 'LA BOÎTE DE RÉCEPTION',
         title: 'Vous triez d’abord. L’équipe voit ensuite.',
-        body: 'Chaque capture arrive d’abord dans la boîte de réception. Vous ajustez le titre, vous la classez dans un dossier (existant ou créé à la volée) et vous ajoutez des tags. Sur les liens et les vidéos, un bandeau propose un titre et des tags : reprenez-les d’un clic, ou ignorez-les.',
+        body: 'Chaque capture arrive d’abord dans la boîte de réception. Vous ajustez le titre, vous la classez dans un dossier (existant ou créé à la volée) et vous ajoutez des tags. Sur les liens et les vidéos, un bandeau propose un titre et des tags : reprenez-les d’un clic, ou ignorez-les.',
         kind: 'columns',
         cols: [
           {
@@ -90,13 +90,13 @@ export const exerciseLibrary: SubpageLocales = {
         note: {
           icon: 'eye',
           label: 'Puis retrouver, sans chercher',
-          desc: 'Le panneau de gauche porte vos dossiers et vos tags avec leur nombre d’exercices ; la grille met le média en avant ; l’aperçu rapide ouvre le plein écran, métadonnées sur le côté, avec navigation précédent / suivant au clavier. Vous feuilletez toute la sélection sans revenir à la grille.',
+          desc: 'Le panneau de gauche porte vos dossiers et vos tags avec leur nombre d’exercices ; la grille met le média en avant ; l’aperçu rapide ouvre le plein écran, métadonnées sur le côté, avec navigation précédent / suivant au clavier. Vous feuilletez toute la sélection sans revenir à la grille.',
         },
       },
       {
         kicker: 'MÉTRIQUES CLÉS',
         title: 'Donnez sa durée à chaque distance.',
-        body: 'Les métriques clés décrivent ce qu’un exercice produit : la distance couverte, le nombre de sprints, le RPE attendu, la surface de jeu. Vous les renseignez une fois sur la fiche, avec leur durée de référence, et cette durée devient obligatoire dès la première métrique, parce que c’est elle qui rend la valeur exploitable : 1 200 m sur 15 min.',
+        body: 'Les métriques clés décrivent ce qu’un exercice produit : la distance couverte, le nombre de sprints, le RPE attendu, la surface de jeu. Vous les renseignez une fois sur la fiche, avec leur durée de référence, et cette durée devient obligatoire dès la première métrique, parce que c’est elle qui rend la valeur exploitable : 1 200 m sur 15 min.',
         kind: 'compare',
         heads: ['Cumulatif', 'Intensif'],
         tones: ['blue', 'green'],
@@ -109,12 +109,12 @@ export const exerciseLibrary: SubpageLocales = {
           {
             label: 'AVEC LA DURÉE',
             a: 'Proportionnel au bloc. Le même exercice joué 20 minutes au lieu de 15 annonce 1 600 m au lieu de 1 200.',
-            b: 'Inchangé : ce sont des propriétés du bloc. Un jeu à 8 joueurs sur 400 m² le reste, qu’il dure 10 ou 30 minutes.',
+            b: 'Inchangé : ce sont des propriétés du bloc. Un jeu à 8 joueurs sur 400 m² le reste, qu’il dure 10 ou 30 minutes.',
           },
           {
             label: 'D’OÙ ELLES VIENNENT',
             a: 'Les colonnes GPS de votre équipe. Renommez-en une dans vos réglages, tous les exercices suivent.',
-            b: 'Toujours disponibles, ou libres : « + Autre métrique… », vous donnez le nom et l’unité.',
+            b: 'Toujours disponibles, ou libres : « + Autre métrique… », vous donnez le nom et l’unité.',
           },
         ],
         callouts: [
@@ -138,7 +138,7 @@ export const exerciseLibrary: SubpageLocales = {
           {
             eyebrow: 'LECTURE',
             title: 'Un taux bas dit où compléter',
-            desc: 'Il montre où l’estimation reste aveugle, et la ligne suivante nomme les blocs à compléter : c’est votre liste de travail pour enrichir la bibliothèque.',
+            desc: 'Il montre où l’estimation reste aveugle, et la ligne suivante nomme les blocs à compléter : c’est votre liste de travail pour enrichir la bibliothèque.',
           },
           {
             eyebrow: 'TRAÇABILITÉ',
@@ -166,7 +166,7 @@ export const exerciseLibrary: SubpageLocales = {
         note: {
           icon: 'satellite',
           label: 'Puis le GPS tranche',
-          desc: 'Après l’import, la mention « estimé » cède la place à la valeur réellement mesurée sur le bloc. Ce que vous aviez déclaré reste visible à côté : c’est la comparaison qui fait progresser vos fiches.',
+          desc: 'Après l’import, la mention « estimé » cède la place à la valeur réellement mesurée sur le bloc. Ce que vous aviez déclaré reste visible à côté : c’est la comparaison qui fait progresser vos fiches.',
         },
       },
     ],

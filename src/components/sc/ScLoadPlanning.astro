@@ -1,7 +1,8 @@
 ---
 import type { ScPageContent } from '../../data/scPageContent';
 import { PLAN_BARS } from '../../data/scPageContent';
-import HomeIcon from '../home/HomeIcon.astro';
+import ScFrame from './ScFrame.astro';
+import ScPoints from './ScPoints.astro';
 
 interface Props {
   planning: ScPageContent['planning'];
@@ -10,90 +11,215 @@ interface Props {
 const { planning: c } = Astro.props;
 const v = c.visual;
 
-const toneBar: Record<string, string> = { blue: 'bg-[#2D7FF9]', green: 'bg-[#8CE99A]' };
-const toneText: Record<string, string> = { blue: 'text-[#2D7FF9]', green: 'text-[#8CE99A]', orange: 'text-[#FF8400]' };
-const toneChip: Record<string, string> = { orange: 'bg-[#FF84001A] text-[#FF8400]', green: 'bg-[#8CE99A14] text-[#8CE99A]' };
+/** Variance is a player's state: over plan is watch, within plan is ready. */
+const chip: Record<string, string> = { orange: 'st-chip--watch', green: 'st-chip--ready', coral: 'st-chip--risk' };
 ---
 
-<section class="bg-[#070A14] py-20 md:py-28" aria-labelledby="sc-planning-title">
-  <div class="hl-wrap grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)] lg:gap-[72px]">
-    <!-- Visual -->
-    <div
-      class="hl-reveal hl-reveal--card hl-parallax order-2 flex flex-col gap-3.5 overflow-hidden rounded-[18px] bg-[#0B1020] p-6 [background-image:radial-gradient(ellipse_50%_50%_at_15%_0%,rgba(45,127,249,0.15),transparent_70%)] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px] lg:order-1"
-    >
-      <div class="flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <p class="text-[0.92rem] font-semibold text-[#F8FAFC]">{v.week}</p>
-          <p class="mt-0.5 text-[0.72rem] text-[#9AA8C4]">{v.goal}</p>
-        </div>
-        <span class="rounded-full bg-[#2D7FF921] px-[11px] py-[5px] font-mono text-[0.53rem] tracking-[0.08em] text-[#7AB8FF] outline-1 outline-[#2D7FF947] -outline-offset-[0.5px]">
-          {v.remaining}
-        </span>
-      </div>
-
-      <p class="font-mono text-[0.59rem] tracking-[0.1em] text-[#68779A]">{v.budgetLabel}</p>
-      <ul class="flex flex-col gap-2" data-stagger>
-        {v.categories.map((cat, i) => (
-          <li class="rounded-[10px] bg-[#FFFFFF06] px-3.5 py-3">
-            <p class="flex items-center justify-between gap-2">
-              <span class="text-[0.75rem] text-[#C3CDE0]">{cat.name}</span>
-              <span class={`font-mono text-[0.69rem] font-medium ${toneText[cat.tone]}`}>{cat.value}</span>
-            </p>
-            <span class="mt-1.5 block h-[5px] overflow-hidden rounded-full bg-[#FFFFFF10]">
-              <span
-                class={`hl-fill block h-full rounded-full ${toneBar[cat.tone]}`}
-                style={`width: ${cat.pct}%; --bd: ${i * 120}ms;`}
-              ></span>
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <div class="flex flex-wrap items-center justify-between gap-2">
-        <p class="font-mono text-[0.59rem] tracking-[0.1em] text-[#68779A]">{v.chartLabel}</p>
-        <p class="flex items-center gap-3.5 text-[0.66rem] text-[#8CA3C7]">
-          <span class="flex items-center gap-1.5"><span class="size-2 rounded-[3px] bg-[#FFFFFF1F]"></span>{v.legendPlanned}</span>
-          <span class="flex items-center gap-1.5"><span class="size-2 rounded-[3px] bg-[#2D7FF9]"></span>{v.legendActual}</span>
-        </p>
-      </div>
-
-      <div class="grid grid-cols-7 items-end gap-2" style="height: 7rem;">
-        {PLAN_BARS.map(([planned, actual], i) => (
-          <div class="flex h-full items-end justify-center gap-1">
-            <span class="hl-bar w-[11px] rounded-[4px] bg-[#FFFFFF1F] sm:w-[13px]" style={`height: ${planned}%; --bd: ${i * 70}ms;`}></span>
-            {actual !== null && (
-              <span class="hl-bar w-[11px] rounded-[4px] bg-[#2D7FF9] sm:w-[13px]" style={`height: ${actual}%; --bd: ${i * 70 + 40}ms;`}></span>
-            )}
-          </div>
-        ))}
-      </div>
-      <div class="grid grid-cols-7 gap-2 text-center font-mono text-[0.59rem] text-[#68779A]">
-        {v.days.map((d) => <span>{d}</span>)}
-      </div>
-
-      <ul class="flex flex-col gap-[7px]" data-stagger>
-        {v.variance.map((row) => (
-          <li class="flex items-center justify-between gap-3 rounded-[9px] bg-[#FFFFFF06] px-3.5 py-2.5">
-            <span class="text-[0.75rem] font-medium text-[#DCE4F2]">{row.name}</span>
-            <span class={`rounded-full px-2.5 py-[3px] font-mono text-[0.63rem] ${toneChip[row.tone]}`}>{row.delta}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Text -->
-    <div class="hl-reveal hl-reveal--right order-1 lg:order-2" style="--d: 120ms;">
-      <p class="font-mono text-[0.63rem] tracking-[0.11em] text-[#7AB8FF]">{c.tag}</p>
-      <h2 id="sc-planning-title" class="hl-display mt-4 text-[clamp(1.85rem,3.6vw,2.5rem)]">{c.title}</h2>
-      <p class="mt-5 text-[0.97rem] leading-[1.65] text-[#9AA8C4]">{c.body}</p>
-      <ul class="hl-checks mt-6" data-stagger>
-        {c.points.map((p) => (
-          <li><HomeIcon name="check-circle" size={15} class="text-[#2D7FF9]" />{p}</li>
-        ))}
-      </ul>
-      <p class="mt-7">
-        <a href={c.href} class="hl-more text-[0.88rem] text-[#7AB8FF]">{c.cta}<HomeIcon name="arrow-right" size={15} /></a>
-      </p>
-    </div>
+<ScFrame id="planification" labelledby="sc-planning-title" stamp={c.stamp}>
+  <div class="st-head">
+    <h2 id="sc-planning-title" class="st-h2">{c.title}</h2>
+    <p class="st-body">{c.body}</p>
   </div>
-</section>
+
+  <div class="st-split st-split--wide-right st-split--top">
+    <ScPoints points={c.points} cta={c.cta} href={c.href} />
+
+    <figure class="st-panel lp">
+      <div class="st-panel__bar">
+        <div class="lp__head">
+          <span class="lp__title">{v.week}</span>
+          <span class="st-small text-ink-3">{v.goal}</span>
+        </div>
+        <span class="st-tag st-tag--accent lp__left">{v.remaining}</span>
+      </div>
+
+      <div class="st-panel__body lp__body">
+        <div class="lp__group">
+          <span class="st-label">{v.budgetLabel}</span>
+          <ul class="lp__cats">
+            {v.categories.map((cat) => (
+              <li>
+                <span class="lp__cat">{cat.name}</span>
+                <span class="st-num lp__val">{cat.value}</span>
+                <span class="st-meter lp__meter" aria-hidden="true"><i style={`width: ${cat.pct}%;`}></i></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="lp__group">
+          <div class="lp__charthead">
+            <span class="st-label">{v.chartLabel}</span>
+            <span class="lp__legend">
+              <span><i class="lp__key lp__key--plan"></i>{v.legendPlanned}</span>
+              <span><i class="lp__key lp__key--act"></i>{v.legendActual}</span>
+            </span>
+          </div>
+          <div class="lp__chart" aria-hidden="true">
+            {PLAN_BARS.map(([planned, actual], i) => (
+              <div class="lp__day">
+                <span class="lp__plan" style={`height: ${planned}%;`}></span>
+                {actual !== null && <span class="lp__act" style={`height: ${actual}%;`}></span>}
+              </div>
+            ))}
+          </div>
+          <div class="lp__days st-num" aria-hidden="true">
+            {v.days.map((d) => <span>{d}</span>)}
+          </div>
+        </div>
+
+        <ul class="lp__var">
+          {v.variance.map((row) => (
+            <li>
+              <span class="lp__cat">{row.name}</span>
+              <span class={`st-chip ${chip[row.tone] ?? ''}`}>{row.delta}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </figure>
+  </div>
+
+  <figure class="lp__shot">
+    <img
+      class="st-shot"
+      src={c.shot.src}
+      alt={c.shot.alt}
+      width="2880"
+      height="1760"
+      loading="lazy"
+      decoding="async"
+    />
+    <figcaption class="st-label">{c.shot.caption}</figcaption>
+  </figure>
+</ScFrame>
+
+<style>
+  figure {
+    margin: 0;
+  }
+  .lp__head {
+    display: grid;
+    gap: 2px;
+  }
+  .lp__title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .lp__left {
+    margin-left: auto;
+  }
+  .lp__body {
+    display: grid;
+    gap: 24px;
+  }
+  .lp__group {
+    display: grid;
+    gap: 12px;
+  }
+  .lp__cats,
+  .lp__var {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+  }
+  .lp__cats li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .lp__meter {
+    grid-column: 1 / -1;
+  }
+  .lp__cat {
+    font-size: 14px;
+    color: var(--color-ink);
+  }
+  .lp__val {
+    font-size: 12.5px;
+    color: var(--color-ink-2);
+  }
+  .lp__charthead {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lp__legend {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--color-ink-3);
+  }
+  .lp__legend > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lp__key {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+  .lp__key--plan {
+    background: var(--color-navy-800);
+    border: 1px dashed var(--color-navy-300);
+  }
+  .lp__key--act {
+    background: var(--color-electric);
+  }
+  .lp__chart {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+    height: 128px;
+    align-items: end;
+    border-bottom: 1px solid var(--color-line-strong);
+  }
+  .lp__day {
+    position: relative;
+    height: 100%;
+  }
+  .lp__plan,
+  .lp__act {
+    position: absolute;
+    bottom: 0;
+    border-radius: 3px 3px 0 0;
+  }
+  .lp__plan {
+    inset-inline: 0;
+    background: var(--color-navy-850);
+    border: 1px dashed var(--color-navy-500);
+    border-bottom: 0;
+  }
+  .lp__act {
+    inset-inline: 22%;
+    background: var(--color-electric);
+  }
+  .lp__days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--color-ink-3);
+  }
+  .lp__var li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--color-line);
+  }
+  .lp__shot {
+    display: grid;
+    gap: 12px;
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+</style>

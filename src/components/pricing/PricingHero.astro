@@ -1,30 +1,44 @@
 ---
-import type { PricingContent } from '../../data/pricingContent';
+import type { Locale, PricingContent } from '../../data/pricingContent';
+import PricingTrial from './PricingTrial.astro';
 
 interface Props {
+  locale: Locale;
   hero: PricingContent['hero'];
+  trial: PricingContent['trial'];
+  cta: PricingContent['cta'];
 }
 
-const { hero: c } = Astro.props;
+const { locale, hero: c, trial, cta } = Astro.props;
 ---
 
-<section class="relative overflow-hidden bg-[#05070F] pt-28 pb-16 md:pt-36 md:pb-24" aria-labelledby="pricing-hero-title">
-  <div
-    class="hl-breathe pointer-events-none absolute inset-x-0 top-0 h-[420px] [background:radial-gradient(ellipse_50%_60%_at_50%_0%,rgba(45,127,249,0.16),transparent_70%)]"
-    aria-hidden="true"
-  >
-  </div>
+<section class="st-grid-bg pp-hero" aria-labelledby="pricing-hero-title">
+  <div class="st-wrap st-split st-split--wide-left">
+    <div class="pp-hero__copy">
+      <nav class="st-crumbs" aria-label="Breadcrumb">
+        <a href={`/${locale}/`}>STRIVN</a>
+        <span aria-current="page">{c.kicker}</span>
+      </nav>
+      <h1 id="pricing-hero-title" class="st-h1">{c.title}</h1>
+      <p class="st-lede">{c.sub}</p>
+    </div>
 
-  <div class="hl-wrap relative">
-    <p class="hl-index hl-reveal text-[#7AB8FF]">
-      <span class="hl-index__rule"></span>
-      {c.kicker}
-    </p>
-    <h1 id="pricing-hero-title" class="hl-display hl-reveal mt-6 max-w-[19ch] text-[clamp(2.3rem,5.4vw,4rem)]" style="--d: 60ms;">
-      {c.title}
-    </h1>
-    <p class="hl-reveal mt-6 max-w-[46rem] text-[1.05rem] leading-[1.65] text-[#AAB8D4]" style="--d: 140ms;">
-      {c.sub}
-    </p>
+    <PricingTrial locale={locale} trial={trial} cta={cta} />
   </div>
 </section>
+
+<style>
+  .pp-hero {
+    padding-block: clamp(56px, 8vw, 112px) clamp(56px, 7vw, 96px);
+  }
+
+  .pp-hero__copy {
+    display: grid;
+    gap: 24px;
+    align-content: start;
+  }
+
+  .pp-hero__copy .st-h1 {
+    max-width: 16ch;
+  }
+</style>

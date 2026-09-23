@@ -20,7 +20,7 @@ export const liveMatch: SubpageLocales = {
       title: 'Encodez le match pendant qu’il se joue.',
       sub: 'Le score, les temps de jeu et les cartons, mais aussi les faits que votre équipe compte, la chaîne de joueurs derrière chaque but, sa qualification, et des observations dessinées sur un vrai terrain. Tout fonctionne hors ligne.',
       bullets: [
-        'Votre vocabulaire de match : vos faits, vos rôles, vos axes',
+        'Votre vocabulaire de match : vos faits, vos rôles, vos axes',
         'Un tap côté Nous ouvre la grille des joueurs, un second attribue',
         'La chaîne s’ouvre d’elle-même après un but que vous marquez',
         'Croquis au doigt, horodaté à la minute de jeu',
@@ -34,8 +34,8 @@ export const liveMatch: SubpageLocales = {
     sections: [
       {
         kicker: 'LA BANDE DES FAITS',
-        title: 'Un seul bouton : il compte, et il attribue.',
-        body: 'Les faits de votre vocabulaire forment une bande au-dessus des stats rapides. Chaque tuile porte son libellé, puis le compte « Nous » et le compte « Adv. ».',
+        title: 'Un seul bouton : il compte, et il attribue.',
+        body: 'Les faits de votre vocabulaire forment une bande au-dessus des stats rapides. Chaque tuile porte son libellé, puis le compte « Nous » et le compte « Adv. ».',
         kind: 'columns',
         cols: [
           {
@@ -58,7 +58,7 @@ export const liveMatch: SubpageLocales = {
           {
             icon: 'ban',
             tone: 'orange',
-            text: 'Un fait remplace le compteur rapide du même geste : si votre vocabulaire contient « Tir cadré », la stat rapide « Tir cadré » disparaît de la bande. Un seul bouton par action.',
+            text: 'Un fait remplace le compteur rapide du même geste : si votre vocabulaire contient « Tir cadré », la stat rapide « Tir cadré » disparaît de la bande. Un seul bouton par action.',
           },
           {
             icon: 'sigma',
@@ -77,7 +77,7 @@ export const liveMatch: SubpageLocales = {
           {
             num: '01',
             title: 'Buteur',
-            desc: 'Déjà connu : vous venez de le taper. La chaîne démarre donc sur la première vraie question.',
+            desc: 'Déjà connu : vous venez de le taper. La chaîne démarre donc sur la première vraie question.',
           },
           {
             num: '02',
@@ -97,8 +97,8 @@ export const liveMatch: SubpageLocales = {
         ],
         note: {
           icon: 'corner-down-right',
-          label: '« Passer ce rôle » laisse un vide, et continue',
-          desc: 'Une chaîne à trous est une chaîne valide. Vous pouvez laisser un rôle vide dans l’instant. Un joueur peut d’ailleurs tenir deux rôles : le garde qui refuse buteur = passeur vaut seulement pour les deux emplacements du score.',
+          label: '« Passer ce rôle » laisse un vide, et continue',
+          desc: 'Une chaîne à trous est une chaîne valide. Vous pouvez laisser un rôle vide dans l’instant. Un joueur peut d’ailleurs tenir deux rôles : le garde qui refuse buteur = passeur vaut seulement pour les deux emplacements du score.',
         },
       },
       {
@@ -115,7 +115,7 @@ export const liveMatch: SubpageLocales = {
           },
           {
             name: 'Type d’action',
-            desc: 'Ce qui a produit l’occasion : jeu placé, transition, coup de pied arrêté.',
+            desc: 'Ce qui a produit l’occasion : jeu placé, transition, coup de pied arrêté.',
             chip: { label: 'Contre-attaque', tone: 'blue' },
           },
           {
@@ -132,7 +132,7 @@ export const liveMatch: SubpageLocales = {
         note: {
           icon: 'clock-3',
           label: 'La minute se calcule toute seule',
-          desc: 'L’application connaît déjà la minute du but : elle calcule « Timing » toute seule. La chaîne du direct porte sur un but que vous marquez ; les buts encaissés se renseignent après le match, au calme.',
+          desc: 'L’application connaît déjà la minute du but : elle calcule « Timing » toute seule. La chaîne du direct porte sur un but que vous marquez ; les buts encaissés se renseignent après le match, au calme.',
         },
       },
       {
@@ -160,13 +160,13 @@ export const liveMatch: SubpageLocales = {
           {
             icon: 'pen-line',
             title: 'Schéma',
-            desc: 'Vos joueurs à gauche, les adverses à droite : glissez-les sur le terrain, tracez flèches, zones et texte.',
+            desc: 'Vos joueurs à gauche, les adverses à droite : glissez-les sur le terrain, tracez flèches, zones et texte.',
           },
         ],
       },
       {
         kicker: 'À LA FIN DU MATCH',
-        title: '« Fin du match » bascule tout vers les statistiques.',
+        title: '« Fin du match » bascule tout vers les statistiques.',
         kind: 'rows',
         rows: [
           {
@@ -175,7 +175,7 @@ export const liveMatch: SubpageLocales = {
           },
           {
             name: 'Les faits attribués',
-            desc: 'Ils deviennent des statistiques joueur ; les autres, des statistiques d’équipe.',
+            desc: 'Ils deviennent des statistiques joueur ; les autres, des statistiques d’équipe.',
           },
           {
             name: 'Les buts encodés',

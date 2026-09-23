@@ -1,4 +1,7 @@
 ---
+/* Sub-page shell (v2): shared header, main, shared footer. The header is
+   sticky in the normal flow, so pages need no top padding for it, and
+   nothing is hidden waiting for a scroll observer. */
 import BaseLayout from './BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -16,6 +19,9 @@ interface Props {
   jsonLdExtra?: Record<string, unknown>[];
   /** Counterpart paths for the language switcher (defaults to the homepages). */
   switchHrefs?: { en: string; fr: string; nl?: string; de?: string; pt?: string; es?: string };
+  /** Open Graph image path, when the page has its own. */
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -26,6 +32,8 @@ const {
   alternates = [],
   jsonLdExtra = [],
   switchHrefs,
+  ogImage,
+  ogImageAlt,
 } = Astro.props;
 
 const c = landingContent[locale];
@@ -39,6 +47,8 @@ const skipLabel = SKIP_LABEL[locale];
   canonicalPath={canonicalPath}
   alternates={alternates}
   jsonLdExtra={jsonLdExtra}
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
 >
   <a href="#s-main" class="s-skip">{skipLabel}</a>
 
@@ -49,32 +59,4 @@ const skipLabel = SKIP_LABEL[locale];
   </main>
 
   <SiteFooter locale={locale} footer={c.footer} />
-
-  <script is:inline>
-    // Before first paint: flag JS availability so [data-reveal] elements
-    // start hidden instead of flashing in. Mirrors the homepage pattern.
-    document.documentElement.classList.add('js-anim');
-  </script>
-
-  <script>
-    // ── Reveal-once cross-fade (Split Studio) ──
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const revealTargets = document.querySelectorAll('[data-reveal]');
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      revealTargets.forEach((el) => el.classList.add('is-in'));
-    } else {
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-in');
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { rootMargin: '0px 0px -8% 0px' },
-      );
-      revealTargets.forEach((el) => revealObserver.observe(el));
-    }
-  </script>
 </BaseLayout>

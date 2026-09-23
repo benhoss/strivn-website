@@ -2,14 +2,14 @@
 /**
  * "MAS campaign" capture: entry progress over the result grid.
  *
- * The last row carries no value on purpose — the page's argument is that a
+ * The last row carries no value on purpose: the page's argument is that a
  * missing result stays visibly missing rather than being guessed at.
  */
 import type { Locale } from '../../../data/landingContent';
 import {
   captureText,
   CAMPAIGN_ROWS,
-  CAMPAIGN_ZONE_DOTS,
+  CAMPAIGN_ZONE_TONES,
   CAMPAIGN_PROGRESS,
 } from '../../../data/subpages/captures';
 import CaptureFrame from './CaptureFrame.astro';
@@ -24,47 +24,30 @@ const pct = Math.round((CAMPAIGN_PROGRESS.done / CAMPAIGN_PROGRESS.total) * 100)
 const done = `${CAMPAIGN_PROGRESS.done} / ${CAMPAIGN_PROGRESS.total}`;
 ---
 
-<CaptureFrame gap="gap-4">
-  <div class="flex items-start justify-between gap-4">
-    <div class="min-w-0">
-      <p class="text-[0.81rem] font-semibold text-[#F8FAFC]">{t.title}</p>
-      <p class="mt-0.5 text-[0.69rem] text-[#68779A]">{t.sub}</p>
+<CaptureFrame title={t.title} meta={t.unit}>
+  <p class="cap-sub">{t.sub}</p>
+
+  <div class="grid gap-2">
+    <div class="flex items-baseline justify-between gap-4">
+      <p class="cap-k">{t.progress}</p>
+      <p class="cap-num m-0 text-ink">{done}</p>
     </div>
-    <p class="shrink-0 font-mono text-[0.63rem] text-[#68779A]">{t.unit}</p>
+    <div class="st-meter" aria-hidden="true"><i style={`width: ${pct}%;`}></i></div>
   </div>
 
-  <div>
-    <div class="flex items-center justify-between gap-4">
-      <p class="font-mono text-[0.53rem] tracking-[0.08em] text-[#68779A]">{t.progress}</p>
-      <p class="hl-display text-[0.94rem] tracking-[-0.02em]" data-count>{done}</p>
-    </div>
-    <div class="mt-2.5 h-1.5 overflow-hidden rounded-full bg-[#FFFFFF0F]">
-      <span class="hl-fill block h-full rounded-full bg-[#2D7FF9]" style={`width: ${pct}%; --bd: 100ms;`} aria-hidden="true"></span>
-    </div>
-  </div>
-
-  <ul class="overflow-hidden rounded-[11px] bg-[#FFFFFF05] outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
+  <ul class="cap-rows">
     {
-      CAMPAIGN_ROWS.map((r, i) => (
-        <li
-          class={`flex items-center gap-3 px-3.5 py-3 ${i < CAMPAIGN_ROWS.length - 1 ? 'border-b border-[#FFFFFF14]' : ''}`}
-        >
-          <span class="min-w-0 flex-1">
-            <span class="block truncate text-[0.78rem] font-medium text-[#DCE4F2]">{r.name}</span>
-            <span class="block truncate text-[0.66rem] text-[#68779A]">{t.positions[r.pos]}</span>
+      CAMPAIGN_ROWS.map((r) => (
+        <li>
+          <span class="cap-grow">
+            <span class="cap-name">{r.name}</span>
+            <span class="cap-sub">{t.positions[r.pos]}</span>
           </span>
-          <span
-            class={`shrink-0 font-mono text-[0.81rem] ${r.value ? 'text-[#DCE4F2]' : 'text-[#68779A]'}`}
-          >
-            {r.value ?? '—'}
+          <span class:list={['cap-num shrink-0', r.value ? 'text-ink' : 'text-ink-4']}>
+            {r.value ?? '·'}
           </span>
-          <span class="flex w-[118px] shrink-0 items-center justify-center gap-1.5 rounded-full bg-[#FFFFFF0A] px-2 py-1 outline-1 outline-[#FFFFFF14] -outline-offset-[0.5px]">
-            <span
-              class="size-[5px] shrink-0 rounded-full"
-              style={`background:${CAMPAIGN_ZONE_DOTS[r.zone]};`}
-              aria-hidden="true"
-            />
-            <span class="font-mono text-[0.56rem] whitespace-nowrap" style={`color:${CAMPAIGN_ZONE_DOTS[r.zone]};`}>
+          <span class="campaign-zone">
+            <span class={`st-chip st-chip--${CAMPAIGN_ZONE_TONES[r.zone]}`}>
               {t.zones[r.zone]}
             </span>
           </span>
@@ -73,5 +56,16 @@ const done = `${CAMPAIGN_PROGRESS.done} / ${CAMPAIGN_PROGRESS.total}`;
     }
   </ul>
 
-  <p class="text-[0.72rem] leading-[1.45] text-[#68779A]">{t.note}</p>
+  <Fragment slot="foot">
+    <p class="text-ink-3">{t.note}</p>
+  </Fragment>
 </CaptureFrame>
+
+<style>
+  .campaign-zone {
+    flex: none;
+    display: flex;
+    justify-content: flex-end;
+    width: 112px;
+  }
+</style>

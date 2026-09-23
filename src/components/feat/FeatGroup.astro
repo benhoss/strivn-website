@@ -1,0 +1,76 @@
+---
+/**
+ * One moment of the week on the features index: rail stamp (day, time, group
+ * name), headline and body, then the module list beside the product screen
+ * that proves it. Slots: `list` (modules), `proof` (panel), `after` (a note
+ * under both).
+ */
+interface Props {
+  id: string;
+  group: { day: string; label: string; title: string; body: string };
+  time: string;
+  /** Give the proof column more room (two panels side by side). */
+  wide?: boolean;
+}
+
+const { id, group, time, wide = false } = Astro.props;
+const titleId = `fx-${id}-title`;
+---
+
+<section id={id} class="st-sec" aria-labelledby={titleId}>
+  <div class="st-wrap st-frame">
+    <p class="st-stamp">
+      <span class="st-stamp__a">{group.day}</span>
+      <span class="st-stamp__b">{time}</span>
+      <span class="st-stamp__c">{group.label}</span>
+    </p>
+
+    <div class="min-w-0">
+      <div class="st-head">
+        <h2 id={titleId} class="st-h2 st-h2--sm">{group.title}</h2>
+        <p class="st-body">{group.body}</p>
+      </div>
+
+      <div class:list={['fx-grid', { 'fx-grid--wide': wide }]}>
+        <div class="fx-grid__list">
+          <slot name="list" />
+        </div>
+        <div class="fx-grid__proof">
+          <slot name="proof" />
+        </div>
+      </div>
+
+      {Astro.slots.has('after') && (
+        <div class="mt-10">
+          <slot name="after" />
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fx-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(28px, 4vw, 56px);
+    align-items: start;
+  }
+  .fx-grid--wide {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  }
+  .fx-grid__list,
+  .fx-grid__proof {
+    min-width: 0;
+  }
+  /* The list is the point of the page: it comes first when the columns fold. */
+  @media (max-width: 1080px) {
+    .fx-grid,
+    .fx-grid--wide {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .fx-grid__proof {
+      max-width: 680px;
+    }
+  }
+</style>

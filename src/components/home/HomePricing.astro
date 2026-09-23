@@ -1,80 +1,193 @@
 ---
-import type { HomeContent, Locale } from '../../data/homeContent';
-import HomeIcon from './HomeIcon.astro';
+import { CONTACT_EMAIL, type HomeContent, type Locale } from '../../data/homeContent';
 import { pricingContent } from '../../data/pricingContent';
 import { planPrice } from '../../lib/planPrice';
+import { appStartUrl } from '../../lib/appUrl';
 
 interface Props {
   locale: Locale;
-  pricing: HomeContent['pricing'];
+  c: HomeContent['pricing'];
 }
 
-const { locale, pricing: c } = Astro.props;
+const { locale, c } = Astro.props;
 
 /**
  * The tiers themselves come from `pricingContent`, never from `homeContent`:
- * a price that appears in two files eventually disagrees with itself, and this
- * section spent months claiming three plans after the architecture moved to
- * four. The homepage owns the heading; the pricing page owns the pricing.
+ * a price that appears in two files eventually disagrees with itself. The
+ * homepage owns the band around them; the pricing page owns the pricing.
+ * Amounts come out of `planPrice()`, from `PLAN_PRICES`.
  *
- * `id="tarifs"` outlives the links that pointed at it — campaign emails already
- * in inboxes still carry the fragment, and a sent email cannot be rewritten.
+ * `id="tarifs"` outlives the links that pointed at it: campaign emails
+ * already in inboxes still carry the fragment.
  */
 const pricing = pricingContent[locale];
-const plans = pricing.plans.items;
-const teaserCta = pricing.teaserCta;
+const tiers = pricing.plans.items.map((plan) => {
+  const price = planPrice(plan.code, locale, pricing.plans, plan.quotePrice);
+  const href =
+    plan.kind === 'contact'
+      ? `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`STRIVN ${plan.name}`)}`
+      : appStartUrl(locale);
+  const external = plan.kind !== 'contact';
+  return { plan, price, href, external, cta: plan.featured ? c.featuredCta : plan.cta };
+});
 ---
 
-<section id="tarifs" class="scroll-mt-24 bg-[#05070F] py-20 md:py-28" aria-labelledby="pricing-title">
-  <div class="hl-wrap">
-    <div class="hl-reveal mx-auto max-w-[46rem] text-center">
-      <p class="hl-index justify-center text-[#7AB8FF]">
-        {c.index}
-        <span class="hl-index__rule"></span>
-        <span class="text-[#68779A]">{c.kicker}</span>
-      </p>
-      <h2 id="pricing-title" class="hl-display mt-5 text-[clamp(2rem,4.4vw,3.2rem)]">{c.title}</h2>
+<section class="st-sec home-pricing" id="tarifs" aria-labelledby="pricing-title">
+  <div class="st-wrap">
+    <div class="st-head">
+      <span class="st-label">{c.label}</span>
+      <h2 id="pricing-title" class="st-h2">{c.title}</h2>
+      <p class="st-body">{c.body}</p>
     </div>
 
-    {/* One rail rather than four cards: the tiers are a ladder, and the page
-        they lead to is where a reader compares them properly. */}
-    <div
-      class="hl-reveal mt-12 grid overflow-hidden rounded-[20px] bg-[#0B1020] outline-1 outline-[#FFFFFF0F] -outline-offset-[0.5px] md:grid-cols-4"
-      style="--d: 80ms;"
-    >
-      {plans.map((plan, i) => {
-        const price = planPrice(plan.code, locale, pricing.plans, plan.quotePrice);
-        return (
-        <div
-          class={`relative p-6 ${plan.featured ? 'bg-gradient-to-b from-[#101B33] to-[#0B1020]' : ''} ${
-            i > 0 ? 'border-t border-[#FFFFFF0F] md:border-t-0 md:border-l' : ''
-          }`}
-        >
-          {plan.featured && <span class="absolute inset-x-0 top-0 h-px bg-[#2D7FF9]" aria-hidden="true"></span>}
-          <p class={`font-mono text-[0.62rem] font-semibold tracking-[0.1em] uppercase ${plan.featured ? 'text-[#7AB8FF]' : 'text-[#68779A]'}`}>
-            {plan.name}
-          </p>
-          {/* The teaser shows the headline figure only. The struck rate and
-              the yearly total belong on the page that compares tiers. */}
-          <p class="mt-3 flex items-baseline gap-1.5">
-            <span class="hl-display text-[1.9rem] leading-none text-[#F8FAFC]">{price.headline}</span>
-            {price.period && <span class="text-[0.78rem] text-[#68779A]">{price.period}</span>}
-          </p>
-          <p class="mt-3 text-[0.9rem] leading-[1.5] text-[#AAB8D4]">{plan.promise}</p>
-        </div>
-        );
-      })}
+    <div class="home-tiers">
+      {tiers.map(({ plan, price, href, external, cta }) => (
+        <article class:list={['home-tier', plan.featured && 'is-featured']} aria-labelledby={`tier-${plan.code}`}>
+          <div class="home-tier__name">
+            <h3 id={`tier-${plan.code}`}>{plan.name}</h3>
+            <span class:list={['st-tag', plan.featured && 'st-tag--accent']}>{plan.badge}</span>
+          </div>
+          <div class="home-tier__price">
+            <span class="p">{price.headline}</span>
+            {price.struck && <s>{price.struck}</s>}
+            {price.period && <span class="per">{price.period}</span>}
+          </div>
+          <p class="home-tier__billed">{[price.billed, price.bonus].filter(Boolean).join(' · ')}</p>
+          <div class="home-tier__copy">
+            <p class="promise">{plan.promise}</p>
+            <p class="qual">{plan.qualifier}</p>
+          </div>
+          <a
+            class:list={['st-btn', 'st-btn--sm', plan.featured ? 'st-btn--primary' : 'st-btn--ghost']}
+            href={href}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noopener' : undefined}
+          >
+            {cta}
+          </a>
+        </article>
+      ))}
     </div>
 
-    <div class="hl-reveal mt-10 flex flex-col items-center gap-5 text-center" style="--d: 160ms;">
-      <p class="max-w-[42rem] text-[0.9rem] leading-[1.6] text-[#8CA3C7]">{c.note}</p>
-      <a
-        href={`/${locale}/pricing/`}
-        class="hl-more hl-btn inline-flex items-center gap-2 rounded-full bg-[#2D7FF9] px-6 py-3.5 text-[0.95rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
-      >
-        {teaserCta}
-        <HomeIcon name="arrow-right" size={15} />
-      </a>
+    <div class="home-tiers__line">
+      <span>{c.line}</span>
+      <a class="st-link" href={`/${locale}/pricing/`}>{c.compare}</a>
     </div>
   </div>
 </section>
+
+<style>
+  .home-tiers {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--color-line-strong);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .home-tier {
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
+    gap: 14px;
+    align-content: start;
+    padding: 24px;
+    min-width: 0;
+  }
+  .home-tier + .home-tier {
+    border-left: 1px solid var(--color-line);
+  }
+  .home-tier.is-featured {
+    background: var(--color-navy-850);
+  }
+  .home-tier__name {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .home-tier__name h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    font-variation-settings: 'wdth' 85;
+    color: var(--color-ink);
+  }
+  .home-tier__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+  }
+  .home-tier__price .p {
+    font-weight: 600;
+    font-variation-settings: 'wdth' 78;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink);
+  }
+  .home-tier__price s {
+    font-size: 14px;
+    color: var(--color-ink-4);
+  }
+  .home-tier__price .per {
+    font-size: 13.5px;
+    color: var(--color-ink-3);
+  }
+  .home-tier__billed {
+    margin: -8px 0 0;
+    min-height: 1.4em;
+    font-size: 12.5px;
+    color: var(--color-ink-4);
+  }
+  .home-tier__copy {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+  }
+  .home-tier__copy p {
+    margin: 0;
+  }
+  .home-tier .promise {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .home-tier .qual {
+    font-size: 14px;
+    color: var(--color-ink-3);
+  }
+  .home-tier .st-btn {
+    white-space: normal;
+    text-align: center;
+  }
+  .home-tiers__line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--color-ink-3);
+  }
+  @media (max-width: 1080px) {
+    .home-tiers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .home-tier:nth-child(3) {
+      border-left: 0;
+    }
+    .home-tier:nth-child(n + 3) {
+      border-top: 1px solid var(--color-line);
+    }
+  }
+  @media (max-width: 560px) {
+    .home-tiers {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .home-tier + .home-tier {
+      border-left: 0;
+      border-top: 1px solid var(--color-line);
+    }
+  }
+</style>

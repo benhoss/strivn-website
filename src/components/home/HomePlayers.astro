@@ -1,0 +1,252 @@
+---
+import HomeWeek from './HomeWeek.astro';
+import { EVENING_RPE, WHOOP_READING, type HomeContent } from '../../data/homeContent';
+import { PARTNERS } from '../../data/partners';
+import { pngSize } from '../../lib/pngSize';
+
+interface Props {
+  c: HomeContent['playerApp'];
+  pct: string;
+}
+
+const { c, pct } = Astro.props;
+const m = c.phone;
+const e = c.evening;
+
+const partners = PARTNERS.map((p) => {
+  const src = `partners/on-white/${p.slug}.png`;
+  const size = pngSize(src);
+  return { ...p, src: `/${src}`, width: size?.width, height: size?.height };
+});
+---
+
+<HomeWeek id="players" stamp={c.stamp} links={c.links} labelledby="players-title">
+  <div class="home-players">
+    <div class="home-players__copy">
+      <div class="st-head home-players__head">
+        <h2 id="players-title" class="st-h2">{c.title}</h2>
+        <p class="st-body">{c.body}</p>
+      </div>
+      <ul class="st-facts home-players__facts">
+        {c.facts.map((f) => <li><b>{f.n}</b>{f.body}</li>)}
+      </ul>
+      <div class="home-partners" role="group" aria-label={c.partnersAria}>
+        {partners.map((p) => (
+          <span class="st-tile home-partners__tile">
+            <img src={p.src} alt={p.name} width={p.width} height={p.height} loading="lazy" decoding="async" />
+          </span>
+        ))}
+        <small>{c.partnersNote}</small>
+      </div>
+    </div>
+
+    <div class="home-phones" aria-hidden="true">
+      <div class="home-phone">
+        <div class="home-phone__screen">
+          <div class="home-phone__status"><span>{m.time}</span><span>STRIVN Player</span></div>
+          <p class="home-phone__h">{m.greeting}</p>
+          <p class="home-phone__sub">{m.team}</p>
+          <div class="home-pcard">
+            <div class="home-pcard__t"><span>{m.wellness.title}</span><span class="st-label">{m.wellness.badge}</span></div>
+            {m.wellness.rows.map((r) => (
+              <div class="home-scale">
+                <span>{r.label}</span>
+                {[1, 2, 3, 4, 5].map((n) => <i class:list={[n === r.value && 'is-on']}></i>)}
+              </div>
+            ))}
+            <div class="home-whoop">
+              WHOOP · {c.whoop.recovery} <b>{WHOOP_READING.recovery}{pct}</b> · {c.whoop.hrv} <b>{WHOOP_READING.hrv} ms</b>
+            </div>
+          </div>
+          <div class="home-send">{m.wellness.submit}</div>
+        </div>
+      </div>
+      <div class="home-phone home-phone--evening">
+        <div class="home-phone__screen">
+          <div class="home-phone__status"><span>{e.time}</span><span>STRIVN Player</span></div>
+          <p class="home-phone__h">{e.title}</p>
+          <p class="home-phone__sub">{e.sub}</p>
+          <div class="home-pcard">
+            <div class="home-pcard__t"><span>{e.intensity}</span><span class="home-pcard__v">{EVENING_RPE}</span></div>
+            <div class="home-scale home-scale--rpe">
+              {Array.from({ length: 10 }, (_, n) => <i class:list={[n < EVENING_RPE && 'is-on']}></i>)}
+            </div>
+          </div>
+          <div class="home-pcard">
+            <div class="home-pcard__t"><span>{e.workoutTitle}</span></div>
+            <span class="home-pcard__meta">{e.workoutBody}</span>
+          </div>
+          <div class="home-send">{m.wellness.submit}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</HomeWeek>
+
+<style>
+  .home-players {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(28px, 4vw, 48px);
+    align-items: center;
+  }
+  .home-players__copy {
+    min-width: 0;
+  }
+  .home-players__head {
+    margin-bottom: 0;
+  }
+  .home-players__facts {
+    margin-top: 28px;
+  }
+  .home-partners {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .home-partners__tile {
+    height: 36px;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+  .home-partners__tile img {
+    height: 18px;
+    width: auto;
+  }
+  .home-partners small {
+    margin-left: 6px;
+    font-size: 12px;
+    color: var(--color-ink-4);
+  }
+
+  /* ── The two phones ── */
+  .home-phones {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    min-width: 0;
+  }
+  .home-phone {
+    width: 260px;
+    max-width: 100%;
+    flex: 0 1 260px;
+    padding: 10px;
+    border-radius: 34px;
+    background: var(--color-void-deep);
+    border: 1px solid var(--color-line-strong);
+    box-shadow: var(--shadow-float-lg);
+  }
+  .home-phone--evening {
+    margin-top: 48px;
+  }
+  .home-phone__screen {
+    display: grid;
+    gap: 14px;
+    padding: 18px 16px 20px;
+    border-radius: 26px;
+    background: var(--color-navy-900);
+  }
+  .home-phone__status {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-ink-3);
+  }
+  .home-phone__h {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    font-variation-settings: 'wdth' 85;
+    line-height: 1.15;
+    color: var(--color-ink);
+  }
+  .home-phone__sub {
+    margin: -10px 0 0;
+    font-size: 12.5px;
+    color: var(--color-ink-3);
+  }
+  .home-pcard {
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+    background: var(--color-navy-850);
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--color-ink);
+  }
+  .home-pcard__t {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+  .home-pcard__v {
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-variant-numeric: tabular-nums;
+  }
+  .home-pcard__meta {
+    font-size: 12.5px;
+    color: var(--color-ink-3);
+  }
+  .home-scale {
+    display: grid;
+    grid-template-columns: 76px repeat(5, minmax(0, 1fr));
+    gap: 4px;
+    align-items: center;
+    font-size: 12px;
+    color: var(--color-ink-2);
+  }
+  .home-scale span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .home-scale--rpe {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+  }
+  .home-scale i {
+    height: 22px;
+    border-radius: 5px;
+    background: var(--color-navy-800);
+  }
+  .home-scale i.is-on {
+    background: var(--color-electric);
+  }
+  .home-whoop {
+    padding-top: 8px;
+    border-top: 1px solid var(--color-line);
+    font-size: 11.5px;
+    color: var(--color-ink-3);
+  }
+  .home-whoop b {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--color-ready);
+  }
+  .home-send {
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--color-electric);
+    color: var(--color-ink);
+    text-align: center;
+    font-weight: 500;
+    font-size: 13.5px;
+  }
+  @media (max-width: 1080px) {
+    .home-players {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .home-phone--evening {
+      display: none;
+    }
+  }
+</style>

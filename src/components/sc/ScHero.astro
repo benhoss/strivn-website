@@ -10,46 +10,68 @@ interface Props {
 }
 
 const { locale, hero } = Astro.props;
-
 ---
 
-<section
-  class="relative overflow-hidden bg-[#05070F] [background-image:radial-gradient(ellipse_65%_55%_at_25%_0%,rgba(45,127,249,0.24),transparent_72%)]"
-  aria-labelledby="sc-hero-title"
->
-  <!-- Ambient layer: a single slow-drifting glow so the hero is never wholly
-       static. Decorative and behind everything; content sits above it. -->
-  <span
-    class="hl-drift pointer-events-none absolute -top-40 left-[8%] size-[42rem] rounded-full [background:radial-gradient(circle,rgba(45,127,249,0.12),transparent_65%)]"
-    aria-hidden="true"></span>
-
-  <div class="hl-wrap relative grid items-center gap-14 pt-24 pb-20 md:pt-28 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-16">
-    <!-- Copy -->
-    <div class="hl-reveal">
-      <p class="hl-kicker">{hero.kicker}</p>
-      <h1 id="sc-hero-title" class="hl-display mt-5 text-[clamp(2.4rem,6vw,3.9rem)]">{hero.title}</h1>
-      <p class="mt-6 max-w-[34rem] text-[1rem] leading-[1.65] text-[#9AA8C4]">{hero.sub}</p>
-
-      <div class="mt-8 flex flex-wrap items-center gap-3">
-        <a
-          href={appStartUrl(locale)}
-          target="_blank"
-          rel="noopener"
-          class="hl-btn inline-flex items-center gap-2 rounded-full bg-[#2D7FF9] px-[26px] py-[15px] text-[0.95rem] font-semibold text-white [box-shadow:0px_10px_36px_-6px_#2D7FF966] hover:bg-[#4F94FB]"
-        >
-          {hero.primaryCta}
-          <HomeIcon name="arrow-right" size={16} />
-        </a>
-        <a
-          href="#quotidien"
-          class="hl-btn inline-flex items-center rounded-full bg-[#FFFFFF0A] px-6 py-[15px] text-[0.95rem] font-medium text-[#F8FAFC] outline-1 outline-[#FFFFFF29] -outline-offset-[0.5px] hover:bg-[#FFFFFF14]"
-        >
-          {hero.secondaryCta}
-        </a>
+<section class="sc-hero st-grid-bg" aria-labelledby="sc-hero-title">
+  <div class="st-wrap">
+    <div class="sc-hero__top">
+      <div class="sc-hero__title">
+        <p class="st-label st-eyebrow">{hero.kicker}</p>
+        <h1 id="sc-hero-title" class="st-h1">{hero.title}</h1>
+      </div>
+      <div class="sc-hero__side">
+        <p class="st-lede">{hero.sub}</p>
+        <div class="st-ctas">
+          <a class="st-btn st-btn--primary" href={appStartUrl(locale)} target="_blank" rel="noopener">
+            {hero.primaryCta}
+            <HomeIcon name="arrow-right" size={16} />
+          </a>
+          <a class="st-btn st-btn--ghost" href={hero.secondaryHref}>{hero.secondaryCta}</a>
+        </div>
+        <p class="st-fine">
+          {hero.fine.map((f) => <span>{f}</span>)}
+        </p>
       </div>
     </div>
 
-    <!-- Readiness board -->
-    <ReadinessBoard board={hero.board} class="hl-reveal hl-reveal--card" style="--d: 160ms;" />
+    <ReadinessBoard board={hero.board} why class="sc-hero__board" />
   </div>
 </section>
+
+<style>
+  .sc-hero {
+    padding-block: clamp(48px, 7vw, 96px) clamp(64px, 8vw, 112px);
+    overflow: hidden;
+  }
+  .sc-hero__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: end;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+  .sc-hero__title {
+    display: grid;
+    gap: 24px;
+  }
+  .sc-hero__title .st-h1 {
+    max-width: 16ch;
+  }
+  .sc-hero__side {
+    display: grid;
+    gap: 24px;
+    padding-bottom: 6px;
+  }
+  .st-fine {
+    margin: 0;
+  }
+  @media (max-width: 1000px) {
+    .sc-hero__top {
+      grid-template-columns: minmax(0, 1fr);
+      align-items: start;
+    }
+    .sc-hero__title .st-h1 {
+      max-width: 18ch;
+    }
+  }
+</style>

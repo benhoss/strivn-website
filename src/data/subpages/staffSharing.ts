@@ -10,12 +10,12 @@ export const staffSharing: SubpageLocales = {
     meta: {
       title: 'Staff & partage | STRIVN',
       description:
-        'Coach principal, adjoints, staff médical : chacun accède à ce qui le concerne. Et ce qui sort de l’équipe sort par un lien que vous coupez en un clic.',
+        'Coach principal, adjoints, staff médical : chacun accède à ce qui le concerne. Et ce qui sort de l’équipe sort par un lien que vous coupez en un clic.',
     },
     hero: {
       kicker: 'STAFF & PARTAGE',
       title: 'Donnez au staff une même lecture, par périmètre.',
-      sub: 'Coach principal, adjoints, staff médical : chacun accède à ce qui le concerne. Et ce qui sort de l’équipe sort par un lien que vous gardez sous contrôle : révocable, traçable, sans compte à créer en face.',
+      sub: 'Coach principal, adjoints, staff médical : chacun accède à ce qui le concerne. Et ce qui sort de l’équipe sort par un lien que vous gardez sous contrôle : révocable, traçable, sans compte à créer en face.',
       ctas: {
         primary: 'Commencer gratuitement',
         secondary: { label: 'Voir le dossier staff', href: '/fr/features/staff-brief/' },
@@ -52,7 +52,7 @@ export const staffSharing: SubpageLocales = {
           {
             icon: 'external-link',
             title: 'Lien public, sans compte',
-            desc: 'Un exercice partagé s’ouvre sur une page unique : média, métriques clés, description. Le destinataire n’a rien à créer.',
+            desc: 'Un exercice partagé s’ouvre sur une page unique : média, métriques clés, description. Le destinataire n’a rien à créer.',
           },
           {
             icon: 'ban',
@@ -72,12 +72,12 @@ export const staffSharing: SubpageLocales = {
           {
             icon: 'baby',
             title: 'Portail parent',
-            desc: 'Sur une équipe « enfants », le parent reçoit un lien personnel, confirme son consentement, et suit son enfant, et lui seul.',
+            desc: 'Sur une équipe « enfants », le parent reçoit un lien personnel, confirme son consentement, et suit son enfant, et lui seul.',
           },
           {
             icon: 'share-2',
             title: 'Export à tout moment',
-            desc: 'Vos données restent les vôtres : export CSV disponible sans condition, sans demande à formuler.',
+            desc: 'Vos données restent les vôtres : export CSV disponible sans condition, sans demande à formuler.',
           },
         ],
       },
