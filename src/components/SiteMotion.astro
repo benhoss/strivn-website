@@ -1,25 +1,261 @@
 ---
 /**
- * Shared motion runtime for the marketing pages.
+ * Motion runtime, loaded once by BaseLayout on every page.
+ * Styles: src/styles/motion.css (read its header for the contract).
  *
- * Since the 2026-09 redesign every page is legible at rest: nothing waits at
- * opacity 0 for an observer, and no figure is rewound to zero to count back
- * up. Screenshots, link previews and a reader who skims all get the real page.
+ * What it does, in order:
+ *  1. Product visuals inside a panel compute when the panel enters the
+ *     viewport: fills grow, bars rise, rows read in, verdict chips land,
+ *     figures count up, a proposal flashes once, the assistant types.
+ *  2. Blocks that are below the fold at load reveal as they scroll in, lists
+ *     cascade. Blocks already on screen are never hidden.
+ *  3. `[data-st-inview]` gets `.is-inview` while on screen (components use it
+ *     to start or pause their own loop, like the homepage hero scan).
  *
- * What is left is one progressive enhancement: `[data-st-inview]` gets
- * `.is-inview` while it is on screen, for components that want to *start* an
- * animation (a scan, a pulse) only when someone is looking. The resting state
- * must already be complete without it.
+ * Components opt out with `[data-st-manual]`, and opt in beyond the
+ * automatic selectors with `data-st-compute` (a container that computes),
+ * `data-st-bars` (SVG group whose rects rise), `data-st-count`,
+ * `data-st-type`, `data-st-flash`, `data-st-reveal`, `data-st-stagger`.
  */
 ---
 
+<script is:inline>
+  // Before first paint, so armed visuals never flash in their final state.
+  // A watchdog drops the class if the runtime below never boots.
+  (function () {
+    var d = document.documentElement;
+    if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    d.classList.add('st-motion');
+    setTimeout(function () {
+      if (!window.__stMotion) d.classList.remove('st-motion');
+    }, 3000);
+  })();
+</script>
+
 <script>
-  const els = document.querySelectorAll<HTMLElement>('[data-st-inview]');
-  if (els.length && 'IntersectionObserver' in window) {
+  type Group = { els: HTMLElement[]; typed: HTMLElement[]; counters: HTMLElement[] };
+
+  const root = document.documentElement;
+  const motion = root.classList.contains('st-motion') && 'IntersectionObserver' in window;
+
+  // ── In-view flag (always on: components rely on it to pause loops) ──
+  const inview = document.querySelectorAll<HTMLElement>('[data-st-inview]');
+  if ('IntersectionObserver' in window && inview.length) {
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.target.classList.toggle('is-inview', e.isIntersecting)),
       { rootMargin: '0px 0px -10% 0px' },
     );
-    els.forEach((el) => io.observe(el));
+    inview.forEach((el) => io.observe(el));
+  }
+
+  if (motion) {
+    const main = document.querySelector('main') ?? document.body;
+    const manual = (el: Element) => Boolean(el.closest('[data-st-manual]'));
+    const all = <T extends Element = HTMLElement>(sel: string, scope: ParentNode = main) =>
+      [...scope.querySelectorAll<T & Element>(sel)].filter((el) => !manual(el)) as unknown as T[];
+
+    // ════════ 1 · Compute groups ════════
+    const PANEL = '.st-panel, .st-block, .st-paper, [data-st-compute]';
+    const groups = new Map<HTMLElement, Group>();
+    const group = (el: Element): Group | null => {
+      const box = el.closest<HTMLElement>(PANEL);
+      if (!box) return null;
+      let g = groups.get(box);
+      if (!g) groups.set(box, (g = { els: [], typed: [], counters: [] }));
+      return g;
+    };
+    const arm = (sel: string, cls: string, base: number, step: number, cap = 1200) => {
+      const seen = new Map<Group, number>();
+      all(sel).forEach((el) => {
+        const g = group(el);
+        if (!g || el.classList.contains(cls)) return;
+        const i = seen.get(g) ?? 0;
+        seen.set(g, i + 1);
+        el.classList.add(cls);
+        el.style.setProperty('--st-d', `${Math.min(base + i * step, cap)}ms`);
+        g.els.push(el);
+      });
+    };
+
+    arm('.st-meter > i, i[style*="width"], span[style*="width"]:not(.st-meter)', 'st-fill', 140, 70);
+    arm('span[style*="height"], [data-st-bars] rect', 'st-bar', 120, 60);
+    arm('tbody > tr, [data-st-rows] > *', 'st-row', 60, 45, 700);
+    arm('.st-chip', 'st-late', 560, 55, 1300);
+
+    all('.st-proposal, [data-st-flash]').forEach((el) => {
+      const g = group(el) ?? group(el.parentElement ?? el);
+      el.classList.add('st-flash');
+      if (el.hasAttribute('data-st-flash') && el.dataset.stFlash === 'risk') el.style.setProperty('--st-flash-rgb', '255, 92, 92');
+      if (g) g.els.push(el);
+      else groups.set(el, { els: [el], typed: [], counters: [] });
+    });
+
+    all('.st-kpi__v, .st-figure, [data-st-count]').forEach((el) => {
+      const g = group(el);
+      if (g) g.counters.push(el);
+      else groups.set(el, { els: [], typed: [], counters: [el] });
+    });
+
+    all('[data-st-type]').forEach((el) => {
+      const g = group(el);
+      if (g) g.typed.push(el);
+      else groups.set(el, { els: [], typed: [el], counters: [] });
+    });
+
+    // ── Count-up: rewinds to zero and counts back to the exact string in
+    // the HTML. Skipped for values without a number, and when the tab is
+    // hidden (rAF is frozen there and the figure would stay at zero).
+    const countUp = (el: HTMLElement, delay: number) => {
+      const template = el.textContent ?? '';
+      const m = template.match(/\d[\d\s\u00a0\u202f.,]*\d|\d/);
+      if (!m || document.visibilityState !== 'visible') return;
+      const raw = m[0];
+      // Keep the string's own conventions: decimal separator, digits after
+      // it, and the thousands separator (space, no-break space, comma, dot).
+      const dm = raw.match(/[.,](\d{1,2})$/);
+      const decimals = dm ? dm[1].length : 0;
+      const decSep = dm ? raw[raw.length - decimals - 1] : '';
+      const intRaw = dm ? raw.slice(0, -decimals - 1) : raw;
+      const groupSep = intRaw.match(/\d([\s\u00a0\u202f.,])\d{3}/)?.[1] ?? '';
+      const end = Number(intRaw.replace(/\D/g, '') + (dm ? `.${dm[1]}` : ''));
+      if (!Number.isFinite(end) || end === 0) return;
+      const fmt = (v: number) => {
+        const [i, f] = v.toFixed(decimals).split('.');
+        const grouped = groupSep ? i.replace(/\B(?=(\d{3})+(?!\d))/g, groupSep) : i;
+        return f ? grouped + decSep + f : grouped;
+      };
+      el.textContent = template.replace(raw, fmt(0));
+      setTimeout(() => {
+        const t0 = performance.now();
+        const dur = 1100;
+        const tick = (now: number) => {
+          const p = Math.min((now - t0) / dur, 1);
+          if (p >= 1) {
+            el.textContent = template;
+            return;
+          }
+          el.textContent = template.replace(raw, fmt(end * (1 - Math.pow(1 - p, 3))));
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, delay);
+    };
+
+    // ── Typing: the answer is written out, caret included. Height is held
+    // so the panel does not jump while the text grows.
+    const type = (el: HTMLElement, delay: number) => {
+      const nodes: Text[] = [];
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) nodes.push(walker.currentNode as Text);
+      const full = nodes.map((n) => n.data);
+      const total = full.reduce((a, s) => a + s.length, 0);
+      if (!total) return;
+      el.style.minHeight = `${el.offsetHeight}px`;
+      nodes.forEach((n) => (n.data = ''));
+      const caret = document.createElement('span');
+      caret.className = 'st-caret';
+      caret.setAttribute('aria-hidden', 'true');
+      el.append(caret);
+      el.classList.add('st-typing');
+      const perChar = Math.max(8, Math.min(22, 1600 / total));
+      setTimeout(() => {
+        const t0 = performance.now();
+        const tick = (now: number) => {
+          let left = Math.floor((now - t0) / perChar);
+          nodes.forEach((n, i) => {
+            const take = Math.max(0, Math.min(full[i].length, left));
+            n.data = full[i].slice(0, take);
+            left -= full[i].length;
+          });
+          if (left < 0) requestAnimationFrame(tick);
+          else {
+            nodes.forEach((n, i) => (n.data = full[i]));
+            setTimeout(() => {
+              el.classList.remove('st-typing');
+              caret.remove();
+              el.style.minHeight = '';
+            }, 900);
+          }
+        };
+        requestAnimationFrame(tick);
+      }, delay);
+    };
+
+    const fire = (box: HTMLElement) => {
+      const g = groups.get(box);
+      if (!g) return;
+      groups.delete(box);
+      g.els.forEach((el) => el.classList.add('is-in'));
+      g.counters.forEach((el, i) => countUp(el, 120 + i * 80));
+      g.typed.forEach((el, i) => type(el, 450 + i * 300));
+    };
+    const computeIo = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          computeIo.unobserve(e.target);
+          fire(e.target as HTMLElement);
+        }),
+      { rootMargin: '0px 0px -12% 0px' },
+    );
+    groups.forEach((_, box) => computeIo.observe(box));
+
+    // ════════ 2 · Block reveals (below the fold only) ════════
+    const LISTS = '.st-cols, .st-facts, .st-rules, .st-faq, .b-list, [data-st-stagger]';
+    const BLOCKS = [
+      '.st-head',
+      '.st-panel',
+      '.st-shot',
+      '.st-block',
+      '.st-paper',
+      '.st-split > *',
+      '.st-stamp',
+      '.st-ctas',
+      'table',
+      'figure',
+      '[data-st-reveal]',
+      LISTS,
+    ].join(', ');
+    const fold = window.innerHeight * 0.92;
+    const picked = all(BLOCKS).filter((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < fold || r.height === 0) return false;
+      // Keep the outermost block: a panel inside a revealed split column
+      // travels with its column.
+      let p = el.parentElement;
+      while (p && p !== main) {
+        if (p.matches(BLOCKS) && p.getBoundingClientRect().top >= fold) return false;
+        p = p.parentElement;
+      }
+      return true;
+    });
+
+    const siblingIndex = new Map<Element, number>();
+    picked.forEach((el) => {
+      const isList = el.matches(LISTS);
+      if (isList) {
+        el.classList.add('st-pre-kids', 'st-rev-kids');
+        [...el.children].forEach((kid, i) => (kid as HTMLElement).style.setProperty('--st-i', String(Math.min(i, 10))));
+      } else {
+        el.classList.add('st-pre', 'st-rev');
+        if (el.matches('.st-panel, .st-shot, .st-block')) el.classList.add('st-pre--card');
+        const parent = el.parentElement!;
+        const i = siblingIndex.get(parent) ?? 0;
+        siblingIndex.set(parent, i + 1);
+        el.style.setProperty('--st-d', `${Math.min(i, 4) * 90}ms`);
+      }
+    });
+    const revealIo = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          revealIo.unobserve(e.target);
+          e.target.classList.remove('st-pre', 'st-pre-kids');
+        }),
+      { rootMargin: '0px 0px -8% 0px' },
+    );
+    picked.forEach((el) => revealIo.observe(el));
+
+    (window as unknown as { __stMotion: boolean }).__stMotion = true;
   }
 </script>

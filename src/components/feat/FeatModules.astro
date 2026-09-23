@@ -17,7 +17,7 @@ const { rows, label } = Astro.props;
   {label && <p class="st-label fx-mods__label">{label}</p>}
   <ul>
     {rows.map((r) => (
-      <li>
+      <li class="st-hover-row">
         {r.href ? (
           <a href={r.href} class="fx-mods__row">
             <span class="st-link fx-mods__name">{r.name}</span>

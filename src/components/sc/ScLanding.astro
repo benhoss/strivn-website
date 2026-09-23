@@ -2,7 +2,6 @@
 import { NAV } from '../../data/nav';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
-import SiteMotion from '../SiteMotion.astro';
 import ScHero from './ScHero.astro';
 import ScDaily from './ScDaily.astro';
 import ScMetrics from './ScMetrics.astro';
@@ -77,6 +76,4 @@ const skipLabelByLocale: Record<Locale, string> = {
   </main>
 
   <HomeFooter locale={locale} footer={shared.footer} />
-
-  <SiteMotion />
 </BaseLayout>

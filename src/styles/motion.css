@@ -1,0 +1,310 @@
+/* STRIVN · motion layer (v2)
+ *
+ * The v1 site's motion vocabulary, brought back into the v2 system:
+ * reveal-on-scroll with a cascade, product visuals that "compute" when they
+ * arrive (fills, bars, verdict chips, counters, the assistant typing), a
+ * one-shot flash on a proposal, hover and press feedback, an animated FAQ,
+ * a slow ambient drift and scroll-linked depth.
+ *
+ * Contract, enforced by SiteMotion.astro:
+ *   - `html.st-motion` is set in <head> only when the visitor accepts motion.
+ *     Without it (no JS, reduced motion, runtime failure) every rule below is
+ *     inert and the page is complete.
+ *   - Block reveals arm only what is *below the fold at load* (`.st-pre`),
+ *     so the first screen, screenshots and link previews show the real page.
+ *   - Product visuals compute when they enter the viewport, including at load.
+ *     Their final state is the HTML; motion only replays how it got there.
+ *   - Anything inside `[data-st-manual]` runs its own choreography and is left
+ *     alone (the homepage hero scan).
+ *
+ * Properties: reveals use `opacity` + `translate`, fills and bars use
+ * `scale`, parallax uses `transform`. Three independent properties, so a
+ * rotated paper sheet can still reveal and a revealed capture can still
+ * drift with the scroll.
+ */
+
+:root {
+  --st-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --st-ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --st-ease-emph: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --st-dur-quick: 160ms;
+  --st-dur-std: 480ms;
+  --st-dur-slow: 760ms;
+}
+
+/* ════════════════════════════════════════════════════════════
+   1 · Reveal on scroll (blocks below the fold)
+   Opacity resolves at ~60 % of the travel: the block is legible before it
+   stops moving, so it reads as settling into place rather than sliding in.
+   ════════════════════════════════════════════════════════════ */
+html.st-motion .st-pre {
+  opacity: 0;
+  translate: 0 24px;
+}
+html.st-motion .st-pre.st-pre--card {
+  translate: 0 28px;
+  scale: 0.985;
+}
+html.st-motion .st-rev {
+  transition:
+    opacity calc(var(--st-dur-slow) * 0.6) var(--st-ease-std) var(--st-d, 0ms),
+    translate var(--st-dur-slow) var(--st-ease-out) var(--st-d, 0ms),
+    scale var(--st-dur-slow) var(--st-ease-out) var(--st-d, 0ms);
+}
+
+/* Cascade: children of a list reveal one after another. */
+html.st-motion .st-pre-kids > * {
+  opacity: 0;
+  translate: 0 14px;
+}
+html.st-motion .st-rev-kids > * {
+  transition:
+    opacity 560ms var(--st-ease-out),
+    translate 560ms var(--st-ease-out);
+  transition-delay: calc(90ms + var(--st-i, 0) * 55ms);
+}
+
+/* ════════════════════════════════════════════════════════════
+   2 · Product visuals compute on arrival
+   ════════════════════════════════════════════════════════════ */
+/* Horizontal fills: meters, live tracks, compare bars. */
+html.st-motion .st-fill:not(.is-in) {
+  scale: 0.04 1;
+}
+html.st-motion .st-fill {
+  transform-origin: left center;
+  transition: scale 900ms cubic-bezier(0.22, 0.61, 0.36, 1) var(--st-d, 0ms);
+}
+
+/* Vertical bars: CSS bars and SVG rects. */
+html.st-motion .st-bar:not(.is-in) {
+  scale: 1 0.06;
+}
+html.st-motion .st-bar {
+  transform-origin: center bottom;
+  transform-box: fill-box;
+  transition: scale 900ms cubic-bezier(0.22, 0.61, 0.36, 1) var(--st-d, 0ms);
+}
+
+/* Verdict chips land after the computation they conclude. */
+html.st-motion .st-late:not(.is-in) {
+  opacity: 0;
+  scale: 0.92;
+}
+html.st-motion .st-late {
+  transition:
+    opacity 360ms var(--st-ease-out) var(--st-d, 0ms),
+    scale 420ms var(--st-ease-emph) var(--st-d, 0ms);
+}
+
+/* Table rows inside a product panel read in, top to bottom. */
+html.st-motion .st-row:not(.is-in) {
+  opacity: 0;
+  translate: -10px 0;
+}
+html.st-motion .st-row {
+  transition:
+    opacity 420ms var(--st-ease-out) var(--st-d, 0ms),
+    translate 520ms var(--st-ease-out) var(--st-d, 0ms);
+}
+
+/* One-shot flash: a proposal or an alert ignites once when it appears,
+ * then settles. Colour follows the element (electric or risk). */
+@keyframes st-flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--st-flash-rgb, 45, 127, 249), 0);
+  }
+  40% {
+    box-shadow: 0 0 0 4px rgba(var(--st-flash-rgb, 45, 127, 249), 0.28),
+      0 0 32px -4px rgba(var(--st-flash-rgb, 45, 127, 249), 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--st-flash-rgb, 45, 127, 249), 0);
+  }
+}
+html.st-motion .st-flash.is-in {
+  animation: st-flash 1100ms var(--st-ease-std) var(--st-d, 700ms) 1 both;
+}
+
+/* The assistant writes its answer: text is revealed by the runtime; the
+ * caret blinks while it types, then goes out. */
+@keyframes st-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.st-caret {
+  display: none;
+}
+html.st-motion .st-typing .st-caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.95em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--color-electric-500);
+  animation: st-caret 640ms steps(1) infinite;
+}
+
+/* ════════════════════════════════════════════════════════════
+   3 · Interaction feedback
+   ════════════════════════════════════════════════════════════ */
+.st-btn {
+  transition:
+    background-color var(--st-dur-quick) var(--st-ease-std),
+    border-color var(--st-dur-quick) var(--st-ease-std),
+    translate var(--st-dur-quick) var(--st-ease-std),
+    scale var(--st-dur-quick) var(--st-ease-std),
+    box-shadow var(--st-dur-quick) var(--st-ease-std);
+}
+.st-btn:hover,
+.st-btn:focus-visible {
+  translate: 0 -1px;
+}
+.st-btn--primary:hover {
+  box-shadow: 0 10px 28px -12px rgba(45, 127, 249, 0.75);
+}
+.st-btn:active {
+  translate: 0 0;
+  scale: 0.98;
+}
+
+/* Rows that are links (module lists, blog list): tint, rule, nudge. */
+.st-hover-row {
+  position: relative;
+  transition: background-color 110ms var(--st-ease-std);
+}
+.st-hover-row::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 2px;
+  height: 0;
+  translate: 0 -50%;
+  border-radius: 999px;
+  background: var(--color-electric-500);
+  opacity: 0;
+  transition:
+    height var(--st-dur-quick) var(--st-ease-std),
+    opacity 110ms var(--st-ease-std);
+}
+.st-hover-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+.st-hover-row:hover::before,
+.st-hover-row:focus-within::before {
+  height: 55%;
+  opacity: 0.8;
+}
+
+/* Product panels answer the pointer with a faint lift of their edge. */
+.st-panel--float,
+.st-shot {
+  transition:
+    border-color var(--st-dur-quick) var(--st-ease-std),
+    box-shadow var(--st-dur-std) var(--st-ease-std);
+}
+.st-panel--float:hover,
+.st-shot:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ════════════════════════════════════════════════════════════
+   4 · FAQ: the answer opens with its height, the + turns into ×
+   ════════════════════════════════════════════════════════════ */
+.st-faq summary::after {
+  content: '+';
+  transition: rotate 220ms var(--st-ease-std);
+}
+.st-faq details[open] summary::after {
+  rotate: 45deg;
+}
+@keyframes st-faq-in {
+  from {
+    opacity: 0;
+    translate: 0 -6px;
+  }
+}
+html.st-motion .st-faq details[open] > :not(summary) {
+  animation: st-faq-in 300ms var(--st-ease-out);
+}
+@supports (interpolate-size: allow-keywords) {
+  .st-faq {
+    interpolate-size: allow-keywords;
+  }
+  .st-faq details::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size 340ms var(--st-ease-std),
+      content-visibility 340ms allow-discrete;
+  }
+  .st-faq details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   5 · Ambient: the hero grid breathes and drifts, very slowly
+   ════════════════════════════════════════════════════════════ */
+@keyframes st-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate3d(-1.5%, 1%, 0) scale(1.04);
+    opacity: 0.95;
+  }
+}
+html.st-motion .st-grid-bg::before {
+  inset: -4%;
+  animation: st-drift 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ════════════════════════════════════════════════════════════
+   6 · Scroll-linked depth, where the browser supports it
+   ════════════════════════════════════════════════════════════ */
+@supports (animation-timeline: view()) {
+  @keyframes st-parallax {
+    from {
+      transform: translateY(14px);
+    }
+    to {
+      transform: translateY(-14px);
+    }
+  }
+  html.st-motion .st-shot,
+  html.st-motion .st-panel--float {
+    animation: st-parallax linear both;
+    animation-timeline: view();
+    animation-range: entry 10% exit 90%;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   Reduced motion: SiteMotion never sets html.st-motion, so sections 1, 2,
+   5 and 6 are already inert. Interaction feedback keeps its colour changes
+   and drops the movement.
+   ════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .st-btn:hover,
+  .st-btn:focus-visible,
+  .st-btn:active {
+    translate: none;
+    scale: none;
+  }
+  .st-faq summary::after,
+  .st-faq details::details-content,
+  .st-hover-row::before {
+    transition: none;
+  }
+}

@@ -9,7 +9,6 @@
 import { NAV } from '../../data/nav';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
-import SiteMotion from '../SiteMotion.astro';
 import HomeFooter from '../home/HomeFooter.astro';
 import ReadinessBoard from '../shared/ReadinessBoard.astro';
 import ReportingDashboard from '../shared/ReportingDashboard.astro';
@@ -101,8 +100,6 @@ const moments = c.ai.moments.map((m, i) => ({ ...m, href: href(AI_SLUGS[i]) }));
   </main>
 
   <HomeFooter locale={locale} footer={home.footer} />
-
-  <SiteMotion />
 </BaseLayout>
 
 <style>

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
-import SiteMotion from '../SiteMotion.astro';
 import HomeHero from './HomeHero.astro';
 import HomeProof from './HomeProof.astro';
 import HomeImport from './HomeImport.astro';
@@ -89,8 +88,6 @@ const RAIL: Array<{ href: string; watch: string[]; match?: boolean }> = [
   </main>
 
   <HomeFooter locale={locale} footer={c.footer} />
-
-  <SiteMotion />
 </BaseLayout>
 
 <style>

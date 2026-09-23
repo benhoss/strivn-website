@@ -709,9 +709,6 @@
   font-size: 18px;
   color: var(--color-ink-3);
 }
-.st-faq details[open] summary::after {
-  content: '−';
-}
 .st-faq details > :not(summary) {
   margin: 0 0 20px;
   color: var(--color-ink-2);

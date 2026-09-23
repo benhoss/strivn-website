@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import '../styles/system.css';
+import '../styles/motion.css';
+import SiteMotion from '../components/SiteMotion.astro';
 
 interface Props {
   title?: string;
@@ -121,6 +123,7 @@ const jsonLd = {
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <SiteMotion />
     <meta name="theme-color" content="#050610" />
   </head>
   <body>
