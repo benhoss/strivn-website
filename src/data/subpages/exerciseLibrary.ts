@@ -17,7 +17,7 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · PLANIFICATION',
-      title: 'Gardez l’exercice croisé le soir, placez-le jeudi.',
+      title: 'Gardez l’exercice croisé le soir, placez-le dans votre prochaine séance.',
       sub: 'Un lien TikTok, une photo prise au bord du terrain, un schéma dessiné sur le tableau tactique, ou simplement du texte. Tout arrive dans la même boîte de réception, se trie une fois, et se rattache ensuite à n’importe quelle séance.',
       bullets: [
         'Quatre façons de capturer : lien, photo, schéma, texte',
@@ -181,7 +181,7 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · PLANNING',
-      title: 'Save the drill you saw tonight, place it Thursday.',
+      title: 'Save the drill you saw tonight, place it in your next session.',
       sub: 'A TikTok link, a photo taken at the side of the pitch, a diagram drawn on the tactics board, or simply text. Everything lands in the same inbox, is sorted once, and can then be attached to any session.',
       bullets: [
         'Four ways to capture: link, photo, diagram, text',
@@ -345,7 +345,7 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · PLANNING',
-      title: 'Bewaar de oefening van vanavond, plaats ze donderdag.',
+      title: 'Bewaar de oefening van vanavond, plaats ze in uw volgende training.',
       sub: 'Een TikTok-link, een foto genomen langs het veld, een schema getekend op het tactische bord, of gewoon tekst. Alles komt in hetzelfde postvak IN, wordt één keer gesorteerd, en kan daarna aan elke training worden gekoppeld.',
       bullets: [
         'Vier manieren om vast te leggen: link, foto, schema, tekst',
@@ -509,7 +509,7 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · PLANUNG',
-      title: 'Speichern Sie die Übung abends, planen Sie sie donnerstags.',
+      title: 'Speichern Sie die Übung abends, planen Sie sie in der nächsten Einheit ein.',
       sub: 'Ein TikTok-Link, ein am Spielfeldrand aufgenommenes Foto, eine auf der Taktiktafel gezeichnete Skizze oder schlicht Text. Alles landet im selben Posteingang, wird einmal sortiert und lässt sich danach an jede Einheit hängen.',
       bullets: [
         'Vier Wege zu erfassen: Link, Foto, Zeichnung, Text',
@@ -673,7 +673,7 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · PLANEAMENTO',
-      title: 'Guarde o exercício visto à noite, coloque-o na quinta.',
+      title: 'Guarde o exercício visto à noite, coloque-o na próxima sessão.',
       sub: 'Uma ligação do TikTok, uma foto tirada à beira do campo, um esquema desenhado no quadro tático, ou simplesmente texto. Tudo chega à mesma caixa de entrada, tria-se uma vez, e depois associa-se a qualquer treino.',
       bullets: [
         'Quatro formas de capturar: ligação, foto, esquema, texto',
@@ -837,7 +837,7 @@ export const exerciseLibrary: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · PLANIFICACIÓN',
-      title: 'Guarda el ejercicio visto de noche, colócalo el jueves.',
+      title: 'Guarda el ejercicio visto de noche, colócalo en tu próxima sesión.',
       sub: 'Un enlace de TikTok, una foto tomada a pie de campo, un esquema dibujado en la pizarra táctica, o simplemente texto. Todo llega a la misma bandeja de entrada, se clasifica una vez, y luego se asocia a cualquier sesión.',
       bullets: [
         'Cuatro formas de capturar: enlace, foto, esquema, texto',

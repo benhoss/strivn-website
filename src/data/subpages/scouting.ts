@@ -34,7 +34,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'DE L’OBSERVATION AU VESTIAIRE',
-        title: 'L’analyste observe le samedi. Le coach tranche le mardi.',
+        title: 'L’analyste observe l’adversaire, le coach décide avant le match.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -211,7 +211,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'FROM THE TOUCHLINE TO THE CHANGING ROOM',
-        title: 'The analyst watches Saturday. The coach decides Tuesday.',
+        title: 'The analyst watches the opponent, the coach decides before the match.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -388,7 +388,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'VAN DE ZIJLIJN TOT DE KLEEDKAMER',
-        title: 'De analist kijkt zaterdag. De coach beslist dinsdag.',
+        title: 'De analist bekijkt de tegenstander, de coach beslist vóór de wedstrijd.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -565,7 +565,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'VOM SPIELFELDRAND IN DIE KABINE',
-        title: 'Der Analyst beobachtet samstags. Der Coach entscheidet dienstags.',
+        title: 'Der Analyst beobachtet den Gegner, der Coach entscheidet vor dem Spiel.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -742,7 +742,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'DA LINHA LATERAL AO BALNEÁRIO',
-        title: 'Sábado, o analista observa. Terça, o treinador decide.',
+        title: 'O analista observa o adversário, o treinador decide antes do jogo.',
         kind: 'rail',
         activeIndex: 0,
         steps: [
@@ -919,7 +919,7 @@ export const scouting: SubpageLocales = {
     sections: [
       {
         kicker: 'DE LA BANDA AL VESTUARIO',
-        title: 'Sábado, el analista observa. Martes, el entrenador decide.',
+        title: 'El analista observa al rival, el entrenador decide antes del partido.',
         kind: 'rail',
         activeIndex: 0,
         steps: [

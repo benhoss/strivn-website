@@ -15,7 +15,7 @@ export const sessions: SubpageLocales = {
     },
     hero: {
       kicker: 'FONCTIONNALITÉS · PLANIFICATION',
-      title: 'Planifiez de la saison à la séance de jeudi.',
+      title: 'Planifiez de la saison à la prochaine séance.',
       sub: 'La saison porte vos cycles, le cycle donne son objectif à chaque semaine, la semaine se remplit de charge rattachée à des séances réelles. Le planificateur pose une couche de charge sur votre calendrier, et laisse les événements au coach.',
       bullets: [
         'Cycles de périodisation : reprise, compétition, affûtage',
@@ -187,7 +187,7 @@ export const sessions: SubpageLocales = {
     },
     hero: {
       kicker: 'FEATURES · PLANNING',
-      title: 'Plan from the season down to Thursday’s session.',
+      title: 'Plan from the season down to the next session.',
       sub: 'The season holds your cycles, the cycle gives each week its target, the week fills with load attached to real sessions. The planner lays a layer of load over your calendar, and leaves events to the coach.',
       bullets: [
         'Periodisation cycles: pre-season, competition, taper',
@@ -359,7 +359,7 @@ export const sessions: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCTIES · PLANNING',
-      title: 'Plan van het seizoen tot de training van donderdag.',
+      title: 'Plan van het seizoen tot de volgende training.',
       sub: 'Het seizoen draagt je cycli, de cyclus geeft elke week haar doel, de week vult zich met belasting die aan echte trainingen hangt. De planner legt een laag belasting over je kalender, en laat de activiteiten aan de coach.',
       bullets: [
         'Periodiseringscycli: opbouw, competitie, taper',
@@ -531,7 +531,7 @@ export const sessions: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNKTIONEN · PLANUNG',
-      title: 'Planen Sie von der Saison bis zur Donnerstagseinheit.',
+      title: 'Planen Sie von der Saison bis zur nächsten Einheit.',
       sub: 'Die Saison trägt Ihre Zyklen, der Zyklus gibt jeder Woche ihr Ziel, die Woche füllt sich mit Belastung, die an echten Einheiten hängt. Der Planer legt eine Belastungsebene über Ihren Kalender und überlässt die Termine dem Trainer.',
       bullets: [
         'Periodisierungszyklen: Aufbau, Wettkampf, Tapering',
@@ -703,7 +703,7 @@ export const sessions: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · PLANEAMENTO',
-      title: 'Planeie da época ao treino de quinta-feira.',
+      title: 'Planeie da época ao próximo treino.',
       sub: 'A época sustenta os seus ciclos, o ciclo dá o objetivo a cada semana, a semana enche-se de carga associada a treinos reais. O planeador põe uma camada de carga sobre o seu calendário, e deixa os eventos ao treinador.',
       bullets: [
         'Ciclos de periodização: pré-época, competição, taper',
@@ -875,7 +875,7 @@ export const sessions: SubpageLocales = {
     },
     hero: {
       kicker: 'FUNCIONALIDADES · PLANIFICACIÓN',
-      title: 'Planifica de la temporada a la sesión del jueves.',
+      title: 'Planifica de la temporada a la próxima sesión.',
       sub: 'La temporada sostiene tus ciclos, el ciclo da su objetivo a cada semana, la semana se llena de carga asociada a sesiones reales. El planificador pone una capa de carga sobre tu calendario, y deja los eventos al entrenador.',
       bullets: [
         'Ciclos de periodización: pretemporada, competición, taper',
