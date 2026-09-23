@@ -94,7 +94,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Six fonctions couvrent le reste de la semaine d’un coach de jeunes.',
+    featuresLead: 'Six fonctions couvrent le reste du travail d’un coach de jeunes.',
     features: {
       title: 'Réunissez le groupe, les tuteurs et les consentements.',
       items: [
@@ -204,7 +204,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Six features cover the rest of a youth coach’s week.',
+    featuresLead: 'Six features cover the rest of a youth coach’s work.',
     features: {
       title: 'Bring your group, the guardians and the consents together.',
       items: [
@@ -314,7 +314,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Zes functies dekken de rest van de week van een jeugdcoach.',
+    featuresLead: 'Zes functies dekken de rest van het werk van een jeugdcoach.',
     features: {
       title: 'Breng uw groep, de voogden en de toestemmingen samen.',
       items: [
@@ -424,7 +424,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Sechs Funktionen decken den Rest der Woche eines Jugendtrainers ab.',
+    featuresLead: 'Sechs Funktionen decken den Rest der Arbeit eines Jugendtrainers ab.',
     features: {
       title: 'Führen Sie Gruppe, Eltern und Einwilligungen zusammen.',
       items: [
@@ -534,7 +534,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Seis funcionalidades cobrem o resto da semana de um treinador de formação.',
+    featuresLead: 'Seis funcionalidades cobrem o resto do trabalho de um treinador de formação.',
     features: {
       title: 'Reúna o grupo, os encarregados e os consentimentos.',
       items: [
@@ -644,7 +644,7 @@ export const youthContent: Record<Locale, YouthContent> = {
         ],
       },
     ],
-    featuresLead: 'Seis funciones cubren el resto de la semana de un entrenador de fútbol base.',
+    featuresLead: 'Seis funciones cubren el resto del trabajo de un entrenador de fútbol base.',
     features: {
       title: 'Reúne el grupo, los tutores y los consentimientos.',
       items: [
