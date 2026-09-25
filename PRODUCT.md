@@ -104,11 +104,14 @@ Every rule below is testable. Copy that breaks one is rewritten, not argued.
    no emphatic capitals. A headline that is a sentence ends with a period.
    Mail: same, with one emoji tolerated per send, never in the subject line.
 10. **One spelling.** STRIVN, everywhere, mail included.
-11. **The hero phrase does not spread.** « Le système d'exploitation du staff
-    performance » is the positioning Benoit chose and keeps (decided
-    2026-09-08); it is also Teamworks' registered H1 in translation. It stays
-    in the hero and the meta title and nowhere else: no section, mail or post
-    reuses « système d'exploitation » or « operating system ».
+11. **The hero phrase does not spread.** « La tour de contrôle du staff
+    performance » is the positioning Benoit chose (2026-09-25). It replaced
+    « Le système d'exploitation du staff performance », Teamworks' registered
+    H1 in translation, once Teamworks bought Opteamal (Dec 2025); a plain
+    descriptive title (« Le suivi de charge et de forme de vos joueurs ») was
+    tried and rejected as too flat. The phrase stays in the hero and the meta
+    title and nowhere else. No page, mail or post uses « système
+    d'exploitation » or « operating system ».
 12. **Mail is the same voice, signed with a first name.** Subject: one concrete
     gain, 50 characters or fewer, never « nouveautés de la semaine ». Opening:
     the news in one sentence, no « Hello ! », no « Voici ce qui est arrivé ».

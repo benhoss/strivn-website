@@ -6,6 +6,7 @@ import HomeProof from './HomeProof.astro';
 import HomeImport from './HomeImport.astro';
 import HomeReadiness from './HomeReadiness.astro';
 import HomeMicrocycle from './HomeMicrocycle.astro';
+import HomeBoard from './HomeBoard.astro';
 import HomeLive from './HomeLive.astro';
 import HomePlayers from './HomePlayers.astro';
 import HomeAssistant from './HomeAssistant.astro';
@@ -45,7 +46,9 @@ const RAIL: Array<{ href: string; watch: string[] }> = [
   { href: '#import', watch: ['import'] },
   { href: '#crossing', watch: ['crossing'] },
   { href: '#readiness', watch: ['readiness'] },
-  { href: '#plan', watch: ['plan'] },
+  // The tactical board prepares the session the microcycle planned: it sits
+  // under that entry rather than adding a ninth to a rail already full at 821px.
+  { href: '#plan', watch: ['plan', 'board'] },
   { href: '#live', watch: ['live'] },
   { href: '#players', watch: ['players'] },
   { href: '#match', watch: ['match'] },
@@ -79,6 +82,7 @@ const RAIL: Array<{ href: string; watch: string[] }> = [
     <HomeImport c={c.import} />
     <HomeReadiness c={c.readiness} status={c.status} pct={c.pct} />
     <HomeMicrocycle c={c.plan} status={c.status} pct={c.pct} />
+    <HomeBoard c={c.board} />
     <HomeLive c={c.live} />
     <HomePlayers c={c.playerApp} pct={c.pct} />
     <HomeAssistant c={c.assistant} pct={c.pct} />

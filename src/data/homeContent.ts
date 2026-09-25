@@ -145,6 +145,29 @@ export interface HomeContent {
     adjustments: [string, string, string];
     links: MoreLink[];
   };
+  /** Before the session · the tactical board: the drill drawn, animated
+   *  over three frames, attached to its block of the session. */
+  board: {
+    stamp: Stamp;
+    title: string;
+    body: string;
+    aria: string;
+    /** The board's name, in the panel bar. */
+    name: string;
+    meta: string;
+    /** Joueur A · Joueur B · Flèche · Zone · Cône · Texte. */
+    tools: [string, string, string, string, string, string];
+    arrowsLabel: string;
+    /** Passe · Course · Conduite: the board's arrow presets. */
+    arrows: [string, string, string];
+    zone: string;
+    /** "Image", before the frame number. */
+    frame: string;
+    attached: string;
+    /** Enregistrer · PNG · Vidéo · Partager. */
+    actions: [string, string, string, string];
+    links: MoreLink[];
+  };
   /** During the session · the live runner. It pilots the session (clock,
    *  attendance, teams, score); load is computed after, never shown live. */
   live: {
@@ -381,7 +404,7 @@ export const WHOOP_READING = { recovery: 74, hrv: 68 };
 
 const fr: HomeContent = {
   meta: {
-    title: 'STRIVN | Le système d’exploitation du staff performance',
+    title: 'STRIVN | La tour de contrôle du staff performance',
     description:
       'Import GPS, wellness, charge et planification dans un seul outil. L’IA lit les données du groupe et signale qui alléger. Gratuit pour une équipe, partagé par tout le staff.',
   },
@@ -402,9 +425,9 @@ const fr: HomeContent = {
   status: { ready: 'Prêt', watch: 'Surveiller', risk: 'Alléger', wait: 'Protocole', importing: 'Import' },
   hero: {
     eyebrow: 'Pour le coach, le préparateur physique et le head of performance',
-    titleMuted: 'Le système d’exploitation',
+    titleMuted: 'La tour de contrôle',
     titleMain: 'du staff performance.',
-    sub: 'Avec un GPS, importez l’export. Sans GPS, partez du RPE et du wellness que vos joueurs envoient depuis leur téléphone. STRIVN croise tout avec le plan, puis vous dit qui alléger.',
+    sub: 'Fatigue, charge, blessures, données GPS : tout votre groupe sur un écran. Avant chaque séance, STRIVN vous dit qui est prêt, qui surveiller et qui alléger.',
     primaryCta: 'Commencer gratuitement',
     secondaryCta: 'Parler à Benoit',
     fine: ['30 jours de Semi-Pro offerts', 'Sans carte', 'Sans validation du club'],
@@ -494,6 +517,22 @@ const fr: HomeContent = {
       'Réathlétisation ischio, 30 min individualisées. Retour estimé J+18.',
     ],
     links: [{ label: 'Voir la planification de charge', href: '/fr/features/training-load/' }],
+  },
+  board: {
+    stamp: { day: 'Avant la séance', what: 'Tableau tactique' },
+    title: 'Dessinez l’exercice, animez-⁠le, joignez-⁠le à la séance.',
+    body: 'Placez joueurs, ballon et matériel sur un terrain de football, de handball, de rugby, de basket ou de volley. Tracez passes, courses et conduites, puis enchaînez les images : le schéma se joue en vidéo et part en PNG sur WhatsApp.',
+    aria: 'Exemple : un pressing dessiné et animé en trois images',
+    name: 'Pressing déclenché sur passe latérale',
+    meta: 'Demi-terrain · 3 images',
+    tools: ['Joueur A', 'Joueur B', 'Flèche', 'Zone', 'Cône', 'Texte'],
+    arrowsLabel: 'Flèches',
+    arrows: ['Passe', 'Course', 'Conduite'],
+    zone: 'Zone de pressing',
+    frame: 'Image',
+    attached: 'Joint au bloc « Pressing 8v8 » de la séance',
+    actions: ['Enregistrer', 'PNG', 'Vidéo', 'Partager'],
+    links: [{ label: 'Voir la bibliothèque d’exercices', href: '/fr/features/exercise-library/' }],
   },
   live: {
     stamp: { day: 'Pendant la séance', what: 'Séance live' },
@@ -664,7 +703,7 @@ const fr: HomeContent = {
 
 const en: HomeContent = {
   meta: {
-    title: 'STRIVN | The operating system for performance staff',
+    title: 'STRIVN | The control tower for performance staff',
     description:
       'GPS import, wellness, load and planning in one tool. The AI reads the squad data and tells you who to hold back. Free for one team, shared by the whole staff.',
   },
@@ -685,9 +724,9 @@ const en: HomeContent = {
   status: { ready: 'Ready', watch: 'Monitor', risk: 'Reduce', wait: 'Protocol', importing: 'Import' },
   hero: {
     eyebrow: 'For the head coach, the S&C coach and the head of performance',
-    titleMuted: 'The operating system',
+    titleMuted: 'The control tower',
     titleMain: 'for performance staff.',
-    sub: 'With GPS, import the export. Without it, start from the RPE and wellness your players send from their phones. STRIVN crosses it all with the plan, then tells you who to hold back.',
+    sub: 'Fatigue, load, injuries, GPS data: your whole squad on one screen. Before every session, STRIVN tells you who is ready, who to monitor and who to hold back.',
     primaryCta: 'Start for free',
     secondaryCta: 'Talk to Benoit',
     fine: ['30 days of Semi-Pro included', 'No card', 'No club approval'],
@@ -777,6 +816,22 @@ const en: HomeContent = {
       'Hamstring return to play, 30 individual minutes. Estimated return in 18 days.',
     ],
     links: [{ label: 'See load planning', href: '/en/features/training-load/' }],
+  },
+  board: {
+    stamp: { day: 'Before the session', what: 'Tactical board' },
+    title: 'Draw the drill, animate it, attach it to the session.',
+    body: 'Place players, the ball and equipment on a football, handball, rugby, basketball or volleyball pitch. Draw passes, runs and dribbles, then chain the frames: the diagram plays as a video and goes out as a PNG on WhatsApp.',
+    aria: 'Example: a press drawn and animated in three frames',
+    name: 'Press triggered by a sideways pass',
+    meta: 'Half pitch · 3 frames',
+    tools: ['Player A', 'Player B', 'Arrow', 'Zone', 'Cone', 'Text'],
+    arrowsLabel: 'Arrows',
+    arrows: ['Pass', 'Run', 'Dribble'],
+    zone: 'Pressing zone',
+    frame: 'Frame',
+    attached: 'Attached to the “Pressing 8v8” block of the session',
+    actions: ['Save', 'PNG', 'Video', 'Share'],
+    links: [{ label: 'See the exercise library', href: '/en/features/exercise-library/' }],
   },
   live: {
     stamp: { day: 'During the session', what: 'Live session' },
@@ -947,7 +1002,7 @@ const en: HomeContent = {
 
 const nl: HomeContent = {
   meta: {
-    title: 'STRIVN | Het besturingssysteem van de performance staff',
+    title: 'STRIVN | De controletoren van de performance staff',
     description:
       'GPS-import, wellness, belasting en planning in één tool. De AI leest de groepsdata en geeft aan wie u moet ontzien. Gratis voor één team, gedeeld door de hele staf.',
   },
@@ -968,9 +1023,9 @@ const nl: HomeContent = {
   status: { ready: 'Klaar', watch: 'Opvolgen', risk: 'Ontlasten', wait: 'Protocol', importing: 'Import' },
   hero: {
     eyebrow: 'Voor de coach, de fysieke trainer en de head of performance',
-    titleMuted: 'Het besturingssysteem',
+    titleMuted: 'De controletoren',
     titleMain: 'van de performance staff.',
-    sub: 'Met GPS importeert u de export. Zonder GPS vertrekt u van de RPE en wellness die uw spelers via hun telefoon sturen. STRIVN kruist alles met het plan en zegt u dan wie u moet ontzien.',
+    sub: 'Vermoeidheid, belasting, blessures, GPS-data: uw hele groep op één scherm. Voor elke training zegt STRIVN u wie klaar is, wie u moet opvolgen en wie u moet ontlasten.',
     primaryCta: 'Gratis beginnen',
     secondaryCta: 'Praat met Benoit',
     fine: ['30 dagen Semi-Pro inbegrepen', 'Zonder kaart', 'Zonder goedkeuring van de club'],
@@ -1060,6 +1115,22 @@ const nl: HomeContent = {
       'Revalidatie hamstring, 30 minuten individueel. Verwachte terugkeer over 18 dagen.',
     ],
     links: [{ label: 'Bekijk de belastingsplanning', href: '/nl/features/training-load/' }],
+  },
+  board: {
+    stamp: { day: 'Voor de training', what: 'Tactisch bord' },
+    title: 'Teken de oefening, animeer ze, koppel ze aan de training.',
+    body: 'Plaats spelers, bal en materiaal op een voetbal-, handbal-, rugby-, basketbal- of volleybalveld. Teken passes, loopacties en dribbels en zet de beelden achter elkaar: het schema speelt af als video en gaat als PNG via WhatsApp.',
+    aria: 'Voorbeeld: een pressing getekend en geanimeerd in drie beelden',
+    name: 'Pressing op een zijwaartse pass',
+    meta: 'Half veld · 3 beelden',
+    tools: ['Speler A', 'Speler B', 'Pijl', 'Zone', 'Kegel', 'Tekst'],
+    arrowsLabel: 'Pijlen',
+    arrows: ['Pass', 'Loopactie', 'Dribbel'],
+    zone: 'Pressingzone',
+    frame: 'Beeld',
+    attached: 'Gekoppeld aan het blok „Pressing 8v8” van de training',
+    actions: ['Opslaan', 'PNG', 'Video', 'Delen'],
+    links: [{ label: 'Bekijk de oefeningenbibliotheek', href: '/nl/features/exercise-library/' }],
   },
   live: {
     stamp: { day: 'Tijdens de training', what: 'Live training' },
@@ -1230,7 +1301,7 @@ const nl: HomeContent = {
 
 const de: HomeContent = {
   meta: {
-    title: 'STRIVN | Das Betriebssystem für den Performance-Staff',
+    title: 'STRIVN | Der Kontrollturm für den Performance-Staff',
     description:
       'GPS-Import, Wellness, Belastung und Planung in einem Tool. Die KI liest die Teamdaten und sagt Ihnen, wen Sie schonen sollten. Kostenlos für ein Team, geteilt vom gesamten Staff.',
   },
@@ -1251,9 +1322,9 @@ const de: HomeContent = {
   status: { ready: 'Bereit', watch: 'Beobachten', risk: 'Entlasten', wait: 'Protokoll', importing: 'Import' },
   hero: {
     eyebrow: 'Für Trainer, Athletiktrainer und Head of Performance',
-    titleMuted: 'Das Betriebssystem',
+    titleMuted: 'Der Kontrollturm',
     titleMain: 'für den Performance-Staff.',
-    sub: 'Mit GPS importieren Sie den Export. Ohne GPS starten Sie mit RPE und Wellness, die Ihre Spieler per Handy senden. STRIVN gleicht alles mit dem Plan ab und sagt Ihnen dann, wen Sie entlasten sollten.',
+    sub: 'Müdigkeit, Belastung, Verletzungen, GPS-Daten: Ihr ganzer Kader auf einem Bildschirm. Vor jeder Einheit sagt Ihnen STRIVN, wer bereit ist, wen Sie beobachten und wen Sie entlasten sollten.',
     primaryCta: 'Kostenlos starten',
     secondaryCta: 'Mit Benoit sprechen',
     fine: ['30 Tage Semi-Pro inklusive', 'Ohne Karte', 'Ohne Vereinsfreigabe'],
@@ -1343,6 +1414,22 @@ const de: HomeContent = {
       'Ischio-Reha, 30 Minuten individuell. Voraussichtliche Rückkehr in 18 Tagen.',
     ],
     links: [{ label: 'Belastungsplanung ansehen', href: '/de/features/training-load/' }],
+  },
+  board: {
+    stamp: { day: 'Vor der Einheit', what: 'Taktiktafel' },
+    title: 'Zeichnen Sie die Übung, animieren Sie sie, hängen Sie sie an die Einheit.',
+    body: 'Platzieren Sie Spieler, Ball und Material auf einem Fußball-, Handball-, Rugby-, Basketball- oder Volleyballfeld. Zeichnen Sie Pässe, Laufwege und Dribblings und reihen Sie die Bilder aneinander: Das Schema läuft als Video und geht als PNG per WhatsApp raus.',
+    aria: 'Beispiel: ein Pressing, gezeichnet und in drei Bildern animiert',
+    name: 'Pressing nach Querpass',
+    meta: 'Halbes Feld · 3 Bilder',
+    tools: ['Spieler A', 'Spieler B', 'Pfeil', 'Zone', 'Hütchen', 'Text'],
+    arrowsLabel: 'Pfeile',
+    arrows: ['Pass', 'Laufweg', 'Dribbling'],
+    zone: 'Pressingzone',
+    frame: 'Bild',
+    attached: 'Am Block „Pressing 8v8“ der Einheit angehängt',
+    actions: ['Speichern', 'PNG', 'Video', 'Teilen'],
+    links: [{ label: 'Übungsbibliothek ansehen', href: '/de/features/exercise-library/' }],
   },
   live: {
     stamp: { day: 'Während der Einheit', what: 'Live-Einheit' },
@@ -1513,7 +1600,7 @@ const de: HomeContent = {
 
 const pt: HomeContent = {
   meta: {
-    title: 'STRIVN | O sistema operativo do staff de performance',
+    title: 'STRIVN | A torre de controlo do staff de performance',
     description:
       'Importação GPS, wellness, carga e planeamento numa só ferramenta. A IA lê os dados do plantel e diz quem aliviar. Grátis para uma equipa, partilhado por todo o staff.',
   },
@@ -1534,9 +1621,9 @@ const pt: HomeContent = {
   status: { ready: 'Apto', watch: 'Vigiar', risk: 'Aliviar', wait: 'Protocolo', importing: 'Importação' },
   hero: {
     eyebrow: 'Para o treinador, o preparador físico e o head of performance',
-    titleMuted: 'O sistema operativo',
+    titleMuted: 'A torre de controlo',
     titleMain: 'do staff de performance.',
-    sub: 'Com GPS, importe a exportação. Sem GPS, parta do RPE e do wellness que os seus jogadores enviam pelo telemóvel. O STRIVN cruza tudo com o plano e depois diz-lhe quem aliviar.',
+    sub: 'Fadiga, carga, lesões, dados GPS: todo o seu plantel num só ecrã. Antes de cada sessão, o STRIVN diz-lhe quem está apto, quem vigiar e quem aliviar.',
     primaryCta: 'Começar gratuitamente',
     secondaryCta: 'Falar com o Benoit',
     fine: ['30 dias de Semi-Pro oferecidos', 'Sem cartão', 'Sem validação do clube'],
@@ -1626,6 +1713,22 @@ const pt: HomeContent = {
       'Reatletização dos isquiotibiais, 30 min individualizados. Regresso estimado em 18 dias.',
     ],
     links: [{ label: 'Ver o planeamento de carga', href: '/pt/features/training-load/' }],
+  },
+  board: {
+    stamp: { day: 'Antes da sessão', what: 'Quadro tático' },
+    title: 'Desenhe o exercício, anime-⁠o, junte-⁠o à sessão.',
+    body: 'Coloque jogadores, bola e material num campo de futebol, andebol, râguebi, basquetebol ou voleibol. Trace passes, corridas e conduções e encadeie as imagens: o esquema reproduz-se em vídeo e segue em PNG pelo WhatsApp.',
+    aria: 'Exemplo: uma pressão desenhada e animada em três imagens',
+    name: 'Pressão acionada por passe lateral',
+    meta: 'Meio-campo · 3 imagens',
+    tools: ['Jogador A', 'Jogador B', 'Seta', 'Zona', 'Cone', 'Texto'],
+    arrowsLabel: 'Setas',
+    arrows: ['Passe', 'Corrida', 'Condução'],
+    zone: 'Zona de pressão',
+    frame: 'Imagem',
+    attached: 'Junto ao bloco «Pressing 8v8» da sessão',
+    actions: ['Guardar', 'PNG', 'Vídeo', 'Partilhar'],
+    links: [{ label: 'Ver a biblioteca de exercícios', href: '/pt/features/exercise-library/' }],
   },
   live: {
     stamp: { day: 'Durante a sessão', what: 'Sessão ao vivo' },
@@ -1796,7 +1899,7 @@ const pt: HomeContent = {
 
 const es: HomeContent = {
   meta: {
-    title: 'STRIVN | El sistema operativo del staff de rendimiento',
+    title: 'STRIVN | La torre de control del staff de rendimiento',
     description:
       'Importación GPS, wellness, carga y planificación en una sola herramienta. La IA lee los datos de la plantilla y señala a quién aliviar. Gratis para un equipo, compartido por todo el staff.',
   },
@@ -1817,9 +1920,9 @@ const es: HomeContent = {
   status: { ready: 'Apto', watch: 'Vigilar', risk: 'Aliviar', wait: 'Protocolo', importing: 'Importación' },
   hero: {
     eyebrow: 'Para el entrenador, el preparador físico y el head of performance',
-    titleMuted: 'El sistema operativo',
+    titleMuted: 'La torre de control',
     titleMain: 'del staff de rendimiento.',
-    sub: 'Con GPS, importe la exportación. Sin GPS, parta del RPE y el wellness que sus jugadores envían desde el móvil. STRIVN lo cruza todo con el plan y luego le dice a quién aliviar.',
+    sub: 'Fatiga, carga, lesiones, datos GPS: toda su plantilla en una sola pantalla. Antes de cada sesión, STRIVN le dice quién está apto, a quién vigilar y a quién aliviar.',
     primaryCta: 'Empezar gratis',
     secondaryCta: 'Hablar con Benoit',
     fine: ['30 días de Semi-Pro incluidos', 'Sin tarjeta', 'Sin validación del club'],
@@ -1909,6 +2012,22 @@ const es: HomeContent = {
       'Readaptación de isquiotibiales, 30 min individualizados. Regreso estimado en 18 días.',
     ],
     links: [{ label: 'Ver la planificación de carga', href: '/es/features/training-load/' }],
+  },
+  board: {
+    stamp: { day: 'Antes de la sesión', what: 'Pizarra táctica' },
+    title: 'Dibuje el ejercicio, anímelo, adjúntelo a la sesión.',
+    body: 'Coloque jugadores, balón y material en un campo de fútbol, balonmano, rugby, baloncesto o voleibol. Trace pases, desmarques y conducciones y encadene las imágenes: el esquema se reproduce en vídeo y sale en PNG por WhatsApp.',
+    aria: 'Ejemplo: una presión dibujada y animada en tres imágenes',
+    name: 'Presión activada por pase lateral',
+    meta: 'Medio campo · 3 imágenes',
+    tools: ['Jugador A', 'Jugador B', 'Flecha', 'Zona', 'Cono', 'Texto'],
+    arrowsLabel: 'Flechas',
+    arrows: ['Pase', 'Desmarque', 'Conducción'],
+    zone: 'Zona de presión',
+    frame: 'Imagen',
+    attached: 'Adjunto al bloque «Pressing 8v8» de la sesión',
+    actions: ['Guardar', 'PNG', 'Vídeo', 'Compartir'],
+    links: [{ label: 'Ver la biblioteca de ejercicios', href: '/es/features/exercise-library/' }],
   },
   live: {
     stamp: { day: 'Durante la sesión', what: 'Sesión en directo' },
