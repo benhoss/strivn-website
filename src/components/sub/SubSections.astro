@@ -276,6 +276,25 @@ const grid = (n: number) => `sub-grid sub-grid--${Math.min(Math.max(n, 2), 4)}`;
           {/* ── Bespoke capture ───────────────────────────────────── */}
           {s.kind === 'visual' && <SubVisual name={s.name} locale={locale} />}
 
+          {/* ── Walkthrough video ─────────────────────────────────── */}
+          {s.kind === 'video' && (
+            <figure class="sub-video">
+              <video
+                class="st-shot"
+                controls
+                playsinline
+                preload="none"
+                poster={s.poster}
+                aria-label={s.label}
+                width="1440"
+                height="900"
+              >
+                <source src={s.src} type="video/mp4" />
+              </video>
+              {s.duration && <figcaption class="st-label">{s.duration}</figcaption>}
+            </figure>
+          )}
+
           {/* ── Marks of the systems STRIVN reads from ────────────── */}
           {s.kind === 'logos' && <PartnerTiles only={s.only} />}
 
@@ -309,6 +328,23 @@ const grid = (n: number) => `sub-grid sub-grid--${Math.min(Math.max(n, 2), 4)}`;
 }
 
 <style>
+  /* ── Walkthrough video: full band width, the capture's own ratio ── */
+  .sub-video {
+    width: 100%;
+    margin: 0;
+  }
+  .sub-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: #0b1220;
+  }
+  .sub-video figcaption {
+    margin-top: 12px;
+  }
   /* ── Opening: heading, then the band's capture ─────────────────── */
   .sub-open {
     margin-bottom: clamp(32px, 4vw, 48px);

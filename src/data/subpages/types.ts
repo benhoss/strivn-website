@@ -143,6 +143,16 @@ export type Section = Head &
         name: string;
       }
     | {
+        /** A product walkthrough the visitor starts: controls, never autoplay. */
+        kind: 'video';
+        src: string;
+        poster: string;
+        /** Accessible name of the player. */
+        label: string;
+        /** Shown under the player, e.g. "5 min". */
+        duration?: string;
+      }
+    | {
         /** App Store and Google Play badges for one of the mobile apps. */
         kind: 'stores';
         app: 'coach' | 'player';
