@@ -719,7 +719,7 @@ const fr: CaptureText = {
     note: 'Rapport enregistré · rejoué sur les données du jour. « * » signale un échantillon trop court.',
   },
   deck: {
-    editor: { title: 'Debrief — Royal Vieux-Pré', meta: '5 PAGES', pages: ['Couverture', 'Aperçu du match', 'Performances remarquables', 'Statistiques par joueur', 'À travailler'], kicker: 'RAPPORT DE MATCH', at: 'chez', date: '29 août 2026 · Championnat', scorers: 'Buteurs', present: 'Présenter' },
+    editor: { title: 'Debrief — Royal Sporting Meuse-Liège', meta: '5 PAGES', pages: ['Couverture', 'Aperçu du match', 'Performances remarquables', 'Statistiques par joueur', 'À travailler'], kicker: 'RAPPORT DE MATCH', at: 'chez', date: '29 août 2026 · Championnat', scorers: 'Buteurs', present: 'Présenter' },
     context: { title: 'Contexte de la présentation', meta: 'RECALCUL', period: 'Période', periodV: 'Un match', match: 'Match', matchV: '05/09 · Étoile de Marnaye', rows: ['Distance totale', 'Haute intensité', 'Sprints'], review: 'À relire', reviewNote: 'Écrit pour le match du 29/08 : relisez avant d\'envoyer.', reviewed: 'J\'ai relu' },
     tactic: { title: 'À travailler', meta: 'PAGE 5 / 5', heading: 'À travailler cette semaine : la transition défensive', caption: 'Transition défensive — contre-pressing', zone: 'Contre-pressing · 5 s' },
   },
@@ -970,7 +970,7 @@ const en: CaptureText = {
     note: 'Saved report · replayed on today’s data. “*” marks too short a sample.',
   },
   deck: {
-    editor: { title: 'Debrief — Royal Vieux-Pré', meta: '5 PAGES', pages: ['Cover', 'Match overview', 'Standout performances', 'Player statistics', 'To work on'], kicker: 'MATCH REPORT', at: 'at', date: '29 August 2026 · League', scorers: 'Scorers', present: 'Present' },
+    editor: { title: 'Debrief — Royal Sporting Meuse-Liège', meta: '5 PAGES', pages: ['Cover', 'Match overview', 'Standout performances', 'Player statistics', 'To work on'], kicker: 'MATCH REPORT', at: 'at', date: '29 August 2026 · League', scorers: 'Scorers', present: 'Present' },
     context: { title: 'Presentation context', meta: 'RECOMPUTED', period: 'Period', periodV: 'A match', match: 'Match', matchV: '05/09 · Étoile de Marnaye', rows: ['Total distance', 'High intensity', 'Sprints'], review: 'To review', reviewNote: 'Written for the 29/08 match: review before sending.', reviewed: 'I\'ve reviewed it' },
     tactic: { title: 'To work on', meta: 'PAGE 5 / 5', heading: 'To work on this week: the defensive transition', caption: 'Defensive transition — counter-press', zone: 'Counter-press · 5 s' },
   },
@@ -1221,7 +1221,7 @@ const nl: CaptureText = {
     note: 'Bewaard rapport · opnieuw gedraaid op de data van vandaag. “*” markeert een te kleine steekproef.',
   },
   deck: {
-    editor: { title: 'Analyse — Royal Vieux-Pré', meta: '5 PAGINA\'S', pages: ['Cover', 'Wedstrijdoverzicht', 'Opvallende prestaties', 'Statistieken per speler', 'Werkpunt'], kicker: 'WEDSTRIJDRAPPORT', at: 'bij', date: '29 augustus 2026 · Competitie', scorers: 'Doelpuntenmakers', present: 'Presenteren' },
+    editor: { title: 'Analyse — Royal Sporting Meuse-Liège', meta: '5 PAGINA\'S', pages: ['Cover', 'Wedstrijdoverzicht', 'Opvallende prestaties', 'Statistieken per speler', 'Werkpunt'], kicker: 'WEDSTRIJDRAPPORT', at: 'bij', date: '29 augustus 2026 · Competitie', scorers: 'Doelpuntenmakers', present: 'Presenteren' },
     context: { title: 'Context van de presentatie', meta: 'HERBEREKEND', period: 'Periode', periodV: 'Een wedstrijd', match: 'Wedstrijd', matchV: '05/09 · Étoile de Marnaye', rows: ['Totale afstand', 'Hoge intensiteit', 'Sprints'], review: 'Na te lezen', reviewNote: 'Geschreven voor de wedstrijd van 29/08: lees na voor je verstuurt.', reviewed: 'Ik heb het nagelezen' },
     tactic: { title: 'Werkpunt', meta: 'PAGINA 5 / 5', heading: 'Werkpunt deze week: de defensieve omschakeling', caption: 'Defensieve omschakeling — tegenpressing', zone: 'Tegenpressing · 5 s' },
   },
@@ -1472,7 +1472,7 @@ const de: CaptureText = {
     note: 'Gespeicherter Bericht · auf den heutigen Daten neu gerechnet. „*“ markiert eine zu kleine Stichprobe.',
   },
   deck: {
-    editor: { title: 'Nachbesprechung — Royal Vieux-Pré', meta: '5 SEITEN', pages: ['Deckblatt', 'Spielübersicht', 'Herausragende Leistungen', 'Statistik je Spieler', 'Schwerpunkt'], kicker: 'SPIELBERICHT', at: 'bei', date: '29. August 2026 · Meisterschaft', scorers: 'Torschützen', present: 'Präsentieren' },
+    editor: { title: 'Nachbesprechung — Royal Sporting Meuse-Liège', meta: '5 SEITEN', pages: ['Deckblatt', 'Spielübersicht', 'Herausragende Leistungen', 'Statistik je Spieler', 'Schwerpunkt'], kicker: 'SPIELBERICHT', at: 'bei', date: '29. August 2026 · Meisterschaft', scorers: 'Torschützen', present: 'Präsentieren' },
     context: { title: 'Kontext der Präsentation', meta: 'NEU BERECHNET', period: 'Zeitraum', periodV: 'Ein Spiel', match: 'Spiel', matchV: '05.09. · Étoile de Marnaye', rows: ['Gesamtdistanz', 'Hohe Intensität', 'Sprints'], review: 'Zu prüfen', reviewNote: 'Für das Spiel vom 29.08. geschrieben: vor dem Versand prüfen.', reviewed: 'Ich habe es gelesen' },
     tactic: { title: 'Schwerpunkt', meta: 'SEITE 5 / 5', heading: 'Schwerpunkt der Woche: Umschalten nach Ballverlust', caption: 'Umschalten nach Ballverlust — Gegenpressing', zone: 'Gegenpressing · 5 s' },
   },
@@ -1723,7 +1723,7 @@ const pt: CaptureText = {
     note: 'Relatório guardado · recalculado sobre os dados de hoje. «*» assinala uma amostra curta.',
   },
   deck: {
-    editor: { title: 'Análise — Royal Vieux-Pré', meta: '5 PÁGINAS', pages: ['Capa', 'Resumo do jogo', 'Desempenhos em destaque', 'Estatísticas por jogador', 'A trabalhar'], kicker: 'RELATÓRIO DE JOGO', at: 'em casa do', date: '29 de agosto de 2026 · Campeonato', scorers: 'Marcadores', present: 'Apresentar' },
+    editor: { title: 'Análise — Royal Sporting Meuse-Liège', meta: '5 PÁGINAS', pages: ['Capa', 'Resumo do jogo', 'Desempenhos em destaque', 'Estatísticas por jogador', 'A trabalhar'], kicker: 'RELATÓRIO DE JOGO', at: 'em casa do', date: '29 de agosto de 2026 · Campeonato', scorers: 'Marcadores', present: 'Apresentar' },
     context: { title: 'Contexto da apresentação', meta: 'RECALCULADO', period: 'Período', periodV: 'Um jogo', match: 'Jogo', matchV: '05/09 · Étoile de Marnaye', rows: ['Distância total', 'Alta intensidade', 'Sprints'], review: 'A rever', reviewNote: 'Escrito para o jogo de 29/08: reveja antes de enviar.', reviewed: 'Já reli' },
     tactic: { title: 'A trabalhar', meta: 'PÁGINA 5 / 5', heading: 'A trabalhar esta semana: a transição defensiva', caption: 'Transição defensiva — pressão pós-perda', zone: 'Pressão pós-perda · 5 s' },
   },
@@ -1974,7 +1974,7 @@ const es: CaptureText = {
     note: 'Informe guardado · recalculado sobre los datos de hoy. «*» señala una muestra corta.',
   },
   deck: {
-    editor: { title: 'Análisis — Royal Vieux-Pré', meta: '5 PÁGINAS', pages: ['Portada', 'Resumen del partido', 'Actuaciones destacadas', 'Estadísticas por jugador', 'A trabajar'], kicker: 'INFORME DE PARTIDO', at: 'en casa del', date: '29 de agosto de 2026 · Liga', scorers: 'Goleadores', present: 'Presentar' },
+    editor: { title: 'Análisis — Royal Sporting Meuse-Liège', meta: '5 PÁGINAS', pages: ['Portada', 'Resumen del partido', 'Actuaciones destacadas', 'Estadísticas por jugador', 'A trabajar'], kicker: 'INFORME DE PARTIDO', at: 'en casa del', date: '29 de agosto de 2026 · Liga', scorers: 'Goleadores', present: 'Presentar' },
     context: { title: 'Contexto de la presentación', meta: 'RECALCULADO', period: 'Periodo', periodV: 'Un partido', match: 'Partido', matchV: '05/09 · Étoile de Marnaye', rows: ['Distancia total', 'Alta intensidad', 'Sprints'], review: 'Por revisar', reviewNote: 'Escrito para el partido del 29/08: revísalo antes de enviar.', reviewed: 'Lo he releído' },
     tactic: { title: 'A trabajar', meta: 'PÁGINA 5 / 5', heading: 'A trabajar esta semana: la transición defensiva', caption: 'Transición defensiva — presión tras pérdida', zone: 'Presión tras pérdida · 5 s' },
   },
@@ -2001,7 +2001,7 @@ const es: CaptureText = {
 export const captureText: Record<Locale, CaptureText> = { fr, en, nl, de, pt, es };
 
 /** Presentation captures: the score, scorers and the figures the context switch recomputes (29/08 → 05/09). */
-export const DECK_COVER = { opponent: 'Royal Vieux-Pré', score: '4 – 0', scorers: 'Loriaux (2), Dewulf, Struyf' };
+export const DECK_COVER = { opponent: 'Royal Sporting Meuse-Liège', score: '4 – 0', scorers: 'Loriaux (2), Dewulf, Struyf' };
 export const DECK_CONTEXT_ROWS: Array<{ before: number; after: number; unit: string }> = [
   { before: 99117, after: 98738, unit: 'm' },
   { before: 7636, after: 7372, unit: 'm' },
