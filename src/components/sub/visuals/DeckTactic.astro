@@ -1,0 +1,101 @@
+---
+/**
+ * A presentation slide carrying a tactical board: the week's theme as the
+ * heading, the staff's board below it, drawn as it is in the tactics editor.
+ *
+ * Drawn in SVG rather than captured: a 4-3-3 losing the ball, three players
+ * pressing the carrier inside the counter-press zone, the back line dropping.
+ * Team colours are the board's own (blue us, red them), not status colours.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText } from '../../../data/subpages/captures';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].deck.tactic;
+
+/** Field 1200 × 800, the board editor's own coordinates. */
+const us = [
+  [1, 90, 400], [2, 620, 140], [4, 430, 320], [5, 430, 480], [3, 620, 660], [6, 600, 400],
+  [8, 760, 300], [10, 760, 520], [7, 930, 170], [9, 990, 400], [11, 930, 630],
+];
+const them = [[8, 850, 420], [10, 700, 590], [9, 540, 240], [7, 720, 170]];
+const press = [[770, 315, 835, 400], [975, 405, 880, 420], [770, 505, 838, 440]];
+const drop = [[610, 155, 480, 210], [610, 645, 480, 590], [590, 400, 515, 400]];
+---
+
+<CaptureFrame title={t.title} meta={t.meta}>
+  <div class="tac">
+    <p class="tac__heading">{t.heading}</p>
+    <svg class="tac__pitch" viewBox="0 0 1200 800" role="img" aria-label={t.caption}>
+      <defs>
+        <marker id="tac-press" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 10 5 0 10z" fill="#ffb020" />
+        </marker>
+        <marker id="tac-drop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 10 5 0 10z" fill="#9ad0ff" />
+        </marker>
+      </defs>
+      <rect width="1200" height="800" fill="#1d5e2a" />
+      {Array.from({ length: 12 }, (_, i) => i % 2 === 0 && <rect x={i * 100} width="100" height="800" fill="#1a5626" />)}
+      <g fill="none" stroke="rgba(255,255,255,.85)" stroke-width="5">
+        <rect x="60" y="50" width="1080" height="700" />
+        <line x1="600" y1="50" x2="600" y2="750" />
+        <circle cx="600" cy="400" r="95" />
+        <rect x="60" y="210" width="170" height="380" />
+        <rect x="970" y="210" width="170" height="380" />
+        <rect x="60" y="310" width="60" height="180" />
+        <rect x="1080" y="310" width="60" height="180" />
+      </g>
+      <rect x="735" y="290" width="240" height="250" fill="rgba(255,92,92,.14)" stroke="#ff5c5c" stroke-width="3" stroke-dasharray="14 10" />
+      <text x="738" y="272" fill="#ffb020" font-size="30" font-weight="700">{t.zone}</text>
+      {drop.map(([a, b, c, d]) => <line x1={a} y1={b} x2={c} y2={d} stroke="#9ad0ff" stroke-width="5" stroke-dasharray="14 9" marker-end="url(#tac-drop)" />)}
+      {press.map(([a, b, c, d]) => <line x1={a} y1={b} x2={c} y2={d} stroke="#ffb020" stroke-width="6" marker-end="url(#tac-press)" />)}
+      {them.map(([n, x, y]) => (
+        <g>
+          <circle cx={x} cy={y} r="22" fill="#ff5c5c" stroke="#fff" stroke-width="3" />
+          <text x={x} y={y + 8} text-anchor="middle" fill="#fff" font-size="22" font-weight="700">{n}</text>
+        </g>
+      ))}
+      {us.map(([n, x, y]) => (
+        <g>
+          <circle cx={x} cy={y} r="22" fill="#2d7ff9" stroke="#fff" stroke-width="3" />
+          <text x={x} y={y + 8} text-anchor="middle" fill="#fff" font-size="22" font-weight="700">{n}</text>
+        </g>
+      ))}
+      <circle cx="878" cy="440" r="9" fill="#fff" stroke="#111" stroke-width="2" />
+    </svg>
+    <p class="tac__caption">{t.caption}</p>
+  </div>
+</CaptureFrame>
+
+<style>
+  .tac {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tac__heading {
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-electric-500);
+    font-weight: 600;
+    color: var(--color-ink);
+    font-size: 14px;
+  }
+  .tac__pitch {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .tac__caption {
+    margin: 0;
+    font-size: 12px;
+    color: var(--color-ink-3);
+  }
+</style>

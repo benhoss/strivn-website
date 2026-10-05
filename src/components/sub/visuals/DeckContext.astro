@@ -1,0 +1,91 @@
+---
+/**
+ * The context switch: the same debrief, moved to the next match.
+ *
+ * Two things the capture must show, because they are the section's argument.
+ * Every figure is recomputed (the old value stays visible, struck, so the
+ * change reads as a recalculation and not as a typo). And the coach's text is
+ * not silently carried over: it is flagged for review, with the button that
+ * clears the flag. The flag is a watch state, the one status colour here.
+ */
+import type { Locale } from '../../../data/landingContent';
+import { captureText, DECK_CONTEXT_ROWS } from '../../../data/subpages/captures';
+import CaptureFrame from './CaptureFrame.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = captureText[locale].deck.context;
+const fmt = (n: number) => new Intl.NumberFormat(locale).format(n);
+---
+
+<CaptureFrame title={t.title} meta={t.meta}>
+  <div class="ctx">
+    <div class="ctx__fields">
+      <p class="m-0">
+        <span class="cap-k">{t.period}</span>
+        <span class="cap-field">{t.periodV}</span>
+      </p>
+      <p class="m-0">
+        <span class="cap-k">{t.match}</span>
+        <span class="cap-field">{t.matchV}</span>
+      </p>
+    </div>
+
+    <ul class="cap-rows">
+      {
+        DECK_CONTEXT_ROWS.map((r, i) => (
+          <li>
+            <span class="cap-grow cap-name">{t.rows[i]}</span>
+            <span class="cap-num ink-4 ctx__old">{fmt(r.before)}</span>
+            <span class="cap-num ink-1">
+              {fmt(r.after)}
+              {r.unit && <span class="ink-3"> {r.unit}</span>}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="ctx__review">
+      <p class="m-0 flex flex-wrap items-center gap-2">
+        <span class="st-chip st-chip--watch">{t.review}</span>
+        <span class="cap-btn ml-auto">{t.reviewed}</span>
+      </p>
+      <p class="m-0 text-[13px] leading-[1.5] text-ink-2">{t.reviewNote}</p>
+    </div>
+  </div>
+</CaptureFrame>
+
+<style>
+  .ctx {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ctx__fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .ctx__fields .cap-k {
+    display: block;
+    margin-bottom: 4px;
+  }
+  .ctx__fields .cap-field {
+    display: block;
+  }
+  .ctx__old {
+    text-decoration: line-through;
+  }
+  .ctx__review {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+  }
+</style>

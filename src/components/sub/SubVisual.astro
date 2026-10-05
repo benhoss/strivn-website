@@ -27,6 +27,9 @@ import PlayerStats from './visuals/PlayerStats.astro';
 import PlayerForm from './visuals/PlayerForm.astro';
 import ReportTable from './visuals/ReportTable.astro';
 import ScoutingBrief from './visuals/ScoutingBrief.astro';
+import DeckEditor from './visuals/DeckEditor.astro';
+import DeckContext from './visuals/DeckContext.astro';
+import DeckTactic from './visuals/DeckTactic.astro';
 
 interface Props {
   name: string;
@@ -56,6 +59,9 @@ const registry: Record<string, any> = {
   'player-form': PlayerForm,
   'report-table': ReportTable,
   'scouting-brief': ScoutingBrief,
+  'deck-editor': DeckEditor,
+  'deck-context': DeckContext,
+  'deck-tactic': DeckTactic,
 };
 
 const Capture = registry[name];
