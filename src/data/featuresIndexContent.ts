@@ -54,7 +54,8 @@ export type ModuleId =
   | 'bi'
   | 'season'
   | 'documents'
-  | 'staffBrief';
+  | 'staffBrief'
+  | 'presentations';
 
 /**
  * The sub-page each module leads to. `null` marks a module with no page of
@@ -94,6 +95,7 @@ export const MODULE_SLUGS: Record<ModuleId, string | null> = {
   season: 'sessions',
   documents: 'staff',
   staffBrief: 'staff-brief',
+  presentations: 'presentations',
 };
 
 export type GroupId = 'monitoring' | 'plan' | 'pitch' | 'players' | 'ai' | 'staff';
@@ -113,7 +115,7 @@ export const GROUPS: ReadonlyArray<{ id: GroupId; modules: readonly ModuleId[] }
     modules: ['rsvp', 'attendance', 'roster', 'trial', 'medical', 'care', 'playerApp', 'parents', 'fines'],
   },
   { id: 'ai', modules: [] },
-  { id: 'staff', modules: ['dashboard', 'reports', 'bi', 'season', 'documents', 'staffBrief'] },
+  { id: 'staff', modules: ['dashboard', 'reports', 'presentations', 'bi', 'season', 'documents', 'staffBrief'] },
 ];
 
 /** Sub-page for each assistant moment, in `ai.moments` order. */
@@ -337,6 +339,10 @@ const fr: FeaturesIndexContent = {
       name: 'Portail parent',
       desc: 'Sur les équipes de jeunes, tout passe par le parent, avec son consentement',
     },
+    presentations: {
+      name: 'Présentations',
+      desc: 'Debrief de match et bilan individuel, aux couleurs du club',
+    },
     staffBrief: {
       name: 'Dossier staff',
       desc: 'Une page à transmettre à votre head coach et à la direction',
@@ -551,6 +557,10 @@ const en: FeaturesIndexContent = {
     parents: {
       name: 'Parent portal',
       desc: 'On youth teams everything goes through the parent, with their consent',
+    },
+    presentations: {
+      name: 'Presentations',
+      desc: 'Match debriefs and player reviews, in your club colours',
     },
     staffBrief: {
       name: 'Staff brief',
@@ -770,6 +780,10 @@ const nl: FeaturesIndexContent = {
     parents: {
       name: 'Ouderportaal',
       desc: 'Bij jeugdteams loopt alles via de ouder, met diens toestemming',
+    },
+    presentations: {
+      name: 'Presentaties',
+      desc: 'Wedstrijdanalyse en individuele evaluatie, in de clubkleuren',
     },
     staffBrief: {
       name: 'Stafdossier',
@@ -997,6 +1011,10 @@ const de: FeaturesIndexContent = {
     parents: {
       name: 'Elternportal',
       desc: 'Bei Jugendteams läuft alles über die Eltern, mit deren Einwilligung',
+    },
+    presentations: {
+      name: 'Präsentationen',
+      desc: 'Spielnachbesprechung und Einzelbilanz, in den Vereinsfarben',
     },
     staffBrief: {
       name: 'Staff-Dossier',
@@ -1231,6 +1249,10 @@ const pt: FeaturesIndexContent = {
     parents: {
       name: 'Portal dos pais',
       desc: 'Nas equipas de jovens tudo passa pelo encarregado, com o seu consentimento',
+    },
+    presentations: {
+      name: 'Apresentações',
+      desc: 'Análise de jogo e balanço individual, com as cores do clube',
     },
     staffBrief: {
       name: 'Dossiê de staff',
@@ -1470,6 +1492,10 @@ const es: FeaturesIndexContent = {
     parents: {
       name: 'Portal de padres',
       desc: 'En equipos de jóvenes todo pasa por el padre, con su consentimiento',
+    },
+    presentations: {
+      name: 'Presentaciones',
+      desc: 'Análisis de partido y balance individual, con los colores del club',
     },
     staffBrief: {
       name: 'Dossier de staff',
