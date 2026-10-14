@@ -9,9 +9,13 @@ interface Props {
   plans: PricingContent['plans'];
   matrix: PricingContent['matrix'];
   email: string;
+  /** Where "compare line by line" goes. The pricing page points at its matrix. */
+  compareHref?: string;
+  /** Section id. `plans` on the pricing page, so another page can keep its own. */
+  sectionId?: string;
 }
 
-const { locale, plans: c, matrix, email } = Astro.props;
+const { locale, plans: c, matrix, email, compareHref = '#compare', sectionId = 'plans' } = Astro.props;
 
 /**
  * Every tier that has a price leads to registration, and that is honest even
@@ -25,7 +29,7 @@ const ctaHref = (plan: PricingPlan): string =>
     : `mailto:${email}?subject=${encodeURIComponent(`STRIVN ${plan.name}`)}`;
 ---
 
-<section id="plans" class="st-sec" aria-labelledby="plans-title">
+<section id={sectionId} class="st-sec" aria-labelledby="plans-title">
   <div class="st-wrap">
     <div class="st-head">
       <span class="st-label st-eyebrow">{c.kicker}</span>
@@ -97,7 +101,7 @@ const ctaHref = (plan: PricingPlan): string =>
           <span class="st-tag">{matrix.cells.upcoming}</span>
         </span>
       </p>
-      <a href="#compare" class="st-link">{matrix.title.replace(/\.$/, '')}</a>
+      <a href={compareHref} class="st-link">{matrix.title.replace(/\.$/, '')}</a>
     </div>
 
     <p class="st-small pp-note">{c.note}</p>

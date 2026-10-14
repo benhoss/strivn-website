@@ -11,7 +11,8 @@ import PricingFaq from './PricingFaq.astro';
 import PricingCta from './PricingCta.astro';
 import { NAV } from '../../data/nav';
 import { homeContent } from '../../data/homeContent';
-import { pricingContent, PRICING_LOCALES, PLAN_PRICES, type Locale } from '../../data/pricingContent';
+import { pricingContent, PRICING_LOCALES, type Locale } from '../../data/pricingContent';
+import { catalogueOffers } from '../../lib/planPrice';
 
 interface Props {
   locale: Locale;
@@ -37,14 +38,7 @@ const skipLabelByLocale: Record<Locale, string> = {
   en: 'Skip to content',
 };
 
-/**
- * Structured-data amounts come from `PLAN_PRICES`, the same cents the cards
- * render, so a price can never be right on the page and stale in the markup.
- * A quoted tier emits no offer at all: an invented figure in structured data
- * is a lie a search engine will repeat.
- */
-const euros = (cents: number) => cents / 100;
-
+/** Amounts come from `catalogueOffers` (`PLAN_PRICES`). A quoted tier emits no offer. */
 const pageUrl = `https://strivn.net${canonicalPath ?? `/${locale}/pricing/`}`;
 
 const jsonLdExtra: Record<string, unknown>[] = [
@@ -70,37 +64,7 @@ const jsonLdExtra: Record<string, unknown>[] = [
     '@id': `${pageUrl}#product`,
     name: 'STRIVN',
     description: c.meta.description,
-    offers: c.plans.items
-      .filter((plan) => PLAN_PRICES[plan.code].monthly !== null)
-      .map((plan) => {
-        const { monthly, yearly } = PLAN_PRICES[plan.code];
-        const offer: Record<string, unknown> = {
-          '@type': 'Offer',
-          name: plan.name,
-          price: euros(monthly!),
-          priceCurrency: 'EUR',
-          url: pageUrl,
-        };
-        if (yearly) {
-          offer.priceSpecification = [
-            {
-              '@type': 'UnitPriceSpecification',
-              price: euros(monthly!),
-              priceCurrency: 'EUR',
-              billingDuration: 1,
-              unitCode: 'MON',
-            },
-            {
-              '@type': 'UnitPriceSpecification',
-              price: euros(yearly),
-              priceCurrency: 'EUR',
-              billingDuration: 1,
-              unitCode: 'ANN',
-            },
-          ];
-        }
-        return offer;
-      }),
+    offers: catalogueOffers(c.plans.items, pageUrl),
   },
 ];
 ---

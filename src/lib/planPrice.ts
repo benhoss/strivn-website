@@ -6,6 +6,7 @@ import {
   type Locale,
   type PlanCode,
   type PricingContent,
+  type PricingPlan,
 } from '../data/pricingContent';
 
 export interface PriceDisplay {
@@ -52,4 +53,45 @@ export function planPrice(
     billed: c.billedYearly.replace('{total}', formatMoney(yearly, locale)),
     bonus: free > 0 ? c.monthsFree.replace('{count}', String(free)) : undefined,
   };
+}
+
+const euros = (cents: number) => cents / 100;
+
+/**
+ * Offer nodes for JSON-LD. Amounts are `PLAN_PRICES`, the same cents the
+ * cards render. A quoted tier emits nothing: a figure that is not in the
+ * catalogue must not reach a search engine.
+ */
+export function catalogueOffers(plans: PricingPlan[], pageUrl: string): Record<string, unknown>[] {
+  return plans
+    .filter((plan) => PLAN_PRICES[plan.code].monthly !== null)
+    .map((plan) => {
+      const { monthly, yearly } = PLAN_PRICES[plan.code];
+      const offer: Record<string, unknown> = {
+        '@type': 'Offer',
+        name: plan.name,
+        price: euros(monthly!),
+        priceCurrency: 'EUR',
+        url: pageUrl,
+      };
+      if (yearly) {
+        offer.priceSpecification = [
+          {
+            '@type': 'UnitPriceSpecification',
+            price: euros(monthly!),
+            priceCurrency: 'EUR',
+            billingDuration: 1,
+            unitCode: 'MON',
+          },
+          {
+            '@type': 'UnitPriceSpecification',
+            price: euros(yearly),
+            priceCurrency: 'EUR',
+            billingDuration: 1,
+            unitCode: 'ANN',
+          },
+        ];
+      }
+      return offer;
+    });
 }

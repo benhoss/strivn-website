@@ -1,11 +1,8 @@
 ---
 /**
  * Competitive landing, French only. Built from the site primitives in
- * system.css (st-sec, st-h1/h2, st-panel, st-chip, st-block, st-cols,
- * st-btn, st-fine, st-faq via HomeFaq) and the shared chrome.
- *
- * HomePricing / PricingPlans are deliberately not used: they render the
- * four-tier catalogue, and this page's prices are its own copy.
+ * system.css and the shared chrome. The pricing band is `PricingPlans`,
+ * fed by the catalogue, so the figures cannot drift from /fr/pricing/.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
@@ -13,22 +10,24 @@ import HomeFooter from '../home/HomeFooter.astro';
 import HomeFaq from '../home/HomeFaq.astro';
 import HomeFinalCta from '../home/HomeFinalCta.astro';
 import HomeIcon from '../home/HomeIcon.astro';
+import PricingPlans from '../pricing/PricingPlans.astro';
 import { NAV } from '../../data/nav';
 import { homeContent, HERO_FILE, HERO_ROWS, HERO_TIME, PROOF_FIGURES } from '../../data/homeContent';
 import { alternativeTeamworks as c, ALTERNATIVE_PATH } from '../../data/alternativeTeamworks';
+import { pricingContent } from '../../data/pricingContent';
 import { appStartUrl } from '../../lib/appUrl';
+import { catalogueOffers } from '../../lib/planPrice';
 import { SKIP_LABEL } from '../../lib/skipLabel';
 
 const locale = 'fr' as const;
 const home = homeContent[locale];
+const pricing = pricingContent[locale];
 const register = appStartUrl(locale);
 
 /** Same roster as the homepage hero; this page shows the four columns it talks about. */
 const rows = HERO_ROWS.slice(0, 4);
 const tone = (row: (typeof rows)[number], cell: 'sleep' | 'acwr') =>
   row.risk?.includes(cell) ? 'is-risk' : row.hot?.includes(cell) ? 'is-hot' : undefined;
-
-const tierHref = (kind: 'register' | 'pro') => (kind === 'pro' ? c.pricing.proHref : register);
 
 const pageUrl = `https://strivn.net${ALTERNATIVE_PATH}`;
 const jsonLdExtra: Record<string, unknown>[] = [
@@ -48,6 +47,13 @@ const jsonLdExtra: Record<string, unknown>[] = [
       { '@type': 'ListItem', position: 1, name: 'STRIVN', item: 'https://strivn.net/fr/' },
       { '@type': 'ListItem', position: 2, name: c.hero.eyebrow, item: pageUrl },
     ],
+  },
+  {
+    '@type': 'Product',
+    '@id': `${pageUrl}#product`,
+    name: 'STRIVN',
+    description: c.meta.description,
+    offers: catalogueOffers(pricing.plans.items, pageUrl),
   },
 ];
 
@@ -228,47 +234,14 @@ const alternates = [
       </div>
     </section>
 
-    <section class="st-sec" id={c.pricing.id} aria-labelledby="pricing-title">
-      <div class="st-wrap">
-        <div class="st-head">
-          <span class="st-label st-eyebrow">{c.pricing.eyebrow}</span>
-          <h2 id="pricing-title" class="st-h2">{c.pricing.title}</h2>
-          <p class="st-lede">{c.pricing.lede}</p>
-        </div>
-        <div class="alt-tiers">
-          {c.pricing.tiers.map((tier) => (
-            <article class:list={['alt-tier', tier.featured && 'is-featured']} aria-labelledby={`tier-${tier.name}`}>
-              <div class="alt-tier__name">
-                <h3 id={`tier-${tier.name}`} class="st-h3">{tier.name}</h3>
-                {tier.badge && <span class="st-tag st-tag--accent">{tier.badge}</span>}
-              </div>
-              <p class="alt-tier__price">
-                {tier.amount}
-                {tier.period && <small>{tier.period}</small>}
-              </p>
-              <p class="st-label alt-tier__alt">{tier.alt}</p>
-              <ul class="alt-tier__features">
-                {tier.features.map((feature) => (
-                  <li>
-                    <HomeIcon name="check" size={14} />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                class:list={['st-btn', tier.featured ? 'st-btn--primary' : 'st-btn--ghost']}
-                href={tierHref(tier.kind)}
-                target={tier.kind === 'register' ? '_blank' : undefined}
-                rel={tier.kind === 'register' ? 'noopener' : undefined}
-              >
-                {tier.cta}
-              </a>
-            </article>
-          ))}
-        </div>
-        <p class="st-fine alt-perks">{c.pricing.perks.map((perk) => <span>{perk}</span>)}</p>
-      </div>
-    </section>
+    <PricingPlans
+      locale={locale}
+      plans={pricing.plans}
+      matrix={pricing.matrix}
+      email={pricing.faq.email}
+      sectionId="tarifs"
+      compareHref={`/${locale}/pricing/#compare`}
+    />
 
     {c.testimonials.items.length > 0 && (
       <section class="st-sec" id={c.testimonials.id} aria-labelledby="quotes-title">
@@ -325,8 +298,7 @@ const alternates = [
   .alt-hero__lead {
     display: block;
   }
-  .alt-hero__copy .st-fine,
-  .alt-perks {
+  .alt-hero__copy .st-fine {
     margin: 0;
   }
 
@@ -583,77 +555,6 @@ const alternates = [
     color: var(--color-ink-3);
   }
 
-  .alt-tiers {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border: 1px solid var(--color-line-strong);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .alt-tier {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 24px;
-    min-width: 0;
-  }
-  .alt-tier + .alt-tier {
-    border-left: 1px solid var(--color-line);
-  }
-  .alt-tier.is-featured {
-    background: var(--color-navy-850);
-  }
-  .alt-tier__name {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-  }
-  .alt-tier__price {
-    margin: 0;
-    font-weight: 600;
-    font-variation-settings: 'wdth' 75;
-    font-size: clamp(40px, 4vw, 52px);
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--color-ink);
-  }
-  .alt-tier__price small {
-    margin-left: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0;
-    font-variation-settings: 'wdth' 100;
-    color: var(--color-ink-3);
-  }
-  .alt-tier__alt {
-    color: var(--color-ink-3);
-  }
-  .alt-tier__features {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 8px;
-    flex: 1;
-  }
-  .alt-tier__features li {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    color: var(--color-ink-2);
-    font-size: 15px;
-  }
-  .alt-tier__features :global(svg) {
-    flex: none;
-    margin-top: 4px;
-    color: var(--color-ink-3);
-  }
-  .alt-perks {
-    margin-top: 22px;
-  }
-
   .alt-quotes {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -683,13 +584,6 @@ const alternates = [
     }
   }
   @media (max-width: 800px) {
-    .alt-tiers {
-      grid-template-columns: minmax(0, 1fr);
-    }
-    .alt-tier + .alt-tier {
-      border-left: 0;
-      border-top: 1px solid var(--color-line);
-    }
     .alt-quotes {
       grid-template-columns: minmax(0, 1fr);
     }

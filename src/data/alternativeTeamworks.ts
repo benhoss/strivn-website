@@ -1,18 +1,77 @@
 /**
  * French-only landing: /fr/alternative-teamworks-opteamal/
  *
- * Copy is the approved prototype. Do not translate it into the other locales
- * and do not swap these sentences for homepage copy.
+ * Copy is the approved prototype, except every price and tier claim, which is
+ * derived from the catalogue (`PLAN_PRICES`, `MATRIX`, `TRIAL`, plan names).
+ * The pricing band itself is `PricingPlans`, so a catalogue change moves the
+ * cards, the comparison line, the FAQ and the trial sentence together.
  *
  * Open items, each marked TODO(validate) where the text lives:
  *   - migration offer (published, pending a yes from the business)
  *   - RGPD / hosting FAQ answer (the bracketed sentence is still a placeholder)
  *   - testimonials (empty on purpose — the block does not render)
  *   - Open Graph image (the site-wide card until a dedicated one exists)
- *   - the three public prices and the plan names, which do not match PLAN_PRICES
  */
 
+import {
+  MATRIX,
+  PLAN_PRICES,
+  TRIAL,
+  formatMoney,
+  pricingContent,
+  type Cell,
+  type MatrixRowKey,
+  type PlanCode,
+} from './pricingContent';
+
 export const ALTERNATIVE_PATH = '/fr/alternative-teamworks-opteamal/';
+
+const LOCALE = 'fr' as const;
+const catalogue = pricingContent[LOCALE];
+const PLAN_ORDER: PlanCode[] = ['free', 'amateur', 'semi_pro', 'pro'];
+
+/** Plan names whose matrix cell matches. Order is the catalogue order. */
+function namesWhere(key: MatrixRowKey, match: (cell: Cell) => boolean): string[] {
+  const row = MATRIX.flatMap((group) => group.rows).find((item) => item.key === key);
+  if (!row) return [];
+  return PLAN_ORDER.filter((_, index) => match(row.cells[index])).map(
+    (code) => catalogue.matrix.planNames[code],
+  );
+}
+
+function au(names: string[]): string {
+  if (names.length <= 1) return names[0] ? `au ${names[0]}` : '';
+  return names.map((name) => `au ${name}`).join(' et ');
+}
+
+/** Monthly catalogue amount, yearly total when there is one, quote when there isn't. */
+function priceClause(code: PlanCode, name: string, quote?: string): string {
+  const { monthly, yearly } = PLAN_PRICES[code];
+  if (monthly === null) {
+    const quoted = (quote ?? catalogue.matrix.cells.onQuote).toLocaleLowerCase(LOCALE);
+    return `${name} ${quoted}`;
+  }
+  if (monthly === 0) return `${name} ${formatMoney(0, LOCALE)}`;
+  const perYear = yearly ? ` (${formatMoney(yearly, LOCALE)}/an)` : '';
+  return `${name} ${formatMoney(monthly, LOCALE)}${catalogue.plans.perMonth}${perYear}`;
+}
+
+const publicPrices = catalogue.plans.items
+  .map((plan) => priceClause(plan.code, plan.name, plan.quotePrice))
+  .join(', ');
+
+const gpsClaim = `${catalogue.matrix.rows.gpsImport}, ${au(namesWhere('gpsImport', (cell) => cell === true))}. ${catalogue.matrix.rows.gpsConnectors} : ${catalogue.matrix.cells.upcoming.toLocaleLowerCase(LOCALE)}, ${au(namesWhere('gpsConnectors', (cell) => cell === 'upcoming'))}.`;
+
+const trialPlan = catalogue.plans.items.find((plan) => plan.code === TRIAL.plan);
+const trialName = trialPlan?.name ?? TRIAL.plan;
+const trialPerk = `${TRIAL.days} jours de ${trialName} offerts`;
+const trialHasCsv = namesWhere('gpsImport', (cell) => cell === true).includes(trialName);
+const trialSentence = trialHasCsv
+  ? `Les ${TRIAL.days} premiers jours sont au ${trialName}, import GPS compris.`
+  : `Les ${TRIAL.days} premiers jours sont au ${trialName}.`;
+
+const perks = [trialPerk, 'Sans carte', 'Sans validation du club'];
+const costAnswer = `Les prix sont publics : ${publicPrices}. ${gpsClaim} ${trialSentence} Sans carte.`;
 
 export interface Testimonial {
   quote: string;
@@ -56,7 +115,7 @@ export const alternativeTeamworks = {
     primaryCta: 'Créer mon espace',
     secondaryCta: 'Demander une démo',
     secondaryHref: mail('Demande de démo STRIVN'),
-    perks: ['30 jours de Semi-Pro offerts', 'Sans carte', 'Sans validation du club'],
+    perks,
     panelAria: 'Exemple de lecture STRIVN avant séance',
     columns: ['Joueur', 'ACWR', 'Sommeil', 'Lecture'] as const,
     proposed: 'Proposé · L. Moreau :',
@@ -110,12 +169,12 @@ export const alternativeTeamworks = {
     columns: { criterion: 'Critère', strivn: 'STRIVN', ams: 'Teamworks AMS' },
     rows: [
       { criterion: 'Mise en place', strivn: 'Quelques minutes, en libre-service', ams: "Projet d'implémentation" },
-      { criterion: 'Prix', strivn: 'Public : 0 €, 25 € ou 249 € par mois', ams: 'Sur devis' },
+      { criterion: 'Prix', strivn: `Public : ${publicPrices}`, ams: 'Sur devis' },
       { criterion: 'Accord du club', strivn: 'Aucune validation nécessaire', ams: 'Vente accompagnée par un commercial' },
       { criterion: 'Check-in joueurs', strivn: 'Par lien, sans app, en 20 secondes, relance automatique', ams: 'Formulaires configurables' },
       {
         criterion: 'Import GPS',
-        strivn: 'CSV Catapult, STATSports et autres, colonnes reconnues au premier import ; connexion directe en Pro',
+        strivn: gpsClaim,
         ams: 'Plus de 100 intégrations',
       },
       { criterion: 'ACWR, monotonie, readiness', strivn: 'Natifs, fenêtre 7/28 jours recalculée chaque nuit', ams: 'Configurables via tableaux de bord' },
@@ -160,55 +219,6 @@ export const alternativeTeamworks = {
     note: "Comparatif établi à partir d'informations publiques au 14 octobre 2026.",
   },
   /**
-   * TODO(validate): plan names and amounts. This page says Semi-Pro is 25 €
-   * and Pro is 249 €. The catalogue behind /fr/pricing/ (`PLAN_PRICES`) is
-   * Gratuit 0 €, Amateur 25 €/mois (250 €/an), Semi-Pro 249 €/mois
-   * (2 490 €/an), Pro sur devis — and CSV GPS import starts at Semi-Pro.
-   * HomePricing and PricingPlans are not used here because they would
-   * replace this copy with that catalogue. Confirm before promoting the URL.
-   */
-  pricing: {
-    id: 'tarifs',
-    eyebrow: 'Tarifs publics',
-    title: 'Un prix affiché, pas un devis.',
-    lede: 'Un coach doit pouvoir structurer son travail sans demander un budget. Commencez gratuitement, passez au niveau supérieur quand votre staff en a besoin.',
-    tiers: [
-      {
-        name: 'Gratuit',
-        amount: '0 €',
-        period: '',
-        alt: 'Pour toujours',
-        features: ['1 équipe', 'Joueurs illimités'],
-        cta: 'Créer un compte',
-        kind: 'register' as const,
-        featured: false,
-      },
-      {
-        name: 'Semi-Pro',
-        badge: '30 jours offerts',
-        amount: '25 €',
-        period: '/ mois',
-        alt: 'ou 250 € / an',
-        features: ['Tout le plan Gratuit', 'Import GPS par CSV', 'Catapult, STATSports et autres'],
-        cta: 'Essayer 30 jours',
-        kind: 'register' as const,
-        featured: true,
-      },
-      {
-        name: 'Pro',
-        amount: '249 €',
-        period: '/ mois',
-        alt: 'ou 2 490 € / an',
-        features: ['Tout le plan Semi-Pro', 'Connexion GPS directe'],
-        cta: "Contacter l'équipe",
-        kind: 'pro' as const,
-        featured: false,
-      },
-    ],
-    proHref: mail('STRIVN Pro'),
-    perks: ['30 jours de Semi-Pro offerts', 'Sans carte', 'Sans validation du club'],
-  },
-  /**
    * TODO(validate): three testimonials — quote, name, role and club — each
    * with written consent. Leave `items` empty until then. The section is
    * not rendered when the list is empty, so placeholder quotes never ship.
@@ -251,7 +261,7 @@ export const alternativeTeamworks = {
       },
       {
         q: 'Combien ça coûte, vraiment ?',
-        a: 'Les prix sont publics : Gratuit à 0 € pour une équipe, Semi-Pro à 25 €/mois (250 €/an) avec import GPS par CSV, Pro à 249 €/mois (2 490 €/an) avec connexion GPS directe. Les 30 premiers jours sont au Semi-Pro, sans carte.',
+        a: costAnswer,
       },
       {
         q: 'Mes joueurs doivent-ils installer une application ?',
@@ -262,11 +272,11 @@ export const alternativeTeamworks = {
   finalCta: {
     eyebrow: 'Prêt cette semaine',
     title: 'Créez votre espace et importez votre première séance.',
-    body: 'Les 30 premiers jours sont au Semi-Pro, import GPS compris. Votre staff vous rejoint quand il voit vos premiers rapports.',
+    body: `${trialSentence} Votre staff vous rejoint quand il voit vos premiers rapports.`,
     primaryCta: 'Créer mon espace gratuitement',
     secondaryCta: 'Demander une démo',
     secondaryHref: mail('Demande de démo STRIVN'),
-    fine: ['30 jours de Semi-Pro offerts', 'Sans carte', 'Sans validation du club'],
+    fine: perks,
   },
   disclaimer:
     "Teamworks, Teamworks AMS et Opteamal sont des marques de leurs détenteurs respectifs. STRIVN n'est ni affilié à ces sociétés, ni approuvé par elles. Catapult, STATSports et WHOOP sont cités à titre de compatibilité. Les informations sur les autres solutions proviennent de sources publiques au 14 octobre 2026 et peuvent évoluer. Chiffres STRIVN au 18 septembre 2026.",
