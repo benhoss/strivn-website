@@ -1,16 +1,18 @@
 /**
  * French-only landing: /fr/alternative-teamworks-opteamal/
  *
- * Copy is the approved prototype, except every price and tier claim, which is
- * derived from the catalogue (`PLAN_PRICES`, `MATRIX`, `TRIAL`, plan names).
- * The pricing band itself is `PricingPlans`, so a catalogue change moves the
- * cards, the comparison line, the FAQ and the trial sentence together.
+ * Prices, plan names and the trial still come from the catalogue
+ * (`PLAN_PRICES`, `MATRIX`, `TRIAL`). Feature claims follow the code audit
+ * of the app: files-only GPS, the three readiness labels, and no unshipped
+ * connector, API, hosting or certification claim.
  *
  * Open items, each marked TODO(validate) where the text lives:
  *   - migration offer (published, pending a yes from the business)
- *   - RGPD / hosting FAQ answer (the bracketed sentence is still a placeholder)
  *   - testimonials (empty on purpose — the block does not render)
  *   - Open Graph image (the site-wide card until a dedicated one exists)
+ *
+ * The data-protection answer stays inside what the privacy policy actually
+ * says. Do not add a country, a DPA, at-rest encryption, or a certification.
  */
 
 import {
@@ -22,6 +24,7 @@ import {
   type Cell,
   type MatrixRowKey,
   type PlanCode,
+  type PricingContent,
 } from './pricingContent';
 
 export const ALTERNATIVE_PATH = '/fr/alternative-teamworks-opteamal/';
@@ -60,18 +63,45 @@ const publicPrices = catalogue.plans.items
   .map((plan) => priceClause(plan.code, plan.name, plan.quotePrice))
   .join(', ');
 
-const gpsClaim = `${catalogue.matrix.rows.gpsImport}, ${au(namesWhere('gpsImport', (cell) => cell === true))}. ${catalogue.matrix.rows.gpsConnectors} : ${catalogue.matrix.cells.upcoming.toLocaleLowerCase(LOCALE)}, ${au(namesWhere('gpsConnectors', (cell) => cell === 'upcoming'))}.`;
+/** GPS import tier names stay on the catalogue. The capability itself is the audit. */
+const gpsTiers = au(namesWhere('gpsImport', (cell) => cell === true));
+const gpsFiles = `Import de fichiers GPS (CSV, XLSX, Catapult, STATSports, traces SPT / GameTraka), ${gpsTiers}. Pas de connecteur en direct, pas d'API publique.`;
 
 const trialPlan = catalogue.plans.items.find((plan) => plan.code === TRIAL.plan);
 const trialName = trialPlan?.name ?? TRIAL.plan;
 const trialPerk = `${TRIAL.days} jours de ${trialName} offerts`;
 const trialHasCsv = namesWhere('gpsImport', (cell) => cell === true).includes(trialName);
 const trialSentence = trialHasCsv
-  ? `Les ${TRIAL.days} premiers jours sont au ${trialName}, import GPS compris.`
+  ? `Les ${TRIAL.days} premiers jours sont au ${trialName}, import de fichiers GPS compris.`
   : `Les ${TRIAL.days} premiers jours sont au ${trialName}.`;
 
 const perks = [trialPerk, 'Sans carte', 'Sans validation du club'];
-const costAnswer = `Les prix sont publics : ${publicPrices}. ${gpsClaim} ${trialSentence} Sans carte.`;
+const costAnswer = `Les prix sont publics : ${publicPrices}. ${gpsFiles} ${trialSentence} Sans carte.`;
+
+/**
+ * Catalogue cards, with the bullets the audit contradicts rewritten or dropped.
+ * Prices, names and the other bullets stay on the catalogue.
+ */
+export function plansForLanding(plans: PricingContent['plans']): PricingContent['plans'] {
+  return {
+    ...plans,
+    items: plans.items.map((plan) => ({
+      ...plan,
+      features: plan.features.flatMap((line) => {
+        if (line.startsWith('À venir')) return [];
+        if (line.startsWith('Import GPS par CSV')) {
+          return [
+            'Import de fichiers GPS : CSV, XLSX, Catapult, STATSports, SPT / GameTraka. Pas de connecteur en direct.',
+          ];
+        }
+        if (line === 'Synchronisation des objets connectés') {
+          return ['WHOOP peut préremplir le check-in'];
+        }
+        return [line];
+      }),
+    })),
+  };
+}
 
 export interface Testimonial {
   quote: string;
@@ -91,13 +121,15 @@ const mail = (subject: string) =>
   `mailto:hello@strivn.net?subject=${encodeURIComponent(subject)}`;
 
 export const alternativeTeamworks = {
+  /** Shown under the tier cards instead of the catalogue's "connect your GPS" line. */
+  gpsNote: gpsFiles,
   meta: {
     title: 'Alternative à Teamworks AMS et Opteamal | STRIVN',
     description:
-      "Opteamal a rejoint Teamworks. Si vous réévaluez votre outil, STRIVN pilote la charge, le wellness et le GPS en quelques minutes, à prix public, sans projet d'intégration ni validation du club.",
+      "Opteamal a rejoint Teamworks. STRIVN pilote la charge, le wellness et les fichiers GPS, à prix public, sans validation du club. Check-in par lien. Six langues : français, anglais, néerlandais, allemand, portugais, espagnol.",
     ogTitle: "STRIVN : l'alternative à Teamworks AMS et Opteamal pour le staff performance",
     ogDescription:
-      "Le pilotage de la charge sans le prix d'entrée ni le projet d'intégration. Prix public, check-in par lien, import GPS Catapult et STATSports, en français.",
+      "Prix public, sans projet d'intégration. Check-in par lien, sans application. Fichiers GPS (CSV, XLSX, Catapult, STATSports, SPT) au Semi-Pro. Six langues.",
     twitterTitle: "STRIVN : l'alternative à Teamworks AMS et Opteamal",
     twitterDescription: "Le pilotage de la charge sans le prix d'entrée ni le projet d'intégration.",
     /**
@@ -111,7 +143,7 @@ export const alternativeTeamworks = {
     eyebrow: 'Alternative à Teamworks AMS et Opteamal',
     titleLead: 'Le pilotage de la charge,',
     title: "sans le prix d'entrée ni le projet d'intégration.",
-    lede: "GPS, RPE, wellness et planification en UA sur un seul écran. Avant chaque séance, STRIVN vous dit qui est prêt, qui surveiller et qui alléger. Vous créez l'espace aujourd'hui, vous importez votre première séance dans la foulée.",
+    lede: "Charge, wellness, RPE et planification en UA. Avant la séance, chaque joueur est Prêt, À suivre ou À risque. Vous créez le compte vous-même : un nouvel espace démarre sur 30 jours de Semi-Pro, import de fichiers GPS compris.",
     primaryCta: 'Créer mon espace',
     secondaryCta: 'Demander une démo',
     secondaryHref: mail('Demande de démo STRIVN'),
@@ -119,9 +151,9 @@ export const alternativeTeamworks = {
     panelAria: 'Exemple de lecture STRIVN avant séance',
     columns: ['Joueur', 'ACWR', 'Sommeil', 'Lecture'] as const,
     proposed: 'Proposé · L. Moreau :',
-    proposal: '3e semaine au-dessus du seuil. Volume −30 % à la prochaine séance, sans sprint.',
-    sources: 'Sources · GPS dernière séance · RPE · wellness 16/18 · plan S12',
-    readings: { ready: 'Prêt', watch: 'Surveiller', risk: 'Alléger' } as const,
+    proposal: "Réduire les sprints et les changements de direction aujourd'hui.",
+    sources: 'ACWR 7/28 · sommeil · RPE. Seuils fixés par le sport, pas par le staff.',
+    readings: { ready: 'Prêt', watch: 'À suivre', risk: 'À risque' } as const,
     statsAria: 'STRIVN en chiffres',
     statsCaption: 'Du régional au professionnel. Au 18 septembre 2026.',
   },
@@ -136,26 +168,36 @@ export const alternativeTeamworks = {
         { when: '18 déc. 2025', what: 'Opteamal intègre la famille Teamworks.' },
         { when: 'Ensuite', what: "Migration des clubs vers l'écosystème Teamworks." },
       ],
-      body: "Teamworks AMS est une suite solide, pensée pour les grandes structures. Si elle couvre vos besoins, rester est un choix logique. Si vous cherchez un outil plus léger, à prix public et opérationnel dès cette semaine, comparez avant de vous engager.",
+      body: "Teamworks AMS est une suite solide, pensée pour les grandes structures. Si elle couvre vos besoins, rester est un choix logique. Si vous cherchez un outil plus léger, à prix public, que le staff ouvre lui-même, comparez avant de vous engager.",
       questions: [
         'Quel budget annuel pour votre staff ?',
-        'Qui porte la mise en place, et en combien de temps ?',
+        'Qui porte la mise en place ?',
         'Vos joueurs devront-ils installer une nouvelle app ?',
       ],
     },
     /**
      * TODO(validate): migration offer. The copy below is published. Confirm
-     * we will import CSV history, map columns with the staff, and that
-     * players can answer by link before this offer is promoted.
+     * we will import the history with the staff, and that players can answer
+     * by link, before this offer is promoted. GPS files sit on Semi-Pro,
+     * which is the trial tier.
      */
     offer: {
       tag: 'Pour les clubs ex-Opteamal',
       title: 'On vous aide à migrer, données comprises.',
       body: "Vous repartez avec votre historique, pas d'une page blanche.",
       points: [
-        { lead: "Import de l'historique en CSV", rest: ' : charge, RPE, wellness et exports GPS passés.' },
-        { lead: 'Aide à la migration', rest: ' : nous faisons la correspondance des colonnes avec vous, une fois.' },
-        { lead: 'Vos joueurs répondent par lien', rest: ', sans app à installer.' },
+        {
+          lead: "Import de l'historique en fichier",
+          rest: ' : charge, RPE et wellness en CSV ou XLSX. Les exports GPS (Catapult, STATSports, SPT / GameTraka) s’importent au Semi-Pro, le palier de l’essai.',
+        },
+        {
+          lead: 'Aide à la migration',
+          rest: " : nous faisons la correspondance des colonnes avec vous, une fois. Elle est ensuite mémorisée pour l'équipe.",
+        },
+        {
+          lead: 'Vos joueurs répondent par lien',
+          rest: ', sur WhatsApp ou par e-mail, sans application à installer.',
+        },
       ],
       cta: 'Parler de ma migration',
       href: mail('Migration depuis Opteamal'),
@@ -165,58 +207,115 @@ export const alternativeTeamworks = {
     id: 'comparatif',
     eyebrow: 'Comparatif',
     title: 'STRIVN et Teamworks AMS, point par point.',
-    lede: "Deux approches différentes. Teamworks AMS est une plateforme d'entreprise configurable ; STRIVN est l'outil du staff performance, prêt à l'emploi.",
+    lede: "Deux approches différentes. Teamworks AMS est une plateforme d'entreprise configurable ; STRIVN est l'outil du staff performance, avec des calculs natifs et un périmètre livré.",
     columns: { criterion: 'Critère', strivn: 'STRIVN', ams: 'Teamworks AMS' },
     rows: [
-      { criterion: 'Mise en place', strivn: 'Quelques minutes, en libre-service', ams: "Projet d'implémentation" },
+      {
+        criterion: 'Mise en place',
+        strivn:
+          'Compte créé par le staff : nom, e-mail, téléphone, mot de passe, langue, pays. Pas d’accord du club ni d’une fédération. 30 jours de Semi-Pro à l’ouverture.',
+        ams: "Projet d'implémentation",
+      },
       { criterion: 'Prix', strivn: `Public : ${publicPrices}`, ams: 'Sur devis' },
-      { criterion: 'Accord du club', strivn: 'Aucune validation nécessaire', ams: 'Vente accompagnée par un commercial' },
-      { criterion: 'Check-in joueurs', strivn: 'Par lien, sans app, en 20 secondes, relance automatique', ams: 'Formulaires configurables' },
+      {
+        criterion: 'Accord du club',
+        strivn: 'Aucune validation du club ni d’une fédération',
+        ams: 'Vente accompagnée par un commercial',
+      },
+      {
+        criterion: 'Check-in joueurs',
+        strivn:
+          'Lien WhatsApp ou e-mail, sans application : fatigue, sommeil, humeur, stress, et RPE. Envois automatiques au Semi-Pro et au Pro. WHOOP peut préremplir le check-in à ces paliers.',
+        ams: 'Formulaires configurables',
+      },
       {
         criterion: 'Import GPS',
-        strivn: gpsClaim,
+        strivn:
+          'Fichiers seulement, au Semi-Pro et au Pro : CSV ou XLSX (Catapult, STATSports, ou tout tableau) et traces SPT / GameTraka (.gt). STRIVN calcule distance et zones de vitesse sur la trace brute. Colonnes devinées, puis mémorisées. Pas de connecteur en direct.',
         ams: 'Plus de 100 intégrations',
       },
-      { criterion: 'ACWR, monotonie, readiness', strivn: 'Natifs, fenêtre 7/28 jours recalculée chaque nuit', ams: 'Configurables via tableaux de bord' },
-      { criterion: 'Planification en UA', strivn: 'Cible vs réalisé, joueur par joueur', ams: 'Configurable' },
+      {
+        criterion: 'ACWR et readiness',
+        strivn:
+          'ACWR 7 jours sur la moyenne chronique de 28 jours, monotonie de Foster, recalculés chaque nuit. Lectures : Prêt, À suivre, À risque. Les écrans sont sur tous les paliers ; la charge issue du GPS demande le Semi-Pro.',
+        ams: 'Configurables via tableaux de bord',
+      },
+      {
+        criterion: 'Planification en UA',
+        strivn:
+          'Cible hebdomadaire, prévu contre réalisé, ajustement par joueur (échelle, exclusion ou travail individuel) sans modifier la grille d’équipe ni la convocation.',
+        ams: 'Configurable',
+      },
       {
         criterion: "Éditeur d'exercices animés",
-        strivn: 'Foot, hand, rugby, basket, volley ; export PNG et vidéo',
+        strivn:
+          'Foot, handball, rugby, basket, volley. Animation, téléchargement PNG ou WebM. Partage du PNG par la feuille de partage du téléphone. 3 tableaux et 3 modèles au Free, sans plafond à partir de l’Amateur.',
         ams: 'Non mis en avant',
         amsMuted: true,
       },
       {
         criterion: 'Bord de terrain hors ligne',
-        strivn: 'Présences, chrono par bloc, synchro au retour du réseau',
+        strivn:
+          'Présences, chrono par bloc, équipes et score. Le téléphone garde un journal hors ligne et le synchronise au retour. Sans durée saisie, la charge utilise le temps réellement joué.',
         ams: 'Non mis en avant',
         amsMuted: true,
       },
       {
-        criterion: 'Assistant IA',
-        strivn: 'Réponses sourcées et rapport hebdomadaire automatique',
+        criterion: 'Assistant et rapport',
+        strivn:
+          'L’assistant lit la charge, le wellness, le GPS et les blessures, et cite les chiffres affichés par l’app, avec la période. Pas de note de source sous chaque réponse. Chaque lundi à 06:00 UTC, un PDF par joueur et par équipe est généré et stocké. Il n’est pas envoyé par e-mail. Quotas mensuels de l’assistant : 60 au Free, 400 à l’Amateur, 2 000 au Semi-Pro, puis au contrat.',
         ams: 'Non communiqué',
         amsMuted: true,
       },
-      { criterion: 'Langue', strivn: 'Français natif', ams: 'Multilingue, orienté anglais' },
+      {
+        criterion: 'Rôles du staff',
+        strivn:
+          'Entraîneur principal, adjoint, médical, kiné, préparateur physique, analyste, délégué, recruteur, entraîneur des gardiens, chacun avec ses permissions. Free : propriétaire seul. Amateur : une invitation en plus. Semi-Pro et Pro : sans plafond.',
+        ams: 'Rôles dans la suite',
+      },
+      {
+        criterion: 'Disponibilité',
+        strivn:
+          'Un joueur absent sort des convocations à l’entraînement et au match. Un joueur limité à l’entraînement sort des matchs. Soins, programme individuel et sélection de stage explicite restent disponibles.',
+        ams: 'Liée au dossier médical',
+      },
+      {
+        criterion: 'Médical',
+        strivn:
+          'Journal de blessure, checklist et plan de retour au jeu, séances de réathlétisation. Tableau médical au Semi-Pro et au Pro. Pas de bibliothèque de protocoles.',
+        ams: 'Module médical complet',
+      },
+      {
+        criterion: 'Langues',
+        strivn:
+          'Français, anglais, néerlandais, allemand, portugais et espagnol. Le français est le texte source.',
+        ams: 'Multilingue, orienté anglais',
+      },
+      {
+        criterion: 'Export et API',
+        strivn:
+          'Agenda iCal, présences, et semaine GPS en CSV (l’export GPS est au Semi-Pro). Pas d’API publique, pas de paquet complet en libre-service.',
+        ams: 'API et intégrations annoncées',
+      },
     ] satisfies CompareRow[],
     fair: [
       {
         tag: 'Point fort AMS',
-        title: 'Médical et retour au jeu',
-        body: 'Teamworks AMS propose un module médical complet. Sur STRIVN, le suivi médical reste volontairement limité.',
+        title: 'Module médical plus large',
+        body: "Teamworks AMS met en avant un module médical complet. STRIVN couvre le journal de blessure, le retour au jeu et la réathlétisation, pas une bibliothèque de protocoles cliniques.",
       },
       {
         tag: 'Point fort AMS',
         title: 'Configurabilité des grandes structures',
-        body: 'Formulaires, tableaux de bord, API : AMS se paramètre pour des fédérations et des organisations multi-équipes.',
+        body: "Formulaires, tableaux de bord et intégrations : AMS se paramètre pour des fédérations et des organisations multi-équipes. STRIVN n'a pas d'API publique.",
       },
       {
         tag: 'Notre choix',
-        title: "Prêt à l'emploi pour le staff",
-        body: "STRIVN fait le choix de calculs natifs et d'une prise en main immédiate, sans paramétrage préalable.",
+        title: "Le périmètre livré, pour le staff",
+        body: "Check-in par lien sans application, bord de terrain hors ligne, calcul des traces SPT, rôles du staff, disponibilité reprise dans les convocations, six langues. Les calculs de charge sont natifs.",
       },
     ],
-    note: "Comparatif établi à partir d'informations publiques au 14 octobre 2026.",
+    note: "Comparatif STRIVN établi sur le code du produit. Côté Teamworks AMS, informations publiques au 14 octobre 2026.",
   },
   /**
    * TODO(validate): three testimonials — quote, name, role and club — each
@@ -237,27 +336,27 @@ export const alternativeTeamworks = {
     items: [
       {
         q: 'Je suis sur Opteamal. Puis-je récupérer mon historique ?',
-        a: 'Oui. Exportez vos données en CSV (charge, RPE, wellness, GPS) et importez-les dans STRIVN. Les colonnes sont reconnues au premier import puis mémorisées. Écrivez-nous à hello@strivn.net : nous faisons la première correspondance avec vous.',
+        a: "Oui, par fichier. Charge, RPE et wellness : CSV ou XLSX. Les exports GPS (CSV, XLSX, Catapult, STATSports, ou trace SPT / GameTraka) s'importent au Semi-Pro et au Pro, palier inclus dans l'essai de 30 jours. La correspondance des colonnes est devinée d'après les en-têtes connus, puis enregistrée pour l'équipe. Écrivez-nous à hello@strivn.net : nous faisons la première correspondance avec vous.",
         mailto: mail('Migration depuis Opteamal'),
       },
       {
         /**
-         * TODO(validate): RGPD / data hosting. Replace the bracketed sentence
-         * with the real hosting location, GDPR basis, DPA availability, and
-         * retention. It is rendered on the page and in the FAQPage JSON-LD
-         * until it is replaced.
+         * Limited to the in-app privacy policy (10 June 2026). Do not add a
+         * hosting country, at-rest encryption, a DPA, or a certification:
+         * the policy names none of them. Rendered on the page and in the
+         * FAQPage JSON-LD.
          */
-        q: 'Où sont hébergées nos données, et sont-elles conformes au RGPD ?',
-        a: "[À VALIDER : localisation de l'hébergement, conformité RGPD, accord de traitement des données (DPA) disponible sur demande, export et suppression des données à tout moment.] Pour toute question : hello@strivn.net.",
-        mailto: mail('Données et RGPD'),
+        q: 'Où sont hébergées nos données, et que pouvez-vous en dire ?',
+        a: "La politique de confidentialité (10 juin 2026) indique un transport en HTTPS, et un droit d'accès, de rectification, d'effacement ou de copie, à demander à hello@strivn.net. Elle ne nomme ni le pays d'hébergement, ni un accord de traitement (DPA), ni une certification. La suppression du compte joueur retire l'accès ; l'effacement complet du dossier passe par l'opérateur.",
+        mailto: mail('Données et confidentialité'),
       },
       {
         q: 'Quel est le délai de mise en place ?',
-        a: "Quelques minutes : créez l'espace, ajoutez vos joueurs, importez votre première séance. Pas de projet d'intégration, pas de formation obligatoire.",
+        a: "Vous créez le compte vous-même : nom, e-mail, téléphone, mot de passe, langue, pays. Pas d'accord du club ni d'une fédération, pas de projet d'implémentation, pas de formation obligatoire. Un nouveau compte démarre sur 30 jours de Semi-Pro.",
       },
       {
         q: "Faut-il l'accord du club ?",
-        a: "Non. Vous créez l'espace, invitez le staff et définissez les droits de chacun, sans validation du club. Votre staff vous rejoint quand il voit vos premiers rapports.",
+        a: "Non. Vous créez le compte et invitez le staff avec un rôle (entraîneur principal, adjoint, médical, kiné, préparateur physique, analyste, délégué, recruteur, entraîneur des gardiens), sans validation du club ni d'une fédération. Au Free, seul le propriétaire ; à l'Amateur, une invitation en plus ; au Semi-Pro et au Pro, pas de plafond.",
       },
       {
         q: 'Combien ça coûte, vraiment ?',
@@ -265,13 +364,13 @@ export const alternativeTeamworks = {
       },
       {
         q: 'Mes joueurs doivent-ils installer une application ?',
-        a: 'Non. Un lien suffit pour répondre au wellness au réveil et au RPE après la séance. Vingt secondes, et la relance part seule.',
+        a: "Non pour répondre. Un lien WhatsApp ou e-mail suffit pour le wellness, le RPE et les rappels. L'envoi automatique du matin et du RPE du soir est au Semi-Pro et au Pro. Le produit complet est l'application web. STRIVN Player et STRIVN coach (iOS et Android) en sont des coques, avec les notifications, et un chrono de bord de terrain sur l'app coach.",
       },
     ],
   },
   finalCta: {
-    eyebrow: 'Prêt cette semaine',
-    title: 'Créez votre espace et importez votre première séance.',
+    eyebrow: 'Essai Semi-Pro',
+    title: 'Créez votre compte. L’essai ouvre l’import de fichiers GPS.',
     body: `${trialSentence} Votre staff vous rejoint quand il voit vos premiers rapports.`,
     primaryCta: 'Créer mon espace gratuitement',
     secondaryCta: 'Demander une démo',
@@ -279,5 +378,5 @@ export const alternativeTeamworks = {
     fine: perks,
   },
   disclaimer:
-    "Teamworks, Teamworks AMS et Opteamal sont des marques de leurs détenteurs respectifs. STRIVN n'est ni affilié à ces sociétés, ni approuvé par elles. Catapult, STATSports et WHOOP sont cités à titre de compatibilité. Les informations sur les autres solutions proviennent de sources publiques au 14 octobre 2026 et peuvent évoluer. Chiffres STRIVN au 18 septembre 2026.",
+    "Teamworks, Teamworks AMS et Opteamal sont des marques de leurs détenteurs respectifs. STRIVN n'est ni affilié à ces sociétés, ni approuvé par elles. Catapult, STATSports, SPT, GameTraka et WHOOP sont des marques de leurs détenteurs. L'import GPS se fait par fichier ; WHOOP peut préremplir le check-in au Semi-Pro et au Pro. Les informations sur Teamworks AMS proviennent de sources publiques au 14 octobre 2026 et peuvent évoluer. Chiffres STRIVN au 18 septembre 2026.",
 };

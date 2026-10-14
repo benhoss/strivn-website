@@ -13,9 +13,14 @@ interface Props {
   compareHref?: string;
   /** Section id. `plans` on the pricing page, so another page can keep its own. */
   sectionId?: string;
+  /**
+   * Replaces the catalogue GPS caption. The alternative landing uses it so
+   * the page does not announce unshipped direct connectors.
+   */
+  gpsNote?: string;
 }
 
-const { locale, plans: c, matrix, email, compareHref = '#compare', sectionId = 'plans' } = Astro.props;
+const { locale, plans: c, matrix, email, compareHref = '#compare', sectionId = 'plans', gpsNote } = Astro.props;
 
 /**
  * Every tier that has a price leads to registration, and that is honest even
@@ -95,11 +100,17 @@ const ctaHref = (plan: PricingPlan): string =>
 
     <div class="pp-line">
       <p class="pp-line__gps">
-        <span>{c.gpsLine.semi}</span>
-        <span>
-          {c.gpsLine.pro}
-          <span class="st-tag">{matrix.cells.upcoming}</span>
-        </span>
+        {gpsNote ? (
+          <span>{gpsNote}</span>
+        ) : (
+          <>
+            <span>{c.gpsLine.semi}</span>
+            <span>
+              {c.gpsLine.pro}
+              <span class="st-tag">{matrix.cells.upcoming}</span>
+            </span>
+          </>
+        )}
       </p>
       <a href={compareHref} class="st-link">{matrix.title.replace(/\.$/, '')}</a>
     </div>

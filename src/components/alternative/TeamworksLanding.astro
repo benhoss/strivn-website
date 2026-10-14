@@ -13,7 +13,7 @@ import HomeIcon from '../home/HomeIcon.astro';
 import PricingPlans from '../pricing/PricingPlans.astro';
 import { NAV } from '../../data/nav';
 import { homeContent, HERO_FILE, HERO_ROWS, HERO_TIME, PROOF_FIGURES } from '../../data/homeContent';
-import { alternativeTeamworks as c, ALTERNATIVE_PATH } from '../../data/alternativeTeamworks';
+import { alternativeTeamworks as c, ALTERNATIVE_PATH, plansForLanding } from '../../data/alternativeTeamworks';
 import { pricingContent } from '../../data/pricingContent';
 import { appStartUrl } from '../../lib/appUrl';
 import { catalogueOffers } from '../../lib/planPrice';
@@ -236,11 +236,12 @@ const alternates = [
 
     <PricingPlans
       locale={locale}
-      plans={pricing.plans}
+      plans={plansForLanding(pricing.plans)}
       matrix={pricing.matrix}
       email={pricing.faq.email}
       sectionId="tarifs"
       compareHref={`/${locale}/pricing/#compare`}
+      gpsNote={c.gpsNote}
     />
 
     {c.testimonials.items.length > 0 && (
