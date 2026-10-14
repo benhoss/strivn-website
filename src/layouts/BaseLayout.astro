@@ -18,6 +18,14 @@ interface Props {
   siteName?: string;
   /** Twitter handle without @ — if provided, twitter:site is emitted */
   twitterSite?: string;
+  /** Overrides `og:title`. Defaults to `title`. */
+  ogTitle?: string;
+  /** Overrides `og:description`. Defaults to `description`. */
+  ogDescription?: string;
+  /** Overrides `twitter:title`. Defaults to the Open Graph title. */
+  twitterTitle?: string;
+  /** Overrides `twitter:description`. Defaults to the Open Graph description. */
+  twitterDescription?: string;
   /** Extra JSON-LD nodes appended to the page @graph (e.g. FAQPage, BreadcrumbList) */
   jsonLdExtra?: Record<string, unknown>[];
 }
@@ -32,8 +40,17 @@ const {
   ogImageAlt = 'STRIVN, the control tower for performance staff',
   siteName = 'STRIVN',
   twitterSite,
+  ogTitle,
+  ogDescription,
+  twitterTitle,
+  twitterDescription,
   jsonLdExtra = [],
 } = Astro.props;
+
+const ogTitleText = ogTitle ?? title;
+const ogDescriptionText = ogDescription ?? description;
+const twitterTitleText = twitterTitle ?? ogTitleText;
+const twitterDescriptionText = twitterDescription ?? ogDescriptionText;
 
 const site = Astro.site ?? new URL('https://strivn.net');
 const canonicalUrl = canonicalPath ? new URL(canonicalPath, site).toString() : undefined;
@@ -91,8 +108,8 @@ const jsonLd = {
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={ogTitleText} />
+    <meta property="og:description" content={ogDescriptionText} />
     <meta property="og:url" content={canonicalUrl ?? site.toString()} />
     <meta property="og:locale" content={ogLocale} />
     {ogImageUrl && (
@@ -107,8 +124,8 @@ const jsonLd = {
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={twitterTitleText} />
+    <meta name="twitter:description" content={twitterDescriptionText} />
     {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
     {ogImageUrl && <meta name="twitter:image:alt" content={ogImageAlt} />}
     {twitterSite && <meta name="twitter:site" content={`@${twitterSite}`} />}

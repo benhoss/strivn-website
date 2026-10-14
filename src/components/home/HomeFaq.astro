@@ -1,8 +1,18 @@
 ---
-import type { HomeContent } from '../../data/homeContent';
+interface FaqItem {
+  q: string;
+  a: string;
+  /** Replaces the default `mailto:` of the address inside `a`. */
+  mailto?: string;
+}
 
 interface Props {
-  c: HomeContent['faq'];
+  c: {
+    label: string;
+    title: string;
+    email: string;
+    items: FaqItem[];
+  };
 }
 
 const { c } = Astro.props;
@@ -31,7 +41,7 @@ const columns = [c.items.slice(0, half), c.items.slice(half)];
               <p>
                 {parts(item.a).map((chunk, j) => (
                   <>
-                    {j > 0 && <a href={`mailto:${c.email}`}>{c.email}</a>}
+                    {j > 0 && <a href={item.mailto ?? `mailto:${c.email}`}>{c.email}</a>}
                     {chunk}
                   </>
                 ))}

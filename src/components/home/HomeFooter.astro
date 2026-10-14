@@ -4,9 +4,11 @@ import type { HomeContent, Locale } from '../../data/homeContent';
 interface Props {
   locale: Locale;
   footer: HomeContent['footer'];
+  /** Legal sentence under the footer bar. Sentence case, not the mono line. */
+  note?: string;
 }
 
-const { locale, footer: c } = Astro.props;
+const { locale, footer: c, note } = Astro.props;
 
 const langs: Array<{ code: Locale; label: string; href: string }> = [
   { code: 'fr', label: 'FR', href: '/fr/' },
@@ -48,5 +50,19 @@ const langs: Array<{ code: Locale; label: string; href: string }> = [
         ))}
       </span>
     </div>
+    {note && <p class="st-foot__note">{note}</p>}
   </div>
 </footer>
+
+<style>
+  .st-foot__note {
+    margin: 20px 0 0;
+    max-width: 76ch;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-ink-3);
+  }
+</style>

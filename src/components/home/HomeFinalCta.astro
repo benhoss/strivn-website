@@ -5,17 +5,28 @@ import { appStartUrl } from '../../lib/appUrl';
 interface Props {
   locale: Locale;
   finalCta: HomeContent['finalCta'];
+  /** Mono label above the statement. The homepage leaves it off. */
+  eyebrow?: string;
+  /** Overrides the default mailto on the secondary button. */
+  secondaryHref?: string;
 }
 
 /* Closes the homepage and the other landing pages (features, S&C,
    solutions, sub-pages), so it carries its own styles and no page state.
    The pair is the voice's CTA pair: self-serve, then a person. */
-const { locale, finalCta: c } = Astro.props;
+const { locale, finalCta: c, eyebrow, secondaryHref } = Astro.props;
 ---
 
 <section class="home-final st-grid-bg" aria-labelledby="final-title">
   <div class="st-wrap home-final__in">
-    <h2 id="final-title" class="st-display home-final__title">{c.title}</h2>
+    {eyebrow ? (
+      <div class="home-final__lead">
+        <span class="st-label st-eyebrow">{eyebrow}</span>
+        <h2 id="final-title" class="st-display home-final__title">{c.title}</h2>
+      </div>
+    ) : (
+      <h2 id="final-title" class="st-display home-final__title">{c.title}</h2>
+    )}
     <div class="home-final__side">
       <p class="st-lede">{c.body}</p>
       <div class="st-ctas">
@@ -23,7 +34,7 @@ const { locale, finalCta: c } = Astro.props;
           {c.primaryCta}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
         </a>
-        <a class="st-btn st-btn--ghost" href={`mailto:${CONTACT_EMAIL}`}>{c.secondaryCta}</a>
+        <a class="st-btn st-btn--ghost" href={secondaryHref ?? `mailto:${CONTACT_EMAIL}`}>{c.secondaryCta}</a>
       </div>
       <p class="st-fine">{c.fine.map((f) => <span>{f}</span>)}</p>
     </div>
@@ -42,6 +53,12 @@ const { locale, finalCta: c } = Astro.props;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
     gap: 40px;
     align-items: end;
+  }
+  .home-final__lead {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+    min-width: 0;
   }
   .home-final__title {
     font-size: clamp(40px, 6.4vw, 84px);
