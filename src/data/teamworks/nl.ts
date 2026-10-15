@@ -33,20 +33,61 @@ export function nlPage(b: LandingBits): SwitchPage {
       secondaryHref: '#comparatif',
       perks: b.perks,
     },
+    showcase: {
+      assistant: {
+        title: "Bevraag al uw data in één vraag.",
+        body: "Ask Teamworks leest de pdf die u opent. De assistent van STRIVN leest belasting, wellness, GPS en de medische staf samen, citeert zijn bronnen en zet elke grafiek op uw dashboards.",
+      },
+      readiness: {
+        title: "Keur goed wat de AI voorstelt vóór de training.",
+        body: "De check-in bij het ontwaken voedt de readiness van elke speler. STRIVN toont waarom een speler naar Ontlasten gaat en stelt de aangepaste training voor. U past toe of wijzigt, in één beweging.",
+      },
+    },
+    compare: {
+      id: 'comparatif',
+      eyebrow: 'STRIVN of Teamworks',
+      title: "Vergelijk wat de AI voor uw staf doet.",
+      lede: "Vijf regels. De bronnen staan onder de tabel.",
+      columns: {
+        criterion: 'Criterium',
+        teamworks: 'Teamworks',
+        strivn: 'STRIVN',
+      },
+      rows: [
+        {
+          criterion: "Wat de AI leest",
+          teamworks: "De pdf die u opent.",
+          strivn: "Belasting, wellness, GPS, medische staf en wedstrijden, samen.",
+        },
+        {
+          criterion: "Wat de AI teruggeeft",
+          teamworks: "Een antwoord met bronvermelding.",
+          strivn: "Een antwoord met bronnen, en de actie klaar om goed te keuren.",
+        },
+        {
+          criterion: "Uw eigen AI",
+          teamworks: "Een API om Teamworks AMS te integreren.",
+          strivn: "Claude en ChatGPT, gekoppeld aan uw gegevens.",
+        },
+        {
+          criterion: "Start",
+          teamworks: "Na een commerciële demo.",
+          strivn: `Vandaag, online, met ${b.trialPerk}.`,
+        },
+        {
+          criterion: "Prijs",
+          teamworks: "Op offerte.",
+          strivn: "Op de pagina, vanaf € 0 per maand.",
+        },
+      ],
+      note: "Bronnen: teamworks.com (pagina's AMS en Performance), Teamworks-blog van 5 augustus 2026 over Ask Teamworks, op 15 oktober 2026.",
+    },
     reasons: {
       id: 'pourquoi-strivn',
       eyebrow: 'Waarom STRIVN',
-      title: 'Laat de AI werken op al uw gegevens.',
-      lede: 'Een profstaf kiest zijn tool op wat die met de gegevens van de club doet. Acht redenen om voor STRIVN te kiezen.',
+      title: "Rust de hele staf uit, van analist tot kiné.",
+      lede: "Zes redenen meer om voor STRIVN te kiezen.",
       items: [
-        {
-          title: 'Bevraag al uw gegevens in één vraag',
-          body: 'De assistent leest belasting, wellness, GPS, de medische staf en de wedstrijden samen, met meer dan 200 tools. Elk antwoord vermeldt zijn bronnen. Een opgeslagen vraag speelt opnieuw af op de cijfers van vandaag.',
-        },
-        {
-          title: 'Keur elke actie goed die de AI voorbereidt',
-          body: 'Een training om aan het plan toe te voegen, een blessure om bij te werken, een 1RM om te registreren: de assistent bereidt de actie voor in een kaart. Ze wordt toegepast na uw akkoord, en u houdt 60 seconden om te annuleren.',
-        },
         {
           title: 'Koppel Claude of ChatGPT aan uw gegevens',
           body: 'De eigenaar van het team activeert de connector, en uw AI leest de kern, de belasting, de GPS en de wedstrijden met uw rechten. Ze schrijft nooit naar spelers, ouders of het publiek. U trekt de toegang in via de instellingen.',
@@ -72,51 +113,6 @@ export function nlPage(b: LandingBits): SwitchPage {
           body: 'De knop ‘Praat met Benoit’ opent een e-mail naar wie STRIVN bouwt. Beschrijf uw staf en uw huidige tool, wij antwoorden u.',
         },
       ],
-    },
-    compare: {
-      id: 'comparatif',
-      eyebrow: 'STRIVN of Teamworks',
-      title: 'Vergelijk STRIVN en Teamworks, regel per regel.',
-      lede: 'Zes punten waarop Teamworks zijn antwoord publiceert, tegenover wat STRIVN vandaag levert.',
-      columns: {
-        criterion: 'Criterium',
-        teamworks: 'Teamworks',
-        strivn: 'STRIVN',
-      },
-      rows: [
-        {
-          criterion: 'AI-assistent',
-          teamworks: 'Ask Teamworks beantwoordt vragen over een pdf-document: reglement, gids, handleiding.',
-          strivn:
-            'De assistent leest belasting, wellness, GPS, de medische staf en de wedstrijden, vermeldt zijn bronnen en bereidt acties voor die de staf goedkeurt.',
-        },
-        {
-          criterion: 'Uw gegevens in uw AI',
-          teamworks: 'Een API om Teamworks AMS in uw technische omgeving te integreren.',
-          strivn: 'Een connector voor Claude en ChatGPT, geactiveerd en intrekbaar door de staf, met uw rechten.',
-        },
-        {
-          criterion: 'Voor wie',
-          teamworks: 'Meer dan 6.500 sportieve eliteorganisaties.',
-          strivn: 'De staf van een club, van regionaal tot prof: 141 ploegen, waarvan 14 profploegen.',
-        },
-        {
-          criterion: 'Prijs',
-          teamworks: 'Op offerte, na een demonstratie.',
-          strivn: `Op de pagina vermeld: ${b.publicPrices}.`,
-        },
-        {
-          criterion: 'Start',
-          teamworks: 'Aanvraag van een demonstratie bij hun verkoopteam.',
-          strivn: `De staf maakt het account zelf aan, zonder goedkeuring van de club. ${b.trialSentence}`,
-        },
-        {
-          criterion: 'Opteamal-clubs',
-          teamworks: 'Overstap naar het Teamworks-platform aangekondigd sinds de overname van 18 december 2025.',
-          strivn: 'Historiek geïmporteerd via bestand, terwijl uw contract loopt.',
-        },
-      ],
-      note: 'Bronnen: teamworks.com (pagina’s AMS en Performance), Teamworks-blog van 5 augustus 2026 over Ask Teamworks, persbericht van 18 december 2025, op 15 oktober 2026. Cijfers van STRIVN op 18 september 2026.',
     },
     switch: {
       id: 'changer',

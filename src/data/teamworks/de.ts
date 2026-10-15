@@ -29,20 +29,61 @@ export function dePage(b: LandingBits): SwitchPage {
       secondaryHref: '#comparatif',
       perks: b.perks,
     },
+    showcase: {
+      assistant: {
+        title: "Befragen Sie alle Ihre Daten mit einer Frage.",
+        body: "Ask Teamworks liest das PDF, das Sie öffnen. Der STRIVN-Assistent liest Belastung, Wellness, GPS und Medizin zusammen, nennt seine Quellen und heftet jede Grafik an Ihre Dashboards.",
+      },
+      readiness: {
+        title: "Bestätigen Sie, was die KI vor der Einheit vorschlägt.",
+        body: "Der Check-in nach dem Aufwachen speist die Readiness jedes Spielers. STRIVN zeigt, warum ein Spieler auf Entlasten wechselt, und schlägt die angepasste Einheit vor. Sie übernehmen oder ändern, in einem Schritt.",
+      },
+    },
+    compare: {
+      id: 'comparatif',
+      eyebrow: 'STRIVN oder Teamworks',
+      title: "Vergleichen Sie, was die KI für Ihren Staff leistet.",
+      lede: "Fünf Zeilen. Die Quellen stehen unter der Tabelle.",
+      columns: {
+        criterion: 'Kriterium',
+        teamworks: 'Teamworks',
+        strivn: 'STRIVN',
+      },
+      rows: [
+        {
+          criterion: "Was die KI liest",
+          teamworks: "Das PDF, das Sie öffnen.",
+          strivn: "Belastung, Wellness, GPS, Medizin und Spiele, zusammen.",
+        },
+        {
+          criterion: "Was die KI liefert",
+          teamworks: "Eine Antwort mit Zitat.",
+          strivn: "Eine Antwort mit Quellen und die Aktion zur Freigabe.",
+        },
+        {
+          criterion: "Ihre eigene KI",
+          teamworks: "Eine API zur Integration von Teamworks AMS.",
+          strivn: "Claude und ChatGPT, mit Ihren Daten verbunden.",
+        },
+        {
+          criterion: "Start",
+          teamworks: "Nach einer Verkaufsdemo.",
+          strivn: `Heute, online. ${b.trialPerk}.`,
+        },
+        {
+          criterion: "Preis",
+          teamworks: "Auf Angebot.",
+          strivn: "Auf der Seite, ab 0 € pro Monat.",
+        },
+      ],
+      note: "Quellen: teamworks.com (Seiten AMS und Performance), Teamworks-Blog vom 5. August 2026 zu Ask Teamworks, Stand 15. Oktober 2026.",
+    },
     reasons: {
       id: 'pourquoi-strivn',
       eyebrow: 'Warum STRIVN',
-      title: 'Lassen Sie die KI an all Ihren Daten arbeiten.',
-      lede: 'Ein Profi-Staff wählt sein Werkzeug danach, was es aus den Daten des Klubs macht. Acht Gründe für STRIVN.',
+      title: "Rüsten Sie den ganzen Staff aus.",
+      lede: "Sechs weitere Gründe für STRIVN.",
       items: [
-        {
-          title: 'Fragen Sie all Ihre Daten mit einer Frage ab',
-          body: 'Der Assistent liest Belastung, Wellness, GPS, Medizin und Spiele zusammen, mit mehr als 200 Werkzeugen. Jede Antwort nennt ihre Quellen. Eine gespeicherte Frage läuft mit den Zahlen des Tages erneut.',
-        },
-        {
-          title: 'Geben Sie jede Aktion frei, die die KI vorbereitet',
-          body: 'Eine Einheit für den Plan, eine Verletzung zum Aktualisieren, ein 1RM zum Erfassen: Der Assistent bereitet die Aktion in einer Karte vor. Sie gilt mit Ihrer Freigabe, und Sie haben 60 Sekunden, um sie zurückzunehmen.',
-        },
         {
           title: 'Verbinden Sie Claude oder ChatGPT mit Ihren Daten',
           body: 'Der Eigentümer des Teams aktiviert den Connector, und Ihre KI liest Kader, Belastung, GPS und Spiele mit Ihren Rechten. Sie schreibt nie an Spieler, Eltern oder die Öffentlichkeit. Den Zugang widerrufen Sie in den Einstellungen.',
@@ -68,51 +109,6 @@ export function dePage(b: LandingBits): SwitchPage {
           body: 'Der Button „Mit Benoit sprechen“ öffnet eine E-Mail an den, der STRIVN baut. Beschreiben Sie Ihren Staff und Ihr aktuelles Werkzeug, wir antworten Ihnen.',
         },
       ],
-    },
-    compare: {
-      id: 'comparatif',
-      eyebrow: 'STRIVN oder Teamworks',
-      title: 'Vergleichen Sie STRIVN und Teamworks, Zeile für Zeile.',
-      lede: 'Sechs Punkte, zu denen Teamworks seine Antwort veröffentlicht, neben dem, was STRIVN heute liefert.',
-      columns: {
-        criterion: 'Kriterium',
-        teamworks: 'Teamworks',
-        strivn: 'STRIVN',
-      },
-      rows: [
-        {
-          criterion: 'KI-Assistent',
-          teamworks: 'Ask Teamworks beantwortet Fragen zu einem PDF-Dokument: Regelwerk, Leitfaden, Handbuch.',
-          strivn:
-            'Der Assistent liest Belastung, Wellness, GPS, Medizin und Spiele, nennt seine Quellen und bereitet Aktionen vor, die der Staff freigibt.',
-        },
-        {
-          criterion: 'Ihre Daten in Ihrer KI',
-          teamworks: 'Eine API, um Teamworks AMS in Ihre technische Umgebung einzubinden.',
-          strivn: 'Ein Connector für Claude und ChatGPT, vom Staff aktiviert und widerrufbar, mit Ihren Rechten.',
-        },
-        {
-          criterion: 'Für wen',
-          teamworks: 'Mehr als 6.500 Elite-Sportorganisationen.',
-          strivn: 'Der Staff eines Klubs, vom Regional- bis zum Profibereich: 141 Teams, davon 14 Profiteams.',
-        },
-        {
-          criterion: 'Preis',
-          teamworks: 'Auf Angebot, nach einer Demo.',
-          strivn: `Auf der Seite angegeben: ${b.publicPrices}.`,
-        },
-        {
-          criterion: 'Start',
-          teamworks: 'Demo-Anfrage bei ihrem Vertriebsteam.',
-          strivn: `Der Staff erstellt das Konto selbst, ohne Freigabe des Klubs. ${b.trialSentence}`,
-        },
-        {
-          criterion: 'Opteamal-Klubs',
-          teamworks: 'Wechsel auf die Teamworks-Plattform angekündigt, seit der Übernahme am 18. Dezember 2025.',
-          strivn: 'Historie per Datei importiert, während Ihr Vertrag läuft.',
-        },
-      ],
-      note: 'Quellen: teamworks.com (Seiten AMS und Performance), Teamworks-Blog vom 5. August 2026 zu Ask Teamworks, Pressemitteilung vom 18. Dezember 2025, Stand 15. Oktober 2026. STRIVN-Zahlen Stand 18. September 2026.',
     },
     switch: {
       id: 'changer',

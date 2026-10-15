@@ -34,6 +34,14 @@ export interface SwitchPage {
     secondaryHref: string;
     perks: string[];
   };
+  /**
+   * Titles and bodies laid over two homepage sections (assistant, readiness),
+   * whose product visuals are already translated in homeContent.
+   */
+  showcase: {
+    assistant: { title: string; body: string };
+    readiness: { title: string; body: string };
+  };
   /** Only the rows where both sides are public. No verdict column. */
   compare: {
     id: string;

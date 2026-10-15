@@ -3,8 +3,9 @@
  * STRIVN against Teamworks, in the six site locales.
  * Prices come from PricingPlans / the catalogue. Competitor cells are the
  * public facts listed in alternativeTeamworks.ts. The proof band under the
- * hero is the homepage's: same figures, same crests, same date. The reasons
- * come before the comparison: the argument first, the sourced table after.
+ * hero is the homepage's: same figures, same crests, same date. Two homepage
+ * sections follow with this page's titles, so the product shows before the
+ * table claims anything. The table stays short, STRIVN's column lit.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
@@ -13,6 +14,8 @@ import HomeFaq from '../home/HomeFaq.astro';
 import HomeFinalCta from '../home/HomeFinalCta.astro';
 import HomeIcon from '../home/HomeIcon.astro';
 import HomeProof from '../home/HomeProof.astro';
+import HomeAssistant from '../home/HomeAssistant.astro';
+import HomeReadiness from '../home/HomeReadiness.astro';
 import PricingPlans from '../pricing/PricingPlans.astro';
 import { NAV } from '../../data/nav';
 import { homeContent } from '../../data/homeContent';
@@ -122,26 +125,9 @@ const alternates = [
 
     <HomeProof c={home.proof} />
 
-    <section class="st-sec" id={c.reasons.id} aria-labelledby="reasons-title">
-      <div class="st-wrap">
-        <div class="st-head">
-          <span class="st-label st-eyebrow">{c.reasons.eyebrow}</span>
-          <h2 id="reasons-title" class="st-h2">{c.reasons.title}</h2>
-          <p class="st-lede">{c.reasons.lede}</p>
-        </div>
-        <ol class="st-facts alt-reasons">
-          {c.reasons.items.map((item, i) => (
-            <li>
-              <b>{String(i + 1).padStart(2, '0')}</b>
-              <span>
-                <strong>{item.title}</strong>
-                {item.body}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
+    {/* Show before compare: the product answering, then the table. */}
+    <HomeAssistant c={{ ...home.assistant, ...c.showcase.assistant }} pct={home.pct} />
+    <HomeReadiness c={{ ...home.readiness, ...c.showcase.readiness }} status={home.status} pct={home.pct} />
 
     <section class="st-sec" id={c.compare.id} aria-labelledby="compare-title">
       <div class="st-wrap">
@@ -164,13 +150,36 @@ const alternates = [
                 <tr>
                   <th scope="row">{row.criterion}</th>
                   <td data-side={c.compare.columns.teamworks}>{row.teamworks}</td>
-                  <td data-side={c.compare.columns.strivn}>{row.strivn}</td>
+                  <td data-side={c.compare.columns.strivn}>
+                    <span class="alt-win"><HomeIcon name="check-circle" size={16} />{row.strivn}</span>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <p class="st-small alt-note">{c.compare.note}</p>
+      </div>
+    </section>
+
+    <section class="st-sec" id={c.reasons.id} aria-labelledby="reasons-title">
+      <div class="st-wrap">
+        <div class="st-head">
+          <span class="st-label st-eyebrow">{c.reasons.eyebrow}</span>
+          <h2 id="reasons-title" class="st-h2">{c.reasons.title}</h2>
+          <p class="st-lede">{c.reasons.lede}</p>
+        </div>
+        <ol class="st-facts alt-reasons">
+          {c.reasons.items.map((item, i) => (
+            <li>
+              <b>{String(i + 1).padStart(2, '0')}</b>
+              <span>
+                <strong>{item.title}</strong>
+                {item.body}
+              </span>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
 
@@ -278,6 +287,22 @@ const alternates = [
   }
   .alt-cmp td:last-child {
     color: var(--color-ink);
+    font-weight: 500;
+    background: rgba(45, 127, 249, 0.08);
+  }
+  .alt-cmp thead th:last-child {
+    color: var(--color-accent, #2d7ff9);
+    background: rgba(45, 127, 249, 0.16);
+  }
+  .alt-win {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .alt-win :global(svg) {
+    flex: none;
+    margin-top: 3px;
+    color: var(--color-accent, #2d7ff9);
   }
 
   .alt-note {
