@@ -9,36 +9,88 @@ export function dePage(b: LandingBits): SwitchPage {
     gpsNote: b.gpsFiles,
     crumb: 'STRIVN oder Teamworks',
     meta: {
-      title: 'Alternative zu Teamworks: STRIVN für den Staff Ihres Klubs',
-      description: `STRIVN oder Teamworks? Öffentliche Preise, Konto online eröffnet, ${b.trialPerk}, in sechs Sprachen. Opteamal-Klubs willkommen.`,
-      ogTitle: 'Sie arbeiten mit Teamworks? Wechseln Sie zu STRIVN, gebaut für Ihren Staff.',
-      ogDescription: `Teamworks betreut mehr als 6.500 Elite-Organisationen, auf Demo-Anfrage. STRIVN zeigt seine Preise und lässt sich online eröffnen: ${b.trialPerk}.`,
-      twitterTitle: 'STRIVN oder Teamworks: Wechseln Sie zu STRIVN.',
-      twitterDescription: `Öffentliche Preise, Konto online eröffnet, ${b.trialPerk}.`,
+      title: 'Alternative zu Teamworks: STRIVN liest Ihre Spielerdaten',
+      description: `STRIVN oder Teamworks? Ein Assistent für Belastung, GPS und Medizin, ein Connector für Claude und ChatGPT, öffentliche Preise. ${b.trialPerk}.`,
+      ogTitle: 'Sie arbeiten mit Teamworks? Wechseln Sie zu STRIVN, der KI für Ihre Spieler.',
+      ogDescription:
+        'Der STRIVN-Assistent liest Belastung, Wellness, GPS, Medizin und Spiele und bereitet die Aktionen vor, die Ihr Staff freigibt.',
+      twitterTitle: 'STRIVN oder Teamworks: die KI für Ihre Spieler.',
+      twitterDescription: `Ein Assistent für alle Ihre Daten, ein Connector für Claude und ChatGPT, ${b.trialPerk}.`,
       ogImage: '/og.png',
       ogImageAlt: 'STRIVN, der Kontrollturm des Performance-Staffs',
     },
     hero: {
       eyebrow: 'STRIVN oder Teamworks',
       titleLead: 'Sie arbeiten mit Teamworks?',
-      title: 'Wechseln Sie zu STRIVN, gebaut für Ihren Staff.',
-      lede: `Teamworks betreut mehr als 6.500 Elite-Sportorganisationen, auf Demo-Anfrage und auf Angebot. STRIVN ist für den Staff eines Klubs gebaut: öffentliche Preise, Konto online eröffnet, ${b.trialDays} Tage Semi-Pro, um an Ihren Einheiten zu vergleichen.`,
+      title: 'Wechseln Sie zu STRIVN, der KI für Ihre Spieler.',
+      lede: 'Ask Teamworks beantwortet Fragen zu Ihren Dokumenten. Der STRIVN-Assistent liest Belastung, Wellness, GPS, Medizin und Spiele jedes Spielers und bereitet dann die Aktionen vor, die Ihr Staff freigibt.',
       primaryCta: 'Meinen Bereich kostenlos erstellen',
       secondaryCta: 'Mit Teamworks vergleichen',
       secondaryHref: '#comparatif',
       perks: b.perks,
     },
+    reasons: {
+      id: 'pourquoi-strivn',
+      eyebrow: 'Warum STRIVN',
+      title: 'Lassen Sie die KI an all Ihren Daten arbeiten.',
+      lede: 'Ein Profi-Staff wählt sein Werkzeug danach, was es aus den Daten des Klubs macht. Acht Gründe für STRIVN.',
+      items: [
+        {
+          title: 'Fragen Sie all Ihre Daten mit einer Frage ab',
+          body: 'Der Assistent liest Belastung, Wellness, GPS, Medizin und Spiele zusammen, mit mehr als 200 Werkzeugen. Jede Antwort nennt ihre Quellen. Eine gespeicherte Frage läuft mit den Zahlen des Tages erneut.',
+        },
+        {
+          title: 'Geben Sie jede Aktion frei, die die KI vorbereitet',
+          body: 'Eine Einheit für den Plan, eine Verletzung zum Aktualisieren, ein 1RM zum Erfassen: Der Assistent bereitet die Aktion in einer Karte vor. Sie gilt mit Ihrer Freigabe, und Sie haben 60 Sekunden, um sie zurückzunehmen.',
+        },
+        {
+          title: 'Verbinden Sie Claude oder ChatGPT mit Ihren Daten',
+          body: 'Der Eigentümer des Teams aktiviert den Connector, und Ihre KI liest Kader, Belastung, GPS und Spiele mit Ihren Rechten. Sie schreibt nie an Spieler, Eltern oder die Öffentlichkeit. Den Zugang widerrufen Sie in den Einstellungen.',
+        },
+        {
+          title: 'Bereiten Sie den Gegner gemeinsam vor',
+          body: 'Der Analyst notiert, filmt und zeichnet unter jedem Gegner. Fotografieren Sie den Spielbericht: Die KI extrahiert die Spieler, die erst mit Ihrer Bestätigung in den Gegnerkader kommen. Danach entsteht das Briefing, vom Scouting-Dossier bis zur Ansprache.',
+        },
+        {
+          title: 'Steuern Sie die Belastung bis zur Übung',
+          body: 'Der RPE liefert die interne Belastung, der GPS-Export die externe, Seite an Seite. ACWR, Monotonie und Strain berechnen sich selbst, die Prognose projiziert die Woche, und jede Übung behält ihre GPS-Messung.',
+        },
+        {
+          title: 'Filtern Sie die Aufgebote über die Medizin',
+          body: 'Die medizinische Übersicht bündelt aktive Verletzungen, Spieler in der Reha und die Verfügbarkeit jedes Einzelnen. Sie filtert die Aufgebote selbst, und der Spieler folgt seinem Return-to-Play-Programm in seiner App.',
+        },
+        {
+          title: 'Diktieren Sie das Spiel-Debriefing',
+          body: 'Sprechen Sie nach dem Spiel: STRIVN bringt Ihr Debriefing in Form. Sie lesen es gegen und wenden es dann an.',
+        },
+        {
+          title: 'Sprechen Sie mit dem, der STRIVN baut',
+          body: 'Der Button „Mit Benoit sprechen“ öffnet eine E-Mail an den, der STRIVN baut. Beschreiben Sie Ihren Staff und Ihr aktuelles Werkzeug, wir antworten Ihnen.',
+        },
+      ],
+    },
     compare: {
       id: 'comparatif',
       eyebrow: 'STRIVN oder Teamworks',
       title: 'Vergleichen Sie STRIVN und Teamworks, Zeile für Zeile.',
-      lede: 'Fünf Punkte, zu denen Teamworks seine Antwort veröffentlicht, neben dem, was STRIVN liefert. Den Rest beurteilen Sie an Ihren eigenen Einheiten.',
+      lede: 'Sechs Punkte, zu denen Teamworks seine Antwort veröffentlicht, neben dem, was STRIVN heute liefert.',
       columns: {
         criterion: 'Kriterium',
         teamworks: 'Teamworks',
         strivn: 'STRIVN',
       },
       rows: [
+        {
+          criterion: 'KI-Assistent',
+          teamworks: 'Ask Teamworks beantwortet Fragen zu einem PDF-Dokument: Regelwerk, Leitfaden, Handbuch.',
+          strivn:
+            'Der Assistent liest Belastung, Wellness, GPS, Medizin und Spiele, nennt seine Quellen und bereitet Aktionen vor, die der Staff freigibt.',
+        },
+        {
+          criterion: 'Ihre Daten in Ihrer KI',
+          teamworks: 'Eine API, um Teamworks AMS in Ihre technische Umgebung einzubinden.',
+          strivn: 'Ein Connector für Claude und ChatGPT, vom Staff aktiviert und widerrufbar, mit Ihren Rechten.',
+        },
         {
           criterion: 'Für wen',
           teamworks: 'Mehr als 6.500 Elite-Sportorganisationen.',
@@ -55,54 +107,12 @@ export function dePage(b: LandingBits): SwitchPage {
           strivn: `Der Staff erstellt das Konto selbst, ohne Freigabe des Klubs. ${b.trialSentence}`,
         },
         {
-          criterion: 'Roadmap',
-          teamworks: 'In Durham, USA, entschieden, für 6.500 Organisationen.',
-          strivn:
-            'Von STRIVN entschieden, als unabhängigem Anbieter. Wir kündigen jede Neuerung per E-Mail an die Coaches an.',
-        },
-        {
           criterion: 'Opteamal-Klubs',
           teamworks: 'Wechsel auf die Teamworks-Plattform angekündigt, seit der Übernahme am 18. Dezember 2025.',
           strivn: 'Historie per Datei importiert, während Ihr Vertrag läuft.',
         },
       ],
-      note: 'Quellen: teamworks.com und Pressemitteilung von Teamworks vom 18. Dezember 2025, Stand 15. Oktober 2026. STRIVN-Zahlen Stand 18. September 2026.',
-    },
-    reasons: {
-      id: 'pourquoi-strivn',
-      eyebrow: 'Warum STRIVN',
-      title: 'Lesen Sie den Zustand jedes Spielers vor der Einheit.',
-      lede: 'Teamworks deckt Scouting, Organisation und Performance von Elite-Organisationen ab. STRIVN konzentriert sich auf die Woche Ihres Staffs. Sieben Gründe, es zu wählen.',
-      items: [
-        {
-          title: 'Senden Sie den Check-in per WhatsApp',
-          body: 'Der Spieler erhält einen Link per WhatsApp oder E-Mail und antwortet, ohne eine App zu installieren. Er bewertet Müdigkeit, Schlaf, Stimmung und Stress, nach der Einheit dann seinen RPE. Der automatische Versand gehört zu Semi-Pro und Pro. Sie lesen die Antworten vor dem Training.',
-        },
-        {
-          title: 'Planen Sie die Woche in AU',
-          body: 'Legen Sie das Ziel fest, verfolgen Sie Plan gegen Ist und passen Sie Spieler für Spieler an. STRIVN berechnet die ACWR über 7 und 28 Tage und ordnet jeden Spieler einem von drei Zuständen zu.',
-        },
-        {
-          title: 'Importieren Sie den GPS-Export, egal von welchem Sensor',
-          body: `Laden Sie die CSV- oder XLSX-Datei von Catapult, STATSports oder einem anderen System hoch, oder die SPT- / GameTraka-Trace. Die Spalten werden beim ersten Import erkannt und dann gespeichert. Import ${b.gpsTiers}.`,
-        },
-        {
-          title: 'Steuern Sie die Einheit vom Spielfeldrand',
-          body: 'Anwesenheit, Stoppuhr pro Block, Teams und Spielstand passen auf das Handy. Ohne Netz führt das Handy ein Protokoll und synchronisiert es bei der Rückkehr. Ohne eingetragene Dauer berechnet STRIVN die Belastung aus der tatsächlich gespielten Zeit.',
-        },
-        {
-          title: 'Arbeiten Sie auf Deutsch, Französisch oder Niederländisch',
-          body: 'STRIVN gibt es in sechs Sprachen: Deutsch, Französisch, Niederländisch, Englisch, Portugiesisch und Spanisch. Jedes Staff-Mitglied wählt seine Sprache bei der Eröffnung seines Kontos.',
-        },
-        {
-          title: 'Geben Sie jedem im Staff seine Rolle',
-          body: 'Neun Rollen, vom Cheftrainer bis zum Physiotherapeuten und Analysten, jede mit ihren Rechten. Bei Semi-Pro und Pro ist die Zahl der Staff-Mitglieder unbegrenzt.',
-        },
-        {
-          title: 'Sprechen Sie mit dem, der STRIVN baut',
-          body: 'Der Button „Mit Benoit sprechen“ öffnet eine E-Mail an den, der STRIVN baut. Beschreiben Sie Ihren Staff und Ihr aktuelles Werkzeug, wir antworten Ihnen.',
-        },
-      ],
+      note: 'Quellen: teamworks.com (Seiten AMS und Performance), Teamworks-Blog vom 5. August 2026 zu Ask Teamworks, Pressemitteilung vom 18. Dezember 2025, Stand 15. Oktober 2026. STRIVN-Zahlen Stand 18. September 2026.',
     },
     switch: {
       id: 'changer',
@@ -122,8 +132,8 @@ export function dePage(b: LandingBits): SwitchPage {
         },
         {
           n: '03',
-          title: 'Laden Sie den Staff ein',
-          body: 'Weisen Sie jeder Person eine Rolle mit ihren Rechten zu. Free hat einen Platz, Amateur zwei, Semi-Pro und Pro unbegrenzt viele.',
+          title: 'Stellen Sie Ihre erste Frage',
+          body: 'Fragen Sie den Assistenten nach der Belastung der Woche oder nach den Spielern, die Sie beobachten sollten. Er antwortet auf Basis Ihrer importierten Historie, mit Quellen.',
         },
       ],
     },
@@ -133,8 +143,16 @@ export function dePage(b: LandingBits): SwitchPage {
       email: 'hello@strivn.net',
       items: [
         {
+          q: 'Bleiben meine Daten meine Daten?',
+          a: 'Ja. Sie lesen sie in STRIVN oder aus Ihrer eigenen KI, über den Connector, den Sie aktivieren und widerrufen. Sie exportieren Anwesenheiten als CSV, den Kalender als ICS, taktische Tafeln und Präsentationen als PDF. Wenn Sie zu Free zurückwechseln, bleibt Ihre gesamte Historie einsehbar.',
+        },
+        {
+          q: 'Kann die KI ohne meine Zustimmung handeln?',
+          a: 'In STRIVN wartet jede Aktion, die der Assistent vorbereitet, auf Ihre Freigabe. Über den Connector handeln Claude oder ChatGPT mit Ihren Rechten, wie ein Mitglied des Staffs, schreiben aber nie an Spieler, Eltern oder die Öffentlichkeit und ändern keine Aufgebote.',
+        },
+        {
           q: 'Kann ich meine Historie aus Teamworks oder Opteamal übernehmen?',
-          a: `Ja, per Datei. Exportieren Sie Belastung, RPE und Wellness als CSV oder XLSX und laden Sie sie in STRIVN hoch. GPS-Exporte lassen sich ${b.gpsTiers} importieren, also während der ${b.trialDays}-tägigen Testphase. Die Spalten werden anhand ihrer Überschriften erkannt und dann für das Team gespeichert. Für die erste Zuordnung schreiben Sie uns an hello@strivn.net.`,
+          a: `Ja, per Datei. Exportieren Sie Belastung, RPE und Wellness als CSV oder XLSX und laden Sie sie in STRIVN hoch. GPS-Exporte lassen sich ${b.gpsTiers} importieren, also während der ${b.trialDays}-tägigen Testphase. Für die erste Zuordnung schreiben Sie uns an hello@strivn.net.`,
           mailto: migration,
         },
         {
@@ -147,15 +165,11 @@ export function dePage(b: LandingBits): SwitchPage {
         },
         {
           q: 'Was kostet STRIVN?',
-          a: `Die Preise sind öffentlich: ${b.publicPrices}. ${b.trialSentence} Sie starten ohne Kreditkarte.`,
+          a: `Die Preise sind öffentlich: ${b.publicPrices}. ${b.trialSentence} Pro, auf Angebot, legt die Volumen für KI und WhatsApp im Vertrag fest.`,
         },
         {
           q: 'Liest STRIVN die Daten meines GPS?',
           a: `Ja, über den Export der Einheit. Laden Sie die CSV- oder XLSX-Datei von Catapult, STATSports oder einem anderen System hoch, oder die SPT- / GameTraka-Trace. STRIVN erkennt die Spalten beim ersten Import und berechnet Distanz und Geschwindigkeitszonen auf der Rohtrace. Import ${b.gpsTiers}.`,
-        },
-        {
-          q: 'Was ändert sich für die Spieler?',
-          a: 'Sie beantworten den Check-in über einen Link per WhatsApp oder E-Mail, ohne eine App zu installieren. Der automatische Versand morgens und abends gehört zu Semi-Pro und Pro. Die Apps STRIVN Player und STRIVN Coach für iOS und Android ergänzen die Benachrichtigungen.',
         },
         {
           q: 'Funktioniert STRIVN auf Niederländisch?',
@@ -165,14 +179,14 @@ export function dePage(b: LandingBits): SwitchPage {
     },
     finalCta: {
       eyebrow: b.trialPerk,
-      title: 'Erstellen Sie Ihren Bereich, vergleichen Sie an Ihren Einheiten.',
-      body: `Starten Sie heute, ohne Demo und ohne Angebot. ${b.trialSentence} Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.`,
+      title: 'Erstellen Sie Ihren Bereich, stellen Sie Ihre erste Frage.',
+      body: `Importieren Sie Ihre Historie und fragen Sie sie ab. ${b.trialSentence} Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.`,
       primaryCta: 'Meinen Bereich kostenlos erstellen',
       secondaryCta: 'Mit Benoit sprechen',
       secondaryHref: migration,
       fine: b.perks,
     },
     disclaimer:
-      'Teamworks, Teamworks AMS und Opteamal sind Marken ihrer jeweiligen Inhaber. STRIVN ist mit diesen Unternehmen weder verbunden noch von ihnen anerkannt. Catapult, STATSports, SPT, GameTraka und WHOOP sind Marken ihrer jeweiligen Inhaber. Die Angaben zu Teamworks und Opteamal stammen aus öffentlichen Quellen, Stand 15. Oktober 2026.',
+      'Teamworks, Teamworks AMS, Ask Teamworks und Opteamal sind Marken ihrer jeweiligen Inhaber. STRIVN ist mit diesen Unternehmen weder verbunden noch von ihnen anerkannt. Claude, ChatGPT, Catapult, STATSports, SPT, GameTraka und WHOOP sind Marken ihrer jeweiligen Inhaber. Die Angaben zu Teamworks und Opteamal stammen aus öffentlichen Quellen, Stand 15. Oktober 2026.',
   };
 }

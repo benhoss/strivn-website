@@ -13,36 +13,88 @@ export function nlPage(b: LandingBits): SwitchPage {
     gpsNote: b.gpsFiles,
     crumb: 'STRIVN of Teamworks',
     meta: {
-      title: 'Alternatief voor Teamworks: STRIVN, voor de staf van uw club',
-      description: `STRIVN of Teamworks? Publieke prijzen, account online geopend, ${b.trialPerk}, in het Nederlands en Frans. Opteamal-clubs welkom.`,
-      ogTitle: 'Werkt u met Teamworks? Stap over naar STRIVN, gemaakt voor uw staf.',
-      ogDescription: `Teamworks bedient meer dan 6.500 eliteorganisaties, op demonstratie. STRIVN toont zijn prijzen en opent online: ${b.trialPerk}.`,
-      twitterTitle: 'STRIVN of Teamworks: stap over naar STRIVN.',
-      twitterDescription: `Publieke prijzen, account online geopend, ${b.trialPerk}.`,
+      title: 'Teamworks-alternatief: STRIVN, de AI die uw spelers leest',
+      description: `STRIVN of Teamworks? Een assistent die belasting, GPS en blessures leest, een connector voor Claude en ChatGPT, publieke prijzen. ${b.trialPerk}.`,
+      ogTitle: 'Werkt u met Teamworks? Stap over naar STRIVN, de AI die uw spelers leest.',
+      ogDescription:
+        'De assistent van STRIVN leest belasting, wellness, GPS, de medische staf en de wedstrijden, en bereidt de acties voor die uw staf goedkeurt.',
+      twitterTitle: 'STRIVN of Teamworks: de AI die uw spelers leest.',
+      twitterDescription: `Een assistent op al uw gegevens, een connector voor Claude en ChatGPT, ${b.trialPerk}.`,
       ogImage: '/og.png',
       ogImageAlt: 'STRIVN, de controletoren van de performancestaf',
     },
     hero: {
       eyebrow: 'STRIVN of Teamworks',
       titleLead: 'Werkt u met Teamworks?',
-      title: 'Stap over naar STRIVN, gemaakt voor uw staf.',
-      lede: `Teamworks bedient meer dan 6.500 sportieve eliteorganisaties, op demonstratie en op offerte. STRIVN is gemaakt voor de staf van een club: publieke prijzen, account online geopend, ${b.trialDays} dagen Semi-Pro om te vergelijken op uw trainingen.`,
+      title: 'Stap over naar STRIVN, de AI die uw spelers leest.',
+      lede: 'Ask Teamworks beantwoordt vragen over uw documenten. De assistent van STRIVN leest de belasting, de wellness, de GPS, de medische staf en de wedstrijden van elke speler, en bereidt dan de acties voor die uw staf goedkeurt.',
       primaryCta: 'Mijn omgeving gratis aanmaken',
       secondaryCta: 'Vergelijk met Teamworks',
       secondaryHref: '#comparatif',
       perks: b.perks,
     },
+    reasons: {
+      id: 'pourquoi-strivn',
+      eyebrow: 'Waarom STRIVN',
+      title: 'Laat de AI werken op al uw gegevens.',
+      lede: 'Een profstaf kiest zijn tool op wat die met de gegevens van de club doet. Acht redenen om voor STRIVN te kiezen.',
+      items: [
+        {
+          title: 'Bevraag al uw gegevens in één vraag',
+          body: 'De assistent leest belasting, wellness, GPS, de medische staf en de wedstrijden samen, met meer dan 200 tools. Elk antwoord vermeldt zijn bronnen. Een opgeslagen vraag speelt opnieuw af op de cijfers van vandaag.',
+        },
+        {
+          title: 'Keur elke actie goed die de AI voorbereidt',
+          body: 'Een training om aan het plan toe te voegen, een blessure om bij te werken, een 1RM om te registreren: de assistent bereidt de actie voor in een kaart. Ze wordt toegepast na uw akkoord, en u houdt 60 seconden om te annuleren.',
+        },
+        {
+          title: 'Koppel Claude of ChatGPT aan uw gegevens',
+          body: 'De eigenaar van het team activeert de connector, en uw AI leest de kern, de belasting, de GPS en de wedstrijden met uw rechten. Ze schrijft nooit naar spelers, ouders of het publiek. U trekt de toegang in via de instellingen.',
+        },
+        {
+          title: 'Bereid de tegenstander met meerderen voor',
+          body: 'De analist noteert, filmt en tekent onder elke tegenstander. Fotografeer het wedstrijdblad: de AI haalt de spelers eruit, die pas in de kern van de tegenstander komen als u bevestigt. Daarna genereert STRIVN de brief, van het scoutingdossier tot de teambespreking.',
+        },
+        {
+          title: 'Stuur de belasting tot op de oefening',
+          body: 'De RPE geeft de interne belasting, de GPS-export de externe belasting, naast elkaar. ACWR, monotonie en strain berekenen zichzelf, de prognose projecteert de week, en elke oefening houdt haar GPS-meting bij.',
+        },
+        {
+          title: 'Filter de oproepingen via de medische staf',
+          body: 'Het medische overzicht bundelt actieve blessures, spelers in revalidatie en de beschikbaarheid van elke speler. Het filtert zelf de oproepingen, en de speler volgt zijn terugkeerprogramma in zijn app.',
+        },
+        {
+          title: 'Dicteer de debriefing van de wedstrijd',
+          body: 'Spreek na de wedstrijd: STRIVN werkt uw debriefing uit. U leest ze na en past ze dan toe.',
+        },
+        {
+          title: 'Praat met wie STRIVN bouwt',
+          body: 'De knop ‘Praat met Benoit’ opent een e-mail naar wie STRIVN bouwt. Beschrijf uw staf en uw huidige tool, wij antwoorden u.',
+        },
+      ],
+    },
     compare: {
       id: 'comparatif',
       eyebrow: 'STRIVN of Teamworks',
       title: 'Vergelijk STRIVN en Teamworks, regel per regel.',
-      lede: 'Vijf punten waarop Teamworks zijn antwoord publiceert, tegenover wat STRIVN levert. De rest beoordeelt u op uw eigen trainingen.',
+      lede: 'Zes punten waarop Teamworks zijn antwoord publiceert, tegenover wat STRIVN vandaag levert.',
       columns: {
         criterion: 'Criterium',
         teamworks: 'Teamworks',
         strivn: 'STRIVN',
       },
       rows: [
+        {
+          criterion: 'AI-assistent',
+          teamworks: 'Ask Teamworks beantwoordt vragen over een pdf-document: reglement, gids, handleiding.',
+          strivn:
+            'De assistent leest belasting, wellness, GPS, de medische staf en de wedstrijden, vermeldt zijn bronnen en bereidt acties voor die de staf goedkeurt.',
+        },
+        {
+          criterion: 'Uw gegevens in uw AI',
+          teamworks: 'Een API om Teamworks AMS in uw technische omgeving te integreren.',
+          strivn: 'Een connector voor Claude en ChatGPT, geactiveerd en intrekbaar door de staf, met uw rechten.',
+        },
         {
           criterion: 'Voor wie',
           teamworks: 'Meer dan 6.500 sportieve eliteorganisaties.',
@@ -59,54 +111,12 @@ export function nlPage(b: LandingBits): SwitchPage {
           strivn: `De staf maakt het account zelf aan, zonder goedkeuring van de club. ${b.trialSentence}`,
         },
         {
-          criterion: 'Roadmap',
-          teamworks: 'Beslist in Durham, in de Verenigde Staten, voor 6.500 organisaties.',
-          strivn:
-            'Beslist door STRIVN, onafhankelijke uitgever. We kondigen elke nieuwigheid per e-mail aan de coaches aan.',
-        },
-        {
           criterion: 'Opteamal-clubs',
           teamworks: 'Overstap naar het Teamworks-platform aangekondigd sinds de overname van 18 december 2025.',
           strivn: 'Historiek geïmporteerd via bestand, terwijl uw contract loopt.',
         },
       ],
-      note: 'Bronnen: teamworks.com en persbericht van Teamworks van 18 december 2025, op 15 oktober 2026. Cijfers van STRIVN op 18 september 2026.',
-    },
-    reasons: {
-      id: 'pourquoi-strivn',
-      eyebrow: 'Waarom STRIVN',
-      title: 'Lees de toestand van elke speler vóór de training.',
-      lede: 'Teamworks dekt rekrutering, operaties en performance van eliteorganisaties. STRIVN focust op de week van uw staf. Zeven redenen om het te kiezen.',
-      items: [
-        {
-          title: 'Stuur de check-in via WhatsApp',
-          body: 'De speler krijgt een link via WhatsApp of e-mail en antwoordt zonder een app te installeren. Hij geeft vermoeidheid, slaap, humeur en stress door, en na de training zijn RPE. Automatisch versturen zit in Semi-Pro en Pro. U leest de antwoorden vóór de training.',
-        },
-        {
-          title: 'Plan de week in AU',
-          body: 'Leg het doel vast, volg gepland tegenover gerealiseerd en stuur speler per speler bij. STRIVN berekent de ACWR op 7 en 28 dagen en plaatst elke speler in een van drie toestanden.',
-        },
-        {
-          title: 'Importeer de GPS-export, welke sensor ook',
-          body: `Zet de CSV of XLSX van Catapult, STATSports of een ander systeem neer, of de SPT- / GameTraka-trace. De kolommen worden bij de eerste import herkend en daarna onthouden. Import ${b.gpsTiers}.`,
-        },
-        {
-          title: 'Stuur de training aan vanaf de zijlijn',
-          body: 'Aanwezigheden, chrono per blok, ploegen en score passen op de telefoon. Zonder netwerk houdt de telefoon een logboek bij en synchroniseert het bij terugkeer. Zonder ingevoerde duur berekent STRIVN de belasting op de werkelijk gespeelde tijd.',
-        },
-        {
-          title: 'Werk in het Nederlands of het Frans',
-          body: 'STRIVN bestaat in zes talen: Nederlands, Frans, Engels, Duits, Portugees en Spaans. Elk staflid kiest zijn taal bij het openen van zijn account.',
-        },
-        {
-          title: 'Geef elk staflid zijn rol',
-          body: 'Negen rollen, van hoofdcoach tot kiné en analist, elk met eigen rechten. In Semi-Pro en Pro is het aantal stafleden onbeperkt.',
-        },
-        {
-          title: 'Praat met wie STRIVN bouwt',
-          body: 'De knop ‘Praat met Benoit’ opent een e-mail naar wie STRIVN bouwt. Beschrijf uw staf en uw huidige tool, wij antwoorden u.',
-        },
-      ],
+      note: 'Bronnen: teamworks.com (pagina’s AMS en Performance), Teamworks-blog van 5 augustus 2026 over Ask Teamworks, persbericht van 18 december 2025, op 15 oktober 2026. Cijfers van STRIVN op 18 september 2026.',
     },
     switch: {
       id: 'changer',
@@ -126,8 +136,8 @@ export function nlPage(b: LandingBits): SwitchPage {
         },
         {
           n: '03',
-          title: 'Nodig de staf uit',
-          body: 'Geef elke persoon een rol, met eigen rechten. Free telt één plaats, Amateur twee, Semi-Pro en Pro een onbeperkt aantal.',
+          title: 'Stel uw eerste vraag',
+          body: 'Vraag de assistent naar de belasting van de week of de spelers om op te volgen. Hij antwoordt op uw geïmporteerde historiek, met de bronnen erbij.',
         },
       ],
     },
@@ -137,8 +147,16 @@ export function nlPage(b: LandingBits): SwitchPage {
       email: 'hello@strivn.net',
       items: [
         {
+          q: 'Blijven mijn gegevens van mij?',
+          a: 'Ja. U leest ze in STRIVN of vanuit uw eigen AI, via de connector die u activeert en intrekt. U exporteert de aanwezigheden in CSV, de kalender in ICS, de tactische borden en de presentaties in pdf. Gaat u terug naar Free, dan blijft uw volledige historiek raadpleegbaar.',
+        },
+        {
+          q: 'Kan de AI handelen zonder mijn akkoord?',
+          a: 'In STRIVN wacht elke actie die de assistent voorbereidt op uw goedkeuring. Via de connector handelen Claude of ChatGPT met uw rechten, zoals een staflid, zonder ooit naar spelers, ouders of het publiek te schrijven en zonder aan de oproepingen te raken.',
+        },
+        {
           q: 'Kan ik mijn Teamworks- of Opteamal-historiek meenemen?',
-          a: `Ja, via bestand. Exporteer belasting, RPE en wellness in CSV of XLSX en zet ze in STRIVN. GPS-exports importeert u ${b.gpsTiers}, dus tijdens de proefperiode van ${b.trialDays} dagen. De kolommen worden herkend aan hun koppen en daarna onthouden voor het team. Voor de eerste koppeling schrijft u ons op hello@strivn.net.`,
+          a: `Ja, via bestand. Exporteer belasting, RPE en wellness in CSV of XLSX en zet ze in STRIVN. GPS-exports importeert u ${b.gpsTiers}, dus tijdens de proefperiode van ${b.trialDays} dagen. Voor de eerste koppeling schrijft u ons op hello@strivn.net.`,
           mailto: migration,
         },
         {
@@ -151,15 +169,11 @@ export function nlPage(b: LandingBits): SwitchPage {
         },
         {
           q: 'Wat kost STRIVN?',
-          a: `De prijzen zijn publiek: ${b.publicPrices}. ${b.trialSentence} U start zonder bankkaart.`,
+          a: `De prijzen zijn publiek: ${b.publicPrices}. ${b.trialSentence} Pro, op offerte, legt de volumes voor AI en WhatsApp vast in het contract.`,
         },
         {
           q: 'Leest STRIVN de gegevens van mijn GPS?',
           a: `Ja, via de export van de training. Zet de CSV of XLSX van Catapult, STATSports of een ander systeem neer, of de SPT- / GameTraka-trace. STRIVN herkent de kolommen bij de eerste import en berekent afstand en snelheidszones op de ruwe trace. Import ${b.gpsTiers}.`,
-        },
-        {
-          q: 'Wat verandert er voor de spelers?',
-          a: 'Ze beantwoorden de check-in via een link in WhatsApp of e-mail, zonder een app te installeren. Automatisch versturen ’s ochtends en ’s avonds zit in Semi-Pro en Pro. De apps STRIVN Player en STRIVN Coach, op iOS en Android, voegen meldingen toe.',
         },
         {
           q: 'Werkt STRIVN in het Nederlands?',
@@ -169,14 +183,14 @@ export function nlPage(b: LandingBits): SwitchPage {
     },
     finalCta: {
       eyebrow: b.trialPerk,
-      title: 'Maak uw omgeving aan en vergelijk op uw trainingen.',
-      body: `Start vandaag, zonder demonstratie of offerte. ${b.trialSentence} Uw staf sluit aan wanneer hij uw eerste rapporten ziet.`,
+      title: 'Maak uw omgeving aan en stel uw eerste vraag.',
+      body: `Importeer uw historiek en bevraag ze. ${b.trialSentence} Uw staf sluit aan wanneer hij uw eerste rapporten ziet.`,
       primaryCta: 'Mijn omgeving gratis aanmaken',
       secondaryCta: 'Praat met Benoit',
       secondaryHref: migration,
       fine: b.perks,
     },
     disclaimer:
-      'Teamworks, Teamworks AMS en Opteamal zijn merken van hun respectieve eigenaars. STRIVN is niet verbonden aan deze bedrijven en wordt er niet door goedgekeurd. Catapult, STATSports, SPT, GameTraka en WHOOP zijn merken van hun eigenaars. De informatie over Teamworks en Opteamal komt uit publieke bronnen op 15 oktober 2026.',
+      'Teamworks, Teamworks AMS, Ask Teamworks en Opteamal zijn merken van hun respectieve eigenaars. STRIVN is niet verbonden aan deze bedrijven en wordt er niet door goedgekeurd. Claude, ChatGPT, Catapult, STATSports, SPT, GameTraka en WHOOP zijn merken van hun eigenaars. De informatie over Teamworks en Opteamal komt uit publieke bronnen op 15 oktober 2026.',
   };
 }

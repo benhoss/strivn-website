@@ -3,7 +3,8 @@
  * STRIVN against Teamworks, in the six site locales.
  * Prices come from PricingPlans / the catalogue. Competitor cells are the
  * public facts listed in alternativeTeamworks.ts. The proof band under the
- * hero is the homepage's: same figures, same crests, same date.
+ * hero is the homepage's: same figures, same crests, same date. The reasons
+ * come before the comparison: the argument first, the sourced table after.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../SiteHeader.astro';
@@ -121,6 +122,27 @@ const alternates = [
 
     <HomeProof c={home.proof} />
 
+    <section class="st-sec" id={c.reasons.id} aria-labelledby="reasons-title">
+      <div class="st-wrap">
+        <div class="st-head">
+          <span class="st-label st-eyebrow">{c.reasons.eyebrow}</span>
+          <h2 id="reasons-title" class="st-h2">{c.reasons.title}</h2>
+          <p class="st-lede">{c.reasons.lede}</p>
+        </div>
+        <ol class="st-facts alt-reasons">
+          {c.reasons.items.map((item, i) => (
+            <li>
+              <b>{String(i + 1).padStart(2, '0')}</b>
+              <span>
+                <strong>{item.title}</strong>
+                {item.body}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
     <section class="st-sec" id={c.compare.id} aria-labelledby="compare-title">
       <div class="st-wrap">
         <div class="st-head">
@@ -149,27 +171,6 @@ const alternates = [
           </table>
         </div>
         <p class="st-small alt-note">{c.compare.note}</p>
-      </div>
-    </section>
-
-    <section class="st-sec" id={c.reasons.id} aria-labelledby="reasons-title">
-      <div class="st-wrap">
-        <div class="st-head">
-          <span class="st-label st-eyebrow">{c.reasons.eyebrow}</span>
-          <h2 id="reasons-title" class="st-h2">{c.reasons.title}</h2>
-          <p class="st-lede">{c.reasons.lede}</p>
-        </div>
-        <ol class="st-facts alt-reasons">
-          {c.reasons.items.map((item, i) => (
-            <li>
-              <b>{String(i + 1).padStart(2, '0')}</b>
-              <span>
-                <strong>{item.title}</strong>
-                {item.body}
-              </span>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
 

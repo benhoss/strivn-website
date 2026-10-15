@@ -7,8 +7,12 @@
  * feature claims follow the app audit. Claims about Teamworks come only from
  * its own pages, as of 15 Oct 2026: "The Operating System for Sports",
  * "Elite Sports Orgs", 6,500+ elite organizations, "Get a Demo" as the only
- * way in (no public pricing page), and the 18 Dec 2025 Opteamal announcement.
- * Do not compare integrations: Teamworks AMS announces 100+.
+ * way in (no public pricing page), the AMS "mature API", Ask Teamworks as
+ * Q&A over an uploaded PDF (Teamworks blog, 5 Aug 2026), and the 18 Dec 2025
+ * Opteamal announcement. Do not compare integrations: Teamworks AMS announces
+ * 100+. Do not argue privacy against Teamworks either: its blog says "your
+ * data stays yours", and STRIVN cannot yet show a full export, a hosting
+ * region, or a no-training guarantee for the models it routes to.
  *
  * Open item, marked TODO(validate) where the text lives: the Open Graph image
  * (the site-wide card until a dedicated one exists).
