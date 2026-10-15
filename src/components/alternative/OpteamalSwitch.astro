@@ -1,6 +1,6 @@
 ---
 /**
- * Switch page for clubs still on Opteamal. French only.
+ * Switch page for clubs still on Opteamal, in the six site locales.
  * Prices come from PricingPlans / the catalogue. Competitor cells are the
  * public facts listed in alternativeOpteamal.ts.
  */
@@ -13,18 +13,28 @@ import HomeIcon from '../home/HomeIcon.astro';
 import PricingPlans from '../pricing/PricingPlans.astro';
 import { NAV } from '../../data/nav';
 import { homeContent } from '../../data/homeContent';
-import { alternativeOpteamal as c, ALTERNATIVE_PATH, plansForLanding } from '../../data/alternativeOpteamal';
-import { pricingContent } from '../../data/pricingContent';
+import {
+  alternativeOpteamal,
+  alternativePath,
+  plansForLanding,
+} from '../../data/alternativeOpteamal';
+import { PRICING_LOCALES, pricingContent, type Locale } from '../../data/pricingContent';
 import { appStartUrl } from '../../lib/appUrl';
 import { catalogueOffers } from '../../lib/planPrice';
 import { SKIP_LABEL } from '../../lib/skipLabel';
 
-const locale = 'fr' as const;
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = alternativeOpteamal[locale];
+const path = alternativePath(locale);
 const home = homeContent[locale];
 const pricing = pricingContent[locale];
 const register = appStartUrl(locale);
 
-const pageUrl = `https://strivn.net${ALTERNATIVE_PATH}`;
+const pageUrl = `https://strivn.net${path}`;
 const jsonLdExtra: Record<string, unknown>[] = [
   {
     '@type': 'FAQPage',
@@ -39,8 +49,8 @@ const jsonLdExtra: Record<string, unknown>[] = [
     '@type': 'BreadcrumbList',
     '@id': `${pageUrl}#breadcrumb`,
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: 'https://strivn.net/fr/' },
-      { '@type': 'ListItem', position: 2, name: "Passer d'Opteamal à STRIVN", item: pageUrl },
+      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: `https://strivn.net/${locale}/` },
+      { '@type': 'ListItem', position: 2, name: c.crumb, item: pageUrl },
     ],
   },
   {
@@ -52,9 +62,13 @@ const jsonLdExtra: Record<string, unknown>[] = [
   },
 ];
 
+const switchHrefs = Object.fromEntries(
+  PRICING_LOCALES.map((code) => [code, alternativePath(code)]),
+) as Record<Locale, string>;
+
 const alternates = [
-  { hreflang: 'fr', href: ALTERNATIVE_PATH },
-  { hreflang: 'x-default', href: ALTERNATIVE_PATH },
+  ...PRICING_LOCALES.map((code) => ({ hreflang: code, href: alternativePath(code) })),
+  { hreflang: 'x-default', href: alternativePath('fr') },
 ];
 ---
 
@@ -62,7 +76,7 @@ const alternates = [
   lang={locale}
   title={c.meta.title}
   description={c.meta.description}
-  canonicalPath={ALTERNATIVE_PATH}
+  canonicalPath={path}
   alternates={alternates}
   ogImage={c.meta.ogImage}
   ogImageAlt={c.meta.ogImageAlt}
@@ -78,7 +92,7 @@ const alternates = [
     locale={locale}
     links={NAV[locale].links}
     cta={NAV[locale].cta}
-    switchHrefs={{ fr: ALTERNATIVE_PATH }}
+    switchHrefs={switchHrefs}
   />
 
   <main id="s-main">
@@ -187,7 +201,7 @@ const alternates = [
 
     <PricingPlans
       locale={locale}
-      plans={plansForLanding(pricing.plans)}
+      plans={plansForLanding(pricing.plans, locale)}
       matrix={pricing.matrix}
       email={pricing.faq.email}
       sectionId="tarifs"
