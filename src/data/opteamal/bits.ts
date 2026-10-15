@@ -3,7 +3,6 @@
  * Amounts come from PLAN_PRICES via formatMoney. Plan names stay
  * Free / Amateur / Semi-Pro / Pro.
  *
- * TODO(validate): migration-help offer, still pending a yes from the business.
  * TODO(validate): dedicated Open Graph image. The site-wide card ships until then.
  */
 
@@ -169,6 +168,7 @@ export function landingBits(locale: Locale): LandingBits {
     publicPrices,
     gpsTiers,
     gpsFiles: GPS_FILES[locale](gpsTiers),
+    trialDays: TRIAL.days,
     trialSentence,
     trialPerk,
     perks: [trialPerk, NO_CARD[locale], NO_CLUB[locale]],

@@ -2,9 +2,6 @@ export interface CompareRow {
   criterion: string;
   opteamal: string;
   strivn: string;
-  /** Short scan label. Not a score. */
-  verdictLead: string;
-  verdict: string;
 }
 
 export interface Reason {
@@ -37,12 +34,13 @@ export interface SwitchPage {
     secondaryHref: string;
     perks: string[];
   };
+  /** Only the rows where both sides are public. No verdict column. */
   compare: {
     id: string;
     eyebrow: string;
     title: string;
     lede: string;
-    columns: { criterion: string; opteamal: string; strivn: string; verdict: string };
+    columns: { criterion: string; opteamal: string; strivn: string };
     rows: CompareRow[];
     note: string;
   };
@@ -59,11 +57,6 @@ export interface SwitchPage {
     title: string;
     lede: string;
     steps: { n: string; title: string; body: string }[];
-    /**
-     * TODO(validate): migration-help offer. Published pending a yes from the
-     * business. The three steps do not depend on this offer.
-     */
-    offer: { tag: string; title: string; body: string; cta: string; href: string };
   };
   stay: {
     id: string;
@@ -96,6 +89,7 @@ export interface LandingBits {
   /** "Semi-Pro and Pro" already joined in the locale's grammar. */
   gpsTiers: string;
   gpsFiles: string;
+  trialDays: number;
   trialSentence: string;
   trialPerk: string;
   perks: string[];

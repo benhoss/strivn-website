@@ -1,273 +1,173 @@
 import { mail } from './bits';
 import type { LandingBits, SwitchPage } from './types';
 
+/** German of the French source text: formal Sie, as the site's DE locale. */
 export function dePage(b: LandingBits): SwitchPage {
-  const costAnswer = `Die Preise sind öffentlich: ${b.publicPrices}. ${b.gpsFiles} ${b.trialSentence} Ohne Karte. Pro bleibt individuell.`;
+  const migration = mail('Wechsel von Opteamal');
 
   return {
     gpsNote: b.gpsFiles,
     crumb: 'Von Opteamal zu STRIVN',
     meta: {
-      title: 'Warum von Opteamal zu STRIVN wechseln',
-      description:
-        'Opteamal, ein belgischer Anbieter, wurde am 18. Dezember 2025 von Teamworks übernommen. Sachlicher Vergleich: öffentliche STRIVN-Preise, Konto ohne Freigabe des Klubs, Check-in per Link. Teamworks AMS kündigt Integrationen, ein Medizinmodul und Zertifizierungen an.',
-      ogTitle: 'Sie nutzen Opteamal? Warum zu STRIVN wechseln',
-      ogDescription:
-        'Am 18. Dezember 2025 von Teamworks übernommen. Öffentliche STRIVN-Preise, Start in Eigenregie, Check-in per Link. Der Vergleich schreibt Opteamal nur öffentliche Fakten zu.',
-      twitterTitle: 'Warum von Opteamal zu STRIVN wechseln',
-      twitterDescription: 'Sachlicher Vergleich für Klubs, die noch auf Opteamal sind, inzwischen bei Teamworks.',
+      title: 'Von Opteamal zu STRIVN wechseln',
+      description: `Teamworks hat Opteamal am 18. Dezember 2025 übernommen. Wechseln Sie mit Ihrer Historie zu STRIVN: öffentliche Preise, ${b.trialPerk}, auf Deutsch, Französisch und Niederländisch.`,
+      ogTitle: 'Sie arbeiten mit Opteamal? Wechseln Sie mit Ihrer Historie zu STRIVN.',
+      ogDescription: `Öffentliche Preise, Konto vom Staff selbst eröffnet, ${b.trialPerk}. Importieren Sie Ihre Belastungs- und GPS-Dateien, während Ihr Vertrag läuft.`,
+      twitterTitle: 'Von Opteamal zu STRIVN wechseln',
+      twitterDescription: `Öffentliche Preise, ${b.trialPerk}, Historie per Datei importiert.`,
       ogImage: '/og.png',
-      ogImageAlt: 'STRIVN, der Kontrollturm für den Performance-Staff',
+      ogImageAlt: 'STRIVN, der Kontrollturm des Performance-Staffs',
     },
     hero: {
       eyebrow: 'Opteamal geht zu Teamworks',
-      titleLead: 'Sie nutzen Opteamal?',
-      title: 'Darum wechseln Sie zu STRIVN.',
-      lede: 'Am 18. Dezember 2025 hat Teamworks Opteamal übernommen, den belgischen Anbieter, und gliedert es in Teamworks ein. Diese Seite stellt die öffentlichen Fakten auf ihrer Seite neben das, was STRIVN liefert. Wo ein Opteamal-Detail nicht öffentlich ist, schreiben wir das, statt eine Lücke zu erfinden.',
-      primaryCta: 'Zu STRIVN wechseln',
-      secondaryCta: 'Vergleich ansehen',
+      titleLead: 'Sie arbeiten mit Opteamal?',
+      title: 'Wechseln Sie mit Ihrer Historie zu STRIVN.',
+      lede: `Teamworks hat Opteamal am 18. Dezember 2025 übernommen. Eröffnen Sie einen STRIVN-Bereich, importieren Sie Ihre Belastungs- und GPS-Dateien und vergleichen Sie ${b.trialDays} Tage lang an Ihren eigenen Einheiten.`,
+      primaryCta: 'Meinen Bereich erstellen',
+      secondaryCta: 'Zum Vergleich',
       secondaryHref: '#comparatif',
       perks: b.perks,
     },
     compare: {
       id: 'comparatif',
       eyebrow: 'Vergleich',
-      title: 'Opteamal (jetzt Teamworks) und STRIVN, Punkt für Punkt.',
-      lede: 'Zwei Spalten mit Fakten, danach eine Lesart. Der Vorteil liegt bei Teamworks AMS, wenn ihre öffentlichen Ankündigungen das sagen. Er liegt bei STRIVN, wenn der Kontrast öffentlich ist. Sonst bleibt die Lesart offen.',
+      title: 'Vergleichen Sie Preis, Kontoeröffnung und Roadmap.',
+      lede: 'Drei Punkte, zu denen Opteamal, Teamworks und STRIVN jeweils ihre Antwort veröffentlichen. Den Rest beurteilen Sie an Ihren eigenen Einheiten.',
       columns: {
         criterion: 'Kriterium',
-        opteamal: 'Opteamal (jetzt Teamworks)',
+        opteamal: 'Opteamal, bei Teamworks',
         strivn: 'STRIVN',
-        verdict: 'Urteil',
       },
       rows: [
         {
-          criterion: 'Wer über das Weitere entscheidet',
-          opteamal:
-            'Opteamal, ein belgischer Anbieter, wurde am 18. Dezember 2025 von Teamworks übernommen und wird in Teamworks eingegliedert. Roadmap und Migration: Teamworks.',
-          strivn: 'Unabhängiger Anbieter. Die Roadmap ist die von STRIVN.',
-          verdictLead: 'Fakt',
-          verdict: 'Seit der Übernahme entscheidet Teamworks über das Weitere von Opteamal.',
-        },
-        {
           criterion: 'Preis',
-          opteamal: 'Individuell, nicht öffentlich.',
-          strivn: `Öffentlich: ${b.publicPrices}.`,
-          verdictLead: 'STRIVN',
-          verdict: 'Die STRIVN-Preise stehen auf der Seite, außer Pro, das individuell bleibt.',
+          opteamal: 'Auf Angebot.',
+          strivn: `Auf der Seite angegeben: ${b.publicPrices}.`,
         },
         {
-          criterion: 'Wie Sie kaufen',
-          opteamal: 'Enterprise-Vertrieb.',
-          strivn:
-            'Der Staff legt das Konto selbst an: Name, E-Mail, Telefon, Passwort, Sprache, Land. Keine Freigabe des Klubs oder eines Verbands. 30 Tage Semi-Pro zum Start, ohne Karte.',
-          verdictLead: 'STRIVN',
-          verdict: 'Start in Eigenregie bei STRIVN. Enterprise-Vertrieb auf ihrer Seite.',
+          criterion: 'Kontoeröffnung',
+          opteamal: 'Auf Anfrage, über ihr Vertriebsteam.',
+          strivn: `Der Staff erstellt das Konto selbst, ohne Freigabe des Klubs. ${b.trialSentence}`,
         },
         {
-          criterion: 'Integrationen',
+          criterion: 'Roadmap',
           opteamal:
-            'Teamworks AMS kündigt mehr als 100 Integrationen an. Welche Liste für einen Opteamal-Klub noch gilt, ist hier nicht öffentlich.',
+            'Seit der Übernahme vom 18. Dezember 2025 bei Teamworks entschieden, Migration inbegriffen.',
           strivn:
-            'Nur Dateien, bei Semi-Pro und Pro: CSV, XLSX, Catapult, STATSports, SPT- / GameTraka-Traces. Kein direkter GPS-Anschluss, keine öffentliche API.',
-          verdictLead: 'Teamworks AMS',
-          verdict: 'Die angekündigten Integrationen sind ein Vorteil von Teamworks AMS. STRIVN bleibt bei Dateien.',
-        },
-        {
-          criterion: 'Medizin',
-          opteamal:
-            'Teamworks AMS kündigt ein Medizinmodul an. Das Detail, das noch Opteamal gehört, ist hier nicht öffentlich.',
-          strivn:
-            'Verletzungstagebuch, Checkliste und Plan für die Rückkehr, Reha-Einheiten. Medizinboard bei Semi-Pro und Pro. Keine Protokollbibliothek.',
-          verdictLead: 'Teamworks AMS',
-          verdict: 'Das angekündigte Medizinmodul ist ein Vorteil von Teamworks AMS.',
-        },
-        {
-          criterion: 'Zertifizierungen',
-          opteamal: 'Teamworks AMS kündigt ISO 27001 und SOC 2 an.',
-          strivn:
-            'Keine Zertifizierung beansprucht. Transport per HTTPS. Recht auf Auskunft, Berichtigung, Löschung oder eine Kopie über hello@strivn.net. Kein genanntes Hosting-Land, kein genannter Auftragsverarbeitungsvertrag.',
-          verdictLead: 'Teamworks AMS',
-          verdict: 'Die angekündigten Zertifizierungen sind ein Vorteil von Teamworks AMS.',
-        },
-        {
-          criterion: 'Sprachen',
-          opteamal: 'Auf dieser Seite nicht öffentlich.',
-          strivn: 'Französisch, Englisch, Niederländisch, Deutsch, Portugiesisch und Spanisch. Französisch ist der Quelltext.',
-          verdictLead: 'Offen',
-          verdict: 'STRIVN dokumentiert sechs Sprachen, darunter Französisch und Niederländisch. Das Opteamal-Detail ist nicht öffentlich.',
-        },
-        {
-          criterion: 'Check-in der Spieler',
-          opteamal: 'Auf dieser Seite nicht öffentlich.',
-          strivn:
-            'Link per WhatsApp oder E-Mail, ohne App. Automatischer Versand bei Semi-Pro und Pro. WHOOP kann den Check-in auf diesen Stufen vorausfüllen.',
-          verdictLead: 'Offen',
-          verdict: 'STRIVN dokumentiert den Link ohne App. Das Äquivalent bei Opteamal ist nicht öffentlich.',
-        },
-        {
-          criterion: 'Seitenlinie',
-          opteamal: 'Auf dieser Seite nicht öffentlich.',
-          strivn:
-            'Anwesenheiten, Chrono pro Block, Mannschaften und Spielstand. Offline-Protokoll auf dem Telefon, synchronisiert bei der Rückkehr.',
-          verdictLead: 'Offen',
-          verdict: 'STRIVN dokumentiert den Offline-Modus. Das Äquivalent bei Opteamal ist nicht öffentlich.',
-        },
-        {
-          criterion: 'Belastung und GPS',
-          opteamal: 'Auf dieser Seite nicht öffentlich.',
-          strivn:
-            'Woche in AU, ACWR 7 Tage auf 28, Lesarten Bereit, Nachverfolgen, Risiko. GPS-Dateiimport bei Semi-Pro und Pro, einschließlich der Berechnung roher SPT-Traces.',
-          verdictLead: 'Offen',
-          verdict: 'STRIVN dokumentiert Belastung und GPS-Dateien. Das Opteamal-Detail ist nicht öffentlich.',
+            'Von STRIVN entschieden, als unabhängigem Anbieter. Wir kündigen jede Neuerung per E-Mail an die Coaches an.',
         },
       ],
-      note: 'Fakten zu Opteamal und Teamworks beschränkt auf öffentliche Angaben zum 15. Oktober 2026: Übernahme, Preis auf Anfrage, Enterprise-Vertrieb und Ankündigungen von Teamworks AMS (Integrationen, Medizinmodul, ISO 27001, SOC 2). Der Rest ihrer Spalte steht als nicht öffentlich.',
+      note: 'Quellen: Pressemitteilung von Teamworks vom 18. Dezember 2025 und öffentliche Seiten von Teamworks und Opteamal, Stand 15. Oktober 2026.',
     },
     reasons: {
-      id: 'raisons',
-      eyebrow: 'Warum wechseln',
-      title: 'Elf Gründe zu wechseln',
-      lede: 'Was STRIVN liefert, und die einzige neue Tatsache auf der Seite von Opteamal: seit der Übernahme entscheidet Teamworks über das Weitere.',
+      id: 'au-quotidien',
+      eyebrow: 'Im Alltag',
+      title: 'Behalten Sie das Monitoring, das Sie schon machen.',
+      lede: 'Sechs Handgriffe, die Ihr Staff jede Woche erledigt, und wie STRIVN sie übernimmt.',
       items: [
         {
-          title: 'Die Preise stehen auf der Seite',
-          body: `Free, Amateur, Semi-Pro und Pro: ${b.publicPrices}. Dieselben Beträge wie im Katalog. Pro bleibt individuell, als Angebot, nicht als versteckter Preis der anderen Stufen.`,
+          title: 'Senden Sie den Check-in per WhatsApp',
+          body: 'Der Spieler erhält einen Link per WhatsApp oder E-Mail und antwortet, ohne eine App zu installieren. Er bewertet Müdigkeit, Schlaf, Stimmung und Stress, nach der Einheit dann seinen RPE. Der automatische Versand gehört zu Semi-Pro und Pro.',
         },
         {
-          title: 'Sie legen das Konto selbst an',
-          body: 'Name, E-Mail, Telefon, Passwort, Sprache, Land. Keine Freigabe des Klubs oder eines Verbands. Das Konto startet mit 30 Tagen Semi-Pro, ohne Karte.',
+          title: 'Steuern Sie die Einheit vom Spielfeldrand',
+          body: 'Anwesenheit, Stoppuhr pro Block, Teams und Spielstand passen auf das Handy. Ohne Netz führt das Handy ein Protokoll und synchronisiert es bei der Rückkehr.',
         },
         {
-          title: 'Spieler antworten über einen Link',
-          body: 'Wellness (Müdigkeit, Schlaf, Stimmung, Stress) und RPE, per WhatsApp oder E-Mail, ohne App. Der automatische Versand morgens und abends liegt bei Semi-Pro und Pro. WHOOP kann den Check-in auf diesen Stufen vorausfüllen.',
+          title: 'Planen Sie die Woche in AU',
+          body: 'Legen Sie das Ziel fest, verfolgen Sie Plan gegen Ist und passen Sie Spieler für Spieler an. STRIVN berechnet die ACWR über 7 und 28 Tage und ordnet jeden Spieler einem von drei Zuständen zu.',
         },
         {
-          title: 'Die Seitenlinie funktioniert offline',
-          body: 'Anwesenheiten, Chrono pro Block, Mannschaften und Spielstand. Das Telefon führt ein Protokoll und synchronisiert es bei der Rückkehr. Fehlt die Dauer, nutzt die Belastung die tatsächlich gespielte Zeit.',
+          title: 'Importieren Sie den GPS-Export, egal von welchem Sensor',
+          body: `Laden Sie die CSV- oder XLSX-Datei von Catapult, STATSports oder einem anderen System hoch, oder die SPT- / GameTraka-Trace. Die Spalten werden beim ersten Import erkannt und dann gespeichert. Import ${b.gpsTiers}.`,
         },
         {
-          title: 'Die Woche planen Sie in AU',
-          body: 'Ziel, geplant gegen tatsächlich, Anpassung pro Spieler (Skala, Ausschluss oder Einzelarbeit), ohne den Mannschaftsplan oder das Aufgebot zu ändern. Belastung aus GPS braucht Semi-Pro.',
+          title: 'Arbeiten Sie auf Deutsch, Französisch oder Niederländisch',
+          body: 'STRIVN gibt es in sechs Sprachen: Deutsch, Französisch, Niederländisch, Englisch, Portugiesisch und Spanisch. Jedes Staff-Mitglied wählt seine Sprache bei der Eröffnung seines Kontos.',
         },
         {
-          title: 'Die Übung läuft und lässt sich teilen',
-          body: 'Fußball, Handball, Rugby, Basketball, Volleyball. Animation, Download als PNG oder WebM, PNG über das Teilen-Menü des Telefons. 3 Tafeln und 3 Vorlagen bei Free, kein Limit ab Amateur.',
-        },
-        {
-          title: 'Französisch und Niederländisch, plus vier Sprachen',
-          body: 'Französisch, Englisch, Niederländisch, Deutsch, Portugiesisch und Spanisch, auf der Seite des Coaches und des Spielers. Französisch ist der Quelltext. Niederländisch ist für belgische Staffs da.',
-        },
-        {
-          title: 'Jede Rolle hat ihre Rechte',
-          body: 'Cheftrainer, Assistent, medizinischer Staff, Physio, Athletiktrainer, Analyst, Delegierter, Scout, Torwarttrainer. Free: nur der Inhaber. Amateur: eine Einladung zusätzlich. Semi-Pro und Pro: kein Limit.',
-        },
-        {
-          title: 'Eine Absenz nimmt den Spieler aus dem Aufgebot',
-          body: 'Ein abwesender Spieler fällt aus den Aufgeboten für Training und Spiel. Ein Spieler, der im Training eingeschränkt ist, fällt aus den Spielen. Behandlung, Einzelprogramm und eine ausdrückliche Lehrgangsauswahl bleiben verfügbar.',
-        },
-        {
-          title: 'Der SPT-Trace wird neu berechnet',
-          body: `Nur Dateien, ${b.gpsTiers}: CSV oder XLSX (Catapult, STATSports oder eine beliebige Tabelle) und SPT- / GameTraka-Traces (.gt). STRIVN berechnet Distanz und Geschwindigkeitszonen auf dem Roh-Trace. Kein Direktanschluss.`,
-        },
-        {
-          title: 'Über das Weitere von Opteamal entscheidet Teamworks',
-          body: 'Seit dem 18. Dezember 2025 liegen Roadmap und Migration von Opteamal bei Teamworks. Das ist ein Wechsel der entscheidenden Stelle, kein Urteil über das Produkt. STRIVN bleibt ein unabhängiger Anbieter.',
+          title: 'Geben Sie jedem im Staff seine Rolle',
+          body: 'Neun Rollen, vom Cheftrainer bis zum Physiotherapeuten und Analysten, jede mit ihren Rechten. Bei Semi-Pro und Pro ist die Zahl der Staff-Mitglieder unbegrenzt.',
         },
       ],
     },
     switch: {
       id: 'changer',
-      eyebrow: 'Wie Sie wechseln',
-      title: 'Drei Schritte. Kein Integrationsprojekt.',
-      lede: 'Sie können einen Bereich öffnen, während Ihr Opteamal-Vertrag noch läuft. Ihre Kündigungsfrist kennen wir nicht: sie steht in Ihrem Vertrag, nicht hier.',
+      eyebrow: 'Wechseln',
+      title: 'Starten Sie STRIVN, während Ihr Vertrag läuft.',
+      lede: `Die Kündigungsfrist steht in Ihrem Opteamal-Vertrag. Starten Sie STRIVN parallel und vergleichen Sie ${b.trialDays} Tage lang an Ihren eigenen Einheiten.`,
       steps: [
         {
           n: '01',
-          title: 'Bereich anlegen',
-          body: 'Name, E-Mail, Telefon, Passwort, Sprache, Land. Ohne Freigabe des Klubs. Das Konto startet mit 30 Tagen Semi-Pro, ohne Karte.',
+          title: 'Erstellen Sie den Bereich',
+          body: `Name, E-Mail, Telefon, Passwort, Sprache und Land genügen. Das Konto startet ${b.trialDays} Tage lang auf Semi-Pro, ohne Karte.`,
         },
         {
           n: '02',
-          title: 'Verlauf importieren',
-          body: 'CSV oder XLSX für Belastung, RPE und Wellness. GPS-Exporte (Catapult, STATSports, SPT / GameTraka) gehen bei Semi-Pro mit, also während der Testphase. Die Spalten werden erraten und danach für das Team gemerkt.',
+          title: 'Importieren Sie die Historie',
+          body: 'Laden Sie Ihre CSV- oder XLSX-Dateien zu Belastung, RPE und Wellness hoch, dann Ihre GPS-Exporte. Die Spalten werden erkannt und dann für das Team gespeichert.',
         },
         {
           n: '03',
-          title: 'Staff einladen',
-          body: 'Eine Rolle pro Person, mit ihren Rechten. Bei Free nur der Inhaber. Bei Amateur eine Einladung zusätzlich. Bei Semi-Pro und Pro kein Limit.',
+          title: 'Laden Sie den Staff ein',
+          body: 'Weisen Sie jeder Person eine Rolle mit ihren Rechten zu. Free hat einen Platz, Amateur zwei, Semi-Pro und Pro unbegrenzt viele.',
         },
       ],
-      offer: {
-        tag: 'Für Klubs, die Opteamal verlassen',
-        title: 'Die erste Spaltenzuordnung können wir mit Ihnen machen.',
-        body: 'Die drei Schritte reichen zum Start. Wenn wir die Spalten einmal mit Ihnen zuordnen sollen, schreiben Sie uns. Das Begleitangebot ist noch zu bestätigen.',
-        cta: 'Über meine Migration sprechen',
-        href: mail('Migration von Opteamal'),
-      },
     },
     stay: {
       id: 'rester',
       eyebrow: 'Bleiben',
-      title: 'Wann Opteamal oder Teamworks die richtige Wahl bleibt.',
-      lede: 'Wechseln ist in diesen Fällen nicht der richtige Schritt. Wir schreiben sie auf, damit die Seite brauchbar bleibt.',
+      title: 'Bleiben Sie in zwei Fällen bei Teamworks.',
+      lede: 'Wählen Sie das Werkzeug, das Ihre Abteilung abdeckt. Ist einer dieser beiden Bedarfe bei Ihnen zentral, deckt Teamworks AMS ihn heute ab.',
       items: [
         {
-          title: 'Das Medizinmodul für Unternehmen',
-          body: 'Teamworks AMS kündigt ein Medizinmodul an. STRIVN deckt das Tagebuch, die Rückkehr und die Reha ab, keine Protokollbibliothek.',
+          title: 'Ihre Sensoren müssen live übertragen',
+          body: `Teamworks AMS kündigt mehr als 100 Integrationen an. STRIVN importiert Ihre GPS-Dateien nach der Einheit, ${b.gpsTiers}.`,
         },
         {
-          title: 'ISO 27001 und SOC 2',
-          body: 'Teamworks AMS kündigt sie an. STRIVN beansprucht keine Zertifizierung, kein Hosting-Land und keinen Auftragsverarbeitungsvertrag.',
-        },
-        {
-          title: 'Die direkten Integrationen',
-          body: 'Teamworks AMS kündigt mehr als 100 Integrationen an. STRIVN importiert Dateien und hat keinen direkten GPS-Anschluss und keine öffentliche API.',
+          title: 'Ihre medizinische Abteilung arbeitet nach Protokollen',
+          body: 'Teamworks AMS kündigt ein Medizinmodul an. STRIVN führt das Verletzungsprotokoll, den Plan für die Rückkehr ins Spiel und die Reha-Einheiten.',
         },
       ],
     },
     faq: {
       label: 'FAQ',
-      title: 'Die Fragen, wenn Sie Opteamal verlassen.',
+      title: 'Ihre Fragen, bevor Sie Opteamal verlassen.',
       email: 'hello@strivn.net',
       items: [
         {
-          q: 'Kann ich meinen Opteamal-Verlauf mitnehmen?',
-          a: 'Per Datei, ja. Belastung, RPE und Wellness: CSV oder XLSX. GPS-Exporte (CSV, XLSX, Catapult, STATSports oder ein SPT- / GameTraka-Trace) importieren Sie bei Semi-Pro und Pro, der Stufe der 30-tägigen Testphase. Die Spaltenzuordnung wird anhand bekannter Kopfzeilen erraten und danach für das Team gespeichert. Es gibt keine öffentliche API, um ein Opteamal-Konto zu leeren. Schreiben Sie uns an hello@strivn.net, wenn wir die erste Zuordnung gemeinsam machen sollen.',
-          mailto: mail('Migration von Opteamal'),
+          q: 'Kann ich meine Opteamal-Historie übernehmen?',
+          a: `Ja, per Datei. Exportieren Sie Belastung, RPE und Wellness als CSV oder XLSX und laden Sie sie in STRIVN hoch. GPS-Exporte lassen sich ${b.gpsTiers} importieren, also während der ${b.trialDays}-tägigen Testphase. Die Spalten werden anhand ihrer Überschriften erkannt und dann für das Team gespeichert. Für die erste Zuordnung schreiben Sie uns an hello@strivn.net.`,
+          mailto: migration,
         },
         {
-          q: 'Ich bin noch im Vertrag. Wann kann ich wechseln?',
-          a: 'Kündigungsfrist, Verlängerung und Ausstiegskosten stehen in Ihrem Vertrag mit Opteamal oder Teamworks. Wir veröffentlichen sie nicht, und diese Seite sagt Ihnen nicht, ihn zu kündigen. Sie können parallel einen STRIVN-Bereich anlegen: ohne Freigabe des Klubs, ohne Karte, mit 30 Tagen Semi-Pro.',
+          q: 'Ich bin noch unter Vertrag. Wann kann ich wechseln?',
+          a: `Kündigungsfrist und Verlängerungsdatum stehen in Ihrem Opteamal- oder Teamworks-Vertrag. Starten Sie STRIVN parallel, ohne Freigabe des Klubs und ohne Karte, mit ${b.trialDays} Tagen Semi-Pro. Sie kündigen zu dem Datum, das Ihnen passt.`,
         },
         {
-          q: 'Was kostet es wirklich?',
-          a: costAnswer,
+          q: 'Was kostet STRIVN?',
+          a: `Die Preise sind öffentlich: ${b.publicPrices}. ${b.trialSentence} Sie starten ohne Kreditkarte.`,
         },
         {
           q: 'Was ändert sich für die Spieler?',
-          a: 'Zum Antworten installieren sie nichts. Ein Link per WhatsApp oder E-Mail reicht für Wellness, RPE und Erinnerungen. Der automatische Versand liegt bei Semi-Pro und Pro. STRIVN Player und STRIVN coach (iOS und Android) gibt es zusätzlich: Hüllen um die Web-App, mit Benachrichtigungen, und einer Chrono an der Seitenlinie in der Coach-App.',
+          a: 'Sie beantworten den Check-in über einen Link per WhatsApp oder E-Mail, ohne eine App zu installieren. Der automatische Versand morgens und abends gehört zu Semi-Pro und Pro. Die Apps STRIVN Player und STRIVN Coach für iOS und Android ergänzen die Benachrichtigungen.',
         },
         {
-          q: 'Und die Sprachen, für einen belgischen Klub?',
-          a: 'STRIVN gibt es auf Französisch, Englisch, Niederländisch, Deutsch, Portugiesisch und Spanisch, auf der Seite des Coaches und des Spielers. Französisch ist der Quelltext. Niederländisch ist dabei. Die Sprachen, die Opteamal noch bedient, stehen hier nicht im Detail: das ist auf dieser Seite nicht öffentlich.',
-        },
-        {
-          q: 'Was finde ich nicht wieder?',
-          a: 'Das Medizinmodul, das Teamworks AMS ankündigt, die Zertifizierungen ISO 27001 und SOC 2, und die mehr als 100 Integrationen, die sie ankündigen. STRIVN beansprucht sie nicht. Verletzungstagebuch, Rückkehr und Dateiimport werden geliefert.',
+          q: 'Funktioniert STRIVN auf Niederländisch?',
+          a: 'Ja. STRIVN gibt es auf Französisch, Niederländisch, Englisch, Deutsch, Portugiesisch und Spanisch, für den Staff wie für die Spieler. Jedes Staff-Mitglied wählt seine Sprache bei der Eröffnung seines Kontos.',
         },
       ],
     },
     finalCta: {
-      eyebrow: 'Testphase Semi-Pro',
-      title: 'Legen Sie den Bereich an und importieren Sie Ihren Verlauf.',
-      body: `${b.trialSentence} Ihr Opteamal-Vertrag endet nicht von selbst: Sie wählen den Zeitpunkt.`,
-      primaryCta: 'Meinen Bereich anlegen',
-      secondaryCta: 'Über meine Migration sprechen',
-      secondaryHref: mail('Migration von Opteamal'),
+      eyebrow: b.trialPerk,
+      title: 'Erstellen Sie Ihren Bereich und importieren Sie Ihre Historie.',
+      body: `${b.trialSentence} Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.`,
+      primaryCta: 'Meinen Bereich erstellen',
+      secondaryCta: 'Mit Benoit sprechen',
+      secondaryHref: migration,
       fine: b.perks,
     },
     disclaimer:
-      'Opteamal, Teamworks und Teamworks AMS sind Marken ihrer jeweiligen Inhaber. STRIVN ist mit diesen Gesellschaften nicht verbunden und wird von ihnen nicht unterstützt. Catapult, STATSports, SPT, GameTraka und WHOOP sind Marken ihrer Inhaber. Der GPS-Import erfolgt per Datei; WHOOP kann den Check-in bei Semi-Pro und Pro vorausfüllen. Angaben zu Opteamal und Teamworks stammen aus öffentlichen Quellen zum 15. Oktober 2026 und können sich ändern. STRIVN-Preise: der geltende Katalog.',
+      'Opteamal, Teamworks und Teamworks AMS sind Marken ihrer jeweiligen Inhaber. STRIVN ist mit diesen Unternehmen weder verbunden noch von ihnen anerkannt. Catapult, STATSports, SPT, GameTraka und WHOOP sind Marken ihrer jeweiligen Inhaber. Die Angaben zu Opteamal und Teamworks stammen aus öffentlichen Quellen, Stand 15. Oktober 2026.',
   };
 }
