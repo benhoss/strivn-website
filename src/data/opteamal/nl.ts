@@ -4,6 +4,7 @@ import type { LandingBits, SwitchPage } from './types';
 /**
  * Flemish, u-vorm. Opteamal’s core is Belgian clubs, so this locale is the
  * one that has to sound like a staff room in Flanders, not a translation.
+ * Translates fr.ts, does not extend it.
  */
 export function nlPage(b: LandingBits): SwitchPage {
   const migration = mail('Migratie vanuit Opteamal');
@@ -13,10 +14,10 @@ export function nlPage(b: LandingBits): SwitchPage {
     crumb: 'Van Opteamal naar STRIVN',
     meta: {
       title: 'Alternatief voor Opteamal: STRIVN, met uw historiek',
-      description: `Teamworks heeft Opteamal in december 2025 overgenomen. Stap over naar STRIVN: publieke prijzen, ${b.trialPerk}, in het Nederlands en het Frans.`,
-      ogTitle: 'Werkt u met Opteamal? Stap over naar STRIVN met uw historiek.',
-      ogDescription: `Publieke prijzen, account aangemaakt door de staf, ${b.trialPerk}. Importeer uw belastings- en GPS-bestanden terwijl uw contract loopt.`,
-      twitterTitle: 'Van Opteamal naar STRIVN',
+      description: `Teamworks kondigt de overstap van Opteamal-clubs aan. Kies STRIVN: publieke prijzen, ${b.trialPerk}, in het Nederlands en Frans.`,
+      ogTitle: 'Werkt u met Opteamal? Stap over naar STRIVN vóór de migratie.',
+      ogDescription: `Teamworks kondigt aan dat de Opteamal-clubs naar zijn platform overstappen. Verander één keer van tool: publieke prijzen, ${b.trialPerk}, historiek geïmporteerd.`,
+      twitterTitle: 'Werkt u met Opteamal? Stap over naar STRIVN.',
       twitterDescription: `Publieke prijzen, ${b.trialPerk}, historiek geïmporteerd via bestand.`,
       ogImage: '/og.png',
       ogImageAlt: 'STRIVN, de controletoren van de performancestaf',
@@ -24,18 +25,18 @@ export function nlPage(b: LandingBits): SwitchPage {
     hero: {
       eyebrow: 'Opteamal gaat naar Teamworks',
       titleLead: 'Werkt u met Opteamal?',
-      title: 'Stap over naar STRIVN met uw historiek.',
-      lede: `Teamworks heeft Opteamal op 18 december 2025 overgenomen. Open een STRIVN-omgeving, importeer uw belastings- en GPS-bestanden en vergelijk ${b.trialDays} dagen lang op uw eigen trainingen.`,
+      title: 'Stap over naar STRIVN vóór de migratie.',
+      lede: `Teamworks heeft Opteamal overgenomen en kondigt aan dat de clubs naar zijn eigen platform overstappen. Verander één keer van tool: importeer uw historiek in STRIVN en test het ${b.trialDays} dagen op uw trainingen.`,
       primaryCta: 'Mijn omgeving gratis aanmaken',
-      secondaryCta: 'Bekijk de vergelijking',
+      secondaryCta: 'Bekijk wat er verandert',
       secondaryHref: '#comparatif',
       perks: b.perks,
     },
     compare: {
       id: 'comparatif',
-      eyebrow: 'Vergelijking',
-      title: 'Vergelijk de prijs, de toegang en de roadmap.',
-      lede: 'Drie punten waarop Opteamal, Teamworks en STRIVN elk hun antwoord publiceren. De rest beoordeelt u op uw eigen trainingen.',
+      eyebrow: 'Wat er verandert',
+      title: 'Vergelijk de toekomst van Opteamal met STRIVN.',
+      lede: 'Op 18 december 2025 kondigde Teamworks aan dat het de Opteamal-clubs op zijn platform onthaalt. U verandert dus van tool: vergelijk beide wegen voor u kiest.',
       columns: {
         criterion: 'Criterium',
         opteamal: 'Opteamal, bij Teamworks',
@@ -43,38 +44,38 @@ export function nlPage(b: LandingBits): SwitchPage {
       },
       rows: [
         {
+          criterion: 'Uw volgende tool',
+          opteamal: 'Het Teamworks-platform, ontworpen voor meer dan 6.500 eliteorganisaties.',
+          strivn: 'STRIVN, ontworpen voor de staf van een club: 141 ploegen, waarvan 14 profploegen.',
+        },
+        {
           criterion: 'Prijs',
           opteamal: 'Op offerte.',
           strivn: `Op de pagina vermeld: ${b.publicPrices}.`,
         },
         {
-          criterion: 'Account openen',
+          criterion: 'Toegang tot het account',
           opteamal: 'Op aanvraag, via hun verkoopteam.',
           strivn: `De staf maakt het account zelf aan, zonder goedkeuring van de club. ${b.trialSentence}`,
         },
         {
           criterion: 'Roadmap',
-          opteamal:
-            'Beslist bij Teamworks sinds de overname van 18 december 2025, de migratie inbegrepen.',
+          opteamal: 'Beslist bij Teamworks, in Durham, in de Verenigde Staten.',
           strivn:
             'Beslist door STRIVN, onafhankelijke uitgever. We kondigen elke nieuwigheid per e-mail aan de coaches aan.',
         },
       ],
-      note: 'Bronnen: persbericht van Teamworks van 18 december 2025 en publieke pagina’s van Teamworks en Opteamal, op 15 oktober 2026.',
+      note: 'Bronnen: persbericht van Teamworks van 18 december 2025 en publieke pagina’s van Teamworks en Opteamal, op 15 oktober 2026. Cijfers van STRIVN op 18 september 2026.',
     },
     reasons: {
       id: 'au-quotidien',
-      eyebrow: 'Dagelijks',
-      title: 'Houd de opvolging die u al doet.',
-      lede: 'Zes taken die uw staf elke week doet, en hoe STRIVN ze opneemt.',
+      eyebrow: 'Wat u wint',
+      title: 'Lees de toestand van elke speler vóór de training.',
+      lede: 'STRIVN kruist de check-in, de RPE, de belasting en de GPS van elke speler. Zeven redenen om het voor uw staf te kiezen.',
       items: [
         {
           title: 'Stuur de check-in via WhatsApp',
           body: 'De speler krijgt een link via WhatsApp of e-mail en antwoordt zonder een app te installeren. Hij geeft vermoeidheid, slaap, humeur en stress door, en na de training zijn RPE. Automatisch versturen zit in Semi-Pro en Pro. U leest de antwoorden vóór de training.',
-        },
-        {
-          title: 'Stuur de training aan vanaf de zijlijn',
-          body: 'Aanwezigheden, chrono per blok, ploegen en score passen op de telefoon. Zonder netwerk houdt de telefoon een logboek bij en synchroniseert het bij terugkeer. Zonder ingevoerde duur berekent STRIVN de belasting op de werkelijk gespeelde tijd.',
         },
         {
           title: 'Plan de week in AU',
@@ -85,6 +86,10 @@ export function nlPage(b: LandingBits): SwitchPage {
           body: `Zet de CSV of XLSX van Catapult, STATSports of een ander systeem neer, of de SPT- / GameTraka-trace. De kolommen worden bij de eerste import herkend en daarna onthouden. Import ${b.gpsTiers}.`,
         },
         {
+          title: 'Stuur de training aan vanaf de zijlijn',
+          body: 'Aanwezigheden, chrono per blok, ploegen en score passen op de telefoon. Zonder netwerk houdt de telefoon een logboek bij en synchroniseert het bij terugkeer. Zonder ingevoerde duur berekent STRIVN de belasting op de werkelijk gespeelde tijd.',
+        },
+        {
           title: 'Werk in het Nederlands of het Frans',
           body: 'STRIVN bestaat in zes talen: Nederlands, Frans, Engels, Duits, Portugees en Spaans. Elk staflid kiest zijn taal bij het openen van zijn account.',
         },
@@ -92,13 +97,17 @@ export function nlPage(b: LandingBits): SwitchPage {
           title: 'Geef elk staflid zijn rol',
           body: 'Negen rollen, van hoofdcoach tot kiné en analist, elk met eigen rechten. In Semi-Pro en Pro is het aantal stafleden onbeperkt.',
         },
+        {
+          title: 'Praat met wie STRIVN bouwt',
+          body: 'De knop ‘Praat met Benoit’ opent een e-mail naar wie STRIVN bouwt. Beschrijf uw staf en uw migratie, wij antwoorden u.',
+        },
       ],
     },
     switch: {
       id: 'changer',
       eyebrow: 'Overstappen',
       title: 'Open STRIVN terwijl uw contract loopt.',
-      lede: `De opzegtermijn staat in uw Opteamal-contract. Open STRIVN ernaast en vergelijk ${b.trialDays} dagen lang op uw eigen trainingen.`,
+      lede: `De opzegtermijn staat in uw Opteamal-contract. Open STRIVN ernaast en test het ${b.trialDays} dagen op uw eigen trainingen.`,
       steps: [
         {
           n: '01',
@@ -114,22 +123,6 @@ export function nlPage(b: LandingBits): SwitchPage {
           n: '03',
           title: 'Nodig de staf uit',
           body: 'Geef elke persoon een rol, met eigen rechten. Free telt één plaats, Amateur twee, Semi-Pro en Pro een onbeperkt aantal.',
-        },
-      ],
-    },
-    stay: {
-      id: 'rester',
-      eyebrow: 'Blijven',
-      title: 'Blijf bij Teamworks in twee gevallen.',
-      lede: 'Kies de tool die uw cel dekt. Is een van deze twee noden centraal bij u, dan beantwoordt Teamworks AMS die vandaag.',
-      items: [
-        {
-          title: 'Uw sensoren moeten live doorkomen',
-          body: `Teamworks AMS kondigt meer dan 100 koppelingen aan. STRIVN importeert uw GPS-bestanden na de training, ${b.gpsTiers}.`,
-        },
-        {
-          title: 'Uw medische cel volgt protocollen',
-          body: 'Teamworks AMS kondigt een medische module aan. STRIVN houdt het blessurelogboek, het terugkeerplan en de revalidatietrainingen bij.',
         },
       ],
     },
@@ -152,6 +145,10 @@ export function nlPage(b: LandingBits): SwitchPage {
           a: `De prijzen zijn publiek: ${b.publicPrices}. ${b.trialSentence} U start zonder bankkaart.`,
         },
         {
+          q: 'Leest STRIVN de gegevens van mijn GPS?',
+          a: `Ja, via de export van de training. Zet de CSV of XLSX van Catapult, STATSports of een ander systeem neer, of de SPT- / GameTraka-trace. STRIVN herkent de kolommen bij de eerste import en berekent afstand en snelheidszones op de ruwe trace. Import ${b.gpsTiers}.`,
+        },
+        {
           q: 'Wat verandert er voor de spelers?',
           a: 'Ze beantwoorden de check-in via een link in WhatsApp of e-mail, zonder een app te installeren. Automatisch versturen ’s ochtends en ’s avonds zit in Semi-Pro en Pro. De apps STRIVN Player en STRIVN Coach, op iOS en Android, voegen meldingen toe.',
         },
@@ -163,8 +160,8 @@ export function nlPage(b: LandingBits): SwitchPage {
     },
     finalCta: {
       eyebrow: b.trialPerk,
-      title: 'Maak uw omgeving aan en importeer uw historiek.',
-      body: `${b.trialSentence} Uw staf sluit aan wanneer hij uw eerste rapporten ziet.`,
+      title: 'Importeer uw historiek in STRIVN.',
+      body: `Verander één keer van tool. ${b.trialSentence} Uw staf sluit aan wanneer hij uw eerste rapporten ziet.`,
       primaryCta: 'Mijn omgeving gratis aanmaken',
       secondaryCta: 'Praat met Benoit',
       secondaryHref: migration,

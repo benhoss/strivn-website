@@ -1,12 +1,12 @@
 /**
  * Switch page in the six site locales: /{locale}/alternative-opteamal/
  *
- * Aimed at clubs still on Opteamal. Prices, plan names and the trial come
- * from the catalogue. STRIVN feature claims follow the app audit. Opteamal
- * and Teamworks cells use only public facts: the 18 Dec 2025 acquisition,
- * quote-only pricing, sales-led sign-up, and Teamworks AMS (100+ integrations,
- * medical module). A criterion where their side is not public is left out of
- * the comparison rather than marked "not public".
+ * Aimed at clubs still on Opteamal, and written to make them switch. Prices,
+ * plan names and the trial come from the catalogue. STRIVN feature claims
+ * follow the app audit. The only claims about the other side come from
+ * Teamworks' own 18 Dec 2025 announcement (Opteamal partners move onto the
+ * Teamworks platform, built for 6,500+ elite organizations) and from their
+ * public pages (quote-only pricing, sales-led sign-up).
  *
  * Open item, marked TODO(validate) where the text lives: the Open Graph image
  * (the site-wide card until a dedicated one exists).

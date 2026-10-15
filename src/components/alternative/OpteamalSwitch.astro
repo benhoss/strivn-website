@@ -202,24 +202,6 @@ const alternates = [
       gpsNote={c.gpsNote}
     />
 
-    <section class="st-sec" id={c.stay.id} aria-labelledby="stay-title">
-      <div class="st-wrap">
-        <div class="st-head">
-          <span class="st-label st-eyebrow">{c.stay.eyebrow}</span>
-          <h2 id="stay-title" class="st-h2">{c.stay.title}</h2>
-          <p class="st-lede">{c.stay.lede}</p>
-        </div>
-        <div class="st-cols">
-          {c.stay.items.map((item) => (
-            <article>
-              <h3 class="st-h3">{item.title}</h3>
-              <p class="st-body">{item.body}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <HomeFaq c={c.faq} />
     <HomeFinalCta
       locale={locale}

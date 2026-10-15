@@ -58,13 +58,6 @@ export interface SwitchPage {
     lede: string;
     steps: { n: string; title: string; body: string }[];
   };
-  stay: {
-    id: string;
-    eyebrow: string;
-    title: string;
-    lede: string;
-    items: { title: string; body: string }[];
-  };
   faq: {
     label: string;
     title: string;

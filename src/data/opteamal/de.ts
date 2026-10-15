@@ -10,10 +10,10 @@ export function dePage(b: LandingBits): SwitchPage {
     crumb: 'Von Opteamal zu STRIVN',
     meta: {
       title: 'Alternative zu Opteamal: STRIVN, mit Ihrer Historie',
-      description: `Teamworks hat Opteamal im Dezember 2025 übernommen. Wechseln Sie zu STRIVN: öffentliche Preise, ${b.trialPerk}, in sechs Sprachen.`,
-      ogTitle: 'Sie arbeiten mit Opteamal? Wechseln Sie mit Ihrer Historie zu STRIVN.',
-      ogDescription: `Öffentliche Preise, Konto vom Staff selbst eröffnet, ${b.trialPerk}. Importieren Sie Ihre Belastungs- und GPS-Dateien, während Ihr Vertrag läuft.`,
-      twitterTitle: 'Von Opteamal zu STRIVN wechseln',
+      description: `Teamworks will die Opteamal-Klubs auf seine Plattform holen. Wählen Sie STRIVN: öffentliche Preise, ${b.trialPerk}, in sechs Sprachen.`,
+      ogTitle: 'Sie arbeiten mit Opteamal? Wechseln Sie vor der Migration zu STRIVN.',
+      ogDescription: `Teamworks kündigt an, die Opteamal-Klubs auf seine Plattform zu holen. Wechseln Sie das Werkzeug nur einmal: öffentliche Preise, ${b.trialPerk}, Historie importiert.`,
+      twitterTitle: 'Sie arbeiten mit Opteamal? Wechseln Sie zu STRIVN.',
       twitterDescription: `Öffentliche Preise, ${b.trialPerk}, Historie per Datei importiert.`,
       ogImage: '/og.png',
       ogImageAlt: 'STRIVN, der Kontrollturm des Performance-Staffs',
@@ -21,18 +21,18 @@ export function dePage(b: LandingBits): SwitchPage {
     hero: {
       eyebrow: 'Opteamal geht zu Teamworks',
       titleLead: 'Sie arbeiten mit Opteamal?',
-      title: 'Wechseln Sie mit Ihrer Historie zu STRIVN.',
-      lede: `Teamworks hat Opteamal am 18. Dezember 2025 übernommen. Eröffnen Sie einen STRIVN-Bereich, importieren Sie Ihre Belastungs- und GPS-Dateien und vergleichen Sie ${b.trialDays} Tage lang an Ihren eigenen Einheiten.`,
+      title: 'Wechseln Sie vor der Migration zu STRIVN.',
+      lede: `Teamworks hat Opteamal übernommen und kündigt an, seine Klubs auf die eigene Plattform zu holen. Wechseln Sie das Werkzeug nur einmal: Importieren Sie Ihre Historie in STRIVN und testen Sie es ${b.trialDays} Tage lang an Ihren Einheiten.`,
       primaryCta: 'Meinen Bereich kostenlos erstellen',
-      secondaryCta: 'Zum Vergleich',
+      secondaryCta: 'Sehen, was sich ändert',
       secondaryHref: '#comparatif',
       perks: b.perks,
     },
     compare: {
       id: 'comparatif',
-      eyebrow: 'Vergleich',
-      title: 'Vergleichen Sie Preis, Zugang und Roadmap.',
-      lede: 'Drei Punkte, zu denen Opteamal, Teamworks und STRIVN jeweils ihre Antwort veröffentlichen. Den Rest beurteilen Sie an Ihren eigenen Einheiten.',
+      eyebrow: 'Was sich ändert',
+      title: 'Vergleichen Sie die Zukunft von Opteamal mit STRIVN.',
+      lede: 'Am 18. Dezember 2025 hat Teamworks angekündigt, die Opteamal-Klubs auf seine Plattform zu holen. Sie wechseln also das Werkzeug: Vergleichen Sie beide Wege, bevor Sie wählen.',
       columns: {
         criterion: 'Kriterium',
         opteamal: 'Opteamal, bei Teamworks',
@@ -40,38 +40,38 @@ export function dePage(b: LandingBits): SwitchPage {
       },
       rows: [
         {
+          criterion: 'Ihr nächstes Werkzeug',
+          opteamal: 'Die Teamworks-Plattform, gebaut für mehr als 6.500 Elite-Organisationen.',
+          strivn: 'STRIVN, gebaut für den Staff eines Klubs: 141 Teams, davon 14 Profiteams.',
+        },
+        {
           criterion: 'Preis',
           opteamal: 'Auf Angebot.',
           strivn: `Auf der Seite angegeben: ${b.publicPrices}.`,
         },
         {
-          criterion: 'Kontoeröffnung',
+          criterion: 'Zugang zum Konto',
           opteamal: 'Auf Anfrage, über ihr Vertriebsteam.',
           strivn: `Der Staff erstellt das Konto selbst, ohne Freigabe des Klubs. ${b.trialSentence}`,
         },
         {
           criterion: 'Roadmap',
-          opteamal:
-            'Seit der Übernahme vom 18. Dezember 2025 bei Teamworks entschieden, Migration inbegriffen.',
+          opteamal: 'Bei Teamworks entschieden, in Durham, USA.',
           strivn:
             'Von STRIVN entschieden, als unabhängigem Anbieter. Wir kündigen jede Neuerung per E-Mail an die Coaches an.',
         },
       ],
-      note: 'Quellen: Pressemitteilung von Teamworks vom 18. Dezember 2025 und öffentliche Seiten von Teamworks und Opteamal, Stand 15. Oktober 2026.',
+      note: 'Quellen: Pressemitteilung von Teamworks vom 18. Dezember 2025 und öffentliche Seiten von Teamworks und Opteamal, Stand 15. Oktober 2026. STRIVN-Zahlen Stand 18. September 2026.',
     },
     reasons: {
       id: 'au-quotidien',
-      eyebrow: 'Im Alltag',
-      title: 'Behalten Sie das Monitoring, das Sie schon machen.',
-      lede: 'Sechs Aufgaben, die Ihr Staff jede Woche erledigt, und wie STRIVN sie übernimmt.',
+      eyebrow: 'Was Sie gewinnen',
+      title: 'Lesen Sie den Zustand jedes Spielers vor der Einheit.',
+      lede: 'STRIVN verbindet Check-in, RPE, Belastung und GPS jedes Spielers. Sieben Gründe, es für Ihren Staff zu wählen.',
       items: [
         {
           title: 'Senden Sie den Check-in per WhatsApp',
           body: 'Der Spieler erhält einen Link per WhatsApp oder E-Mail und antwortet, ohne eine App zu installieren. Er bewertet Müdigkeit, Schlaf, Stimmung und Stress, nach der Einheit dann seinen RPE. Der automatische Versand gehört zu Semi-Pro und Pro. Sie lesen die Antworten vor dem Training.',
-        },
-        {
-          title: 'Steuern Sie die Einheit vom Spielfeldrand',
-          body: 'Anwesenheit, Stoppuhr pro Block, Teams und Spielstand passen auf das Handy. Ohne Netz führt das Handy ein Protokoll und synchronisiert es bei der Rückkehr. Ohne eingetragene Dauer berechnet STRIVN die Belastung aus der tatsächlich gespielten Zeit.',
         },
         {
           title: 'Planen Sie die Woche in AU',
@@ -82,6 +82,10 @@ export function dePage(b: LandingBits): SwitchPage {
           body: `Laden Sie die CSV- oder XLSX-Datei von Catapult, STATSports oder einem anderen System hoch, oder die SPT- / GameTraka-Trace. Die Spalten werden beim ersten Import erkannt und dann gespeichert. Import ${b.gpsTiers}.`,
         },
         {
+          title: 'Steuern Sie die Einheit vom Spielfeldrand',
+          body: 'Anwesenheit, Stoppuhr pro Block, Teams und Spielstand passen auf das Handy. Ohne Netz führt das Handy ein Protokoll und synchronisiert es bei der Rückkehr. Ohne eingetragene Dauer berechnet STRIVN die Belastung aus der tatsächlich gespielten Zeit.',
+        },
+        {
           title: 'Arbeiten Sie auf Deutsch, Französisch oder Niederländisch',
           body: 'STRIVN gibt es in sechs Sprachen: Deutsch, Französisch, Niederländisch, Englisch, Portugiesisch und Spanisch. Jedes Staff-Mitglied wählt seine Sprache bei der Eröffnung seines Kontos.',
         },
@@ -89,13 +93,17 @@ export function dePage(b: LandingBits): SwitchPage {
           title: 'Geben Sie jedem im Staff seine Rolle',
           body: 'Neun Rollen, vom Cheftrainer bis zum Physiotherapeuten und Analysten, jede mit ihren Rechten. Bei Semi-Pro und Pro ist die Zahl der Staff-Mitglieder unbegrenzt.',
         },
+        {
+          title: 'Sprechen Sie mit dem, der STRIVN baut',
+          body: 'Der Button „Mit Benoit sprechen“ öffnet eine E-Mail an den, der STRIVN baut. Beschreiben Sie Ihren Staff und Ihren Wechsel, wir antworten Ihnen.',
+        },
       ],
     },
     switch: {
       id: 'changer',
       eyebrow: 'Wechseln',
       title: 'Starten Sie STRIVN, während Ihr Vertrag läuft.',
-      lede: `Die Kündigungsfrist steht in Ihrem Opteamal-Vertrag. Starten Sie STRIVN parallel und vergleichen Sie ${b.trialDays} Tage lang an Ihren eigenen Einheiten.`,
+      lede: `Die Kündigungsfrist steht in Ihrem Opteamal-Vertrag. Starten Sie STRIVN parallel und testen Sie es ${b.trialDays} Tage lang an Ihren eigenen Einheiten.`,
       steps: [
         {
           n: '01',
@@ -111,22 +119,6 @@ export function dePage(b: LandingBits): SwitchPage {
           n: '03',
           title: 'Laden Sie den Staff ein',
           body: 'Weisen Sie jeder Person eine Rolle mit ihren Rechten zu. Free hat einen Platz, Amateur zwei, Semi-Pro und Pro unbegrenzt viele.',
-        },
-      ],
-    },
-    stay: {
-      id: 'rester',
-      eyebrow: 'Bleiben',
-      title: 'Bleiben Sie in zwei Fällen bei Teamworks.',
-      lede: 'Wählen Sie das Werkzeug, das Ihre Abteilung abdeckt. Ist einer dieser beiden Bedarfe bei Ihnen zentral, deckt Teamworks AMS ihn heute ab.',
-      items: [
-        {
-          title: 'Ihre Sensoren müssen live übertragen',
-          body: `Teamworks AMS kündigt mehr als 100 Integrationen an. STRIVN importiert Ihre GPS-Dateien nach der Einheit, ${b.gpsTiers}.`,
-        },
-        {
-          title: 'Ihre medizinische Abteilung arbeitet nach Protokollen',
-          body: 'Teamworks AMS kündigt ein Medizinmodul an. STRIVN führt das Verletzungsprotokoll, den Plan für die Rückkehr ins Spiel und die Reha-Einheiten.',
         },
       ],
     },
@@ -149,6 +141,10 @@ export function dePage(b: LandingBits): SwitchPage {
           a: `Die Preise sind öffentlich: ${b.publicPrices}. ${b.trialSentence} Sie starten ohne Kreditkarte.`,
         },
         {
+          q: 'Liest STRIVN die Daten meines GPS?',
+          a: `Ja, über den Export der Einheit. Laden Sie die CSV- oder XLSX-Datei von Catapult, STATSports oder einem anderen System hoch, oder die SPT- / GameTraka-Trace. STRIVN erkennt die Spalten beim ersten Import und berechnet Distanz und Geschwindigkeitszonen auf der Rohtrace. Import ${b.gpsTiers}.`,
+        },
+        {
           q: 'Was ändert sich für die Spieler?',
           a: 'Sie beantworten den Check-in über einen Link per WhatsApp oder E-Mail, ohne eine App zu installieren. Der automatische Versand morgens und abends gehört zu Semi-Pro und Pro. Die Apps STRIVN Player und STRIVN Coach für iOS und Android ergänzen die Benachrichtigungen.',
         },
@@ -160,8 +156,8 @@ export function dePage(b: LandingBits): SwitchPage {
     },
     finalCta: {
       eyebrow: b.trialPerk,
-      title: 'Erstellen Sie Ihren Bereich und importieren Sie Ihre Historie.',
-      body: `${b.trialSentence} Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.`,
+      title: 'Importieren Sie Ihre Historie in STRIVN.',
+      body: `Wechseln Sie das Werkzeug nur einmal. ${b.trialSentence} Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.`,
       primaryCta: 'Meinen Bereich kostenlos erstellen',
       secondaryCta: 'Mit Benoit sprechen',
       secondaryHref: migration,
