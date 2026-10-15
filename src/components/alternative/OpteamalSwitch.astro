@@ -1,0 +1,376 @@
+---
+/**
+ * Switch page for clubs still on Opteamal. French only.
+ * Prices come from PricingPlans / the catalogue. Competitor cells are the
+ * public facts listed in alternativeOpteamal.ts.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../SiteHeader.astro';
+import HomeFooter from '../home/HomeFooter.astro';
+import HomeFaq from '../home/HomeFaq.astro';
+import HomeFinalCta from '../home/HomeFinalCta.astro';
+import HomeIcon from '../home/HomeIcon.astro';
+import PricingPlans from '../pricing/PricingPlans.astro';
+import { NAV } from '../../data/nav';
+import { homeContent } from '../../data/homeContent';
+import { alternativeOpteamal as c, ALTERNATIVE_PATH, plansForLanding } from '../../data/alternativeOpteamal';
+import { pricingContent } from '../../data/pricingContent';
+import { appStartUrl } from '../../lib/appUrl';
+import { catalogueOffers } from '../../lib/planPrice';
+import { SKIP_LABEL } from '../../lib/skipLabel';
+
+const locale = 'fr' as const;
+const home = homeContent[locale];
+const pricing = pricingContent[locale];
+const register = appStartUrl(locale);
+
+const pageUrl = `https://strivn.net${ALTERNATIVE_PATH}`;
+const jsonLdExtra: Record<string, unknown>[] = [
+  {
+    '@type': 'FAQPage',
+    '@id': `${pageUrl}#faq`,
+    mainEntity: c.faq.items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    '@id': `${pageUrl}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: 'https://strivn.net/fr/' },
+      { '@type': 'ListItem', position: 2, name: "Passer d'Opteamal à STRIVN", item: pageUrl },
+    ],
+  },
+  {
+    '@type': 'Product',
+    '@id': `${pageUrl}#product`,
+    name: 'STRIVN',
+    description: c.meta.description,
+    offers: catalogueOffers(pricing.plans.items, pageUrl),
+  },
+];
+
+const alternates = [
+  { hreflang: 'fr', href: ALTERNATIVE_PATH },
+  { hreflang: 'x-default', href: ALTERNATIVE_PATH },
+];
+---
+
+<BaseLayout
+  lang={locale}
+  title={c.meta.title}
+  description={c.meta.description}
+  canonicalPath={ALTERNATIVE_PATH}
+  alternates={alternates}
+  ogImage={c.meta.ogImage}
+  ogImageAlt={c.meta.ogImageAlt}
+  ogTitle={c.meta.ogTitle}
+  ogDescription={c.meta.ogDescription}
+  twitterTitle={c.meta.twitterTitle}
+  twitterDescription={c.meta.twitterDescription}
+  jsonLdExtra={jsonLdExtra}
+>
+  <a href="#s-main" class="s-skip">{SKIP_LABEL[locale]}</a>
+
+  <SiteHeader
+    locale={locale}
+    links={NAV[locale].links}
+    cta={NAV[locale].cta}
+    switchHrefs={{ fr: ALTERNATIVE_PATH }}
+  />
+
+  <main id="s-main">
+    <section class="alt-hero st-grid-bg" aria-labelledby="alt-hero-title">
+      <div class="st-wrap">
+        <div class="alt-hero__copy">
+          <span class="st-label st-eyebrow">{c.hero.eyebrow}</span>
+          <h1 id="alt-hero-title" class="st-h1">
+            <span class="st-muted alt-hero__lead">{c.hero.titleLead}</span>
+            {c.hero.title}
+          </h1>
+          <p class="st-lede">{c.hero.lede}</p>
+          <div class="st-ctas">
+            <a class="st-btn st-btn--primary" href={register} target="_blank" rel="noopener">
+              {c.hero.primaryCta}
+              <HomeIcon name="arrow-right" size={16} />
+            </a>
+            <a class="st-btn st-btn--ghost" href={c.hero.secondaryHref}>{c.hero.secondaryCta}</a>
+          </div>
+          <p class="st-fine">{c.hero.perks.map((perk) => <span>{perk}</span>)}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="st-sec" id={c.compare.id} aria-labelledby="compare-title">
+      <div class="st-wrap">
+        <div class="st-head">
+          <span class="st-label st-eyebrow">{c.compare.eyebrow}</span>
+          <h2 id="compare-title" class="st-h2">{c.compare.title}</h2>
+          <p class="st-lede">{c.compare.lede}</p>
+        </div>
+        <div class="alt-cmp">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">{c.compare.columns.criterion}</th>
+                <th scope="col">{c.compare.columns.opteamal}</th>
+                <th scope="col">{c.compare.columns.strivn}</th>
+                <th scope="col">{c.compare.columns.verdict}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {c.compare.rows.map((row) => (
+                <tr>
+                  <th scope="row">{row.criterion}</th>
+                  <td data-side={c.compare.columns.opteamal}>{row.opteamal}</td>
+                  <td data-side={c.compare.columns.strivn}>{row.strivn}</td>
+                  <td class="verdict" data-side={c.compare.columns.verdict}>
+                    <b>{row.verdictLead}</b>
+                    <span>{row.verdict}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="st-small alt-note">{c.compare.note}</p>
+      </div>
+    </section>
+
+    <section class="st-sec" id={c.reasons.id} aria-labelledby="reasons-title">
+      <div class="st-wrap">
+        <div class="st-head">
+          <span class="st-label st-eyebrow">{c.reasons.eyebrow}</span>
+          <h2 id="reasons-title" class="st-h2">{c.reasons.title}</h2>
+          <p class="st-lede">{c.reasons.lede}</p>
+        </div>
+        <ol class="st-facts alt-reasons">
+          {c.reasons.items.map((item, i) => (
+            <li>
+              <b>{String(i + 1).padStart(2, '0')}</b>
+              <span>
+                <strong>{item.title}</strong>
+                {item.body}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="st-sec" id={c.switch.id} aria-labelledby="switch-title">
+      <div class="st-wrap">
+        <div class="st-head">
+          <span class="st-label st-eyebrow">{c.switch.eyebrow}</span>
+          <h2 id="switch-title" class="st-h2">{c.switch.title}</h2>
+          <p class="st-lede">{c.switch.lede}</p>
+        </div>
+        <div class="st-cols alt-steps">
+          {c.switch.steps.map((step) => (
+            <article>
+              <span class="st-label">{step.n}</span>
+              <h3 class="st-h3">{step.title}</h3>
+              <p class="st-body">{step.body}</p>
+            </article>
+          ))}
+        </div>
+        <aside class="st-block alt-offer">
+          <span class="st-tag st-tag--accent">{c.switch.offer.tag}</span>
+          <h3 class="st-h3">{c.switch.offer.title}</h3>
+          <p class="st-body">{c.switch.offer.body}</p>
+          <a class="st-btn st-btn--primary" href={c.switch.offer.href}>{c.switch.offer.cta}</a>
+        </aside>
+      </div>
+    </section>
+
+    <PricingPlans
+      locale={locale}
+      plans={plansForLanding(pricing.plans)}
+      matrix={pricing.matrix}
+      email={pricing.faq.email}
+      sectionId="tarifs"
+      compareHref={`/${locale}/pricing/#compare`}
+      gpsNote={c.gpsNote}
+    />
+
+    <section class="st-sec" id={c.stay.id} aria-labelledby="stay-title">
+      <div class="st-wrap">
+        <div class="st-head">
+          <span class="st-label st-eyebrow">{c.stay.eyebrow}</span>
+          <h2 id="stay-title" class="st-h2">{c.stay.title}</h2>
+          <p class="st-lede">{c.stay.lede}</p>
+        </div>
+        <div class="st-cols">
+          {c.stay.items.map((item) => (
+            <article>
+              <h3 class="st-h3">{item.title}</h3>
+              <p class="st-body">{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <HomeFaq c={c.faq} />
+    <HomeFinalCta
+      locale={locale}
+      finalCta={c.finalCta}
+      eyebrow={c.finalCta.eyebrow}
+      secondaryHref={c.finalCta.secondaryHref}
+    />
+  </main>
+
+  <HomeFooter locale={locale} footer={home.footer} note={c.disclaimer} />
+</BaseLayout>
+
+<style>
+  .alt-hero {
+    overflow: hidden;
+    padding-block: clamp(48px, 7vw, 96px);
+  }
+  .alt-hero__copy {
+    display: grid;
+    gap: 22px;
+    justify-items: start;
+    max-width: 40rem;
+  }
+  .alt-hero__copy .st-h1 {
+    max-width: 14em;
+  }
+  .alt-hero__lead {
+    display: block;
+  }
+  .alt-hero__copy .st-fine {
+    margin: 0;
+  }
+
+  .alt-cmp {
+    border: 1px solid var(--color-line-strong);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .alt-cmp table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .alt-cmp th,
+  .alt-cmp td {
+    padding: 16px 18px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .alt-cmp tr:last-child th,
+  .alt-cmp tr:last-child td {
+    border-bottom: 0;
+  }
+  .alt-cmp thead th {
+    background: var(--color-navy-900);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+  .alt-cmp tbody th {
+    width: 16%;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .alt-cmp td {
+    width: 28%;
+    color: var(--color-ink-2);
+    font-size: 15px;
+  }
+  .alt-cmp td.verdict {
+    width: 28%;
+    color: var(--color-ink);
+  }
+  .alt-cmp td.verdict b {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  .alt-note {
+    margin-top: 16px;
+    color: var(--color-ink-3);
+  }
+
+  .alt-reasons span {
+    display: grid;
+    gap: 4px;
+  }
+  .alt-reasons strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  .alt-offer {
+    display: grid;
+    gap: 14px;
+    justify-items: start;
+    margin-top: clamp(28px, 4vw, 40px);
+    border-color: rgba(45, 127, 249, 0.35);
+    background: rgba(45, 127, 249, 0.08);
+  }
+  .alt-offer .st-body {
+    max-width: none;
+  }
+
+  @media (max-width: 680px) {
+    .alt-cmp {
+      border: 0;
+      border-radius: 0;
+      overflow: visible;
+    }
+    .alt-cmp table,
+    .alt-cmp tbody,
+    .alt-cmp tr,
+    .alt-cmp th,
+    .alt-cmp td {
+      display: block;
+      width: 100%;
+    }
+    .alt-cmp thead {
+      display: none;
+    }
+    .alt-cmp tr {
+      border: 1px solid var(--color-line-strong);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: var(--color-navy-950);
+    }
+    .alt-cmp tbody th {
+      width: auto;
+      background: var(--color-navy-900);
+      border-bottom: 1px solid var(--color-line);
+    }
+    .alt-cmp td {
+      border-bottom: 1px solid var(--color-line);
+    }
+    .alt-cmp tr td:last-child {
+      border-bottom: 0;
+    }
+    .alt-cmp td[data-side]::before {
+      content: attr(data-side);
+      display: block;
+      margin-bottom: 6px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-ink-3);
+    }
+  }
+</style>

@@ -4,13 +4,20 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://strivn.net',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/fr/alternative-teamworks-opteamal'),
+    }),
+  ],
   // The combined live page shipped briefly before being split into
   // live-session and live-match. Séance is the usage the campaign links to.
   redirects: {
     // Campaign links reach for the French word; the page itself keeps the
     // English slug, as /features/ and /solutions/ do in every locale.
     '/fr/tarifs/': '/fr/pricing/',
+    // First slug of the Opteamal switch page. The page itself is
+    // /fr/alternative-opteamal/.
+    '/fr/alternative-teamworks-opteamal/': '/fr/alternative-opteamal/',
     '/fr/features/live/': '/fr/features/live-session/',
     '/en/features/live/': '/en/features/live-session/',
     '/nl/features/live/': '/nl/features/live-session/',
