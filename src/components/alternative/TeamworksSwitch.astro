@@ -16,6 +16,7 @@ import HomeIcon from '../home/HomeIcon.astro';
 import HomeProof from '../home/HomeProof.astro';
 import HomeAssistant from '../home/HomeAssistant.astro';
 import HomeReadiness from '../home/HomeReadiness.astro';
+import HomeImport from '../home/HomeImport.astro';
 import PricingPlans from '../pricing/PricingPlans.astro';
 import { NAV } from '../../data/nav';
 import { homeContent } from '../../data/homeContent';
@@ -128,6 +129,7 @@ const alternates = [
     {/* Show before compare: the product answering, then the table. */}
     <HomeAssistant c={{ ...home.assistant, ...c.showcase.assistant }} pct={home.pct} />
     <HomeReadiness c={{ ...home.readiness, ...c.showcase.readiness }} status={home.status} pct={home.pct} />
+    <HomeImport c={{ ...home.import, ...c.showcase.open }} />
 
     <section class="st-sec" id={c.compare.id} aria-labelledby="compare-title">
       <div class="st-wrap">
@@ -199,6 +201,12 @@ const alternates = [
             </article>
           ))}
         </div>
+        <aside class="st-block alt-offer">
+          <span class="st-tag st-tag--accent">{c.switch.offer.tag}</span>
+          <h3 class="st-h3">{c.switch.offer.title}</h3>
+          <p class="st-body">{c.switch.offer.body}</p>
+          <a class="st-btn st-btn--primary" href={c.switch.offer.href}>{c.switch.offer.cta}</a>
+        </aside>
       </div>
     </section>
 
@@ -308,6 +316,18 @@ const alternates = [
   .alt-note {
     margin-top: 16px;
     color: var(--color-ink-3);
+  }
+
+  .alt-offer {
+    display: grid;
+    gap: 14px;
+    justify-items: start;
+    margin-top: clamp(28px, 4vw, 40px);
+    border-color: rgba(45, 127, 249, 0.35);
+    background: rgba(45, 127, 249, 0.08);
+  }
+  .alt-offer .st-body {
+    max-width: none;
   }
 
   .alt-reasons span {

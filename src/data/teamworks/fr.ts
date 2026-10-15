@@ -16,14 +16,15 @@ import type { LandingBits, SwitchPage } from './types';
  * at once, with the coach's rights), a club-wide view, federation sync.
  */
 export function frPage(b: LandingBits): SwitchPage {
-  const migration = mail('Passer de Teamworks à STRIVN');
+  const transfer = mail('Transfert de mes données Teamworks');
+  const perks = [b.trialPerk, 'Transfert Teamworks offert', "Ouvert à l'IA de votre choix"];
 
   return {
     gpsNote: b.gpsFiles,
     crumb: 'STRIVN ou Teamworks',
     meta: {
       title: "Alternative à Teamworks : STRIVN, l'IA qui lit vos joueurs",
-      description: `STRIVN ou Teamworks ? Un assistant qui lit charge, GPS et infirmerie, un connecteur Claude et ChatGPT, des prix publics. ${b.trialPerk}.`,
+      description: `STRIVN ou Teamworks ? L'IA qui lit charge, GPS et infirmerie, ouverte à Claude et ChatGPT. ${b.trialDays} jours d'essai et transfert de vos données offerts.`,
       ogTitle: "Vous êtes sur Teamworks ? Passez à STRIVN, l'IA qui lit vos joueurs.",
       ogDescription:
         "L'assistant STRIVN lit la charge, le wellness, le GPS, l'infirmerie et les matchs, et prépare les actions que votre staff valide.",
@@ -38,9 +39,9 @@ export function frPage(b: LandingBits): SwitchPage {
       title: "Passez à STRIVN, l'IA qui lit vos joueurs.",
       lede: "Ask Teamworks répond aux questions posées sur vos documents. L'assistant STRIVN lit la charge, le wellness, le GPS, l'infirmerie et les matchs de chaque joueur, puis prépare les actions que votre staff valide.",
       primaryCta: 'Créer mon espace gratuitement',
-      secondaryCta: 'Comparer avec Teamworks',
-      secondaryHref: '#comparatif',
-      perks: b.perks,
+      secondaryCta: 'Planifier mon transfert',
+      secondaryHref: transfer,
+      perks,
     },
     showcase: {
       assistant: {
@@ -50,6 +51,10 @@ export function frPage(b: LandingBits): SwitchPage {
       readiness: {
         title: "Validez ce que l'IA propose avant la séance.",
         body: "Le check-in du réveil nourrit la readiness de chaque joueur. STRIVN montre pourquoi un joueur passe en Alléger et propose la séance adaptée. Vous appliquez ou vous modifiez, en un geste.",
+      },
+      open: {
+        title: "Gardez STRIVN ouvert, de l'import à votre IA.",
+        body: "STRIVN lit le fichier de n'importe quel capteur ou outil, et s'ouvre à l'IA de votre choix par MCP, le protocole ouvert des assistants IA. Les présences sortent en CSV, le calendrier en ICS, les tableaux et les présentations en PDF.",
       },
     },
     compare: {
@@ -74,14 +79,14 @@ export function frPage(b: LandingBits): SwitchPage {
           strivn: "Une réponse sourcée, et l'action prête à valider.",
         },
         {
-          criterion: 'Votre propre IA',
+          criterion: 'Ouverture',
           teamworks: 'Une API pour intégrer Teamworks AMS.',
-          strivn: 'Claude et ChatGPT, branchés sur vos données.',
+          strivn: "Le protocole ouvert MCP : Claude, ChatGPT ou l'IA de votre choix.",
         },
         {
           criterion: 'Démarrage',
           teamworks: 'Après une démonstration commerciale.',
-          strivn: `Aujourd'hui, en ligne, avec ${b.trialPerk}.`,
+          strivn: `Aujourd'hui, en ligne : ${b.trialDays} jours d'essai et transfert de vos données offerts.`,
         },
         {
           criterion: 'Prix',
@@ -98,8 +103,8 @@ export function frPage(b: LandingBits): SwitchPage {
       lede: 'Six raisons de plus de choisir STRIVN.',
       items: [
         {
-          title: 'Branchez Claude ou ChatGPT sur vos données',
-          body: "Le propriétaire de l'équipe active le connecteur, et votre IA lit l'effectif, la charge, le GPS et les matchs avec vos droits. Elle n'écrit jamais aux joueurs, aux parents ni au public. Vous révoquez l'accès depuis les réglages.",
+          title: "Branchez l'IA de votre choix sur vos données",
+          body: "STRIVN parle MCP, le protocole ouvert des assistants IA. Le propriétaire de l'équipe l'active, puis Claude, ChatGPT ou tout client compatible lisent l'effectif, la charge, le GPS et les matchs avec vos droits. Ils n'écrivent jamais aux joueurs, aux parents ni au public, et vous révoquez l'accès depuis les réglages.",
         },
         {
           title: "Préparez l'adversaire à plusieurs",
@@ -127,7 +132,7 @@ export function frPage(b: LandingBits): SwitchPage {
       id: 'changer',
       eyebrow: 'Changer',
       title: 'Ouvrez STRIVN pendant que votre contrat court.',
-      lede: `Le préavis figure dans votre contrat Teamworks ou Opteamal. Ouvrez STRIVN en parallèle et testez-le ${b.trialDays} jours sur vos propres séances.`,
+      lede: `Le préavis figure dans votre contrat Teamworks ou Opteamal. Testez STRIVN ${b.trialDays} jours sur vos séances, et nous transférons vos données avec vous, sans frais.`,
       steps: [
         {
           n: '01',
@@ -136,8 +141,8 @@ export function frPage(b: LandingBits): SwitchPage {
         },
         {
           n: '02',
-          title: "Importez l'historique",
-          body: 'Déposez vos CSV ou XLSX de charge, de RPE et de wellness, puis vos exports GPS. Les colonnes sont reconnues, puis mémorisées pour l’équipe.',
+          title: 'Transférez vos données Teamworks',
+          body: 'Envoyez-nous vos exports Teamworks ou Opteamal. Nous préparons avec vous la correspondance des colonnes et l’import de la charge, du wellness et du GPS.',
         },
         {
           n: '03',
@@ -145,6 +150,13 @@ export function frPage(b: LandingBits): SwitchPage {
           body: "Demandez à l'assistant la charge de la semaine ou les joueurs à surveiller. Il répond sur votre historique importé, sources à l'appui.",
         },
       ],
+      offer: {
+        tag: 'Clubs Teamworks',
+        title: `${b.trialDays} jours d'essai et le transfert de vos données, offerts.`,
+        body: "Nous reprenons vos exports Teamworks avec vous, vérifions la correspondance des colonnes et importons votre historique pendant que vous testez STRIVN sur vos séances.",
+        cta: 'Planifier mon transfert',
+        href: transfer,
+      },
     },
     faq: {
       label: 'FAQ',
@@ -152,17 +164,21 @@ export function frPage(b: LandingBits): SwitchPage {
       email: 'hello@strivn.net',
       items: [
         {
+          q: 'STRIVN est-il vraiment ouvert ?',
+          a: "Oui. Vos données entrent par fichier, quel que soit le capteur ou l'outil d'origine. Elles sortent vers l'IA de votre choix par MCP, le protocole ouvert des assistants IA, et s'exportent en CSV, ICS ou PDF selon l'écran. Le connecteur s'active et se révoque depuis les réglages de l'équipe.",
+        },
+        {
           q: 'Mes données restent-elles à moi ?',
-          a: 'Oui. Vous les lisez dans STRIVN ou depuis votre propre IA, par le connecteur que vous activez et révoquez. Vous exportez les présences en CSV, le calendrier en ICS, les tableaux tactiques et les présentations en PDF. Si vous redescendez au Free, tout votre historique reste consultable.',
+          a: 'Oui. Vous les lisez dans STRIVN ou depuis votre propre IA. Si vous redescendez au Free, tout votre historique reste consultable, et vous gardez l’export et la suppression de ce qui vous appartient.',
         },
         {
           q: "L'IA peut-elle agir sans mon accord ?",
           a: "Dans STRIVN, chaque action préparée par l'assistant attend votre validation. Par le connecteur, Claude ou ChatGPT agissent avec vos droits, comme un membre du staff, sans jamais écrire aux joueurs, aux parents ni au public, ni toucher aux convocations.",
         },
         {
-          q: 'Puis-je reprendre mon historique Teamworks ou Opteamal ?',
-          a: `Oui, par fichier. Exportez la charge, le RPE et le wellness en CSV ou XLSX, puis déposez-les dans STRIVN. Les exports GPS s'importent ${b.gpsTiers}, donc pendant l'essai de ${b.trialDays} jours. Pour la première correspondance, écrivez-nous à hello@strivn.net.`,
-          mailto: migration,
+          q: 'Qui transfère mes données Teamworks ou Opteamal ?',
+          a: `Nous, avec vous, sans frais. Envoyez-nous vos exports en CSV ou XLSX : nous préparons la correspondance des colonnes et l'import de la charge, du RPE, du wellness et du GPS pendant vos ${b.trialDays} jours d'essai. Écrivez-nous à hello@strivn.net.`,
+          mailto: transfer,
         },
         {
           q: 'Je suis encore sous contrat. Quand puis-je changer ?',
@@ -188,12 +204,12 @@ export function frPage(b: LandingBits): SwitchPage {
     },
     finalCta: {
       eyebrow: b.trialPerk,
-      title: 'Créez votre espace et posez votre première question.',
-      body: `Importez votre historique, puis interrogez-le. ${b.trialSentence} Votre staff vous rejoint quand il voit vos premiers rapports.`,
+      title: `Testez STRIVN ${b.trialDays} jours, transfert de vos données offert.`,
+      body: `Nous transférons vos données Teamworks avec vous, puis vous interrogez votre historique. ${b.trialSentence}`,
       primaryCta: 'Créer mon espace gratuitement',
       secondaryCta: 'Parler à Benoit',
-      secondaryHref: migration,
-      fine: b.perks,
+      secondaryHref: transfer,
+      fine: perks,
     },
     disclaimer:
       "Teamworks, Teamworks AMS, Ask Teamworks et Opteamal sont des marques de leurs détenteurs. STRIVN n'est ni affilié à ces sociétés, ni approuvé par elles. Claude, ChatGPT, Catapult, STATSports, SPT, GameTraka et WHOOP sont des marques de leurs détenteurs. Les informations sur Teamworks et Opteamal proviennent de sources publiques au 15 octobre 2026.",

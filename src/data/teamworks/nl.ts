@@ -7,14 +7,15 @@ import type { LandingBits, SwitchPage } from './types';
  * not a translation. Translates fr.ts, does not extend it.
  */
 export function nlPage(b: LandingBits): SwitchPage {
-  const migration = mail('Overstappen van Teamworks naar STRIVN');
+  const transfer = mail('Overdracht van mijn Teamworks-gegevens');
+  const perks = [b.trialPerk, 'Teamworks-overdracht inbegrepen', 'Open voor de AI van uw keuze'];
 
   return {
     gpsNote: b.gpsFiles,
     crumb: 'STRIVN of Teamworks',
     meta: {
       title: 'Teamworks-alternatief: STRIVN, de AI die uw spelers leest',
-      description: `STRIVN of Teamworks? Een assistent die belasting, GPS en blessures leest, een connector voor Claude en ChatGPT, publieke prijzen. ${b.trialPerk}.`,
+      description: `STRIVN of Teamworks? De AI die belasting, GPS en blessures leest, open voor Claude en ChatGPT. ${b.trialDays} dagen proef en gegevensoverdracht inbegrepen.`,
       ogTitle: 'Werkt u met Teamworks? Stap over naar STRIVN, de AI die uw spelers leest.',
       ogDescription:
         'De assistent van STRIVN leest belasting, wellness, GPS, de medische staf en de wedstrijden, en bereidt de acties voor die uw staf goedkeurt.',
@@ -29,9 +30,9 @@ export function nlPage(b: LandingBits): SwitchPage {
       title: 'Stap over naar STRIVN, de AI die uw spelers leest.',
       lede: 'Ask Teamworks beantwoordt vragen over uw documenten. De assistent van STRIVN leest de belasting, de wellness, de GPS, de medische staf en de wedstrijden van elke speler, en bereidt dan de acties voor die uw staf goedkeurt.',
       primaryCta: 'Mijn omgeving gratis aanmaken',
-      secondaryCta: 'Vergelijk met Teamworks',
-      secondaryHref: '#comparatif',
-      perks: b.perks,
+      secondaryCta: 'Plan mijn overdracht',
+      secondaryHref: transfer,
+      perks,
     },
     showcase: {
       assistant: {
@@ -41,6 +42,10 @@ export function nlPage(b: LandingBits): SwitchPage {
       readiness: {
         title: "Keur goed wat de AI voorstelt vóór de training.",
         body: "De check-in bij het ontwaken voedt de readiness van elke speler. STRIVN toont waarom een speler naar Ontlasten gaat en stelt de aangepaste training voor. U past toe of wijzigt, in één beweging.",
+      },
+      open: {
+        title: 'Houd STRIVN open, van de import tot uw AI.',
+        body: 'STRIVN leest het bestand van elke sensor of tool, en opent zich voor de AI van uw keuze via MCP, het open protocol van AI-assistenten. Aanwezigheden gaan eruit in CSV, de kalender in ICS, tactische borden en presentaties in pdf.',
       },
     },
     compare: {
@@ -65,14 +70,14 @@ export function nlPage(b: LandingBits): SwitchPage {
           strivn: "Een antwoord met bronnen, en de actie klaar om goed te keuren.",
         },
         {
-          criterion: "Uw eigen AI",
+          criterion: 'Openheid',
           teamworks: "Een API om Teamworks AMS te integreren.",
-          strivn: "Claude en ChatGPT, gekoppeld aan uw gegevens.",
+          strivn: 'Het open protocol MCP: Claude, ChatGPT of de AI van uw keuze.',
         },
         {
           criterion: "Start",
           teamworks: "Na een commerciële demo.",
-          strivn: `Vandaag, online, met ${b.trialPerk}.`,
+          strivn: `Vandaag, online: ${b.trialDays} dagen proef en de overdracht van uw gegevens inbegrepen.`,
         },
         {
           criterion: "Prijs",
@@ -89,8 +94,8 @@ export function nlPage(b: LandingBits): SwitchPage {
       lede: "Zes redenen meer om voor STRIVN te kiezen.",
       items: [
         {
-          title: 'Koppel Claude of ChatGPT aan uw gegevens',
-          body: 'De eigenaar van het team activeert de connector, en uw AI leest de kern, de belasting, de GPS en de wedstrijden met uw rechten. Ze schrijft nooit naar spelers, ouders of het publiek. U trekt de toegang in via de instellingen.',
+          title: 'Koppel de AI van uw keuze aan uw gegevens',
+          body: 'STRIVN spreekt MCP, het open protocol van AI-assistenten. De eigenaar van het team activeert het, en dan lezen Claude, ChatGPT of elke compatibele client de kern, de belasting, de GPS en de wedstrijden met uw rechten. Ze schrijven nooit naar spelers, ouders of het publiek, en u trekt de toegang in via de instellingen.',
         },
         {
           title: 'Bereid de tegenstander met meerderen voor',
@@ -118,7 +123,7 @@ export function nlPage(b: LandingBits): SwitchPage {
       id: 'changer',
       eyebrow: 'Overstappen',
       title: 'Open STRIVN terwijl uw contract loopt.',
-      lede: `De opzegtermijn staat in uw Teamworks- of Opteamal-contract. Open STRIVN ernaast en test het ${b.trialDays} dagen op uw eigen trainingen.`,
+      lede: `De opzegtermijn staat in uw Teamworks- of Opteamal-contract. Test STRIVN ${b.trialDays} dagen op uw trainingen, en wij dragen uw gegevens samen met u over, zonder kosten.`,
       steps: [
         {
           n: '01',
@@ -127,8 +132,8 @@ export function nlPage(b: LandingBits): SwitchPage {
         },
         {
           n: '02',
-          title: 'Importeer de historiek',
-          body: 'Zet uw CSV- of XLSX-bestanden met belasting, RPE en wellness neer, daarna uw GPS-exports. De kolommen worden herkend en daarna onthouden voor het team.',
+          title: 'Breng uw Teamworks-gegevens over',
+          body: 'Stuur ons uw exports uit Teamworks of Opteamal. Samen met u bereiden we de koppeling van de kolommen voor en de import van belasting, wellness en GPS.',
         },
         {
           n: '03',
@@ -136,6 +141,13 @@ export function nlPage(b: LandingBits): SwitchPage {
           body: 'Vraag de assistent naar de belasting van de week of de spelers om op te volgen. Hij antwoordt op uw geïmporteerde historiek, met de bronnen erbij.',
         },
       ],
+      offer: {
+        tag: 'Teamworks-clubs',
+        title: `${b.trialDays} dagen proef en de overdracht van uw gegevens, gratis.`,
+        body: 'We nemen uw Teamworks-exports samen met u door, controleren de koppeling van de kolommen en importeren uw historiek terwijl u STRIVN op uw trainingen test.',
+        cta: 'Plan mijn overdracht',
+        href: transfer,
+      },
     },
     faq: {
       label: 'FAQ',
@@ -143,17 +155,21 @@ export function nlPage(b: LandingBits): SwitchPage {
       email: 'hello@strivn.net',
       items: [
         {
+          q: 'Is STRIVN echt open?',
+          a: 'Ja. Uw gegevens komen binnen via bestand, wat de sensor of de tool van herkomst ook is. Ze gaan naar de AI van uw keuze via MCP, het open protocol van AI-assistenten, en u exporteert ze in CSV, ICS of pdf, afhankelijk van het scherm. De connector activeert en trekt u in via de instellingen van het team.',
+        },
+        {
           q: 'Blijven mijn gegevens van mij?',
-          a: 'Ja. U leest ze in STRIVN of vanuit uw eigen AI, via de connector die u activeert en intrekt. U exporteert de aanwezigheden in CSV, de kalender in ICS, de tactische borden en de presentaties in pdf. Gaat u terug naar Free, dan blijft uw volledige historiek raadpleegbaar.',
+          a: 'Ja. U leest ze in STRIVN of vanuit uw eigen AI. Gaat u terug naar Free, dan blijft uw volledige historiek raadpleegbaar, en houdt u de export en de verwijdering van wat van u is.',
         },
         {
           q: 'Kan de AI handelen zonder mijn akkoord?',
           a: 'In STRIVN wacht elke actie die de assistent voorbereidt op uw goedkeuring. Via de connector handelen Claude of ChatGPT met uw rechten, zoals een staflid, zonder ooit naar spelers, ouders of het publiek te schrijven en zonder aan de oproepingen te raken.',
         },
         {
-          q: 'Kan ik mijn Teamworks- of Opteamal-historiek meenemen?',
-          a: `Ja, via bestand. Exporteer belasting, RPE en wellness in CSV of XLSX en zet ze in STRIVN. GPS-exports importeert u ${b.gpsTiers}, dus tijdens de proefperiode van ${b.trialDays} dagen. Voor de eerste koppeling schrijft u ons op hello@strivn.net.`,
-          mailto: migration,
+          q: 'Wie draagt mijn Teamworks- of Opteamal-gegevens over?',
+          a: `Wij, samen met u, zonder kosten. Stuur ons uw exports in CSV of XLSX: we bereiden de koppeling van de kolommen voor en de import van belasting, RPE, wellness en GPS tijdens uw ${b.trialDays} dagen proef. Schrijf ons op hello@strivn.net.`,
+          mailto: transfer,
         },
         {
           q: 'Ik zit nog onder contract. Wanneer kan ik overstappen?',
@@ -179,12 +195,12 @@ export function nlPage(b: LandingBits): SwitchPage {
     },
     finalCta: {
       eyebrow: b.trialPerk,
-      title: 'Maak uw omgeving aan en stel uw eerste vraag.',
-      body: `Importeer uw historiek en bevraag ze. ${b.trialSentence} Uw staf sluit aan wanneer hij uw eerste rapporten ziet.`,
+      title: `Test STRIVN ${b.trialDays} dagen, gegevensoverdracht inbegrepen.`,
+      body: `Wij dragen uw Teamworks-gegevens samen met u over, daarna bevraagt u uw historiek. ${b.trialSentence}`,
       primaryCta: 'Mijn omgeving gratis aanmaken',
       secondaryCta: 'Praat met Benoit',
-      secondaryHref: migration,
-      fine: b.perks,
+      secondaryHref: transfer,
+      fine: perks,
     },
     disclaimer:
       'Teamworks, Teamworks AMS, Ask Teamworks en Opteamal zijn merken van hun respectieve eigenaars. STRIVN is niet verbonden aan deze bedrijven en wordt er niet door goedgekeurd. Claude, ChatGPT, Catapult, STATSports, SPT, GameTraka en WHOOP zijn merken van hun eigenaars. De informatie over Teamworks en Opteamal komt uit publieke bronnen op 15 oktober 2026.',

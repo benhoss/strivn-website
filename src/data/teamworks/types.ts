@@ -41,6 +41,8 @@ export interface SwitchPage {
   showcase: {
     assistant: { title: string; body: string };
     readiness: { title: string; body: string };
+    /** The import section: what goes in, and what goes out to the club's AI. */
+    open: { title: string; body: string };
   };
   /** Only the rows where both sides are public. No verdict column. */
   compare: {
@@ -65,6 +67,8 @@ export interface SwitchPage {
     title: string;
     lede: string;
     steps: { n: string; title: string; body: string }[];
+    /** Free trial and a data transfer done with the club. Confirmed by Benoit on 2026-10-15. */
+    offer: { tag: string; title: string; body: string; cta: string; href: string };
   };
   faq: {
     label: string;

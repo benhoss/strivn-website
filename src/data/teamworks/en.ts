@@ -3,14 +3,15 @@ import type { LandingBits, SwitchPage } from './types';
 
 /** English translation of fr.ts. Translate, do not extend. */
 export function enPage(b: LandingBits): SwitchPage {
-  const migration = mail('Switching from Teamworks to STRIVN');
+  const transfer = mail('Transferring my Teamworks data');
+  const perks = [b.trialPerk, 'Teamworks transfer included', 'Open to the AI you choose'];
 
   return {
     gpsNote: b.gpsFiles,
     crumb: 'STRIVN or Teamworks',
     meta: {
       title: 'Teamworks alternative: STRIVN, AI that reads your players',
-      description: `STRIVN or Teamworks? An assistant that reads load, GPS and the medical room, a Claude and ChatGPT connector, public prices. ${b.trialPerk}.`,
+      description: `STRIVN or Teamworks? AI that reads load, GPS and the medical room, open to Claude and ChatGPT. ${b.trialDays}-day trial and data transfer included.`,
       ogTitle: 'On Teamworks? Switch to STRIVN, the AI that reads your players.',
       ogDescription:
         'The STRIVN assistant reads load, wellness, GPS, the medical room and matches, and prepares the actions your staff approves.',
@@ -25,9 +26,9 @@ export function enPage(b: LandingBits): SwitchPage {
       title: 'Switch to STRIVN, the AI that reads your players.',
       lede: 'Ask Teamworks answers questions asked about your documents. The STRIVN assistant reads every player’s load, wellness, GPS, medical record and matches, then prepares the actions your staff approves.',
       primaryCta: 'Create my space for free',
-      secondaryCta: 'Compare with Teamworks',
-      secondaryHref: '#comparatif',
-      perks: b.perks,
+      secondaryCta: 'Plan my transfer',
+      secondaryHref: transfer,
+      perks,
     },
     showcase: {
       assistant: {
@@ -37,6 +38,10 @@ export function enPage(b: LandingBits): SwitchPage {
       readiness: {
         title: "Approve what the AI suggests before the session.",
         body: "The wake-up check-in feeds each player's readiness. STRIVN shows why a player moves to Reduce and suggests the adjusted session. You apply it or edit it, in one move.",
+      },
+      open: {
+        title: 'Keep STRIVN open, from import to your AI.',
+        body: 'STRIVN reads the file from any sensor or tool, and opens to the AI you choose through MCP, the open protocol for AI assistants. Attendance goes out as CSV, the calendar as ICS, boards and presentations as PDF.',
       },
     },
     compare: {
@@ -61,14 +66,14 @@ export function enPage(b: LandingBits): SwitchPage {
           strivn: "A sourced answer, and the action ready to approve.",
         },
         {
-          criterion: "Your own AI",
+          criterion: "Openness",
           teamworks: "An API to integrate Teamworks AMS.",
-          strivn: "Claude and ChatGPT, plugged into your data.",
+          strivn: "The open MCP protocol: Claude, ChatGPT or the AI you choose.",
         },
         {
           criterion: "Getting started",
           teamworks: "After a sales demo.",
-          strivn: `Today, online, with ${b.trialPerk}.`,
+          strivn: `Today, online: a ${b.trialDays}-day trial and your data transfer, included.`,
         },
         {
           criterion: "Price",
@@ -85,8 +90,8 @@ export function enPage(b: LandingBits): SwitchPage {
       lede: "Six more reasons to choose STRIVN.",
       items: [
         {
-          title: 'Connect Claude or ChatGPT to your data',
-          body: 'The team owner turns the connector on, and your AI reads the squad, load, GPS and matches with your permissions. It never writes to players, parents or the public. You revoke access from the settings.',
+          title: 'Connect the AI you choose to your data',
+          body: 'STRIVN speaks MCP, the open protocol for AI assistants. The team owner turns it on, then Claude, ChatGPT or any compatible client reads the squad, load, GPS and matches with your permissions. They never write to players, parents or the public, and you revoke access from the settings.',
         },
         {
           title: 'Prepare the opponent together',
@@ -114,7 +119,7 @@ export function enPage(b: LandingBits): SwitchPage {
       id: 'changer',
       eyebrow: 'Switch',
       title: 'Open STRIVN while your contract runs.',
-      lede: `The notice period is in your Teamworks or Opteamal contract. Open STRIVN alongside it and test it for ${b.trialDays} days on your own sessions.`,
+      lede: `The notice period is in your Teamworks or Opteamal contract. Test STRIVN for ${b.trialDays} days on your sessions, and we transfer your data with you, at no cost.`,
       steps: [
         {
           n: '01',
@@ -123,8 +128,8 @@ export function enPage(b: LandingBits): SwitchPage {
         },
         {
           n: '02',
-          title: 'Import your history',
-          body: 'Drop in your load, RPE and wellness CSV or XLSX files, then your GPS exports. Columns are recognized, then remembered for the team.',
+          title: 'Transfer your Teamworks data',
+          body: 'Send us your Teamworks or Opteamal exports. We prepare the column mapping with you, then import load, wellness and GPS.',
         },
         {
           n: '03',
@@ -132,6 +137,13 @@ export function enPage(b: LandingBits): SwitchPage {
           body: 'Ask the assistant for the week’s load or the players to watch. It answers on your imported history, with its sources.',
         },
       ],
+      offer: {
+        tag: 'Teamworks clubs',
+        title: `A ${b.trialDays}-day trial and your data transfer, on us.`,
+        body: 'We go through your Teamworks exports with you, check the column mapping and import your history while you test STRIVN on your sessions.',
+        cta: 'Plan my transfer',
+        href: transfer,
+      },
     },
     faq: {
       label: 'FAQ',
@@ -139,17 +151,21 @@ export function enPage(b: LandingBits): SwitchPage {
       email: 'hello@strivn.net',
       items: [
         {
+          q: 'Is STRIVN really open?',
+          a: 'Yes. Your data comes in by file, whatever the sensor or source tool. It goes out to the AI you choose through MCP, the open protocol for AI assistants, and exports as CSV, ICS or PDF depending on the screen. The connector is turned on and revoked from the team settings.',
+        },
+        {
           q: 'Does my data stay mine?',
-          a: 'Yes. You read it in STRIVN or from your own AI, through the connector you turn on and revoke. You export attendance as CSV, the calendar as ICS, tactical boards and presentations as PDF. If you move back down to Free, your whole history stays available.',
+          a: 'Yes. You read it in STRIVN or from your own AI. If you move back down to Free, your whole history stays available, and you keep exporting and deleting what belongs to you.',
         },
         {
           q: 'Can the AI act without my approval?',
           a: 'In STRIVN, every action the assistant prepares waits for your approval. Through the connector, Claude or ChatGPT act with your permissions, like a member of the staff, without ever writing to players, parents or the public, or touching call-ups.',
         },
         {
-          q: 'Can I bring my Teamworks or Opteamal history?',
-          a: `Yes, by file. Export load, RPE and wellness as CSV or XLSX, then drop them into STRIVN. GPS exports import ${b.gpsTiers}, so during the ${b.trialDays}-day trial. For the first column mapping, write to us at hello@strivn.net.`,
-          mailto: migration,
+          q: 'Who transfers my Teamworks or Opteamal data?',
+          a: `We do, with you, at no cost. Send us your exports as CSV or XLSX: we prepare the column mapping and import load, RPE, wellness and GPS during your ${b.trialDays}-day trial. Write to us at hello@strivn.net.`,
+          mailto: transfer,
         },
         {
           q: 'I am still under contract. When can I switch?',
@@ -175,12 +191,12 @@ export function enPage(b: LandingBits): SwitchPage {
     },
     finalCta: {
       eyebrow: b.trialPerk,
-      title: 'Create your space and ask your first question.',
-      body: `Import your history, then question it. ${b.trialSentence} Your staff joins you when they see your first reports.`,
+      title: `Test STRIVN for ${b.trialDays} days, data transfer included.`,
+      body: `We transfer your Teamworks data with you, then you question your history. ${b.trialSentence}`,
       primaryCta: 'Create my space for free',
       secondaryCta: 'Talk to Benoit',
-      secondaryHref: migration,
-      fine: b.perks,
+      secondaryHref: transfer,
+      fine: perks,
     },
     disclaimer:
       'Teamworks, Teamworks AMS, Ask Teamworks and Opteamal are trademarks of their respective owners. STRIVN is neither affiliated with nor endorsed by these companies. Claude, ChatGPT, Catapult, STATSports, SPT, GameTraka and WHOOP are trademarks of their respective owners. Information about Teamworks and Opteamal comes from public sources as of 15 October 2026.',
