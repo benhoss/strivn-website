@@ -23,12 +23,16 @@ import type { LandingBits } from './types';
 export const ALTERNATIVE_LOCALES: Locale[] = ['fr', 'en', 'nl', 'de', 'pt', 'es'];
 
 export function alternativePath(locale: Locale): string {
-  return `/${locale}/alternative-opteamal/`;
+  return `/${locale}/alternative-teamworks/`;
 }
 
-/** French URL. x-default, and the target of the old slug. */
+/** French URL. x-default, and the target of the old slugs. */
 export const ALTERNATIVE_PATH = alternativePath('fr');
-/** Previous French slug. `astro.config.mjs` redirects it here. */
+/**
+ * Earlier slugs of this page: the first French one, then the Opteamal page
+ * in each locale. `astro.config.mjs` redirects them here and keeps them out
+ * of the sitemap.
+ */
 export const ALTERNATIVE_LEGACY_PATH = '/fr/alternative-teamworks-opteamal/';
 
 const PLAN_ORDER: PlanCode[] = ['free', 'amateur', 'semi_pro', 'pro'];

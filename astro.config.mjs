@@ -6,7 +6,9 @@ export default defineConfig({
   site: 'https://strivn.net',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/fr/alternative-teamworks-opteamal'),
+      // Redirect stubs of the Teamworks page's earlier slugs stay out.
+      filter: (page) =>
+        !page.includes('/fr/alternative-teamworks-opteamal') && !page.includes('/alternative-opteamal/'),
     }),
   ],
   // The combined live page shipped briefly before being split into
@@ -15,9 +17,15 @@ export default defineConfig({
     // Campaign links reach for the French word; the page itself keeps the
     // English slug, as /features/ and /solutions/ do in every locale.
     '/fr/tarifs/': '/fr/pricing/',
-    // First slug of the Opteamal switch page. The page itself is
-    // /fr/alternative-opteamal/.
-    '/fr/alternative-teamworks-opteamal/': '/fr/alternative-opteamal/',
+    // Earlier slugs of the Teamworks page: the first French one, then the
+    // Opteamal switch page it grew from (shipped 2026-10-15, one locale each).
+    '/fr/alternative-teamworks-opteamal/': '/fr/alternative-teamworks/',
+    '/fr/alternative-opteamal/': '/fr/alternative-teamworks/',
+    '/en/alternative-opteamal/': '/en/alternative-teamworks/',
+    '/nl/alternative-opteamal/': '/nl/alternative-teamworks/',
+    '/de/alternative-opteamal/': '/de/alternative-teamworks/',
+    '/pt/alternative-opteamal/': '/pt/alternative-teamworks/',
+    '/es/alternative-opteamal/': '/es/alternative-teamworks/',
     '/fr/features/live/': '/fr/features/live-session/',
     '/en/features/live/': '/en/features/live-session/',
     '/nl/features/live/': '/nl/features/live-session/',

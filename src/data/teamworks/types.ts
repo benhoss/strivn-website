@@ -1,6 +1,6 @@
 export interface CompareRow {
   criterion: string;
-  opteamal: string;
+  teamworks: string;
   strivn: string;
 }
 
@@ -40,7 +40,7 @@ export interface SwitchPage {
     eyebrow: string;
     title: string;
     lede: string;
-    columns: { criterion: string; opteamal: string; strivn: string };
+    columns: { criterion: string; teamworks: string; strivn: string };
     rows: CompareRow[];
     note: string;
   };

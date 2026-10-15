@@ -5,77 +5,81 @@ import type { LandingBits, SwitchPage } from './types';
  * French source text. The other locales translate this page, they do not
  * extend it. Voice: PRODUCT.md § Voice.
  *
- * The page argues the switch. Its one claim about the other side is what
- * Teamworks itself announced on 18 Dec 2025 (Durham, N.C.): Opteamal
- * partners move onto the Teamworks platform, built for 6,500+ elite
- * organizations. Everything else is what STRIVN ships.
+ * The page argues STRIVN against Teamworks. What it says about Teamworks
+ * comes from Teamworks' own pages (see alternativeTeamworks.ts). Everything
+ * else is what STRIVN ships.
  */
 export function frPage(b: LandingBits): SwitchPage {
-  const migration = mail('Migration depuis Opteamal');
+  const migration = mail('Passer de Teamworks à STRIVN');
 
   return {
     gpsNote: b.gpsFiles,
-    crumb: "Passer d'Opteamal à STRIVN",
+    crumb: 'STRIVN ou Teamworks',
     meta: {
-      title: 'Alternative à Opteamal : STRIVN, avec votre historique',
-      description: `Teamworks annonce la migration des clubs Opteamal. Choisissez STRIVN : prix publics, ${b.trialPerk}, en français et en néerlandais.`,
-      ogTitle: 'Vous êtes sur Opteamal ? Passez à STRIVN avant la migration.',
-      ogDescription: `Teamworks annonce faire passer les clubs Opteamal sur sa plateforme. Changez d'outil une seule fois : prix publics, ${b.trialPerk}, historique importé.`,
-      twitterTitle: 'Vous êtes sur Opteamal ? Passez à STRIVN.',
-      twitterDescription: `Prix publics, ${b.trialPerk}, historique importé par fichier.`,
+      title: 'Alternative à Teamworks : STRIVN, pour le staff de votre club',
+      description: `STRIVN ou Teamworks ? Prix publics, compte ouvert en ligne, ${b.trialPerk}, en français et en néerlandais. Clubs Opteamal bienvenus.`,
+      ogTitle: 'Vous êtes sur Teamworks ? Passez à STRIVN, conçu pour votre staff.',
+      ogDescription: `Teamworks équipe plus de 6 500 organisations d'élite, sur démonstration. STRIVN affiche ses prix et s'ouvre en ligne : ${b.trialPerk}.`,
+      twitterTitle: 'STRIVN ou Teamworks : passez à STRIVN.',
+      twitterDescription: `Prix publics, compte ouvert en ligne, ${b.trialPerk}.`,
       ogImage: '/og.png',
       ogImageAlt: 'STRIVN, la tour de contrôle du staff performance',
     },
     hero: {
-      eyebrow: 'Opteamal rejoint Teamworks',
-      titleLead: 'Vous êtes sur Opteamal ?',
-      title: 'Passez à STRIVN avant la migration.',
-      lede: `Teamworks a racheté Opteamal et annonce faire passer ses clubs sur sa propre plateforme. Changez d'outil une seule fois : importez votre historique dans STRIVN et testez-le ${b.trialDays} jours sur vos séances.`,
+      eyebrow: 'STRIVN ou Teamworks',
+      titleLead: 'Vous êtes sur Teamworks ?',
+      title: 'Passez à STRIVN, conçu pour votre staff.',
+      lede: `Teamworks équipe plus de 6 500 organisations sportives d'élite, sur démonstration et sur devis. STRIVN est conçu pour le staff d'un club : prix publics, compte ouvert en ligne, ${b.trialDays} jours de Semi-Pro pour comparer sur vos séances.`,
       primaryCta: 'Créer mon espace gratuitement',
-      secondaryCta: 'Voir ce qui change',
+      secondaryCta: 'Comparer avec Teamworks',
       secondaryHref: '#comparatif',
       perks: b.perks,
     },
     compare: {
       id: 'comparatif',
-      eyebrow: 'Ce qui change',
-      title: "Comparez la suite d'Opteamal avec STRIVN.",
-      lede: "Le 18 décembre 2025, Teamworks a annoncé accueillir les clubs Opteamal sur sa plateforme. Vous allez changer d'outil : comparez les deux suites avant de choisir.",
+      eyebrow: 'STRIVN ou Teamworks',
+      title: 'Comparez STRIVN et Teamworks, ligne par ligne.',
+      lede: 'Cinq points sur lesquels Teamworks publie sa réponse, face à ce que STRIVN livre. Le reste se juge sur vos propres séances.',
       columns: {
         criterion: 'Critère',
-        opteamal: 'Opteamal, chez Teamworks',
+        teamworks: 'Teamworks',
         strivn: 'STRIVN',
       },
       rows: [
         {
-          criterion: 'Votre prochain outil',
-          opteamal: 'La plateforme Teamworks, conçue pour plus de 6 500 organisations d’élite.',
-          strivn: 'STRIVN, conçu pour le staff d’un club : 141 équipes, dont 14 équipes pro.',
+          criterion: 'Pour qui',
+          teamworks: 'Plus de 6 500 organisations sportives d’élite.',
+          strivn: 'Le staff d’un club, du régional au pro : 141 équipes, dont 14 équipes pro.',
         },
         {
           criterion: 'Prix',
-          opteamal: 'Sur devis.',
+          teamworks: 'Sur devis, après une démonstration.',
           strivn: `Affichés sur la page : ${b.publicPrices}.`,
         },
         {
-          criterion: 'Accès au compte',
-          opteamal: 'Sur demande, via leur équipe commerciale.',
+          criterion: 'Démarrage',
+          teamworks: 'Demande de démonstration à leur équipe commerciale.',
           strivn: `Le staff crée le compte lui-même, sans validation du club. ${b.trialSentence}`,
         },
         {
           criterion: 'Feuille de route',
-          opteamal: 'Décidée chez Teamworks, à Durham, aux États-Unis.',
+          teamworks: 'Décidée à Durham, aux États-Unis, pour 6 500 organisations.',
           strivn:
             'Décidée par STRIVN, éditeur indépendant. Nous annonçons chaque nouveauté par e-mail aux coachs.',
         },
+        {
+          criterion: 'Clubs Opteamal',
+          teamworks: 'Passage annoncé sur la plateforme Teamworks depuis le rachat du 18 décembre 2025.',
+          strivn: 'Historique importé par fichier, pendant que votre contrat court.',
+        },
       ],
-      note: 'Sources : communiqué de Teamworks du 18 décembre 2025 et pages publiques de Teamworks et d’Opteamal, au 15 octobre 2026. Chiffres STRIVN au 18 septembre 2026.',
+      note: 'Sources : teamworks.com et communiqué de Teamworks du 18 décembre 2025, au 15 octobre 2026. Chiffres STRIVN au 18 septembre 2026.',
     },
     reasons: {
-      id: 'au-quotidien',
-      eyebrow: 'Ce que vous gagnez',
+      id: 'pourquoi-strivn',
+      eyebrow: 'Pourquoi STRIVN',
       title: "Lisez l'état de chaque joueur avant la séance.",
-      lede: 'STRIVN croise le check-in, le RPE, la charge et le GPS de chaque joueur. Sept raisons de le choisir pour votre staff.',
+      lede: "Teamworks couvre le recrutement, les opérations et la performance des organisations d'élite. STRIVN se concentre sur la semaine de votre staff. Sept raisons de le choisir.",
       items: [
         {
           title: 'Envoyez le check-in par WhatsApp',
@@ -103,7 +107,7 @@ export function frPage(b: LandingBits): SwitchPage {
         },
         {
           title: 'Parlez à celui qui construit STRIVN',
-          body: 'Le bouton « Parler à Benoit » ouvre un e-mail à celui qui construit STRIVN. Décrivez votre staff et votre migration, nous vous répondons.',
+          body: 'Le bouton « Parler à Benoit » ouvre un e-mail à celui qui construit STRIVN. Décrivez votre staff et votre outil actuel, nous vous répondons.',
         },
       ],
     },
@@ -111,7 +115,7 @@ export function frPage(b: LandingBits): SwitchPage {
       id: 'changer',
       eyebrow: 'Changer',
       title: 'Ouvrez STRIVN pendant que votre contrat court.',
-      lede: `Le préavis figure dans votre contrat Opteamal. Ouvrez STRIVN en parallèle et testez-le ${b.trialDays} jours sur vos propres séances.`,
+      lede: `Le préavis figure dans votre contrat Teamworks ou Opteamal. Ouvrez STRIVN en parallèle et testez-le ${b.trialDays} jours sur vos propres séances.`,
       steps: [
         {
           n: '01',
@@ -132,17 +136,21 @@ export function frPage(b: LandingBits): SwitchPage {
     },
     faq: {
       label: 'FAQ',
-      title: 'Vos questions avant de quitter Opteamal.',
+      title: 'Vos questions avant de quitter Teamworks.',
       email: 'hello@strivn.net',
       items: [
         {
-          q: 'Puis-je reprendre mon historique Opteamal ?',
+          q: 'Puis-je reprendre mon historique Teamworks ou Opteamal ?',
           a: `Oui, par fichier. Exportez la charge, le RPE et le wellness en CSV ou XLSX, puis déposez-les dans STRIVN. Les exports GPS s'importent ${b.gpsTiers}, donc pendant l'essai de ${b.trialDays} jours. Les colonnes sont reconnues d'après leurs en-têtes, puis mémorisées pour l'équipe. Pour la première correspondance, écrivez-nous à hello@strivn.net.`,
           mailto: migration,
         },
         {
           q: 'Je suis encore sous contrat. Quand puis-je changer ?',
-          a: `Le préavis et la date de reconduction figurent dans votre contrat Opteamal ou Teamworks. Ouvrez STRIVN en parallèle, sans validation du club et sans carte, avec ${b.trialDays} jours de Semi-Pro. Vous résiliez à la date qui vous convient.`,
+          a: `Le préavis et la date de reconduction figurent dans votre contrat. Ouvrez STRIVN en parallèle, sans validation du club et sans carte, avec ${b.trialDays} jours de Semi-Pro. Vous résiliez à la date qui vous convient.`,
+        },
+        {
+          q: "J'étais sur Opteamal. Que change le rachat par Teamworks ?",
+          a: "Teamworks a racheté Opteamal le 18 décembre 2025 et annonce faire passer ses clubs sur sa propre plateforme. Si vous changez d'outil, changez une seule fois : importez votre historique dans STRIVN pendant que votre contrat court.",
         },
         {
           q: 'Combien coûte STRIVN ?',
@@ -164,14 +172,14 @@ export function frPage(b: LandingBits): SwitchPage {
     },
     finalCta: {
       eyebrow: b.trialPerk,
-      title: 'Importez votre historique dans STRIVN.',
-      body: `Changez d'outil une seule fois. ${b.trialSentence} Votre staff vous rejoint quand il voit vos premiers rapports.`,
+      title: 'Créez votre espace et comparez sur vos séances.',
+      body: `Commencez aujourd'hui, sans démonstration ni devis. ${b.trialSentence} Votre staff vous rejoint quand il voit vos premiers rapports.`,
       primaryCta: 'Créer mon espace gratuitement',
       secondaryCta: 'Parler à Benoit',
       secondaryHref: migration,
       fine: b.perks,
     },
     disclaimer:
-      "Opteamal, Teamworks et Teamworks AMS sont des marques de leurs détenteurs. STRIVN n'est ni affilié à ces sociétés, ni approuvé par elles. Catapult, STATSports, SPT, GameTraka et WHOOP sont des marques de leurs détenteurs. Les informations sur Opteamal et Teamworks proviennent de sources publiques au 15 octobre 2026.",
+      "Teamworks, Teamworks AMS et Opteamal sont des marques de leurs détenteurs. STRIVN n'est ni affilié à ces sociétés, ni approuvé par elles. Catapult, STATSports, SPT, GameTraka et WHOOP sont des marques de leurs détenteurs. Les informations sur Teamworks et Opteamal proviennent de sources publiques au 15 octobre 2026.",
   };
 }

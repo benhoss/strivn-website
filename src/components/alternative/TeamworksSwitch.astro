@@ -1,8 +1,8 @@
 ---
 /**
- * Switch page for clubs still on Opteamal, in the six site locales.
+ * STRIVN against Teamworks, in the six site locales.
  * Prices come from PricingPlans / the catalogue. Competitor cells are the
- * public facts listed in alternativeOpteamal.ts. The proof band under the
+ * public facts listed in alternativeTeamworks.ts. The proof band under the
  * hero is the homepage's: same figures, same crests, same date.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -16,10 +16,10 @@ import PricingPlans from '../pricing/PricingPlans.astro';
 import { NAV } from '../../data/nav';
 import { homeContent } from '../../data/homeContent';
 import {
-  alternativeOpteamal,
+  alternativeTeamworks,
   alternativePath,
   plansForLanding,
-} from '../../data/alternativeOpteamal';
+} from '../../data/alternativeTeamworks';
 import { PRICING_LOCALES, pricingContent, type Locale } from '../../data/pricingContent';
 import { appStartUrl } from '../../lib/appUrl';
 import { catalogueOffers } from '../../lib/planPrice';
@@ -30,7 +30,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const c = alternativeOpteamal[locale];
+const c = alternativeTeamworks[locale];
 const path = alternativePath(locale);
 const home = homeContent[locale];
 const pricing = pricingContent[locale];
@@ -133,7 +133,7 @@ const alternates = [
             <thead>
               <tr>
                 <th scope="col">{c.compare.columns.criterion}</th>
-                <th scope="col">{c.compare.columns.opteamal}</th>
+                <th scope="col">{c.compare.columns.teamworks}</th>
                 <th scope="col">{c.compare.columns.strivn}</th>
               </tr>
             </thead>
@@ -141,7 +141,7 @@ const alternates = [
               {c.compare.rows.map((row) => (
                 <tr>
                   <th scope="row">{row.criterion}</th>
-                  <td data-side={c.compare.columns.opteamal}>{row.opteamal}</td>
+                  <td data-side={c.compare.columns.teamworks}>{row.teamworks}</td>
                   <td data-side={c.compare.columns.strivn}>{row.strivn}</td>
                 </tr>
               ))}
