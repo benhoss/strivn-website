@@ -12,8 +12,8 @@ export function nlPage(b: LandingBits): SwitchPage {
     gpsNote: b.gpsFiles,
     crumb: 'Van Opteamal naar STRIVN',
     meta: {
-      title: 'Van Opteamal naar STRIVN',
-      description: `Teamworks heeft Opteamal op 18 december 2025 overgenomen. Stap over naar STRIVN met uw historiek: publieke prijzen, ${b.trialPerk}, in het Nederlands en het Frans.`,
+      title: 'Alternatief voor Opteamal: STRIVN, met uw historiek',
+      description: `Teamworks heeft Opteamal in december 2025 overgenomen. Stap over naar STRIVN: publieke prijzen, ${b.trialPerk}, in het Nederlands en het Frans.`,
       ogTitle: 'Werkt u met Opteamal? Stap over naar STRIVN met uw historiek.',
       ogDescription: `Publieke prijzen, account aangemaakt door de staf, ${b.trialPerk}. Importeer uw belastings- en GPS-bestanden terwijl uw contract loopt.`,
       twitterTitle: 'Van Opteamal naar STRIVN',
@@ -26,7 +26,7 @@ export function nlPage(b: LandingBits): SwitchPage {
       titleLead: 'Werkt u met Opteamal?',
       title: 'Stap over naar STRIVN met uw historiek.',
       lede: `Teamworks heeft Opteamal op 18 december 2025 overgenomen. Open een STRIVN-omgeving, importeer uw belastings- en GPS-bestanden en vergelijk ${b.trialDays} dagen lang op uw eigen trainingen.`,
-      primaryCta: 'Mijn omgeving aanmaken',
+      primaryCta: 'Mijn omgeving gratis aanmaken',
       secondaryCta: 'Bekijk de vergelijking',
       secondaryHref: '#comparatif',
       perks: b.perks,
@@ -34,7 +34,7 @@ export function nlPage(b: LandingBits): SwitchPage {
     compare: {
       id: 'comparatif',
       eyebrow: 'Vergelijking',
-      title: 'Vergelijk de prijs, de start en de roadmap.',
+      title: 'Vergelijk de prijs, de toegang en de roadmap.',
       lede: 'Drie punten waarop Opteamal, Teamworks en STRIVN elk hun antwoord publiceren. De rest beoordeelt u op uw eigen trainingen.',
       columns: {
         criterion: 'Criterium',
@@ -66,15 +66,15 @@ export function nlPage(b: LandingBits): SwitchPage {
       id: 'au-quotidien',
       eyebrow: 'Dagelijks',
       title: 'Houd de opvolging die u al doet.',
-      lede: 'Zes handelingen die uw staf elke week doet, en hoe STRIVN ze opneemt.',
+      lede: 'Zes taken die uw staf elke week doet, en hoe STRIVN ze opneemt.',
       items: [
         {
           title: 'Stuur de check-in via WhatsApp',
-          body: 'De speler krijgt een link via WhatsApp of e-mail en antwoordt zonder een app te installeren. Hij geeft vermoeidheid, slaap, humeur en stress door, en na de training zijn RPE. Automatisch versturen zit in Semi-Pro en Pro.',
+          body: 'De speler krijgt een link via WhatsApp of e-mail en antwoordt zonder een app te installeren. Hij geeft vermoeidheid, slaap, humeur en stress door, en na de training zijn RPE. Automatisch versturen zit in Semi-Pro en Pro. U leest de antwoorden vóór de training.',
         },
         {
           title: 'Stuur de training aan vanaf de zijlijn',
-          body: 'Aanwezigheden, chrono per blok, ploegen en score passen op de telefoon. Zonder netwerk houdt de telefoon een logboek bij en synchroniseert het bij terugkeer.',
+          body: 'Aanwezigheden, chrono per blok, ploegen en score passen op de telefoon. Zonder netwerk houdt de telefoon een logboek bij en synchroniseert het bij terugkeer. Zonder ingevoerde duur berekent STRIVN de belasting op de werkelijk gespeelde tijd.',
         },
         {
           title: 'Plan de week in AU',
@@ -165,7 +165,7 @@ export function nlPage(b: LandingBits): SwitchPage {
       eyebrow: b.trialPerk,
       title: 'Maak uw omgeving aan en importeer uw historiek.',
       body: `${b.trialSentence} Uw staf sluit aan wanneer hij uw eerste rapporten ziet.`,
-      primaryCta: 'Mijn omgeving aanmaken',
+      primaryCta: 'Mijn omgeving gratis aanmaken',
       secondaryCta: 'Praat met Benoit',
       secondaryHref: migration,
       fine: b.perks,

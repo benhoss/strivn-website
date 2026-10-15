@@ -9,8 +9,8 @@ export function dePage(b: LandingBits): SwitchPage {
     gpsNote: b.gpsFiles,
     crumb: 'Von Opteamal zu STRIVN',
     meta: {
-      title: 'Von Opteamal zu STRIVN wechseln',
-      description: `Teamworks hat Opteamal am 18. Dezember 2025 übernommen. Wechseln Sie mit Ihrer Historie zu STRIVN: öffentliche Preise, ${b.trialPerk}, auf Deutsch, Französisch und Niederländisch.`,
+      title: 'Alternative zu Opteamal: STRIVN, mit Ihrer Historie',
+      description: `Teamworks hat Opteamal im Dezember 2025 übernommen. Wechseln Sie zu STRIVN: öffentliche Preise, ${b.trialPerk}, in sechs Sprachen.`,
       ogTitle: 'Sie arbeiten mit Opteamal? Wechseln Sie mit Ihrer Historie zu STRIVN.',
       ogDescription: `Öffentliche Preise, Konto vom Staff selbst eröffnet, ${b.trialPerk}. Importieren Sie Ihre Belastungs- und GPS-Dateien, während Ihr Vertrag läuft.`,
       twitterTitle: 'Von Opteamal zu STRIVN wechseln',
@@ -23,7 +23,7 @@ export function dePage(b: LandingBits): SwitchPage {
       titleLead: 'Sie arbeiten mit Opteamal?',
       title: 'Wechseln Sie mit Ihrer Historie zu STRIVN.',
       lede: `Teamworks hat Opteamal am 18. Dezember 2025 übernommen. Eröffnen Sie einen STRIVN-Bereich, importieren Sie Ihre Belastungs- und GPS-Dateien und vergleichen Sie ${b.trialDays} Tage lang an Ihren eigenen Einheiten.`,
-      primaryCta: 'Meinen Bereich erstellen',
+      primaryCta: 'Meinen Bereich kostenlos erstellen',
       secondaryCta: 'Zum Vergleich',
       secondaryHref: '#comparatif',
       perks: b.perks,
@@ -31,7 +31,7 @@ export function dePage(b: LandingBits): SwitchPage {
     compare: {
       id: 'comparatif',
       eyebrow: 'Vergleich',
-      title: 'Vergleichen Sie Preis, Kontoeröffnung und Roadmap.',
+      title: 'Vergleichen Sie Preis, Zugang und Roadmap.',
       lede: 'Drei Punkte, zu denen Opteamal, Teamworks und STRIVN jeweils ihre Antwort veröffentlichen. Den Rest beurteilen Sie an Ihren eigenen Einheiten.',
       columns: {
         criterion: 'Kriterium',
@@ -63,15 +63,15 @@ export function dePage(b: LandingBits): SwitchPage {
       id: 'au-quotidien',
       eyebrow: 'Im Alltag',
       title: 'Behalten Sie das Monitoring, das Sie schon machen.',
-      lede: 'Sechs Handgriffe, die Ihr Staff jede Woche erledigt, und wie STRIVN sie übernimmt.',
+      lede: 'Sechs Aufgaben, die Ihr Staff jede Woche erledigt, und wie STRIVN sie übernimmt.',
       items: [
         {
           title: 'Senden Sie den Check-in per WhatsApp',
-          body: 'Der Spieler erhält einen Link per WhatsApp oder E-Mail und antwortet, ohne eine App zu installieren. Er bewertet Müdigkeit, Schlaf, Stimmung und Stress, nach der Einheit dann seinen RPE. Der automatische Versand gehört zu Semi-Pro und Pro.',
+          body: 'Der Spieler erhält einen Link per WhatsApp oder E-Mail und antwortet, ohne eine App zu installieren. Er bewertet Müdigkeit, Schlaf, Stimmung und Stress, nach der Einheit dann seinen RPE. Der automatische Versand gehört zu Semi-Pro und Pro. Sie lesen die Antworten vor dem Training.',
         },
         {
           title: 'Steuern Sie die Einheit vom Spielfeldrand',
-          body: 'Anwesenheit, Stoppuhr pro Block, Teams und Spielstand passen auf das Handy. Ohne Netz führt das Handy ein Protokoll und synchronisiert es bei der Rückkehr.',
+          body: 'Anwesenheit, Stoppuhr pro Block, Teams und Spielstand passen auf das Handy. Ohne Netz führt das Handy ein Protokoll und synchronisiert es bei der Rückkehr. Ohne eingetragene Dauer berechnet STRIVN die Belastung aus der tatsächlich gespielten Zeit.',
         },
         {
           title: 'Planen Sie die Woche in AU',
@@ -162,7 +162,7 @@ export function dePage(b: LandingBits): SwitchPage {
       eyebrow: b.trialPerk,
       title: 'Erstellen Sie Ihren Bereich und importieren Sie Ihre Historie.',
       body: `${b.trialSentence} Ihr Staff kommt dazu, sobald er Ihre ersten Berichte sieht.`,
-      primaryCta: 'Meinen Bereich erstellen',
+      primaryCta: 'Meinen Bereich kostenlos erstellen',
       secondaryCta: 'Mit Benoit sprechen',
       secondaryHref: migration,
       fine: b.perks,

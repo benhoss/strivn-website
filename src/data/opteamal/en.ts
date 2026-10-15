@@ -9,8 +9,8 @@ export function enPage(b: LandingBits): SwitchPage {
     gpsNote: b.gpsFiles,
     crumb: 'Switch from Opteamal to STRIVN',
     meta: {
-      title: 'Switch from Opteamal to STRIVN',
-      description: `Teamworks acquired Opteamal on 18 December 2025. Switch to STRIVN with your history: public prices, ${b.trialPerk}, in French and Dutch.`,
+      title: 'Opteamal alternative: STRIVN, with your history',
+      description: `Teamworks acquired Opteamal in December 2025. Switch to STRIVN: public prices, ${b.trialPerk}, in French and Dutch.`,
       ogTitle: 'On Opteamal? Switch to STRIVN with your history.',
       ogDescription: `Public prices, an account the staff opens itself, ${b.trialPerk}. Import your load and GPS files while your contract runs.`,
       twitterTitle: 'Switch from Opteamal to STRIVN',
@@ -23,7 +23,7 @@ export function enPage(b: LandingBits): SwitchPage {
       titleLead: 'On Opteamal?',
       title: 'Switch to STRIVN with your history.',
       lede: `Teamworks acquired Opteamal on 18 December 2025. Open a STRIVN space, import your load and GPS files, then compare on your own sessions for ${b.trialDays} days.`,
-      primaryCta: 'Create my space',
+      primaryCta: 'Create my space for free',
       secondaryCta: 'See the comparison',
       secondaryHref: '#comparatif',
       perks: b.perks,
@@ -31,7 +31,7 @@ export function enPage(b: LandingBits): SwitchPage {
     compare: {
       id: 'comparatif',
       eyebrow: 'Comparison',
-      title: 'Compare price, sign-up and roadmap.',
+      title: 'Compare price, access and roadmap.',
       lede: 'Three points where Opteamal, Teamworks and STRIVN each publish their answer. Judge the rest on your own sessions.',
       columns: {
         criterion: 'Criterion',
@@ -62,15 +62,15 @@ export function enPage(b: LandingBits): SwitchPage {
       id: 'au-quotidien',
       eyebrow: 'Day to day',
       title: 'Keep the monitoring you already do.',
-      lede: 'Six things your staff does every week, and how STRIVN handles each one.',
+      lede: 'Six tasks your staff does every week, and how STRIVN handles each one.',
       items: [
         {
           title: 'Send the check-in by WhatsApp',
-          body: 'The player gets a link by WhatsApp or email and answers without installing an app. They rate fatigue, sleep, mood and stress, then their RPE after the session. Automatic sending is on Semi-Pro and Pro.',
+          body: 'The player gets a link by WhatsApp or email and answers without installing an app. They rate fatigue, sleep, mood and stress, then their RPE after the session. Automatic sending is on Semi-Pro and Pro. You read the answers before training.',
         },
         {
           title: 'Run the session from the touchline',
-          body: 'Attendance, block timer, teams and score fit on the phone. Without a signal, the phone keeps a log and syncs it when you are back online.',
+          body: 'Attendance, block timer, teams and score fit on the phone. Without a signal, the phone keeps a log and syncs it when you are back online. With no duration entered, STRIVN computes the load from the time actually played.',
         },
         {
           title: 'Plan the week in AU',
@@ -161,7 +161,7 @@ export function enPage(b: LandingBits): SwitchPage {
       eyebrow: b.trialPerk,
       title: 'Create your space and import your history.',
       body: `${b.trialSentence} Your staff joins you when they see your first reports.`,
-      primaryCta: 'Create my space',
+      primaryCta: 'Create my space for free',
       secondaryCta: 'Talk to Benoit',
       secondaryHref: migration,
       fine: b.perks,

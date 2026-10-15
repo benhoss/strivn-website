@@ -14,8 +14,8 @@ export function frPage(b: LandingBits): SwitchPage {
     gpsNote: b.gpsFiles,
     crumb: "Passer d'Opteamal à STRIVN",
     meta: {
-      title: "Passer d'Opteamal à STRIVN",
-      description: `Teamworks a racheté Opteamal le 18 décembre 2025. Passez à STRIVN avec votre historique : prix publics, ${b.trialPerk}, en français et en néerlandais.`,
+      title: 'Alternative à Opteamal : STRIVN, avec votre historique',
+      description: `Teamworks a racheté Opteamal en décembre 2025. Passez à STRIVN : prix publics, ${b.trialPerk}, en français et en néerlandais.`,
       ogTitle: 'Vous êtes sur Opteamal ? Passez à STRIVN avec votre historique.',
       ogDescription: `Prix publics, compte ouvert par le staff, ${b.trialPerk}. Importez vos fichiers de charge et de GPS pendant que votre contrat court.`,
       twitterTitle: "Passer d'Opteamal à STRIVN",
@@ -28,7 +28,7 @@ export function frPage(b: LandingBits): SwitchPage {
       titleLead: 'Vous êtes sur Opteamal ?',
       title: 'Passez à STRIVN avec votre historique.',
       lede: `Teamworks a racheté Opteamal le 18 décembre 2025. Ouvrez un espace STRIVN, importez vos fichiers de charge et de GPS, puis comparez sur vos propres séances pendant ${b.trialDays} jours.`,
-      primaryCta: 'Créer mon espace',
+      primaryCta: 'Créer mon espace gratuitement',
       secondaryCta: 'Voir le comparatif',
       secondaryHref: '#comparatif',
       perks: b.perks,
@@ -36,7 +36,7 @@ export function frPage(b: LandingBits): SwitchPage {
     compare: {
       id: 'comparatif',
       eyebrow: 'Comparatif',
-      title: "Comparez le prix, l'ouverture et la feuille de route.",
+      title: "Comparez le prix, l'accès et la feuille de route.",
       lede: 'Trois points sur lesquels Opteamal, Teamworks et STRIVN publient chacun leur réponse. Le reste se juge sur vos propres séances.',
       columns: {
         criterion: 'Critère',
@@ -68,15 +68,15 @@ export function frPage(b: LandingBits): SwitchPage {
       id: 'au-quotidien',
       eyebrow: 'Au quotidien',
       title: 'Gardez le suivi que vous faites déjà.',
-      lede: 'Six gestes que votre staff fait chaque semaine, et la façon dont STRIVN les prend en charge.',
+      lede: 'Six tâches que votre staff fait chaque semaine, et la façon dont STRIVN les prend en charge.',
       items: [
         {
           title: 'Envoyez le check-in par WhatsApp',
-          body: "Le joueur reçoit un lien par WhatsApp ou e-mail et répond sans installer d'application. Il note fatigue, sommeil, humeur et stress, puis son RPE après la séance. L'envoi automatique est au Semi-Pro et au Pro.",
+          body: "Le joueur reçoit un lien par WhatsApp ou e-mail et répond sans installer d'application. Il note fatigue, sommeil, humeur et stress, puis son RPE après la séance. L'envoi automatique est au Semi-Pro et au Pro. Vous lisez les réponses avant l'entraînement.",
         },
         {
           title: 'Pilotez la séance depuis le bord du terrain',
-          body: 'Présences, chrono par bloc, équipes et score tiennent sur le téléphone. Sans réseau, le téléphone garde un journal et le synchronise au retour.',
+          body: 'Présences, chrono par bloc, équipes et score tiennent sur le téléphone. Sans réseau, le téléphone garde un journal et le synchronise au retour. Sans durée saisie, STRIVN calcule la charge sur le temps réellement joué.',
         },
         {
           title: 'Planifiez la semaine en UA',
@@ -167,7 +167,7 @@ export function frPage(b: LandingBits): SwitchPage {
       eyebrow: b.trialPerk,
       title: 'Créez votre espace et importez votre historique.',
       body: `${b.trialSentence} Votre staff vous rejoint quand il voit vos premiers rapports.`,
-      primaryCta: 'Créer mon espace',
+      primaryCta: 'Créer mon espace gratuitement',
       secondaryCta: 'Parler à Benoit',
       secondaryHref: migration,
       fine: b.perks,
