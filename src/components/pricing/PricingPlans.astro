@@ -1,5 +1,5 @@
 ---
-import type { Locale, PricingContent, PricingPlan } from '../../data/pricingContent';
+import { PLAN_CAPABILITIES, formatCount, type Locale, type PricingContent, type PricingPlan } from '../../data/pricingContent';
 import HomeIcon from '../home/HomeIcon.astro';
 import { planPrice } from '../../lib/planPrice';
 import { appStartUrl } from '../../lib/appUrl';
@@ -65,10 +65,17 @@ const ctaHref = (plan: PricingPlan): string =>
               {price.period && <span class="pp-price__per">{price.period}</span>}
             </p>
 
-            <p class="pp-billed">
-              {price.billed}
-              {price.bonus && <> · {price.bonus}</>}
-            </p>
+            <div class="pp-billed">
+              <p>
+                {price.billed}
+                {price.bonus && <> · {price.bonus}</>}
+              </p>
+              <p class="pp-caps">
+                {c.capabilities
+                  .replace('{count}', formatCount(PLAN_CAPABILITIES.included[plan.code], locale))
+                  .replace('{total}', formatCount(PLAN_CAPABILITIES.total, locale))}
+              </p>
+            </div>
 
             <div class="pp-tier__promise">
               <p class="st-h4">{plan.promise}.</p>
@@ -196,9 +203,21 @@ const ctaHref = (plan: PricingPlan): string =>
 
   .pp-billed {
     margin: -6px 0 0;
-    min-height: 1.4em;
     font-size: 12.5px;
     color: var(--color-ink-3);
+  }
+
+  .pp-billed p {
+    margin: 0;
+    min-height: 1.4em;
+  }
+
+  /* The tally the app's plan cards show, derived from the catalogue: a figure,
+     so tabular digits, and quieter than the billing line above it. */
+  .pp-caps {
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink-4);
   }
 
   .pp-tier__promise {

@@ -43,6 +43,18 @@ export const PLAN_PRICES: Record<PlanCode, { monthly: number | null; yearly?: nu
   pro: { monthly: null },
 };
 
+/**
+ * How many catalogue capabilities each tier opens, out of the total — the
+ * figure the app's plan cards show. The app DERIVES it from `config/billing.php`
+ * (`PlanComparison::capabilityTally()`) and publishes it as
+ * `plans[].capabilities` in the feed; `scripts/check-pricing.mjs` fails the
+ * build when these copies drift.
+ */
+export const PLAN_CAPABILITIES: { total: number; included: Record<PlanCode, number> } = {
+  total: 39,
+  included: { free: 19, amateur: 25, semi_pro: 37, pro: 39 },
+};
+
 /** The trial every new account opens on. `strivn-app/config/billing.php` → `trial`. */
 export const TRIAL = { plan: 'semi_pro' as PlanCode, days: 30 } as const;
 
@@ -119,7 +131,7 @@ export const MATRIX: MatrixGroup[] = [
     rows: [
       { key: 'teams', cells: [1, 1, 1, 'unlimited'] },
       { key: 'players', cells: ['unlimited', 'unlimited', 'unlimited', 'unlimited'] },
-      { key: 'staffSeats', cells: [1, 2, 'unlimited', 'unlimited'] },
+      { key: 'staffSeats', cells: [1, 4, 'unlimited', 'unlimited'] },
       { key: 'eventsCore', cells: [true, true, true, true] },
       { key: 'eventsIndividual', cells: [false, true, true, true] },
       { key: 'eventsPerf', cells: [false, false, true, true] },
@@ -209,6 +221,8 @@ export interface PricingContent {
     billedYearly: string;
     /** "{count} months free" — `{count}` is substituted, never hardcoded. */
     monthsFree: string;
+    /** "{count} of {total} capabilities" — both from `PLAN_CAPABILITIES`. */
+    capabilities: string;
     /** Screen-reader name for the struck-through full monthly price. */
     fullMonthlyLabel: string;
     freePeriod: string;
@@ -274,6 +288,7 @@ const fr: PricingContent = {
     note: 'Les paliers payants ouvrent à la vente prochainement. Créez votre compte, l’essai vous met au Semi-Pro pendant 30 jours, et nous vous prévenons à l’ouverture.',
     perMonth: '/ mois',
     billedYearly: 'Facturé {total} par an',
+    capabilities: '{count} capacités sur {total}',
     monthsFree: '{count} mois offerts',
     fullMonthlyLabel: 'Au mois',
     freePeriod: 'pour toujours',
@@ -314,7 +329,7 @@ const fr: PricingContent = {
           'Tableaux tactiques et modèles sans plafond',
           'Historique de matchs complet',
           'Entraînement individuel et récupération au calendrier',
-          'Une seconde place de staff, pour votre préparateur',
+          'Quatre places de staff : coach, adjoint, préparateur, kiné',
           '400 appels à l’assistant IA par mois',
         ],
         cta: 'Créer un compte',
@@ -463,7 +478,7 @@ const fr: PricingContent = {
       },
       {
         q: 'Pourquoi 25 € puis 249 € ?',
-        a: 'Les deux paliers vendent deux métiers différents. L’Amateur couvre la logistique du staff, payée par un coach de sa poche. Il lève les plafonds et ouvre une seconde place de staff. Le Semi-Pro ouvre la performance sur un budget de club, avec l’import GPS et le croisement qui va avec.',
+        a: 'Les deux paliers vendent deux métiers différents. L’Amateur couvre la logistique du staff, payée par un coach de sa poche. Il lève les plafonds et ouvre quatre places de staff, assez pour le coach, l’adjoint, le préparateur et le kiné. Le Semi-Pro ouvre la performance sur un budget de club, avec l’import GPS et le croisement qui va avec.',
       },
       {
         q: 'Pourquoi le prix affiché est-il le tarif annuel ?',
@@ -524,6 +539,7 @@ const en: PricingContent = {
     note: 'Paid tiers open for sale soon. Create your account, the trial puts you on Semi-Pro for 30 days, and we tell you when the sale opens.',
     perMonth: '/ month',
     billedYearly: 'Billed {total} per year',
+    capabilities: '{count} of {total} capabilities',
     monthsFree: '{count} months free',
     fullMonthlyLabel: 'Monthly',
     freePeriod: 'forever',
@@ -564,7 +580,7 @@ const en: PricingContent = {
           'Unlimited tactical boards and templates',
           'Full match history',
           'Individual training and recovery on the calendar',
-          'A second staff seat for your S&C coach',
+          'Four staff seats: coach, assistant, S&C coach, physio',
           '400 AI assistant calls a month',
         ],
         cta: 'Create an account',
@@ -713,7 +729,7 @@ const en: PricingContent = {
       },
       {
         q: 'Why €25 and then €249?',
-        a: 'The two tiers sell two different jobs. Amateur covers the staff’s logistics, paid out of a coach’s pocket. It lifts the caps and opens a second staff seat. Semi-Pro opens performance on a club budget, with GPS import and the crossing that goes with it.',
+        a: 'The two tiers sell two different jobs. Amateur covers the staff’s logistics, paid out of a coach’s pocket. It lifts the caps and opens four staff seats, enough for the coach, the assistant, the S&C coach and the physio. Semi-Pro opens performance on a club budget, with GPS import and the crossing that goes with it.',
       },
       {
         q: 'Why is the price shown the annual one?',
@@ -774,6 +790,7 @@ const nl: PricingContent = {
     note: 'Betaalde niveaus komen binnenkort te koop. Maak uw account aan, de proefperiode zet u 30 dagen op Semi-Pro, en wij verwittigen u zodra de verkoop opent.',
     perMonth: '/ maand',
     billedYearly: 'Gefactureerd {total} per jaar',
+    capabilities: '{count} van {total} mogelijkheden',
     monthsFree: '{count} maanden gratis',
     fullMonthlyLabel: 'Per maand',
     freePeriod: 'voor altijd',
@@ -814,7 +831,7 @@ const nl: PricingContent = {
           'Onbeperkte tactische borden en sjablonen',
           'Volledige wedstrijdgeschiedenis',
           'Individuele training en recuperatie in de agenda',
-          'Een tweede stafplaats voor uw fysieke trainer',
+          'Vier stafplaatsen: coach, assistent, fysiek trainer, kinesist',
           '400 oproepen naar de AI-assistent per maand',
         ],
         cta: 'Account aanmaken',
@@ -963,7 +980,7 @@ const nl: PricingContent = {
       },
       {
         q: 'Waarom 25 € en dan 249 €?',
-        a: 'De twee niveaus verkopen twee verschillende vakken. Amateur dekt de logistiek van de staf, betaald uit de zak van een coach. Het licht de plafonds op en opent een tweede stafplaats. Semi-Pro opent de performance op een clubbudget, met GPS-import en de kruising die erbij hoort.',
+        a: 'De twee niveaus verkopen twee verschillende vakken. Amateur dekt de logistiek van de staf, betaald uit de zak van een coach. Het licht de plafonds op en opent vier stafplaatsen, genoeg voor de coach, de assistent, de fysiek trainer en de kinesist. Semi-Pro opent de performance op een clubbudget, met GPS-import en de kruising die erbij hoort.',
       },
       {
         q: 'Waarom is de getoonde prijs het jaartarief?',
@@ -1024,6 +1041,7 @@ const de: PricingContent = {
     note: 'Die bezahlten Stufen gehen demnächst in den Verkauf. Legen Sie Ihr Konto an, die Testphase setzt Sie 30 Tage auf Semi-Pro, und wir sagen Bescheid, sobald der Verkauf öffnet.',
     perMonth: '/ Monat',
     billedYearly: 'Abgerechnet {total} pro Jahr',
+    capabilities: '{count} von {total} Funktionen',
     monthsFree: '{count} Monate gratis',
     fullMonthlyLabel: 'Monatlich',
     freePeriod: 'für immer',
@@ -1064,7 +1082,7 @@ const de: PricingContent = {
           'Unbegrenzte Taktiktafeln und Vorlagen',
           'Vollständige Spielhistorie',
           'Einzeltraining und Regeneration im Kalender',
-          'Ein zweiter Staff-Platz für Ihren Athletiktrainer',
+          'Vier Staff-Plätze: Trainer, Co-Trainer, Athletiktrainer, Physio',
           '400 Aufrufe des KI-Assistenten pro Monat',
         ],
         cta: 'Konto anlegen',
@@ -1213,7 +1231,7 @@ const de: PricingContent = {
       },
       {
         q: 'Warum 25 € und dann 249 €?',
-        a: 'Die beiden Stufen verkaufen zwei verschiedene Berufe. Amateur deckt die Logistik des Staffs, aus der Tasche eines Coachs bezahlt. Sie hebt die Limits und öffnet einen zweiten Staff-Platz. Semi-Pro öffnet die Performance auf einem Klubbudget, mit GPS-Import und der Verschränkung, die dazugehört.',
+        a: 'Die beiden Stufen verkaufen zwei verschiedene Berufe. Amateur deckt die Logistik des Staffs, aus der Tasche eines Coachs bezahlt. Sie hebt die Limits und öffnet vier Staff-Plätze, genug für Trainer, Co-Trainer, Athletiktrainer und Physio. Semi-Pro öffnet die Performance auf einem Klubbudget, mit GPS-Import und der Verschränkung, die dazugehört.',
       },
       {
         q: 'Warum ist der gezeigte Preis der Jahrestarif?',
@@ -1274,6 +1292,7 @@ const pt: PricingContent = {
     note: 'Os níveis pagos abrem à venda em breve. Crie a sua conta, o período de teste coloca-o em Semi-Pro durante 30 dias, e avisamos quando a venda abrir.',
     perMonth: '/ mês',
     billedYearly: 'Faturado {total} por ano',
+    capabilities: '{count} de {total} funcionalidades',
     monthsFree: '{count} meses oferecidos',
     fullMonthlyLabel: 'Ao mês',
     freePeriod: 'para sempre',
@@ -1314,7 +1333,7 @@ const pt: PricingContent = {
           'Quadros táticos e modelos sem limite',
           'Histórico de jogos completo',
           'Treino individual e recuperação no calendário',
-          'Um segundo lugar de staff para o seu preparador físico',
+          'Quatro lugares de staff: treinador, adjunto, preparador físico, fisio',
           '400 chamadas ao assistente de IA por mês',
         ],
         cta: 'Criar uma conta',
@@ -1463,7 +1482,7 @@ const pt: PricingContent = {
       },
       {
         q: 'Porquê 25 € e depois 249 €?',
-        a: 'Os dois níveis vendem dois ofícios diferentes. O Amateur cobre a logística do staff, paga do bolso de um treinador. Levanta os limites e abre um segundo lugar de staff. O Semi-Pro abre a performance com orçamento de clube, com importação GPS e o cruzamento que vem com ela.',
+        a: 'Os dois níveis vendem dois ofícios diferentes. O Amateur cobre a logística do staff, paga do bolso de um treinador. Levanta os limites e abre quatro lugares de staff, o suficiente para o treinador, o adjunto, o preparador físico e o fisio. O Semi-Pro abre a performance com orçamento de clube, com importação GPS e o cruzamento que vem com ela.',
       },
       {
         q: 'Porque é que o preço mostrado é o anual?',
@@ -1524,6 +1543,7 @@ const es: PricingContent = {
     note: 'Los niveles de pago abren a la venta pronto. Cree su cuenta, la prueba le pone en Semi-Pro durante 30 días, y le avisamos cuando abra la venta.',
     perMonth: '/ mes',
     billedYearly: 'Facturado {total} al año',
+    capabilities: '{count} de {total} funciones',
     monthsFree: '{count} meses gratis',
     fullMonthlyLabel: 'Al mes',
     freePeriod: 'para siempre',
@@ -1564,7 +1584,7 @@ const es: PricingContent = {
           'Pizarras tácticas y plantillas sin límite',
           'Histórico de partidos completo',
           'Entrenamiento individual y recuperación en el calendario',
-          'Un segundo puesto de staff para su preparador físico',
+          'Cuatro puestos de staff: entrenador, ayudante, preparador físico, fisio',
           '400 llamadas al asistente de IA al mes',
         ],
         cta: 'Crear una cuenta',
@@ -1713,7 +1733,7 @@ const es: PricingContent = {
       },
       {
         q: '¿Por qué 25 € y luego 249 €?',
-        a: 'Los dos niveles venden dos oficios distintos. Amateur cubre la logística del staff, pagada del bolsillo de un entrenador. Levanta los límites y abre un segundo puesto de staff. Semi-Pro abre el rendimiento con presupuesto de club, con importación GPS y el cruce que viene con ella.',
+        a: 'Los dos niveles venden dos oficios distintos. Amateur cubre la logística del staff, pagada del bolsillo de un entrenador. Levanta los límites y abre cuatro puestos de staff, suficientes para el entrenador, el ayudante, el preparador físico y el fisio. Semi-Pro abre el rendimiento con presupuesto de club, con importación GPS y el cruce que viene con ella.',
       },
       {
         q: '¿Por qué el precio mostrado es el anual?',

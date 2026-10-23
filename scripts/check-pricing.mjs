@@ -108,6 +108,23 @@ ORDER.forEach((code, i) => {
   }
 });
 
+/** The per-tier capability tally the app derives and publishes. An older feed
+ *  without the field is a warning: the app may not have deployed it yet. */
+const capabilities = extractObject('PLAN_CAPABILITIES');
+if (feed.plans.every((p) => p.capabilities)) {
+  ORDER.forEach((code) => {
+    const remote = byCode[code].capabilities;
+    if (remote.total !== capabilities.total) {
+      problems.push(`capabilities total: site ${capabilities.total}, catalogue ${remote.total}`);
+    }
+    if (remote.included !== capabilities.included[code]) {
+      problems.push(`capabilities/${code}: site ${capabilities.included[code]}, catalogue ${remote.included}`);
+    }
+  });
+} else {
+  console.warn('check-pricing: the feed carries no capability tally yet — PLAN_CAPABILITIES not checked.');
+}
+
 if (problems.length) {
   console.error(`\ncheck-pricing: the site disagrees with ${FEED}\n`);
   problems.forEach((p) => console.error(`  ✗ ${p}`));
