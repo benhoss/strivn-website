@@ -51,8 +51,8 @@ export const PLAN_PRICES: Record<PlanCode, { monthly: number | null; yearly?: nu
  * build when these copies drift.
  */
 export const PLAN_CAPABILITIES: { total: number; included: Record<PlanCode, number> } = {
-  total: 39,
-  included: { free: 19, amateur: 25, semi_pro: 37, pro: 39 },
+  total: 41,
+  included: { free: 19, amateur: 25, semi_pro: 38, pro: 41 },
 };
 
 /** The trial every new account opens on. `strivn-app/config/billing.php` → `trial`. */
