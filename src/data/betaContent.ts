@@ -42,7 +42,19 @@ export interface BetaContent {
     rate: string;
     exhausted: string;
     signup: string;
+    /** Stamp of each composed turn: « Question 2 ». */
+    question: string;
+    sources: string;
+    composingLong: string;
+    more: string;
+    /** `{s}`: seconds the turn took. */
+    composedIn: string;
+    asks: string;
+    retry: string;
+    done: string;
   };
+  /** The block closing every composed turn: related questions and the sign-up. */
+  next: { stamp: string; title: string; tryBody: string };
   /** When the composer is off (budget, outage): the static routes instead. */
   fallback: { title: string; body: string; links: { label: string; href: string }[] };
   personaNames: Record<string, string>;
@@ -99,6 +111,19 @@ export const betaContent: Record<BetaLocale, BetaContent> = {
       rate: 'Trop de questions d’un coup. Patientez une minute.',
       exhausted: 'Vous avez exploré tout ce que cette visite permet. Créez votre compte pour continuer, votre profil suit.',
       signup: 'Créer mon espace gratuitement',
+      question: 'Question',
+      sources: 'Sources lues',
+      composingLong: 'STRIVN lit la documentation et compose la page.',
+      more: 'La suite de la page arrive.',
+      composedIn: 'Composée en {s} s',
+      asks: 'Pour préciser la suite',
+      retry: 'Relancer la question',
+      done: 'Page composée.',
+    },
+    next: {
+      stamp: 'La suite',
+      title: 'Continuer avec une question proche',
+      tryBody: 'Les 30 premiers jours sont au Semi-Pro, import GPS compris, sans carte. Ce que vous avez dit ici préremplit votre inscription.',
     },
     fallback: {
       title: 'La composition en direct fait une pause.',
@@ -163,6 +188,19 @@ export const betaContent: Record<BetaLocale, BetaContent> = {
       rate: 'Too many questions at once. Wait a minute.',
       exhausted: 'You have explored everything this visit allows. Create your account to continue, your profile comes with you.',
       signup: 'Create my space for free',
+      question: 'Question',
+      sources: 'Sources read',
+      composingLong: 'STRIVN is reading the documentation and composing the page.',
+      more: 'More of the page is on its way.',
+      composedIn: 'Composed in {s} s',
+      asks: 'To narrow what comes next',
+      retry: 'Ask again',
+      done: 'Page composed.',
+    },
+    next: {
+      stamp: 'Next',
+      title: 'Carry on with a related question',
+      tryBody: 'The first 30 days are on Semi-Pro, GPS import included, no card. What you said here prefills your sign-up.',
     },
     fallback: {
       title: 'Live composition is taking a break.',

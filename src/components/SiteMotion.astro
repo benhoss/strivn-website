@@ -39,14 +39,26 @@
   const motion = root.classList.contains('st-motion') && 'IntersectionObserver' in window;
 
   // ── In-view flag (always on: components rely on it to pause loops) ──
-  const inview = document.querySelectorAll<HTMLElement>('[data-st-inview]');
-  if ('IntersectionObserver' in window && inview.length) {
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.target.classList.toggle('is-inview', e.isIntersecting)),
-      { rootMargin: '0px 0px -10% 0px' },
-    );
-    inview.forEach((el) => io.observe(el));
-  }
+  const inviewIo =
+    'IntersectionObserver' in window
+      ? new IntersectionObserver(
+          (entries) => entries.forEach((e) => e.target.classList.toggle('is-inview', e.isIntersecting)),
+          { rootMargin: '0px 0px -10% 0px' },
+        )
+      : null;
+  document.querySelectorAll<HTMLElement>('[data-st-inview]').forEach((el) => inviewIo?.observe(el));
+
+  // Set below when motion runs: arms the compute groups found in a scope.
+  let computeIn: ((scope: ParentNode) => void) | null = null;
+
+  /* Content injected after load (the generated beta's bands) joins the same
+     vocabulary: in-view flags, and visuals that compute when they arrive. */
+  (window as unknown as { __stMotionAdopt: (root: Element) => void }).__stMotionAdopt = (root) => {
+    [root, ...root.querySelectorAll('[data-st-inview]')]
+      .filter((el) => el.matches('[data-st-inview]'))
+      .forEach((el) => inviewIo?.observe(el));
+    computeIn?.(root);
+  };
 
   if (motion) {
     const main = document.querySelector('main') ?? document.body;
@@ -64,9 +76,9 @@
       if (!g) groups.set(box, (g = { els: [], typed: [], counters: [] }));
       return g;
     };
-    const arm = (sel: string, cls: string, base: number, step: number, cap = 1200) => {
+    const arm = (sel: string, cls: string, base: number, step: number, cap = 1200, scope: ParentNode = main) => {
       const seen = new Map<Group, number>();
-      all(sel).forEach((el) => {
+      all(sel, scope).forEach((el) => {
         const g = group(el);
         if (!g || el.classList.contains(cls)) return;
         const i = seen.get(g) ?? 0;
@@ -77,30 +89,33 @@
       });
     };
 
-    arm('.st-meter > i, i[style*="width"], span[style*="width"]:not(.st-meter)', 'st-fill', 140, 70);
-    arm('span[style*="height"], [data-st-bars] rect', 'st-bar', 120, 60);
-    arm('tbody > tr, [data-st-rows] > *', 'st-row', 60, 45, 700);
-    arm('.st-chip', 'st-late', 560, 55, 1300);
+    const armIn = (scope: ParentNode) => {
+      arm('.st-meter > i, i[style*="width"], span[style*="width"]:not(.st-meter)', 'st-fill', 140, 70, 1200, scope);
+      arm('span[style*="height"], [data-st-bars] rect', 'st-bar', 120, 60, 1200, scope);
+      arm('tbody > tr, [data-st-rows] > *', 'st-row', 60, 45, 700, scope);
+      arm('.st-chip', 'st-late', 560, 55, 1300, scope);
 
-    all('.st-proposal, [data-st-flash]').forEach((el) => {
-      const g = group(el) ?? group(el.parentElement ?? el);
-      el.classList.add('st-flash');
-      if (el.hasAttribute('data-st-flash') && el.dataset.stFlash === 'risk') el.style.setProperty('--st-flash-rgb', '255, 92, 92');
-      if (g) g.els.push(el);
-      else groups.set(el, { els: [el], typed: [], counters: [] });
-    });
+      all('.st-proposal, [data-st-flash]', scope).forEach((el) => {
+        if (el.classList.contains('st-flash')) return;
+        const g = group(el) ?? group(el.parentElement ?? el);
+        el.classList.add('st-flash');
+        if (el.hasAttribute('data-st-flash') && el.dataset.stFlash === 'risk') el.style.setProperty('--st-flash-rgb', '255, 92, 92');
+        if (g) g.els.push(el);
+        else groups.set(el, { els: [el], typed: [], counters: [] });
+      });
 
-    all('.st-kpi__v, .st-figure, [data-st-count]').forEach((el) => {
-      const g = group(el);
-      if (g) g.counters.push(el);
-      else groups.set(el, { els: [], typed: [], counters: [el] });
-    });
+      all('.st-kpi__v, .st-figure, [data-st-count]', scope).forEach((el) => {
+        const g = group(el);
+        if (g) g.counters.push(el);
+        else groups.set(el, { els: [], typed: [], counters: [el] });
+      });
 
-    all('[data-st-type]').forEach((el) => {
-      const g = group(el);
-      if (g) g.typed.push(el);
-      else groups.set(el, { els: [], typed: [el], counters: [] });
-    });
+      all('[data-st-type]', scope).forEach((el) => {
+        const g = group(el);
+        if (g) g.typed.push(el);
+        else groups.set(el, { els: [], typed: [el], counters: [] });
+      });
+    };
 
     // ── Count-up: rewinds to zero and counts back to the exact string in
     // the HTML. Skipped for values without a number, and when the tab is
@@ -198,7 +213,11 @@
         }),
       { rootMargin: '0px 0px -12% 0px' },
     );
-    groups.forEach((_, box) => computeIo.observe(box));
+    computeIn = (scope) => {
+      armIn(scope);
+      groups.forEach((_, box) => computeIo.observe(box));
+    };
+    computeIn(main);
 
     // ════════ 2 · Block reveals (below the fold only) ════════
     const LISTS = '.st-cols, .st-facts, .st-rules, .st-faq, .b-list, [data-st-stagger]';
