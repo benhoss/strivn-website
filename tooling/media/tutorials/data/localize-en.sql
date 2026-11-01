@@ -98,3 +98,59 @@ UPDATE rtp_plans p SET phases = (
   FROM json_array_elements_text(p.phases) WITH ORDINALITY AS e(v, i) LEFT JOIN rtp_tr t ON t.fr = e.v)
 WHERE json_typeof(p.phases) = 'array';
 UPDATE exercise_folders SET name = 'Football sessions' WHERE name = 'Séances football';
+
+-- GPS metric names, as the demo's GPS export named its columns (coach data, shown verbatim).
+UPDATE gps_metric_definitions m SET label = v.en FROM (VALUES
+ ('Distance totale','Total distance'),('Distance haute intensité','High-intensity distance'),('Vitesse max','Top speed'),
+ ('Accélérations','Accelerations'),('Décélérations','Decelerations'),('Charge externe','External load')) AS v(fr, en)
+WHERE m.label = v.fr;
+UPDATE gps_metric_definitions SET unit = 'AU' WHERE unit = 'ua';
+
+-- Coach session reviews and per-player observations.
+CREATE TEMP TABLE nt(fr text PRIMARY KEY, en text);
+INSERT INTO nt VALUES
+ ('Récupération active, tout le monde a joué le jeu.','Active recovery, everyone bought in.'),
+ ('Match maîtrisé dans le contenu, encore trop de déchet technique.','We controlled the game, but still too many technical errors.'),
+ ('Volume volontairement réduit, groupe attentif.','Volume deliberately reduced, group focused.'),
+ ('Beaucoup d’engagement, très bon niveau d’exigence.','Lots of commitment, very high standards.'),
+ ('Beaucoup d’engagement, résultat mérité.','Lots of commitment, a deserved result.'),
+ ('Bonne entame, il a fallu s’accrocher en seconde période.','Good start, we had to hang on in the second half.'),
+ ('Travail technique au calme, rien à signaler.','Calm technical work, nothing to report.'),
+ ('On a produit du jeu, il manque de la finition.','We played well but lacked finishing.'),
+ ('Séance conforme au plan, quelques relâchements en fin de séance.','Session went to plan, a few lapses towards the end.'),
+ ('Rythme élevé, quelques joueurs en difficulté sur la fin.','High tempo, a few players struggled at the end.'),
+ ('Bon investissement du groupe, contenu respecté.','Good effort from the group, content delivered.'),
+ ('Grosse séance, intensité tenue jusqu’au bout.','Big session, intensity held right to the end.'),
+ ('Bonne séance dans l’ensemble, deux ateliers à refaire.','Good session overall, two drills to redo.'),
+ ('Séance de remise en route, bonne application générale.','Return-to-training session, good application overall.'),
+ ('Séance dense, le groupe a répondu présent.','Dense session, the group delivered.'),
+ ('Rencontre difficile, le groupe n’a rien lâché.','A tough game, the group never gave up.'),
+ ('Excellent état d’esprit malgré la charge.','Excellent attitude despite the load.'),
+ ('Manque de justesse technique aujourd’hui.','Lacked technical precision today.'),
+ ('Application constante, continue comme ça.','Consistently focused, keep it up.'),
+ ('Trop discret sur la seconde partie de séance.','Too quiet in the second half of the session.'),
+ ('Belle progression sur les dernières semaines.','Real progress over the last few weeks.'),
+ ('Très bonne activité, a tiré le groupe.','Very active, pulled the group along.'),
+ ('Gros volume de travail, à féliciter.','Huge work rate, well done.'),
+ ('Doit hausser le ton dans les duels.','Needs to step up in duels.'),
+ ('Bon placement, lecture du jeu intéressante.','Good positioning, reads the game well.');
+UPDATE event_results r SET notes = nt.en FROM nt WHERE r.notes = nt.fr;
+UPDATE event_player_evaluations e SET coach_notes = nt.en FROM nt WHERE e.coach_notes = nt.fr;
+
+-- Players' session-RPE comments.
+CREATE TEMP TABLE fb(fr text PRIMARY KEY, en text);
+INSERT INTO fb VALUES
+ ('Séance correcte, j’étais dedans.','Decent session, I was in it.'),('Content de la séance, bien calibrée.','Happy with the session, well judged.'),
+ ('Grosse séance, ça piquait sur la fin.','Big session, it stung at the end.'),('J’étais dans le rouge sur les derniers blocs.','I was in the red for the last blocks.'),
+ ('Rythme soutenu mais gérable.','High tempo but manageable.'),('Facile, j’aurais pu en faire plus.','Easy, I could have done more.'),
+ ('Tranquille, bonne remise en route.','Easy, a good restart.'),('Un peu dur au début puis ça allait.','A bit tough at first, then fine.'),
+ ('Très intense, j’ai fini à bout de souffle.','Very intense, I finished out of breath.'),('Bon rythme, aucune difficulté.','Good tempo, no problem.'),
+ ('Rien de méchant, on a surtout parlé.','Nothing hard, we mostly talked.'),('Séance légère, je me sentais bien.','Light session, I felt good.'),
+ ('Beaucoup de courses, je suis cuit.','Lots of running, I''m done in.'),('Dur du début à la fin.','Hard from start to finish.'),
+ ('Bon volume, rien d’excessif.','Good volume, nothing excessive.'),('Ça montait vite mais j’ai tenu.','It ramped up fast but I held on.'),
+ ('Intensité maximale, aucune récupération.','Maximum intensity, no recovery.');
+UPDATE player_event_feedback f SET comment = fb.en FROM fb WHERE f.comment = fb.fr;
+
+-- Starter competitions (seeded in French before CompetitionDefaults followed the team locale).
+UPDATE competitions c SET name = v.en FROM (VALUES ('Championnat','League'),('Coupe','Cup'),('Amical','Friendly'),('Tournoi','Tournament')) AS v(fr, en)
+WHERE c.name = v.fr AND c.team_id = 1;

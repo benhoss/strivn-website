@@ -1,0 +1,35 @@
+1
+00:00:04,500 --> 00:00:12,741
+Session results lists every past session and match, with how many players gave feedback and whether you reviewed it.
+
+2
+00:00:12,741 --> 00:00:20,644
+Filter by trainings, matches or sessions still waiting for your review.
+
+3
+00:00:20,644 --> 00:00:26,956
+Open Wednesday’s training. Your RPE sits next to the players’ average and their distribution.
+
+4
+00:00:26,956 --> 00:00:33,257
+Your review: perceived intensity, how the session went, its real duration and your notes.
+
+5
+00:00:33,257 --> 00:00:41,096
+Then each player: present or not, a rating out of 10 and a short observation for the staff.
+
+6
+00:00:41,096 --> 00:00:47,812
+Players’ own comments appear alongside, so you see how the session felt from the inside.
+
+7
+00:00:47,812 --> 00:00:56,028
+For a match, the review is the match sheet: score, and every goal, card and substitution on a timeline.
+
+8
+00:00:56,028 --> 00:01:03,113
+Team stats against the opponent, and playing time — which goes straight into each player’s load.
+
+9
+00:01:03,113 --> 00:01:10,602
+Share a read-only match summary with families through a public link — and revoke it any time.
