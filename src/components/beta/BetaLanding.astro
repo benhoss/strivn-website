@@ -68,7 +68,7 @@ const client = {
   <main id="s-main" class="bg-void font-sans text-ink antialiased" data-beta={JSON.stringify(client)}>
     <SubHero locale={locale} hero={c.hero} crumbs={{ label: c.crumbs.label, href: `/${locale}/`, page: c.crumbs.page }}>
       <div class="beta-dock-home" data-dock-home>
-        <div class="beta-dock" data-dock>
+        <div class="beta-dock" data-dock role="region" aria-label={c.ask.label}>
           <p class="beta-profile" data-profile hidden>
             <span class="st-label">{c.live.profile}</span>
             <span class="beta-profile__text" data-profile-text></span>
@@ -101,6 +101,8 @@ const client = {
       </div>
     </section>
 
+    {/* The hero (and its h1) leaves once the page composes; the page keeps its h1 for assistive tech. */}
+    <h1 class="beta-sr" data-composed-h1 hidden>{c.hero.title}</h1>
     <div class="beta-page" data-page></div>
     <p class="beta-sr" aria-live="polite" data-live></p>
 
@@ -135,7 +137,8 @@ const client = {
   }
   .beta-form input::placeholder { color: var(--color-ink-3); }
   .beta-form [data-send]:disabled { opacity: 0.55; cursor: progress; }
-  .beta-note { margin: 0; }
+  /* The note carries the retention notice: it has to read (ink-4 is 2.9:1). */
+  .beta-note { margin: 0; color: var(--color-ink-3); }
   .beta-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   .beta-profile { display: flex; align-items: baseline; gap: 10px; min-width: 0; margin: 0; font-size: 13px; color: var(--color-ink-2); }
@@ -152,7 +155,9 @@ const client = {
   /* ── Once the page composes ────────────────────────────────── */
   :global(body.is-composing .sub-hero),
   :global(body.is-composing) [data-beta-intro] { display: none; }
-  :global(body.is-composing) .beta-page { padding-bottom: 168px; }
+  /* Room for the fixed dock under the last thing on the page (the footer). */
+  :global(body.is-composing) { padding-bottom: 168px; }
+  .beta-dock[hidden] { display: none; }
 
   /* The question docks to the bottom of the screen, on a solid floor so it
      never sits over the page it composes. */
@@ -185,6 +190,14 @@ const client = {
     color: var(--color-ink);
     text-wrap: balance;
     overflow-wrap: anywhere;
+  }
+  .beta-page :global(.beta-turn__q--long) {
+    max-width: 64ch;
+    font-size: clamp(18px, 1.6vw, 21px);
+    font-variation-settings: 'wdth' 92;
+    line-height: 1.45;
+    letter-spacing: 0;
+    text-wrap: pretty;
   }
 
   /* Sources, as the composer reads them: the one that is being read is
@@ -253,7 +266,7 @@ const client = {
   .beta-page :global(.beta-next__body) { margin: 0; max-width: 48ch; color: var(--color-ink-2); }
   .beta-page :global(.beta-next__alt) { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; }
   /* A narrow panel: one promise per line, without the inline separators. */
-  .beta-page :global(.beta-next__try .st-fine) { display: grid; gap: 6px; margin: 0; }
+  .beta-page :global(.beta-next__try .st-fine) { display: grid; gap: 6px; margin: 0; color: var(--color-ink-3); }
   .beta-page :global(.beta-next__try .st-fine > *::after) { content: none; }
   @media (max-width: 900px) {
     .beta-page :global(.beta-next__grid) { grid-template-columns: minmax(0, 1fr); }
@@ -367,10 +380,16 @@ const client = {
 
   function startComposing(): void {
     if (document.body.classList.contains('is-composing')) return;
+    // Moving the dock blurs whatever had focus in it; give it back.
+    const focused = dock.contains(document.activeElement) ? (document.activeElement as HTMLElement) : null;
     document.body.append(dock);
+    focused?.focus({ preventScroll: true });
     document.body.classList.add('is-composing');
+    document.querySelector<HTMLElement>('[data-composed-h1]')!.hidden = false;
     window.scrollTo({ top: 0 });
   }
+
+  const lastTurn = () => [...page.querySelectorAll<HTMLElement>('.beta-turn')].at(-1) ?? null;
 
   function openTurn(prompt: string, n: number, isLive: boolean): Turn {
     const root = el('article', 'beta-turn');
@@ -388,7 +407,10 @@ const client = {
     sources.setAttribute('aria-label', copy.live.sources);
     const scan = el('div', 'beta-scan');
     scan.setAttribute('aria-hidden', 'true');
-    col.append(el('h2', 'beta-turn__q', quote(prompt)), sources, scan);
+    const q = el('h2', 'beta-turn__q', quote(prompt));
+    // A paragraph-long question reads as a paragraph, not a 600-px headline.
+    if (prompt.length > 140) q.classList.add('beta-turn__q--long');
+    col.append(q, sources, scan);
     head.append(stamp, col);
 
     const body = el('div', 'beta-turn__body');
@@ -397,6 +419,8 @@ const client = {
 
     root.append(head, body);
     page.querySelector('.beta-next')?.remove();
+    // A failed turn can only be retried while it is the latest.
+    page.querySelectorAll('[data-retry]').forEach((b) => b.remove());
     land(page, root, null, isLive);
     return { root, body, pending, sources, status, started: performance.now() };
   }
@@ -424,9 +448,12 @@ const client = {
     const row = el('div', 'beta-chips');
     (data.options ?? []).forEach((o) => {
       const b = chip(o, () => {
+        if (busy) return;
         b.setAttribute('aria-pressed', 'true');
         void ask(o);
       });
+      // Arrives mid-turn: answerable once the turn is written (finishTurn).
+      b.disabled = t.root.dataset.state === 'composing';
       row.append(b);
     });
     panel.append(row, el('p', 'beta-askme__or', copy.live.answerOr));
@@ -442,13 +469,14 @@ const client = {
     });
   }
 
-  function finishTurn(t: Turn, ok: boolean): void {
+  function finishTurn(t: Turn, ok: boolean, announce = true): void {
     t.pending.remove();
     t.root.dataset.state = ok ? 'done' : 'failed';
     t.sources.querySelectorAll('li').forEach((li) => li.setAttribute('data-state', 'read'));
+    t.body.querySelectorAll<HTMLButtonElement>('.beta-askme:not(.is-answered) button').forEach((b) => (b.disabled = false));
     const secs = Math.max(1, Math.round((performance.now() - t.started) / 1000));
-    t.status.textContent = ok ? copy.live.composedIn.replace('{s}', String(secs)) : '';
-    if (ok) live.textContent = copy.live.done;
+    t.status.textContent = ok && announce ? copy.live.composedIn.replace('{s}', String(secs)) : '';
+    if (ok && announce) live.textContent = copy.live.done;
   }
 
   function failTurn(t: Turn, text: string, options: { retry?: string; signup?: string } = {}): void {
@@ -456,11 +484,16 @@ const client = {
     box.append(el('p', 'st-lede', text));
     if (options.retry) {
       const again = options.retry;
-      box.append(chip(copy.live.retry, () => {
+      const retry = chip(copy.live.retry, () => {
+        // Only the latest turn, and never over a turn being written: the
+        // failed turn gives its number back to the one that replaces it.
+        if (busy || lastTurn() !== t.root) return;
         t.root.remove();
         turn -= 1;
         void ask(again);
-      }));
+      });
+      retry.dataset.retry = '';
+      box.append(retry);
     }
     if (options.signup) {
       const a = el('a', 'st-btn st-btn--primary', copy.live.signup);
@@ -551,6 +584,16 @@ const client = {
   }
 
   async function openSession(): Promise<boolean> {
+    try {
+      return await restoreOrOpen();
+    } catch {
+      // A proxy page instead of JSON, a restore that cannot render: the static routes.
+      showFallback();
+      return false;
+    }
+  }
+
+  async function restoreOrOpen(): Promise<boolean> {
     const res = await fetch('/beta/session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -572,8 +615,7 @@ const client = {
       data.page.forEach((p: { prompt: string; html: string[] }, i: number) => {
         last = openTurn(p.prompt, i + 1, false);
         p.html.forEach((h) => addHtml(last!, h, false));
-        finishTurn(last, true);
-        last.status.textContent = '';
+        finishTurn(last, true, false);
       });
       turn = data.turns ?? data.page.length;
       if (last) renderNext(last, data.suggestions ?? []);
@@ -586,8 +628,20 @@ const client = {
     if (!message || busy) return;
     busy = true;
     sendButton.disabled = true;
-    if (!(await session())) { busy = false; sendButton.disabled = false; return; }
+    // Give the field back only to someone typing in it: a tap on a phone
+    // should not reopen the keyboard after every turn.
+    const refocus = document.activeElement === input;
+    try {
+      if (await session()) await compose(message);
+    } finally {
+      busy = false;
+      sendButton.disabled = false;
+      if (refocus) input.focus({ preventScroll: true });
+    }
+  }
 
+  /** One turn: the visit is open; the page grows from the stream. */
+  async function compose(message: string): Promise<void> {
     input.value = '';
     closeAsks();
     startComposing();
@@ -599,15 +653,36 @@ const client = {
 
     let suggestions: string[] = [];
     let failed = false;
+    let finished = false; // the stream's `done`: anything short of it is a cut turn
+    let unavailable = false;
+    let exhausted = false;
+
+    const handle = (event: string, data: any): void => {
+      if (event === 'status') readSource(t, String(data.label ?? ''));
+      else if (event === 'html') addHtml(t, String(data.html ?? ''));
+      else if (event === 'ask') askBlock(t, data);
+      else if (event === 'suggestions') suggestions = Array.isArray(data.items) ? data.items : [];
+      else if (event === 'profile') { profile = data.profile ?? {}; renderProfile(); }
+      else if (event === 'done') { finished = true; handoffUrl = data.handoff_url ?? handoffUrl; }
+      else if (event === 'error' && !failed) {
+        failed = true;
+        if (data.code === 'unavailable') unavailable = true;
+        else if ((exhausted = data.code === 'exhausted')) failTurn(t, copy.live.exhausted, { signup: data.handoff_url ?? handoffUrl });
+        else if (data.code === 'rate') failTurn(t, copy.live.rate);
+        else failTurn(t, data.message ?? copy.live.failed, { retry: message });
+      }
+    };
+
     try {
       const res = await fetch('/beta/turn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, message, locale: copy.locale, pageUrl: location.href, handoffUrl, turn }),
       });
-      const reader = res.body!.pipeThrough(new TextDecoderStream()).getReader();
+      if (!res.ok || !res.body) throw new Error(`turn ${res.status}`);
+      const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
       let buffer = '';
-      for (;;) {
+      while (!unavailable) {
         const { value, done } = await reader.read();
         if (done) break;
         buffer += value;
@@ -616,43 +691,51 @@ const client = {
           const frame = buffer.slice(0, cut);
           buffer = buffer.slice(cut + 2);
           const event = /^event: (.*)$/m.exec(frame)?.[1] ?? '';
-          const data = JSON.parse(/^data: (.*)$/m.exec(frame)?.[1] ?? 'null');
-          if (event === 'status') readSource(t, data.label);
-          else if (event === 'html') addHtml(t, data.html);
-          else if (event === 'ask') askBlock(t, data);
-          else if (event === 'suggestions') suggestions = data.items ?? [];
-          else if (event === 'profile') { profile = data.profile ?? {}; renderProfile(); }
-          else if (event === 'done') handoffUrl = data.handoff_url ?? handoffUrl;
-          else if (event === 'error') {
-            failed = true;
-            if (data.code === 'unavailable') { t.root.remove(); showFallback(); break; }
-            if (data.code === 'exhausted') failTurn(t, copy.live.exhausted, { signup: data.handoff_url ?? handoffUrl });
-            else if (data.code === 'rate') failTurn(t, copy.live.rate);
-            else failTurn(t, data.message ?? copy.live.failed, { retry: message });
+          let data: unknown = null;
+          try {
+            data = JSON.parse(/^data: (.*)$/m.exec(frame)?.[1] ?? 'null');
+          } catch {
+            /* a malformed frame is skipped, like upstream does */
           }
+          if (data && typeof data === 'object') handle(event, data);
         }
       }
+      if (unavailable) reader.cancel().catch(() => {});
     } catch {
+      /* network drop, gateway error: handled below as a cut turn */
+    }
+
+    if (unavailable) {
+      t.root.remove();
+      turn -= 1;
+      showFallback();
+      return;
+    }
+    if (!failed && !finished) {
       failed = true;
       failTurn(t, copy.live.failed, { retry: message });
     }
-
     if (!failed) {
       finishTurn(t, true);
       renderNext(t, suggestions);
-    } else if (suggestions.length) {
+    } else if (suggestions.length && !exhausted) {
+      // A failed turn still offers its related questions; an exhausted
+      // visit already shows the sign-up in its message.
       renderNext(t, suggestions);
     }
-    busy = false;
-    sendButton.disabled = false;
-    input.focus({ preventScroll: true });
   }
 
   form.addEventListener('submit', (e) => { e.preventDefault(); void ask(input.value); });
   document.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach((b) => b.addEventListener('click', () => void ask(b.dataset.prompt!)));
 
   // Restore a visit, then honour ?q= (a campaign or an answer page can open on a question).
-  const initial = new URLSearchParams(location.search).get('q');
+  const params = new URLSearchParams(location.search);
+  const initial = params.get('q');
+  if (initial) {
+    // Asked once: a reload restores the visit instead of asking (and paying) again.
+    params.delete('q');
+    history.replaceState(history.state, '', location.pathname + (params.size ? `?${params}` : '') + location.hash);
+  }
   if (store.get() || initial) {
     session().then((ok) => { if (ok && initial) void ask(initial); });
   }
