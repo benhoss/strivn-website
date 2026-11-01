@@ -10,9 +10,11 @@ import { appStartUrl } from '../../lib/appUrl';
 
 interface Props {
   locale: Locale;
+  /** Registration link. The generated beta passes one carrying the visit, so the form opens prefilled. */
+  href?: string;
 }
 
-const { locale } = Astro.props;
+const { locale, href } = Astro.props;
 const c = subClosing[locale];
 
 /* The secondary button opens the staff brief; on that page it would reload
@@ -27,7 +29,7 @@ const showSecondary = Astro.url.pathname !== briefHref;
     <div class="sub-close__side">
       <p class="st-lede">{c.body}</p>
       <div class="st-ctas">
-        <a class="st-btn st-btn--primary" href={appStartUrl(locale)} target="_blank" rel="noopener">
+        <a class="st-btn st-btn--primary" href={href ?? appStartUrl(locale)} target="_blank" rel="noopener">
           {c.primaryCta}
           <svg
             viewBox="0 0 24 24"

@@ -28,6 +28,8 @@ interface Props {
   twitterDescription?: string;
   /** Extra JSON-LD nodes appended to the page @graph (e.g. FAQPage, BreadcrumbList) */
   jsonLdExtra?: Record<string, unknown>[];
+  /** Robots directive. Pages are indexed unless they say otherwise (the generated beta does). */
+  robots?: string;
 }
 
 const {
@@ -45,6 +47,7 @@ const {
   twitterTitle,
   twitterDescription,
   jsonLdExtra = [],
+  robots = 'index, follow',
 } = Astro.props;
 
 const ogTitleText = ogTitle ?? title;
@@ -98,7 +101,7 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
 
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     {alternates.map((alternate) => (

@@ -14,9 +14,13 @@
  * Exits non-zero on the first failure class it finds, listing every instance.
  */
 import { readFile, readdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join, posix } from 'node:path';
 
-const DIST = new URL('../dist/', import.meta.url).pathname;
+// With the Node adapter (the generated beta's routes), the static site is
+// built into dist/client and the server into dist/server.
+const ROOT = new URL('../dist/', import.meta.url).pathname;
+const DIST = existsSync(join(ROOT, 'client')) ? join(ROOT, 'client') + '/' : ROOT;
 
 /** Every built HTML file, as a site-absolute URL path. */
 async function pages(dir = DIST, base = '/') {
@@ -55,7 +59,9 @@ for (const { url } of all) {
     // External, mail, tel, and protocol-relative links are out of scope.
     if (!raw.startsWith('/') || raw.startsWith('//')) continue;
 
-    const [path, fragment] = raw.split('#');
+    // A query string selects state on the target page (`/fr/beta/?q=…`), not another page.
+    const [withQuery, fragment] = raw.split('#');
+    const path = withQuery.split('?')[0];
     const target = path === '' ? url : path.endsWith('/') ? path : `${path}/`;
 
     if (!byUrl.has(target)) {

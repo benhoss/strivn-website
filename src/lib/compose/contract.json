@@ -1,0 +1,2183 @@
+{
+  "version": "b804dafb29db",
+  "kinds": [
+    "cards",
+    "rows",
+    "columns",
+    "panels",
+    "compare",
+    "callout",
+    "note",
+    "rail",
+    "nested",
+    "stats",
+    "crosslink",
+    "visual"
+  ],
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "anyOf": [
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "cards",
+            "description": "Rows of equal cards: icon tile, name, description."
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "desc": {
+                  "type": "string"
+                },
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                }
+              },
+              "required": [
+                "icon",
+                "title",
+                "desc"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "per": {
+            "type": "number",
+            "enum": [
+              2,
+              3
+            ],
+            "description": "Cards per row at desktop width. Defaults to 3."
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "cards",
+          "kind"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "rows",
+            "description": "Definition rows: a left label (with optional formula), a description, and an optional chip on the right. Used for indicators, event types, refusal states."
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "sub": {
+                  "type": "string"
+                },
+                "desc": {
+                  "type": "string"
+                },
+                "chip": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "tone": {
+                      "type": "string",
+                      "enum": [
+                        "blue",
+                        "green",
+                        "orange",
+                        "red",
+                        "plain"
+                      ],
+                      "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                    }
+                  },
+                  "required": [
+                    "label"
+                  ],
+                  "additionalProperties": false
+                },
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                }
+              },
+              "required": [
+                "name",
+                "desc"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "pill": {
+            "type": "boolean",
+            "description": "Render the label as a pill rather than a heading."
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "rows"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "columns",
+            "description": "Columns separated by vertical hairlines."
+          },
+          "cols": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "desc": {
+                  "type": "string"
+                },
+                "eyebrow": {
+                  "type": "string"
+                },
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                }
+              },
+              "required": [
+                "title",
+                "desc"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "cols",
+          "kind"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "panels",
+            "description": "Two or three panels compared side by side."
+          },
+          "panels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "eyebrow": {
+                  "type": "string"
+                },
+                "lead": {
+                  "type": "string"
+                },
+                "desc": {
+                  "type": "string"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                }
+              },
+              "required": [
+                "title"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "panels"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "compare",
+            "description": "A row-label / column-A / column-B comparison table."
+          },
+          "heads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "tones": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "green",
+                "orange",
+                "red",
+                "plain"
+              ],
+              "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "a": {
+                  "type": "string"
+                },
+                "b": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "label",
+                "a",
+                "b"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "heads",
+          "kind",
+          "rows"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "tone": {
+            "type": "string",
+            "enum": [
+              "blue",
+              "green",
+              "orange",
+              "red",
+              "plain"
+            ],
+            "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+          },
+          "icon": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "link": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "href"
+            ],
+            "additionalProperties": false
+          },
+          "kind": {
+            "type": "string",
+            "const": "callout"
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "text"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "const": "note"
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "desc",
+          "kind",
+          "label"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "rail",
+            "description": "Before / during / after rail, one step highlighted."
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "num": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "desc": {
+                  "type": "string"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "num",
+                "title",
+                "desc"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "activeIndex": {
+            "type": "number"
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "steps"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "nested",
+            "description": "Nested scales, each indented under the previous one."
+          },
+          "levels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "where": {
+                  "type": "string"
+                },
+                "desc": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "where",
+                "desc"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "activeIndex": {
+            "type": "number"
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "levels"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "stats",
+            "description": "A row of headline figures."
+          },
+          "stats": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                }
+              },
+              "required": [
+                "value",
+                "label"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "stats"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "crosslink",
+            "description": "Pointer to a neighbouring page."
+          },
+          "link": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "href"
+            ],
+            "additionalProperties": false
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "link"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "visual",
+            "description": "A bespoke capture, named in the visual registry."
+          },
+          "name": {
+            "type": "string"
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "name"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "video",
+            "description": "A product walkthrough the visitor starts: controls, never autoplay."
+          },
+          "src": {
+            "type": "string"
+          },
+          "poster": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string",
+            "description": "Accessible name of the player."
+          },
+          "duration": {
+            "type": "string",
+            "description": "Shown under the player, e.g. \"5 min\"."
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind",
+          "label",
+          "poster",
+          "src"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "stores",
+            "description": "App Store and Google Play badges for one of the mobile apps."
+          },
+          "app": {
+            "type": "string",
+            "enum": [
+              "coach",
+              "player"
+            ]
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "app",
+          "kind"
+        ]
+      },
+      {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "logos",
+            "description": "Tiles carrying the marks of the systems STRIVN reads from. The names come from `partners.ts`, so a page names slugs rather than brands and the strip cannot drift from the homepage's."
+          },
+          "only": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "whoop",
+                "catapult",
+                "hudl",
+                "oliver-sports"
+              ]
+            },
+            "description": "Restrict the row, in the order given. Defaults to all of them."
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "visual": {
+            "type": "string",
+            "description": "Capture rendered between the heading and the section body."
+          },
+          "visualAside": {
+            "type": "boolean",
+            "description": "Sit the capture beside the heading rather than under it. For narrow specimens — a single card, a form — which would otherwise leave the right half of the band empty."
+          },
+          "callouts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tone": {
+                  "type": "string",
+                  "enum": [
+                    "blue",
+                    "green",
+                    "orange",
+                    "red",
+                    "plain"
+                  ],
+                  "description": "Accent for chips, labels and dots. `green`, `orange` and `red` render as the ready / watch / risk status tokens, so they belong on content that describes a player's state; `blue` is the electric label accent; `plain` is neutral. Section kinds that are not about a player (panels, compare, stats) render every tone neutral except `blue`."
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "href"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "description": "A banner: icon, sentence, optional trailing link."
+            }
+          },
+          "note": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "desc"
+            ],
+            "additionalProperties": false,
+            "description": "A wide aside: short label on the left, explanation on the right."
+          },
+          "foot": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Anchor target, for pages whose hero offers jump pills."
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      }
+    ],
+    "definitions": {}
+  },
+  "icons": [
+    "calendar",
+    "send",
+    "clipboard",
+    "radio",
+    "activity",
+    "moon",
+    "table",
+    "satellite",
+    "copy",
+    "gauge",
+    "bell",
+    "users",
+    "target",
+    "sparkles",
+    "sun",
+    "radar",
+    "layout",
+    "shield",
+    "dumbbell",
+    "building",
+    "check",
+    "play",
+    "link",
+    "download",
+    "camera",
+    "plus",
+    "clock",
+    "smartphone",
+    "trophy",
+    "ruler",
+    "signal",
+    "eye",
+    "baby",
+    "ban",
+    "sigma",
+    "video",
+    "list",
+    "library",
+    "euro",
+    "minus",
+    "zap",
+    "info",
+    "circle",
+    "shuffle",
+    "timer",
+    "square",
+    "type",
+    "mic",
+    "image"
+  ],
+  "visuals": {
+    "load-board": "Charge de la semaine : trois KPI d'équipe (charge, ACWR, monotonie) au-dessus du flux du jour.",
+    "checkin-signals": "Check-in du matin : tableau des réponses des joueurs (sommeil, fatigue, douleur) et l'alerte du joueur à risque.",
+    "test-campaign": "Campagne de tests physiques (VMA) : avancement de la saisie et grille des résultats.",
+    "gps-blocks": "Import GPS : les colonnes de zones de l'export reliées à des blocs de vitesse nommés (aérobie, haute intensité, sprint).",
+    "unit-conversion": "Conversion d'unité de charge : ce que le coach saisit, ce que STRIVN stocke, ce que le staff lit.",
+    "measure-editor": "Éditeur de mesure de test : nom, unité, description et zones de valeur.",
+    "percentile-scale": "Position d'un joueur sur les référentiels de son poste (percentiles).",
+    "week-plan": "Semaine planifiée : sept jours de charge prévue, et le jeudi ouvert en détail.",
+    "live-runner": "Séance en direct au bord du terrain : le bloc en cours, son chrono et les suivants.",
+    "match-live": "Saisie de match en direct : score, faits comptés et chronologie.",
+    "library-inbox": "Bibliothèque d'exercices : une capture partagée (lien, vidéo) à classer, et la file derrière.",
+    "program-weights": "Programme de musculation : une prescription avec une charge calculée par joueur.",
+    "squad-list": "Effectif : les joueurs par statut (présent, adapté, blessé, indisponible).",
+    "rsvp-board": "Convocation : les réponses des joueurs qui arrivent, compteurs par statut.",
+    "rtp-protocol": "Protocole de retour au jeu d'un joueur blessé : étapes validées et date de retour estimée.",
+    "player-phone": "App joueur : l'écran d'accueil du joueur sur téléphone.",
+    "player-stats": "App joueur : les statistiques de saison du joueur et ses derniers matchs.",
+    "player-form": "App joueur : sa forme du jour, la semaine et la quinzaine.",
+    "report-table": "Rapport enregistré : sélection et forme des joueurs, avec la fiabilité de chaque valeur.",
+    "scouting-brief": "Dossier adversaire : l'effectif observé et le brief proposé à partir de lui.",
+    "deck-editor": "Présentation d'après-match : l'éditeur et la couverture remplie automatiquement.",
+    "deck-context": "Présentation : le même débrief basculé sur le match suivant.",
+    "deck-tactic": "Présentation : une diapositive avec un tableau tactique du staff."
+  },
+  "bands": {
+    "home-import": {
+      "describe": "Bandeau complet : importer l'export GPS de la séance et le croiser avec RPE, wellness et plan (remplace le tableur).",
+      "personas": [
+        "sc_coach",
+        "club"
+      ]
+    },
+    "home-readiness": {
+      "describe": "Bandeau complet : la readiness du matin, qui est prêt, qui surveiller, et pourquoi.",
+      "personas": [
+        "sc_coach",
+        "coach",
+        "physio"
+      ]
+    },
+    "home-microcycle": {
+      "describe": "Bandeau complet : le microcycle planifié, charge prévue contre réalisée.",
+      "personas": [
+        "sc_coach",
+        "coach"
+      ]
+    },
+    "home-players": {
+      "describe": "Bandeau complet : l'app joueur, check-in du matin et RPE après séance.",
+      "personas": [
+        "player",
+        "parent",
+        "coach",
+        "sc_coach"
+      ]
+    },
+    "home-assistant": {
+      "describe": "Bandeau complet : après le match, l'assistant prépare le rapport et le débrief.",
+      "personas": [
+        "coach",
+        "sc_coach",
+        "club"
+      ]
+    },
+    "home-live": {
+      "describe": "Bandeau complet : la séance en direct sur tablette au bord du terrain.",
+      "personas": [
+        "coach",
+        "sc_coach"
+      ]
+    },
+    "sc-daily": {
+      "describe": "Bandeau complet : la journée du préparateur physique dans STRIVN.",
+      "personas": [
+        "sc_coach"
+      ]
+    },
+    "sc-metrics": {
+      "describe": "Bandeau complet : les indicateurs de charge (ACWR, monotonie, HSR) et leur lecture.",
+      "personas": [
+        "sc_coach",
+        "physio"
+      ]
+    },
+    "sc-load-planning": {
+      "describe": "Bandeau complet : planifier la charge de la semaine et la comparer au réalisé.",
+      "personas": [
+        "sc_coach"
+      ]
+    },
+    "sc-library": {
+      "describe": "Bandeau complet : la bibliothèque d'exercices du staff et leurs métriques.",
+      "personas": [
+        "sc_coach",
+        "coach"
+      ]
+    },
+    "sc-strength": {
+      "describe": "Bandeau complet : la musculation, 1RM et charges prescrites par joueur.",
+      "personas": [
+        "sc_coach"
+      ]
+    },
+    "sc-tests": {
+      "describe": "Bandeau complet : les campagnes de tests physiques et les référentiels.",
+      "personas": [
+        "sc_coach"
+      ]
+    },
+    "sc-reports": {
+      "describe": "Bandeau complet : les rapports hebdomadaires pour le staff et la direction.",
+      "personas": [
+        "sc_coach",
+        "club"
+      ]
+    },
+    "sol-roles": {
+      "describe": "Bandeau complet : ce que chaque rôle du staff fait dans STRIVN (coach, préparateur, kiné, analyste).",
+      "personas": [
+        "club",
+        "coach",
+        "physio",
+        "scout"
+      ]
+    }
+  }
+}

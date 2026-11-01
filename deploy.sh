@@ -9,6 +9,11 @@
 # Env (optional):
 #   DRY_RUN=1    : pass --dry-run to rsync, no remote writes
 #   REMOTE       : default "forge@strivn.net:/home/forge/p3rform-strivn-website.on-forge.com/public"
+#   SERVER_REMOTE: where the generated beta's Node server lives (default
+#                  "forge@strivn.net:/home/forge/strivn-beta-server"); SKIP_SERVER=1
+#                  publishes the static site only
+#   SERVER_RESTART: command run on the host after the server upload (default
+#                  "sudo -n supervisorctl restart strivn-beta")
 #
 # Requires: Node + npm, rsync, ssh access to REMOTE (StrictHostKeyChecking=accept-new).
 
@@ -17,7 +22,12 @@ set -euo pipefail
 # ─── Config ────────────────────────────────────────────────────────────────
 REMOTE="${REMOTE:-forge@strivn.net:/home/forge/p3rform-strivn-website.on-forge.com/public}"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-DIST="$SCRIPT_DIR/dist"
+# The Node adapter (the generated beta's /beta/session and /beta/turn routes)
+# builds the static site into dist/client and the server into dist/server.
+# Every page is still static; only those two routes need the server.
+DIST="$SCRIPT_DIR/dist/client"
+SERVER_REMOTE="${SERVER_REMOTE:-forge@strivn.net:/home/forge/strivn-beta-server}"
+SERVER_RESTART="${SERVER_RESTART:-sudo -n supervisorctl restart strivn-beta}"
 DRY_RUN_FLAG=""
 [[ "${DRY_RUN:-0}" == "1" ]] && DRY_RUN_FLAG="--dry-run"
 
@@ -93,6 +103,23 @@ RSYNC_FLAGS=(
 # Trailing-slash on the source is critical: it tells rsync to copy the
 # *contents* of dist/ into the remote directory, not dist/ itself.
 rsync "${RSYNC_FLAGS[@]}" "$DIST/" "$REMOTE"
+
+# ─── Beta server ───────────────────────────────────────────────────────────
+# The server bundle plus the lockfile: the host installs production deps
+# itself, then the supervised process restarts. Runbook:
+# docs/plans/2026-11-01-001-feat-website-generated-beta-plan.md § 14.
+if [[ "${SKIP_SERVER:-0}" != "1" ]]; then
+  echo ""
+  echo "→ beta server: $SERVER_REMOTE"
+  rsync "${RSYNC_FLAGS[@]}" --exclude='client/' "$SCRIPT_DIR/dist/" "$SERVER_REMOTE/dist/"
+  rsync -a ${DRY_RUN_FLAG:+$DRY_RUN_FLAG} -e 'ssh -o StrictHostKeyChecking=accept-new -o ConnectTimeout=10' \
+    "$SCRIPT_DIR/package.json" "$SCRIPT_DIR/package-lock.json" "$SERVER_REMOTE/"
+  if [[ -z "$DRY_RUN_FLAG" ]]; then
+    host="${SERVER_REMOTE%%:*}"
+    path="${SERVER_REMOTE#*:}"
+    ssh -o StrictHostKeyChecking=accept-new "$host" "cd '$path' && npm ci --omit=dev --ignore-scripts --silent && $SERVER_RESTART"
+  fi
+fi
 
 echo ""
 echo "✓ deployed"

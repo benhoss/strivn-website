@@ -1,6 +1,6 @@
 # Site généré (bêta) · cadrage
 
-Date : 2026-11-01 · Statut : **à valider par Benoit, rien n'est construit avant validation**
+Date : 2026-11-01 · Statut : **validé par Benoit le 2026-11-01, phases 0 à 4 construites** (bilan au § 15)
 Dépôts : `strivn-website` (page, rendu, pages de réponse) et `P3rform` (compositeur IA, hand-off, analytique).
 
 ## 1. Objectif
@@ -233,3 +233,49 @@ Il se trouve sur deux branches locales non poussées : `feat/discovery-site` (ap
 | Google pénalise du contenu généré | Rien n'est indexé sans PR relue. Les réponses en direct sont en `noindex`. |
 | Une deuxième pile à exploiter sur Forge (démon Node) | Elle ne sert que `/beta`. Si elle tombe, nginx renvoie vers l'accueil statique. |
 | Le schéma du site et la copie de l'app divergent | Contrôle `postbuild`, et synchronisation au déploiement du site. |
+
+## 14. Mise en production (runbook)
+
+À faire une fois, dans cet ordre. Tant que l'étape 4 n'est pas faite, `/fr/beta/` affiche son repli statique (liens vers les pages), jamais une erreur.
+
+1. **App (Forge, site app.strivn.net).** Déployer la branche, puis `php artisan migrate`. Dans `.env` :
+   - `DISCOVERY_ENABLED=1`
+   - `DISCOVERY_PROXY_KEY=<secret long>` (le même qu'à l'étape 3)
+   - `DISCOVERY_MODEL`, puis `DISCOVERY_PRICE_INPUT_EUR` et `DISCOVERY_PRICE_OUTPUT_EUR` relevés sur OpenRouter le jour même ; `DISCOVERY_DAILY_BUDGET_EUR=5`
+   - `DISCOVERY_GITHUB_TOKEN` : un jeton à grain fin, limité à `benhoss/strivn-website`, droits *Contents* et *Pull requests* en écriture. Sans lui, le bouton télécharge le fichier.
+2. **Site (Forge, site strivn.net).** Node 22 sur l'hôte. Un démon supervisé (Forge › Daemons), lancé depuis `/home/forge/strivn-beta-server` :
+   `HOST=127.0.0.1 PORT=4321 DISCOVER_API=https://app.strivn.net/api/discover DISCOVER_PROXY_KEY=<secret> node dist/server/entry.mjs`
+   nommé `strivn-beta` (c'est le nom que `deploy.sh` redémarre ; sinon `SERVER_RESTART=…`).
+3. **nginx (strivn.net).** Seules les deux routes dynamiques vont au démon. Les pages `/fr/beta/` et `/en/beta/` restent des fichiers statiques :
+   ```nginx
+   location ~ ^/beta/(session|turn)$ {
+       proxy_pass http://127.0.0.1:4321;
+       proxy_http_version 1.1;
+       proxy_set_header Host $host;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_buffering off;          # le flux SSE doit partir au fil de l'eau
+       proxy_read_timeout 120s;
+   }
+   ```
+   Si le démon tombe, ces deux routes répondent 502. La page affiche alors son repli, et le reste du site n'est pas concerné.
+4. **Déploiement du site.** `./deploy.sh` publie `dist/client/` (le site statique, comme avant) puis le serveur. Ensuite, côté app : `php artisan discovery:sync-site`. Cette commande lit `https://strivn.net/beta/compose-contract.json` et `compose-corpus.json`. **À relancer après chaque déploiement du site**, comme `docs:sync` après l'aide.
+5. **Vérifier.** Ouvrir `/fr/beta/`, poser une question, puis regarder `/admin/discovery` dans l'app.
+
+## 15. Bilan de construction (2026-11-01)
+
+**Phase 0.** Le rendu à la demande des composants existants fonctionne : une route Node rend `SubSections`, une capture ou un bandeau avec l'API Container d'Astro, et leurs styles sont déjà dans la page parce que `BetaLanding` importe les composants. Les bandeaux retenus après audit sont au nombre de 14 (`src/lib/compose/bands.ts`). Deux sont écartés : `HomeBoard`, dont le script ne s'exécuterait pas sur un bandeau injecté, et `SolCompo`, qui dit « ci-dessous ». **Pas fait : le banc d'essai des modèles** (20 questions × 7 profils). Il demande une clé OpenRouter, absente de l'environnement de construction. À faire avant d'ouvrir la bêta. Le modèle par défaut reste un choix provisoire.
+
+**Phase 1.** Le contrat est généré depuis `types.ts` (`npm run build:compose-contract`). Le `postbuild` refuse un contrat périmé et publie `compose-contract.json` et `compose-corpus.json`. Côté app, `discovery:sync-site` les synchronise, et `DiscoveryItems` valide chaque ligne contre le schéma. Les sortes `video`, `stores` et `logos` sont exclues.
+
+**Phase 2.** `/fr/beta/` et `/en/beta/` sont statiques et `noindex`, et absentes du sitemap. Les routes `/beta/session` et `/beta/turn` tournent sur Node. Sans `DISCOVER_API`, un compositeur scripté hors ligne sert aux démos. La pile revenant au retour sur la page, `?q=` et le repli statique sont en place.
+
+**Phase 3.** L'inscription arrive pré-remplie et récupère la visite, et l'onboarding lit le profil. La clôture d'inscription (`SubClosing`) apparaît au plus une fois par page, parce que ses identifiants sont fixes.
+
+**Phase 4.** `/admin/discovery` montre les questions regroupées, les profils, l'engagement, la conversion et le coût. Le bouton « En faire une page de réponse » compose la page en FR et EN et ouvre une PR en brouillon, ou télécharge le fichier sans jeton. Les pages de réponse sont publiées sous `/{fr,en}/questions/{slug}/` avec FAQPage, BreadcrumbList, hreflang et sitemap, et leur index n'est construit qu'à partir d'une page. `discovery:prune` anonymise les visites après 12 mois.
+
+**Petites modifications de l'existant**, toutes rétrocompatibles :
+- `BaseLayout` reçoit `robots` ;
+- `SubSections` reçoit `idPrefix` ;
+- `SubClosing` reçoit `href` ;
+- `check-links` ignore la query string ;
+- `deploy.sh` publie `dist/client` et le serveur.

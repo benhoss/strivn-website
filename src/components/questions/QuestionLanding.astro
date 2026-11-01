@@ -1,0 +1,77 @@
+---
+/**
+ * An answer page: SubLanding's shell (header, SubHero, SubSections,
+ * SubClosing, footer) at /{locale}/questions/{slug}/, with hreflang for the
+ * locales the page exists in, a breadcrumb and a FAQPage entry. Indexed, and
+ * in the sitemap: this is the layer of the generated website Google reads.
+ */
+import { NAV } from '../../data/nav';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../SiteHeader.astro';
+import SubHero from '../sub/SubHero.astro';
+import SubSections from '../sub/SubSections.astro';
+import SubClosing from '../sub/SubClosing.astro';
+import HomeFooter from '../home/HomeFooter.astro';
+import { homeContent } from '../../data/homeContent';
+import { SKIP_LABEL } from '../../lib/skipLabel';
+import { answerLabels, type AnswerLocale, type AnswerPage } from '../../data/questions';
+import type { Section } from '../../data/subpages/types';
+
+interface Props {
+  locale: AnswerLocale;
+  page: AnswerPage;
+}
+
+const { locale, page } = Astro.props;
+const content = page.locales[locale]!;
+const labels = answerLabels[locale];
+const shared = homeContent[locale];
+const site = 'https://strivn.net';
+
+const path = (l: AnswerLocale) => `/${l}/questions/${page.slug}/`;
+const available = (Object.keys(page.locales) as AnswerLocale[]).filter((l) => page.locales[l]);
+const alternates = [
+  ...available.map((l) => ({ hreflang: l, href: path(l) })),
+  { hreflang: 'x-default', href: path(available.includes('fr') ? 'fr' : available[0]) },
+];
+const switchHrefs = Object.fromEntries(available.map((l) => [l, path(l)]));
+
+// Close on the generated page, opened on this very question.
+const sections: Section[] = [
+  ...content.sections,
+  { kind: 'crosslink', link: { label: labels.ask, href: `${labels.askHref}?q=${encodeURIComponent(content.question)}` } },
+];
+
+const jsonLdExtra = [
+  {
+    '@type': 'FAQPage',
+    mainEntity: [{ '@type': 'Question', name: content.question, acceptedAnswer: { '@type': 'Answer', text: content.answer } }],
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'STRIVN', item: `${site}/${locale}/` },
+      { '@type': 'ListItem', position: 2, name: labels.crumb, item: `${site}/${locale}/questions/` },
+      { '@type': 'ListItem', position: 3, name: content.question, item: `${site}${path(locale)}` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  lang={locale}
+  title={content.meta.title}
+  description={content.meta.description}
+  canonicalPath={path(locale)}
+  alternates={alternates}
+  jsonLdExtra={jsonLdExtra}
+>
+  <a href="#s-main" class="s-skip">{SKIP_LABEL[locale]}</a>
+  <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} switchHrefs={switchHrefs} />
+  <main id="s-main" class="bg-void font-sans text-ink antialiased">
+    <SubHero locale={locale} hero={content.hero} crumbs={{ label: labels.crumb, href: `/${locale}/questions/`, page: content.question }} />
+    <SubSections sections={sections} locale={locale} />
+    <SubClosing locale={locale} />
+  </main>
+  <HomeFooter locale={locale} footer={shared.footer} />
+</BaseLayout>

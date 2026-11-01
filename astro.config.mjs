@@ -1,14 +1,21 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import node from '@astrojs/node';
 
 export default defineConfig({
   site: 'https://strivn.net',
+  // Every page stays prerendered (static output). Only the generated website's
+  // endpoints opt out with `prerender = false`; they run in the Node server
+  // the adapter builds into dist/server (beta/README in docs/plans).
+  output: 'static',
+  adapter: node({ mode: 'standalone' }),
   integrations: [
     sitemap({
       // Redirect stubs of the Teamworks page's earlier slugs stay out.
+      // The generated beta is noindex: one visitor's page, never a search result.
       filter: (page) =>
-        !page.includes('/fr/alternative-teamworks-opteamal') && !page.includes('/alternative-opteamal/'),
+        !page.includes('/fr/alternative-teamworks-opteamal') && !page.includes('/alternative-opteamal/') && !/\/(fr|en)\/beta\//.test(page),
     }),
   ],
   // The combined live page shipped briefly before being split into

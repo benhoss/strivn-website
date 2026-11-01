@@ -25,9 +25,14 @@ import PartnerTiles from '../shared/PartnerTiles.astro';
 interface Props {
   sections: Section[];
   locale: Locale;
+  /**
+   * Prefix of the heading ids. A page renders its sections in one call; the
+   * generated beta renders them one at a time, so each call needs its own.
+   */
+  idPrefix?: string;
 }
 
-const { sections, locale } = Astro.props;
+const { sections, locale, idPrefix = 'sub-s' } = Astro.props;
 
 /** Status ink, for content that is a player's state. Scoped classes rather
  *  than Tailwind utilities: the `st-*` type rules come later in the cascade
@@ -69,7 +74,7 @@ const grid = (n: number) => `sub-grid sub-grid--${Math.min(Math.max(n, 2), 4)}`;
       <section
         id={s.id}
         class:list={['st-sec sub-sec', bare && !head && 'st-sec--tight']}
-        aria-labelledby={s.title ? `sub-s${i}` : undefined}
+        aria-labelledby={s.title ? `${idPrefix}${i}` : undefined}
       >
         <div class="st-wrap">
           {(head || s.visual) && (
@@ -78,7 +83,7 @@ const grid = (n: number) => `sub-grid sub-grid--${Math.min(Math.max(n, 2), 4)}`;
                 <div class="st-head sub-head">
                   {s.kicker && <p class="st-label st-eyebrow">{s.kicker}</p>}
                   {s.title && (
-                    <h2 id={`sub-s${i}`} class="st-h2">
+                    <h2 id={`${idPrefix}${i}`} class="st-h2">
                       {s.title}
                     </h2>
                   )}
