@@ -15,7 +15,9 @@ export default {
   },
   // Tom's injury is declared on camera and one RTP step is ticked: undo both.
   setup: () => {
-    sh(`psql -h 127.0.0.1 -U p3rform -d p3rform -c "DELETE FROM injuries WHERE player_id = 4" -c "UPDATE return_to_play_steps SET completed_at = NULL, completed_by = NULL WHERE injury_id = 3 AND name = 'Quadriceps strengthening'"`);
+    // Through Eloquent, not SQL: the injury observer puts the player's status back.
+    sh(`cd /home/user/P3rform && php artisan tinker --execute='App\\Models\\Injury::where("player_id", 4)->get()->each->delete();'`);
+    sh(`psql -h 127.0.0.1 -U p3rform -d p3rform -c "UPDATE return_to_play_steps SET completed_at = NULL, completed_by = NULL WHERE injury_id = 3 AND name = 'Quadriceps strengthening'"`);
     sh('cd /home/user/P3rform && php artisan cache:clear');
   },
   scenes: [{

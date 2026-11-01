@@ -1,47 +1,47 @@
 1
-00:00:04,500 --> 00:00:10,027
+00:00:04,500 --> 00:00:10,017
 After each session, players are asked one thing: how hard was it?
 
 2
-00:00:10,027 --> 00:00:17,494
+00:00:10,017 --> 00:00:17,481
 They tap a value from 1 (very easy) to 10 (maximal). Nathan found Saturday’s match hard: 8.
 
 3
-00:00:17,494 --> 00:00:23,254
+00:00:17,481 --> 00:00:23,202
 An optional comment, then Save. That’s it.
 
 4
-00:00:23,656 --> 00:00:30,367
+00:00:23,603 --> 00:00:30,313
 On the staff side, open Wellbeing › RPE. Every answer lands here, session by session.
 
 5
-00:00:30,367 --> 00:00:38,990
+00:00:30,313 --> 00:00:38,949
 Player RPE, your own coach RPE, the gap between the two and the response rate over the last 4 weeks.
 
 6
-00:00:38,990 --> 00:00:47,999
+00:00:38,949 --> 00:00:47,968
 One row per player, one column per session. A big gap tells you a player feels sessions harder than you planned.
 
 7
-00:00:47,999 --> 00:00:57,759
+00:00:47,968 --> 00:00:57,752
 Under Tracking › Load, RPE × minutes becomes each player’s load in arbitrary units (AU) — or GPS load once you import it.
 
 8
-00:00:57,759 --> 00:01:05,235
+00:00:57,752 --> 00:01:05,194
 Players are sorted by load. Malik is flagged as over-used compared with the rest of the squad.
 
 9
-00:01:05,235 --> 00:01:14,603
+00:01:05,194 --> 00:01:14,589
 The Trends tab ranks players by ACWR — this week’s load against the last four. The usual band is 0.8 to 1.3.
 
 10
-00:01:14,603 --> 00:01:21,275
+00:01:14,589 --> 00:01:21,307
 When a player’s load jumps well above their own baseline, strivn raises a load alert.
 
 11
-00:01:21,275 --> 00:01:27,215
+00:01:21,307 --> 00:01:27,251
 View trend shows the weekly load, ACWR, monotony and strain behind the alert.
 
 12
-00:01:27,215 --> 00:01:33,898
+00:01:27,251 --> 00:01:33,954
 Adjust the plan, then acknowledge the alert so the whole staff knows it was handled.

@@ -1,39 +1,39 @@
 1
-00:00:04,500 --> 00:00:11,605
+00:00:04,500 --> 00:00:11,574
 The Medical board is the staff’s shared view of injuries, rehab and what needs reviewing today.
 
 2
-00:00:11,605 --> 00:00:18,421
+00:00:11,574 --> 00:00:18,414
 Tom felt his hamstring during sprints. Open Injuries, then Declare.
 
 3
-00:00:18,421 --> 00:00:23,905
+00:00:18,414 --> 00:00:23,640
 Pick the player, the type and the zone…
 
 4
-00:00:23,905 --> 00:00:36,903
+00:00:23,641 --> 00:00:36,667
 …then the side, how severe it is and whether he can train or play.
 
 5
-00:00:36,903 --> 00:00:42,752
+00:00:36,667 --> 00:00:42,196
 Add an estimated return date and a note for the staff.
 
 6
-00:00:42,752 --> 00:00:47,502
+00:00:42,196 --> 00:00:47,633
 Declare. The injury is shared with the whole staff instantly.
 
 7
-00:00:47,502 --> 00:00:54,582
+00:00:47,633 --> 00:00:54,730
 Open an injury to follow it: days out, severity, estimated return and progress. Here, Maxime’s knee.
 
 8
-00:00:54,582 --> 00:01:01,252
+00:00:54,730 --> 00:01:01,403
 Recovery steps take him back to the group. Tick a step off when it’s done.
 
 9
-00:01:01,252 --> 00:01:06,784
+00:01:01,403 --> 00:01:06,943
 Availability is set here too: unavailable, training only, or fit to play.
 
 10
-00:01:06,784 --> 00:01:15,772
+00:01:06,943 --> 00:01:15,933
 Back on the board, Availability shows who can be selected. Tom and Maxime are out — and left off call-ups automatically.

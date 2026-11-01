@@ -85,3 +85,16 @@ UPDATE planned_slots s SET label = bl.en FROM bl WHERE s.label = bl.fr;
 UPDATE player_slot_feedback f SET slot_label = bl.en FROM bl WHERE f.slot_label = bl.fr;
 UPDATE planned_block_templates t SET label = bl.en FROM bl WHERE t.label = bl.fr;
 UPDATE planned_lanes l SET label = bl.en FROM bl WHERE l.label = bl.fr;
+
+-- Return-to-play plan phases (a JSON array of names) and the bot's shared exercise folder.
+CREATE TEMP TABLE IF NOT EXISTS rtp_tr(fr text PRIMARY KEY, en text);
+INSERT INTO rtp_tr VALUES
+ ('Repos et compression 48 h','Rest and compression, 48 h'),('Renforcement du triceps sural','Calf strengthening'),
+ ('Course en ligne droite','Straight-line running'),('Réintégration collective partielle','Partial return to team training'),
+ ('Décharge et glaçage 72 h','Offloading and ice, 72 h'),('Renforcement quadriceps','Quadriceps strengthening')
+ON CONFLICT DO NOTHING;
+UPDATE rtp_plans p SET phases = (
+  SELECT json_agg(coalesce(t.en, e.v) ORDER BY e.i)
+  FROM json_array_elements_text(p.phases) WITH ORDINALITY AS e(v, i) LEFT JOIN rtp_tr t ON t.fr = e.v)
+WHERE json_typeof(p.phases) = 'array';
+UPDATE exercise_folders SET name = 'Football sessions' WHERE name = 'Séances football';

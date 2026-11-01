@@ -1,6 +1,6 @@
 # Morning wellness check-in & squad readiness | strivn feature guide
 
-**Duration:** 1:42 · **Language:** English · **Captions:** `02-checkin-readiness-en.srt` (upload as English subtitles)
+**Duration:** 1:41 · **Language:** English · **Captions:** `02-checkin-readiness-en.srt` (upload as English subtitles)
 
 ## Title
 Morning wellness check-in & squad readiness | strivn feature guide
@@ -10,9 +10,9 @@ How the daily check-in works in strivn: a player answers fatigue, sleep, stress 
 
 Chapters
 0:00 The player’s check-in
-0:36 Team wellness
-0:51 Readiness
-1:29 Act on it
+0:35 Team wellness
+0:49 Readiness
+1:28 Act on it
 
 Start free with one team → https://strivn.net
 Help center → https://docs.strivn.net
