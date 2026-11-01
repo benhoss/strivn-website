@@ -1,0 +1,59 @@
+1
+00:00:04,500 --> 00:00:12,726
+Sessions & matches shows your whole week. Each day is tagged against the next match: MD-4, MD-1, match day.
+
+2
+00:00:12,726 --> 00:00:18,287
+Right below, the week’s attendance: who trained, who missed, at a glance.
+
+3
+00:00:18,287 --> 00:00:23,878
+Open any session or match. Here, last Saturday’s match.
+
+4
+00:00:23,878 --> 00:00:30,979
+18 players confirmed, 1 is unsure. Answers arrive automatically from WhatsApp, email or the player app.
+
+5
+00:00:30,979 --> 00:00:37,663
+The Players tab lists everyone called up, with their answer and any note they left.
+
+6
+00:00:37,663 --> 00:00:39,506
+Close the panel when you’re done.
+
+7
+00:00:39,506 --> 00:00:44,642
+To schedule something new, click + Event and choose a type.
+
+8
+00:00:44,642 --> 00:00:49,776
+Let’s book a video session before the next match: pick Meeting.
+
+9
+00:00:49,776 --> 00:00:58,778
+Fill in the essentials: title, date, time, duration and place.
+
+10
+00:00:58,778 --> 00:01:05,877
+Next, the call-up: the whole active squad is selected — switch to Selection to pick players.
+
+11
+00:01:05,877 --> 00:01:13,134
+Players confirm before the deadline, and this is the exact message they’ll receive.
+
+12
+00:01:13,134 --> 00:01:19,822
+Create the event. The call-up goes out on its own — no group chat needed.
+
+13
+00:01:19,822 --> 00:01:25,727
+Here it is on Monday. Answers will fill in here as players reply.
+
+14
+00:01:25,727 --> 00:01:33,091
+Call-ups tracks every send: what went out, what’s scheduled and who still has to answer.
+
+15
+00:01:33,091 --> 00:01:40,158
+Need to nudge latecomers? On any event, Send reminder only reaches players who haven’t answered yet.
