@@ -56,6 +56,16 @@ export const attendance: SubpageLocales = {
         },
       },
       {
+        kicker: 'EN VIDÉO',
+        title: 'Planifier la semaine, convoquer, voir qui vient.',
+        body: 'La semaine avant le match dans le calendrier, les réponses du samedi, un événement créé avec sa convocation, et le suivi de chaque envoi.',
+        kind: 'video',
+        src: '/videos/tutorials/01-calendar-callups-fr.mp4',
+        poster: '/posters/tutorials/01-calendar-callups-fr.jpg',
+        label: 'Vidéo : planifier la semaine et envoyer les convocations dans strivn',
+        duration: '2 min · sous-titrée',
+      },
+      {
         kicker: 'SUR TOUTE LA SAISON',
         title: 'Mesurez la présence et la réactivité de chaque joueur.',
         body: 'Trois indicateurs calculés à partir de ce que vous collectez déjà, sans saisie supplémentaire.',
@@ -145,6 +155,16 @@ export const attendance: SubpageLocales = {
           label: 'The reminder targets only pending players',
           desc: '“Send a reminder” notifies only the pending players; those who have already answered are left alone. That is what keeps a reminder credible the next time.',
         },
+      },
+      {
+        kicker: 'IN VIDEO',
+        title: 'Plan the week, call up the squad, see who’s coming.',
+        body: 'The match-day week in the calendar, Saturday’s answers, a new event created with its call-up, and the follow-up of every send.',
+        kind: 'video',
+        src: '/videos/tutorials/01-calendar-callups-en.mp4',
+        poster: '/posters/tutorials/01-calendar-callups-en.jpg',
+        label: 'Video: planning the week and sending call-ups in strivn',
+        duration: '2 min · subtitled',
       },
       {
         kicker: 'ACROSS THE SEASON',

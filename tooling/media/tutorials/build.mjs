@@ -7,14 +7,20 @@
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { DIR } from '../config.mjs';
-import { chromium, recordScene, sh, go } from './lib.mjs';
+import { chromium, recordScene, sh, go, LANG, BROWSER_LOCALE, tc, untranslated } from './lib.mjs';
 import { coachLogin, playerLogin } from './login.mjs';
 
 const id = process.argv[2];
 if (!id) { console.error('usage: node tutorials/build.mjs <id>'); process.exit(1); }
 const only = process.argv[3]; // optional: re-record one scene index and reuse the rest; `none` re-assembles without recording
-const tut = (await import(`./scripts/${id}.mjs`)).default;
-const WORK = resolve(DIR.work, 'tutorials', id); mkdirSync(WORK, { recursive: true });
+const raw = (await import(`./scripts/${id}.mjs`)).default;
+// Viewer-facing metadata through the dictionary (identity in English).
+const tut = { ...raw, eyebrow: tc(raw.eyebrow || 'Feature guide'), title: tc(raw.title), subtitle: tc(raw.subtitle),
+  chapters: raw.chapters.map(tc), outroTitle: tc(raw.outroTitle || 'Try it with your team'),
+  outroSub: tc(raw.outroSub || 'Free for one team. Your whole staff, one platform.'),
+  youtube: { title: tc(raw.youtube.title), description: tc(raw.youtube.description), tags: LANG === 'en' ? raw.youtube.tags : (tc(raw.youtube.tags.join(', ')) || '').split(', ') },
+  scenes: raw.scenes.map((sc) => ({ ...sc, title: tc(sc.title), eyebrow: sc.device === 'mobile' ? tc(sc.eyebrow || 'Player app') : sc.eyebrow })) };
+const WORK = resolve(DIR.work, 'tutorials', LANG === 'en' ? id : `${id}-${LANG}`); mkdirSync(WORK, { recursive: true });
 const OUT_SITE = resolve(DIR.videos, 'tutorials'); mkdirSync(OUT_SITE, { recursive: true });
 const OUT_YT = resolve(DIR.here, 'tutorials', 'youtube', id); mkdirSync(OUT_YT, { recursive: true });
 
@@ -28,12 +34,14 @@ const page = (body, css = '') => `<!doctype html><html><head><meta charset="utf-
 html,body{width:1920px;height:1080px;overflow:hidden;font-family:Archivo,sans-serif;color:#F3F6FB}${css}</style></head><body>${body}</body></html>`;
 
 // ── 1. record ────────────────────────────────────────────────────────────
-const browser = await chromium.launch();
-const ctxA = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: 'en-GB' });
+// Chromium formats native date/time inputs from its own UI language, not the
+// context locale: without this a French cut shows "06:00 PM".
+const browser = await chromium.launch(LANG === 'en' ? {} : { args: [`--lang=${BROWSER_LOCALE}`], env: { ...process.env, LANG: `${BROWSER_LOCALE.replace('-', '_')}.UTF-8`, LANGUAGE: LANG } });
+const ctxA = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: BROWSER_LOCALE });
 const pa = await ctxA.newPage(); await coachLogin(pa); const coachState = await ctxA.storageState(); await ctxA.close();
 let playerState = null;
 if (tut.scenes.some((s) => s.as === 'player')) {
-  const ctxP = await browser.newContext({ viewport: { width: 390, height: 844 }, locale: 'en-GB', isMobile: true, hasTouch: true });
+  const ctxP = await browser.newContext({ viewport: { width: 390, height: 844 }, locale: BROWSER_LOCALE, isMobile: true, hasTouch: true });
   const pp = await ctxP.newPage(); await playerLogin(pp, tut.player); playerState = await ctxP.storageState(); await ctxP.close();
 }
 if (tut.setup && only === undefined) await tut.setup(); // a partial re-take keeps the data the reused scenes were recorded on
@@ -56,7 +64,7 @@ const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, 
 const pg = await ctx.newPage();
 const shot = async (html, file, transparent = false) => { await pg.setContent(html); await pg.evaluate(() => document.fonts.ready); await pg.waitForTimeout(150); await pg.screenshot({ path: file, omitBackground: transparent }); };
 
-await shot(page(`<div class="w"><img src="${LOGO}" class="logo"><div class="eb">${esc(tut.eyebrow || 'Feature guide')}</div><h1>${esc(tut.title)}</h1><p>${esc(tut.subtitle)}</p>
+await shot(page(`<div class="w"><img src="${LOGO}" class="logo"><div class="eb">${esc(tut.eyebrow)}</div><h1>${esc(tut.title)}</h1><p>${esc(tut.subtitle)}</p>
   <ol>${tut.chapters.map((c, i) => `<li><span>${String(i + 1).padStart(2, '0')}</span>${esc(c)}</li>`).join('')}</ol></div>`,
   `body{${BG}}.w{height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:26px}
   .logo{height:58px;margin-bottom:18px}.eb{font-family:JBM;font-size:20px;letter-spacing:.3em;text-transform:uppercase;color:#5D9CFA}
@@ -65,9 +73,9 @@ await shot(page(`<div class="w"><img src="${LOGO}" class="logo"><div class="eb">
   li{font-size:21px;color:#D7DEEA;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:10px 20px;background:rgba(255,255,255,.03)}
   li span{font-family:JBM;color:#5D9CFA;margin-right:10px;font-size:18px}`), resolve(WORK, 'intro.png'));
 
-await shot(page(`<div class="w"><img src="${LOGO}" class="logo"><h1>${esc(tut.outroTitle || 'Try it with your team')}</h1>
-  <p>${esc(tut.outroSub || 'Free for one team. Your whole staff, one platform.')}</p><div class="cta">Start free · strivn.net</div>
-  <div class="help">More guides: docs.strivn.net</div></div>`,
+await shot(page(`<div class="w"><img src="${LOGO}" class="logo"><h1>${esc(tut.outroTitle)}</h1>
+  <p>${esc(tut.outroSub)}</p><div class="cta">${esc(tc('Start free · strivn.net'))}</div>
+  <div class="help">${esc(tc('More guides: docs.strivn.net'))}</div></div>`,
   `body{${BG}}.w{height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:30px}
   .logo{height:64px;margin-bottom:14px}h1{font-size:84px;font-weight:600;font-stretch:88%;letter-spacing:-.02em}p{font-size:32px;color:#B5C2D7}
   .cta{margin-top:12px;background:#0F6DF8;color:#fff;font-size:30px;font-weight:600;padding:20px 40px;border-radius:999px}
@@ -77,7 +85,7 @@ await shot(page(`<div class="w"><img src="${LOGO}" class="logo"><h1>${esc(tut.ou
 const PH = { x: 1180, y: 56, w: 398, h: 862 };
 for (const [i, s] of scenes.entries()) {
   if (!s.mobile) continue;
-  await shot(page(`<div class="side"><div class="eb">${esc(s.eyebrow || 'Player app')}</div><h2>${esc(s.title || '')}</h2></div>
+  await shot(page(`<div class="side"><div class="eb">${esc(s.eyebrow)}</div><h2>${esc(s.title || '')}</h2></div>
     <div class="phone"></div>`,
     `body{${BG}}.side{position:absolute;left:180px;top:0;height:1000px;width:840px;display:flex;flex-direction:column;justify-content:center;gap:22px}
     .eb{font-family:JBM;font-size:20px;letter-spacing:.3em;text-transform:uppercase;color:#5D9CFA}h2{font-size:72px;font-weight:600;font-stretch:88%;line-height:1.02;letter-spacing:-.02em}
@@ -108,6 +116,8 @@ for (const [i, c] of cues.entries()) {
 }
 await browser.close();
 
+if (untranslated.size) { console.error(`✗ ${untranslated.size} untranslated string(s) for ${LANG}:\n` + [...untranslated].map((x) => '  ' + JSON.stringify(x)).join('\n')); process.exit(2); }
+
 // ── 3. assemble ──────────────────────────────────────────────────────────
 const enc = '-c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -r 30';
 const card = (png, d, out) => sh(`ffmpeg -y -loop 1 -t ${d} -i "${png}" -vf "fade=t=in:st=0:d=${FADE},fade=t=out:st=${d - FADE}:d=${FADE},format=yuv420p" ${enc} "${out}" -loglevel error`);
@@ -133,13 +143,13 @@ const inputs = cues.map((_, i) => `-i "${resolve(WORK, `cue-${i}.png`)}"`).join(
 let fc = '', prev = '0:v';
 cues.forEach((c, i) => { const o = `v${i}`; fc += `[${prev}][${i + 1}:v]overlay=0:0:enable='between(t,${c.start.toFixed(3)},${(c.end - 0.04).toFixed(3)})'[${o}];`; prev = o; });
 writeFileSync(resolve(WORK, 'subs.filter'), fc.replace(/;$/, ''));
-const burned = resolve(OUT_SITE, `${id}-en.mp4`);
+const burned = resolve(OUT_SITE, `${id}-${LANG}.mp4`);
 sh(`ffmpeg -y -i "${clean}" ${inputs} -filter_complex_script "${resolve(WORK, 'subs.filter')}" -map "[${prev}]" -map 0:a -c:v libx264 -preset slow -crf 22 -pix_fmt yuv420p -c:a copy -movflags +faststart "${burned}" -loglevel error`);
 
 // ── 4. YouTube kit: clean upload + SRT + chapters/description ────────────
 const ts = (x) => { const h = Math.floor(x / 3600), m = Math.floor((x % 3600) / 60), s = x % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${s.toFixed(3).padStart(6, '0').replace('.', ',')}`; };
-writeFileSync(resolve(OUT_YT, `${id}-en.srt`), cues.map((c, i) => `${i + 1}\n${ts(c.start)} --> ${ts(c.end)}\n${c.text}\n`).join('\n'));
-sh(`cp "${clean}" "${resolve(OUT_YT, `${id}-en-youtube.mp4`)}"`);
+writeFileSync(resolve(OUT_YT, `${id}-${LANG}.srt`), cues.map((c, i) => `${i + 1}\n${ts(c.start)} --> ${ts(c.end)}\n${c.text}\n`).join('\n'));
+sh(`cp "${clean}" "${resolve(OUT_YT, `${id}-${LANG}-youtube.mp4`)}"`);
 const mmss = (x) => `${Math.floor(x / 60)}:${String(Math.floor(x % 60)).padStart(2, '0')}`;
 // YouTube only shows chapters when the first starts at 0:00 and each lasts
 // at least 10 s: the intro folds into the first chapter, the outro into the
@@ -153,9 +163,13 @@ for (const [i, m] of marks.entries()) {
   chapters.push(m);
 }
 const chap = chapters.map((m) => `${mmss(m.t)} ${m.title}`);
-writeFileSync(resolve(OUT_YT, 'youtube.md'), `# ${tut.youtube.title}
+const L = {
+  en: { lang: 'English', subs: 'English subtitles', chapters: 'Chapters', start: 'Start free with one team', help: 'Help center', playlist: 'strivn — Feature guides' },
+  fr: { lang: 'Français', subs: 'sous-titres français', chapters: 'Chapitres', start: 'Commencez gratuitement avec une équipe', help: 'Centre d’aide', playlist: 'strivn — Guides fonctionnalités' },
+}[LANG];
+writeFileSync(resolve(OUT_YT, LANG === 'en' ? 'youtube.md' : `youtube-${LANG}.md`), `# ${tut.youtube.title}
 
-**Duration:** ${mmss(total)} · **Language:** English · **Captions:** \`${id}-en.srt\` (upload as English subtitles)
+**Duration:** ${mmss(total)} · **Language:** ${L.lang} · **Upload:** \`${id}-${LANG}-youtube.mp4\` (no burned-in subtitles) · **Captions:** \`${id}-${LANG}.srt\` (upload as ${L.subs})
 
 ## Title
 ${tut.youtube.title}
@@ -163,16 +177,16 @@ ${tut.youtube.title}
 ## Description
 ${tut.youtube.description}
 
-Chapters
+${L.chapters}
 ${chap.join('\n')}
 
-Start free with one team → https://strivn.net
-Help center → https://docs.strivn.net
+${L.start} → https://strivn.net
+${L.help} → https://docs.strivn.net
 
 ## Tags
 ${tut.youtube.tags.join(', ')}
 
 ## Playlist
-strivn — Feature guides
+${L.playlist}
 `);
 console.log(`\n✓ ${burned}  (${total.toFixed(1)}s, ${cues.length} cues)\n✓ ${OUT_YT}`);

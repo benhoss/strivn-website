@@ -6,12 +6,45 @@
 // device pixels) instead of Playwright's recordVideo, whose low-bitrate VP8
 // smears small UI text.
 import { chromium } from 'playwright';
-import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { execSync } from 'node:child_process';
 import { BASE } from '../config.mjs';
 
 export { chromium, BASE };
+
+// ── Language ────────────────────────────────────────────────────────────
+// TUTORIAL_LANG=fr records the French cut. Scripts are written once, in
+// English: `t()` maps UI labels (selectors), callouts, captions and metadata
+// through i18n/<lang>.json. A selector label missing from the dictionary
+// passes through unchanged (player names, numbers); a caption, callout or
+// card text that is missing is collected in `untranslated` and fails the build.
+export const LANG = process.env.TUTORIAL_LANG || 'en';
+export const BROWSER_LOCALE = { en: 'en-GB', fr: 'fr-FR' }[LANG] || LANG;
+const DICT = LANG === 'en' ? {} : JSON.parse(readFileSync(new URL(`./i18n/${LANG}.json`, import.meta.url), 'utf8'));
+export const untranslated = new Set();
+export function t(s) {
+  if (LANG === 'en' || s == null) return s;
+  if (s instanceof RegExp) return DICT[s.source] !== undefined ? new RegExp(DICT[s.source], s.flags) : s;
+  return DICT[s] !== undefined ? DICT[s] : s;
+}
+/** An XPath string literal for any text: French labels carry apostrophes. */
+export function xq(s) {
+  if (!s.includes("'")) return `'${s}'`;
+  if (!s.includes('"')) return `"${s}"`;
+  return `concat(${s.split("'").map((p) => `'${p}'`).join(`, "'", `)})`;
+}
+/** A label whose translation depends on where it sits (`ctx:key` entry first). */
+export function tk(ctx, s) {
+  if (LANG === 'en') return s;
+  return DICT[`${ctx}:${s}`] !== undefined ? DICT[`${ctx}:${s}`] : t(s);
+}
+/** Strict variant for text the viewer reads: a missing entry is a build error. */
+export function tc(s) {
+  if (LANG === 'en' || s == null || s === '') return s;
+  if (DICT[s] === undefined) { untranslated.add(s); return s; }
+  return DICT[s];
+}
 
 export const DESKTOP = { viewport: { width: 1600, height: 900 }, deviceScaleFactor: 1.2 }; // → 1920×1080 px
 export const MOBILE = { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2.5, isMobile: true, hasTouch: true }; // → 975×2110 px
@@ -66,6 +99,7 @@ export function helpers(page) {
   const moveToEl = async (loc) => { const b = await box(loc); if (b) await moveTo(b.x + b.width / 2, b.y + b.height / 2); return b; };
   const ripple = () => page.evaluate(([x, y]) => { const r = document.createElement('div'); r.className = '__tut_ripple'; r.style.left = x + 'px'; r.style.top = y + 'px'; document.body.appendChild(r); setTimeout(() => r.remove(), 700); }, pos);
   const spot = async (loc, label, n, pad = 8) => {
+    label = tc(label);
     const b = await box(loc); if (!b) return null; await ensure();
     await page.evaluate(([b, pad, label, n]) => {
       const h = document.getElementById('__tut_hl');
@@ -117,7 +151,7 @@ export async function go(page, path, settle = 1500) {
  */
 export async function recordScene(browser, scene, { workDir, storageState, name }) {
   const dev = scene.device === 'mobile' ? MOBILE : DESKTOP;
-  const ctx = await browser.newContext({ ...dev, storageState, locale: 'en-GB', timezoneId: 'Europe/Brussels', colorScheme: 'dark' });
+  const ctx = await browser.newContext({ ...dev, storageState, locale: BROWSER_LOCALE, timezoneId: 'Europe/Brussels', colorScheme: 'dark' });
   const page = await ctx.newPage();
   await scene.prepare(page);
   const h = helpers(page); await h.ensure();
@@ -143,9 +177,10 @@ export async function recordScene(browser, scene, { workDir, storageState, name 
     const s = Date.now() / 1000 - t0;
     const started = Date.now();
     try { await step.run(h); } catch (e) { console.warn(`  ! ${name} step "${step.caption.slice(0, 40)}…": ${e.message.split('\n')[0]}`); }
-    const min = step.hold ?? readTime(step.caption);
+    const caption = tc(step.caption);
+    const min = step.hold ?? readTime(caption);
     while (Date.now() - started < min) await page.waitForTimeout(50);
-    cues.push({ start: s, end: Date.now() / 1000 - t0, text: step.caption, chapter: step.chapter });
+    cues.push({ start: s, end: Date.now() / 1000 - t0, text: caption, chapter: tc(step.chapter) });
   }
   await page.waitForTimeout(400);
   const tEnd = Date.now() / 1000;
@@ -182,12 +217,12 @@ export async function recordScene(browser, scene, { workDir, storageState, name 
 export async function coachPage(page, path, { keepRail = false } = {}) {
   await page.addInitScript((keep) => {
     try { localStorage.setItem('strv-assistant-rail', keep ? 'open' : 'collapsed'); localStorage.setItem('strv-assistant-personalize', 'later'); } catch (e) {}
-    const css = '[aria-label="Incomplete coach AI profile"]{display:none!important}';
+    const css = '[aria-label="Incomplete coach AI profile"],[aria-label="Profil IA coach incomplet"]{display:none!important}';
     const add = () => { const s = document.createElement('style'); s.textContent = css; document.head.appendChild(s); };
     if (document.head) add(); else document.addEventListener('DOMContentLoaded', add);
   }, keepRail);
   await go(page, path);
-  for (const name of ['Got it', 'Later']) {
+  for (const name of ['Got it', 'Later', 'Compris', 'Plus tard']) {
     const b = page.getByRole('button', { name, exact: true });
     if (await b.count() && await b.first().isVisible().catch(() => false)) { await b.first().click().catch(() => {}); await page.waitForTimeout(500); break; }
   }

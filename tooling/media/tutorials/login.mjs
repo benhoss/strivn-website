@@ -1,7 +1,8 @@
 import { BASE } from '../config.mjs';
+const LANG = process.env.TUTORIAL_LANG || 'en';
 export const COACH = { phone: process.env.STRIVN_COACH_PHONE || '+32470112233', password: process.env.STRIVN_COACH_PW || 'password' };
 export async function coachLogin(page) {
-  await page.goto(`${BASE}/login?lang=en`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${BASE}/login?lang=${LANG}`, { waitUntil: 'domcontentloaded' });
   const tab = page.locator('[role=tab]').nth(0); if (await tab.count()) await tab.click().catch(() => {});
   await page.fill('input[name=phone]', COACH.phone);
   await page.fill('input[name=password]', COACH.password);
@@ -9,7 +10,7 @@ export async function coachLogin(page) {
   await page.waitForURL(/\/teams\//, { timeout: 30000 });
 }
 export async function playerLogin(page, player) {
-  await page.goto(`${BASE}/login?as=player&player_only=1&lang=en`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${BASE}/login?as=player&player_only=1&lang=${LANG}`, { waitUntil: 'domcontentloaded' });
   const tab = page.locator('[role=tab]').nth(1); if (await tab.count()) await tab.click().catch(() => {});
   await page.fill('input[name=identifier]', player.identifier);
   await page.fill('#player_password', player.password);

@@ -1,5 +1,5 @@
 // Tutorial 3 — Training load: player RPE (phone) → RPE grid → team load → ACWR trends → load alerts.
-import { coachPage, go, sh } from '../lib.mjs';
+import { coachPage, go, sh, t, xq } from '../lib.mjs';
 
 export default {
   eyebrow: 'Feature guide · Training load',
@@ -19,32 +19,32 @@ export default {
       prepare: (p) => go(p, '/portal/agenda'),
       steps: [
         { chapter: 'Players rate the session', caption: 'After each session, players are asked one thing: how hard was it?',
-          run: async (h) => { const c = h.page.getByText('waiting for feedback').first(); await h.spot(c.locator('xpath=ancestor::a[1] | ancestor::div[2]').first(), null, null, 8); await h.wait(800); await h.click(c, null, null, { spotlight: false, after: 1500 }); } },
+          run: async (h) => { const c = h.page.getByText(t('waiting for feedback')).first(); await h.spot(c.locator('xpath=ancestor::a[1] | ancestor::div[2]').first(), null, null, 8); await h.wait(800); await h.click(c, null, null, { spotlight: false, after: 1500 }); } },
         { caption: 'They tap a value from 1 (very easy) to 10 (maximal). Nathan found Saturday’s match hard: 8.',
-          run: async (h) => { await h.scrollBy(300); const bar = h.page.locator('button.ramp-step[aria-label^="8 "]:visible').first(); await h.click(bar, null, null, { spotlight: false, after: 600 }); } },
+          run: async (h) => { await h.scrollBy(300); const bar = h.page.locator(`button.ramp-step[aria-label^="${t('8 ')}"]:visible`).first(); await h.click(bar, null, null, { spotlight: false, after: 600 }); } },
         { caption: 'An optional comment, then Save. That’s it.',
-          run: async (h) => { const t = h.page.locator('textarea:visible').first(); await h.moveToEl(t); await h.type(t, 'Legs heavy in the second half', 50); await h.click(h.page.getByRole('button', { name: 'Save', exact: true }).first(), null, null, { spotlight: false, after: 1500 }); } },
+          run: async (h) => { const field = h.page.locator('textarea:visible').first(); await h.moveToEl(field); await h.type(field, t('Legs heavy in the second half'), 50); await h.click(h.page.getByRole('button', { name: t('Save'), exact: true }).first(), null, null, { spotlight: false, after: 1500 }); } },
       ] },
     { prepare: (p) => coachPage(p, '/teams/1/wellness'),
       steps: [
         { chapter: 'RPE at a glance', caption: 'On the staff side, open Wellbeing › RPE. Every answer lands here, session by session.',
-          run: async (h) => { await h.click(h.page.getByRole('link', { name: 'RPE', exact: true }).first(), 'RPE', 1, { after: 1800 }); } },
+          run: async (h) => { await h.click(h.page.getByRole('link', { name: t('RPE'), exact: true }).first(), 'RPE', 1, { after: 1800 }); } },
         { caption: 'Player RPE, your own coach RPE, the gap between the two and the response rate over the last 4 weeks.',
-          run: async (h) => { await h.spot(h.page.getByText('Response rate', { exact: false }).first().locator("xpath=ancestor::*[.//text()[contains(., 'Player RPE')]][1]"), 'Summary', 2); } },
+          run: async (h) => { await h.spot(h.page.getByText(t('Response rate'), { exact: false }).first().locator(`xpath=ancestor::*[.//text()[contains(., ${xq(t('Player RPE'))})]][1]`), 'Summary', 2); } },
         { caption: 'One row per player, one column per session. A big gap tells you a player feels sessions harder than you planned.',
-          run: async (h) => { await h.clear(); await h.scrollBy(300); const row = h.page.locator('tr').filter({ hasText: 'Sacha Dethier' }).first(); await h.spot(row, 'Player vs coach gap', 3); await h.moveToEl(row.locator('td').last()); } },
+          run: async (h) => { await h.clear(); await h.scrollBy(300); const row = h.page.locator('tr').filter({ hasText: t('Sacha Dethier') }).first(); await h.spot(row, 'Player vs coach gap', 3); await h.moveToEl(row.locator('td').last()); } },
         { chapter: 'Team load', caption: 'Under Tracking › Load, RPE × minutes becomes each player’s load in arbitrary units (AU) — or GPS load once you import it.',
-          run: async (h) => { await h.clear(); await h.click(h.page.getByRole('link', { name: 'Load', exact: true }).first(), 'Load', 4, { after: 1800 }); await h.spot(h.page.getByText('Total load (AU)', { exact: false }).first().locator('xpath=ancestor::div[2]'), 'Last 4 weeks', 5); } },
+          run: async (h) => { await h.clear(); await h.click(h.page.getByRole('link', { name: t('Load'), exact: true }).first(), 'Load', 4, { after: 1800 }); await h.spot(h.page.getByText(t('Total load (AU)'), { exact: false }).first().locator('xpath=ancestor::div[2]'), 'Last 4 weeks', 5); } },
         { caption: 'Players are sorted by load. Malik is flagged as over-used compared with the rest of the squad.',
           run: async (h) => { await h.clear(); await h.scrollBy(260); const row = h.page.locator(':text-is("Malik Moriaux"):visible').first().locator("xpath=ancestor::*[.//text()[contains(., '%')]][1]"); await h.spot(row, 'Over-used', 6); } },
         { chapter: 'ACWR & load alerts', caption: 'The Trends tab ranks players by ACWR — this week’s load against the last four. The usual band is 0.8 to 1.3.',
-          run: async (h) => { await h.clear(); await h.scrollBy(-400); await h.click(h.page.getByRole('link', { name: 'Trends', exact: true }).first(), 'Trends', 7, { after: 1800 }); await h.spot(h.page.getByText('ACWR ranking').first().locator('xpath=ancestor::div[1]'), 'ACWR, monotony, strain', 8); } },
+          run: async (h) => { await h.clear(); await h.scrollBy(-400); await h.click(h.page.getByRole('link', { name: t('Trends'), exact: true }).first(), 'Trends', 7, { after: 1800 }); await h.spot(h.page.getByText(t('ACWR ranking')).first().locator('xpath=ancestor::div[1]'), 'ACWR, monotony, strain', 8); } },
         { caption: 'When a player’s load jumps well above their own baseline, strivn raises a load alert.',
-          run: async (h) => { await h.clear(); await h.page.mouse.move(800, 500); await h.scrollBy(2400, 50); const a = h.page.getByText('Load alerts', { exact: true }).first().locator('xpath=ancestor::div[2]'); await h.spot(a, 'Load alerts', 9); } },
+          run: async (h) => { await h.clear(); await h.page.mouse.move(800, 500); await h.scrollBy(2400, 50); const a = h.page.getByText(t('Load alerts'), { exact: true }).first().locator('xpath=ancestor::div[2]'); await h.spot(a, 'Load alerts', 9); } },
         { caption: 'View trend shows the weekly load, ACWR, monotony and strain behind the alert.',
-          run: async (h) => { await h.clear(); await h.click(h.page.getByRole('link', { name: 'View trend' }).first(), 'View trend', 10, { after: 1800 }); await h.spot(h.page.getByText('Weekly ACWR, monotony and strain').first().locator('xpath=ancestor::div[2]'), null, null, 6); } },
+          run: async (h) => { await h.clear(); await h.click(h.page.getByRole('link', { name: t('View trend') }).first(), 'View trend', 10, { after: 1800 }); await h.spot(h.page.getByText(t('Weekly ACWR, monotony and strain')).first().locator('xpath=ancestor::div[2]'), null, null, 6); } },
         { caption: 'Adjust the plan, then acknowledge the alert so the whole staff knows it was handled.',
-          run: async (h) => { await h.clear(); const b = h.page.getByRole('button', { name: 'Acknowledge' }).first(); await h.spot(b, 'Acknowledge', 11); await h.moveToEl(b); } },
+          run: async (h) => { await h.clear(); const b = h.page.getByRole('button', { name: t('Acknowledge') }).first(); await h.spot(b, 'Acknowledge', 11); await h.moveToEl(b); } },
       ] },
   ],
 };

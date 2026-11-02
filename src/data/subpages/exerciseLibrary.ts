@@ -66,6 +66,16 @@ export const exerciseLibrary: SubpageLocales = {
         },
       },
       {
+        kicker: 'EN VIDÉO',
+        title: 'De la bibliothèque au déroulé.',
+        body: 'Chercher un exercice et ses métriques apprises, ouvrir l’entraînement de la semaine, puis construire le déroulé avec durée, RPE et charge calculés au fil de l’eau.',
+        kind: 'video',
+        src: '/videos/tutorials/05-session-planning-fr.mp4',
+        poster: '/posters/tutorials/05-session-planning-fr.jpg',
+        label: 'Vidéo : planifier une séance depuis la bibliothèque dans strivn',
+        duration: '2 min · sous-titrée',
+      },
+      {
         kicker: 'LA BOÎTE DE RÉCEPTION',
         title: 'Vous triez d’abord. L’équipe voit ensuite.',
         body: 'Chaque capture arrive d’abord dans la boîte de réception. Vous ajustez le titre, vous la classez dans un dossier (existant ou créé à la volée) et vous ajoutez des tags. Sur les liens et les vidéos, un bandeau propose un titre et des tags : reprenez-les d’un clic, ou ignorez-les.',
@@ -228,6 +238,16 @@ export const exerciseLibrary: SubpageLocales = {
           label: 'From the sofa, too',
           desc: 'Forward a link to STRIVN’s WhatsApp number from your phone: the capture lands in the same inbox, exactly as it would from the web.',
         },
+      },
+      {
+        kicker: 'IN VIDEO',
+        title: 'From the library to the running order.',
+        body: 'Search a drill and its learned metrics, open the week’s training, then build the running order with time, RPE and load calculated as you go.',
+        kind: 'video',
+        src: '/videos/tutorials/05-session-planning-en.mp4',
+        poster: '/posters/tutorials/05-session-planning-en.jpg',
+        label: 'Video: planning a session from the exercise library in strivn',
+        duration: '2 min · subtitled',
       },
       {
         kicker: 'THE INBOX',

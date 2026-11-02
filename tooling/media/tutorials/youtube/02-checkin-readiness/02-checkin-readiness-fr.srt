@@ -1,0 +1,51 @@
+1
+00:00:04,500 --> 00:00:13,110
+Chaque matin, le joueur trouve son check-in en haut de l’app — ou le reçoit par notification, WhatsApp ou e-mail.
+
+2
+00:00:13,110 --> 00:00:17,038
+Un geste pour commencer.
+
+3
+00:00:17,038 --> 00:00:25,139
+Quatre curseurs : fatigue, sommeil, stress et humeur. Nathan a bien dormi et se sent frais aujourd’hui.
+
+4
+00:00:25,139 --> 00:00:31,433
+Une douleur ? Activer Douleur / Blessure prévient tout de suite le staff médical.
+
+5
+00:00:31,433 --> 00:00:36,635
+Validez — une dizaine de secondes en tout.
+
+6
+00:00:37,037 --> 00:00:46,032
+Côté staff, le bien-être du groupe rassemble les réponses du jour et signale ceux dont la tendance sur 7 jours dérive.
+
+7
+00:00:46,032 --> 00:00:52,322
+Chaque barre est un jour. La fatigue de Tom augmente depuis trois jours d’affilée.
+
+8
+00:00:52,322 --> 00:00:59,806
+L’état de forme va plus loin : check-ins, charge et statut médical donnent un avis par joueur.
+
+9
+00:00:59,806 --> 00:01:08,448
+Aujourd’hui : 2 à risque, 8 à suivre et 9 prêts — dont Nathan, qui vient de faire son check-in.
+
+10
+00:01:08,448 --> 00:01:15,533
+Louis Peeters est à risque : fatigue très élevée et charge récente en hausse (ACWR 1,14).
+
+11
+00:01:15,533 --> 00:01:21,862
+Maxime est sous surveillance médicale : douleur et fatigue élevée, le conseil est d’alléger.
+
+12
+00:01:21,862 --> 00:01:28,933
+Plus bas, les joueurs à suivre et ceux prêts à s’entraîner — chaque ligne dit pourquoi.
+
+13
+00:01:28,933 --> 00:01:38,719
+Les mêmes signaux alimentent « À décider maintenant » sur Aujourd’hui : le staff commence chaque matin par ce qui demande une décision.

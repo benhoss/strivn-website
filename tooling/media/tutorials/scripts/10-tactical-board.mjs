@@ -1,7 +1,7 @@
 // Tutorial 10 — Tactical boards: create a board, place players, draw runs and passes, save.
-import { coachPage, sh } from '../lib.mjs';
+import { coachPage, sh, t } from '../lib.mjs';
 
-const TITLE = 'Corner — near-post run';
+const TITLE = t('Corner — near-post run');
 const tool = (h, name) => h.page.locator(`button[\\@click="setTool('${name}')"]`).first();
 
 /** Press, travel with the visible cursor, release — a real drag on the canvas. */
@@ -34,11 +34,11 @@ export default {
     prepare: (p) => coachPage(p, '/teams/1/tactical-boards'),
     steps: [
       { chapter: 'Create a board', caption: 'Tactical boards keeps every drawing of the staff. Click New board.',
-        run: async (h) => { await h.click(h.page.getByRole('link', { name: /New board/ }).first(), 'New board', 1, { after: 1500 }); } },
+        run: async (h) => { await h.click(h.page.getByRole('link', { name: t(/New board/) }).first(), 'New board', 1, { after: 1500 }); } },
       { caption: 'Give it a title, pick the sport and the background — whole field, half or a blank board.',
-        run: async (h) => { const t = h.page.locator('input[name=title]:visible'); await h.moveToEl(t); await h.type(t, TITLE, 55); await h.spot(h.page.locator('select:visible').last(), 'Background', 2); } },
+        run: async (h) => { const field = h.page.locator('input[name=title]:visible'); await h.moveToEl(field); await h.type(field, TITLE, 55); await h.spot(h.page.locator('select:visible').last(), 'Background', 2); } },
       { caption: 'Create the board.',  hold: 2400,
-        run: async (h) => { await h.clear(); await h.click(h.page.getByRole('button', { name: 'Create board', exact: true }), 'Create board', 3, { after: 1500 });
+        run: async (h) => { await h.clear(); await h.click(h.page.getByRole('button', { name: t('Create board'), exact: true }), 'Create board', 3, { after: 1500 });
           // The "board created" banner shrinks the pitch to ~73 %; reloading
           // gives the 100 % layout the coordinates below are measured on.
           await h.page.reload({ waitUntil: 'domcontentloaded' }); await h.wait(1800); await h.ensure(); } },
@@ -55,13 +55,13 @@ export default {
       { chapter: 'Draw the movement', caption: 'Pick the arrow tool and drag: a run to the near post…',
         run: async (h) => { await h.click(tool(h, 'arrow'), 'Arrow', 5, { after: 500 }); await drag(h, [1172, 436], [1272, 462]); } },
       { caption: '…and a pass. Each arrow can be typed as a pass, a run, a dribble or a shot.',
-        run: async (h) => { await drag(h, [1322, 296], [1268, 468]); await h.spot(h.page.getByText('Pass', { exact: true }).first().locator('xpath=ancestor::div[1]'), 'Arrow type', 6); } },
+        run: async (h) => { await drag(h, [1322, 296], [1268, 468]); await h.spot(h.page.getByText(t('Pass'), { exact: true }).first().locator('xpath=ancestor::div[1]'), 'Arrow type', 6); } },
       { caption: 'Add a zone, text or equipment the same way. Undo is one click away.',
         run: async (h) => { await h.clear(); await h.click(tool(h, 'select'), null, null, { spotlight: false, after: 400 }); await h.spot(h.page.locator(`button[\\@click="setTool('zone')"]`).first().locator('xpath=..'), 'Zones, text, equipment', 7); } },
       { chapter: 'Save & share', caption: 'Save. Export a PNG, share it on WhatsApp, or present it full screen in the dressing room.',
-        run: async (h) => { await h.clear(); await h.click(h.page.getByRole('button', { name: 'Save', exact: true }).first(), 'Save', 8, { after: 1500 }); await h.spot(h.page.getByRole('button', { name: /Present/ }).first().locator('xpath=..'), 'PNG · Share · Present', 9); } },
+        run: async (h) => { await h.clear(); await h.click(h.page.getByRole('button', { name: t('Save'), exact: true }).first(), 'Save', 8, { after: 1500 }); await h.spot(h.page.getByRole('button', { name: t(/Present/) }).first().locator('xpath=..'), 'PNG · Share · Present', 9); } },
       { caption: 'Back in the list, attach the board to a session so it shows up in the session plan.',
-        run: async (h) => { await h.clear(); await h.click(h.page.getByRole('link', { name: 'Tactical boards', exact: true }).first(), null, null, { spotlight: false, after: 1800 }); const c = h.page.getByText(TITLE).first(); await h.spot(c.locator('xpath=ancestor::a[1] | ancestor::div[2]').first(), 'Your board', 10); } },
+        run: async (h) => { await h.clear(); await h.click(h.page.getByRole('link', { name: t('Tactical boards'), exact: true }).first(), null, null, { spotlight: false, after: 1800 }); const c = h.page.getByText(TITLE).first(); await h.spot(c.locator('xpath=ancestor::a[1] | ancestor::div[2]').first(), 'Your board', 10); } },
     ],
   }],
 };

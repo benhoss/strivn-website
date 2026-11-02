@@ -1,6 +1,6 @@
 # Feature tutorials (YouTube / support)
 
-Ten subtitled, click-by-click feature guides recorded from the **real strivn app**
+Ten subtitled, click-by-click feature guides, in English and French, recorded from the **real strivn app**
 on a fully seeded demo club. Real clicks, a visible cursor, spotlight highlights
 with numbered callouts, burned-in subtitles, branded intro/outro cards.
 
@@ -23,6 +23,35 @@ Each `youtube/<id>/` folder holds what an upload needs:
 - `youtube.md` — title, description, YouTube-valid chapters (first at 0:00, each ≥ 10 s), tags, playlist.
 
 The burned-in versions in `public/videos/tutorials/` are for the website, social posts and support replies.
+
+## Languages (EN / FR)
+
+Scripts are written once, in English. `TUTORIAL_LANG=fr` records the French cut:
+`t()` (in `lib.mjs`) maps every UI label used as a selector, every callout, caption,
+card and YouTube field through `i18n/fr.json`. Viewer-facing text missing from the
+dictionary fails the build; run the pre-flight first:
+
+```bash
+node tutorials/i18n/check.mjs fr            # lists anything missing
+tutorials/data/use-locale.sh fr             # French demo content + French logins
+TUTORIAL_LANG=fr node tutorials/build.mjs 03-training-load
+```
+
+Outputs: `public/videos/tutorials/<id>-fr.mp4`, `youtube/<id>/<id>-fr.srt`,
+`<id>-fr-youtube.mp4` and `youtube-fr.md`. Switch back with `use-locale.sh en`.
+
+**Freeze the clock.** The captions quote the demo club's state on Sunday
+1 November 2026 (who is at risk, ACWR values, response counts). Run the app under
+`faketime` so a later take shows the same day: see `data/start-app.sh`
+(`faketime -f "@2026-11-01 11:30:00" php artisan serve …`, same for `queue:work`).
+On another day without it, re-check every caption that quotes a number.
+
+## On the website
+
+`site/embed.py` inserts the videos (FR + EN) into the feature pages under
+`src/data/subpages/*.ts` — one `video` section right after each page's opening
+section — and writes the posters (the title card) to `public/posters/tutorials/`.
+Re-run it after re-recording; it replaces its own sections.
 
 ## How it works
 

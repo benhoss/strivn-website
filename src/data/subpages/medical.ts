@@ -61,6 +61,16 @@ export const medical: SubpageLocales = {
         ],
       },
       {
+        kicker: 'EN VIDÉO',
+        title: 'Déclarez une fois, suivez jusqu’au retour.',
+        body: 'Une blessure déclarée en quelques clics, une étape de reprise cochée, et la vue des disponibilités qui écarte les blessés des convocations.',
+        kind: 'video',
+        src: '/videos/tutorials/04-injuries-rtp-fr.mp4',
+        poster: '/posters/tutorials/04-injuries-rtp-fr.jpg',
+        label: 'Vidéo : suivi des blessures et retour au jeu dans strivn',
+        duration: '2 min · sous-titrée',
+      },
+      {
         kicker: 'LA DISPONIBILITÉ',
         title: 'Vous bougez un cran. Les convocations suivent.',
         body: 'Ce panneau, et lui seul, décide de ce que le joueur peut faire. La liste des convocables se déduit d’ici, sans liste parallèle à maintenir.',
@@ -154,6 +164,16 @@ export const medical: SubpageLocales = {
             b: 'The time of each slot, the player, their reason and their note, visible to staff only.',
           },
         ],
+      },
+      {
+        kicker: 'IN VIDEO',
+        title: 'Declare it once, follow it to the return.',
+        body: 'An injury declared in a few clicks, a recovery step ticked off, and the availability view that keeps injured players off the call-ups.',
+        kind: 'video',
+        src: '/videos/tutorials/04-injuries-rtp-en.mp4',
+        poster: '/posters/tutorials/04-injuries-rtp-en.jpg',
+        label: 'Video: injury tracking and return to play in strivn',
+        duration: '2 min · subtitled',
       },
       {
         kicker: 'AVAILABILITY',
