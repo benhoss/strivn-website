@@ -1,5 +1,5 @@
 // Tutorial 3 — Training load: player RPE (phone) → RPE grid → team load → ACWR trends → load alerts.
-import { coachPage, go, sh, t, xq } from '../lib.mjs';
+import { coachPage, go, sh, t, xq, PSQL, ARTISAN } from '../lib.mjs';
 
 export default {
   eyebrow: 'Feature guide · Training load',
@@ -13,7 +13,7 @@ export default {
     tags: ['strivn', 'session RPE', 'sRPE', 'ACWR', 'acute chronic workload ratio', 'training load monitoring', 'injury prevention', 'sports science', 'football coaching app'],
   },
   // Nathan rates Saturday's match on camera: remove the previous take's answer.
-  setup: () => { sh(`psql -h 127.0.0.1 -U p3rform -d p3rform -c "DELETE FROM player_event_feedback WHERE player_id = 1 AND calendar_event_id = 100"`); sh('cd /home/user/P3rform && php artisan cache:clear'); },
+  setup: () => { sh(`${PSQL} -c "DELETE FROM player_event_feedback WHERE player_id = 1 AND calendar_event_id = 100"`); sh(`${ARTISAN} cache:clear`); },
   scenes: [
     { device: 'mobile', as: 'player', eyebrow: 'Player app', title: 'Rate the session',
       prepare: (p) => go(p, '/portal/agenda'),
@@ -35,8 +35,8 @@ export default {
           run: async (h) => { await h.clear(); await h.scrollBy(300); const row = h.page.locator('tr').filter({ hasText: t('Sacha Dethier') }).first(); await h.spot(row, 'Player vs coach gap', 3); await h.moveToEl(row.locator('td').last()); } },
         { chapter: 'Team load', caption: 'Under Tracking › Load, RPE × minutes becomes each player’s load in arbitrary units (AU) — or GPS load once you import it.',
           run: async (h) => { await h.clear(); await h.click(h.page.getByRole('link', { name: t('Load'), exact: true }).first(), 'Load', 4, { after: 1800 }); await h.spot(h.page.getByText(t('Total load (AU)'), { exact: false }).first().locator('xpath=ancestor::div[2]'), 'Last 4 weeks', 5); } },
-        { caption: 'Players are sorted by load. Malik is flagged as over-used compared with the rest of the squad.',
-          run: async (h) => { await h.clear(); await h.scrollBy(260); const row = h.page.locator(':text-is("Malik Moriaux"):visible').first().locator("xpath=ancestor::*[.//text()[contains(., '%')]][1]"); await h.spot(row, 'Over-used', 6); } },
+        { caption: 'Players are sorted by load, highest first, with each one’s sessions, average RPE and share of the top load.',
+          run: async (h) => { await h.clear(); await h.scrollBy(260); const row = h.page.locator(':text-is("Théo Dandois"):visible').first().locator("xpath=ancestor::*[.//text()[contains(., '%')]][1]"); await h.spot(row, 'Highest load', 6); } },
         { chapter: 'ACWR & load alerts', caption: 'The Trends tab ranks players by ACWR — this week’s load against the last four. The usual band is 0.8 to 1.3.',
           run: async (h) => { await h.clear(); await h.scrollBy(-400); await h.click(h.page.getByRole('link', { name: t('Trends'), exact: true }).first(), 'Trends', 7, { after: 1800 }); await h.spot(h.page.getByText(t('ACWR ranking')).first().locator('xpath=ancestor::div[1]'), 'ACWR, monotony, strain', 8); } },
         { caption: 'When a player’s load jumps well above their own baseline, strivn raises a load alert.',

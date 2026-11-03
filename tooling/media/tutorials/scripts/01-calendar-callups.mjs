@@ -1,5 +1,5 @@
 // Tutorial 1 — Plan the week and send call-ups (calendar, RSVP, new event wizard).
-import { coachPage, sh, t } from '../lib.mjs';
+import { coachPage, sh, t, PSQL } from '../lib.mjs';
 
 const ev = (id) => `[data-coach-target='calendar_event:${id}'][data-ev]:visible`;
 const panel = (p) => p.locator('[x-show]').filter({ has: p.getByText(t('Targeted RSVP reminder')) }).first();
@@ -15,7 +15,7 @@ export default {
     tags: ['strivn', 'football coaching app', 'team calendar', 'call-ups', 'RSVP', 'convocation', 'team management', 'coach software', 'attendance tracking'],
   },
   // A real event is created on camera: remove the previous take's copy first.
-  setup: () => { sh(`psql -h 127.0.0.1 -U p3rform -d p3rform -c "DELETE FROM calendar_events WHERE title IN ('Video analysis — CS Pierrefonds', 'Analyse vidéo — CS Pierrefonds')"`); },
+  setup: () => { sh(`${PSQL} -c "DELETE FROM calendar_events WHERE title IN ('Video analysis — CS Pierrefonds', 'Analyse vidéo — CS Pierrefonds')"`); },
   scenes: [{
     prepare: (p) => coachPage(p, '/teams/1/calendar'),
     steps: [

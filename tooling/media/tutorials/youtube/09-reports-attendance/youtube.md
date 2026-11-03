@@ -1,6 +1,6 @@
 # Weekly staff reports & attendance export | strivn feature guide
 
-**Duration:** 1:13 · **Language:** English · **Captions:** `09-reports-attendance-en.srt` (upload as English subtitles)
+**Duration:** 1:12 · **Language:** English · **Upload:** `09-reports-attendance-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `09-reports-attendance-en.srt` (upload as English subtitles)
 
 ## Title
 Weekly staff reports & attendance export | strivn feature guide
@@ -11,7 +11,7 @@ The reports strivn prepares for your weekly staff meeting: load and availability
 Chapters
 0:00 Load & availability
 0:21 Team report
-0:47 Attendance
+0:46 Attendance
 
 Start free with one team → https://strivn.net
 Help center → https://docs.strivn.net

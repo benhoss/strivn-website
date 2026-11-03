@@ -1,6 +1,6 @@
 # Faire le bilan des séances et des matchs avec le ressenti des joueurs | Guide strivn
 
-**Duration:** 1:23 · **Language:** Français · **Upload:** `07-session-results-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `07-session-results-fr.srt` (upload as sous-titres français)
+**Duration:** 1:21 · **Language:** Français · **Upload:** `07-session-results-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `07-session-results-fr.srt` (upload as sous-titres français)
 
 ## Title
 Faire le bilan des séances et des matchs avec le ressenti des joueurs | Guide strivn
@@ -10,9 +10,9 @@ Comment boucler chaque séance dans strivn : voir les séances encore à évalue
 
 Chapitres
 0:00 Toutes les séances passées
-0:22 Coach et joueurs
-0:36 Les évaluations individuelles
-0:51 La feuille de match
+0:20 Coach et joueurs
+0:34 Les évaluations individuelles
+0:50 La feuille de match
 
 Commencez gratuitement avec une équipe → https://strivn.net
 Centre d’aide → https://docs.strivn.net

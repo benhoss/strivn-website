@@ -1,5 +1,5 @@
 // Tutorial 2 — Morning check-in (player phone) → team wellness & readiness (coach).
-import { coachPage, go, sh, t, xq } from '../lib.mjs';
+import { coachPage, go, sh, t, xq, PSQL, ARTISAN } from '../lib.mjs';
 
 /** Drag a range input's thumb to `value`, with the visible cursor following. */
 async function drag(h, input, value) {
@@ -32,7 +32,7 @@ export default {
     tags: ['strivn', 'wellness questionnaire', 'athlete monitoring', 'readiness', 'ACWR', 'player check-in', 'sports science', 'football coaching app', 'load management'],
   },
   // Nathan answers on camera: clear today's answer from the previous take.
-  setup: () => { sh(`psql -h 127.0.0.1 -U p3rform -d p3rform -c "DELETE FROM wellness_entries WHERE player_id = 1 AND date = '2026-11-01'"`); sh('cd /home/user/P3rform && php artisan cache:clear'); },
+  setup: () => { sh(`${PSQL} -c "DELETE FROM wellness_entries WHERE player_id = 1 AND date = '2026-11-01'"`); sh(`${ARTISAN} cache:clear`); },
   scenes: [
     { device: 'mobile', as: 'player', eyebrow: 'Player app', title: 'The morning check-in',
       prepare: (p) => go(p, '/portal/agenda'),
@@ -56,9 +56,9 @@ export default {
           run: async (h) => { const row = h.page.locator('div').filter({ hasText: t('Tom Bastin') }).filter({ hasText: t('rising') }).filter({ hasNotText: t('Théo') }).last(); await h.spot(row, 'Fatigue rising', 2); await h.moveTo(1450, 380); } },
         { chapter: 'Readiness', caption: 'Readiness goes one step further: check-ins, training load and medical status become one call per player.',
           run: async (h) => { await h.clear(); await h.click(h.page.getByRole('link', { name: t('Readiness'), exact: true }).first(), 'Readiness', 3, { after: 1800 }); } },
-        { caption: 'Today: 2 at risk, 8 to follow up and 9 ready — Nathan, who just checked in, is one of them.',
+        { caption: 'Today: 2 at risk, 8 to follow up and 10 ready — Nathan, who just checked in, is one of them.',
           run: async (h) => { await h.spot(h.page.locator('div').filter({ has: h.page.getByText(t('Overview'), { exact: true }) }).filter({ hasText: t('Checked in today') }).last(), 'Squad overview', 4); } },
-        { caption: 'Louis Peeters is at risk: very high fatigue and his recent load is trending up (ACWR 1.14).',
+        { caption: 'Louis Peeters is at risk: very high fatigue and his recent load is trending up (ACWR 0.99).',
           run: async (h) => { const card = h.page.getByText(t('Louis Peeters'), { exact: true }).first().locator(`xpath=ancestor::*[.//text()[contains(., ${xq(t('Ask the AI'))})]][1]`); await h.spot(card, 'At risk', 5); await h.moveToEl(h.page.getByText(t('ACWR')).first()); } },
         { caption: 'Maxime is under medical watch: pain and high fatigue, so the advice is to ease him off.',
           run: async (h) => { const card = h.page.locator(':text-is("Maxime Delhaize"):visible').first().locator(`xpath=ancestor::*[.//text()[contains(., ${xq(t('Ask the AI'))})]][1]`); await h.spot(card, 'Under medical watch', 6); } },

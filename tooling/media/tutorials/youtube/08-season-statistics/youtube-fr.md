@@ -1,6 +1,6 @@
 # Statistiques de l’équipe et des joueurs sur la saison | Guide strivn
 
-**Duration:** 1:15 · **Language:** Français · **Upload:** `08-season-statistics-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `08-season-statistics-fr.srt` (upload as sous-titres français)
+**Duration:** 1:13 · **Language:** Français · **Upload:** `08-season-statistics-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `08-season-statistics-fr.srt` (upload as sous-titres français)
 
 ## Title
 Statistiques de l’équipe et des joueurs sur la saison | Guide strivn
@@ -10,7 +10,7 @@ D’où viennent les statistiques de strivn et comment les lire : bilan et forme
 
 Chapitres
 0:00 Bilan et forme
-0:51 Entraînement
+0:49 Entraînement
 
 Commencez gratuitement avec une équipe → https://strivn.net
 Centre d’aide → https://docs.strivn.net

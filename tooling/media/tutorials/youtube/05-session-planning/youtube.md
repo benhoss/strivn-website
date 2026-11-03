@@ -1,6 +1,6 @@
 # Plan training sessions from your exercise library | strivn feature guide
 
-**Duration:** 1:20 · **Language:** English · **Captions:** `05-session-planning-en.srt` (upload as English subtitles)
+**Duration:** 1:19 · **Language:** English · **Upload:** `05-session-planning-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `05-session-planning-en.srt` (upload as English subtitles)
 
 ## Title
 Plan training sessions from your exercise library | strivn feature guide
@@ -11,7 +11,7 @@ How to plan a training session in strivn: browse and search the staff's shared e
 Chapters
 0:00 Your exercise library
 0:24 The week’s sessions
-0:40 The running order
+0:39 The running order
 
 Start free with one team → https://strivn.net
 Help center → https://docs.strivn.net

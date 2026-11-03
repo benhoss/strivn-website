@@ -1,6 +1,6 @@
 # Plan your week & send call-ups | strivn feature guide
 
-**Duration:** 1:45 · **Language:** English · **Captions:** `01-calendar-callups-en.srt` (upload as English subtitles)
+**Duration:** 1:40 · **Language:** English · **Upload:** `01-calendar-callups-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `01-calendar-callups-en.srt` (upload as English subtitles)
 
 ## Title
 Plan your week & send call-ups | strivn feature guide
@@ -11,8 +11,8 @@ How to run your team's week in strivn: read the match-day microcycle, check who 
 Chapters
 0:00 Your week at a glance
 0:18 Check who is coming
-0:39 Create an event
-1:25 Follow up call-ups
+0:38 Create an event
+1:22 Follow up call-ups
 
 Start free with one team → https://strivn.net
 Help center → https://docs.strivn.net

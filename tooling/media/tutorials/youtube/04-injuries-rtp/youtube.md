@@ -1,6 +1,6 @@
 # Injury tracking & return to play | strivn feature guide
 
-**Duration:** 1:20 · **Language:** English · **Captions:** `04-injuries-rtp-en.srt` (upload as English subtitles)
+**Duration:** 1:17 · **Language:** English · **Upload:** `04-injuries-rtp-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `04-injuries-rtp-en.srt` (upload as English subtitles)
 
 ## Title
 Injury tracking & return to play | strivn feature guide
@@ -11,8 +11,8 @@ How the medical staff works in strivn: the medical board, declaring an injury (t
 Chapters
 0:00 The medical board
 0:11 Declare an injury
-0:47 Return-to-play steps
-1:06 Squad availability
+0:44 Return-to-play steps
+1:03 Squad availability
 
 Start free with one team → https://strivn.net
 Help center → https://docs.strivn.net

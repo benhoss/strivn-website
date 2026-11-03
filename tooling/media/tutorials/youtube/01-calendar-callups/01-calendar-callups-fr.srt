@@ -1,59 +1,59 @@
 1
-00:00:04,500 --> 00:00:13,906
+00:00:04,500 --> 00:00:13,898
 Séances & matchs affiche toute la semaine. Chaque jour est situé par rapport au prochain match : J-4, J-1, jour de match.
 
 2
-00:00:13,906 --> 00:00:23,780
+00:00:13,898 --> 00:00:23,464
 Juste en dessous, les présences de la semaine : qui s’est entraîné, qui a manqué, d’un coup d’œil.
 
 3
-00:00:23,780 --> 00:00:29,310
+00:00:23,464 --> 00:00:29,016
 Ouvrez une séance ou un match. Ici, le match de samedi dernier.
 
 4
-00:00:29,310 --> 00:00:36,780
+00:00:29,016 --> 00:00:36,460
 18 joueurs ont confirmé, 1 hésite. Les réponses arrivent toutes seules depuis WhatsApp, l’e-mail ou l’app joueur.
 
 5
-00:00:36,780 --> 00:00:43,480
+00:00:36,460 --> 00:00:43,146
 L’onglet Joueurs liste tous les convoqués, avec leur réponse et le mot qu’ils ont laissé.
 
 6
-00:00:43,480 --> 00:00:45,316
+00:00:43,146 --> 00:00:44,995
 Fermez le panneau quand vous avez fini.
 
 7
-00:00:45,316 --> 00:00:50,860
+00:00:44,995 --> 00:00:50,525
 Pour planifier autre chose, cliquez sur + Événement et choisissez un type.
 
 8
-00:00:50,860 --> 00:00:56,016
+00:00:50,525 --> 00:00:55,689
 Calons une séance vidéo avant le prochain match : choisissez Réunion.
 
 9
-00:00:56,016 --> 00:01:05,266
+00:00:55,689 --> 00:01:02,971
 Renseignez l’essentiel : titre, date, heure, durée et lieu.
 
 10
-00:01:05,266 --> 00:01:12,729
+00:01:02,971 --> 00:01:10,450
 Ensuite, la convocation : tout l’effectif actif est sélectionné — passez sur Sélection pour choisir les joueurs.
 
 11
-00:01:12,729 --> 00:01:19,645
+00:01:10,450 --> 00:01:16,213
 Les joueurs confirment avant l’échéance, et voici le message exact qu’ils recevront.
 
 12
-00:01:19,645 --> 00:01:25,575
+00:01:16,213 --> 00:01:22,128
 Créez l’événement. La convocation part toute seule — pas besoin de groupe WhatsApp.
 
 13
-00:01:25,575 --> 00:01:31,668
+00:01:22,128 --> 00:01:27,262
 Le voici lundi. Les réponses s’afficheront ici au fil des retours.
 
 14
-00:01:31,668 --> 00:01:39,531
+00:01:27,262 --> 00:01:35,111
 Convocations suit chaque envoi : ce qui est parti, ce qui est programmé et qui doit encore répondre.
 
 15
-00:01:39,531 --> 00:01:47,377
+00:01:35,111 --> 00:01:42,980
 Des retardataires ? Sur chaque événement, la relance ne touche que les joueurs qui n’ont pas encore répondu.

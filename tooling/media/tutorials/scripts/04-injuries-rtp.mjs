@@ -1,5 +1,5 @@
 // Tutorial 4 — Declare an injury, follow return to play, keep call-ups honest.
-import { coachPage, sh, t, tk, xq } from '../lib.mjs';
+import { coachPage, sh, t, tk, xq, PSQL, ARTISAN } from '../lib.mjs';
 
 const sel = async (h, loc, value) => { await h.moveToEl(loc); await h.ripple(); await loc.selectOption(value); await h.wait(450); };
 
@@ -16,9 +16,9 @@ export default {
   // Tom's injury is declared on camera and one RTP step is ticked: undo both.
   setup: () => {
     // Through Eloquent, not SQL: the injury observer puts the player's status back.
-    sh(`cd /home/user/P3rform && php artisan tinker --execute='App\\Models\\Injury::where("player_id", 4)->get()->each->delete();'`);
-    sh(`psql -h 127.0.0.1 -U p3rform -d p3rform -c "UPDATE return_to_play_steps SET completed_at = NULL, completed_by = NULL WHERE injury_id = 3 AND name IN ('Quadriceps strengthening', 'Renforcement quadriceps')"`);
-    sh('cd /home/user/P3rform && php artisan cache:clear');
+    sh(`${ARTISAN} tinker --execute='App\\Models\\Injury::where("player_id", 4)->get()->each->delete();'`);
+    sh(`${PSQL} -c "UPDATE return_to_play_steps SET completed_at = NULL, completed_by = NULL WHERE injury_id = 3 AND name IN ('Quadriceps strengthening', 'Renforcement quadriceps')"`);
+    sh(`${ARTISAN} cache:clear`);
   },
   scenes: [{
     prepare: (p) => coachPage(p, '/teams/1/medical'),

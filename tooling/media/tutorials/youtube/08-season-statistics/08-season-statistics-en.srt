@@ -1,31 +1,31 @@
 1
-00:00:04,500 --> 00:00:11,970
+00:00:04,500 --> 00:00:11,975
 Analytics › Statistics opens on the record: the form strip, points per match, goals for and against.
 
 2
-00:00:11,970 --> 00:00:18,304
+00:00:11,975 --> 00:00:18,302
 Home and away side by side, and what happens once you take the lead.
 
 3
-00:00:18,304 --> 00:00:25,762
+00:00:18,302 --> 00:00:25,765
 strivn also flags what stands out — here, 65 % of goals conceded come from set pieces.
 
 4
-00:00:25,762 --> 00:00:33,661
+00:00:25,765 --> 00:00:33,040
 Filter by period, competition or venue — every figure updates.
 
 5
-00:00:33,661 --> 00:00:39,961
+00:00:33,040 --> 00:00:39,340
 Goals breaks down how you score and concede: minute, situation and who was involved.
 
 6
-00:00:39,961 --> 00:00:47,220
+00:00:39,340 --> 00:00:46,048
 Players shows each one’s contribution: minutes, goals, assists, and goals conceded while on the pitch.
 
 7
-00:00:47,220 --> 00:00:55,062
+00:00:46,048 --> 00:00:53,910
 Training shows who misses sessions, planned vs actual load, and how hard each type of block really felt.
 
 8
-00:00:55,062 --> 00:01:02,515
+00:00:53,910 --> 00:01:01,353
 Nothing to type twice: these numbers come from the match sheets and session reviews you already complete.

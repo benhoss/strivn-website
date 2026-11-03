@@ -1,39 +1,39 @@
 1
-00:00:04,500 --> 00:00:09,642
+00:00:04,500 --> 00:00:09,641
 Tactical boards keeps every drawing of the staff. Click New board.
 
 2
-00:00:09,642 --> 00:00:17,510
+00:00:09,641 --> 00:00:17,513
 Give it a title, pick the sport and the background — whole field, half or a blank board.
 
 3
-00:00:17,510 --> 00:00:24,083
+00:00:17,513 --> 00:00:23,582
 Create the board.
 
 4
-00:00:24,083 --> 00:00:31,974
+00:00:23,582 --> 00:00:30,273
 Drag players from your roster onto the pitch — their name and number follow them.
 
 5
-00:00:31,974 --> 00:00:40,336
+00:00:30,273 --> 00:00:38,514
 Or use the player tools: opponents (B), and a teammate (A) for the corner taker — one click each.
 
 6
-00:00:40,336 --> 00:00:45,860
+00:00:38,514 --> 00:00:44,072
 Pick the arrow tool and drag: a run to the near post…
 
 7
-00:00:45,860 --> 00:00:53,713
+00:00:44,072 --> 00:00:51,899
 …and a pass. Each arrow can be typed as a pass, a run, a dribble or a shot.
 
 8
-00:00:53,713 --> 00:01:00,008
+00:00:51,899 --> 00:00:58,214
 Add a zone, text or equipment the same way. Undo is one click away.
 
 9
-00:01:00,008 --> 00:01:07,478
+00:00:58,214 --> 00:01:05,678
 Save. Export a PNG, share it on WhatsApp, or present it full screen in the dressing room.
 
 10
-00:01:07,478 --> 00:01:15,332
+00:01:05,678 --> 00:01:13,529
 Back in the list, attach the board to a session so it shows up in the session plan.

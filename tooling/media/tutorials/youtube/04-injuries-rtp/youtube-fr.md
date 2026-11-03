@@ -1,6 +1,6 @@
 # Suivi des blessures et retour au jeu | Guide strivn
 
-**Duration:** 1:23 · **Language:** Français · **Upload:** `04-injuries-rtp-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `04-injuries-rtp-fr.srt` (upload as sous-titres français)
+**Duration:** 1:20 · **Language:** Français · **Upload:** `04-injuries-rtp-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `04-injuries-rtp-fr.srt` (upload as sous-titres français)
 
 ## Title
 Suivi des blessures et retour au jeu | Guide strivn
@@ -11,8 +11,8 @@ Comment le staff médical travaille dans strivn : le tableau médical, la décla
 Chapitres
 0:00 Le tableau médical
 0:12 Déclarer une blessure
-0:48 Les étapes du retour
-1:10 La disponibilité du groupe
+0:45 Les étapes du retour
+1:07 La disponibilité du groupe
 
 Commencez gratuitement avec une équipe → https://strivn.net
 Centre d’aide → https://docs.strivn.net
