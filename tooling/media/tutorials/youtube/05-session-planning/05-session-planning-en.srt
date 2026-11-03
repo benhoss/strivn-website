@@ -1,39 +1,39 @@
 1
-00:00:04,500 --> 00:00:13,140
+00:00:04,500 --> 00:00:13,141
 The exercise library holds every drill your staff uses — text, video, photo or diagram — shared with your colleagues.
 
 2
-00:00:13,140 --> 00:00:17,509
+00:00:13,141 --> 00:00:17,515
 Search or filter to find a drill in seconds.
 
 3
-00:00:17,509 --> 00:00:24,985
+00:00:17,515 --> 00:00:24,987
 Open it. Each exercise learns from real sessions: what was planned, and the effort players actually reported.
 
 4
-00:00:24,985 --> 00:00:34,309
+00:00:24,987 --> 00:00:33,726
 Plan a session lists the week’s trainings, each tagged against the next match.
 
 5
-00:00:34,309 --> 00:00:40,230
+00:00:33,726 --> 00:00:39,673
 Open Tuesday’s training: 90 minutes planned, ready for the 18 players called up.
 
 6
-00:00:40,230 --> 00:00:45,374
+00:00:39,673 --> 00:00:44,810
 Edit the running order to build the session block by block.
 
 7
-00:00:45,374 --> 00:00:54,384
+00:00:44,810 --> 00:00:53,803
 Every block has its start time, duration, planned RPE and load in AU — and links to drills from your library.
 
 8
-00:00:54,384 --> 00:01:01,857
+00:00:53,803 --> 00:01:01,267
 Your library sits on the left: search it, preview a drill, then drag it into the session.
 
 9
-00:01:01,857 --> 00:01:07,774
+00:01:01,267 --> 00:01:07,169
 Totals update as you go: duration, load, average RPE and number of blocks.
 
 10
-00:01:07,774 --> 00:01:15,226
+00:01:07,169 --> 00:01:14,658
 Click Done. The plan feeds the week’s planned load, and the live session view on the pitch.

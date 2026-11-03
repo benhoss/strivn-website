@@ -1,6 +1,6 @@
 # Planifier ses séances depuis sa bibliothèque d’exercices | Guide strivn
 
-**Duration:** 1:22 · **Language:** Français · **Upload:** `05-session-planning-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `05-session-planning-fr.srt` (upload as sous-titres français)
+**Duration:** 1:21 · **Language:** Français · **Upload:** `05-session-planning-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `05-session-planning-fr.srt` (upload as sous-titres français)
 
 ## Title
 Planifier ses séances depuis sa bibliothèque d’exercices | Guide strivn
@@ -11,7 +11,7 @@ Comment planifier une séance dans strivn : parcourir et chercher dans la biblio
 Chapitres
 0:00 Votre bibliothèque
 0:25 Les séances de la semaine
-0:41 Le déroulé
+0:40 Le déroulé
 
 Commencez gratuitement avec une équipe → https://strivn.net
 Centre d’aide → https://docs.strivn.net

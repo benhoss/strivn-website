@@ -1,51 +1,51 @@
 1
-00:00:04,500 --> 00:00:13,483
+00:00:04,500 --> 00:00:13,508
 Every morning, players find their check-in at the top of the app — or get it by notification, WhatsApp or email.
 
 2
-00:00:13,483 --> 00:00:17,029
+00:00:13,508 --> 00:00:16,882
 One tap to start.
 
 3
-00:00:17,029 --> 00:00:25,117
+00:00:16,882 --> 00:00:24,139
 Four sliders: fatigue, sleep, stress and mood. Nathan slept well and feels fresh today.
 
 4
-00:00:25,118 --> 00:00:31,022
+00:00:24,139 --> 00:00:30,054
 Something hurts? Turning on Pain / Injury alerts the medical staff straight away.
 
 5
-00:00:31,022 --> 00:00:34,661
+00:00:30,054 --> 00:00:34,968
 Confirm — about ten seconds in total.
 
 6
-00:00:35,063 --> 00:00:42,547
+00:00:35,370 --> 00:00:42,825
 On the staff side, Team wellness gathers today’s answers and flags anyone whose 7-day trend is drifting.
 
 7
-00:00:42,547 --> 00:00:49,651
+00:00:42,825 --> 00:00:49,881
 Each bar is one day. Tom’s fatigue has been rising for three days in a row.
 
 8
-00:00:49,651 --> 00:00:56,708
+00:00:49,881 --> 00:00:56,979
 Readiness goes one step further: check-ins, training load and medical status become one call per player.
 
 9
-00:00:56,708 --> 00:01:05,697
-Today: 2 at risk, 8 to follow up and 9 ready — Nathan, who just checked in, is one of them.
+00:00:56,979 --> 00:01:06,005
+Today: 2 at risk, 8 to follow up and 10 ready — Nathan, who just checked in, is one of them.
 
 10
-00:01:05,697 --> 00:01:13,164
-Louis Peeters is at risk: very high fatigue and his recent load is trending up (ACWR 1.14).
+00:01:06,005 --> 00:01:13,482
+Louis Peeters is at risk: very high fatigue and his recent load is trending up (ACWR 0.99).
 
 11
-00:01:13,164 --> 00:01:20,617
+00:01:13,482 --> 00:01:20,937
 Maxime is under medical watch: pain and high fatigue, so the advice is to ease him off.
 
 12
-00:01:20,617 --> 00:01:28,102
+00:01:20,937 --> 00:01:28,421
 Scroll down for players to follow up and those ready to train — every line says why.
 
 13
-00:01:28,102 --> 00:01:36,351
+00:01:28,421 --> 00:01:36,676
 The same signals feed Today’s “Decide now” list, so the staff starts every morning with what needs a decision.

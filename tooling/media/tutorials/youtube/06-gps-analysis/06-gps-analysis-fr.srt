@@ -1,39 +1,39 @@
 1
-00:00:04,500 --> 00:00:13,494
+00:00:04,500 --> 00:00:13,485
 GPS › Analyse s’ouvre sur l’état de l’effectif : la dernière valeur de chaque joueur, lue face à sa propre cible.
 
 2
-00:00:13,495 --> 00:00:21,804
+00:00:13,485 --> 00:00:21,795
 Ambre sous la cible, vert dans la cible, rouge au-dessus. La ligne médiane donne la référence du groupe.
 
 3
-00:00:21,804 --> 00:00:36,712
+00:00:21,795 --> 00:00:29,241
 Filtrez entraînements ou matchs, et choisissez la période — des 7 derniers jours à toute la saison.
 
 4
-00:00:36,712 --> 00:00:45,335
+00:00:29,241 --> 00:00:37,862
 Cliquez une valeur pour ouvrir le joueur : ses zones de vitesse séance par séance, et ses cibles par zone.
 
 5
-00:00:45,335 --> 00:00:53,968
+00:00:37,862 --> 00:00:46,476
 Plus bas, charge interne (sRPE) face à charge externe (GPS) : un écart qui se creuse est un signal précoce.
 
 6
-00:00:53,968 --> 00:01:01,819
+00:00:46,476 --> 00:00:54,335
 Matchs lit chaque match face à la forme récente du joueur : la bande est son écart habituel.
 
 7
-00:01:01,819 --> 00:01:09,659
+00:00:54,335 --> 00:01:02,165
 Choisissez un joueur en haut : une ligne par match, chaque valeur avec son écart à ses habitudes.
 
 8
-00:01:09,659 --> 00:01:19,799
+00:01:02,165 --> 00:01:10,577
 Comparaisons met deux événements côte à côte — ici les deux derniers matchs, sur les métriques choisies.
 
 9
-00:01:19,799 --> 00:01:28,423
+00:01:10,577 --> 00:01:19,174
 D’abord les moyennes de l’équipe, puis chaque joueur : qui a couru plus, qui a moins sprinté, et de combien.
 
 10
-00:01:28,423 --> 00:01:37,041
+00:01:19,174 --> 00:01:27,807
 Les nouvelles données arrivent par Imports — un fichier de votre système GPS, ou une synchro cloud automatique en Pro.

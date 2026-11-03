@@ -1,6 +1,6 @@
 # Créer des tableaux tactiques pour votre équipe | Guide strivn
 
-**Duration:** 1:20 · **Language:** Français · **Upload:** `10-tactical-board-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `10-tactical-board-fr.srt` (upload as sous-titres français)
+**Duration:** 1:18 · **Language:** Français · **Upload:** `10-tactical-board-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `10-tactical-board-fr.srt` (upload as sous-titres français)
 
 ## Title
 Créer des tableaux tactiques pour votre équipe | Guide strivn
@@ -10,9 +10,9 @@ Comment dessiner un coup de pied arrêté dans le tableau tactique de strivn : c
 
 Chapitres
 0:00 Créer un tableau
-0:24 Placer les joueurs
-0:40 Dessiner le mouvement
-1:00 Enregistrer et partager
+0:23 Placer les joueurs
+0:39 Dessiner le mouvement
+0:59 Enregistrer et partager
 
 Commencez gratuitement avec une équipe → https://strivn.net
 Centre d’aide → https://docs.strivn.net

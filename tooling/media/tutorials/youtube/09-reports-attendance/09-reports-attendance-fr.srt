@@ -1,35 +1,35 @@
 1
-00:00:04,500 --> 00:00:10,028
+00:00:04,500 --> 00:00:10,030
 Bilans automatiques propose trois rapports hebdomadaires, prêts pour la réunion du staff.
 
 2
-00:00:10,029 --> 00:00:18,246
+00:00:10,030 --> 00:00:18,254
 Charge & disponibilité : le ratio de charge et la charge de chaque joueur sur les quatre dernières semaines…
 
 3
-00:00:18,246 --> 00:00:23,793
+00:00:18,254 --> 00:00:23,804
 …puis qui était indisponible, et pendant combien de jours et de matchs.
 
 4
-00:00:23,793 --> 00:00:33,579
+00:00:23,804 --> 00:00:33,583
 Le rapport d’équipe met réponse aux check-ins, fatigue, humeur et ratio de charge dans un seul tableau, avec l’évolution depuis la semaine dernière.
 
 5
-00:00:33,579 --> 00:00:41,067
+00:00:33,583 --> 00:00:41,062
 Passez à 4 ou 12 semaines pour prendre du recul. Chaque rapport s’ouvre dans l’Explorateur pour creuser.
 
 6
-00:00:41,067 --> 00:00:50,858
+00:00:41,062 --> 00:00:49,542
 Le rapport par joueur suit un joueur : fatigue, sommeil, ratio de charge et minutes sur les derniers jours.
 
 7
-00:00:50,858 --> 00:01:01,097
+00:00:49,542 --> 00:00:57,954
 Présences, dans Suivi, montre qui était là à chaque événement, sur la période de votre choix.
 
 8
-00:01:01,097 --> 00:01:08,176
+00:00:57,954 --> 00:01:05,013
 Une ligne par joueur, une colonne par événement — avec le taux de présence de chacun.
 
 9
-00:01:08,176 --> 00:01:12,966
+00:01:05,013 --> 00:01:09,786
 Exportez-le en CSV, ou recevez-le par e-mail pour le club.

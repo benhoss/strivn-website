@@ -1,31 +1,31 @@
 1
-00:00:04,500 --> 00:00:12,745
+00:00:04,500 --> 00:00:12,739
 Analyse › Statistiques s’ouvre sur le bilan : la forme, les points par match, les buts marqués et encaissés.
 
 2
-00:00:12,745 --> 00:00:19,837
+00:00:12,739 --> 00:00:19,814
 Domicile et extérieur côte à côte, et ce qui se passe une fois que vous menez.
 
 3
-00:00:19,837 --> 00:00:28,073
+00:00:19,814 --> 00:00:28,033
 strivn signale aussi ce qui ressort — ici, 65 % des buts encaissés viennent de coups de pied arrêtés.
 
 4
-00:00:28,073 --> 00:00:36,701
+00:00:28,033 --> 00:00:35,336
 Filtrez par période, compétition ou lieu — chaque chiffre suit.
 
 5
-00:00:36,701 --> 00:00:43,361
+00:00:35,336 --> 00:00:41,243
 Buts détaille comment vous marquez et encaissez : minute, situation et joueurs impliqués.
 
 6
-00:00:43,361 --> 00:00:51,978
+00:00:41,243 --> 00:00:49,869
 Joueurs montre la contribution de chacun : minutes, buts, passes décisives et buts encaissés quand il est sur le terrain.
 
 7
-00:00:51,978 --> 00:01:01,005
+00:00:49,869 --> 00:00:58,863
 Entraînement montre qui manque les séances, la charge prévue face à la réelle, et le ressenti de chaque type de bloc.
 
 8
-00:01:01,005 --> 00:01:10,404
+00:00:58,863 --> 00:01:08,261
 Rien à saisir deux fois : ces chiffres viennent des feuilles de match et des bilans de séance que vous remplissez déjà.

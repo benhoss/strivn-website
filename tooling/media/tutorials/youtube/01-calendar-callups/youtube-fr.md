@@ -1,6 +1,6 @@
 # Planifier la semaine et envoyer les convocations | Guide strivn
 
-**Duration:** 1:52 · **Language:** Français · **Upload:** `01-calendar-callups-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `01-calendar-callups-fr.srt` (upload as sous-titres français)
+**Duration:** 1:47 · **Language:** Français · **Upload:** `01-calendar-callups-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `01-calendar-callups-fr.srt` (upload as sous-titres français)
 
 ## Title
 Planifier la semaine et envoyer les convocations | Guide strivn
@@ -11,8 +11,8 @@ Comment piloter la semaine de votre équipe dans strivn : lire le microcycle ava
 Chapitres
 0:00 La semaine d’un coup d’œil
 0:23 Qui vient ?
-0:45 Créer un événement
-1:31 Suivre les convocations
+0:44 Créer un événement
+1:27 Suivre les convocations
 
 Commencez gratuitement avec une équipe → https://strivn.net
 Centre d’aide → https://docs.strivn.net

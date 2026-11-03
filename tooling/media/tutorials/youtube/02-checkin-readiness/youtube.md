@@ -1,6 +1,6 @@
 # Morning wellness check-in & squad readiness | strivn feature guide
 
-**Duration:** 1:41 · **Language:** English · **Captions:** `02-checkin-readiness-en.srt` (upload as English subtitles)
+**Duration:** 1:41 · **Language:** English · **Upload:** `02-checkin-readiness-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `02-checkin-readiness-en.srt` (upload as English subtitles)
 
 ## Title
 Morning wellness check-in & squad readiness | strivn feature guide

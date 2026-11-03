@@ -51,6 +51,17 @@ export const MOBILE = { viewport: { width: 390, height: 844 }, deviceScaleFactor
 
 export const sh = (cmd) => execSync(cmd, { stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 1 << 26 }).toString();
 
+// How a script's setup() reaches the app's CLI and database. The defaults fit a
+// native checkout; for the Docker stack (see README) point them at the containers.
+const APP_DIR = process.env.STRIVN_APP_DIR || '/home/user/P3rform';
+export const ARTISAN = process.env.STRIVN_ARTISAN || `cd ${APP_DIR} && php artisan`;
+export const PSQL = process.env.STRIVN_PSQL || 'psql -h 127.0.0.1 -U p3rform -d p3rform';
+
+// The browser's clock, set to the server's frozen demo day (TUTORIAL_NOW, the
+// same value faketime gets): anything the page dates itself, such as the
+// calendar's current week, matches the captions. Time keeps running from there.
+export const BROWSER_NOW = process.env.TUTORIAL_NOW ? new Date(process.env.TUTORIAL_NOW.replace(' ', 'T') + 'Z') : null;
+
 // Reading time for a subtitle: ~2.6 words/s plus a beat, never under 2.6 s.
 export const readTime = (text) => Math.max(2.6, text.split(/\s+/).length / 2.6 + 0.9) * 1000;
 
@@ -152,6 +163,7 @@ export async function go(page, path, settle = 1500) {
 export async function recordScene(browser, scene, { workDir, storageState, name }) {
   const dev = scene.device === 'mobile' ? MOBILE : DESKTOP;
   const ctx = await browser.newContext({ ...dev, storageState, locale: BROWSER_LOCALE, timezoneId: 'Europe/Brussels', colorScheme: 'dark' });
+  if (BROWSER_NOW) await ctx.clock.install({ time: BROWSER_NOW });
   const page = await ctx.newPage();
   await scene.prepare(page);
   const h = helpers(page); await h.ensure();

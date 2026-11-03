@@ -1,6 +1,6 @@
 # Create tactical boards for your team | strivn feature guide
 
-**Duration:** 1:20 · **Language:** English · **Captions:** `10-tactical-board-en.srt` (upload as English subtitles)
+**Duration:** 1:18 · **Language:** English · **Upload:** `10-tactical-board-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `10-tactical-board-en.srt` (upload as English subtitles)
 
 ## Title
 Create tactical boards for your team | strivn feature guide
@@ -10,9 +10,9 @@ How to draw a set piece in strivn's tactical board: create a board, drop players
 
 Chapters
 0:00 Create a board
-0:24 Place players
-0:40 Draw the movement
-1:00 Save & share
+0:23 Place players
+0:38 Draw the movement
+0:58 Save & share
 
 Start free with one team → https://strivn.net
 Help center → https://docs.strivn.net

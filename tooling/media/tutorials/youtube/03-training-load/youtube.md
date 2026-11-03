@@ -1,6 +1,6 @@
 # Track training load with session RPE & ACWR | strivn feature guide
 
-**Duration:** 1:38 · **Language:** English · **Captions:** `03-training-load-en.srt` (upload as English subtitles)
+**Duration:** 1:39 · **Language:** English · **Upload:** `03-training-load-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `03-training-load-en.srt` (upload as English subtitles)
 
 ## Title
 Track training load with session RPE & ACWR | strivn feature guide

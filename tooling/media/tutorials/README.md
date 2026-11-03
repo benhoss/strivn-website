@@ -88,4 +88,25 @@ Re-run it after re-recording; it replaces its own sections.
 3. **Record** — `cd tooling/media && node tutorials/build.mjs 01-calendar-callups` (≈3–5 min each).
    Playwright resolves from `tooling/media/node_modules` (a symlink to a global install works).
 
+### On a Mac, with Docker
+
+No PHP or Postgres on the host: run a throwaway strivn-app stack and point the recorder at
+its containers. Needs `brew install ffmpeg` (7+ works; `build.mjs` picks the right
+filter-file flag) and `npx playwright install chromium chromium-headless-shell` in `tooling/media`.
+
+- App image: the repo `Dockerfile` plus `apt-get install faketime`. Keep `vendor/` in a named
+  volume: on the case-insensitive macOS disk, composer fails to unpack `sentry/sentry-laravel`.
+- Container env: `QUEUE_CONNECTION=redis`, `SESSION_LIFETIME=525600` (otherwise the fake-dated
+  session cookie has already expired for the real-time browser), `OPENROUTER_URL=http://127.0.0.1:9/api/v1`.
+- Provision under `faketime -f "@2026-11-01 08:00:00"`, then serve under `@2026-11-01 11:30:00`
+  with `php -S 0.0.0.0:8082 …/Foundation/resources/server.php` run from `public/`, **not**
+  `artisan serve`, which strips `LD_PRELOAD` from its child server and loses the fake clock.
+- Recorder env:
+  ```bash
+  export STRIVN_PSQL="docker exec -i -e PGPASSWORD=p3rform <stack>-postgres-1 psql -U p3rform -d p3rform"
+  export STRIVN_ARTISAN="docker exec -i <stack>-app-1 php artisan"
+  export TUTORIAL_NOW="2026-11-01 11:30:00"   # the browser's clock too (calendar's current week)
+  ```
+  `use-locale.sh` and every script's `setup()` go through `STRIVN_PSQL` / `STRIVN_ARTISAN`.
+
 Verify with a contact sheet: `ffmpeg -i <out>.mp4 -vf "fps=1/4,scale=640:-1,tile=4x3" sheet-%d.png`.

@@ -1,5 +1,5 @@
 // Tutorial 10 — Tactical boards: create a board, place players, draw runs and passes, save.
-import { coachPage, sh, t } from '../lib.mjs';
+import { coachPage, sh, t, ARTISAN } from '../lib.mjs';
 
 const TITLE = t('Corner — near-post run');
 const tool = (h, name) => h.page.locator(`button[\\@click="setTool('${name}')"]`).first();
@@ -29,7 +29,7 @@ export default {
     description: `How to draw a set piece in strivn's tactical board: create a board, drop players from your roster or with the player tools, draw runs, passes and shots, then save, export a PNG, share it on WhatsApp or present it full screen — and attach it to a training session.`,
     tags: ['strivn', 'tactical board', 'football tactics', 'set pieces', 'corner routine', 'coaching board', 'football coaching app', 'tactics board app', 'training session'],
   },
-  setup: () => { sh(`cd /home/user/P3rform && php artisan tinker --execute='App\\Models\\TacticalBoard::where("team_id", 1)->get()->each->delete();'`); },
+  setup: () => { sh(`${ARTISAN} tinker --execute='App\\Models\\TacticalBoard::where("team_id", 1)->get()->each->delete();'`); },
   scenes: [{
     prepare: (p) => coachPage(p, '/teams/1/tactical-boards'),
     steps: [

@@ -1,6 +1,6 @@
 # Check-in bien-être du matin et état de forme du groupe | Guide strivn
 
-**Duration:** 1:43 · **Language:** Français · **Upload:** `02-checkin-readiness-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `02-checkin-readiness-fr.srt` (upload as sous-titres français)
+**Duration:** 1:42 · **Language:** Français · **Upload:** `02-checkin-readiness-fr-youtube.mp4` (no burned-in subtitles) · **Captions:** `02-checkin-readiness-fr.srt` (upload as sous-titres français)
 
 ## Title
 Check-in bien-être du matin et état de forme du groupe | Guide strivn
@@ -10,9 +10,9 @@ Comment fonctionne le check-in quotidien dans strivn : le joueur renseigne fatig
 
 Chapitres
 0:00 Le check-in du joueur
-0:37 Le bien-être du groupe
-0:52 État de forme
-1:28 Décider
+0:35 Le bien-être du groupe
+0:51 État de forme
+1:27 Décider
 
 Commencez gratuitement avec une équipe → https://strivn.net
 Centre d’aide → https://docs.strivn.net

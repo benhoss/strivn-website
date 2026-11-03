@@ -144,7 +144,10 @@ let fc = '', prev = '0:v';
 cues.forEach((c, i) => { const o = `v${i}`; fc += `[${prev}][${i + 1}:v]overlay=0:0:enable='between(t,${c.start.toFixed(3)},${(c.end - 0.04).toFixed(3)})'[${o}];`; prev = o; });
 writeFileSync(resolve(WORK, 'subs.filter'), fc.replace(/;$/, ''));
 const burned = resolve(OUT_SITE, `${id}-${LANG}.mp4`);
-sh(`ffmpeg -y -i "${clean}" ${inputs} -filter_complex_script "${resolve(WORK, 'subs.filter')}" -map "[${prev}]" -map 0:a -c:v libx264 -preset slow -crf 22 -pix_fmt yuv420p -c:a copy -movflags +faststart "${burned}" -loglevel error`);
+// ffmpeg 7 reads an option's value from a file with `-/opt`; 8 removed -filter_complex_script.
+const ffMajor = Number((sh('ffmpeg -version').match(/version n?(\d+)/) || [])[1] || 0);
+const filterFile = ffMajor >= 7 ? '-/filter_complex' : '-filter_complex_script';
+sh(`ffmpeg -y -i "${clean}" ${inputs} ${filterFile} "${resolve(WORK, 'subs.filter')}" -map "[${prev}]" -map 0:a -c:v libx264 -preset slow -crf 22 -pix_fmt yuv420p -c:a copy -movflags +faststart "${burned}" -loglevel error`);
 
 // ── 4. YouTube kit: clean upload + SRT + chapters/description ────────────
 const ts = (x) => { const h = Math.floor(x / 3600), m = Math.floor((x % 3600) / 60), s = x % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${s.toFixed(3).padStart(6, '0').replace('.', ',')}`; };

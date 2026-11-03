@@ -1,6 +1,6 @@
 # Analyse GPS data for your squad | strivn feature guide
 
-**Duration:** 1:28 · **Language:** English · **Captions:** `06-gps-analysis-en.srt` (upload as English subtitles)
+**Duration:** 1:27 · **Language:** English · **Upload:** `06-gps-analysis-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `06-gps-analysis-en.srt` (upload as English subtitles)
 
 ## Title
 Analyse GPS data for your squad | strivn feature guide

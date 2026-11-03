@@ -1,35 +1,35 @@
 1
-00:00:04,500 --> 00:00:13,869
+00:00:04,500 --> 00:00:13,886
 Résultats séances liste chaque séance et chaque match passés, avec le nombre de retours joueurs et si vous avez fait votre bilan.
 
 2
-00:00:13,869 --> 00:00:22,391
+00:00:13,886 --> 00:00:20,860
 Filtrez entraînements, matchs ou séances qui attendent encore votre bilan.
 
 3
-00:00:22,391 --> 00:00:30,229
+00:00:20,860 --> 00:00:28,705
 Ouvrez l’entraînement de mercredi. Votre RPE est à côté de la moyenne des joueurs et de leur répartition.
 
 4
-00:00:30,229 --> 00:00:36,541
+00:00:28,705 --> 00:00:34,992
 Votre bilan : intensité perçue, note de la séance, durée réelle et vos remarques.
 
 5
-00:00:36,541 --> 00:00:44,383
+00:00:34,992 --> 00:00:42,862
 Puis chaque joueur : présent ou non, une note sur 10 et une courte observation pour le staff.
 
 6
-00:00:44,383 --> 00:00:51,845
+00:00:42,862 --> 00:00:50,308
 Les commentaires des joueurs s’affichent à côté : vous voyez la séance de leur point de vue.
 
 7
-00:00:51,845 --> 00:01:01,236
+00:00:50,308 --> 00:00:59,712
 Pour un match, le bilan est la feuille de match : le score, et chaque but, carton et changement sur une chronologie.
 
 8
-00:01:01,236 --> 00:01:09,834
+00:00:59,712 --> 00:01:08,351
 Les statistiques face à l’adversaire, et le temps de jeu — qui part directement dans la charge de chaque joueur.
 
 9
-00:01:09,834 --> 00:01:18,454
+00:01:08,351 --> 00:01:16,969
 Partagez un résumé du match en lecture seule avec les familles via un lien public — révocable à tout moment.

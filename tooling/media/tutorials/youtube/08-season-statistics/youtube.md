@@ -1,6 +1,6 @@
 # Team & player season statistics | strivn feature guide
 
-**Duration:** 1:07 · **Language:** English · **Captions:** `08-season-statistics-en.srt` (upload as English subtitles)
+**Duration:** 1:06 · **Language:** English · **Upload:** `08-season-statistics-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `08-season-statistics-en.srt` (upload as English subtitles)
 
 ## Title
 Team & player season statistics | strivn feature guide
@@ -10,7 +10,7 @@ Where strivn's statistics come from and how to read them: the team record and fo
 
 Chapters
 0:00 Record & form
-0:47 Training
+0:46 Training
 
 Start free with one team → https://strivn.net
 Help center → https://docs.strivn.net

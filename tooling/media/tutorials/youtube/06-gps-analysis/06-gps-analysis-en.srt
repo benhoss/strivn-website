@@ -1,39 +1,39 @@
 1
-00:00:04,500 --> 00:00:12,744
+00:00:04,500 --> 00:00:12,729
 GPS › Analysis opens on the squad status: the latest value of every player, read against his own target.
 
 2
-00:00:12,744 --> 00:00:20,202
+00:00:12,729 --> 00:00:20,168
 Amber is under target, green on target, red above. The median line gives you the squad’s reference.
 
 3
-00:00:20,202 --> 00:00:28,446
+00:00:20,168 --> 00:00:28,417
 Filter by trainings or matches, and choose the period — from the last 7 days to the whole season.
 
 4
-00:00:28,446 --> 00:00:36,318
+00:00:28,417 --> 00:00:36,245
 Click a value to open the player: his speed zones session by session, and his targets per band.
 
 5
-00:00:36,318 --> 00:00:43,418
+00:00:36,245 --> 00:00:43,304
 Further down, internal load (sRPE) against external load (GPS): a widening gap is an early warning.
 
 6
-00:00:43,418 --> 00:00:50,483
+00:00:43,304 --> 00:00:50,397
 Matches reads every match against the player’s own recent form: the band is his usual spread.
 
 7
-00:00:50,483 --> 00:00:58,706
+00:00:50,397 --> 00:00:58,628
 Pick a player at the top: one row per match, each value with its gap to his usual output.
 
 8
-00:00:58,706 --> 00:01:07,923
+00:00:58,628 --> 00:01:07,063
 Comparisons puts two events side by side — here the last two matches, on the metrics you choose.
 
 9
-00:01:07,923 --> 00:01:15,009
+00:01:07,063 --> 00:01:14,154
 Team averages first, then every player: who ran more, who sprinted less, and by how much.
 
 10
-00:01:15,009 --> 00:01:23,260
+00:01:14,154 --> 00:01:22,378
 New data arrives through Imports — a file from your GPS system, or an automatic cloud sync on Pro.

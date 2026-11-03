@@ -1,6 +1,6 @@
 # Review training sessions & matches with player feedback | strivn feature guide
 
-**Duration:** 1:15 · **Language:** English · **Captions:** `07-session-results-en.srt` (upload as English subtitles)
+**Duration:** 1:14 · **Language:** English · **Upload:** `07-session-results-en-youtube.mp4` (no burned-in subtitles) · **Captions:** `07-session-results-en.srt` (upload as English subtitles)
 
 ## Title
 Review training sessions & matches with player feedback | strivn feature guide
@@ -10,9 +10,9 @@ How to close the loop after every session in strivn: see which sessions still ne
 
 Chapters
 0:00 Every past session
-0:20 Coach vs players
-0:33 Individual evaluations
-0:47 The match sheet
+0:19 Coach vs players
+0:32 Individual evaluations
+0:46 The match sheet
 
 Start free with one team → https://strivn.net
 Help center → https://docs.strivn.net
