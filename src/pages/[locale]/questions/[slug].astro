@@ -1,0 +1,14 @@
+---
+import QuestionLanding from '../../../components/questions/QuestionLanding.astro';
+import { answerPages, type AnswerLocale } from '../../../data/questions';
+
+export function getStaticPaths() {
+  return answerPages.flatMap((page) =>
+    (Object.keys(page.locales) as AnswerLocale[]).map((locale) => ({ params: { locale, slug: page.slug }, props: { locale, page } })),
+  );
+}
+
+const { locale, page } = Astro.props;
+---
+
+<QuestionLanding locale={locale} page={page} />

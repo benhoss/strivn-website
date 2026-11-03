@@ -1,0 +1,50 @@
+---
+/**
+ * The list of answer pages, one per locale. Built only for a locale that has
+ * at least one: an empty index would be a thin page in the sitemap.
+ */
+import { NAV } from '../../../data/nav';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SubHero from '../../../components/sub/SubHero.astro';
+import SubSections from '../../../components/sub/SubSections.astro';
+import HomeFooter from '../../../components/home/HomeFooter.astro';
+import { homeContent } from '../../../data/homeContent';
+import { SKIP_LABEL } from '../../../lib/skipLabel';
+import { answerLabels, answerPages, type AnswerLocale } from '../../../data/questions';
+import type { Section } from '../../../data/subpages/types';
+
+export function getStaticPaths() {
+  return (['fr', 'en'] as AnswerLocale[])
+    .filter((locale) => answerPages.some((p) => p.locales[locale]))
+    .map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: AnswerLocale };
+const labels = answerLabels[locale];
+const pages = answerPages.filter((p) => p.locales[locale]);
+const sections: Section[] = [
+  {
+    kind: 'rows',
+    rows: pages.map((p) => ({ name: p.locales[locale]!.question, desc: p.locales[locale]!.answer })),
+  },
+  ...pages.map((p): Section => ({ kind: 'crosslink', link: { label: p.locales[locale]!.question, href: `/${locale}/questions/${p.slug}/` } })),
+];
+const others = (['fr', 'en'] as AnswerLocale[]).filter((l) => answerPages.some((p) => p.locales[l]));
+---
+
+<BaseLayout
+  lang={locale}
+  title={`${labels.index} | STRIVN`}
+  description={labels.intro}
+  canonicalPath={`/${locale}/questions/`}
+  alternates={others.map((l) => ({ hreflang: l, href: `/${l}/questions/` }))}
+>
+  <a href="#s-main" class="s-skip">{SKIP_LABEL[locale]}</a>
+  <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} switchHrefs={Object.fromEntries(others.map((l) => [l, `/${l}/questions/`]))} />
+  <main id="s-main" class="bg-void font-sans text-ink antialiased">
+    <SubHero locale={locale} hero={{ kicker: labels.crumb, title: labels.index, sub: labels.intro }} crumbs={{ label: 'STRIVN', href: `/${locale}/`, page: labels.crumb }} />
+    <SubSections sections={sections} locale={locale} />
+  </main>
+  <HomeFooter locale={locale} footer={homeContent[locale].footer} />
+</BaseLayout>

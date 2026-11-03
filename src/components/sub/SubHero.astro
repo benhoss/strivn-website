@@ -50,6 +50,9 @@ const split = Boolean(hero.visual);
 
       <p class="st-lede">{hero.sub}</p>
 
+      {/* Page-specific control under the lede (the beta's question field). Empty everywhere else. */}
+      <slot />
+
       {
         hero.bullets && (
           <ul class="sub-hero__points">

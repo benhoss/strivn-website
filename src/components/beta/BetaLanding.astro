@@ -1,0 +1,742 @@
+---
+/**
+ * The generated website (plan 2026-11-01-001): a hero carrying the question
+ * field, shortcuts, then a page composed for this visitor, turn by turn.
+ *
+ * Nothing composed is a new component. The shell is SubLanding's (header,
+ * SubHero, footer); every composed band arrives as HTML rendered on the
+ * server by SubSections, an existing page band or SubClosing (/beta/turn).
+ * Those components are imported below so their styles ship with this page.
+ *
+ * What this file adds is the frame a visitor needs to follow a live page:
+ * each turn opens on the stamp rail (« Question 2 », the time, how long it
+ * took), lists the sources the composer reads as it reads them, sweeps a
+ * line while it writes, lets each block land with the site's own motion
+ * (SiteMotion's __stMotionAdopt), and closes on « La suite »: related
+ * questions and the sign-up, prefilled with the visit.
+ *
+ * Not indexed: live answers are one visitor's page. The indexable layer is the
+ * existing pages and, once approved, the answer pages (/questions/).
+ */
+import { NAV } from '../../data/nav';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../SiteHeader.astro';
+import SubHero from '../sub/SubHero.astro';
+import SubSections from '../sub/SubSections.astro';
+import SubClosing from '../sub/SubClosing.astro';
+import HomeFooter from '../home/HomeFooter.astro';
+import { homeContent } from '../../data/homeContent';
+import { betaContent, type BetaLocale } from '../../data/betaContent';
+import { subClosing } from '../../data/subpages/closing';
+import { BANDS } from '../../lib/compose/bands';
+import { SKIP_LABEL } from '../../lib/skipLabel';
+import { appStartUrl } from '../../lib/appUrl';
+
+interface Props {
+  locale: BetaLocale;
+}
+
+const { locale } = Astro.props;
+const c = betaContent[locale];
+const shared = homeContent[locale];
+const closing = subClosing[locale];
+const path = (l: BetaLocale) => `/${l}/beta/`;
+
+// Every band the composer may place, so their styles ship with the page.
+const bandComponents = Object.values(BANDS).map((b) => b.component);
+
+const client = {
+  locale,
+  live: c.live,
+  personaNames: c.personaNames,
+  signupUrl: appStartUrl(locale),
+  next: { ...c.next, tryTitle: closing.title, cta: closing.primaryCta, fine: closing.fine },
+};
+---
+
+<BaseLayout
+  lang={locale}
+  title={c.meta.title}
+  description={c.meta.description}
+  canonicalPath={`/${locale}/`}
+  robots="noindex, follow"
+>
+  <a href="#s-main" class="s-skip">{SKIP_LABEL[locale]}</a>
+
+  <SiteHeader locale={locale} links={NAV[locale].links} cta={NAV[locale].cta} switchHrefs={{ fr: path('fr'), en: path('en') }} />
+
+  <main id="s-main" class="bg-void font-sans text-ink antialiased" data-beta={JSON.stringify(client)}>
+    <SubHero locale={locale} hero={c.hero} crumbs={{ label: c.crumbs.label, href: `/${locale}/`, page: c.crumbs.page }}>
+      <div class="beta-dock-home" data-dock-home>
+        <div class="beta-dock" data-dock role="region" aria-label={c.ask.label}>
+          <p class="beta-profile" data-profile hidden>
+            <span class="st-label">{c.live.profile}</span>
+            <span class="beta-profile__text" data-profile-text></span>
+          </p>
+          <form class="st-panel beta-form" data-form autocomplete="off">
+            <label class="beta-sr" for="beta-input">{c.ask.label}</label>
+            <input id="beta-input" name="message" maxlength="600" placeholder={c.ask.placeholder} data-input />
+            <button class="st-btn st-btn--primary" type="submit" data-send>{c.ask.send}</button>
+          </form>
+          <p class="st-fine beta-note">{c.ask.note}</p>
+        </div>
+      </div>
+    </SubHero>
+
+    <section class="beta-shortcuts" aria-labelledby="beta-q" data-beta-intro>
+      <div class="st-wrap beta-shortcuts__in">
+        <h2 id="beta-q" class="st-h3">{c.ask.question}</h2>
+        <div class="beta-shortcuts__group">
+          <p class="st-label">{c.ask.personas}</p>
+          <div class="beta-chips">
+            {c.personas.map((s) => <button type="button" class="st-btn st-btn--ghost st-btn--sm" data-prompt={s.prompt}>{s.label}</button>)}
+          </div>
+        </div>
+        <div class="beta-shortcuts__group">
+          <p class="st-label">{c.ask.topics}</p>
+          <div class="beta-chips">
+            {c.topics.map((s) => <button type="button" class="st-btn st-btn--ghost st-btn--sm" data-prompt={s.prompt}>{s.label}</button>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* The hero (and its h1) leaves once the page composes; the page keeps its h1 for assistive tech. */}
+    <h1 class="beta-sr" data-composed-h1 hidden>{c.hero.title}</h1>
+    <div class="beta-page" data-page></div>
+    <p class="beta-sr" aria-live="polite" data-live></p>
+
+    <section class="st-sec" data-fallback hidden aria-labelledby="beta-fallback">
+      <div class="st-wrap">
+        <h2 id="beta-fallback" class="st-h2">{c.fallback.title}</h2>
+        <p class="st-lede">{c.fallback.body}</p>
+        <div class="beta-chips">
+          {c.fallback.links.map((l) => <a class="st-btn st-btn--ghost st-btn--sm" href={l.href}>{l.label}</a>)}
+        </div>
+      </div>
+    </section>
+
+    {/* Never rendered: keeps these components' styles in this page's bundle. */}
+    {false && <SubSections sections={[]} locale={locale} />}
+    {false && <SubClosing locale={locale} />}
+    {false && bandComponents.map((Band) => <Band />)}
+  </main>
+
+  <HomeFooter locale={locale} footer={shared.footer} />
+</BaseLayout>
+
+<style>
+  /* ── Before the first question ─────────────────────────────── */
+  .beta-dock-home { max-width: 600px; }
+  .beta-dock { display: grid; gap: 10px; }
+  .beta-form { display: flex; gap: 8px; padding: 6px; align-items: center; transition: border-color 150ms ease; }
+  .beta-form:focus-within { border-color: var(--color-electric); }
+  .beta-form input {
+    flex: 1; min-width: 0; background: transparent; border: 0; outline: none;
+    padding: 10px 12px; font: inherit; font-size: 16px; color: var(--color-ink);
+  }
+  .beta-form input::placeholder { color: var(--color-ink-3); }
+  .beta-form [data-send]:disabled { opacity: 0.55; cursor: progress; }
+  /* The note carries the retention notice: it has to read (ink-4 is 2.9:1). */
+  .beta-note { margin: 0; color: var(--color-ink-3); }
+  .beta-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .beta-profile { display: flex; align-items: baseline; gap: 10px; min-width: 0; margin: 0; font-size: 13px; color: var(--color-ink-2); }
+  .beta-profile[hidden], [data-dock-home] .beta-profile { display: none; }
+  .beta-profile .st-label { flex: none; }
+  .beta-profile__text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .beta-shortcuts { padding-block: 0 clamp(64px, 9vw, 112px); }
+  .beta-shortcuts__in { display: grid; gap: 28px; }
+  .beta-shortcuts__group { display: grid; gap: 12px; }
+  .beta-chips,
+  .beta-page :global(.beta-chips) { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* ── Once the page composes ────────────────────────────────── */
+  :global(body.is-composing .sub-hero),
+  :global(body.is-composing) [data-beta-intro] { display: none; }
+  /* Room for the fixed dock under the last thing on the page (the footer). */
+  :global(body.is-composing) { padding-bottom: 168px; }
+  .beta-dock[hidden] { display: none; }
+
+  /* The question docks to the bottom of the screen, on a solid floor so it
+     never sits over the page it composes. */
+  :global(body.is-composing) .beta-dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    padding: 12px var(--st-gutter) max(12px, env(safe-area-inset-bottom));
+    background: var(--color-void);
+    border-top: 1px solid var(--color-line-strong);
+    box-shadow: var(--shadow-float-lg);
+  }
+  :global(body.is-composing) .beta-dock > * { width: 100%; max-width: calc(var(--st-max) - 2 * var(--st-gutter)); margin-inline: auto; }
+  @media (max-width: 640px) {
+    :global(body.is-composing) .beta-note { display: none; }
+  }
+
+  /* ── A turn: the question on the stamp rail ────────────────── */
+  .beta-page :global(.beta-turn) { scroll-margin-top: calc(var(--st-header) + 8px); }
+  .beta-page :global(.beta-turn__head) { padding-block: clamp(40px, 6vw, 72px) 0; }
+  .beta-page :global(.beta-turn + .beta-turn) { border-top: 1px solid var(--color-line); }
+  .beta-page :global(.beta-turn__main) { display: grid; gap: 20px; min-width: 0; }
+  .beta-page :global(.beta-turn__q) {
+    margin: 0;
+    max-width: 34ch;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-variation-settings: 'wdth' 82;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  .beta-page :global(.beta-turn__q--long) {
+    max-width: 64ch;
+    font-size: clamp(18px, 1.6vw, 21px);
+    font-variation-settings: 'wdth' 92;
+    line-height: 1.45;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  /* Sources, as the composer reads them: the one that is being read is
+     electric; read ones settle to ink. */
+  .beta-page :global(.beta-sources) { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .beta-page :global(.beta-sources:empty) { display: none; }
+  .beta-page :global(.beta-sources li) {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 4px 10px; border-radius: 999px;
+    border: 1px solid var(--color-line-strong);
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--color-ink-2);
+    transition: color 200ms ease, border-color 200ms ease;
+  }
+  .beta-page :global(.beta-sources li::before) {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; flex: none;
+    background: var(--color-ink-3);
+  }
+  .beta-page :global(.beta-sources li[data-state='reading']) { color: var(--color-electric-500); border-color: rgba(79, 148, 251, 0.5); }
+  .beta-page :global(.beta-sources li[data-state='reading']::before) { background: currentColor; }
+
+  /* The scan: one hairline under the question; while the page is being
+     written an electric segment sweeps along it. The page's one loop. */
+  .beta-page :global(.beta-scan) { position: relative; height: 1px; overflow: hidden; background: var(--color-line-strong); transition: opacity 400ms ease; }
+  .beta-page :global(.beta-turn[data-state='composing'] .beta-scan::after) {
+    content: ''; position: absolute; inset: 0 auto 0 0; width: 30%;
+    background: linear-gradient(90deg, transparent, var(--color-electric-500), transparent);
+  }
+  .beta-page :global(.beta-turn:not([data-state='composing']) .beta-scan) { opacity: 0; }
+
+  .beta-page :global(.beta-pending) { display: flex; align-items: center; gap: 12px; padding-block: 32px 56px; color: var(--color-ink-3); }
+  .beta-page :global(.beta-pending::before) { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--color-electric-500); flex: none; }
+
+  /* The model's question to the visitor: a panel, its options as buttons. */
+  .beta-page :global(.beta-askme) { padding-block: 32px 48px; }
+  .beta-page :global(.beta-askme__in) { display: grid; gap: 14px; max-width: 760px; padding: 24px; border-color: rgba(79, 148, 251, 0.35); transition: opacity 200ms ease; }
+  .beta-page :global(.beta-askme__in .st-h3) { margin: 0; }
+  .beta-page :global(.beta-askme__or) { margin: 0; font-size: 14px; color: var(--color-ink-3); }
+  .beta-page :global(.beta-askme.is-answered .beta-askme__in) { opacity: 0.6; }
+  .beta-page :global(.beta-askme button[aria-pressed='true']) { border-color: var(--color-electric); color: var(--color-ink); opacity: 1; }
+  .beta-page :global(.beta-askme button:disabled) { cursor: default; }
+  .beta-page :global(.beta-askme button:disabled:not([aria-pressed='true'])) { opacity: 0.5; }
+
+  .beta-page :global(.beta-error) { display: grid; gap: 16px; justify-items: start; padding-block: 40px 64px; }
+  .beta-page :global(.beta-error .st-lede) { margin: 0; max-width: 60ch; }
+
+  /* ── La suite ──────────────────────────────────────────────── */
+  .beta-page :global(.beta-next) { padding-block: clamp(56px, 7vw, 96px); border-top: 1px solid var(--color-line); }
+  .beta-page :global(.beta-next__grid) {
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 40px clamp(32px, 5vw, 64px); align-items: start;
+  }
+  .beta-page :global(.beta-next__dig .st-h3) { margin: 0 0 16px; }
+  .beta-page :global(.beta-next__list) { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--color-line); }
+  .beta-page :global(.beta-next__list li) { border-bottom: 1px solid var(--color-line); }
+  .beta-page :global(.beta-next__row) {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    width: 100%; padding: 16px 0; border: 0; background: none; cursor: pointer;
+    font: 500 16px/1.4 var(--font-sans); color: var(--color-ink); text-align: left;
+  }
+  .beta-page :global(.beta-next__row svg) { width: 16px; height: 16px; flex: none; color: var(--color-electric-500); transition: translate 160ms var(--st-ease); }
+  .beta-page :global(.beta-next__row:hover svg),
+  .beta-page :global(.beta-next__row:focus-visible svg) { translate: 3px 0; }
+  .beta-page :global(.beta-next__try) { display: grid; gap: 18px; justify-items: start; padding: 28px; }
+  .beta-page :global(.beta-next__try .st-h3) { margin: 0; }
+  .beta-page :global(.beta-next__body) { margin: 0; max-width: 48ch; color: var(--color-ink-2); }
+  .beta-page :global(.beta-next__alt) { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; }
+  /* A narrow panel: one promise per line, without the inline separators. */
+  .beta-page :global(.beta-next__try .st-fine) { display: grid; gap: 6px; margin: 0; color: var(--color-ink-3); }
+  .beta-page :global(.beta-next__try .st-fine > *::after) { content: none; }
+  @media (max-width: 900px) {
+    .beta-page :global(.beta-next__grid) { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* ── Motion (only when SiteMotion runs: never with reduced motion) ── */
+  @keyframes beta-arrive { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+  @keyframes beta-sweep { from { translate: -100% 0; } to { translate: 340% 0; } }
+  @keyframes beta-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  :global(html.st-motion) .beta-page :global(.is-arriving) { animation: beta-arrive 560ms var(--st-ease) both; }
+  :global(html.st-motion) .beta-page :global(.beta-turn[data-state='composing'] .beta-scan::after) { animation: beta-sweep 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  :global(html.st-motion) .beta-page :global(.beta-sources li[data-state='reading']::before),
+  :global(html.st-motion) .beta-page :global(.beta-pending::before) { animation: beta-pulse 1.1s ease-in-out infinite; }
+</style>
+
+<script>
+  type Copy = {
+    locale: string;
+    live: Record<string, string>;
+    personaNames: Record<string, string>;
+    signupUrl: string;
+    next: { stamp: string; title: string; tryTitle: string; tryBody: string; cta: string; fine: string[] };
+  };
+  type Turn = {
+    root: HTMLElement;
+    body: HTMLElement;
+    pending: HTMLElement;
+    sources: HTMLElement;
+    status: HTMLElement;
+    started: number;
+  };
+
+  const main = document.querySelector<HTMLElement>('[data-beta]')!;
+  const copy = JSON.parse(main.dataset.beta!) as Copy;
+  const page = document.querySelector<HTMLElement>('[data-page]')!;
+  const dock = document.querySelector<HTMLElement>('[data-dock]')!;
+  const form = document.querySelector<HTMLFormElement>('[data-form]')!;
+  const input = document.querySelector<HTMLInputElement>('[data-input]')!;
+  const sendButton = document.querySelector<HTMLButtonElement>('[data-send]')!;
+  const profileBox = document.querySelector<HTMLElement>('[data-profile]')!;
+  const profileText = document.querySelector<HTMLElement>('[data-profile-text]')!;
+  const live = document.querySelector<HTMLElement>('[data-live]')!;
+  const fallback = document.querySelector<HTMLElement>('[data-fallback]')!;
+
+  const STORAGE = 'strivn-beta-session';
+  const motion = document.documentElement.classList.contains('st-motion');
+  const time = new Intl.DateTimeFormat(copy.locale, { hour: '2-digit', minute: '2-digit' });
+  const quote = (s: string) => (copy.locale === 'fr' ? `« ${s} »` : `“${s}”`);
+  let token: string | null = null;
+  let handoffUrl = copy.signupUrl;
+  let profile: Record<string, string> = {};
+  let busy = false;
+  let turn = 0;
+
+  const store = {
+    get: () => { try { return localStorage.getItem(STORAGE); } catch { return null; } },
+    set: (v: string) => { try { localStorage.setItem(STORAGE, v); } catch { /* private window */ } },
+  };
+
+  const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = ''): HTMLElementTagNameMap[K] => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  };
+
+  const arrow = () => {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    const p = document.createElementNS(ns, 'path');
+    p.setAttribute('d', 'M5 12h14M13 6l6 6-6 6');
+    svg.append(p);
+    return svg;
+  };
+
+  /** A block lands, then its visuals compute with the site's own motion. */
+  function land(target: HTMLElement, node: HTMLElement, before: Element | null = null, animate = true): void {
+    target.insertBefore(node, before && before.parentElement === target ? before : null);
+    (window as unknown as { __stMotionAdopt?: (root: Element) => void }).__stMotionAdopt?.(node);
+    if (motion && animate) {
+      node.classList.add('is-arriving');
+      node.addEventListener('animationend', () => node.classList.remove('is-arriving'), { once: true });
+    }
+  }
+
+  function renderProfile(): void {
+    const parts: string[] = [];
+    if (profile.persona) parts.push(copy.personaNames[profile.persona] ?? profile.persona);
+    // The free-text role only when no persona says it already (« Préparateur · préparateur physique »).
+    const keys = profile.persona ? ['sport', 'level', 'gps_vendor', 'squad_size', 'club'] : ['role', 'sport', 'level', 'gps_vendor', 'squad_size', 'club'];
+    for (const key of keys) {
+      if (profile[key] && !parts.includes(profile[key])) parts.push(profile[key]);
+    }
+    profileBox.hidden = parts.length === 0;
+    profileText.textContent = parts.join(' · ');
+  }
+
+  function chip(label: string, onClick: () => void): HTMLButtonElement {
+    const b = el('button', 'st-btn st-btn--ghost st-btn--sm', label);
+    b.type = 'button';
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  function startComposing(): void {
+    if (document.body.classList.contains('is-composing')) return;
+    // Moving the dock blurs whatever had focus in it; give it back.
+    const focused = dock.contains(document.activeElement) ? (document.activeElement as HTMLElement) : null;
+    document.body.append(dock);
+    focused?.focus({ preventScroll: true });
+    document.body.classList.add('is-composing');
+    document.querySelector<HTMLElement>('[data-composed-h1]')!.hidden = false;
+    window.scrollTo({ top: 0 });
+  }
+
+  const lastTurn = () => [...page.querySelectorAll<HTMLElement>('.beta-turn')].at(-1) ?? null;
+
+  function openTurn(prompt: string, n: number, isLive: boolean): Turn {
+    const root = el('article', 'beta-turn');
+    root.dataset.state = isLive ? 'composing' : 'done';
+
+    const head = el('header', 'st-wrap st-frame beta-turn__head');
+    const stamp = el('div', 'st-stamp');
+    stamp.append(el('span', 'st-stamp__a', `${copy.live.question} ${n}`));
+    if (isLive) stamp.append(el('span', 'st-stamp__b', time.format(new Date())));
+    const status = el('span', 'st-stamp__c', isLive ? copy.live.composing : '');
+    stamp.append(status);
+
+    const col = el('div', 'beta-turn__main');
+    const sources = el('ul', 'beta-sources');
+    sources.setAttribute('aria-label', copy.live.sources);
+    const scan = el('div', 'beta-scan');
+    scan.setAttribute('aria-hidden', 'true');
+    const q = el('h2', 'beta-turn__q', quote(prompt));
+    // A paragraph-long question reads as a paragraph, not a 600-px headline.
+    if (prompt.length > 140) q.classList.add('beta-turn__q--long');
+    col.append(q, sources, scan);
+    head.append(stamp, col);
+
+    const body = el('div', 'beta-turn__body');
+    const pending = el('p', 'st-wrap st-label beta-pending', copy.live.composingLong);
+    if (isLive) body.append(pending);
+
+    root.append(head, body);
+    page.querySelector('.beta-next')?.remove();
+    // A failed turn can only be retried while it is the latest.
+    page.querySelectorAll('[data-retry]').forEach((b) => b.remove());
+    land(page, root, null, isLive);
+    return { root, body, pending, sources, status, started: performance.now() };
+  }
+
+  function readSource(t: Turn, label: string): void {
+    t.sources.querySelectorAll('li[data-state="reading"]').forEach((li) => li.setAttribute('data-state', 'read'));
+    const li = el('li', '', label);
+    li.dataset.state = 'reading';
+    t.sources.append(li);
+  }
+
+  function addHtml(t: Turn, html: string, animate = true): void {
+    const block = el('div', 'beta-block');
+    const tpl = document.createElement('template');
+    tpl.innerHTML = html;
+    block.append(tpl.content);
+    land(t.body, block, t.pending, animate);
+    t.pending.textContent = copy.live.more;
+  }
+
+  function askBlock(t: Turn, data: { question: string; options?: string[] }): void {
+    const box = el('section', 'st-wrap beta-askme');
+    const panel = el('div', 'st-panel beta-askme__in');
+    panel.append(el('p', 'st-label st-label--accent', copy.live.asks), el('h3', 'st-h3', data.question));
+    const row = el('div', 'beta-chips');
+    (data.options ?? []).forEach((o) => {
+      const b = chip(o, () => {
+        if (busy) return;
+        b.setAttribute('aria-pressed', 'true');
+        void ask(o);
+      });
+      // Arrives mid-turn: answerable once the turn is written (finishTurn).
+      b.disabled = t.root.dataset.state === 'composing';
+      row.append(b);
+    });
+    panel.append(row, el('p', 'beta-askme__or', copy.live.answerOr));
+    box.append(panel);
+    land(t.body, box, t.pending);
+  }
+
+  /** Earlier questions to the visitor close once the visit moves on. */
+  function closeAsks(): void {
+    page.querySelectorAll('.beta-askme:not(.is-answered)').forEach((box) => {
+      box.classList.add('is-answered');
+      box.querySelectorAll('button').forEach((b) => (b.disabled = true));
+    });
+  }
+
+  function finishTurn(t: Turn, ok: boolean, announce = true): void {
+    t.pending.remove();
+    t.root.dataset.state = ok ? 'done' : 'failed';
+    t.sources.querySelectorAll('li').forEach((li) => li.setAttribute('data-state', 'read'));
+    t.body.querySelectorAll<HTMLButtonElement>('.beta-askme:not(.is-answered) button').forEach((b) => (b.disabled = false));
+    const secs = Math.max(1, Math.round((performance.now() - t.started) / 1000));
+    t.status.textContent = ok && announce ? copy.live.composedIn.replace('{s}', String(secs)) : '';
+    if (ok && announce) live.textContent = copy.live.done;
+  }
+
+  function failTurn(t: Turn, text: string, options: { retry?: string; signup?: string } = {}): void {
+    const box = el('div', 'st-wrap beta-error');
+    box.append(el('p', 'st-lede', text));
+    if (options.retry) {
+      const again = options.retry;
+      const retry = chip(copy.live.retry, () => {
+        // Only the latest turn, and never over a turn being written: the
+        // failed turn gives its number back to the one that replaces it.
+        if (busy || lastTurn() !== t.root) return;
+        t.root.remove();
+        turn -= 1;
+        void ask(again);
+      });
+      retry.dataset.retry = '';
+      box.append(retry);
+    }
+    if (options.signup) {
+      const a = el('a', 'st-btn st-btn--primary', copy.live.signup);
+      a.href = options.signup;
+      box.append(a);
+    }
+    land(t.body, box, t.pending);
+    finishTurn(t, false);
+    live.textContent = text;
+  }
+
+  /** « La suite »: related questions, then the sign-up carrying the visit. */
+  function renderNext(t: Turn, suggestions: string[]): void {
+    page.querySelector('.beta-next')?.remove();
+    const hasClose = Boolean(t.body.querySelector('.sub-close'));
+    if (!suggestions.length && hasClose) return;
+
+    const section = el('section', 'beta-next');
+    section.setAttribute('aria-labelledby', 'beta-next-title');
+    const wrap = el('div', 'st-wrap st-frame');
+    const stamp = el('div', 'st-stamp');
+    stamp.append(el('span', 'st-stamp__a', copy.next.stamp));
+    const grid = el('div', 'beta-next__grid');
+    let titled = false;
+
+    if (suggestions.length) {
+      const dig = el('div', 'beta-next__dig');
+      const h = el('h2', 'st-h3', copy.next.title);
+      h.id = 'beta-next-title';
+      titled = true;
+      const list = el('ul', 'beta-next__list');
+      suggestions.slice(0, 4).forEach((s) => {
+        const li = el('li', 'st-hover-row');
+        const b = el('button', 'beta-next__row');
+        b.type = 'button';
+        b.append(el('span', '', s), arrow());
+        b.addEventListener('click', () => void ask(s));
+        li.append(b);
+        list.append(li);
+      });
+      dig.append(h, list);
+      grid.append(dig);
+    }
+
+    if (!hasClose) {
+      const box = el('div', 'st-panel beta-next__try');
+      const h = el(titled ? 'h3' : 'h2', 'st-h3', copy.next.tryTitle);
+      if (!titled) h.id = 'beta-next-title';
+      const cta = el('a', 'st-btn st-btn--primary', copy.next.cta);
+      cta.href = handoffUrl;
+      cta.target = '_blank';
+      cta.rel = 'noopener';
+      cta.append(arrow());
+      const alt = el('p', 'beta-next__alt');
+      const talk = el('a', 'st-link', copy.live.talk);
+      talk.href = 'mailto:hello@strivn.net';
+      alt.append(talk);
+      // A player or a parent is rarely the one who signs up: they pass it on.
+      if (profile.persona === 'player' || profile.persona === 'parent') {
+        const share = el('a', 'st-link', copy.live.share);
+        share.href = `mailto:?subject=${encodeURIComponent(copy.live.shareSubject)}&body=${encodeURIComponent(location.origin + location.pathname)}`;
+        alt.append(share);
+      }
+      const fine = el('p', 'st-fine');
+      copy.next.fine.forEach((f) => fine.append(el('span', '', f)));
+      box.append(h, el('p', 'beta-next__body', copy.next.tryBody), cta, alt, fine);
+      grid.append(box);
+    }
+
+    wrap.append(stamp, grid);
+    section.append(wrap);
+    land(page, section);
+  }
+
+  function showFallback(): void {
+    fallback.hidden = false;
+    document.querySelector<HTMLElement>('[data-beta-intro]')!.hidden = true;
+    dock.hidden = true;
+  }
+
+  /* One session request at a time: a shortcut clicked while a visit is still
+     being restored waits for it instead of opening a second visit. */
+  let opening: Promise<boolean> | null = null;
+  function session(): Promise<boolean> {
+    if (token) return Promise.resolve(true);
+    opening ??= openSession().finally(() => { opening = null; });
+    return opening;
+  }
+
+  async function openSession(): Promise<boolean> {
+    try {
+      return await restoreOrOpen();
+    } catch {
+      // A proxy page instead of JSON, a restore that cannot render: the static routes.
+      showFallback();
+      return false;
+    }
+  }
+
+  async function restoreOrOpen(): Promise<boolean> {
+    const res = await fetch('/beta/session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ locale: copy.locale, token: store.get(), referrer: document.referrer || null, pageUrl: location.href }),
+    }).catch(() => null);
+    const data = res?.ok ? await res.json() : null;
+    if (!data || data.available === false) {
+      showFallback();
+      return false;
+    }
+    token = data.token;
+    handoffUrl = data.handoff_url ?? handoffUrl;
+    profile = data.profile ?? {};
+    if (!data.mock) store.set(data.token);
+    renderProfile();
+    if (data.page?.length && data.locale === copy.locale) {
+      startComposing();
+      let last: Turn | null = null;
+      data.page.forEach((p: { prompt: string; html: string[] }, i: number) => {
+        last = openTurn(p.prompt, i + 1, false);
+        p.html.forEach((h) => addHtml(last!, h, false));
+        finishTurn(last, true, false);
+      });
+      turn = data.turns ?? data.page.length;
+      if (last) renderNext(last, data.suggestions ?? []);
+    }
+    return true;
+  }
+
+  async function ask(message: string): Promise<void> {
+    message = message.trim();
+    if (!message || busy) return;
+    busy = true;
+    sendButton.disabled = true;
+    // Give the field back only to someone typing in it: a tap on a phone
+    // should not reopen the keyboard after every turn.
+    const refocus = document.activeElement === input;
+    try {
+      if (await session()) await compose(message);
+    } finally {
+      busy = false;
+      sendButton.disabled = false;
+      if (refocus) input.focus({ preventScroll: true });
+    }
+  }
+
+  /** One turn: the visit is open; the page grows from the stream. */
+  async function compose(message: string): Promise<void> {
+    input.value = '';
+    closeAsks();
+    startComposing();
+    turn += 1;
+    live.textContent = copy.live.composing;
+
+    const t = openTurn(message, turn, true);
+    requestAnimationFrame(() => t.root.scrollIntoView({ behavior: motion ? 'smooth' : 'auto', block: 'start' }));
+
+    let suggestions: string[] = [];
+    let failed = false;
+    let finished = false; // the stream's `done`: anything short of it is a cut turn
+    let unavailable = false;
+    let exhausted = false;
+
+    const handle = (event: string, data: any): void => {
+      if (event === 'status') readSource(t, String(data.label ?? ''));
+      else if (event === 'html') addHtml(t, String(data.html ?? ''));
+      else if (event === 'ask') askBlock(t, data);
+      else if (event === 'suggestions') suggestions = Array.isArray(data.items) ? data.items : [];
+      else if (event === 'profile') { profile = data.profile ?? {}; renderProfile(); }
+      else if (event === 'done') { finished = true; handoffUrl = data.handoff_url ?? handoffUrl; }
+      else if (event === 'error' && !failed) {
+        failed = true;
+        if (data.code === 'unavailable') unavailable = true;
+        else if ((exhausted = data.code === 'exhausted')) failTurn(t, copy.live.exhausted, { signup: data.handoff_url ?? handoffUrl });
+        else if (data.code === 'rate') failTurn(t, copy.live.rate);
+        else failTurn(t, data.message ?? copy.live.failed, { retry: message });
+      }
+    };
+
+    try {
+      const res = await fetch('/beta/turn', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, message, locale: copy.locale, pageUrl: location.href, handoffUrl, turn }),
+      });
+      if (!res.ok || !res.body) throw new Error(`turn ${res.status}`);
+      const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
+      let buffer = '';
+      while (!unavailable) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += value;
+        let cut: number;
+        while ((cut = buffer.indexOf('\n\n')) !== -1) {
+          const frame = buffer.slice(0, cut);
+          buffer = buffer.slice(cut + 2);
+          const event = /^event: (.*)$/m.exec(frame)?.[1] ?? '';
+          let data: unknown = null;
+          try {
+            data = JSON.parse(/^data: (.*)$/m.exec(frame)?.[1] ?? 'null');
+          } catch {
+            /* a malformed frame is skipped, like upstream does */
+          }
+          if (data && typeof data === 'object') handle(event, data);
+        }
+      }
+      if (unavailable) reader.cancel().catch(() => {});
+    } catch {
+      /* network drop, gateway error: handled below as a cut turn */
+    }
+
+    if (unavailable) {
+      t.root.remove();
+      turn -= 1;
+      showFallback();
+      return;
+    }
+    if (!failed && !finished) {
+      failed = true;
+      failTurn(t, copy.live.failed, { retry: message });
+    }
+    if (!failed) {
+      finishTurn(t, true);
+      renderNext(t, suggestions);
+    } else if (suggestions.length && !exhausted) {
+      // A failed turn still offers its related questions; an exhausted
+      // visit already shows the sign-up in its message.
+      renderNext(t, suggestions);
+    }
+  }
+
+  form.addEventListener('submit', (e) => { e.preventDefault(); void ask(input.value); });
+  document.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach((b) => b.addEventListener('click', () => void ask(b.dataset.prompt!)));
+
+  // Restore a visit, then honour ?q= (a campaign or an answer page can open on a question).
+  const params = new URLSearchParams(location.search);
+  const initial = params.get('q');
+  if (initial) {
+    // Asked once: a reload restores the visit instead of asking (and paying) again.
+    params.delete('q');
+    history.replaceState(history.state, '', location.pathname + (params.size ? `?${params}` : '') + location.hash);
+  }
+  if (store.get() || initial) {
+    session().then((ok) => { if (ok && initial) void ask(initial); });
+  }
+</script>
