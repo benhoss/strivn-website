@@ -1,0 +1,39 @@
+1
+00:00:04,500 --> 00:00:12,359
+Le tableau médical est la vue partagée du staff : blessures, rééducation et ce qu’il faut revoir aujourd’hui.
+
+2
+00:00:12,359 --> 00:00:19,152
+Tom a senti son ischio pendant les sprints. Ouvrez Blessures, puis Déclarer.
+
+3
+00:00:19,152 --> 00:00:24,513
+Choisissez le joueur, le type et la zone…
+
+4
+00:00:24,513 --> 00:00:37,360
+…puis le côté, la gravité et s’il peut s’entraîner ou jouer.
+
+5
+00:00:37,360 --> 00:00:43,247
+Ajoutez une date de retour estimée et une note pour le staff.
+
+6
+00:00:43,247 --> 00:00:48,570
+Déclarez. La blessure est partagée avec tout le staff, immédiatement.
+
+7
+00:00:48,570 --> 00:00:57,200
+Ouvrez une blessure pour la suivre : jours hors jeu, gravité, retour estimé et progression. Ici, le genou de Maxime.
+
+8
+00:00:57,200 --> 00:01:04,273
+Les étapes du retour le ramènent vers le groupe. Cochez une étape quand elle est faite.
+
+9
+00:01:04,273 --> 00:01:10,568
+La disponibilité se règle ici aussi : indisponible, entraînement seulement, ou apte à jouer.
+
+10
+00:01:10,568 --> 00:01:18,779
+Sur le tableau, Disponibilité montre qui est sélectionnable. Tom et Maxime sont absents — et écartés des convocations automatiquement.

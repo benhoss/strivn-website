@@ -1,0 +1,47 @@
+1
+00:00:04,500 --> 00:00:11,219
+Après chaque séance, une seule question au joueur : c’était dur à quel point ?
+
+2
+00:00:11,219 --> 00:00:20,208
+Il touche une valeur de 1 (très facile) à 10 (maximal). Nathan a trouvé le match de samedi dur : 8.
+
+3
+00:00:20,208 --> 00:00:26,164
+Un commentaire si besoin, puis Enregistrer. C’est tout.
+
+4
+00:00:26,568 --> 00:00:32,499
+Côté staff, ouvrez Bien-être › RPE. Chaque réponse arrive ici, séance par séance.
+
+5
+00:00:32,499 --> 00:00:40,731
+Le RPE des joueurs, votre RPE coach, l’écart entre les deux et le taux de réponse sur 4 semaines.
+
+6
+00:00:40,731 --> 00:00:49,745
+Une ligne par joueur, une colonne par séance. Un gros écart : le joueur ressent les séances plus dures que prévu.
+
+7
+00:00:49,745 --> 00:01:00,657
+Dans Suivi › Charge, RPE × minutes donne la charge de chaque joueur en unités arbitraires (UA) — ou la charge GPS dès que vous l’importez.
+
+8
+00:01:00,657 --> 00:01:07,732
+Les joueurs sont triés par charge. Malik est signalé sur-utilisé par rapport au reste du groupe.
+
+9
+00:01:07,732 --> 00:01:18,263
+L’onglet Tendances classe les joueurs par ACWR — la charge de la semaine face aux quatre précédentes. La zone habituelle va de 0,8 à 1,3.
+
+10
+00:01:18,263 --> 00:01:25,317
+Quand la charge d’un joueur dépasse nettement sa propre base, strivn lève une alerte de charge.
+
+11
+00:01:25,317 --> 00:01:32,029
+Voir la tendance affiche la charge hebdo, l’ACWR, la monotonie et la contrainte derrière l’alerte.
+
+12
+00:01:32,029 --> 00:01:38,701
+Ajustez le plan, puis acquittez l’alerte pour que tout le staff sache qu’elle est traitée.

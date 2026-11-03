@@ -1,0 +1,39 @@
+1
+00:00:04,500 --> 00:00:10,026
+Tableaux tactiques garde tous les dessins du staff. Cliquez sur Nouveau board.
+
+2
+00:00:10,026 --> 00:00:17,097
+Donnez-lui un titre, choisissez le sport et le fond — terrain entier, demi-terrain ou tableau vierge.
+
+3
+00:00:17,097 --> 00:00:24,567
+Créez le tableau.
+
+4
+00:00:24,567 --> 00:00:31,881
+Glissez les joueurs de l’effectif sur le terrain — leur nom et leur numéro les suivent.
+
+5
+00:00:31,881 --> 00:00:40,885
+Ou les outils joueur : les adversaires (B), et un coéquipier (A) pour le tireur de corner — un clic chacun.
+
+6
+00:00:40,885 --> 00:00:46,436
+Prenez la flèche et faites glisser : un appel au premier poteau…
+
+7
+00:00:46,436 --> 00:00:53,503
+…et une passe. Chaque flèche peut être une passe, une course, une conduite ou un tir.
+
+8
+00:00:53,504 --> 00:01:00,978
+Ajoutez une zone, du texte ou du matériel de la même façon. Annuler est à un clic.
+
+9
+00:01:00,978 --> 00:01:07,308
+Enregistrez. Exportez un PNG, partagez sur WhatsApp, ou présentez en plein écran au vestiaire.
+
+10
+00:01:07,308 --> 00:01:15,517
+De retour dans la liste, liez le tableau à une séance pour qu’il apparaisse dans le plan de séance.

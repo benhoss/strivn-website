@@ -1,0 +1,35 @@
+1
+00:00:04,500 --> 00:00:09,647
+Automatic reports holds three weekly reports, ready for the staff meeting.
+
+2
+00:00:09,647 --> 00:00:15,935
+Load & availability: each player’s load ratio and load over the last four weeks…
+
+3
+00:00:15,935 --> 00:00:21,106
+…then who was unavailable, and for how many days and matches.
+
+4
+00:00:21,106 --> 00:00:29,705
+The team report puts check-in response, fatigue, mood and load ratio in one table, with the change since last week.
+
+5
+00:00:29,706 --> 00:00:37,963
+Switch to 4 or 12 weeks for a longer view. Any report opens in the Explorer to dig further.
+
+6
+00:00:37,963 --> 00:00:47,024
+The player report follows one player: fatigue, sleep, load ratio and minutes over the last days.
+
+7
+00:00:47,024 --> 00:00:56,214
+Attendance, under Tracking, shows who attended which event over any period.
+
+8
+00:00:56,214 --> 00:01:02,511
+One row per player, one column per event — with each player’s attendance rate.
+
+9
+00:01:02,511 --> 00:01:08,838
+Export it as a CSV, or send it to your inbox for the club.

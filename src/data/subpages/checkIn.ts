@@ -56,6 +56,16 @@ export const checkIn: SubpageLocales = {
         ],
       },
       {
+        kicker: 'EN VIDÉO',
+        title: 'Du téléphone du joueur à la décision du matin.',
+        body: 'Un joueur fait son check-in en dix secondes ; le staff lit les tendances bien-être, l’état de forme de chacun et la liste « À décider maintenant ».',
+        kind: 'video',
+        src: '/videos/tutorials/02-checkin-readiness-fr.mp4',
+        poster: '/posters/tutorials/02-checkin-readiness-fr.jpg',
+        label: 'Vidéo : le check-in du matin et l’état de forme du groupe dans strivn',
+        duration: '2 min · sous-titrée',
+      },
+      {
         kicker: 'INTÉGRATION WHOOP',
         title: 'Le bracelet remplit le check-in du matin.',
         body: 'STRIVN se connecte à WHOOP par son API développeur et récupère les mesures de la nuit : le score de récupération, la durée et la performance de sommeil, la VFC et la fréquence cardiaque au repos. Le check-in arrive pré-rempli. Le joueur ouvre, vérifie, ajuste ce qui lui semble faux, et valide. Cent joueurs peuvent aujourd’hui connecter leur bracelet à STRIVN.',
@@ -144,6 +154,16 @@ export const checkIn: SubpageLocales = {
             desc: 'An unanswered check-in is never counted as “good”. Missing data stays visible as missing.',
           },
         ],
+      },
+      {
+        kicker: 'IN VIDEO',
+        title: 'From the player’s phone to the morning decision.',
+        body: 'A player does the check-in in ten seconds; the staff read the squad’s wellness trends, each player’s readiness, and the “Decide now” list.',
+        kind: 'video',
+        src: '/videos/tutorials/02-checkin-readiness-en.mp4',
+        poster: '/posters/tutorials/02-checkin-readiness-en.jpg',
+        label: 'Video: the morning check-in and squad readiness in strivn',
+        duration: '2 min · subtitled',
       },
       {
         kicker: 'WHOOP INTEGRATION',
